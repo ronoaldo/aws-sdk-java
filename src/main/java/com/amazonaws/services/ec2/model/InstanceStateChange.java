@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,132 +13,130 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a state change for a specific EC2 instance.
+ * Describes an instance state change.
  * </p>
  */
-public class InstanceStateChange  implements Serializable  {
+public class InstanceStateChange implements Serializable {
 
     /**
-     * The ID of the instance whose state changed.
+     * The ID of the instance.
      */
     private String instanceId;
 
     /**
-     * The current state of the specified instance.
+     * The current state of the instance.
      */
     private InstanceState currentState;
 
     /**
-     * The previous state of the specified instance.
+     * The previous state of the instance.
      */
     private InstanceState previousState;
 
     /**
-     * The ID of the instance whose state changed.
+     * The ID of the instance.
      *
-     * @return The ID of the instance whose state changed.
+     * @return The ID of the instance.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * The ID of the instance whose state changed.
+     * The ID of the instance.
      *
-     * @param instanceId The ID of the instance whose state changed.
+     * @param instanceId The ID of the instance.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * The ID of the instance whose state changed.
+     * The ID of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The ID of the instance whose state changed.
+     * @param instanceId The ID of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStateChange withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * The current state of the specified instance.
+     * The current state of the instance.
      *
-     * @return The current state of the specified instance.
+     * @return The current state of the instance.
      */
     public InstanceState getCurrentState() {
         return currentState;
     }
     
     /**
-     * The current state of the specified instance.
+     * The current state of the instance.
      *
-     * @param currentState The current state of the specified instance.
+     * @param currentState The current state of the instance.
      */
     public void setCurrentState(InstanceState currentState) {
         this.currentState = currentState;
     }
     
     /**
-     * The current state of the specified instance.
+     * The current state of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param currentState The current state of the specified instance.
+     * @param currentState The current state of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStateChange withCurrentState(InstanceState currentState) {
         this.currentState = currentState;
         return this;
     }
-    
-    
+
     /**
-     * The previous state of the specified instance.
+     * The previous state of the instance.
      *
-     * @return The previous state of the specified instance.
+     * @return The previous state of the instance.
      */
     public InstanceState getPreviousState() {
         return previousState;
     }
     
     /**
-     * The previous state of the specified instance.
+     * The previous state of the instance.
      *
-     * @param previousState The previous state of the specified instance.
+     * @param previousState The previous state of the instance.
      */
     public void setPreviousState(InstanceState previousState) {
         this.previousState = previousState;
     }
     
     /**
-     * The previous state of the specified instance.
+     * The previous state of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param previousState The previous state of the specified instance.
+     * @param previousState The previous state of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStateChange withPreviousState(InstanceState previousState) {
         this.previousState = previousState;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,9 +148,9 @@ public class InstanceStateChange  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getCurrentState() != null) sb.append("CurrentState: " + getCurrentState() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getCurrentState() != null) sb.append("CurrentState: " + getCurrentState() + ",");
         if (getPreviousState() != null) sb.append("PreviousState: " + getPreviousState() );
         sb.append("}");
         return sb.toString();

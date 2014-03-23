@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Information about the master playlist.
+ * </p>
  */
-public class CreateJobPlaylist  implements Serializable  {
+public class CreateJobPlaylist implements Serializable {
 
     /**
      * The name that you want Elastic Transcoder to assign to the master
@@ -51,7 +54,7 @@ public class CreateJobPlaylist  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 30<br/>
      */
-    private java.util.List<String> outputKeys;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> outputKeys;
 
     /**
      * The name that you want Elastic Transcoder to assign to the master
@@ -124,14 +127,13 @@ public class CreateJobPlaylist  implements Serializable  {
      *         in the file name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobPlaylist withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * This value must currently be HLSv3.
      * <p>
@@ -167,14 +169,13 @@ public class CreateJobPlaylist  implements Serializable  {
      * @param format This value must currently be HLSv3.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobPlaylist withFormat(String format) {
         this.format = format;
         return this;
     }
-    
-    
+
     /**
      * For each output in this job that you want to include in a master
      * playlist, the value of the <code>Outputs:Key</code> object. If you
@@ -190,7 +191,10 @@ public class CreateJobPlaylist  implements Serializable  {
      *         <code>SegmentDuration</code> for all of the outputs must be the same.
      */
     public java.util.List<String> getOutputKeys() {
-        
+        if (outputKeys == null) {
+              outputKeys = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              outputKeys.setAutoConstruct(true);
+        }
         return outputKeys;
     }
     
@@ -213,8 +217,7 @@ public class CreateJobPlaylist  implements Serializable  {
             this.outputKeys = null;
             return;
         }
-
-        java.util.List<String> outputKeysCopy = new java.util.ArrayList<String>(outputKeys.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> outputKeysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(outputKeys.size());
         outputKeysCopy.addAll(outputKeys);
         this.outputKeys = outputKeysCopy;
     }
@@ -236,7 +239,7 @@ public class CreateJobPlaylist  implements Serializable  {
      *         <code>SegmentDuration</code> for all of the outputs must be the same.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobPlaylist withOutputKeys(String... outputKeys) {
         if (getOutputKeys() == null) setOutputKeys(new java.util.ArrayList<String>(outputKeys.length));
@@ -263,20 +266,20 @@ public class CreateJobPlaylist  implements Serializable  {
      *         <code>SegmentDuration</code> for all of the outputs must be the same.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobPlaylist withOutputKeys(java.util.Collection<String> outputKeys) {
         if (outputKeys == null) {
             this.outputKeys = null;
         } else {
-            java.util.List<String> outputKeysCopy = new java.util.ArrayList<String>(outputKeys.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> outputKeysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(outputKeys.size());
             outputKeysCopy.addAll(outputKeys);
             this.outputKeys = outputKeysCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -288,9 +291,9 @@ public class CreateJobPlaylist  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");
         if (getOutputKeys() != null) sb.append("OutputKeys: " + getOutputKeys() );
         sb.append("}");
         return sb.toString();

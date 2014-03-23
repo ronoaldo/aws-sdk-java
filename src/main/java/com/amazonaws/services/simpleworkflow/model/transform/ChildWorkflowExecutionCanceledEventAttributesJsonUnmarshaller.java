@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,32 +22,28 @@ import com.amazonaws.services.simpleworkflow.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Child Workflow Execution Canceled Event Attributes JSON Unmarshaller
  */
 public class ChildWorkflowExecutionCanceledEventAttributesJsonUnmarshaller implements Unmarshaller<ChildWorkflowExecutionCanceledEventAttributes, JsonUnmarshallerContext> {
 
-    
-
     public ChildWorkflowExecutionCanceledEventAttributes unmarshall(JsonUnmarshallerContext context) throws Exception {
         ChildWorkflowExecutionCanceledEventAttributes childWorkflowExecutionCanceledEventAttributes = new ChildWorkflowExecutionCanceledEventAttributes();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("workflowExecution", targetDepth)) {
                     context.nextToken();
@@ -74,7 +70,6 @@ public class ChildWorkflowExecutionCanceledEventAttributesJsonUnmarshaller imple
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * The response body contains a JSON object. If the job is successfully
+ * canceled, the value of <code>Success</code> is <code>true</code> .
+ * </p>
  */
-public class CancelJobResult  implements Serializable  {
+public class CancelJobResult implements Serializable {
 
     /**
      * Returns a string representation of this object; useful for testing and

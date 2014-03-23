@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The returned result of the corresponding request.
  * </p>
  */
-public class GetDistributionResult  implements Serializable  {
+public class GetDistributionResult implements Serializable {
 
     /**
      * The distribution's information.
@@ -59,14 +60,13 @@ public class GetDistributionResult  implements Serializable  {
      * @param distribution The distribution's information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetDistributionResult withDistribution(Distribution distribution) {
         this.distribution = distribution;
         return this;
     }
-    
-    
+
     /**
      * The current version of the distribution's information. For example:
      * E2QWRUHAPOMQZL.
@@ -99,14 +99,13 @@ public class GetDistributionResult  implements Serializable  {
      *         E2QWRUHAPOMQZL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetDistributionResult withETag(String eTag) {
         this.eTag = eTag;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -118,8 +117,8 @@ public class GetDistributionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDistribution() != null) sb.append("Distribution: " + getDistribution() + ",");    	
+        sb.append("{");
+        if (getDistribution() != null) sb.append("Distribution: " + getDistribution() + ",");
         if (getETag() != null) sb.append("ETag: " + getETag() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class PurchaseReservedInstancesOfferingRequestMarshaller implements Marsh
     public Request<PurchaseReservedInstancesOfferingRequest> marshall(PurchaseReservedInstancesOfferingRequest purchaseReservedInstancesOfferingRequest) {
 
         if (purchaseReservedInstancesOfferingRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PurchaseReservedInstancesOfferingRequest> request = new DefaultRequest<PurchaseReservedInstancesOfferingRequest>(purchaseReservedInstancesOfferingRequest, "AmazonEC2");
         request.addParameter("Action", "PurchaseReservedInstancesOffering");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (purchaseReservedInstancesOfferingRequest.getReservedInstancesOfferingId() != null) {
             request.addParameter("ReservedInstancesOfferingId", StringUtils.fromString(purchaseReservedInstancesOfferingRequest.getReservedInstancesOfferingId()));
@@ -55,7 +55,6 @@ public class PurchaseReservedInstancesOfferingRequestMarshaller implements Marsh
                 request.addParameter("LimitPrice.CurrencyCode", StringUtils.fromString(reservedInstanceLimitPriceLimitPrice.getCurrencyCode()));
             }
         }
-
 
         return request;
     }

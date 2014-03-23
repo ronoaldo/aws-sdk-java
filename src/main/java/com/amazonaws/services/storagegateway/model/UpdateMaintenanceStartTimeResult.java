@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A JSON object containing the GatewayARN of the gateway whose maintenance start time is updated.
+ * A JSON object containing the of the gateway whose maintenance start
+ * time is updated.
  * </p>
  */
-public class UpdateMaintenanceStartTimeResult  implements Serializable  {
+public class UpdateMaintenanceStartTimeResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -79,14 +81,13 @@ public class UpdateMaintenanceStartTimeResult  implements Serializable  {
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateMaintenanceStartTimeResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -98,7 +99,7 @@ public class UpdateMaintenanceStartTimeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

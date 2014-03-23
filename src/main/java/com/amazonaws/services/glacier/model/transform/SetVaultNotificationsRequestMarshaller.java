@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class SetVaultNotificationsRequestMarshaller implements Marshaller<Request<SetVaultNotificationsRequest>, SetVaultNotificationsRequest> {
 
-    
-
     public Request<SetVaultNotificationsRequest> marshall(SetVaultNotificationsRequest setVaultNotificationsRequest) {
     if (setVaultNotificationsRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,13 +49,11 @@ public class SetVaultNotificationsRequestMarshaller implements Marshaller<Reques
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.PUT);
 
-
         String uriResourcePath = "/{accountId}/vaults/{vaultName}/notification-configuration"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(setVaultNotificationsRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(setVaultNotificationsRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (setVaultNotificationsRequest.getAccountId() == null) ? "" : StringUtils.fromString(setVaultNotificationsRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (setVaultNotificationsRequest.getVaultName() == null) ? "" : StringUtils.fromString(setVaultNotificationsRequest.getVaultName())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -77,14 +73,10 @@ public class SetVaultNotificationsRequestMarshaller implements Marshaller<Reques
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
             VaultNotificationConfig vaultNotificationConfig = setVaultNotificationsRequest.getVaultNotificationConfig();
             if (vaultNotificationConfig != null) {
 
@@ -94,8 +86,8 @@ public class SetVaultNotificationsRequestMarshaller implements Marshaller<Reques
                     jsonWriter.key("SNSTopic").value(vaultNotificationConfig.getSNSTopic());
                 }
 
-                java.util.List<String> eventsList = vaultNotificationConfig.getEvents();
-                if (eventsList != null) {
+                com.amazonaws.internal.ListWithAutoConstructFlag<String> eventsList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(vaultNotificationConfig.getEvents());
+                if (eventsList != null && !(eventsList.isAutoConstruct() && eventsList.isEmpty())) {
 
                     jsonWriter.key("Events");
                     jsonWriter.array();
@@ -110,21 +102,14 @@ public class SetVaultNotificationsRequestMarshaller implements Marshaller<Reques
                 jsonWriter.endObject();
             }
 
-
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,40 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents the destination of the message, consisting of To:, CC:, and BCC: fields.
+ * Represents the destination of the message, consisting of To:, CC:, and
+ * BCC: fields.
+ * </p>
+ * <p>
+ * By default, the string must be 7-bit ASCII. If the text must contain
+ * any other characters, then you must use MIME encoded-word syntax (RFC
+ * 2047) instead of a literal string. MIME encoded-word syntax uses the
+ * following form: <code>=?charset?encoding?encoded-text?=</code> .
+ * For more information, see
+ * <a href="http://tools.ietf.org/html/rfc2047"> RFC 2047 </a>
+ * .
  * </p>
  */
-public class Destination  implements Serializable  {
+public class Destination implements Serializable {
 
     /**
      * The To: field(s) of the message.
      */
-    private java.util.List<String> toAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> toAddresses;
 
     /**
      * The CC: field(s) of the message.
      */
-    private java.util.List<String> ccAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> ccAddresses;
 
     /**
      * The BCC: field(s) of the message.
      */
-    private java.util.List<String> bccAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> bccAddresses;
 
     /**
      * Default constructor for a new Destination object.  Callers should use the
@@ -51,20 +62,18 @@ public class Destination  implements Serializable  {
      * @param toAddresses The To: field(s) of the message.
      */
     public Destination(java.util.List<String> toAddresses) {
-        this.toAddresses = toAddresses;
+        setToAddresses(toAddresses);
     }
 
-    
-    
     /**
      * The To: field(s) of the message.
      *
      * @return The To: field(s) of the message.
      */
     public java.util.List<String> getToAddresses() {
-        
         if (toAddresses == null) {
-            toAddresses = new java.util.ArrayList<String>();
+              toAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              toAddresses.setAutoConstruct(true);
         }
         return toAddresses;
     }
@@ -79,8 +88,7 @@ public class Destination  implements Serializable  {
             this.toAddresses = null;
             return;
         }
-
-        java.util.List<String> toAddressesCopy = new java.util.ArrayList<String>(toAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> toAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(toAddresses.size());
         toAddressesCopy.addAll(toAddresses);
         this.toAddresses = toAddressesCopy;
     }
@@ -93,7 +101,7 @@ public class Destination  implements Serializable  {
      * @param toAddresses The To: field(s) of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Destination withToAddresses(String... toAddresses) {
         if (getToAddresses() == null) setToAddresses(new java.util.ArrayList<String>(toAddresses.length));
@@ -111,29 +119,29 @@ public class Destination  implements Serializable  {
      * @param toAddresses The To: field(s) of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Destination withToAddresses(java.util.Collection<String> toAddresses) {
         if (toAddresses == null) {
             this.toAddresses = null;
         } else {
-            java.util.List<String> toAddressesCopy = new java.util.ArrayList<String>(toAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> toAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(toAddresses.size());
             toAddressesCopy.addAll(toAddresses);
             this.toAddresses = toAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The CC: field(s) of the message.
      *
      * @return The CC: field(s) of the message.
      */
     public java.util.List<String> getCcAddresses() {
-        
         if (ccAddresses == null) {
-            ccAddresses = new java.util.ArrayList<String>();
+              ccAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              ccAddresses.setAutoConstruct(true);
         }
         return ccAddresses;
     }
@@ -148,8 +156,7 @@ public class Destination  implements Serializable  {
             this.ccAddresses = null;
             return;
         }
-
-        java.util.List<String> ccAddressesCopy = new java.util.ArrayList<String>(ccAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> ccAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ccAddresses.size());
         ccAddressesCopy.addAll(ccAddresses);
         this.ccAddresses = ccAddressesCopy;
     }
@@ -162,7 +169,7 @@ public class Destination  implements Serializable  {
      * @param ccAddresses The CC: field(s) of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Destination withCcAddresses(String... ccAddresses) {
         if (getCcAddresses() == null) setCcAddresses(new java.util.ArrayList<String>(ccAddresses.length));
@@ -180,29 +187,29 @@ public class Destination  implements Serializable  {
      * @param ccAddresses The CC: field(s) of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Destination withCcAddresses(java.util.Collection<String> ccAddresses) {
         if (ccAddresses == null) {
             this.ccAddresses = null;
         } else {
-            java.util.List<String> ccAddressesCopy = new java.util.ArrayList<String>(ccAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> ccAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ccAddresses.size());
             ccAddressesCopy.addAll(ccAddresses);
             this.ccAddresses = ccAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The BCC: field(s) of the message.
      *
      * @return The BCC: field(s) of the message.
      */
     public java.util.List<String> getBccAddresses() {
-        
         if (bccAddresses == null) {
-            bccAddresses = new java.util.ArrayList<String>();
+              bccAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              bccAddresses.setAutoConstruct(true);
         }
         return bccAddresses;
     }
@@ -217,8 +224,7 @@ public class Destination  implements Serializable  {
             this.bccAddresses = null;
             return;
         }
-
-        java.util.List<String> bccAddressesCopy = new java.util.ArrayList<String>(bccAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> bccAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(bccAddresses.size());
         bccAddressesCopy.addAll(bccAddresses);
         this.bccAddresses = bccAddressesCopy;
     }
@@ -231,7 +237,7 @@ public class Destination  implements Serializable  {
      * @param bccAddresses The BCC: field(s) of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Destination withBccAddresses(String... bccAddresses) {
         if (getBccAddresses() == null) setBccAddresses(new java.util.ArrayList<String>(bccAddresses.length));
@@ -249,20 +255,20 @@ public class Destination  implements Serializable  {
      * @param bccAddresses The BCC: field(s) of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Destination withBccAddresses(java.util.Collection<String> bccAddresses) {
         if (bccAddresses == null) {
             this.bccAddresses = null;
         } else {
-            java.util.List<String> bccAddressesCopy = new java.util.ArrayList<String>(bccAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> bccAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(bccAddresses.size());
             bccAddressesCopy.addAll(bccAddresses);
             this.bccAddresses = bccAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -274,9 +280,9 @@ public class Destination  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getToAddresses() != null) sb.append("ToAddresses: " + getToAddresses() + ",");    	
-        if (getCcAddresses() != null) sb.append("CcAddresses: " + getCcAddresses() + ",");    	
+        sb.append("{");
+        if (getToAddresses() != null) sb.append("ToAddresses: " + getToAddresses() + ",");
+        if (getCcAddresses() != null) sb.append("CcAddresses: " + getCcAddresses() + ",");
         if (getBccAddresses() != null) sb.append("BccAddresses: " + getBccAddresses() );
         sb.append("}");
         return sb.toString();

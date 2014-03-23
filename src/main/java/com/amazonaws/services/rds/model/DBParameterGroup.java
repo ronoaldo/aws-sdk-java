@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,150 +13,150 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the CreateDBParameterGroup action.
+ * Contains the result of a successful invocation of the
+ * CreateDBParameterGroup action.
  * </p>
  * <p>
- * This data type is used as a request parameter in the DeleteDBParameterGroup action, and as a response element in the DescribeDBParameterGroups
- * action.
+ * This data type is used as a request parameter in the
+ * DeleteDBParameterGroup action, and as a response element in the
+ * DescribeDBParameterGroups action.
  * </p>
  */
-public class DBParameterGroup  implements Serializable  {
+public class DBParameterGroup implements Serializable {
 
     /**
-     * Provides the name of the DB Parameter Group.
+     * Provides the name of the DB parameter group.
      */
     private String dBParameterGroupName;
 
     /**
-     * Provides the name of the DB Parameter Group Family that this DB
-     * Parameter Group is compatible with.
+     * Provides the name of the DB parameter group family that this DB
+     * parameter group is compatible with.
      */
     private String dBParameterGroupFamily;
 
     /**
-     * Provides the customer-specified description for this DB Parameter
-     * Group.
+     * Provides the customer-specified description for this DB parameter
+     * group.
      */
     private String description;
 
     /**
-     * Provides the name of the DB Parameter Group.
+     * Provides the name of the DB parameter group.
      *
-     * @return Provides the name of the DB Parameter Group.
+     * @return Provides the name of the DB parameter group.
      */
     public String getDBParameterGroupName() {
         return dBParameterGroupName;
     }
     
     /**
-     * Provides the name of the DB Parameter Group.
+     * Provides the name of the DB parameter group.
      *
-     * @param dBParameterGroupName Provides the name of the DB Parameter Group.
+     * @param dBParameterGroupName Provides the name of the DB parameter group.
      */
     public void setDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
     }
     
     /**
-     * Provides the name of the DB Parameter Group.
+     * Provides the name of the DB parameter group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupName Provides the name of the DB Parameter Group.
+     * @param dBParameterGroupName Provides the name of the DB parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBParameterGroup withDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
         return this;
     }
-    
-    
+
     /**
-     * Provides the name of the DB Parameter Group Family that this DB
-     * Parameter Group is compatible with.
+     * Provides the name of the DB parameter group family that this DB
+     * parameter group is compatible with.
      *
-     * @return Provides the name of the DB Parameter Group Family that this DB
-     *         Parameter Group is compatible with.
+     * @return Provides the name of the DB parameter group family that this DB
+     *         parameter group is compatible with.
      */
     public String getDBParameterGroupFamily() {
         return dBParameterGroupFamily;
     }
     
     /**
-     * Provides the name of the DB Parameter Group Family that this DB
-     * Parameter Group is compatible with.
+     * Provides the name of the DB parameter group family that this DB
+     * parameter group is compatible with.
      *
-     * @param dBParameterGroupFamily Provides the name of the DB Parameter Group Family that this DB
-     *         Parameter Group is compatible with.
+     * @param dBParameterGroupFamily Provides the name of the DB parameter group family that this DB
+     *         parameter group is compatible with.
      */
     public void setDBParameterGroupFamily(String dBParameterGroupFamily) {
         this.dBParameterGroupFamily = dBParameterGroupFamily;
     }
     
     /**
-     * Provides the name of the DB Parameter Group Family that this DB
-     * Parameter Group is compatible with.
+     * Provides the name of the DB parameter group family that this DB
+     * parameter group is compatible with.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupFamily Provides the name of the DB Parameter Group Family that this DB
-     *         Parameter Group is compatible with.
+     * @param dBParameterGroupFamily Provides the name of the DB parameter group family that this DB
+     *         parameter group is compatible with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBParameterGroup withDBParameterGroupFamily(String dBParameterGroupFamily) {
         this.dBParameterGroupFamily = dBParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
-     * Provides the customer-specified description for this DB Parameter
-     * Group.
+     * Provides the customer-specified description for this DB parameter
+     * group.
      *
-     * @return Provides the customer-specified description for this DB Parameter
-     *         Group.
+     * @return Provides the customer-specified description for this DB parameter
+     *         group.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Provides the customer-specified description for this DB Parameter
-     * Group.
+     * Provides the customer-specified description for this DB parameter
+     * group.
      *
-     * @param description Provides the customer-specified description for this DB Parameter
-     *         Group.
+     * @param description Provides the customer-specified description for this DB parameter
+     *         group.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Provides the customer-specified description for this DB Parameter
-     * Group.
+     * Provides the customer-specified description for this DB parameter
+     * group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description Provides the customer-specified description for this DB Parameter
-     *         Group.
+     * @param description Provides the customer-specified description for this DB parameter
+     *         group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBParameterGroup withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -168,9 +168,9 @@ public class DBParameterGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() + ",");    	
-        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");    	
+        sb.append("{");
+        if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() + ",");
+        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

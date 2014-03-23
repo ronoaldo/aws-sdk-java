@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>WorkflowExecutionContinuedAsNew</code> event.
+ * Provides details of the <code>WorkflowExecutionContinuedAsNew</code>
+ * event.
  * </p>
  */
-public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializable  {
+public class WorkflowExecutionContinuedAsNewEventAttributes implements Serializable {
 
     /**
      * The input provided to the new workflow execution.
@@ -99,7 +101,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> tagList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tagList;
 
     /**
      * Represents a workflow type.
@@ -141,14 +143,13 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * @param input The input provided to the new workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the
@@ -199,14 +200,13 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      *         tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * The <code>runId</code> of the new workflow execution.
      * <p>
@@ -242,14 +242,13 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * @param newExecutionRunId The <code>runId</code> of the new workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withNewExecutionRunId(String newExecutionRunId) {
         this.newExecutionRunId = newExecutionRunId;
         return this;
     }
-    
-    
+
     /**
      * The total duration allowed for the new workflow execution. <p>The
      * valid values are integers greater than or equal to <code>0</code>. An
@@ -303,14 +302,13 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      *         <code>NONE</code> can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withExecutionStartToCloseTimeout(String executionStartToCloseTimeout) {
         this.executionStartToCloseTimeout = executionStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * Represents a task list.
      *
@@ -337,14 +335,13 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * @param taskList Represents a task list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * The maximum duration of decision tasks for the new workflow execution.
      * <p>The valid values are integers greater than or equal to
@@ -404,14 +401,13 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      *         duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withTaskStartToCloseTimeout(String taskStartToCloseTimeout) {
         this.taskStartToCloseTimeout = taskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The policy to use for the child workflow executions of the new
      * execution if it is terminated by calling the
@@ -511,7 +507,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -519,8 +515,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * The policy to use for the child workflow executions of the new
      * execution if it is terminated by calling the
@@ -586,7 +581,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -594,7 +589,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * The list of tags associated with the new workflow execution.
      * <p>
@@ -604,9 +599,9 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * @return The list of tags associated with the new workflow execution.
      */
     public java.util.List<String> getTagList() {
-        
         if (tagList == null) {
-            tagList = new java.util.ArrayList<String>();
+              tagList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              tagList.setAutoConstruct(true);
         }
         return tagList;
     }
@@ -624,8 +619,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
             this.tagList = null;
             return;
         }
-
-        java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
         tagListCopy.addAll(tagList);
         this.tagList = tagListCopy;
     }
@@ -641,7 +635,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * @param tagList The list of tags associated with the new workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withTagList(String... tagList) {
         if (getTagList() == null) setTagList(new java.util.ArrayList<String>(tagList.length));
@@ -662,20 +656,20 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * @param tagList The list of tags associated with the new workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withTagList(java.util.Collection<String> tagList) {
         if (tagList == null) {
             this.tagList = null;
         } else {
-            java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
             tagListCopy.addAll(tagList);
             this.tagList = tagListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Represents a workflow type.
      *
@@ -702,14 +696,13 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
      * @param workflowType Represents a workflow type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionContinuedAsNewEventAttributes withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -721,15 +714,15 @@ public class WorkflowExecutionContinuedAsNewEventAttributes  implements Serializ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");    	
-        if (getNewExecutionRunId() != null) sb.append("NewExecutionRunId: " + getNewExecutionRunId() + ",");    	
-        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");    	
-        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");    	
-        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");    	
+        sb.append("{");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");
+        if (getNewExecutionRunId() != null) sb.append("NewExecutionRunId: " + getNewExecutionRunId() + ",");
+        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");
+        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");
+        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");
         if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() );
         sb.append("}");
         return sb.toString();

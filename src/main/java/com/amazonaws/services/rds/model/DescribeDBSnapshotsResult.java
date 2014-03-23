@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeDBSnapshots action.
+ * Contains the result of a successful invocation of the
+ * DescribeDBSnapshots action.
  * </p>
  */
-public class DescribeDBSnapshotsResult  implements Serializable  {
+public class DescribeDBSnapshotsResult implements Serializable {
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -32,7 +34,7 @@ public class DescribeDBSnapshotsResult  implements Serializable  {
     /**
      * A list of <a>DBSnapshot</a> instances.
      */
-    private java.util.List<DBSnapshot> dBSnapshots;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DBSnapshot> dBSnapshots;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -72,23 +74,22 @@ public class DescribeDBSnapshotsResult  implements Serializable  {
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>DBSnapshot</a> instances.
      *
      * @return A list of <a>DBSnapshot</a> instances.
      */
     public java.util.List<DBSnapshot> getDBSnapshots() {
-        
         if (dBSnapshots == null) {
-            dBSnapshots = new java.util.ArrayList<DBSnapshot>();
+              dBSnapshots = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSnapshot>();
+              dBSnapshots.setAutoConstruct(true);
         }
         return dBSnapshots;
     }
@@ -103,8 +104,7 @@ public class DescribeDBSnapshotsResult  implements Serializable  {
             this.dBSnapshots = null;
             return;
         }
-
-        java.util.List<DBSnapshot> dBSnapshotsCopy = new java.util.ArrayList<DBSnapshot>(dBSnapshots.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DBSnapshot> dBSnapshotsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSnapshot>(dBSnapshots.size());
         dBSnapshotsCopy.addAll(dBSnapshots);
         this.dBSnapshots = dBSnapshotsCopy;
     }
@@ -117,7 +117,7 @@ public class DescribeDBSnapshotsResult  implements Serializable  {
      * @param dBSnapshots A list of <a>DBSnapshot</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsResult withDBSnapshots(DBSnapshot... dBSnapshots) {
         if (getDBSnapshots() == null) setDBSnapshots(new java.util.ArrayList<DBSnapshot>(dBSnapshots.length));
@@ -135,20 +135,20 @@ public class DescribeDBSnapshotsResult  implements Serializable  {
      * @param dBSnapshots A list of <a>DBSnapshot</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsResult withDBSnapshots(java.util.Collection<DBSnapshot> dBSnapshots) {
         if (dBSnapshots == null) {
             this.dBSnapshots = null;
         } else {
-            java.util.List<DBSnapshot> dBSnapshotsCopy = new java.util.ArrayList<DBSnapshot>(dBSnapshots.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DBSnapshot> dBSnapshotsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSnapshot>(dBSnapshots.size());
             dBSnapshotsCopy.addAll(dBSnapshots);
             this.dBSnapshots = dBSnapshotsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class DescribeDBSnapshotsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getDBSnapshots() != null) sb.append("DBSnapshots: " + getDBSnapshots() );
         sb.append("}");
         return sb.toString();

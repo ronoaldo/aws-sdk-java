@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>WorkflowExecutionTimedOut</code> event.
  * </p>
  */
-public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  {
+public class WorkflowExecutionTimedOutEventAttributes implements Serializable {
 
     /**
      * The type of timeout that caused this event.
@@ -85,7 +86,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
      * @param timeoutType The type of timeout that caused this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see WorkflowExecutionTimeoutType
      */
@@ -93,8 +94,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
         this.timeoutType = timeoutType;
         return this;
     }
-    
-    
+
     /**
      * The type of timeout that caused this event.
      * <p>
@@ -120,7 +120,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
      * @param timeoutType The type of timeout that caused this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see WorkflowExecutionTimeoutType
      */
@@ -128,7 +128,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
         this.timeoutType = timeoutType.toString();
         return this;
     }
-    
+
     /**
      * The policy used for the child workflow executions of this workflow
      * execution. The supported child policies are: <ul>
@@ -216,7 +216,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -224,8 +224,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * The policy used for the child workflow executions of this workflow
      * execution. The supported child policies are: <ul>
@@ -283,7 +282,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -291,7 +290,7 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -303,8 +302,8 @@ public class WorkflowExecutionTimedOutEventAttributes  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimeoutType() != null) sb.append("TimeoutType: " + getTimeoutType() + ",");    	
+        sb.append("{");
+        if (getTimeoutType() != null) sb.append("TimeoutType: " + getTimeoutType() + ",");
         if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() );
         sb.append("}");
         return sb.toString();

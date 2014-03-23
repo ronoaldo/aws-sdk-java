@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
-public class GetJobOutputResult  implements Serializable  {
+public class GetJobOutputResult implements Serializable {
 
     /**
      * The job data, either archive data or inventory data.
@@ -105,14 +106,13 @@ public class GetJobOutputResult  implements Serializable  {
      * @param body The job data, either archive data or inventory data.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetJobOutputResult withBody(java.io.InputStream body) {
         this.body = body;
         return this;
     }
-    
-    
+
     /**
      * The checksum of the data in the response. This header is returned only
      * when retrieving the output for an archive retrieval job. Furthermore,
@@ -211,14 +211,13 @@ public class GetJobOutputResult  implements Serializable  {
      *         returned as a response header.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetJobOutputResult withChecksum(String checksum) {
         this.checksum = checksum;
         return this;
     }
-    
-    
+
     /**
      * The HTTP response code for a job output request. The value depends on
      * whether a range was specified in the request.
@@ -251,14 +250,13 @@ public class GetJobOutputResult  implements Serializable  {
      *         whether a range was specified in the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetJobOutputResult withStatus(Integer status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The range of bytes returned by Amazon Glacier. If only partial output
      * is downloaded, the response provides the range of bytes Amazon Glacier
@@ -303,14 +301,13 @@ public class GetJobOutputResult  implements Serializable  {
      *         from 8 MB.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetJobOutputResult withContentRange(String contentRange) {
         this.contentRange = contentRange;
         return this;
     }
-    
-    
+
     /**
      * Indicates the range units accepted. For more information, go to <a
      * href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">RFC2616</a>.
@@ -343,14 +340,13 @@ public class GetJobOutputResult  implements Serializable  {
      *         href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">RFC2616</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetJobOutputResult withAcceptRanges(String acceptRanges) {
         this.acceptRanges = acceptRanges;
         return this;
     }
-    
-    
+
     /**
      * The Content-Type depends on whether the job output is an archive or a
      * vault inventory. For archive data, the Content-Type is
@@ -407,14 +403,13 @@ public class GetJobOutputResult  implements Serializable  {
      *         Content-Type is application/json.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetJobOutputResult withContentType(String contentType) {
         this.contentType = contentType;
         return this;
     }
-    
-    
+
     /**
      * The description of an archive.
      *
@@ -441,14 +436,13 @@ public class GetJobOutputResult  implements Serializable  {
      * @param archiveDescription The description of an archive.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetJobOutputResult withArchiveDescription(String archiveDescription) {
         this.archiveDescription = archiveDescription;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -460,13 +454,13 @@ public class GetJobOutputResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBody() != null) sb.append("Body: " + getBody() + ",");    	
-        if (getChecksum() != null) sb.append("Checksum: " + getChecksum() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getContentRange() != null) sb.append("ContentRange: " + getContentRange() + ",");    	
-        if (getAcceptRanges() != null) sb.append("AcceptRanges: " + getAcceptRanges() + ",");    	
-        if (getContentType() != null) sb.append("ContentType: " + getContentType() + ",");    	
+        sb.append("{");
+        if (getBody() != null) sb.append("Body: " + getBody() + ",");
+        if (getChecksum() != null) sb.append("Checksum: " + getChecksum() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getContentRange() != null) sb.append("ContentRange: " + getContentRange() + ",");
+        if (getAcceptRanges() != null) sb.append("AcceptRanges: " + getAcceptRanges() + ",");
+        if (getContentType() != null) sb.append("ContentType: " + getContentType() + ",");
         if (getArchiveDescription() != null) sb.append("ArchiveDescription: " + getArchiveDescription() );
         sb.append("}");
         return sb.toString();

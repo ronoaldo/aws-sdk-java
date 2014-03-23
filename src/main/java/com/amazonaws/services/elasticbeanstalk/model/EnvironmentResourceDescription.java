@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes the AWS resources in use by this environment. This data is live.
+ * Describes the AWS resources in use by this environment. This data is
+ * live.
  * </p>
  */
-public class EnvironmentResourceDescription  implements Serializable  {
+public class EnvironmentResourceDescription implements Serializable {
 
     /**
      * The name of the environment.
@@ -33,27 +35,32 @@ public class EnvironmentResourceDescription  implements Serializable  {
     /**
      * The <code>AutoScalingGroups</code> used by this environment.
      */
-    private java.util.List<AutoScalingGroup> autoScalingGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingGroup> autoScalingGroups;
 
     /**
      * The Amazon EC2 instances used by this environment.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * The Auto Scaling launch configurations in use by this environment.
      */
-    private java.util.List<LaunchConfiguration> launchConfigurations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration> launchConfigurations;
 
     /**
      * The LoadBalancers in use by this environment.
      */
-    private java.util.List<LoadBalancer> loadBalancers;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancer> loadBalancers;
 
     /**
      * The <code>AutoScaling</code> triggers in use by this environment.
      */
-    private java.util.List<Trigger> triggers;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Trigger> triggers;
+
+    /**
+     * The queues used by this environment.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Queue> queues;
 
     /**
      * Default constructor for a new EnvironmentResourceDescription object.  Callers should use the
@@ -96,23 +103,22 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param environmentName The name of the environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * The <code>AutoScalingGroups</code> used by this environment.
      *
      * @return The <code>AutoScalingGroups</code> used by this environment.
      */
     public java.util.List<AutoScalingGroup> getAutoScalingGroups() {
-        
         if (autoScalingGroups == null) {
-            autoScalingGroups = new java.util.ArrayList<AutoScalingGroup>();
+              autoScalingGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingGroup>();
+              autoScalingGroups.setAutoConstruct(true);
         }
         return autoScalingGroups;
     }
@@ -127,8 +133,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
             this.autoScalingGroups = null;
             return;
         }
-
-        java.util.List<AutoScalingGroup> autoScalingGroupsCopy = new java.util.ArrayList<AutoScalingGroup>(autoScalingGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingGroup> autoScalingGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingGroup>(autoScalingGroups.size());
         autoScalingGroupsCopy.addAll(autoScalingGroups);
         this.autoScalingGroups = autoScalingGroupsCopy;
     }
@@ -141,7 +146,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param autoScalingGroups The <code>AutoScalingGroups</code> used by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withAutoScalingGroups(AutoScalingGroup... autoScalingGroups) {
         if (getAutoScalingGroups() == null) setAutoScalingGroups(new java.util.ArrayList<AutoScalingGroup>(autoScalingGroups.length));
@@ -159,29 +164,29 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param autoScalingGroups The <code>AutoScalingGroups</code> used by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withAutoScalingGroups(java.util.Collection<AutoScalingGroup> autoScalingGroups) {
         if (autoScalingGroups == null) {
             this.autoScalingGroups = null;
         } else {
-            java.util.List<AutoScalingGroup> autoScalingGroupsCopy = new java.util.ArrayList<AutoScalingGroup>(autoScalingGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingGroup> autoScalingGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AutoScalingGroup>(autoScalingGroups.size());
             autoScalingGroupsCopy.addAll(autoScalingGroups);
             this.autoScalingGroups = autoScalingGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The Amazon EC2 instances used by this environment.
      *
      * @return The Amazon EC2 instances used by this environment.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -196,8 +201,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -210,7 +214,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param instances The Amazon EC2 instances used by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -228,29 +232,29 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param instances The Amazon EC2 instances used by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The Auto Scaling launch configurations in use by this environment.
      *
      * @return The Auto Scaling launch configurations in use by this environment.
      */
     public java.util.List<LaunchConfiguration> getLaunchConfigurations() {
-        
         if (launchConfigurations == null) {
-            launchConfigurations = new java.util.ArrayList<LaunchConfiguration>();
+              launchConfigurations = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration>();
+              launchConfigurations.setAutoConstruct(true);
         }
         return launchConfigurations;
     }
@@ -265,8 +269,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
             this.launchConfigurations = null;
             return;
         }
-
-        java.util.List<LaunchConfiguration> launchConfigurationsCopy = new java.util.ArrayList<LaunchConfiguration>(launchConfigurations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration> launchConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration>(launchConfigurations.size());
         launchConfigurationsCopy.addAll(launchConfigurations);
         this.launchConfigurations = launchConfigurationsCopy;
     }
@@ -279,7 +282,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param launchConfigurations The Auto Scaling launch configurations in use by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withLaunchConfigurations(LaunchConfiguration... launchConfigurations) {
         if (getLaunchConfigurations() == null) setLaunchConfigurations(new java.util.ArrayList<LaunchConfiguration>(launchConfigurations.length));
@@ -297,29 +300,29 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param launchConfigurations The Auto Scaling launch configurations in use by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withLaunchConfigurations(java.util.Collection<LaunchConfiguration> launchConfigurations) {
         if (launchConfigurations == null) {
             this.launchConfigurations = null;
         } else {
-            java.util.List<LaunchConfiguration> launchConfigurationsCopy = new java.util.ArrayList<LaunchConfiguration>(launchConfigurations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration> launchConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration>(launchConfigurations.size());
             launchConfigurationsCopy.addAll(launchConfigurations);
             this.launchConfigurations = launchConfigurationsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The LoadBalancers in use by this environment.
      *
      * @return The LoadBalancers in use by this environment.
      */
     public java.util.List<LoadBalancer> getLoadBalancers() {
-        
         if (loadBalancers == null) {
-            loadBalancers = new java.util.ArrayList<LoadBalancer>();
+              loadBalancers = new com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancer>();
+              loadBalancers.setAutoConstruct(true);
         }
         return loadBalancers;
     }
@@ -334,8 +337,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
             this.loadBalancers = null;
             return;
         }
-
-        java.util.List<LoadBalancer> loadBalancersCopy = new java.util.ArrayList<LoadBalancer>(loadBalancers.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancer> loadBalancersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancer>(loadBalancers.size());
         loadBalancersCopy.addAll(loadBalancers);
         this.loadBalancers = loadBalancersCopy;
     }
@@ -348,7 +350,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param loadBalancers The LoadBalancers in use by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withLoadBalancers(LoadBalancer... loadBalancers) {
         if (getLoadBalancers() == null) setLoadBalancers(new java.util.ArrayList<LoadBalancer>(loadBalancers.length));
@@ -366,29 +368,29 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param loadBalancers The LoadBalancers in use by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withLoadBalancers(java.util.Collection<LoadBalancer> loadBalancers) {
         if (loadBalancers == null) {
             this.loadBalancers = null;
         } else {
-            java.util.List<LoadBalancer> loadBalancersCopy = new java.util.ArrayList<LoadBalancer>(loadBalancers.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancer> loadBalancersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LoadBalancer>(loadBalancers.size());
             loadBalancersCopy.addAll(loadBalancers);
             this.loadBalancers = loadBalancersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The <code>AutoScaling</code> triggers in use by this environment.
      *
      * @return The <code>AutoScaling</code> triggers in use by this environment.
      */
     public java.util.List<Trigger> getTriggers() {
-        
         if (triggers == null) {
-            triggers = new java.util.ArrayList<Trigger>();
+              triggers = new com.amazonaws.internal.ListWithAutoConstructFlag<Trigger>();
+              triggers.setAutoConstruct(true);
         }
         return triggers;
     }
@@ -403,8 +405,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
             this.triggers = null;
             return;
         }
-
-        java.util.List<Trigger> triggersCopy = new java.util.ArrayList<Trigger>(triggers.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Trigger> triggersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Trigger>(triggers.size());
         triggersCopy.addAll(triggers);
         this.triggers = triggersCopy;
     }
@@ -417,7 +418,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param triggers The <code>AutoScaling</code> triggers in use by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withTriggers(Trigger... triggers) {
         if (getTriggers() == null) setTriggers(new java.util.ArrayList<Trigger>(triggers.length));
@@ -435,20 +436,88 @@ public class EnvironmentResourceDescription  implements Serializable  {
      * @param triggers The <code>AutoScaling</code> triggers in use by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourceDescription withTriggers(java.util.Collection<Trigger> triggers) {
         if (triggers == null) {
             this.triggers = null;
         } else {
-            java.util.List<Trigger> triggersCopy = new java.util.ArrayList<Trigger>(triggers.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Trigger> triggersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Trigger>(triggers.size());
             triggersCopy.addAll(triggers);
             this.triggers = triggersCopy;
         }
 
         return this;
     }
+
+    /**
+     * The queues used by this environment.
+     *
+     * @return The queues used by this environment.
+     */
+    public java.util.List<Queue> getQueues() {
+        if (queues == null) {
+              queues = new com.amazonaws.internal.ListWithAutoConstructFlag<Queue>();
+              queues.setAutoConstruct(true);
+        }
+        return queues;
+    }
     
+    /**
+     * The queues used by this environment.
+     *
+     * @param queues The queues used by this environment.
+     */
+    public void setQueues(java.util.Collection<Queue> queues) {
+        if (queues == null) {
+            this.queues = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<Queue> queuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Queue>(queues.size());
+        queuesCopy.addAll(queues);
+        this.queues = queuesCopy;
+    }
+    
+    /**
+     * The queues used by this environment.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param queues The queues used by this environment.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public EnvironmentResourceDescription withQueues(Queue... queues) {
+        if (getQueues() == null) setQueues(new java.util.ArrayList<Queue>(queues.length));
+        for (Queue value : queues) {
+            getQueues().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * The queues used by this environment.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param queues The queues used by this environment.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public EnvironmentResourceDescription withQueues(java.util.Collection<Queue> queues) {
+        if (queues == null) {
+            this.queues = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<Queue> queuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Queue>(queues.size());
+            queuesCopy.addAll(queues);
+            this.queues = queuesCopy;
+        }
+
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -460,13 +529,14 @@ public class EnvironmentResourceDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
-        if (getAutoScalingGroups() != null) sb.append("AutoScalingGroups: " + getAutoScalingGroups() + ",");    	
-        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");    	
-        if (getLaunchConfigurations() != null) sb.append("LaunchConfigurations: " + getLaunchConfigurations() + ",");    	
-        if (getLoadBalancers() != null) sb.append("LoadBalancers: " + getLoadBalancers() + ",");    	
-        if (getTriggers() != null) sb.append("Triggers: " + getTriggers() );
+        sb.append("{");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+        if (getAutoScalingGroups() != null) sb.append("AutoScalingGroups: " + getAutoScalingGroups() + ",");
+        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");
+        if (getLaunchConfigurations() != null) sb.append("LaunchConfigurations: " + getLaunchConfigurations() + ",");
+        if (getLoadBalancers() != null) sb.append("LoadBalancers: " + getLoadBalancers() + ",");
+        if (getTriggers() != null) sb.append("Triggers: " + getTriggers() + ",");
+        if (getQueues() != null) sb.append("Queues: " + getQueues() );
         sb.append("}");
         return sb.toString();
     }
@@ -482,6 +552,7 @@ public class EnvironmentResourceDescription  implements Serializable  {
         hashCode = prime * hashCode + ((getLaunchConfigurations() == null) ? 0 : getLaunchConfigurations().hashCode()); 
         hashCode = prime * hashCode + ((getLoadBalancers() == null) ? 0 : getLoadBalancers().hashCode()); 
         hashCode = prime * hashCode + ((getTriggers() == null) ? 0 : getTriggers().hashCode()); 
+        hashCode = prime * hashCode + ((getQueues() == null) ? 0 : getQueues().hashCode()); 
         return hashCode;
     }
     
@@ -505,6 +576,8 @@ public class EnvironmentResourceDescription  implements Serializable  {
         if (other.getLoadBalancers() != null && other.getLoadBalancers().equals(this.getLoadBalancers()) == false) return false; 
         if (other.getTriggers() == null ^ this.getTriggers() == null) return false;
         if (other.getTriggers() != null && other.getTriggers().equals(this.getTriggers()) == false) return false; 
+        if (other.getQueues() == null ^ this.getQueues() == null) return false;
+        if (other.getQueues() != null && other.getQueues().equals(this.getQueues()) == false) return false; 
         return true;
     }
     

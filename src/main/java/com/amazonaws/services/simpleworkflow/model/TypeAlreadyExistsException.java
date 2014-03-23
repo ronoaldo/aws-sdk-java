@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,10 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * Returned if the type already exists in the specified domain. You will get this fault even if the existing type is in deprecated status. You can
- * specify another version if the intent is to create a new distinct version of the type.
+ * Returned if the type already exists in the specified domain. You will
+ * get this fault even if the existing type is in deprecated status. You
+ * can specify another version if the intent is to create a new distinct
+ * version of the type.
  * </p>
  */        
 public class TypeAlreadyExistsException extends AmazonServiceException {

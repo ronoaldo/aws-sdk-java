@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The output for a DescribeStackResource action.
  * </p>
  */
-public class DescribeStackResourceResult  implements Serializable  {
+public class DescribeStackResourceResult implements Serializable {
 
     /**
      * A <code>StackResourceDetail</code> structure containing the
@@ -60,14 +61,13 @@ public class DescribeStackResourceResult  implements Serializable  {
      *         description of the specified resource in the specified stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourceResult withStackResourceDetail(StackResourceDetail stackResourceDetail) {
         this.stackResourceDetail = stackResourceDetail;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +79,7 @@ public class DescribeStackResourceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStackResourceDetail() != null) sb.append("StackResourceDetail: " + getStackResourceDetail() );
         sb.append("}");
         return sb.toString();

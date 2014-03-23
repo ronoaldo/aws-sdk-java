@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,38 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#sendEmail(SendEmailRequest) SendEmail operation}.
  * <p>
- * Composes an email message based on input data, and then immediately queues the message for sending.
+ * Composes an email message based on input data, and then immediately
+ * queues the message for sending.
  * </p>
  * <p>
- * <b>IMPORTANT:</b>If you have not yet requested production access to Amazon SES, then you will only be able to send email to and from verified email
- * addresses and domains. For more information, go to the Amazon SES Developer Guide.
+ * <b>IMPORTANT:</b> You can only send email from verified email
+ * addresses and domains. If you have not requested production access to
+ * Amazon SES, you must also verify every recipient email address except
+ * for the recipients provided by the Amazon SES mailbox simulator. For
+ * more information, go to the Amazon SES Developer Guide.
  * </p>
  * <p>
  * The total size of the message cannot exceed 10 MB.
  * </p>
  * <p>
- * Amazon SES has a limit on the total number of recipients per message: The combined number of To:, CC: and BCC: email addresses cannot exceed 50. If
- * you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call Amazon SES
- * repeatedly to send the message to each group.
+ * Amazon SES has a limit on the total number of recipients per message:
+ * The combined number of To:, CC: and BCC: email addresses cannot exceed
+ * 50. If you need to send an email message to a larger audience, you can
+ * divide your recipient list into groups of 50 or fewer, and then call
+ * Amazon SES repeatedly to send the message to each group.
  * </p>
  * <p>
- * For every message that you send, the total number of recipients (To:, CC: and BCC:) is counted against your <i>sending quota</i> - the maximum number
- * of emails you can send in a 24-hour period. For information about your sending quota, go to the "Managing Your Sending Activity" section of the<a
- * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide"> Amazon SES Developer Guide </a> .
+ * For every message that you send, the total number of recipients (To:,
+ * CC: and BCC:) is counted against your <i>sending quota</i> - the
+ * maximum number of emails you can send in a 24-hour period. For
+ * information about your sending quota, go to the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#sendEmail(SendEmailRequest)
  */
-public class SendEmailRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SendEmailRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The identity's email address.
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      */
     private String source;
 
@@ -62,7 +78,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * The reply-to email address(es) for the message. If the recipient
      * replies to the message, each reply-to address will receive the reply.
      */
-    private java.util.List<String> replyToAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> replyToAddresses;
 
     /**
      * The email address to which bounce notifications are to be forwarded.
@@ -84,53 +100,85 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param source The identity's email address.
+     * @param source The identity's email address. <p> By default, the string
+     * must be 7-bit ASCII. If the text must contain any other characters,
+     * then you must use MIME encoded-word syntax (RFC 2047) instead of a
+     * literal string. MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      * @param destination The destination for this email, composed of To:,
      * CC:, and BCC: fields.
      * @param message The message to be sent.
      */
     public SendEmailRequest(String source, Destination destination, Message message) {
-        this.source = source;
-        this.destination = destination;
-        this.message = message;
+        setSource(source);
+        setDestination(destination);
+        setMessage(message);
     }
 
-    
-    
     /**
-     * The identity's email address.
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      *
-     * @return The identity's email address.
+     * @return The identity's email address. <p> By default, the string must be 7-bit
+     *         ASCII. If the text must contain any other characters, then you must
+     *         use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     *         MIME encoded-word syntax uses the following form:
+     *         <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     *         see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      */
     public String getSource() {
         return source;
     }
     
     /**
-     * The identity's email address.
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      *
-     * @param source The identity's email address.
+     * @param source The identity's email address. <p> By default, the string must be 7-bit
+     *         ASCII. If the text must contain any other characters, then you must
+     *         use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     *         MIME encoded-word syntax uses the following form:
+     *         <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     *         see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      */
     public void setSource(String source) {
         this.source = source;
     }
     
     /**
-     * The identity's email address.
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param source The identity's email address.
+     * @param source The identity's email address. <p> By default, the string must be 7-bit
+     *         ASCII. If the text must contain any other characters, then you must
+     *         use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     *         MIME encoded-word syntax uses the following form:
+     *         <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     *         see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withSource(String source) {
         this.source = source;
         return this;
     }
-    
-    
+
     /**
      * The destination for this email, composed of To:, CC:, and BCC: fields.
      *
@@ -157,14 +205,13 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * @param destination The destination for this email, composed of To:, CC:, and BCC: fields.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withDestination(Destination destination) {
         this.destination = destination;
         return this;
     }
-    
-    
+
     /**
      * The message to be sent.
      *
@@ -191,14 +238,13 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      * @param message The message to be sent.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withMessage(Message message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * The reply-to email address(es) for the message. If the recipient
      * replies to the message, each reply-to address will receive the reply.
@@ -207,9 +253,9 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      *         replies to the message, each reply-to address will receive the reply.
      */
     public java.util.List<String> getReplyToAddresses() {
-        
         if (replyToAddresses == null) {
-            replyToAddresses = new java.util.ArrayList<String>();
+              replyToAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              replyToAddresses.setAutoConstruct(true);
         }
         return replyToAddresses;
     }
@@ -226,8 +272,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
             this.replyToAddresses = null;
             return;
         }
-
-        java.util.List<String> replyToAddressesCopy = new java.util.ArrayList<String>(replyToAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> replyToAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(replyToAddresses.size());
         replyToAddressesCopy.addAll(replyToAddresses);
         this.replyToAddresses = replyToAddressesCopy;
     }
@@ -242,7 +287,7 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      *         replies to the message, each reply-to address will receive the reply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withReplyToAddresses(String... replyToAddresses) {
         if (getReplyToAddresses() == null) setReplyToAddresses(new java.util.ArrayList<String>(replyToAddresses.length));
@@ -262,20 +307,20 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      *         replies to the message, each reply-to address will receive the reply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withReplyToAddresses(java.util.Collection<String> replyToAddresses) {
         if (replyToAddresses == null) {
             this.replyToAddresses = null;
         } else {
-            java.util.List<String> replyToAddressesCopy = new java.util.ArrayList<String>(replyToAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> replyToAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(replyToAddresses.size());
             replyToAddressesCopy.addAll(replyToAddresses);
             this.replyToAddresses = replyToAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The email address to which bounce notifications are to be forwarded.
      * If the message cannot be delivered to the recipient, then an error
@@ -326,14 +371,13 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
      *         <code>ReturnPath</code> parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendEmailRequest withReturnPath(String returnPath) {
         this.returnPath = returnPath;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -345,11 +389,11 @@ public class SendEmailRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getDestination() != null) sb.append("Destination: " + getDestination() + ",");    	
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
-        if (getReplyToAddresses() != null) sb.append("ReplyToAddresses: " + getReplyToAddresses() + ",");    	
+        sb.append("{");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getDestination() != null) sb.append("Destination: " + getDestination() + ",");
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");
+        if (getReplyToAddresses() != null) sb.append("ReplyToAddresses: " + getReplyToAddresses() + ",");
         if (getReturnPath() != null) sb.append("ReturnPath: " + getReturnPath() );
         sb.append("}");
         return sb.toString();

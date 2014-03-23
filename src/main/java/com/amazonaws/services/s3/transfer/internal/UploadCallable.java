@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -25,6 +25,9 @@ import java.util.concurrent.Future;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.amazonaws.event.ProgressListenerChain;
+import com.amazonaws.event.ProgressEvent;
+import com.amazonaws.event.ProgressListenerCallbackExecutor;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3EncryptionClient;
 import com.amazonaws.services.s3.model.AbortMultipartUploadRequest;
@@ -32,7 +35,6 @@ import com.amazonaws.services.s3.model.CompleteMultipartUploadRequest;
 import com.amazonaws.services.s3.model.CompleteMultipartUploadResult;
 import com.amazonaws.services.s3.model.InitiateMultipartUploadRequest;
 import com.amazonaws.services.s3.model.PartETag;
-import com.amazonaws.services.s3.model.ProgressEvent;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.StorageClass;
@@ -51,7 +53,7 @@ public class UploadCallable implements Callable<UploadResult> {
 
     private static final Log log = LogFactory.getLog(UploadCallable.class);
     private final TransferManagerConfiguration configuration;
-    private final ProgressListenerChain progressListenerChain;
+    private final ProgressListenerCallbackExecutor progressListenerChainCallbackExecutor;
     private final List<Future<PartETag>> futures = new ArrayList<Future<PartETag>>();
 
     public UploadCallable(TransferManager transferManager, ExecutorService threadPool, UploadImpl upload, PutObjectRequest putObjectRequest, ProgressListenerChain progressListenerChain) {
@@ -60,8 +62,17 @@ public class UploadCallable implements Callable<UploadResult> {
 
         this.threadPool = threadPool;
         this.putObjectRequest = putObjectRequest;
-        this.progressListenerChain = progressListenerChain;
+        this.progressListenerChainCallbackExecutor = ProgressListenerCallbackExecutor
+                .wrapListener(progressListenerChain);
         this.upload = upload;
+    }
+
+    /**
+     * @deprecated Replaced by {@link #UploadCallable(TransferManager, ExecutorService, UploadImpl, PutObjectRequest, ProgressListenerChain)}
+     */
+    @Deprecated
+    public UploadCallable(TransferManager transferManager, ExecutorService threadPool, UploadImpl upload, PutObjectRequest putObjectRequest, com.amazonaws.services.s3.transfer.internal.ProgressListenerChain progressListenerChain) {
+        this(transferManager, threadPool, upload, putObjectRequest, progressListenerChain.transformToGeneralProgressListenerChain());
     }
 
     List<Future<PartETag>> getFutures() {
@@ -151,8 +162,8 @@ public class UploadCallable implements Callable<UploadResult> {
     private long getOptimalPartSize(boolean isUsingEncryption) {
         long optimalPartSize = TransferManagerUtils.calculateOptimalPartSize(putObjectRequest, configuration);
         if (isUsingEncryption && optimalPartSize % 32 > 0) {
-        	// When using encryption, parts must line up correctly along cipher block boundaries
-        	optimalPartSize = optimalPartSize - (optimalPartSize % 32) + 32 ;
+            // When using encryption, parts must line up correctly along cipher block boundaries
+            optimalPartSize = optimalPartSize - (optimalPartSize % 32) + 32 ;
         }
         log.debug("Calculated optimal part size: " + optimalPartSize);
         return optimalPartSize;
@@ -184,8 +195,6 @@ public class UploadCallable implements Callable<UploadResult> {
         CompleteMultipartUploadResult completeMultipartUploadResult = s3
                 .completeMultipartUpload(new CompleteMultipartUploadRequest(putObjectRequest.getBucketName(),
                         putObjectRequest.getKey(), multipartUploadId, partETags));
-
-        fireProgressEvent(ProgressEvent.COMPLETED_EVENT_CODE);
 
         UploadResult uploadResult = new UploadResult();
         uploadResult.setBucketName(completeMultipartUploadResult.getBucketName());
@@ -227,10 +236,10 @@ public class UploadCallable implements Callable<UploadResult> {
         return uploadId;
     }
 
-    private void fireProgressEvent(int eventType) {
-        if (progressListenerChain == null) return;
+    private void fireProgressEvent(final int eventType) {
+        if (progressListenerChainCallbackExecutor == null) return;
         ProgressEvent event = new ProgressEvent(0);
         event.setEventCode(eventType);
-        progressListenerChain.progressChanged(event);
+        progressListenerChainCallbackExecutor.progressChanged(event);
     }
 }

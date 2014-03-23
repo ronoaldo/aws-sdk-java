@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The Alarm data type.
  * </p>
  */
-public class Alarm  implements Serializable  {
+public class Alarm implements Serializable {
 
     /**
      * The name of the alarm.
@@ -78,14 +79,13 @@ public class Alarm  implements Serializable  {
      * @param alarmName The name of the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Alarm withAlarmName(String alarmName) {
         this.alarmName = alarmName;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of the alarm.
      * <p>
@@ -124,14 +124,13 @@ public class Alarm  implements Serializable  {
      * @param alarmARN The Amazon Resource Name (ARN) of the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Alarm withAlarmARN(String alarmARN) {
         this.alarmARN = alarmARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -143,8 +142,8 @@ public class Alarm  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");    	
+        sb.append("{");
+        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");
         if (getAlarmARN() != null) sb.append("AlarmARN: " + getAlarmARN() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>ExternalWorkflowExecutionCancelRequested</code> event.
+ * Provides details of the
+ * <code>ExternalWorkflowExecutionCancelRequested</code> event.
  * </p>
  */
-public class ExternalWorkflowExecutionCancelRequestedEventAttributes  implements Serializable  {
+public class ExternalWorkflowExecutionCancelRequestedEventAttributes implements Serializable {
 
     /**
      * The external workflow execution to which the cancellation request was
@@ -71,14 +73,13 @@ public class ExternalWorkflowExecutionCancelRequestedEventAttributes  implements
      *         delivered.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExternalWorkflowExecutionCancelRequestedEventAttributes withWorkflowExecution(WorkflowExecution workflowExecution) {
         this.workflowExecution = workflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The id of the
      * <code>RequestCancelExternalWorkflowExecutionInitiated</code> event
@@ -141,14 +142,13 @@ public class ExternalWorkflowExecutionCancelRequestedEventAttributes  implements
      *         this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExternalWorkflowExecutionCancelRequestedEventAttributes withInitiatedEventId(Long initiatedEventId) {
         this.initiatedEventId = initiatedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class ExternalWorkflowExecutionCancelRequestedEventAttributes  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");    	
+        sb.append("{");
+        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");
         if (getInitiatedEventId() != null) sb.append("InitiatedEventId: " + getInitiatedEventId() );
         sb.append("}");
         return sb.toString();

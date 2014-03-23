@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeDBParametersRequestMarshaller implements Marshaller<Request
     public Request<DescribeDBParametersRequest> marshall(DescribeDBParametersRequest describeDBParametersRequest) {
 
         if (describeDBParametersRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeDBParametersRequest> request = new DefaultRequest<DescribeDBParametersRequest>(describeDBParametersRequest, "AmazonRDS");
         request.addParameter("Action", "DescribeDBParameters");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (describeDBParametersRequest.getDBParameterGroupName() != null) {
             request.addParameter("DBParameterGroupName", StringUtils.fromString(describeDBParametersRequest.getDBParameterGroupName()));
@@ -52,7 +52,6 @@ public class DescribeDBParametersRequestMarshaller implements Marshaller<Request
         if (describeDBParametersRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeDBParametersRequest.getMarker()));
         }
-
 
         return request;
     }

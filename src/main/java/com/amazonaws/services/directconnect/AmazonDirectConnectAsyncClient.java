@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,33 +29,40 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.directconnect.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonDirectConnect.
  * All asynchronous calls made using this client are non-blocking. Callers could either
  * process the result and handle the exceptions in the worker thread by providing a callback handler
  * when making the call, or use the returned Future object to check the result of the call in the calling thread.
  * <p>
- * AWS Direct Connect makes it easy to establish a dedicated network connection from your premises to Amazon Web Services (AWS). Using AWS Direct
- * Connect, you can establish private connectivity between AWS and your data center, office, or colocation environment, which in many cases can reduce
- * your network costs, increase bandwidth throughput, and provide a more consistent network experience than Internet-based connections.
+ * AWS Direct Connect makes it easy to establish a dedicated network
+ * connection from your premises to Amazon Web Services (AWS). Using AWS
+ * Direct Connect, you can establish private connectivity between AWS and
+ * your data center, office, or colocation environment, which in many
+ * cases can reduce your network costs, increase bandwidth throughput,
+ * and provide a more consistent network experience than Internet-based
+ * connections.
  * </p>
  * <p>
- * The AWS Direct Connect API Reference provides descriptions, syntax, and usage examples for each of the actions and data types for AWS Direct Connect.
- * Use the following links to get started using the <i>AWS Direct Connect API Reference</i> :
+ * The AWS Direct Connect API Reference provides descriptions, syntax,
+ * and usage examples for each of the actions and data types for AWS
+ * Direct Connect. Use the following links to get started using the
+ * <i>AWS Direct Connect API Reference</i> :
  * </p>
  * 
  * <ul>
- * <li> <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/API_Operations.html"> Actions </a> : An alphabetical list of all AWS
- * Direct Connect actions.</li>
- * <li> <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/API_Types.html"> Data Types </a> : An alphabetical list of all AWS Direct
- * Connect data types.</li>
- * <li> <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/CommonParameters.html"> Common Parameters </a> : Parameters that all Query
- * actions can use.</li>
- * <li> <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/CommonErrors.html"> Common Errors </a> : Client and server errors that all
- * actions can return.</li>
- * <li> <a href="http://docs.aws.amazon.com/general/latest/gr/index.html?rande.html"> Regions and Endpoints </a> : Itemized regions and endpoints for
- * all AWS products.</li>
+ * <li>
+ * <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/API_Operations.html"> Actions </a>
+ * : An alphabetical list of all AWS Direct Connect actions.</li>
+ * <li>
+ * <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/API_Types.html"> Data Types </a>
+ * : An alphabetical list of all AWS Direct Connect data types.</li>
+ * <li>
+ * <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/CommonParameters.html"> Common Query Parameters </a>
+ * : Parameters that all Query actions can use.</li>
+ * <li>
+ * <a href="http://docs.aws.amazon.com/directconnect/latest/APIReference/CommonErrors.html"> Common Errors </a>
+ * : Client and server errors that all actions can return.</li>
  * 
  * </ul>
  */
@@ -67,6 +74,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -82,7 +90,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonDirectConnectAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -106,16 +114,16 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      *                       client connects to AmazonDirectConnect
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonDirectConnectAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonDirectConnect using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -127,7 +135,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      *                       when authenticating with AWS services.
      */
     public AmazonDirectConnectAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -181,7 +189,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonDirectConnect using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -194,7 +202,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      *            to authenticate requests with AWS services.
      */
     public AmazonDirectConnectAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -237,7 +245,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      */
     public AmazonDirectConnectAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -266,7 +274,6 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -282,7 +289,8 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -292,23 +300,17 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
             
     /**
      * <p>
-     * Displays all virtual interfaces for an AWS account. Virtual interfaces
-     * deleted fewer than 15 minutes before DescribeVirtualInterfaces is
-     * called are also returned. If a virtual interface ID is included then
-     * only a single virtual interface will be returned.
-     * </p>
-     * <p>
-     * A virtual interface (VLAN) transmits the traffic between the Direct
-     * Connect location and the customer.
+     * Returns the list of AWS Direct Connect locations in the current AWS
+     * region. These are the locations that may be selected when calling
+     * CreateConnection or CreateInterconnect.
      * </p>
      *
-     * @param describeVirtualInterfacesRequest Container for the necessary
-     *           parameters to execute the DescribeVirtualInterfaces operation on
-     *           AmazonDirectConnect.
+     * @param describeLocationsRequest Container for the necessary parameters
+     *           to execute the DescribeLocations operation on AmazonDirectConnect.
      * 
      * @return A Java Future object containing the response from the
-     *         DescribeVirtualInterfaces service method, as returned by
-     *         AmazonDirectConnect.
+     *         DescribeLocations service method, as returned by AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -318,39 +320,32 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      *             If an error response is returned by AmazonDirectConnect indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public Future<DescribeVirtualInterfacesResult> describeVirtualInterfacesAsync(final DescribeVirtualInterfacesRequest describeVirtualInterfacesRequest) 
+    public Future<DescribeLocationsResult> describeLocationsAsync(final DescribeLocationsRequest describeLocationsRequest) 
             throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeVirtualInterfacesResult>() {
-            public DescribeVirtualInterfacesResult call() throws Exception {
-                return describeVirtualInterfaces(describeVirtualInterfacesRequest);
-		    }
-		});
+        return executorService.submit(new Callable<DescribeLocationsResult>() {
+            public DescribeLocationsResult call() throws Exception {
+                return describeLocations(describeLocationsRequest);
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * Displays all virtual interfaces for an AWS account. Virtual interfaces
-     * deleted fewer than 15 minutes before DescribeVirtualInterfaces is
-     * called are also returned. If a virtual interface ID is included then
-     * only a single virtual interface will be returned.
-     * </p>
-     * <p>
-     * A virtual interface (VLAN) transmits the traffic between the Direct
-     * Connect location and the customer.
+     * Returns the list of AWS Direct Connect locations in the current AWS
+     * region. These are the locations that may be selected when calling
+     * CreateConnection or CreateInterconnect.
      * </p>
      *
-     * @param describeVirtualInterfacesRequest Container for the necessary
-     *           parameters to execute the DescribeVirtualInterfaces operation on
-     *           AmazonDirectConnect.
+     * @param describeLocationsRequest Container for the necessary parameters
+     *           to execute the DescribeLocations operation on AmazonDirectConnect.
      * @param asyncHandler Asynchronous callback handler for events in the
      *           life-cycle of the request. Users could provide the implementation of
      *           the four callback methods in this interface to process the operation
      *           result or handle the exception.
      * 
      * @return A Java Future object containing the response from the
-     *         DescribeVirtualInterfaces service method, as returned by
-     *         AmazonDirectConnect.
+     *         DescribeLocations service method, as returned by AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -360,45 +355,44 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      *             If an error response is returned by AmazonDirectConnect indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public Future<DescribeVirtualInterfacesResult> describeVirtualInterfacesAsync(
-            final DescribeVirtualInterfacesRequest describeVirtualInterfacesRequest,
-            final AsyncHandler<DescribeVirtualInterfacesRequest, DescribeVirtualInterfacesResult> asyncHandler)
+    public Future<DescribeLocationsResult> describeLocationsAsync(
+            final DescribeLocationsRequest describeLocationsRequest,
+            final AsyncHandler<DescribeLocationsRequest, DescribeLocationsResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeVirtualInterfacesResult>() {
-            public DescribeVirtualInterfacesResult call() throws Exception {
-            	DescribeVirtualInterfacesResult result;
+        return executorService.submit(new Callable<DescribeLocationsResult>() {
+            public DescribeLocationsResult call() throws Exception {
+              DescribeLocationsResult result;
                 try {
-            		result = describeVirtualInterfaces(describeVirtualInterfacesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeVirtualInterfacesRequest, result);
-               	return result;
-		    }
-		});
+                result = describeLocations(describeLocationsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeLocationsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * Returns a list of virtual private gateways owned by the AWS account.
+     * Accept ownership of a public virtual interface created by another
+     * customer.
      * </p>
      * <p>
-     * You can create one or more AWS Direct Connect private virtual
-     * interfaces linking to a virtual private gateway. A virtual private
-     * gateway can be managed via Amazon Virtual Private Cloud (VPC) console
-     * or the <a
-     * /AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">
-     * EC2 CreateVpnGateway </a> action.
+     * After the virtual interface owner calls this function, the specified
+     * virtual interface will be created and made available for handling
+     * traffic.
      * </p>
      *
-     * @param describeVirtualGatewaysRequest Container for the necessary
-     *           parameters to execute the DescribeVirtualGateways operation on
-     *           AmazonDirectConnect.
+     * @param confirmPublicVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the ConfirmPublicVirtualInterface
+     *           operation on AmazonDirectConnect.
      * 
      * @return A Java Future object containing the response from the
-     *         DescribeVirtualGateways service method, as returned by
+     *         ConfirmPublicVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -408,40 +402,38 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      *             If an error response is returned by AmazonDirectConnect indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public Future<DescribeVirtualGatewaysResult> describeVirtualGatewaysAsync(final DescribeVirtualGatewaysRequest describeVirtualGatewaysRequest) 
+    public Future<ConfirmPublicVirtualInterfaceResult> confirmPublicVirtualInterfaceAsync(final ConfirmPublicVirtualInterfaceRequest confirmPublicVirtualInterfaceRequest) 
             throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeVirtualGatewaysResult>() {
-            public DescribeVirtualGatewaysResult call() throws Exception {
-                return describeVirtualGateways(describeVirtualGatewaysRequest);
-		    }
-		});
+        return executorService.submit(new Callable<ConfirmPublicVirtualInterfaceResult>() {
+            public ConfirmPublicVirtualInterfaceResult call() throws Exception {
+                return confirmPublicVirtualInterface(confirmPublicVirtualInterfaceRequest);
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * Returns a list of virtual private gateways owned by the AWS account.
+     * Accept ownership of a public virtual interface created by another
+     * customer.
      * </p>
      * <p>
-     * You can create one or more AWS Direct Connect private virtual
-     * interfaces linking to a virtual private gateway. A virtual private
-     * gateway can be managed via Amazon Virtual Private Cloud (VPC) console
-     * or the <a
-     * /AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">
-     * EC2 CreateVpnGateway </a> action.
+     * After the virtual interface owner calls this function, the specified
+     * virtual interface will be created and made available for handling
+     * traffic.
      * </p>
      *
-     * @param describeVirtualGatewaysRequest Container for the necessary
-     *           parameters to execute the DescribeVirtualGateways operation on
-     *           AmazonDirectConnect.
+     * @param confirmPublicVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the ConfirmPublicVirtualInterface
+     *           operation on AmazonDirectConnect.
      * @param asyncHandler Asynchronous callback handler for events in the
      *           life-cycle of the request. Users could provide the implementation of
      *           the four callback methods in this interface to process the operation
      *           result or handle the exception.
      * 
      * @return A Java Future object containing the response from the
-     *         DescribeVirtualGateways service method, as returned by
+     *         ConfirmPublicVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -451,522 +443,30 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      *             If an error response is returned by AmazonDirectConnect indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public Future<DescribeVirtualGatewaysResult> describeVirtualGatewaysAsync(
-            final DescribeVirtualGatewaysRequest describeVirtualGatewaysRequest,
-            final AsyncHandler<DescribeVirtualGatewaysRequest, DescribeVirtualGatewaysResult> asyncHandler)
+    public Future<ConfirmPublicVirtualInterfaceResult> confirmPublicVirtualInterfaceAsync(
+            final ConfirmPublicVirtualInterfaceRequest confirmPublicVirtualInterfaceRequest,
+            final AsyncHandler<ConfirmPublicVirtualInterfaceRequest, ConfirmPublicVirtualInterfaceResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeVirtualGatewaysResult>() {
-            public DescribeVirtualGatewaysResult call() throws Exception {
-            	DescribeVirtualGatewaysResult result;
+        return executorService.submit(new Callable<ConfirmPublicVirtualInterfaceResult>() {
+            public ConfirmPublicVirtualInterfaceResult call() throws Exception {
+              ConfirmPublicVirtualInterfaceResult result;
                 try {
-            		result = describeVirtualGateways(describeVirtualGatewaysRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeVirtualGatewaysRequest, result);
-               	return result;
-		    }
-		});
-    }
-    
-    /**
-     * <p>
-     * Displays details about a specific connection including the order steps
-     * for the connection and the current state of the connection order.
-     * </p>
-     *
-     * @param describeConnectionDetailRequest Container for the necessary
-     *           parameters to execute the DescribeConnectionDetail operation on
-     *           AmazonDirectConnect.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeConnectionDetail service method, as returned by
-     *         AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeConnectionDetailResult> describeConnectionDetailAsync(final DescribeConnectionDetailRequest describeConnectionDetailRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeConnectionDetailResult>() {
-            public DescribeConnectionDetailResult call() throws Exception {
-                return describeConnectionDetail(describeConnectionDetailRequest);
-		    }
-		});
-    }
-
-    
-    /**
-     * <p>
-     * Displays details about a specific connection including the order steps
-     * for the connection and the current state of the connection order.
-     * </p>
-     *
-     * @param describeConnectionDetailRequest Container for the necessary
-     *           parameters to execute the DescribeConnectionDetail operation on
-     *           AmazonDirectConnect.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeConnectionDetail service method, as returned by
-     *         AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeConnectionDetailResult> describeConnectionDetailAsync(
-            final DescribeConnectionDetailRequest describeConnectionDetailRequest,
-            final AsyncHandler<DescribeConnectionDetailRequest, DescribeConnectionDetailResult> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeConnectionDetailResult>() {
-            public DescribeConnectionDetailResult call() throws Exception {
-            	DescribeConnectionDetailResult result;
-                try {
-            		result = describeConnectionDetail(describeConnectionDetailRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeConnectionDetailRequest, result);
-               	return result;
-		    }
-		});
-    }
-    
-    /**
-     * <p>
-     * Describes one or more of the offerings that are currently available
-     * for creating new connections. The results include offerings for all
-     * regions.
-     * </p>
-     * <p>
-     * To order a new connection you need to select a specific offering ID.
-     * </p>
-     *
-     * @param describeOfferingsRequest Container for the necessary parameters
-     *           to execute the DescribeOfferings operation on AmazonDirectConnect.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeOfferings service method, as returned by AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeOfferingsResult> describeOfferingsAsync(final DescribeOfferingsRequest describeOfferingsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeOfferingsResult>() {
-            public DescribeOfferingsResult call() throws Exception {
-                return describeOfferings(describeOfferingsRequest);
-		    }
-		});
-    }
-
-    
-    /**
-     * <p>
-     * Describes one or more of the offerings that are currently available
-     * for creating new connections. The results include offerings for all
-     * regions.
-     * </p>
-     * <p>
-     * To order a new connection you need to select a specific offering ID.
-     * </p>
-     *
-     * @param describeOfferingsRequest Container for the necessary parameters
-     *           to execute the DescribeOfferings operation on AmazonDirectConnect.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeOfferings service method, as returned by AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeOfferingsResult> describeOfferingsAsync(
-            final DescribeOfferingsRequest describeOfferingsRequest,
-            final AsyncHandler<DescribeOfferingsRequest, DescribeOfferingsResult> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeOfferingsResult>() {
-            public DescribeOfferingsResult call() throws Exception {
-            	DescribeOfferingsResult result;
-                try {
-            		result = describeOfferings(describeOfferingsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeOfferingsRequest, result);
-               	return result;
-		    }
-		});
-    }
-    
-    /**
-     * <p>
-     * Displays all connections in this region.
-     * </p>
-     * <p>
-     * If a connection ID is provided, it will only return this particular
-     * connection.
-     * </p>
-     *
-     * @param describeConnectionsRequest Container for the necessary
-     *           parameters to execute the DescribeConnections operation on
-     *           AmazonDirectConnect.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeConnections service method, as returned by
-     *         AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeConnectionsResult> describeConnectionsAsync(final DescribeConnectionsRequest describeConnectionsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeConnectionsResult>() {
-            public DescribeConnectionsResult call() throws Exception {
-                return describeConnections(describeConnectionsRequest);
-		    }
-		});
-    }
-
-    
-    /**
-     * <p>
-     * Displays all connections in this region.
-     * </p>
-     * <p>
-     * If a connection ID is provided, it will only return this particular
-     * connection.
-     * </p>
-     *
-     * @param describeConnectionsRequest Container for the necessary
-     *           parameters to execute the DescribeConnections operation on
-     *           AmazonDirectConnect.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeConnections service method, as returned by
-     *         AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeConnectionsResult> describeConnectionsAsync(
-            final DescribeConnectionsRequest describeConnectionsRequest,
-            final AsyncHandler<DescribeConnectionsRequest, DescribeConnectionsResult> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeConnectionsResult>() {
-            public DescribeConnectionsResult call() throws Exception {
-            	DescribeConnectionsResult result;
-                try {
-            		result = describeConnections(describeConnectionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeConnectionsRequest, result);
-               	return result;
-		    }
-		});
-    }
-    
-    /**
-     * <p>
-     * Displays additional ordering step details for a specified offering.
-     * </p>
-     *
-     * @param describeOfferingDetailRequest Container for the necessary
-     *           parameters to execute the DescribeOfferingDetail operation on
-     *           AmazonDirectConnect.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeOfferingDetail service method, as returned by
-     *         AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeOfferingDetailResult> describeOfferingDetailAsync(final DescribeOfferingDetailRequest describeOfferingDetailRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeOfferingDetailResult>() {
-            public DescribeOfferingDetailResult call() throws Exception {
-                return describeOfferingDetail(describeOfferingDetailRequest);
-		    }
-		});
-    }
-
-    
-    /**
-     * <p>
-     * Displays additional ordering step details for a specified offering.
-     * </p>
-     *
-     * @param describeOfferingDetailRequest Container for the necessary
-     *           parameters to execute the DescribeOfferingDetail operation on
-     *           AmazonDirectConnect.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DescribeOfferingDetail service method, as returned by
-     *         AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DescribeOfferingDetailResult> describeOfferingDetailAsync(
-            final DescribeOfferingDetailRequest describeOfferingDetailRequest,
-            final AsyncHandler<DescribeOfferingDetailRequest, DescribeOfferingDetailResult> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DescribeOfferingDetailResult>() {
-            public DescribeOfferingDetailResult call() throws Exception {
-            	DescribeOfferingDetailResult result;
-                try {
-            		result = describeOfferingDetail(describeOfferingDetailRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeOfferingDetailRequest, result);
-               	return result;
-		    }
-		});
-    }
-    
-    /**
-     * <p>
-     * Deletes the connection.
-     * </p>
-     * <p>
-     * Deleting a connection only stops the AWS Direct Connect port and data
-     * transfer charges. You separately need to cancel any services or
-     * charges for cross-connects or network circuits that connect you to the
-     * AWS Direct Connect location with the providers of those services.
-     * </p>
-     *
-     * @param deleteConnectionRequest Container for the necessary parameters
-     *           to execute the DeleteConnection operation on AmazonDirectConnect.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DeleteConnection service method, as returned by AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DeleteConnectionResult> deleteConnectionAsync(final DeleteConnectionRequest deleteConnectionRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DeleteConnectionResult>() {
-            public DeleteConnectionResult call() throws Exception {
-                return deleteConnection(deleteConnectionRequest);
-		    }
-		});
-    }
-
-    
-    /**
-     * <p>
-     * Deletes the connection.
-     * </p>
-     * <p>
-     * Deleting a connection only stops the AWS Direct Connect port and data
-     * transfer charges. You separately need to cancel any services or
-     * charges for cross-connects or network circuits that connect you to the
-     * AWS Direct Connect location with the providers of those services.
-     * </p>
-     *
-     * @param deleteConnectionRequest Container for the necessary parameters
-     *           to execute the DeleteConnection operation on AmazonDirectConnect.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         DeleteConnection service method, as returned by AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<DeleteConnectionResult> deleteConnectionAsync(
-            final DeleteConnectionRequest deleteConnectionRequest,
-            final AsyncHandler<DeleteConnectionRequest, DeleteConnectionResult> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<DeleteConnectionResult>() {
-            public DeleteConnectionResult call() throws Exception {
-            	DeleteConnectionResult result;
-                try {
-            		result = deleteConnection(deleteConnectionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteConnectionRequest, result);
-               	return result;
-		    }
-		});
-    }
-    
-    /**
-     * <p>
-     * Creates a new network connection between the customer network and a
-     * specific AWS Direct Connect location.
-     * </p>
-     * <p>
-     * A connection links your internal network to an AWS Direct Connect
-     * location over a standard 1 gigabit or 10 gigabit Ethernet fiber-optic
-     * cable. One end of the cable is connected to your router, the other to
-     * an AWS Direct Connect router. A Direct Connect location provides
-     * access to Amazon Web Services in the region it is associated with. You
-     * can establish connections with AWS Direct Connect locations in
-     * multiple regions, but a connection in one region does not provide
-     * connectivity to other regions.
-     * </p>
-     *
-     * @param createConnectionRequest Container for the necessary parameters
-     *           to execute the CreateConnection operation on AmazonDirectConnect.
-     * 
-     * @return A Java Future object containing the response from the
-     *         CreateConnection service method, as returned by AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<CreateConnectionResult> createConnectionAsync(final CreateConnectionRequest createConnectionRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<CreateConnectionResult>() {
-            public CreateConnectionResult call() throws Exception {
-                return createConnection(createConnectionRequest);
-		    }
-		});
-    }
-
-    
-    /**
-     * <p>
-     * Creates a new network connection between the customer network and a
-     * specific AWS Direct Connect location.
-     * </p>
-     * <p>
-     * A connection links your internal network to an AWS Direct Connect
-     * location over a standard 1 gigabit or 10 gigabit Ethernet fiber-optic
-     * cable. One end of the cable is connected to your router, the other to
-     * an AWS Direct Connect router. A Direct Connect location provides
-     * access to Amazon Web Services in the region it is associated with. You
-     * can establish connections with AWS Direct Connect locations in
-     * multiple regions, but a connection in one region does not provide
-     * connectivity to other regions.
-     * </p>
-     *
-     * @param createConnectionRequest Container for the necessary parameters
-     *           to execute the CreateConnection operation on AmazonDirectConnect.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         CreateConnection service method, as returned by AmazonDirectConnect.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonDirectConnect indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<CreateConnectionResult> createConnectionAsync(
-            final CreateConnectionRequest createConnectionRequest,
-            final AsyncHandler<CreateConnectionRequest, CreateConnectionResult> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException {
-        return executorService.submit(new Callable<CreateConnectionResult>() {
-            public CreateConnectionResult call() throws Exception {
-            	CreateConnectionResult result;
-                try {
-            		result = createConnection(createConnectionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createConnectionRequest, result);
-               	return result;
-		    }
-		});
+                result = confirmPublicVirtualInterface(confirmPublicVirtualInterfaceRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(confirmPublicVirtualInterfaceRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Creates a new private virtual interface. A virtual interface is the
      * VLAN that transports AWS Direct Connect traffic. A private virtual
-     * interface supports sending traffic to a single Virtual Private Cloud
+     * interface supports sending traffic to a single virtual private cloud
      * (VPC).
      * </p>
      *
@@ -977,6 +477,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * @return A Java Future object containing the response from the
      *         CreatePrivateVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -991,16 +492,15 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
         return executorService.submit(new Callable<CreatePrivateVirtualInterfaceResult>() {
             public CreatePrivateVirtualInterfaceResult call() throws Exception {
                 return createPrivateVirtualInterface(createPrivateVirtualInterfaceRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates a new private virtual interface. A virtual interface is the
      * VLAN that transports AWS Direct Connect traffic. A private virtual
-     * interface supports sending traffic to a single Virtual Private Cloud
+     * interface supports sending traffic to a single virtual private cloud
      * (VPC).
      * </p>
      *
@@ -1015,6 +515,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * @return A Java Future object containing the response from the
      *         CreatePrivateVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1030,17 +531,17 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreatePrivateVirtualInterfaceResult>() {
             public CreatePrivateVirtualInterfaceResult call() throws Exception {
-            	CreatePrivateVirtualInterfaceResult result;
+              CreatePrivateVirtualInterfaceResult result;
                 try {
-            		result = createPrivateVirtualInterface(createPrivateVirtualInterfaceRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createPrivateVirtualInterfaceRequest, result);
-               	return result;
-		    }
-		});
+                result = createPrivateVirtualInterface(createPrivateVirtualInterfaceRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createPrivateVirtualInterfaceRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1055,6 +556,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * @return A Java Future object containing the response from the
      *         DeleteVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1069,11 +571,10 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
         return executorService.submit(new Callable<DeleteVirtualInterfaceResult>() {
             public DeleteVirtualInterfaceResult call() throws Exception {
                 return deleteVirtualInterface(deleteVirtualInterfaceRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes a virtual interface.
@@ -1090,6 +591,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * @return A Java Future object containing the response from the
      *         DeleteVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1105,17 +607,17 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeleteVirtualInterfaceResult>() {
             public DeleteVirtualInterfaceResult call() throws Exception {
-            	DeleteVirtualInterfaceResult result;
+              DeleteVirtualInterfaceResult result;
                 try {
-            		result = deleteVirtualInterface(deleteVirtualInterfaceRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteVirtualInterfaceRequest, result);
-               	return result;
-		    }
-		});
+                result = deleteVirtualInterface(deleteVirtualInterfaceRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteVirtualInterfaceRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1133,6 +635,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * @return A Java Future object containing the response from the
      *         CreatePublicVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1147,11 +650,10 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
         return executorService.submit(new Callable<CreatePublicVirtualInterfaceResult>() {
             public CreatePublicVirtualInterfaceResult call() throws Exception {
                 return createPublicVirtualInterface(createPublicVirtualInterfaceRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates a new public virtual interface. A virtual interface is the
@@ -1171,6 +673,7 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
      * @return A Java Future object containing the response from the
      *         CreatePublicVirtualInterface service method, as returned by
      *         AmazonDirectConnect.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1186,17 +689,1271 @@ public class AmazonDirectConnectAsyncClient extends AmazonDirectConnectClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreatePublicVirtualInterfaceResult>() {
             public CreatePublicVirtualInterfaceResult call() throws Exception {
-            	CreatePublicVirtualInterfaceResult result;
+              CreatePublicVirtualInterfaceResult result;
                 try {
-            		result = createPublicVirtualInterface(createPublicVirtualInterfaceRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createPublicVirtualInterfaceRequest, result);
-               	return result;
-		    }
-		});
+                result = createPublicVirtualInterface(createPublicVirtualInterfaceRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createPublicVirtualInterfaceRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Creates a new interconnect between a AWS Direct Connect partner's
+     * network and a specific AWS Direct Connect location.
+     * </p>
+     * <p>
+     * An interconnect is a connection which is capable of hosting other
+     * connections. The AWS Direct Connect partner can use an interconnect
+     * to provide sub-1Gbps AWS Direct Connect service to tier 2 customers
+     * who do not have their own connections. Like a standard connection, an
+     * interconnect links the AWS Direct Connect partner's network to an AWS
+     * Direct Connect location over a standard 1 Gbps or 10 Gbps Ethernet
+     * fiber-optic cable. One end is connected to the partner's router, the
+     * other to an AWS Direct Connect router.
+     * </p>
+     * <p>
+     * For each end customer, the AWS Direct Connect partner provisions a
+     * connection on their interconnect by calling
+     * AllocateConnectionOnInterconnect. The end customer can then connect
+     * to AWS resources by creating a virtual interface on their connection,
+     * using the VLAN assigned to them by the AWS Direct Connect partner.
+     * </p>
+     *
+     * @param createInterconnectRequest Container for the necessary
+     *           parameters to execute the CreateInterconnect operation on
+     *           AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateInterconnect service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<CreateInterconnectResult> createInterconnectAsync(final CreateInterconnectRequest createInterconnectRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<CreateInterconnectResult>() {
+            public CreateInterconnectResult call() throws Exception {
+                return createInterconnect(createInterconnectRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Creates a new interconnect between a AWS Direct Connect partner's
+     * network and a specific AWS Direct Connect location.
+     * </p>
+     * <p>
+     * An interconnect is a connection which is capable of hosting other
+     * connections. The AWS Direct Connect partner can use an interconnect
+     * to provide sub-1Gbps AWS Direct Connect service to tier 2 customers
+     * who do not have their own connections. Like a standard connection, an
+     * interconnect links the AWS Direct Connect partner's network to an AWS
+     * Direct Connect location over a standard 1 Gbps or 10 Gbps Ethernet
+     * fiber-optic cable. One end is connected to the partner's router, the
+     * other to an AWS Direct Connect router.
+     * </p>
+     * <p>
+     * For each end customer, the AWS Direct Connect partner provisions a
+     * connection on their interconnect by calling
+     * AllocateConnectionOnInterconnect. The end customer can then connect
+     * to AWS resources by creating a virtual interface on their connection,
+     * using the VLAN assigned to them by the AWS Direct Connect partner.
+     * </p>
+     *
+     * @param createInterconnectRequest Container for the necessary
+     *           parameters to execute the CreateInterconnect operation on
+     *           AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateInterconnect service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<CreateInterconnectResult> createInterconnectAsync(
+            final CreateInterconnectRequest createInterconnectRequest,
+            final AsyncHandler<CreateInterconnectRequest, CreateInterconnectResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<CreateInterconnectResult>() {
+            public CreateInterconnectResult call() throws Exception {
+              CreateInterconnectResult result;
+                try {
+                result = createInterconnect(createInterconnectRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createInterconnectRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Displays all virtual interfaces for an AWS account. Virtual interfaces
+     * deleted fewer than 15 minutes before DescribeVirtualInterfaces is
+     * called are also returned. If a connection ID is included then only
+     * virtual interfaces associated with this connection will be returned.
+     * If a virtual interface ID is included then only a single virtual
+     * interface will be returned.
+     * </p>
+     * <p>
+     * A virtual interface (VLAN) transmits the traffic between the AWS
+     * Direct Connect location and the customer.
+     * </p>
+     * <p>
+     * If a connection ID is provided, only virtual interfaces provisioned on
+     * the specified connection will be returned. If a virtual interface ID
+     * is provided, only this particular virtual interface will be returned.
+     * </p>
+     *
+     * @param describeVirtualInterfacesRequest Container for the necessary
+     *           parameters to execute the DescribeVirtualInterfaces operation on
+     *           AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeVirtualInterfaces service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeVirtualInterfacesResult> describeVirtualInterfacesAsync(final DescribeVirtualInterfacesRequest describeVirtualInterfacesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeVirtualInterfacesResult>() {
+            public DescribeVirtualInterfacesResult call() throws Exception {
+                return describeVirtualInterfaces(describeVirtualInterfacesRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Displays all virtual interfaces for an AWS account. Virtual interfaces
+     * deleted fewer than 15 minutes before DescribeVirtualInterfaces is
+     * called are also returned. If a connection ID is included then only
+     * virtual interfaces associated with this connection will be returned.
+     * If a virtual interface ID is included then only a single virtual
+     * interface will be returned.
+     * </p>
+     * <p>
+     * A virtual interface (VLAN) transmits the traffic between the AWS
+     * Direct Connect location and the customer.
+     * </p>
+     * <p>
+     * If a connection ID is provided, only virtual interfaces provisioned on
+     * the specified connection will be returned. If a virtual interface ID
+     * is provided, only this particular virtual interface will be returned.
+     * </p>
+     *
+     * @param describeVirtualInterfacesRequest Container for the necessary
+     *           parameters to execute the DescribeVirtualInterfaces operation on
+     *           AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeVirtualInterfaces service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeVirtualInterfacesResult> describeVirtualInterfacesAsync(
+            final DescribeVirtualInterfacesRequest describeVirtualInterfacesRequest,
+            final AsyncHandler<DescribeVirtualInterfacesRequest, DescribeVirtualInterfacesResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeVirtualInterfacesResult>() {
+            public DescribeVirtualInterfacesResult call() throws Exception {
+              DescribeVirtualInterfacesResult result;
+                try {
+                result = describeVirtualInterfaces(describeVirtualInterfacesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeVirtualInterfacesRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Confirm the creation of a hosted connection on an interconnect.
+     * </p>
+     * <p>
+     * Upon creation, the hosted connection is initially in the 'Ordering'
+     * state, and will remain in this state until the owner calls
+     * ConfirmConnection to confirm creation of the hosted connection.
+     * </p>
+     *
+     * @param confirmConnectionRequest Container for the necessary parameters
+     *           to execute the ConfirmConnection operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ConfirmConnection service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<ConfirmConnectionResult> confirmConnectionAsync(final ConfirmConnectionRequest confirmConnectionRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<ConfirmConnectionResult>() {
+            public ConfirmConnectionResult call() throws Exception {
+                return confirmConnection(confirmConnectionRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Confirm the creation of a hosted connection on an interconnect.
+     * </p>
+     * <p>
+     * Upon creation, the hosted connection is initially in the 'Ordering'
+     * state, and will remain in this state until the owner calls
+     * ConfirmConnection to confirm creation of the hosted connection.
+     * </p>
+     *
+     * @param confirmConnectionRequest Container for the necessary parameters
+     *           to execute the ConfirmConnection operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ConfirmConnection service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<ConfirmConnectionResult> confirmConnectionAsync(
+            final ConfirmConnectionRequest confirmConnectionRequest,
+            final AsyncHandler<ConfirmConnectionRequest, ConfirmConnectionResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<ConfirmConnectionResult>() {
+            public ConfirmConnectionResult call() throws Exception {
+              ConfirmConnectionResult result;
+                try {
+                result = confirmConnection(confirmConnectionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(confirmConnectionRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Returns a list of interconnects owned by the AWS account.
+     * </p>
+     * <p>
+     * If an interconnect ID is provided, it will only return this particular
+     * interconnect.
+     * </p>
+     *
+     * @param describeInterconnectsRequest Container for the necessary
+     *           parameters to execute the DescribeInterconnects operation on
+     *           AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeInterconnects service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeInterconnectsResult> describeInterconnectsAsync(final DescribeInterconnectsRequest describeInterconnectsRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeInterconnectsResult>() {
+            public DescribeInterconnectsResult call() throws Exception {
+                return describeInterconnects(describeInterconnectsRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Returns a list of interconnects owned by the AWS account.
+     * </p>
+     * <p>
+     * If an interconnect ID is provided, it will only return this particular
+     * interconnect.
+     * </p>
+     *
+     * @param describeInterconnectsRequest Container for the necessary
+     *           parameters to execute the DescribeInterconnects operation on
+     *           AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeInterconnects service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeInterconnectsResult> describeInterconnectsAsync(
+            final DescribeInterconnectsRequest describeInterconnectsRequest,
+            final AsyncHandler<DescribeInterconnectsRequest, DescribeInterconnectsResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeInterconnectsResult>() {
+            public DescribeInterconnectsResult call() throws Exception {
+              DescribeInterconnectsResult result;
+                try {
+                result = describeInterconnects(describeInterconnectsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeInterconnectsRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Returns a list of virtual private gateways owned by the AWS account.
+     * </p>
+     * <p>
+     * You can create one or more AWS Direct Connect private virtual
+     * interfaces linking to a virtual private gateway. A virtual private
+     * gateway can be managed via Amazon Virtual Private Cloud (VPC) console
+     * or the
+     * <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html"> EC2 CreateVpnGateway </a>
+     * action.
+     * </p>
+     *
+     * @param describeVirtualGatewaysRequest Container for the necessary
+     *           parameters to execute the DescribeVirtualGateways operation on
+     *           AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeVirtualGateways service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeVirtualGatewaysResult> describeVirtualGatewaysAsync(final DescribeVirtualGatewaysRequest describeVirtualGatewaysRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeVirtualGatewaysResult>() {
+            public DescribeVirtualGatewaysResult call() throws Exception {
+                return describeVirtualGateways(describeVirtualGatewaysRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Returns a list of virtual private gateways owned by the AWS account.
+     * </p>
+     * <p>
+     * You can create one or more AWS Direct Connect private virtual
+     * interfaces linking to a virtual private gateway. A virtual private
+     * gateway can be managed via Amazon Virtual Private Cloud (VPC) console
+     * or the
+     * <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html"> EC2 CreateVpnGateway </a>
+     * action.
+     * </p>
+     *
+     * @param describeVirtualGatewaysRequest Container for the necessary
+     *           parameters to execute the DescribeVirtualGateways operation on
+     *           AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeVirtualGateways service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeVirtualGatewaysResult> describeVirtualGatewaysAsync(
+            final DescribeVirtualGatewaysRequest describeVirtualGatewaysRequest,
+            final AsyncHandler<DescribeVirtualGatewaysRequest, DescribeVirtualGatewaysResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeVirtualGatewaysResult>() {
+            public DescribeVirtualGatewaysResult call() throws Exception {
+              DescribeVirtualGatewaysResult result;
+                try {
+                result = describeVirtualGateways(describeVirtualGatewaysRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeVirtualGatewaysRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Accept ownership of a private virtual interface created by another
+     * customer.
+     * </p>
+     * <p>
+     * After the virtual interface owner calls this function, the virtual
+     * interface will be created and attached to the given virtual private
+     * gateway, and will be available for handling traffic.
+     * </p>
+     *
+     * @param confirmPrivateVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the ConfirmPrivateVirtualInterface
+     *           operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ConfirmPrivateVirtualInterface service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<ConfirmPrivateVirtualInterfaceResult> confirmPrivateVirtualInterfaceAsync(final ConfirmPrivateVirtualInterfaceRequest confirmPrivateVirtualInterfaceRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<ConfirmPrivateVirtualInterfaceResult>() {
+            public ConfirmPrivateVirtualInterfaceResult call() throws Exception {
+                return confirmPrivateVirtualInterface(confirmPrivateVirtualInterfaceRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Accept ownership of a private virtual interface created by another
+     * customer.
+     * </p>
+     * <p>
+     * After the virtual interface owner calls this function, the virtual
+     * interface will be created and attached to the given virtual private
+     * gateway, and will be available for handling traffic.
+     * </p>
+     *
+     * @param confirmPrivateVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the ConfirmPrivateVirtualInterface
+     *           operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ConfirmPrivateVirtualInterface service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<ConfirmPrivateVirtualInterfaceResult> confirmPrivateVirtualInterfaceAsync(
+            final ConfirmPrivateVirtualInterfaceRequest confirmPrivateVirtualInterfaceRequest,
+            final AsyncHandler<ConfirmPrivateVirtualInterfaceRequest, ConfirmPrivateVirtualInterfaceResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<ConfirmPrivateVirtualInterfaceResult>() {
+            public ConfirmPrivateVirtualInterfaceResult call() throws Exception {
+              ConfirmPrivateVirtualInterfaceResult result;
+                try {
+                result = confirmPrivateVirtualInterface(confirmPrivateVirtualInterfaceRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(confirmPrivateVirtualInterfaceRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Displays all connections in this region.
+     * </p>
+     * <p>
+     * If a connection ID is provided, the call returns only that particular
+     * connection.
+     * </p>
+     *
+     * @param describeConnectionsRequest Container for the necessary
+     *           parameters to execute the DescribeConnections operation on
+     *           AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeConnections service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeConnectionsResult> describeConnectionsAsync(final DescribeConnectionsRequest describeConnectionsRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeConnectionsResult>() {
+            public DescribeConnectionsResult call() throws Exception {
+                return describeConnections(describeConnectionsRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Displays all connections in this region.
+     * </p>
+     * <p>
+     * If a connection ID is provided, the call returns only that particular
+     * connection.
+     * </p>
+     *
+     * @param describeConnectionsRequest Container for the necessary
+     *           parameters to execute the DescribeConnections operation on
+     *           AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeConnections service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeConnectionsResult> describeConnectionsAsync(
+            final DescribeConnectionsRequest describeConnectionsRequest,
+            final AsyncHandler<DescribeConnectionsRequest, DescribeConnectionsResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeConnectionsResult>() {
+            public DescribeConnectionsResult call() throws Exception {
+              DescribeConnectionsResult result;
+                try {
+                result = describeConnections(describeConnectionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeConnectionsRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Provisions a public virtual interface to be owned by a different
+     * customer.
+     * </p>
+     * <p>
+     * The owner of a connection calls this function to provision a public
+     * virtual interface which will be owned by another AWS customer.
+     * </p>
+     * <p>
+     * Virtual interfaces created using this function must be confirmed by
+     * the virtual interface owner by calling ConfirmPublicVirtualInterface.
+     * Until this step has been completed, the virtual interface will be in
+     * 'Confirming' state, and will not be available for handling traffic.
+     * </p>
+     *
+     * @param allocatePublicVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the AllocatePublicVirtualInterface
+     *           operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AllocatePublicVirtualInterface service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<AllocatePublicVirtualInterfaceResult> allocatePublicVirtualInterfaceAsync(final AllocatePublicVirtualInterfaceRequest allocatePublicVirtualInterfaceRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<AllocatePublicVirtualInterfaceResult>() {
+            public AllocatePublicVirtualInterfaceResult call() throws Exception {
+                return allocatePublicVirtualInterface(allocatePublicVirtualInterfaceRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Provisions a public virtual interface to be owned by a different
+     * customer.
+     * </p>
+     * <p>
+     * The owner of a connection calls this function to provision a public
+     * virtual interface which will be owned by another AWS customer.
+     * </p>
+     * <p>
+     * Virtual interfaces created using this function must be confirmed by
+     * the virtual interface owner by calling ConfirmPublicVirtualInterface.
+     * Until this step has been completed, the virtual interface will be in
+     * 'Confirming' state, and will not be available for handling traffic.
+     * </p>
+     *
+     * @param allocatePublicVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the AllocatePublicVirtualInterface
+     *           operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AllocatePublicVirtualInterface service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<AllocatePublicVirtualInterfaceResult> allocatePublicVirtualInterfaceAsync(
+            final AllocatePublicVirtualInterfaceRequest allocatePublicVirtualInterfaceRequest,
+            final AsyncHandler<AllocatePublicVirtualInterfaceRequest, AllocatePublicVirtualInterfaceResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<AllocatePublicVirtualInterfaceResult>() {
+            public AllocatePublicVirtualInterfaceResult call() throws Exception {
+              AllocatePublicVirtualInterfaceResult result;
+                try {
+                result = allocatePublicVirtualInterface(allocatePublicVirtualInterfaceRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(allocatePublicVirtualInterfaceRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Provisions a private virtual interface to be owned by a different
+     * customer.
+     * </p>
+     * <p>
+     * The owner of a connection calls this function to provision a private
+     * virtual interface which will be owned by another AWS customer.
+     * </p>
+     * <p>
+     * Virtual interfaces created using this function must be confirmed by
+     * the virtual interface owner by calling ConfirmPrivateVirtualInterface.
+     * Until this step has been completed, the virtual interface will be in
+     * 'Confirming' state, and will not be available for handling traffic.
+     * </p>
+     *
+     * @param allocatePrivateVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the AllocatePrivateVirtualInterface
+     *           operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AllocatePrivateVirtualInterface service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<AllocatePrivateVirtualInterfaceResult> allocatePrivateVirtualInterfaceAsync(final AllocatePrivateVirtualInterfaceRequest allocatePrivateVirtualInterfaceRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<AllocatePrivateVirtualInterfaceResult>() {
+            public AllocatePrivateVirtualInterfaceResult call() throws Exception {
+                return allocatePrivateVirtualInterface(allocatePrivateVirtualInterfaceRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Provisions a private virtual interface to be owned by a different
+     * customer.
+     * </p>
+     * <p>
+     * The owner of a connection calls this function to provision a private
+     * virtual interface which will be owned by another AWS customer.
+     * </p>
+     * <p>
+     * Virtual interfaces created using this function must be confirmed by
+     * the virtual interface owner by calling ConfirmPrivateVirtualInterface.
+     * Until this step has been completed, the virtual interface will be in
+     * 'Confirming' state, and will not be available for handling traffic.
+     * </p>
+     *
+     * @param allocatePrivateVirtualInterfaceRequest Container for the
+     *           necessary parameters to execute the AllocatePrivateVirtualInterface
+     *           operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AllocatePrivateVirtualInterface service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<AllocatePrivateVirtualInterfaceResult> allocatePrivateVirtualInterfaceAsync(
+            final AllocatePrivateVirtualInterfaceRequest allocatePrivateVirtualInterfaceRequest,
+            final AsyncHandler<AllocatePrivateVirtualInterfaceRequest, AllocatePrivateVirtualInterfaceResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<AllocatePrivateVirtualInterfaceResult>() {
+            public AllocatePrivateVirtualInterfaceResult call() throws Exception {
+              AllocatePrivateVirtualInterfaceResult result;
+                try {
+                result = allocatePrivateVirtualInterface(allocatePrivateVirtualInterfaceRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(allocatePrivateVirtualInterfaceRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Deletes the connection.
+     * </p>
+     * <p>
+     * Deleting a connection only stops the AWS Direct Connect port hour and
+     * data transfer charges. You need to cancel separately with the
+     * providers any services or charges for cross-connects or network
+     * circuits that connect you to the AWS Direct Connect location.
+     * </p>
+     *
+     * @param deleteConnectionRequest Container for the necessary parameters
+     *           to execute the DeleteConnection operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DeleteConnection service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DeleteConnectionResult> deleteConnectionAsync(final DeleteConnectionRequest deleteConnectionRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DeleteConnectionResult>() {
+            public DeleteConnectionResult call() throws Exception {
+                return deleteConnection(deleteConnectionRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Deletes the connection.
+     * </p>
+     * <p>
+     * Deleting a connection only stops the AWS Direct Connect port hour and
+     * data transfer charges. You need to cancel separately with the
+     * providers any services or charges for cross-connects or network
+     * circuits that connect you to the AWS Direct Connect location.
+     * </p>
+     *
+     * @param deleteConnectionRequest Container for the necessary parameters
+     *           to execute the DeleteConnection operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DeleteConnection service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DeleteConnectionResult> deleteConnectionAsync(
+            final DeleteConnectionRequest deleteConnectionRequest,
+            final AsyncHandler<DeleteConnectionRequest, DeleteConnectionResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DeleteConnectionResult>() {
+            public DeleteConnectionResult call() throws Exception {
+              DeleteConnectionResult result;
+                try {
+                result = deleteConnection(deleteConnectionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteConnectionRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Return a list of connections that have been provisioned on the given
+     * interconnect.
+     * </p>
+     *
+     * @param describeConnectionsOnInterconnectRequest Container for the
+     *           necessary parameters to execute the DescribeConnectionsOnInterconnect
+     *           operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeConnectionsOnInterconnect service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeConnectionsOnInterconnectResult> describeConnectionsOnInterconnectAsync(final DescribeConnectionsOnInterconnectRequest describeConnectionsOnInterconnectRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeConnectionsOnInterconnectResult>() {
+            public DescribeConnectionsOnInterconnectResult call() throws Exception {
+                return describeConnectionsOnInterconnect(describeConnectionsOnInterconnectRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Return a list of connections that have been provisioned on the given
+     * interconnect.
+     * </p>
+     *
+     * @param describeConnectionsOnInterconnectRequest Container for the
+     *           necessary parameters to execute the DescribeConnectionsOnInterconnect
+     *           operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeConnectionsOnInterconnect service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeConnectionsOnInterconnectResult> describeConnectionsOnInterconnectAsync(
+            final DescribeConnectionsOnInterconnectRequest describeConnectionsOnInterconnectRequest,
+            final AsyncHandler<DescribeConnectionsOnInterconnectRequest, DescribeConnectionsOnInterconnectResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeConnectionsOnInterconnectResult>() {
+            public DescribeConnectionsOnInterconnectResult call() throws Exception {
+              DescribeConnectionsOnInterconnectResult result;
+                try {
+                result = describeConnectionsOnInterconnect(describeConnectionsOnInterconnectRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeConnectionsOnInterconnectRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Creates a hosted connection on an interconnect.
+     * </p>
+     * <p>
+     * Allocates a VLAN number and a specified amount of bandwidth for use by
+     * a hosted connection on the given interconnect.
+     * </p>
+     *
+     * @param allocateConnectionOnInterconnectRequest Container for the
+     *           necessary parameters to execute the AllocateConnectionOnInterconnect
+     *           operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AllocateConnectionOnInterconnect service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<AllocateConnectionOnInterconnectResult> allocateConnectionOnInterconnectAsync(final AllocateConnectionOnInterconnectRequest allocateConnectionOnInterconnectRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<AllocateConnectionOnInterconnectResult>() {
+            public AllocateConnectionOnInterconnectResult call() throws Exception {
+                return allocateConnectionOnInterconnect(allocateConnectionOnInterconnectRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Creates a hosted connection on an interconnect.
+     * </p>
+     * <p>
+     * Allocates a VLAN number and a specified amount of bandwidth for use by
+     * a hosted connection on the given interconnect.
+     * </p>
+     *
+     * @param allocateConnectionOnInterconnectRequest Container for the
+     *           necessary parameters to execute the AllocateConnectionOnInterconnect
+     *           operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AllocateConnectionOnInterconnect service method, as returned by
+     *         AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<AllocateConnectionOnInterconnectResult> allocateConnectionOnInterconnectAsync(
+            final AllocateConnectionOnInterconnectRequest allocateConnectionOnInterconnectRequest,
+            final AsyncHandler<AllocateConnectionOnInterconnectRequest, AllocateConnectionOnInterconnectResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<AllocateConnectionOnInterconnectResult>() {
+            public AllocateConnectionOnInterconnectResult call() throws Exception {
+              AllocateConnectionOnInterconnectResult result;
+                try {
+                result = allocateConnectionOnInterconnect(allocateConnectionOnInterconnectRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(allocateConnectionOnInterconnectRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Creates a new connection between the customer network and a specific
+     * AWS Direct Connect location.
+     * </p>
+     * <p>
+     * A connection links your internal network to an AWS Direct Connect
+     * location over a standard 1 gigabit or 10 gigabit Ethernet fiber-optic
+     * cable. One end of the cable is connected to your router, the other to
+     * an AWS Direct Connect router. An AWS Direct Connect location provides
+     * access to Amazon Web Services in the region it is associated with. You
+     * can establish connections with AWS Direct Connect locations in
+     * multiple regions, but a connection in one region does not provide
+     * connectivity to other regions.
+     * </p>
+     *
+     * @param createConnectionRequest Container for the necessary parameters
+     *           to execute the CreateConnection operation on AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateConnection service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<CreateConnectionResult> createConnectionAsync(final CreateConnectionRequest createConnectionRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<CreateConnectionResult>() {
+            public CreateConnectionResult call() throws Exception {
+                return createConnection(createConnectionRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Creates a new connection between the customer network and a specific
+     * AWS Direct Connect location.
+     * </p>
+     * <p>
+     * A connection links your internal network to an AWS Direct Connect
+     * location over a standard 1 gigabit or 10 gigabit Ethernet fiber-optic
+     * cable. One end of the cable is connected to your router, the other to
+     * an AWS Direct Connect router. An AWS Direct Connect location provides
+     * access to Amazon Web Services in the region it is associated with. You
+     * can establish connections with AWS Direct Connect locations in
+     * multiple regions, but a connection in one region does not provide
+     * connectivity to other regions.
+     * </p>
+     *
+     * @param createConnectionRequest Container for the necessary parameters
+     *           to execute the CreateConnection operation on AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateConnection service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<CreateConnectionResult> createConnectionAsync(
+            final CreateConnectionRequest createConnectionRequest,
+            final AsyncHandler<CreateConnectionRequest, CreateConnectionResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<CreateConnectionResult>() {
+            public CreateConnectionResult call() throws Exception {
+              CreateConnectionResult result;
+                try {
+                result = createConnection(createConnectionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createConnectionRequest, result);
+                 return result;
+        }
+    });
+    }
+    
+    /**
+     * <p>
+     * Deletes the specified interconnect.
+     * </p>
+     *
+     * @param deleteInterconnectRequest Container for the necessary
+     *           parameters to execute the DeleteInterconnect operation on
+     *           AmazonDirectConnect.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DeleteInterconnect service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DeleteInterconnectResult> deleteInterconnectAsync(final DeleteInterconnectRequest deleteInterconnectRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DeleteInterconnectResult>() {
+            public DeleteInterconnectResult call() throws Exception {
+                return deleteInterconnect(deleteInterconnectRequest);
+        }
+    });
+    }
+
+    /**
+     * <p>
+     * Deletes the specified interconnect.
+     * </p>
+     *
+     * @param deleteInterconnectRequest Container for the necessary
+     *           parameters to execute the DeleteInterconnect operation on
+     *           AmazonDirectConnect.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DeleteInterconnect service method, as returned by AmazonDirectConnect.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonDirectConnect indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DeleteInterconnectResult> deleteInterconnectAsync(
+            final DeleteInterconnectRequest deleteInterconnectRequest,
+            final AsyncHandler<DeleteInterconnectRequest, DeleteInterconnectResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DeleteInterconnectResult>() {
+            public DeleteInterconnectResult call() throws Exception {
+              DeleteInterconnectResult result;
+                try {
+                result = deleteInterconnect(deleteInterconnectRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteInterconnectRequest, result);
+                 return result;
+        }
+    });
     }
     
 }

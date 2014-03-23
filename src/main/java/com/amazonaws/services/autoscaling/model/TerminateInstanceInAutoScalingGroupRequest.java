@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#terminateInstanceInAutoScalingGroup(TerminateInstanceInAutoScalingGroupRequest) TerminateInstanceInAutoScalingGroup operation}.
  * <p>
- * Terminates the specified instance. Optionally, the desired group size can be adjusted.
+ * Terminates the specified instance. Optionally, the desired group size
+ * can be adjusted.
  * </p>
  * <p>
- * <b>NOTE:</b> This call simply registers a termination request. The termination of the instance cannot happen immediately.
+ * <b>NOTE:</b> This call simply registers a termination request. The
+ * termination of the instance cannot happen immediately.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#terminateInstanceInAutoScalingGroup(TerminateInstanceInAutoScalingGroupRequest)
  */
-public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the Amazon EC2 instance to be terminated.
@@ -83,14 +87,13 @@ public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebService
      * @param instanceId The ID of the Amazon EC2 instance to be terminated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateInstanceInAutoScalingGroupRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether (<i>true</i>) or not (<i>false</i>) terminating this
      * instance should also decrement the size of the
@@ -129,14 +132,13 @@ public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebService
      *         <a>AutoScalingGroup</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateInstanceInAutoScalingGroupRequest withShouldDecrementDesiredCapacity(Boolean shouldDecrementDesiredCapacity) {
         this.shouldDecrementDesiredCapacity = shouldDecrementDesiredCapacity;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether (<i>true</i>) or not (<i>false</i>) terminating this
      * instance should also decrement the size of the
@@ -149,7 +151,7 @@ public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebService
     public Boolean getShouldDecrementDesiredCapacity() {
         return shouldDecrementDesiredCapacity;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -161,8 +163,8 @@ public class TerminateInstanceInAutoScalingGroupRequest extends AmazonWebService
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (isShouldDecrementDesiredCapacity() != null) sb.append("ShouldDecrementDesiredCapacity: " + isShouldDecrementDesiredCapacity() );
         sb.append("}");
         return sb.toString();

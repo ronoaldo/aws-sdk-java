@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class EnableMetricsCollectionRequestMarshaller implements Marshaller<Requ
     public Request<EnableMetricsCollectionRequest> marshall(EnableMetricsCollectionRequest enableMetricsCollectionRequest) {
 
         if (enableMetricsCollectionRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<EnableMetricsCollectionRequest> request = new DefaultRequest<EnableMetricsCollectionRequest>(enableMetricsCollectionRequest, "AmazonAutoScaling");
         request.addParameter("Action", "EnableMetricsCollection");
@@ -57,7 +57,6 @@ public class EnableMetricsCollectionRequestMarshaller implements Marshaller<Requ
         if (enableMetricsCollectionRequest.getGranularity() != null) {
             request.addParameter("Granularity", StringUtils.fromString(enableMetricsCollectionRequest.getGranularity()));
         }
-
 
         return request;
     }

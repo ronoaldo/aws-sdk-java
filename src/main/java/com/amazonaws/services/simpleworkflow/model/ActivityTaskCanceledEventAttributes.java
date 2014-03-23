@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>ActivityTaskCanceled</code> event.
  * </p>
  */
-public class ActivityTaskCanceledEventAttributes  implements Serializable  {
+public class ActivityTaskCanceledEventAttributes implements Serializable {
 
     /**
      * Details of the cancellation (if any).
@@ -89,14 +90,13 @@ public class ActivityTaskCanceledEventAttributes  implements Serializable  {
      * @param details Details of the cancellation (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCanceledEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>ActivityTaskScheduled</code> event that was
      * recorded when this activity task was scheduled. This information can
@@ -141,14 +141,13 @@ public class ActivityTaskCanceledEventAttributes  implements Serializable  {
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCanceledEventAttributes withScheduledEventId(Long scheduledEventId) {
         this.scheduledEventId = scheduledEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>ActivityTaskStarted</code> event recorded when
      * this activity task was started. This information can be useful for
@@ -193,14 +192,13 @@ public class ActivityTaskCanceledEventAttributes  implements Serializable  {
      *         this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCanceledEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * If set, contains the Id of the last
      * <code>ActivityTaskCancelRequested</code> event recorded for this
@@ -245,14 +243,13 @@ public class ActivityTaskCanceledEventAttributes  implements Serializable  {
      *         by tracing back the chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCanceledEventAttributes withLatestCancelRequestedEventId(Long latestCancelRequestedEventId) {
         this.latestCancelRequestedEventId = latestCancelRequestedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -264,10 +261,10 @@ public class ActivityTaskCanceledEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
-        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");    	
-        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");    	
+        sb.append("{");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
+        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");
+        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");
         if (getLatestCancelRequestedEventId() != null) sb.append("LatestCancelRequestedEventId: " + getLatestCancelRequestedEventId() );
         sb.append("}");
         return sb.toString();

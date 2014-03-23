@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Defines the query to run against an object.
  * </p>
  */
-public class Query  implements Serializable  {
+public class Query implements Serializable {
 
     /**
      * List of selectors that define the query. An object must satisfy all of
      * the selectors to match the query.
      */
-    private java.util.List<Selector> selectors;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Selector> selectors;
 
     /**
      * List of selectors that define the query. An object must satisfy all of
@@ -36,9 +37,9 @@ public class Query  implements Serializable  {
      *         the selectors to match the query.
      */
     public java.util.List<Selector> getSelectors() {
-        
         if (selectors == null) {
-            selectors = new java.util.ArrayList<Selector>();
+              selectors = new com.amazonaws.internal.ListWithAutoConstructFlag<Selector>();
+              selectors.setAutoConstruct(true);
         }
         return selectors;
     }
@@ -55,8 +56,7 @@ public class Query  implements Serializable  {
             this.selectors = null;
             return;
         }
-
-        java.util.List<Selector> selectorsCopy = new java.util.ArrayList<Selector>(selectors.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Selector> selectorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Selector>(selectors.size());
         selectorsCopy.addAll(selectors);
         this.selectors = selectorsCopy;
     }
@@ -71,7 +71,7 @@ public class Query  implements Serializable  {
      *         the selectors to match the query.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Query withSelectors(Selector... selectors) {
         if (getSelectors() == null) setSelectors(new java.util.ArrayList<Selector>(selectors.length));
@@ -91,20 +91,20 @@ public class Query  implements Serializable  {
      *         the selectors to match the query.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Query withSelectors(java.util.Collection<Selector> selectors) {
         if (selectors == null) {
             this.selectors = null;
         } else {
-            java.util.List<Selector> selectorsCopy = new java.util.ArrayList<Selector>(selectors.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Selector> selectorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Selector>(selectors.size());
             selectorsCopy.addAll(selectors);
             this.selectors = selectorsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +116,7 @@ public class Query  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSelectors() != null) sb.append("Selectors: " + getSelectors() );
         sb.append("}");
         return sb.toString();

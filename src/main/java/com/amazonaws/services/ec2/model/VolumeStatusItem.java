@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,163 +13,177 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Volume Status Item
+ * <p>
+ * Describes the volume status.
+ * </p>
  */
-public class VolumeStatusItem  implements Serializable  {
-
-    private String volumeId;
-
-    private String availabilityZone;
-
-    private VolumeStatusInfo volumeStatus;
-
-    private java.util.List<VolumeStatusEvent> events;
-
-    private java.util.List<VolumeStatusAction> actions;
+public class VolumeStatusItem implements Serializable {
 
     /**
-     * Returns the value of the VolumeId property for this object.
+     * The volume ID.
+     */
+    private String volumeId;
+
+    /**
+     * The Availability Zone of the volume.
+     */
+    private String availabilityZone;
+
+    /**
+     * The volume status.
+     */
+    private VolumeStatusInfo volumeStatus;
+
+    /**
+     * A list of events associated with the volume.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent> events;
+
+    /**
+     * The details of the operation.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction> actions;
+
+    /**
+     * The volume ID.
      *
-     * @return The value of the VolumeId property for this object.
+     * @return The volume ID.
      */
     public String getVolumeId() {
         return volumeId;
     }
     
     /**
-     * Sets the value of the VolumeId property for this object.
+     * The volume ID.
      *
-     * @param volumeId The new value for the VolumeId property for this object.
+     * @param volumeId The volume ID.
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
     
     /**
-     * Sets the value of the VolumeId property for this object.
+     * The volume ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeId The new value for the VolumeId property for this object.
+     * @param volumeId The volume ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withVolumeId(String volumeId) {
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the AvailabilityZone property for this object.
+     * The Availability Zone of the volume.
      *
-     * @return The value of the AvailabilityZone property for this object.
+     * @return The Availability Zone of the volume.
      */
     public String getAvailabilityZone() {
         return availabilityZone;
     }
     
     /**
-     * Sets the value of the AvailabilityZone property for this object.
+     * The Availability Zone of the volume.
      *
-     * @param availabilityZone The new value for the AvailabilityZone property for this object.
+     * @param availabilityZone The Availability Zone of the volume.
      */
     public void setAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
     }
     
     /**
-     * Sets the value of the AvailabilityZone property for this object.
+     * The Availability Zone of the volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZone The new value for the AvailabilityZone property for this object.
+     * @param availabilityZone The Availability Zone of the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the VolumeStatus property for this object.
+     * The volume status.
      *
-     * @return The value of the VolumeStatus property for this object.
+     * @return The volume status.
      */
     public VolumeStatusInfo getVolumeStatus() {
         return volumeStatus;
     }
     
     /**
-     * Sets the value of the VolumeStatus property for this object.
+     * The volume status.
      *
-     * @param volumeStatus The new value for the VolumeStatus property for this object.
+     * @param volumeStatus The volume status.
      */
     public void setVolumeStatus(VolumeStatusInfo volumeStatus) {
         this.volumeStatus = volumeStatus;
     }
     
     /**
-     * Sets the value of the VolumeStatus property for this object.
+     * The volume status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeStatus The new value for the VolumeStatus property for this object.
+     * @param volumeStatus The volume status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withVolumeStatus(VolumeStatusInfo volumeStatus) {
         this.volumeStatus = volumeStatus;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Events property for this object.
+     * A list of events associated with the volume.
      *
-     * @return The value of the Events property for this object.
+     * @return A list of events associated with the volume.
      */
     public java.util.List<VolumeStatusEvent> getEvents() {
-        
         if (events == null) {
-            events = new java.util.ArrayList<VolumeStatusEvent>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
     
     /**
-     * Sets the value of the Events property for this object.
+     * A list of events associated with the volume.
      *
-     * @param events The new value for the Events property for this object.
+     * @param events A list of events associated with the volume.
      */
     public void setEvents(java.util.Collection<VolumeStatusEvent> events) {
         if (events == null) {
             this.events = null;
             return;
         }
-
-        java.util.List<VolumeStatusEvent> eventsCopy = new java.util.ArrayList<VolumeStatusEvent>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
     
     /**
-     * Sets the value of the Events property for this object.
+     * A list of events associated with the volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param events The new value for the Events property for this object.
+     * @param events A list of events associated with the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withEvents(VolumeStatusEvent... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<VolumeStatusEvent>(events.length));
@@ -180,65 +194,64 @@ public class VolumeStatusItem  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Events property for this object.
+     * A list of events associated with the volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param events The new value for the Events property for this object.
+     * @param events A list of events associated with the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withEvents(java.util.Collection<VolumeStatusEvent> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<VolumeStatusEvent> eventsCopy = new java.util.ArrayList<VolumeStatusEvent>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusEvent>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Actions property for this object.
+     * The details of the operation.
      *
-     * @return The value of the Actions property for this object.
+     * @return The details of the operation.
      */
     public java.util.List<VolumeStatusAction> getActions() {
-        
         if (actions == null) {
-            actions = new java.util.ArrayList<VolumeStatusAction>();
+              actions = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction>();
+              actions.setAutoConstruct(true);
         }
         return actions;
     }
     
     /**
-     * Sets the value of the Actions property for this object.
+     * The details of the operation.
      *
-     * @param actions The new value for the Actions property for this object.
+     * @param actions The details of the operation.
      */
     public void setActions(java.util.Collection<VolumeStatusAction> actions) {
         if (actions == null) {
             this.actions = null;
             return;
         }
-
-        java.util.List<VolumeStatusAction> actionsCopy = new java.util.ArrayList<VolumeStatusAction>(actions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction> actionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction>(actions.size());
         actionsCopy.addAll(actions);
         this.actions = actionsCopy;
     }
     
     /**
-     * Sets the value of the Actions property for this object.
+     * The details of the operation.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param actions The new value for the Actions property for this object.
+     * @param actions The details of the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withActions(VolumeStatusAction... actions) {
         if (getActions() == null) setActions(new java.util.ArrayList<VolumeStatusAction>(actions.length));
@@ -249,27 +262,27 @@ public class VolumeStatusItem  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Actions property for this object.
+     * The details of the operation.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param actions The new value for the Actions property for this object.
+     * @param actions The details of the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusItem withActions(java.util.Collection<VolumeStatusAction> actions) {
         if (actions == null) {
             this.actions = null;
         } else {
-            java.util.List<VolumeStatusAction> actionsCopy = new java.util.ArrayList<VolumeStatusAction>(actions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction> actionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusAction>(actions.size());
             actionsCopy.addAll(actions);
             this.actions = actionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -281,11 +294,11 @@ public class VolumeStatusItem  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getVolumeStatus() != null) sb.append("VolumeStatus: " + getVolumeStatus() + ",");    	
-        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getVolumeStatus() != null) sb.append("VolumeStatus: " + getVolumeStatus() + ",");
+        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");
         if (getActions() != null) sb.append("Actions: " + getActions() );
         sb.append("}");
         return sb.toString();

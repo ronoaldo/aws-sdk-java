@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * Snapshot StAX Unmarshaller
  */
@@ -37,12 +36,9 @@ public class SnapshotStaxUnmarshaller implements Unmarshaller<Snapshot, StaxUnma
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
 
-        
         if (context.isStartOfDocument()) targetDepth += 2;
-        
 
         if (context.isStartOfDocument()) targetDepth++;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -107,6 +103,46 @@ public class SnapshotStaxUnmarshaller implements Unmarshaller<Snapshot, StaxUnma
                 }
                 if (context.testExpression("Encrypted", targetDepth)) {
                     snapshot.setEncrypted(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("EncryptedWithHSM", targetDepth)) {
+                    snapshot.setEncryptedWithHSM(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("AccountsWithRestoreAccess/AccountWithRestoreAccess", targetDepth)) {
+                    snapshot.getAccountsWithRestoreAccess().add(AccountWithRestoreAccessStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("OwnerAccount", targetDepth)) {
+                    snapshot.setOwnerAccount(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("TotalBackupSizeInMegaBytes", targetDepth)) {
+                    snapshot.setTotalBackupSizeInMegaBytes(DoubleStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("ActualIncrementalBackupSizeInMegaBytes", targetDepth)) {
+                    snapshot.setActualIncrementalBackupSizeInMegaBytes(DoubleStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("BackupProgressInMegaBytes", targetDepth)) {
+                    snapshot.setBackupProgressInMegaBytes(DoubleStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("CurrentBackupRateInMegaBytesPerSecond", targetDepth)) {
+                    snapshot.setCurrentBackupRateInMegaBytesPerSecond(DoubleStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("EstimatedSecondsToCompletion", targetDepth)) {
+                    snapshot.setEstimatedSecondsToCompletion(LongStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("ElapsedTimeInSeconds", targetDepth)) {
+                    snapshot.setElapsedTimeInSeconds(LongStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("SourceRegion", targetDepth)) {
+                    snapshot.setSourceRegion(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

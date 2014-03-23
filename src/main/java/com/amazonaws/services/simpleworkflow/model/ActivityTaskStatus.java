@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Status information about an activity task.
  * </p>
  */
-public class ActivityTaskStatus  implements Serializable  {
+public class ActivityTaskStatus implements Serializable {
 
     /**
      * Set to <code>true</code> if cancellation of the task is requested.
@@ -53,14 +54,13 @@ public class ActivityTaskStatus  implements Serializable  {
      * @param cancelRequested Set to <code>true</code> if cancellation of the task is requested.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskStatus withCancelRequested(Boolean cancelRequested) {
         this.cancelRequested = cancelRequested;
         return this;
     }
-    
-    
+
     /**
      * Set to <code>true</code> if cancellation of the task is requested.
      *
@@ -69,7 +69,7 @@ public class ActivityTaskStatus  implements Serializable  {
     public Boolean getCancelRequested() {
         return cancelRequested;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -81,7 +81,7 @@ public class ActivityTaskStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (isCancelRequested() != null) sb.append("CancelRequested: " + isCancelRequested() );
         sb.append("}");
         return sb.toString();

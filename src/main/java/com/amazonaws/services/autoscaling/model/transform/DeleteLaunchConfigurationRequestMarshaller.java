@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteLaunchConfigurationRequestMarshaller implements Marshaller<Re
     public Request<DeleteLaunchConfigurationRequest> marshall(DeleteLaunchConfigurationRequest deleteLaunchConfigurationRequest) {
 
         if (deleteLaunchConfigurationRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteLaunchConfigurationRequest> request = new DefaultRequest<DeleteLaunchConfigurationRequest>(deleteLaunchConfigurationRequest, "AmazonAutoScaling");
         request.addParameter("Action", "DeleteLaunchConfiguration");
@@ -43,7 +43,6 @@ public class DeleteLaunchConfigurationRequestMarshaller implements Marshaller<Re
         if (deleteLaunchConfigurationRequest.getLaunchConfigurationName() != null) {
             request.addParameter("LaunchConfigurationName", StringUtils.fromString(deleteLaunchConfigurationRequest.getLaunchConfigurationName()));
         }
-
 
         return request;
     }

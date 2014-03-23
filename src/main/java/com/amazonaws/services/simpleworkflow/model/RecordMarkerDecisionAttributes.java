@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -23,22 +24,30 @@ import java.io.Serializable;
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this decision's access to Amazon SWF in much the same way as for the regular API:
+ * You can use IAM policies to control this decision's access to Amazon
+ * SWF in much the same way as for the regular API:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the decision to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to specify this decision.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the decision to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * specify this decision.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails. The associated event attribute's
+ * <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
+ * details and example IAM policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  */
-public class RecordMarkerDecisionAttributes  implements Serializable  {
+public class RecordMarkerDecisionAttributes implements Serializable {
 
     /**
      * The name of the marker. This file is required.
@@ -91,14 +100,13 @@ public class RecordMarkerDecisionAttributes  implements Serializable  {
      * @param markerName The name of the marker. This file is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecordMarkerDecisionAttributes withMarkerName(String markerName) {
         this.markerName = markerName;
         return this;
     }
-    
-    
+
     /**
      * Optional details of the marker.
      * <p>
@@ -134,14 +142,13 @@ public class RecordMarkerDecisionAttributes  implements Serializable  {
      * @param details Optional details of the marker.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecordMarkerDecisionAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -153,8 +160,8 @@ public class RecordMarkerDecisionAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarkerName() != null) sb.append("MarkerName: " + getMarkerName() + ",");    	
+        sb.append("{");
+        if (getMarkerName() != null) sb.append("MarkerName: " + getMarkerName() + ",");
         if (getDetails() != null) sb.append("Details: " + getDetails() );
         sb.append("}");
         return sb.toString();

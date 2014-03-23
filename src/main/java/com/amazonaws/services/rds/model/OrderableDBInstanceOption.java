@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,232 +13,229 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains a list of available options for a DB Instance
+ * Contains a list of available options for a DB instance
  * </p>
  * <p>
- * This data type is used as a response element in the DescribeOrderableDBInstanceOptions action.
+ * This data type is used as a response element in the
+ * DescribeOrderableDBInstanceOptions action.
  * </p>
  */
-public class OrderableDBInstanceOption  implements Serializable  {
+public class OrderableDBInstanceOption implements Serializable {
 
     /**
-     * The engine type of the orderable DB Instance.
+     * The engine type of the orderable DB instance.
      */
     private String engine;
 
     /**
-     * The engine version of the orderable DB Instance.
+     * The engine version of the orderable DB instance.
      */
     private String engineVersion;
 
     /**
-     * The DB Instance Class for the orderable DB Instance
+     * The DB instance Class for the orderable DB instance
      */
     private String dBInstanceClass;
 
     /**
-     * The license model for the orderable DB Instance.
+     * The license model for the orderable DB instance.
      */
     private String licenseModel;
 
     /**
-     * A list of availability zones for the orderable DB Instance.
+     * A list of availability zones for the orderable DB instance.
      */
-    private java.util.List<AvailabilityZone> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZones;
 
     /**
-     * Indicates whether this orderable DB Instance is multi-AZ capable.
+     * Indicates whether this orderable DB instance is multi-AZ capable.
      */
     private Boolean multiAZCapable;
 
     /**
-     * Indicates whether this orderable DB Instance can have a read replica.
+     * Indicates whether this orderable DB instance can have a read replica.
      */
     private Boolean readReplicaCapable;
 
     /**
-     * Indicates whether this is a VPC orderable DB Instance.
+     * Indicates whether this is a VPC orderable DB instance.
      */
     private Boolean vpc;
 
     /**
-     * The engine type of the orderable DB Instance.
+     * The engine type of the orderable DB instance.
      *
-     * @return The engine type of the orderable DB Instance.
+     * @return The engine type of the orderable DB instance.
      */
     public String getEngine() {
         return engine;
     }
     
     /**
-     * The engine type of the orderable DB Instance.
+     * The engine type of the orderable DB instance.
      *
-     * @param engine The engine type of the orderable DB Instance.
+     * @param engine The engine type of the orderable DB instance.
      */
     public void setEngine(String engine) {
         this.engine = engine;
     }
     
     /**
-     * The engine type of the orderable DB Instance.
+     * The engine type of the orderable DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param engine The engine type of the orderable DB Instance.
+     * @param engine The engine type of the orderable DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withEngine(String engine) {
         this.engine = engine;
         return this;
     }
-    
-    
+
     /**
-     * The engine version of the orderable DB Instance.
+     * The engine version of the orderable DB instance.
      *
-     * @return The engine version of the orderable DB Instance.
+     * @return The engine version of the orderable DB instance.
      */
     public String getEngineVersion() {
         return engineVersion;
     }
     
     /**
-     * The engine version of the orderable DB Instance.
+     * The engine version of the orderable DB instance.
      *
-     * @param engineVersion The engine version of the orderable DB Instance.
+     * @param engineVersion The engine version of the orderable DB instance.
      */
     public void setEngineVersion(String engineVersion) {
         this.engineVersion = engineVersion;
     }
     
     /**
-     * The engine version of the orderable DB Instance.
+     * The engine version of the orderable DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param engineVersion The engine version of the orderable DB Instance.
+     * @param engineVersion The engine version of the orderable DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withEngineVersion(String engineVersion) {
         this.engineVersion = engineVersion;
         return this;
     }
-    
-    
+
     /**
-     * The DB Instance Class for the orderable DB Instance
+     * The DB instance Class for the orderable DB instance
      *
-     * @return The DB Instance Class for the orderable DB Instance
+     * @return The DB instance Class for the orderable DB instance
      */
     public String getDBInstanceClass() {
         return dBInstanceClass;
     }
     
     /**
-     * The DB Instance Class for the orderable DB Instance
+     * The DB instance Class for the orderable DB instance
      *
-     * @param dBInstanceClass The DB Instance Class for the orderable DB Instance
+     * @param dBInstanceClass The DB instance Class for the orderable DB instance
      */
     public void setDBInstanceClass(String dBInstanceClass) {
         this.dBInstanceClass = dBInstanceClass;
     }
     
     /**
-     * The DB Instance Class for the orderable DB Instance
+     * The DB instance Class for the orderable DB instance
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBInstanceClass The DB Instance Class for the orderable DB Instance
+     * @param dBInstanceClass The DB instance Class for the orderable DB instance
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withDBInstanceClass(String dBInstanceClass) {
         this.dBInstanceClass = dBInstanceClass;
         return this;
     }
-    
-    
+
     /**
-     * The license model for the orderable DB Instance.
+     * The license model for the orderable DB instance.
      *
-     * @return The license model for the orderable DB Instance.
+     * @return The license model for the orderable DB instance.
      */
     public String getLicenseModel() {
         return licenseModel;
     }
     
     /**
-     * The license model for the orderable DB Instance.
+     * The license model for the orderable DB instance.
      *
-     * @param licenseModel The license model for the orderable DB Instance.
+     * @param licenseModel The license model for the orderable DB instance.
      */
     public void setLicenseModel(String licenseModel) {
         this.licenseModel = licenseModel;
     }
     
     /**
-     * The license model for the orderable DB Instance.
+     * The license model for the orderable DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param licenseModel The license model for the orderable DB Instance.
+     * @param licenseModel The license model for the orderable DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withLicenseModel(String licenseModel) {
         this.licenseModel = licenseModel;
         return this;
     }
-    
-    
+
     /**
-     * A list of availability zones for the orderable DB Instance.
+     * A list of availability zones for the orderable DB instance.
      *
-     * @return A list of availability zones for the orderable DB Instance.
+     * @return A list of availability zones for the orderable DB instance.
      */
     public java.util.List<AvailabilityZone> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<AvailabilityZone>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
     
     /**
-     * A list of availability zones for the orderable DB Instance.
+     * A list of availability zones for the orderable DB instance.
      *
-     * @param availabilityZones A list of availability zones for the orderable DB Instance.
+     * @param availabilityZones A list of availability zones for the orderable DB instance.
      */
     public void setAvailabilityZones(java.util.Collection<AvailabilityZone> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<AvailabilityZone> availabilityZonesCopy = new java.util.ArrayList<AvailabilityZone>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
     
     /**
-     * A list of availability zones for the orderable DB Instance.
+     * A list of availability zones for the orderable DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones A list of availability zones for the orderable DB Instance.
+     * @param availabilityZones A list of availability zones for the orderable DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withAvailabilityZones(AvailabilityZone... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<AvailabilityZone>(availabilityZones.length));
@@ -249,156 +246,153 @@ public class OrderableDBInstanceOption  implements Serializable  {
     }
     
     /**
-     * A list of availability zones for the orderable DB Instance.
+     * A list of availability zones for the orderable DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones A list of availability zones for the orderable DB Instance.
+     * @param availabilityZones A list of availability zones for the orderable DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withAvailabilityZones(java.util.Collection<AvailabilityZone> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<AvailabilityZone> availabilityZonesCopy = new java.util.ArrayList<AvailabilityZone>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Indicates whether this orderable DB Instance is multi-AZ capable.
+     * Indicates whether this orderable DB instance is multi-AZ capable.
      *
-     * @return Indicates whether this orderable DB Instance is multi-AZ capable.
+     * @return Indicates whether this orderable DB instance is multi-AZ capable.
      */
     public Boolean isMultiAZCapable() {
         return multiAZCapable;
     }
     
     /**
-     * Indicates whether this orderable DB Instance is multi-AZ capable.
+     * Indicates whether this orderable DB instance is multi-AZ capable.
      *
-     * @param multiAZCapable Indicates whether this orderable DB Instance is multi-AZ capable.
+     * @param multiAZCapable Indicates whether this orderable DB instance is multi-AZ capable.
      */
     public void setMultiAZCapable(Boolean multiAZCapable) {
         this.multiAZCapable = multiAZCapable;
     }
     
     /**
-     * Indicates whether this orderable DB Instance is multi-AZ capable.
+     * Indicates whether this orderable DB instance is multi-AZ capable.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param multiAZCapable Indicates whether this orderable DB Instance is multi-AZ capable.
+     * @param multiAZCapable Indicates whether this orderable DB instance is multi-AZ capable.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withMultiAZCapable(Boolean multiAZCapable) {
         this.multiAZCapable = multiAZCapable;
         return this;
     }
-    
-    
+
     /**
-     * Indicates whether this orderable DB Instance is multi-AZ capable.
+     * Indicates whether this orderable DB instance is multi-AZ capable.
      *
-     * @return Indicates whether this orderable DB Instance is multi-AZ capable.
+     * @return Indicates whether this orderable DB instance is multi-AZ capable.
      */
     public Boolean getMultiAZCapable() {
         return multiAZCapable;
     }
-    
+
     /**
-     * Indicates whether this orderable DB Instance can have a read replica.
+     * Indicates whether this orderable DB instance can have a read replica.
      *
-     * @return Indicates whether this orderable DB Instance can have a read replica.
+     * @return Indicates whether this orderable DB instance can have a read replica.
      */
     public Boolean isReadReplicaCapable() {
         return readReplicaCapable;
     }
     
     /**
-     * Indicates whether this orderable DB Instance can have a read replica.
+     * Indicates whether this orderable DB instance can have a read replica.
      *
-     * @param readReplicaCapable Indicates whether this orderable DB Instance can have a read replica.
+     * @param readReplicaCapable Indicates whether this orderable DB instance can have a read replica.
      */
     public void setReadReplicaCapable(Boolean readReplicaCapable) {
         this.readReplicaCapable = readReplicaCapable;
     }
     
     /**
-     * Indicates whether this orderable DB Instance can have a read replica.
+     * Indicates whether this orderable DB instance can have a read replica.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param readReplicaCapable Indicates whether this orderable DB Instance can have a read replica.
+     * @param readReplicaCapable Indicates whether this orderable DB instance can have a read replica.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withReadReplicaCapable(Boolean readReplicaCapable) {
         this.readReplicaCapable = readReplicaCapable;
         return this;
     }
-    
-    
+
     /**
-     * Indicates whether this orderable DB Instance can have a read replica.
+     * Indicates whether this orderable DB instance can have a read replica.
      *
-     * @return Indicates whether this orderable DB Instance can have a read replica.
+     * @return Indicates whether this orderable DB instance can have a read replica.
      */
     public Boolean getReadReplicaCapable() {
         return readReplicaCapable;
     }
-    
+
     /**
-     * Indicates whether this is a VPC orderable DB Instance.
+     * Indicates whether this is a VPC orderable DB instance.
      *
-     * @return Indicates whether this is a VPC orderable DB Instance.
+     * @return Indicates whether this is a VPC orderable DB instance.
      */
     public Boolean isVpc() {
         return vpc;
     }
     
     /**
-     * Indicates whether this is a VPC orderable DB Instance.
+     * Indicates whether this is a VPC orderable DB instance.
      *
-     * @param vpc Indicates whether this is a VPC orderable DB Instance.
+     * @param vpc Indicates whether this is a VPC orderable DB instance.
      */
     public void setVpc(Boolean vpc) {
         this.vpc = vpc;
     }
     
     /**
-     * Indicates whether this is a VPC orderable DB Instance.
+     * Indicates whether this is a VPC orderable DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpc Indicates whether this is a VPC orderable DB Instance.
+     * @param vpc Indicates whether this is a VPC orderable DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableDBInstanceOption withVpc(Boolean vpc) {
         this.vpc = vpc;
         return this;
     }
-    
-    
+
     /**
-     * Indicates whether this is a VPC orderable DB Instance.
+     * Indicates whether this is a VPC orderable DB instance.
      *
-     * @return Indicates whether this is a VPC orderable DB Instance.
+     * @return Indicates whether this is a VPC orderable DB instance.
      */
     public Boolean getVpc() {
         return vpc;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -410,14 +404,14 @@ public class OrderableDBInstanceOption  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");    	
-        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");    	
-        if (getDBInstanceClass() != null) sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");    	
-        if (getLicenseModel() != null) sb.append("LicenseModel: " + getLicenseModel() + ",");    	
-        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");    	
-        if (isMultiAZCapable() != null) sb.append("MultiAZCapable: " + isMultiAZCapable() + ",");    	
-        if (isReadReplicaCapable() != null) sb.append("ReadReplicaCapable: " + isReadReplicaCapable() + ",");    	
+        sb.append("{");
+        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");
+        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");
+        if (getDBInstanceClass() != null) sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+        if (getLicenseModel() != null) sb.append("LicenseModel: " + getLicenseModel() + ",");
+        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+        if (isMultiAZCapable() != null) sb.append("MultiAZCapable: " + isMultiAZCapable() + ",");
+        if (isReadReplicaCapable() != null) sb.append("ReadReplicaCapable: " + isReadReplicaCapable() + ",");
         if (isVpc() != null) sb.append("Vpc: " + isVpc() );
         sb.append("}");
         return sb.toString();

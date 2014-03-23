@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeClusters(DescribeClustersRequest) DescribeClusters operation}.
  * <p>
- * Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and
- * security and access properties. This operation supports pagination. For more information about managing clusters, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a> in the <i>Amazon Redshift Management
- * Guide</i> .
+ * Returns properties of provisioned clusters including general cluster
+ * properties, cluster database properties, maintenance and backup
+ * properties, and security and access properties. This operation
+ * supports pagination. For more information about managing clusters, go
+ * to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeClusters(DescribeClustersRequest)
  */
-public class DescribeClustersRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeClustersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The unique identifier of a cluster whose properties you are
@@ -94,14 +99,13 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest  implements
      *         that all clusters defined for an account are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClustersRequest withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records that the response can include. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -158,14 +162,13 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest  implements
      *         and no more than 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClustersRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional marker returned by a previous <b>DescribeClusters</b>
      * request to indicate the first cluster that the current
@@ -216,14 +219,13 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest  implements
      *         <b>DescribeClusters</b> request, but not both.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClustersRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -235,9 +237,9 @@ public class DescribeClustersRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

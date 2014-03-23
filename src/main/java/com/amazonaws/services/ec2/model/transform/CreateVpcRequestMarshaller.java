@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateVpcRequestMarshaller implements Marshaller<Request<CreateVpcR
     public Request<CreateVpcRequest> marshall(CreateVpcRequest createVpcRequest) {
 
         if (createVpcRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateVpcRequest> request = new DefaultRequest<CreateVpcRequest>(createVpcRequest, "AmazonEC2");
         request.addParameter("Action", "CreateVpc");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createVpcRequest.getCidrBlock() != null) {
             request.addParameter("CidrBlock", StringUtils.fromString(createVpcRequest.getCidrBlock()));
@@ -46,7 +46,6 @@ public class CreateVpcRequestMarshaller implements Marshaller<Request<CreateVpcR
         if (createVpcRequest.getInstanceTenancy() != null) {
             request.addParameter("InstanceTenancy", StringUtils.fromString(createVpcRequest.getInstanceTenancy()));
         }
-
 
         return request;
     }

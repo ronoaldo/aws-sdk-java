@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element for queries on VPC security group membership.
+ * This data type is used as a response element for queries on VPC
+ * security group membership.
  * </p>
  */
-public class VpcSecurityGroupMembership  implements Serializable  {
+public class VpcSecurityGroupMembership implements Serializable {
 
     /**
      * The name of the VPC security group.
@@ -28,7 +30,7 @@ public class VpcSecurityGroupMembership  implements Serializable  {
     private String vpcSecurityGroupId;
 
     /**
-     * The status of the VPC Security Group.
+     * The status of the VPC security group.
      */
     private String status;
 
@@ -58,48 +60,46 @@ public class VpcSecurityGroupMembership  implements Serializable  {
      * @param vpcSecurityGroupId The name of the VPC security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpcSecurityGroupMembership withVpcSecurityGroupId(String vpcSecurityGroupId) {
         this.vpcSecurityGroupId = vpcSecurityGroupId;
         return this;
     }
-    
-    
+
     /**
-     * The status of the VPC Security Group.
+     * The status of the VPC security group.
      *
-     * @return The status of the VPC Security Group.
+     * @return The status of the VPC security group.
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * The status of the VPC Security Group.
+     * The status of the VPC security group.
      *
-     * @param status The status of the VPC Security Group.
+     * @param status The status of the VPC security group.
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * The status of the VPC Security Group.
+     * The status of the VPC security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param status The status of the VPC Security Group.
+     * @param status The status of the VPC security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpcSecurityGroupMembership withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +111,8 @@ public class VpcSecurityGroupMembership  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpcSecurityGroupId() != null) sb.append("VpcSecurityGroupId: " + getVpcSecurityGroupId() + ",");    	
+        sb.append("{");
+        if (getVpcSecurityGroupId() != null) sb.append("VpcSecurityGroupId: " + getVpcSecurityGroupId() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

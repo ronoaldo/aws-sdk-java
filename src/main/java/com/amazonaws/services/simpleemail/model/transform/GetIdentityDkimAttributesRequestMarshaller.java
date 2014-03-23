@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class GetIdentityDkimAttributesRequestMarshaller implements Marshaller<Re
     public Request<GetIdentityDkimAttributesRequest> marshall(GetIdentityDkimAttributesRequest getIdentityDkimAttributesRequest) {
 
         if (getIdentityDkimAttributesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetIdentityDkimAttributesRequest> request = new DefaultRequest<GetIdentityDkimAttributesRequest>(getIdentityDkimAttributesRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "GetIdentityDkimAttributes");
         request.addParameter("Version", "2010-12-01");
-
 
         java.util.List<String> identitiesList = getIdentityDkimAttributesRequest.getIdentities();
         int identitiesListIndex = 1;
@@ -51,7 +50,6 @@ public class GetIdentityDkimAttributesRequestMarshaller implements Marshaller<Re
 
             identitiesListIndex++;
         }
-
 
         return request;
     }

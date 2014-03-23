@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,121 +13,200 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Price Schedule Specification
+ * <p>
+ * Describes the price for a Reserved Instance.
+ * </p>
  */
-public class PriceScheduleSpecification  implements Serializable  {
+public class PriceScheduleSpecification implements Serializable {
 
+    /**
+     * The number of months remaining in the reservation. For example, 2 is
+     * the second to the last month before the capacity reservation expires.
+     */
     private Long term;
 
+    /**
+     * The fixed price for the term.
+     */
     private Double price;
 
+    /**
+     * The currency for transacting the Reserved Instance resale. At this
+     * time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
+     */
     private String currencyCode;
 
     /**
-     * Returns the value of the Term property for this object.
+     * The number of months remaining in the reservation. For example, 2 is
+     * the second to the last month before the capacity reservation expires.
      *
-     * @return The value of the Term property for this object.
+     * @return The number of months remaining in the reservation. For example, 2 is
+     *         the second to the last month before the capacity reservation expires.
      */
     public Long getTerm() {
         return term;
     }
     
     /**
-     * Sets the value of the Term property for this object.
+     * The number of months remaining in the reservation. For example, 2 is
+     * the second to the last month before the capacity reservation expires.
      *
-     * @param term The new value for the Term property for this object.
+     * @param term The number of months remaining in the reservation. For example, 2 is
+     *         the second to the last month before the capacity reservation expires.
      */
     public void setTerm(Long term) {
         this.term = term;
     }
     
     /**
-     * Sets the value of the Term property for this object.
+     * The number of months remaining in the reservation. For example, 2 is
+     * the second to the last month before the capacity reservation expires.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param term The new value for the Term property for this object.
+     * @param term The number of months remaining in the reservation. For example, 2 is
+     *         the second to the last month before the capacity reservation expires.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceScheduleSpecification withTerm(Long term) {
         this.term = term;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Price property for this object.
+     * The fixed price for the term.
      *
-     * @return The value of the Price property for this object.
+     * @return The fixed price for the term.
      */
     public Double getPrice() {
         return price;
     }
     
     /**
-     * Sets the value of the Price property for this object.
+     * The fixed price for the term.
      *
-     * @param price The new value for the Price property for this object.
+     * @param price The fixed price for the term.
      */
     public void setPrice(Double price) {
         this.price = price;
     }
     
     /**
-     * Sets the value of the Price property for this object.
+     * The fixed price for the term.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param price The new value for the Price property for this object.
+     * @param price The fixed price for the term.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PriceScheduleSpecification withPrice(Double price) {
         this.price = price;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the CurrencyCode property for this object.
+     * The currency for transacting the Reserved Instance resale. At this
+     * time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
      *
-     * @return The value of the CurrencyCode property for this object.
+     * @return The currency for transacting the Reserved Instance resale. At this
+     *         time, the only supported currency is <code>USD</code>.
+     *
+     * @see CurrencyCodeValues
      */
     public String getCurrencyCode() {
         return currencyCode;
     }
     
     /**
-     * Sets the value of the CurrencyCode property for this object.
+     * The currency for transacting the Reserved Instance resale. At this
+     * time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
      *
-     * @param currencyCode The new value for the CurrencyCode property for this object.
+     * @param currencyCode The currency for transacting the Reserved Instance resale. At this
+     *         time, the only supported currency is <code>USD</code>.
+     *
+     * @see CurrencyCodeValues
      */
     public void setCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
     }
     
     /**
-     * Sets the value of the CurrencyCode property for this object.
+     * The currency for transacting the Reserved Instance resale. At this
+     * time, the only supported currency is <code>USD</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
      *
-     * @param currencyCode The new value for the CurrencyCode property for this object.
+     * @param currencyCode The currency for transacting the Reserved Instance resale. At this
+     *         time, the only supported currency is <code>USD</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see CurrencyCodeValues
      */
     public PriceScheduleSpecification withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
         return this;
     }
+
+    /**
+     * The currency for transacting the Reserved Instance resale. At this
+     * time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
+     *
+     * @param currencyCode The currency for transacting the Reserved Instance resale. At this
+     *         time, the only supported currency is <code>USD</code>.
+     *
+     * @see CurrencyCodeValues
+     */
+    public void setCurrencyCode(CurrencyCodeValues currencyCode) {
+        this.currencyCode = currencyCode.toString();
+    }
     
-    
+    /**
+     * The currency for transacting the Reserved Instance resale. At this
+     * time, the only supported currency is <code>USD</code>.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
+     *
+     * @param currencyCode The currency for transacting the Reserved Instance resale. At this
+     *         time, the only supported currency is <code>USD</code>.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see CurrencyCodeValues
+     */
+    public PriceScheduleSpecification withCurrencyCode(CurrencyCodeValues currencyCode) {
+        this.currencyCode = currencyCode.toString();
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -139,9 +218,9 @@ public class PriceScheduleSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTerm() != null) sb.append("Term: " + getTerm() + ",");    	
-        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");    	
+        sb.append("{");
+        if (getTerm() != null) sb.append("Term: " + getTerm() + ",");
+        if (getPrice() != null) sb.append("Price: " + getPrice() + ",");
         if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() );
         sb.append("}");
         return sb.toString();

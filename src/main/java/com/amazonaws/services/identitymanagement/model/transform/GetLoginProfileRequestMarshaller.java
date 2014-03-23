@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class GetLoginProfileRequestMarshaller implements Marshaller<Request<GetL
     public Request<GetLoginProfileRequest> marshall(GetLoginProfileRequest getLoginProfileRequest) {
 
         if (getLoginProfileRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetLoginProfileRequest> request = new DefaultRequest<GetLoginProfileRequest>(getLoginProfileRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "GetLoginProfile");
@@ -43,7 +43,6 @@ public class GetLoginProfileRequestMarshaller implements Marshaller<Request<GetL
         if (getLoginProfileRequest.getUserName() != null) {
             request.addParameter("UserName", StringUtils.fromString(getLoginProfileRequest.getUserName()));
         }
-
 
         return request;
     }

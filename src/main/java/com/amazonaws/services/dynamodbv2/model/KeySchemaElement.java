@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a key schema. Specifies the attributes that make up the primary key of a table, or the key attributes of a secondary index.
+ * Represents a single element of a key schema. A key schema specifies
+ * the attributes that make up the primary key of a table, or the key
+ * attributes of an index.
  * </p>
  */
-public class KeySchemaElement  implements Serializable  {
+public class KeySchemaElement implements Serializable {
 
     /**
-     * Represents the name of a key attribute.
+     * The name of a key attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
@@ -31,8 +34,8 @@ public class KeySchemaElement  implements Serializable  {
     private String attributeName;
 
     /**
-     * Represents the attribute data, consisting of the data type and the
-     * attribute value itself.
+     * The attribute data, consisting of the data type and the attribute
+     * value itself.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
@@ -46,57 +49,84 @@ public class KeySchemaElement  implements Serializable  {
     public KeySchemaElement() {}
     
     /**
-     * Represents the name of a key attribute.
+     * Constructs a new KeySchemaElement object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param attributeName The name of a key attribute.
+     * @param keyType The attribute data, consisting of the data type and the
+     * attribute value itself.
+     */
+    public KeySchemaElement(String attributeName, String keyType) {
+        setAttributeName(attributeName);
+        setKeyType(keyType);
+    }
+
+    /**
+     * Constructs a new KeySchemaElement object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param attributeName The name of a key attribute.
+     * @param keyType The attribute data, consisting of the data type and the
+     * attribute value itself.
+     */
+    public KeySchemaElement(String attributeName, KeyType keyType) {
+        this.attributeName = attributeName;
+        this.keyType = keyType.toString();
+    }
+
+    /**
+     * The name of a key attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @return Represents the name of a key attribute.
+     * @return The name of a key attribute.
      */
     public String getAttributeName() {
         return attributeName;
     }
     
     /**
-     * Represents the name of a key attribute.
+     * The name of a key attribute.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param attributeName Represents the name of a key attribute.
+     * @param attributeName The name of a key attribute.
      */
     public void setAttributeName(String attributeName) {
         this.attributeName = attributeName;
     }
     
     /**
-     * Represents the name of a key attribute.
+     * The name of a key attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      *
-     * @param attributeName Represents the name of a key attribute.
+     * @param attributeName The name of a key attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeySchemaElement withAttributeName(String attributeName) {
         this.attributeName = attributeName;
         return this;
     }
-    
-    
+
     /**
-     * Represents the attribute data, consisting of the data type and the
-     * attribute value itself.
+     * The attribute data, consisting of the data type and the attribute
+     * value itself.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @return Represents the attribute data, consisting of the data type and the
-     *         attribute value itself.
+     * @return The attribute data, consisting of the data type and the attribute
+     *         value itself.
      *
      * @see KeyType
      */
@@ -105,14 +135,14 @@ public class KeySchemaElement  implements Serializable  {
     }
     
     /**
-     * Represents the attribute data, consisting of the data type and the
-     * attribute value itself.
+     * The attribute data, consisting of the data type and the attribute
+     * value itself.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType Represents the attribute data, consisting of the data type and the
-     *         attribute value itself.
+     * @param keyType The attribute data, consisting of the data type and the attribute
+     *         value itself.
      *
      * @see KeyType
      */
@@ -121,19 +151,19 @@ public class KeySchemaElement  implements Serializable  {
     }
     
     /**
-     * Represents the attribute data, consisting of the data type and the
-     * attribute value itself.
+     * The attribute data, consisting of the data type and the attribute
+     * value itself.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType Represents the attribute data, consisting of the data type and the
-     *         attribute value itself.
+     * @param keyType The attribute data, consisting of the data type and the attribute
+     *         value itself.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see KeyType
      */
@@ -141,17 +171,16 @@ public class KeySchemaElement  implements Serializable  {
         this.keyType = keyType;
         return this;
     }
-    
-    
+
     /**
-     * Represents the attribute data, consisting of the data type and the
-     * attribute value itself.
+     * The attribute data, consisting of the data type and the attribute
+     * value itself.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType Represents the attribute data, consisting of the data type and the
-     *         attribute value itself.
+     * @param keyType The attribute data, consisting of the data type and the attribute
+     *         value itself.
      *
      * @see KeyType
      */
@@ -160,19 +189,19 @@ public class KeySchemaElement  implements Serializable  {
     }
     
     /**
-     * Represents the attribute data, consisting of the data type and the
-     * attribute value itself.
+     * The attribute data, consisting of the data type and the attribute
+     * value itself.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>HASH, RANGE
      *
-     * @param keyType Represents the attribute data, consisting of the data type and the
-     *         attribute value itself.
+     * @param keyType The attribute data, consisting of the data type and the attribute
+     *         value itself.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see KeyType
      */
@@ -180,7 +209,7 @@ public class KeySchemaElement  implements Serializable  {
         this.keyType = keyType.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -192,8 +221,8 @@ public class KeySchemaElement  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getKeyType() != null) sb.append("KeyType: " + getKeyType() );
         sb.append("}");
         return sb.toString();

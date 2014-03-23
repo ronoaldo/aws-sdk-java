@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ModifyVolumeAttributeRequestMarshaller implements Marshaller<Reques
     public Request<ModifyVolumeAttributeRequest> marshall(ModifyVolumeAttributeRequest modifyVolumeAttributeRequest) {
 
         if (modifyVolumeAttributeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ModifyVolumeAttributeRequest> request = new DefaultRequest<ModifyVolumeAttributeRequest>(modifyVolumeAttributeRequest, "AmazonEC2");
         request.addParameter("Action", "ModifyVolumeAttribute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (modifyVolumeAttributeRequest.getVolumeId() != null) {
             request.addParameter("VolumeId", StringUtils.fromString(modifyVolumeAttributeRequest.getVolumeId()));
@@ -46,7 +46,6 @@ public class ModifyVolumeAttributeRequestMarshaller implements Marshaller<Reques
         if (modifyVolumeAttributeRequest.isAutoEnableIO() != null) {
             request.addParameter("AutoEnableIO.Value", StringUtils.fromBoolean(modifyVolumeAttributeRequest.isAutoEnableIO()));
         }
-
 
         return request;
     }

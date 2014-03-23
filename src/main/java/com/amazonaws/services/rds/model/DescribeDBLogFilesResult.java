@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The response from a call to DescribeDBLogFiles.
  * </p>
  */
-public class DescribeDBLogFilesResult  implements Serializable  {
+public class DescribeDBLogFilesResult implements Serializable {
 
     /**
      * The DB log files returned.
      */
-    private java.util.List<DescribeDBLogFilesDetails> describeDBLogFiles;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DescribeDBLogFilesDetails> describeDBLogFiles;
 
     /**
      * An optional paging token.
@@ -38,9 +39,9 @@ public class DescribeDBLogFilesResult  implements Serializable  {
      * @return The DB log files returned.
      */
     public java.util.List<DescribeDBLogFilesDetails> getDescribeDBLogFiles() {
-        
         if (describeDBLogFiles == null) {
-            describeDBLogFiles = new java.util.ArrayList<DescribeDBLogFilesDetails>();
+              describeDBLogFiles = new com.amazonaws.internal.ListWithAutoConstructFlag<DescribeDBLogFilesDetails>();
+              describeDBLogFiles.setAutoConstruct(true);
         }
         return describeDBLogFiles;
     }
@@ -55,8 +56,7 @@ public class DescribeDBLogFilesResult  implements Serializable  {
             this.describeDBLogFiles = null;
             return;
         }
-
-        java.util.List<DescribeDBLogFilesDetails> describeDBLogFilesCopy = new java.util.ArrayList<DescribeDBLogFilesDetails>(describeDBLogFiles.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DescribeDBLogFilesDetails> describeDBLogFilesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DescribeDBLogFilesDetails>(describeDBLogFiles.size());
         describeDBLogFilesCopy.addAll(describeDBLogFiles);
         this.describeDBLogFiles = describeDBLogFilesCopy;
     }
@@ -69,7 +69,7 @@ public class DescribeDBLogFilesResult  implements Serializable  {
      * @param describeDBLogFiles The DB log files returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesResult withDescribeDBLogFiles(DescribeDBLogFilesDetails... describeDBLogFiles) {
         if (getDescribeDBLogFiles() == null) setDescribeDBLogFiles(new java.util.ArrayList<DescribeDBLogFilesDetails>(describeDBLogFiles.length));
@@ -87,20 +87,20 @@ public class DescribeDBLogFilesResult  implements Serializable  {
      * @param describeDBLogFiles The DB log files returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesResult withDescribeDBLogFiles(java.util.Collection<DescribeDBLogFilesDetails> describeDBLogFiles) {
         if (describeDBLogFiles == null) {
             this.describeDBLogFiles = null;
         } else {
-            java.util.List<DescribeDBLogFilesDetails> describeDBLogFilesCopy = new java.util.ArrayList<DescribeDBLogFilesDetails>(describeDBLogFiles.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DescribeDBLogFilesDetails> describeDBLogFilesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DescribeDBLogFilesDetails>(describeDBLogFiles.size());
             describeDBLogFilesCopy.addAll(describeDBLogFiles);
             this.describeDBLogFiles = describeDBLogFilesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An optional paging token.
      *
@@ -127,14 +127,13 @@ public class DescribeDBLogFilesResult  implements Serializable  {
      * @param marker An optional paging token.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +145,8 @@ public class DescribeDBLogFilesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDescribeDBLogFiles() != null) sb.append("DescribeDBLogFiles: " + getDescribeDBLogFiles() + ",");    	
+        sb.append("{");
+        if (getDescribeDBLogFiles() != null) sb.append("DescribeDBLogFiles: " + getDescribeDBLogFiles() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

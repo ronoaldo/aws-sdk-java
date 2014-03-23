@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The resource you are attempting to change is in use. For example, you are attempting to delete a pipeline that is currently in use.
+ * The resource you are attempting to change is in use. For example, you
+ * are attempting to delete a pipeline that is currently in use.
  * </p>
  */        
 public class ResourceInUseException extends AmazonServiceException {

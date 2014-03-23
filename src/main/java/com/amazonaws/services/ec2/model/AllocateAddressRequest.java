@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AllocateAddressRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#allocateAddress(AllocateAddressRequest) AllocateAddress operation}.
  * <p>
- * The AllocateAddress operation acquires an elastic IP address for use with your account.
+ * Acquires an Elastic IP address.
+ * </p>
+ * <p>
+ * An Elastic IP address is for use either in the EC2-Classic platform or
+ * in a VPC. For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html"> Elastic IP Addresses </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#allocateAddress(AllocateAddressRequest)
  */
-public class AllocateAddressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AllocateAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AllocateAddressRequest> {
 
     /**
-     * Set to <code>vpc</code> to allocate the address to your VPC. By
-     * default, will allocate to EC2.
+     * Set to <code>vpc</code> to allocate the address for use with instances
+     * in a VPC. <p>Default: The address is for use with instances in
+     * EC2-Classic.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>vpc, standard
@@ -36,14 +47,16 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
     private String domain;
 
     /**
-     * Set to <code>vpc</code> to allocate the address to your VPC. By
-     * default, will allocate to EC2.
+     * Set to <code>vpc</code> to allocate the address for use with instances
+     * in a VPC. <p>Default: The address is for use with instances in
+     * EC2-Classic.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>vpc, standard
      *
-     * @return Set to <code>vpc</code> to allocate the address to your VPC. By
-     *         default, will allocate to EC2.
+     * @return Set to <code>vpc</code> to allocate the address for use with instances
+     *         in a VPC. <p>Default: The address is for use with instances in
+     *         EC2-Classic.
      *
      * @see DomainType
      */
@@ -52,14 +65,16 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
     }
     
     /**
-     * Set to <code>vpc</code> to allocate the address to your VPC. By
-     * default, will allocate to EC2.
+     * Set to <code>vpc</code> to allocate the address for use with instances
+     * in a VPC. <p>Default: The address is for use with instances in
+     * EC2-Classic.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>vpc, standard
      *
-     * @param domain Set to <code>vpc</code> to allocate the address to your VPC. By
-     *         default, will allocate to EC2.
+     * @param domain Set to <code>vpc</code> to allocate the address for use with instances
+     *         in a VPC. <p>Default: The address is for use with instances in
+     *         EC2-Classic.
      *
      * @see DomainType
      */
@@ -68,19 +83,21 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
     }
     
     /**
-     * Set to <code>vpc</code> to allocate the address to your VPC. By
-     * default, will allocate to EC2.
+     * Set to <code>vpc</code> to allocate the address for use with instances
+     * in a VPC. <p>Default: The address is for use with instances in
+     * EC2-Classic.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>vpc, standard
      *
-     * @param domain Set to <code>vpc</code> to allocate the address to your VPC. By
-     *         default, will allocate to EC2.
+     * @param domain Set to <code>vpc</code> to allocate the address for use with instances
+     *         in a VPC. <p>Default: The address is for use with instances in
+     *         EC2-Classic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
@@ -88,17 +105,18 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
-     * Set to <code>vpc</code> to allocate the address to your VPC. By
-     * default, will allocate to EC2.
+     * Set to <code>vpc</code> to allocate the address for use with instances
+     * in a VPC. <p>Default: The address is for use with instances in
+     * EC2-Classic.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>vpc, standard
      *
-     * @param domain Set to <code>vpc</code> to allocate the address to your VPC. By
-     *         default, will allocate to EC2.
+     * @param domain Set to <code>vpc</code> to allocate the address for use with instances
+     *         in a VPC. <p>Default: The address is for use with instances in
+     *         EC2-Classic.
      *
      * @see DomainType
      */
@@ -107,25 +125,39 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
     }
     
     /**
-     * Set to <code>vpc</code> to allocate the address to your VPC. By
-     * default, will allocate to EC2.
+     * Set to <code>vpc</code> to allocate the address for use with instances
+     * in a VPC. <p>Default: The address is for use with instances in
+     * EC2-Classic.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>vpc, standard
      *
-     * @param domain Set to <code>vpc</code> to allocate the address to your VPC. By
-     *         default, will allocate to EC2.
+     * @param domain Set to <code>vpc</code> to allocate the address for use with instances
+     *         in a VPC. <p>Default: The address is for use with instances in
+     *         EC2-Classic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DomainType
      */
     public AllocateAddressRequest withDomain(DomainType domain) {
         this.domain = domain.toString();
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AllocateAddressRequest> getDryRunRequest() {
+        Request<AllocateAddressRequest> request = new AllocateAddressRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -139,7 +171,7 @@ public class AllocateAddressRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomain() != null) sb.append("Domain: " + getDomain() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package com.amazonaws.util;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.Date;
 
 import org.apache.commons.codec.binary.Base64;
@@ -26,8 +27,12 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class StringUtils {
 
+    private static final String DEFAULT_ENCODING = "UTF-8";
+
     /** Shared date utils for converting dates to strings */
     private static final DateUtils dateUtils = new DateUtils();
+
+    public static final Charset UTF8 = Charset.forName(DEFAULT_ENCODING);
 
     public static Integer toInteger(StringBuilder value) {
         return Integer.parseInt(value.toString());
@@ -58,20 +63,20 @@ public class StringUtils {
     }
 
     public static String fromBigInteger(BigInteger value) {
-    	return value.toString();
+        return value.toString();
     }
 
     public static String fromBigDecimal(BigDecimal value) {
-    	return value.toString();
+        return value.toString();
     }
 
 
     public static BigInteger toBigInteger(String s) {
-    	return new BigInteger(s);
+        return new BigInteger(s);
     }
 
     public static BigDecimal toBigDecimal(String s) {
-    	return new BigDecimal(s);
+        return new BigDecimal(s);
     }
 
     public static String fromFloat(Float value) {
@@ -153,16 +158,15 @@ public class StringUtils {
      * Joins the strings in parts with joiner between each string
      * @param joiner the string to insert between the strings in parts
      * @param parts the parts to join
-     * @return
      */
     public static String join(String joiner, String... parts) {
-      StringBuilder builder = new StringBuilder();
-      for (int i = 0; i < parts.length; i++) {
-    			builder.append(parts[i].toString());
-    			if (i < parts.length - 1) {
-    				builder.append(joiner);
-    			}
-    		}
-      return builder.toString();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < parts.length; i++) {
+            builder.append(parts[i]);
+            if (i < parts.length - 1) {
+                builder.append(joiner);
+            }
+        }
+        return builder.toString();
     }
 }

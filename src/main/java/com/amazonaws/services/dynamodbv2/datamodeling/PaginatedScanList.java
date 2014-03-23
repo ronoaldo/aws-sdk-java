@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package com.amazonaws.services.dynamodbv2.datamodeling;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.PaginationLoadingStrategy;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 
@@ -40,17 +41,33 @@ public class PaginatedScanList<T> extends PaginatedList<T> {
     /** The current scan request */
     private final ScanRequest scanRequest;
 
+    private final DynamoDBMapperConfig config;
+    
     /** The current results for the last executed scan operation */
     private ScanResult scanResult;
 
-
-    public PaginatedScanList(DynamoDBMapper mapper, Class<T> clazz, AmazonDynamoDB dynamo, ScanRequest scanRequest, ScanResult scanResult) {
-        super(mapper, clazz, dynamo);
+    public PaginatedScanList(
+            DynamoDBMapper mapper,
+            Class<T> clazz,
+            AmazonDynamoDB dynamo,
+            ScanRequest scanRequest,
+            ScanResult scanResult,
+            PaginationLoadingStrategy paginationLoadingStrategy,
+            DynamoDBMapperConfig config
+    ) {
+        super(mapper, clazz, dynamo, paginationLoadingStrategy);
 
         this.scanRequest = scanRequest;
         this.scanResult = scanResult;
+        this.config = config;
 
-        allResults.addAll(mapper.marshallIntoObjects(clazz, scanResult.getItems()));
+        allResults.addAll(mapper.marshalIntoObjects(
+            mapper.toParameters(scanResult.getItems(), clazz, config)));
+        
+        // If the results should be eagerly loaded at once
+        if (paginationLoadingStrategy == PaginationLoadingStrategy.EAGER_LOADING) {
+            loadAllResults();
+        }
     }
 
     @Override
@@ -62,7 +79,8 @@ public class PaginatedScanList<T> extends PaginatedList<T> {
     protected synchronized List<T> fetchNextPage() {
         scanRequest.setExclusiveStartKey(scanResult.getLastEvaluatedKey());
         scanResult = dynamo.scan(DynamoDBMapper.applyUserAgent(scanRequest));
-        return mapper.marshallIntoObjects(clazz, scanResult.getItems());
+        return mapper.marshalIntoObjects(
+            mapper.toParameters(scanResult.getItems(), clazz, config));
     }
 
 }

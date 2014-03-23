@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,11 +13,12 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The status of the DB Parameter Group.
+ * The status of the DB parameter group.
  * </p>
  * <p>
  * This data type is used as a response element in the following actions:
@@ -33,10 +34,10 @@ import java.io.Serializable;
  * 
  * </ul>
  */
-public class DBParameterGroupStatus  implements Serializable  {
+public class DBParameterGroupStatus implements Serializable {
 
     /**
-     * The name of the DP Parameter Group.
+     * The name of the DP parameter group.
      */
     private String dBParameterGroupName;
 
@@ -52,39 +53,38 @@ public class DBParameterGroupStatus  implements Serializable  {
     public DBParameterGroupStatus() {}
     
     /**
-     * The name of the DP Parameter Group.
+     * The name of the DP parameter group.
      *
-     * @return The name of the DP Parameter Group.
+     * @return The name of the DP parameter group.
      */
     public String getDBParameterGroupName() {
         return dBParameterGroupName;
     }
     
     /**
-     * The name of the DP Parameter Group.
+     * The name of the DP parameter group.
      *
-     * @param dBParameterGroupName The name of the DP Parameter Group.
+     * @param dBParameterGroupName The name of the DP parameter group.
      */
     public void setDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
     }
     
     /**
-     * The name of the DP Parameter Group.
+     * The name of the DP parameter group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupName The name of the DP Parameter Group.
+     * @param dBParameterGroupName The name of the DP parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBParameterGroupStatus withDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * The status of parameter updates.
      *
@@ -111,14 +111,13 @@ public class DBParameterGroupStatus  implements Serializable  {
      * @param parameterApplyStatus The status of parameter updates.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBParameterGroupStatus withParameterApplyStatus(String parameterApplyStatus) {
         this.parameterApplyStatus = parameterApplyStatus;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -130,8 +129,8 @@ public class DBParameterGroupStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() + ",");    	
+        sb.append("{");
+        if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() + ",");
         if (getParameterApplyStatus() != null) sb.append("ParameterApplyStatus: " + getParameterApplyStatus() );
         sb.append("}");
         return sb.toString();

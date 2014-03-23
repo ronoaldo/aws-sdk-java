@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,77 +13,109 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeSecurityGroupsRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeSecurityGroups(DescribeSecurityGroupsRequest) DescribeSecurityGroups operation}.
  * <p>
- * The DescribeSecurityGroups operation returns information about security groups that you own.
+ * Describes one or more of your security groups.
  * </p>
  * <p>
- * If you specify security group names, information about those security group is returned. Otherwise, information for all security group is returned.
- * If you specify a group that does not exist, a fault is returned.
+ * A security group is for use with instances either in the EC2-Classic
+ * platform or in a specific VPC. For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html"> Amazon EC2 Security Groups </a> in the <i>Amazon Elastic Compute Cloud User Guide</i> and <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html"> Security Groups for Your VPC </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSecurityGroups(DescribeSecurityGroupsRequest)
  */
-public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSecurityGroupsRequest> {
 
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * [EC2-Classic, default VPC] One or more security group names.
+     * <p>Default: Describes all your security groups.
      */
-    private java.util.List<String> groupNames;
-
-    private java.util.List<String> groupIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNames;
 
     /**
-     * A list of filters used to match properties for SecurityGroups. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more security group IDs. <p>Default: Describes all your
+     * security groups.
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groupIds;
 
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * One or more filters. <ul> <li> <p><code>description</code> - The
+     * description of the security group. </li> <li> <p><code>group-id</code>
+     * - The ID of the security group. </li> <li> <p><code>group-name</code>
+     * - The name of the security group. </li> <li>
+     * <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     * granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     * - The start of port range for the TCP and UDP protocols, or an ICMP
+     * type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     * name of a security group that has been granted permission. </li> <li>
+     * <p><code>ip-permission.protocol</code> - The IP protocol for the
+     * permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     * a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     * account that has been granted permission. </li> <li>
+     * <p><code>owner-id</code> - The AWS account ID of the owner of the
+     * security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     * assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     * The value of a tag assigned to the security group. </li> <li>
+     * <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     * group was created. </li> </ul>
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
+
+    /**
+     * [EC2-Classic, default VPC] One or more security group names.
+     * <p>Default: Describes all your security groups.
      *
-     * @return The optional list of Amazon EC2 security groups to describe.
+     * @return [EC2-Classic, default VPC] One or more security group names.
+     *         <p>Default: Describes all your security groups.
      */
     public java.util.List<String> getGroupNames() {
-        
         if (groupNames == null) {
-            groupNames = new java.util.ArrayList<String>();
+              groupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groupNames.setAutoConstruct(true);
         }
         return groupNames;
     }
     
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * [EC2-Classic, default VPC] One or more security group names.
+     * <p>Default: Describes all your security groups.
      *
-     * @param groupNames The optional list of Amazon EC2 security groups to describe.
+     * @param groupNames [EC2-Classic, default VPC] One or more security group names.
+     *         <p>Default: Describes all your security groups.
      */
     public void setGroupNames(java.util.Collection<String> groupNames) {
         if (groupNames == null) {
             this.groupNames = null;
             return;
         }
-
-        java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
         groupNamesCopy.addAll(groupNames);
         this.groupNames = groupNamesCopy;
     }
     
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * [EC2-Classic, default VPC] One or more security group names.
+     * <p>Default: Describes all your security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupNames The optional list of Amazon EC2 security groups to describe.
+     * @param groupNames [EC2-Classic, default VPC] One or more security group names.
+     *         <p>Default: Describes all your security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupNames(String... groupNames) {
         if (getGroupNames() == null) setGroupNames(new java.util.ArrayList<String>(groupNames.length));
@@ -94,65 +126,72 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The optional list of Amazon EC2 security groups to describe.
+     * [EC2-Classic, default VPC] One or more security group names.
+     * <p>Default: Describes all your security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupNames The optional list of Amazon EC2 security groups to describe.
+     * @param groupNames [EC2-Classic, default VPC] One or more security group names.
+     *         <p>Default: Describes all your security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupNames(java.util.Collection<String> groupNames) {
         if (groupNames == null) {
             this.groupNames = null;
         } else {
-            java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
             groupNamesCopy.addAll(groupNames);
             this.groupNames = groupNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the GroupIds property for this object.
+     * One or more security group IDs. <p>Default: Describes all your
+     * security groups.
      *
-     * @return The value of the GroupIds property for this object.
+     * @return One or more security group IDs. <p>Default: Describes all your
+     *         security groups.
      */
     public java.util.List<String> getGroupIds() {
-        
         if (groupIds == null) {
-            groupIds = new java.util.ArrayList<String>();
+              groupIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groupIds.setAutoConstruct(true);
         }
         return groupIds;
     }
     
     /**
-     * Sets the value of the GroupIds property for this object.
+     * One or more security group IDs. <p>Default: Describes all your
+     * security groups.
      *
-     * @param groupIds The new value for the GroupIds property for this object.
+     * @param groupIds One or more security group IDs. <p>Default: Describes all your
+     *         security groups.
      */
     public void setGroupIds(java.util.Collection<String> groupIds) {
         if (groupIds == null) {
             this.groupIds = null;
             return;
         }
-
-        java.util.List<String> groupIdsCopy = new java.util.ArrayList<String>(groupIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupIds.size());
         groupIdsCopy.addAll(groupIds);
         this.groupIds = groupIdsCopy;
     }
     
     /**
-     * Sets the value of the GroupIds property for this object.
+     * One or more security group IDs. <p>Default: Describes all your
+     * security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupIds The new value for the GroupIds property for this object.
+     * @param groupIds One or more security group IDs. <p>Default: Describes all your
+     *         security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupIds(String... groupIds) {
         if (getGroupIds() == null) setGroupIds(new java.util.ArrayList<String>(groupIds.length));
@@ -163,89 +202,186 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * Sets the value of the GroupIds property for this object.
+     * One or more security group IDs. <p>Default: Describes all your
+     * security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupIds The new value for the GroupIds property for this object.
+     * @param groupIds One or more security group IDs. <p>Default: Describes all your
+     *         security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withGroupIds(java.util.Collection<String> groupIds) {
         if (groupIds == null) {
             this.groupIds = null;
         } else {
-            java.util.List<String> groupIdsCopy = new java.util.ArrayList<String>(groupIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupIds.size());
             groupIdsCopy.addAll(groupIds);
             this.groupIds = groupIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of filters used to match properties for SecurityGroups. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>description</code> - The
+     * description of the security group. </li> <li> <p><code>group-id</code>
+     * - The ID of the security group. </li> <li> <p><code>group-name</code>
+     * - The name of the security group. </li> <li>
+     * <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     * granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     * - The start of port range for the TCP and UDP protocols, or an ICMP
+     * type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     * name of a security group that has been granted permission. </li> <li>
+     * <p><code>ip-permission.protocol</code> - The IP protocol for the
+     * permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     * a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     * account that has been granted permission. </li> <li>
+     * <p><code>owner-id</code> - The AWS account ID of the owner of the
+     * security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     * assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     * The value of a tag assigned to the security group. </li> <li>
+     * <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     * group was created. </li> </ul>
      *
-     * @return A list of filters used to match properties for SecurityGroups. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @return One or more filters. <ul> <li> <p><code>description</code> - The
+     *         description of the security group. </li> <li> <p><code>group-id</code>
+     *         - The ID of the security group. </li> <li> <p><code>group-name</code>
+     *         - The name of the security group. </li> <li>
+     *         <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     *         granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     *         - The start of port range for the TCP and UDP protocols, or an ICMP
+     *         type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     *         name of a security group that has been granted permission. </li> <li>
+     *         <p><code>ip-permission.protocol</code> - The IP protocol for the
+     *         permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     *         a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     *         The end of port range for the TCP and UDP protocols, or an ICMP code.
+     *         </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     *         account that has been granted permission. </li> <li>
+     *         <p><code>owner-id</code> - The AWS account ID of the owner of the
+     *         security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     *         assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     *         The value of a tag assigned to the security group. </li> <li>
+     *         <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     *         group was created. </li> </ul>
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
     
     /**
-     * A list of filters used to match properties for SecurityGroups. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>description</code> - The
+     * description of the security group. </li> <li> <p><code>group-id</code>
+     * - The ID of the security group. </li> <li> <p><code>group-name</code>
+     * - The name of the security group. </li> <li>
+     * <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     * granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     * - The start of port range for the TCP and UDP protocols, or an ICMP
+     * type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     * name of a security group that has been granted permission. </li> <li>
+     * <p><code>ip-permission.protocol</code> - The IP protocol for the
+     * permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     * a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     * account that has been granted permission. </li> <li>
+     * <p><code>owner-id</code> - The AWS account ID of the owner of the
+     * security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     * assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     * The value of a tag assigned to the security group. </li> <li>
+     * <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     * group was created. </li> </ul>
      *
-     * @param filters A list of filters used to match properties for SecurityGroups. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>description</code> - The
+     *         description of the security group. </li> <li> <p><code>group-id</code>
+     *         - The ID of the security group. </li> <li> <p><code>group-name</code>
+     *         - The name of the security group. </li> <li>
+     *         <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     *         granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     *         - The start of port range for the TCP and UDP protocols, or an ICMP
+     *         type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     *         name of a security group that has been granted permission. </li> <li>
+     *         <p><code>ip-permission.protocol</code> - The IP protocol for the
+     *         permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     *         a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     *         The end of port range for the TCP and UDP protocols, or an ICMP code.
+     *         </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     *         account that has been granted permission. </li> <li>
+     *         <p><code>owner-id</code> - The AWS account ID of the owner of the
+     *         security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     *         assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     *         The value of a tag assigned to the security group. </li> <li>
+     *         <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     *         group was created. </li> </ul>
      */
     public void setFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
     
     /**
-     * A list of filters used to match properties for SecurityGroups. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>description</code> - The
+     * description of the security group. </li> <li> <p><code>group-id</code>
+     * - The ID of the security group. </li> <li> <p><code>group-name</code>
+     * - The name of the security group. </li> <li>
+     * <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     * granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     * - The start of port range for the TCP and UDP protocols, or an ICMP
+     * type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     * name of a security group that has been granted permission. </li> <li>
+     * <p><code>ip-permission.protocol</code> - The IP protocol for the
+     * permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     * a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     * account that has been granted permission. </li> <li>
+     * <p><code>owner-id</code> - The AWS account ID of the owner of the
+     * security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     * assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     * The value of a tag assigned to the security group. </li> <li>
+     * <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     * group was created. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for SecurityGroups. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>description</code> - The
+     *         description of the security group. </li> <li> <p><code>group-id</code>
+     *         - The ID of the security group. </li> <li> <p><code>group-name</code>
+     *         - The name of the security group. </li> <li>
+     *         <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     *         granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     *         - The start of port range for the TCP and UDP protocols, or an ICMP
+     *         type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     *         name of a security group that has been granted permission. </li> <li>
+     *         <p><code>ip-permission.protocol</code> - The IP protocol for the
+     *         permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     *         a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     *         The end of port range for the TCP and UDP protocols, or an ICMP code.
+     *         </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     *         account that has been granted permission. </li> <li>
+     *         <p><code>owner-id</code> - The AWS account ID of the owner of the
+     *         security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     *         assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     *         The value of a tag assigned to the security group. </li> <li>
+     *         <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     *         group was created. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -256,33 +392,77 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * A list of filters used to match properties for SecurityGroups. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>description</code> - The
+     * description of the security group. </li> <li> <p><code>group-id</code>
+     * - The ID of the security group. </li> <li> <p><code>group-name</code>
+     * - The name of the security group. </li> <li>
+     * <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     * granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     * - The start of port range for the TCP and UDP protocols, or an ICMP
+     * type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     * name of a security group that has been granted permission. </li> <li>
+     * <p><code>ip-permission.protocol</code> - The IP protocol for the
+     * permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     * a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     * account that has been granted permission. </li> <li>
+     * <p><code>owner-id</code> - The AWS account ID of the owner of the
+     * security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     * assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     * The value of a tag assigned to the security group. </li> <li>
+     * <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     * group was created. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for SecurityGroups. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>description</code> - The
+     *         description of the security group. </li> <li> <p><code>group-id</code>
+     *         - The ID of the security group. </li> <li> <p><code>group-name</code>
+     *         - The name of the security group. </li> <li>
+     *         <p><code>ip-permission.cidr</code> - A CIDR range that has been
+     *         granted permission. </li> <li> <p><code>ip-permission.from-port</code>
+     *         - The start of port range for the TCP and UDP protocols, or an ICMP
+     *         type number. </li> <li> <p><code>ip-permission.group-name</code> - The
+     *         name of a security group that has been granted permission. </li> <li>
+     *         <p><code>ip-permission.protocol</code> - The IP protocol for the
+     *         permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or
+     *         a protocol number). </li> <li> <p><code>ip-permission.to-port</code> -
+     *         The end of port range for the TCP and UDP protocols, or an ICMP code.
+     *         </li> <li> <p><code>ip-permission.user-id</code> - The ID of an AWS
+     *         account that has been granted permission. </li> <li>
+     *         <p><code>owner-id</code> - The AWS account ID of the owner of the
+     *         security group. </li> <li> <p><code>tag-key</code> - The key of a tag
+     *         assigned to the security group. </li> <li> <p><code>tag-value</code> -
+     *         The value of a tag assigned to the security group. </li> <li>
+     *         <p><code>vpc-id</code> - The ID of the VPC specified when the security
+     *         group was created. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSecurityGroupsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeSecurityGroupsRequest> getDryRunRequest() {
+        Request<DescribeSecurityGroupsRequest> request = new DescribeSecurityGroupsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -296,9 +476,9 @@ public class DescribeSecurityGroupsRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");    	
-        if (getGroupIds() != null) sb.append("GroupIds: " + getGroupIds() + ",");    	
+        sb.append("{");
+        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");
+        if (getGroupIds() != null) sb.append("GroupIds: " + getGroupIds() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

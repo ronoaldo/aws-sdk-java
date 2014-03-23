@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Configuration of a bootstrap action.
  * </p>
  */
-public class BootstrapActionConfig  implements Serializable  {
+public class BootstrapActionConfig implements Serializable {
 
     /**
      * The name of the bootstrap action.
@@ -51,12 +52,10 @@ public class BootstrapActionConfig  implements Serializable  {
      * @param scriptBootstrapAction The script run by the bootstrap action.
      */
     public BootstrapActionConfig(String name, ScriptBootstrapActionConfig scriptBootstrapAction) {
-        this.name = name;
-        this.scriptBootstrapAction = scriptBootstrapAction;
+        setName(name);
+        setScriptBootstrapAction(scriptBootstrapAction);
     }
 
-    
-    
     /**
      * The name of the bootstrap action.
      * <p>
@@ -95,14 +94,13 @@ public class BootstrapActionConfig  implements Serializable  {
      * @param name The name of the bootstrap action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BootstrapActionConfig withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The script run by the bootstrap action.
      *
@@ -129,14 +127,13 @@ public class BootstrapActionConfig  implements Serializable  {
      * @param scriptBootstrapAction The script run by the bootstrap action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BootstrapActionConfig withScriptBootstrapAction(ScriptBootstrapActionConfig scriptBootstrapAction) {
         this.scriptBootstrapAction = scriptBootstrapAction;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -148,8 +145,8 @@ public class BootstrapActionConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getScriptBootstrapAction() != null) sb.append("ScriptBootstrapAction: " + getScriptBootstrapAction() );
         sb.append("}");
         return sb.toString();

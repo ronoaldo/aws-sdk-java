@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Configuration defining a new instance group.
  * </p>
  */
-public class InstanceGroupConfig  implements Serializable  {
+public class InstanceGroupConfig implements Serializable {
 
     /**
      * Friendly name given to the instance group.
@@ -89,13 +90,11 @@ public class InstanceGroupConfig  implements Serializable  {
      * group.
      */
     public InstanceGroupConfig(String instanceRole, String instanceType, Integer instanceCount) {
-        this.instanceRole = instanceRole;
-        this.instanceType = instanceType;
-        this.instanceCount = instanceCount;
+        setInstanceRole(instanceRole);
+        setInstanceType(instanceType);
+        setInstanceCount(instanceCount);
     }
 
-    
-    
     /**
      * Constructs a new InstanceGroupConfig object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -112,7 +111,7 @@ public class InstanceGroupConfig  implements Serializable  {
         this.instanceType = instanceType;
         this.instanceCount = instanceCount;
     }
-    
+
     /**
      * Friendly name given to the instance group.
      * <p>
@@ -151,14 +150,13 @@ public class InstanceGroupConfig  implements Serializable  {
      * @param name Friendly name given to the instance group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupConfig withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Market type of the Amazon EC2 instances used to create a cluster node.
      * <p>
@@ -198,7 +196,7 @@ public class InstanceGroupConfig  implements Serializable  {
      * @param market Market type of the Amazon EC2 instances used to create a cluster node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see MarketType
      */
@@ -206,8 +204,7 @@ public class InstanceGroupConfig  implements Serializable  {
         this.market = market;
         return this;
     }
-    
-    
+
     /**
      * Market type of the Amazon EC2 instances used to create a cluster node.
      * <p>
@@ -233,7 +230,7 @@ public class InstanceGroupConfig  implements Serializable  {
      * @param market Market type of the Amazon EC2 instances used to create a cluster node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see MarketType
      */
@@ -241,7 +238,7 @@ public class InstanceGroupConfig  implements Serializable  {
         this.market = market.toString();
         return this;
     }
-    
+
     /**
      * The role of the instance group in the cluster.
      * <p>
@@ -281,7 +278,7 @@ public class InstanceGroupConfig  implements Serializable  {
      * @param instanceRole The role of the instance group in the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceRoleType
      */
@@ -289,8 +286,7 @@ public class InstanceGroupConfig  implements Serializable  {
         this.instanceRole = instanceRole;
         return this;
     }
-    
-    
+
     /**
      * The role of the instance group in the cluster.
      * <p>
@@ -316,7 +312,7 @@ public class InstanceGroupConfig  implements Serializable  {
      * @param instanceRole The role of the instance group in the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceRoleType
      */
@@ -324,7 +320,7 @@ public class InstanceGroupConfig  implements Serializable  {
         this.instanceRole = instanceRole.toString();
         return this;
     }
-    
+
     /**
      * Bid price for each Amazon EC2 instance in the instance group when
      * launching nodes as Spot Instances, expressed in USD.
@@ -369,14 +365,13 @@ public class InstanceGroupConfig  implements Serializable  {
      *         launching nodes as Spot Instances, expressed in USD.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupConfig withBidPrice(String bidPrice) {
         this.bidPrice = bidPrice;
         return this;
     }
-    
-    
+
     /**
      * The Amazon EC2 instance type for all instances in the instance group.
      * <p>
@@ -415,14 +410,13 @@ public class InstanceGroupConfig  implements Serializable  {
      * @param instanceType The Amazon EC2 instance type for all instances in the instance group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupConfig withInstanceType(String instanceType) {
         this.instanceType = instanceType;
         return this;
     }
-    
-    
+
     /**
      * Target number of instances for the instance group.
      *
@@ -449,14 +443,13 @@ public class InstanceGroupConfig  implements Serializable  {
      * @param instanceCount Target number of instances for the instance group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupConfig withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -468,12 +461,12 @@ public class InstanceGroupConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getMarket() != null) sb.append("Market: " + getMarket() + ",");    	
-        if (getInstanceRole() != null) sb.append("InstanceRole: " + getInstanceRole() + ",");    	
-        if (getBidPrice() != null) sb.append("BidPrice: " + getBidPrice() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getMarket() != null) sb.append("Market: " + getMarket() + ",");
+        if (getInstanceRole() != null) sb.append("InstanceRole: " + getInstanceRole() + ",");
+        if (getBidPrice() != null) sb.append("BidPrice: " + getBidPrice() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
         if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() );
         sb.append("}");
         return sb.toString();

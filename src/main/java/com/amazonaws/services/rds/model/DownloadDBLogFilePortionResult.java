@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element to DownloadDBLogFilePortion.
+ * This data type is used as a response element to
+ * DownloadDBLogFilePortion.
  * </p>
  */
-public class DownloadDBLogFilePortionResult  implements Serializable  {
+public class DownloadDBLogFilePortionResult implements Serializable {
 
     /**
      * Entries from the specified log file.
@@ -65,14 +67,13 @@ public class DownloadDBLogFilePortionResult  implements Serializable  {
      * @param logFileData Entries from the specified log file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DownloadDBLogFilePortionResult withLogFileData(String logFileData) {
         this.logFileData = logFileData;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous
      * DownloadDBLogFilePortion request.
@@ -105,14 +106,13 @@ public class DownloadDBLogFilePortionResult  implements Serializable  {
      *         DownloadDBLogFilePortion request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DownloadDBLogFilePortionResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Boolean value that if true, indicates there is more data to be
      * downloaded.
@@ -145,14 +145,13 @@ public class DownloadDBLogFilePortionResult  implements Serializable  {
      *         downloaded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DownloadDBLogFilePortionResult withAdditionalDataPending(Boolean additionalDataPending) {
         this.additionalDataPending = additionalDataPending;
         return this;
     }
-    
-    
+
     /**
      * Boolean value that if true, indicates there is more data to be
      * downloaded.
@@ -163,7 +162,7 @@ public class DownloadDBLogFilePortionResult  implements Serializable  {
     public Boolean getAdditionalDataPending() {
         return additionalDataPending;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -175,9 +174,9 @@ public class DownloadDBLogFilePortionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLogFileData() != null) sb.append("LogFileData: " + getLogFileData() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getLogFileData() != null) sb.append("LogFileData: " + getLogFileData() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (isAdditionalDataPending() != null) sb.append("AdditionalDataPending: " + isAdditionalDataPending() );
         sb.append("}");
         return sb.toString();

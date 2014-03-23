@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class PutGroupPolicyRequestMarshaller implements Marshaller<Request<PutGr
     public Request<PutGroupPolicyRequest> marshall(PutGroupPolicyRequest putGroupPolicyRequest) {
 
         if (putGroupPolicyRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PutGroupPolicyRequest> request = new DefaultRequest<PutGroupPolicyRequest>(putGroupPolicyRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "PutGroupPolicy");
@@ -49,7 +49,6 @@ public class PutGroupPolicyRequestMarshaller implements Marshaller<Request<PutGr
         if (putGroupPolicyRequest.getPolicyDocument() != null) {
             request.addParameter("PolicyDocument", StringUtils.fromString(putGroupPolicyRequest.getPolicyDocument()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * A list of the pipelines associated with the current AWS account.
+ * </p>
  */
-public class ListPipelinesResult  implements Serializable  {
+public class ListPipelinesResult implements Serializable {
 
     /**
      * An array of <code>Pipeline</code> objects.
      */
-    private java.util.List<Pipeline> pipelines;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Pipeline> pipelines;
+
+    /**
+     * A value that you use to access the second and subsequent pages of
+     * results, if any. When the pipelines fit on one page or when you've
+     * reached the last page of results, the value of
+     * <code>NextPageToken</code> is <code>null</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Pattern: </b>^\d{13}-\w{6}$<br/>
+     */
+    private String nextPageToken;
 
     /**
      * An array of <code>Pipeline</code> objects.
@@ -31,7 +45,10 @@ public class ListPipelinesResult  implements Serializable  {
      * @return An array of <code>Pipeline</code> objects.
      */
     public java.util.List<Pipeline> getPipelines() {
-        
+        if (pipelines == null) {
+              pipelines = new com.amazonaws.internal.ListWithAutoConstructFlag<Pipeline>();
+              pipelines.setAutoConstruct(true);
+        }
         return pipelines;
     }
     
@@ -45,8 +62,7 @@ public class ListPipelinesResult  implements Serializable  {
             this.pipelines = null;
             return;
         }
-
-        java.util.List<Pipeline> pipelinesCopy = new java.util.ArrayList<Pipeline>(pipelines.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Pipeline> pipelinesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Pipeline>(pipelines.size());
         pipelinesCopy.addAll(pipelines);
         this.pipelines = pipelinesCopy;
     }
@@ -59,7 +75,7 @@ public class ListPipelinesResult  implements Serializable  {
      * @param pipelines An array of <code>Pipeline</code> objects.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPipelinesResult withPipelines(Pipeline... pipelines) {
         if (getPipelines() == null) setPipelines(new java.util.ArrayList<Pipeline>(pipelines.length));
@@ -77,20 +93,80 @@ public class ListPipelinesResult  implements Serializable  {
      * @param pipelines An array of <code>Pipeline</code> objects.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPipelinesResult withPipelines(java.util.Collection<Pipeline> pipelines) {
         if (pipelines == null) {
             this.pipelines = null;
         } else {
-            java.util.List<Pipeline> pipelinesCopy = new java.util.ArrayList<Pipeline>(pipelines.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Pipeline> pipelinesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Pipeline>(pipelines.size());
             pipelinesCopy.addAll(pipelines);
             this.pipelines = pipelinesCopy;
         }
 
         return this;
     }
+
+    /**
+     * A value that you use to access the second and subsequent pages of
+     * results, if any. When the pipelines fit on one page or when you've
+     * reached the last page of results, the value of
+     * <code>NextPageToken</code> is <code>null</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Pattern: </b>^\d{13}-\w{6}$<br/>
+     *
+     * @return A value that you use to access the second and subsequent pages of
+     *         results, if any. When the pipelines fit on one page or when you've
+     *         reached the last page of results, the value of
+     *         <code>NextPageToken</code> is <code>null</code>.
+     */
+    public String getNextPageToken() {
+        return nextPageToken;
+    }
     
+    /**
+     * A value that you use to access the second and subsequent pages of
+     * results, if any. When the pipelines fit on one page or when you've
+     * reached the last page of results, the value of
+     * <code>NextPageToken</code> is <code>null</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Pattern: </b>^\d{13}-\w{6}$<br/>
+     *
+     * @param nextPageToken A value that you use to access the second and subsequent pages of
+     *         results, if any. When the pipelines fit on one page or when you've
+     *         reached the last page of results, the value of
+     *         <code>NextPageToken</code> is <code>null</code>.
+     */
+    public void setNextPageToken(String nextPageToken) {
+        this.nextPageToken = nextPageToken;
+    }
+    
+    /**
+     * A value that you use to access the second and subsequent pages of
+     * results, if any. When the pipelines fit on one page or when you've
+     * reached the last page of results, the value of
+     * <code>NextPageToken</code> is <code>null</code>.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Pattern: </b>^\d{13}-\w{6}$<br/>
+     *
+     * @param nextPageToken A value that you use to access the second and subsequent pages of
+     *         results, if any. When the pipelines fit on one page or when you've
+     *         reached the last page of results, the value of
+     *         <code>NextPageToken</code> is <code>null</code>.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ListPipelinesResult withNextPageToken(String nextPageToken) {
+        this.nextPageToken = nextPageToken;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,8 +178,9 @@ public class ListPipelinesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelines() != null) sb.append("Pipelines: " + getPipelines() );
+        sb.append("{");
+        if (getPipelines() != null) sb.append("Pipelines: " + getPipelines() + ",");
+        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() );
         sb.append("}");
         return sb.toString();
     }
@@ -114,6 +191,7 @@ public class ListPipelinesResult  implements Serializable  {
         int hashCode = 1;
         
         hashCode = prime * hashCode + ((getPipelines() == null) ? 0 : getPipelines().hashCode()); 
+        hashCode = prime * hashCode + ((getNextPageToken() == null) ? 0 : getNextPageToken().hashCode()); 
         return hashCode;
     }
     
@@ -127,6 +205,8 @@ public class ListPipelinesResult  implements Serializable  {
         
         if (other.getPipelines() == null ^ this.getPipelines() == null) return false;
         if (other.getPipelines() != null && other.getPipelines().equals(this.getPipelines()) == false) return false; 
+        if (other.getNextPageToken() == null ^ this.getNextPageToken() == null) return false;
+        if (other.getNextPageToken() != null && other.getNextPageToken().equals(this.getNextPageToken()) == false) return false; 
         return true;
     }
     

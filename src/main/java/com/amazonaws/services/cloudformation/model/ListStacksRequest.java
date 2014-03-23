@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudformation.AmazonCloudFormation#listStacks(ListStacksRequest) ListStacks operation}.
  * <p>
- * Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted
- * is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including
- * existing stacks and stacks that have been deleted).
+ * Returns the summary information for stacks whose status matches the
+ * specified StackStatusFilter. Summary information for stacks that have
+ * been deleted is kept for 90 days after the stack is deleted. If no
+ * StackStatusFilter is specified, summary information for all stacks is
+ * returned (including existing stacks and stacks that have been
+ * deleted).
  * </p>
  *
  * @see com.amazonaws.services.cloudformation.AmazonCloudFormation#listStacks(ListStacksRequest)
  */
-public class ListStacksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListStacksRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * String that identifies the start of the next list of stacks, if there
@@ -43,7 +48,7 @@ public class ListStacksRequest extends AmazonWebServiceRequest  implements Seria
      * complete list of stack status codes, see the <code>StackStatus</code>
      * parameter of the <a>Stack</a> data type.
      */
-    private java.util.List<String> stackStatusFilters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> stackStatusFilters;
 
     /**
      * String that identifies the start of the next list of stacks, if there
@@ -86,14 +91,13 @@ public class ListStacksRequest extends AmazonWebServiceRequest  implements Seria
      *         is one. <p>Default: There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStacksRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Stack status to use as a filter. Specify one or more stack status
      * codes to list only stacks with the specified status codes. For a
@@ -106,9 +110,9 @@ public class ListStacksRequest extends AmazonWebServiceRequest  implements Seria
      *         parameter of the <a>Stack</a> data type.
      */
     public java.util.List<String> getStackStatusFilters() {
-        
         if (stackStatusFilters == null) {
-            stackStatusFilters = new java.util.ArrayList<String>();
+              stackStatusFilters = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              stackStatusFilters.setAutoConstruct(true);
         }
         return stackStatusFilters;
     }
@@ -129,8 +133,7 @@ public class ListStacksRequest extends AmazonWebServiceRequest  implements Seria
             this.stackStatusFilters = null;
             return;
         }
-
-        java.util.List<String> stackStatusFiltersCopy = new java.util.ArrayList<String>(stackStatusFilters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> stackStatusFiltersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(stackStatusFilters.size());
         stackStatusFiltersCopy.addAll(stackStatusFilters);
         this.stackStatusFilters = stackStatusFiltersCopy;
     }
@@ -149,7 +152,7 @@ public class ListStacksRequest extends AmazonWebServiceRequest  implements Seria
      *         parameter of the <a>Stack</a> data type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStacksRequest withStackStatusFilters(String... stackStatusFilters) {
         if (getStackStatusFilters() == null) setStackStatusFilters(new java.util.ArrayList<String>(stackStatusFilters.length));
@@ -173,20 +176,49 @@ public class ListStacksRequest extends AmazonWebServiceRequest  implements Seria
      *         parameter of the <a>Stack</a> data type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStacksRequest withStackStatusFilters(java.util.Collection<String> stackStatusFilters) {
         if (stackStatusFilters == null) {
             this.stackStatusFilters = null;
         } else {
-            java.util.List<String> stackStatusFiltersCopy = new java.util.ArrayList<String>(stackStatusFilters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> stackStatusFiltersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(stackStatusFilters.size());
             stackStatusFiltersCopy.addAll(stackStatusFilters);
             this.stackStatusFilters = stackStatusFiltersCopy;
         }
 
         return this;
     }
-    
+
+    /**
+     * Stack status to use as a filter. Specify one or more stack status
+     * codes to list only stacks with the specified status codes. For a
+     * complete list of stack status codes, see the <code>StackStatus</code>
+     * parameter of the <a>Stack</a> data type.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param stackStatusFilters Stack status to use as a filter. Specify one or more stack status
+     *         codes to list only stacks with the specified status codes. For a
+     *         complete list of stack status codes, see the <code>StackStatus</code>
+     *         parameter of the <a>Stack</a> data type.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ListStacksRequest withStackStatusFilters(StackStatus... stackStatusFilters) {
+        java.util.ArrayList<String> stackStatusFiltersCopy = new java.util.ArrayList<String>(stackStatusFilters.length);
+        for (StackStatus member : stackStatusFilters) {
+            stackStatusFiltersCopy.add(member.toString());
+        }
+        if (getStackStatusFilters() == null) {
+            setStackStatusFilters(stackStatusFiltersCopy);
+        } else {
+            getStackStatusFilters().addAll(stackStatusFiltersCopy);
+        }
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -198,8 +230,8 @@ public class ListStacksRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getStackStatusFilters() != null) sb.append("StackStatusFilters: " + getStackStatusFilters() );
         sb.append("}");
         return sb.toString();

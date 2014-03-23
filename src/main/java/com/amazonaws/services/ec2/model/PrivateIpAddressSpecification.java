@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,94 +13,110 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Private Ip Address Specification
+ * <p>
+ * Describes a secondary private IP address for a network interface.
+ * </p>
  */
-public class PrivateIpAddressSpecification  implements Serializable  {
+public class PrivateIpAddressSpecification implements Serializable {
 
+    /**
+     * The private IP addresses.
+     */
     private String privateIpAddress;
 
+    /**
+     * Indicates whether the private IP address is the primary private IP
+     * address.
+     */
     private Boolean primary;
 
     /**
-     * Returns the value of the PrivateIpAddress property for this object.
+     * The private IP addresses.
      *
-     * @return The value of the PrivateIpAddress property for this object.
+     * @return The private IP addresses.
      */
     public String getPrivateIpAddress() {
         return privateIpAddress;
     }
     
     /**
-     * Sets the value of the PrivateIpAddress property for this object.
+     * The private IP addresses.
      *
-     * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
+     * @param privateIpAddress The private IP addresses.
      */
     public void setPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
     }
     
     /**
-     * Sets the value of the PrivateIpAddress property for this object.
+     * The private IP addresses.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
+     * @param privateIpAddress The private IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PrivateIpAddressSpecification withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Primary property for this object.
+     * Indicates whether the private IP address is the primary private IP
+     * address.
      *
-     * @return The value of the Primary property for this object.
+     * @return Indicates whether the private IP address is the primary private IP
+     *         address.
      */
     public Boolean isPrimary() {
         return primary;
     }
     
     /**
-     * Sets the value of the Primary property for this object.
+     * Indicates whether the private IP address is the primary private IP
+     * address.
      *
-     * @param primary The new value for the Primary property for this object.
+     * @param primary Indicates whether the private IP address is the primary private IP
+     *         address.
      */
     public void setPrimary(Boolean primary) {
         this.primary = primary;
     }
     
     /**
-     * Sets the value of the Primary property for this object.
+     * Indicates whether the private IP address is the primary private IP
+     * address.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param primary The new value for the Primary property for this object.
+     * @param primary Indicates whether the private IP address is the primary private IP
+     *         address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PrivateIpAddressSpecification withPrimary(Boolean primary) {
         this.primary = primary;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Primary property for this object.
+     * Indicates whether the private IP address is the primary private IP
+     * address.
      *
-     * @return The value of the Primary property for this object.
+     * @return Indicates whether the private IP address is the primary private IP
+     *         address.
      */
     public Boolean getPrimary() {
         return primary;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -112,8 +128,8 @@ public class PrivateIpAddressSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
+        sb.append("{");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
         if (isPrimary() != null) sb.append("Primary: " + isPrimary() );
         sb.append("}");
         return sb.toString();

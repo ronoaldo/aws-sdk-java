@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteScheduledAction(DeleteScheduledActionRequest) DeleteScheduledAction operation}.
  * <p>
- * Deletes a scheduled action previously created using the PutScheduledUpdateGroupAction.
+ * Deletes a scheduled action previously created using the
+ * PutScheduledUpdateGroupAction.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteScheduledAction(DeleteScheduledActionRequest)
  */
-public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteScheduledActionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -82,14 +85,13 @@ public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  imple
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteScheduledActionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The name of the action you want to delete.
      * <p>
@@ -128,14 +130,13 @@ public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  imple
      * @param scheduledActionName The name of the action you want to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteScheduledActionRequest withScheduledActionName(String scheduledActionName) {
         this.scheduledActionName = scheduledActionName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -147,8 +148,8 @@ public class DeleteScheduledActionRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() );
         sb.append("}");
         return sb.toString();

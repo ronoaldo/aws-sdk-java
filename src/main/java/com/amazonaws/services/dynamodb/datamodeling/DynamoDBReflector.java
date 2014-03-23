@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ import com.amazonaws.util.DateUtils;
 
 /**
  * Reflection assistant for {@link DynamoDBMapper}
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBReflector} instead.
  */
 @Deprecated
 public class DynamoDBReflector {

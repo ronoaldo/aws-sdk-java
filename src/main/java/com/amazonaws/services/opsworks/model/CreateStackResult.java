@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the response to a <code>CreateStack</code> request.
  * </p>
  */
-public class CreateStackResult  implements Serializable  {
+public class CreateStackResult implements Serializable {
 
     /**
      * The stack ID, which is an opaque string that you use to identify the
@@ -60,14 +61,13 @@ public class CreateStackResult  implements Serializable  {
      *         stack when performing actions such as <code>DescribeStacks</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStackResult withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +79,7 @@ public class CreateStackResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStackId() != null) sb.append("StackId: " + getStackId() );
         sb.append("}");
         return sb.toString();

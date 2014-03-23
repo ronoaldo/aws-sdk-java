@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the DescribeEvents action.
+ * This data type is used as a response element in the DescribeEvents
+ * action.
  * </p>
  */
-public class Event  implements Serializable  {
+public class Event implements Serializable {
 
     /**
      * Provides the identifier for the source of the event.
@@ -43,7 +45,7 @@ public class Event  implements Serializable  {
     /**
      * Specifies the category for the event.
      */
-    private java.util.List<String> eventCategories;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> eventCategories;
 
     /**
      * Specifies the date and time of the event.
@@ -82,14 +84,13 @@ public class Event  implements Serializable  {
      * @param sourceIdentifier Provides the identifier for the source of the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withSourceIdentifier(String sourceIdentifier) {
         this.sourceIdentifier = sourceIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Specifies the source type for this event.
      * <p>
@@ -129,7 +130,7 @@ public class Event  implements Serializable  {
      * @param sourceType Specifies the source type for this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -137,8 +138,7 @@ public class Event  implements Serializable  {
         this.sourceType = sourceType;
         return this;
     }
-    
-    
+
     /**
      * Specifies the source type for this event.
      * <p>
@@ -164,7 +164,7 @@ public class Event  implements Serializable  {
      * @param sourceType Specifies the source type for this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -172,7 +172,7 @@ public class Event  implements Serializable  {
         this.sourceType = sourceType.toString();
         return this;
     }
-    
+
     /**
      * Provides the text of this event.
      *
@@ -199,23 +199,22 @@ public class Event  implements Serializable  {
      * @param message Provides the text of this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * Specifies the category for the event.
      *
      * @return Specifies the category for the event.
      */
     public java.util.List<String> getEventCategories() {
-        
         if (eventCategories == null) {
-            eventCategories = new java.util.ArrayList<String>();
+              eventCategories = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              eventCategories.setAutoConstruct(true);
         }
         return eventCategories;
     }
@@ -230,8 +229,7 @@ public class Event  implements Serializable  {
             this.eventCategories = null;
             return;
         }
-
-        java.util.List<String> eventCategoriesCopy = new java.util.ArrayList<String>(eventCategories.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> eventCategoriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(eventCategories.size());
         eventCategoriesCopy.addAll(eventCategories);
         this.eventCategories = eventCategoriesCopy;
     }
@@ -244,7 +242,7 @@ public class Event  implements Serializable  {
      * @param eventCategories Specifies the category for the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withEventCategories(String... eventCategories) {
         if (getEventCategories() == null) setEventCategories(new java.util.ArrayList<String>(eventCategories.length));
@@ -262,20 +260,20 @@ public class Event  implements Serializable  {
      * @param eventCategories Specifies the category for the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withEventCategories(java.util.Collection<String> eventCategories) {
         if (eventCategories == null) {
             this.eventCategories = null;
         } else {
-            java.util.List<String> eventCategoriesCopy = new java.util.ArrayList<String>(eventCategories.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> eventCategoriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(eventCategories.size());
             eventCategoriesCopy.addAll(eventCategories);
             this.eventCategories = eventCategoriesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Specifies the date and time of the event.
      *
@@ -302,14 +300,13 @@ public class Event  implements Serializable  {
      * @param date Specifies the date and time of the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withDate(java.util.Date date) {
         this.date = date;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -321,11 +318,11 @@ public class Event  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() + ",");    	
-        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");    	
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
-        if (getEventCategories() != null) sb.append("EventCategories: " + getEventCategories() + ",");    	
+        sb.append("{");
+        if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() + ",");
+        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");
+        if (getEventCategories() != null) sb.append("EventCategories: " + getEventCategories() + ",");
         if (getDate() != null) sb.append("Date: " + getDate() );
         sb.append("}");
         return sb.toString();

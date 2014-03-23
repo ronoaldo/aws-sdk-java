@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#registerDomain(RegisterDomainRequest) RegisterDomain operation}.
@@ -25,27 +27,35 @@ import java.io.Serializable;
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>You cannot use an IAM policy to control domain access for this action. The name of the domain being registered is available as the resource of
- * this action.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>You cannot use an IAM policy to control domain access for this
+ * action. The name of the domain being registered is available as the
+ * resource of this action.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  * <p>
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#registerDomain(RegisterDomainRequest)
  */
-public class RegisterDomainRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RegisterDomainRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the domain to register. The name must be unique. <p>The
@@ -146,14 +156,13 @@ public class RegisterDomainRequest extends AmazonWebServiceRequest  implements S
      *         literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterDomainRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Textual description of the domain.
      * <p>
@@ -189,14 +198,13 @@ public class RegisterDomainRequest extends AmazonWebServiceRequest  implements S
      * @param description Textual description of the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterDomainRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Specifies the duration--<b><i>in days</i></b>--for which the record
      * (including the history) of workflow executions in this domain should
@@ -262,14 +270,13 @@ public class RegisterDomainRequest extends AmazonWebServiceRequest  implements S
      *         executions in this domain are not retained at all.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterDomainRequest withWorkflowExecutionRetentionPeriodInDays(String workflowExecutionRetentionPeriodInDays) {
         this.workflowExecutionRetentionPeriodInDays = workflowExecutionRetentionPeriodInDays;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -281,9 +288,9 @@ public class RegisterDomainRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getWorkflowExecutionRetentionPeriodInDays() != null) sb.append("WorkflowExecutionRetentionPeriodInDays: " + getWorkflowExecutionRetentionPeriodInDays() );
         sb.append("}");
         return sb.toString();

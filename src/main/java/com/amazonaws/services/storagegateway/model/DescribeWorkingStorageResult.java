@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * A JSON object containing the following fields:
  * </p>
- * 
- * <ul>
- * <li> DescribeWorkingStorageOutput$DiskIds </li>
- * <li> GatewayARN </li>
- * <li> DescribeWorkingStorageOutput$WorkingStorageAllocatedInBytes </li>
- * <li> DescribeWorkingStorageOutput$WorkingStorageUsedInBytes </li>
- * 
- * </ul>
  */
-public class DescribeWorkingStorageResult  implements Serializable  {
+public class DescribeWorkingStorageResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -46,7 +39,7 @@ public class DescribeWorkingStorageResult  implements Serializable  {
      * length of 1 and maximum length of 300). If no local disks are
      * configured as working storage, then the DiskIds array is empty.
      */
-    private java.util.List<String> diskIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIds;
 
     /**
      * The total working storage in bytes in use by the gateway. If no
@@ -107,14 +100,13 @@ public class DescribeWorkingStorageResult  implements Serializable  {
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeWorkingStorageResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * An array of the gateway's local disk IDs that are configured as
      * working storage. Each local disk ID is specified as a string (minimum
@@ -127,9 +119,9 @@ public class DescribeWorkingStorageResult  implements Serializable  {
      *         configured as working storage, then the DiskIds array is empty.
      */
     public java.util.List<String> getDiskIds() {
-        
         if (diskIds == null) {
-            diskIds = new java.util.ArrayList<String>();
+              diskIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              diskIds.setAutoConstruct(true);
         }
         return diskIds;
     }
@@ -150,8 +142,7 @@ public class DescribeWorkingStorageResult  implements Serializable  {
             this.diskIds = null;
             return;
         }
-
-        java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
         diskIdsCopy.addAll(diskIds);
         this.diskIds = diskIdsCopy;
     }
@@ -170,7 +161,7 @@ public class DescribeWorkingStorageResult  implements Serializable  {
      *         configured as working storage, then the DiskIds array is empty.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeWorkingStorageResult withDiskIds(String... diskIds) {
         if (getDiskIds() == null) setDiskIds(new java.util.ArrayList<String>(diskIds.length));
@@ -194,20 +185,20 @@ public class DescribeWorkingStorageResult  implements Serializable  {
      *         configured as working storage, then the DiskIds array is empty.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeWorkingStorageResult withDiskIds(java.util.Collection<String> diskIds) {
         if (diskIds == null) {
             this.diskIds = null;
         } else {
-            java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
             diskIdsCopy.addAll(diskIds);
             this.diskIds = diskIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The total working storage in bytes in use by the gateway. If no
      * working storage is configured for the gateway, this field returns 0.
@@ -240,14 +231,13 @@ public class DescribeWorkingStorageResult  implements Serializable  {
      *         working storage is configured for the gateway, this field returns 0.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeWorkingStorageResult withWorkingStorageUsedInBytes(Long workingStorageUsedInBytes) {
         this.workingStorageUsedInBytes = workingStorageUsedInBytes;
         return this;
     }
-    
-    
+
     /**
      * The total working storage in bytes allocated for the gateway. If no
      * working storage is configured for the gateway, this field returns 0.
@@ -280,14 +270,13 @@ public class DescribeWorkingStorageResult  implements Serializable  {
      *         working storage is configured for the gateway, this field returns 0.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeWorkingStorageResult withWorkingStorageAllocatedInBytes(Long workingStorageAllocatedInBytes) {
         this.workingStorageAllocatedInBytes = workingStorageAllocatedInBytes;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -299,10 +288,10 @@ public class DescribeWorkingStorageResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getDiskIds() != null) sb.append("DiskIds: " + getDiskIds() + ",");    	
-        if (getWorkingStorageUsedInBytes() != null) sb.append("WorkingStorageUsedInBytes: " + getWorkingStorageUsedInBytes() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getDiskIds() != null) sb.append("DiskIds: " + getDiskIds() + ",");
+        if (getWorkingStorageUsedInBytes() != null) sb.append("WorkingStorageUsedInBytes: " + getWorkingStorageUsedInBytes() + ",");
         if (getWorkingStorageAllocatedInBytes() != null) sb.append("WorkingStorageAllocatedInBytes: " + getWorkingStorageAllocatedInBytes() );
         sb.append("}");
         return sb.toString();

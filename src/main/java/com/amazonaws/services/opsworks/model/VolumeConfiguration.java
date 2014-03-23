@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an Amazon EBS volume configuration.
  * </p>
  */
-public class VolumeConfiguration  implements Serializable  {
+public class VolumeConfiguration implements Serializable {
 
     /**
      * The volume mount point. For example "/dev/sdh".
@@ -70,14 +71,13 @@ public class VolumeConfiguration  implements Serializable  {
      * @param mountPoint The volume mount point. For example "/dev/sdh".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeConfiguration withMountPoint(String mountPoint) {
         this.mountPoint = mountPoint;
         return this;
     }
-    
-    
+
     /**
      * The volume <a
      * href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID
@@ -116,14 +116,13 @@ public class VolumeConfiguration  implements Serializable  {
      *         level</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeConfiguration withRaidLevel(Integer raidLevel) {
         this.raidLevel = raidLevel;
         return this;
     }
-    
-    
+
     /**
      * The number of disks in the volume.
      *
@@ -150,14 +149,13 @@ public class VolumeConfiguration  implements Serializable  {
      * @param numberOfDisks The number of disks in the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeConfiguration withNumberOfDisks(Integer numberOfDisks) {
         this.numberOfDisks = numberOfDisks;
         return this;
     }
-    
-    
+
     /**
      * The volume size.
      *
@@ -184,14 +182,13 @@ public class VolumeConfiguration  implements Serializable  {
      * @param size The volume size.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeConfiguration withSize(Integer size) {
         this.size = size;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -203,10 +200,10 @@ public class VolumeConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMountPoint() != null) sb.append("MountPoint: " + getMountPoint() + ",");    	
-        if (getRaidLevel() != null) sb.append("RaidLevel: " + getRaidLevel() + ",");    	
-        if (getNumberOfDisks() != null) sb.append("NumberOfDisks: " + getNumberOfDisks() + ",");    	
+        sb.append("{");
+        if (getMountPoint() != null) sb.append("MountPoint: " + getMountPoint() + ",");
+        if (getRaidLevel() != null) sb.append("RaidLevel: " + getRaidLevel() + ",");
+        if (getNumberOfDisks() != null) sb.append("NumberOfDisks: " + getNumberOfDisks() + ",");
         if (getSize() != null) sb.append("Size: " + getSize() );
         sb.append("}");
         return sb.toString();

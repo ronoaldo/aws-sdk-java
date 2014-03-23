@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the GetSessionToken action.
+ * Contains the result of a successful call to the GetSessionToken
+ * action, including temporary AWS credentials that can be used to make
+ * AWS requests.
  * </p>
  */
-public class GetSessionTokenResult  implements Serializable  {
+public class GetSessionTokenResult implements Serializable {
 
     /**
      * The session credentials for API authentication.
@@ -53,14 +56,13 @@ public class GetSessionTokenResult  implements Serializable  {
      * @param credentials The session credentials for API authentication.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenResult withCredentials(Credentials credentials) {
         this.credentials = credentials;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +74,7 @@ public class GetSessionTokenResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCredentials() != null) sb.append("Credentials: " + getCredentials() );
         sb.append("}");
         return sb.toString();

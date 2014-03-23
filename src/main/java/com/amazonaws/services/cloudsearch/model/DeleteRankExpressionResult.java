@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A response message that contains the status of a deleted <code>RankExpression</code> .
+ * A response message that contains the status of a deleted
+ * <code>RankExpression</code> .
  * </p>
  */
-public class DeleteRankExpressionResult  implements Serializable  {
+public class DeleteRankExpressionResult implements Serializable {
 
     /**
      * The value of a <code>RankExpression</code> and its current status.
@@ -53,14 +55,13 @@ public class DeleteRankExpressionResult  implements Serializable  {
      * @param rankExpression The value of a <code>RankExpression</code> and its current status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteRankExpressionResult withRankExpression(RankExpressionStatus rankExpression) {
         this.rankExpression = rankExpression;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +73,7 @@ public class DeleteRankExpressionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRankExpression() != null) sb.append("RankExpression: " + getRankExpression() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#downloadDBLogFilePortion(DownloadDBLogFilePortionRequest) DownloadDBLogFilePortion operation}.
@@ -24,10 +26,10 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.rds.AmazonRDS#downloadDBLogFilePortion(DownloadDBLogFilePortionRequest)
  */
-public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -53,13 +55,13 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
     private Integer numberOfLines;
 
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
      * consecutive hyphens</li> </ul>
      *
-     * @return The customer-assigned name of the DB Instance that contains the log
+     * @return The customer-assigned name of the DB instance that contains the log
      *         files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      *         to 63 alphanumeric characters or hyphens</li> <li>First character must
      *         be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -70,13 +72,13 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
     }
     
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
      * consecutive hyphens</li> </ul>
      *
-     * @param dBInstanceIdentifier The customer-assigned name of the DB Instance that contains the log
+     * @param dBInstanceIdentifier The customer-assigned name of the DB instance that contains the log
      *         files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      *         to 63 alphanumeric characters or hyphens</li> <li>First character must
      *         be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -87,7 +89,7 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
     }
     
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -95,21 +97,20 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBInstanceIdentifier The customer-assigned name of the DB Instance that contains the log
+     * @param dBInstanceIdentifier The customer-assigned name of the DB instance that contains the log
      *         files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      *         to 63 alphanumeric characters or hyphens</li> <li>First character must
      *         be a letter</li> <li>Cannot end with a hyphen or contain two
      *         consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DownloadDBLogFilePortionRequest withDBInstanceIdentifier(String dBInstanceIdentifier) {
         this.dBInstanceIdentifier = dBInstanceIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The name of the log file to be downloaded.
      *
@@ -136,14 +137,13 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
      * @param logFileName The name of the log file to be downloaded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DownloadDBLogFilePortionRequest withLogFileName(String logFileName) {
         this.logFileName = logFileName;
         return this;
     }
-    
-    
+
     /**
      * The pagination token provided in the previous request. If this
      * parameter is specified the response includes only records beyond the
@@ -182,14 +182,13 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
      *         marker, up to MaxRecords.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DownloadDBLogFilePortionRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * The number of lines remaining to be downloaded.
      *
@@ -216,14 +215,13 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
      * @param numberOfLines The number of lines remaining to be downloaded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DownloadDBLogFilePortionRequest withNumberOfLines(Integer numberOfLines) {
         this.numberOfLines = numberOfLines;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -235,10 +233,10 @@ public class DownloadDBLogFilePortionRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");    	
-        if (getLogFileName() != null) sb.append("LogFileName: " + getLogFileName() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+        if (getLogFileName() != null) sb.append("LogFileName: " + getLogFileName() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getNumberOfLines() != null) sb.append("NumberOfLines: " + getNumberOfLines() );
         sb.append("}");
         return sb.toString();

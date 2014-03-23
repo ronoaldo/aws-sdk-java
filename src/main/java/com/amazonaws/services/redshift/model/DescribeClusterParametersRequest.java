@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,28 +13,34 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeClusterParameters(DescribeClusterParametersRequest) DescribeClusterParameters operation}.
  * <p>
- * Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group. For each parameter the response includes
- * information such as parameter name, description, data type, value, whether the parameter value is modifiable, and so on.
+ * Returns a detailed list of parameters contained within the specified
+ * Amazon Redshift parameter group. For each parameter the response
+ * includes information such as parameter name, description, data type,
+ * value, whether the parameter value is modifiable, and so on.
  * </p>
  * <p>
- * You can specify <i>source</i> filter to retrieve parameters of only specific type. For example, to retrieve parameters that were modified by a user
- * action such as from ModifyClusterParameterGroup, you can specify <i>source</i> equal to <i>user</i> .
+ * You can specify <i>source</i> filter to retrieve parameters of only
+ * specific type. For example, to retrieve parameters that were modified
+ * by a user action such as from ModifyClusterParameterGroup, you can
+ * specify <i>source</i> equal to <i>user</i> .
  * </p>
  * <p>
- * For more information about managing parameter groups, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift Parameter Groups </a> in the <i>Amazon
- * Redshift Management Guide</i> .
+ * For more information about managing parameter groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift Parameter Groups </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeClusterParameters(DescribeClusterParametersRequest)
  */
-public class DescribeClusterParametersRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeClusterParametersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of a cluster parameter group for which to return details.
@@ -93,14 +99,13 @@ public class DescribeClusterParametersRequest extends AmazonWebServiceRequest  i
      * @param parameterGroupName The name of a cluster parameter group for which to return details.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParametersRequest withParameterGroupName(String parameterGroupName) {
         this.parameterGroupName = parameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * The parameter types to return. Specify <code>user</code> to show
      * parameters that are different form the default. Similarly, specify
@@ -151,14 +156,13 @@ public class DescribeClusterParametersRequest extends AmazonWebServiceRequest  i
      *         <p>Valid Values: <code>user</code> | <code>engine-default</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParametersRequest withSource(String source) {
         this.source = source;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value,
@@ -209,14 +213,13 @@ public class DescribeClusterParametersRequest extends AmazonWebServiceRequest  i
      *         <p>Constraints: Value must be at least 20 and no more than 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParametersRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional marker returned from a previous
      * <b>DescribeClusterParameters</b> request. If this parameter is
@@ -261,14 +264,13 @@ public class DescribeClusterParametersRequest extends AmazonWebServiceRequest  i
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParametersRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -280,10 +282,10 @@ public class DescribeClusterParametersRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

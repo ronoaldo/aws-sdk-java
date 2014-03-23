@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#detachElasticLoadBalancer(DetachElasticLoadBalancerRequest) DetachElasticLoadBalancer operation}.
  * <p>
- * Detaches a specified Elastic Load Balancing instance from it's layer.
+ * Detaches a specified Elastic Load Balancing instance from its layer.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Manage permissions level for the stack, or an attached policy
+ * that explicitly grants permissions. For more information on user
+ * permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#detachElasticLoadBalancer(DetachElasticLoadBalancerRequest)
  */
-public class DetachElasticLoadBalancerRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DetachElasticLoadBalancerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Elastic Load Balancing instance's name.
@@ -63,14 +73,13 @@ public class DetachElasticLoadBalancerRequest extends AmazonWebServiceRequest  i
      * @param elasticLoadBalancerName The Elastic Load Balancing instance's name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachElasticLoadBalancerRequest withElasticLoadBalancerName(String elasticLoadBalancerName) {
         this.elasticLoadBalancerName = elasticLoadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The ID of the layer that the Elastic Load Balancing instance is
      * attached to.
@@ -103,14 +112,13 @@ public class DetachElasticLoadBalancerRequest extends AmazonWebServiceRequest  i
      *         attached to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachElasticLoadBalancerRequest withLayerId(String layerId) {
         this.layerId = layerId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -122,8 +130,8 @@ public class DetachElasticLoadBalancerRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getElasticLoadBalancerName() != null) sb.append("ElasticLoadBalancerName: " + getElasticLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getElasticLoadBalancerName() != null) sb.append("ElasticLoadBalancerName: " + getElasticLoadBalancerName() + ",");
         if (getLayerId() != null) sb.append("LayerId: " + getLayerId() );
         sb.append("}");
         return sb.toString();

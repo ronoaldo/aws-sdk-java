@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class VerifyEmailIdentityRequestMarshaller implements Marshaller<Request<
     public Request<VerifyEmailIdentityRequest> marshall(VerifyEmailIdentityRequest verifyEmailIdentityRequest) {
 
         if (verifyEmailIdentityRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<VerifyEmailIdentityRequest> request = new DefaultRequest<VerifyEmailIdentityRequest>(verifyEmailIdentityRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "VerifyEmailIdentity");
@@ -43,7 +43,6 @@ public class VerifyEmailIdentityRequestMarshaller implements Marshaller<Request<
         if (verifyEmailIdentityRequest.getEmailAddress() != null) {
             request.addParameter("EmailAddress", StringUtils.fromString(verifyEmailIdentityRequest.getEmailAddress()));
         }
-
 
         return request;
     }

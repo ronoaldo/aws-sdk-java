@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * An invalidation.
  * </p>
  */
-public class Invalidation  implements Serializable  {
+public class Invalidation implements Serializable {
 
     /**
      * The identifier for the invalidation request. For example:
@@ -82,14 +83,13 @@ public class Invalidation  implements Serializable  {
      *         IDFDVBD632BHDS5.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Invalidation withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The status of the invalidation request. When the invalidation batch is
      * finished, the status is Completed.
@@ -122,14 +122,13 @@ public class Invalidation  implements Serializable  {
      *         finished, the status is Completed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Invalidation withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The date and time the invalidation request was first made.
      *
@@ -156,14 +155,13 @@ public class Invalidation  implements Serializable  {
      * @param createTime The date and time the invalidation request was first made.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Invalidation withCreateTime(java.util.Date createTime) {
         this.createTime = createTime;
         return this;
     }
-    
-    
+
     /**
      * The current invalidation information for the batch request.
      *
@@ -190,14 +188,13 @@ public class Invalidation  implements Serializable  {
      * @param invalidationBatch The current invalidation information for the batch request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Invalidation withInvalidationBatch(InvalidationBatch invalidationBatch) {
         this.invalidationBatch = invalidationBatch;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -209,10 +206,10 @@ public class Invalidation  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getCreateTime() != null) sb.append("CreateTime: " + getCreateTime() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getCreateTime() != null) sb.append("CreateTime: " + getCreateTime() + ",");
         if (getInvalidationBatch() != null) sb.append("InvalidationBatch: " + getInvalidationBatch() );
         sb.append("}");
         return sb.toString();

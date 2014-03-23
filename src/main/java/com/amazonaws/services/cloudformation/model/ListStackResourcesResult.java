@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for a ListStackResources action.
  * </p>
  */
-public class ListStackResourcesResult  implements Serializable  {
+public class ListStackResourcesResult implements Serializable {
 
     /**
      * A list of <code>StackResourceSummary</code> structures.
      */
-    private java.util.List<StackResourceSummary> stackResourceSummaries;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<StackResourceSummary> stackResourceSummaries;
 
     /**
      * String that identifies the start of the next list of events, if there
@@ -42,9 +43,9 @@ public class ListStackResourcesResult  implements Serializable  {
      * @return A list of <code>StackResourceSummary</code> structures.
      */
     public java.util.List<StackResourceSummary> getStackResourceSummaries() {
-        
         if (stackResourceSummaries == null) {
-            stackResourceSummaries = new java.util.ArrayList<StackResourceSummary>();
+              stackResourceSummaries = new com.amazonaws.internal.ListWithAutoConstructFlag<StackResourceSummary>();
+              stackResourceSummaries.setAutoConstruct(true);
         }
         return stackResourceSummaries;
     }
@@ -59,8 +60,7 @@ public class ListStackResourcesResult  implements Serializable  {
             this.stackResourceSummaries = null;
             return;
         }
-
-        java.util.List<StackResourceSummary> stackResourceSummariesCopy = new java.util.ArrayList<StackResourceSummary>(stackResourceSummaries.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<StackResourceSummary> stackResourceSummariesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackResourceSummary>(stackResourceSummaries.size());
         stackResourceSummariesCopy.addAll(stackResourceSummaries);
         this.stackResourceSummaries = stackResourceSummariesCopy;
     }
@@ -73,7 +73,7 @@ public class ListStackResourcesResult  implements Serializable  {
      * @param stackResourceSummaries A list of <code>StackResourceSummary</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStackResourcesResult withStackResourceSummaries(StackResourceSummary... stackResourceSummaries) {
         if (getStackResourceSummaries() == null) setStackResourceSummaries(new java.util.ArrayList<StackResourceSummary>(stackResourceSummaries.length));
@@ -91,20 +91,20 @@ public class ListStackResourcesResult  implements Serializable  {
      * @param stackResourceSummaries A list of <code>StackResourceSummary</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStackResourcesResult withStackResourceSummaries(java.util.Collection<StackResourceSummary> stackResourceSummaries) {
         if (stackResourceSummaries == null) {
             this.stackResourceSummaries = null;
         } else {
-            java.util.List<StackResourceSummary> stackResourceSummariesCopy = new java.util.ArrayList<StackResourceSummary>(stackResourceSummaries.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<StackResourceSummary> stackResourceSummariesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackResourceSummary>(stackResourceSummaries.size());
             stackResourceSummariesCopy.addAll(stackResourceSummaries);
             this.stackResourceSummaries = stackResourceSummariesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * String that identifies the start of the next list of events, if there
      * is one.
@@ -146,14 +146,13 @@ public class ListStackResourcesResult  implements Serializable  {
      *         is one.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStackResourcesResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -165,8 +164,8 @@ public class ListStackResourcesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackResourceSummaries() != null) sb.append("StackResourceSummaries: " + getStackResourceSummaries() + ",");    	
+        sb.append("{");
+        if (getStackResourceSummaries() != null) sb.append("StackResourceSummaries: " + getStackResourceSummaries() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

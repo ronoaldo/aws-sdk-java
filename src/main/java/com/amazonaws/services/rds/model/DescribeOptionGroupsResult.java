@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * List of option groups.
  * </p>
  */
-public class DescribeOptionGroupsResult  implements Serializable  {
+public class DescribeOptionGroupsResult implements Serializable {
 
     /**
      * List of option groups.
      */
-    private java.util.List<OptionGroup> optionGroupsList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<OptionGroup> optionGroupsList;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -40,9 +41,9 @@ public class DescribeOptionGroupsResult  implements Serializable  {
      * @return List of option groups.
      */
     public java.util.List<OptionGroup> getOptionGroupsList() {
-        
         if (optionGroupsList == null) {
-            optionGroupsList = new java.util.ArrayList<OptionGroup>();
+              optionGroupsList = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionGroup>();
+              optionGroupsList.setAutoConstruct(true);
         }
         return optionGroupsList;
     }
@@ -57,8 +58,7 @@ public class DescribeOptionGroupsResult  implements Serializable  {
             this.optionGroupsList = null;
             return;
         }
-
-        java.util.List<OptionGroup> optionGroupsListCopy = new java.util.ArrayList<OptionGroup>(optionGroupsList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<OptionGroup> optionGroupsListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionGroup>(optionGroupsList.size());
         optionGroupsListCopy.addAll(optionGroupsList);
         this.optionGroupsList = optionGroupsListCopy;
     }
@@ -71,7 +71,7 @@ public class DescribeOptionGroupsResult  implements Serializable  {
      * @param optionGroupsList List of option groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOptionGroupsResult withOptionGroupsList(OptionGroup... optionGroupsList) {
         if (getOptionGroupsList() == null) setOptionGroupsList(new java.util.ArrayList<OptionGroup>(optionGroupsList.length));
@@ -89,20 +89,20 @@ public class DescribeOptionGroupsResult  implements Serializable  {
      * @param optionGroupsList List of option groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOptionGroupsResult withOptionGroupsList(java.util.Collection<OptionGroup> optionGroupsList) {
         if (optionGroupsList == null) {
             this.optionGroupsList = null;
         } else {
-            java.util.List<OptionGroup> optionGroupsListCopy = new java.util.ArrayList<OptionGroup>(optionGroupsList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<OptionGroup> optionGroupsListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionGroup>(optionGroupsList.size());
             optionGroupsListCopy.addAll(optionGroupsList);
             this.optionGroupsList = optionGroupsListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the
@@ -141,14 +141,13 @@ public class DescribeOptionGroupsResult  implements Serializable  {
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOptionGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +159,8 @@ public class DescribeOptionGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOptionGroupsList() != null) sb.append("OptionGroupsList: " + getOptionGroupsList() + ",");    	
+        sb.append("{");
+        if (getOptionGroupsList() != null) sb.append("OptionGroupsList: " + getOptionGroupsList() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

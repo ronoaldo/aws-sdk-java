@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#createClusterSecurityGroup(CreateClusterSecurityGroupRequest) CreateClusterSecurityGroup operation}.
  * <p>
- * Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters.
+ * Creates a new Amazon Redshift security group. You use security groups
+ * to control access to non-VPC clusters.
  * </p>
  * <p>
- * For information about managing security groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">
- * Amazon Redshift Cluster Security Groups </a> in the <i>Amazon Redshift Management Guide</i> .
+ * For information about managing security groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html"> Amazon Redshift Cluster Security Groups </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#createClusterSecurityGroup(CreateClusterSecurityGroupRequest)
  */
-public class CreateClusterSecurityGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateClusterSecurityGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name for the security group. Amazon Redshift stores the value as a
@@ -102,14 +106,13 @@ public class CreateClusterSecurityGroupRequest extends AmazonWebServiceRequest  
      *         <code>examplesecuritygroup</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateClusterSecurityGroupRequest withClusterSecurityGroupName(String clusterSecurityGroupName) {
         this.clusterSecurityGroupName = clusterSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * A description for the security group.
      *
@@ -136,14 +139,13 @@ public class CreateClusterSecurityGroupRequest extends AmazonWebServiceRequest  
      * @param description A description for the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateClusterSecurityGroupRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +157,8 @@ public class CreateClusterSecurityGroupRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterSecurityGroupName() != null) sb.append("ClusterSecurityGroupName: " + getClusterSecurityGroupName() + ",");    	
+        sb.append("{");
+        if (getClusterSecurityGroupName() != null) sb.append("ClusterSecurityGroupName: " + getClusterSecurityGroupName() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

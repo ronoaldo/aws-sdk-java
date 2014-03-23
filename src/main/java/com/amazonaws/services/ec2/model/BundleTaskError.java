@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,93 +13,92 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents an error that occurred during a bundle task.
+ * Describes an error for BundleInstance.
  * </p>
  */
-public class BundleTaskError  implements Serializable  {
+public class BundleTaskError implements Serializable {
 
     /**
-     * Error code.
+     * The error code.
      */
     private String code;
 
     /**
-     * Error message.
+     * The error message.
      */
     private String message;
 
     /**
-     * Error code.
+     * The error code.
      *
-     * @return Error code.
+     * @return The error code.
      */
     public String getCode() {
         return code;
     }
     
     /**
-     * Error code.
+     * The error code.
      *
-     * @param code Error code.
+     * @param code The error code.
      */
     public void setCode(String code) {
         this.code = code;
     }
     
     /**
-     * Error code.
+     * The error code.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param code Error code.
+     * @param code The error code.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTaskError withCode(String code) {
         this.code = code;
         return this;
     }
-    
-    
+
     /**
-     * Error message.
+     * The error message.
      *
-     * @return Error message.
+     * @return The error message.
      */
     public String getMessage() {
         return message;
     }
     
     /**
-     * Error message.
+     * The error message.
      *
-     * @param message Error message.
+     * @param message The error message.
      */
     public void setMessage(String message) {
         this.message = message;
     }
     
     /**
-     * Error message.
+     * The error message.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param message Error message.
+     * @param message The error message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTaskError withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class BundleTaskError  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

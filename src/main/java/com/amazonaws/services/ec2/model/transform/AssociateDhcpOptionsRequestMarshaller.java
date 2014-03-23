@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class AssociateDhcpOptionsRequestMarshaller implements Marshaller<Request
     public Request<AssociateDhcpOptionsRequest> marshall(AssociateDhcpOptionsRequest associateDhcpOptionsRequest) {
 
         if (associateDhcpOptionsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AssociateDhcpOptionsRequest> request = new DefaultRequest<AssociateDhcpOptionsRequest>(associateDhcpOptionsRequest, "AmazonEC2");
         request.addParameter("Action", "AssociateDhcpOptions");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (associateDhcpOptionsRequest.getDhcpOptionsId() != null) {
             request.addParameter("DhcpOptionsId", StringUtils.fromString(associateDhcpOptionsRequest.getDhcpOptionsId()));
@@ -46,7 +46,6 @@ public class AssociateDhcpOptionsRequestMarshaller implements Marshaller<Request
         if (associateDhcpOptionsRequest.getVpcId() != null) {
             request.addParameter("VpcId", StringUtils.fromString(associateDhcpOptionsRequest.getVpcId()));
         }
-
 
         return request;
     }

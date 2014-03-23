@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,17 +33,16 @@ public class GetPasswordDataRequestMarshaller implements Marshaller<Request<GetP
     public Request<GetPasswordDataRequest> marshall(GetPasswordDataRequest getPasswordDataRequest) {
 
         if (getPasswordDataRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetPasswordDataRequest> request = new DefaultRequest<GetPasswordDataRequest>(getPasswordDataRequest, "AmazonEC2");
         request.addParameter("Action", "GetPasswordData");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (getPasswordDataRequest.getInstanceId() != null) {
             request.addParameter("InstanceId", StringUtils.fromString(getPasswordDataRequest.getInstanceId()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Copy Snapshot Result
+ * 
  */
-public class CopySnapshotResult  implements Serializable  {
+public class CopySnapshotResult implements Serializable {
 
+    /**
+     * The ID of the new snapshot.
+     */
     private String snapshotId;
 
     /**
-     * Returns the value of the SnapshotId property for this object.
+     * The ID of the new snapshot.
      *
-     * @return The value of the SnapshotId property for this object.
+     * @return The ID of the new snapshot.
      */
     public String getSnapshotId() {
         return snapshotId;
     }
     
     /**
-     * Sets the value of the SnapshotId property for this object.
+     * The ID of the new snapshot.
      *
-     * @param snapshotId The new value for the SnapshotId property for this object.
+     * @param snapshotId The ID of the new snapshot.
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
     }
     
     /**
-     * Sets the value of the SnapshotId property for this object.
+     * The ID of the new snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param snapshotId The new value for the SnapshotId property for this object.
+     * @param snapshotId The ID of the new snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopySnapshotResult withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +70,7 @@ public class CopySnapshotResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeClusterSnapshotsRequestMarshaller implements Marshaller<Req
     public Request<DescribeClusterSnapshotsRequest> marshall(DescribeClusterSnapshotsRequest describeClusterSnapshotsRequest) {
 
         if (describeClusterSnapshotsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeClusterSnapshotsRequest> request = new DefaultRequest<DescribeClusterSnapshotsRequest>(describeClusterSnapshotsRequest, "AmazonRedshift");
         request.addParameter("Action", "DescribeClusterSnapshots");
@@ -61,7 +61,9 @@ public class DescribeClusterSnapshotsRequestMarshaller implements Marshaller<Req
         if (describeClusterSnapshotsRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeClusterSnapshotsRequest.getMarker()));
         }
-
+        if (describeClusterSnapshotsRequest.getOwnerAccount() != null) {
+            request.addParameter("OwnerAccount", StringUtils.fromString(describeClusterSnapshotsRequest.getOwnerAccount()));
+        }
 
         return request;
     }

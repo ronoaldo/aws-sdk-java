@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ModifyNetworkInterfaceAttributeRequestMarshaller implements Marshal
     public Request<ModifyNetworkInterfaceAttributeRequest> marshall(ModifyNetworkInterfaceAttributeRequest modifyNetworkInterfaceAttributeRequest) {
 
         if (modifyNetworkInterfaceAttributeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ModifyNetworkInterfaceAttributeRequest> request = new DefaultRequest<ModifyNetworkInterfaceAttributeRequest>(modifyNetworkInterfaceAttributeRequest, "AmazonEC2");
         request.addParameter("Action", "ModifyNetworkInterfaceAttribute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (modifyNetworkInterfaceAttributeRequest.getNetworkInterfaceId() != null) {
             request.addParameter("NetworkInterfaceId", StringUtils.fromString(modifyNetworkInterfaceAttributeRequest.getNetworkInterfaceId()));
@@ -69,7 +69,6 @@ public class ModifyNetworkInterfaceAttributeRequestMarshaller implements Marshal
                 request.addParameter("Attachment.DeleteOnTermination", StringUtils.fromBoolean(networkInterfaceAttachmentChangesAttachment.isDeleteOnTermination()));
             }
         }
-
 
         return request;
     }

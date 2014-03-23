@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,67 +13,75 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ModifyImageAttributeRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#modifyImageAttribute(ModifyImageAttributeRequest) ModifyImageAttribute operation}.
  * <p>
- * The ModifyImageAttribute operation modifies an attribute of an AMI.
+ * Modifies the specified attribute of the specified AMI. You can specify
+ * only one attribute at a time.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> AWS Marketplace product codes cannot be modified. Images
+ * with an AWS Marketplace product code cannot be made public.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifyImageAttribute(ModifyImageAttributeRequest)
  */
-public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyImageAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifyImageAttributeRequest> {
 
     /**
-     * The ID of the AMI whose attribute you want to modify.
+     * The ID of the AMI.
      */
     private String imageId;
 
     /**
-     * The name of the AMI attribute you want to modify. <p> Available
-     * attributes: <code>launchPermission</code>, <code>productCodes</code>
+     * The name of the attribute to modify.
      */
     private String attribute;
 
     /**
-     * The type of operation being requested. <p> Available operation types:
-     * <code>add</code>, <code>remove</code>
+     * The operation type.
      */
     private String operationType;
 
     /**
-     * The AWS user ID being added to or removed from the list of users with
-     * launch permissions for this AMI. Only valid when the launchPermission
-     * attribute is being modified.
+     * One or more AWS account IDs. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      */
-    private java.util.List<String> userIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> userIds;
 
     /**
-     * The user group being added to or removed from the list of user groups
-     * with launch permissions for this AMI. Only valid when the
-     * launchPermission attribute is being modified. <p> Available user
-     * groups: <code>all</code>
+     * One or more user groups. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      */
-    private java.util.List<String> userGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> userGroups;
 
     /**
-     * The list of product codes being added to or removed from the specified
-     * AMI. Only valid when the productCodes attribute is being modified.
+     * One or more product codes. After you add a product code to an AMI, it
+     * can't be removed. This is only valid when modifying the
+     * <code>productCodes</code> attribute.
      */
-    private java.util.List<String> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> productCodes;
 
     /**
-     * The value of the attribute being modified. Only valid when the
-     * description attribute is being modified.
+     * The value of the attribute being modified. This is only valid when
+     * modifying the <code>description</code> attribute.
      */
     private String value;
 
+    /**
+     * <p/>
+     */
     private LaunchPermissionModifications launchPermission;
 
     /**
-     * String value
+     * A description for the AMI.
      */
     private String description;
 
@@ -88,182 +96,156 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param imageId The ID of the AMI whose attribute you want to modify.
-     * @param attribute The name of the AMI attribute you want to modify. <p>
-     * Available attributes: <code>launchPermission</code>,
-     * <code>productCodes</code>
+     * @param imageId The ID of the AMI.
+     * @param attribute The name of the attribute to modify.
      */
     public ModifyImageAttributeRequest(String imageId, String attribute) {
-        this.imageId = imageId;
-        this.attribute = attribute;
+        setImageId(imageId);
+        setAttribute(attribute);
     }
 
-    
-    
     /**
-     * The ID of the AMI whose attribute you want to modify.
+     * The ID of the AMI.
      *
-     * @return The ID of the AMI whose attribute you want to modify.
+     * @return The ID of the AMI.
      */
     public String getImageId() {
         return imageId;
     }
     
     /**
-     * The ID of the AMI whose attribute you want to modify.
+     * The ID of the AMI.
      *
-     * @param imageId The ID of the AMI whose attribute you want to modify.
+     * @param imageId The ID of the AMI.
      */
     public void setImageId(String imageId) {
         this.imageId = imageId;
     }
     
     /**
-     * The ID of the AMI whose attribute you want to modify.
+     * The ID of the AMI.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param imageId The ID of the AMI whose attribute you want to modify.
+     * @param imageId The ID of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withImageId(String imageId) {
         this.imageId = imageId;
         return this;
     }
-    
-    
+
     /**
-     * The name of the AMI attribute you want to modify. <p> Available
-     * attributes: <code>launchPermission</code>, <code>productCodes</code>
+     * The name of the attribute to modify.
      *
-     * @return The name of the AMI attribute you want to modify. <p> Available
-     *         attributes: <code>launchPermission</code>, <code>productCodes</code>
+     * @return The name of the attribute to modify.
      */
     public String getAttribute() {
         return attribute;
     }
     
     /**
-     * The name of the AMI attribute you want to modify. <p> Available
-     * attributes: <code>launchPermission</code>, <code>productCodes</code>
+     * The name of the attribute to modify.
      *
-     * @param attribute The name of the AMI attribute you want to modify. <p> Available
-     *         attributes: <code>launchPermission</code>, <code>productCodes</code>
+     * @param attribute The name of the attribute to modify.
      */
     public void setAttribute(String attribute) {
         this.attribute = attribute;
     }
     
     /**
-     * The name of the AMI attribute you want to modify. <p> Available
-     * attributes: <code>launchPermission</code>, <code>productCodes</code>
+     * The name of the attribute to modify.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attribute The name of the AMI attribute you want to modify. <p> Available
-     *         attributes: <code>launchPermission</code>, <code>productCodes</code>
+     * @param attribute The name of the attribute to modify.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withAttribute(String attribute) {
         this.attribute = attribute;
         return this;
     }
-    
-    
+
     /**
-     * The type of operation being requested. <p> Available operation types:
-     * <code>add</code>, <code>remove</code>
+     * The operation type.
      *
-     * @return The type of operation being requested. <p> Available operation types:
-     *         <code>add</code>, <code>remove</code>
+     * @return The operation type.
      */
     public String getOperationType() {
         return operationType;
     }
     
     /**
-     * The type of operation being requested. <p> Available operation types:
-     * <code>add</code>, <code>remove</code>
+     * The operation type.
      *
-     * @param operationType The type of operation being requested. <p> Available operation types:
-     *         <code>add</code>, <code>remove</code>
+     * @param operationType The operation type.
      */
     public void setOperationType(String operationType) {
         this.operationType = operationType;
     }
     
     /**
-     * The type of operation being requested. <p> Available operation types:
-     * <code>add</code>, <code>remove</code>
+     * The operation type.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param operationType The type of operation being requested. <p> Available operation types:
-     *         <code>add</code>, <code>remove</code>
+     * @param operationType The operation type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withOperationType(String operationType) {
         this.operationType = operationType;
         return this;
     }
-    
-    
+
     /**
-     * The AWS user ID being added to or removed from the list of users with
-     * launch permissions for this AMI. Only valid when the launchPermission
-     * attribute is being modified.
+     * One or more AWS account IDs. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      *
-     * @return The AWS user ID being added to or removed from the list of users with
-     *         launch permissions for this AMI. Only valid when the launchPermission
-     *         attribute is being modified.
+     * @return One or more AWS account IDs. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      */
     public java.util.List<String> getUserIds() {
-        
         if (userIds == null) {
-            userIds = new java.util.ArrayList<String>();
+              userIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              userIds.setAutoConstruct(true);
         }
         return userIds;
     }
     
     /**
-     * The AWS user ID being added to or removed from the list of users with
-     * launch permissions for this AMI. Only valid when the launchPermission
-     * attribute is being modified.
+     * One or more AWS account IDs. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      *
-     * @param userIds The AWS user ID being added to or removed from the list of users with
-     *         launch permissions for this AMI. Only valid when the launchPermission
-     *         attribute is being modified.
+     * @param userIds One or more AWS account IDs. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      */
     public void setUserIds(java.util.Collection<String> userIds) {
         if (userIds == null) {
             this.userIds = null;
             return;
         }
-
-        java.util.List<String> userIdsCopy = new java.util.ArrayList<String>(userIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> userIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userIds.size());
         userIdsCopy.addAll(userIds);
         this.userIds = userIdsCopy;
     }
     
     /**
-     * The AWS user ID being added to or removed from the list of users with
-     * launch permissions for this AMI. Only valid when the launchPermission
-     * attribute is being modified.
+     * One or more AWS account IDs. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userIds The AWS user ID being added to or removed from the list of users with
-     *         launch permissions for this AMI. Only valid when the launchPermission
-     *         attribute is being modified.
+     * @param userIds One or more AWS account IDs. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserIds(String... userIds) {
         if (getUserIds() == null) setUserIds(new java.util.ArrayList<String>(userIds.length));
@@ -274,87 +256,72 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     }
     
     /**
-     * The AWS user ID being added to or removed from the list of users with
-     * launch permissions for this AMI. Only valid when the launchPermission
-     * attribute is being modified.
+     * One or more AWS account IDs. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userIds The AWS user ID being added to or removed from the list of users with
-     *         launch permissions for this AMI. Only valid when the launchPermission
-     *         attribute is being modified.
+     * @param userIds One or more AWS account IDs. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserIds(java.util.Collection<String> userIds) {
         if (userIds == null) {
             this.userIds = null;
         } else {
-            java.util.List<String> userIdsCopy = new java.util.ArrayList<String>(userIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> userIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userIds.size());
             userIdsCopy.addAll(userIds);
             this.userIds = userIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The user group being added to or removed from the list of user groups
-     * with launch permissions for this AMI. Only valid when the
-     * launchPermission attribute is being modified. <p> Available user
-     * groups: <code>all</code>
+     * One or more user groups. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      *
-     * @return The user group being added to or removed from the list of user groups
-     *         with launch permissions for this AMI. Only valid when the
-     *         launchPermission attribute is being modified. <p> Available user
-     *         groups: <code>all</code>
+     * @return One or more user groups. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      */
     public java.util.List<String> getUserGroups() {
-        
         if (userGroups == null) {
-            userGroups = new java.util.ArrayList<String>();
+              userGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              userGroups.setAutoConstruct(true);
         }
         return userGroups;
     }
     
     /**
-     * The user group being added to or removed from the list of user groups
-     * with launch permissions for this AMI. Only valid when the
-     * launchPermission attribute is being modified. <p> Available user
-     * groups: <code>all</code>
+     * One or more user groups. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      *
-     * @param userGroups The user group being added to or removed from the list of user groups
-     *         with launch permissions for this AMI. Only valid when the
-     *         launchPermission attribute is being modified. <p> Available user
-     *         groups: <code>all</code>
+     * @param userGroups One or more user groups. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      */
     public void setUserGroups(java.util.Collection<String> userGroups) {
         if (userGroups == null) {
             this.userGroups = null;
             return;
         }
-
-        java.util.List<String> userGroupsCopy = new java.util.ArrayList<String>(userGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> userGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userGroups.size());
         userGroupsCopy.addAll(userGroups);
         this.userGroups = userGroupsCopy;
     }
     
     /**
-     * The user group being added to or removed from the list of user groups
-     * with launch permissions for this AMI. Only valid when the
-     * launchPermission attribute is being modified. <p> Available user
-     * groups: <code>all</code>
+     * One or more user groups. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userGroups The user group being added to or removed from the list of user groups
-     *         with launch permissions for this AMI. Only valid when the
-     *         launchPermission attribute is being modified. <p> Available user
-     *         groups: <code>all</code>
+     * @param userGroups One or more user groups. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserGroups(String... userGroups) {
         if (getUserGroups() == null) setUserGroups(new java.util.ArrayList<String>(userGroups.length));
@@ -365,77 +332,78 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     }
     
     /**
-     * The user group being added to or removed from the list of user groups
-     * with launch permissions for this AMI. Only valid when the
-     * launchPermission attribute is being modified. <p> Available user
-     * groups: <code>all</code>
+     * One or more user groups. This is only valid when modifying the
+     * <code>launchPermission</code> attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userGroups The user group being added to or removed from the list of user groups
-     *         with launch permissions for this AMI. Only valid when the
-     *         launchPermission attribute is being modified. <p> Available user
-     *         groups: <code>all</code>
+     * @param userGroups One or more user groups. This is only valid when modifying the
+     *         <code>launchPermission</code> attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withUserGroups(java.util.Collection<String> userGroups) {
         if (userGroups == null) {
             this.userGroups = null;
         } else {
-            java.util.List<String> userGroupsCopy = new java.util.ArrayList<String>(userGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> userGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(userGroups.size());
             userGroupsCopy.addAll(userGroups);
             this.userGroups = userGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The list of product codes being added to or removed from the specified
-     * AMI. Only valid when the productCodes attribute is being modified.
+     * One or more product codes. After you add a product code to an AMI, it
+     * can't be removed. This is only valid when modifying the
+     * <code>productCodes</code> attribute.
      *
-     * @return The list of product codes being added to or removed from the specified
-     *         AMI. Only valid when the productCodes attribute is being modified.
+     * @return One or more product codes. After you add a product code to an AMI, it
+     *         can't be removed. This is only valid when modifying the
+     *         <code>productCodes</code> attribute.
      */
     public java.util.List<String> getProductCodes() {
-        
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<String>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
     
     /**
-     * The list of product codes being added to or removed from the specified
-     * AMI. Only valid when the productCodes attribute is being modified.
+     * One or more product codes. After you add a product code to an AMI, it
+     * can't be removed. This is only valid when modifying the
+     * <code>productCodes</code> attribute.
      *
-     * @param productCodes The list of product codes being added to or removed from the specified
-     *         AMI. Only valid when the productCodes attribute is being modified.
+     * @param productCodes One or more product codes. After you add a product code to an AMI, it
+     *         can't be removed. This is only valid when modifying the
+     *         <code>productCodes</code> attribute.
      */
     public void setProductCodes(java.util.Collection<String> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<String> productCodesCopy = new java.util.ArrayList<String>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
     
     /**
-     * The list of product codes being added to or removed from the specified
-     * AMI. Only valid when the productCodes attribute is being modified.
+     * One or more product codes. After you add a product code to an AMI, it
+     * can't be removed. This is only valid when modifying the
+     * <code>productCodes</code> attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCodes The list of product codes being added to or removed from the specified
-     *         AMI. Only valid when the productCodes attribute is being modified.
+     * @param productCodes One or more product codes. After you add a product code to an AMI, it
+     *         can't be removed. This is only valid when modifying the
+     *         <code>productCodes</code> attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withProductCodes(String... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<String>(productCodes.length));
@@ -446,136 +414,147 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     }
     
     /**
-     * The list of product codes being added to or removed from the specified
-     * AMI. Only valid when the productCodes attribute is being modified.
+     * One or more product codes. After you add a product code to an AMI, it
+     * can't be removed. This is only valid when modifying the
+     * <code>productCodes</code> attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCodes The list of product codes being added to or removed from the specified
-     *         AMI. Only valid when the productCodes attribute is being modified.
+     * @param productCodes One or more product codes. After you add a product code to an AMI, it
+     *         can't be removed. This is only valid when modifying the
+     *         <code>productCodes</code> attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withProductCodes(java.util.Collection<String> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<String> productCodesCopy = new java.util.ArrayList<String>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The value of the attribute being modified. Only valid when the
-     * description attribute is being modified.
+     * The value of the attribute being modified. This is only valid when
+     * modifying the <code>description</code> attribute.
      *
-     * @return The value of the attribute being modified. Only valid when the
-     *         description attribute is being modified.
+     * @return The value of the attribute being modified. This is only valid when
+     *         modifying the <code>description</code> attribute.
      */
     public String getValue() {
         return value;
     }
     
     /**
-     * The value of the attribute being modified. Only valid when the
-     * description attribute is being modified.
+     * The value of the attribute being modified. This is only valid when
+     * modifying the <code>description</code> attribute.
      *
-     * @param value The value of the attribute being modified. Only valid when the
-     *         description attribute is being modified.
+     * @param value The value of the attribute being modified. This is only valid when
+     *         modifying the <code>description</code> attribute.
      */
     public void setValue(String value) {
         this.value = value;
     }
     
     /**
-     * The value of the attribute being modified. Only valid when the
-     * description attribute is being modified.
+     * The value of the attribute being modified. This is only valid when
+     * modifying the <code>description</code> attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param value The value of the attribute being modified. Only valid when the
-     *         description attribute is being modified.
+     * @param value The value of the attribute being modified. This is only valid when
+     *         modifying the <code>description</code> attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the LaunchPermission property for this object.
+     * <p/>
      *
-     * @return The value of the LaunchPermission property for this object.
+     * @return <p/>
      */
     public LaunchPermissionModifications getLaunchPermission() {
         return launchPermission;
     }
     
     /**
-     * Sets the value of the LaunchPermission property for this object.
+     * <p/>
      *
-     * @param launchPermission The new value for the LaunchPermission property for this object.
+     * @param launchPermission <p/>
      */
     public void setLaunchPermission(LaunchPermissionModifications launchPermission) {
         this.launchPermission = launchPermission;
     }
     
     /**
-     * Sets the value of the LaunchPermission property for this object.
+     * <p/>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param launchPermission The new value for the LaunchPermission property for this object.
+     * @param launchPermission <p/>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withLaunchPermission(LaunchPermissionModifications launchPermission) {
         this.launchPermission = launchPermission;
         return this;
     }
-    
-    
+
     /**
-     * String value
+     * A description for the AMI.
      *
-     * @return String value
+     * @return A description for the AMI.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * String value
+     * A description for the AMI.
      *
-     * @param description String value
+     * @param description A description for the AMI.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * String value
+     * A description for the AMI.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description String value
+     * @param description A description for the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyImageAttributeRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ModifyImageAttributeRequest> getDryRunRequest() {
+        Request<ModifyImageAttributeRequest> request = new ModifyImageAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -588,15 +567,15 @@ public class ModifyImageAttributeRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");    	
-        if (getOperationType() != null) sb.append("OperationType: " + getOperationType() + ",");    	
-        if (getUserIds() != null) sb.append("UserIds: " + getUserIds() + ",");    	
-        if (getUserGroups() != null) sb.append("UserGroups: " + getUserGroups() + ",");    	
-        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
-        if (getLaunchPermission() != null) sb.append("LaunchPermission: " + getLaunchPermission() + ",");    	
+        sb.append("{");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getAttribute() != null) sb.append("Attribute: " + getAttribute() + ",");
+        if (getOperationType() != null) sb.append("OperationType: " + getOperationType() + ",");
+        if (getUserIds() != null) sb.append("UserIds: " + getUserIds() + ",");
+        if (getUserGroups() != null) sb.append("UserGroups: " + getUserGroups() + ",");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
+        if (getLaunchPermission() != null) sb.append("LaunchPermission: " + getLaunchPermission() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

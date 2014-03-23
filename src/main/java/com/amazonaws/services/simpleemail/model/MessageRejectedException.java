@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,9 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * Indicates that the action failed, and the message could not be sent. Check the error stack for more information about what caused the error.
+ * Indicates that the action failed, and the message could not be sent.
+ * Check the error stack for more information about what caused the
+ * error.
  * </p>
  */        
 public class MessageRejectedException extends AmazonServiceException {

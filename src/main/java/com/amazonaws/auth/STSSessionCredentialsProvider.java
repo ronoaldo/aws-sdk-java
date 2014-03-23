@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,6 +103,20 @@ public class STSSessionCredentialsProvider implements AWSCredentialsProvider {
      */
     public STSSessionCredentialsProvider(AWSCredentialsProvider longLivedCredentialsProvider, ClientConfiguration clientConfiguration) {
         securityTokenService = new AWSSecurityTokenServiceClient(longLivedCredentialsProvider, clientConfiguration);
+    }
+
+    /**
+     * Sets the AWS Security Token Service (STS) endpoint where session
+     * credentials are retrieved from.
+     * <p>
+     * The default AWS Security Token Service (STS) endpoint
+     * ("sts.amazonaws.com") works for all accounts that are not for
+     * China(Beijing) region. You only need to change the endpoint to
+     * "sts.cn-north-1.amazonaws.com.cn" when you are requesting session
+     * credentials for services in China(Beijing) region.
+     */
+    public void setSTSClientEndpoint(String endpoint) {
+        securityTokenService.setEndpoint(endpoint);
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,86 +21,218 @@ import java.io.Serializable;
  * The <code>AutoScalingNotificationTypes</code> data type.
  * </p>
  */
-public class DescribeAutoScalingNotificationTypesResult  implements Serializable  {
+public class DescribeAutoScalingNotificationTypesResult implements Serializable {
 
     /**
-     * Notification types supported by Auto Scaling. They are:
-     * autoscaling:EC2_INSTANCE_LAUNCH,
-     * autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     * autoscaling:EC2_INSTANCE_TERMINATE,
-     * autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     * autoscaling:TEST_NOTIFICATION
+     * Returns a list of all notification types supported by Auto Scaling.
+     * They are: <ul>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     * <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     * <examples>
+     * <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     * &AUTHPARAMS </queryrequest>
+     * <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     * xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     * <DescribeAutoScalingNotificationTypesResult>
+     * <AutoScalingNotificationTypes>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     * <member>autoscaling:TEST_NOTIFICATION</member>
+     * </AutoScalingNotificationTypes>
+     * </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     * <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     * </ResponseMetadata>
+     * </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     * </examples>
      */
-    private java.util.List<String> autoScalingNotificationTypes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingNotificationTypes;
 
     /**
-     * Notification types supported by Auto Scaling. They are:
-     * autoscaling:EC2_INSTANCE_LAUNCH,
-     * autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     * autoscaling:EC2_INSTANCE_TERMINATE,
-     * autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     * autoscaling:TEST_NOTIFICATION
+     * Returns a list of all notification types supported by Auto Scaling.
+     * They are: <ul>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     * <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     * <examples>
+     * <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     * &AUTHPARAMS </queryrequest>
+     * <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     * xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     * <DescribeAutoScalingNotificationTypesResult>
+     * <AutoScalingNotificationTypes>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     * <member>autoscaling:TEST_NOTIFICATION</member>
+     * </AutoScalingNotificationTypes>
+     * </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     * <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     * </ResponseMetadata>
+     * </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     * </examples>
      *
-     * @return Notification types supported by Auto Scaling. They are:
-     *         autoscaling:EC2_INSTANCE_LAUNCH,
-     *         autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     *         autoscaling:EC2_INSTANCE_TERMINATE,
-     *         autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     *         autoscaling:TEST_NOTIFICATION
+     * @return Returns a list of all notification types supported by Auto Scaling.
+     *         They are: <ul>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     *         <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     *         <examples>
+     *         <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     *         &AUTHPARAMS </queryrequest>
+     *         <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     *         xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     *         <DescribeAutoScalingNotificationTypesResult>
+     *         <AutoScalingNotificationTypes>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     *         <member>autoscaling:TEST_NOTIFICATION</member>
+     *         </AutoScalingNotificationTypes>
+     *         </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     *         <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     *         </ResponseMetadata>
+     *         </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     *         </examples>
      */
     public java.util.List<String> getAutoScalingNotificationTypes() {
-        
         if (autoScalingNotificationTypes == null) {
-            autoScalingNotificationTypes = new java.util.ArrayList<String>();
+              autoScalingNotificationTypes = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              autoScalingNotificationTypes.setAutoConstruct(true);
         }
         return autoScalingNotificationTypes;
     }
     
     /**
-     * Notification types supported by Auto Scaling. They are:
-     * autoscaling:EC2_INSTANCE_LAUNCH,
-     * autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     * autoscaling:EC2_INSTANCE_TERMINATE,
-     * autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     * autoscaling:TEST_NOTIFICATION
+     * Returns a list of all notification types supported by Auto Scaling.
+     * They are: <ul>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     * <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     * <examples>
+     * <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     * &AUTHPARAMS </queryrequest>
+     * <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     * xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     * <DescribeAutoScalingNotificationTypesResult>
+     * <AutoScalingNotificationTypes>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     * <member>autoscaling:TEST_NOTIFICATION</member>
+     * </AutoScalingNotificationTypes>
+     * </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     * <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     * </ResponseMetadata>
+     * </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     * </examples>
      *
-     * @param autoScalingNotificationTypes Notification types supported by Auto Scaling. They are:
-     *         autoscaling:EC2_INSTANCE_LAUNCH,
-     *         autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     *         autoscaling:EC2_INSTANCE_TERMINATE,
-     *         autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     *         autoscaling:TEST_NOTIFICATION
+     * @param autoScalingNotificationTypes Returns a list of all notification types supported by Auto Scaling.
+     *         They are: <ul>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     *         <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     *         <examples>
+     *         <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     *         &AUTHPARAMS </queryrequest>
+     *         <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     *         xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     *         <DescribeAutoScalingNotificationTypesResult>
+     *         <AutoScalingNotificationTypes>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     *         <member>autoscaling:TEST_NOTIFICATION</member>
+     *         </AutoScalingNotificationTypes>
+     *         </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     *         <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     *         </ResponseMetadata>
+     *         </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     *         </examples>
      */
     public void setAutoScalingNotificationTypes(java.util.Collection<String> autoScalingNotificationTypes) {
         if (autoScalingNotificationTypes == null) {
             this.autoScalingNotificationTypes = null;
             return;
         }
-
-        java.util.List<String> autoScalingNotificationTypesCopy = new java.util.ArrayList<String>(autoScalingNotificationTypes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingNotificationTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingNotificationTypes.size());
         autoScalingNotificationTypesCopy.addAll(autoScalingNotificationTypes);
         this.autoScalingNotificationTypes = autoScalingNotificationTypesCopy;
     }
     
     /**
-     * Notification types supported by Auto Scaling. They are:
-     * autoscaling:EC2_INSTANCE_LAUNCH,
-     * autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     * autoscaling:EC2_INSTANCE_TERMINATE,
-     * autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     * autoscaling:TEST_NOTIFICATION
+     * Returns a list of all notification types supported by Auto Scaling.
+     * They are: <ul>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     * <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     * <examples>
+     * <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     * &AUTHPARAMS </queryrequest>
+     * <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     * xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     * <DescribeAutoScalingNotificationTypesResult>
+     * <AutoScalingNotificationTypes>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     * <member>autoscaling:TEST_NOTIFICATION</member>
+     * </AutoScalingNotificationTypes>
+     * </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     * <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     * </ResponseMetadata>
+     * </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     * </examples>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param autoScalingNotificationTypes Notification types supported by Auto Scaling. They are:
-     *         autoscaling:EC2_INSTANCE_LAUNCH,
-     *         autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     *         autoscaling:EC2_INSTANCE_TERMINATE,
-     *         autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     *         autoscaling:TEST_NOTIFICATION
+     * @param autoScalingNotificationTypes Returns a list of all notification types supported by Auto Scaling.
+     *         They are: <ul>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     *         <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     *         <examples>
+     *         <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     *         &AUTHPARAMS </queryrequest>
+     *         <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     *         xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     *         <DescribeAutoScalingNotificationTypesResult>
+     *         <AutoScalingNotificationTypes>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     *         <member>autoscaling:TEST_NOTIFICATION</member>
+     *         </AutoScalingNotificationTypes>
+     *         </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     *         <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     *         </ResponseMetadata>
+     *         </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     *         </examples>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingNotificationTypesResult withAutoScalingNotificationTypes(String... autoScalingNotificationTypes) {
         if (getAutoScalingNotificationTypes() == null) setAutoScalingNotificationTypes(new java.util.ArrayList<String>(autoScalingNotificationTypes.length));
@@ -110,37 +243,75 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
     }
     
     /**
-     * Notification types supported by Auto Scaling. They are:
-     * autoscaling:EC2_INSTANCE_LAUNCH,
-     * autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     * autoscaling:EC2_INSTANCE_TERMINATE,
-     * autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     * autoscaling:TEST_NOTIFICATION
+     * Returns a list of all notification types supported by Auto Scaling.
+     * They are: <ul>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     * <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     * <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     * <examples>
+     * <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     * &AUTHPARAMS </queryrequest>
+     * <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     * xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     * <DescribeAutoScalingNotificationTypesResult>
+     * <AutoScalingNotificationTypes>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     * <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     * <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     * <member>autoscaling:TEST_NOTIFICATION</member>
+     * </AutoScalingNotificationTypes>
+     * </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     * <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     * </ResponseMetadata>
+     * </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     * </examples>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param autoScalingNotificationTypes Notification types supported by Auto Scaling. They are:
-     *         autoscaling:EC2_INSTANCE_LAUNCH,
-     *         autoscaling:EC2_INSTANCE_LAUNCH_ERROR,
-     *         autoscaling:EC2_INSTANCE_TERMINATE,
-     *         autoscaling:EC2_INSTANCE_TERMINATE_ERROR,
-     *         autoscaling:TEST_NOTIFICATION
+     * @param autoScalingNotificationTypes Returns a list of all notification types supported by Auto Scaling.
+     *         They are: <ul>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE</code></li>
+     *         <li><p><code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code></li>
+     *         <li><p><code>autoscaling:TEST_NOTIFICATION</code></li> </ul>
+     *         <examples>
+     *         <queryrequest>https://autoscaling.amazonaws.com/?Version=2011-01-01&Action=DescribeAutoScalingNotificationTypes
+     *         &AUTHPARAMS </queryrequest>
+     *         <queryresponse><DescribeAutoScalingNotificationTypesResponse
+     *         xmlns="http://autoscaling.amazonaws.com/doc/2011-01-01/">
+     *         <DescribeAutoScalingNotificationTypesResult>
+     *         <AutoScalingNotificationTypes>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH</member>
+     *         <member>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE</member>
+     *         <member>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</member>
+     *         <member>autoscaling:TEST_NOTIFICATION</member>
+     *         </AutoScalingNotificationTypes>
+     *         </DescribeAutoScalingNotificationTypesResult> <ResponseMetadata>
+     *         <RequestId>42fc6794-bf21-11e2-a1cf-ff3dEXAMPLE</RequestId>
+     *         </ResponseMetadata>
+     *         </DescribeAutoScalingNotificationTypesResponse></queryresponse>
+     *         </examples>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingNotificationTypesResult withAutoScalingNotificationTypes(java.util.Collection<String> autoScalingNotificationTypes) {
         if (autoScalingNotificationTypes == null) {
             this.autoScalingNotificationTypes = null;
         } else {
-            java.util.List<String> autoScalingNotificationTypesCopy = new java.util.ArrayList<String>(autoScalingNotificationTypes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingNotificationTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingNotificationTypes.size());
             autoScalingNotificationTypesCopy.addAll(autoScalingNotificationTypes);
             this.autoScalingNotificationTypes = autoScalingNotificationTypesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -152,7 +323,7 @@ public class DescribeAutoScalingNotificationTypesResult  implements Serializable
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAutoScalingNotificationTypes() != null) sb.append("AutoScalingNotificationTypes: " + getAutoScalingNotificationTypes() );
         sb.append("}");
         return sb.toString();

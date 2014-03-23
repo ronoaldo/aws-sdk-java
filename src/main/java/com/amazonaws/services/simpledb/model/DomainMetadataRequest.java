@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpledb.AmazonSimpleDB#domainMetadata(DomainMetadataRequest) DomainMetadata operation}.
  * <p>
- * Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the
- * attribute names and values.
+ * Returns information about the domain, including when the domain was
+ * created, the number of items and attributes in the domain, and the
+ * size of the attribute names and values.
  * </p>
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#domainMetadata(DomainMetadataRequest)
  */
-public class DomainMetadataRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DomainMetadataRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain for which to display the metadata of.
@@ -47,11 +50,9 @@ public class DomainMetadataRequest extends AmazonWebServiceRequest  implements S
      * metadata of.
      */
     public DomainMetadataRequest(String domainName) {
-        this.domainName = domainName;
+        setDomainName(domainName);
     }
 
-    
-    
     /**
      * The name of the domain for which to display the metadata of.
      *
@@ -78,14 +79,13 @@ public class DomainMetadataRequest extends AmazonWebServiceRequest  implements S
      * @param domainName The name of the domain for which to display the metadata of.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -97,7 +97,7 @@ public class DomainMetadataRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomainName() != null) sb.append("DomainName: " + getDomainName() );
         sb.append("}");
         return sb.toString();

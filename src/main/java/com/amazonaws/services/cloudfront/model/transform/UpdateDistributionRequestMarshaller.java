@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  */
 package com.amazonaws.services.cloudfront.model.transform;
 
+import static com.amazonaws.util.StringUtils.UTF8;
+
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.Request;
@@ -44,10 +45,9 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
         Request<UpdateDistributionRequest> request = new DefaultRequest<UpdateDistributionRequest>(updateDistributionRequest, "AmazonCloudFront");
         request.setHttpMethod(HttpMethodName.PUT);
         if (updateDistributionRequest.getIfMatch() != null)
-        	request.addHeader("If-Match", StringUtils.fromString(updateDistributionRequest.getIfMatch()));
-        
+          request.addHeader("If-Match", StringUtils.fromString(updateDistributionRequest.getIfMatch()));
 
-        String uriResourcePath = "2012-07-01/distribution/{Id}/config"; 
+        String uriResourcePath = "2014-01-31/distribution/{Id}/config"; 
         uriResourcePath = uriResourcePath.replace("{Id}", getString(updateDistributionRequest.getId())); 
 
         if (uriResourcePath.contains("?")) {
@@ -66,11 +66,9 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
 
         request.setResourcePath(uriResourcePath);
 
-        
             StringWriter stringWriter = new StringWriter();
-            XMLWriter xmlWriter = new XMLWriter(stringWriter, "http://cloudfront.amazonaws.com/doc/2012-07-01/");
+            XMLWriter xmlWriter = new XMLWriter(stringWriter, "http://cloudfront.amazonaws.com/doc/2014-01-31/");
 
-            
                     if (updateDistributionRequest != null) {
             DistributionConfig distributionConfigDistributionConfig = updateDistributionRequest.getDistributionConfig();
             if (distributionConfigDistributionConfig != null) {
@@ -96,7 +94,6 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                                 xmlWriter.startElement("CNAME");
                                     xmlWriter.value(aliasesAliasesitemsListValue);
                                 xmlWriter.endElement();
-
 
                                     aliasesAliasesitemsListIndex++;
                                 }
@@ -159,7 +156,6 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                                     }
                                 xmlWriter.endElement();
 
-
                                     originsOriginsitemsListIndex++;
                                 }
                                 xmlWriter.endElement();
@@ -208,7 +204,6 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                                                             xmlWriter.value(cookieNamesWhitelistedNamesitemsListValue);
                                                         xmlWriter.endElement();
 
-
                                                             cookieNamesWhitelistedNamesitemsListIndex++;
                                                         }
                                                         xmlWriter.endElement();
@@ -245,7 +240,6 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                                             xmlWriter.value(trustedSignersTrustedSignersitemsListValue);
                                         xmlWriter.endElement();
 
-
                                             trustedSignersTrustedSignersitemsListIndex++;
                                         }
                                         xmlWriter.endElement();
@@ -259,6 +253,36 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                         }
                         if (defaultCacheBehaviorDefaultCacheBehavior.getMinTTL() != null) {
                             xmlWriter.startElement("MinTTL").value(defaultCacheBehaviorDefaultCacheBehavior.getMinTTL()).endElement();
+                        }
+                        if (defaultCacheBehaviorDefaultCacheBehavior != null) {
+                            AllowedMethods allowedMethodsAllowedMethods = defaultCacheBehaviorDefaultCacheBehavior.getAllowedMethods();
+                            if (allowedMethodsAllowedMethods != null) {
+                                xmlWriter.startElement("AllowedMethods");
+                                if (allowedMethodsAllowedMethods.getQuantity() != null) {
+                                    xmlWriter.startElement("Quantity").value(allowedMethodsAllowedMethods.getQuantity()).endElement();
+                                }
+
+                                if (allowedMethodsAllowedMethods != null) {
+                                    java.util.List<String> allowedMethodsAllowedMethodsitemsList = allowedMethodsAllowedMethods.getItems();
+                                    if (allowedMethodsAllowedMethodsitemsList != null && allowedMethodsAllowedMethodsitemsList.size() > 0) {
+                                        int allowedMethodsAllowedMethodsitemsListIndex = 1;
+                                        xmlWriter.startElement("Items");
+                                        for (String allowedMethodsAllowedMethodsitemsListValue : allowedMethodsAllowedMethodsitemsList) {
+
+                                        xmlWriter.startElement("Method");
+                                            xmlWriter.value(allowedMethodsAllowedMethodsitemsListValue);
+                                        xmlWriter.endElement();
+
+                                            allowedMethodsAllowedMethodsitemsListIndex++;
+                                        }
+                                        xmlWriter.endElement();
+                                    }
+                                }
+                                xmlWriter.endElement();
+                            }
+                        }
+                        if (defaultCacheBehaviorDefaultCacheBehavior.isSmoothStreaming() != null) {
+                            xmlWriter.startElement("SmoothStreaming").value(defaultCacheBehaviorDefaultCacheBehavior.isSmoothStreaming()).endElement();
                         }
                         xmlWriter.endElement();
                     }
@@ -318,7 +342,6 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                                                                         xmlWriter.value(cookieNamesWhitelistedNamesitemsListValue);
                                                                     xmlWriter.endElement();
 
-
                                                                         cookieNamesWhitelistedNamesitemsListIndex++;
                                                                     }
                                                                     xmlWriter.endElement();
@@ -355,7 +378,6 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                                                         xmlWriter.value(trustedSignersTrustedSignersitemsListValue);
                                                     xmlWriter.endElement();
 
-
                                                         trustedSignersTrustedSignersitemsListIndex++;
                                                     }
                                                     xmlWriter.endElement();
@@ -370,10 +392,77 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                                     if (cacheBehaviorsCacheBehaviorsitemsListValue.getMinTTL() != null) {
                                         xmlWriter.startElement("MinTTL").value(cacheBehaviorsCacheBehaviorsitemsListValue.getMinTTL()).endElement();
                                     }
+                                    if (cacheBehaviorsCacheBehaviorsitemsListValue != null) {
+                                        AllowedMethods allowedMethodsAllowedMethods = cacheBehaviorsCacheBehaviorsitemsListValue.getAllowedMethods();
+                                        if (allowedMethodsAllowedMethods != null) {
+                                            xmlWriter.startElement("AllowedMethods");
+                                            if (allowedMethodsAllowedMethods.getQuantity() != null) {
+                                                xmlWriter.startElement("Quantity").value(allowedMethodsAllowedMethods.getQuantity()).endElement();
+                                            }
+
+                                            if (allowedMethodsAllowedMethods != null) {
+                                                java.util.List<String> allowedMethodsAllowedMethodsitemsList = allowedMethodsAllowedMethods.getItems();
+                                                if (allowedMethodsAllowedMethodsitemsList != null && allowedMethodsAllowedMethodsitemsList.size() > 0) {
+                                                    int allowedMethodsAllowedMethodsitemsListIndex = 1;
+                                                    xmlWriter.startElement("Items");
+                                                    for (String allowedMethodsAllowedMethodsitemsListValue : allowedMethodsAllowedMethodsitemsList) {
+
+                                                    xmlWriter.startElement("Method");
+                                                        xmlWriter.value(allowedMethodsAllowedMethodsitemsListValue);
+                                                    xmlWriter.endElement();
+
+                                                        allowedMethodsAllowedMethodsitemsListIndex++;
+                                                    }
+                                                    xmlWriter.endElement();
+                                                }
+                                            }
+                                            xmlWriter.endElement();
+                                        }
+                                    }
+                                    if (cacheBehaviorsCacheBehaviorsitemsListValue.isSmoothStreaming() != null) {
+                                        xmlWriter.startElement("SmoothStreaming").value(cacheBehaviorsCacheBehaviorsitemsListValue.isSmoothStreaming()).endElement();
+                                    }
                                 xmlWriter.endElement();
 
-
                                     cacheBehaviorsCacheBehaviorsitemsListIndex++;
+                                }
+                                xmlWriter.endElement();
+                            }
+                        }
+                        xmlWriter.endElement();
+                    }
+                }
+                if (distributionConfigDistributionConfig != null) {
+                    CustomErrorResponses customErrorResponsesCustomErrorResponses = distributionConfigDistributionConfig.getCustomErrorResponses();
+                    if (customErrorResponsesCustomErrorResponses != null) {
+                        xmlWriter.startElement("CustomErrorResponses");
+                        if (customErrorResponsesCustomErrorResponses.getQuantity() != null) {
+                            xmlWriter.startElement("Quantity").value(customErrorResponsesCustomErrorResponses.getQuantity()).endElement();
+                        }
+
+                        if (customErrorResponsesCustomErrorResponses != null) {
+                            java.util.List<CustomErrorResponse> customErrorResponsesCustomErrorResponsesitemsList = customErrorResponsesCustomErrorResponses.getItems();
+                            if (customErrorResponsesCustomErrorResponsesitemsList != null && customErrorResponsesCustomErrorResponsesitemsList.size() > 0) {
+                                int customErrorResponsesCustomErrorResponsesitemsListIndex = 1;
+                                xmlWriter.startElement("Items");
+                                for (CustomErrorResponse customErrorResponsesCustomErrorResponsesitemsListValue : customErrorResponsesCustomErrorResponsesitemsList) {
+
+                                xmlWriter.startElement("CustomErrorResponse");
+                                    if (customErrorResponsesCustomErrorResponsesitemsListValue.getErrorCode() != null) {
+                                        xmlWriter.startElement("ErrorCode").value(customErrorResponsesCustomErrorResponsesitemsListValue.getErrorCode()).endElement();
+                                    }
+                                    if (customErrorResponsesCustomErrorResponsesitemsListValue.getResponsePagePath() != null) {
+                                        xmlWriter.startElement("ResponsePagePath").value(customErrorResponsesCustomErrorResponsesitemsListValue.getResponsePagePath()).endElement();
+                                    }
+                                    if (customErrorResponsesCustomErrorResponsesitemsListValue.getResponseCode() != null) {
+                                        xmlWriter.startElement("ResponseCode").value(customErrorResponsesCustomErrorResponsesitemsListValue.getResponseCode()).endElement();
+                                    }
+                                    if (customErrorResponsesCustomErrorResponsesitemsListValue.getErrorCachingMinTTL() != null) {
+                                        xmlWriter.startElement("ErrorCachingMinTTL").value(customErrorResponsesCustomErrorResponsesitemsListValue.getErrorCachingMinTTL()).endElement();
+                                    }
+                                xmlWriter.endElement();
+
+                                    customErrorResponsesCustomErrorResponsesitemsListIndex++;
                                 }
                                 xmlWriter.endElement();
                             }
@@ -409,19 +498,70 @@ public class UpdateDistributionRequestMarshaller implements Marshaller<Request<U
                 if (distributionConfigDistributionConfig.isEnabled() != null) {
                     xmlWriter.startElement("Enabled").value(distributionConfigDistributionConfig.isEnabled()).endElement();
                 }
+                if (distributionConfigDistributionConfig != null) {
+                    ViewerCertificate viewerCertificateViewerCertificate = distributionConfigDistributionConfig.getViewerCertificate();
+                    if (viewerCertificateViewerCertificate != null) {
+                        xmlWriter.startElement("ViewerCertificate");
+                        if (viewerCertificateViewerCertificate.getIAMCertificateId() != null) {
+                            xmlWriter.startElement("IAMCertificateId").value(viewerCertificateViewerCertificate.getIAMCertificateId()).endElement();
+                        }
+                        if (viewerCertificateViewerCertificate.isCloudFrontDefaultCertificate() != null) {
+                            xmlWriter.startElement("CloudFrontDefaultCertificate").value(viewerCertificateViewerCertificate.isCloudFrontDefaultCertificate()).endElement();
+                        }
+                        if (viewerCertificateViewerCertificate.getSSLSupportMethod() != null) {
+                            xmlWriter.startElement("SSLSupportMethod").value(viewerCertificateViewerCertificate.getSSLSupportMethod()).endElement();
+                        }
+                        xmlWriter.endElement();
+                    }
+                }
+                if (distributionConfigDistributionConfig != null) {
+                    Restrictions restrictionsRestrictions = distributionConfigDistributionConfig.getRestrictions();
+                    if (restrictionsRestrictions != null) {
+                        xmlWriter.startElement("Restrictions");
+                        if (restrictionsRestrictions != null) {
+                            GeoRestriction geoRestrictionGeoRestriction = restrictionsRestrictions.getGeoRestriction();
+                            if (geoRestrictionGeoRestriction != null) {
+                                xmlWriter.startElement("GeoRestriction");
+                                if (geoRestrictionGeoRestriction.getRestrictionType() != null) {
+                                    xmlWriter.startElement("RestrictionType").value(geoRestrictionGeoRestriction.getRestrictionType()).endElement();
+                                }
+                                if (geoRestrictionGeoRestriction.getQuantity() != null) {
+                                    xmlWriter.startElement("Quantity").value(geoRestrictionGeoRestriction.getQuantity()).endElement();
+                                }
+
+                                if (geoRestrictionGeoRestriction != null) {
+                                    java.util.List<String> geoRestrictionGeoRestrictionitemsList = geoRestrictionGeoRestriction.getItems();
+                                    if (geoRestrictionGeoRestrictionitemsList != null && geoRestrictionGeoRestrictionitemsList.size() > 0) {
+                                        int geoRestrictionGeoRestrictionitemsListIndex = 1;
+                                        xmlWriter.startElement("Items");
+                                        for (String geoRestrictionGeoRestrictionitemsListValue : geoRestrictionGeoRestrictionitemsList) {
+
+                                        xmlWriter.startElement("Location");
+                                            xmlWriter.value(geoRestrictionGeoRestrictionitemsListValue);
+                                        xmlWriter.endElement();
+
+                                            geoRestrictionGeoRestrictionitemsListIndex++;
+                                        }
+                                        xmlWriter.endElement();
+                                    }
+                                }
+                                xmlWriter.endElement();
+                            }
+                        }
+                        xmlWriter.endElement();
+                    }
+                }
                 xmlWriter.endElement();
             }
         }
 
-
             try {
                 request.setContent(new StringInputStream(stringWriter.getBuffer().toString()));
-                request.addHeader("Content-Length", Integer.toString(stringWriter.getBuffer().toString().getBytes("UTF-8").length));
+                request.addHeader("Content-Length", Integer.toString(stringWriter.getBuffer().toString().getBytes(UTF8).length));
                 request.addHeader("Content-Type", "application/xml");
             } catch (UnsupportedEncodingException e) {
                 throw new AmazonClientException("Unable to marshall request to XML", e);
             }
-        
 
         return request;
     }

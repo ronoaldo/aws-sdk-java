@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the CreateGroup action.
+ * Contains the result of a successful invocation of the CreateGroup
+ * action.
  * </p>
  */
-public class CreateGroupResult  implements Serializable  {
+public class CreateGroupResult implements Serializable {
 
     /**
      * Information about the group.
@@ -53,14 +55,13 @@ public class CreateGroupResult  implements Serializable  {
      * @param group Information about the group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateGroupResult withGroup(Group group) {
         this.group = group;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +73,7 @@ public class CreateGroupResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGroup() != null) sb.append("Group: " + getGroup() );
         sb.append("}");
         return sb.toString();

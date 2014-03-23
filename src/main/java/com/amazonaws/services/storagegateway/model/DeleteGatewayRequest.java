@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,40 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#deleteGateway(DeleteGatewayRequest) DeleteGateway operation}.
  * <p>
- * This operation deletes a gateway. To specify which gateway to delete, use the Amazon Resource Name (ARN) of the gateway in your request. The operation
- * deletes the gateway; however, it does not delete the gateway virtual machine (VM) from your host computer.
+ * This operation deletes a gateway. To specify which gateway to delete,
+ * use the Amazon Resource Name (ARN) of the gateway in your request. The
+ * operation deletes the gateway; however, it does not delete the gateway
+ * virtual machine (VM) from your host computer.
  * </p>
  * <p>
- * After you delete a gateway, you cannot reactivate it. Completed snapshots of the gateway volumes are not deleted upon deleting the gateway, however,
- * pending snapshots will not complete. After you delete a gateway, your next step is to remove it from your environment.
+ * After you delete a gateway, you cannot reactivate it. Completed
+ * snapshots of the gateway volumes are not deleted upon deleting the
+ * gateway, however, pending snapshots will not complete. After you
+ * delete a gateway, your next step is to remove it from your
+ * environment.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> You no longer pay software charges after the gateway is deleted; however, your existing Amazon EBS snapshots persist and you will
- * continue to be billed for these snapshots.??You can choose to remove all remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.??
- * If you prefer not to cancel your Amazon EC2 subscription, you can delete your snapshots using the Amazon EC2 console. For more information, see the
- * AWS Storage Gateway Detail Page.
+ * <b>IMPORTANT:</b> You no longer pay software charges after the gateway
+ * is deleted; however, your existing Amazon EBS snapshots persist and
+ * you will continue to be billed for these snapshots.??You can choose to
+ * remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
+ * subscription.?? If you prefer not to cancel your Amazon EC2
+ * subscription, you can delete your snapshots using the Amazon EC2
+ * console. For more information, see the AWS Storage Gateway Detail
+ * Page.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#deleteGateway(DeleteGatewayRequest)
  */
-public class DeleteGatewayRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteGatewayRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -94,14 +105,13 @@ public class DeleteGatewayRequest extends AmazonWebServiceRequest  implements Se
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteGatewayRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -113,7 +123,7 @@ public class DeleteGatewayRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

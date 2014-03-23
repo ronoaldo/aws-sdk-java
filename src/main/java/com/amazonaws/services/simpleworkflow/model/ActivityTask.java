@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Unit of work sent to an activity worker.
  * </p>
  */
-public class ActivityTask  implements Serializable  {
+public class ActivityTask implements Serializable {
 
     /**
      * The opaque string used as a handle on the task. This token is used by
@@ -113,14 +114,13 @@ public class ActivityTask  implements Serializable  {
      *         system about the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTask withTaskToken(String taskToken) {
         this.taskToken = taskToken;
         return this;
     }
-    
-    
+
     /**
      * The unique ID of the task.
      * <p>
@@ -156,14 +156,13 @@ public class ActivityTask  implements Serializable  {
      * @param activityId The unique ID of the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTask withActivityId(String activityId) {
         this.activityId = activityId;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>ActivityTaskStarted</code> event recorded in the
      * history.
@@ -196,14 +195,13 @@ public class ActivityTask  implements Serializable  {
      *         history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTask withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * The workflow execution that started this activity task.
      *
@@ -230,14 +228,13 @@ public class ActivityTask  implements Serializable  {
      * @param workflowExecution The workflow execution that started this activity task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTask withWorkflowExecution(WorkflowExecution workflowExecution) {
         this.workflowExecution = workflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The type of this activity task.
      *
@@ -264,14 +261,13 @@ public class ActivityTask  implements Serializable  {
      * @param activityType The type of this activity task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTask withActivityType(ActivityType activityType) {
         this.activityType = activityType;
         return this;
     }
-    
-    
+
     /**
      * The inputs provided when the activity task was scheduled. The form of
      * the input is user defined and should be meaningful to the activity
@@ -319,14 +315,13 @@ public class ActivityTask  implements Serializable  {
      *         implementation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTask withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -338,12 +333,12 @@ public class ActivityTask  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTaskToken() != null) sb.append("TaskToken: " + getTaskToken() + ",");    	
-        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");    	
-        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");    	
-        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");    	
-        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");    	
+        sb.append("{");
+        if (getTaskToken() != null) sb.append("TaskToken: " + getTaskToken() + ",");
+        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");
+        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");
+        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");
+        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");
         if (getInput() != null) sb.append("Input: " + getInput() );
         sb.append("}");
         return sb.toString();

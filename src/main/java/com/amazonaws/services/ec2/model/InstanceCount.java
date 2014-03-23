@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,85 +13,151 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Instance Count
+ * <p>
+ * Describes a Reserved Instance listing state.
+ * </p>
  */
-public class InstanceCount  implements Serializable  {
+public class InstanceCount implements Serializable {
 
+    /**
+     * The states of the listed Reserved Instances.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, sold, cancelled, pending
+     */
     private String state;
 
+    /**
+     * he number of listed Reserved Instances in the state specified by the
+     * <code>state</code>.
+     */
     private Integer instanceCount;
 
     /**
-     * Returns the value of the State property for this object.
+     * The states of the listed Reserved Instances.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, sold, cancelled, pending
      *
-     * @return The value of the State property for this object.
+     * @return The states of the listed Reserved Instances.
+     *
+     * @see ListingState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The states of the listed Reserved Instances.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, sold, cancelled, pending
      *
-     * @param state The new value for the State property for this object.
+     * @param state The states of the listed Reserved Instances.
+     *
+     * @see ListingState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The states of the listed Reserved Instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, sold, cancelled, pending
      *
-     * @param state The new value for the State property for this object.
+     * @param state The states of the listed Reserved Instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see ListingState
      */
     public InstanceCount withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The states of the listed Reserved Instances.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, sold, cancelled, pending
+     *
+     * @param state The states of the listed Reserved Instances.
+     *
+     * @see ListingState
+     */
+    public void setState(ListingState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Returns the value of the InstanceCount property for this object.
+     * The states of the listed Reserved Instances.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, sold, cancelled, pending
      *
-     * @return The value of the InstanceCount property for this object.
+     * @param state The states of the listed Reserved Instances.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see ListingState
+     */
+    public InstanceCount withState(ListingState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * he number of listed Reserved Instances in the state specified by the
+     * <code>state</code>.
+     *
+     * @return he number of listed Reserved Instances in the state specified by the
+     *         <code>state</code>.
      */
     public Integer getInstanceCount() {
         return instanceCount;
     }
     
     /**
-     * Sets the value of the InstanceCount property for this object.
+     * he number of listed Reserved Instances in the state specified by the
+     * <code>state</code>.
      *
-     * @param instanceCount The new value for the InstanceCount property for this object.
+     * @param instanceCount he number of listed Reserved Instances in the state specified by the
+     *         <code>state</code>.
      */
     public void setInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
     }
     
     /**
-     * Sets the value of the InstanceCount property for this object.
+     * he number of listed Reserved Instances in the state specified by the
+     * <code>state</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceCount The new value for the InstanceCount property for this object.
+     * @param instanceCount he number of listed Reserved Instances in the state specified by the
+     *         <code>state</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceCount withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,8 +169,8 @@ public class InstanceCount  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
+        sb.append("{");
+        if (getState() != null) sb.append("State: " + getState() + ",");
         if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() );
         sb.append("}");
         return sb.toString();

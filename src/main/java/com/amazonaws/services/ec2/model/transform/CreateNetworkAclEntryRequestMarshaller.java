@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateNetworkAclEntryRequestMarshaller implements Marshaller<Reques
     public Request<CreateNetworkAclEntryRequest> marshall(CreateNetworkAclEntryRequest createNetworkAclEntryRequest) {
 
         if (createNetworkAclEntryRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateNetworkAclEntryRequest> request = new DefaultRequest<CreateNetworkAclEntryRequest>(createNetworkAclEntryRequest, "AmazonEC2");
         request.addParameter("Action", "CreateNetworkAclEntry");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createNetworkAclEntryRequest.getNetworkAclId() != null) {
             request.addParameter("NetworkAclId", StringUtils.fromString(createNetworkAclEntryRequest.getNetworkAclId()));
@@ -76,7 +76,6 @@ public class CreateNetworkAclEntryRequestMarshaller implements Marshaller<Reques
                 request.addParameter("PortRange.To", StringUtils.fromInteger(portRangePortRange.getTo()));
             }
         }
-
 
         return request;
     }

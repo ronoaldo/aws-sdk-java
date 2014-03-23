@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.directconnect.AmazonDirectConnect#describeVirtualGateways(DescribeVirtualGatewaysRequest) DescribeVirtualGateways operation}.
@@ -22,14 +24,17 @@ import java.io.Serializable;
  * Returns a list of virtual private gateways owned by the AWS account.
  * </p>
  * <p>
- * You can create one or more AWS Direct Connect private virtual interfaces linking to a virtual private gateway. A virtual private gateway can be
- * managed via Amazon Virtual Private Cloud (VPC) console or the <a
- * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html"> EC2 CreateVpnGateway </a> action.
+ * You can create one or more AWS Direct Connect private virtual
+ * interfaces linking to a virtual private gateway. A virtual private
+ * gateway can be managed via Amazon Virtual Private Cloud (VPC) console
+ * or the
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html"> EC2 CreateVpnGateway </a>
+ * action.
  * </p>
  *
  * @see com.amazonaws.services.directconnect.AmazonDirectConnect#describeVirtualGateways(DescribeVirtualGatewaysRequest)
  */
-public class DescribeVirtualGatewaysRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeVirtualGatewaysRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Returns a string representation of this object; useful for testing and

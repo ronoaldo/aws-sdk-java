@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeExportTasksRequestMarshaller implements Marshaller<Request<
     public Request<DescribeExportTasksRequest> marshall(DescribeExportTasksRequest describeExportTasksRequest) {
 
         if (describeExportTasksRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeExportTasksRequest> request = new DefaultRequest<DescribeExportTasksRequest>(describeExportTasksRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeExportTasks");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> exportTaskIdsList = describeExportTasksRequest.getExportTaskIds();
         int exportTaskIdsListIndex = 1;
@@ -51,7 +50,6 @@ public class DescribeExportTasksRequestMarshaller implements Marshaller<Request<
 
             exportTaskIdsListIndex++;
         }
-
 
         return request;
     }

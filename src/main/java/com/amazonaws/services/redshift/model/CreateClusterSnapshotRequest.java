@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#createClusterSnapshot(CreateClusterSnapshotRequest) CreateClusterSnapshot operation}.
  * <p>
- * Creates a manual snapshot of the specified cluster. The cluster must be in the "available" state.
+ * Creates a manual snapshot of the specified cluster. The cluster must
+ * be in the "available" state.
  * </p>
  * <p>
- * For more information about working with snapshots, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">
- * Amazon Redshift Snapshots </a> in the <i>Amazon Redshift Management Guide</i> .
+ * For more information about working with snapshots, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html"> Amazon Redshift Snapshots </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#createClusterSnapshot(CreateClusterSnapshotRequest)
  */
-public class CreateClusterSnapshotRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateClusterSnapshotRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A unique identifier for the snapshot that you are requesting. This
@@ -108,14 +112,13 @@ public class CreateClusterSnapshotRequest extends AmazonWebServiceRequest  imple
      *         <code>my-snapshot-id</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateClusterSnapshotRequest withSnapshotIdentifier(String snapshotIdentifier) {
         this.snapshotIdentifier = snapshotIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The cluster identifier for which you want a snapshot.
      *
@@ -142,14 +145,13 @@ public class CreateClusterSnapshotRequest extends AmazonWebServiceRequest  imple
      * @param clusterIdentifier The cluster identifier for which you want a snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateClusterSnapshotRequest withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -161,8 +163,8 @@ public class CreateClusterSnapshotRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotIdentifier() != null) sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");    	
+        sb.append("{");
+        if (getSnapshotIdentifier() != null) sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");
         if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() );
         sb.append("}");
         return sb.toString();

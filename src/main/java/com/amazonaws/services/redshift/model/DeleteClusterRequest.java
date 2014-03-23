@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,30 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#deleteCluster(DeleteClusterRequest) DeleteCluster operation}.
  * <p>
- * Deletes a previously provisioned cluster. A successful response from the web service indicates that the request was received correctly. If a final
- * cluster snapshot is requested the status of the cluster will be "final-snapshot" while the snapshot is being taken, then it's "deleting" once Amazon
- * Redshift begins deleting the cluster. Use DescribeClusters to monitor the status of the deletion. The delete operation cannot be canceled or reverted
- * once submitted. For more information about managing clusters, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a> in the <i>Amazon Redshift Management
- * Guide</i> .
+ * Deletes a previously provisioned cluster. A successful response from
+ * the web service indicates that the request was received correctly. If
+ * a final cluster snapshot is requested the status of the cluster will
+ * be "final-snapshot" while the snapshot is being taken, then it's
+ * "deleting" once Amazon Redshift begins deleting the cluster. Use
+ * DescribeClusters to monitor the status of the deletion. The delete
+ * operation cannot be canceled or reverted once submitted. For more
+ * information about managing clusters, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#deleteCluster(DeleteClusterRequest)
  */
-public class DeleteClusterRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteClusterRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the cluster to be deleted. <p>Constraints: <ul>
@@ -112,14 +118,13 @@ public class DeleteClusterRequest extends AmazonWebServiceRequest  implements Se
      *         consecutive hyphens.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteClusterRequest withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Determines whether a final snapshot of the cluster is created before
      * Amazon Redshift deletes the cluster. If <code>true</code>, a final
@@ -182,14 +187,13 @@ public class DeleteClusterRequest extends AmazonWebServiceRequest  implements Se
      *         <p>Default: <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteClusterRequest withSkipFinalClusterSnapshot(Boolean skipFinalClusterSnapshot) {
         this.skipFinalClusterSnapshot = skipFinalClusterSnapshot;
         return this;
     }
-    
-    
+
     /**
      * Determines whether a final snapshot of the cluster is created before
      * Amazon Redshift deletes the cluster. If <code>true</code>, a final
@@ -210,7 +214,7 @@ public class DeleteClusterRequest extends AmazonWebServiceRequest  implements Se
     public Boolean getSkipFinalClusterSnapshot() {
         return skipFinalClusterSnapshot;
     }
-    
+
     /**
      * The identifier of the final snapshot that is to be created immediately
      * before deleting the cluster. If this parameter is provided,
@@ -267,14 +271,13 @@ public class DeleteClusterRequest extends AmazonWebServiceRequest  implements Se
      *         end with a hyphen or contain two consecutive hyphens.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteClusterRequest withFinalClusterSnapshotIdentifier(String finalClusterSnapshotIdentifier) {
         this.finalClusterSnapshotIdentifier = finalClusterSnapshotIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -286,9 +289,9 @@ public class DeleteClusterRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");    	
-        if (isSkipFinalClusterSnapshot() != null) sb.append("SkipFinalClusterSnapshot: " + isSkipFinalClusterSnapshot() + ",");    	
+        sb.append("{");
+        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+        if (isSkipFinalClusterSnapshot() != null) sb.append("SkipFinalClusterSnapshot: " + isSkipFinalClusterSnapshot() + ",");
         if (getFinalClusterSnapshotIdentifier() != null) sb.append("FinalClusterSnapshotIdentifier: " + getFinalClusterSnapshotIdentifier() );
         sb.append("}");
         return sb.toString();

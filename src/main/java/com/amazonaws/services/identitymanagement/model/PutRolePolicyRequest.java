@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,30 +13,37 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#putRolePolicy(PutRolePolicyRequest) PutRolePolicy operation}.
  * <p>
- * Adds (or updates) a policy document associated with the specified role. For information about policies, go to <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?PoliciesOverview.html"> Overview of Policies </a> in <i>Using AWS Identity
- * and Access Management</i> .
+ * Adds (or updates) a policy document associated with the specified
+ * role. For information about policies, go to
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?PoliciesOverview.html"> Overview of Policies </a>
+ * in <i>Using AWS Identity and Access Management</i> .
  * </p>
  * <p>
- * For information about limits on the policies you can associate with a role, see <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a> in <i>Using AWS
- * Identity and Access Management</i> .
+ * For information about limits on the policies you can associate with a
+ * role, see
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a>
+ * in <i>Using AWS Identity and Access Management</i> .
  * </p>
  * <p>
- * <b>NOTE:</b>Because policy documents can be large, you should use POST rather than GET when calling PutRolePolicy. For information about setting up
- * signatures and authorization through the API, go to Signing AWS API Requests in the AWS General Reference. For general information about using the
- * Query API with IAM, go to Making Query Requests in Using IAM.
+ * <b>NOTE:</b>Because policy documents can be large, you should use POST
+ * rather than GET when calling PutRolePolicy. For information about
+ * setting up signatures and authorization through the API, go to Signing
+ * AWS API Requests in the AWS General Reference. For general information
+ * about using the Query API with IAM, go to Making Query Requests in
+ * Using IAM.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#putRolePolicy(PutRolePolicyRequest)
  */
-public class PutRolePolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutRolePolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the role to associate the policy with.
@@ -103,14 +110,13 @@ public class PutRolePolicyRequest extends AmazonWebServiceRequest  implements Se
      * @param roleName Name of the role to associate the policy with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutRolePolicyRequest withRoleName(String roleName) {
         this.roleName = roleName;
         return this;
     }
-    
-    
+
     /**
      * Name of the policy document.
      * <p>
@@ -149,14 +155,13 @@ public class PutRolePolicyRequest extends AmazonWebServiceRequest  implements Se
      * @param policyName Name of the policy document.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutRolePolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * The policy document.
      * <p>
@@ -195,14 +200,13 @@ public class PutRolePolicyRequest extends AmazonWebServiceRequest  implements Se
      * @param policyDocument The policy document.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutRolePolicyRequest withPolicyDocument(String policyDocument) {
         this.policyDocument = policyDocument;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -214,9 +218,9 @@ public class PutRolePolicyRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRoleName() != null) sb.append("RoleName: " + getRoleName() + ",");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getRoleName() != null) sb.append("RoleName: " + getRoleName() + ",");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (getPolicyDocument() != null) sb.append("PolicyDocument: " + getPolicyDocument() );
         sb.append("}");
         return sb.toString();

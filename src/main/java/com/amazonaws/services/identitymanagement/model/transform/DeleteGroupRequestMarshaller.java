@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteGroupRequestMarshaller implements Marshaller<Request<DeleteGr
     public Request<DeleteGroupRequest> marshall(DeleteGroupRequest deleteGroupRequest) {
 
         if (deleteGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteGroupRequest> request = new DefaultRequest<DeleteGroupRequest>(deleteGroupRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "DeleteGroup");
@@ -43,7 +43,6 @@ public class DeleteGroupRequestMarshaller implements Marshaller<Request<DeleteGr
         if (deleteGroupRequest.getGroupName() != null) {
             request.addParameter("GroupName", StringUtils.fromString(deleteGroupRequest.getGroupName()));
         }
-
 
         return request;
     }

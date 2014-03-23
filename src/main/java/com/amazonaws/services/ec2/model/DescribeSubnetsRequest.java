@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,78 +13,99 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeSubnetsRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeSubnets(DescribeSubnetsRequest) DescribeSubnets operation}.
  * <p>
- * Gives you information about your subnets. You can filter the results to return information only about subnets that match criteria you specify.
+ * Describes one or more of your subnets.
  * </p>
  * <p>
- * For example, you could ask to get information about a particular subnet (or all) only if the subnet's state is available. You can specify multiple
- * filters (e.g., the subnet is in a particular VPC, and the subnet's state is available).
- * </p>
- * <p>
- * The result includes information for a particular subnet only if the subnet matches all your filters. If there's no match, no special message is
- * returned; the response is simply empty. The following table shows the available filters.
+ * For more information about subnets, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html"> Your VPC and Subnets </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeSubnets(DescribeSubnetsRequest)
  */
-public class DescribeSubnetsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeSubnetsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeSubnetsRequest> {
 
     /**
-     * A set of one or more subnet IDs.
+     * One or more subnet IDs. <p>Default: Describes all your subnets.
      */
-    private java.util.List<String> subnetIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIds;
 
     /**
-     * A list of filters used to match properties for Subnets. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     * Availability Zone for the subnet. </li> <li>
+     * <p><code>available-ip-address-count</code> - The number of IP
+     * addresses in the subnet that are available. </li> <li>
+     * <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     * you specify must exactly match the subnet's CIDR block for information
+     * to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     * - Indicates whether this is the default subnet for the Availability
+     * Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     * (<code>pending</code> | <code>available</code>). </li> <li>
+     * <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the <code>tag-value</code> filter. For
+     * example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     * subnet. </li> </ul>
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
-     * A set of one or more subnet IDs.
+     * One or more subnet IDs. <p>Default: Describes all your subnets.
      *
-     * @return A set of one or more subnet IDs.
+     * @return One or more subnet IDs. <p>Default: Describes all your subnets.
      */
     public java.util.List<String> getSubnetIds() {
-        
         if (subnetIds == null) {
-            subnetIds = new java.util.ArrayList<String>();
+              subnetIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnetIds.setAutoConstruct(true);
         }
         return subnetIds;
     }
     
     /**
-     * A set of one or more subnet IDs.
+     * One or more subnet IDs. <p>Default: Describes all your subnets.
      *
-     * @param subnetIds A set of one or more subnet IDs.
+     * @param subnetIds One or more subnet IDs. <p>Default: Describes all your subnets.
      */
     public void setSubnetIds(java.util.Collection<String> subnetIds) {
         if (subnetIds == null) {
             this.subnetIds = null;
             return;
         }
-
-        java.util.List<String> subnetIdsCopy = new java.util.ArrayList<String>(subnetIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
         subnetIdsCopy.addAll(subnetIds);
         this.subnetIds = subnetIdsCopy;
     }
     
     /**
-     * A set of one or more subnet IDs.
+     * One or more subnet IDs. <p>Default: Describes all your subnets.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetIds A set of one or more subnet IDs.
+     * @param subnetIds One or more subnet IDs. <p>Default: Describes all your subnets.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSubnetsRequest withSubnetIds(String... subnetIds) {
         if (getSubnetIds() == null) setSubnetIds(new java.util.ArrayList<String>(subnetIds.length));
@@ -95,83 +116,208 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest  implements 
     }
     
     /**
-     * A set of one or more subnet IDs.
+     * One or more subnet IDs. <p>Default: Describes all your subnets.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetIds A set of one or more subnet IDs.
+     * @param subnetIds One or more subnet IDs. <p>Default: Describes all your subnets.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSubnetsRequest withSubnetIds(java.util.Collection<String> subnetIds) {
         if (subnetIds == null) {
             this.subnetIds = null;
         } else {
-            java.util.List<String> subnetIdsCopy = new java.util.ArrayList<String>(subnetIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
             subnetIdsCopy.addAll(subnetIds);
             this.subnetIds = subnetIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of filters used to match properties for Subnets. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     * Availability Zone for the subnet. </li> <li>
+     * <p><code>available-ip-address-count</code> - The number of IP
+     * addresses in the subnet that are available. </li> <li>
+     * <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     * you specify must exactly match the subnet's CIDR block for information
+     * to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     * - Indicates whether this is the default subnet for the Availability
+     * Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     * (<code>pending</code> | <code>available</code>). </li> <li>
+     * <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the <code>tag-value</code> filter. For
+     * example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     * subnet. </li> </ul>
      *
-     * @return A list of filters used to match properties for Subnets. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @return One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     *         Availability Zone for the subnet. </li> <li>
+     *         <p><code>available-ip-address-count</code> - The number of IP
+     *         addresses in the subnet that are available. </li> <li>
+     *         <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     *         you specify must exactly match the subnet's CIDR block for information
+     *         to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     *         - Indicates whether this is the default subnet for the Availability
+     *         Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     *         (<code>pending</code> | <code>available</code>). </li> <li>
+     *         <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the <code>tag-value</code> filter. For
+     *         example, if you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     *         subnet. </li> </ul>
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
     
     /**
-     * A list of filters used to match properties for Subnets. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     * Availability Zone for the subnet. </li> <li>
+     * <p><code>available-ip-address-count</code> - The number of IP
+     * addresses in the subnet that are available. </li> <li>
+     * <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     * you specify must exactly match the subnet's CIDR block for information
+     * to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     * - Indicates whether this is the default subnet for the Availability
+     * Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     * (<code>pending</code> | <code>available</code>). </li> <li>
+     * <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the <code>tag-value</code> filter. For
+     * example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     * subnet. </li> </ul>
      *
-     * @param filters A list of filters used to match properties for Subnets. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     *         Availability Zone for the subnet. </li> <li>
+     *         <p><code>available-ip-address-count</code> - The number of IP
+     *         addresses in the subnet that are available. </li> <li>
+     *         <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     *         you specify must exactly match the subnet's CIDR block for information
+     *         to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     *         - Indicates whether this is the default subnet for the Availability
+     *         Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     *         (<code>pending</code> | <code>available</code>). </li> <li>
+     *         <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the <code>tag-value</code> filter. For
+     *         example, if you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     *         subnet. </li> </ul>
      */
     public void setFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
     
     /**
-     * A list of filters used to match properties for Subnets. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     * Availability Zone for the subnet. </li> <li>
+     * <p><code>available-ip-address-count</code> - The number of IP
+     * addresses in the subnet that are available. </li> <li>
+     * <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     * you specify must exactly match the subnet's CIDR block for information
+     * to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     * - Indicates whether this is the default subnet for the Availability
+     * Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     * (<code>pending</code> | <code>available</code>). </li> <li>
+     * <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the <code>tag-value</code> filter. For
+     * example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     * subnet. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for Subnets. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     *         Availability Zone for the subnet. </li> <li>
+     *         <p><code>available-ip-address-count</code> - The number of IP
+     *         addresses in the subnet that are available. </li> <li>
+     *         <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     *         you specify must exactly match the subnet's CIDR block for information
+     *         to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     *         - Indicates whether this is the default subnet for the Availability
+     *         Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     *         (<code>pending</code> | <code>available</code>). </li> <li>
+     *         <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the <code>tag-value</code> filter. For
+     *         example, if you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     *         subnet. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSubnetsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -182,31 +328,85 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest  implements 
     }
     
     /**
-     * A list of filters used to match properties for Subnets. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     * Availability Zone for the subnet. </li> <li>
+     * <p><code>available-ip-address-count</code> - The number of IP
+     * addresses in the subnet that are available. </li> <li>
+     * <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     * you specify must exactly match the subnet's CIDR block for information
+     * to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     * - Indicates whether this is the default subnet for the Availability
+     * Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     * (<code>pending</code> | <code>available</code>). </li> <li>
+     * <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the <code>tag-value</code> filter. For
+     * example, if you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     * subnet. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for Subnets. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>availability-zone</code> - The
+     *         Availability Zone for the subnet. </li> <li>
+     *         <p><code>available-ip-address-count</code> - The number of IP
+     *         addresses in the subnet that are available. </li> <li>
+     *         <p><code>cidr</code> - The CIDR block of the subnet. The CIDR block
+     *         you specify must exactly match the subnet's CIDR block for information
+     *         to be returned for the subnet. </li> <li> <p><code>defaultForAz</code>
+     *         - Indicates whether this is the default subnet for the Availability
+     *         Zone. </li> <li> <p><code>state</code> - The state of the subnet
+     *         (<code>pending</code> | <code>available</code>). </li> <li>
+     *         <p><code>subnet-id</code> - The ID of the subnet. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the <code>tag-value</code> filter. For
+     *         example, if you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>vpc-id</code> - The ID of the VPC for the
+     *         subnet. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSubnetsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeSubnetsRequest> getDryRunRequest() {
+        Request<DescribeSubnetsRequest> request = new DescribeSubnetsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -220,8 +420,8 @@ public class DescribeSubnetsRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubnetIds() != null) sb.append("SubnetIds: " + getSubnetIds() + ",");    	
+        sb.append("{");
+        if (getSubnetIds() != null) sb.append("SubnetIds: " + getSubnetIds() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

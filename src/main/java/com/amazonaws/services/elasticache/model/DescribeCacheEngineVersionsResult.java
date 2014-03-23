@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,97 +13,103 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeCacheEngineVersions action.
+ * Represents the output of a DescribeCacheEngineVersions operation.
  * </p>
  */
-public class DescribeCacheEngineVersionsResult  implements Serializable  {
+public class DescribeCacheEngineVersionsResult implements Serializable {
 
     /**
-     * The identifier returned to allow retrieval of paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
-     * A list of <code>CacheEngineVersion</code> elements.
+     * A list of cache engine version details. Each element in the list
+     * contains detailed information about once cache engine version.
      */
-    private java.util.List<CacheEngineVersion> cacheEngineVersions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CacheEngineVersion> cacheEngineVersions;
 
     /**
-     * The identifier returned to allow retrieval of paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return The identifier returned to allow retrieval of paginated results.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The identifier returned to allow retrieval of paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker The identifier returned to allow retrieval of paginated results.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The identifier returned to allow retrieval of paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The identifier returned to allow retrieval of paginated results.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheEngineVersionsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of <code>CacheEngineVersion</code> elements.
+     * A list of cache engine version details. Each element in the list
+     * contains detailed information about once cache engine version.
      *
-     * @return A list of <code>CacheEngineVersion</code> elements.
+     * @return A list of cache engine version details. Each element in the list
+     *         contains detailed information about once cache engine version.
      */
     public java.util.List<CacheEngineVersion> getCacheEngineVersions() {
-        
         if (cacheEngineVersions == null) {
-            cacheEngineVersions = new java.util.ArrayList<CacheEngineVersion>();
+              cacheEngineVersions = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheEngineVersion>();
+              cacheEngineVersions.setAutoConstruct(true);
         }
         return cacheEngineVersions;
     }
     
     /**
-     * A list of <code>CacheEngineVersion</code> elements.
+     * A list of cache engine version details. Each element in the list
+     * contains detailed information about once cache engine version.
      *
-     * @param cacheEngineVersions A list of <code>CacheEngineVersion</code> elements.
+     * @param cacheEngineVersions A list of cache engine version details. Each element in the list
+     *         contains detailed information about once cache engine version.
      */
     public void setCacheEngineVersions(java.util.Collection<CacheEngineVersion> cacheEngineVersions) {
         if (cacheEngineVersions == null) {
             this.cacheEngineVersions = null;
             return;
         }
-
-        java.util.List<CacheEngineVersion> cacheEngineVersionsCopy = new java.util.ArrayList<CacheEngineVersion>(cacheEngineVersions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CacheEngineVersion> cacheEngineVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheEngineVersion>(cacheEngineVersions.size());
         cacheEngineVersionsCopy.addAll(cacheEngineVersions);
         this.cacheEngineVersions = cacheEngineVersionsCopy;
     }
     
     /**
-     * A list of <code>CacheEngineVersion</code> elements.
+     * A list of cache engine version details. Each element in the list
+     * contains detailed information about once cache engine version.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheEngineVersions A list of <code>CacheEngineVersion</code> elements.
+     * @param cacheEngineVersions A list of cache engine version details. Each element in the list
+     *         contains detailed information about once cache engine version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheEngineVersionsResult withCacheEngineVersions(CacheEngineVersion... cacheEngineVersions) {
         if (getCacheEngineVersions() == null) setCacheEngineVersions(new java.util.ArrayList<CacheEngineVersion>(cacheEngineVersions.length));
@@ -114,27 +120,29 @@ public class DescribeCacheEngineVersionsResult  implements Serializable  {
     }
     
     /**
-     * A list of <code>CacheEngineVersion</code> elements.
+     * A list of cache engine version details. Each element in the list
+     * contains detailed information about once cache engine version.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheEngineVersions A list of <code>CacheEngineVersion</code> elements.
+     * @param cacheEngineVersions A list of cache engine version details. Each element in the list
+     *         contains detailed information about once cache engine version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheEngineVersionsResult withCacheEngineVersions(java.util.Collection<CacheEngineVersion> cacheEngineVersions) {
         if (cacheEngineVersions == null) {
             this.cacheEngineVersions = null;
         } else {
-            java.util.List<CacheEngineVersion> cacheEngineVersionsCopy = new java.util.ArrayList<CacheEngineVersion>(cacheEngineVersions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CacheEngineVersion> cacheEngineVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheEngineVersion>(cacheEngineVersions.size());
             cacheEngineVersionsCopy.addAll(cacheEngineVersions);
             this.cacheEngineVersions = cacheEngineVersionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +154,8 @@ public class DescribeCacheEngineVersionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getCacheEngineVersions() != null) sb.append("CacheEngineVersions: " + getCacheEngineVersions() );
         sb.append("}");
         return sb.toString();

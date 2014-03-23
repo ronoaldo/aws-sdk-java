@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeEvents action.
  * </p>
  */
-public class DescribeEventsResult  implements Serializable  {
+public class DescribeEventsResult implements Serializable {
 
     /**
      * A marker at which to continue listing events in a new request. The
@@ -32,7 +33,7 @@ public class DescribeEventsResult  implements Serializable  {
     /**
      * A list of <a>Event</a> instances.
      */
-    private java.util.List<Event> events;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Event> events;
 
     /**
      * A marker at which to continue listing events in a new request. The
@@ -72,23 +73,22 @@ public class DescribeEventsResult  implements Serializable  {
      *         returned in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>Event</a> instances.
      *
      * @return A list of <a>Event</a> instances.
      */
     public java.util.List<Event> getEvents() {
-        
         if (events == null) {
-            events = new java.util.ArrayList<Event>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<Event>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
@@ -103,8 +103,7 @@ public class DescribeEventsResult  implements Serializable  {
             this.events = null;
             return;
         }
-
-        java.util.List<Event> eventsCopy = new java.util.ArrayList<Event>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Event> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Event>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
@@ -117,7 +116,7 @@ public class DescribeEventsResult  implements Serializable  {
      * @param events A list of <a>Event</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withEvents(Event... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<Event>(events.length));
@@ -135,20 +134,20 @@ public class DescribeEventsResult  implements Serializable  {
      * @param events A list of <a>Event</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withEvents(java.util.Collection<Event> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<Event> eventsCopy = new java.util.ArrayList<Event>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Event> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Event>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +159,8 @@ public class DescribeEventsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getEvents() != null) sb.append("Events: " + getEvents() );
         sb.append("}");
         return sb.toString();

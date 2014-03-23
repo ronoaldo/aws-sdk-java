@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#deleteDBParameterGroup(DeleteDBParameterGroupRequest) DeleteDBParameterGroup operation}.
  * <p>
- * Deletes a specified DBParameterGroup. The DBParameterGroup cannot be associated with any RDS instances to be deleted.
+ * Deletes a specified DBParameterGroup. The DBParameterGroup cannot be
+ * associated with any RDS instances to be deleted.
  * </p>
  * <p>
- * <b>NOTE:</b> The specified DB Parameter Group cannot be associated with any DB Instances.
+ * <b>NOTE:</b> The specified DB parameter group cannot be associated
+ * with any DB instances.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#deleteDBParameterGroup(DeleteDBParameterGroupRequest)
  */
-public class DeleteDBParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteDBParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the DB Parameter Group. <p>Constraints: <ul> <li>Must be
-     * the name of an existing DB Parameter Group</li> <li>You cannot delete
-     * a default DB Parameter Group</li> <li>Cannot be associated with any DB
-     * Instances</li> </ul>
+     * The name of the DB parameter group. <p>Constraints: <ul> <li>Must be
+     * the name of an existing DB parameter group</li> <li>You cannot delete
+     * a default DB parameter group</li> <li>Cannot be associated with any DB
+     * instances</li> </ul>
      */
     private String dBParameterGroupName;
 
@@ -48,69 +52,66 @@ public class DeleteDBParameterGroupRequest extends AmazonWebServiceRequest  impl
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param dBParameterGroupName The name of the DB Parameter Group.
-     * <p>Constraints: <ul> <li>Must be the name of an existing DB Parameter
-     * Group</li> <li>You cannot delete a default DB Parameter Group</li>
-     * <li>Cannot be associated with any DB Instances</li> </ul>
+     * @param dBParameterGroupName The name of the DB parameter group.
+     * <p>Constraints: <ul> <li>Must be the name of an existing DB parameter
+     * group</li> <li>You cannot delete a default DB parameter group</li>
+     * <li>Cannot be associated with any DB instances</li> </ul>
      */
     public DeleteDBParameterGroupRequest(String dBParameterGroupName) {
-        this.dBParameterGroupName = dBParameterGroupName;
+        setDBParameterGroupName(dBParameterGroupName);
     }
 
-    
-    
     /**
-     * The name of the DB Parameter Group. <p>Constraints: <ul> <li>Must be
-     * the name of an existing DB Parameter Group</li> <li>You cannot delete
-     * a default DB Parameter Group</li> <li>Cannot be associated with any DB
-     * Instances</li> </ul>
+     * The name of the DB parameter group. <p>Constraints: <ul> <li>Must be
+     * the name of an existing DB parameter group</li> <li>You cannot delete
+     * a default DB parameter group</li> <li>Cannot be associated with any DB
+     * instances</li> </ul>
      *
-     * @return The name of the DB Parameter Group. <p>Constraints: <ul> <li>Must be
-     *         the name of an existing DB Parameter Group</li> <li>You cannot delete
-     *         a default DB Parameter Group</li> <li>Cannot be associated with any DB
-     *         Instances</li> </ul>
+     * @return The name of the DB parameter group. <p>Constraints: <ul> <li>Must be
+     *         the name of an existing DB parameter group</li> <li>You cannot delete
+     *         a default DB parameter group</li> <li>Cannot be associated with any DB
+     *         instances</li> </ul>
      */
     public String getDBParameterGroupName() {
         return dBParameterGroupName;
     }
     
     /**
-     * The name of the DB Parameter Group. <p>Constraints: <ul> <li>Must be
-     * the name of an existing DB Parameter Group</li> <li>You cannot delete
-     * a default DB Parameter Group</li> <li>Cannot be associated with any DB
-     * Instances</li> </ul>
+     * The name of the DB parameter group. <p>Constraints: <ul> <li>Must be
+     * the name of an existing DB parameter group</li> <li>You cannot delete
+     * a default DB parameter group</li> <li>Cannot be associated with any DB
+     * instances</li> </ul>
      *
-     * @param dBParameterGroupName The name of the DB Parameter Group. <p>Constraints: <ul> <li>Must be
-     *         the name of an existing DB Parameter Group</li> <li>You cannot delete
-     *         a default DB Parameter Group</li> <li>Cannot be associated with any DB
-     *         Instances</li> </ul>
+     * @param dBParameterGroupName The name of the DB parameter group. <p>Constraints: <ul> <li>Must be
+     *         the name of an existing DB parameter group</li> <li>You cannot delete
+     *         a default DB parameter group</li> <li>Cannot be associated with any DB
+     *         instances</li> </ul>
      */
     public void setDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
     }
     
     /**
-     * The name of the DB Parameter Group. <p>Constraints: <ul> <li>Must be
-     * the name of an existing DB Parameter Group</li> <li>You cannot delete
-     * a default DB Parameter Group</li> <li>Cannot be associated with any DB
-     * Instances</li> </ul>
+     * The name of the DB parameter group. <p>Constraints: <ul> <li>Must be
+     * the name of an existing DB parameter group</li> <li>You cannot delete
+     * a default DB parameter group</li> <li>Cannot be associated with any DB
+     * instances</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupName The name of the DB Parameter Group. <p>Constraints: <ul> <li>Must be
-     *         the name of an existing DB Parameter Group</li> <li>You cannot delete
-     *         a default DB Parameter Group</li> <li>Cannot be associated with any DB
-     *         Instances</li> </ul>
+     * @param dBParameterGroupName The name of the DB parameter group. <p>Constraints: <ul> <li>Must be
+     *         the name of an existing DB parameter group</li> <li>You cannot delete
+     *         a default DB parameter group</li> <li>Cannot be associated with any DB
+     *         instances</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteDBParameterGroupRequest withDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -122,7 +123,7 @@ public class DeleteDBParameterGroupRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() );
         sb.append("}");
         return sb.toString();

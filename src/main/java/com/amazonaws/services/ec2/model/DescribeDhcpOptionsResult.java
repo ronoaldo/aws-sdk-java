@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Dhcp Options Result
+ * 
  */
-public class DescribeDhcpOptionsResult  implements Serializable  {
-
-    private java.util.List<DhcpOptions> dhcpOptions;
+public class DescribeDhcpOptionsResult implements Serializable {
 
     /**
-     * Returns the value of the DhcpOptions property for this object.
+     * Information about one or more DHCP options sets.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DhcpOptions> dhcpOptions;
+
+    /**
+     * Information about one or more DHCP options sets.
      *
-     * @return The value of the DhcpOptions property for this object.
+     * @return Information about one or more DHCP options sets.
      */
     public java.util.List<DhcpOptions> getDhcpOptions() {
-        
         if (dhcpOptions == null) {
-            dhcpOptions = new java.util.ArrayList<DhcpOptions>();
+              dhcpOptions = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpOptions>();
+              dhcpOptions.setAutoConstruct(true);
         }
         return dhcpOptions;
     }
     
     /**
-     * Sets the value of the DhcpOptions property for this object.
+     * Information about one or more DHCP options sets.
      *
-     * @param dhcpOptions The new value for the DhcpOptions property for this object.
+     * @param dhcpOptions Information about one or more DHCP options sets.
      */
     public void setDhcpOptions(java.util.Collection<DhcpOptions> dhcpOptions) {
         if (dhcpOptions == null) {
             this.dhcpOptions = null;
             return;
         }
-
-        java.util.List<DhcpOptions> dhcpOptionsCopy = new java.util.ArrayList<DhcpOptions>(dhcpOptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DhcpOptions> dhcpOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpOptions>(dhcpOptions.size());
         dhcpOptionsCopy.addAll(dhcpOptions);
         this.dhcpOptions = dhcpOptionsCopy;
     }
     
     /**
-     * Sets the value of the DhcpOptions property for this object.
+     * Information about one or more DHCP options sets.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpOptions The new value for the DhcpOptions property for this object.
+     * @param dhcpOptions Information about one or more DHCP options sets.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDhcpOptionsResult withDhcpOptions(DhcpOptions... dhcpOptions) {
         if (getDhcpOptions() == null) setDhcpOptions(new java.util.ArrayList<DhcpOptions>(dhcpOptions.length));
@@ -70,27 +73,27 @@ public class DescribeDhcpOptionsResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the DhcpOptions property for this object.
+     * Information about one or more DHCP options sets.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpOptions The new value for the DhcpOptions property for this object.
+     * @param dhcpOptions Information about one or more DHCP options sets.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDhcpOptionsResult withDhcpOptions(java.util.Collection<DhcpOptions> dhcpOptions) {
         if (dhcpOptions == null) {
             this.dhcpOptions = null;
         } else {
-            java.util.List<DhcpOptions> dhcpOptionsCopy = new java.util.ArrayList<DhcpOptions>(dhcpOptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DhcpOptions> dhcpOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpOptions>(dhcpOptions.size());
             dhcpOptionsCopy.addAll(dhcpOptions);
             this.dhcpOptions = dhcpOptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeDhcpOptionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDhcpOptions() != null) sb.append("DhcpOptions: " + getDhcpOptions() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * A JSON object containing the following fields:
  * </p>
- * 
- * <ul>
- * <li> CreateSnapshotOutput$SnapshotId </li>
- * <li> CreateSnapshotOutput$VolumeARN </li>
- * 
- * </ul>
  */
-public class CreateSnapshotResult  implements Serializable  {
+public class CreateSnapshotResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the volume of which the snapshot was
@@ -89,14 +84,13 @@ public class CreateSnapshotResult  implements Serializable  {
      *         taken.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotResult withVolumeARN(String volumeARN) {
         this.volumeARN = volumeARN;
         return this;
     }
-    
-    
+
     /**
      * The snapshot ID that is used to refer to the snapshot in future
      * operations such as describing snapshots (Amazon Elastic Compute Cloud
@@ -150,14 +144,13 @@ public class CreateSnapshotResult  implements Serializable  {
      *         snapshot (<a>CreateStorediSCSIVolume</a>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotResult withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -169,8 +162,8 @@ public class CreateSnapshotResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");    	
+        sb.append("{");
+        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");
         if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() );
         sb.append("}");
         return sb.toString();

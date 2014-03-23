@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>ChildWorkflowExecutionCompleted</code> event.
+ * Provides details of the <code>ChildWorkflowExecutionCompleted</code>
+ * event.
  * </p>
  */
-public class ChildWorkflowExecutionCompletedEventAttributes  implements Serializable  {
+public class ChildWorkflowExecutionCompletedEventAttributes implements Serializable {
 
     /**
      * The child workflow execution that was completed.
@@ -83,14 +85,13 @@ public class ChildWorkflowExecutionCompletedEventAttributes  implements Serializ
      * @param workflowExecution The child workflow execution that was completed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCompletedEventAttributes withWorkflowExecution(WorkflowExecution workflowExecution) {
         this.workflowExecution = workflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The type of the child workflow execution.
      *
@@ -117,14 +118,13 @@ public class ChildWorkflowExecutionCompletedEventAttributes  implements Serializ
      * @param workflowType The type of the child workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCompletedEventAttributes withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * The result of the child workflow execution (if any).
      * <p>
@@ -160,14 +160,13 @@ public class ChildWorkflowExecutionCompletedEventAttributes  implements Serializ
      * @param result The result of the child workflow execution (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCompletedEventAttributes withResult(String result) {
         this.result = result;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>StartChildWorkflowExecutionInitiated</code> event
      * corresponding to the <code>StartChildWorkflowExecution</code>
@@ -218,14 +217,13 @@ public class ChildWorkflowExecutionCompletedEventAttributes  implements Serializ
      *         chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCompletedEventAttributes withInitiatedEventId(Long initiatedEventId) {
         this.initiatedEventId = initiatedEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>ChildWorkflowExecutionStarted</code> event
      * recorded when this child workflow execution was started. This
@@ -270,14 +268,13 @@ public class ChildWorkflowExecutionCompletedEventAttributes  implements Serializ
      *         chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCompletedEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -289,11 +286,11 @@ public class ChildWorkflowExecutionCompletedEventAttributes  implements Serializ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getResult() != null) sb.append("Result: " + getResult() + ",");    	
-        if (getInitiatedEventId() != null) sb.append("InitiatedEventId: " + getInitiatedEventId() + ",");    	
+        sb.append("{");
+        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getResult() != null) sb.append("Result: " + getResult() + ",");
+        if (getInitiatedEventId() != null) sb.append("InitiatedEventId: " + getInitiatedEventId() + ",");
         if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() );
         sb.append("}");
         return sb.toString();

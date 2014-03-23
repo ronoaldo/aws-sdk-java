@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#getPipelineDefinition(GetPipelineDefinitionRequest) GetPipelineDefinition operation}.
  * <p>
- * Returns the definition of the specified pipeline. You can call GetPipelineDefinition to retrieve the pipeline definition you provided using
- * PutPipelineDefinition.
+ * Returns the definition of the specified pipeline. You can call
+ * GetPipelineDefinition to retrieve the pipeline definition you provided
+ * using PutPipelineDefinition.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#getPipelineDefinition(GetPipelineDefinitionRequest)
  */
-public class GetPipelineDefinitionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetPipelineDefinitionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the pipeline.
@@ -87,14 +90,13 @@ public class GetPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
      * @param pipelineId The identifier of the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPipelineDefinitionRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * The version of the pipeline definition to retrieve. This parameter
      * accepts the values <code>latest</code> (default) and
@@ -157,14 +159,13 @@ public class GetPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
      *         last definition of the pipeline that was activated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPipelineDefinitionRequest withVersion(String version) {
         this.version = version;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -176,8 +177,8 @@ public class GetPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
         if (getVersion() != null) sb.append("Version: " + getVersion() );
         sb.append("}");
         return sb.toString();

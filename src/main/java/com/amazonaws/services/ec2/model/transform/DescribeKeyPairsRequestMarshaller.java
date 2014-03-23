@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeKeyPairsRequestMarshaller implements Marshaller<Request<Des
     public Request<DescribeKeyPairsRequest> marshall(DescribeKeyPairsRequest describeKeyPairsRequest) {
 
         if (describeKeyPairsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeKeyPairsRequest> request = new DefaultRequest<DescribeKeyPairsRequest>(describeKeyPairsRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeKeyPairs");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> keyNamesList = describeKeyPairsRequest.getKeyNames();
         int keyNamesListIndex = 1;
@@ -76,7 +75,6 @@ public class DescribeKeyPairsRequestMarshaller implements Marshaller<Request<Des
 
             filtersListIndex++;
         }
-
 
         return request;
     }

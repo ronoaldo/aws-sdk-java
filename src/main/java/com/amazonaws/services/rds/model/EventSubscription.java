@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the results of a successful invocation of the DescribeEventSubscriptions action.
+ * Contains the results of a successful invocation of the
+ * DescribeEventSubscriptions action.
  * </p>
  */
-public class EventSubscription  implements Serializable  {
+public class EventSubscription implements Serializable {
 
     /**
      * The AWS customer account associated with the RDS event notification
@@ -61,13 +63,13 @@ public class EventSubscription  implements Serializable  {
     /**
      * A list of source Ids for the RDS event notification subscription.
      */
-    private java.util.List<String> sourceIdsList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> sourceIdsList;
 
     /**
      * A list of event categories for the RDS event notification
      * subscription.
      */
-    private java.util.List<String> eventCategoriesList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> eventCategoriesList;
 
     /**
      * A Boolean value indicating if the subscription is enabled. True
@@ -107,14 +109,13 @@ public class EventSubscription  implements Serializable  {
      *         subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withCustomerAwsId(String customerAwsId) {
         this.customerAwsId = customerAwsId;
         return this;
     }
-    
-    
+
     /**
      * The RDS event notification subscription Id.
      *
@@ -141,14 +142,13 @@ public class EventSubscription  implements Serializable  {
      * @param custSubscriptionId The RDS event notification subscription Id.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withCustSubscriptionId(String custSubscriptionId) {
         this.custSubscriptionId = custSubscriptionId;
         return this;
     }
-    
-    
+
     /**
      * The topic ARN of the RDS event notification subscription.
      *
@@ -175,14 +175,13 @@ public class EventSubscription  implements Serializable  {
      * @param snsTopicArn The topic ARN of the RDS event notification subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withSnsTopicArn(String snsTopicArn) {
         this.snsTopicArn = snsTopicArn;
         return this;
     }
-    
-    
+
     /**
      * The status of the RDS event notification subscription. <p>Constraints:
      * <p>Can be one of the following: creating | modifying | deleting |
@@ -239,14 +238,13 @@ public class EventSubscription  implements Serializable  {
      *         after the subscription was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The time the RDS event notification subscription was created.
      *
@@ -273,14 +271,13 @@ public class EventSubscription  implements Serializable  {
      * @param subscriptionCreationTime The time the RDS event notification subscription was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withSubscriptionCreationTime(String subscriptionCreationTime) {
         this.subscriptionCreationTime = subscriptionCreationTime;
         return this;
     }
-    
-    
+
     /**
      * The source type for the RDS event notification subscription.
      *
@@ -307,23 +304,22 @@ public class EventSubscription  implements Serializable  {
      * @param sourceType The source type for the RDS event notification subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withSourceType(String sourceType) {
         this.sourceType = sourceType;
         return this;
     }
-    
-    
+
     /**
      * A list of source Ids for the RDS event notification subscription.
      *
      * @return A list of source Ids for the RDS event notification subscription.
      */
     public java.util.List<String> getSourceIdsList() {
-        
         if (sourceIdsList == null) {
-            sourceIdsList = new java.util.ArrayList<String>();
+              sourceIdsList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              sourceIdsList.setAutoConstruct(true);
         }
         return sourceIdsList;
     }
@@ -338,8 +334,7 @@ public class EventSubscription  implements Serializable  {
             this.sourceIdsList = null;
             return;
         }
-
-        java.util.List<String> sourceIdsListCopy = new java.util.ArrayList<String>(sourceIdsList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> sourceIdsListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(sourceIdsList.size());
         sourceIdsListCopy.addAll(sourceIdsList);
         this.sourceIdsList = sourceIdsListCopy;
     }
@@ -352,7 +347,7 @@ public class EventSubscription  implements Serializable  {
      * @param sourceIdsList A list of source Ids for the RDS event notification subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withSourceIdsList(String... sourceIdsList) {
         if (getSourceIdsList() == null) setSourceIdsList(new java.util.ArrayList<String>(sourceIdsList.length));
@@ -370,20 +365,20 @@ public class EventSubscription  implements Serializable  {
      * @param sourceIdsList A list of source Ids for the RDS event notification subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withSourceIdsList(java.util.Collection<String> sourceIdsList) {
         if (sourceIdsList == null) {
             this.sourceIdsList = null;
         } else {
-            java.util.List<String> sourceIdsListCopy = new java.util.ArrayList<String>(sourceIdsList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> sourceIdsListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(sourceIdsList.size());
             sourceIdsListCopy.addAll(sourceIdsList);
             this.sourceIdsList = sourceIdsListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of event categories for the RDS event notification
      * subscription.
@@ -392,9 +387,9 @@ public class EventSubscription  implements Serializable  {
      *         subscription.
      */
     public java.util.List<String> getEventCategoriesList() {
-        
         if (eventCategoriesList == null) {
-            eventCategoriesList = new java.util.ArrayList<String>();
+              eventCategoriesList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              eventCategoriesList.setAutoConstruct(true);
         }
         return eventCategoriesList;
     }
@@ -411,8 +406,7 @@ public class EventSubscription  implements Serializable  {
             this.eventCategoriesList = null;
             return;
         }
-
-        java.util.List<String> eventCategoriesListCopy = new java.util.ArrayList<String>(eventCategoriesList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> eventCategoriesListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(eventCategoriesList.size());
         eventCategoriesListCopy.addAll(eventCategoriesList);
         this.eventCategoriesList = eventCategoriesListCopy;
     }
@@ -427,7 +421,7 @@ public class EventSubscription  implements Serializable  {
      *         subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withEventCategoriesList(String... eventCategoriesList) {
         if (getEventCategoriesList() == null) setEventCategoriesList(new java.util.ArrayList<String>(eventCategoriesList.length));
@@ -447,20 +441,20 @@ public class EventSubscription  implements Serializable  {
      *         subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withEventCategoriesList(java.util.Collection<String> eventCategoriesList) {
         if (eventCategoriesList == null) {
             this.eventCategoriesList = null;
         } else {
-            java.util.List<String> eventCategoriesListCopy = new java.util.ArrayList<String>(eventCategoriesList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> eventCategoriesListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(eventCategoriesList.size());
             eventCategoriesListCopy.addAll(eventCategoriesList);
             this.eventCategoriesList = eventCategoriesListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A Boolean value indicating if the subscription is enabled. True
      * indicates the subscription is enabled.
@@ -493,14 +487,13 @@ public class EventSubscription  implements Serializable  {
      *         indicates the subscription is enabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventSubscription withEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * A Boolean value indicating if the subscription is enabled. True
      * indicates the subscription is enabled.
@@ -511,7 +504,7 @@ public class EventSubscription  implements Serializable  {
     public Boolean getEnabled() {
         return enabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -523,15 +516,15 @@ public class EventSubscription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCustomerAwsId() != null) sb.append("CustomerAwsId: " + getCustomerAwsId() + ",");    	
-        if (getCustSubscriptionId() != null) sb.append("CustSubscriptionId: " + getCustSubscriptionId() + ",");    	
-        if (getSnsTopicArn() != null) sb.append("SnsTopicArn: " + getSnsTopicArn() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getSubscriptionCreationTime() != null) sb.append("SubscriptionCreationTime: " + getSubscriptionCreationTime() + ",");    	
-        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");    	
-        if (getSourceIdsList() != null) sb.append("SourceIdsList: " + getSourceIdsList() + ",");    	
-        if (getEventCategoriesList() != null) sb.append("EventCategoriesList: " + getEventCategoriesList() + ",");    	
+        sb.append("{");
+        if (getCustomerAwsId() != null) sb.append("CustomerAwsId: " + getCustomerAwsId() + ",");
+        if (getCustSubscriptionId() != null) sb.append("CustSubscriptionId: " + getCustSubscriptionId() + ",");
+        if (getSnsTopicArn() != null) sb.append("SnsTopicArn: " + getSnsTopicArn() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getSubscriptionCreationTime() != null) sb.append("SubscriptionCreationTime: " + getSubscriptionCreationTime() + ",");
+        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");
+        if (getSourceIdsList() != null) sb.append("SourceIdsList: " + getSourceIdsList() + ",");
+        if (getEventCategoriesList() != null) sb.append("EventCategoriesList: " + getEventCategoriesList() + ",");
         if (isEnabled() != null) sb.append("Enabled: " + isEnabled() );
         sb.append("}");
         return sb.toString();

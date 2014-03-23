@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,196 +13,258 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CopyImageRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#copyImage(CopyImageRequest) CopyImage operation}.
- * 
+ * <p>
+ * Initiates the copy of an AMI from the specified source region to the
+ * region in which the request was made.
+ * </p>
+ * <p>
+ * For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html"> Copying AMIs </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#copyImage(CopyImageRequest)
  */
-public class CopyImageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CopyImageRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CopyImageRequest> {
 
+    /**
+     * The name of the region that contains the AMI to copy.
+     */
     private String sourceRegion;
 
+    /**
+     * The ID of the AMI to copy.
+     */
     private String sourceImageId;
 
+    /**
+     * The name of the new AMI in the destination region.
+     */
     private String name;
 
+    /**
+     * A description for the new AMI in the destination region.
+     */
     private String description;
 
+    /**
+     * Unique, case-sensitive identifier you provide to ensure idempotency of
+     * the request. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     * to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User
+     * Guide</i>.
+     */
     private String clientToken;
 
     /**
-     * Returns the value of the SourceRegion property for this object.
+     * The name of the region that contains the AMI to copy.
      *
-     * @return The value of the SourceRegion property for this object.
+     * @return The name of the region that contains the AMI to copy.
      */
     public String getSourceRegion() {
         return sourceRegion;
     }
     
     /**
-     * Sets the value of the SourceRegion property for this object.
+     * The name of the region that contains the AMI to copy.
      *
-     * @param sourceRegion The new value for the SourceRegion property for this object.
+     * @param sourceRegion The name of the region that contains the AMI to copy.
      */
     public void setSourceRegion(String sourceRegion) {
         this.sourceRegion = sourceRegion;
     }
     
     /**
-     * Sets the value of the SourceRegion property for this object.
+     * The name of the region that contains the AMI to copy.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sourceRegion The new value for the SourceRegion property for this object.
+     * @param sourceRegion The name of the region that contains the AMI to copy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withSourceRegion(String sourceRegion) {
         this.sourceRegion = sourceRegion;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the SourceImageId property for this object.
+     * The ID of the AMI to copy.
      *
-     * @return The value of the SourceImageId property for this object.
+     * @return The ID of the AMI to copy.
      */
     public String getSourceImageId() {
         return sourceImageId;
     }
     
     /**
-     * Sets the value of the SourceImageId property for this object.
+     * The ID of the AMI to copy.
      *
-     * @param sourceImageId The new value for the SourceImageId property for this object.
+     * @param sourceImageId The ID of the AMI to copy.
      */
     public void setSourceImageId(String sourceImageId) {
         this.sourceImageId = sourceImageId;
     }
     
     /**
-     * Sets the value of the SourceImageId property for this object.
+     * The ID of the AMI to copy.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sourceImageId The new value for the SourceImageId property for this object.
+     * @param sourceImageId The ID of the AMI to copy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withSourceImageId(String sourceImageId) {
         this.sourceImageId = sourceImageId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Name property for this object.
+     * The name of the new AMI in the destination region.
      *
-     * @return The value of the Name property for this object.
+     * @return The name of the new AMI in the destination region.
      */
     public String getName() {
         return name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The name of the new AMI in the destination region.
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The name of the new AMI in the destination region.
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The name of the new AMI in the destination region.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The name of the new AMI in the destination region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Description property for this object.
+     * A description for the new AMI in the destination region.
      *
-     * @return The value of the Description property for this object.
+     * @return A description for the new AMI in the destination region.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description for the new AMI in the destination region.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description for the new AMI in the destination region.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description for the new AMI in the destination region.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description for the new AMI in the destination region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the ClientToken property for this object.
+     * Unique, case-sensitive identifier you provide to ensure idempotency of
+     * the request. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     * to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User
+     * Guide</i>.
      *
-     * @return The value of the ClientToken property for this object.
+     * @return Unique, case-sensitive identifier you provide to ensure idempotency of
+     *         the request. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     *         to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User
+     *         Guide</i>.
      */
     public String getClientToken() {
         return clientToken;
     }
     
     /**
-     * Sets the value of the ClientToken property for this object.
+     * Unique, case-sensitive identifier you provide to ensure idempotency of
+     * the request. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     * to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User
+     * Guide</i>.
      *
-     * @param clientToken The new value for the ClientToken property for this object.
+     * @param clientToken Unique, case-sensitive identifier you provide to ensure idempotency of
+     *         the request. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     *         to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User
+     *         Guide</i>.
      */
     public void setClientToken(String clientToken) {
         this.clientToken = clientToken;
     }
     
     /**
-     * Sets the value of the ClientToken property for this object.
+     * Unique, case-sensitive identifier you provide to ensure idempotency of
+     * the request. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     * to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User
+     * Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param clientToken The new value for the ClientToken property for this object.
+     * @param clientToken Unique, case-sensitive identifier you provide to ensure idempotency of
+     *         the request. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How
+     *         to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User
+     *         Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CopyImageRequest withClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CopyImageRequest> getDryRunRequest() {
+        Request<CopyImageRequest> request = new CopyImageRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -215,11 +277,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceRegion() != null) sb.append("SourceRegion: " + getSourceRegion() + ",");    	
-        if (getSourceImageId() != null) sb.append("SourceImageId: " + getSourceImageId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getSourceRegion() != null) sb.append("SourceRegion: " + getSourceRegion() + ",");
+        if (getSourceImageId() != null) sb.append("SourceImageId: " + getSourceImageId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getClientToken() != null) sb.append("ClientToken: " + getClientToken() );
         sb.append("}");
         return sb.toString();

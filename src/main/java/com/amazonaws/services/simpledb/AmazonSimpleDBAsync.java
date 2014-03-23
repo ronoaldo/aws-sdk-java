@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb;
-            
+
 import java.util.concurrent.Future;
 
 import com.amazonaws.AmazonClientException;
@@ -26,20 +26,29 @@ import com.amazonaws.services.simpledb.model.*;
  * Each asynchronous method will return a Java Future object, and users are also allowed
  * to provide a callback handler.
  * Amazon SimpleDB <p>
- * Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By offloading the time and effort
- * associated with building and operating a web-scale database, SimpleDB provides developers the freedom to focus on application development.
+ * Amazon SimpleDB is a web service providing the core database
+ * functions of data indexing and querying in the cloud. By offloading
+ * the time and effort associated with building and operating a web-scale
+ * database, SimpleDB provides developers the freedom to focus on
+ * application development.
  * </p>
  * <p>
- * A traditional, clustered relational database requires a sizable upfront capital outlay, is complex to design, and often requires extensive and
- * repetitive database administration. Amazon SimpleDB is dramatically simpler, requiring no schema, automatically indexing your data and providing a
- * simple API for storage and access. This approach eliminates the administrative burden of data modeling, index maintenance, and performance tuning.
- * Developers gain access to this functionality within Amazon's proven computing environment, are able to scale instantly, and pay only for what they
- * use.
+ * A traditional, clustered relational database requires a sizable
+ * upfront capital outlay, is complex to design, and often requires
+ * extensive and repetitive database administration. Amazon SimpleDB is
+ * dramatically simpler, requiring no schema, automatically indexing your
+ * data and providing a simple API for storage and access. This approach
+ * eliminates the administrative burden of data modeling, index
+ * maintenance, and performance tuning. Developers gain access to this
+ * functionality within Amazon's proven computing environment, are able
+ * to scale instantly, and pay only for what they use.
  * </p>
  * <p>
- * Visit <a href="http://aws.amazon.com/simpledb/"> http://aws.amazon.com/simpledb/ </a> for more information.
- * </p> 
- */       
+ * Visit
+ * <a href="http://aws.amazon.com/simpledb/"> http://aws.amazon.com/simpledb/ </a>
+ * for more information.
+ * </p>
+ */
 public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
     /**
      * <p>
@@ -65,6 +74,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the Select
      *         service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -105,6 +115,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the Select
      *         service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -179,6 +190,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         PutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -256,6 +268,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         PutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -306,6 +319,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         BatchDeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -359,6 +373,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         BatchDeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -390,6 +405,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -424,6 +440,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -453,9 +470,9 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * The client can create up to 100 domains per account.
      * </p>
      * <p>
-     * If the client requires additional domains, go to <a
-     * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-     * http://aws.amazon.com/contact-us/simpledb-limit-request/ </a> .
+     * If the client requires additional domains, go to
+     * <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/"> http://aws.amazon.com/contact-us/simpledb-limit-request/ </a>
+     * .
      * </p>
      *
      * @param createDomainRequest Container for the necessary parameters to
@@ -463,6 +480,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         CreateDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -491,9 +509,9 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * The client can create up to 100 domains per account.
      * </p>
      * <p>
-     * If the client requires additional domains, go to <a
-     * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-     * http://aws.amazon.com/contact-us/simpledb-limit-request/ </a> .
+     * If the client requires additional domains, go to
+     * <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/"> http://aws.amazon.com/contact-us/simpledb-limit-request/ </a>
+     * .
      * </p>
      *
      * @param createDomainRequest Container for the necessary parameters to
@@ -505,6 +523,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         CreateDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -546,6 +565,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -590,6 +610,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -620,6 +641,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         ListDomains service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -653,6 +675,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         ListDomains service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -688,6 +711,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         GetAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -726,6 +750,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         GetAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -820,6 +845,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         BatchPutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -917,6 +943,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         BatchPutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -942,6 +969,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         DomainMetadata service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -970,6 +998,7 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
      * 
      * @return A Java Future object containing the response from the
      *         DomainMetadata service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -982,6 +1011,5 @@ public interface AmazonSimpleDBAsync extends AmazonSimpleDB {
     public Future<DomainMetadataResult> domainMetadataAsync(DomainMetadataRequest domainMetadataRequest,
             AsyncHandler<DomainMetadataRequest, DomainMetadataResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
-
 }
         

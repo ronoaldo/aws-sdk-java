@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,96 +13,118 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DetachNetworkInterfaceRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#detachNetworkInterface(DetachNetworkInterfaceRequest) DetachNetworkInterface operation}.
- * 
+ * <p>
+ * Detaches a network interface from an instance.
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#detachNetworkInterface(DetachNetworkInterfaceRequest)
  */
-public class DetachNetworkInterfaceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DetachNetworkInterfaceRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DetachNetworkInterfaceRequest> {
 
+    /**
+     * The ID of the attachment.
+     */
     private String attachmentId;
 
+    /**
+     * Specifies whether to force a detachment.
+     */
     private Boolean force;
 
     /**
-     * Returns the value of the AttachmentId property for this object.
+     * The ID of the attachment.
      *
-     * @return The value of the AttachmentId property for this object.
+     * @return The ID of the attachment.
      */
     public String getAttachmentId() {
         return attachmentId;
     }
     
     /**
-     * Sets the value of the AttachmentId property for this object.
+     * The ID of the attachment.
      *
-     * @param attachmentId The new value for the AttachmentId property for this object.
+     * @param attachmentId The ID of the attachment.
      */
     public void setAttachmentId(String attachmentId) {
         this.attachmentId = attachmentId;
     }
     
     /**
-     * Sets the value of the AttachmentId property for this object.
+     * The ID of the attachment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attachmentId The new value for the AttachmentId property for this object.
+     * @param attachmentId The ID of the attachment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachNetworkInterfaceRequest withAttachmentId(String attachmentId) {
         this.attachmentId = attachmentId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Force property for this object.
+     * Specifies whether to force a detachment.
      *
-     * @return The value of the Force property for this object.
+     * @return Specifies whether to force a detachment.
      */
     public Boolean isForce() {
         return force;
     }
     
     /**
-     * Sets the value of the Force property for this object.
+     * Specifies whether to force a detachment.
      *
-     * @param force The new value for the Force property for this object.
+     * @param force Specifies whether to force a detachment.
      */
     public void setForce(Boolean force) {
         this.force = force;
     }
     
     /**
-     * Sets the value of the Force property for this object.
+     * Specifies whether to force a detachment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param force The new value for the Force property for this object.
+     * @param force Specifies whether to force a detachment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachNetworkInterfaceRequest withForce(Boolean force) {
         this.force = force;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Force property for this object.
+     * Specifies whether to force a detachment.
      *
-     * @return The value of the Force property for this object.
+     * @return Specifies whether to force a detachment.
      */
     public Boolean getForce() {
         return force;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DetachNetworkInterfaceRequest> getDryRunRequest() {
+        Request<DetachNetworkInterfaceRequest> request = new DetachNetworkInterfaceRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -116,8 +138,8 @@ public class DetachNetworkInterfaceRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttachmentId() != null) sb.append("AttachmentId: " + getAttachmentId() + ",");    	
+        sb.append("{");
+        if (getAttachmentId() != null) sb.append("AttachmentId: " + getAttachmentId() + ",");
         if (isForce() != null) sb.append("Force: " + isForce() );
         sb.append("}");
         return sb.toString();

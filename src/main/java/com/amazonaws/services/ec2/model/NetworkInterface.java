@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,547 +13,650 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Network Interface
+ * <p>
+ * Describes a network interface.
+ * </p>
  */
-public class NetworkInterface  implements Serializable  {
-
-    private String networkInterfaceId;
-
-    private String subnetId;
-
-    private String vpcId;
-
-    private String availabilityZone;
-
-    private String description;
-
-    private String ownerId;
-
-    private String requesterId;
-
-    private Boolean requesterManaged;
-
-    private String status;
-
-    private String macAddress;
-
-    private String privateIpAddress;
-
-    private String privateDnsName;
-
-    private Boolean sourceDestCheck;
-
-    private java.util.List<GroupIdentifier> groups;
-
-    private NetworkInterfaceAttachment attachment;
-
-    private NetworkInterfaceAssociation association;
-
-    private java.util.List<Tag> tagSet;
-
-    private java.util.List<NetworkInterfacePrivateIpAddress> privateIpAddresses;
+public class NetworkInterface implements Serializable {
 
     /**
-     * Returns the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
+     */
+    private String networkInterfaceId;
+
+    /**
+     * The ID of the subnet.
+     */
+    private String subnetId;
+
+    /**
+     * The ID of the VPC.
+     */
+    private String vpcId;
+
+    /**
+     * The Availability Zone.
+     */
+    private String availabilityZone;
+
+    /**
+     * A description.
+     */
+    private String description;
+
+    /**
+     * The AWS account ID of the owner of the network interface.
+     */
+    private String ownerId;
+
+    /**
+     * The ID of the entity that launched the instance on your behalf (for
+     * example, AWS Management Console or Auto Scaling).
+     */
+    private String requesterId;
+
+    /**
+     * Indicates whether the network interface is being managed by AWS.
+     */
+    private Boolean requesterManaged;
+
+    /**
+     * The status of the network interface.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, attaching, in-use, detaching
+     */
+    private String status;
+
+    /**
+     * The MAC address.
+     */
+    private String macAddress;
+
+    /**
+     * The IP address of the network interface within the subnet.
+     */
+    private String privateIpAddress;
+
+    /**
+     * The private DNS name.
+     */
+    private String privateDnsName;
+
+    /**
+     * Indicates whether traffic to or from the instance is validated.
+     */
+    private Boolean sourceDestCheck;
+
+    /**
+     * Any security groups for the network interface.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> groups;
+
+    /**
+     * The network interface attachment.
+     */
+    private NetworkInterfaceAttachment attachment;
+
+    /**
+     * The association information for an Elastic IP associated with the
+     * network interface.
+     */
+    private NetworkInterfaceAssociation association;
+
+    /**
+     * Any tags assigned to the network interface.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagSet;
+
+    /**
+     * The private IP addresses associated with the network interface.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterfacePrivateIpAddress> privateIpAddresses;
+
+    /**
+     * The ID of the network interface.
      *
-     * @return The value of the NetworkInterfaceId property for this object.
+     * @return The ID of the network interface.
      */
     public String getNetworkInterfaceId() {
         return networkInterfaceId;
     }
     
     /**
-     * Sets the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      *
-     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
+     * @param networkInterfaceId The ID of the network interface.
      */
     public void setNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
     }
     
     /**
-     * Sets the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
+     * @param networkInterfaceId The ID of the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the SubnetId property for this object.
+     * The ID of the subnet.
      *
-     * @return The value of the SubnetId property for this object.
+     * @return The ID of the subnet.
      */
     public String getSubnetId() {
         return subnetId;
     }
     
     /**
-     * Sets the value of the SubnetId property for this object.
+     * The ID of the subnet.
      *
-     * @param subnetId The new value for the SubnetId property for this object.
+     * @param subnetId The ID of the subnet.
      */
     public void setSubnetId(String subnetId) {
         this.subnetId = subnetId;
     }
     
     /**
-     * Sets the value of the SubnetId property for this object.
+     * The ID of the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetId The new value for the SubnetId property for this object.
+     * @param subnetId The ID of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withSubnetId(String subnetId) {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the VpcId property for this object.
+     * The ID of the VPC.
      *
-     * @return The value of the VpcId property for this object.
+     * @return The ID of the VPC.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * The ID of the VPC.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId The ID of the VPC.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * The ID of the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId The ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the AvailabilityZone property for this object.
+     * The Availability Zone.
      *
-     * @return The value of the AvailabilityZone property for this object.
+     * @return The Availability Zone.
      */
     public String getAvailabilityZone() {
         return availabilityZone;
     }
     
     /**
-     * Sets the value of the AvailabilityZone property for this object.
+     * The Availability Zone.
      *
-     * @param availabilityZone The new value for the AvailabilityZone property for this object.
+     * @param availabilityZone The Availability Zone.
      */
     public void setAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
     }
     
     /**
-     * Sets the value of the AvailabilityZone property for this object.
+     * The Availability Zone.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZone The new value for the AvailabilityZone property for this object.
+     * @param availabilityZone The Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Description property for this object.
+     * A description.
      *
-     * @return The value of the Description property for this object.
+     * @return A description.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the OwnerId property for this object.
+     * The AWS account ID of the owner of the network interface.
      *
-     * @return The value of the OwnerId property for this object.
+     * @return The AWS account ID of the owner of the network interface.
      */
     public String getOwnerId() {
         return ownerId;
     }
     
     /**
-     * Sets the value of the OwnerId property for this object.
+     * The AWS account ID of the owner of the network interface.
      *
-     * @param ownerId The new value for the OwnerId property for this object.
+     * @param ownerId The AWS account ID of the owner of the network interface.
      */
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
     
     /**
-     * Sets the value of the OwnerId property for this object.
+     * The AWS account ID of the owner of the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ownerId The new value for the OwnerId property for this object.
+     * @param ownerId The AWS account ID of the owner of the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withOwnerId(String ownerId) {
         this.ownerId = ownerId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the RequesterId property for this object.
+     * The ID of the entity that launched the instance on your behalf (for
+     * example, AWS Management Console or Auto Scaling).
      *
-     * @return The value of the RequesterId property for this object.
+     * @return The ID of the entity that launched the instance on your behalf (for
+     *         example, AWS Management Console or Auto Scaling).
      */
     public String getRequesterId() {
         return requesterId;
     }
     
     /**
-     * Sets the value of the RequesterId property for this object.
+     * The ID of the entity that launched the instance on your behalf (for
+     * example, AWS Management Console or Auto Scaling).
      *
-     * @param requesterId The new value for the RequesterId property for this object.
+     * @param requesterId The ID of the entity that launched the instance on your behalf (for
+     *         example, AWS Management Console or Auto Scaling).
      */
     public void setRequesterId(String requesterId) {
         this.requesterId = requesterId;
     }
     
     /**
-     * Sets the value of the RequesterId property for this object.
+     * The ID of the entity that launched the instance on your behalf (for
+     * example, AWS Management Console or Auto Scaling).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param requesterId The new value for the RequesterId property for this object.
+     * @param requesterId The ID of the entity that launched the instance on your behalf (for
+     *         example, AWS Management Console or Auto Scaling).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withRequesterId(String requesterId) {
         this.requesterId = requesterId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the RequesterManaged property for this object.
+     * Indicates whether the network interface is being managed by AWS.
      *
-     * @return The value of the RequesterManaged property for this object.
+     * @return Indicates whether the network interface is being managed by AWS.
      */
     public Boolean isRequesterManaged() {
         return requesterManaged;
     }
     
     /**
-     * Sets the value of the RequesterManaged property for this object.
+     * Indicates whether the network interface is being managed by AWS.
      *
-     * @param requesterManaged The new value for the RequesterManaged property for this object.
+     * @param requesterManaged Indicates whether the network interface is being managed by AWS.
      */
     public void setRequesterManaged(Boolean requesterManaged) {
         this.requesterManaged = requesterManaged;
     }
     
     /**
-     * Sets the value of the RequesterManaged property for this object.
+     * Indicates whether the network interface is being managed by AWS.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param requesterManaged The new value for the RequesterManaged property for this object.
+     * @param requesterManaged Indicates whether the network interface is being managed by AWS.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withRequesterManaged(Boolean requesterManaged) {
         this.requesterManaged = requesterManaged;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the RequesterManaged property for this object.
+     * Indicates whether the network interface is being managed by AWS.
      *
-     * @return The value of the RequesterManaged property for this object.
+     * @return Indicates whether the network interface is being managed by AWS.
      */
     public Boolean getRequesterManaged() {
         return requesterManaged;
     }
-    
+
     /**
-     * Returns the value of the Status property for this object.
+     * The status of the network interface.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, attaching, in-use, detaching
      *
-     * @return The value of the Status property for this object.
+     * @return The status of the network interface.
+     *
+     * @see NetworkInterfaceStatus
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status of the network interface.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, attaching, in-use, detaching
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status of the network interface.
+     *
+     * @see NetworkInterfaceStatus
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status of the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, attaching, in-use, detaching
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status of the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see NetworkInterfaceStatus
      */
     public NetworkInterface withStatus(String status) {
         this.status = status;
         return this;
     }
-    
+
+    /**
+     * The status of the network interface.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, attaching, in-use, detaching
+     *
+     * @param status The status of the network interface.
+     *
+     * @see NetworkInterfaceStatus
+     */
+    public void setStatus(NetworkInterfaceStatus status) {
+        this.status = status.toString();
+    }
     
     /**
-     * Returns the value of the MacAddress property for this object.
+     * The status of the network interface.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available, attaching, in-use, detaching
      *
-     * @return The value of the MacAddress property for this object.
+     * @param status The status of the network interface.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see NetworkInterfaceStatus
+     */
+    public NetworkInterface withStatus(NetworkInterfaceStatus status) {
+        this.status = status.toString();
+        return this;
+    }
+
+    /**
+     * The MAC address.
+     *
+     * @return The MAC address.
      */
     public String getMacAddress() {
         return macAddress;
     }
     
     /**
-     * Sets the value of the MacAddress property for this object.
+     * The MAC address.
      *
-     * @param macAddress The new value for the MacAddress property for this object.
+     * @param macAddress The MAC address.
      */
     public void setMacAddress(String macAddress) {
         this.macAddress = macAddress;
     }
     
     /**
-     * Sets the value of the MacAddress property for this object.
+     * The MAC address.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param macAddress The new value for the MacAddress property for this object.
+     * @param macAddress The MAC address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withMacAddress(String macAddress) {
         this.macAddress = macAddress;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the PrivateIpAddress property for this object.
+     * The IP address of the network interface within the subnet.
      *
-     * @return The value of the PrivateIpAddress property for this object.
+     * @return The IP address of the network interface within the subnet.
      */
     public String getPrivateIpAddress() {
         return privateIpAddress;
     }
     
     /**
-     * Sets the value of the PrivateIpAddress property for this object.
+     * The IP address of the network interface within the subnet.
      *
-     * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
+     * @param privateIpAddress The IP address of the network interface within the subnet.
      */
     public void setPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
     }
     
     /**
-     * Sets the value of the PrivateIpAddress property for this object.
+     * The IP address of the network interface within the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
+     * @param privateIpAddress The IP address of the network interface within the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the PrivateDnsName property for this object.
+     * The private DNS name.
      *
-     * @return The value of the PrivateDnsName property for this object.
+     * @return The private DNS name.
      */
     public String getPrivateDnsName() {
         return privateDnsName;
     }
     
     /**
-     * Sets the value of the PrivateDnsName property for this object.
+     * The private DNS name.
      *
-     * @param privateDnsName The new value for the PrivateDnsName property for this object.
+     * @param privateDnsName The private DNS name.
      */
     public void setPrivateDnsName(String privateDnsName) {
         this.privateDnsName = privateDnsName;
     }
     
     /**
-     * Sets the value of the PrivateDnsName property for this object.
+     * The private DNS name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateDnsName The new value for the PrivateDnsName property for this object.
+     * @param privateDnsName The private DNS name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withPrivateDnsName(String privateDnsName) {
         this.privateDnsName = privateDnsName;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the SourceDestCheck property for this object.
+     * Indicates whether traffic to or from the instance is validated.
      *
-     * @return The value of the SourceDestCheck property for this object.
+     * @return Indicates whether traffic to or from the instance is validated.
      */
     public Boolean isSourceDestCheck() {
         return sourceDestCheck;
     }
     
     /**
-     * Sets the value of the SourceDestCheck property for this object.
+     * Indicates whether traffic to or from the instance is validated.
      *
-     * @param sourceDestCheck The new value for the SourceDestCheck property for this object.
+     * @param sourceDestCheck Indicates whether traffic to or from the instance is validated.
      */
     public void setSourceDestCheck(Boolean sourceDestCheck) {
         this.sourceDestCheck = sourceDestCheck;
     }
     
     /**
-     * Sets the value of the SourceDestCheck property for this object.
+     * Indicates whether traffic to or from the instance is validated.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sourceDestCheck The new value for the SourceDestCheck property for this object.
+     * @param sourceDestCheck Indicates whether traffic to or from the instance is validated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withSourceDestCheck(Boolean sourceDestCheck) {
         this.sourceDestCheck = sourceDestCheck;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the SourceDestCheck property for this object.
+     * Indicates whether traffic to or from the instance is validated.
      *
-     * @return The value of the SourceDestCheck property for this object.
+     * @return Indicates whether traffic to or from the instance is validated.
      */
     public Boolean getSourceDestCheck() {
         return sourceDestCheck;
     }
-    
+
     /**
-     * Returns the value of the Groups property for this object.
+     * Any security groups for the network interface.
      *
-     * @return The value of the Groups property for this object.
+     * @return Any security groups for the network interface.
      */
     public java.util.List<GroupIdentifier> getGroups() {
-        
         if (groups == null) {
-            groups = new java.util.ArrayList<GroupIdentifier>();
+              groups = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>();
+              groups.setAutoConstruct(true);
         }
         return groups;
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * Any security groups for the network interface.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups Any security groups for the network interface.
      */
     public void setGroups(java.util.Collection<GroupIdentifier> groups) {
         if (groups == null) {
             this.groups = null;
             return;
         }
-
-        java.util.List<GroupIdentifier> groupsCopy = new java.util.ArrayList<GroupIdentifier>(groups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>(groups.size());
         groupsCopy.addAll(groups);
         this.groups = groupsCopy;
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * Any security groups for the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups Any security groups for the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withGroups(GroupIdentifier... groups) {
         if (getGroups() == null) setGroups(new java.util.ArrayList<GroupIdentifier>(groups.length));
@@ -564,133 +667,136 @@ public class NetworkInterface  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * Any security groups for the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups Any security groups for the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withGroups(java.util.Collection<GroupIdentifier> groups) {
         if (groups == null) {
             this.groups = null;
         } else {
-            java.util.List<GroupIdentifier> groupsCopy = new java.util.ArrayList<GroupIdentifier>(groups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>(groups.size());
             groupsCopy.addAll(groups);
             this.groups = groupsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Attachment property for this object.
+     * The network interface attachment.
      *
-     * @return The value of the Attachment property for this object.
+     * @return The network interface attachment.
      */
     public NetworkInterfaceAttachment getAttachment() {
         return attachment;
     }
     
     /**
-     * Sets the value of the Attachment property for this object.
+     * The network interface attachment.
      *
-     * @param attachment The new value for the Attachment property for this object.
+     * @param attachment The network interface attachment.
      */
     public void setAttachment(NetworkInterfaceAttachment attachment) {
         this.attachment = attachment;
     }
     
     /**
-     * Sets the value of the Attachment property for this object.
+     * The network interface attachment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attachment The new value for the Attachment property for this object.
+     * @param attachment The network interface attachment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withAttachment(NetworkInterfaceAttachment attachment) {
         this.attachment = attachment;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Association property for this object.
+     * The association information for an Elastic IP associated with the
+     * network interface.
      *
-     * @return The value of the Association property for this object.
+     * @return The association information for an Elastic IP associated with the
+     *         network interface.
      */
     public NetworkInterfaceAssociation getAssociation() {
         return association;
     }
     
     /**
-     * Sets the value of the Association property for this object.
+     * The association information for an Elastic IP associated with the
+     * network interface.
      *
-     * @param association The new value for the Association property for this object.
+     * @param association The association information for an Elastic IP associated with the
+     *         network interface.
      */
     public void setAssociation(NetworkInterfaceAssociation association) {
         this.association = association;
     }
     
     /**
-     * Sets the value of the Association property for this object.
+     * The association information for an Elastic IP associated with the
+     * network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param association The new value for the Association property for this object.
+     * @param association The association information for an Elastic IP associated with the
+     *         network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withAssociation(NetworkInterfaceAssociation association) {
         this.association = association;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the TagSet property for this object.
+     * Any tags assigned to the network interface.
      *
-     * @return The value of the TagSet property for this object.
+     * @return Any tags assigned to the network interface.
      */
     public java.util.List<Tag> getTagSet() {
-        
         if (tagSet == null) {
-            tagSet = new java.util.ArrayList<Tag>();
+              tagSet = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tagSet.setAutoConstruct(true);
         }
         return tagSet;
     }
     
     /**
-     * Sets the value of the TagSet property for this object.
+     * Any tags assigned to the network interface.
      *
-     * @param tagSet The new value for the TagSet property for this object.
+     * @param tagSet Any tags assigned to the network interface.
      */
     public void setTagSet(java.util.Collection<Tag> tagSet) {
         if (tagSet == null) {
             this.tagSet = null;
             return;
         }
-
-        java.util.List<Tag> tagSetCopy = new java.util.ArrayList<Tag>(tagSet.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagSetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tagSet.size());
         tagSetCopy.addAll(tagSet);
         this.tagSet = tagSetCopy;
     }
     
     /**
-     * Sets the value of the TagSet property for this object.
+     * Any tags assigned to the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tagSet The new value for the TagSet property for this object.
+     * @param tagSet Any tags assigned to the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withTagSet(Tag... tagSet) {
         if (getTagSet() == null) setTagSet(new java.util.ArrayList<Tag>(tagSet.length));
@@ -701,65 +807,64 @@ public class NetworkInterface  implements Serializable  {
     }
     
     /**
-     * Sets the value of the TagSet property for this object.
+     * Any tags assigned to the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tagSet The new value for the TagSet property for this object.
+     * @param tagSet Any tags assigned to the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withTagSet(java.util.Collection<Tag> tagSet) {
         if (tagSet == null) {
             this.tagSet = null;
         } else {
-            java.util.List<Tag> tagSetCopy = new java.util.ArrayList<Tag>(tagSet.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagSetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tagSet.size());
             tagSetCopy.addAll(tagSet);
             this.tagSet = tagSetCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the PrivateIpAddresses property for this object.
+     * The private IP addresses associated with the network interface.
      *
-     * @return The value of the PrivateIpAddresses property for this object.
+     * @return The private IP addresses associated with the network interface.
      */
     public java.util.List<NetworkInterfacePrivateIpAddress> getPrivateIpAddresses() {
-        
         if (privateIpAddresses == null) {
-            privateIpAddresses = new java.util.ArrayList<NetworkInterfacePrivateIpAddress>();
+              privateIpAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterfacePrivateIpAddress>();
+              privateIpAddresses.setAutoConstruct(true);
         }
         return privateIpAddresses;
     }
     
     /**
-     * Sets the value of the PrivateIpAddresses property for this object.
+     * The private IP addresses associated with the network interface.
      *
-     * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
+     * @param privateIpAddresses The private IP addresses associated with the network interface.
      */
     public void setPrivateIpAddresses(java.util.Collection<NetworkInterfacePrivateIpAddress> privateIpAddresses) {
         if (privateIpAddresses == null) {
             this.privateIpAddresses = null;
             return;
         }
-
-        java.util.List<NetworkInterfacePrivateIpAddress> privateIpAddressesCopy = new java.util.ArrayList<NetworkInterfacePrivateIpAddress>(privateIpAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterfacePrivateIpAddress> privateIpAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterfacePrivateIpAddress>(privateIpAddresses.size());
         privateIpAddressesCopy.addAll(privateIpAddresses);
         this.privateIpAddresses = privateIpAddressesCopy;
     }
     
     /**
-     * Sets the value of the PrivateIpAddresses property for this object.
+     * The private IP addresses associated with the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
+     * @param privateIpAddresses The private IP addresses associated with the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withPrivateIpAddresses(NetworkInterfacePrivateIpAddress... privateIpAddresses) {
         if (getPrivateIpAddresses() == null) setPrivateIpAddresses(new java.util.ArrayList<NetworkInterfacePrivateIpAddress>(privateIpAddresses.length));
@@ -770,27 +875,27 @@ public class NetworkInterface  implements Serializable  {
     }
     
     /**
-     * Sets the value of the PrivateIpAddresses property for this object.
+     * The private IP addresses associated with the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
+     * @param privateIpAddresses The private IP addresses associated with the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withPrivateIpAddresses(java.util.Collection<NetworkInterfacePrivateIpAddress> privateIpAddresses) {
         if (privateIpAddresses == null) {
             this.privateIpAddresses = null;
         } else {
-            java.util.List<NetworkInterfacePrivateIpAddress> privateIpAddressesCopy = new java.util.ArrayList<NetworkInterfacePrivateIpAddress>(privateIpAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterfacePrivateIpAddress> privateIpAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterfacePrivateIpAddress>(privateIpAddresses.size());
             privateIpAddressesCopy.addAll(privateIpAddresses);
             this.privateIpAddresses = privateIpAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -802,24 +907,24 @@ public class NetworkInterface  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
-        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getRequesterId() != null) sb.append("RequesterId: " + getRequesterId() + ",");    	
-        if (isRequesterManaged() != null) sb.append("RequesterManaged: " + isRequesterManaged() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getMacAddress() != null) sb.append("MacAddress: " + getMacAddress() + ",");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
-        if (getPrivateDnsName() != null) sb.append("PrivateDnsName: " + getPrivateDnsName() + ",");    	
-        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");    	
-        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");    	
-        if (getAttachment() != null) sb.append("Attachment: " + getAttachment() + ",");    	
-        if (getAssociation() != null) sb.append("Association: " + getAssociation() + ",");    	
-        if (getTagSet() != null) sb.append("TagSet: " + getTagSet() + ",");    	
+        sb.append("{");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getRequesterId() != null) sb.append("RequesterId: " + getRequesterId() + ",");
+        if (isRequesterManaged() != null) sb.append("RequesterManaged: " + isRequesterManaged() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getMacAddress() != null) sb.append("MacAddress: " + getMacAddress() + ",");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+        if (getPrivateDnsName() != null) sb.append("PrivateDnsName: " + getPrivateDnsName() + ",");
+        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");
+        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");
+        if (getAttachment() != null) sb.append("Attachment: " + getAttachment() + ",");
+        if (getAssociation() != null) sb.append("Association: " + getAssociation() + ",");
+        if (getTagSet() != null) sb.append("TagSet: " + getTagSet() + ",");
         if (getPrivateIpAddresses() != null) sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() );
         sb.append("}");
         return sb.toString();

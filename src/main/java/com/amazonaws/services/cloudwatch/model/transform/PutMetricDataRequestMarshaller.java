@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class PutMetricDataRequestMarshaller implements Marshaller<Request<PutMet
     public Request<PutMetricDataRequest> marshall(PutMetricDataRequest putMetricDataRequest) {
 
         if (putMetricDataRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PutMetricDataRequest> request = new DefaultRequest<PutMetricDataRequest>(putMetricDataRequest, "AmazonCloudWatch");
         request.addParameter("Action", "PutMetricData");
@@ -98,7 +98,6 @@ public class PutMetricDataRequestMarshaller implements Marshaller<Request<PutMet
 
             metricDataListIndex++;
         }
-
 
         return request;
     }

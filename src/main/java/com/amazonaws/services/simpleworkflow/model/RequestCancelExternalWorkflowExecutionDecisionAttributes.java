@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,32 +13,42 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>RequestCancelExternalWorkflowExecution</code> decision.
+ * Provides details of the
+ * <code>RequestCancelExternalWorkflowExecution</code> decision.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this decision's access to Amazon SWF in much the same way as for the regular API:
+ * You can use IAM policies to control this decision's access to Amazon
+ * SWF in much the same way as for the regular API:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the decision to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to specify this decision.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the decision to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * specify this decision.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails. The associated event attribute's
+ * <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
+ * details and example IAM policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  */
-public class RequestCancelExternalWorkflowExecutionDecisionAttributes  implements Serializable  {
+public class RequestCancelExternalWorkflowExecutionDecisionAttributes implements Serializable {
 
     /**
      * The <code>workflowId</code> of the external workflow execution to
@@ -107,14 +117,13 @@ public class RequestCancelExternalWorkflowExecutionDecisionAttributes  implement
      *         cancel. This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelExternalWorkflowExecutionDecisionAttributes withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The <code>runId</code> of the external workflow execution to cancel.
      * <p>
@@ -150,14 +159,13 @@ public class RequestCancelExternalWorkflowExecutionDecisionAttributes  implement
      * @param runId The <code>runId</code> of the external workflow execution to cancel.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelExternalWorkflowExecutionDecisionAttributes withRunId(String runId) {
         this.runId = runId;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent workflow tasks.
@@ -199,14 +207,13 @@ public class RequestCancelExternalWorkflowExecutionDecisionAttributes  implement
      *         subsequent workflow tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelExternalWorkflowExecutionDecisionAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -218,9 +225,9 @@ public class RequestCancelExternalWorkflowExecutionDecisionAttributes  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");    	
+        sb.append("{");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");
         if (getControl() != null) sb.append("Control: " + getControl() );
         sb.append("}");
         return sb.toString();

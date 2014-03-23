@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,9 +18,13 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The non-AWS identity provider (IDP) that was asked to verify the incoming identity token rejected the identity claim. This might be because the claim
- * is invalid, has expired, or has been explicitly revoked by the user. The error message contains details about the response from the non-AWS identity
- * provider.
+ * The identity provider (IdP) reported that authentication failed. This
+ * might be because the claim is invalid.
+ * </p>
+ * <p>
+ * If this error is returned for the
+ * <code>AssumeRoleWithWebIdentity</code> operation, it can also mean
+ * that the claim has expired or has been explicitly revoked.
  * </p>
  */        
 public class IDPRejectedClaimException extends AmazonServiceException {

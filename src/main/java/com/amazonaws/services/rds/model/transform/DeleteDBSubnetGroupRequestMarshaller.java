@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,17 +33,16 @@ public class DeleteDBSubnetGroupRequestMarshaller implements Marshaller<Request<
     public Request<DeleteDBSubnetGroupRequest> marshall(DeleteDBSubnetGroupRequest deleteDBSubnetGroupRequest) {
 
         if (deleteDBSubnetGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteDBSubnetGroupRequest> request = new DefaultRequest<DeleteDBSubnetGroupRequest>(deleteDBSubnetGroupRequest, "AmazonRDS");
         request.addParameter("Action", "DeleteDBSubnetGroup");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (deleteDBSubnetGroupRequest.getDBSubnetGroupName() != null) {
             request.addParameter("DBSubnetGroupName", StringUtils.fromString(deleteDBSubnetGroupRequest.getDBSubnetGroupName()));
         }
-
 
         return request;
     }

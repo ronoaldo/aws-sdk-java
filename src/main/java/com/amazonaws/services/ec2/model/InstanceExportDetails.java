@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,69 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Instance Export Details
+ * <p>
+ * Describes an instance export task.
+ * </p>
  */
-public class InstanceExportDetails  implements Serializable  {
+public class InstanceExportDetails implements Serializable {
 
+    /**
+     * The ID of the resource being exported.
+     */
     private String instanceId;
 
+    /**
+     * The target virtualization environment.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
+     */
     private String targetEnvironment;
 
     /**
-     * Returns the value of the InstanceId property for this object.
+     * The ID of the resource being exported.
      *
-     * @return The value of the InstanceId property for this object.
+     * @return The ID of the resource being exported.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * Sets the value of the InstanceId property for this object.
+     * The ID of the resource being exported.
      *
-     * @param instanceId The new value for the InstanceId property for this object.
+     * @param instanceId The ID of the resource being exported.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * Sets the value of the InstanceId property for this object.
+     * The ID of the resource being exported.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The new value for the InstanceId property for this object.
+     * @param instanceId The ID of the resource being exported.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceExportDetails withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the TargetEnvironment property for this object.
+     * The target virtualization environment.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
-     * @return The value of the TargetEnvironment property for this object.
+     * @return The target virtualization environment.
      *
      * @see ExportEnvironment
      */
@@ -73,12 +84,12 @@ public class InstanceExportDetails  implements Serializable  {
     }
     
     /**
-     * Sets the value of the TargetEnvironment property for this object.
+     * The target virtualization environment.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
-     * @param targetEnvironment The new value for the TargetEnvironment property for this object.
+     * @param targetEnvironment The target virtualization environment.
      *
      * @see ExportEnvironment
      */
@@ -87,17 +98,17 @@ public class InstanceExportDetails  implements Serializable  {
     }
     
     /**
-     * Sets the value of the TargetEnvironment property for this object.
+     * The target virtualization environment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
-     * @param targetEnvironment The new value for the TargetEnvironment property for this object.
+     * @param targetEnvironment The target virtualization environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExportEnvironment
      */
@@ -105,15 +116,14 @@ public class InstanceExportDetails  implements Serializable  {
         this.targetEnvironment = targetEnvironment;
         return this;
     }
-    
-    
+
     /**
-     * Sets the value of the TargetEnvironment property for this object.
+     * The target virtualization environment.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
-     * @param targetEnvironment The new value for the TargetEnvironment property for this object.
+     * @param targetEnvironment The target virtualization environment.
      *
      * @see ExportEnvironment
      */
@@ -122,17 +132,17 @@ public class InstanceExportDetails  implements Serializable  {
     }
     
     /**
-     * Sets the value of the TargetEnvironment property for this object.
+     * The target virtualization environment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>citrix, vmware
+     * <b>Allowed Values: </b>citrix, vmware, microsoft
      *
-     * @param targetEnvironment The new value for the TargetEnvironment property for this object.
+     * @param targetEnvironment The target virtualization environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExportEnvironment
      */
@@ -140,7 +150,7 @@ public class InstanceExportDetails  implements Serializable  {
         this.targetEnvironment = targetEnvironment.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -152,8 +162,8 @@ public class InstanceExportDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getTargetEnvironment() != null) sb.append("TargetEnvironment: " + getTargetEnvironment() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The configuration for the streaming distribution.
  * </p>
  */
-public class StreamingDistributionConfig  implements Serializable  {
+public class StreamingDistributionConfig implements Serializable {
 
     /**
      * A unique number that ensures the request can't be replayed. If the
@@ -124,13 +125,11 @@ public class StreamingDistributionConfig  implements Serializable  {
      * end user requests for content.
      */
     public StreamingDistributionConfig(String callerReference, S3Origin s3Origin, Boolean enabled) {
-        this.callerReference = callerReference;
-        this.s3Origin = s3Origin;
-        this.enabled = enabled;
+        setCallerReference(callerReference);
+        setS3Origin(s3Origin);
+        setEnabled(enabled);
     }
 
-    
-    
     /**
      * A unique number that ensures the request can't be replayed. If the
      * CallerReference is new (no matter the content of the
@@ -223,14 +222,13 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         CloudFront returns a DistributionAlreadyExists error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionConfig withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about the Amazon S3 bucket
      * from which you want CloudFront to get your media files for
@@ -269,14 +267,13 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionConfig withS3Origin(S3Origin s3Origin) {
         this.s3Origin = s3Origin;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about CNAMEs (alternate
      * domain names), if any, for this streaming distribution.
@@ -309,14 +306,13 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         domain names), if any, for this streaming distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionConfig withAliases(Aliases aliases) {
         this.aliases = aliases;
         return this;
     }
-    
-    
+
     /**
      * Any comments you want to include about the streaming distribution.
      *
@@ -343,14 +339,13 @@ public class StreamingDistributionConfig  implements Serializable  {
      * @param comment Any comments you want to include about the streaming distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionConfig withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * A complex type that controls whether access logs are written for the
      * streaming distribution.
@@ -383,14 +378,13 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         streaming distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionConfig withLogging(StreamingLoggingConfig logging) {
         this.logging = logging;
         return this;
     }
-    
-    
+
     /**
      * A complex type that specifies the AWS accounts, if any, that you want
      * to allow to create signed URLs for private content. If you want to
@@ -489,14 +483,13 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionConfig withTrustedSigners(TrustedSigners trustedSigners) {
         this.trustedSigners = trustedSigners;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about price class for this
      * streaming distribution.
@@ -542,7 +535,7 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         streaming distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PriceClass
      */
@@ -550,8 +543,7 @@ public class StreamingDistributionConfig  implements Serializable  {
         this.priceClass = priceClass;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about price class for this
      * streaming distribution.
@@ -581,7 +573,7 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         streaming distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PriceClass
      */
@@ -589,7 +581,7 @@ public class StreamingDistributionConfig  implements Serializable  {
         this.priceClass = priceClass.toString();
         return this;
     }
-    
+
     /**
      * Whether the streaming distribution is enabled to accept end user
      * requests for content.
@@ -622,14 +614,13 @@ public class StreamingDistributionConfig  implements Serializable  {
      *         requests for content.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionConfig withEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * Whether the streaming distribution is enabled to accept end user
      * requests for content.
@@ -640,7 +631,7 @@ public class StreamingDistributionConfig  implements Serializable  {
     public Boolean getEnabled() {
         return enabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -652,14 +643,14 @@ public class StreamingDistributionConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");    	
-        if (getS3Origin() != null) sb.append("S3Origin: " + getS3Origin() + ",");    	
-        if (getAliases() != null) sb.append("Aliases: " + getAliases() + ",");    	
-        if (getComment() != null) sb.append("Comment: " + getComment() + ",");    	
-        if (getLogging() != null) sb.append("Logging: " + getLogging() + ",");    	
-        if (getTrustedSigners() != null) sb.append("TrustedSigners: " + getTrustedSigners() + ",");    	
-        if (getPriceClass() != null) sb.append("PriceClass: " + getPriceClass() + ",");    	
+        sb.append("{");
+        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");
+        if (getS3Origin() != null) sb.append("S3Origin: " + getS3Origin() + ",");
+        if (getAliases() != null) sb.append("Aliases: " + getAliases() + ",");
+        if (getComment() != null) sb.append("Comment: " + getComment() + ",");
+        if (getLogging() != null) sb.append("Logging: " + getLogging() + ",");
+        if (getTrustedSigners() != null) sb.append("TrustedSigners: " + getTrustedSigners() + ",");
+        if (getPriceClass() != null) sb.append("PriceClass: " + getPriceClass() + ",");
         if (isEnabled() != null) sb.append("Enabled: " + isEnabled() );
         sb.append("}");
         return sb.toString();

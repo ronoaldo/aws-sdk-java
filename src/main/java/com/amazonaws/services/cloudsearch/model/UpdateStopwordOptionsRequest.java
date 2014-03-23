@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#updateStopwordOptions(UpdateStopwordOptionsRequest) UpdateStopwordOptions operation}.
  * <p>
- * Configures stopwords for the search domain. Stopwords are used during indexing and when processing search requests. The maximum size of the stopwords
- * dictionary is 10KB.
+ * Configures stopwords for the search domain. Stopwords are used during
+ * indexing and when processing search requests. The maximum size of the
+ * stopwords dictionary is 10 KB.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#updateStopwordOptions(UpdateStopwordOptionsRequest)
  */
-public class UpdateStopwordOptionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateStopwordOptionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -43,7 +46,7 @@ public class UpdateStopwordOptionsRequest extends AmazonWebServiceRequest  imple
     /**
      * Lists stopwords serialized as a JSON document. The document has a
      * single object with one property "stopwords" whose value is an array of
-     * strings. The maximum size of a stopwords document is 10KB. Example:
+     * strings. The maximum size of a stopwords document is 10 KB. Example:
      * <code>{ "stopwords": ["a", "an", "the", "of"] }</code>
      */
     private String stopwords;
@@ -110,23 +113,22 @@ public class UpdateStopwordOptionsRequest extends AmazonWebServiceRequest  imple
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateStopwordOptionsRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Lists stopwords serialized as a JSON document. The document has a
      * single object with one property "stopwords" whose value is an array of
-     * strings. The maximum size of a stopwords document is 10KB. Example:
+     * strings. The maximum size of a stopwords document is 10 KB. Example:
      * <code>{ "stopwords": ["a", "an", "the", "of"] }</code>
      *
      * @return Lists stopwords serialized as a JSON document. The document has a
      *         single object with one property "stopwords" whose value is an array of
-     *         strings. The maximum size of a stopwords document is 10KB. Example:
+     *         strings. The maximum size of a stopwords document is 10 KB. Example:
      *         <code>{ "stopwords": ["a", "an", "the", "of"] }</code>
      */
     public String getStopwords() {
@@ -136,12 +138,12 @@ public class UpdateStopwordOptionsRequest extends AmazonWebServiceRequest  imple
     /**
      * Lists stopwords serialized as a JSON document. The document has a
      * single object with one property "stopwords" whose value is an array of
-     * strings. The maximum size of a stopwords document is 10KB. Example:
+     * strings. The maximum size of a stopwords document is 10 KB. Example:
      * <code>{ "stopwords": ["a", "an", "the", "of"] }</code>
      *
      * @param stopwords Lists stopwords serialized as a JSON document. The document has a
      *         single object with one property "stopwords" whose value is an array of
-     *         strings. The maximum size of a stopwords document is 10KB. Example:
+     *         strings. The maximum size of a stopwords document is 10 KB. Example:
      *         <code>{ "stopwords": ["a", "an", "the", "of"] }</code>
      */
     public void setStopwords(String stopwords) {
@@ -151,25 +153,24 @@ public class UpdateStopwordOptionsRequest extends AmazonWebServiceRequest  imple
     /**
      * Lists stopwords serialized as a JSON document. The document has a
      * single object with one property "stopwords" whose value is an array of
-     * strings. The maximum size of a stopwords document is 10KB. Example:
+     * strings. The maximum size of a stopwords document is 10 KB. Example:
      * <code>{ "stopwords": ["a", "an", "the", "of"] }</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param stopwords Lists stopwords serialized as a JSON document. The document has a
      *         single object with one property "stopwords" whose value is an array of
-     *         strings. The maximum size of a stopwords document is 10KB. Example:
+     *         strings. The maximum size of a stopwords document is 10 KB. Example:
      *         <code>{ "stopwords": ["a", "an", "the", "of"] }</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateStopwordOptionsRequest withStopwords(String stopwords) {
         this.stopwords = stopwords;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -181,8 +182,8 @@ public class UpdateStopwordOptionsRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getStopwords() != null) sb.append("Stopwords: " + getStopwords() );
         sb.append("}");
         return sb.toString();

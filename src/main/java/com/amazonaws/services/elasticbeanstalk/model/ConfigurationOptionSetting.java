@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,19 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A specification identifying an individual configuration option along with its current value.
+ * A specification identifying an individual configuration option along
+ * with its current value. For a list of possible option values, go to
+ * <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html"> Option Values </a>
+ * in the <i>AWS Elastic Beanstalk Developer Guide</i> .
+ * 
  * </p>
  */
-public class ConfigurationOptionSetting  implements Serializable  {
+public class ConfigurationOptionSetting implements Serializable {
 
     /**
      * A unique namespace identifying the option's associated AWS resource.
@@ -54,13 +59,11 @@ public class ConfigurationOptionSetting  implements Serializable  {
      * @param value The current value for the configuration option.
      */
     public ConfigurationOptionSetting(String namespace, String optionName, String value) {
-        this.namespace = namespace;
-        this.optionName = optionName;
-        this.value = value;
+        setNamespace(namespace);
+        setOptionName(optionName);
+        setValue(value);
     }
 
-    
-    
     /**
      * A unique namespace identifying the option's associated AWS resource.
      *
@@ -87,14 +90,13 @@ public class ConfigurationOptionSetting  implements Serializable  {
      * @param namespace A unique namespace identifying the option's associated AWS resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionSetting withNamespace(String namespace) {
         this.namespace = namespace;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration option.
      *
@@ -121,14 +123,13 @@ public class ConfigurationOptionSetting  implements Serializable  {
      * @param optionName The name of the configuration option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionSetting withOptionName(String optionName) {
         this.optionName = optionName;
         return this;
     }
-    
-    
+
     /**
      * The current value for the configuration option.
      *
@@ -155,14 +156,13 @@ public class ConfigurationOptionSetting  implements Serializable  {
      * @param value The current value for the configuration option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionSetting withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -174,9 +174,9 @@ public class ConfigurationOptionSetting  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
-        if (getOptionName() != null) sb.append("OptionName: " + getOptionName() + ",");    	
+        sb.append("{");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
+        if (getOptionName() != null) sb.append("OptionName: " + getOptionName() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

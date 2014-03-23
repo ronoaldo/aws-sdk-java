@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  */
 package com.amazonaws.services.route53.model.transform;
 
+import static com.amazonaws.util.StringUtils.UTF8;
+
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.Request;
@@ -44,7 +45,7 @@ public class ListHealthChecksRequestMarshaller implements Marshaller<Request<Lis
         Request<ListHealthChecksRequest> request = new DefaultRequest<ListHealthChecksRequest>(listHealthChecksRequest, "AmazonRoute53");
         request.setHttpMethod(HttpMethodName.GET);
 
-        String uriResourcePath = "/2012-12-12/healthcheck?marker={Marker}&maxitems={MaxItems}"; 
+        String uriResourcePath = "/2013-04-01/healthcheck?marker={Marker}&maxitems={MaxItems}"; 
         uriResourcePath = uriResourcePath.replace("{Marker}", getString(listHealthChecksRequest.getMarker())); 
         uriResourcePath = uriResourcePath.replace("{MaxItems}", getString(listHealthChecksRequest.getMaxItems())); 
 
@@ -63,8 +64,6 @@ public class ListHealthChecksRequestMarshaller implements Marshaller<Request<Lis
         }
 
         request.setResourcePath(uriResourcePath);
-
-        
 
         return request;
     }

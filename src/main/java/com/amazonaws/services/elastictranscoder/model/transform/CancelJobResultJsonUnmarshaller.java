@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,21 +22,17 @@ import com.amazonaws.services.elastictranscoder.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Cancel Job Result JSON Unmarshaller
  */
 public class CancelJobResultJsonUnmarshaller implements Unmarshaller<CancelJobResult, JsonUnmarshallerContext> {
 
-    
-
     public CancelJobResult unmarshall(JsonUnmarshallerContext context) throws Exception {
         CancelJobResult cancelJobResult = new CancelJobResult();
 
-        
-        
         return cancelJobResult;
     }
 

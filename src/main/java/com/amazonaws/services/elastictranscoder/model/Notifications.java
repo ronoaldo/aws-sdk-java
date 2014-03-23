@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The Amazon Simple Notification Service (Amazon SNS) topic or topics to notify in order to report job status.
+ * The Amazon Simple Notification Service (Amazon SNS) topic or topics to
+ * notify in order to report job status.
  * </p>
  * <p>
- * <b>IMPORTANT:</b>To receive notifications, you must also subscribe to the new topic in the Amazon SNS console.
+ * <b>IMPORTANT:</b>To receive notifications, you must also subscribe to
+ * the new topic in the Amazon SNS console.
  * </p>
  */
-public class Notifications  implements Serializable  {
+public class Notifications implements Serializable {
 
     /**
      * The Amazon Simple Notification Service (Amazon SNS) topic that you
@@ -102,14 +105,13 @@ public class Notifications  implements Serializable  {
      *         want to notify when Elastic Transcoder has started to process the job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Notifications withProgressing(String progressing) {
         this.progressing = progressing;
         return this;
     }
-    
-    
+
     /**
      * The Amazon SNS topic that you want to notify when Elastic Transcoder
      * has finished processing the job.
@@ -151,14 +153,13 @@ public class Notifications  implements Serializable  {
      *         has finished processing the job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Notifications withCompleted(String completed) {
         this.completed = completed;
         return this;
     }
-    
-    
+
     /**
      * The Amazon SNS topic that you want to notify when Elastic Transcoder
      * encounters a warning condition.
@@ -200,14 +201,13 @@ public class Notifications  implements Serializable  {
      *         encounters a warning condition.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Notifications withWarning(String warning) {
         this.warning = warning;
         return this;
     }
-    
-    
+
     /**
      * The Amazon SNS topic that you want to notify when Elastic Transcoder
      * encounters an error condition.
@@ -249,14 +249,13 @@ public class Notifications  implements Serializable  {
      *         encounters an error condition.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Notifications withError(String error) {
         this.error = error;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -268,10 +267,10 @@ public class Notifications  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProgressing() != null) sb.append("Progressing: " + getProgressing() + ",");    	
-        if (getCompleted() != null) sb.append("Completed: " + getCompleted() + ",");    	
-        if (getWarning() != null) sb.append("Warning: " + getWarning() + ",");    	
+        sb.append("{");
+        if (getProgressing() != null) sb.append("Progressing: " + getProgressing() + ",");
+        if (getCompleted() != null) sb.append("Completed: " + getCompleted() + ",");
+        if (getWarning() != null) sb.append("Warning: " + getWarning() + ",");
         if (getError() != null) sb.append("Error: " + getError() );
         sb.append("}");
         return sb.toString();

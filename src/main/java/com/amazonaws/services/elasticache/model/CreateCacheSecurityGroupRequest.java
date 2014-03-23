@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,33 +13,39 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#createCacheSecurityGroup(CreateCacheSecurityGroupRequest) CreateCacheSecurityGroup operation}.
  * <p>
- * Creates a new Cache Security Group. Cache Security groups control access to one or more Cache Clusters.
+ * The <i>CreateCacheSecurityGroup</i> operation creates a new cache
+ * security group. Use a cache security group to control access to one or
+ * more cache clusters.
  * </p>
  * <p>
- * Only use cache security groups when you are creating a cluster outside of an Amazon Virtual Private Cloud (VPC). Inside of a VPC, use VPC security
- * groups.
+ * Cache security groups are only used when you are creating a cluster
+ * outside of an Amazon Virtual Private Cloud (VPC). If you are creating
+ * a cluster inside of a VPC, use a cache subnet group instead. For more
+ * information, see <i>CreateCacheSubnetGroup</i> .
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#createCacheSecurityGroup(CreateCacheSecurityGroupRequest)
  */
-public class CreateCacheSecurityGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateCacheSecurityGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name for the Cache Security Group. This value is stored as a
+     * A name for the cache security group. This value is stored as a
      * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters. Must not be "Default". <p>Example:
+     * alphanumeric characters. Must not be the word "Default". <p>Example:
      * <code>mysecuritygroup</code>
      */
     private String cacheSecurityGroupName;
 
     /**
-     * The description for the Cache Security Group.
+     * A description for the cache security group.
      */
     private String description;
 
@@ -54,28 +60,26 @@ public class CreateCacheSecurityGroupRequest extends AmazonWebServiceRequest  im
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param cacheSecurityGroupName The name for the Cache Security Group.
+     * @param cacheSecurityGroupName A name for the cache security group.
      * This value is stored as a lowercase string. <p>Constraints: Must
-     * contain no more than 255 alphanumeric characters. Must not be
+     * contain no more than 255 alphanumeric characters. Must not be the word
      * "Default". <p>Example: <code>mysecuritygroup</code>
-     * @param description The description for the Cache Security Group.
+     * @param description A description for the cache security group.
      */
     public CreateCacheSecurityGroupRequest(String cacheSecurityGroupName, String description) {
-        this.cacheSecurityGroupName = cacheSecurityGroupName;
-        this.description = description;
+        setCacheSecurityGroupName(cacheSecurityGroupName);
+        setDescription(description);
     }
 
-    
-    
     /**
-     * The name for the Cache Security Group. This value is stored as a
+     * A name for the cache security group. This value is stored as a
      * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters. Must not be "Default". <p>Example:
+     * alphanumeric characters. Must not be the word "Default". <p>Example:
      * <code>mysecuritygroup</code>
      *
-     * @return The name for the Cache Security Group. This value is stored as a
+     * @return A name for the cache security group. This value is stored as a
      *         lowercase string. <p>Constraints: Must contain no more than 255
-     *         alphanumeric characters. Must not be "Default". <p>Example:
+     *         alphanumeric characters. Must not be the word "Default". <p>Example:
      *         <code>mysecuritygroup</code>
      */
     public String getCacheSecurityGroupName() {
@@ -83,14 +87,14 @@ public class CreateCacheSecurityGroupRequest extends AmazonWebServiceRequest  im
     }
     
     /**
-     * The name for the Cache Security Group. This value is stored as a
+     * A name for the cache security group. This value is stored as a
      * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters. Must not be "Default". <p>Example:
+     * alphanumeric characters. Must not be the word "Default". <p>Example:
      * <code>mysecuritygroup</code>
      *
-     * @param cacheSecurityGroupName The name for the Cache Security Group. This value is stored as a
+     * @param cacheSecurityGroupName A name for the cache security group. This value is stored as a
      *         lowercase string. <p>Constraints: Must contain no more than 255
-     *         alphanumeric characters. Must not be "Default". <p>Example:
+     *         alphanumeric characters. Must not be the word "Default". <p>Example:
      *         <code>mysecuritygroup</code>
      */
     public void setCacheSecurityGroupName(String cacheSecurityGroupName) {
@@ -98,61 +102,59 @@ public class CreateCacheSecurityGroupRequest extends AmazonWebServiceRequest  im
     }
     
     /**
-     * The name for the Cache Security Group. This value is stored as a
+     * A name for the cache security group. This value is stored as a
      * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters. Must not be "Default". <p>Example:
+     * alphanumeric characters. Must not be the word "Default". <p>Example:
      * <code>mysecuritygroup</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSecurityGroupName The name for the Cache Security Group. This value is stored as a
+     * @param cacheSecurityGroupName A name for the cache security group. This value is stored as a
      *         lowercase string. <p>Constraints: Must contain no more than 255
-     *         alphanumeric characters. Must not be "Default". <p>Example:
+     *         alphanumeric characters. Must not be the word "Default". <p>Example:
      *         <code>mysecuritygroup</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheSecurityGroupRequest withCacheSecurityGroupName(String cacheSecurityGroupName) {
         this.cacheSecurityGroupName = cacheSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
-     * The description for the Cache Security Group.
+     * A description for the cache security group.
      *
-     * @return The description for the Cache Security Group.
+     * @return A description for the cache security group.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * The description for the Cache Security Group.
+     * A description for the cache security group.
      *
-     * @param description The description for the Cache Security Group.
+     * @param description A description for the cache security group.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * The description for the Cache Security Group.
+     * A description for the cache security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The description for the Cache Security Group.
+     * @param description A description for the cache security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheSecurityGroupRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -164,8 +166,8 @@ public class CreateCacheSecurityGroupRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheSecurityGroupName() != null) sb.append("CacheSecurityGroupName: " + getCacheSecurityGroupName() + ",");    	
+        sb.append("{");
+        if (getCacheSecurityGroupName() != null) sb.append("CacheSecurityGroupName: " + getCacheSecurityGroupName() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

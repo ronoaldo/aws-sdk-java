@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,56 +13,61 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a selection criteria for a <i>Query</i> or <i>Scan</i> operation.
+ * Represents a selection criteria for a <i>Query</i> or <i>Scan</i>
+ * operation.
  * </p>
  * 
  * <ul>
  * <li> <p>
- * For a <i>Query</i> operation, the condition specifies the key attributes to use when querying a table or a secondary index.
+ * For a <i>Query</i> operation, the condition specifies the key
+ * attributes to use when querying a table or an index.
  * </p>
  * </li>
  * <li> <p>
- * For a <i>Scan</i> operation, the condition is used to evaluate the scan results and return only the desired values.
+ * For a <i>Scan</i> operation, the condition is used to evaluate the
+ * scan results and return only the desired values.
  * </p>
  * </li>
  * 
  * </ul>
  * <p>
- * Multiple conditions are "ANDed" together. In other words, all of the conditions must be met to be included in the output.
+ * Multiple conditions are "ANDed" together. In other words, all of the
+ * conditions must be met to be included in the output.
  * </p>
  */
-public class Condition  implements Serializable  {
+public class Condition implements Serializable {
 
     /**
-     * Represents one or more values to evaluate against the supplied
-     * attribute. This list contains exactly one value, except for a
-     * <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     * list contains two values. <note> <p>For type Number, value comparisons
-     * are numeric. <p>String value comparisons for greater than, equals, or
-     * less than are based on ASCII character code values. For example,
-     * <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     * greater than <code>B</code>. For a list of code values, see <a
+     * One or more values to evaluate against the supplied attribute. This
+     * list contains exactly one value, except for a <code>BETWEEN</code> or
+     * <code>IN</code> comparison, in which case the list contains two
+     * values. <note> <p>For type Number, value comparisons are numeric.
+     * <p>String value comparisons for greater than, equals, or less than are
+     * based on ASCII character code values. For example, <code>a</code> is
+     * greater than <code>A</code>, and <code>aa</code> is greater than
+     * <code>B</code>. For a list of code values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note>
      */
-    private java.util.List<AttributeValue> attributeValueList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue> attributeValueList;
 
     /**
-     * Represents a comparator for evaluating attributes. For example,
-     * equals, greater than, less than, etc. <p>Valid comparison operators
-     * for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     * BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     * NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     * data types in JSON, see <a
+     * A comparator for evaluating attributes. For example, equals, greater
+     * than, less than, etc. <p>Valid comparison operators for Query:
+     * <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     * <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     * GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     * | BETWEEN</code> <p>For information on specifying data types in JSON,
+     * see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -70,42 +75,43 @@ public class Condition  implements Serializable  {
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -130,7 +136,7 @@ public class Condition  implements Serializable  {
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -159,61 +165,60 @@ public class Condition  implements Serializable  {
     public Condition() {}
     
     /**
-     * Represents one or more values to evaluate against the supplied
-     * attribute. This list contains exactly one value, except for a
-     * <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     * list contains two values. <note> <p>For type Number, value comparisons
-     * are numeric. <p>String value comparisons for greater than, equals, or
-     * less than are based on ASCII character code values. For example,
-     * <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     * greater than <code>B</code>. For a list of code values, see <a
+     * One or more values to evaluate against the supplied attribute. This
+     * list contains exactly one value, except for a <code>BETWEEN</code> or
+     * <code>IN</code> comparison, in which case the list contains two
+     * values. <note> <p>For type Number, value comparisons are numeric.
+     * <p>String value comparisons for greater than, equals, or less than are
+     * based on ASCII character code values. For example, <code>a</code> is
+     * greater than <code>A</code>, and <code>aa</code> is greater than
+     * <code>B</code>. For a list of code values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note>
      *
-     * @return Represents one or more values to evaluate against the supplied
-     *         attribute. This list contains exactly one value, except for a
-     *         <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     *         list contains two values. <note> <p>For type Number, value comparisons
-     *         are numeric. <p>String value comparisons for greater than, equals, or
-     *         less than are based on ASCII character code values. For example,
-     *         <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     *         greater than <code>B</code>. For a list of code values, see <a
+     * @return One or more values to evaluate against the supplied attribute. This
+     *         list contains exactly one value, except for a <code>BETWEEN</code> or
+     *         <code>IN</code> comparison, in which case the list contains two
+     *         values. <note> <p>For type Number, value comparisons are numeric.
+     *         <p>String value comparisons for greater than, equals, or less than are
+     *         based on ASCII character code values. For example, <code>a</code> is
+     *         greater than <code>A</code>, and <code>aa</code> is greater than
+     *         <code>B</code>. For a list of code values, see <a
      *         href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     *         <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     *         <p>For Binary, DynamoDB treats each byte of the binary data as
      *         unsigned when it compares binary values, for example when evaluating
      *         query expressions. </note>
      */
     public java.util.List<AttributeValue> getAttributeValueList() {
-        
         return attributeValueList;
     }
     
     /**
-     * Represents one or more values to evaluate against the supplied
-     * attribute. This list contains exactly one value, except for a
-     * <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     * list contains two values. <note> <p>For type Number, value comparisons
-     * are numeric. <p>String value comparisons for greater than, equals, or
-     * less than are based on ASCII character code values. For example,
-     * <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     * greater than <code>B</code>. For a list of code values, see <a
+     * One or more values to evaluate against the supplied attribute. This
+     * list contains exactly one value, except for a <code>BETWEEN</code> or
+     * <code>IN</code> comparison, in which case the list contains two
+     * values. <note> <p>For type Number, value comparisons are numeric.
+     * <p>String value comparisons for greater than, equals, or less than are
+     * based on ASCII character code values. For example, <code>a</code> is
+     * greater than <code>A</code>, and <code>aa</code> is greater than
+     * <code>B</code>. For a list of code values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note>
      *
-     * @param attributeValueList Represents one or more values to evaluate against the supplied
-     *         attribute. This list contains exactly one value, except for a
-     *         <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     *         list contains two values. <note> <p>For type Number, value comparisons
-     *         are numeric. <p>String value comparisons for greater than, equals, or
-     *         less than are based on ASCII character code values. For example,
-     *         <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     *         greater than <code>B</code>. For a list of code values, see <a
+     * @param attributeValueList One or more values to evaluate against the supplied attribute. This
+     *         list contains exactly one value, except for a <code>BETWEEN</code> or
+     *         <code>IN</code> comparison, in which case the list contains two
+     *         values. <note> <p>For type Number, value comparisons are numeric.
+     *         <p>String value comparisons for greater than, equals, or less than are
+     *         based on ASCII character code values. For example, <code>a</code> is
+     *         greater than <code>A</code>, and <code>aa</code> is greater than
+     *         <code>B</code>. For a list of code values, see <a
      *         href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     *         <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     *         <p>For Binary, DynamoDB treats each byte of the binary data as
      *         unsigned when it compares binary values, for example when evaluating
      *         query expressions. </note>
      */
@@ -222,43 +227,42 @@ public class Condition  implements Serializable  {
             this.attributeValueList = null;
             return;
         }
-
-        java.util.List<AttributeValue> attributeValueListCopy = new java.util.ArrayList<AttributeValue>(attributeValueList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue> attributeValueListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue>(attributeValueList.size());
         attributeValueListCopy.addAll(attributeValueList);
         this.attributeValueList = attributeValueListCopy;
     }
     
     /**
-     * Represents one or more values to evaluate against the supplied
-     * attribute. This list contains exactly one value, except for a
-     * <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     * list contains two values. <note> <p>For type Number, value comparisons
-     * are numeric. <p>String value comparisons for greater than, equals, or
-     * less than are based on ASCII character code values. For example,
-     * <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     * greater than <code>B</code>. For a list of code values, see <a
+     * One or more values to evaluate against the supplied attribute. This
+     * list contains exactly one value, except for a <code>BETWEEN</code> or
+     * <code>IN</code> comparison, in which case the list contains two
+     * values. <note> <p>For type Number, value comparisons are numeric.
+     * <p>String value comparisons for greater than, equals, or less than are
+     * based on ASCII character code values. For example, <code>a</code> is
+     * greater than <code>A</code>, and <code>aa</code> is greater than
+     * <code>B</code>. For a list of code values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeValueList Represents one or more values to evaluate against the supplied
-     *         attribute. This list contains exactly one value, except for a
-     *         <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     *         list contains two values. <note> <p>For type Number, value comparisons
-     *         are numeric. <p>String value comparisons for greater than, equals, or
-     *         less than are based on ASCII character code values. For example,
-     *         <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     *         greater than <code>B</code>. For a list of code values, see <a
+     * @param attributeValueList One or more values to evaluate against the supplied attribute. This
+     *         list contains exactly one value, except for a <code>BETWEEN</code> or
+     *         <code>IN</code> comparison, in which case the list contains two
+     *         values. <note> <p>For type Number, value comparisons are numeric.
+     *         <p>String value comparisons for greater than, equals, or less than are
+     *         based on ASCII character code values. For example, <code>a</code> is
+     *         greater than <code>A</code>, and <code>aa</code> is greater than
+     *         <code>B</code>. For a list of code values, see <a
      *         href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     *         <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     *         <p>For Binary, DynamoDB treats each byte of the binary data as
      *         unsigned when it compares binary values, for example when evaluating
      *         query expressions. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Condition withAttributeValueList(AttributeValue... attributeValueList) {
         if (getAttributeValueList() == null) setAttributeValueList(new java.util.ArrayList<AttributeValue>(attributeValueList.length));
@@ -269,59 +273,59 @@ public class Condition  implements Serializable  {
     }
     
     /**
-     * Represents one or more values to evaluate against the supplied
-     * attribute. This list contains exactly one value, except for a
-     * <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     * list contains two values. <note> <p>For type Number, value comparisons
-     * are numeric. <p>String value comparisons for greater than, equals, or
-     * less than are based on ASCII character code values. For example,
-     * <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     * greater than <code>B</code>. For a list of code values, see <a
+     * One or more values to evaluate against the supplied attribute. This
+     * list contains exactly one value, except for a <code>BETWEEN</code> or
+     * <code>IN</code> comparison, in which case the list contains two
+     * values. <note> <p>For type Number, value comparisons are numeric.
+     * <p>String value comparisons for greater than, equals, or less than are
+     * based on ASCII character code values. For example, <code>a</code> is
+     * greater than <code>A</code>, and <code>aa</code> is greater than
+     * <code>B</code>. For a list of code values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeValueList Represents one or more values to evaluate against the supplied
-     *         attribute. This list contains exactly one value, except for a
-     *         <code>BETWEEN</code> or <code>IN</code> comparison, in which case the
-     *         list contains two values. <note> <p>For type Number, value comparisons
-     *         are numeric. <p>String value comparisons for greater than, equals, or
-     *         less than are based on ASCII character code values. For example,
-     *         <code>a</code> is greater than <code>A</code>, and <code>aa</code> is
-     *         greater than <code>B</code>. For a list of code values, see <a
+     * @param attributeValueList One or more values to evaluate against the supplied attribute. This
+     *         list contains exactly one value, except for a <code>BETWEEN</code> or
+     *         <code>IN</code> comparison, in which case the list contains two
+     *         values. <note> <p>For type Number, value comparisons are numeric.
+     *         <p>String value comparisons for greater than, equals, or less than are
+     *         based on ASCII character code values. For example, <code>a</code> is
+     *         greater than <code>A</code>, and <code>aa</code> is greater than
+     *         <code>B</code>. For a list of code values, see <a
      *         href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     *         <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     *         <p>For Binary, DynamoDB treats each byte of the binary data as
      *         unsigned when it compares binary values, for example when evaluating
      *         query expressions. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Condition withAttributeValueList(java.util.Collection<AttributeValue> attributeValueList) {
         if (attributeValueList == null) {
             this.attributeValueList = null;
         } else {
-            java.util.List<AttributeValue> attributeValueListCopy = new java.util.ArrayList<AttributeValue>(attributeValueList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue> attributeValueListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AttributeValue>(attributeValueList.size());
             attributeValueListCopy.addAll(attributeValueList);
             this.attributeValueList = attributeValueListCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Represents a comparator for evaluating attributes. For example,
-     * equals, greater than, less than, etc. <p>Valid comparison operators
-     * for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     * BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     * NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     * data types in JSON, see <a
+     * A comparator for evaluating attributes. For example, equals, greater
+     * than, less than, etc. <p>Valid comparison operators for Query:
+     * <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     * <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     * GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     * | BETWEEN</code> <p>For information on specifying data types in JSON,
+     * see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -329,42 +333,43 @@ public class Condition  implements Serializable  {
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -389,7 +394,7 @@ public class Condition  implements Serializable  {
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -409,15 +414,15 @@ public class Condition  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>EQ, NE, IN, LE, LT, GE, GT, BETWEEN, NOT_NULL, NULL, CONTAINS, NOT_CONTAINS, BEGINS_WITH
      *
-     * @return Represents a comparator for evaluating attributes. For example,
-     *         equals, greater than, less than, etc. <p>Valid comparison operators
-     *         for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     *         BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     *         NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     *         data types in JSON, see <a
+     * @return A comparator for evaluating attributes. For example, equals, greater
+     *         than, less than, etc. <p>Valid comparison operators for Query:
+     *         <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     *         <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     *         GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     *         | BETWEEN</code> <p>For information on specifying data types in JSON,
+     *         see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -425,42 +430,43 @@ public class Condition  implements Serializable  {
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -485,7 +491,7 @@ public class Condition  implements Serializable  {
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -509,15 +515,15 @@ public class Condition  implements Serializable  {
     }
     
     /**
-     * Represents a comparator for evaluating attributes. For example,
-     * equals, greater than, less than, etc. <p>Valid comparison operators
-     * for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     * BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     * NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     * data types in JSON, see <a
+     * A comparator for evaluating attributes. For example, equals, greater
+     * than, less than, etc. <p>Valid comparison operators for Query:
+     * <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     * <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     * GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     * | BETWEEN</code> <p>For information on specifying data types in JSON,
+     * see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -525,42 +531,43 @@ public class Condition  implements Serializable  {
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -585,7 +592,7 @@ public class Condition  implements Serializable  {
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -605,15 +612,15 @@ public class Condition  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>EQ, NE, IN, LE, LT, GE, GT, BETWEEN, NOT_NULL, NULL, CONTAINS, NOT_CONTAINS, BEGINS_WITH
      *
-     * @param comparisonOperator Represents a comparator for evaluating attributes. For example,
-     *         equals, greater than, less than, etc. <p>Valid comparison operators
-     *         for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     *         BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     *         NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     *         data types in JSON, see <a
+     * @param comparisonOperator A comparator for evaluating attributes. For example, equals, greater
+     *         than, less than, etc. <p>Valid comparison operators for Query:
+     *         <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     *         <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     *         GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     *         | BETWEEN</code> <p>For information on specifying data types in JSON,
+     *         see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -621,42 +628,43 @@ public class Condition  implements Serializable  {
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -681,7 +689,7 @@ public class Condition  implements Serializable  {
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -705,15 +713,15 @@ public class Condition  implements Serializable  {
     }
     
     /**
-     * Represents a comparator for evaluating attributes. For example,
-     * equals, greater than, less than, etc. <p>Valid comparison operators
-     * for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     * BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     * NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     * data types in JSON, see <a
+     * A comparator for evaluating attributes. For example, equals, greater
+     * than, less than, etc. <p>Valid comparison operators for Query:
+     * <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     * <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     * GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     * | BETWEEN</code> <p>For information on specifying data types in JSON,
+     * see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -721,42 +729,43 @@ public class Condition  implements Serializable  {
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -781,7 +790,7 @@ public class Condition  implements Serializable  {
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -803,15 +812,15 @@ public class Condition  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>EQ, NE, IN, LE, LT, GE, GT, BETWEEN, NOT_NULL, NULL, CONTAINS, NOT_CONTAINS, BEGINS_WITH
      *
-     * @param comparisonOperator Represents a comparator for evaluating attributes. For example,
-     *         equals, greater than, less than, etc. <p>Valid comparison operators
-     *         for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     *         BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     *         NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     *         data types in JSON, see <a
+     * @param comparisonOperator A comparator for evaluating attributes. For example, equals, greater
+     *         than, less than, etc. <p>Valid comparison operators for Query:
+     *         <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     *         <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     *         GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     *         | BETWEEN</code> <p>For information on specifying data types in JSON,
+     *         see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -819,42 +828,43 @@ public class Condition  implements Serializable  {
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -879,7 +889,7 @@ public class Condition  implements Serializable  {
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -897,7 +907,7 @@ public class Condition  implements Serializable  {
      *         to <code>{"NS":["6", "2", "1"]}</code> </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ComparisonOperator
      */
@@ -905,18 +915,17 @@ public class Condition  implements Serializable  {
         this.comparisonOperator = comparisonOperator;
         return this;
     }
-    
-    
+
     /**
-     * Represents a comparator for evaluating attributes. For example,
-     * equals, greater than, less than, etc. <p>Valid comparison operators
-     * for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     * BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     * NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     * data types in JSON, see <a
+     * A comparator for evaluating attributes. For example, equals, greater
+     * than, less than, etc. <p>Valid comparison operators for Query:
+     * <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     * <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     * GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     * | BETWEEN</code> <p>For information on specifying data types in JSON,
+     * see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -924,42 +933,43 @@ public class Condition  implements Serializable  {
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -984,7 +994,7 @@ public class Condition  implements Serializable  {
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -1004,15 +1014,15 @@ public class Condition  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>EQ, NE, IN, LE, LT, GE, GT, BETWEEN, NOT_NULL, NULL, CONTAINS, NOT_CONTAINS, BEGINS_WITH
      *
-     * @param comparisonOperator Represents a comparator for evaluating attributes. For example,
-     *         equals, greater than, less than, etc. <p>Valid comparison operators
-     *         for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     *         BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     *         NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     *         data types in JSON, see <a
+     * @param comparisonOperator A comparator for evaluating attributes. For example, equals, greater
+     *         than, less than, etc. <p>Valid comparison operators for Query:
+     *         <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     *         <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     *         GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     *         | BETWEEN</code> <p>For information on specifying data types in JSON,
+     *         see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1020,42 +1030,43 @@ public class Condition  implements Serializable  {
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1080,7 +1091,7 @@ public class Condition  implements Serializable  {
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -1104,15 +1115,15 @@ public class Condition  implements Serializable  {
     }
     
     /**
-     * Represents a comparator for evaluating attributes. For example,
-     * equals, greater than, less than, etc. <p>Valid comparison operators
-     * for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     * BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     * NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     * BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     * data types in JSON, see <a
+     * A comparator for evaluating attributes. For example, equals, greater
+     * than, less than, etc. <p>Valid comparison operators for Query:
+     * <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     * <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     * GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     * | BETWEEN</code> <p>For information on specifying data types in JSON,
+     * see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1120,42 +1131,43 @@ public class Condition  implements Serializable  {
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1180,7 +1192,7 @@ public class Condition  implements Serializable  {
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -1202,15 +1214,15 @@ public class Condition  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>EQ, NE, IN, LE, LT, GE, GT, BETWEEN, NOT_NULL, NULL, CONTAINS, NOT_CONTAINS, BEGINS_WITH
      *
-     * @param comparisonOperator Represents a comparator for evaluating attributes. For example,
-     *         equals, greater than, less than, etc. <p>Valid comparison operators
-     *         for Query: <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH |
-     *         BETWEEN</code> <p>Valid comparison operators for Scan: <p><code>EQ |
-     *         NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS |
-     *         BEGINS_WITH | IN | BETWEEN</code> <p>For information on specifying
-     *         data types in JSON, see <a
+     * @param comparisonOperator A comparator for evaluating attributes. For example, equals, greater
+     *         than, less than, etc. <p>Valid comparison operators for Query:
+     *         <p><code>EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN</code>
+     *         <p>Valid comparison operators for Scan: <p><code>EQ | NE | LE | LT |
+     *         GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN
+     *         | BETWEEN</code> <p>For information on specifying data types in JSON,
+     *         see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1218,42 +1230,43 @@ public class Condition  implements Serializable  {
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1278,7 +1291,7 @@ public class Condition  implements Serializable  {
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -1296,7 +1309,7 @@ public class Condition  implements Serializable  {
      *         to <code>{"NS":["6", "2", "1"]}</code> </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ComparisonOperator
      */
@@ -1304,7 +1317,7 @@ public class Condition  implements Serializable  {
         this.comparisonOperator = comparisonOperator.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1316,8 +1329,8 @@ public class Condition  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeValueList() != null) sb.append("AttributeValueList: " + getAttributeValueList() + ",");    	
+        sb.append("{");
+        if (getAttributeValueList() != null) sb.append("AttributeValueList: " + getAttributeValueList() + ",");
         if (getComparisonOperator() != null) sb.append("ComparisonOperator: " + getComparisonOperator() );
         sb.append("}");
         return sb.toString();

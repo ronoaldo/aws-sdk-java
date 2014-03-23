@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * A complex type that contains the response for the request.
  * </p>
  */
-public class ListHostedZonesResult  implements Serializable  {
+public class ListHostedZonesResult implements Serializable {
 
     /**
      * A complex type that contains information about the hosted zones
      * associated with the current AWS account.
      */
-    private java.util.List<HostedZone> hostedZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<HostedZone> hostedZones;
 
     /**
      * If the request returned more than one page of results, submit another
@@ -79,9 +80,9 @@ public class ListHostedZonesResult  implements Serializable  {
      *         associated with the current AWS account.
      */
     public java.util.List<HostedZone> getHostedZones() {
-        
         if (hostedZones == null) {
-            hostedZones = new java.util.ArrayList<HostedZone>();
+              hostedZones = new com.amazonaws.internal.ListWithAutoConstructFlag<HostedZone>();
+              hostedZones.setAutoConstruct(true);
         }
         return hostedZones;
     }
@@ -98,8 +99,7 @@ public class ListHostedZonesResult  implements Serializable  {
             this.hostedZones = null;
             return;
         }
-
-        java.util.List<HostedZone> hostedZonesCopy = new java.util.ArrayList<HostedZone>(hostedZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<HostedZone> hostedZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<HostedZone>(hostedZones.size());
         hostedZonesCopy.addAll(hostedZones);
         this.hostedZones = hostedZonesCopy;
     }
@@ -114,7 +114,7 @@ public class ListHostedZonesResult  implements Serializable  {
      *         associated with the current AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesResult withHostedZones(HostedZone... hostedZones) {
         if (getHostedZones() == null) setHostedZones(new java.util.ArrayList<HostedZone>(hostedZones.length));
@@ -134,20 +134,20 @@ public class ListHostedZonesResult  implements Serializable  {
      *         associated with the current AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesResult withHostedZones(java.util.Collection<HostedZone> hostedZones) {
         if (hostedZones == null) {
             this.hostedZones = null;
         } else {
-            java.util.List<HostedZone> hostedZonesCopy = new java.util.ArrayList<HostedZone>(hostedZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<HostedZone> hostedZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<HostedZone>(hostedZones.size());
             hostedZonesCopy.addAll(hostedZones);
             this.hostedZones = hostedZonesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * If the request returned more than one page of results, submit another
      * request and specify the value of <code>NextMarker</code> from the last
@@ -201,14 +201,13 @@ public class ListHostedZonesResult  implements Serializable  {
      *         results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A flag indicating whether there are more hosted zones to be listed. If
      * your results were truncated, you can make a follow-up request for the
@@ -253,14 +252,13 @@ public class ListHostedZonesResult  implements Serializable  {
      *         <p>Valid Values: <code>true</code> | <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesResult withIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
-    
-    
+
     /**
      * A flag indicating whether there are more hosted zones to be listed. If
      * your results were truncated, you can make a follow-up request for the
@@ -275,7 +273,7 @@ public class ListHostedZonesResult  implements Serializable  {
     public Boolean getIsTruncated() {
         return isTruncated;
     }
-    
+
     /**
      * Indicates where to continue listing hosted zones. If
      * <a>ListHostedZonesResponse$IsTruncated</a> is <code>true</code>, make
@@ -335,14 +333,13 @@ public class ListHostedZonesResult  implements Serializable  {
      *         element to get the next page of results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesResult withNextMarker(String nextMarker) {
         this.nextMarker = nextMarker;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of hosted zones to be included in the response
      * body. If the number of hosted zones associated with this AWS account
@@ -411,14 +408,13 @@ public class ListHostedZonesResult  implements Serializable  {
      *         results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesResult withMaxItems(String maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -430,11 +426,11 @@ public class ListHostedZonesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getHostedZones() != null) sb.append("HostedZones: " + getHostedZones() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
-        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");    	
-        if (getNextMarker() != null) sb.append("NextMarker: " + getNextMarker() + ",");    	
+        sb.append("{");
+        if (getHostedZones() != null) sb.append("HostedZones: " + getHostedZones() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
+        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");
+        if (getNextMarker() != null) sb.append("NextMarker: " + getNextMarker() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

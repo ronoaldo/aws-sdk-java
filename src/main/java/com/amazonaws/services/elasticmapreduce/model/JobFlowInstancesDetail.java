@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Specify the type of Amazon EC2 instances to run the job flow on.
  * </p>
  */
-public class JobFlowInstancesDetail  implements Serializable  {
+public class JobFlowInstancesDetail implements Serializable {
 
     /**
      * The Amazon EC2 master node instance type.
@@ -69,7 +70,7 @@ public class JobFlowInstancesDetail  implements Serializable  {
     /**
      * Details about the job flow's instance groups.
      */
-    private java.util.List<InstanceGroupDetail> instanceGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupDetail> instanceGroups;
 
     /**
      * An approximation of the cost of the job flow, represented in
@@ -103,13 +104,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
     private String ec2SubnetId;
 
     /**
-     * Specifies the Amazon EC2 Availability Zone for the job flow.
+     * The Amazon EC2 Availability Zone for the job flow.
      */
     private PlacementType placement;
 
     /**
-     * Specifies whether or not the job flow should terminate after
-     * completing all steps.
+     * Specifies whether the job flow should terminate after completing all
+     * steps.
      */
     private Boolean keepJobFlowAliveWhenNoSteps;
 
@@ -121,7 +122,7 @@ public class JobFlowInstancesDetail  implements Serializable  {
     private Boolean terminationProtected;
 
     /**
-     * Specifies the Hadoop version for the job flow.
+     * The Hadoop version for the job flow.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
@@ -148,13 +149,11 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * the master node and all others are slave nodes.
      */
     public JobFlowInstancesDetail(String masterInstanceType, String slaveInstanceType, Integer instanceCount) {
-        this.masterInstanceType = masterInstanceType;
-        this.slaveInstanceType = slaveInstanceType;
-        this.instanceCount = instanceCount;
+        setMasterInstanceType(masterInstanceType);
+        setSlaveInstanceType(slaveInstanceType);
+        setInstanceCount(instanceCount);
     }
 
-    
-    
     /**
      * The Amazon EC2 master node instance type.
      * <p>
@@ -193,14 +192,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * @param masterInstanceType The Amazon EC2 master node instance type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withMasterInstanceType(String masterInstanceType) {
         this.masterInstanceType = masterInstanceType;
         return this;
     }
-    
-    
+
     /**
      * The DNS name of the master node.
      * <p>
@@ -239,14 +237,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * @param masterPublicDnsName The DNS name of the master node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withMasterPublicDnsName(String masterPublicDnsName) {
         this.masterPublicDnsName = masterPublicDnsName;
         return this;
     }
-    
-    
+
     /**
      * The Amazon EC2 instance identifier of the master node.
      * <p>
@@ -285,14 +282,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * @param masterInstanceId The Amazon EC2 instance identifier of the master node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withMasterInstanceId(String masterInstanceId) {
         this.masterInstanceId = masterInstanceId;
         return this;
     }
-    
-    
+
     /**
      * The Amazon EC2 slave node instance type.
      * <p>
@@ -331,14 +327,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * @param slaveInstanceType The Amazon EC2 slave node instance type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withSlaveInstanceType(String slaveInstanceType) {
         this.slaveInstanceType = slaveInstanceType;
         return this;
     }
-    
-    
+
     /**
      * The number of Amazon EC2 instances in the cluster. If the value is 1,
      * the same instance serves as both the master and slave node. If the
@@ -383,23 +378,22 @@ public class JobFlowInstancesDetail  implements Serializable  {
      *         others are slave nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
         return this;
     }
-    
-    
+
     /**
      * Details about the job flow's instance groups.
      *
      * @return Details about the job flow's instance groups.
      */
     public java.util.List<InstanceGroupDetail> getInstanceGroups() {
-        
         if (instanceGroups == null) {
-            instanceGroups = new java.util.ArrayList<InstanceGroupDetail>();
+              instanceGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupDetail>();
+              instanceGroups.setAutoConstruct(true);
         }
         return instanceGroups;
     }
@@ -414,8 +408,7 @@ public class JobFlowInstancesDetail  implements Serializable  {
             this.instanceGroups = null;
             return;
         }
-
-        java.util.List<InstanceGroupDetail> instanceGroupsCopy = new java.util.ArrayList<InstanceGroupDetail>(instanceGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupDetail> instanceGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupDetail>(instanceGroups.size());
         instanceGroupsCopy.addAll(instanceGroups);
         this.instanceGroups = instanceGroupsCopy;
     }
@@ -428,7 +421,7 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * @param instanceGroups Details about the job flow's instance groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withInstanceGroups(InstanceGroupDetail... instanceGroups) {
         if (getInstanceGroups() == null) setInstanceGroups(new java.util.ArrayList<InstanceGroupDetail>(instanceGroups.length));
@@ -446,20 +439,20 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * @param instanceGroups Details about the job flow's instance groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withInstanceGroups(java.util.Collection<InstanceGroupDetail> instanceGroups) {
         if (instanceGroups == null) {
             this.instanceGroups = null;
         } else {
-            java.util.List<InstanceGroupDetail> instanceGroupsCopy = new java.util.ArrayList<InstanceGroupDetail>(instanceGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupDetail> instanceGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupDetail>(instanceGroups.size());
             instanceGroupsCopy.addAll(instanceGroups);
             this.instanceGroups = instanceGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An approximation of the cost of the job flow, represented in
      * m1.small/hours. This value is incremented once for every hour an
@@ -516,14 +509,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
      *         only an approximation and does not reflect the actual billing rate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withNormalizedInstanceHours(Integer normalizedInstanceHours) {
         this.normalizedInstanceHours = normalizedInstanceHours;
         return this;
     }
-    
-    
+
     /**
      * The name of an Amazon EC2 key pair that can be used to ssh to the
      * master node of job flow.
@@ -568,14 +560,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
      *         master node of job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withEc2KeyName(String ec2KeyName) {
         this.ec2KeyName = ec2KeyName;
         return this;
     }
-    
-    
+
     /**
      * For job flows launched within Amazon Virtual Private Cloud, this value
      * specifies the identifier of the subnet where the job flow was
@@ -626,99 +617,96 @@ public class JobFlowInstancesDetail  implements Serializable  {
      *         launched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withEc2SubnetId(String ec2SubnetId) {
         this.ec2SubnetId = ec2SubnetId;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the Amazon EC2 Availability Zone for the job flow.
+     * The Amazon EC2 Availability Zone for the job flow.
      *
-     * @return Specifies the Amazon EC2 Availability Zone for the job flow.
+     * @return The Amazon EC2 Availability Zone for the job flow.
      */
     public PlacementType getPlacement() {
         return placement;
     }
     
     /**
-     * Specifies the Amazon EC2 Availability Zone for the job flow.
+     * The Amazon EC2 Availability Zone for the job flow.
      *
-     * @param placement Specifies the Amazon EC2 Availability Zone for the job flow.
+     * @param placement The Amazon EC2 Availability Zone for the job flow.
      */
     public void setPlacement(PlacementType placement) {
         this.placement = placement;
     }
     
     /**
-     * Specifies the Amazon EC2 Availability Zone for the job flow.
+     * The Amazon EC2 Availability Zone for the job flow.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param placement Specifies the Amazon EC2 Availability Zone for the job flow.
+     * @param placement The Amazon EC2 Availability Zone for the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withPlacement(PlacementType placement) {
         this.placement = placement;
         return this;
     }
-    
-    
+
     /**
-     * Specifies whether or not the job flow should terminate after
-     * completing all steps.
+     * Specifies whether the job flow should terminate after completing all
+     * steps.
      *
-     * @return Specifies whether or not the job flow should terminate after
-     *         completing all steps.
+     * @return Specifies whether the job flow should terminate after completing all
+     *         steps.
      */
     public Boolean isKeepJobFlowAliveWhenNoSteps() {
         return keepJobFlowAliveWhenNoSteps;
     }
     
     /**
-     * Specifies whether or not the job flow should terminate after
-     * completing all steps.
+     * Specifies whether the job flow should terminate after completing all
+     * steps.
      *
-     * @param keepJobFlowAliveWhenNoSteps Specifies whether or not the job flow should terminate after
-     *         completing all steps.
+     * @param keepJobFlowAliveWhenNoSteps Specifies whether the job flow should terminate after completing all
+     *         steps.
      */
     public void setKeepJobFlowAliveWhenNoSteps(Boolean keepJobFlowAliveWhenNoSteps) {
         this.keepJobFlowAliveWhenNoSteps = keepJobFlowAliveWhenNoSteps;
     }
     
     /**
-     * Specifies whether or not the job flow should terminate after
-     * completing all steps.
+     * Specifies whether the job flow should terminate after completing all
+     * steps.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param keepJobFlowAliveWhenNoSteps Specifies whether or not the job flow should terminate after
-     *         completing all steps.
+     * @param keepJobFlowAliveWhenNoSteps Specifies whether the job flow should terminate after completing all
+     *         steps.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withKeepJobFlowAliveWhenNoSteps(Boolean keepJobFlowAliveWhenNoSteps) {
         this.keepJobFlowAliveWhenNoSteps = keepJobFlowAliveWhenNoSteps;
         return this;
     }
-    
-    
+
     /**
-     * Specifies whether or not the job flow should terminate after
-     * completing all steps.
+     * Specifies whether the job flow should terminate after completing all
+     * steps.
      *
-     * @return Specifies whether or not the job flow should terminate after
-     *         completing all steps.
+     * @return Specifies whether the job flow should terminate after completing all
+     *         steps.
      */
     public Boolean getKeepJobFlowAliveWhenNoSteps() {
         return keepJobFlowAliveWhenNoSteps;
     }
-    
+
     /**
      * Specifies whether the Amazon EC2 instances in the cluster are
      * protected from termination by API calls, user intervention, or in the
@@ -757,14 +745,13 @@ public class JobFlowInstancesDetail  implements Serializable  {
      *         event of a job flow error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withTerminationProtected(Boolean terminationProtected) {
         this.terminationProtected = terminationProtected;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the Amazon EC2 instances in the cluster are
      * protected from termination by API calls, user intervention, or in the
@@ -777,35 +764,35 @@ public class JobFlowInstancesDetail  implements Serializable  {
     public Boolean getTerminationProtected() {
         return terminationProtected;
     }
-    
+
     /**
-     * Specifies the Hadoop version for the job flow.
+     * The Hadoop version for the job flow.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @return Specifies the Hadoop version for the job flow.
+     * @return The Hadoop version for the job flow.
      */
     public String getHadoopVersion() {
         return hadoopVersion;
     }
     
     /**
-     * Specifies the Hadoop version for the job flow.
+     * The Hadoop version for the job flow.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param hadoopVersion Specifies the Hadoop version for the job flow.
+     * @param hadoopVersion The Hadoop version for the job flow.
      */
     public void setHadoopVersion(String hadoopVersion) {
         this.hadoopVersion = hadoopVersion;
     }
     
     /**
-     * Specifies the Hadoop version for the job flow.
+     * The Hadoop version for the job flow.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -813,17 +800,16 @@ public class JobFlowInstancesDetail  implements Serializable  {
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param hadoopVersion Specifies the Hadoop version for the job flow.
+     * @param hadoopVersion The Hadoop version for the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesDetail withHadoopVersion(String hadoopVersion) {
         this.hadoopVersion = hadoopVersion;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -835,19 +821,19 @@ public class JobFlowInstancesDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMasterInstanceType() != null) sb.append("MasterInstanceType: " + getMasterInstanceType() + ",");    	
-        if (getMasterPublicDnsName() != null) sb.append("MasterPublicDnsName: " + getMasterPublicDnsName() + ",");    	
-        if (getMasterInstanceId() != null) sb.append("MasterInstanceId: " + getMasterInstanceId() + ",");    	
-        if (getSlaveInstanceType() != null) sb.append("SlaveInstanceType: " + getSlaveInstanceType() + ",");    	
-        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");    	
-        if (getInstanceGroups() != null) sb.append("InstanceGroups: " + getInstanceGroups() + ",");    	
-        if (getNormalizedInstanceHours() != null) sb.append("NormalizedInstanceHours: " + getNormalizedInstanceHours() + ",");    	
-        if (getEc2KeyName() != null) sb.append("Ec2KeyName: " + getEc2KeyName() + ",");    	
-        if (getEc2SubnetId() != null) sb.append("Ec2SubnetId: " + getEc2SubnetId() + ",");    	
-        if (getPlacement() != null) sb.append("Placement: " + getPlacement() + ",");    	
-        if (isKeepJobFlowAliveWhenNoSteps() != null) sb.append("KeepJobFlowAliveWhenNoSteps: " + isKeepJobFlowAliveWhenNoSteps() + ",");    	
-        if (isTerminationProtected() != null) sb.append("TerminationProtected: " + isTerminationProtected() + ",");    	
+        sb.append("{");
+        if (getMasterInstanceType() != null) sb.append("MasterInstanceType: " + getMasterInstanceType() + ",");
+        if (getMasterPublicDnsName() != null) sb.append("MasterPublicDnsName: " + getMasterPublicDnsName() + ",");
+        if (getMasterInstanceId() != null) sb.append("MasterInstanceId: " + getMasterInstanceId() + ",");
+        if (getSlaveInstanceType() != null) sb.append("SlaveInstanceType: " + getSlaveInstanceType() + ",");
+        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");
+        if (getInstanceGroups() != null) sb.append("InstanceGroups: " + getInstanceGroups() + ",");
+        if (getNormalizedInstanceHours() != null) sb.append("NormalizedInstanceHours: " + getNormalizedInstanceHours() + ",");
+        if (getEc2KeyName() != null) sb.append("Ec2KeyName: " + getEc2KeyName() + ",");
+        if (getEc2SubnetId() != null) sb.append("Ec2SubnetId: " + getEc2SubnetId() + ",");
+        if (getPlacement() != null) sb.append("Placement: " + getPlacement() + ",");
+        if (isKeepJobFlowAliveWhenNoSteps() != null) sb.append("KeepJobFlowAliveWhenNoSteps: " + isKeepJobFlowAliveWhenNoSteps() + ",");
+        if (isTerminationProtected() != null) sb.append("TerminationProtected: " + isTerminationProtected() + ",");
         if (getHadoopVersion() != null) sb.append("HadoopVersion: " + getHadoopVersion() );
         sb.append("}");
         return sb.toString();

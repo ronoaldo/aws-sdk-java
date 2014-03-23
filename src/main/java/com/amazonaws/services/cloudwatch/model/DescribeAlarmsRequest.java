@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudwatch.AmazonCloudWatch#describeAlarms(DescribeAlarmsRequest) DescribeAlarms operation}.
  * <p>
- * Retrieves alarms with the specified names. If no name is specified, all alarms for the user are returned. Alarms can be retrieved by using only a
- * prefix for the alarm name, the alarm state, or a prefix for any action.
+ * Retrieves alarms with the specified names. If no name is specified,
+ * all alarms for the user are returned. Alarms can be retrieved by using
+ * only a prefix for the alarm name, the alarm state, or a prefix for any
+ * action.
  * </p>
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#describeAlarms(DescribeAlarmsRequest)
  */
-public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeAlarmsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list of alarm names to retrieve information for.
@@ -33,7 +37,7 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      */
-    private java.util.List<String> alarmNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNames;
 
     /**
      * The alarm name prefix. <code>AlarmNames</code> cannot be specified if
@@ -83,9 +87,9 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * @return A list of alarm names to retrieve information for.
      */
     public java.util.List<String> getAlarmNames() {
-        
         if (alarmNames == null) {
-            alarmNames = new java.util.ArrayList<String>();
+              alarmNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              alarmNames.setAutoConstruct(true);
         }
         return alarmNames;
     }
@@ -103,8 +107,7 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
             this.alarmNames = null;
             return;
         }
-
-        java.util.List<String> alarmNamesCopy = new java.util.ArrayList<String>(alarmNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmNames.size());
         alarmNamesCopy.addAll(alarmNames);
         this.alarmNames = alarmNamesCopy;
     }
@@ -120,7 +123,7 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * @param alarmNames A list of alarm names to retrieve information for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsRequest withAlarmNames(String... alarmNames) {
         if (getAlarmNames() == null) setAlarmNames(new java.util.ArrayList<String>(alarmNames.length));
@@ -141,20 +144,20 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * @param alarmNames A list of alarm names to retrieve information for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsRequest withAlarmNames(java.util.Collection<String> alarmNames) {
         if (alarmNames == null) {
             this.alarmNames = null;
         } else {
-            java.util.List<String> alarmNamesCopy = new java.util.ArrayList<String>(alarmNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmNames.size());
             alarmNamesCopy.addAll(alarmNames);
             this.alarmNames = alarmNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The alarm name prefix. <code>AlarmNames</code> cannot be specified if
      * this parameter is specified.
@@ -196,14 +199,13 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      *         this parameter is specified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsRequest withAlarmNamePrefix(String alarmNamePrefix) {
         this.alarmNamePrefix = alarmNamePrefix;
         return this;
     }
-    
-    
+
     /**
      * The state value to be used in matching alarms.
      * <p>
@@ -243,7 +245,7 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * @param stateValue The state value to be used in matching alarms.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StateValue
      */
@@ -251,8 +253,7 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
         this.stateValue = stateValue;
         return this;
     }
-    
-    
+
     /**
      * The state value to be used in matching alarms.
      * <p>
@@ -278,7 +279,7 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * @param stateValue The state value to be used in matching alarms.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StateValue
      */
@@ -286,7 +287,7 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
         this.stateValue = stateValue.toString();
         return this;
     }
-    
+
     /**
      * The action name prefix.
      * <p>
@@ -322,14 +323,13 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * @param actionPrefix The action name prefix.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsRequest withActionPrefix(String actionPrefix) {
         this.actionPrefix = actionPrefix;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of alarm descriptions to retrieve.
      * <p>
@@ -365,14 +365,13 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      * @param maxRecords The maximum number of alarm descriptions to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * The token returned by a previous call to indicate that there is more
      * data available.
@@ -405,14 +404,13 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
      *         data available.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -424,12 +422,12 @@ public class DescribeAlarmsRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmNames() != null) sb.append("AlarmNames: " + getAlarmNames() + ",");    	
-        if (getAlarmNamePrefix() != null) sb.append("AlarmNamePrefix: " + getAlarmNamePrefix() + ",");    	
-        if (getStateValue() != null) sb.append("StateValue: " + getStateValue() + ",");    	
-        if (getActionPrefix() != null) sb.append("ActionPrefix: " + getActionPrefix() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getAlarmNames() != null) sb.append("AlarmNames: " + getAlarmNames() + ",");
+        if (getAlarmNamePrefix() != null) sb.append("AlarmNamePrefix: " + getAlarmNamePrefix() + ",");
+        if (getStateValue() != null) sb.append("StateValue: " + getStateValue() + ",");
+        if (getActionPrefix() != null) sb.append("ActionPrefix: " + getActionPrefix() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

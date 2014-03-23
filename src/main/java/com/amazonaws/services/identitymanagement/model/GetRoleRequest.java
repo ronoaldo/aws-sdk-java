@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getRole(GetRoleRequest) GetRole operation}.
  * <p>
- * Retrieves information about the specified role, including the role's path, GUID, ARN, and the policy granting permission to EC2 to assume the role.
- * For more information about ARNs, go to ARNs. For more information about roles, go to <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/WorkingWithRoles.html"> Working with Roles </a> .
+ * Retrieves information about the specified role, including the role's
+ * path, GUID, ARN, and the policy granting permission to EC2 to assume
+ * the role. For more information about ARNs, go to ARNs. For more
+ * information about roles, go to
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html"> Working with Roles </a>
+ * .
  * </p>
  * <p>
- * The returned policy is URL-encoded according to RFC 3986. For more information about RFC 3986, go to <a href="http://www.faqs.org/rfcs/rfc3986.html">
- * http://www.faqs.org/rfcs/rfc3986.html </a> .
+ * The returned policy is URL-encoded according to RFC 3986. For more
+ * information about RFC 3986, go to
+ * <a href="http://www.faqs.org/rfcs/rfc3986.html"> http://www.faqs.org/rfcs/rfc3986.html </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getRole(GetRoleRequest)
  */
-public class GetRoleRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetRoleRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the role to get information about.
@@ -79,14 +86,13 @@ public class GetRoleRequest extends AmazonWebServiceRequest  implements Serializ
      * @param roleName Name of the role to get information about.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetRoleRequest withRoleName(String roleName) {
         this.roleName = roleName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -98,7 +104,7 @@ public class GetRoleRequest extends AmazonWebServiceRequest  implements Serializ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRoleName() != null) sb.append("RoleName: " + getRoleName() );
         sb.append("}");
         return sb.toString();

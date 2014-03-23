@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class GetTopicAttributesRequestMarshaller implements Marshaller<Request<G
     public Request<GetTopicAttributesRequest> marshall(GetTopicAttributesRequest getTopicAttributesRequest) {
 
         if (getTopicAttributesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetTopicAttributesRequest> request = new DefaultRequest<GetTopicAttributesRequest>(getTopicAttributesRequest, "AmazonSNS");
         request.addParameter("Action", "GetTopicAttributes");
@@ -43,7 +43,6 @@ public class GetTopicAttributesRequestMarshaller implements Marshaller<Request<G
         if (getTopicAttributesRequest.getTopicArn() != null) {
             request.addParameter("TopicArn", StringUtils.fromString(getTopicAttributesRequest.getTopicArn()));
         }
-
 
         return request;
     }

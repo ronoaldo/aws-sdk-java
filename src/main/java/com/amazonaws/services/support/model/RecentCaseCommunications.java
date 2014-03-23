@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,70 +13,63 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * List of Commmunication objects.
+ * Contains the five most recent communications associated with the case.
  * </p>
  */
-public class RecentCaseCommunications  implements Serializable  {
+public class RecentCaseCommunications implements Serializable {
 
     /**
-     * List of <a href="API_Communication.html"
-     * title="Communication">Commmunication</a> objects.
+     * The five most recent communications associated with the case.
      */
-    private java.util.List<Communication> communications;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Communication> communications;
 
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      */
     private String nextToken;
 
     /**
-     * List of <a href="API_Communication.html"
-     * title="Communication">Commmunication</a> objects.
+     * The five most recent communications associated with the case.
      *
-     * @return List of <a href="API_Communication.html"
-     *         title="Communication">Commmunication</a> objects.
+     * @return The five most recent communications associated with the case.
      */
     public java.util.List<Communication> getCommunications() {
-        
         if (communications == null) {
-            communications = new java.util.ArrayList<Communication>();
+              communications = new com.amazonaws.internal.ListWithAutoConstructFlag<Communication>();
+              communications.setAutoConstruct(true);
         }
         return communications;
     }
     
     /**
-     * List of <a href="API_Communication.html"
-     * title="Communication">Commmunication</a> objects.
+     * The five most recent communications associated with the case.
      *
-     * @param communications List of <a href="API_Communication.html"
-     *         title="Communication">Commmunication</a> objects.
+     * @param communications The five most recent communications associated with the case.
      */
     public void setCommunications(java.util.Collection<Communication> communications) {
         if (communications == null) {
             this.communications = null;
             return;
         }
-
-        java.util.List<Communication> communicationsCopy = new java.util.ArrayList<Communication>(communications.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Communication> communicationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Communication>(communications.size());
         communicationsCopy.addAll(communications);
         this.communications = communicationsCopy;
     }
     
     /**
-     * List of <a href="API_Communication.html"
-     * title="Communication">Commmunication</a> objects.
+     * The five most recent communications associated with the case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param communications List of <a href="API_Communication.html"
-     *         title="Communication">Commmunication</a> objects.
+     * @param communications The five most recent communications associated with the case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecentCaseCommunications withCommunications(Communication... communications) {
         if (getCommunications() == null) setCommunications(new java.util.ArrayList<Communication>(communications.length));
@@ -87,63 +80,60 @@ public class RecentCaseCommunications  implements Serializable  {
     }
     
     /**
-     * List of <a href="API_Communication.html"
-     * title="Communication">Commmunication</a> objects.
+     * The five most recent communications associated with the case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param communications List of <a href="API_Communication.html"
-     *         title="Communication">Commmunication</a> objects.
+     * @param communications The five most recent communications associated with the case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecentCaseCommunications withCommunications(java.util.Collection<Communication> communications) {
         if (communications == null) {
             this.communications = null;
         } else {
-            java.util.List<Communication> communicationsCopy = new java.util.ArrayList<Communication>(communications.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Communication> communicationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Communication>(communications.size());
             communicationsCopy.addAll(communications);
             this.communications = communicationsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @return Defines a resumption point for pagination.
+     * @return A resumption point for pagination.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecentCaseCommunications withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +145,8 @@ public class RecentCaseCommunications  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCommunications() != null) sb.append("Communications: " + getCommunications() + ",");    	
+        sb.append("{");
+        if (getCommunications() != null) sb.append("Communications: " + getCommunications() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

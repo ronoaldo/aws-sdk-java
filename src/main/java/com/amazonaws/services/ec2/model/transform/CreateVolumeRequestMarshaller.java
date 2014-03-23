@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateVolumeRequestMarshaller implements Marshaller<Request<CreateV
     public Request<CreateVolumeRequest> marshall(CreateVolumeRequest createVolumeRequest) {
 
         if (createVolumeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateVolumeRequest> request = new DefaultRequest<CreateVolumeRequest>(createVolumeRequest, "AmazonEC2");
         request.addParameter("Action", "CreateVolume");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createVolumeRequest.getSize() != null) {
             request.addParameter("Size", StringUtils.fromInteger(createVolumeRequest.getSize()));
@@ -55,7 +55,6 @@ public class CreateVolumeRequestMarshaller implements Marshaller<Request<CreateV
         if (createVolumeRequest.getIops() != null) {
             request.addParameter("Iops", StringUtils.fromInteger(createVolumeRequest.getIops()));
         }
-
 
         return request;
     }

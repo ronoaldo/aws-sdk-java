@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A list of the part sizes of the multipart upload.
  * </p>
  */
-public class PartListElement  implements Serializable  {
+public class PartListElement implements Serializable {
 
     /**
      * The byte range of a part, inclusive of the upper value of the range.
@@ -65,14 +66,13 @@ public class PartListElement  implements Serializable  {
      * @param rangeInBytes The byte range of a part, inclusive of the upper value of the range.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PartListElement withRangeInBytes(String rangeInBytes) {
         this.rangeInBytes = rangeInBytes;
         return this;
     }
-    
-    
+
     /**
      * The SHA256 tree hash value that Amazon Glacier calculated for the
      * part. This field is never <code>null</code>.
@@ -105,14 +105,13 @@ public class PartListElement  implements Serializable  {
      *         part. This field is never <code>null</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PartListElement withSHA256TreeHash(String sHA256TreeHash) {
         this.sHA256TreeHash = sHA256TreeHash;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -124,8 +123,8 @@ public class PartListElement  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRangeInBytes() != null) sb.append("RangeInBytes: " + getRangeInBytes() + ",");    	
+        sb.append("{");
+        if (getRangeInBytes() != null) sb.append("RangeInBytes: " + getRangeInBytes() + ",");
         if (getSHA256TreeHash() != null) sb.append("SHA256TreeHash: " + getSHA256TreeHash() );
         sb.append("}");
         return sb.toString();

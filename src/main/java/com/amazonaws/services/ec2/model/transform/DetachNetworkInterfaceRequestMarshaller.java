@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DetachNetworkInterfaceRequestMarshaller implements Marshaller<Reque
     public Request<DetachNetworkInterfaceRequest> marshall(DetachNetworkInterfaceRequest detachNetworkInterfaceRequest) {
 
         if (detachNetworkInterfaceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DetachNetworkInterfaceRequest> request = new DefaultRequest<DetachNetworkInterfaceRequest>(detachNetworkInterfaceRequest, "AmazonEC2");
         request.addParameter("Action", "DetachNetworkInterface");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (detachNetworkInterfaceRequest.getAttachmentId() != null) {
             request.addParameter("AttachmentId", StringUtils.fromString(detachNetworkInterfaceRequest.getAttachmentId()));
@@ -46,7 +46,6 @@ public class DetachNetworkInterfaceRequestMarshaller implements Marshaller<Reque
         if (detachNetworkInterfaceRequest.isForce() != null) {
             request.addParameter("Force", StringUtils.fromBoolean(detachNetworkInterfaceRequest.isForce()));
         }
-
 
         return request;
     }

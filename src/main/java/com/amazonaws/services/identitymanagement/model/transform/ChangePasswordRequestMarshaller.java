@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ChangePasswordRequestMarshaller implements Marshaller<Request<Chang
     public Request<ChangePasswordRequest> marshall(ChangePasswordRequest changePasswordRequest) {
 
         if (changePasswordRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ChangePasswordRequest> request = new DefaultRequest<ChangePasswordRequest>(changePasswordRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "ChangePassword");
@@ -46,7 +46,6 @@ public class ChangePasswordRequestMarshaller implements Marshaller<Request<Chang
         if (changePasswordRequest.getNewPassword() != null) {
             request.addParameter("NewPassword", StringUtils.fromString(changePasswordRequest.getNewPassword()));
         }
-
 
         return request;
     }

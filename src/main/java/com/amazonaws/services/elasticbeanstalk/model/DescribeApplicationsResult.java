@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Result message containing a list of application descriptions.
  * </p>
  */
-public class DescribeApplicationsResult  implements Serializable  {
+public class DescribeApplicationsResult implements Serializable {
 
     /**
      * This parameter contains a list of <a>ApplicationDescription</a>.
      */
-    private java.util.List<ApplicationDescription> applications;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationDescription> applications;
 
     /**
      * This parameter contains a list of <a>ApplicationDescription</a>.
@@ -33,9 +34,9 @@ public class DescribeApplicationsResult  implements Serializable  {
      * @return This parameter contains a list of <a>ApplicationDescription</a>.
      */
     public java.util.List<ApplicationDescription> getApplications() {
-        
         if (applications == null) {
-            applications = new java.util.ArrayList<ApplicationDescription>();
+              applications = new com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationDescription>();
+              applications.setAutoConstruct(true);
         }
         return applications;
     }
@@ -50,8 +51,7 @@ public class DescribeApplicationsResult  implements Serializable  {
             this.applications = null;
             return;
         }
-
-        java.util.List<ApplicationDescription> applicationsCopy = new java.util.ArrayList<ApplicationDescription>(applications.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationDescription> applicationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationDescription>(applications.size());
         applicationsCopy.addAll(applications);
         this.applications = applicationsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeApplicationsResult  implements Serializable  {
      * @param applications This parameter contains a list of <a>ApplicationDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeApplicationsResult withApplications(ApplicationDescription... applications) {
         if (getApplications() == null) setApplications(new java.util.ArrayList<ApplicationDescription>(applications.length));
@@ -82,20 +82,20 @@ public class DescribeApplicationsResult  implements Serializable  {
      * @param applications This parameter contains a list of <a>ApplicationDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeApplicationsResult withApplications(java.util.Collection<ApplicationDescription> applications) {
         if (applications == null) {
             this.applications = null;
         } else {
-            java.util.List<ApplicationDescription> applicationsCopy = new java.util.ArrayList<ApplicationDescription>(applications.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationDescription> applicationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationDescription>(applications.size());
             applicationsCopy.addAll(applications);
             this.applications = applicationsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeApplicationsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getApplications() != null) sb.append("Applications: " + getApplications() );
         sb.append("}");
         return sb.toString();

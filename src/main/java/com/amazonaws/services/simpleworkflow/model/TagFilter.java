@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Used to filter the workflow executions in visibility APIs based on a tag.
+ * Used to filter the workflow executions in visibility APIs based on a
+ * tag.
  * </p>
  */
-public class TagFilter  implements Serializable  {
+public class TagFilter implements Serializable {
 
     /**
      * Specifies the tag that must be associated with the execution for it to
@@ -72,14 +74,13 @@ public class TagFilter  implements Serializable  {
      *         meet the filter criteria. This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagFilter withTag(String tag) {
         this.tag = tag;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -91,7 +92,7 @@ public class TagFilter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTag() != null) sb.append("Tag: " + getTag() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,37 +13,50 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#countPendingActivityTasks(CountPendingActivityTasksRequest) CountPendingActivityTasks operation}.
  * <p>
- * Returns the estimated number of activity tasks in the specified task list. The count returned is an approximation and is not guaranteed to be exact.
- * If you specify a task list that no activity task was ever scheduled in then 0 will be returned.
+ * Returns the estimated number of activity tasks in the specified task
+ * list. The count returned is an approximation and is not guaranteed to
+ * be exact. If you specify a task list that no activity task was ever
+ * scheduled in then 0 will be returned.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>Use a <b>Condition</b> element with the <code>swf:taskList.name</code> key to allow the action to access only certain task lists.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>Use a <b>Condition</b> element with the
+ * <code>swf:taskList.name</code> key to allow the action to access only
+ * certain task lists.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#countPendingActivityTasks(CountPendingActivityTasksRequest)
  */
-public class CountPendingActivityTasksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CountPendingActivityTasksRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain that contains the task list.
@@ -93,14 +106,13 @@ public class CountPendingActivityTasksRequest extends AmazonWebServiceRequest  i
      * @param domain The name of the domain that contains the task list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CountPendingActivityTasksRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * The name of the task list.
      *
@@ -127,14 +139,13 @@ public class CountPendingActivityTasksRequest extends AmazonWebServiceRequest  i
      * @param taskList The name of the task list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CountPendingActivityTasksRequest withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +157,8 @@ public class CountPendingActivityTasksRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
         if (getTaskList() != null) sb.append("TaskList: " + getTaskList() );
         sb.append("}");
         return sb.toString();

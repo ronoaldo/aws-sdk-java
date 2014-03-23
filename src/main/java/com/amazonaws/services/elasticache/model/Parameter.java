@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,42 +13,44 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A setting controlling some apsect of the service's behavior.
+ * Describes an individual setting that controls some aspect of
+ * ElastiCache behavior.
  * </p>
  */
-public class Parameter  implements Serializable  {
+public class Parameter implements Serializable {
 
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      */
     private String parameterName;
 
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      */
     private String parameterValue;
 
     /**
-     * Provides a description of the parameter.
+     * A description of the parameter.
      */
     private String description;
 
     /**
-     * Indicates the source of the parameter value.
+     * The source of the parameter.
      */
     private String source;
 
     /**
-     * Specifies the valid data type for the parameter.
+     * The valid data type for the parameter.
      */
     private String dataType;
 
     /**
-     * Specifies the valid range of values for the parameter.
+     * The valid range of values for the parameter.
      */
     private String allowedValues;
 
@@ -60,7 +62,7 @@ public class Parameter  implements Serializable  {
     private Boolean isModifiable;
 
     /**
-     * The earliest engine version to which the parameter can apply.
+     * The earliest cache engine version to which the parameter can apply.
      */
     private String minimumEngineVersion;
 
@@ -71,209 +73,203 @@ public class Parameter  implements Serializable  {
     public Parameter() {}
     
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      *
-     * @return Specifies the name of the parameter.
+     * @return The name of the parameter.
      */
     public String getParameterName() {
         return parameterName;
     }
     
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      *
-     * @param parameterName Specifies the name of the parameter.
+     * @param parameterName The name of the parameter.
      */
     public void setParameterName(String parameterName) {
         this.parameterName = parameterName;
     }
     
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param parameterName Specifies the name of the parameter.
+     * @param parameterName The name of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withParameterName(String parameterName) {
         this.parameterName = parameterName;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      *
-     * @return Specifies the value of the parameter.
+     * @return The value of the parameter.
      */
     public String getParameterValue() {
         return parameterValue;
     }
     
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      *
-     * @param parameterValue Specifies the value of the parameter.
+     * @param parameterValue The value of the parameter.
      */
     public void setParameterValue(String parameterValue) {
         this.parameterValue = parameterValue;
     }
     
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param parameterValue Specifies the value of the parameter.
+     * @param parameterValue The value of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withParameterValue(String parameterValue) {
         this.parameterValue = parameterValue;
         return this;
     }
-    
-    
+
     /**
-     * Provides a description of the parameter.
+     * A description of the parameter.
      *
-     * @return Provides a description of the parameter.
+     * @return A description of the parameter.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Provides a description of the parameter.
+     * A description of the parameter.
      *
-     * @param description Provides a description of the parameter.
+     * @param description A description of the parameter.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Provides a description of the parameter.
+     * A description of the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description Provides a description of the parameter.
+     * @param description A description of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Indicates the source of the parameter value.
+     * The source of the parameter.
      *
-     * @return Indicates the source of the parameter value.
+     * @return The source of the parameter.
      */
     public String getSource() {
         return source;
     }
     
     /**
-     * Indicates the source of the parameter value.
+     * The source of the parameter.
      *
-     * @param source Indicates the source of the parameter value.
+     * @param source The source of the parameter.
      */
     public void setSource(String source) {
         this.source = source;
     }
     
     /**
-     * Indicates the source of the parameter value.
+     * The source of the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param source Indicates the source of the parameter value.
+     * @param source The source of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withSource(String source) {
         this.source = source;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the valid data type for the parameter.
+     * The valid data type for the parameter.
      *
-     * @return Specifies the valid data type for the parameter.
+     * @return The valid data type for the parameter.
      */
     public String getDataType() {
         return dataType;
     }
     
     /**
-     * Specifies the valid data type for the parameter.
+     * The valid data type for the parameter.
      *
-     * @param dataType Specifies the valid data type for the parameter.
+     * @param dataType The valid data type for the parameter.
      */
     public void setDataType(String dataType) {
         this.dataType = dataType;
     }
     
     /**
-     * Specifies the valid data type for the parameter.
+     * The valid data type for the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dataType Specifies the valid data type for the parameter.
+     * @param dataType The valid data type for the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withDataType(String dataType) {
         this.dataType = dataType;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the valid range of values for the parameter.
+     * The valid range of values for the parameter.
      *
-     * @return Specifies the valid range of values for the parameter.
+     * @return The valid range of values for the parameter.
      */
     public String getAllowedValues() {
         return allowedValues;
     }
     
     /**
-     * Specifies the valid range of values for the parameter.
+     * The valid range of values for the parameter.
      *
-     * @param allowedValues Specifies the valid range of values for the parameter.
+     * @param allowedValues The valid range of values for the parameter.
      */
     public void setAllowedValues(String allowedValues) {
         this.allowedValues = allowedValues;
     }
     
     /**
-     * Specifies the valid range of values for the parameter.
+     * The valid range of values for the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param allowedValues Specifies the valid range of values for the parameter.
+     * @param allowedValues The valid range of values for the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withAllowedValues(String allowedValues) {
         this.allowedValues = allowedValues;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether (<code>true</code>) or not (<code>false</code>) the
      * parameter can be modified. Some parameters have security or
@@ -312,14 +308,13 @@ public class Parameter  implements Serializable  {
      *         operational implications that prevent them from being changed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withIsModifiable(Boolean isModifiable) {
         this.isModifiable = isModifiable;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether (<code>true</code>) or not (<code>false</code>) the
      * parameter can be modified. Some parameters have security or
@@ -332,41 +327,40 @@ public class Parameter  implements Serializable  {
     public Boolean getIsModifiable() {
         return isModifiable;
     }
-    
+
     /**
-     * The earliest engine version to which the parameter can apply.
+     * The earliest cache engine version to which the parameter can apply.
      *
-     * @return The earliest engine version to which the parameter can apply.
+     * @return The earliest cache engine version to which the parameter can apply.
      */
     public String getMinimumEngineVersion() {
         return minimumEngineVersion;
     }
     
     /**
-     * The earliest engine version to which the parameter can apply.
+     * The earliest cache engine version to which the parameter can apply.
      *
-     * @param minimumEngineVersion The earliest engine version to which the parameter can apply.
+     * @param minimumEngineVersion The earliest cache engine version to which the parameter can apply.
      */
     public void setMinimumEngineVersion(String minimumEngineVersion) {
         this.minimumEngineVersion = minimumEngineVersion;
     }
     
     /**
-     * The earliest engine version to which the parameter can apply.
+     * The earliest cache engine version to which the parameter can apply.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param minimumEngineVersion The earliest engine version to which the parameter can apply.
+     * @param minimumEngineVersion The earliest cache engine version to which the parameter can apply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withMinimumEngineVersion(String minimumEngineVersion) {
         this.minimumEngineVersion = minimumEngineVersion;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -378,14 +372,14 @@ public class Parameter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterName() != null) sb.append("ParameterName: " + getParameterName() + ",");    	
-        if (getParameterValue() != null) sb.append("ParameterValue: " + getParameterValue() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getDataType() != null) sb.append("DataType: " + getDataType() + ",");    	
-        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");    	
-        if (isModifiable() != null) sb.append("IsModifiable: " + isModifiable() + ",");    	
+        sb.append("{");
+        if (getParameterName() != null) sb.append("ParameterName: " + getParameterName() + ",");
+        if (getParameterValue() != null) sb.append("ParameterValue: " + getParameterValue() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getDataType() != null) sb.append("DataType: " + getDataType() + ",");
+        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");
+        if (isModifiable() != null) sb.append("IsModifiable: " + isModifiable() + ",");
         if (getMinimumEngineVersion() != null) sb.append("MinimumEngineVersion: " + getMinimumEngineVersion() );
         sb.append("}");
         return sb.toString();

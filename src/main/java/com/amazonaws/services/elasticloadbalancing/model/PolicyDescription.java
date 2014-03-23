@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,100 +21,98 @@ import java.io.Serializable;
  * The <code>PolicyDescription</code> data type.
  * </p>
  */
-public class PolicyDescription  implements Serializable  {
+public class PolicyDescription implements Serializable {
 
     /**
-     * The name mof the policy associated with the LoadBalancer.
+     * The name of the policy associated with the load balancer.
      */
     private String policyName;
 
     /**
-     * The name of the policy type associated with the LoadBalancer.
+     * The name of the policy type associated with the load balancer.
      */
     private String policyTypeName;
 
     /**
      * A list of policy attribute description structures.
      */
-    private java.util.List<PolicyAttributeDescription> policyAttributeDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription> policyAttributeDescriptions;
 
     /**
-     * The name mof the policy associated with the LoadBalancer.
+     * The name of the policy associated with the load balancer.
      *
-     * @return The name mof the policy associated with the LoadBalancer.
+     * @return The name of the policy associated with the load balancer.
      */
     public String getPolicyName() {
         return policyName;
     }
     
     /**
-     * The name mof the policy associated with the LoadBalancer.
+     * The name of the policy associated with the load balancer.
      *
-     * @param policyName The name mof the policy associated with the LoadBalancer.
+     * @param policyName The name of the policy associated with the load balancer.
      */
     public void setPolicyName(String policyName) {
         this.policyName = policyName;
     }
     
     /**
-     * The name mof the policy associated with the LoadBalancer.
+     * The name of the policy associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyName The name mof the policy associated with the LoadBalancer.
+     * @param policyName The name of the policy associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
-     * The name of the policy type associated with the LoadBalancer.
+     * The name of the policy type associated with the load balancer.
      *
-     * @return The name of the policy type associated with the LoadBalancer.
+     * @return The name of the policy type associated with the load balancer.
      */
     public String getPolicyTypeName() {
         return policyTypeName;
     }
     
     /**
-     * The name of the policy type associated with the LoadBalancer.
+     * The name of the policy type associated with the load balancer.
      *
-     * @param policyTypeName The name of the policy type associated with the LoadBalancer.
+     * @param policyTypeName The name of the policy type associated with the load balancer.
      */
     public void setPolicyTypeName(String policyTypeName) {
         this.policyTypeName = policyTypeName;
     }
     
     /**
-     * The name of the policy type associated with the LoadBalancer.
+     * The name of the policy type associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyTypeName The name of the policy type associated with the LoadBalancer.
+     * @param policyTypeName The name of the policy type associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyTypeName(String policyTypeName) {
         this.policyTypeName = policyTypeName;
         return this;
     }
-    
-    
+
     /**
      * A list of policy attribute description structures.
      *
      * @return A list of policy attribute description structures.
      */
     public java.util.List<PolicyAttributeDescription> getPolicyAttributeDescriptions() {
-        
         if (policyAttributeDescriptions == null) {
-            policyAttributeDescriptions = new java.util.ArrayList<PolicyAttributeDescription>();
+              policyAttributeDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription>();
+              policyAttributeDescriptions.setAutoConstruct(true);
         }
         return policyAttributeDescriptions;
     }
@@ -128,8 +127,7 @@ public class PolicyDescription  implements Serializable  {
             this.policyAttributeDescriptions = null;
             return;
         }
-
-        java.util.List<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new java.util.ArrayList<PolicyAttributeDescription>(policyAttributeDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription>(policyAttributeDescriptions.size());
         policyAttributeDescriptionsCopy.addAll(policyAttributeDescriptions);
         this.policyAttributeDescriptions = policyAttributeDescriptionsCopy;
     }
@@ -142,7 +140,7 @@ public class PolicyDescription  implements Serializable  {
      * @param policyAttributeDescriptions A list of policy attribute description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyAttributeDescriptions(PolicyAttributeDescription... policyAttributeDescriptions) {
         if (getPolicyAttributeDescriptions() == null) setPolicyAttributeDescriptions(new java.util.ArrayList<PolicyAttributeDescription>(policyAttributeDescriptions.length));
@@ -160,20 +158,20 @@ public class PolicyDescription  implements Serializable  {
      * @param policyAttributeDescriptions A list of policy attribute description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyDescription withPolicyAttributeDescriptions(java.util.Collection<PolicyAttributeDescription> policyAttributeDescriptions) {
         if (policyAttributeDescriptions == null) {
             this.policyAttributeDescriptions = null;
         } else {
-            java.util.List<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new java.util.ArrayList<PolicyAttributeDescription>(policyAttributeDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription> policyAttributeDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeDescription>(policyAttributeDescriptions.size());
             policyAttributeDescriptionsCopy.addAll(policyAttributeDescriptions);
             this.policyAttributeDescriptions = policyAttributeDescriptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -185,9 +183,9 @@ public class PolicyDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
-        if (getPolicyTypeName() != null) sb.append("PolicyTypeName: " + getPolicyTypeName() + ",");    	
+        sb.append("{");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
+        if (getPolicyTypeName() != null) sb.append("PolicyTypeName: " + getPolicyTypeName() + ",");
         if (getPolicyAttributeDescriptions() != null) sb.append("PolicyAttributeDescriptions: " + getPolicyAttributeDescriptions() );
         sb.append("}");
         return sb.toString();

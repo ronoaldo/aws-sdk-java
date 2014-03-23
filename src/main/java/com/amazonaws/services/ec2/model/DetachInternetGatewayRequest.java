@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DetachInternetGatewayRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#detachInternetGateway(DetachInternetGatewayRequest) DetachInternetGateway operation}.
  * <p>
- * Detaches an Internet gateway from a VPC, disabling connectivity between the Internet and the VPC. The VPC must not contain any running instances with
- * elastic IP addresses. For more information about your VPC and Internet gateway, go to Amazon Virtual Private Cloud User Guide.
- * </p>
- * <p>
- * For more information about Amazon Virtual Private Cloud and Internet gateways, go to the Amazon Virtual Private Cloud User Guide.
+ * Detaches an Internet gateway from a VPC, disabling connectivity
+ * between the Internet and the VPC. The VPC must not contain any running
+ * instances with Elastic IP addresses.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#detachInternetGateway(DetachInternetGatewayRequest)
  */
-public class DetachInternetGatewayRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DetachInternetGatewayRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DetachInternetGatewayRequest> {
 
     /**
-     * The ID of the Internet gateway to detach.
+     * The ID of the Internet gateway.
      */
     private String internetGatewayId;
 
@@ -41,39 +43,38 @@ public class DetachInternetGatewayRequest extends AmazonWebServiceRequest  imple
     private String vpcId;
 
     /**
-     * The ID of the Internet gateway to detach.
+     * The ID of the Internet gateway.
      *
-     * @return The ID of the Internet gateway to detach.
+     * @return The ID of the Internet gateway.
      */
     public String getInternetGatewayId() {
         return internetGatewayId;
     }
     
     /**
-     * The ID of the Internet gateway to detach.
+     * The ID of the Internet gateway.
      *
-     * @param internetGatewayId The ID of the Internet gateway to detach.
+     * @param internetGatewayId The ID of the Internet gateway.
      */
     public void setInternetGatewayId(String internetGatewayId) {
         this.internetGatewayId = internetGatewayId;
     }
     
     /**
-     * The ID of the Internet gateway to detach.
+     * The ID of the Internet gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param internetGatewayId The ID of the Internet gateway to detach.
+     * @param internetGatewayId The ID of the Internet gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachInternetGatewayRequest withInternetGatewayId(String internetGatewayId) {
         this.internetGatewayId = internetGatewayId;
         return this;
     }
-    
-    
+
     /**
      * The ID of the VPC.
      *
@@ -100,13 +101,24 @@ public class DetachInternetGatewayRequest extends AmazonWebServiceRequest  imple
      * @param vpcId The ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachInternetGatewayRequest withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DetachInternetGatewayRequest> getDryRunRequest() {
+        Request<DetachInternetGatewayRequest> request = new DetachInternetGatewayRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -119,8 +131,8 @@ public class DetachInternetGatewayRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInternetGatewayId() != null) sb.append("InternetGatewayId: " + getInternetGatewayId() + ",");    	
+        sb.append("{");
+        if (getInternetGatewayId() != null) sb.append("InternetGatewayId: " + getInternetGatewayId() + ",");
         if (getVpcId() != null) sb.append("VpcId: " + getVpcId() );
         sb.append("}");
         return sb.toString();

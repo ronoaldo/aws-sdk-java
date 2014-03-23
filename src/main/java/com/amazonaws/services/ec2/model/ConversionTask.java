@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,269 +13,359 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Conversion Task
+ * <p>
+ * Describes a conversion task.
+ * </p>
  */
-public class ConversionTask  implements Serializable  {
-
-    private String conversionTaskId;
-
-    private String expirationTime;
-
-    private ImportInstanceTaskDetails importInstance;
-
-    private ImportVolumeTaskDetails importVolume;
-
-    private String state;
-
-    private String statusMessage;
-
-    private java.util.List<Tag> tags;
+public class ConversionTask implements Serializable {
 
     /**
-     * Returns the value of the ConversionTaskId property for this object.
+     * The ID of the conversion task.
+     */
+    private String conversionTaskId;
+
+    /**
+     * The time when the task expires. If the upload isn't complete before
+     * the expiration time, we automatically cancel the task.
+     */
+    private String expirationTime;
+
+    /**
+     * If the task is for importing an instance, this contains information
+     * about the import instance task.
+     */
+    private ImportInstanceTaskDetails importInstance;
+
+    /**
+     * If the task is for importing a volume, this contains information about
+     * the import volume task.
+     */
+    private ImportVolumeTaskDetails importVolume;
+
+    /**
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
+     */
+    private String state;
+
+    /**
+     * The status message related to the conversion task.
+     */
+    private String statusMessage;
+
+    /**
+     * 
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
+
+    /**
+     * The ID of the conversion task.
      *
-     * @return The value of the ConversionTaskId property for this object.
+     * @return The ID of the conversion task.
      */
     public String getConversionTaskId() {
         return conversionTaskId;
     }
     
     /**
-     * Sets the value of the ConversionTaskId property for this object.
+     * The ID of the conversion task.
      *
-     * @param conversionTaskId The new value for the ConversionTaskId property for this object.
+     * @param conversionTaskId The ID of the conversion task.
      */
     public void setConversionTaskId(String conversionTaskId) {
         this.conversionTaskId = conversionTaskId;
     }
     
     /**
-     * Sets the value of the ConversionTaskId property for this object.
+     * The ID of the conversion task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param conversionTaskId The new value for the ConversionTaskId property for this object.
+     * @param conversionTaskId The ID of the conversion task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConversionTask withConversionTaskId(String conversionTaskId) {
         this.conversionTaskId = conversionTaskId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the ExpirationTime property for this object.
+     * The time when the task expires. If the upload isn't complete before
+     * the expiration time, we automatically cancel the task.
      *
-     * @return The value of the ExpirationTime property for this object.
+     * @return The time when the task expires. If the upload isn't complete before
+     *         the expiration time, we automatically cancel the task.
      */
     public String getExpirationTime() {
         return expirationTime;
     }
     
     /**
-     * Sets the value of the ExpirationTime property for this object.
+     * The time when the task expires. If the upload isn't complete before
+     * the expiration time, we automatically cancel the task.
      *
-     * @param expirationTime The new value for the ExpirationTime property for this object.
+     * @param expirationTime The time when the task expires. If the upload isn't complete before
+     *         the expiration time, we automatically cancel the task.
      */
     public void setExpirationTime(String expirationTime) {
         this.expirationTime = expirationTime;
     }
     
     /**
-     * Sets the value of the ExpirationTime property for this object.
+     * The time when the task expires. If the upload isn't complete before
+     * the expiration time, we automatically cancel the task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param expirationTime The new value for the ExpirationTime property for this object.
+     * @param expirationTime The time when the task expires. If the upload isn't complete before
+     *         the expiration time, we automatically cancel the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConversionTask withExpirationTime(String expirationTime) {
         this.expirationTime = expirationTime;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the ImportInstance property for this object.
+     * If the task is for importing an instance, this contains information
+     * about the import instance task.
      *
-     * @return The value of the ImportInstance property for this object.
+     * @return If the task is for importing an instance, this contains information
+     *         about the import instance task.
      */
     public ImportInstanceTaskDetails getImportInstance() {
         return importInstance;
     }
     
     /**
-     * Sets the value of the ImportInstance property for this object.
+     * If the task is for importing an instance, this contains information
+     * about the import instance task.
      *
-     * @param importInstance The new value for the ImportInstance property for this object.
+     * @param importInstance If the task is for importing an instance, this contains information
+     *         about the import instance task.
      */
     public void setImportInstance(ImportInstanceTaskDetails importInstance) {
         this.importInstance = importInstance;
     }
     
     /**
-     * Sets the value of the ImportInstance property for this object.
+     * If the task is for importing an instance, this contains information
+     * about the import instance task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param importInstance The new value for the ImportInstance property for this object.
+     * @param importInstance If the task is for importing an instance, this contains information
+     *         about the import instance task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConversionTask withImportInstance(ImportInstanceTaskDetails importInstance) {
         this.importInstance = importInstance;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the ImportVolume property for this object.
+     * If the task is for importing a volume, this contains information about
+     * the import volume task.
      *
-     * @return The value of the ImportVolume property for this object.
+     * @return If the task is for importing a volume, this contains information about
+     *         the import volume task.
      */
     public ImportVolumeTaskDetails getImportVolume() {
         return importVolume;
     }
     
     /**
-     * Sets the value of the ImportVolume property for this object.
+     * If the task is for importing a volume, this contains information about
+     * the import volume task.
      *
-     * @param importVolume The new value for the ImportVolume property for this object.
+     * @param importVolume If the task is for importing a volume, this contains information about
+     *         the import volume task.
      */
     public void setImportVolume(ImportVolumeTaskDetails importVolume) {
         this.importVolume = importVolume;
     }
     
     /**
-     * Sets the value of the ImportVolume property for this object.
+     * If the task is for importing a volume, this contains information about
+     * the import volume task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param importVolume The new value for the ImportVolume property for this object.
+     * @param importVolume If the task is for importing a volume, this contains information about
+     *         the import volume task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConversionTask withImportVolume(ImportVolumeTaskDetails importVolume) {
         this.importVolume = importVolume;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the State property for this object.
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @return The value of the State property for this object.
+     * @return The state of the conversion task.
+     *
+     * @see ConversionTaskState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @param state The new value for the State property for this object.
+     * @param state The state of the conversion task.
+     *
+     * @see ConversionTaskState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The state of the conversion task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @param state The new value for the State property for this object.
+     * @param state The state of the conversion task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see ConversionTaskState
      */
     public ConversionTask withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
+     *
+     * @param state The state of the conversion task.
+     *
+     * @see ConversionTaskState
+     */
+    public void setState(ConversionTaskState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Returns the value of the StatusMessage property for this object.
+     * The state of the conversion task.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @return The value of the StatusMessage property for this object.
+     * @param state The state of the conversion task.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see ConversionTaskState
+     */
+    public ConversionTask withState(ConversionTaskState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * The status message related to the conversion task.
+     *
+     * @return The status message related to the conversion task.
      */
     public String getStatusMessage() {
         return statusMessage;
     }
     
     /**
-     * Sets the value of the StatusMessage property for this object.
+     * The status message related to the conversion task.
      *
-     * @param statusMessage The new value for the StatusMessage property for this object.
+     * @param statusMessage The status message related to the conversion task.
      */
     public void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
     }
     
     /**
-     * Sets the value of the StatusMessage property for this object.
+     * The status message related to the conversion task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param statusMessage The new value for the StatusMessage property for this object.
+     * @param statusMessage The status message related to the conversion task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConversionTask withStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Tags property for this object.
+     * 
      *
-     * @return The value of the Tags property for this object.
+     * @return 
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * 
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags 
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConversionTask withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -286,27 +376,27 @@ public class ConversionTask  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConversionTask withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -318,13 +408,13 @@ public class ConversionTask  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getConversionTaskId() != null) sb.append("ConversionTaskId: " + getConversionTaskId() + ",");    	
-        if (getExpirationTime() != null) sb.append("ExpirationTime: " + getExpirationTime() + ",");    	
-        if (getImportInstance() != null) sb.append("ImportInstance: " + getImportInstance() + ",");    	
-        if (getImportVolume() != null) sb.append("ImportVolume: " + getImportVolume() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");    	
+        sb.append("{");
+        if (getConversionTaskId() != null) sb.append("ConversionTaskId: " + getConversionTaskId() + ",");
+        if (getExpirationTime() != null) sb.append("ExpirationTime: " + getExpirationTime() + ",");
+        if (getImportInstance() != null) sb.append("ImportInstance: " + getImportInstance() + ",");
+        if (getImportVolume() != null) sb.append("ImportVolume: " + getImportVolume() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

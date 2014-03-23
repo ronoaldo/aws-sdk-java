@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
-public class ListVaultsResult  implements Serializable  {
+public class ListVaultsResult implements Serializable {
 
     /**
      * List of vaults.
      */
-    private java.util.List<DescribeVaultOutput> vaultList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DescribeVaultOutput> vaultList;
 
     /**
      * The vault ARN at which to continue pagination of the results. You use
@@ -40,9 +41,9 @@ public class ListVaultsResult  implements Serializable  {
      * @return List of vaults.
      */
     public java.util.List<DescribeVaultOutput> getVaultList() {
-        
         if (vaultList == null) {
-            vaultList = new java.util.ArrayList<DescribeVaultOutput>();
+              vaultList = new com.amazonaws.internal.ListWithAutoConstructFlag<DescribeVaultOutput>();
+              vaultList.setAutoConstruct(true);
         }
         return vaultList;
     }
@@ -57,8 +58,7 @@ public class ListVaultsResult  implements Serializable  {
             this.vaultList = null;
             return;
         }
-
-        java.util.List<DescribeVaultOutput> vaultListCopy = new java.util.ArrayList<DescribeVaultOutput>(vaultList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DescribeVaultOutput> vaultListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DescribeVaultOutput>(vaultList.size());
         vaultListCopy.addAll(vaultList);
         this.vaultList = vaultListCopy;
     }
@@ -71,7 +71,7 @@ public class ListVaultsResult  implements Serializable  {
      * @param vaultList List of vaults.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVaultsResult withVaultList(DescribeVaultOutput... vaultList) {
         if (getVaultList() == null) setVaultList(new java.util.ArrayList<DescribeVaultOutput>(vaultList.length));
@@ -89,20 +89,20 @@ public class ListVaultsResult  implements Serializable  {
      * @param vaultList List of vaults.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVaultsResult withVaultList(java.util.Collection<DescribeVaultOutput> vaultList) {
         if (vaultList == null) {
             this.vaultList = null;
         } else {
-            java.util.List<DescribeVaultOutput> vaultListCopy = new java.util.ArrayList<DescribeVaultOutput>(vaultList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DescribeVaultOutput> vaultListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DescribeVaultOutput>(vaultList.size());
             vaultListCopy.addAll(vaultList);
             this.vaultList = vaultListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The vault ARN at which to continue pagination of the results. You use
      * the marker in another List Vaults request to obtain more vaults in the
@@ -141,14 +141,13 @@ public class ListVaultsResult  implements Serializable  {
      *         list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVaultsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +159,8 @@ public class ListVaultsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVaultList() != null) sb.append("VaultList: " + getVaultList() + ",");    	
+        sb.append("{");
+        if (getVaultList() != null) sb.append("VaultList: " + getVaultList() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ListDomainsRequestMarshaller implements Marshaller<Request<ListDoma
     public Request<ListDomainsRequest> marshall(ListDomainsRequest listDomainsRequest) {
 
         if (listDomainsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ListDomainsRequest> request = new DefaultRequest<ListDomainsRequest>(listDomainsRequest, "AmazonSimpleDB");
         request.addParameter("Action", "ListDomains");
@@ -46,7 +46,6 @@ public class ListDomainsRequestMarshaller implements Marshaller<Request<ListDoma
         if (listDomainsRequest.getNextToken() != null) {
             request.addParameter("NextToken", StringUtils.fromString(listDomainsRequest.getNextToken()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>TimerCanceled</code> event.
  * </p>
  */
-public class TimerCanceledEventAttributes  implements Serializable  {
+public class TimerCanceledEventAttributes implements Serializable {
 
     /**
      * The unique Id of the timer that was canceled.
@@ -80,14 +81,13 @@ public class TimerCanceledEventAttributes  implements Serializable  {
      * @param timerId The unique Id of the timer that was canceled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerCanceledEventAttributes withTimerId(String timerId) {
         this.timerId = timerId;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>TimerStarted</code> event that was recorded when
      * this timer was started. This information can be useful for diagnosing
@@ -126,14 +126,13 @@ public class TimerCanceledEventAttributes  implements Serializable  {
      *         problems by tracing back the chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerCanceledEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the <code>CancelTimer</code>
@@ -178,14 +177,13 @@ public class TimerCanceledEventAttributes  implements Serializable  {
      *         diagnosing problems by tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerCanceledEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -197,9 +195,9 @@ public class TimerCanceledEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimerId() != null) sb.append("TimerId: " + getTimerId() + ",");    	
-        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");    	
+        sb.append("{");
+        if (getTimerId() != null) sb.append("TimerId: " + getTimerId() + ",");
+        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");
         if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() );
         sb.append("}");
         return sb.toString();

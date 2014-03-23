@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,161 +13,158 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#createCacheSubnetGroup(CreateCacheSubnetGroupRequest) CreateCacheSubnetGroup operation}.
  * <p>
- * Creates a new Cache Subnet Group.
+ * The <i>CreateCacheSubnetGroup</i> operation creates a new cache subnet
+ * group.
+ * </p>
+ * <p>
+ * Use this parameter only when you are creating a cluster in an Amazon
+ * Virtual Private Cloud (VPC).
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#createCacheSubnetGroup(CreateCacheSubnetGroupRequest)
  */
-public class CreateCacheSubnetGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateCacheSubnetGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name for the Cache Subnet Group. This value is stored as a
-     * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters or hyphens. <p>Example:
-     * <code>mysubnetgroup</code>
+     * A name for the cache subnet group. This value is stored as a lowercase
+     * string. <p>Constraints: Must contain no more than 255 alphanumeric
+     * characters or hyphens. <p>Example: <code>mysubnetgroup</code>
      */
     private String cacheSubnetGroupName;
 
     /**
-     * The description for the Cache Subnet Group.
+     * A description for the cache subnet group.
      */
     private String cacheSubnetGroupDescription;
 
     /**
-     * The EC2 Subnet IDs for the Cache Subnet Group.
+     * A list of VPC subnet IDs for the cache subnet group.
      */
-    private java.util.List<String> subnetIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIds;
 
     /**
-     * The name for the Cache Subnet Group. This value is stored as a
-     * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters or hyphens. <p>Example:
-     * <code>mysubnetgroup</code>
+     * A name for the cache subnet group. This value is stored as a lowercase
+     * string. <p>Constraints: Must contain no more than 255 alphanumeric
+     * characters or hyphens. <p>Example: <code>mysubnetgroup</code>
      *
-     * @return The name for the Cache Subnet Group. This value is stored as a
-     *         lowercase string. <p>Constraints: Must contain no more than 255
-     *         alphanumeric characters or hyphens. <p>Example:
-     *         <code>mysubnetgroup</code>
+     * @return A name for the cache subnet group. This value is stored as a lowercase
+     *         string. <p>Constraints: Must contain no more than 255 alphanumeric
+     *         characters or hyphens. <p>Example: <code>mysubnetgroup</code>
      */
     public String getCacheSubnetGroupName() {
         return cacheSubnetGroupName;
     }
     
     /**
-     * The name for the Cache Subnet Group. This value is stored as a
-     * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters or hyphens. <p>Example:
-     * <code>mysubnetgroup</code>
+     * A name for the cache subnet group. This value is stored as a lowercase
+     * string. <p>Constraints: Must contain no more than 255 alphanumeric
+     * characters or hyphens. <p>Example: <code>mysubnetgroup</code>
      *
-     * @param cacheSubnetGroupName The name for the Cache Subnet Group. This value is stored as a
-     *         lowercase string. <p>Constraints: Must contain no more than 255
-     *         alphanumeric characters or hyphens. <p>Example:
-     *         <code>mysubnetgroup</code>
+     * @param cacheSubnetGroupName A name for the cache subnet group. This value is stored as a lowercase
+     *         string. <p>Constraints: Must contain no more than 255 alphanumeric
+     *         characters or hyphens. <p>Example: <code>mysubnetgroup</code>
      */
     public void setCacheSubnetGroupName(String cacheSubnetGroupName) {
         this.cacheSubnetGroupName = cacheSubnetGroupName;
     }
     
     /**
-     * The name for the Cache Subnet Group. This value is stored as a
-     * lowercase string. <p>Constraints: Must contain no more than 255
-     * alphanumeric characters or hyphens. <p>Example:
-     * <code>mysubnetgroup</code>
+     * A name for the cache subnet group. This value is stored as a lowercase
+     * string. <p>Constraints: Must contain no more than 255 alphanumeric
+     * characters or hyphens. <p>Example: <code>mysubnetgroup</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSubnetGroupName The name for the Cache Subnet Group. This value is stored as a
-     *         lowercase string. <p>Constraints: Must contain no more than 255
-     *         alphanumeric characters or hyphens. <p>Example:
-     *         <code>mysubnetgroup</code>
+     * @param cacheSubnetGroupName A name for the cache subnet group. This value is stored as a lowercase
+     *         string. <p>Constraints: Must contain no more than 255 alphanumeric
+     *         characters or hyphens. <p>Example: <code>mysubnetgroup</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheSubnetGroupRequest withCacheSubnetGroupName(String cacheSubnetGroupName) {
         this.cacheSubnetGroupName = cacheSubnetGroupName;
         return this;
     }
-    
-    
+
     /**
-     * The description for the Cache Subnet Group.
+     * A description for the cache subnet group.
      *
-     * @return The description for the Cache Subnet Group.
+     * @return A description for the cache subnet group.
      */
     public String getCacheSubnetGroupDescription() {
         return cacheSubnetGroupDescription;
     }
     
     /**
-     * The description for the Cache Subnet Group.
+     * A description for the cache subnet group.
      *
-     * @param cacheSubnetGroupDescription The description for the Cache Subnet Group.
+     * @param cacheSubnetGroupDescription A description for the cache subnet group.
      */
     public void setCacheSubnetGroupDescription(String cacheSubnetGroupDescription) {
         this.cacheSubnetGroupDescription = cacheSubnetGroupDescription;
     }
     
     /**
-     * The description for the Cache Subnet Group.
+     * A description for the cache subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSubnetGroupDescription The description for the Cache Subnet Group.
+     * @param cacheSubnetGroupDescription A description for the cache subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheSubnetGroupRequest withCacheSubnetGroupDescription(String cacheSubnetGroupDescription) {
         this.cacheSubnetGroupDescription = cacheSubnetGroupDescription;
         return this;
     }
-    
-    
+
     /**
-     * The EC2 Subnet IDs for the Cache Subnet Group.
+     * A list of VPC subnet IDs for the cache subnet group.
      *
-     * @return The EC2 Subnet IDs for the Cache Subnet Group.
+     * @return A list of VPC subnet IDs for the cache subnet group.
      */
     public java.util.List<String> getSubnetIds() {
-        
         if (subnetIds == null) {
-            subnetIds = new java.util.ArrayList<String>();
+              subnetIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnetIds.setAutoConstruct(true);
         }
         return subnetIds;
     }
     
     /**
-     * The EC2 Subnet IDs for the Cache Subnet Group.
+     * A list of VPC subnet IDs for the cache subnet group.
      *
-     * @param subnetIds The EC2 Subnet IDs for the Cache Subnet Group.
+     * @param subnetIds A list of VPC subnet IDs for the cache subnet group.
      */
     public void setSubnetIds(java.util.Collection<String> subnetIds) {
         if (subnetIds == null) {
             this.subnetIds = null;
             return;
         }
-
-        java.util.List<String> subnetIdsCopy = new java.util.ArrayList<String>(subnetIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
         subnetIdsCopy.addAll(subnetIds);
         this.subnetIds = subnetIdsCopy;
     }
     
     /**
-     * The EC2 Subnet IDs for the Cache Subnet Group.
+     * A list of VPC subnet IDs for the cache subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetIds The EC2 Subnet IDs for the Cache Subnet Group.
+     * @param subnetIds A list of VPC subnet IDs for the cache subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheSubnetGroupRequest withSubnetIds(String... subnetIds) {
         if (getSubnetIds() == null) setSubnetIds(new java.util.ArrayList<String>(subnetIds.length));
@@ -178,27 +175,27 @@ public class CreateCacheSubnetGroupRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The EC2 Subnet IDs for the Cache Subnet Group.
+     * A list of VPC subnet IDs for the cache subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetIds The EC2 Subnet IDs for the Cache Subnet Group.
+     * @param subnetIds A list of VPC subnet IDs for the cache subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheSubnetGroupRequest withSubnetIds(java.util.Collection<String> subnetIds) {
         if (subnetIds == null) {
             this.subnetIds = null;
         } else {
-            java.util.List<String> subnetIdsCopy = new java.util.ArrayList<String>(subnetIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
             subnetIdsCopy.addAll(subnetIds);
             this.subnetIds = subnetIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -210,9 +207,9 @@ public class CreateCacheSubnetGroupRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheSubnetGroupName() != null) sb.append("CacheSubnetGroupName: " + getCacheSubnetGroupName() + ",");    	
-        if (getCacheSubnetGroupDescription() != null) sb.append("CacheSubnetGroupDescription: " + getCacheSubnetGroupDescription() + ",");    	
+        sb.append("{");
+        if (getCacheSubnetGroupName() != null) sb.append("CacheSubnetGroupName: " + getCacheSubnetGroupName() + ",");
+        if (getCacheSubnetGroupDescription() != null) sb.append("CacheSubnetGroupDescription: " + getCacheSubnetGroupDescription() + ",");
         if (getSubnetIds() != null) sb.append("SubnetIds: " + getSubnetIds() );
         sb.append("}");
         return sb.toString();

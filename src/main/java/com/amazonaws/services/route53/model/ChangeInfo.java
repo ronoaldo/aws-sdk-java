@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that describes change information about changes made to your hosted zone.
+ * A complex type that describes change information about changes made to
+ * your hosted zone.
  * </p>
  * <p>
- * This element contains an ID that you use when performing a GetChange action to get detailed information about the change.
+ * This element contains an ID that you use when performing a GetChange
+ * action to get detailed information about the change.
  * </p>
  */
-public class ChangeInfo  implements Serializable  {
+public class ChangeInfo implements Serializable {
 
     /**
      * The ID of the request. Use this ID to track when the change has
@@ -90,13 +93,11 @@ public class ChangeInfo  implements Serializable  {
      * context.
      */
     public ChangeInfo(String id, String status, java.util.Date submittedAt) {
-        this.id = id;
-        this.status = status;
-        this.submittedAt = submittedAt;
+        setId(id);
+        setStatus(status);
+        setSubmittedAt(submittedAt);
     }
 
-    
-    
     /**
      * Constructs a new ChangeInfo object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -120,7 +121,7 @@ public class ChangeInfo  implements Serializable  {
         this.status = status.toString();
         this.submittedAt = submittedAt;
     }
-    
+
     /**
      * The ID of the request. Use this ID to track when the change has
      * completed across all Amazon Route 53 DNS servers.
@@ -162,14 +163,13 @@ public class ChangeInfo  implements Serializable  {
      *         completed across all Amazon Route 53 DNS servers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeInfo withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The current state of the request. <code>PENDING</code> indicates that
      * this request has not yet been applied to all Amazon Route 53 DNS
@@ -221,7 +221,7 @@ public class ChangeInfo  implements Serializable  {
      *         servers. <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChangeStatus
      */
@@ -229,8 +229,7 @@ public class ChangeInfo  implements Serializable  {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The current state of the request. <code>PENDING</code> indicates that
      * this request has not yet been applied to all Amazon Route 53 DNS
@@ -264,7 +263,7 @@ public class ChangeInfo  implements Serializable  {
      *         servers. <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChangeStatus
      */
@@ -272,7 +271,7 @@ public class ChangeInfo  implements Serializable  {
         this.status = status.toString();
         return this;
     }
-    
+
     /**
      * The date and time the change was submitted, in the format
      * <code>YYYY-MM-DDThh:mm:ssZ</code>, as specified in the ISO 8601
@@ -329,14 +328,13 @@ public class ChangeInfo  implements Serializable  {
      *         context.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeInfo withSubmittedAt(java.util.Date submittedAt) {
         this.submittedAt = submittedAt;
         return this;
     }
-    
-    
+
     /**
      * A complex type that describes change information about changes made to
      * your hosted zone. <p>This element contains an ID that you use when
@@ -390,14 +388,13 @@ public class ChangeInfo  implements Serializable  {
      *         the change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeInfo withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -409,10 +406,10 @@ public class ChangeInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getSubmittedAt() != null) sb.append("SubmittedAt: " + getSubmittedAt() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getSubmittedAt() != null) sb.append("SubmittedAt: " + getSubmittedAt() + ",");
         if (getComment() != null) sb.append("Comment: " + getComment() );
         sb.append("}");
         return sb.toString();

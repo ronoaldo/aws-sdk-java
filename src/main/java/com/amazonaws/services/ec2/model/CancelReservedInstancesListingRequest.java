@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,65 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#cancelReservedInstancesListing(CancelReservedInstancesListingRequest) CancelReservedInstancesListing operation}.
- * 
+ * <p>
+ * Cancels the specified Reserved Instance listing in the Reserved
+ * Instance Marketplace.
+ * </p>
+ * <p>
+ * For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html"> Reserved Instance Marketplace </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#cancelReservedInstancesListing(CancelReservedInstancesListingRequest)
  */
-public class CancelReservedInstancesListingRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CancelReservedInstancesListingRequest extends AmazonWebServiceRequest implements Serializable {
 
+    /**
+     * The ID of the Reserved Instance listing.
+     */
     private String reservedInstancesListingId;
 
     /**
-     * Returns the value of the ReservedInstancesListingId property for this
-     * object.
+     * The ID of the Reserved Instance listing.
      *
-     * @return The value of the ReservedInstancesListingId property for this object.
+     * @return The ID of the Reserved Instance listing.
      */
     public String getReservedInstancesListingId() {
         return reservedInstancesListingId;
     }
     
     /**
-     * Sets the value of the ReservedInstancesListingId property for this
-     * object.
+     * The ID of the Reserved Instance listing.
      *
-     * @param reservedInstancesListingId The new value for the ReservedInstancesListingId property for this
-     *         object.
+     * @param reservedInstancesListingId The ID of the Reserved Instance listing.
      */
     public void setReservedInstancesListingId(String reservedInstancesListingId) {
         this.reservedInstancesListingId = reservedInstancesListingId;
     }
     
     /**
-     * Sets the value of the ReservedInstancesListingId property for this
-     * object.
+     * The ID of the Reserved Instance listing.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstancesListingId The new value for the ReservedInstancesListingId property for this
-     *         object.
+     * @param reservedInstancesListingId The ID of the Reserved Instance listing.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelReservedInstancesListingRequest withReservedInstancesListingId(String reservedInstancesListingId) {
         this.reservedInstancesListingId = reservedInstancesListingId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -76,7 +83,7 @@ public class CancelReservedInstancesListingRequest extends AmazonWebServiceReque
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservedInstancesListingId() != null) sb.append("ReservedInstancesListingId: " + getReservedInstancesListingId() );
         sb.append("}");
         return sb.toString();

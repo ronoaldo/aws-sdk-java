@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,126 +13,130 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Network Acl Association
+ * <p>
+ * Describes an association between a network ACL and a subnet.
+ * </p>
  */
-public class NetworkAclAssociation  implements Serializable  {
+public class NetworkAclAssociation implements Serializable {
 
+    /**
+     * The ID of the association between a network ACL and a subnet.
+     */
     private String networkAclAssociationId;
 
+    /**
+     * The ID of the network ACL.
+     */
     private String networkAclId;
 
+    /**
+     * The ID of the subnet.
+     */
     private String subnetId;
 
     /**
-     * Returns the value of the NetworkAclAssociationId property for this
-     * object.
+     * The ID of the association between a network ACL and a subnet.
      *
-     * @return The value of the NetworkAclAssociationId property for this object.
+     * @return The ID of the association between a network ACL and a subnet.
      */
     public String getNetworkAclAssociationId() {
         return networkAclAssociationId;
     }
     
     /**
-     * Sets the value of the NetworkAclAssociationId property for this
-     * object.
+     * The ID of the association between a network ACL and a subnet.
      *
-     * @param networkAclAssociationId The new value for the NetworkAclAssociationId property for this
-     *         object.
+     * @param networkAclAssociationId The ID of the association between a network ACL and a subnet.
      */
     public void setNetworkAclAssociationId(String networkAclAssociationId) {
         this.networkAclAssociationId = networkAclAssociationId;
     }
     
     /**
-     * Sets the value of the NetworkAclAssociationId property for this
-     * object.
+     * The ID of the association between a network ACL and a subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkAclAssociationId The new value for the NetworkAclAssociationId property for this
-     *         object.
+     * @param networkAclAssociationId The ID of the association between a network ACL and a subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAclAssociation withNetworkAclAssociationId(String networkAclAssociationId) {
         this.networkAclAssociationId = networkAclAssociationId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the NetworkAclId property for this object.
+     * The ID of the network ACL.
      *
-     * @return The value of the NetworkAclId property for this object.
+     * @return The ID of the network ACL.
      */
     public String getNetworkAclId() {
         return networkAclId;
     }
     
     /**
-     * Sets the value of the NetworkAclId property for this object.
+     * The ID of the network ACL.
      *
-     * @param networkAclId The new value for the NetworkAclId property for this object.
+     * @param networkAclId The ID of the network ACL.
      */
     public void setNetworkAclId(String networkAclId) {
         this.networkAclId = networkAclId;
     }
     
     /**
-     * Sets the value of the NetworkAclId property for this object.
+     * The ID of the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkAclId The new value for the NetworkAclId property for this object.
+     * @param networkAclId The ID of the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAclAssociation withNetworkAclId(String networkAclId) {
         this.networkAclId = networkAclId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the SubnetId property for this object.
+     * The ID of the subnet.
      *
-     * @return The value of the SubnetId property for this object.
+     * @return The ID of the subnet.
      */
     public String getSubnetId() {
         return subnetId;
     }
     
     /**
-     * Sets the value of the SubnetId property for this object.
+     * The ID of the subnet.
      *
-     * @param subnetId The new value for the SubnetId property for this object.
+     * @param subnetId The ID of the subnet.
      */
     public void setSubnetId(String subnetId) {
         this.subnetId = subnetId;
     }
     
     /**
-     * Sets the value of the SubnetId property for this object.
+     * The ID of the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetId The new value for the SubnetId property for this object.
+     * @param subnetId The ID of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAclAssociation withSubnetId(String subnetId) {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -144,9 +148,9 @@ public class NetworkAclAssociation  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNetworkAclAssociationId() != null) sb.append("NetworkAclAssociationId: " + getNetworkAclAssociationId() + ",");    	
-        if (getNetworkAclId() != null) sb.append("NetworkAclId: " + getNetworkAclId() + ",");    	
+        sb.append("{");
+        if (getNetworkAclAssociationId() != null) sb.append("NetworkAclAssociationId: " + getNetworkAclAssociationId() + ",");
+        if (getNetworkAclId() != null) sb.append("NetworkAclId: " + getNetworkAclId() + ",");
         if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() );
         sb.append("}");
         return sb.toString();

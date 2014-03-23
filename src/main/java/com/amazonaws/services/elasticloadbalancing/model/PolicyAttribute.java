@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The PolicyAttribute data type. This data type contains a key/value pair that defines properties of a specific policy.
+ * The PolicyAttribute data type. This data type contains a key/value
+ * pair that defines properties of a specific policy.
  * </p>
  */
-public class PolicyAttribute  implements Serializable  {
+public class PolicyAttribute implements Serializable {
 
     /**
      * The name of the attribute associated with the policy.
@@ -49,12 +51,10 @@ public class PolicyAttribute  implements Serializable  {
      * policy.
      */
     public PolicyAttribute(String attributeName, String attributeValue) {
-        this.attributeName = attributeName;
-        this.attributeValue = attributeValue;
+        setAttributeName(attributeName);
+        setAttributeValue(attributeValue);
     }
 
-    
-    
     /**
      * The name of the attribute associated with the policy.
      *
@@ -81,14 +81,13 @@ public class PolicyAttribute  implements Serializable  {
      * @param attributeName The name of the attribute associated with the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttribute withAttributeName(String attributeName) {
         this.attributeName = attributeName;
         return this;
     }
-    
-    
+
     /**
      * The value of the attribute associated with the policy.
      *
@@ -115,14 +114,13 @@ public class PolicyAttribute  implements Serializable  {
      * @param attributeValue The value of the attribute associated with the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttribute withAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -134,8 +132,8 @@ public class PolicyAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeValue() != null) sb.append("AttributeValue: " + getAttributeValue() );
         sb.append("}");
         return sb.toString();

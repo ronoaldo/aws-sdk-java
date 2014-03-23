@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A section of the response body that provides information about the job that is created.
+ * A section of the response body that provides information about the job
+ * that is created.
  * </p>
  */
-public class Job  implements Serializable  {
+public class Job implements Serializable {
 
     /**
      * The identifier that Elastic Transcoder assigned to the job. You use
@@ -30,6 +32,11 @@ public class Job  implements Serializable  {
      * <b>Pattern: </b>^\d{13}-\w{6}$<br/>
      */
     private String id;
+
+    /**
+     * The Amazon Resource Name (ARN) for the job.
+     */
+    private String arn;
 
     /**
      * The <code>Id</code> of the pipeline that you want Elastic Transcoder
@@ -70,7 +77,7 @@ public class Job  implements Serializable  {
      * files for each output in the order in which you specify them in the
      * job.
      */
-    private java.util.List<JobOutput> outputs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<JobOutput> outputs;
 
     /**
      * The value, if any, that you want Elastic Transcoder to prepend to the
@@ -91,12 +98,12 @@ public class Job  implements Serializable  {
      * Transcoder to create. <p>We recommend that you create only one master
      * playlist. The maximum number of master playlists in a job is 30.
      */
-    private java.util.List<Playlist> playlists;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Playlist> playlists;
 
     /**
      * The status of the job: <code>Submitted</code>,
-     * <code>Progressing</code>, <code>l</code>, <code>Canceled</code>, or
-     * <code>Error</code>.
+     * <code>Progressing</code>, <code>Complete</code>,
+     * <code>Canceled</code>, or <code>Error</code>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>(^Submitted$)|(^Progressing$)|(^Complete$)|(^Canceled$)|(^Error$)<br/>
@@ -144,14 +151,46 @@ public class Job  implements Serializable  {
      *         this value to get settings for the job or to delete the job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withId(String id) {
         this.id = id;
         return this;
     }
+
+    /**
+     * The Amazon Resource Name (ARN) for the job.
+     *
+     * @return The Amazon Resource Name (ARN) for the job.
+     */
+    public String getArn() {
+        return arn;
+    }
     
+    /**
+     * The Amazon Resource Name (ARN) for the job.
+     *
+     * @param arn The Amazon Resource Name (ARN) for the job.
+     */
+    public void setArn(String arn) {
+        this.arn = arn;
+    }
     
+    /**
+     * The Amazon Resource Name (ARN) for the job.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param arn The Amazon Resource Name (ARN) for the job.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Job withArn(String arn) {
+        this.arn = arn;
+        return this;
+    }
+
     /**
      * The <code>Id</code> of the pipeline that you want Elastic Transcoder
      * to use for transcoding. The pipeline determines several settings,
@@ -211,14 +250,13 @@ public class Job  implements Serializable  {
      *         the transcoded files.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * A section of the request or response body that provides information
      * about the file that is being transcoded.
@@ -251,14 +289,13 @@ public class Job  implements Serializable  {
      *         about the file that is being transcoded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withInput(JobInput input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * If you specified one output for a job, information about that output.
      * If you specified multiple outputs for a job, the Output object lists
@@ -321,14 +358,13 @@ public class Job  implements Serializable  {
      *         transcoded (target) file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withOutput(JobOutput output) {
         this.output = output;
         return this;
     }
-    
-    
+
     /**
      * Information about the output files. We recommend that you use the
      * <code>Outputs</code> syntax for all jobs, even when you want Elastic
@@ -349,7 +385,10 @@ public class Job  implements Serializable  {
      *         job.
      */
     public java.util.List<JobOutput> getOutputs() {
-        
+        if (outputs == null) {
+              outputs = new com.amazonaws.internal.ListWithAutoConstructFlag<JobOutput>();
+              outputs.setAutoConstruct(true);
+        }
         return outputs;
     }
     
@@ -377,8 +416,7 @@ public class Job  implements Serializable  {
             this.outputs = null;
             return;
         }
-
-        java.util.List<JobOutput> outputsCopy = new java.util.ArrayList<JobOutput>(outputs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<JobOutput> outputsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<JobOutput>(outputs.size());
         outputsCopy.addAll(outputs);
         this.outputs = outputsCopy;
     }
@@ -405,7 +443,7 @@ public class Job  implements Serializable  {
      *         job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withOutputs(JobOutput... outputs) {
         if (getOutputs() == null) setOutputs(new java.util.ArrayList<JobOutput>(outputs.length));
@@ -437,20 +475,20 @@ public class Job  implements Serializable  {
      *         job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withOutputs(java.util.Collection<JobOutput> outputs) {
         if (outputs == null) {
             this.outputs = null;
         } else {
-            java.util.List<JobOutput> outputsCopy = new java.util.ArrayList<JobOutput>(outputs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<JobOutput> outputsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<JobOutput>(outputs.size());
             outputsCopy.addAll(outputs);
             this.outputs = outputsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The value, if any, that you want Elastic Transcoder to prepend to the
      * names of all files that this job creates, including output files,
@@ -504,14 +542,13 @@ public class Job  implements Serializable  {
      *         delimiter to the end of the <code>OutputKeyPrefix</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withOutputKeyPrefix(String outputKeyPrefix) {
         this.outputKeyPrefix = outputKeyPrefix;
         return this;
     }
-    
-    
+
     /**
      * <important>Outputs in MPEG-TS format only.</important>If you specify a
      * preset in <code>PresetId</code> for which the value of
@@ -528,7 +565,10 @@ public class Job  implements Serializable  {
      *         playlist. The maximum number of master playlists in a job is 30.
      */
     public java.util.List<Playlist> getPlaylists() {
-        
+        if (playlists == null) {
+              playlists = new com.amazonaws.internal.ListWithAutoConstructFlag<Playlist>();
+              playlists.setAutoConstruct(true);
+        }
         return playlists;
     }
     
@@ -552,8 +592,7 @@ public class Job  implements Serializable  {
             this.playlists = null;
             return;
         }
-
-        java.util.List<Playlist> playlistsCopy = new java.util.ArrayList<Playlist>(playlists.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Playlist> playlistsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Playlist>(playlists.size());
         playlistsCopy.addAll(playlists);
         this.playlists = playlistsCopy;
     }
@@ -576,7 +615,7 @@ public class Job  implements Serializable  {
      *         playlist. The maximum number of master playlists in a job is 30.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withPlaylists(Playlist... playlists) {
         if (getPlaylists() == null) setPlaylists(new java.util.ArrayList<Playlist>(playlists.length));
@@ -604,31 +643,31 @@ public class Job  implements Serializable  {
      *         playlist. The maximum number of master playlists in a job is 30.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withPlaylists(java.util.Collection<Playlist> playlists) {
         if (playlists == null) {
             this.playlists = null;
         } else {
-            java.util.List<Playlist> playlistsCopy = new java.util.ArrayList<Playlist>(playlists.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Playlist> playlistsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Playlist>(playlists.size());
             playlistsCopy.addAll(playlists);
             this.playlists = playlistsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The status of the job: <code>Submitted</code>,
-     * <code>Progressing</code>, <code>l</code>, <code>Canceled</code>, or
-     * <code>Error</code>.
+     * <code>Progressing</code>, <code>Complete</code>,
+     * <code>Canceled</code>, or <code>Error</code>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>(^Submitted$)|(^Progressing$)|(^Complete$)|(^Canceled$)|(^Error$)<br/>
      *
      * @return The status of the job: <code>Submitted</code>,
-     *         <code>Progressing</code>, <code>l</code>, <code>Canceled</code>, or
-     *         <code>Error</code>.
+     *         <code>Progressing</code>, <code>Complete</code>,
+     *         <code>Canceled</code>, or <code>Error</code>.
      */
     public String getStatus() {
         return status;
@@ -636,15 +675,15 @@ public class Job  implements Serializable  {
     
     /**
      * The status of the job: <code>Submitted</code>,
-     * <code>Progressing</code>, <code>l</code>, <code>Canceled</code>, or
-     * <code>Error</code>.
+     * <code>Progressing</code>, <code>Complete</code>,
+     * <code>Canceled</code>, or <code>Error</code>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>(^Submitted$)|(^Progressing$)|(^Complete$)|(^Canceled$)|(^Error$)<br/>
      *
      * @param status The status of the job: <code>Submitted</code>,
-     *         <code>Progressing</code>, <code>l</code>, <code>Canceled</code>, or
-     *         <code>Error</code>.
+     *         <code>Progressing</code>, <code>Complete</code>,
+     *         <code>Canceled</code>, or <code>Error</code>.
      */
     public void setStatus(String status) {
         this.status = status;
@@ -652,8 +691,8 @@ public class Job  implements Serializable  {
     
     /**
      * The status of the job: <code>Submitted</code>,
-     * <code>Progressing</code>, <code>l</code>, <code>Canceled</code>, or
-     * <code>Error</code>.
+     * <code>Progressing</code>, <code>Complete</code>,
+     * <code>Canceled</code>, or <code>Error</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -661,18 +700,17 @@ public class Job  implements Serializable  {
      * <b>Pattern: </b>(^Submitted$)|(^Progressing$)|(^Complete$)|(^Canceled$)|(^Error$)<br/>
      *
      * @param status The status of the job: <code>Submitted</code>,
-     *         <code>Progressing</code>, <code>l</code>, <code>Canceled</code>, or
-     *         <code>Error</code>.
+     *         <code>Progressing</code>, <code>Complete</code>,
+     *         <code>Canceled</code>, or <code>Error</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -684,14 +722,15 @@ public class Job  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getOutput() != null) sb.append("Output: " + getOutput() + ",");    	
-        if (getOutputs() != null) sb.append("Outputs: " + getOutputs() + ",");    	
-        if (getOutputKeyPrefix() != null) sb.append("OutputKeyPrefix: " + getOutputKeyPrefix() + ",");    	
-        if (getPlaylists() != null) sb.append("Playlists: " + getPlaylists() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getOutput() != null) sb.append("Output: " + getOutput() + ",");
+        if (getOutputs() != null) sb.append("Outputs: " + getOutputs() + ",");
+        if (getOutputKeyPrefix() != null) sb.append("OutputKeyPrefix: " + getOutputKeyPrefix() + ",");
+        if (getPlaylists() != null) sb.append("Playlists: " + getPlaylists() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();
@@ -703,6 +742,7 @@ public class Job  implements Serializable  {
         int hashCode = 1;
         
         hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode()); 
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode()); 
         hashCode = prime * hashCode + ((getPipelineId() == null) ? 0 : getPipelineId().hashCode()); 
         hashCode = prime * hashCode + ((getInput() == null) ? 0 : getInput().hashCode()); 
         hashCode = prime * hashCode + ((getOutput() == null) ? 0 : getOutput().hashCode()); 
@@ -723,6 +763,8 @@ public class Job  implements Serializable  {
         
         if (other.getId() == null ^ this.getId() == null) return false;
         if (other.getId() != null && other.getId().equals(this.getId()) == false) return false; 
+        if (other.getArn() == null ^ this.getArn() == null) return false;
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false) return false; 
         if (other.getPipelineId() == null ^ this.getPipelineId() == null) return false;
         if (other.getPipelineId() != null && other.getPipelineId().equals(this.getPipelineId()) == false) return false; 
         if (other.getInput() == null ^ this.getInput() == null) return false;

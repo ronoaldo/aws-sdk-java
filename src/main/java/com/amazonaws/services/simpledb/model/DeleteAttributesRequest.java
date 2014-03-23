@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,38 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpledb.AmazonSimpleDB#deleteAttributes(DeleteAttributesRequest) DeleteAttributes operation}.
  * <p>
- * Deletes one or more attributes associated with an item. If all attributes of the item are deleted, the item is deleted.
+ * Deletes one or more attributes associated with an item. If all
+ * attributes of the item are deleted, the item is deleted.
  * </p>
  * <p>
- * <b>NOTE:</b> If DeleteAttributes is called without being passed any attributes or values specified, all the attributes for the item are deleted.
+ * <b>NOTE:</b> If DeleteAttributes is called without being passed any
+ * attributes or values specified, all the attributes for the item are
+ * deleted.
  * </p>
  * <p>
- * <code>DeleteAttributes</code> is an idempotent operation; running it multiple times on the same item or attribute does not result in an error
- * response.
+ * <code>DeleteAttributes</code> is an idempotent operation; running it
+ * multiple times on the same item or attribute does not result in an
+ * error response.
  * </p>
  * <p>
- * Because Amazon SimpleDB makes multiple copies of item data and uses an eventual consistency update model, performing a GetAttributes or Select
- * operation (read) immediately after a <code>DeleteAttributes</code> or PutAttributes operation (write) might not return updated item data.
+ * Because Amazon SimpleDB makes multiple copies of item data and uses
+ * an eventual consistency update model, performing a GetAttributes or
+ * Select operation (read) immediately after a
+ * <code>DeleteAttributes</code> or PutAttributes operation (write) might
+ * not return updated item data.
  * </p>
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#deleteAttributes(DeleteAttributesRequest)
  */
-public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which to perform the operation.
@@ -53,7 +62,7 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      * A list of Attributes. Similar to columns on a spreadsheet, attributes
      * represent categories of data that can be assigned to items.
      */
-    private java.util.List<Attribute> attributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributes;
 
     /**
      * The update condition which, if specified, determines whether the
@@ -81,12 +90,10 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      * more value-attribute pairs.
      */
     public DeleteAttributesRequest(String domainName, String itemName) {
-        this.domainName = domainName;
-        this.itemName = itemName;
+        setDomainName(domainName);
+        setItemName(itemName);
     }
 
-    
-    
     /**
      * Constructs a new DeleteAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -102,13 +109,11 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      * assigned to items.
      */
     public DeleteAttributesRequest(String domainName, String itemName, java.util.List<Attribute> attributes) {
-        this.domainName = domainName;
-        this.itemName = itemName;
-        this.attributes = attributes;
+        setDomainName(domainName);
+        setItemName(itemName);
+        setAttributes(attributes);
     }
 
-    
-    
     /**
      * Constructs a new DeleteAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -128,14 +133,12 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      * and the attributes to be deleted.
      */
     public DeleteAttributesRequest(String domainName, String itemName, java.util.List<Attribute> attributes, UpdateCondition expected) {
-        this.domainName = domainName;
-        this.itemName = itemName;
-        this.attributes = attributes;
-        this.expected = expected;
+        setDomainName(domainName);
+        setItemName(itemName);
+        setAttributes(attributes);
+        setExpected(expected);
     }
 
-    
-    
     /**
      * The name of the domain in which to perform the operation.
      *
@@ -162,14 +165,13 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      * @param domainName The name of the domain in which to perform the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAttributesRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * The name of the item. Similar to rows on a spreadsheet, items
      * represent individual objects that contain one or more value-attribute
@@ -208,14 +210,13 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      *         pairs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAttributesRequest withItemName(String itemName) {
         this.itemName = itemName;
         return this;
     }
-    
-    
+
     /**
      * A list of Attributes. Similar to columns on a spreadsheet, attributes
      * represent categories of data that can be assigned to items.
@@ -224,9 +225,9 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      *         represent categories of data that can be assigned to items.
      */
     public java.util.List<Attribute> getAttributes() {
-        
         if (attributes == null) {
-            attributes = new java.util.ArrayList<Attribute>();
+              attributes = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>();
+              attributes.setAutoConstruct(true);
         }
         return attributes;
     }
@@ -243,8 +244,7 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
             this.attributes = null;
             return;
         }
-
-        java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
         attributesCopy.addAll(attributes);
         this.attributes = attributesCopy;
     }
@@ -259,7 +259,7 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      *         represent categories of data that can be assigned to items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAttributesRequest withAttributes(Attribute... attributes) {
         if (getAttributes() == null) setAttributes(new java.util.ArrayList<Attribute>(attributes.length));
@@ -279,20 +279,20 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      *         represent categories of data that can be assigned to items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAttributesRequest withAttributes(java.util.Collection<Attribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
         } else {
-            java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
             attributesCopy.addAll(attributes);
             this.attributes = attributesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The update condition which, if specified, determines whether the
      * specified attributes will be deleted or not. The update condition must
@@ -337,14 +337,13 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
      *         attributes to be deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAttributesRequest withExpected(UpdateCondition expected) {
         this.expected = expected;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -356,10 +355,10 @@ public class DeleteAttributesRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");    	
-        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");
+        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");
         if (getExpected() != null) sb.append("Expected: " + getExpected() );
         sb.append("}");
         return sb.toString();

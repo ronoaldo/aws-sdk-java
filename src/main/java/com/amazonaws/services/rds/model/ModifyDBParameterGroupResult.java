@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,55 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the ModifyDBParameterGroup or ResetDBParameterGroup action.
+ * Contains the result of a successful invocation of the
+ * ModifyDBParameterGroup or ResetDBParameterGroup action.
  * </p>
  */
-public class ModifyDBParameterGroupResult  implements Serializable  {
+public class ModifyDBParameterGroupResult implements Serializable {
 
     /**
-     * The name of the DB Parameter Group.
+     * The name of the DB parameter group.
      */
     private String dBParameterGroupName;
 
     /**
-     * The name of the DB Parameter Group.
+     * The name of the DB parameter group.
      *
-     * @return The name of the DB Parameter Group.
+     * @return The name of the DB parameter group.
      */
     public String getDBParameterGroupName() {
         return dBParameterGroupName;
     }
     
     /**
-     * The name of the DB Parameter Group.
+     * The name of the DB parameter group.
      *
-     * @param dBParameterGroupName The name of the DB Parameter Group.
+     * @param dBParameterGroupName The name of the DB parameter group.
      */
     public void setDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
     }
     
     /**
-     * The name of the DB Parameter Group.
+     * The name of the DB parameter group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupName The name of the DB Parameter Group.
+     * @param dBParameterGroupName The name of the DB parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyDBParameterGroupResult withDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +73,7 @@ public class ModifyDBParameterGroupResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() );
         sb.append("}");
         return sb.toString();

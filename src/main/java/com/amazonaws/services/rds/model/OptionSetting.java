@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,19 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Option settings are the actual settings being applied or configured for that option. It is used when you modify an option group or describe option
- * groups. For example, the NATIVE_NETWORK_ENCRYPTION option has a setting called SQLNET.ENCRYPTION_SERVER that can have several different values.
+ * Option settings are the actual settings being applied or configured
+ * for that option. It is used when you modify an option group or
+ * describe option groups. For example, the NATIVE_NETWORK_ENCRYPTION
+ * option has a setting called SQLNET.ENCRYPTION_SERVER that can have
+ * several different values.
  * </p>
  */
-public class OptionSetting  implements Serializable  {
+public class OptionSetting implements Serializable {
 
     /**
      * The name of the option that has settings that you can set.
@@ -95,14 +99,13 @@ public class OptionSetting  implements Serializable  {
      * @param name The name of the option that has settings that you can set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The current value of the option setting.
      *
@@ -129,14 +132,13 @@ public class OptionSetting  implements Serializable  {
      * @param value The current value of the option setting.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * The default value of the option setting.
      *
@@ -163,14 +165,13 @@ public class OptionSetting  implements Serializable  {
      * @param defaultValue The default value of the option setting.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * The description of the option setting.
      *
@@ -197,14 +198,13 @@ public class OptionSetting  implements Serializable  {
      * @param description The description of the option setting.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The DB engine specific parameter type.
      *
@@ -231,14 +231,13 @@ public class OptionSetting  implements Serializable  {
      * @param applyType The DB engine specific parameter type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withApplyType(String applyType) {
         this.applyType = applyType;
         return this;
     }
-    
-    
+
     /**
      * The data type of the option setting.
      *
@@ -265,14 +264,13 @@ public class OptionSetting  implements Serializable  {
      * @param dataType The data type of the option setting.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withDataType(String dataType) {
         this.dataType = dataType;
         return this;
     }
-    
-    
+
     /**
      * The allowed values of the option setting.
      *
@@ -299,14 +297,13 @@ public class OptionSetting  implements Serializable  {
      * @param allowedValues The allowed values of the option setting.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withAllowedValues(String allowedValues) {
         this.allowedValues = allowedValues;
         return this;
     }
-    
-    
+
     /**
      * A Boolean value that, when true, indicates the option setting can be
      * modified from the default.
@@ -339,14 +336,13 @@ public class OptionSetting  implements Serializable  {
      *         modified from the default.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withIsModifiable(Boolean isModifiable) {
         this.isModifiable = isModifiable;
         return this;
     }
-    
-    
+
     /**
      * A Boolean value that, when true, indicates the option setting can be
      * modified from the default.
@@ -357,7 +353,7 @@ public class OptionSetting  implements Serializable  {
     public Boolean getIsModifiable() {
         return isModifiable;
     }
-    
+
     /**
      * Indicates if the option setting is part of a collection.
      *
@@ -384,14 +380,13 @@ public class OptionSetting  implements Serializable  {
      * @param isCollection Indicates if the option setting is part of a collection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSetting withIsCollection(Boolean isCollection) {
         this.isCollection = isCollection;
         return this;
     }
-    
-    
+
     /**
      * Indicates if the option setting is part of a collection.
      *
@@ -400,7 +395,7 @@ public class OptionSetting  implements Serializable  {
     public Boolean getIsCollection() {
         return isCollection;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -412,15 +407,15 @@ public class OptionSetting  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getApplyType() != null) sb.append("ApplyType: " + getApplyType() + ",");    	
-        if (getDataType() != null) sb.append("DataType: " + getDataType() + ",");    	
-        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");    	
-        if (isModifiable() != null) sb.append("IsModifiable: " + isModifiable() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getApplyType() != null) sb.append("ApplyType: " + getApplyType() + ",");
+        if (getDataType() != null) sb.append("DataType: " + getDataType() + ",");
+        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");
+        if (isModifiable() != null) sb.append("IsModifiable: " + isModifiable() + ",");
         if (isCollection() != null) sb.append("IsCollection: " + isCollection() );
         sb.append("}");
         return sb.toString();

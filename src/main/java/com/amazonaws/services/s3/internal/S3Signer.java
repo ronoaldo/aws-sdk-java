@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import com.amazonaws.auth.AbstractAWSSigner;
 import com.amazonaws.auth.Signer;
 import com.amazonaws.auth.SigningAlgorithm;
 import com.amazonaws.services.s3.Headers;
+import com.amazonaws.util.HttpUtils;
 
 /**
  * Implementation of the {@linkplain Signer} interface specific to S3's signing
@@ -62,11 +63,17 @@ public class S3Signer extends AbstractAWSSigner {
     private final String resourcePath;
 
     /**
+     * Create a dummy instance of the S3Signer.
+     */
+    public S3Signer() {
+        this.httpVerb = null;
+        this.resourcePath = null;
+    }
+
+    /**
      * Constructs a new S3Signer to sign requests based on the
      * AWS credentials, HTTP method and canonical S3 resource path.
      *
-     * @param credentials
-     *            The AWS credentials to use to sign the request.
      * @param httpVerb
      *            The HTTP verb (GET, PUT, POST, HEAD, DELETE) the request is
      *            using.
@@ -82,7 +89,16 @@ public class S3Signer extends AbstractAWSSigner {
             throw new IllegalArgumentException("Parameter resourcePath is empty");
     }
 
-    public void sign(Request<?> request, AWSCredentials credentials) throws AmazonClientException {
+    @Override
+    public void sign(Request<?> request, AWSCredentials credentials) {
+
+        if (resourcePath == null) {
+            throw new UnsupportedOperationException(
+                "Cannot sign a request using a dummy S3Signer instance with "
+                + "no resource path"
+            );
+        }
+
         if (credentials == null || credentials.getAWSSecretKey() == null) {
             log.debug("Canonical string will not be signed, as no AWS Secret Key was provided");
             return;
@@ -90,12 +106,20 @@ public class S3Signer extends AbstractAWSSigner {
 
         AWSCredentials sanitizedCredentials = sanitizeCredentials(credentials);
         if ( sanitizedCredentials instanceof AWSSessionCredentials ) {
-        	addSessionCredentials(request, (AWSSessionCredentials) sanitizedCredentials);
+            addSessionCredentials(request, (AWSSessionCredentials) sanitizedCredentials);
         }
 
-        String encodedResourcePath = ServiceUtils.urlEncode(resourcePath);
+        /*
+         * In s3 sigv2, the way slash characters are encoded should be
+         * consistent in both the request url and the encoded resource path.
+         * Since we have to encode "//" to "/%2F" in the request url to make
+         * httpclient works, we need to do the same encoding here for the
+         * resource path.
+         */
+        String encodedResourcePath = HttpUtils.appendUri(request.getEndpoint().getPath(), resourcePath, true);
 
-        Date date = getSignatureDate(request.getTimeOffset());
+        int timeOffset = getTimeOffset(request);
+        Date date = getSignatureDate(timeOffset);
         request.addHeader(Headers.DATE, ServiceUtils.formatRfc822Date(date));
         String canonicalString = RestUtils.makeS3CanonicalString(
                 httpVerb, encodedResourcePath, request, null);

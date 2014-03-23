@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class SelectRequestMarshaller implements Marshaller<Request<SelectRequest
     public Request<SelectRequest> marshall(SelectRequest selectRequest) {
 
         if (selectRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<SelectRequest> request = new DefaultRequest<SelectRequest>(selectRequest, "AmazonSimpleDB");
         request.addParameter("Action", "Select");
@@ -49,7 +49,6 @@ public class SelectRequestMarshaller implements Marshaller<Request<SelectRequest
         if (selectRequest.isConsistentRead() != null) {
             request.addParameter("ConsistentRead", StringUtils.fromBoolean(selectRequest.isConsistentRead()));
         }
-
 
         return request;
     }

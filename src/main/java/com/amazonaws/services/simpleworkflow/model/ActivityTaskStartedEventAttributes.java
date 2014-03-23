@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>ActivityTaskStarted</code> event.
  * </p>
  */
-public class ActivityTaskStartedEventAttributes  implements Serializable  {
+public class ActivityTaskStartedEventAttributes implements Serializable {
 
     /**
      * Identity of the worker that was assigned this task. This aids
@@ -87,14 +88,13 @@ public class ActivityTaskStartedEventAttributes  implements Serializable  {
      *         defined.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskStartedEventAttributes withIdentity(String identity) {
         this.identity = identity;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>ActivityTaskScheduled</code> event that was
      * recorded when this activity task was scheduled. This information can
@@ -139,14 +139,13 @@ public class ActivityTaskStartedEventAttributes  implements Serializable  {
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskStartedEventAttributes withScheduledEventId(Long scheduledEventId) {
         this.scheduledEventId = scheduledEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +157,8 @@ public class ActivityTaskStartedEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");    	
+        sb.append("{");
+        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");
         if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() );
         sb.append("}");
         return sb.toString();

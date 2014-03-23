@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>ActivityTaskCancelRequested</code> event.
+ * Provides details of the <code>ActivityTaskCancelRequested</code>
+ * event.
  * </p>
  */
-public class ActivityTaskCancelRequestedEventAttributes  implements Serializable  {
+public class ActivityTaskCancelRequestedEventAttributes implements Serializable {
 
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
@@ -89,14 +91,13 @@ public class ActivityTaskCancelRequestedEventAttributes  implements Serializable
      *         tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCancelRequestedEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * The unique ID of the task.
      * <p>
@@ -132,14 +133,13 @@ public class ActivityTaskCancelRequestedEventAttributes  implements Serializable
      * @param activityId The unique ID of the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCancelRequestedEventAttributes withActivityId(String activityId) {
         this.activityId = activityId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -151,8 +151,8 @@ public class ActivityTaskCancelRequestedEventAttributes  implements Serializable
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");    	
+        sb.append("{");
+        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");
         if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() );
         sb.append("}");
         return sb.toString();

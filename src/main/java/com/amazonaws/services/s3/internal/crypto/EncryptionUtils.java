@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -183,14 +183,14 @@ public class EncryptionUtils {
             // Get fields from instruction object
             byte[] encryptedSymmetricKeyBytes = instructionJSON.getString(Headers.CRYPTO_KEY).getBytes();
             byte[] initVectorBytes = instructionJSON.getString(Headers.CRYPTO_IV).getBytes();
-            String materialsDescriptionString = instructionJSON.getString(Headers.MATERIALS_DESCRIPTION);
+            String materialsDescriptionString = instructionJSON.tryGetString(Headers.MATERIALS_DESCRIPTION);
             Map<String, String> materialsDescription = convertJSONToMap(materialsDescriptionString);
 
             // Decode from Base 64 to standard binary bytes
             encryptedSymmetricKeyBytes = Base64.decodeBase64(encryptedSymmetricKeyBytes);
             initVectorBytes = Base64.decodeBase64(initVectorBytes);
 
-            if (encryptedSymmetricKeyBytes == null || initVectorBytes == null || materialsDescription == null) {
+            if (encryptedSymmetricKeyBytes == null || initVectorBytes == null) {
                 // If necessary encryption info was not found in the instruction file, throw an exception.
                 throw new AmazonClientException(
                         String.format("Necessary encryption info not found in the instruction file '%s' in bucket '%s'",
@@ -265,7 +265,7 @@ public class EncryptionUtils {
         String materialsDescriptionString = getStringFromMetadata(Headers.MATERIALS_DESCRIPTION, metadata);
         Map<String, String> materialsDescription = convertJSONToMap(materialsDescriptionString);
 
-        if (encryptedSymmetricKeyBytes == null || initVectorBytes == null || materialsDescription == null) {
+        if (encryptedSymmetricKeyBytes == null || initVectorBytes == null) {
             // If necessary encryption info was not found in the instruction file, throw an exception.
             throw new AmazonClientException(
                     String.format("Necessary encryption info not found in the headers of file '%s' in bucket '%s'",
@@ -311,7 +311,10 @@ public class EncryptionUtils {
         if (metadata.getContentMD5() != null) {
             metadata.addUserMetadata(Headers.UNENCRYPTED_CONTENT_MD5, metadata.getContentMD5());
         }
-
+        
+        // Removes the original content MD5 if present from the meta data.
+        metadata.setContentMD5(null);
+        
         // Record the original, unencrypted content-length so it can be accessed later
         long originalContentLength = getUnencryptedContentLength(request, metadata);
         if (originalContentLength >= 0) metadata.addUserMetadata(
@@ -319,7 +322,9 @@ public class EncryptionUtils {
 
         // Put the calculated length of the encrypted contents in the metadata
         long cryptoContentLength = calculateCryptoContentLength(instruction.getSymmetricCipher(), request, metadata);
-        if (cryptoContentLength >= 0) metadata.setContentLength(cryptoContentLength);
+        if (cryptoContentLength >= 0) {
+            metadata.setContentLength(cryptoContentLength);
+        }
 
         request.setMetadata(metadata);
 
@@ -429,12 +434,9 @@ public class EncryptionUtils {
      */
     public static boolean isEncryptionInfoInMetadata(S3Object retrievedObject) {
         Map<String, String> metadata = retrievedObject.getObjectMetadata().getUserMetadata();
-        if (metadata == null) {
-            return false;
-        }
-        return (metadata.containsKey(Headers.CRYPTO_IV) &&
-                metadata.containsKey(Headers.CRYPTO_KEY) &&
-                metadata.containsKey(Headers.MATERIALS_DESCRIPTION));
+        return metadata != null
+            && metadata.containsKey(Headers.CRYPTO_IV)
+            && metadata.containsKey(Headers.CRYPTO_KEY);
     }
 
     /**
@@ -623,7 +625,7 @@ public class EncryptionUtils {
         }
     }
 
-    public static InputStream getEncryptedInputStream(UploadPartRequest request, CipherFactory cipherFactory) {
+    public static ByteRangeCapturingInputStream getEncryptedInputStream(UploadPartRequest request, CipherFactory cipherFactory) {
         try {
             InputStream originalInputStream = request.getInputStream();
             if (request.getFile() != null) {
@@ -770,9 +772,6 @@ public class EncryptionUtils {
     private static long calculateCryptoContentLength(Cipher symmetricCipher, PutObjectRequest request, ObjectMetadata metadata) {
         long plaintextLength = getUnencryptedContentLength(request, metadata);
 
-        // If we have a zero length object, return zero as the encrypted size
-        if (plaintextLength == 0) return 0;
-
         // If we don't know the unencrypted size, then report -1
         if (plaintextLength < 0) return -1;
 
@@ -811,7 +810,8 @@ public class EncryptionUtils {
     private static long getUnencryptedContentLength(PutObjectRequest request, ObjectMetadata metadata) {
         if (request.getFile() != null) {
             return request.getFile().length();
-        } else if (request.getInputStream() != null && metadata.getContentLength() > 0) {
+        } else if (request.getInputStream() != null
+                   && metadata.getRawMetadata().get(Headers.CONTENT_LENGTH) != null) {
             return metadata.getContentLength();
         }
 

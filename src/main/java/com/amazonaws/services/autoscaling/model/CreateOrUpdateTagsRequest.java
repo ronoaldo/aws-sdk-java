@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#createOrUpdateTags(CreateOrUpdateTagsRequest) CreateOrUpdateTags operation}.
@@ -22,13 +24,20 @@ import java.io.Serializable;
  * Creates new tags or updates existing tags for an Auto Scaling group.
  * </p>
  * <p>
- * <b>NOTE:</b> A tag's definition is composed of a resource ID, resource type, key and value, and the propagate flag. Value and the propagate flag are
- * optional parameters. See the Request Parameters for more information.
+ * <b>NOTE:</b> A tag's definition is composed of a resource ID, resource
+ * type, key and value, and the propagate flag. Value and the propagate
+ * flag are optional parameters. See the Request Parameters for more
+ * information.
+ * </p>
+ * <p>
+ * For information on creating tags for your Auto Scaling group, see
+ * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html"> Tag Your Auto Scaling Groups and Amazon EC2 Instances </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#createOrUpdateTags(CreateOrUpdateTagsRequest)
  */
-public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The tag to be created or updated. Each tag should be defined by its
@@ -48,7 +57,7 @@ public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest  implemen
      * tag of the same name already exists, the operation overwrites the
      * previous tag definition, but you will not get an error message.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * The tag to be created or updated. Each tag should be defined by its
@@ -86,9 +95,9 @@ public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest  implemen
      *         previous tag definition, but you will not get an error message.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -133,8 +142,7 @@ public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest  implemen
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -177,7 +185,7 @@ public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest  implemen
      *         previous tag definition, but you will not get an error message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateOrUpdateTagsRequest withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -225,20 +233,20 @@ public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest  implemen
      *         previous tag definition, but you will not get an error message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateOrUpdateTagsRequest withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -250,7 +258,7 @@ public class CreateOrUpdateTagsRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

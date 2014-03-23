@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,34 +14,26 @@
  */
 package com.amazonaws.services.glacier;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map.Entry;
+import java.net.*;
+import java.util.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 import com.amazonaws.*;
 import com.amazonaws.regions.*;
 import com.amazonaws.auth.*;
-import com.amazonaws.handlers.HandlerChainFactory;
-import com.amazonaws.handlers.RequestHandler;
-import com.amazonaws.http.HttpResponseHandler;
-import com.amazonaws.http.JsonResponseHandler;
-import com.amazonaws.http.JsonErrorResponseHandler;
-import com.amazonaws.http.ExecutionContext;
-import com.amazonaws.util.AWSRequestMetrics;
+import com.amazonaws.handlers.*;
+import com.amazonaws.http.*;
+import com.amazonaws.regions.*;
+import com.amazonaws.internal.*;
+import com.amazonaws.metrics.*;
+import com.amazonaws.transform.*;
+import com.amazonaws.util.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
-import com.amazonaws.internal.StaticCredentialsProvider;
-import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.JsonUnmarshallerContext;
-import com.amazonaws.transform.GlacierErrorUnmarshaller;
-import com.amazonaws.util.json.JSONObject;
+import com.amazonaws.util.json.*;
 
 import com.amazonaws.services.glacier.model.*;
 import com.amazonaws.services.glacier.model.transform.*;
-
 
 /**
  * Client for accessing AmazonGlacier.  All service calls made
@@ -52,34 +44,49 @@ import com.amazonaws.services.glacier.model.transform.*;
  * Amazon Glacier is a storage solution for "cold data."
  * </p>
  * <p>
- * Amazon Glacier is an extremely low-cost storage service that provides secure, durable, and easy-to-use storage for data backup and archival. With
- * Amazon Glacier, customers can store their data cost effectively for months, years, or decades. Amazon Glacier also enables customers to offload the
- * administrative burdens of operating and scaling storage to AWS, so they don't have to worry about capacity planning, hardware provisioning, data
- * replication, hardware failure and recovery, or time-consuming hardware migrations.
+ * Amazon Glacier is an extremely low-cost storage service that provides
+ * secure, durable, and easy-to-use storage for data backup and archival.
+ * With Amazon Glacier, customers can store their data cost effectively
+ * for months, years, or decades. Amazon Glacier also enables customers
+ * to offload the administrative burdens of operating and scaling storage
+ * to AWS, so they don't have to worry about capacity planning, hardware
+ * provisioning, data replication, hardware failure and recovery, or
+ * time-consuming hardware migrations.
  * </p>
  * <p>
- * Amazon Glacier is a great storage choice when low storage cost is paramount, your data is rarely retrieved, and retrieval latency of several hours is
- * acceptable. If your application requires fast or frequent access to your data, consider using Amazon S3. For more information, go to <a
- * href="http://aws.amazon.com/s3/"> Amazon Simple Storage Service (Amazon S3) </a> .
+ * Amazon Glacier is a great storage choice when low storage cost is
+ * paramount, your data is rarely retrieved, and retrieval latency of
+ * several hours is acceptable. If your application requires fast or
+ * frequent access to your data, consider using Amazon S3. For more
+ * information, go to
+ * <a href="http://aws.amazon.com/s3/"> Amazon Simple Storage Service (Amazon S3) </a>
+ * .
  * </p>
  * <p>
- * You can store any kind of data in any format. There is no maximum limit on the total amount of data you can store in Amazon Glacier.
+ * You can store any kind of data in any format. There is no maximum
+ * limit on the total amount of data you can store in Amazon Glacier.
  * </p>
  * <p>
- * If you are a first-time user of Amazon Glacier, we recommend that you begin by reading the following sections in the <i>Amazon Glacier Developer
- * Guide</i> :
+ * If you are a first-time user of Amazon Glacier, we recommend that you
+ * begin by reading the following sections in the <i>Amazon Glacier
+ * Developer Guide</i> :
  * </p>
  * 
  * <ul>
  * <li> <p>
- * <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/introduction.html"> What is Amazon Glacier </a> - This section of the Developer
- * Guide describes the underlying data model, the operations it supports, and the AWS SDKs that you can use to interact with the service.
+ * 
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html"> What is Amazon Glacier </a>
+ * - This section of the Developer Guide describes the underlying data
+ * model, the operations it supports, and the AWS SDKs that you can use
+ * to interact with the service.
  * </p>
  * </li>
  * <li> <p>
- * <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html"> Getting Started with Amazon Glacier </a> -
- * The Getting Started section walks you through the process of creating a vault, uploading archives, creating jobs to download archives, retrieving the
- * job output, and deleting archives.
+ * 
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html"> Getting Started with Amazon Glacier </a>
+ * - The Getting Started section walks you through the process of
+ * creating a vault, uploading archives, creating jobs to download
+ * archives, retrieving the job output, and deleting archives.
  * </p>
  * </li>
  * 
@@ -95,12 +102,7 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
     /**
      * List of exception unmarshallers for all AmazonGlacier exceptions.
      */
-    protected List<Unmarshaller<AmazonServiceException, JSONObject>> exceptionUnmarshallers;
-
-    
-    /** AWS signer for authenticating requests. */
-    private AWS4Signer signer;
-
+    protected List<GlacierErrorUnmarshaller> jsonErrorUnmarshallers;
 
     /**
      * Constructs a new client to invoke service methods on
@@ -116,7 +118,7 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonGlacierClient() {
         this(new DefaultAWSCredentialsProviderChain(), new ClientConfiguration());
@@ -140,7 +142,7 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *                       client connects to AmazonGlacier
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonGlacierClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration);
@@ -177,7 +179,7 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *                       (ex: proxy settings, retry counts, etc.).
      */
     public AmazonGlacierClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
-        super(clientConfiguration);
+        super(adjustClientConfiguration(clientConfiguration));
         
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
         
@@ -217,37 +219,61 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *                       (ex: proxy settings, retry counts, etc.).
      */
     public AmazonGlacierClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
-        super(clientConfiguration);
+        this(awsCredentialsProvider, clientConfiguration, null);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on
+     * AmazonGlacier using the specified AWS account credentials
+     * provider, client configuration options and request metric collector.
+     * 
+     * <p>
+     * All service calls made using this new client object are blocking, and will not
+     * return until the service call completes.
+     *
+     * @param awsCredentialsProvider
+     *            The AWS credentials provider which will provide credentials
+     *            to authenticate requests with AWS services.
+     * @param clientConfiguration The client configuration options controlling how this
+     *                       client connects to AmazonGlacier
+     *                       (ex: proxy settings, retry counts, etc.).
+     * @param requestMetricCollector optional request metric collector
+     */
+    public AmazonGlacierClient(AWSCredentialsProvider awsCredentialsProvider,
+            ClientConfiguration clientConfiguration,
+            RequestMetricCollector requestMetricCollector) {
+        super(adjustClientConfiguration(clientConfiguration), requestMetricCollector);
         
         this.awsCredentialsProvider = awsCredentialsProvider;
         
         init();
     }
 
-
     private void init() {
-        exceptionUnmarshallers = new ArrayList<Unmarshaller<AmazonServiceException, JSONObject>>();
-        exceptionUnmarshallers.add(new InvalidParameterValueExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new LimitExceededExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new MissingParameterValueExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new RequestTimeoutExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new ServiceUnavailableExceptionUnmarshaller());
-        exceptionUnmarshallers.add(new ResourceNotFoundExceptionUnmarshaller());
+        jsonErrorUnmarshallers = new ArrayList<GlacierErrorUnmarshaller>();
+        jsonErrorUnmarshallers.add(new InvalidParameterValueExceptionUnmarshaller());
+        jsonErrorUnmarshallers.add(new LimitExceededExceptionUnmarshaller());
+        jsonErrorUnmarshallers.add(new MissingParameterValueExceptionUnmarshaller());
+        jsonErrorUnmarshallers.add(new RequestTimeoutExceptionUnmarshaller());
+        jsonErrorUnmarshallers.add(new ServiceUnavailableExceptionUnmarshaller());
+        jsonErrorUnmarshallers.add(new ResourceNotFoundExceptionUnmarshaller());
         
-        exceptionUnmarshallers.add(new GlacierErrorUnmarshaller());
-        setEndpoint("glacier.us-east-1.amazonaws.com");
-
-        signer = new AWS4Signer();
-        
-
+        jsonErrorUnmarshallers.add(new GlacierErrorUnmarshaller());
+        // calling this.setEndPoint(...) will also modify the signer accordingly
+        this.setEndpoint("glacier.us-east-1.amazonaws.com");
         HandlerChainFactory chainFactory = new HandlerChainFactory();
-        requestHandlers.addAll(chainFactory.newRequestHandlerChain(
+        requestHandler2s.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/glacier/request.handlers"));
-
-        
+        requestHandler2s.addAll(chainFactory.newRequestHandler2Chain(
+                "/com/amazonaws/services/glacier/request.handler2s"));
     }
 
-    
+    private static ClientConfiguration adjustClientConfiguration(ClientConfiguration orig) {
+        ClientConfiguration config = orig;
+        
+        return config;
+    }
+
     /**
      * <p>
      * This operation lists all vaults owned by the calling user's account.
@@ -268,16 +294,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/retrieving-vault-info.html">
-     * Retrieving Vault Metadata in Amazon Glacier </a> and <a
-     * s.amazonwebservices.com/amazonglacier/latest/dev/api-vaults-get.html">
-     * List Vaults </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html"> Retrieving Vault Metadata in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html"> List Vaults </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
@@ -300,26 +324,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListVaultsResult listVaults(ListVaultsRequest listVaultsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public ListVaultsResult listVaults(ListVaultsRequest listVaultsRequest) {
+        ExecutionContext executionContext = createExecutionContext(listVaultsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<ListVaultsRequest> request = new ListVaultsRequestMarshaller().marshall(listVaultsRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListVaultsRequest> request = null;
+        Response<ListVaultsResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListVaultsRequestMarshaller().marshall(listVaultsRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<ListVaultsResult, JsonUnmarshallerContext> unmarshaller = new ListVaultsResultJsonUnmarshaller();
+            JsonResponseHandler<ListVaultsResult> responseHandler = new JsonResponseHandler<ListVaultsResult>(unmarshaller);
 
-        Unmarshaller<ListVaultsResult, JsonUnmarshallerContext> unmarshaller = new ListVaultsResultJsonUnmarshaller();
-        
-        JsonResponseHandler<ListVaultsResult> responseHandler = new JsonResponseHandler<ListVaultsResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation returns information about a job you previously
@@ -342,15 +372,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For information about the underlying REST API, go to <a
-     * onwebservices.com/amazonglacier/latest/dev/api-describe-job-get.html">
-     * Working with Archives in Amazon Glacier </a> in the <i>Amazon Glacier
-     * Developer Guide</i> .
+     * For information about the underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html"> Working with Archives in Amazon Glacier </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
@@ -373,26 +402,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeJobResult describeJob(DescribeJobRequest describeJobRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public DescribeJobResult describeJob(DescribeJobRequest describeJobRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<DescribeJobRequest> request = new DescribeJobRequestMarshaller().marshall(describeJobRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeJobRequest> request = null;
+        Response<DescribeJobResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeJobRequestMarshaller().marshall(describeJobRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<DescribeJobResult, JsonUnmarshallerContext> unmarshaller = new DescribeJobResultJsonUnmarshaller();
+            JsonResponseHandler<DescribeJobResult> responseHandler = new JsonResponseHandler<DescribeJobResult>(unmarshaller);
 
-        Unmarshaller<DescribeJobResult, JsonUnmarshallerContext> unmarshaller = new DescribeJobResultJsonUnmarshaller();
-        
-        JsonResponseHandler<DescribeJobResult> responseHandler = new JsonResponseHandler<DescribeJobResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation lists the parts of an archive that have been uploaded
@@ -418,16 +453,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/working-with-archives.html">
-     * Working with Archives in Amazon Glacier </a> and <a
-     * bservices.com/amazonglacier/latest/dev/api-multipart-list-parts.html">
-     * List Parts </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and the underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html"> Working with Archives in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html"> List Parts </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * </p>
      *
      * @param listPartsRequest Container for the necessary parameters to
@@ -449,26 +482,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListPartsResult listParts(ListPartsRequest listPartsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public ListPartsResult listParts(ListPartsRequest listPartsRequest) {
+        ExecutionContext executionContext = createExecutionContext(listPartsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<ListPartsRequest> request = new ListPartsRequestMarshaller().marshall(listPartsRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListPartsRequest> request = null;
+        Response<ListPartsResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListPartsRequestMarshaller().marshall(listPartsRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<ListPartsResult, JsonUnmarshallerContext> unmarshaller = new ListPartsResultJsonUnmarshaller();
+            JsonResponseHandler<ListPartsResult> responseHandler = new JsonResponseHandler<ListPartsResult>(unmarshaller);
 
-        Unmarshaller<ListPartsResult, JsonUnmarshallerContext> unmarshaller = new ListPartsResultJsonUnmarshaller();
-        
-        JsonResponseHandler<ListPartsResult> responseHandler = new JsonResponseHandler<ListPartsResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation retrieves the <code>notification-configuration</code>
@@ -478,25 +517,22 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * For information about setting a notification configuration on a vault,
      * see SetVaultNotifications. If a notification configuration for a vault
      * is not set, the operation returns a <code>404 Not Found</code> error.
-     * For more information about vault notifications, see <a
-     * services.com/amazonglacier/latest/dev/configuring-notifications.html">
-     * Configuring Vault Notifications in Amazon Glacier </a> .
+     * For more information about vault notifications, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html"> Configuring Vault Notifications in Amazon Glacier </a>
+     * .
      * </p>
      * <p>
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * services.com/amazonglacier/latest/dev/configuring-notifications.html">
-     * Configuring Vault Notifications in Amazon Glacier </a> and <a
-     * rvices.com/amazonglacier/latest/dev/api-vault-notifications-get.html">
-     * Get Vault Notification Configuration </a> in the <i>Amazon Glacier
-     * Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html"> Configuring Vault Notifications in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html"> Get Vault Notification Configuration </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
@@ -520,26 +556,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetVaultNotificationsResult getVaultNotifications(GetVaultNotificationsRequest getVaultNotificationsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public GetVaultNotificationsResult getVaultNotifications(GetVaultNotificationsRequest getVaultNotificationsRequest) {
+        ExecutionContext executionContext = createExecutionContext(getVaultNotificationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<GetVaultNotificationsRequest> request = new GetVaultNotificationsRequestMarshaller().marshall(getVaultNotificationsRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetVaultNotificationsRequest> request = null;
+        Response<GetVaultNotificationsResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetVaultNotificationsRequestMarshaller().marshall(getVaultNotificationsRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<GetVaultNotificationsResult, JsonUnmarshallerContext> unmarshaller = new GetVaultNotificationsResultJsonUnmarshaller();
+            JsonResponseHandler<GetVaultNotificationsResult> responseHandler = new JsonResponseHandler<GetVaultNotificationsResult>(unmarshaller);
 
-        Unmarshaller<GetVaultNotificationsResult, JsonUnmarshallerContext> unmarshaller = new GetVaultNotificationsResultJsonUnmarshaller();
-        
-        JsonResponseHandler<GetVaultNotificationsResult> responseHandler = new JsonResponseHandler<GetVaultNotificationsResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation lists jobs for a vault, including jobs that are
@@ -590,14 +632,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For the underlying REST API, go to <a
-     * ocs.amazonwebservices.com/amazonglacier/latest/dev/api-jobs-get.html">
-     * List Jobs </a>
+     * For the underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html"> List Jobs </a>
+     * 
      * </p>
      *
      * @param listJobsRequest Container for the necessary parameters to
@@ -619,26 +661,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListJobsResult listJobs(ListJobsRequest listJobsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public ListJobsResult listJobs(ListJobsRequest listJobsRequest) {
+        ExecutionContext executionContext = createExecutionContext(listJobsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<ListJobsRequest> request = new ListJobsRequestMarshaller().marshall(listJobsRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListJobsRequest> request = null;
+        Response<ListJobsResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListJobsRequestMarshaller().marshall(listJobsRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<ListJobsResult, JsonUnmarshallerContext> unmarshaller = new ListJobsResultJsonUnmarshaller();
+            JsonResponseHandler<ListJobsResult> responseHandler = new JsonResponseHandler<ListJobsResult>(unmarshaller);
 
-        Unmarshaller<ListJobsResult, JsonUnmarshallerContext> unmarshaller = new ListJobsResultJsonUnmarshaller();
-        
-        JsonResponseHandler<ListJobsResult> responseHandler = new JsonResponseHandler<ListJobsResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation creates a new vault with the specified name. The name
@@ -672,16 +720,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * .amazonwebservices.com/amazonglacier/latest/dev/creating-vaults.html">
-     * Creating a Vault in Amazon Glacier </a> and <a
-     * cs.amazonwebservices.com/amazonglacier/latest/dev/api-vault-put.html">
-     * Create Vault </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html"> Creating a Vault in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html"> Create Vault </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
@@ -704,26 +750,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public CreateVaultResult createVault(CreateVaultRequest createVaultRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public CreateVaultResult createVault(CreateVaultRequest createVaultRequest) {
+        ExecutionContext executionContext = createExecutionContext(createVaultRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<CreateVaultRequest> request = new CreateVaultRequestMarshaller().marshall(createVaultRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateVaultRequest> request = null;
+        Response<CreateVaultResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateVaultRequestMarshaller().marshall(createVaultRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<CreateVaultResult, JsonUnmarshallerContext> unmarshaller = new CreateVaultResultJsonUnmarshaller();
+            JsonResponseHandler<CreateVaultResult> responseHandler = new JsonResponseHandler<CreateVaultResult>(unmarshaller);
 
-        Unmarshaller<CreateVaultResult, JsonUnmarshallerContext> unmarshaller = new CreateVaultResultJsonUnmarshaller();
-        
-        JsonResponseHandler<CreateVaultResult> responseHandler = new JsonResponseHandler<CreateVaultResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation initiates a multipart upload. Amazon Glacier creates a
@@ -761,17 +813,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/uploading-archive-mpu.html">
-     * Uploading Large Archives in Parts (Multipart Upload) </a> and <a
-     * ices.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html">
-     * Initiate Multipart Upload </a> in the <i>Amazon Glacier Developer
-     * Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html"> Uploading Large Archives in Parts (Multipart Upload) </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html"> Initiate Multipart Upload </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * </p>
      *
      * @param initiateMultipartUploadRequest Container for the necessary
@@ -794,26 +843,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public InitiateMultipartUploadResult initiateMultipartUpload(InitiateMultipartUploadRequest initiateMultipartUploadRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public InitiateMultipartUploadResult initiateMultipartUpload(InitiateMultipartUploadRequest initiateMultipartUploadRequest) {
+        ExecutionContext executionContext = createExecutionContext(initiateMultipartUploadRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<InitiateMultipartUploadRequest> request = new InitiateMultipartUploadRequestMarshaller().marshall(initiateMultipartUploadRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<InitiateMultipartUploadRequest> request = null;
+        Response<InitiateMultipartUploadResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new InitiateMultipartUploadRequestMarshaller().marshall(initiateMultipartUploadRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<InitiateMultipartUploadResult, JsonUnmarshallerContext> unmarshaller = new InitiateMultipartUploadResultJsonUnmarshaller();
+            JsonResponseHandler<InitiateMultipartUploadResult> responseHandler = new JsonResponseHandler<InitiateMultipartUploadResult>(unmarshaller);
 
-        Unmarshaller<InitiateMultipartUploadResult, JsonUnmarshallerContext> unmarshaller = new InitiateMultipartUploadResultJsonUnmarshaller();
-        
-        JsonResponseHandler<InitiateMultipartUploadResult> responseHandler = new JsonResponseHandler<InitiateMultipartUploadResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation aborts a multipart upload identified by the upload ID.
@@ -824,7 +879,7 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * upload. Aborting a completed upload fails. However, aborting an
      * already-aborted upload will succeed, for a short time. For more
      * information about uploading a part and completing a multipart upload,
-     * see UploadPart and CompleteMultipartUpload.
+     * see UploadMultipartPart and CompleteMultipartUpload.
      * </p>
      * <p>
      * This operation is idempotent.
@@ -833,23 +888,21 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/working-with-archives.html">
-     * Working with Archives in Amazon Glacier </a> and <a
-     * ervices.com/amazonglacier/latest/dev/api-multipart-abort-upload.html">
-     * Abort Multipart Upload </a> in the <i>Amazon Glacier Developer
-     * Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html"> Working with Archives in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html"> Abort Multipart Upload </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
      * @param abortMultipartUploadRequest Container for the necessary
      *           parameters to execute the AbortMultipartUpload service method on
      *           AmazonGlacier.
+     * 
      * 
      * @throws ResourceNotFoundException
      * @throws MissingParameterValueException
@@ -864,17 +917,18 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void abortMultipartUpload(AbortMultipartUploadRequest abortMultipartUploadRequest) 
-            throws AmazonServiceException, AmazonClientException {
-                                     
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public void abortMultipartUpload(AbortMultipartUploadRequest abortMultipartUploadRequest) {
+        ExecutionContext executionContext = createExecutionContext(abortMultipartUploadRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<AbortMultipartUploadRequest> request = new AbortMultipartUploadRequestMarshaller().marshall(abortMultipartUploadRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
-
+        Request<AbortMultipartUploadRequest> request;
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+        try {
+            request = new AbortMultipartUploadRequestMarshaller().marshall(abortMultipartUploadRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+        } finally {
+            awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+        }
         JsonResponseHandler<Void> responseHandler = new JsonResponseHandler<Void>(null);
         invoke(request, responseHandler, executionContext);
     }
@@ -904,21 +958,20 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * zonwebservices.com/amazonglacier/latest/dev/deleting-an-archive.html">
-     * Deleting an Archive in Amazon Glacier </a> and <a
-     * azonwebservices.com/amazonglacier/latest/dev/api-archive-delete.html">
-     * Delete Archive </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive.html"> Deleting an Archive in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html"> Delete Archive </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
      * @param deleteArchiveRequest Container for the necessary parameters to
      *           execute the DeleteArchive service method on AmazonGlacier.
+     * 
      * 
      * @throws ResourceNotFoundException
      * @throws MissingParameterValueException
@@ -933,17 +986,18 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteArchive(DeleteArchiveRequest deleteArchiveRequest) 
-            throws AmazonServiceException, AmazonClientException {
-                                     
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public void deleteArchive(DeleteArchiveRequest deleteArchiveRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteArchiveRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<DeleteArchiveRequest> request = new DeleteArchiveRequestMarshaller().marshall(deleteArchiveRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
-
+        Request<DeleteArchiveRequest> request;
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+        try {
+            request = new DeleteArchiveRequestMarshaller().marshall(deleteArchiveRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+        } finally {
+            awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+        }
         JsonResponseHandler<Void> responseHandler = new JsonResponseHandler<Void>(null);
         invoke(request, responseHandler, executionContext);
     }
@@ -989,7 +1043,7 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * <li> <p>
      * After downloading all the parts of the job output, you have a list of
      * eight checksum values. Compute the tree hash of these values to find
-     * the checksum of the entire output. Using the Describe Job API, obtain
+     * the checksum of the entire output. Using the DescribeJob API, obtain
      * job information of the job that provided you the output. The response
      * includes the checksum of the entire archive stored in Amazon Glacier.
      * You compare this value with the checksum you computed to ensure you
@@ -1000,18 +1054,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
-     * .amazonwebservices.com/amazonglacier/latest/dev/vault-inventory.html">
-     * Downloading a Vault Inventory </a> , <a
-     * webservices.com/amazonglacier/latest/dev/downloading-an-archive.html">
-     * Downloading an Archive </a> , and <a
-     * azonwebservices.com/amazonglacier/latest/dev/api-job-output-get.html">
-     * Get Job Output </a>
+     * For conceptual information and the underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html"> Downloading a Vault Inventory </a> , <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html"> Downloading an Archive </a> , and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html"> Get Job Output </a>
+     * 
      * </p>
      *
      * @param getJobOutputRequest Container for the necessary parameters to
@@ -1033,28 +1083,37 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetJobOutputResult getJobOutput(GetJobOutputRequest getJobOutputRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public GetJobOutputResult getJobOutput(GetJobOutputRequest getJobOutputRequest) {
+        ExecutionContext executionContext = createExecutionContext(getJobOutputRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<GetJobOutputRequest> request = new GetJobOutputRequestMarshaller().marshall(getJobOutputRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetJobOutputRequest> request = null;
+        Response<GetJobOutputResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetJobOutputRequestMarshaller().marshall(getJobOutputRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<GetJobOutputResult, JsonUnmarshallerContext> unmarshaller = new GetJobOutputResultJsonUnmarshaller();
+            JsonResponseHandler<GetJobOutputResult> responseHandler = new JsonResponseHandler<GetJobOutputResult>(unmarshaller);
+            
+            responseHandler.needsConnectionLeftOpen = true;
 
-        Unmarshaller<GetJobOutputResult, JsonUnmarshallerContext> unmarshaller = new GetJobOutputResultJsonUnmarshaller();
-        
-        JsonResponseHandler<GetJobOutputResult> responseHandler = new JsonResponseHandler<GetJobOutputResult>(unmarshaller);
-
-        
-        responseHandler.needsConnectionLeftOpen = true;
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            GetJobOutputResult awsResponse = response.getAwsResponse();
+            awsResponse.setBody(new ServiceClientHolderInputStream(awsResponse.getBody(),this));
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation initiates a job of the specified type. In this release,
@@ -1093,7 +1152,7 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * Glacier completes the job. In addition to specifying an SNS topic per
      * job request, you can configure vault notifications for a vault so that
      * job notifications are always sent. For more information, see
-     * SetVaultNotificationConfiguration.
+     * SetVaultNotifications.
      * </p>
      * </li>
      * <li> <p>
@@ -1113,15 +1172,15 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * If for a specific event, you add both the notification configuration
      * on the vault and also specify an SNS topic in your initiate job
      * request, Amazon Glacier sends both notifications. For more
-     * information, see SetVaultNotificationConfiguration.
+     * information, see SetVaultNotifications.
      * </p>
      * <p>
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
      * <b>About the Vault Inventory</b>
@@ -1144,19 +1203,75 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * inventory.
      * </p>
      * <p>
+     * <b>Range Inventory Retrieval</b>
+     * </p>
+     * <p>
+     * You can limit the number of inventory items retrieved by filtering on
+     * the archive creation date or by setting a limit.
+     * </p>
+     * <p>
+     * <i>Filtering by Archive Creation Date</i>
+     * </p>
+     * <p>
+     * You can retrieve inventory items for archives created between
+     * <code>StartDate</code> and <code>EndDate</code> by specifying values
+     * for these parameters in the <b>InitiateJob</b> request. Archives
+     * created on or after the <code>StartDate</code> and before the
+     * <code>EndDate</code> will be returned. If you only provide the
+     * <code>StartDate</code> without the <code>EndDate</code> , you will
+     * retrieve the inventory for all archives created on or after the
+     * <code>StartDate</code> . If you only provide the <code>EndDate</code>
+     * without the <code>StartDate</code> , you will get back the inventory
+     * for all archives created before the <code>EndDate</code> .
+     * </p>
+     * <p>
+     * <i>Limiting Inventory Items per Retrieval</i>
+     * </p>
+     * <p>
+     * You can limit the number of inventory items returned by setting the
+     * <code>Limit</code> parameter in the <b>InitiateJob</b> request. The
+     * inventory job output will contain inventory items up to the specified
+     * <code>Limit</code> . If there are more inventory items available, the
+     * result is paginated. After a job is complete you can use the
+     * DescribeJob operation to get a marker that you use in a subsequent
+     * <b>InitiateJob</b> request. The marker will indicate the starting
+     * point to retrieve the next set of inventory items. You can page
+     * through your entire inventory by repeatedly making <b>InitiateJob</b>
+     * requests with the marker from the previous <b>DescribeJob</b> output,
+     * until you get a marker from <b>DescribeJob</b> that returns null,
+     * indicating that there are no more inventory items available.
+     * </p>
+     * <p>
+     * You can use the <code>Limit</code> parameter together with the date
+     * range parameters.
+     * </p>
+     * <p>
+     * <b>About Ranged Archive Retrieval</b>
+     * </p>
+     * <p>
+     * You can initiate an archive retrieval for the whole archive or a
+     * range of the archive. In the case of ranged archive retrieval, you
+     * specify a byte range to return or the whole archive. The range
+     * specified must be megabyte (MB) aligned, that is the range start value
+     * must be divisible by 1 MB and range end value plus 1 must be divisible
+     * by 1 MB or equal the end of the archive. If the ranged archive
+     * retrieval is not megabyte aligned, this operation returns a 400
+     * response. Furthermore, to ensure you get checksum values for data you
+     * download using Get Job Output API, the range must be tree hash
+     * aligned.
+     * </p>
+     * <p>
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/api-initiate-job-post.html">
-     * Initiate a Job </a> and <a
-     * .amazonwebservices.com/amazonglacier/latest/dev/vault-inventory.html">
-     * Downloading a Vault Inventory </a>
+     * For conceptual information and the underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html"> Initiate a Job </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html"> Downloading a Vault Inventory </a>
+     * 
      * </p>
      *
      * @param initiateJobRequest Container for the necessary parameters to
@@ -1178,26 +1293,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public InitiateJobResult initiateJob(InitiateJobRequest initiateJobRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public InitiateJobResult initiateJob(InitiateJobRequest initiateJobRequest) {
+        ExecutionContext executionContext = createExecutionContext(initiateJobRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<InitiateJobRequest> request = new InitiateJobRequestMarshaller().marshall(initiateJobRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<InitiateJobRequest> request = null;
+        Response<InitiateJobResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new InitiateJobRequestMarshaller().marshall(initiateJobRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<InitiateJobResult, JsonUnmarshallerContext> unmarshaller = new InitiateJobResultJsonUnmarshaller();
+            JsonResponseHandler<InitiateJobResult> responseHandler = new JsonResponseHandler<InitiateJobResult>(unmarshaller);
 
-        Unmarshaller<InitiateJobResult, JsonUnmarshallerContext> unmarshaller = new InitiateJobResultJsonUnmarshaller();
-        
-        JsonResponseHandler<InitiateJobResult> responseHandler = new JsonResponseHandler<InitiateJobResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation adds an archive to a vault. This is a synchronous
@@ -1218,9 +1339,9 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * You must provide a SHA256 tree hash of the data you are uploading. For
-     * information about computing a SHA256 tree hash, see <a
-     * nwebservices.com/amazonglacier/latest/dev/checksum-calculations.html">
-     * Computing Checksums </a> .
+     * information about computing a SHA256 tree hash, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html"> Computing Checksums </a>
+     * .
      * </p>
      * <p>
      * You can optionally specify an archive description of up to 1,024
@@ -1239,16 +1360,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * onwebservices.com/amazonglacier/latest/dev/uploading-an-archive.html">
-     * Uploading an Archive in Amazon Glacier </a> and <a
-     * amazonwebservices.com/amazonglacier/latest/dev/api-archive-post.html">
-     * Upload Archive </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html"> Uploading an Archive in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html"> Upload Archive </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
@@ -1272,26 +1391,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public UploadArchiveResult uploadArchive(UploadArchiveRequest uploadArchiveRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public UploadArchiveResult uploadArchive(UploadArchiveRequest uploadArchiveRequest) {
+        ExecutionContext executionContext = createExecutionContext(uploadArchiveRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<UploadArchiveRequest> request = new UploadArchiveRequestMarshaller().marshall(uploadArchiveRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UploadArchiveRequest> request = null;
+        Response<UploadArchiveResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UploadArchiveRequestMarshaller().marshall(uploadArchiveRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<UploadArchiveResult, JsonUnmarshallerContext> unmarshaller = new UploadArchiveResultJsonUnmarshaller();
+            JsonResponseHandler<UploadArchiveResult> responseHandler = new JsonResponseHandler<UploadArchiveResult>(unmarshaller);
 
-        Unmarshaller<UploadArchiveResult, JsonUnmarshallerContext> unmarshaller = new UploadArchiveResultJsonUnmarshaller();
-        
-        JsonResponseHandler<UploadArchiveResult> responseHandler = new JsonResponseHandler<UploadArchiveResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation configures notifications that will be sent when
@@ -1328,23 +1453,21 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * services.com/amazonglacier/latest/dev/configuring-notifications.html">
-     * Configuring Vault Notifications in Amazon Glacier </a> and <a
-     * rvices.com/amazonglacier/latest/dev/api-vault-notifications-put.html">
-     * Set Vault Notification Configuration </a> in the <i>Amazon Glacier
-     * Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html"> Configuring Vault Notifications in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html"> Set Vault Notification Configuration </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
      * @param setVaultNotificationsRequest Container for the necessary
      *           parameters to execute the SetVaultNotifications service method on
      *           AmazonGlacier.
+     * 
      * 
      * @throws ResourceNotFoundException
      * @throws MissingParameterValueException
@@ -1359,17 +1482,18 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void setVaultNotifications(SetVaultNotificationsRequest setVaultNotificationsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-                                     
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public void setVaultNotifications(SetVaultNotificationsRequest setVaultNotificationsRequest) {
+        ExecutionContext executionContext = createExecutionContext(setVaultNotificationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<SetVaultNotificationsRequest> request = new SetVaultNotificationsRequestMarshaller().marshall(setVaultNotificationsRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
-
+        Request<SetVaultNotificationsRequest> request;
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+        try {
+            request = new SetVaultNotificationsRequestMarshaller().marshall(setVaultNotificationsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+        } finally {
+            awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+        }
         JsonResponseHandler<Void> responseHandler = new JsonResponseHandler<Void>(null);
         invoke(request, responseHandler, executionContext);
     }
@@ -1389,15 +1513,15 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * <p>
      * In the request, you must include the computed SHA256 tree hash of the
      * entire archive you have uploaded. For information about computing a
-     * SHA256 tree hash, see <a
-     * nwebservices.com/amazonglacier/latest/dev/checksum-calculations.html">
-     * Computing Checksums </a> . On the server side, Amazon Glacier also
-     * constructs the SHA256 tree hash of the assembled archive. If the
-     * values match, Amazon Glacier saves the archive to the vault;
-     * otherwise, it returns an error, and the operation fails. The ListParts
-     * operation returns a list of parts uploaded for a specific multipart
-     * upload. It includes checksum information for each uploaded part that
-     * can be used to debug a bad checksum issue.
+     * SHA256 tree hash, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html"> Computing Checksums </a>
+     * . On the server side, Amazon Glacier also constructs the SHA256 tree
+     * hash of the assembled archive. If the values match, Amazon Glacier
+     * saves the archive to the vault; otherwise, it returns an error, and
+     * the operation fails. The ListParts operation returns a list of parts
+     * uploaded for a specific multipart upload. It includes checksum
+     * information for each uploaded part that can be used to debug a bad
+     * checksum issue.
      * </p>
      * <p>
      * Additionally, Amazon Glacier also checks for any missing content
@@ -1421,17 +1545,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/uploading-archive-mpu.html">
-     * Uploading Large Archives in Parts (Multipart Upload) </a> and <a
-     * ices.com/amazonglacier/latest/dev/api-multipart-complete-upload.html">
-     * Complete Multipart Upload </a> in the <i>Amazon Glacier Developer
-     * Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html"> Uploading Large Archives in Parts (Multipart Upload) </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html"> Complete Multipart Upload </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
@@ -1455,26 +1576,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public CompleteMultipartUploadResult completeMultipartUpload(CompleteMultipartUploadRequest completeMultipartUploadRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public CompleteMultipartUploadResult completeMultipartUpload(CompleteMultipartUploadRequest completeMultipartUploadRequest) {
+        ExecutionContext executionContext = createExecutionContext(completeMultipartUploadRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<CompleteMultipartUploadRequest> request = new CompleteMultipartUploadRequestMarshaller().marshall(completeMultipartUploadRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CompleteMultipartUploadRequest> request = null;
+        Response<CompleteMultipartUploadResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CompleteMultipartUploadRequestMarshaller().marshall(completeMultipartUploadRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<CompleteMultipartUploadResult, JsonUnmarshallerContext> unmarshaller = new CompleteMultipartUploadResultJsonUnmarshaller();
+            JsonResponseHandler<CompleteMultipartUploadResult> responseHandler = new JsonResponseHandler<CompleteMultipartUploadResult>(unmarshaller);
 
-        Unmarshaller<CompleteMultipartUploadResult, JsonUnmarshallerContext> unmarshaller = new CompleteMultipartUploadResultJsonUnmarshaller();
-        
-        JsonResponseHandler<CompleteMultipartUploadResult> responseHandler = new JsonResponseHandler<CompleteMultipartUploadResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation uploads a part of an archive. You can upload archive
@@ -1493,9 +1620,9 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * part and include it in your request. Upon receiving the part data,
      * Amazon Glacier also computes a SHA256 tree hash. If these hash values
      * don't match, the operation fails. For information about computing a
-     * SHA256 tree hash, see <a
-     * nwebservices.com/amazonglacier/latest/dev/checksum-calculations.html">
-     * Computing Checksums </a> .
+     * SHA256 tree hash, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html"> Computing Checksums </a>
+     * .
      * </p>
      * </li>
      * <li> <p>
@@ -1529,16 +1656,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/uploading-archive-mpu.html">
-     * Uploading Large Archives in Parts (Multipart Upload) </a> and <a
-     * .amazonwebservices.com/amazonglacier/latest/dev/api-upload-part.html">
-     * Upload Part </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html"> Uploading Large Archives in Parts (Multipart Upload) </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.html"> Upload Part </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * </p>
      *
      * @param uploadMultipartPartRequest Container for the necessary
@@ -1562,26 +1687,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public UploadMultipartPartResult uploadMultipartPart(UploadMultipartPartRequest uploadMultipartPartRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public UploadMultipartPartResult uploadMultipartPart(UploadMultipartPartRequest uploadMultipartPartRequest) {
+        ExecutionContext executionContext = createExecutionContext(uploadMultipartPartRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<UploadMultipartPartRequest> request = new UploadMultipartPartRequestMarshaller().marshall(uploadMultipartPartRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UploadMultipartPartRequest> request = null;
+        Response<UploadMultipartPartResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UploadMultipartPartRequestMarshaller().marshall(uploadMultipartPartRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<UploadMultipartPartResult, JsonUnmarshallerContext> unmarshaller = new UploadMultipartPartResultJsonUnmarshaller();
+            JsonResponseHandler<UploadMultipartPartResult> responseHandler = new JsonResponseHandler<UploadMultipartPartResult>(unmarshaller);
 
-        Unmarshaller<UploadMultipartPartResult, JsonUnmarshallerContext> unmarshaller = new UploadMultipartPartResultJsonUnmarshaller();
-        
-        JsonResponseHandler<UploadMultipartPartResult> responseHandler = new JsonResponseHandler<UploadMultipartPartResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation returns information about a vault, including the
@@ -1593,24 +1724,22 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * Vault, the change in contents will not be immediately reflected. If
      * you want to retrieve the latest inventory of the vault, use
      * InitiateJob. Amazon Glacier generates vault inventories approximately
-     * daily. For more information, see <a
-     * .amazonwebservices.com/amazonglacier/latest/dev/vault-inventory.html">
-     * Downloading a Vault Inventory in Amazon Glacier </a> .
+     * daily. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html"> Downloading a Vault Inventory in Amazon Glacier </a>
+     * .
      * </p>
      * <p>
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/retrieving-vault-info.html">
-     * Retrieving Vault Metadata in Amazon Glacier </a> and <a
-     * cs.amazonwebservices.com/amazonglacier/latest/dev/api-vault-get.html">
-     * Describe Vault </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html"> Retrieving Vault Metadata in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html"> Describe Vault </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
@@ -1633,26 +1762,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DescribeVaultResult describeVault(DescribeVaultRequest describeVaultRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public DescribeVaultResult describeVault(DescribeVaultRequest describeVaultRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeVaultRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<DescribeVaultRequest> request = new DescribeVaultRequestMarshaller().marshall(describeVaultRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeVaultRequest> request = null;
+        Response<DescribeVaultResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeVaultRequestMarshaller().marshall(describeVaultRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<DescribeVaultResult, JsonUnmarshallerContext> unmarshaller = new DescribeVaultResultJsonUnmarshaller();
+            JsonResponseHandler<DescribeVaultResult> responseHandler = new JsonResponseHandler<DescribeVaultResult>(unmarshaller);
 
-        Unmarshaller<DescribeVaultResult, JsonUnmarshallerContext> unmarshaller = new DescribeVaultResultJsonUnmarshaller();
-        
-        JsonResponseHandler<DescribeVaultResult> responseHandler = new JsonResponseHandler<DescribeVaultResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation deletes the notification configuration set for a vault.
@@ -1665,22 +1800,20 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * .amazonwebservices.com/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * services.com/amazonglacier/latest/dev/configuring-notifications.html">
-     * Configuring Vault Notifications in Amazon Glacier </a> and <a
-     * ces.com/amazonglacier/latest/dev/api-vault-notifications-delete.html">
-     * Delete Vault Notification Configuration </a> in the Amazon Glacier
-     * Developer Guide.
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html"> Configuring Vault Notifications in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html"> Delete Vault Notification Configuration </a>
+     * in the Amazon Glacier Developer Guide.
      * </p>
      *
      * @param deleteVaultNotificationsRequest Container for the necessary
      *           parameters to execute the DeleteVaultNotifications service method on
      *           AmazonGlacier.
+     * 
      * 
      * @throws ResourceNotFoundException
      * @throws MissingParameterValueException
@@ -1695,17 +1828,18 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteVaultNotifications(DeleteVaultNotificationsRequest deleteVaultNotificationsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-                                     
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public void deleteVaultNotifications(DeleteVaultNotificationsRequest deleteVaultNotificationsRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteVaultNotificationsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<DeleteVaultNotificationsRequest> request = new DeleteVaultNotificationsRequestMarshaller().marshall(deleteVaultNotificationsRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
-
+        Request<DeleteVaultNotificationsRequest> request;
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+        try {
+            request = new DeleteVaultNotificationsRequestMarshaller().marshall(deleteVaultNotificationsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+        } finally {
+            awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+        }
         JsonResponseHandler<Void> responseHandler = new JsonResponseHandler<Void>(null);
         invoke(request, responseHandler, executionContext);
     }
@@ -1741,17 +1875,14 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and the underlying REST API, go to <a
-     * nwebservices.com/amazonglacier/latest/dev/working-with-archives.html">
-     * Working with Archives in Amazon Glacier </a> and <a
-     * ervices.com/amazonglacier/latest/dev/api-multipart-list-uploads.html">
-     * List Multipart Uploads </a> in the <i>Amazon Glacier Developer
-     * Guide</i> .
+     * For conceptual information and the underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html"> Working with Archives in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html"> List Multipart Uploads </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * </p>
      *
      * @param listMultipartUploadsRequest Container for the necessary
@@ -1774,26 +1905,32 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListMultipartUploadsResult listMultipartUploads(ListMultipartUploadsRequest listMultipartUploadsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public ListMultipartUploadsResult listMultipartUploads(ListMultipartUploadsRequest listMultipartUploadsRequest) {
+        ExecutionContext executionContext = createExecutionContext(listMultipartUploadsRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<ListMultipartUploadsRequest> request = new ListMultipartUploadsRequestMarshaller().marshall(listMultipartUploadsRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListMultipartUploadsRequest> request = null;
+        Response<ListMultipartUploadsResult> response = null;
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListMultipartUploadsRequestMarshaller().marshall(listMultipartUploadsRequest);
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            Unmarshaller<ListMultipartUploadsResult, JsonUnmarshallerContext> unmarshaller = new ListMultipartUploadsResultJsonUnmarshaller();
+            JsonResponseHandler<ListMultipartUploadsResult> responseHandler = new JsonResponseHandler<ListMultipartUploadsResult>(unmarshaller);
 
-        Unmarshaller<ListMultipartUploadsResult, JsonUnmarshallerContext> unmarshaller = new ListMultipartUploadsResultJsonUnmarshaller();
-        
-        JsonResponseHandler<ListMultipartUploadsResult> responseHandler = new JsonResponseHandler<ListMultipartUploadsResult>(unmarshaller);
-
-        
-
-        return invoke(request, responseHandler, executionContext);
+            response = invoke(request, responseHandler, executionContext);
+            
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response, LOGGING_AWS_REQUEST_METRIC);
+        }
     }
-    
+
     /**
      * <p>
      * This operation deletes a vault. Amazon Glacier will delete a vault
@@ -1802,13 +1939,9 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * If either of these conditions is not satisfied, the vault deletion
      * fails (that is, the vault is not removed) and Amazon Glacier returns
      * an error. You can use DescribeVault to return the number of archives
-     * in a vault, and you can use <a
-     * nwebservices.com/amazonglacier/latest/dev/api-initiate-job-post.html">
-     * Initiate a Job (POST jobs) </a> to initiate a new inventory retrieval
-     * for a vault. The inventory contains the archive IDs you use to delete
-     * archives using <a
-     * azonwebservices.com/amazonglacier/latest/dev/api-archive-delete.html">
-     * Delete Archive (DELETE archive) </a> .
+     * in a vault, and you can use
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html"> Initiate a Job (POST jobs) </a> to initiate a new inventory retrieval for a vault. The inventory contains the archive IDs you use to delete archives using <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html"> Delete Archive (DELETE archive) </a>
+     * .
      * </p>
      * <p>
      * This operation is idempotent.
@@ -1817,21 +1950,20 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      * An AWS account has full permission to perform all operations
      * (actions). However, AWS Identity and Access Management (IAM) users
      * don't have any permissions by default. You must grant them explicit
-     * permission to perform specific actions. For more information, see <a
-     * ices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html">
-     * Access Control Using AWS Identity and Access Management (IAM) </a> .
+     * permission to perform specific actions. For more information, see
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+     * .
      * </p>
      * <p>
-     * For conceptual information and underlying REST API, go to <a
-     * .amazonwebservices.com/amazonglacier/latest/dev/deleting-vaults.html">
-     * Deleting a Vault in Amazon Glacier </a> and <a
-     * amazonwebservices.com/amazonglacier/latest/dev/api-vault-delete.html">
-     * Delete Vault </a> in the <i>Amazon Glacier Developer Guide</i> .
+     * For conceptual information and underlying REST API, go to
+     * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-vaults.html"> Deleting a Vault in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html"> Delete Vault </a>
+     * in the <i>Amazon Glacier Developer Guide</i> .
      * 
      * </p>
      *
      * @param deleteVaultRequest Container for the necessary parameters to
      *           execute the DeleteVault service method on AmazonGlacier.
+     * 
      * 
      * @throws ResourceNotFoundException
      * @throws MissingParameterValueException
@@ -1846,68 +1978,31 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
      *             If an error response is returned by AmazonGlacier indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteVault(DeleteVaultRequest deleteVaultRequest) 
-            throws AmazonServiceException, AmazonClientException {
-                                     
-        /* Create execution context */
-        ExecutionContext executionContext = createExecutionContext();
-        
+    public void deleteVault(DeleteVaultRequest deleteVaultRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteVaultRequest);
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
-        Request<DeleteVaultRequest> request = new DeleteVaultRequestMarshaller().marshall(deleteVaultRequest);
-        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
-
+        Request<DeleteVaultRequest> request;
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+        try {
+            request = new DeleteVaultRequestMarshaller().marshall(deleteVaultRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+        } finally {
+            awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+        }
         JsonResponseHandler<Void> responseHandler = new JsonResponseHandler<Void>(null);
         invoke(request, responseHandler, executionContext);
     }
-    
-    /**
-     * Overrides the default endpoint for this client ("https://glacier.us-east-1.amazonaws.com") and explicitly provides
-     * an AWS region ID and AWS service name to use when the client calculates a signature
-     * for requests.  In almost all cases, this region ID and service name
-     * are automatically determined from the endpoint, and callers should use the simpler
-     * one-argument form of setEndpoint instead of this method.
-     * <p>
-     * <b>This method is not threadsafe. Endpoints should be configured when the
-     * client is created and before any service requests are made. Changing it
-     * afterwards creates inevitable race conditions for any service requests in
-     * transit.</b>
-     * <p>
-     * Callers can pass in just the endpoint (ex: "glacier.us-east-1.amazonaws.com") or a full
-     * URL, including the protocol (ex: "https://glacier.us-east-1.amazonaws.com"). If the
-     * protocol is not specified here, the default protocol from this client's
-     * {@link ClientConfiguration} will be used, which by default is HTTPS.
-     * <p>
-     * For more information on using AWS regions with the AWS SDK for Java, and
-     * a complete list of all available endpoints for all AWS services, see:
-     * <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
-     * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
-     *
-     * @param endpoint
-     *            The endpoint (ex: "glacier.us-east-1.amazonaws.com") or a full URL,
-     *            including the protocol (ex: "https://glacier.us-east-1.amazonaws.com") of
-     *            the region specific AWS endpoint this client will communicate
-     *            with.
-     * @param serviceName
-     *            The name of the AWS service to use when signing requests.
-     * @param regionId
-     *            The ID of the region in which this service resides.
-     *
-     * @throws IllegalArgumentException
-     *             If any problems are detected with the specified endpoint.
-     * @see AmazonDynamoDB#setRegion(Region)     
-     */
-    public void setEndpoint(String endpoint, String serviceName, String regionId) throws IllegalArgumentException {
-        setEndpoint(endpoint);
-        signer.setServiceName(serviceName);
-        signer.setRegionName(regionId);
-    }
-    
+
     @Override
-    protected String getServiceAbbreviation() {
-        return "glacier";
+    public void setEndpoint(String endpoint) {
+        super.setEndpoint(endpoint);
     }
-    
+
+    @Override
+    public void setEndpoint(String endpoint, String serviceName, String regionId) throws IllegalArgumentException {
+        super.setEndpoint(endpoint, serviceName, regionId);
+    }
 
     /**
      * Returns additional metadata for a previously executed successful, request, typically used for
@@ -1929,36 +2024,30 @@ public class AmazonGlacierClient extends AmazonWebServiceClient implements Amazo
         return client.getResponseMetadataForRequest(request);
     }
 
-    private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request,
-                                                                HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-                                                                ExecutionContext executionContext) throws AmazonClientException {
-
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request,
+            HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext) {
         request.setEndpoint(endpoint);
         request.setTimeOffset(timeOffset);
 
         AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
-
-        awsRequestMetrics.startEvent(Field.CredentialsRequestTime.name());
-        AWSCredentials credentials = awsCredentialsProvider.getCredentials();
-        awsRequestMetrics.endEvent(Field.CredentialsRequestTime.name());
+        AWSCredentials credentials;
+        awsRequestMetrics.startEvent(Field.CredentialsRequestTime);
+        try {
+            credentials = awsCredentialsProvider.getCredentials();
+        } finally {
+            awsRequestMetrics.endEvent(Field.CredentialsRequestTime);
+        }
 
         AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
         if (originalRequest != null && originalRequest.getRequestCredentials() != null) {
             credentials = originalRequest.getRequestCredentials();
         }
 
-        executionContext.setSigner(signer);
         executionContext.setCredentials(credentials);
-
-        
-        JsonErrorResponseHandler errorResponseHandler = new JsonErrorResponseHandler(exceptionUnmarshallers);
-
-        awsRequestMetrics.startEvent(Field.ClientExecuteTime.name());
-        X result = (X) client.execute(request, responseHandler, errorResponseHandler, executionContext);
-        awsRequestMetrics.endEvent(Field.ClientExecuteTime.name());
-
-        awsRequestMetrics.log();
-
+        JsonErrorResponseHandler errorResponseHandler = new JsonErrorResponseHandler(jsonErrorUnmarshallers);
+        Response<X> result = client.execute(request, responseHandler,
+                errorResponseHandler, executionContext);
         return result;
     }
 }

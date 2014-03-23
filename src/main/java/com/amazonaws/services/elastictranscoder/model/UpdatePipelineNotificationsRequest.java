@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#updatePipelineNotifications(UpdatePipelineNotificationsRequest) UpdatePipelineNotifications operation}.
  * <p>
- * To update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline, send a POST request to the
- * <code>/2012-09-25/pipelines/[pipelineId]/notifications</code> resource.
+ * With the UpdatePipelineNotifications operation, you can update Amazon
+ * Simple Notification Service (Amazon SNS) notifications for a pipeline.
  * </p>
  * <p>
- * When you update notifications for a pipeline, Elastic Transcoder returns the values that you specified in the request.
+ * When you update notifications for a pipeline, Elastic Transcoder
+ * returns the values that you specified in the request.
  * </p>
  *
  * @see com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#updatePipelineNotifications(UpdatePipelineNotificationsRequest)
  */
-public class UpdatePipelineNotificationsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdatePipelineNotificationsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the pipeline for which you want to change
@@ -102,14 +105,13 @@ public class UpdatePipelineNotificationsRequest extends AmazonWebServiceRequest 
      *         notification settings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdatePipelineNotificationsRequest withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
      * topic that you want to notify to report job status. <important>To
@@ -238,14 +240,13 @@ public class UpdatePipelineNotificationsRequest extends AmazonWebServiceRequest 
      *         the topic.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdatePipelineNotificationsRequest withNotifications(Notifications notifications) {
         this.notifications = notifications;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -257,8 +258,8 @@ public class UpdatePipelineNotificationsRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getNotifications() != null) sb.append("Notifications: " + getNotifications() );
         sb.append("}");
         return sb.toString();

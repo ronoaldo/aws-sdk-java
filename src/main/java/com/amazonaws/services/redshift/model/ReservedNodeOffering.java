@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a reserved node offering.
  * </p>
  */
-public class ReservedNodeOffering  implements Serializable  {
+public class ReservedNodeOffering implements Serializable {
 
     /**
      * The offering identifier.
@@ -66,7 +67,7 @@ public class ReservedNodeOffering  implements Serializable  {
      * clusters using the node offering. Recurring charges are only in effect
      * for heavy-utilization reserved nodes.
      */
-    private java.util.List<RecurringCharge> recurringCharges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringCharges;
 
     /**
      * The offering identifier.
@@ -94,14 +95,13 @@ public class ReservedNodeOffering  implements Serializable  {
      * @param reservedNodeOfferingId The offering identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withReservedNodeOfferingId(String reservedNodeOfferingId) {
         this.reservedNodeOfferingId = reservedNodeOfferingId;
         return this;
     }
-    
-    
+
     /**
      * The node type offered by the reserved node offering.
      *
@@ -128,14 +128,13 @@ public class ReservedNodeOffering  implements Serializable  {
      * @param nodeType The node type offered by the reserved node offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * The duration, in seconds, for which the offering will reserve the
      * node.
@@ -168,14 +167,13 @@ public class ReservedNodeOffering  implements Serializable  {
      *         node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withDuration(Integer duration) {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
      * The upfront fixed charge you will pay to purchase the specific
      * reserved node offering.
@@ -208,14 +206,13 @@ public class ReservedNodeOffering  implements Serializable  {
      *         reserved node offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withFixedPrice(Double fixedPrice) {
         this.fixedPrice = fixedPrice;
         return this;
     }
-    
-    
+
     /**
      * The rate you are charged for each hour the cluster that is using the
      * offering is running.
@@ -248,14 +245,13 @@ public class ReservedNodeOffering  implements Serializable  {
      *         offering is running.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withUsagePrice(Double usagePrice) {
         this.usagePrice = usagePrice;
         return this;
     }
-    
-    
+
     /**
      * The currency code for the compute nodes offering.
      *
@@ -282,14 +278,13 @@ public class ReservedNodeOffering  implements Serializable  {
      * @param currencyCode The currency code for the compute nodes offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
         return this;
     }
-    
-    
+
     /**
      * The anticipated utilization of the reserved node, as defined in the
      * reserved node offering.
@@ -322,14 +317,13 @@ public class ReservedNodeOffering  implements Serializable  {
      *         reserved node offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withOfferingType(String offeringType) {
         this.offeringType = offeringType;
         return this;
     }
-    
-    
+
     /**
      * The charge to your account regardless of whether you are creating any
      * clusters using the node offering. Recurring charges are only in effect
@@ -340,9 +334,9 @@ public class ReservedNodeOffering  implements Serializable  {
      *         for heavy-utilization reserved nodes.
      */
     public java.util.List<RecurringCharge> getRecurringCharges() {
-        
         if (recurringCharges == null) {
-            recurringCharges = new java.util.ArrayList<RecurringCharge>();
+              recurringCharges = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>();
+              recurringCharges.setAutoConstruct(true);
         }
         return recurringCharges;
     }
@@ -361,8 +355,7 @@ public class ReservedNodeOffering  implements Serializable  {
             this.recurringCharges = null;
             return;
         }
-
-        java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
         recurringChargesCopy.addAll(recurringCharges);
         this.recurringCharges = recurringChargesCopy;
     }
@@ -379,7 +372,7 @@ public class ReservedNodeOffering  implements Serializable  {
      *         for heavy-utilization reserved nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withRecurringCharges(RecurringCharge... recurringCharges) {
         if (getRecurringCharges() == null) setRecurringCharges(new java.util.ArrayList<RecurringCharge>(recurringCharges.length));
@@ -401,20 +394,20 @@ public class ReservedNodeOffering  implements Serializable  {
      *         for heavy-utilization reserved nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNodeOffering withRecurringCharges(java.util.Collection<RecurringCharge> recurringCharges) {
         if (recurringCharges == null) {
             this.recurringCharges = null;
         } else {
-            java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
             recurringChargesCopy.addAll(recurringCharges);
             this.recurringCharges = recurringChargesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -426,14 +419,14 @@ public class ReservedNodeOffering  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedNodeOfferingId() != null) sb.append("ReservedNodeOfferingId: " + getReservedNodeOfferingId() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");    	
-        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");    	
-        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");    	
-        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");    	
+        sb.append("{");
+        if (getReservedNodeOfferingId() != null) sb.append("ReservedNodeOfferingId: " + getReservedNodeOfferingId() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");
+        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");
+        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");
+        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");
         if (getRecurringCharges() != null) sb.append("RecurringCharges: " + getRecurringCharges() );
         sb.append("}");
         return sb.toString();

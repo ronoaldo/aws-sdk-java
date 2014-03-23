@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.
+ * A complex type that contains information about the Amazon S3 bucket
+ * from which you want CloudFront to get your media files for
+ * distribution.
  * </p>
  */
-public class S3Origin  implements Serializable  {
+public class S3Origin implements Serializable {
 
     /**
      * The DNS name of the S3 origin.
@@ -46,11 +49,9 @@ public class S3Origin  implements Serializable  {
      * @param domainName The DNS name of the S3 origin.
      */
     public S3Origin(String domainName) {
-        this.domainName = domainName;
+        setDomainName(domainName);
     }
 
-    
-    
     /**
      * Constructs a new S3Origin object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -60,12 +61,10 @@ public class S3Origin  implements Serializable  {
      * @param originAccessIdentity Your S3 origin's origin access identity.
      */
     public S3Origin(String domainName, String originAccessIdentity) {
-        this.domainName = domainName;
-        this.originAccessIdentity = originAccessIdentity;
+        setDomainName(domainName);
+        setOriginAccessIdentity(originAccessIdentity);
     }
 
-    
-    
     /**
      * The DNS name of the S3 origin.
      *
@@ -92,14 +91,13 @@ public class S3Origin  implements Serializable  {
      * @param domainName The DNS name of the S3 origin.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Origin withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Your S3 origin's origin access identity.
      *
@@ -126,14 +124,13 @@ public class S3Origin  implements Serializable  {
      * @param originAccessIdentity Your S3 origin's origin access identity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Origin withOriginAccessIdentity(String originAccessIdentity) {
         this.originAccessIdentity = originAccessIdentity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -145,8 +142,8 @@ public class S3Origin  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getOriginAccessIdentity() != null) sb.append("OriginAccessIdentity: " + getOriginAccessIdentity() );
         sb.append("}");
         return sb.toString();

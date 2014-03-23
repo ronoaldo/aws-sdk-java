@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateApplicationRequestMarshaller implements Marshaller<Request<Cr
     public Request<CreateApplicationRequest> marshall(CreateApplicationRequest createApplicationRequest) {
 
         if (createApplicationRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateApplicationRequest> request = new DefaultRequest<CreateApplicationRequest>(createApplicationRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "CreateApplication");
@@ -46,7 +46,6 @@ public class CreateApplicationRequestMarshaller implements Marshaller<Request<Cr
         if (createApplicationRequest.getDescription() != null) {
             request.addParameter("Description", StringUtils.fromString(createApplicationRequest.getDescription()));
         }
-
 
         return request;
     }

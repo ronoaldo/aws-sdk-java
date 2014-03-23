@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,245 +13,289 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The Vpc data type.
+ * Describes a VPC.
  * </p>
  */
-public class Vpc  implements Serializable  {
+public class Vpc implements Serializable {
 
     /**
-     * Specifies the ID of the VPC.
+     * The ID of the VPC.
      */
     private String vpcId;
 
     /**
-     * Describes the current state of the VPC. The state of the subnet may be
-     * either <code>pending</code> or <code>available</code>.
+     * The current state of the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      */
     private String state;
 
     /**
-     * Specifies the CIDR block the VPC covers.
+     * The CIDR block for the VPC.
      */
     private String cidrBlock;
 
     /**
-     * Specifies the ID of the set of DHCP options associated with the VPC.
-     * Contains a value of <code>default</code> if the default options are
-     * associated with the VPC.
+     * The ID of the set of DHCP options you've associated with the VPC (or
+     * <code>default</code> if the default options are associated with the
+     * VPC).
      */
     private String dhcpOptionsId;
 
     /**
-     * A list of tags for the VPC.
+     * Any tags assigned to the VPC.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * The allowed tenancy of instances launched into the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>default, dedicated
      */
     private String instanceTenancy;
 
     /**
-     * 
+     * Indicates whether the VPC is the default VPC.
      */
     private Boolean isDefault;
 
     /**
-     * Specifies the ID of the VPC.
+     * The ID of the VPC.
      *
-     * @return Specifies the ID of the VPC.
+     * @return The ID of the VPC.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Specifies the ID of the VPC.
+     * The ID of the VPC.
      *
-     * @param vpcId Specifies the ID of the VPC.
+     * @param vpcId The ID of the VPC.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Specifies the ID of the VPC.
+     * The ID of the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId Specifies the ID of the VPC.
+     * @param vpcId The ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
-     * Describes the current state of the VPC. The state of the subnet may be
-     * either <code>pending</code> or <code>available</code>.
+     * The current state of the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @return Describes the current state of the VPC. The state of the subnet may be
-     *         either <code>pending</code> or <code>available</code>.
+     * @return The current state of the VPC.
+     *
+     * @see VpcState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Describes the current state of the VPC. The state of the subnet may be
-     * either <code>pending</code> or <code>available</code>.
+     * The current state of the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @param state Describes the current state of the VPC. The state of the subnet may be
-     *         either <code>pending</code> or <code>available</code>.
+     * @param state The current state of the VPC.
+     *
+     * @see VpcState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Describes the current state of the VPC. The state of the subnet may be
-     * either <code>pending</code> or <code>available</code>.
+     * The current state of the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @param state Describes the current state of the VPC. The state of the subnet may be
-     *         either <code>pending</code> or <code>available</code>.
+     * @param state The current state of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see VpcState
      */
     public Vpc withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The current state of the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
+     *
+     * @param state The current state of the VPC.
+     *
+     * @see VpcState
+     */
+    public void setState(VpcState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Specifies the CIDR block the VPC covers.
+     * The current state of the VPC.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @return Specifies the CIDR block the VPC covers.
+     * @param state The current state of the VPC.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see VpcState
+     */
+    public Vpc withState(VpcState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * The CIDR block for the VPC.
+     *
+     * @return The CIDR block for the VPC.
      */
     public String getCidrBlock() {
         return cidrBlock;
     }
     
     /**
-     * Specifies the CIDR block the VPC covers.
+     * The CIDR block for the VPC.
      *
-     * @param cidrBlock Specifies the CIDR block the VPC covers.
+     * @param cidrBlock The CIDR block for the VPC.
      */
     public void setCidrBlock(String cidrBlock) {
         this.cidrBlock = cidrBlock;
     }
     
     /**
-     * Specifies the CIDR block the VPC covers.
+     * The CIDR block for the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cidrBlock Specifies the CIDR block the VPC covers.
+     * @param cidrBlock The CIDR block for the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withCidrBlock(String cidrBlock) {
         this.cidrBlock = cidrBlock;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the ID of the set of DHCP options associated with the VPC.
-     * Contains a value of <code>default</code> if the default options are
-     * associated with the VPC.
+     * The ID of the set of DHCP options you've associated with the VPC (or
+     * <code>default</code> if the default options are associated with the
+     * VPC).
      *
-     * @return Specifies the ID of the set of DHCP options associated with the VPC.
-     *         Contains a value of <code>default</code> if the default options are
-     *         associated with the VPC.
+     * @return The ID of the set of DHCP options you've associated with the VPC (or
+     *         <code>default</code> if the default options are associated with the
+     *         VPC).
      */
     public String getDhcpOptionsId() {
         return dhcpOptionsId;
     }
     
     /**
-     * Specifies the ID of the set of DHCP options associated with the VPC.
-     * Contains a value of <code>default</code> if the default options are
-     * associated with the VPC.
+     * The ID of the set of DHCP options you've associated with the VPC (or
+     * <code>default</code> if the default options are associated with the
+     * VPC).
      *
-     * @param dhcpOptionsId Specifies the ID of the set of DHCP options associated with the VPC.
-     *         Contains a value of <code>default</code> if the default options are
-     *         associated with the VPC.
+     * @param dhcpOptionsId The ID of the set of DHCP options you've associated with the VPC (or
+     *         <code>default</code> if the default options are associated with the
+     *         VPC).
      */
     public void setDhcpOptionsId(String dhcpOptionsId) {
         this.dhcpOptionsId = dhcpOptionsId;
     }
     
     /**
-     * Specifies the ID of the set of DHCP options associated with the VPC.
-     * Contains a value of <code>default</code> if the default options are
-     * associated with the VPC.
+     * The ID of the set of DHCP options you've associated with the VPC (or
+     * <code>default</code> if the default options are associated with the
+     * VPC).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpOptionsId Specifies the ID of the set of DHCP options associated with the VPC.
-     *         Contains a value of <code>default</code> if the default options are
-     *         associated with the VPC.
+     * @param dhcpOptionsId The ID of the set of DHCP options you've associated with the VPC (or
+     *         <code>default</code> if the default options are associated with the
+     *         VPC).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withDhcpOptionsId(String dhcpOptionsId) {
         this.dhcpOptionsId = dhcpOptionsId;
         return this;
     }
-    
-    
+
     /**
-     * A list of tags for the VPC.
+     * Any tags assigned to the VPC.
      *
-     * @return A list of tags for the VPC.
+     * @return Any tags assigned to the VPC.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * A list of tags for the VPC.
+     * Any tags assigned to the VPC.
      *
-     * @param tags A list of tags for the VPC.
+     * @param tags Any tags assigned to the VPC.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * A list of tags for the VPC.
+     * Any tags assigned to the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the VPC.
+     * @param tags Any tags assigned to the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -262,31 +306,36 @@ public class Vpc  implements Serializable  {
     }
     
     /**
-     * A list of tags for the VPC.
+     * Any tags assigned to the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the VPC.
+     * @param tags Any tags assigned to the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The allowed tenancy of instances launched into the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>default, dedicated
      *
      * @return The allowed tenancy of instances launched into the VPC.
+     *
+     * @see Tenancy
      */
     public String getInstanceTenancy() {
         return instanceTenancy;
@@ -294,8 +343,13 @@ public class Vpc  implements Serializable  {
     
     /**
      * The allowed tenancy of instances launched into the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>default, dedicated
      *
      * @param instanceTenancy The allowed tenancy of instances launched into the VPC.
+     *
+     * @see Tenancy
      */
     public void setInstanceTenancy(String instanceTenancy) {
         this.instanceTenancy = instanceTenancy;
@@ -305,61 +359,98 @@ public class Vpc  implements Serializable  {
      * The allowed tenancy of instances launched into the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>default, dedicated
      *
      * @param instanceTenancy The allowed tenancy of instances launched into the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see Tenancy
      */
     public Vpc withInstanceTenancy(String instanceTenancy) {
         this.instanceTenancy = instanceTenancy;
         return this;
     }
-    
+
+    /**
+     * The allowed tenancy of instances launched into the VPC.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>default, dedicated
+     *
+     * @param instanceTenancy The allowed tenancy of instances launched into the VPC.
+     *
+     * @see Tenancy
+     */
+    public void setInstanceTenancy(Tenancy instanceTenancy) {
+        this.instanceTenancy = instanceTenancy.toString();
+    }
     
     /**
-     * 
+     * The allowed tenancy of instances launched into the VPC.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>default, dedicated
      *
-     * @return 
+     * @param instanceTenancy The allowed tenancy of instances launched into the VPC.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see Tenancy
+     */
+    public Vpc withInstanceTenancy(Tenancy instanceTenancy) {
+        this.instanceTenancy = instanceTenancy.toString();
+        return this;
+    }
+
+    /**
+     * Indicates whether the VPC is the default VPC.
+     *
+     * @return Indicates whether the VPC is the default VPC.
      */
     public Boolean isDefault() {
         return isDefault;
     }
     
     /**
-     * 
+     * Indicates whether the VPC is the default VPC.
      *
-     * @param isDefault 
+     * @param isDefault Indicates whether the VPC is the default VPC.
      */
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
     
     /**
-     * 
+     * Indicates whether the VPC is the default VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param isDefault 
+     * @param isDefault Indicates whether the VPC is the default VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Vpc withIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
         return this;
     }
-    
-    
+
     /**
-     * 
+     * Indicates whether the VPC is the default VPC.
      *
-     * @return 
+     * @return Indicates whether the VPC is the default VPC.
      */
     public Boolean getIsDefault() {
         return isDefault;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -371,13 +462,13 @@ public class Vpc  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getCidrBlock() != null) sb.append("CidrBlock: " + getCidrBlock() + ",");    	
-        if (getDhcpOptionsId() != null) sb.append("DhcpOptionsId: " + getDhcpOptionsId() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
-        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");    	
+        sb.append("{");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getCidrBlock() != null) sb.append("CidrBlock: " + getCidrBlock() + ",");
+        if (getDhcpOptionsId() != null) sb.append("DhcpOptionsId: " + getDhcpOptionsId() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
+        if (getInstanceTenancy() != null) sb.append("InstanceTenancy: " + getInstanceTenancy() + ",");
         if (isDefault() != null) sb.append("IsDefault: " + isDefault() );
         sb.append("}");
         return sb.toString();

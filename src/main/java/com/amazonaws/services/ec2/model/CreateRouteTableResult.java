@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Create Route Table Result
+ * 
  */
-public class CreateRouteTableResult  implements Serializable  {
+public class CreateRouteTableResult implements Serializable {
 
+    /**
+     * Information about the route table.
+     */
     private RouteTable routeTable;
 
     /**
-     * Returns the value of the RouteTable property for this object.
+     * Information about the route table.
      *
-     * @return The value of the RouteTable property for this object.
+     * @return Information about the route table.
      */
     public RouteTable getRouteTable() {
         return routeTable;
     }
     
     /**
-     * Sets the value of the RouteTable property for this object.
+     * Information about the route table.
      *
-     * @param routeTable The new value for the RouteTable property for this object.
+     * @param routeTable Information about the route table.
      */
     public void setRouteTable(RouteTable routeTable) {
         this.routeTable = routeTable;
     }
     
     /**
-     * Sets the value of the RouteTable property for this object.
+     * Information about the route table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routeTable The new value for the RouteTable property for this object.
+     * @param routeTable Information about the route table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateRouteTableResult withRouteTable(RouteTable routeTable) {
         this.routeTable = routeTable;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +70,7 @@ public class CreateRouteTableResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRouteTable() != null) sb.append("RouteTable: " + getRouteTable() );
         sb.append("}");
         return sb.toString();

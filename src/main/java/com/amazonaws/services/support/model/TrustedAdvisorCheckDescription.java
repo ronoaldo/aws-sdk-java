@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,242 +13,238 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Description of each check returned by DescribeTrustedAdvisorChecks.
+ * The description and metadata for a Trusted Advisor check.
  * </p>
  */
-public class TrustedAdvisorCheckDescription  implements Serializable  {
+public class TrustedAdvisorCheckDescription implements Serializable {
 
     /**
-     * Unique identifier for a specific Trusted Advisor check description.
+     * The unique identifier for the Trusted Advisor check.
      */
     private String id;
 
     /**
-     * Display name for the Trusted Advisor check. Corresponds to the display
-     * name for the check in the Trusted Advisor user interface.
+     * The display name for the Trusted Advisor check.
      */
     private String name;
 
     /**
-     * Description of the Trusted Advisor check.
+     * The description of the Trusted Advisor check, which includes the alert
+     * criteria and recommended actions (contains HTML markup).
      */
     private String description;
 
     /**
-     * Category to which the Trusted Advisor check belongs.
+     * The category of the Trusted Advisor check.
      */
     private String category;
 
     /**
-     * List of metadata returned in <a
-     * href="API_TrustedAdvisorResourceDetail.html"
-     * title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     * objects for a Trusted Advisor check.
+     * The column headings for the data returned by the Trusted Advisor
+     * check. The order of the headings corresponds to the order of the data
+     * in the <b>Metadata</b> element of the
+     * <a>TrustedAdvisorResourceDetail</a> for the check.
      */
-    private java.util.List<String> metadata;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> metadata;
 
     /**
-     * Unique identifier for a specific Trusted Advisor check description.
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @return Unique identifier for a specific Trusted Advisor check description.
+     * @return The unique identifier for the Trusted Advisor check.
      */
     public String getId() {
         return id;
     }
     
     /**
-     * Unique identifier for a specific Trusted Advisor check description.
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @param id Unique identifier for a specific Trusted Advisor check description.
+     * @param id The unique identifier for the Trusted Advisor check.
      */
     public void setId(String id) {
         this.id = id;
     }
     
     /**
-     * Unique identifier for a specific Trusted Advisor check description.
+     * The unique identifier for the Trusted Advisor check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param id Unique identifier for a specific Trusted Advisor check description.
+     * @param id The unique identifier for the Trusted Advisor check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckDescription withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
-     * Display name for the Trusted Advisor check. Corresponds to the display
-     * name for the check in the Trusted Advisor user interface.
+     * The display name for the Trusted Advisor check.
      *
-     * @return Display name for the Trusted Advisor check. Corresponds to the display
-     *         name for the check in the Trusted Advisor user interface.
+     * @return The display name for the Trusted Advisor check.
      */
     public String getName() {
         return name;
     }
     
     /**
-     * Display name for the Trusted Advisor check. Corresponds to the display
-     * name for the check in the Trusted Advisor user interface.
+     * The display name for the Trusted Advisor check.
      *
-     * @param name Display name for the Trusted Advisor check. Corresponds to the display
-     *         name for the check in the Trusted Advisor user interface.
+     * @param name The display name for the Trusted Advisor check.
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * Display name for the Trusted Advisor check. Corresponds to the display
-     * name for the check in the Trusted Advisor user interface.
+     * The display name for the Trusted Advisor check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param name Display name for the Trusted Advisor check. Corresponds to the display
-     *         name for the check in the Trusted Advisor user interface.
+     * @param name The display name for the Trusted Advisor check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckDescription withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
-     * Description of the Trusted Advisor check.
+     * The description of the Trusted Advisor check, which includes the alert
+     * criteria and recommended actions (contains HTML markup).
      *
-     * @return Description of the Trusted Advisor check.
+     * @return The description of the Trusted Advisor check, which includes the alert
+     *         criteria and recommended actions (contains HTML markup).
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Description of the Trusted Advisor check.
+     * The description of the Trusted Advisor check, which includes the alert
+     * criteria and recommended actions (contains HTML markup).
      *
-     * @param description Description of the Trusted Advisor check.
+     * @param description The description of the Trusted Advisor check, which includes the alert
+     *         criteria and recommended actions (contains HTML markup).
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Description of the Trusted Advisor check.
+     * The description of the Trusted Advisor check, which includes the alert
+     * criteria and recommended actions (contains HTML markup).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description Description of the Trusted Advisor check.
+     * @param description The description of the Trusted Advisor check, which includes the alert
+     *         criteria and recommended actions (contains HTML markup).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckDescription withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Category to which the Trusted Advisor check belongs.
+     * The category of the Trusted Advisor check.
      *
-     * @return Category to which the Trusted Advisor check belongs.
+     * @return The category of the Trusted Advisor check.
      */
     public String getCategory() {
         return category;
     }
     
     /**
-     * Category to which the Trusted Advisor check belongs.
+     * The category of the Trusted Advisor check.
      *
-     * @param category Category to which the Trusted Advisor check belongs.
+     * @param category The category of the Trusted Advisor check.
      */
     public void setCategory(String category) {
         this.category = category;
     }
     
     /**
-     * Category to which the Trusted Advisor check belongs.
+     * The category of the Trusted Advisor check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param category Category to which the Trusted Advisor check belongs.
+     * @param category The category of the Trusted Advisor check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckDescription withCategory(String category) {
         this.category = category;
         return this;
     }
-    
-    
+
     /**
-     * List of metadata returned in <a
-     * href="API_TrustedAdvisorResourceDetail.html"
-     * title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     * objects for a Trusted Advisor check.
+     * The column headings for the data returned by the Trusted Advisor
+     * check. The order of the headings corresponds to the order of the data
+     * in the <b>Metadata</b> element of the
+     * <a>TrustedAdvisorResourceDetail</a> for the check.
      *
-     * @return List of metadata returned in <a
-     *         href="API_TrustedAdvisorResourceDetail.html"
-     *         title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     *         objects for a Trusted Advisor check.
+     * @return The column headings for the data returned by the Trusted Advisor
+     *         check. The order of the headings corresponds to the order of the data
+     *         in the <b>Metadata</b> element of the
+     *         <a>TrustedAdvisorResourceDetail</a> for the check.
      */
     public java.util.List<String> getMetadata() {
-        
         if (metadata == null) {
-            metadata = new java.util.ArrayList<String>();
+              metadata = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              metadata.setAutoConstruct(true);
         }
         return metadata;
     }
     
     /**
-     * List of metadata returned in <a
-     * href="API_TrustedAdvisorResourceDetail.html"
-     * title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     * objects for a Trusted Advisor check.
+     * The column headings for the data returned by the Trusted Advisor
+     * check. The order of the headings corresponds to the order of the data
+     * in the <b>Metadata</b> element of the
+     * <a>TrustedAdvisorResourceDetail</a> for the check.
      *
-     * @param metadata List of metadata returned in <a
-     *         href="API_TrustedAdvisorResourceDetail.html"
-     *         title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     *         objects for a Trusted Advisor check.
+     * @param metadata The column headings for the data returned by the Trusted Advisor
+     *         check. The order of the headings corresponds to the order of the data
+     *         in the <b>Metadata</b> element of the
+     *         <a>TrustedAdvisorResourceDetail</a> for the check.
      */
     public void setMetadata(java.util.Collection<String> metadata) {
         if (metadata == null) {
             this.metadata = null;
             return;
         }
-
-        java.util.List<String> metadataCopy = new java.util.ArrayList<String>(metadata.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> metadataCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metadata.size());
         metadataCopy.addAll(metadata);
         this.metadata = metadataCopy;
     }
     
     /**
-     * List of metadata returned in <a
-     * href="API_TrustedAdvisorResourceDetail.html"
-     * title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     * objects for a Trusted Advisor check.
+     * The column headings for the data returned by the Trusted Advisor
+     * check. The order of the headings corresponds to the order of the data
+     * in the <b>Metadata</b> element of the
+     * <a>TrustedAdvisorResourceDetail</a> for the check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param metadata List of metadata returned in <a
-     *         href="API_TrustedAdvisorResourceDetail.html"
-     *         title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     *         objects for a Trusted Advisor check.
+     * @param metadata The column headings for the data returned by the Trusted Advisor
+     *         check. The order of the headings corresponds to the order of the data
+     *         in the <b>Metadata</b> element of the
+     *         <a>TrustedAdvisorResourceDetail</a> for the check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckDescription withMetadata(String... metadata) {
         if (getMetadata() == null) setMetadata(new java.util.ArrayList<String>(metadata.length));
@@ -259,33 +255,33 @@ public class TrustedAdvisorCheckDescription  implements Serializable  {
     }
     
     /**
-     * List of metadata returned in <a
-     * href="API_TrustedAdvisorResourceDetail.html"
-     * title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     * objects for a Trusted Advisor check.
+     * The column headings for the data returned by the Trusted Advisor
+     * check. The order of the headings corresponds to the order of the data
+     * in the <b>Metadata</b> element of the
+     * <a>TrustedAdvisorResourceDetail</a> for the check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param metadata List of metadata returned in <a
-     *         href="API_TrustedAdvisorResourceDetail.html"
-     *         title="TrustedAdvisorResourceDetail">TrustedAdvisorResourceDetail</a>
-     *         objects for a Trusted Advisor check.
+     * @param metadata The column headings for the data returned by the Trusted Advisor
+     *         check. The order of the headings corresponds to the order of the data
+     *         in the <b>Metadata</b> element of the
+     *         <a>TrustedAdvisorResourceDetail</a> for the check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckDescription withMetadata(java.util.Collection<String> metadata) {
         if (metadata == null) {
             this.metadata = null;
         } else {
-            java.util.List<String> metadataCopy = new java.util.ArrayList<String>(metadata.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> metadataCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metadata.size());
             metadataCopy.addAll(metadata);
             this.metadata = metadataCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -297,11 +293,11 @@ public class TrustedAdvisorCheckDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getCategory() != null) sb.append("Category: " + getCategory() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getCategory() != null) sb.append("Category: " + getCategory() + ",");
         if (getMetadata() != null) sb.append("Metadata: " + getMetadata() );
         sb.append("}");
         return sb.toString();

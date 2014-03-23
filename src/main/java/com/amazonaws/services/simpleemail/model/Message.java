@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents the message to be sent, composed of a subject and a body.
  * </p>
  */
-public class Message  implements Serializable  {
+public class Message implements Serializable {
 
     /**
      * The subject of the message: A short summary of the content, which will
@@ -49,12 +50,10 @@ public class Message  implements Serializable  {
      * @param body The message body.
      */
     public Message(Content subject, Body body) {
-        this.subject = subject;
-        this.body = body;
+        setSubject(subject);
+        setBody(body);
     }
 
-    
-    
     /**
      * The subject of the message: A short summary of the content, which will
      * appear in the recipient's inbox.
@@ -87,14 +86,13 @@ public class Message  implements Serializable  {
      *         appear in the recipient's inbox.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withSubject(Content subject) {
         this.subject = subject;
         return this;
     }
-    
-    
+
     /**
      * The message body.
      *
@@ -121,14 +119,13 @@ public class Message  implements Serializable  {
      * @param body The message body.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Message withBody(Body body) {
         this.body = body;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -140,8 +137,8 @@ public class Message  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubject() != null) sb.append("Subject: " + getSubject() + ",");    	
+        sb.append("{");
+        if (getSubject() != null) sb.append("Subject: " + getSubject() + ",");
         if (getBody() != null) sb.append("Body: " + getBody() );
         sb.append("}");
         return sb.toString();

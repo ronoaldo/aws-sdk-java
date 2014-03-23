@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DeleteVpnConnectionRouteRequestMarshaller implements Marshaller<Req
     public Request<DeleteVpnConnectionRouteRequest> marshall(DeleteVpnConnectionRouteRequest deleteVpnConnectionRouteRequest) {
 
         if (deleteVpnConnectionRouteRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteVpnConnectionRouteRequest> request = new DefaultRequest<DeleteVpnConnectionRouteRequest>(deleteVpnConnectionRouteRequest, "AmazonEC2");
         request.addParameter("Action", "DeleteVpnConnectionRoute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (deleteVpnConnectionRouteRequest.getVpnConnectionId() != null) {
             request.addParameter("VpnConnectionId", StringUtils.fromString(deleteVpnConnectionRouteRequest.getVpnConnectionId()));
@@ -46,7 +46,6 @@ public class DeleteVpnConnectionRouteRequestMarshaller implements Marshaller<Req
         if (deleteVpnConnectionRouteRequest.getDestinationCidrBlock() != null) {
             request.addParameter("DestinationCidrBlock", StringUtils.fromString(deleteVpnConnectionRouteRequest.getDestinationCidrBlock()));
         }
-
 
         return request;
     }

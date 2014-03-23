@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,93 +13,59 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class DescribeTrustedAdvisorCheckSummariesResult  implements Serializable  {
+public class DescribeTrustedAdvisorCheckSummariesResult implements Serializable {
 
     /**
-     * List of <a href="API_TrustedAdvisorCheckSummary.html"
-     * title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     * objects returned by the <a
-     * href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     * title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     * request.
+     * The summary information for the requested Trusted Advisor checks.
      */
-    private java.util.List<TrustedAdvisorCheckSummary> summaries;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckSummary> summaries;
 
     /**
-     * List of <a href="API_TrustedAdvisorCheckSummary.html"
-     * title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     * objects returned by the <a
-     * href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     * title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     * request.
+     * The summary information for the requested Trusted Advisor checks.
      *
-     * @return List of <a href="API_TrustedAdvisorCheckSummary.html"
-     *         title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     *         objects returned by the <a
-     *         href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     *         title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     *         request.
+     * @return The summary information for the requested Trusted Advisor checks.
      */
     public java.util.List<TrustedAdvisorCheckSummary> getSummaries() {
-        
         if (summaries == null) {
-            summaries = new java.util.ArrayList<TrustedAdvisorCheckSummary>();
+              summaries = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckSummary>();
+              summaries.setAutoConstruct(true);
         }
         return summaries;
     }
     
     /**
-     * List of <a href="API_TrustedAdvisorCheckSummary.html"
-     * title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     * objects returned by the <a
-     * href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     * title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     * request.
+     * The summary information for the requested Trusted Advisor checks.
      *
-     * @param summaries List of <a href="API_TrustedAdvisorCheckSummary.html"
-     *         title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     *         objects returned by the <a
-     *         href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     *         title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     *         request.
+     * @param summaries The summary information for the requested Trusted Advisor checks.
      */
     public void setSummaries(java.util.Collection<TrustedAdvisorCheckSummary> summaries) {
         if (summaries == null) {
             this.summaries = null;
             return;
         }
-
-        java.util.List<TrustedAdvisorCheckSummary> summariesCopy = new java.util.ArrayList<TrustedAdvisorCheckSummary>(summaries.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckSummary> summariesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckSummary>(summaries.size());
         summariesCopy.addAll(summaries);
         this.summaries = summariesCopy;
     }
     
     /**
-     * List of <a href="API_TrustedAdvisorCheckSummary.html"
-     * title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     * objects returned by the <a
-     * href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     * title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     * request.
+     * The summary information for the requested Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param summaries List of <a href="API_TrustedAdvisorCheckSummary.html"
-     *         title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     *         objects returned by the <a
-     *         href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     *         title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     *         request.
+     * @param summaries The summary information for the requested Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckSummariesResult withSummaries(TrustedAdvisorCheckSummary... summaries) {
         if (getSummaries() == null) setSummaries(new java.util.ArrayList<TrustedAdvisorCheckSummary>(summaries.length));
@@ -110,37 +76,27 @@ public class DescribeTrustedAdvisorCheckSummariesResult  implements Serializable
     }
     
     /**
-     * List of <a href="API_TrustedAdvisorCheckSummary.html"
-     * title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     * objects returned by the <a
-     * href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     * title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     * request.
+     * The summary information for the requested Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param summaries List of <a href="API_TrustedAdvisorCheckSummary.html"
-     *         title="TrustedAdvisorCheckSummary">TrustedAdvisorCheckSummary</a>
-     *         objects returned by the <a
-     *         href="API_DescribeTrustedAdvisorCheckSummaries.html"
-     *         title="DescribeTrustedAdvisorCheckSummaries">DescribeTrustedAdvisorCheckSummaries</a>
-     *         request.
+     * @param summaries The summary information for the requested Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckSummariesResult withSummaries(java.util.Collection<TrustedAdvisorCheckSummary> summaries) {
         if (summaries == null) {
             this.summaries = null;
         } else {
-            java.util.List<TrustedAdvisorCheckSummary> summariesCopy = new java.util.ArrayList<TrustedAdvisorCheckSummary>(summaries.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckSummary> summariesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckSummary>(summaries.size());
             summariesCopy.addAll(summaries);
             this.summaries = summariesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -152,7 +108,7 @@ public class DescribeTrustedAdvisorCheckSummariesResult  implements Serializable
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSummaries() != null) sb.append("Summaries: " + getSummaries() );
         sb.append("}");
         return sb.toString();

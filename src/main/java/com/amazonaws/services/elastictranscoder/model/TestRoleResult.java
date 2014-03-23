@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * The <code>TestRoleResponse</code> structure.
+ * </p>
  */
-public class TestRoleResult  implements Serializable  {
+public class TestRoleResult implements Serializable {
 
     /**
      * If the operation is successful, this value is <code>true</code>;
@@ -34,7 +37,7 @@ public class TestRoleResult  implements Serializable  {
      * value is an array of one or more error messages that were generated
      * during the test process.
      */
-    private java.util.List<String> messages;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> messages;
 
     /**
      * If the operation is successful, this value is <code>true</code>;
@@ -77,14 +80,13 @@ public class TestRoleResult  implements Serializable  {
      *         otherwise, the value is <code>false</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TestRoleResult withSuccess(String success) {
         this.success = success;
         return this;
     }
-    
-    
+
     /**
      * If the <code>Success</code> element contains <code>false</code>, this
      * value is an array of one or more error messages that were generated
@@ -95,7 +97,10 @@ public class TestRoleResult  implements Serializable  {
      *         during the test process.
      */
     public java.util.List<String> getMessages() {
-        
+        if (messages == null) {
+              messages = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              messages.setAutoConstruct(true);
+        }
         return messages;
     }
     
@@ -113,8 +118,7 @@ public class TestRoleResult  implements Serializable  {
             this.messages = null;
             return;
         }
-
-        java.util.List<String> messagesCopy = new java.util.ArrayList<String>(messages.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(messages.size());
         messagesCopy.addAll(messages);
         this.messages = messagesCopy;
     }
@@ -131,7 +135,7 @@ public class TestRoleResult  implements Serializable  {
      *         during the test process.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TestRoleResult withMessages(String... messages) {
         if (getMessages() == null) setMessages(new java.util.ArrayList<String>(messages.length));
@@ -153,20 +157,20 @@ public class TestRoleResult  implements Serializable  {
      *         during the test process.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TestRoleResult withMessages(java.util.Collection<String> messages) {
         if (messages == null) {
             this.messages = null;
         } else {
-            java.util.List<String> messagesCopy = new java.util.ArrayList<String>(messages.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(messages.size());
             messagesCopy.addAll(messages);
             this.messages = messagesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -178,8 +182,8 @@ public class TestRoleResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSuccess() != null) sb.append("Success: " + getSuccess() + ",");    	
+        sb.append("{");
+        if (getSuccess() != null) sb.append("Success: " + getSuccess() + ",");
         if (getMessages() != null) sb.append("Messages: " + getMessages() );
         sb.append("}");
         return sb.toString();

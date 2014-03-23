@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the DescribeDBSecurityGroups action.
+ * This data type is used as a response element in the
+ * DescribeDBSecurityGroups action.
  * </p>
  */
-public class IPRange  implements Serializable  {
+public class IPRange implements Serializable {
 
     /**
      * Specifies the status of the IP range. Status can be "authorizing",
@@ -71,14 +73,13 @@ public class IPRange  implements Serializable  {
      *         "authorized", "revoking", and "revoked".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IPRange withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Specifies the IP range.
      *
@@ -105,14 +106,13 @@ public class IPRange  implements Serializable  {
      * @param cIDRIP Specifies the IP range.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IPRange withCIDRIP(String cIDRIP) {
         this.cIDRIP = cIDRIP;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -124,8 +124,8 @@ public class IPRange  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getCIDRIP() != null) sb.append("CIDRIP: " + getCIDRIP() );
         sb.append("}");
         return sb.toString();

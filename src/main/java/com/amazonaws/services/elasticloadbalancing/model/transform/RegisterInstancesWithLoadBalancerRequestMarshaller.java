@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class RegisterInstancesWithLoadBalancerRequestMarshaller implements Marsh
     public Request<RegisterInstancesWithLoadBalancerRequest> marshall(RegisterInstancesWithLoadBalancerRequest registerInstancesWithLoadBalancerRequest) {
 
         if (registerInstancesWithLoadBalancerRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RegisterInstancesWithLoadBalancerRequest> request = new DefaultRequest<RegisterInstancesWithLoadBalancerRequest>(registerInstancesWithLoadBalancerRequest, "AmazonElasticLoadBalancing");
         request.addParameter("Action", "RegisterInstancesWithLoadBalancer");
@@ -57,7 +57,6 @@ public class RegisterInstancesWithLoadBalancerRequestMarshaller implements Marsh
 
             instancesListIndex++;
         }
-
 
         return request;
     }

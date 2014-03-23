@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteLaunchConfiguration(DeleteLaunchConfigurationRequest) DeleteLaunchConfiguration operation}.
@@ -22,13 +24,14 @@ import java.io.Serializable;
  * Deletes the specified LaunchConfiguration.
  * </p>
  * <p>
- * The specified launch configuration must not be attached to an Auto Scaling group. When this call completes, the launch configuration is no longer
- * available for use.
+ * The specified launch configuration must not be attached to an Auto
+ * Scaling group. When this call completes, the launch configuration is
+ * no longer available for use.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteLaunchConfiguration(DeleteLaunchConfigurationRequest)
  */
-public class DeleteLaunchConfigurationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteLaunchConfigurationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the launch configuration.
@@ -77,14 +80,13 @@ public class DeleteLaunchConfigurationRequest extends AmazonWebServiceRequest  i
      * @param launchConfigurationName The name of the launch configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteLaunchConfigurationRequest withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -96,7 +98,7 @@ public class DeleteLaunchConfigurationRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() );
         sb.append("}");
         return sb.toString();

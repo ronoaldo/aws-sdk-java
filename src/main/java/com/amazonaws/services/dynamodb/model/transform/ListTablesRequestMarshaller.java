@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ import com.amazonaws.util.json.*;
 
 /**
  * List Tables Request Marshaller
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.transform.ListTablesRequestMarshaller} instead.
  */
 @Deprecated
 public class ListTablesRequestMarshaller implements Marshaller<Request<ListTablesRequest>, ListTablesRequest> {

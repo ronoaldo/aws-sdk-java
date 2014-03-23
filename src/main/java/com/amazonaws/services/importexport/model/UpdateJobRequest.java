@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.importexport.AmazonImportExport#updateJob(UpdateJobRequest) UpdateJob operation}.
  * <p>
- * You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached
- * to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and
- * you can only use it on jobs you own.
+ * You use this operation to change the parameters specified in the
+ * original manifest file by supplying a new manifest file. The manifest
+ * file attached to this request replaces the original manifest file. You
+ * can only use the operation after a CreateJob request but before the
+ * data transfer starts and you can only use it on jobs you own.
  * </p>
  *
  * @see com.amazonaws.services.importexport.AmazonImportExport#updateJob(UpdateJobRequest)
  */
-public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateJobRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A unique identifier which refers to a particular job.
@@ -78,14 +82,13 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param jobId A unique identifier which refers to a particular job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateJobRequest withJobId(String jobId) {
         this.jobId = jobId;
         return this;
     }
-    
-    
+
     /**
      * The UTF-8 encoded text of the manifest file.
      *
@@ -112,14 +115,13 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param manifest The UTF-8 encoded text of the manifest file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateJobRequest withManifest(String manifest) {
         this.manifest = manifest;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -159,7 +161,7 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -167,8 +169,7 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
         this.jobType = jobType;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -194,7 +195,7 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -202,7 +203,7 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
         this.jobType = jobType.toString();
         return this;
     }
-    
+
     /**
      * Validate the manifest and parameter values in the request but do not
      * actually create a job.
@@ -235,14 +236,13 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         actually create a job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateJobRequest withValidateOnly(Boolean validateOnly) {
         this.validateOnly = validateOnly;
         return this;
     }
-    
-    
+
     /**
      * Validate the manifest and parameter values in the request but do not
      * actually create a job.
@@ -253,7 +253,7 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
     public Boolean getValidateOnly() {
         return validateOnly;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -265,10 +265,10 @@ public class UpdateJobRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");    	
-        if (getManifest() != null) sb.append("Manifest: " + getManifest() + ",");    	
-        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");    	
+        sb.append("{");
+        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");
+        if (getManifest() != null) sb.append("Manifest: " + getManifest() + ",");
+        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");
         if (isValidateOnly() != null) sb.append("ValidateOnly: " + isValidateOnly() );
         sb.append("}");
         return sb.toString();

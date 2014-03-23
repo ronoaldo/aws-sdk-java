@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>DecisionTaskCompleted</code> event.
  * </p>
  */
-public class DecisionTaskCompletedEventAttributes  implements Serializable  {
+public class DecisionTaskCompletedEventAttributes implements Serializable {
 
     /**
      * User defined context for the workflow execution.
@@ -81,14 +82,13 @@ public class DecisionTaskCompletedEventAttributes  implements Serializable  {
      * @param executionContext User defined context for the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTaskCompletedEventAttributes withExecutionContext(String executionContext) {
         this.executionContext = executionContext;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskScheduled</code> event that was
      * recorded when this decision task was scheduled. This information can
@@ -133,14 +133,13 @@ public class DecisionTaskCompletedEventAttributes  implements Serializable  {
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTaskCompletedEventAttributes withScheduledEventId(Long scheduledEventId) {
         this.scheduledEventId = scheduledEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>DecisionTaskStarted</code> event recorded when
      * this decision task was started. This information can be useful for
@@ -185,14 +184,13 @@ public class DecisionTaskCompletedEventAttributes  implements Serializable  {
      *         this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTaskCompletedEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -204,9 +202,9 @@ public class DecisionTaskCompletedEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExecutionContext() != null) sb.append("ExecutionContext: " + getExecutionContext() + ",");    	
-        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");    	
+        sb.append("{");
+        if (getExecutionContext() != null) sb.append("ExecutionContext: " + getExecutionContext() + ",");
+        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");
         if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() );
         sb.append("}");
         return sb.toString();

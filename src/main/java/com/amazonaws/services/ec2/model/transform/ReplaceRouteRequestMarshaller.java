@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ReplaceRouteRequestMarshaller implements Marshaller<Request<Replace
     public Request<ReplaceRouteRequest> marshall(ReplaceRouteRequest replaceRouteRequest) {
 
         if (replaceRouteRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ReplaceRouteRequest> request = new DefaultRequest<ReplaceRouteRequest>(replaceRouteRequest, "AmazonEC2");
         request.addParameter("Action", "ReplaceRoute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (replaceRouteRequest.getRouteTableId() != null) {
             request.addParameter("RouteTableId", StringUtils.fromString(replaceRouteRequest.getRouteTableId()));
@@ -55,7 +55,6 @@ public class ReplaceRouteRequestMarshaller implements Marshaller<Request<Replace
         if (replaceRouteRequest.getNetworkInterfaceId() != null) {
             request.addParameter("NetworkInterfaceId", StringUtils.fromString(replaceRouteRequest.getNetworkInterfaceId()));
         }
-
 
         return request;
     }

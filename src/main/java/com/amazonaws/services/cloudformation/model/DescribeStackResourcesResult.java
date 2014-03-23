@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for a DescribeStackResources action.
  * </p>
  */
-public class DescribeStackResourcesResult  implements Serializable  {
+public class DescribeStackResourcesResult implements Serializable {
 
     /**
      * A list of <code>StackResource</code> structures.
      */
-    private java.util.List<StackResource> stackResources;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<StackResource> stackResources;
 
     /**
      * A list of <code>StackResource</code> structures.
@@ -33,9 +34,9 @@ public class DescribeStackResourcesResult  implements Serializable  {
      * @return A list of <code>StackResource</code> structures.
      */
     public java.util.List<StackResource> getStackResources() {
-        
         if (stackResources == null) {
-            stackResources = new java.util.ArrayList<StackResource>();
+              stackResources = new com.amazonaws.internal.ListWithAutoConstructFlag<StackResource>();
+              stackResources.setAutoConstruct(true);
         }
         return stackResources;
     }
@@ -50,8 +51,7 @@ public class DescribeStackResourcesResult  implements Serializable  {
             this.stackResources = null;
             return;
         }
-
-        java.util.List<StackResource> stackResourcesCopy = new java.util.ArrayList<StackResource>(stackResources.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<StackResource> stackResourcesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackResource>(stackResources.size());
         stackResourcesCopy.addAll(stackResources);
         this.stackResources = stackResourcesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeStackResourcesResult  implements Serializable  {
      * @param stackResources A list of <code>StackResource</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourcesResult withStackResources(StackResource... stackResources) {
         if (getStackResources() == null) setStackResources(new java.util.ArrayList<StackResource>(stackResources.length));
@@ -82,20 +82,20 @@ public class DescribeStackResourcesResult  implements Serializable  {
      * @param stackResources A list of <code>StackResource</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourcesResult withStackResources(java.util.Collection<StackResource> stackResources) {
         if (stackResources == null) {
             this.stackResources = null;
         } else {
-            java.util.List<StackResource> stackResourcesCopy = new java.util.ArrayList<StackResource>(stackResources.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<StackResource> stackResourcesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackResource>(stackResources.size());
             stackResourcesCopy.addAll(stackResources);
             this.stackResources = stackResourcesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeStackResourcesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStackResources() != null) sb.append("StackResources: " + getStackResources() );
         sb.append("}");
         return sb.toString();

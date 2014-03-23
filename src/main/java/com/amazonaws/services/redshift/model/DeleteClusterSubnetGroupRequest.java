@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#deleteClusterSubnetGroup(DeleteClusterSubnetGroupRequest) DeleteClusterSubnetGroup operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#deleteClusterSubnetGroup(DeleteClusterSubnetGroupRequest)
  */
-public class DeleteClusterSubnetGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteClusterSubnetGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the cluster subnet group name to be deleted.
@@ -57,14 +59,13 @@ public class DeleteClusterSubnetGroupRequest extends AmazonWebServiceRequest  im
      * @param clusterSubnetGroupName The name of the cluster subnet group name to be deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteClusterSubnetGroupRequest withClusterSubnetGroupName(String clusterSubnetGroupName) {
         this.clusterSubnetGroupName = clusterSubnetGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -76,7 +77,7 @@ public class DeleteClusterSubnetGroupRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getClusterSubnetGroupName() != null) sb.append("ClusterSubnetGroupName: " + getClusterSubnetGroupName() );
         sb.append("}");
         return sb.toString();

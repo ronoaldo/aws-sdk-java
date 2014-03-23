@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,30 +13,37 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#describePipelines(DescribePipelinesRequest) DescribePipelines operation}.
  * <p>
- * Retrieve metadata about one or more pipelines. The information retrieved includes the name of the pipeline, the pipeline identifier, its current
- * state, and the user account that owns the pipeline. Using account credentials, you can retrieve metadata about pipelines that you or your IAM users
- * have created. If you are using an IAM user account, you can retrieve metadata about only those pipelines you have read permission for.
+ * Retrieve metadata about one or more pipelines. The information
+ * retrieved includes the name of the pipeline, the pipeline identifier,
+ * its current state, and the user account that owns the pipeline. Using
+ * account credentials, you can retrieve metadata about pipelines that
+ * you or your IAM users have created. If you are using an IAM user
+ * account, you can retrieve metadata about only those pipelines you have
+ * read permission for.
  * </p>
  * <p>
- * To retrieve the full pipeline definition instead of metadata about the pipeline, call the GetPipelineDefinition action.
+ * To retrieve the full pipeline definition instead of metadata about
+ * the pipeline, call the GetPipelineDefinition action.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#describePipelines(DescribePipelinesRequest)
  */
-public class DescribePipelinesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribePipelinesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Identifiers of the pipelines to describe. You can pass as many as 25
      * identifiers in a single call to <a>DescribePipelines</a>. You can
      * obtain pipeline identifiers by calling <a>ListPipelines</a>.
      */
-    private java.util.List<String> pipelineIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> pipelineIds;
 
     /**
      * Identifiers of the pipelines to describe. You can pass as many as 25
@@ -48,9 +55,9 @@ public class DescribePipelinesRequest extends AmazonWebServiceRequest  implement
      *         obtain pipeline identifiers by calling <a>ListPipelines</a>.
      */
     public java.util.List<String> getPipelineIds() {
-        
         if (pipelineIds == null) {
-            pipelineIds = new java.util.ArrayList<String>();
+              pipelineIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              pipelineIds.setAutoConstruct(true);
         }
         return pipelineIds;
     }
@@ -69,8 +76,7 @@ public class DescribePipelinesRequest extends AmazonWebServiceRequest  implement
             this.pipelineIds = null;
             return;
         }
-
-        java.util.List<String> pipelineIdsCopy = new java.util.ArrayList<String>(pipelineIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> pipelineIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(pipelineIds.size());
         pipelineIdsCopy.addAll(pipelineIds);
         this.pipelineIds = pipelineIdsCopy;
     }
@@ -87,7 +93,7 @@ public class DescribePipelinesRequest extends AmazonWebServiceRequest  implement
      *         obtain pipeline identifiers by calling <a>ListPipelines</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePipelinesRequest withPipelineIds(String... pipelineIds) {
         if (getPipelineIds() == null) setPipelineIds(new java.util.ArrayList<String>(pipelineIds.length));
@@ -109,20 +115,20 @@ public class DescribePipelinesRequest extends AmazonWebServiceRequest  implement
      *         obtain pipeline identifiers by calling <a>ListPipelines</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePipelinesRequest withPipelineIds(java.util.Collection<String> pipelineIds) {
         if (pipelineIds == null) {
             this.pipelineIds = null;
         } else {
-            java.util.List<String> pipelineIdsCopy = new java.util.ArrayList<String>(pipelineIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> pipelineIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(pipelineIds.size());
             pipelineIdsCopy.addAll(pipelineIds);
             this.pipelineIds = pipelineIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -134,7 +140,7 @@ public class DescribePipelinesRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPipelineIds() != null) sb.append("PipelineIds: " + getPipelineIds() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#createPipeline(CreatePipelineRequest) CreatePipeline operation}.
  * <p>
- * Creates a new empty pipeline. When this action succeeds, you can then use the PutPipelineDefinition action to populate the pipeline.
+ * Creates a new empty pipeline. When this action succeeds, you can then
+ * use the PutPipelineDefinition action to populate the pipeline.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#createPipeline(CreatePipelineRequest)
  */
-public class CreatePipelineRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreatePipelineRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the new pipeline. You can use the same name for multiple
@@ -117,14 +120,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         assigns each new pipeline a unique pipeline identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A unique identifier that you specify. This identifier is not the same
      * as the pipeline identifier assigned by AWS Data Pipeline. You are
@@ -235,14 +237,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         the AWS account or IAM user credentials.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
         return this;
     }
-    
-    
+
     /**
      * The description of the new pipeline.
      * <p>
@@ -281,14 +282,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      * @param description The description of the new pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -300,9 +300,9 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getUniqueId() != null) sb.append("UniqueId: " + getUniqueId() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getUniqueId() != null) sb.append("UniqueId: " + getUniqueId() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

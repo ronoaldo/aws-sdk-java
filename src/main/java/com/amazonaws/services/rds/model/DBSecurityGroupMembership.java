@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the following actions:
+ * This data type is used as a response element in the following
+ * actions:
  * </p>
  * 
  * <ul>
@@ -28,15 +30,15 @@ import java.io.Serializable;
  * 
  * </ul>
  */
-public class DBSecurityGroupMembership  implements Serializable  {
+public class DBSecurityGroupMembership implements Serializable {
 
     /**
-     * The name of the DB Security Group.
+     * The name of the DB security group.
      */
     private String dBSecurityGroupName;
 
     /**
-     * The status of the DB Security Group.
+     * The status of the DB security group.
      */
     private String status;
 
@@ -47,73 +49,71 @@ public class DBSecurityGroupMembership  implements Serializable  {
     public DBSecurityGroupMembership() {}
     
     /**
-     * The name of the DB Security Group.
+     * The name of the DB security group.
      *
-     * @return The name of the DB Security Group.
+     * @return The name of the DB security group.
      */
     public String getDBSecurityGroupName() {
         return dBSecurityGroupName;
     }
     
     /**
-     * The name of the DB Security Group.
+     * The name of the DB security group.
      *
-     * @param dBSecurityGroupName The name of the DB Security Group.
+     * @param dBSecurityGroupName The name of the DB security group.
      */
     public void setDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
     }
     
     /**
-     * The name of the DB Security Group.
+     * The name of the DB security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSecurityGroupName The name of the DB Security Group.
+     * @param dBSecurityGroupName The name of the DB security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroupMembership withDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
-     * The status of the DB Security Group.
+     * The status of the DB security group.
      *
-     * @return The status of the DB Security Group.
+     * @return The status of the DB security group.
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * The status of the DB Security Group.
+     * The status of the DB security group.
      *
-     * @param status The status of the DB Security Group.
+     * @param status The status of the DB security group.
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * The status of the DB Security Group.
+     * The status of the DB security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param status The status of the DB Security Group.
+     * @param status The status of the DB security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroupMembership withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -125,8 +125,8 @@ public class DBSecurityGroupMembership  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBSecurityGroupName() != null) sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() + ",");    	
+        sb.append("{");
+        if (getDBSecurityGroupName() != null) sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

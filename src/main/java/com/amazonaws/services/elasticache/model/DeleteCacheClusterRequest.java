@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#deleteCacheCluster(DeleteCacheClusterRequest) DeleteCacheCluster operation}.
  * <p>
- * Deletes a previously provisioned Cache Cluster. A successful response from the web service indicates the request was received correctly. This action
- * cannot be canceled or reverted. DeleteCacheCluster deletes all associated Cache Nodes, node endpoints and the Cache Cluster itself.
+ * The <i>DeleteCacheCluster</i> operation deletes a previously
+ * provisioned cache cluster. <i>DeleteCacheCluster</i> deletes all
+ * associated cache nodes, node endpoints and the cache cluster itself.
+ * When you receive a successful response from this operation, Amazon
+ * ElastiCache immediately begins deleting the cache cluster; you cannot
+ * cancel or revert this operation.
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#deleteCacheCluster(DeleteCacheClusterRequest)
  */
-public class DeleteCacheClusterRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteCacheClusterRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The Cache Cluster identifier for the Cache Cluster to be deleted. This
-     * parameter isn't case sensitive.
+     * The cache cluster identifier for the cluster to be deleted. This
+     * parameter is not case sensitive.
      */
     private String cacheClusterId;
 
@@ -44,55 +50,52 @@ public class DeleteCacheClusterRequest extends AmazonWebServiceRequest  implemen
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param cacheClusterId The Cache Cluster identifier for the Cache
-     * Cluster to be deleted. This parameter isn't case sensitive.
+     * @param cacheClusterId The cache cluster identifier for the cluster to
+     * be deleted. This parameter is not case sensitive.
      */
     public DeleteCacheClusterRequest(String cacheClusterId) {
-        this.cacheClusterId = cacheClusterId;
+        setCacheClusterId(cacheClusterId);
     }
 
-    
-    
     /**
-     * The Cache Cluster identifier for the Cache Cluster to be deleted. This
-     * parameter isn't case sensitive.
+     * The cache cluster identifier for the cluster to be deleted. This
+     * parameter is not case sensitive.
      *
-     * @return The Cache Cluster identifier for the Cache Cluster to be deleted. This
-     *         parameter isn't case sensitive.
+     * @return The cache cluster identifier for the cluster to be deleted. This
+     *         parameter is not case sensitive.
      */
     public String getCacheClusterId() {
         return cacheClusterId;
     }
     
     /**
-     * The Cache Cluster identifier for the Cache Cluster to be deleted. This
-     * parameter isn't case sensitive.
+     * The cache cluster identifier for the cluster to be deleted. This
+     * parameter is not case sensitive.
      *
-     * @param cacheClusterId The Cache Cluster identifier for the Cache Cluster to be deleted. This
-     *         parameter isn't case sensitive.
+     * @param cacheClusterId The cache cluster identifier for the cluster to be deleted. This
+     *         parameter is not case sensitive.
      */
     public void setCacheClusterId(String cacheClusterId) {
         this.cacheClusterId = cacheClusterId;
     }
     
     /**
-     * The Cache Cluster identifier for the Cache Cluster to be deleted. This
-     * parameter isn't case sensitive.
+     * The cache cluster identifier for the cluster to be deleted. This
+     * parameter is not case sensitive.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheClusterId The Cache Cluster identifier for the Cache Cluster to be deleted. This
-     *         parameter isn't case sensitive.
+     * @param cacheClusterId The cache cluster identifier for the cluster to be deleted. This
+     *         parameter is not case sensitive.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteCacheClusterRequest withCacheClusterId(String cacheClusterId) {
         this.cacheClusterId = cacheClusterId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -104,7 +107,7 @@ public class DeleteCacheClusterRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCacheClusterId() != null) sb.append("CacheClusterId: " + getCacheClusterId() );
         sb.append("}");
         return sb.toString();

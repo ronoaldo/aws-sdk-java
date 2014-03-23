@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.elastictranscoder.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class ReadJobRequestMarshaller implements Marshaller<Request<ReadJobRequest>, ReadJobRequest> {
 
-    
-
     public Request<ReadJobRequest> marshall(ReadJobRequest readJobRequest) {
     if (readJobRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,12 +49,10 @@ public class ReadJobRequestMarshaller implements Marshaller<Request<ReadJobReque
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.GET);
 
-
         String uriResourcePath = "2012-09-25/jobs/{Id}"; 
-        uriResourcePath = uriResourcePath.replace("{Id}", getString(readJobRequest.getId())); 
+        uriResourcePath = uriResourcePath.replace("{Id}", (readJobRequest.getId() == null) ? "" : StringUtils.fromString(readJobRequest.getId())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -76,16 +72,8 @@ public class ReadJobRequestMarshaller implements Marshaller<Request<ReadJobReque
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

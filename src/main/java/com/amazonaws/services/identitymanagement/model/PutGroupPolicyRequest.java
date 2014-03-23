@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,30 +13,37 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#putGroupPolicy(PutGroupPolicyRequest) PutGroupPolicy operation}.
  * <p>
- * Adds (or updates) a policy document associated with the specified group. For information about policies, refer to <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?PoliciesOverview.html"> Overview of Policies </a> in <i>Using AWS Identity
- * and Access Management</i> .
+ * Adds (or updates) a policy document associated with the specified
+ * group. For information about policies, refer to
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?PoliciesOverview.html"> Overview of Policies </a>
+ * in <i>Using AWS Identity and Access Management</i> .
  * </p>
  * <p>
- * For information about limits on the number of policies you can associate with a group, see <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a> in <i>Using AWS
- * Identity and Access Management</i> .
+ * For information about limits on the number of policies you can
+ * associate with a group, see
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a>
+ * in <i>Using AWS Identity and Access Management</i> .
  * </p>
  * <p>
- * <b>NOTE:</b>Because policy documents can be large, you should use POST rather than GET when calling PutGroupPolicy. For information about setting up
- * signatures and authorization through the API, go to Signing AWS API Requests in the AWS General Reference. For general information about using the
- * Query API with IAM, go to Making Query Requests in Using IAM.
+ * <b>NOTE:</b>Because policy documents can be large, you should use POST
+ * rather than GET when calling PutGroupPolicy. For information about
+ * setting up signatures and authorization through the API, go to Signing
+ * AWS API Requests in the AWS General Reference. For general information
+ * about using the Query API with IAM, go to Making Query Requests in
+ * Using IAM.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#putGroupPolicy(PutGroupPolicyRequest)
  */
-public class PutGroupPolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutGroupPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the group to associate the policy with.
@@ -81,13 +88,11 @@ public class PutGroupPolicyRequest extends AmazonWebServiceRequest  implements S
      * @param policyDocument The policy document.
      */
     public PutGroupPolicyRequest(String groupName, String policyName, String policyDocument) {
-        this.groupName = groupName;
-        this.policyName = policyName;
-        this.policyDocument = policyDocument;
+        setGroupName(groupName);
+        setPolicyName(policyName);
+        setPolicyDocument(policyDocument);
     }
 
-    
-    
     /**
      * Name of the group to associate the policy with.
      * <p>
@@ -126,14 +131,13 @@ public class PutGroupPolicyRequest extends AmazonWebServiceRequest  implements S
      * @param groupName Name of the group to associate the policy with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutGroupPolicyRequest withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * Name of the policy document.
      * <p>
@@ -172,14 +176,13 @@ public class PutGroupPolicyRequest extends AmazonWebServiceRequest  implements S
      * @param policyName Name of the policy document.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutGroupPolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * The policy document.
      * <p>
@@ -218,14 +221,13 @@ public class PutGroupPolicyRequest extends AmazonWebServiceRequest  implements S
      * @param policyDocument The policy document.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutGroupPolicyRequest withPolicyDocument(String policyDocument) {
         this.policyDocument = policyDocument;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -237,9 +239,9 @@ public class PutGroupPolicyRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (getPolicyDocument() != null) sb.append("PolicyDocument: " + getPolicyDocument() );
         sb.append("}");
         return sb.toString();

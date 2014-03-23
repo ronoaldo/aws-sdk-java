@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,174 +13,191 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Network Acl
+ * <p>
+ * Describes a network ACL.
+ * </p>
  */
-public class NetworkAcl  implements Serializable  {
-
-    private String networkAclId;
-
-    private String vpcId;
-
-    private Boolean isDefault;
-
-    private java.util.List<NetworkAclEntry> entries;
-
-    private java.util.List<NetworkAclAssociation> associations;
-
-    private java.util.List<Tag> tags;
+public class NetworkAcl implements Serializable {
 
     /**
-     * Returns the value of the NetworkAclId property for this object.
+     * The ID of the network ACL.
+     */
+    private String networkAclId;
+
+    /**
+     * The ID of the VPC for the network ACL.
+     */
+    private String vpcId;
+
+    /**
+     * Indicates whether this is the default network ACL for the VPC.
+     */
+    private Boolean isDefault;
+
+    /**
+     * One or more entries (rules) in the network ACL.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclEntry> entries;
+
+    /**
+     * Any associations between the network ACL and one or more subnets
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclAssociation> associations;
+
+    /**
+     * Any tags assigned to the network ACL.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
+
+    /**
+     * The ID of the network ACL.
      *
-     * @return The value of the NetworkAclId property for this object.
+     * @return The ID of the network ACL.
      */
     public String getNetworkAclId() {
         return networkAclId;
     }
     
     /**
-     * Sets the value of the NetworkAclId property for this object.
+     * The ID of the network ACL.
      *
-     * @param networkAclId The new value for the NetworkAclId property for this object.
+     * @param networkAclId The ID of the network ACL.
      */
     public void setNetworkAclId(String networkAclId) {
         this.networkAclId = networkAclId;
     }
     
     /**
-     * Sets the value of the NetworkAclId property for this object.
+     * The ID of the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkAclId The new value for the NetworkAclId property for this object.
+     * @param networkAclId The ID of the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withNetworkAclId(String networkAclId) {
         this.networkAclId = networkAclId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the VpcId property for this object.
+     * The ID of the VPC for the network ACL.
      *
-     * @return The value of the VpcId property for this object.
+     * @return The ID of the VPC for the network ACL.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * The ID of the VPC for the network ACL.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId The ID of the VPC for the network ACL.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * The ID of the VPC for the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId The ID of the VPC for the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the IsDefault property for this object.
+     * Indicates whether this is the default network ACL for the VPC.
      *
-     * @return The value of the IsDefault property for this object.
+     * @return Indicates whether this is the default network ACL for the VPC.
      */
     public Boolean isDefault() {
         return isDefault;
     }
     
     /**
-     * Sets the value of the IsDefault property for this object.
+     * Indicates whether this is the default network ACL for the VPC.
      *
-     * @param isDefault The new value for the IsDefault property for this object.
+     * @param isDefault Indicates whether this is the default network ACL for the VPC.
      */
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
     
     /**
-     * Sets the value of the IsDefault property for this object.
+     * Indicates whether this is the default network ACL for the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param isDefault The new value for the IsDefault property for this object.
+     * @param isDefault Indicates whether this is the default network ACL for the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the IsDefault property for this object.
+     * Indicates whether this is the default network ACL for the VPC.
      *
-     * @return The value of the IsDefault property for this object.
+     * @return Indicates whether this is the default network ACL for the VPC.
      */
     public Boolean getIsDefault() {
         return isDefault;
     }
-    
+
     /**
-     * Returns the value of the Entries property for this object.
+     * One or more entries (rules) in the network ACL.
      *
-     * @return The value of the Entries property for this object.
+     * @return One or more entries (rules) in the network ACL.
      */
     public java.util.List<NetworkAclEntry> getEntries() {
-        
         if (entries == null) {
-            entries = new java.util.ArrayList<NetworkAclEntry>();
+              entries = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclEntry>();
+              entries.setAutoConstruct(true);
         }
         return entries;
     }
     
     /**
-     * Sets the value of the Entries property for this object.
+     * One or more entries (rules) in the network ACL.
      *
-     * @param entries The new value for the Entries property for this object.
+     * @param entries One or more entries (rules) in the network ACL.
      */
     public void setEntries(java.util.Collection<NetworkAclEntry> entries) {
         if (entries == null) {
             this.entries = null;
             return;
         }
-
-        java.util.List<NetworkAclEntry> entriesCopy = new java.util.ArrayList<NetworkAclEntry>(entries.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclEntry> entriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclEntry>(entries.size());
         entriesCopy.addAll(entries);
         this.entries = entriesCopy;
     }
     
     /**
-     * Sets the value of the Entries property for this object.
+     * One or more entries (rules) in the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param entries The new value for the Entries property for this object.
+     * @param entries One or more entries (rules) in the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withEntries(NetworkAclEntry... entries) {
         if (getEntries() == null) setEntries(new java.util.ArrayList<NetworkAclEntry>(entries.length));
@@ -191,65 +208,64 @@ public class NetworkAcl  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Entries property for this object.
+     * One or more entries (rules) in the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param entries The new value for the Entries property for this object.
+     * @param entries One or more entries (rules) in the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withEntries(java.util.Collection<NetworkAclEntry> entries) {
         if (entries == null) {
             this.entries = null;
         } else {
-            java.util.List<NetworkAclEntry> entriesCopy = new java.util.ArrayList<NetworkAclEntry>(entries.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclEntry> entriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclEntry>(entries.size());
             entriesCopy.addAll(entries);
             this.entries = entriesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Associations property for this object.
+     * Any associations between the network ACL and one or more subnets
      *
-     * @return The value of the Associations property for this object.
+     * @return Any associations between the network ACL and one or more subnets
      */
     public java.util.List<NetworkAclAssociation> getAssociations() {
-        
         if (associations == null) {
-            associations = new java.util.ArrayList<NetworkAclAssociation>();
+              associations = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclAssociation>();
+              associations.setAutoConstruct(true);
         }
         return associations;
     }
     
     /**
-     * Sets the value of the Associations property for this object.
+     * Any associations between the network ACL and one or more subnets
      *
-     * @param associations The new value for the Associations property for this object.
+     * @param associations Any associations between the network ACL and one or more subnets
      */
     public void setAssociations(java.util.Collection<NetworkAclAssociation> associations) {
         if (associations == null) {
             this.associations = null;
             return;
         }
-
-        java.util.List<NetworkAclAssociation> associationsCopy = new java.util.ArrayList<NetworkAclAssociation>(associations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclAssociation> associationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclAssociation>(associations.size());
         associationsCopy.addAll(associations);
         this.associations = associationsCopy;
     }
     
     /**
-     * Sets the value of the Associations property for this object.
+     * Any associations between the network ACL and one or more subnets
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param associations The new value for the Associations property for this object.
+     * @param associations Any associations between the network ACL and one or more subnets
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withAssociations(NetworkAclAssociation... associations) {
         if (getAssociations() == null) setAssociations(new java.util.ArrayList<NetworkAclAssociation>(associations.length));
@@ -260,65 +276,64 @@ public class NetworkAcl  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Associations property for this object.
+     * Any associations between the network ACL and one or more subnets
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param associations The new value for the Associations property for this object.
+     * @param associations Any associations between the network ACL and one or more subnets
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withAssociations(java.util.Collection<NetworkAclAssociation> associations) {
         if (associations == null) {
             this.associations = null;
         } else {
-            java.util.List<NetworkAclAssociation> associationsCopy = new java.util.ArrayList<NetworkAclAssociation>(associations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclAssociation> associationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAclAssociation>(associations.size());
             associationsCopy.addAll(associations);
             this.associations = associationsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Tags property for this object.
+     * Any tags assigned to the network ACL.
      *
-     * @return The value of the Tags property for this object.
+     * @return Any tags assigned to the network ACL.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the network ACL.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the network ACL.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -329,27 +344,27 @@ public class NetworkAcl  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkAcl withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -361,12 +376,12 @@ public class NetworkAcl  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNetworkAclId() != null) sb.append("NetworkAclId: " + getNetworkAclId() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (isDefault() != null) sb.append("IsDefault: " + isDefault() + ",");    	
-        if (getEntries() != null) sb.append("Entries: " + getEntries() + ",");    	
-        if (getAssociations() != null) sb.append("Associations: " + getAssociations() + ",");    	
+        sb.append("{");
+        if (getNetworkAclId() != null) sb.append("NetworkAclId: " + getNetworkAclId() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (isDefault() != null) sb.append("IsDefault: " + isDefault() + ",");
+        if (getEntries() != null) sb.append("Entries: " + getEntries() + ",");
+        if (getAssociations() != null) sb.append("Associations: " + getAssociations() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

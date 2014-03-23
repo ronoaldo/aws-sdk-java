@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A response message that contains the rank expressions for a search domain.
+ * A response message that contains the rank expressions for a search
+ * domain.
  * </p>
  */
-public class DescribeRankExpressionsResult  implements Serializable  {
+public class DescribeRankExpressionsResult implements Serializable {
 
     /**
      * The rank expressions configured for the domain.
      */
-    private java.util.List<RankExpressionStatus> rankExpressions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RankExpressionStatus> rankExpressions;
 
     /**
      * The rank expressions configured for the domain.
@@ -33,9 +35,9 @@ public class DescribeRankExpressionsResult  implements Serializable  {
      * @return The rank expressions configured for the domain.
      */
     public java.util.List<RankExpressionStatus> getRankExpressions() {
-        
         if (rankExpressions == null) {
-            rankExpressions = new java.util.ArrayList<RankExpressionStatus>();
+              rankExpressions = new com.amazonaws.internal.ListWithAutoConstructFlag<RankExpressionStatus>();
+              rankExpressions.setAutoConstruct(true);
         }
         return rankExpressions;
     }
@@ -50,8 +52,7 @@ public class DescribeRankExpressionsResult  implements Serializable  {
             this.rankExpressions = null;
             return;
         }
-
-        java.util.List<RankExpressionStatus> rankExpressionsCopy = new java.util.ArrayList<RankExpressionStatus>(rankExpressions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RankExpressionStatus> rankExpressionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RankExpressionStatus>(rankExpressions.size());
         rankExpressionsCopy.addAll(rankExpressions);
         this.rankExpressions = rankExpressionsCopy;
     }
@@ -64,7 +65,7 @@ public class DescribeRankExpressionsResult  implements Serializable  {
      * @param rankExpressions The rank expressions configured for the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRankExpressionsResult withRankExpressions(RankExpressionStatus... rankExpressions) {
         if (getRankExpressions() == null) setRankExpressions(new java.util.ArrayList<RankExpressionStatus>(rankExpressions.length));
@@ -82,20 +83,20 @@ public class DescribeRankExpressionsResult  implements Serializable  {
      * @param rankExpressions The rank expressions configured for the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRankExpressionsResult withRankExpressions(java.util.Collection<RankExpressionStatus> rankExpressions) {
         if (rankExpressions == null) {
             this.rankExpressions = null;
         } else {
-            java.util.List<RankExpressionStatus> rankExpressionsCopy = new java.util.ArrayList<RankExpressionStatus>(rankExpressions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RankExpressionStatus> rankExpressionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RankExpressionStatus>(rankExpressions.size());
             rankExpressionsCopy.addAll(rankExpressions);
             this.rankExpressions = rankExpressionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +108,7 @@ public class DescribeRankExpressionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRankExpressions() != null) sb.append("RankExpressions: " + getRankExpressions() );
         sb.append("}");
         return sb.toString();

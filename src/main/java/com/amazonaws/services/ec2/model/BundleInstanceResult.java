@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
  * 
- * </p>
  */
-public class BundleInstanceResult  implements Serializable  {
+public class BundleInstanceResult implements Serializable {
 
     /**
-     * 
+     * Information about the bundle task.
      */
     private BundleTask bundleTask;
 
     /**
-     * 
+     * Information about the bundle task.
      *
-     * @return 
+     * @return Information about the bundle task.
      */
     public BundleTask getBundleTask() {
         return bundleTask;
     }
     
     /**
-     * 
+     * Information about the bundle task.
      *
-     * @param bundleTask 
+     * @param bundleTask Information about the bundle task.
      */
     public void setBundleTask(BundleTask bundleTask) {
         this.bundleTask = bundleTask;
     }
     
     /**
-     * 
+     * Information about the bundle task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bundleTask 
+     * @param bundleTask Information about the bundle task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleInstanceResult withBundleTask(BundleTask bundleTask) {
         this.bundleTask = bundleTask;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class BundleInstanceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getBundleTask() != null) sb.append("BundleTask: " + getBundleTask() );
         sb.append("}");
         return sb.toString();

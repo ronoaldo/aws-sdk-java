@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  */
 package com.amazonaws.services.cloudfront.model.transform;
 
+import static com.amazonaws.util.StringUtils.UTF8;
+
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.Request;
@@ -44,7 +45,7 @@ public class GetCloudFrontOriginAccessIdentityConfigRequestMarshaller implements
         Request<GetCloudFrontOriginAccessIdentityConfigRequest> request = new DefaultRequest<GetCloudFrontOriginAccessIdentityConfigRequest>(getCloudFrontOriginAccessIdentityConfigRequest, "AmazonCloudFront");
         request.setHttpMethod(HttpMethodName.GET);
 
-        String uriResourcePath = "2012-07-01/origin-access-identity/cloudfront/{Id}/config"; 
+        String uriResourcePath = "2014-01-31/origin-access-identity/cloudfront/{Id}/config"; 
         uriResourcePath = uriResourcePath.replace("{Id}", getString(getCloudFrontOriginAccessIdentityConfigRequest.getId())); 
 
         if (uriResourcePath.contains("?")) {
@@ -62,8 +63,6 @@ public class GetCloudFrontOriginAccessIdentityConfigRequestMarshaller implements
         }
 
         request.setResourcePath(uriResourcePath);
-
-        
 
         return request;
     }

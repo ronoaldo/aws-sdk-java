@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The StackEvent data type.
  * </p>
  */
-public class StackEvent  implements Serializable  {
+public class StackEvent implements Serializable {
 
     /**
      * The unique ID name of the instance of the stack.
@@ -49,9 +50,10 @@ public class StackEvent  implements Serializable  {
     private String physicalResourceId;
 
     /**
-     * Type of the resource. (For more information, go to the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">AWS
-     * CloudFormation User Guide</a>.)
+     * Type of resource. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">
+     * AWS Resource Types Reference</a> in the AWS CloudFormation User
+     * Guide.)
      */
     private String resourceType;
 
@@ -104,14 +106,13 @@ public class StackEvent  implements Serializable  {
      * @param stackId The unique ID name of the instance of the stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The unique ID of this event.
      *
@@ -138,14 +139,13 @@ public class StackEvent  implements Serializable  {
      * @param eventId The unique ID of this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withEventId(String eventId) {
         this.eventId = eventId;
         return this;
     }
-    
-    
+
     /**
      * The name associated with a stack.
      *
@@ -172,14 +172,13 @@ public class StackEvent  implements Serializable  {
      * @param stackName The name associated with a stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withStackName(String stackName) {
         this.stackName = stackName;
         return this;
     }
-    
-    
+
     /**
      * The logical name of the resource specified in the template.
      *
@@ -206,14 +205,13 @@ public class StackEvent  implements Serializable  {
      * @param logicalResourceId The logical name of the resource specified in the template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withLogicalResourceId(String logicalResourceId) {
         this.logicalResourceId = logicalResourceId;
         return this;
     }
-    
-    
+
     /**
      * The name or unique identifier associated with the physical instance of
      * the resource.
@@ -246,60 +244,64 @@ public class StackEvent  implements Serializable  {
      *         the resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withPhysicalResourceId(String physicalResourceId) {
         this.physicalResourceId = physicalResourceId;
         return this;
     }
-    
-    
+
     /**
-     * Type of the resource. (For more information, go to the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">AWS
-     * CloudFormation User Guide</a>.)
+     * Type of resource. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">
+     * AWS Resource Types Reference</a> in the AWS CloudFormation User
+     * Guide.)
      *
-     * @return Type of the resource. (For more information, go to the <a
-     *         href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">AWS
-     *         CloudFormation User Guide</a>.)
+     * @return Type of resource. (For more information, go to <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">
+     *         AWS Resource Types Reference</a> in the AWS CloudFormation User
+     *         Guide.)
      */
     public String getResourceType() {
         return resourceType;
     }
     
     /**
-     * Type of the resource. (For more information, go to the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">AWS
-     * CloudFormation User Guide</a>.)
+     * Type of resource. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">
+     * AWS Resource Types Reference</a> in the AWS CloudFormation User
+     * Guide.)
      *
-     * @param resourceType Type of the resource. (For more information, go to the <a
-     *         href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">AWS
-     *         CloudFormation User Guide</a>.)
+     * @param resourceType Type of resource. (For more information, go to <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">
+     *         AWS Resource Types Reference</a> in the AWS CloudFormation User
+     *         Guide.)
      */
     public void setResourceType(String resourceType) {
         this.resourceType = resourceType;
     }
     
     /**
-     * Type of the resource. (For more information, go to the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">AWS
-     * CloudFormation User Guide</a>.)
+     * Type of resource. (For more information, go to <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">
+     * AWS Resource Types Reference</a> in the AWS CloudFormation User
+     * Guide.)
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param resourceType Type of the resource. (For more information, go to the <a
-     *         href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">AWS
-     *         CloudFormation User Guide</a>.)
+     * @param resourceType Type of resource. (For more information, go to <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">
+     *         AWS Resource Types Reference</a> in the AWS CloudFormation User
+     *         Guide.)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withResourceType(String resourceType) {
         this.resourceType = resourceType;
         return this;
     }
-    
-    
+
     /**
      * Time the status was updated.
      *
@@ -326,14 +328,13 @@ public class StackEvent  implements Serializable  {
      * @param timestamp Time the status was updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
      * Current status of the resource.
      * <p>
@@ -373,7 +374,7 @@ public class StackEvent  implements Serializable  {
      * @param resourceStatus Current status of the resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceStatus
      */
@@ -381,8 +382,7 @@ public class StackEvent  implements Serializable  {
         this.resourceStatus = resourceStatus;
         return this;
     }
-    
-    
+
     /**
      * Current status of the resource.
      * <p>
@@ -408,7 +408,7 @@ public class StackEvent  implements Serializable  {
      * @param resourceStatus Current status of the resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceStatus
      */
@@ -416,7 +416,7 @@ public class StackEvent  implements Serializable  {
         this.resourceStatus = resourceStatus.toString();
         return this;
     }
-    
+
     /**
      * Success/failure message associated with the resource.
      *
@@ -443,14 +443,13 @@ public class StackEvent  implements Serializable  {
      * @param resourceStatusReason Success/failure message associated with the resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withResourceStatusReason(String resourceStatusReason) {
         this.resourceStatusReason = resourceStatusReason;
         return this;
     }
-    
-    
+
     /**
      * BLOB of the properties used to create the resource.
      *
@@ -477,14 +476,13 @@ public class StackEvent  implements Serializable  {
      * @param resourceProperties BLOB of the properties used to create the resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackEvent withResourceProperties(String resourceProperties) {
         this.resourceProperties = resourceProperties;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -496,16 +494,16 @@ public class StackEvent  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getEventId() != null) sb.append("EventId: " + getEventId() + ",");    	
-        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");    	
-        if (getLogicalResourceId() != null) sb.append("LogicalResourceId: " + getLogicalResourceId() + ",");    	
-        if (getPhysicalResourceId() != null) sb.append("PhysicalResourceId: " + getPhysicalResourceId() + ",");    	
-        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
-        if (getResourceStatus() != null) sb.append("ResourceStatus: " + getResourceStatus() + ",");    	
-        if (getResourceStatusReason() != null) sb.append("ResourceStatusReason: " + getResourceStatusReason() + ",");    	
+        sb.append("{");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getEventId() != null) sb.append("EventId: " + getEventId() + ",");
+        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");
+        if (getLogicalResourceId() != null) sb.append("LogicalResourceId: " + getLogicalResourceId() + ",");
+        if (getPhysicalResourceId() != null) sb.append("PhysicalResourceId: " + getPhysicalResourceId() + ",");
+        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
+        if (getResourceStatus() != null) sb.append("ResourceStatus: " + getResourceStatus() + ",");
+        if (getResourceStatusReason() != null) sb.append("ResourceStatusReason: " + getResourceStatusReason() + ",");
         if (getResourceProperties() != null) sb.append("ResourceProperties: " + getResourceProperties() );
         sb.append("}");
         return sb.toString();

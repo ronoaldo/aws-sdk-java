@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import com.amazonaws.auth.policy.Condition;
 import com.amazonaws.auth.policy.Policy;
 import com.amazonaws.auth.policy.Principal;
 import com.amazonaws.auth.policy.Principal.Services;
+import com.amazonaws.auth.policy.Principal.WebIdentityProviders;
 import com.amazonaws.auth.policy.Resource;
 import com.amazonaws.auth.policy.Statement;
 import com.amazonaws.auth.policy.Statement.Effect;
@@ -108,6 +109,11 @@ public class JsonPolicyReader {
             return;
         }
 
+        if (jStatement.optString(JsonDocumentFields.PRINCIPAL).equals("*")) {
+            statement.setPrincipals(Principal.All);
+            return;
+        }
+
         if (statement.getPrincipals() == null) {
             statement.setPrincipals(new LinkedList<Principal>());
         }
@@ -118,9 +124,18 @@ public class JsonPolicyReader {
             String serviceId = jPrincipals.optString(field);
             if (serviceId != null && serviceId.length() > 0) {
                 if (field.equalsIgnoreCase("AWS")) {
-                statement.getPrincipals().add(new Principal(serviceId));
+                    statement.getPrincipals().add(new Principal(serviceId));
                 } else if (field.equalsIgnoreCase("Service")) {
-                    statement.getPrincipals().add(new Principal(Services.fromString(serviceId)));
+                    statement.getPrincipals().add(
+                            new Principal(Services.fromString(serviceId)));
+                } else if (field.equalsIgnoreCase("Federated")) {
+                    if (WebIdentityProviders.fromString(serviceId) != null) {
+                        statement.getPrincipals().add(
+                                new Principal(WebIdentityProviders.fromString(serviceId)));
+                    } else {
+                        statement.getPrincipals().add(
+                                new Principal("Federated", serviceId));
+                    }
                 }
             } else {
                 JSONArray jPrincipal = jPrincipals.getJSONArray(field);
@@ -221,10 +236,11 @@ public class JsonPolicyReader {
     /**
      *  An auxiliary class to help instantiate the action object.
      */
-    private class NamedAction implements Action {
+    private static class NamedAction implements Action {
 
         private String actionName;
-        NamedAction(String actionName) {
+
+        public NamedAction(String actionName) {
             this.actionName = actionName;
         }
 

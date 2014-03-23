@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -25,10 +25,10 @@ import java.util.TreeMap;
 import java.util.SortedMap;
 import java.util.Map;
 
-import org.codehaus.jackson.JsonFactory;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonToken;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
 import org.apache.commons.codec.binary.Base64;
 
 /**
@@ -40,7 +40,7 @@ public class SignatureChecker {
 
     private final String NOTIFICATION_TYPE = "Notification";
     private final String SUBSCRIBE_TYPE = "SubscriptionConfirmation";
-    private final String UNSUBSCRIBE_TYPE = "UnsubscriptionConfirmation";
+    private final String UNSUBSCRIBE_TYPE = "UnsubscribeConfirmation";
 
     private final String TYPE = "Type";
     private final String SUBSCRIBE_URL = "SubscribeURL";
@@ -68,21 +68,39 @@ public class SignatureChecker {
      * @return True if the message was correctly validated, otherwise false.
      */
     public boolean verifyMessageSignature(String message, PublicKey publicKey) {
-        boolean valid = false;
+
         // extract the type and signature parameters
         Map<String, String> parsed = parseJSON(message);
-        String version = parsed.get(SIGNATURE_VERSION);
+
+        return verifySignature(parsed, publicKey);
+    }
+
+    /**
+     * Validates the signature on a Simple Notification Service message. No
+     * Amazon-specific dependencies, just plain Java crypto
+     *
+     * @param parsedMessage
+     *            A map of Simple Notification Service message.
+     * @param publicKey
+     *            The Simple Notification Service public key, exactly as you'd
+     *            see it when retrieved from the cert.
+     *
+     * @return True if the message was correctly validated, otherwise false.
+     */
+    public boolean verifySignature(Map<String, String> parsedMessage, PublicKey publicKey) {
+        boolean valid = false;
+        String version = parsedMessage.get(SIGNATURE_VERSION);
         if (version.equals("1")) {
             // construct the canonical signed string
-            String type = parsed.get(TYPE);
-            String signature = parsed.get(SIGNATURE);
+            String type = parsedMessage.get(TYPE);
+            String signature = parsedMessage.get(SIGNATURE);
             String signed = "";
             if (type.equals(NOTIFICATION_TYPE)) {
-                signed = stringToSign(publishMessageValues(parsed));
+                signed = stringToSign(publishMessageValues(parsedMessage));
             } else if (type.equals(SUBSCRIBE_TYPE)) {
-                signed = stringToSign(subscribeMessageValues(parsed));
+                signed = stringToSign(subscribeMessageValues(parsedMessage));
             } else if (type.equals(UNSUBSCRIBE_TYPE)) {
-                signed = stringToSign(subscribeMessageValues(parsed)); // no difference, for now
+                signed = stringToSign(subscribeMessageValues(parsedMessage)); // no difference, for now
             } else {
                 throw new RuntimeException("Cannot process message of type " + type);
             }
@@ -96,8 +114,11 @@ public class SignatureChecker {
      * method does no handling of the many rare exceptions it is required to
      * catch.
      *
+     * This can also be used to verify the signature from the x-amz-sns-signature http header
+     *
      * @param message
-     *            Exact string that was signed
+     *            Exact string that was signed.  In the case of the x-amz-sns-signature header the
+     *            signing string is the entire post body
      * @param signature
      *            Base64-encoded signature of the message
      * @return
@@ -141,7 +162,22 @@ public class SignatureChecker {
             while (parser.nextToken() != JsonToken.END_OBJECT) {
                 String fieldname = parser.getCurrentName();
                 parser.nextToken(); // move to value, or START_OBJECT/START_ARRAY
-                String value = parser.getText();
+                String value;
+                if (parser.getCurrentToken() == JsonToken.START_ARRAY)
+                {
+                    value = "";
+                    boolean first = true;
+                    while (parser.nextToken() != JsonToken.END_ARRAY)
+                    {
+                        if (!first) value += ",";
+                        first = false;
+                        value += parser.getText();
+                    }
+                }
+                else
+                {
+                    value = parser.getText();
+                }
                 parsed.put(fieldname, value);
             }
         } catch (JsonParseException e) {

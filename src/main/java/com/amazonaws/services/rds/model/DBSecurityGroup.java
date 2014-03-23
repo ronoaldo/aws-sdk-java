@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the following actions:
+ * Contains the result of a successful invocation of the following
+ * actions:
  * </p>
  * 
  * <ul>
@@ -28,186 +30,183 @@ import java.io.Serializable;
  * 
  * </ul>
  * <p>
- * This data type is used as a response element in the DescribeDBSecurityGroups action.
+ * This data type is used as a response element in the
+ * DescribeDBSecurityGroups action.
  * </p>
  */
-public class DBSecurityGroup  implements Serializable  {
+public class DBSecurityGroup implements Serializable {
 
     /**
-     * Provides the AWS ID of the owner of a specific DB Security Group.
+     * Provides the AWS ID of the owner of a specific DB security group.
      */
     private String ownerId;
 
     /**
-     * Specifies the name of the DB Security Group.
+     * Specifies the name of the DB security group.
      */
     private String dBSecurityGroupName;
 
     /**
-     * Provides the description of the DB Security Group.
+     * Provides the description of the DB security group.
      */
     private String dBSecurityGroupDescription;
 
     /**
-     * Provides the VpcId of the DB Security Group.
+     * Provides the VpcId of the DB security group.
      */
     private String vpcId;
 
     /**
      * Contains a list of <a>EC2SecurityGroup</a> elements.
      */
-    private java.util.List<EC2SecurityGroup> eC2SecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup> eC2SecurityGroups;
 
     /**
      * Contains a list of <a>IPRange</a> elements.
      */
-    private java.util.List<IPRange> iPRanges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IPRange> iPRanges;
 
     /**
-     * Provides the AWS ID of the owner of a specific DB Security Group.
+     * Provides the AWS ID of the owner of a specific DB security group.
      *
-     * @return Provides the AWS ID of the owner of a specific DB Security Group.
+     * @return Provides the AWS ID of the owner of a specific DB security group.
      */
     public String getOwnerId() {
         return ownerId;
     }
     
     /**
-     * Provides the AWS ID of the owner of a specific DB Security Group.
+     * Provides the AWS ID of the owner of a specific DB security group.
      *
-     * @param ownerId Provides the AWS ID of the owner of a specific DB Security Group.
+     * @param ownerId Provides the AWS ID of the owner of a specific DB security group.
      */
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
     
     /**
-     * Provides the AWS ID of the owner of a specific DB Security Group.
+     * Provides the AWS ID of the owner of a specific DB security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ownerId Provides the AWS ID of the owner of a specific DB Security Group.
+     * @param ownerId Provides the AWS ID of the owner of a specific DB security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withOwnerId(String ownerId) {
         this.ownerId = ownerId;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the name of the DB Security Group.
+     * Specifies the name of the DB security group.
      *
-     * @return Specifies the name of the DB Security Group.
+     * @return Specifies the name of the DB security group.
      */
     public String getDBSecurityGroupName() {
         return dBSecurityGroupName;
     }
     
     /**
-     * Specifies the name of the DB Security Group.
+     * Specifies the name of the DB security group.
      *
-     * @param dBSecurityGroupName Specifies the name of the DB Security Group.
+     * @param dBSecurityGroupName Specifies the name of the DB security group.
      */
     public void setDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
     }
     
     /**
-     * Specifies the name of the DB Security Group.
+     * Specifies the name of the DB security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSecurityGroupName Specifies the name of the DB Security Group.
+     * @param dBSecurityGroupName Specifies the name of the DB security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
-     * Provides the description of the DB Security Group.
+     * Provides the description of the DB security group.
      *
-     * @return Provides the description of the DB Security Group.
+     * @return Provides the description of the DB security group.
      */
     public String getDBSecurityGroupDescription() {
         return dBSecurityGroupDescription;
     }
     
     /**
-     * Provides the description of the DB Security Group.
+     * Provides the description of the DB security group.
      *
-     * @param dBSecurityGroupDescription Provides the description of the DB Security Group.
+     * @param dBSecurityGroupDescription Provides the description of the DB security group.
      */
     public void setDBSecurityGroupDescription(String dBSecurityGroupDescription) {
         this.dBSecurityGroupDescription = dBSecurityGroupDescription;
     }
     
     /**
-     * Provides the description of the DB Security Group.
+     * Provides the description of the DB security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSecurityGroupDescription Provides the description of the DB Security Group.
+     * @param dBSecurityGroupDescription Provides the description of the DB security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withDBSecurityGroupDescription(String dBSecurityGroupDescription) {
         this.dBSecurityGroupDescription = dBSecurityGroupDescription;
         return this;
     }
-    
-    
+
     /**
-     * Provides the VpcId of the DB Security Group.
+     * Provides the VpcId of the DB security group.
      *
-     * @return Provides the VpcId of the DB Security Group.
+     * @return Provides the VpcId of the DB security group.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Provides the VpcId of the DB Security Group.
+     * Provides the VpcId of the DB security group.
      *
-     * @param vpcId Provides the VpcId of the DB Security Group.
+     * @param vpcId Provides the VpcId of the DB security group.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Provides the VpcId of the DB Security Group.
+     * Provides the VpcId of the DB security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId Provides the VpcId of the DB Security Group.
+     * @param vpcId Provides the VpcId of the DB security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
      * Contains a list of <a>EC2SecurityGroup</a> elements.
      *
      * @return Contains a list of <a>EC2SecurityGroup</a> elements.
      */
     public java.util.List<EC2SecurityGroup> getEC2SecurityGroups() {
-        
         if (eC2SecurityGroups == null) {
-            eC2SecurityGroups = new java.util.ArrayList<EC2SecurityGroup>();
+              eC2SecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup>();
+              eC2SecurityGroups.setAutoConstruct(true);
         }
         return eC2SecurityGroups;
     }
@@ -222,8 +221,7 @@ public class DBSecurityGroup  implements Serializable  {
             this.eC2SecurityGroups = null;
             return;
         }
-
-        java.util.List<EC2SecurityGroup> eC2SecurityGroupsCopy = new java.util.ArrayList<EC2SecurityGroup>(eC2SecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup> eC2SecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup>(eC2SecurityGroups.size());
         eC2SecurityGroupsCopy.addAll(eC2SecurityGroups);
         this.eC2SecurityGroups = eC2SecurityGroupsCopy;
     }
@@ -236,7 +234,7 @@ public class DBSecurityGroup  implements Serializable  {
      * @param eC2SecurityGroups Contains a list of <a>EC2SecurityGroup</a> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withEC2SecurityGroups(EC2SecurityGroup... eC2SecurityGroups) {
         if (getEC2SecurityGroups() == null) setEC2SecurityGroups(new java.util.ArrayList<EC2SecurityGroup>(eC2SecurityGroups.length));
@@ -254,29 +252,29 @@ public class DBSecurityGroup  implements Serializable  {
      * @param eC2SecurityGroups Contains a list of <a>EC2SecurityGroup</a> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withEC2SecurityGroups(java.util.Collection<EC2SecurityGroup> eC2SecurityGroups) {
         if (eC2SecurityGroups == null) {
             this.eC2SecurityGroups = null;
         } else {
-            java.util.List<EC2SecurityGroup> eC2SecurityGroupsCopy = new java.util.ArrayList<EC2SecurityGroup>(eC2SecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup> eC2SecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup>(eC2SecurityGroups.size());
             eC2SecurityGroupsCopy.addAll(eC2SecurityGroups);
             this.eC2SecurityGroups = eC2SecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Contains a list of <a>IPRange</a> elements.
      *
      * @return Contains a list of <a>IPRange</a> elements.
      */
     public java.util.List<IPRange> getIPRanges() {
-        
         if (iPRanges == null) {
-            iPRanges = new java.util.ArrayList<IPRange>();
+              iPRanges = new com.amazonaws.internal.ListWithAutoConstructFlag<IPRange>();
+              iPRanges.setAutoConstruct(true);
         }
         return iPRanges;
     }
@@ -291,8 +289,7 @@ public class DBSecurityGroup  implements Serializable  {
             this.iPRanges = null;
             return;
         }
-
-        java.util.List<IPRange> iPRangesCopy = new java.util.ArrayList<IPRange>(iPRanges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IPRange> iPRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IPRange>(iPRanges.size());
         iPRangesCopy.addAll(iPRanges);
         this.iPRanges = iPRangesCopy;
     }
@@ -305,7 +302,7 @@ public class DBSecurityGroup  implements Serializable  {
      * @param iPRanges Contains a list of <a>IPRange</a> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withIPRanges(IPRange... iPRanges) {
         if (getIPRanges() == null) setIPRanges(new java.util.ArrayList<IPRange>(iPRanges.length));
@@ -323,20 +320,20 @@ public class DBSecurityGroup  implements Serializable  {
      * @param iPRanges Contains a list of <a>IPRange</a> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSecurityGroup withIPRanges(java.util.Collection<IPRange> iPRanges) {
         if (iPRanges == null) {
             this.iPRanges = null;
         } else {
-            java.util.List<IPRange> iPRangesCopy = new java.util.ArrayList<IPRange>(iPRanges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IPRange> iPRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IPRange>(iPRanges.size());
             iPRangesCopy.addAll(iPRanges);
             this.iPRanges = iPRangesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -348,12 +345,12 @@ public class DBSecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getDBSecurityGroupName() != null) sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() + ",");    	
-        if (getDBSecurityGroupDescription() != null) sb.append("DBSecurityGroupDescription: " + getDBSecurityGroupDescription() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getEC2SecurityGroups() != null) sb.append("EC2SecurityGroups: " + getEC2SecurityGroups() + ",");    	
+        sb.append("{");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getDBSecurityGroupName() != null) sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() + ",");
+        if (getDBSecurityGroupDescription() != null) sb.append("DBSecurityGroupDescription: " + getDBSecurityGroupDescription() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getEC2SecurityGroups() != null) sb.append("EC2SecurityGroups: " + getEC2SecurityGroups() + ",");
         if (getIPRanges() != null) sb.append("IPRanges: " + getIPRanges() );
         sb.append("}");
         return sb.toString();

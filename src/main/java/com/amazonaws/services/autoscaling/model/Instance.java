@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The <code>Instance</code> data type.
  * </p>
  */
-public class Instance  implements Serializable  {
+public class Instance implements Serializable {
 
     /**
      * Specifies the ID of the Amazon EC2 instance.
@@ -41,7 +42,9 @@ public class Instance  implements Serializable  {
     private String availabilityZone;
 
     /**
-     * Contains a description of the current <i>lifecycle</i> state.
+     * Contains a description of the current <i>lifecycle</i> state. <note>
+     * <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     * </note>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>Pending, Quarantined, InService, Terminating, Terminated
@@ -104,14 +107,13 @@ public class Instance  implements Serializable  {
      * @param instanceId Specifies the ID of the Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Availability Zones associated with this instance.
      * <p>
@@ -150,21 +152,24 @@ public class Instance  implements Serializable  {
      * @param availabilityZone Availability Zones associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
-     * Contains a description of the current <i>lifecycle</i> state.
+     * Contains a description of the current <i>lifecycle</i> state. <note>
+     * <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     * </note>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>Pending, Quarantined, InService, Terminating, Terminated
      *
-     * @return Contains a description of the current <i>lifecycle</i> state.
+     * @return Contains a description of the current <i>lifecycle</i> state. <note>
+     *         <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     *         </note>
      *
      * @see LifecycleState
      */
@@ -173,12 +178,16 @@ public class Instance  implements Serializable  {
     }
     
     /**
-     * Contains a description of the current <i>lifecycle</i> state.
+     * Contains a description of the current <i>lifecycle</i> state. <note>
+     * <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     * </note>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>Pending, Quarantined, InService, Terminating, Terminated
      *
-     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state.
+     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state. <note>
+     *         <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     *         </note>
      *
      * @see LifecycleState
      */
@@ -187,17 +196,21 @@ public class Instance  implements Serializable  {
     }
     
     /**
-     * Contains a description of the current <i>lifecycle</i> state.
+     * Contains a description of the current <i>lifecycle</i> state. <note>
+     * <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     * </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>Pending, Quarantined, InService, Terminating, Terminated
      *
-     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state.
+     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state. <note>
+     *         <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     *         </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see LifecycleState
      */
@@ -205,15 +218,18 @@ public class Instance  implements Serializable  {
         this.lifecycleState = lifecycleState;
         return this;
     }
-    
-    
+
     /**
-     * Contains a description of the current <i>lifecycle</i> state.
+     * Contains a description of the current <i>lifecycle</i> state. <note>
+     * <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     * </note>
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>Pending, Quarantined, InService, Terminating, Terminated
      *
-     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state.
+     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state. <note>
+     *         <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     *         </note>
      *
      * @see LifecycleState
      */
@@ -222,17 +238,21 @@ public class Instance  implements Serializable  {
     }
     
     /**
-     * Contains a description of the current <i>lifecycle</i> state.
+     * Contains a description of the current <i>lifecycle</i> state. <note>
+     * <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     * </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>Pending, Quarantined, InService, Terminating, Terminated
      *
-     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state.
+     * @param lifecycleState Contains a description of the current <i>lifecycle</i> state. <note>
+     *         <p>The <code>Quarantined</code> lifecycle state is currently not used.
+     *         </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see LifecycleState
      */
@@ -240,7 +260,7 @@ public class Instance  implements Serializable  {
         this.lifecycleState = lifecycleState.toString();
         return this;
     }
-    
+
     /**
      * The instance's health status.
      * <p>
@@ -279,14 +299,13 @@ public class Instance  implements Serializable  {
      * @param healthStatus The instance's health status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withHealthStatus(String healthStatus) {
         this.healthStatus = healthStatus;
         return this;
     }
-    
-    
+
     /**
      * The launch configuration associated with this instance.
      * <p>
@@ -325,14 +344,13 @@ public class Instance  implements Serializable  {
      * @param launchConfigurationName The launch configuration associated with this instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -344,11 +362,11 @@ public class Instance  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getLifecycleState() != null) sb.append("LifecycleState: " + getLifecycleState() + ",");    	
-        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getLifecycleState() != null) sb.append("LifecycleState: " + getLifecycleState() + ",");
+        if (getHealthStatus() != null) sb.append("HealthStatus: " + getHealthStatus() + ",");
         if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() );
         sb.append("}");
         return sb.toString();

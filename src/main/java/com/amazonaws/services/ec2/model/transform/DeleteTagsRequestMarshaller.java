@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DeleteTagsRequestMarshaller implements Marshaller<Request<DeleteTag
     public Request<DeleteTagsRequest> marshall(DeleteTagsRequest deleteTagsRequest) {
 
         if (deleteTagsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteTagsRequest> request = new DefaultRequest<DeleteTagsRequest>(deleteTagsRequest, "AmazonEC2");
         request.addParameter("Action", "DeleteTags");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> resourcesList = deleteTagsRequest.getResources();
         int resourcesListIndex = 1;
@@ -68,7 +67,6 @@ public class DeleteTagsRequestMarshaller implements Marshaller<Request<DeleteTag
 
             tagsListIndex++;
         }
-
 
         return request;
     }

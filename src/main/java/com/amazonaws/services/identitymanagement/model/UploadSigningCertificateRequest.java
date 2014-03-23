@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,39 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#uploadSigningCertificate(UploadSigningCertificateRequest) UploadSigningCertificate operation}.
  * <p>
- * Uploads an X.509 signing certificate and associates it with the specified user. Some AWS services use X.509 signing certificates to validate requests
- * that are signed with a corresponding private key. When you upload the certificate, its default status is <code>Active</code> .
+ * Uploads an X.509 signing certificate and associates it with the
+ * specified user. Some AWS services use X.509 signing certificates to
+ * validate requests that are signed with a corresponding private key.
+ * When you upload the certificate, its default status is
+ * <code>Active</code> .
  * </p>
  * <p>
- * If the <code>UserName</code> field is not specified, the user name is determined implicitly based on the AWS Access Key ID used to sign the request.
- * Because this action works for access keys under the AWS account, this API can be used to manage root credentials even if the AWS account has no
- * associated users.
+ * If the <code>UserName</code> field is not specified, the user name is
+ * determined implicitly based on the AWS access key ID used to sign the
+ * request. Because this action works for access keys under the AWS
+ * account, this API can be used to manage root credentials even if the
+ * AWS account has no associated users.
  * </p>
  * <p>
- * <b>NOTE:</b>Because the body of a X.509 certificate can be large, you should use POST rather than GET when calling UploadSigningCertificate. For
- * information about setting up signatures and authorization through the API, go to Signing AWS API Requests in the AWS General Reference. For general
- * information about using the Query API with IAM, go to Making Query Requests in Using IAM.
+ * <b>NOTE:</b>Because the body of a X.509 certificate can be large, you
+ * should use POST rather than GET when calling UploadSigningCertificate.
+ * For information about setting up signatures and authorization through
+ * the API, go to Signing AWS API Requests in the AWS General Reference.
+ * For general information about using the Query API with IAM, go to
+ * Making Query Requests in Using IAM.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#uploadSigningCertificate(UploadSigningCertificateRequest)
  */
-public class UploadSigningCertificateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UploadSigningCertificateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the user the signing certificate is for.
@@ -69,11 +79,9 @@ public class UploadSigningCertificateRequest extends AmazonWebServiceRequest  im
      * @param certificateBody The contents of the signing certificate.
      */
     public UploadSigningCertificateRequest(String certificateBody) {
-        this.certificateBody = certificateBody;
+        setCertificateBody(certificateBody);
     }
 
-    
-    
     /**
      * Name of the user the signing certificate is for.
      * <p>
@@ -112,14 +120,13 @@ public class UploadSigningCertificateRequest extends AmazonWebServiceRequest  im
      * @param userName Name of the user the signing certificate is for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadSigningCertificateRequest withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * The contents of the signing certificate.
      * <p>
@@ -158,14 +165,13 @@ public class UploadSigningCertificateRequest extends AmazonWebServiceRequest  im
      * @param certificateBody The contents of the signing certificate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadSigningCertificateRequest withCertificateBody(String certificateBody) {
         this.certificateBody = certificateBody;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -177,8 +183,8 @@ public class UploadSigningCertificateRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");    	
+        sb.append("{");
+        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");
         if (getCertificateBody() != null) sb.append("CertificateBody: " + getCertificateBody() );
         sb.append("}");
         return sb.toString();

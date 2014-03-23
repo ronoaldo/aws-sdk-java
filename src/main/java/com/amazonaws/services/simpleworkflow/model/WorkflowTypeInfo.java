@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains information about a workflow type.
  * </p>
  */
-public class WorkflowTypeInfo  implements Serializable  {
+public class WorkflowTypeInfo implements Serializable {
 
     /**
      * The workflow type this information is about.
@@ -81,14 +82,13 @@ public class WorkflowTypeInfo  implements Serializable  {
      * @param workflowType The workflow type this information is about.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeInfo withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * The current status of the workflow type.
      * <p>
@@ -128,7 +128,7 @@ public class WorkflowTypeInfo  implements Serializable  {
      * @param status The current status of the workflow type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -136,8 +136,7 @@ public class WorkflowTypeInfo  implements Serializable  {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The current status of the workflow type.
      * <p>
@@ -163,7 +162,7 @@ public class WorkflowTypeInfo  implements Serializable  {
      * @param status The current status of the workflow type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -171,7 +170,7 @@ public class WorkflowTypeInfo  implements Serializable  {
         this.status = status.toString();
         return this;
     }
-    
+
     /**
      * The description of the type registered through
      * <a>RegisterWorkflowType</a>.
@@ -213,14 +212,13 @@ public class WorkflowTypeInfo  implements Serializable  {
      *         <a>RegisterWorkflowType</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeInfo withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The date when this type was registered.
      *
@@ -247,14 +245,13 @@ public class WorkflowTypeInfo  implements Serializable  {
      * @param creationDate The date when this type was registered.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeInfo withCreationDate(java.util.Date creationDate) {
         this.creationDate = creationDate;
         return this;
     }
-    
-    
+
     /**
      * If the type is in deprecated state, then it is set to the date when
      * the type was deprecated.
@@ -287,14 +284,13 @@ public class WorkflowTypeInfo  implements Serializable  {
      *         the type was deprecated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeInfo withDeprecationDate(java.util.Date deprecationDate) {
         this.deprecationDate = deprecationDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -306,11 +302,11 @@ public class WorkflowTypeInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");    	
+        sb.append("{");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");
         if (getDeprecationDate() != null) sb.append("DeprecationDate: " + getDeprecationDate() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,34 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpledb.AmazonSimpleDB#select(SelectRequest) Select operation}.
  * <p>
- * The <code>Select</code> operation returns a set of attributes for <code>ItemNames</code> that match the select expression. <code>Select</code> is
- * similar to the standard SQL SELECT statement.
+ * The <code>Select</code> operation returns a set of attributes for
+ * <code>ItemNames</code> that match the select expression.
+ * <code>Select</code> is similar to the standard SQL SELECT statement.
  * </p>
  * <p>
- * The total size of the response cannot exceed 1 MB in total size. Amazon SimpleDB automatically adjusts the number of items returned per page to
- * enforce this limit. For example, if the client asks to retrieve 2500 items, but each individual item is 10 kB in size, the system returns 100 items
- * and an appropriate <code>NextToken</code> so the client can access the next page of results.
+ * The total size of the response cannot exceed 1 MB in total size.
+ * Amazon SimpleDB automatically adjusts the number of items returned per
+ * page to enforce this limit. For example, if the client asks to
+ * retrieve 2500 items, but each individual item is 10 kB in size, the
+ * system returns 100 items and an appropriate <code>NextToken</code> so
+ * the client can access the next page of results.
  * </p>
  * <p>
- * For information on how to construct select expressions, see Using Select to Create Amazon SimpleDB Queries in the Developer Guide.
+ * For information on how to construct select expressions, see Using
+ * Select to Create Amazon SimpleDB Queries in the Developer Guide.
  * </p>
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#select(SelectRequest)
  */
-public class SelectRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SelectRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The expression used to query the domain.
@@ -69,11 +76,9 @@ public class SelectRequest extends AmazonWebServiceRequest  implements Serializa
      * @param selectExpression The expression used to query the domain.
      */
     public SelectRequest(String selectExpression) {
-        this.selectExpression = selectExpression;
+        setSelectExpression(selectExpression);
     }
 
-    
-    
     /**
      * Constructs a new SelectRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -87,12 +92,10 @@ public class SelectRequest extends AmazonWebServiceRequest  implements Serializa
      * client may not see data that was written immediately before your read.
      */
     public SelectRequest(String selectExpression, Boolean consistentRead) {
-        this.selectExpression = selectExpression;
-        this.consistentRead = consistentRead;
+        setSelectExpression(selectExpression);
+        setConsistentRead(consistentRead);
     }
 
-    
-    
     /**
      * The expression used to query the domain.
      *
@@ -119,14 +122,13 @@ public class SelectRequest extends AmazonWebServiceRequest  implements Serializa
      * @param selectExpression The expression used to query the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectRequest withSelectExpression(String selectExpression) {
         this.selectExpression = selectExpression;
         return this;
     }
-    
-    
+
     /**
      * A string informing Amazon SimpleDB where to start the next list of
      * <code>ItemNames</code>.
@@ -159,14 +161,13 @@ public class SelectRequest extends AmazonWebServiceRequest  implements Serializa
      *         <code>ItemNames</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Determines whether or not strong consistency should be enforced when
      * data is read from SimpleDB. If <code>true</code>, any data previously
@@ -217,14 +218,13 @@ public class SelectRequest extends AmazonWebServiceRequest  implements Serializa
      *         written immediately before your read.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectRequest withConsistentRead(Boolean consistentRead) {
         this.consistentRead = consistentRead;
         return this;
     }
-    
-    
+
     /**
      * Determines whether or not strong consistency should be enforced when
      * data is read from SimpleDB. If <code>true</code>, any data previously
@@ -241,7 +241,7 @@ public class SelectRequest extends AmazonWebServiceRequest  implements Serializa
     public Boolean getConsistentRead() {
         return consistentRead;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -253,9 +253,9 @@ public class SelectRequest extends AmazonWebServiceRequest  implements Serializa
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSelectExpression() != null) sb.append("SelectExpression: " + getSelectExpression() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getSelectExpression() != null) sb.append("SelectExpression: " + getSelectExpression() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (isConsistentRead() != null) sb.append("ConsistentRead: " + isConsistentRead() );
         sb.append("}");
         return sb.toString();

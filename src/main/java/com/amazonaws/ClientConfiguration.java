@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,14 +14,23 @@
  */
 package com.amazonaws;
 
+import org.apache.http.annotation.NotThreadSafe;
+
+import com.amazonaws.retry.PredefinedRetryPolicies;
+import com.amazonaws.retry.RetryPolicy;
+import com.amazonaws.http.IdleConnectionReaper;
 import com.amazonaws.util.VersionInfoUtils;
 /**
  * Client configuration options such as proxy settings, user agent string, max
  * retry attempts, etc.
  */
+@NotThreadSafe
 public class ClientConfiguration {
 
-    /** The default timeout for a connected socket. */
+    /** The default timeout for creating new connections. */
+    public static final int DEFAULT_CONNECTION_TIMEOUT = 50 * 1000;
+
+    /** The default timeout for reading from a connected socket. */
     public static final int DEFAULT_SOCKET_TIMEOUT = 50 * 1000;
 
     /** The default max connection pool size. */
@@ -30,17 +39,41 @@ public class ClientConfiguration {
     /** The default HTTP user agent header for AWS Java SDK clients. */
     public static final String DEFAULT_USER_AGENT = VersionInfoUtils.getUserAgent();
 
-    /** The default maximum number of retries for error responses. */
-    public static final int DEFAULT_MAX_RETRIES = 3;
+    /**
+     * Default request retry policy, including the maximum retry count of 3, the
+     * default retry condition and the default back-off strategy.
+     * <p>
+     * Note this default policy might be overridden by a service-specific
+     * default policy, if the user doesn't provide a custom RetryPolicy
+     * implementation by {@link #setRetryPolicy(RetryPolicy)}. For example,
+     * AmazonDynamoDBClient by default uses a different retry policy
+     * {@link PredefinedRetryPolicies#DYNAMODB_DEFAULT}.
+     *
+     * @see PredefinedRetryPolicies#DEFAULT
+     * @see PredefinedRetryPolicies#DYNAMODB_DEFAULT
+     */
+    public static final RetryPolicy DEFAULT_RETRY_POLICY = PredefinedRetryPolicies.DEFAULT;
+
+    /**
+     * The default on whether to use the {@link IdleConnectionReaper} to manage stale connections
+     *
+     * @see IdleConnectionReaper
+     */
+    public static final boolean DEFAULT_USE_REAPER = true;
 
     /** The HTTP user agent header passed with all HTTP requests. */
     private String userAgent = DEFAULT_USER_AGENT;
 
     /**
      * The maximum number of times that a retryable failed request (ex: a 5xx
-     * response from a service) will be retried.
+     * response from a service) will be retried. Or -1 if the user has not
+     * explicitly set this value, in which case the configured RetryPolicy will
+     * be used to control the retry count.
      */
-    private int maxErrorRetry = DEFAULT_MAX_RETRIES;
+    private int maxErrorRetry = -1;
+
+    /** The retry policy upon failed requests. **/
+    private RetryPolicy retryPolicy = DEFAULT_RETRY_POLICY;
 
     /**
      * The protocol to use when connecting to Amazon Web Services.
@@ -68,7 +101,13 @@ public class ClientConfiguration {
     /** Optional Windows workstation name for configuring NTLM proxy support. */
     private String proxyWorkstation = null;
 
-	/** The maximum number of open HTTP connections. */
+    /**
+     * Whether to pre-emptively authenticate against a proxy server using basic
+     * authentication
+     */
+    private boolean preemptiveBasicProxyAuth;
+
+    /** The maximum number of open HTTP connections. */
     private int maxConnections = DEFAULT_MAX_CONNECTIONS;
 
     /**
@@ -83,7 +122,7 @@ public class ClientConfiguration {
      * a connection before giving up and timing out. A value of 0 means
      * infinity, and is not recommended.
      */
-    private int connectionTimeout = 50 * 1000;
+    private int connectionTimeout = DEFAULT_CONNECTION_TIMEOUT;
 
     /**
      * Optional size hint (in bytes) for the low level TCP send buffer. This is
@@ -99,25 +138,45 @@ public class ClientConfiguration {
      */
     private int socketReceiveBufferSizeHint = 0;
 
+    /**
+     * Optional whether to use the {@link IdleConnectionReaper} to manage stale connections. A reason for not running
+     * the {@link IdleConnectionReaper} can be if running in an environment where the modifyThread and modifyThreadGroup
+     * permissions are not allowed.
+     */
+    private boolean useReaper = DEFAULT_USE_REAPER;
+
+    /**
+     * Optional override to control which signature algorithm should be used to
+     * sign requests to the service. If not explicitly set, the client will
+     * determine the algorithm to use by inspecting a configuration file baked
+     * in to the SDK.
+     */
+    private String signerOverride;
+
 
     public ClientConfiguration() {}
 
     public ClientConfiguration(ClientConfiguration other) {
-        this.connectionTimeout = other.connectionTimeout;
-        this.maxConnections    = other.maxConnections;
-        this.maxErrorRetry     = other.maxErrorRetry;
-        this.protocol          = other.protocol;
-        this.proxyDomain       = other.proxyDomain;
-        this.proxyHost         = other.proxyHost;
-        this.proxyPassword     = other.proxyPassword;
-        this.proxyPort         = other.proxyPort;
-        this.proxyUsername     = other.proxyUsername;
-        this.proxyWorkstation  = other.proxyWorkstation;
-        this.socketTimeout     = other.socketTimeout;
-        this.userAgent         = other.userAgent;
+        this.connectionTimeout          = other.connectionTimeout;
+        this.maxConnections             = other.maxConnections;
+        this.maxErrorRetry              = other.maxErrorRetry;
+        this.retryPolicy                = other.retryPolicy;
+        this.protocol                   = other.protocol;
+        this.proxyDomain                = other.proxyDomain;
+        this.proxyHost                  = other.proxyHost;
+        this.proxyPassword              = other.proxyPassword;
+        this.proxyPort                  = other.proxyPort;
+        this.proxyUsername              = other.proxyUsername;
+        this.proxyWorkstation           = other.proxyWorkstation;
+        this.preemptiveBasicProxyAuth   = other.preemptiveBasicProxyAuth;
+        this.socketTimeout              = other.socketTimeout;
+        this.userAgent                  = other.userAgent;
+        this.useReaper                  = other.useReaper;
 
         this.socketReceiveBufferSizeHint = other.socketReceiveBufferSizeHint;
         this.socketSendBufferSizeHint    = other.socketSendBufferSizeHint;
+
+        this.signerOverride    = other.signerOverride;
     }
 
     /**
@@ -463,11 +522,49 @@ public class ClientConfiguration {
 	}
 
     /**
+     * Returns the retry policy upon failed requests.
+     *
+     * @return The retry policy upon failed requests.
+     */
+    public RetryPolicy getRetryPolicy() {
+        return retryPolicy;
+    }
+
+    /**
+     * Sets the retry policy upon failed requests. User could specify whether
+     * the RetryPolicy should honor maxErrorRetry set by
+     * {@link #setMaxErrorRetry(int)}.
+     *
+     * @param retryPolicy
+     *            The retry policy upon failed requests.
+     */
+    public void setRetryPolicy(RetryPolicy retryPolicy) {
+        this.retryPolicy = retryPolicy;
+    }
+
+    /**
+     * Sets the retry policy upon failed requests, and returns the updated
+     * ClientConfiguration object. User could specify whether the RetryPolicy
+     * should honor maxErrorRetry set by {@link #setMaxErrorRetry(int)}
+     *
+     * @param retryPolicy
+     *            The retry policy upon failed requests.
+     */
+    public ClientConfiguration withRetryPolicy(RetryPolicy retryPolicy) {
+        setRetryPolicy(retryPolicy);
+        return this;
+    }
+
+    /**
      * Returns the maximum number of retry attempts for failed retryable
-     * requests (ex: 5xx error responses from a service).
+     * requests (ex: 5xx error responses from a service). This method returns -1
+     * before a maxErrorRetry value is explicitly set by
+     * {@link #setMaxErrorRetry(int)}, in which case the configured RetryPolicy
+     * will be used to control the retry count.
      *
      * @return The maximum number of retry attempts for failed retryable
-     *         requests.
+     *         requests, or -1 if maxErrorRetry has not been set by
+     *         {@link #setMaxErrorRetry(int)}.
      */
     public int getMaxErrorRetry() {
         return maxErrorRetry;
@@ -479,9 +576,12 @@ public class ClientConfiguration {
      *
      * @param maxErrorRetry
      *            The maximum number of retry attempts for failed retryable
-     *            requests.
+     *            requests. This value should not be negative.
      */
     public void setMaxErrorRetry(int maxErrorRetry) {
+        if (maxErrorRetry < 0) {
+            throw new IllegalArgumentException("maxErrorRetry shoud be non-negative");
+        }
         this.maxErrorRetry = maxErrorRetry;
     }
 
@@ -492,7 +592,7 @@ public class ClientConfiguration {
      *
      * @param maxErrorRetry
      *            The maximum number of retry attempts for failed retryable
-     *            requests.
+     *            requests. This value should not be negative.
      *
      * @return The updated ClientConfiguration object.
      */
@@ -586,6 +686,38 @@ public class ClientConfiguration {
      */
     public ClientConfiguration withConnectionTimeout(int connectionTimeout) {
         setConnectionTimeout(connectionTimeout);
+        return this;
+    }
+
+    /**
+     * Checks if the {@link IdleConnectionReaper} is to be started
+     *
+     * @return if the {@link IdleConnectionReaper} is to be started
+     */
+    public boolean useReaper() {
+        return useReaper;
+    }
+
+    /**
+     * Sets whether the {@link IdleConnectionReaper} is to be started as a daemon thread
+     *
+     * @param use whether the {@link IdleConnectionReaper} is to be started as a daemon thread
+     *
+     * @see IdleConnectionReaper
+     */
+    public void setUseReaper(boolean use) {
+        this.useReaper = use;
+    }
+
+    /**
+     * Sets whether the {@link IdleConnectionReaper} is to be started as a daemon thread
+     *
+     * @param use the {@link IdleConnectionReaper} is to be started as a daemon thread
+     *
+     * @return The updated ClientConfiguration object.
+     */
+    public ClientConfiguration withReaper(boolean use) {
+        setUseReaper(use);
         return this;
     }
 
@@ -710,6 +842,133 @@ public class ClientConfiguration {
     public ClientConfiguration withSocketBufferSizeHints(
             int socketSendBufferSizeHint, int socketReceiveBufferSizeHint) {
         setSocketBufferSizeHints(socketSendBufferSizeHint, socketReceiveBufferSizeHint);
+        return this;
+    }
+
+    /**
+     * Returns the name of the signature algorithm to use for signing requests
+     * made by this client. If not set or explicitly set to null, the client
+     * will choose a signature algorithm to use based on a configuration file
+     * of supported signature algorithms for the service and region.
+     * <p>
+     * Most users do not need to concern themselves with which signature
+     * algorithm is being used, as the defaults will be sufficient. This
+     * setting exists only so advanced users can opt in to newer signature
+     * protocols which have not yet been made the default for a particular
+     * service/region.
+     * <p>
+     * Not all services support all signature algorithms, and configuring an
+     * unsupported signature algorithm will lead to authentication failures.
+     * Use me at your own risk, and only after consulting the documentation
+     * for the service to ensure it actually does supports your chosen
+     * algorithm.
+     * <p>
+     * If non-null, the name returned from this method is used to look up
+     * a {@code Signer} class implementing the chosen algorithm by the
+     * {@code com.amazonaws.auth.SignerFactory} class.
+     *
+     * @return The signature algorithm to use for this client, or null to use
+     *         the default.
+     */
+    public String getSignerOverride() {
+        return signerOverride;
+    }
+
+    /**
+     * Sets the name of the signature algorithm to use for signing requests
+     * made by this client. If not set or explicitly set to null, the client
+     * will choose a signature algorithm to use based on a configuration file
+     * of supported signature algorithms for the service and region.
+     * <p>
+     * Most users do not need to concern themselves with which signature
+     * algorithm is being used, as the defaults will be sufficient. This
+     * setting exists only so advanced users can opt in to newer signature
+     * protocols which have not yet been made the default for a particular
+     * service/region.
+     * <p>
+     * Not all services support all signature algorithms, and configuring an
+     * unsupported signature algorithm will lead to authentication failures.
+     * Use me at your own risk, and only after consulting the documentation
+     * for the service to ensure it actually does supports your chosen
+     * algorithm.
+     * <p>
+     * If non-null, the name returned from this method is used to look up
+     * a {@code Signer} class implementing the chosen algorithm by the
+     * {@code com.amazonaws.auth.SignerFactory} class.
+     *
+     * @param value   The signature algorithm to use for this client, or null
+     *                to use the default.
+     */
+    public void setSignerOverride(final String value) {
+        signerOverride = value;
+    }
+
+    /**
+     * Sets the name of the signature algorithm to use for signing requests
+     * made by this client. If not set or explicitly set to null, the client
+     * will choose a signature algorithm to use based on a configuration file
+     * of supported signature algorithms for the service and region.
+     * <p>
+     * Most users do not need to concern themselves with which signature
+     * algorithm is being used, as the defaults will be sufficient. This
+     * setting exists only so advanced users can opt in to newer signature
+     * protocols which have not yet been made the default for a particular
+     * service/region.
+     * <p>
+     * Not all services support all signature algorithms, and configuring an
+     * unsupported signature algorithm will lead to authentication failures.
+     * Use me at your own risk, and only after consulting the documentation
+     * for the service to ensure it actually does supports your chosen
+     * algorithm.
+     * <p>
+     * If non-null, the name returned from this method is used to look up
+     * a {@code Signer} class implementing the chosen algorithm by the
+     * {@code com.amazonaws.auth.SignerFactory} class.
+     *
+     * @param value   The signature algorithm to use for this client, or null
+     *                to use the default.
+     * @return        The updated ClientConfiguration object.
+     */
+    public ClientConfiguration withSignerOverride(final String value) {
+        setSignerOverride(value);
+        return this;
+    }
+
+    /**
+     * Returns whether to attempt to authenticate preemptively against proxy servers
+     * using basic authentication
+     *
+     * @return Whether to authenticate preemptively against proxy server.
+     */
+    public boolean isPreemptiveBasicProxyAuth() {
+        return preemptiveBasicProxyAuth;
+    }
+
+    /**
+     * Sets whether to attempt to authenticate preemptively against proxy servers
+     * using basic authentication
+     *
+     * @param preemptiveBasicProxyAuth
+     *             Whether to authenticate preemptively against proxy server.
+     */
+    public void setPreemptiveBasicProxyAuth(Boolean preemptiveBasicProxyAuth) {
+        this.preemptiveBasicProxyAuth = preemptiveBasicProxyAuth;
+    }
+
+
+    /**
+     * Sets whether to attempt to authenticate preemptively against proxy
+     * servers using basic authentication, and returns the updated
+     * ClientConfiguration object so that additional method calls may be chained
+     * together.
+     * 
+     * @param preemptiveBasicProxyAuth
+     *            Whether to authenticate preemptively against proxy server.
+     * @return The updated ClientConfiguration objectt=
+     * 
+     */
+    public ClientConfiguration withPreemptiveBasicProxyAuth(boolean preemptiveBasicProxyAuth) {
+        setPreemptiveBasicProxyAuth(preemptiveBasicProxyAuth);
         return this;
     }
 

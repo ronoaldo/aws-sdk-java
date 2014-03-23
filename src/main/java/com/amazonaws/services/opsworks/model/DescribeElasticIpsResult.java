@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeElasticIps</code> request.
  * </p>
  */
-public class DescribeElasticIpsResult  implements Serializable  {
+public class DescribeElasticIpsResult implements Serializable {
 
     /**
      * An <code>ElasticIps</code> object that describes the specified Elastic
      * IP addresses.
      */
-    private java.util.List<ElasticIp> elasticIps;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ElasticIp> elasticIps;
 
     /**
      * An <code>ElasticIps</code> object that describes the specified Elastic
@@ -36,9 +37,9 @@ public class DescribeElasticIpsResult  implements Serializable  {
      *         IP addresses.
      */
     public java.util.List<ElasticIp> getElasticIps() {
-        
         if (elasticIps == null) {
-            elasticIps = new java.util.ArrayList<ElasticIp>();
+              elasticIps = new com.amazonaws.internal.ListWithAutoConstructFlag<ElasticIp>();
+              elasticIps.setAutoConstruct(true);
         }
         return elasticIps;
     }
@@ -55,8 +56,7 @@ public class DescribeElasticIpsResult  implements Serializable  {
             this.elasticIps = null;
             return;
         }
-
-        java.util.List<ElasticIp> elasticIpsCopy = new java.util.ArrayList<ElasticIp>(elasticIps.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ElasticIp> elasticIpsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ElasticIp>(elasticIps.size());
         elasticIpsCopy.addAll(elasticIps);
         this.elasticIps = elasticIpsCopy;
     }
@@ -71,7 +71,7 @@ public class DescribeElasticIpsResult  implements Serializable  {
      *         IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeElasticIpsResult withElasticIps(ElasticIp... elasticIps) {
         if (getElasticIps() == null) setElasticIps(new java.util.ArrayList<ElasticIp>(elasticIps.length));
@@ -91,20 +91,20 @@ public class DescribeElasticIpsResult  implements Serializable  {
      *         IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeElasticIpsResult withElasticIps(java.util.Collection<ElasticIp> elasticIps) {
         if (elasticIps == null) {
             this.elasticIps = null;
         } else {
-            java.util.List<ElasticIp> elasticIpsCopy = new java.util.ArrayList<ElasticIp>(elasticIps.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ElasticIp> elasticIpsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ElasticIp>(elasticIps.size());
             elasticIpsCopy.addAll(elasticIps);
             this.elasticIps = elasticIpsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +116,7 @@ public class DescribeElasticIpsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getElasticIps() != null) sb.append("ElasticIps: " + getElasticIps() );
         sb.append("}");
         return sb.toString();

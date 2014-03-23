@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,82 +13,79 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides information about an Amazon EC2 resource Tag.
+ * Describes a tag.
  * </p>
  */
-public class TagDescription  implements Serializable  {
+public class TagDescription implements Serializable {
 
     /**
-     * The resource ID for the tag.
+     * The ID of the resource. For example, <code>ami-1a2b3c4d</code>.
      */
     private String resourceId;
 
     /**
-     * The type of resource identified by the associated resource ID (ex:
-     * instance, AMI, EBS volume, etc).
+     * The type of resource.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, snapshot, spot-instances-request, subnet, volume, vpc, vpn-connection, vpn-gateway
+     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
      */
     private String resourceType;
 
     /**
-     * The tag's key.
+     * The key of the tag.
      */
     private String key;
 
     /**
-     * The tag's value.
+     * The value of the tag.
      */
     private String value;
 
     /**
-     * The resource ID for the tag.
+     * The ID of the resource. For example, <code>ami-1a2b3c4d</code>.
      *
-     * @return The resource ID for the tag.
+     * @return The ID of the resource. For example, <code>ami-1a2b3c4d</code>.
      */
     public String getResourceId() {
         return resourceId;
     }
     
     /**
-     * The resource ID for the tag.
+     * The ID of the resource. For example, <code>ami-1a2b3c4d</code>.
      *
-     * @param resourceId The resource ID for the tag.
+     * @param resourceId The ID of the resource. For example, <code>ami-1a2b3c4d</code>.
      */
     public void setResourceId(String resourceId) {
         this.resourceId = resourceId;
     }
     
     /**
-     * The resource ID for the tag.
+     * The ID of the resource. For example, <code>ami-1a2b3c4d</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param resourceId The resource ID for the tag.
+     * @param resourceId The ID of the resource. For example, <code>ami-1a2b3c4d</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withResourceId(String resourceId) {
         this.resourceId = resourceId;
         return this;
     }
-    
-    
+
     /**
-     * The type of resource identified by the associated resource ID (ex:
-     * instance, AMI, EBS volume, etc).
+     * The type of resource.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, snapshot, spot-instances-request, subnet, volume, vpc, vpn-connection, vpn-gateway
+     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
      *
-     * @return The type of resource identified by the associated resource ID (ex:
-     *         instance, AMI, EBS volume, etc).
+     * @return The type of resource.
      *
      * @see ResourceType
      */
@@ -97,14 +94,12 @@ public class TagDescription  implements Serializable  {
     }
     
     /**
-     * The type of resource identified by the associated resource ID (ex:
-     * instance, AMI, EBS volume, etc).
+     * The type of resource.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, snapshot, spot-instances-request, subnet, volume, vpc, vpn-connection, vpn-gateway
+     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
      *
-     * @param resourceType The type of resource identified by the associated resource ID (ex:
-     *         instance, AMI, EBS volume, etc).
+     * @param resourceType The type of resource.
      *
      * @see ResourceType
      */
@@ -113,19 +108,17 @@ public class TagDescription  implements Serializable  {
     }
     
     /**
-     * The type of resource identified by the associated resource ID (ex:
-     * instance, AMI, EBS volume, etc).
+     * The type of resource.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, snapshot, spot-instances-request, subnet, volume, vpc, vpn-connection, vpn-gateway
+     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
      *
-     * @param resourceType The type of resource identified by the associated resource ID (ex:
-     *         instance, AMI, EBS volume, etc).
+     * @param resourceType The type of resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceType
      */
@@ -133,17 +126,14 @@ public class TagDescription  implements Serializable  {
         this.resourceType = resourceType;
         return this;
     }
-    
-    
+
     /**
-     * The type of resource identified by the associated resource ID (ex:
-     * instance, AMI, EBS volume, etc).
+     * The type of resource.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, snapshot, spot-instances-request, subnet, volume, vpc, vpn-connection, vpn-gateway
+     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
      *
-     * @param resourceType The type of resource identified by the associated resource ID (ex:
-     *         instance, AMI, EBS volume, etc).
+     * @param resourceType The type of resource.
      *
      * @see ResourceType
      */
@@ -152,19 +142,17 @@ public class TagDescription  implements Serializable  {
     }
     
     /**
-     * The type of resource identified by the associated resource ID (ex:
-     * instance, AMI, EBS volume, etc).
+     * The type of resource.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, snapshot, spot-instances-request, subnet, volume, vpc, vpn-connection, vpn-gateway
+     * <b>Allowed Values: </b>customer-gateway, dhcp-options, image, instance, internet-gateway, network-acl, network-interface, reserved-instances, route-table, snapshot, spot-instances-request, subnet, security-group, volume, vpc, vpn-connection, vpn-gateway
      *
-     * @param resourceType The type of resource identified by the associated resource ID (ex:
-     *         instance, AMI, EBS volume, etc).
+     * @param resourceType The type of resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceType
      */
@@ -172,75 +160,73 @@ public class TagDescription  implements Serializable  {
         this.resourceType = resourceType.toString();
         return this;
     }
-    
+
     /**
-     * The tag's key.
+     * The key of the tag.
      *
-     * @return The tag's key.
+     * @return The key of the tag.
      */
     public String getKey() {
         return key;
     }
     
     /**
-     * The tag's key.
+     * The key of the tag.
      *
-     * @param key The tag's key.
+     * @param key The key of the tag.
      */
     public void setKey(String key) {
         this.key = key;
     }
     
     /**
-     * The tag's key.
+     * The key of the tag.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param key The tag's key.
+     * @param key The key of the tag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withKey(String key) {
         this.key = key;
         return this;
     }
-    
-    
+
     /**
-     * The tag's value.
+     * The value of the tag.
      *
-     * @return The tag's value.
+     * @return The value of the tag.
      */
     public String getValue() {
         return value;
     }
     
     /**
-     * The tag's value.
+     * The value of the tag.
      *
-     * @param value The tag's value.
+     * @param value The value of the tag.
      */
     public void setValue(String value) {
         this.value = value;
     }
     
     /**
-     * The tag's value.
+     * The value of the tag.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param value The tag's value.
+     * @param value The value of the tag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -252,10 +238,10 @@ public class TagDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");    	
-        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
+        sb.append("{");
+        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");
+        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

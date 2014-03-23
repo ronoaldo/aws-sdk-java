@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeReservedNodeOfferings action.
  * </p>
  */
-public class DescribeReservedNodeOfferingsResult  implements Serializable  {
+public class DescribeReservedNodeOfferingsResult implements Serializable {
 
     /**
      * An optional marker returned by a previous
@@ -32,7 +33,7 @@ public class DescribeReservedNodeOfferingsResult  implements Serializable  {
     /**
      * A list of reserved node offerings.
      */
-    private java.util.List<ReservedNodeOffering> reservedNodeOfferings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNodeOffering> reservedNodeOfferings;
 
     /**
      * An optional marker returned by a previous
@@ -72,23 +73,22 @@ public class DescribeReservedNodeOfferingsResult  implements Serializable  {
      *         reserved node offering that the request will return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedNodeOfferingsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of reserved node offerings.
      *
      * @return A list of reserved node offerings.
      */
     public java.util.List<ReservedNodeOffering> getReservedNodeOfferings() {
-        
         if (reservedNodeOfferings == null) {
-            reservedNodeOfferings = new java.util.ArrayList<ReservedNodeOffering>();
+              reservedNodeOfferings = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNodeOffering>();
+              reservedNodeOfferings.setAutoConstruct(true);
         }
         return reservedNodeOfferings;
     }
@@ -103,8 +103,7 @@ public class DescribeReservedNodeOfferingsResult  implements Serializable  {
             this.reservedNodeOfferings = null;
             return;
         }
-
-        java.util.List<ReservedNodeOffering> reservedNodeOfferingsCopy = new java.util.ArrayList<ReservedNodeOffering>(reservedNodeOfferings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNodeOffering> reservedNodeOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNodeOffering>(reservedNodeOfferings.size());
         reservedNodeOfferingsCopy.addAll(reservedNodeOfferings);
         this.reservedNodeOfferings = reservedNodeOfferingsCopy;
     }
@@ -117,7 +116,7 @@ public class DescribeReservedNodeOfferingsResult  implements Serializable  {
      * @param reservedNodeOfferings A list of reserved node offerings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedNodeOfferingsResult withReservedNodeOfferings(ReservedNodeOffering... reservedNodeOfferings) {
         if (getReservedNodeOfferings() == null) setReservedNodeOfferings(new java.util.ArrayList<ReservedNodeOffering>(reservedNodeOfferings.length));
@@ -135,20 +134,20 @@ public class DescribeReservedNodeOfferingsResult  implements Serializable  {
      * @param reservedNodeOfferings A list of reserved node offerings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedNodeOfferingsResult withReservedNodeOfferings(java.util.Collection<ReservedNodeOffering> reservedNodeOfferings) {
         if (reservedNodeOfferings == null) {
             this.reservedNodeOfferings = null;
         } else {
-            java.util.List<ReservedNodeOffering> reservedNodeOfferingsCopy = new java.util.ArrayList<ReservedNodeOffering>(reservedNodeOfferings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNodeOffering> reservedNodeOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNodeOffering>(reservedNodeOfferings.size());
             reservedNodeOfferingsCopy.addAll(reservedNodeOfferings);
             this.reservedNodeOfferings = reservedNodeOfferingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +159,8 @@ public class DescribeReservedNodeOfferingsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getReservedNodeOfferings() != null) sb.append("ReservedNodeOfferings: " + getReservedNodeOfferings() );
         sb.append("}");
         return sb.toString();

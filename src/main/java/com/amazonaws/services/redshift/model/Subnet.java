@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a subnet.
  * </p>
  */
-public class Subnet  implements Serializable  {
+public class Subnet implements Serializable {
 
     /**
      * The identifier of the subnet.
@@ -63,14 +64,13 @@ public class Subnet  implements Serializable  {
      * @param subnetIdentifier The identifier of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withSubnetIdentifier(String subnetIdentifier) {
         this.subnetIdentifier = subnetIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Describes an availability zone.
      *
@@ -97,14 +97,13 @@ public class Subnet  implements Serializable  {
      * @param subnetAvailabilityZone Describes an availability zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withSubnetAvailabilityZone(AvailabilityZone subnetAvailabilityZone) {
         this.subnetAvailabilityZone = subnetAvailabilityZone;
         return this;
     }
-    
-    
+
     /**
      * The status of the subnet.
      *
@@ -131,14 +130,13 @@ public class Subnet  implements Serializable  {
      * @param subnetStatus The status of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withSubnetStatus(String subnetStatus) {
         this.subnetStatus = subnetStatus;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,9 +148,9 @@ public class Subnet  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubnetIdentifier() != null) sb.append("SubnetIdentifier: " + getSubnetIdentifier() + ",");    	
-        if (getSubnetAvailabilityZone() != null) sb.append("SubnetAvailabilityZone: " + getSubnetAvailabilityZone() + ",");    	
+        sb.append("{");
+        if (getSubnetIdentifier() != null) sb.append("SubnetIdentifier: " + getSubnetIdentifier() + ",");
+        if (getSubnetAvailabilityZone() != null) sb.append("SubnetAvailabilityZone: " + getSubnetAvailabilityZone() + ",");
         if (getSubnetStatus() != null) sb.append("SubnetStatus: " + getSubnetStatus() );
         sb.append("}");
         return sb.toString();

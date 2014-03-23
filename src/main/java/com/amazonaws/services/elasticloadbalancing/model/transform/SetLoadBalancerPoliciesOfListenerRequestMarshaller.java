@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class SetLoadBalancerPoliciesOfListenerRequestMarshaller implements Marsh
     public Request<SetLoadBalancerPoliciesOfListenerRequest> marshall(SetLoadBalancerPoliciesOfListenerRequest setLoadBalancerPoliciesOfListenerRequest) {
 
         if (setLoadBalancerPoliciesOfListenerRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<SetLoadBalancerPoliciesOfListenerRequest> request = new DefaultRequest<SetLoadBalancerPoliciesOfListenerRequest>(setLoadBalancerPoliciesOfListenerRequest, "AmazonElasticLoadBalancing");
         request.addParameter("Action", "SetLoadBalancerPoliciesOfListener");
@@ -58,7 +58,6 @@ public class SetLoadBalancerPoliciesOfListenerRequestMarshaller implements Marsh
 
             policyNamesListIndex++;
         }
-
 
         return request;
     }

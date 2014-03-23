@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribePermissions</code> request.
  * </p>
  */
-public class DescribePermissionsResult  implements Serializable  {
+public class DescribePermissionsResult implements Serializable {
 
     /**
      * An array of <code>Permission</code> objects that describe the stack
@@ -33,7 +34,7 @@ public class DescribePermissionsResult  implements Serializable  {
      * single <code>Permission</code> object with permissions for the
      * specified stack and IAM ARN.</li> </ul>
      */
-    private java.util.List<Permission> permissions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Permission> permissions;
 
     /**
      * An array of <code>Permission</code> objects that describe the stack
@@ -57,9 +58,9 @@ public class DescribePermissionsResult  implements Serializable  {
      *         specified stack and IAM ARN.</li> </ul>
      */
     public java.util.List<Permission> getPermissions() {
-        
         if (permissions == null) {
-            permissions = new java.util.ArrayList<Permission>();
+              permissions = new com.amazonaws.internal.ListWithAutoConstructFlag<Permission>();
+              permissions.setAutoConstruct(true);
         }
         return permissions;
     }
@@ -90,8 +91,7 @@ public class DescribePermissionsResult  implements Serializable  {
             this.permissions = null;
             return;
         }
-
-        java.util.List<Permission> permissionsCopy = new java.util.ArrayList<Permission>(permissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Permission> permissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Permission>(permissions.size());
         permissionsCopy.addAll(permissions);
         this.permissions = permissionsCopy;
     }
@@ -120,7 +120,7 @@ public class DescribePermissionsResult  implements Serializable  {
      *         specified stack and IAM ARN.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePermissionsResult withPermissions(Permission... permissions) {
         if (getPermissions() == null) setPermissions(new java.util.ArrayList<Permission>(permissions.length));
@@ -154,20 +154,20 @@ public class DescribePermissionsResult  implements Serializable  {
      *         specified stack and IAM ARN.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePermissionsResult withPermissions(java.util.Collection<Permission> permissions) {
         if (permissions == null) {
             this.permissions = null;
         } else {
-            java.util.List<Permission> permissionsCopy = new java.util.ArrayList<Permission>(permissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Permission> permissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Permission>(permissions.size());
             permissionsCopy.addAll(permissions);
             this.permissions = permissionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -179,7 +179,7 @@ public class DescribePermissionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPermissions() != null) sb.append("Permissions: " + getPermissions() );
         sb.append("}");
         return sb.toString();

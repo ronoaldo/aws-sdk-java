@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>WorkflowExecutionCompleted</code> event.
+ * Provides details of the <code>WorkflowExecutionCompleted</code>
+ * event.
  * </p>
  */
-public class WorkflowExecutionCompletedEventAttributes  implements Serializable  {
+public class WorkflowExecutionCompletedEventAttributes implements Serializable {
 
     /**
      * The result produced by the workflow execution upon successful
@@ -81,14 +83,13 @@ public class WorkflowExecutionCompletedEventAttributes  implements Serializable 
      *         completion.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionCompletedEventAttributes withResult(String result) {
         this.result = result;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the
@@ -139,14 +140,13 @@ public class WorkflowExecutionCompletedEventAttributes  implements Serializable 
      *         tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionCompletedEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +158,8 @@ public class WorkflowExecutionCompletedEventAttributes  implements Serializable 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResult() != null) sb.append("Result: " + getResult() + ",");    	
+        sb.append("{");
+        if (getResult() != null) sb.append("Result: " + getResult() + ",");
         if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() );
         sb.append("}");
         return sb.toString();

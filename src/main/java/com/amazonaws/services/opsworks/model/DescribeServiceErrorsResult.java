@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeServiceErrors</code> request.
  * </p>
  */
-public class DescribeServiceErrorsResult  implements Serializable  {
+public class DescribeServiceErrorsResult implements Serializable {
 
     /**
      * An array of <code>ServiceError</code> objects that describe the
      * specified service errors.
      */
-    private java.util.List<ServiceError> serviceErrors;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ServiceError> serviceErrors;
 
     /**
      * An array of <code>ServiceError</code> objects that describe the
@@ -36,9 +37,9 @@ public class DescribeServiceErrorsResult  implements Serializable  {
      *         specified service errors.
      */
     public java.util.List<ServiceError> getServiceErrors() {
-        
         if (serviceErrors == null) {
-            serviceErrors = new java.util.ArrayList<ServiceError>();
+              serviceErrors = new com.amazonaws.internal.ListWithAutoConstructFlag<ServiceError>();
+              serviceErrors.setAutoConstruct(true);
         }
         return serviceErrors;
     }
@@ -55,8 +56,7 @@ public class DescribeServiceErrorsResult  implements Serializable  {
             this.serviceErrors = null;
             return;
         }
-
-        java.util.List<ServiceError> serviceErrorsCopy = new java.util.ArrayList<ServiceError>(serviceErrors.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ServiceError> serviceErrorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ServiceError>(serviceErrors.size());
         serviceErrorsCopy.addAll(serviceErrors);
         this.serviceErrors = serviceErrorsCopy;
     }
@@ -71,7 +71,7 @@ public class DescribeServiceErrorsResult  implements Serializable  {
      *         specified service errors.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeServiceErrorsResult withServiceErrors(ServiceError... serviceErrors) {
         if (getServiceErrors() == null) setServiceErrors(new java.util.ArrayList<ServiceError>(serviceErrors.length));
@@ -91,20 +91,20 @@ public class DescribeServiceErrorsResult  implements Serializable  {
      *         specified service errors.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeServiceErrorsResult withServiceErrors(java.util.Collection<ServiceError> serviceErrors) {
         if (serviceErrors == null) {
             this.serviceErrors = null;
         } else {
-            java.util.List<ServiceError> serviceErrorsCopy = new java.util.ArrayList<ServiceError>(serviceErrors.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ServiceError> serviceErrorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ServiceError>(serviceErrors.size());
             serviceErrorsCopy.addAll(serviceErrors);
             this.serviceErrors = serviceErrorsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +116,7 @@ public class DescribeServiceErrorsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getServiceErrors() != null) sb.append("ServiceErrors: " + getServiceErrors() );
         sb.append("}");
         return sb.toString();

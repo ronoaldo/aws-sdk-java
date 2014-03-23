@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a parameter group.
  * </p>
  */
-public class ClusterParameterGroup  implements Serializable  {
+public class ClusterParameterGroup implements Serializable {
 
     /**
      * The name of the cluster parameter group.
@@ -64,14 +65,13 @@ public class ClusterParameterGroup  implements Serializable  {
      * @param parameterGroupName The name of the cluster parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterParameterGroup withParameterGroupName(String parameterGroupName) {
         this.parameterGroupName = parameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * The name of the cluster parameter group family that this cluster
      * parameter group is compatible with.
@@ -104,14 +104,13 @@ public class ClusterParameterGroup  implements Serializable  {
      *         parameter group is compatible with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterParameterGroup withParameterGroupFamily(String parameterGroupFamily) {
         this.parameterGroupFamily = parameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * The description of the parameter group.
      *
@@ -138,14 +137,13 @@ public class ClusterParameterGroup  implements Serializable  {
      * @param description The description of the parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterParameterGroup withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -157,9 +155,9 @@ public class ClusterParameterGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");    	
-        if (getParameterGroupFamily() != null) sb.append("ParameterGroupFamily: " + getParameterGroupFamily() + ",");    	
+        sb.append("{");
+        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");
+        if (getParameterGroupFamily() != null) sb.append("ParameterGroupFamily: " + getParameterGroupFamily() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

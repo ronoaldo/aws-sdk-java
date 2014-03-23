@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,20 @@ import java.io.Serializable;
  * The output for a DescribeStacks action.
  * </p>
  */
-public class DescribeStacksResult  implements Serializable  {
+public class DescribeStacksResult implements Serializable {
 
     /**
      * A list of stack structures.
      */
-    private java.util.List<Stack> stacks;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Stack> stacks;
 
+    /**
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 1024<br/>
+     */
     private String nextToken;
 
     /**
@@ -35,9 +43,9 @@ public class DescribeStacksResult  implements Serializable  {
      * @return A list of stack structures.
      */
     public java.util.List<Stack> getStacks() {
-        
         if (stacks == null) {
-            stacks = new java.util.ArrayList<Stack>();
+              stacks = new com.amazonaws.internal.ListWithAutoConstructFlag<Stack>();
+              stacks.setAutoConstruct(true);
         }
         return stacks;
     }
@@ -52,8 +60,7 @@ public class DescribeStacksResult  implements Serializable  {
             this.stacks = null;
             return;
         }
-
-        java.util.List<Stack> stacksCopy = new java.util.ArrayList<Stack>(stacks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Stack> stacksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Stack>(stacks.size());
         stacksCopy.addAll(stacks);
         this.stacks = stacksCopy;
     }
@@ -66,7 +73,7 @@ public class DescribeStacksResult  implements Serializable  {
      * @param stacks A list of stack structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksResult withStacks(Stack... stacks) {
         if (getStacks() == null) setStacks(new java.util.ArrayList<Stack>(stacks.length));
@@ -84,63 +91,68 @@ public class DescribeStacksResult  implements Serializable  {
      * @param stacks A list of stack structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksResult withStacks(java.util.Collection<Stack> stacks) {
         if (stacks == null) {
             this.stacks = null;
         } else {
-            java.util.List<Stack> stacksCopy = new java.util.ArrayList<Stack>(stacks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Stack> stacksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Stack>(stacks.size());
             stacksCopy.addAll(stacks);
             this.stacks = stacksCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the NextToken property for this object.
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1024<br/>
      *
-     * @return The value of the NextToken property for this object.
+     * @return String that identifies the start of the next list of stacks, if there
+     *         is one.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1024<br/>
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken String that identifies the start of the next list of stacks, if there
+     *         is one.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1024<br/>
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken String that identifies the start of the next list of stacks, if there
+     *         is one.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -152,8 +164,8 @@ public class DescribeStacksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStacks() != null) sb.append("Stacks: " + getStacks() + ",");    	
+        sb.append("{");
+        if (getStacks() != null) sb.append("Stacks: " + getStacks() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

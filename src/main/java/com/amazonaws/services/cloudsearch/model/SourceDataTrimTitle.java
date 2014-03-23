@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies how to trim common words from the beginning of a field to enable title sorting by that field.
+ * Specifies how to trim common words from the beginning of a field to
+ * enable title sorting by that field.
  * </p>
  */
-public class SourceDataTrimTitle  implements Serializable  {
+public class SourceDataTrimTitle implements Serializable {
 
     /**
      * The name of the document source field to add to this
@@ -33,7 +35,8 @@ public class SourceDataTrimTitle  implements Serializable  {
     private String sourceName;
 
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
@@ -99,57 +102,61 @@ public class SourceDataTrimTitle  implements Serializable  {
      *         <code>IndexField</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceDataTrimTitle withSourceName(String sourceName) {
         this.sourceName = sourceName;
         return this;
     }
-    
-    
+
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @return The value of a field or source document attribute.
+     * @return The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      */
     public String getDefaultValue() {
         return defaultValue;
     }
     
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @param defaultValue The value of a field or source document attribute.
+     * @param defaultValue The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      */
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
     }
     
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @param defaultValue The value of a field or source document attribute.
+     * @param defaultValue The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceDataTrimTitle withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * The separator that follows the text to trim.
      *
@@ -176,14 +183,13 @@ public class SourceDataTrimTitle  implements Serializable  {
      * @param separator The separator that follows the text to trim.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceDataTrimTitle withSeparator(String separator) {
         this.separator = separator;
         return this;
     }
-    
-    
+
     /**
      * An <a href="http://tools.ietf.org/html/rfc4646">IETF RFC 4646</a>
      * language code. Only the primary language is considered. English (en)
@@ -231,14 +237,13 @@ public class SourceDataTrimTitle  implements Serializable  {
      *         is currently the only supported language.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceDataTrimTitle withLanguage(String language) {
         this.language = language;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -250,10 +255,10 @@ public class SourceDataTrimTitle  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceName() != null) sb.append("SourceName: " + getSourceName() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
-        if (getSeparator() != null) sb.append("Separator: " + getSeparator() + ",");    	
+        sb.append("{");
+        if (getSourceName() != null) sb.append("SourceName: " + getSourceName() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
+        if (getSeparator() != null) sb.append("Separator: " + getSeparator() + ",");
         if (getLanguage() != null) sb.append("Language: " + getLanguage() );
         sb.append("}");
         return sb.toString();

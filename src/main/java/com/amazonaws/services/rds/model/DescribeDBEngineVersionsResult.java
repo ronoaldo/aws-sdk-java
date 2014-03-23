@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeDBEngineVersions action.
+ * Contains the result of a successful invocation of the
+ * DescribeDBEngineVersions action.
  * </p>
  */
-public class DescribeDBEngineVersionsResult  implements Serializable  {
+public class DescribeDBEngineVersionsResult implements Serializable {
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -32,7 +34,7 @@ public class DescribeDBEngineVersionsResult  implements Serializable  {
     /**
      * A list of <code>DBEngineVersion</code> elements.
      */
-    private java.util.List<DBEngineVersion> dBEngineVersions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DBEngineVersion> dBEngineVersions;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -72,23 +74,22 @@ public class DescribeDBEngineVersionsResult  implements Serializable  {
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <code>DBEngineVersion</code> elements.
      *
      * @return A list of <code>DBEngineVersion</code> elements.
      */
     public java.util.List<DBEngineVersion> getDBEngineVersions() {
-        
         if (dBEngineVersions == null) {
-            dBEngineVersions = new java.util.ArrayList<DBEngineVersion>();
+              dBEngineVersions = new com.amazonaws.internal.ListWithAutoConstructFlag<DBEngineVersion>();
+              dBEngineVersions.setAutoConstruct(true);
         }
         return dBEngineVersions;
     }
@@ -103,8 +104,7 @@ public class DescribeDBEngineVersionsResult  implements Serializable  {
             this.dBEngineVersions = null;
             return;
         }
-
-        java.util.List<DBEngineVersion> dBEngineVersionsCopy = new java.util.ArrayList<DBEngineVersion>(dBEngineVersions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DBEngineVersion> dBEngineVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBEngineVersion>(dBEngineVersions.size());
         dBEngineVersionsCopy.addAll(dBEngineVersions);
         this.dBEngineVersions = dBEngineVersionsCopy;
     }
@@ -117,7 +117,7 @@ public class DescribeDBEngineVersionsResult  implements Serializable  {
      * @param dBEngineVersions A list of <code>DBEngineVersion</code> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsResult withDBEngineVersions(DBEngineVersion... dBEngineVersions) {
         if (getDBEngineVersions() == null) setDBEngineVersions(new java.util.ArrayList<DBEngineVersion>(dBEngineVersions.length));
@@ -135,20 +135,20 @@ public class DescribeDBEngineVersionsResult  implements Serializable  {
      * @param dBEngineVersions A list of <code>DBEngineVersion</code> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsResult withDBEngineVersions(java.util.Collection<DBEngineVersion> dBEngineVersions) {
         if (dBEngineVersions == null) {
             this.dBEngineVersions = null;
         } else {
-            java.util.List<DBEngineVersion> dBEngineVersionsCopy = new java.util.ArrayList<DBEngineVersion>(dBEngineVersions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DBEngineVersion> dBEngineVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBEngineVersion>(dBEngineVersions.size());
             dBEngineVersionsCopy.addAll(dBEngineVersions);
             this.dBEngineVersions = dBEngineVersionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class DescribeDBEngineVersionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getDBEngineVersions() != null) sb.append("DBEngineVersions: " + getDBEngineVersions() );
         sb.append("}");
         return sb.toString();

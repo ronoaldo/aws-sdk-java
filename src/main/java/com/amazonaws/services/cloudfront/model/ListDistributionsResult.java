@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The returned result of the corresponding request.
  * </p>
  */
-public class ListDistributionsResult  implements Serializable  {
+public class ListDistributionsResult implements Serializable {
 
     /**
      * The DistributionList type.
@@ -53,14 +54,13 @@ public class ListDistributionsResult  implements Serializable  {
      * @param distributionList The DistributionList type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDistributionsResult withDistributionList(DistributionList distributionList) {
         this.distributionList = distributionList;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class ListDistributionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDistributionList() != null) sb.append("DistributionList: " + getDistributionList() );
         sb.append("}");
         return sb.toString();

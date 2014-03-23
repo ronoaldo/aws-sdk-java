@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeReservedInstancesOfferingsRequestMarshaller implements Mars
     public Request<DescribeReservedInstancesOfferingsRequest> marshall(DescribeReservedInstancesOfferingsRequest describeReservedInstancesOfferingsRequest) {
 
         if (describeReservedInstancesOfferingsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeReservedInstancesOfferingsRequest> request = new DefaultRequest<DescribeReservedInstancesOfferingsRequest>(describeReservedInstancesOfferingsRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeReservedInstancesOfferings");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> reservedInstancesOfferingIdsList = describeReservedInstancesOfferingsRequest.getReservedInstancesOfferingIds();
         int reservedInstancesOfferingIdsListIndex = 1;
@@ -97,7 +96,18 @@ public class DescribeReservedInstancesOfferingsRequestMarshaller implements Mars
         if (describeReservedInstancesOfferingsRequest.getMaxResults() != null) {
             request.addParameter("MaxResults", StringUtils.fromInteger(describeReservedInstancesOfferingsRequest.getMaxResults()));
         }
-
+        if (describeReservedInstancesOfferingsRequest.isIncludeMarketplace() != null) {
+            request.addParameter("IncludeMarketplace", StringUtils.fromBoolean(describeReservedInstancesOfferingsRequest.isIncludeMarketplace()));
+        }
+        if (describeReservedInstancesOfferingsRequest.getMinDuration() != null) {
+            request.addParameter("MinDuration", StringUtils.fromLong(describeReservedInstancesOfferingsRequest.getMinDuration()));
+        }
+        if (describeReservedInstancesOfferingsRequest.getMaxDuration() != null) {
+            request.addParameter("MaxDuration", StringUtils.fromLong(describeReservedInstancesOfferingsRequest.getMaxDuration()));
+        }
+        if (describeReservedInstancesOfferingsRequest.getMaxInstanceCount() != null) {
+            request.addParameter("MaxInstanceCount", StringUtils.fromInteger(describeReservedInstancesOfferingsRequest.getMaxInstanceCount()));
+        }
 
         return request;
     }

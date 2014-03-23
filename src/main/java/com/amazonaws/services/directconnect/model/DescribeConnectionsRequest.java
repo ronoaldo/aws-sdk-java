@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.directconnect.AmazonDirectConnect#describeConnections(DescribeConnectionsRequest) DescribeConnections operation}.
@@ -22,12 +24,13 @@ import java.io.Serializable;
  * Displays all connections in this region.
  * </p>
  * <p>
- * If a connection ID is provided, it will only return this particular connection.
+ * If a connection ID is provided, the call returns only that particular
+ * connection.
  * </p>
  *
  * @see com.amazonaws.services.directconnect.AmazonDirectConnect#describeConnections(DescribeConnectionsRequest)
  */
-public class DescribeConnectionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeConnectionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
@@ -60,14 +63,13 @@ public class DescribeConnectionsRequest extends AmazonWebServiceRequest  impleme
      * @param connectionId ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConnectionsRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +81,7 @@ public class DescribeConnectionsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() );
         sb.append("}");
         return sb.toString();

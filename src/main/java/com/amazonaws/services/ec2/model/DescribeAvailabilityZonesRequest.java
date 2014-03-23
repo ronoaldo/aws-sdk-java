@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,75 +13,86 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeAvailabilityZonesRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeAvailabilityZones(DescribeAvailabilityZonesRequest) DescribeAvailabilityZones operation}.
  * <p>
- * The DescribeAvailabilityZones operation describes availability zones that are currently available to the account and their states.
+ * Describes one or more of the Availability Zones that are available to
+ * you. The results include zones only for the region you're currently
+ * using. If there is an event impacting an Availability Zone, you can
+ * use this request to view the state and any provided message for that
+ * Availability Zone.
  * </p>
  * <p>
- * Availability zones are not the same across accounts. The availability zone <code>us-east-1a</code> for account A is not necessarily the same as
- * <code>us-east-1a</code> for account B. Zone assignments are mapped independently for each account.
+ * For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"> Regions and Availability Zones </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeAvailabilityZones(DescribeAvailabilityZonesRequest)
  */
-public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeAvailabilityZonesRequest> {
 
     /**
-     * A list of the availability zone names to describe.
+     * The names of one or more Availability Zones.
      */
-    private java.util.List<String> zoneNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> zoneNames;
 
     /**
-     * A list of filters used to match properties for AvailabilityZones. For
-     * a complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>message</code> - Information
+     * about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     * The name of the region for the Availability Zone (for example,
+     * <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     * of the Availability Zone (<code>available</code> |
+     * <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     * <p><code>zone-name</code> - The name of the Availability Zone (for
+     * example, <code>us-east-1a</code>). </li> </ul>
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
-     * A list of the availability zone names to describe.
+     * The names of one or more Availability Zones.
      *
-     * @return A list of the availability zone names to describe.
+     * @return The names of one or more Availability Zones.
      */
     public java.util.List<String> getZoneNames() {
-        
         if (zoneNames == null) {
-            zoneNames = new java.util.ArrayList<String>();
+              zoneNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              zoneNames.setAutoConstruct(true);
         }
         return zoneNames;
     }
     
     /**
-     * A list of the availability zone names to describe.
+     * The names of one or more Availability Zones.
      *
-     * @param zoneNames A list of the availability zone names to describe.
+     * @param zoneNames The names of one or more Availability Zones.
      */
     public void setZoneNames(java.util.Collection<String> zoneNames) {
         if (zoneNames == null) {
             this.zoneNames = null;
             return;
         }
-
-        java.util.List<String> zoneNamesCopy = new java.util.ArrayList<String>(zoneNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> zoneNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(zoneNames.size());
         zoneNamesCopy.addAll(zoneNames);
         this.zoneNames = zoneNamesCopy;
     }
     
     /**
-     * A list of the availability zone names to describe.
+     * The names of one or more Availability Zones.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param zoneNames A list of the availability zone names to describe.
+     * @param zoneNames The names of one or more Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAvailabilityZonesRequest withZoneNames(String... zoneNames) {
         if (getZoneNames() == null) setZoneNames(new java.util.ArrayList<String>(zoneNames.length));
@@ -92,89 +103,106 @@ public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest  i
     }
     
     /**
-     * A list of the availability zone names to describe.
+     * The names of one or more Availability Zones.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param zoneNames A list of the availability zone names to describe.
+     * @param zoneNames The names of one or more Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAvailabilityZonesRequest withZoneNames(java.util.Collection<String> zoneNames) {
         if (zoneNames == null) {
             this.zoneNames = null;
         } else {
-            java.util.List<String> zoneNamesCopy = new java.util.ArrayList<String>(zoneNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> zoneNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(zoneNames.size());
             zoneNamesCopy.addAll(zoneNames);
             this.zoneNames = zoneNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of filters used to match properties for AvailabilityZones. For
-     * a complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>message</code> - Information
+     * about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     * The name of the region for the Availability Zone (for example,
+     * <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     * of the Availability Zone (<code>available</code> |
+     * <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     * <p><code>zone-name</code> - The name of the Availability Zone (for
+     * example, <code>us-east-1a</code>). </li> </ul>
      *
-     * @return A list of filters used to match properties for AvailabilityZones. For
-     *         a complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @return One or more filters. <ul> <li> <p><code>message</code> - Information
+     *         about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     *         The name of the region for the Availability Zone (for example,
+     *         <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     *         of the Availability Zone (<code>available</code> |
+     *         <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     *         <p><code>zone-name</code> - The name of the Availability Zone (for
+     *         example, <code>us-east-1a</code>). </li> </ul>
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
     
     /**
-     * A list of filters used to match properties for AvailabilityZones. For
-     * a complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>message</code> - Information
+     * about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     * The name of the region for the Availability Zone (for example,
+     * <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     * of the Availability Zone (<code>available</code> |
+     * <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     * <p><code>zone-name</code> - The name of the Availability Zone (for
+     * example, <code>us-east-1a</code>). </li> </ul>
      *
-     * @param filters A list of filters used to match properties for AvailabilityZones. For
-     *         a complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>message</code> - Information
+     *         about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     *         The name of the region for the Availability Zone (for example,
+     *         <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     *         of the Availability Zone (<code>available</code> |
+     *         <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     *         <p><code>zone-name</code> - The name of the Availability Zone (for
+     *         example, <code>us-east-1a</code>). </li> </ul>
      */
     public void setFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
     
     /**
-     * A list of filters used to match properties for AvailabilityZones. For
-     * a complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>message</code> - Information
+     * about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     * The name of the region for the Availability Zone (for example,
+     * <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     * of the Availability Zone (<code>available</code> |
+     * <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     * <p><code>zone-name</code> - The name of the Availability Zone (for
+     * example, <code>us-east-1a</code>). </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for AvailabilityZones. For
-     *         a complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>message</code> - Information
+     *         about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     *         The name of the region for the Availability Zone (for example,
+     *         <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     *         of the Availability Zone (<code>available</code> |
+     *         <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     *         <p><code>zone-name</code> - The name of the Availability Zone (for
+     *         example, <code>us-east-1a</code>). </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAvailabilityZonesRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -185,33 +213,51 @@ public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest  i
     }
     
     /**
-     * A list of filters used to match properties for AvailabilityZones. For
-     * a complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>message</code> - Information
+     * about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     * The name of the region for the Availability Zone (for example,
+     * <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     * of the Availability Zone (<code>available</code> |
+     * <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     * <p><code>zone-name</code> - The name of the Availability Zone (for
+     * example, <code>us-east-1a</code>). </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for AvailabilityZones. For
-     *         a complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>message</code> - Information
+     *         about the Availability Zone. </li> <li> <p><code>region-name</code> -
+     *         The name of the region for the Availability Zone (for example,
+     *         <code>us-east-1</code>). </li> <li> <p><code>state</code> - The state
+     *         of the Availability Zone (<code>available</code> |
+     *         <code>impaired</code> | <code>unavailable</code>). </li> <li>
+     *         <p><code>zone-name</code> - The name of the Availability Zone (for
+     *         example, <code>us-east-1a</code>). </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAvailabilityZonesRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeAvailabilityZonesRequest> getDryRunRequest() {
+        Request<DescribeAvailabilityZonesRequest> request = new DescribeAvailabilityZonesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -225,8 +271,8 @@ public class DescribeAvailabilityZonesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getZoneNames() != null) sb.append("ZoneNames: " + getZoneNames() + ",");    	
+        sb.append("{");
+        if (getZoneNames() != null) sb.append("ZoneNames: " + getZoneNames() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

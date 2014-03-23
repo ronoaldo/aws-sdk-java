@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for Hadoop to execute and waits for the
- * job to finish or fail.
+ * A job flow step consisting of a JAR file whose main function will be
+ * executed. The main function submits a job for Hadoop to execute and
+ * waits for the job to finish or fail.
  * </p>
  */
-public class HadoopJarStepConfig  implements Serializable  {
+public class HadoopJarStepConfig implements Serializable {
 
     /**
      * A list of Java properties that are set when the step runs. You can use
      * these properties to pass key value pairs to your main function.
      */
-    private java.util.List<KeyValue> properties;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<KeyValue> properties;
 
     /**
      * A path to a JAR file run during the step.
@@ -53,7 +55,7 @@ public class HadoopJarStepConfig  implements Serializable  {
      * A list of command line arguments passed to the JAR file's main
      * function when executed.
      */
-    private java.util.List<String> args;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> args;
 
     /**
      * Default constructor for a new HadoopJarStepConfig object.  Callers should use the
@@ -69,11 +71,9 @@ public class HadoopJarStepConfig  implements Serializable  {
      * @param jar A path to a JAR file run during the step.
      */
     public HadoopJarStepConfig(String jar) {
-        this.jar = jar;
+        setJar(jar);
     }
 
-    
-    
     /**
      * A list of Java properties that are set when the step runs. You can use
      * these properties to pass key value pairs to your main function.
@@ -82,9 +82,9 @@ public class HadoopJarStepConfig  implements Serializable  {
      *         these properties to pass key value pairs to your main function.
      */
     public java.util.List<KeyValue> getProperties() {
-        
         if (properties == null) {
-            properties = new java.util.ArrayList<KeyValue>();
+              properties = new com.amazonaws.internal.ListWithAutoConstructFlag<KeyValue>();
+              properties.setAutoConstruct(true);
         }
         return properties;
     }
@@ -101,8 +101,7 @@ public class HadoopJarStepConfig  implements Serializable  {
             this.properties = null;
             return;
         }
-
-        java.util.List<KeyValue> propertiesCopy = new java.util.ArrayList<KeyValue>(properties.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<KeyValue> propertiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<KeyValue>(properties.size());
         propertiesCopy.addAll(properties);
         this.properties = propertiesCopy;
     }
@@ -117,7 +116,7 @@ public class HadoopJarStepConfig  implements Serializable  {
      *         these properties to pass key value pairs to your main function.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HadoopJarStepConfig withProperties(KeyValue... properties) {
         if (getProperties() == null) setProperties(new java.util.ArrayList<KeyValue>(properties.length));
@@ -137,20 +136,20 @@ public class HadoopJarStepConfig  implements Serializable  {
      *         these properties to pass key value pairs to your main function.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HadoopJarStepConfig withProperties(java.util.Collection<KeyValue> properties) {
         if (properties == null) {
             this.properties = null;
         } else {
-            java.util.List<KeyValue> propertiesCopy = new java.util.ArrayList<KeyValue>(properties.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<KeyValue> propertiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<KeyValue>(properties.size());
             propertiesCopy.addAll(properties);
             this.properties = propertiesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A path to a JAR file run during the step.
      * <p>
@@ -189,14 +188,13 @@ public class HadoopJarStepConfig  implements Serializable  {
      * @param jar A path to a JAR file run during the step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HadoopJarStepConfig withJar(String jar) {
         this.jar = jar;
         return this;
     }
-    
-    
+
     /**
      * The name of the main class in the specified Java file. If not
      * specified, the JAR file should specify a Main-Class in its manifest
@@ -247,14 +245,13 @@ public class HadoopJarStepConfig  implements Serializable  {
      *         file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HadoopJarStepConfig withMainClass(String mainClass) {
         this.mainClass = mainClass;
         return this;
     }
-    
-    
+
     /**
      * A list of command line arguments passed to the JAR file's main
      * function when executed.
@@ -263,9 +260,9 @@ public class HadoopJarStepConfig  implements Serializable  {
      *         function when executed.
      */
     public java.util.List<String> getArgs() {
-        
         if (args == null) {
-            args = new java.util.ArrayList<String>();
+              args = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              args.setAutoConstruct(true);
         }
         return args;
     }
@@ -282,8 +279,7 @@ public class HadoopJarStepConfig  implements Serializable  {
             this.args = null;
             return;
         }
-
-        java.util.List<String> argsCopy = new java.util.ArrayList<String>(args.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> argsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(args.size());
         argsCopy.addAll(args);
         this.args = argsCopy;
     }
@@ -298,7 +294,7 @@ public class HadoopJarStepConfig  implements Serializable  {
      *         function when executed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HadoopJarStepConfig withArgs(String... args) {
         if (getArgs() == null) setArgs(new java.util.ArrayList<String>(args.length));
@@ -318,20 +314,20 @@ public class HadoopJarStepConfig  implements Serializable  {
      *         function when executed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HadoopJarStepConfig withArgs(java.util.Collection<String> args) {
         if (args == null) {
             this.args = null;
         } else {
-            java.util.List<String> argsCopy = new java.util.ArrayList<String>(args.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> argsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(args.size());
             argsCopy.addAll(args);
             this.args = argsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -343,10 +339,10 @@ public class HadoopJarStepConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProperties() != null) sb.append("Properties: " + getProperties() + ",");    	
-        if (getJar() != null) sb.append("Jar: " + getJar() + ",");    	
-        if (getMainClass() != null) sb.append("MainClass: " + getMainClass() + ",");    	
+        sb.append("{");
+        if (getProperties() != null) sb.append("Properties: " + getProperties() + ",");
+        if (getJar() != null) sb.append("Jar: " + getJar() + ",");
+        if (getMainClass() != null) sb.append("MainClass: " + getMainClass() + ",");
         if (getArgs() != null) sb.append("Args: " + getArgs() );
         sb.append("}");
         return sb.toString();

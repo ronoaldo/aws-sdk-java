@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the action DescribeCacheEngineVersions.
+ * Provides all of the details about a particular cache engine version.
  * </p>
  */
-public class CacheEngineVersion  implements Serializable  {
+public class CacheEngineVersion implements Serializable {
 
     /**
      * The name of the cache engine.
@@ -33,7 +34,8 @@ public class CacheEngineVersion  implements Serializable  {
     private String engineVersion;
 
     /**
-     * The name of the CacheParameterGroupFamily for the cache engine.
+     * The name of the cache parameter group family associated with this
+     * cache engine.
      */
     private String cacheParameterGroupFamily;
 
@@ -73,14 +75,13 @@ public class CacheEngineVersion  implements Serializable  {
      * @param engine The name of the cache engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheEngineVersion withEngine(String engine) {
         this.engine = engine;
         return this;
     }
-    
-    
+
     /**
      * The version number of the cache engine.
      *
@@ -107,48 +108,52 @@ public class CacheEngineVersion  implements Serializable  {
      * @param engineVersion The version number of the cache engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheEngineVersion withEngineVersion(String engineVersion) {
         this.engineVersion = engineVersion;
         return this;
     }
-    
-    
+
     /**
-     * The name of the CacheParameterGroupFamily for the cache engine.
+     * The name of the cache parameter group family associated with this
+     * cache engine.
      *
-     * @return The name of the CacheParameterGroupFamily for the cache engine.
+     * @return The name of the cache parameter group family associated with this
+     *         cache engine.
      */
     public String getCacheParameterGroupFamily() {
         return cacheParameterGroupFamily;
     }
     
     /**
-     * The name of the CacheParameterGroupFamily for the cache engine.
+     * The name of the cache parameter group family associated with this
+     * cache engine.
      *
-     * @param cacheParameterGroupFamily The name of the CacheParameterGroupFamily for the cache engine.
+     * @param cacheParameterGroupFamily The name of the cache parameter group family associated with this
+     *         cache engine.
      */
     public void setCacheParameterGroupFamily(String cacheParameterGroupFamily) {
         this.cacheParameterGroupFamily = cacheParameterGroupFamily;
     }
     
     /**
-     * The name of the CacheParameterGroupFamily for the cache engine.
+     * The name of the cache parameter group family associated with this
+     * cache engine.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroupFamily The name of the CacheParameterGroupFamily for the cache engine.
+     * @param cacheParameterGroupFamily The name of the cache parameter group family associated with this
+     *         cache engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheEngineVersion withCacheParameterGroupFamily(String cacheParameterGroupFamily) {
         this.cacheParameterGroupFamily = cacheParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * The description of the cache engine.
      *
@@ -175,14 +180,13 @@ public class CacheEngineVersion  implements Serializable  {
      * @param cacheEngineDescription The description of the cache engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheEngineVersion withCacheEngineDescription(String cacheEngineDescription) {
         this.cacheEngineDescription = cacheEngineDescription;
         return this;
     }
-    
-    
+
     /**
      * The description of the cache engine version.
      *
@@ -209,14 +213,13 @@ public class CacheEngineVersion  implements Serializable  {
      * @param cacheEngineVersionDescription The description of the cache engine version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheEngineVersion withCacheEngineVersionDescription(String cacheEngineVersionDescription) {
         this.cacheEngineVersionDescription = cacheEngineVersionDescription;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -228,11 +231,11 @@ public class CacheEngineVersion  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");    	
-        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");    	
-        if (getCacheParameterGroupFamily() != null) sb.append("CacheParameterGroupFamily: " + getCacheParameterGroupFamily() + ",");    	
-        if (getCacheEngineDescription() != null) sb.append("CacheEngineDescription: " + getCacheEngineDescription() + ",");    	
+        sb.append("{");
+        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");
+        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");
+        if (getCacheParameterGroupFamily() != null) sb.append("CacheParameterGroupFamily: " + getCacheParameterGroupFamily() + ",");
+        if (getCacheEngineDescription() != null) sb.append("CacheEngineDescription: " + getCacheEngineDescription() + ",");
         if (getCacheEngineVersionDescription() != null) sb.append("CacheEngineVersionDescription: " + getCacheEngineVersionDescription() );
         sb.append("}");
         return sb.toString();

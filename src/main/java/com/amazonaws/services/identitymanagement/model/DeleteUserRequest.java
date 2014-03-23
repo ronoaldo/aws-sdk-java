@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteUser(DeleteUserRequest) DeleteUser operation}.
  * <p>
- * Deletes the specified user. The user must not belong to any groups, have any keys or signing certificates, or have any attached policies.
+ * Deletes the specified user. The user must not belong to any groups,
+ * have any keys or signing certificates, or have any attached policies.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteUser(DeleteUserRequest)
  */
-public class DeleteUserRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteUserRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the user to delete.
@@ -49,11 +52,9 @@ public class DeleteUserRequest extends AmazonWebServiceRequest  implements Seria
      * @param userName Name of the user to delete.
      */
     public DeleteUserRequest(String userName) {
-        this.userName = userName;
+        setUserName(userName);
     }
 
-    
-    
     /**
      * Name of the user to delete.
      * <p>
@@ -92,14 +93,13 @@ public class DeleteUserRequest extends AmazonWebServiceRequest  implements Seria
      * @param userName Name of the user to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteUserRequest withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +111,7 @@ public class DeleteUserRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getUserName() != null) sb.append("UserName: " + getUserName() );
         sb.append("}");
         return sb.toString();

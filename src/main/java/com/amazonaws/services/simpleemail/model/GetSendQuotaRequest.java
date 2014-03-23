@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendQuota(GetSendQuotaRequest) GetSendQuota operation}.
  * <p>
  * Returns the user's current sending limits.
  * </p>
+ * <p>
+ * This action is throttled at one request per second.
+ * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendQuota(GetSendQuotaRequest)
  */
-public class GetSendQuotaRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetSendQuotaRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Returns a string representation of this object; useful for testing and

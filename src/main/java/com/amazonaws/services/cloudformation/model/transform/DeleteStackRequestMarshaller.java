@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteStackRequestMarshaller implements Marshaller<Request<DeleteSt
     public Request<DeleteStackRequest> marshall(DeleteStackRequest deleteStackRequest) {
 
         if (deleteStackRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteStackRequest> request = new DefaultRequest<DeleteStackRequest>(deleteStackRequest, "AmazonCloudFormation");
         request.addParameter("Action", "DeleteStack");
@@ -43,7 +43,6 @@ public class DeleteStackRequestMarshaller implements Marshaller<Request<DeleteSt
         if (deleteStackRequest.getStackName() != null) {
             request.addParameter("StackName", StringUtils.fromString(deleteStackRequest.getStackName()));
         }
-
 
         return request;
     }

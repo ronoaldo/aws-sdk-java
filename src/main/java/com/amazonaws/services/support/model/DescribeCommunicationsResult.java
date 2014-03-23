@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,70 +13,64 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class DescribeCommunicationsResult  implements Serializable  {
+public class DescribeCommunicationsResult implements Serializable {
 
     /**
-     * Contains a list of <a href="API_Communication.html"
-     * title="Communication">Communications</a> objects.
+     * The communications for the case.
      */
-    private java.util.List<Communication> communications;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Communication> communications;
 
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      */
     private String nextToken;
 
     /**
-     * Contains a list of <a href="API_Communication.html"
-     * title="Communication">Communications</a> objects.
+     * The communications for the case.
      *
-     * @return Contains a list of <a href="API_Communication.html"
-     *         title="Communication">Communications</a> objects.
+     * @return The communications for the case.
      */
     public java.util.List<Communication> getCommunications() {
-        
         if (communications == null) {
-            communications = new java.util.ArrayList<Communication>();
+              communications = new com.amazonaws.internal.ListWithAutoConstructFlag<Communication>();
+              communications.setAutoConstruct(true);
         }
         return communications;
     }
     
     /**
-     * Contains a list of <a href="API_Communication.html"
-     * title="Communication">Communications</a> objects.
+     * The communications for the case.
      *
-     * @param communications Contains a list of <a href="API_Communication.html"
-     *         title="Communication">Communications</a> objects.
+     * @param communications The communications for the case.
      */
     public void setCommunications(java.util.Collection<Communication> communications) {
         if (communications == null) {
             this.communications = null;
             return;
         }
-
-        java.util.List<Communication> communicationsCopy = new java.util.ArrayList<Communication>(communications.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Communication> communicationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Communication>(communications.size());
         communicationsCopy.addAll(communications);
         this.communications = communicationsCopy;
     }
     
     /**
-     * Contains a list of <a href="API_Communication.html"
-     * title="Communication">Communications</a> objects.
+     * The communications for the case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param communications Contains a list of <a href="API_Communication.html"
-     *         title="Communication">Communications</a> objects.
+     * @param communications The communications for the case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommunicationsResult withCommunications(Communication... communications) {
         if (getCommunications() == null) setCommunications(new java.util.ArrayList<Communication>(communications.length));
@@ -87,63 +81,60 @@ public class DescribeCommunicationsResult  implements Serializable  {
     }
     
     /**
-     * Contains a list of <a href="API_Communication.html"
-     * title="Communication">Communications</a> objects.
+     * The communications for the case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param communications Contains a list of <a href="API_Communication.html"
-     *         title="Communication">Communications</a> objects.
+     * @param communications The communications for the case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommunicationsResult withCommunications(java.util.Collection<Communication> communications) {
         if (communications == null) {
             this.communications = null;
         } else {
-            java.util.List<Communication> communicationsCopy = new java.util.ArrayList<Communication>(communications.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Communication> communicationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Communication>(communications.size());
             communicationsCopy.addAll(communications);
             this.communications = communicationsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @return Defines a resumption point for pagination.
+     * @return A resumption point for pagination.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommunicationsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +146,8 @@ public class DescribeCommunicationsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCommunications() != null) sb.append("Communications: " + getCommunications() + ",");    	
+        sb.append("{");
+        if (getCommunications() != null) sb.append("Communications: " + getCommunications() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

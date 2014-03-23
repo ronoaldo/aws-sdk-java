@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the DescribeReservedCacheNodes and PurchaseReservedCacheNodesOffering actions.
+ * Represents the output of a <i>PurchaseReservedCacheNodesOffering</i>
+ * operation.
  * </p>
  */
-public class ReservedCacheNode  implements Serializable  {
+public class ReservedCacheNode implements Serializable {
 
     /**
      * The unique identifier for the reservation.
@@ -33,7 +35,7 @@ public class ReservedCacheNode  implements Serializable  {
     private String reservedCacheNodesOfferingId;
 
     /**
-     * The cache node type for the reserved Cache Node.
+     * The cache node type for the reserved cache nodes.
      */
     private String cacheNodeType;
 
@@ -48,39 +50,39 @@ public class ReservedCacheNode  implements Serializable  {
     private Integer duration;
 
     /**
-     * The fixed price charged for this reserved Cache Node.
+     * The fixed price charged for this reserved cache node.
      */
     private Double fixedPrice;
 
     /**
-     * The hourly price charged for this reserved Cache Node.
+     * The hourly price charged for this reserved cache node.
      */
     private Double usagePrice;
 
     /**
-     * The number of reserved Cache Nodes.
+     * The number of cache nodes that have been reserved.
      */
     private Integer cacheNodeCount;
 
     /**
-     * The description of the reserved Cache Node.
+     * The description of the reserved cache node.
      */
     private String productDescription;
 
     /**
-     * The offering type of this reserved Cache Node.
+     * The offering type of this reserved cache node.
      */
     private String offeringType;
 
     /**
-     * The state of the reserved Cache Node.
+     * The state of the reserved cache node.
      */
     private String state;
 
     /**
-     * The recurring price charged to run this reserved Cache Node.
+     * The recurring price charged to run this reserved cache node.
      */
-    private java.util.List<RecurringCharge> recurringCharges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringCharges;
 
     /**
      * The unique identifier for the reservation.
@@ -108,14 +110,13 @@ public class ReservedCacheNode  implements Serializable  {
      * @param reservedCacheNodeId The unique identifier for the reservation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withReservedCacheNodeId(String reservedCacheNodeId) {
         this.reservedCacheNodeId = reservedCacheNodeId;
         return this;
     }
-    
-    
+
     /**
      * The offering identifier.
      *
@@ -142,48 +143,46 @@ public class ReservedCacheNode  implements Serializable  {
      * @param reservedCacheNodesOfferingId The offering identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withReservedCacheNodesOfferingId(String reservedCacheNodesOfferingId) {
         this.reservedCacheNodesOfferingId = reservedCacheNodesOfferingId;
         return this;
     }
-    
-    
+
     /**
-     * The cache node type for the reserved Cache Node.
+     * The cache node type for the reserved cache nodes.
      *
-     * @return The cache node type for the reserved Cache Node.
+     * @return The cache node type for the reserved cache nodes.
      */
     public String getCacheNodeType() {
         return cacheNodeType;
     }
     
     /**
-     * The cache node type for the reserved Cache Node.
+     * The cache node type for the reserved cache nodes.
      *
-     * @param cacheNodeType The cache node type for the reserved Cache Node.
+     * @param cacheNodeType The cache node type for the reserved cache nodes.
      */
     public void setCacheNodeType(String cacheNodeType) {
         this.cacheNodeType = cacheNodeType;
     }
     
     /**
-     * The cache node type for the reserved Cache Node.
+     * The cache node type for the reserved cache nodes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeType The cache node type for the reserved Cache Node.
+     * @param cacheNodeType The cache node type for the reserved cache nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withCacheNodeType(String cacheNodeType) {
         this.cacheNodeType = cacheNodeType;
         return this;
     }
-    
-    
+
     /**
      * The time the reservation started.
      *
@@ -210,14 +209,13 @@ public class ReservedCacheNode  implements Serializable  {
      * @param startTime The time the reservation started.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The duration of the reservation in seconds.
      *
@@ -244,256 +242,248 @@ public class ReservedCacheNode  implements Serializable  {
      * @param duration The duration of the reservation in seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withDuration(Integer duration) {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
-     * The fixed price charged for this reserved Cache Node.
+     * The fixed price charged for this reserved cache node.
      *
-     * @return The fixed price charged for this reserved Cache Node.
+     * @return The fixed price charged for this reserved cache node.
      */
     public Double getFixedPrice() {
         return fixedPrice;
     }
     
     /**
-     * The fixed price charged for this reserved Cache Node.
+     * The fixed price charged for this reserved cache node.
      *
-     * @param fixedPrice The fixed price charged for this reserved Cache Node.
+     * @param fixedPrice The fixed price charged for this reserved cache node.
      */
     public void setFixedPrice(Double fixedPrice) {
         this.fixedPrice = fixedPrice;
     }
     
     /**
-     * The fixed price charged for this reserved Cache Node.
+     * The fixed price charged for this reserved cache node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param fixedPrice The fixed price charged for this reserved Cache Node.
+     * @param fixedPrice The fixed price charged for this reserved cache node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withFixedPrice(Double fixedPrice) {
         this.fixedPrice = fixedPrice;
         return this;
     }
-    
-    
+
     /**
-     * The hourly price charged for this reserved Cache Node.
+     * The hourly price charged for this reserved cache node.
      *
-     * @return The hourly price charged for this reserved Cache Node.
+     * @return The hourly price charged for this reserved cache node.
      */
     public Double getUsagePrice() {
         return usagePrice;
     }
     
     /**
-     * The hourly price charged for this reserved Cache Node.
+     * The hourly price charged for this reserved cache node.
      *
-     * @param usagePrice The hourly price charged for this reserved Cache Node.
+     * @param usagePrice The hourly price charged for this reserved cache node.
      */
     public void setUsagePrice(Double usagePrice) {
         this.usagePrice = usagePrice;
     }
     
     /**
-     * The hourly price charged for this reserved Cache Node.
+     * The hourly price charged for this reserved cache node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param usagePrice The hourly price charged for this reserved Cache Node.
+     * @param usagePrice The hourly price charged for this reserved cache node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withUsagePrice(Double usagePrice) {
         this.usagePrice = usagePrice;
         return this;
     }
-    
-    
+
     /**
-     * The number of reserved Cache Nodes.
+     * The number of cache nodes that have been reserved.
      *
-     * @return The number of reserved Cache Nodes.
+     * @return The number of cache nodes that have been reserved.
      */
     public Integer getCacheNodeCount() {
         return cacheNodeCount;
     }
     
     /**
-     * The number of reserved Cache Nodes.
+     * The number of cache nodes that have been reserved.
      *
-     * @param cacheNodeCount The number of reserved Cache Nodes.
+     * @param cacheNodeCount The number of cache nodes that have been reserved.
      */
     public void setCacheNodeCount(Integer cacheNodeCount) {
         this.cacheNodeCount = cacheNodeCount;
     }
     
     /**
-     * The number of reserved Cache Nodes.
+     * The number of cache nodes that have been reserved.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeCount The number of reserved Cache Nodes.
+     * @param cacheNodeCount The number of cache nodes that have been reserved.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withCacheNodeCount(Integer cacheNodeCount) {
         this.cacheNodeCount = cacheNodeCount;
         return this;
     }
-    
-    
+
     /**
-     * The description of the reserved Cache Node.
+     * The description of the reserved cache node.
      *
-     * @return The description of the reserved Cache Node.
+     * @return The description of the reserved cache node.
      */
     public String getProductDescription() {
         return productDescription;
     }
     
     /**
-     * The description of the reserved Cache Node.
+     * The description of the reserved cache node.
      *
-     * @param productDescription The description of the reserved Cache Node.
+     * @param productDescription The description of the reserved cache node.
      */
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
     }
     
     /**
-     * The description of the reserved Cache Node.
+     * The description of the reserved cache node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productDescription The description of the reserved Cache Node.
+     * @param productDescription The description of the reserved cache node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withProductDescription(String productDescription) {
         this.productDescription = productDescription;
         return this;
     }
-    
-    
+
     /**
-     * The offering type of this reserved Cache Node.
+     * The offering type of this reserved cache node.
      *
-     * @return The offering type of this reserved Cache Node.
+     * @return The offering type of this reserved cache node.
      */
     public String getOfferingType() {
         return offeringType;
     }
     
     /**
-     * The offering type of this reserved Cache Node.
+     * The offering type of this reserved cache node.
      *
-     * @param offeringType The offering type of this reserved Cache Node.
+     * @param offeringType The offering type of this reserved cache node.
      */
     public void setOfferingType(String offeringType) {
         this.offeringType = offeringType;
     }
     
     /**
-     * The offering type of this reserved Cache Node.
+     * The offering type of this reserved cache node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param offeringType The offering type of this reserved Cache Node.
+     * @param offeringType The offering type of this reserved cache node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withOfferingType(String offeringType) {
         this.offeringType = offeringType;
         return this;
     }
-    
-    
+
     /**
-     * The state of the reserved Cache Node.
+     * The state of the reserved cache node.
      *
-     * @return The state of the reserved Cache Node.
+     * @return The state of the reserved cache node.
      */
     public String getState() {
         return state;
     }
     
     /**
-     * The state of the reserved Cache Node.
+     * The state of the reserved cache node.
      *
-     * @param state The state of the reserved Cache Node.
+     * @param state The state of the reserved cache node.
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * The state of the reserved Cache Node.
+     * The state of the reserved cache node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param state The state of the reserved Cache Node.
+     * @param state The state of the reserved cache node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withState(String state) {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
-     * The recurring price charged to run this reserved Cache Node.
+     * The recurring price charged to run this reserved cache node.
      *
-     * @return The recurring price charged to run this reserved Cache Node.
+     * @return The recurring price charged to run this reserved cache node.
      */
     public java.util.List<RecurringCharge> getRecurringCharges() {
-        
         if (recurringCharges == null) {
-            recurringCharges = new java.util.ArrayList<RecurringCharge>();
+              recurringCharges = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>();
+              recurringCharges.setAutoConstruct(true);
         }
         return recurringCharges;
     }
     
     /**
-     * The recurring price charged to run this reserved Cache Node.
+     * The recurring price charged to run this reserved cache node.
      *
-     * @param recurringCharges The recurring price charged to run this reserved Cache Node.
+     * @param recurringCharges The recurring price charged to run this reserved cache node.
      */
     public void setRecurringCharges(java.util.Collection<RecurringCharge> recurringCharges) {
         if (recurringCharges == null) {
             this.recurringCharges = null;
             return;
         }
-
-        java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
         recurringChargesCopy.addAll(recurringCharges);
         this.recurringCharges = recurringChargesCopy;
     }
     
     /**
-     * The recurring price charged to run this reserved Cache Node.
+     * The recurring price charged to run this reserved cache node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param recurringCharges The recurring price charged to run this reserved Cache Node.
+     * @param recurringCharges The recurring price charged to run this reserved cache node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withRecurringCharges(RecurringCharge... recurringCharges) {
         if (getRecurringCharges() == null) setRecurringCharges(new java.util.ArrayList<RecurringCharge>(recurringCharges.length));
@@ -504,27 +494,27 @@ public class ReservedCacheNode  implements Serializable  {
     }
     
     /**
-     * The recurring price charged to run this reserved Cache Node.
+     * The recurring price charged to run this reserved cache node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param recurringCharges The recurring price charged to run this reserved Cache Node.
+     * @param recurringCharges The recurring price charged to run this reserved cache node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedCacheNode withRecurringCharges(java.util.Collection<RecurringCharge> recurringCharges) {
         if (recurringCharges == null) {
             this.recurringCharges = null;
         } else {
-            java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
             recurringChargesCopy.addAll(recurringCharges);
             this.recurringCharges = recurringChargesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -536,18 +526,18 @@ public class ReservedCacheNode  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedCacheNodeId() != null) sb.append("ReservedCacheNodeId: " + getReservedCacheNodeId() + ",");    	
-        if (getReservedCacheNodesOfferingId() != null) sb.append("ReservedCacheNodesOfferingId: " + getReservedCacheNodesOfferingId() + ",");    	
-        if (getCacheNodeType() != null) sb.append("CacheNodeType: " + getCacheNodeType() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");    	
-        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");    	
-        if (getCacheNodeCount() != null) sb.append("CacheNodeCount: " + getCacheNodeCount() + ",");    	
-        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");    	
-        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
+        sb.append("{");
+        if (getReservedCacheNodeId() != null) sb.append("ReservedCacheNodeId: " + getReservedCacheNodeId() + ",");
+        if (getReservedCacheNodesOfferingId() != null) sb.append("ReservedCacheNodesOfferingId: " + getReservedCacheNodesOfferingId() + ",");
+        if (getCacheNodeType() != null) sb.append("CacheNodeType: " + getCacheNodeType() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");
+        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");
+        if (getCacheNodeCount() != null) sb.append("CacheNodeCount: " + getCacheNodeCount() + ",");
+        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");
+        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
         if (getRecurringCharges() != null) sb.append("RecurringCharges: " + getRecurringCharges() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -137,6 +137,9 @@ public class DynamoDBQueryExpression <T> {
     /**
      * Sets the hash key value(s) for this query. All hash key attributes for
      * the table must be specified with this key object.
+     * 
+     * Note 1: Currently the DynamoDBMapper supports only one value per hash key.
+     * Note 2: Currently the Amazon DynamoDB supports only one hash key per table.   
      */
     public void setHashKeyValues(T hashKeyValues) {
         this.hashKeyValues = hashKeyValues;
@@ -189,7 +192,7 @@ public class DynamoDBQueryExpression <T> {
     /**
      * Sets one range key condition for this query, using the attribute name of
      * the range key. All range key attributes for the table must be specified
-     * by using {@link @DynamoDBRangeKey} or {@link @DynamoDBIndexRangeKey} annotations
+     * by using {@link DynamoDBRangeKey} or {@link DynamoDBIndexRangeKey} annotations
      * before executing the query.
      * 		<dl>
      * 			<dt>If the attribute is the primary range key</dt>
@@ -223,7 +226,7 @@ public class DynamoDBQueryExpression <T> {
 
     /**
      * Sets the name of the index to be used by this query. All index names must be specified by using
-     * {@link @DynamoDBIndexRangeKey} annotation on the getter method of the corresponding index range key
+     * {@link DynamoDBIndexRangeKey} annotation on the getter method of the corresponding index range key
      * before executing the query.
      */
     public void setIndexName(String indexName) {
@@ -232,7 +235,7 @@ public class DynamoDBQueryExpression <T> {
 
     /**
      * Sets the name of the index to be used by this query. All index names must be specified by using
-     * {@link @DynamoDBIndexRangeKey} annotation on the getter method of the corresponding index range key
+     * {@link DynamoDBIndexRangeKey} annotation on the getter method of the corresponding index range key
      * before executing the query.
      * <p>Returns a pointer to this object for method-chaining.
      */

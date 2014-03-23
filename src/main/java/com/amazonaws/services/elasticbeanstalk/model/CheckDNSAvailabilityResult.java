@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Indicates if the specified CNAME is available.
  * </p>
  */
-public class CheckDNSAvailabilityResult  implements Serializable  {
+public class CheckDNSAvailabilityResult implements Serializable {
 
     /**
      * Indicates if the specified CNAME is available: <enumValues> <value
@@ -97,14 +98,13 @@ public class CheckDNSAvailabilityResult  implements Serializable  {
      *         not available. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CheckDNSAvailabilityResult withAvailable(Boolean available) {
         this.available = available;
         return this;
     }
-    
-    
+
     /**
      * Indicates if the specified CNAME is available: <enumValues> <value
      * name="true"> <p> <code>true</code> : The CNAME is available. </value>
@@ -123,7 +123,7 @@ public class CheckDNSAvailabilityResult  implements Serializable  {
     public Boolean getAvailable() {
         return available;
     }
-    
+
     /**
      * The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is
      * called with the provided prefix.
@@ -165,14 +165,13 @@ public class CheckDNSAvailabilityResult  implements Serializable  {
      *         called with the provided prefix.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CheckDNSAvailabilityResult withFullyQualifiedCNAME(String fullyQualifiedCNAME) {
         this.fullyQualifiedCNAME = fullyQualifiedCNAME;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -184,8 +183,8 @@ public class CheckDNSAvailabilityResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (isAvailable() != null) sb.append("Available: " + isAvailable() + ",");    	
+        sb.append("{");
+        if (isAvailable() != null) sb.append("Available: " + isAvailable() + ",");
         if (getFullyQualifiedCNAME() != null) sb.append("FullyQualifiedCNAME: " + getFullyQualifiedCNAME() );
         sb.append("}");
         return sb.toString();

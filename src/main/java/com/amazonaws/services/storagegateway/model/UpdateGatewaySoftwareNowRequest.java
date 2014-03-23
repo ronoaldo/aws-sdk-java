@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#updateGatewaySoftwareNow(UpdateGatewaySoftwareNowRequest) UpdateGatewaySoftwareNow operation}.
  * <p>
- * This operation updates the gateway virtual machine (VM) software. The request immediately triggers the software update.
+ * This operation updates the gateway virtual machine (VM) software. The
+ * request immediately triggers the software update.
  * </p>
  * <p>
- * <b>NOTE:</b>When you make this request, you get a 200 OK success response immediately. However, it might take some time for the update to complete.
- * You can call DescribeGatewayInformation to verify the gateway is in the STATE_RUNNING state.
+ * <b>NOTE:</b>When you make this request, you get a 200 OK success
+ * response immediately. However, it might take some time for the update
+ * to complete. You can call DescribeGatewayInformation to verify the
+ * gateway is in the STATE_RUNNING state.
  * </p>
  * <p>
- * <b>IMPORTANT:</b>A software update forces a system restart of your gateway. You can minimize the chance of any disruption to your applications by
- * increasing your iSCSI Initiators' timeouts. For more information about increasing iSCSI Initiator timeouts for Windows and Linux, see Customizing Your
- * Windows iSCSI Settings and Customizing Your Linux iSCSI Settings, respectively.
+ * <b>IMPORTANT:</b>A software update forces a system restart of your
+ * gateway. You can minimize the chance of any disruption to your
+ * applications by increasing your iSCSI Initiators' timeouts. For more
+ * information about increasing iSCSI Initiator timeouts for Windows and
+ * Linux, see Customizing Your Windows iSCSI Settings and Customizing
+ * Your Linux iSCSI Settings, respectively.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#updateGatewaySoftwareNow(UpdateGatewaySoftwareNowRequest)
  */
-public class UpdateGatewaySoftwareNowRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateGatewaySoftwareNowRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -92,14 +100,13 @@ public class UpdateGatewaySoftwareNowRequest extends AmazonWebServiceRequest  im
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateGatewaySoftwareNowRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +118,7 @@ public class UpdateGatewaySoftwareNowRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

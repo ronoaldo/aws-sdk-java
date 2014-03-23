@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,13 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#retrieveEnvironmentInfo(RetrieveEnvironmentInfoRequest) RetrieveEnvironmentInfo operation}.
  * <p>
- * Retrieves the compiled information from a RequestEnvironmentInfo request.
+ * Retrieves the compiled information from a RequestEnvironmentInfo
+ * request.
  * </p>
  * <p>
  * Related Topics
@@ -32,7 +35,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#retrieveEnvironmentInfo(RetrieveEnvironmentInfoRequest)
  */
-public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the data's environment. <p> If no such environment is found,
@@ -77,11 +80,9 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
      * @param infoType The type of information to retrieve.
      */
     public RetrieveEnvironmentInfoRequest(String infoType) {
-        this.infoType = infoType;
+        setInfoType(infoType);
     }
 
-    
-    
     /**
      * Constructs a new RetrieveEnvironmentInfoRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -92,7 +93,7 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
     public RetrieveEnvironmentInfoRequest(EnvironmentInfoType infoType) {
         this.infoType = infoType.toString();
     }
-    
+
     /**
      * The ID of the data's environment. <p> If no such environment is found,
      * returns an <code>InvalidParameterValue</code> error. <p> Condition:
@@ -143,14 +144,13 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RetrieveEnvironmentInfoRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the data's environment. <p> If no such environment is
      * found, returns an <code>InvalidParameterValue</code> error. <p>
@@ -210,14 +210,13 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RetrieveEnvironmentInfoRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * The type of information to retrieve.
      * <p>
@@ -257,7 +256,7 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
      * @param infoType The type of information to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentInfoType
      */
@@ -265,8 +264,7 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
         this.infoType = infoType;
         return this;
     }
-    
-    
+
     /**
      * The type of information to retrieve.
      * <p>
@@ -292,7 +290,7 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
      * @param infoType The type of information to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentInfoType
      */
@@ -300,7 +298,7 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
         this.infoType = infoType.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -312,9 +310,9 @@ public class RetrieveEnvironmentInfoRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
+        sb.append("{");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
         if (getInfoType() != null) sb.append("InfoType: " + getInfoType() );
         sb.append("}");
         return sb.toString();

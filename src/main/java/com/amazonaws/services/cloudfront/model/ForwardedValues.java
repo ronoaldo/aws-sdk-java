@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A complex type that specifies how CloudFront handles query strings.
  * </p>
  */
-public class ForwardedValues  implements Serializable  {
+public class ForwardedValues implements Serializable {
 
     /**
      * Indicates whether you want CloudFront to forward query strings to the
@@ -72,14 +73,13 @@ public class ForwardedValues  implements Serializable  {
      *         true; if not, specify false.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ForwardedValues withQueryString(Boolean queryString) {
         this.queryString = queryString;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether you want CloudFront to forward query strings to the
      * origin that is associated with this cache behavior. If so, specify
@@ -92,7 +92,7 @@ public class ForwardedValues  implements Serializable  {
     public Boolean getQueryString() {
         return queryString;
     }
-    
+
     /**
      * A complex type that specifies how CloudFront handles cookies.
      *
@@ -119,14 +119,13 @@ public class ForwardedValues  implements Serializable  {
      * @param cookies A complex type that specifies how CloudFront handles cookies.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ForwardedValues withCookies(CookiePreference cookies) {
         this.cookies = cookies;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +137,8 @@ public class ForwardedValues  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (isQueryString() != null) sb.append("QueryString: " + isQueryString() + ",");    	
+        sb.append("{");
+        if (isQueryString() != null) sb.append("QueryString: " + isQueryString() + ",");
         if (getCookies() != null) sb.append("Cookies: " + getCookies() );
         sb.append("}");
         return sb.toString();

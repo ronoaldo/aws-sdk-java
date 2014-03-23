@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.util;
+import static com.amazonaws.util.StringUtils.UTF8;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.text.ParseException;
@@ -36,10 +36,7 @@ import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
-import com.amazonaws.AmazonClientException;
 
 /**
  * Utility methods for extracting data from XML documents using Xpath
@@ -275,13 +272,10 @@ public class XpathUtils {
         if (isEmptyString(base64EncodedString)) return null;
 
         if (!isEmpty(node)) {
-            try {
-                byte[] base64EncodedBytes = base64EncodedString.getBytes("UTF-8");
-                byte[] decodedBytes = Base64.decodeBase64(base64EncodedBytes);
-                return ByteBuffer.wrap(decodedBytes);
-            } catch (UnsupportedEncodingException e) {
-                throw new AmazonClientException("Unable to unmarshall XML data into a ByteBuffer", e);
-            }
+            byte[] base64EncodedBytes = base64EncodedString
+                    .getBytes(UTF8);
+            byte[] decodedBytes = Base64.decodeBase64(base64EncodedBytes);
+            return ByteBuffer.wrap(decodedBytes);
         }
         return null;
     }
@@ -349,7 +343,7 @@ public class XpathUtils {
     private static String evaluateAsString(String expression, Node node) throws XPathExpressionException {
         if (isEmpty(node)) return null;
 
-        if (expression != ".") {
+        if (!expression.equals(".")) {
             /*
              * If the expression being evaluated doesn't select a node, we want
              * to return null to distinguish between cases where a node isn't

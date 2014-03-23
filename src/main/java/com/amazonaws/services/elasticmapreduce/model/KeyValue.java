@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A key value pair.
  * </p>
  */
-public class KeyValue  implements Serializable  {
+public class KeyValue implements Serializable {
 
     /**
      * The unique identifier of a key value pair.
@@ -55,12 +56,10 @@ public class KeyValue  implements Serializable  {
      * @param value The value part of the identified key.
      */
     public KeyValue(String key, String value) {
-        this.key = key;
-        this.value = value;
+        setKey(key);
+        setValue(value);
     }
 
-    
-    
     /**
      * The unique identifier of a key value pair.
      * <p>
@@ -99,14 +98,13 @@ public class KeyValue  implements Serializable  {
      * @param key The unique identifier of a key value pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeyValue withKey(String key) {
         this.key = key;
         return this;
     }
-    
-    
+
     /**
      * The value part of the identified key.
      * <p>
@@ -145,14 +143,13 @@ public class KeyValue  implements Serializable  {
      * @param value The value part of the identified key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeyValue withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -164,8 +161,8 @@ public class KeyValue  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
+        sb.append("{");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

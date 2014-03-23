@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#createUser(CreateUserRequest) CreateUser operation}.
@@ -22,18 +24,19 @@ import java.io.Serializable;
  * Creates a new user for your AWS account.
  * </p>
  * <p>
- * For information about limitations on the number of users you can create, see <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a> in <i>Using AWS
- * Identity and Access Management</i> .
+ * For information about limitations on the number of users you can
+ * create, see
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a>
+ * in <i>Using AWS Identity and Access Management</i> .
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#createUser(CreateUserRequest)
  */
-public class CreateUserRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateUserRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The path for the user name. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -67,14 +70,12 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
      * @param userName Name of the user to create.
      */
     public CreateUserRequest(String userName) {
-        this.userName = userName;
+        setUserName(userName);
     }
 
-    
-    
     /**
      * The path for the user name. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -84,7 +85,7 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @return The path for the user name. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>. <p>This parameter is optional. If
      *         it is not included, it defaults to a slash (/).
@@ -95,7 +96,7 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
     
     /**
      * The path for the user name. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -105,7 +106,7 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @param path The path for the user name. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>. <p>This parameter is optional. If
      *         it is not included, it defaults to a slash (/).
@@ -116,7 +117,7 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
     
     /**
      * The path for the user name. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -128,20 +129,19 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @param path The path for the user name. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>. <p>This parameter is optional. If
      *         it is not included, it defaults to a slash (/).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateUserRequest withPath(String path) {
         this.path = path;
         return this;
     }
-    
-    
+
     /**
      * Name of the user to create.
      * <p>
@@ -180,14 +180,13 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
      * @param userName Name of the user to create.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateUserRequest withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -199,8 +198,8 @@ public class CreateUserRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPath() != null) sb.append("Path: " + getPath() + ",");    	
+        sb.append("{");
+        if (getPath() != null) sb.append("Path: " + getPath() + ",");
         if (getUserName() != null) sb.append("UserName: " + getUserName() );
         sb.append("}");
         return sb.toString();

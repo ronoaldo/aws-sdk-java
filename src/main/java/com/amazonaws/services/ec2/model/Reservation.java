@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,200 +13,189 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An Amazon EC2 reservation of requested EC2 instances.
+ * Describes a reservation.
  * </p>
  */
-public class Reservation  implements Serializable  {
+public class Reservation implements Serializable {
 
     /**
-     * The unique ID of this reservation.
+     * The ID of the reservation.
      */
     private String reservationId;
 
     /**
-     * The AWS Access Key ID of the user who owns the reservation.
+     * The ID of the AWS account that owns the reservation.
      */
     private String ownerId;
 
     /**
-     * The unique ID of the user who requested the instances in this
-     * reservation.
+     * The ID of the requester that launched the instances on your behalf
+     * (for example, AWS Management Console or Auto Scaling).
      */
     private String requesterId;
 
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      */
-    private java.util.List<GroupIdentifier> groups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> groups;
 
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      */
-    private java.util.List<String> groupNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNames;
 
     /**
-     * The list of Amazon EC2 instances included in this reservation.
+     * One or more instances.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
-     * The unique ID of this reservation.
+     * The ID of the reservation.
      *
-     * @return The unique ID of this reservation.
+     * @return The ID of the reservation.
      */
     public String getReservationId() {
         return reservationId;
     }
     
     /**
-     * The unique ID of this reservation.
+     * The ID of the reservation.
      *
-     * @param reservationId The unique ID of this reservation.
+     * @param reservationId The ID of the reservation.
      */
     public void setReservationId(String reservationId) {
         this.reservationId = reservationId;
     }
     
     /**
-     * The unique ID of this reservation.
+     * The ID of the reservation.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservationId The unique ID of this reservation.
+     * @param reservationId The ID of the reservation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withReservationId(String reservationId) {
         this.reservationId = reservationId;
         return this;
     }
-    
-    
+
     /**
-     * The AWS Access Key ID of the user who owns the reservation.
+     * The ID of the AWS account that owns the reservation.
      *
-     * @return The AWS Access Key ID of the user who owns the reservation.
+     * @return The ID of the AWS account that owns the reservation.
      */
     public String getOwnerId() {
         return ownerId;
     }
     
     /**
-     * The AWS Access Key ID of the user who owns the reservation.
+     * The ID of the AWS account that owns the reservation.
      *
-     * @param ownerId The AWS Access Key ID of the user who owns the reservation.
+     * @param ownerId The ID of the AWS account that owns the reservation.
      */
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
     
     /**
-     * The AWS Access Key ID of the user who owns the reservation.
+     * The ID of the AWS account that owns the reservation.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ownerId The AWS Access Key ID of the user who owns the reservation.
+     * @param ownerId The ID of the AWS account that owns the reservation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withOwnerId(String ownerId) {
         this.ownerId = ownerId;
         return this;
     }
-    
-    
+
     /**
-     * The unique ID of the user who requested the instances in this
-     * reservation.
+     * The ID of the requester that launched the instances on your behalf
+     * (for example, AWS Management Console or Auto Scaling).
      *
-     * @return The unique ID of the user who requested the instances in this
-     *         reservation.
+     * @return The ID of the requester that launched the instances on your behalf
+     *         (for example, AWS Management Console or Auto Scaling).
      */
     public String getRequesterId() {
         return requesterId;
     }
     
     /**
-     * The unique ID of the user who requested the instances in this
-     * reservation.
+     * The ID of the requester that launched the instances on your behalf
+     * (for example, AWS Management Console or Auto Scaling).
      *
-     * @param requesterId The unique ID of the user who requested the instances in this
-     *         reservation.
+     * @param requesterId The ID of the requester that launched the instances on your behalf
+     *         (for example, AWS Management Console or Auto Scaling).
      */
     public void setRequesterId(String requesterId) {
         this.requesterId = requesterId;
     }
     
     /**
-     * The unique ID of the user who requested the instances in this
-     * reservation.
+     * The ID of the requester that launched the instances on your behalf
+     * (for example, AWS Management Console or Auto Scaling).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param requesterId The unique ID of the user who requested the instances in this
-     *         reservation.
+     * @param requesterId The ID of the requester that launched the instances on your behalf
+     *         (for example, AWS Management Console or Auto Scaling).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withRequesterId(String requesterId) {
         this.requesterId = requesterId;
         return this;
     }
-    
-    
+
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      *
-     * @return The list of security groups requested for the instances in this
-     *         reservation.
+     * @return One or more security groups.
      */
     public java.util.List<GroupIdentifier> getGroups() {
-        
         if (groups == null) {
-            groups = new java.util.ArrayList<GroupIdentifier>();
+              groups = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>();
+              groups.setAutoConstruct(true);
         }
         return groups;
     }
     
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      *
-     * @param groups The list of security groups requested for the instances in this
-     *         reservation.
+     * @param groups One or more security groups.
      */
     public void setGroups(java.util.Collection<GroupIdentifier> groups) {
         if (groups == null) {
             this.groups = null;
             return;
         }
-
-        java.util.List<GroupIdentifier> groupsCopy = new java.util.ArrayList<GroupIdentifier>(groups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>(groups.size());
         groupsCopy.addAll(groups);
         this.groups = groupsCopy;
     }
     
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The list of security groups requested for the instances in this
-     *         reservation.
+     * @param groups One or more security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withGroups(GroupIdentifier... groups) {
         if (getGroups() == null) setGroups(new java.util.ArrayList<GroupIdentifier>(groups.length));
@@ -217,73 +206,64 @@ public class Reservation  implements Serializable  {
     }
     
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The list of security groups requested for the instances in this
-     *         reservation.
+     * @param groups One or more security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withGroups(java.util.Collection<GroupIdentifier> groups) {
         if (groups == null) {
             this.groups = null;
         } else {
-            java.util.List<GroupIdentifier> groupsCopy = new java.util.ArrayList<GroupIdentifier>(groups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GroupIdentifier>(groups.size());
             groupsCopy.addAll(groups);
             this.groups = groupsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      *
-     * @return The list of security groups requested for the instances in this
-     *         reservation.
+     * @return One or more security groups.
      */
     public java.util.List<String> getGroupNames() {
-        
         if (groupNames == null) {
-            groupNames = new java.util.ArrayList<String>();
+              groupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groupNames.setAutoConstruct(true);
         }
         return groupNames;
     }
     
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      *
-     * @param groupNames The list of security groups requested for the instances in this
-     *         reservation.
+     * @param groupNames One or more security groups.
      */
     public void setGroupNames(java.util.Collection<String> groupNames) {
         if (groupNames == null) {
             this.groupNames = null;
             return;
         }
-
-        java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
         groupNamesCopy.addAll(groupNames);
         this.groupNames = groupNamesCopy;
     }
     
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupNames The list of security groups requested for the instances in this
-     *         reservation.
+     * @param groupNames One or more security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withGroupNames(String... groupNames) {
         if (getGroupNames() == null) setGroupNames(new java.util.ArrayList<String>(groupNames.length));
@@ -294,67 +274,64 @@ public class Reservation  implements Serializable  {
     }
     
     /**
-     * The list of security groups requested for the instances in this
-     * reservation.
+     * One or more security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupNames The list of security groups requested for the instances in this
-     *         reservation.
+     * @param groupNames One or more security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withGroupNames(java.util.Collection<String> groupNames) {
         if (groupNames == null) {
             this.groupNames = null;
         } else {
-            java.util.List<String> groupNamesCopy = new java.util.ArrayList<String>(groupNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groupNames.size());
             groupNamesCopy.addAll(groupNames);
             this.groupNames = groupNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The list of Amazon EC2 instances included in this reservation.
+     * One or more instances.
      *
-     * @return The list of Amazon EC2 instances included in this reservation.
+     * @return One or more instances.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
     
     /**
-     * The list of Amazon EC2 instances included in this reservation.
+     * One or more instances.
      *
-     * @param instances The list of Amazon EC2 instances included in this reservation.
+     * @param instances One or more instances.
      */
     public void setInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
     
     /**
-     * The list of Amazon EC2 instances included in this reservation.
+     * One or more instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instances The list of Amazon EC2 instances included in this reservation.
+     * @param instances One or more instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -365,27 +342,27 @@ public class Reservation  implements Serializable  {
     }
     
     /**
-     * The list of Amazon EC2 instances included in this reservation.
+     * One or more instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instances The list of Amazon EC2 instances included in this reservation.
+     * @param instances One or more instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Reservation withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -397,12 +374,12 @@ public class Reservation  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservationId() != null) sb.append("ReservationId: " + getReservationId() + ",");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getRequesterId() != null) sb.append("RequesterId: " + getRequesterId() + ",");    	
-        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");    	
-        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");    	
+        sb.append("{");
+        if (getReservationId() != null) sb.append("ReservationId: " + getReservationId() + ",");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getRequesterId() != null) sb.append("RequesterId: " + getRequesterId() + ",");
+        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");
+        if (getGroupNames() != null) sb.append("GroupNames: " + getGroupNames() + ",");
         if (getInstances() != null) sb.append("Instances: " + getInstances() );
         sb.append("}");
         return sb.toString();

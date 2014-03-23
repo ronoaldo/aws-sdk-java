@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyEmailIdentity(VerifyEmailIdentityRequest) VerifyEmailIdentity operation}.
  * <p>
- * Verifies an email address. This action causes a confirmation email message to be sent to the specified address.
+ * Verifies an email address. This action causes a confirmation email
+ * message to be sent to the specified address.
+ * </p>
+ * <p>
+ * This action is throttled at one request per second.
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyEmailIdentity(VerifyEmailIdentityRequest)
  */
-public class VerifyEmailIdentityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class VerifyEmailIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The email address to be verified.
@@ -57,14 +63,13 @@ public class VerifyEmailIdentityRequest extends AmazonWebServiceRequest  impleme
      * @param emailAddress The email address to be verified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyEmailIdentityRequest withEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -76,7 +81,7 @@ public class VerifyEmailIdentityRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getEmailAddress() != null) sb.append("EmailAddress: " + getEmailAddress() );
         sb.append("}");
         return sb.toString();

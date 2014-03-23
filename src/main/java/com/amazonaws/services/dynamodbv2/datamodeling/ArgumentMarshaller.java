@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,14 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 interface ArgumentMarshaller {
     
     /**
-     * Marhsalls the object given into an AttributeValue.
+     * Marshalls the object given into an AttributeValue.
      */
     public AttributeValue marshall(Object obj);
+    
+    static interface StringAttributeMarshaller extends ArgumentMarshaller {}
+    static interface NumberAttributeMarshaller extends ArgumentMarshaller {}
+    static interface BinaryAttributeMarshaller extends ArgumentMarshaller {}
+    static interface StringSetAttributeMarshaller extends ArgumentMarshaller {}
+    static interface NumberSetAttributeMarshaller extends ArgumentMarshaller {}
+    static interface BinarySetAttributeMarshaller extends ArgumentMarshaller {}
 }

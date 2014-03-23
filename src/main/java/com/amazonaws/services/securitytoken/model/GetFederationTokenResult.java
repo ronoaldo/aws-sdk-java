@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the GetFederationToken action.
+ * Contains the result of a successful call to the GetFederationToken
+ * action, including temporary AWS credentials that can be used to make
+ * AWS requests.
  * </p>
  */
-public class GetFederationTokenResult  implements Serializable  {
+public class GetFederationTokenResult implements Serializable {
 
     /**
      * Credentials for the service API authentication.
@@ -71,14 +74,13 @@ public class GetFederationTokenResult  implements Serializable  {
      * @param credentials Credentials for the service API authentication.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenResult withCredentials(Credentials credentials) {
         this.credentials = credentials;
         return this;
     }
-    
-    
+
     /**
      * Identifiers for the federated user associated with the credentials
      * (such as <code>arn:aws:sts::123456789012:federated-user/Bob</code> or
@@ -123,14 +125,13 @@ public class GetFederationTokenResult  implements Serializable  {
      *         in your resource policies like in an Amazon S3 bucket policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenResult withFederatedUser(FederatedUser federatedUser) {
         this.federatedUser = federatedUser;
         return this;
     }
-    
-    
+
     /**
      * A percentage value indicating the size of the policy in packed form.
      * The service rejects policies for which the packed size is greater than
@@ -178,14 +179,13 @@ public class GetFederationTokenResult  implements Serializable  {
      *         100 percent of the allowed value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetFederationTokenResult withPackedPolicySize(Integer packedPolicySize) {
         this.packedPolicySize = packedPolicySize;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -197,9 +197,9 @@ public class GetFederationTokenResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");    	
-        if (getFederatedUser() != null) sb.append("FederatedUser: " + getFederatedUser() + ",");    	
+        sb.append("{");
+        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");
+        if (getFederatedUser() != null) sb.append("FederatedUser: " + getFederatedUser() + ",");
         if (getPackedPolicySize() != null) sb.append("PackedPolicySize: " + getPackedPolicySize() );
         sb.append("}");
         return sb.toString();

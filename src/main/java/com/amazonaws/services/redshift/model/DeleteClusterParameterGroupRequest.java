@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#deleteClusterParameterGroup(DeleteClusterParameterGroupRequest) DeleteClusterParameterGroup operation}.
  * <p>
  * Deletes a specified Amazon Redshift parameter group. <p>
- * <b>NOTE:</b>You cannot delete a parameter group if it is associated with a cluster.
+ * <b>NOTE:</b>You cannot delete a parameter group if it is associated
+ * with a cluster.
  * </p>
  * 
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#deleteClusterParameterGroup(DeleteClusterParameterGroupRequest)
  */
-public class DeleteClusterParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteClusterParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the parameter group to be deleted. <p>Constraints: <ul>
@@ -74,14 +77,13 @@ public class DeleteClusterParameterGroupRequest extends AmazonWebServiceRequest 
      *         <li>Cannot delete a default cluster parameter group.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteClusterParameterGroupRequest withParameterGroupName(String parameterGroupName) {
         this.parameterGroupName = parameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -93,7 +95,7 @@ public class DeleteClusterParameterGroupRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() );
         sb.append("}");
         return sb.toString();

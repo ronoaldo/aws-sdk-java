@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,32 +22,28 @@ import com.amazonaws.services.opsworks.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Elastic Load Balancer JSON Unmarshaller
  */
 public class ElasticLoadBalancerJsonUnmarshaller implements Unmarshaller<ElasticLoadBalancer, JsonUnmarshallerContext> {
 
-    
-
     public ElasticLoadBalancer unmarshall(JsonUnmarshallerContext context) throws Exception {
         ElasticLoadBalancer elasticLoadBalancer = new ElasticLoadBalancer();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("ElasticLoadBalancerName", targetDepth)) {
                     context.nextToken();
@@ -69,10 +65,20 @@ public class ElasticLoadBalancerJsonUnmarshaller implements Unmarshaller<Elastic
                     context.nextToken();
                     elasticLoadBalancer.setLayerId(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("VpcId", targetDepth)) {
+                    context.nextToken();
+                    elasticLoadBalancer.setVpcId(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("AvailabilityZones", targetDepth)) {
+                    context.nextToken();
                     elasticLoadBalancer.setAvailabilityZones(new ListUnmarshaller<String>(StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
+                if (context.testExpression("SubnetIds", targetDepth)) {
+                    context.nextToken();
+                    elasticLoadBalancer.setSubnetIds(new ListUnmarshaller<String>(StringJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
                 if (context.testExpression("Ec2InstanceIds", targetDepth)) {
+                    context.nextToken();
                     elasticLoadBalancer.setEc2InstanceIds(new ListUnmarshaller<String>(StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
@@ -80,7 +86,6 @@ public class ElasticLoadBalancerJsonUnmarshaller implements Unmarshaller<Elastic
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * A response message that contains the index fields for a search domain.
  * </p>
  */
-public class DescribeIndexFieldsResult  implements Serializable  {
+public class DescribeIndexFieldsResult implements Serializable {
 
     /**
      * The index fields configured for the domain.
      */
-    private java.util.List<IndexFieldStatus> indexFields;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IndexFieldStatus> indexFields;
 
     /**
      * The index fields configured for the domain.
@@ -33,9 +34,9 @@ public class DescribeIndexFieldsResult  implements Serializable  {
      * @return The index fields configured for the domain.
      */
     public java.util.List<IndexFieldStatus> getIndexFields() {
-        
         if (indexFields == null) {
-            indexFields = new java.util.ArrayList<IndexFieldStatus>();
+              indexFields = new com.amazonaws.internal.ListWithAutoConstructFlag<IndexFieldStatus>();
+              indexFields.setAutoConstruct(true);
         }
         return indexFields;
     }
@@ -50,8 +51,7 @@ public class DescribeIndexFieldsResult  implements Serializable  {
             this.indexFields = null;
             return;
         }
-
-        java.util.List<IndexFieldStatus> indexFieldsCopy = new java.util.ArrayList<IndexFieldStatus>(indexFields.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IndexFieldStatus> indexFieldsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IndexFieldStatus>(indexFields.size());
         indexFieldsCopy.addAll(indexFields);
         this.indexFields = indexFieldsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeIndexFieldsResult  implements Serializable  {
      * @param indexFields The index fields configured for the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeIndexFieldsResult withIndexFields(IndexFieldStatus... indexFields) {
         if (getIndexFields() == null) setIndexFields(new java.util.ArrayList<IndexFieldStatus>(indexFields.length));
@@ -82,20 +82,20 @@ public class DescribeIndexFieldsResult  implements Serializable  {
      * @param indexFields The index fields configured for the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeIndexFieldsResult withIndexFields(java.util.Collection<IndexFieldStatus> indexFields) {
         if (indexFields == null) {
             this.indexFields = null;
         } else {
-            java.util.List<IndexFieldStatus> indexFieldsCopy = new java.util.ArrayList<IndexFieldStatus>(indexFields.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IndexFieldStatus> indexFieldsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IndexFieldStatus>(indexFields.size());
             indexFieldsCopy.addAll(indexFields);
             this.indexFields = indexFieldsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeIndexFieldsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getIndexFields() != null) sb.append("IndexFields: " + getIndexFields() );
         sb.append("}");
         return sb.toString();

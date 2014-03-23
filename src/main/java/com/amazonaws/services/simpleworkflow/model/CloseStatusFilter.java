@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Used to filter the closed workflow executions in visibility APIs by their close status.
+ * Used to filter the closed workflow executions in visibility APIs by
+ * their close status.
  * </p>
  */
-public class CloseStatusFilter  implements Serializable  {
+public class CloseStatusFilter implements Serializable {
 
     /**
      * The close status that must match the close status of an execution for
@@ -76,7 +78,7 @@ public class CloseStatusFilter  implements Serializable  {
      *         it to meet the criteria of this filter. This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see CloseStatus
      */
@@ -84,8 +86,7 @@ public class CloseStatusFilter  implements Serializable  {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The close status that must match the close status of an execution for
      * it to meet the criteria of this filter. This field is required.
@@ -115,7 +116,7 @@ public class CloseStatusFilter  implements Serializable  {
      *         it to meet the criteria of this filter. This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see CloseStatus
      */
@@ -123,7 +124,7 @@ public class CloseStatusFilter  implements Serializable  {
         this.status = status.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -135,7 +136,7 @@ public class CloseStatusFilter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

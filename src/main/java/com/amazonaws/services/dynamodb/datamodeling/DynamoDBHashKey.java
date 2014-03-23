@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ import java.lang.annotation.Target;
  * Applied to the getter method for a hash key property.
  * <p>
  * This annotation is required.
+ * 
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey} instead.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

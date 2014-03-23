@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when OpsWorks starts or stops load-based
- * instances.
+ * Describes a load-based auto scaling upscaling or downscaling threshold
+ * configuration, which specifies when AWS OpsWorks starts or stops
+ * load-based instances.
  * </p>
  */
-public class AutoScalingThresholds  implements Serializable  {
+public class AutoScalingThresholds implements Serializable {
 
     /**
      * The number of instances to add or remove when the load exceeds a
@@ -39,15 +41,15 @@ public class AutoScalingThresholds  implements Serializable  {
     private Integer thresholdsWaitTime;
 
     /**
-     * The amount of time (in minutes) after a scaling event occurs that
+     * The amount of time (in minutes) after a scaling event occurs that AWS
      * OpsWorks should ignore metrics and not raise any additional scaling
-     * events. For example, OpsWorks adds new instances following an
+     * events. For example, AWS OpsWorks adds new instances following an
      * upscaling event but the instances won't start reducing the load until
      * they have been booted and configured. There is no point in raising
      * additional scaling events during that operation, which typically takes
      * several minutes. <code>IgnoreMetricsTime</code> allows you to direct
-     * OpsWorks to not raise any scaling events long enough to get the new
-     * instances online.
+     * AWS OpsWorks to not raise any scaling events long enough to get the
+     * new instances online.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 100<br/>
@@ -104,14 +106,13 @@ public class AutoScalingThresholds  implements Serializable  {
      *         threshold.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingThresholds withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
         return this;
     }
-    
-    
+
     /**
      * The amount of time, in minutes, that the load must exceed a threshold
      * before more instances are added or removed.
@@ -153,105 +154,103 @@ public class AutoScalingThresholds  implements Serializable  {
      *         before more instances are added or removed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingThresholds withThresholdsWaitTime(Integer thresholdsWaitTime) {
         this.thresholdsWaitTime = thresholdsWaitTime;
         return this;
     }
-    
-    
+
     /**
-     * The amount of time (in minutes) after a scaling event occurs that
+     * The amount of time (in minutes) after a scaling event occurs that AWS
      * OpsWorks should ignore metrics and not raise any additional scaling
-     * events. For example, OpsWorks adds new instances following an
+     * events. For example, AWS OpsWorks adds new instances following an
      * upscaling event but the instances won't start reducing the load until
      * they have been booted and configured. There is no point in raising
      * additional scaling events during that operation, which typically takes
      * several minutes. <code>IgnoreMetricsTime</code> allows you to direct
-     * OpsWorks to not raise any scaling events long enough to get the new
-     * instances online.
+     * AWS OpsWorks to not raise any scaling events long enough to get the
+     * new instances online.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 100<br/>
      *
-     * @return The amount of time (in minutes) after a scaling event occurs that
+     * @return The amount of time (in minutes) after a scaling event occurs that AWS
      *         OpsWorks should ignore metrics and not raise any additional scaling
-     *         events. For example, OpsWorks adds new instances following an
+     *         events. For example, AWS OpsWorks adds new instances following an
      *         upscaling event but the instances won't start reducing the load until
      *         they have been booted and configured. There is no point in raising
      *         additional scaling events during that operation, which typically takes
      *         several minutes. <code>IgnoreMetricsTime</code> allows you to direct
-     *         OpsWorks to not raise any scaling events long enough to get the new
-     *         instances online.
+     *         AWS OpsWorks to not raise any scaling events long enough to get the
+     *         new instances online.
      */
     public Integer getIgnoreMetricsTime() {
         return ignoreMetricsTime;
     }
     
     /**
-     * The amount of time (in minutes) after a scaling event occurs that
+     * The amount of time (in minutes) after a scaling event occurs that AWS
      * OpsWorks should ignore metrics and not raise any additional scaling
-     * events. For example, OpsWorks adds new instances following an
+     * events. For example, AWS OpsWorks adds new instances following an
      * upscaling event but the instances won't start reducing the load until
      * they have been booted and configured. There is no point in raising
      * additional scaling events during that operation, which typically takes
      * several minutes. <code>IgnoreMetricsTime</code> allows you to direct
-     * OpsWorks to not raise any scaling events long enough to get the new
-     * instances online.
+     * AWS OpsWorks to not raise any scaling events long enough to get the
+     * new instances online.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 100<br/>
      *
-     * @param ignoreMetricsTime The amount of time (in minutes) after a scaling event occurs that
+     * @param ignoreMetricsTime The amount of time (in minutes) after a scaling event occurs that AWS
      *         OpsWorks should ignore metrics and not raise any additional scaling
-     *         events. For example, OpsWorks adds new instances following an
+     *         events. For example, AWS OpsWorks adds new instances following an
      *         upscaling event but the instances won't start reducing the load until
      *         they have been booted and configured. There is no point in raising
      *         additional scaling events during that operation, which typically takes
      *         several minutes. <code>IgnoreMetricsTime</code> allows you to direct
-     *         OpsWorks to not raise any scaling events long enough to get the new
-     *         instances online.
+     *         AWS OpsWorks to not raise any scaling events long enough to get the
+     *         new instances online.
      */
     public void setIgnoreMetricsTime(Integer ignoreMetricsTime) {
         this.ignoreMetricsTime = ignoreMetricsTime;
     }
     
     /**
-     * The amount of time (in minutes) after a scaling event occurs that
+     * The amount of time (in minutes) after a scaling event occurs that AWS
      * OpsWorks should ignore metrics and not raise any additional scaling
-     * events. For example, OpsWorks adds new instances following an
+     * events. For example, AWS OpsWorks adds new instances following an
      * upscaling event but the instances won't start reducing the load until
      * they have been booted and configured. There is no point in raising
      * additional scaling events during that operation, which typically takes
      * several minutes. <code>IgnoreMetricsTime</code> allows you to direct
-     * OpsWorks to not raise any scaling events long enough to get the new
-     * instances online.
+     * AWS OpsWorks to not raise any scaling events long enough to get the
+     * new instances online.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 100<br/>
      *
-     * @param ignoreMetricsTime The amount of time (in minutes) after a scaling event occurs that
+     * @param ignoreMetricsTime The amount of time (in minutes) after a scaling event occurs that AWS
      *         OpsWorks should ignore metrics and not raise any additional scaling
-     *         events. For example, OpsWorks adds new instances following an
+     *         events. For example, AWS OpsWorks adds new instances following an
      *         upscaling event but the instances won't start reducing the load until
      *         they have been booted and configured. There is no point in raising
      *         additional scaling events during that operation, which typically takes
      *         several minutes. <code>IgnoreMetricsTime</code> allows you to direct
-     *         OpsWorks to not raise any scaling events long enough to get the new
-     *         instances online.
+     *         AWS OpsWorks to not raise any scaling events long enough to get the
+     *         new instances online.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingThresholds withIgnoreMetricsTime(Integer ignoreMetricsTime) {
         this.ignoreMetricsTime = ignoreMetricsTime;
         return this;
     }
-    
-    
+
     /**
      * The CPU utilization threshold, as a percent of the available CPU.
      *
@@ -278,14 +277,13 @@ public class AutoScalingThresholds  implements Serializable  {
      * @param cpuThreshold The CPU utilization threshold, as a percent of the available CPU.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingThresholds withCpuThreshold(Double cpuThreshold) {
         this.cpuThreshold = cpuThreshold;
         return this;
     }
-    
-    
+
     /**
      * The memory utilization threshold, as a percent of the available
      * memory.
@@ -318,14 +316,13 @@ public class AutoScalingThresholds  implements Serializable  {
      *         memory.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingThresholds withMemoryThreshold(Double memoryThreshold) {
         this.memoryThreshold = memoryThreshold;
         return this;
     }
-    
-    
+
     /**
      * The load threshold. For more information about how load is computed,
      * see <a href="http://en.wikipedia.org/wiki/Load_%28computing%29">Load
@@ -364,14 +361,13 @@ public class AutoScalingThresholds  implements Serializable  {
      *         (computing)</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingThresholds withLoadThreshold(Double loadThreshold) {
         this.loadThreshold = loadThreshold;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -383,12 +379,12 @@ public class AutoScalingThresholds  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");    	
-        if (getThresholdsWaitTime() != null) sb.append("ThresholdsWaitTime: " + getThresholdsWaitTime() + ",");    	
-        if (getIgnoreMetricsTime() != null) sb.append("IgnoreMetricsTime: " + getIgnoreMetricsTime() + ",");    	
-        if (getCpuThreshold() != null) sb.append("CpuThreshold: " + getCpuThreshold() + ",");    	
-        if (getMemoryThreshold() != null) sb.append("MemoryThreshold: " + getMemoryThreshold() + ",");    	
+        sb.append("{");
+        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");
+        if (getThresholdsWaitTime() != null) sb.append("ThresholdsWaitTime: " + getThresholdsWaitTime() + ",");
+        if (getIgnoreMetricsTime() != null) sb.append("IgnoreMetricsTime: " + getIgnoreMetricsTime() + ",");
+        if (getCpuThreshold() != null) sb.append("CpuThreshold: " + getCpuThreshold() + ",");
+        if (getMemoryThreshold() != null) sb.append("MemoryThreshold: " + getMemoryThreshold() + ",");
         if (getLoadThreshold() != null) sb.append("LoadThreshold: " + getLoadThreshold() );
         sb.append("}");
         return sb.toString();

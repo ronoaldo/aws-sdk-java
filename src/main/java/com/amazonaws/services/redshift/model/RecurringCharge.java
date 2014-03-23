@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a recurring charge.
  * </p>
  */
-public class RecurringCharge  implements Serializable  {
+public class RecurringCharge implements Serializable {
 
     /**
      * The amount charged per the period of time specified by the recurring
@@ -65,14 +66,13 @@ public class RecurringCharge  implements Serializable  {
      *         charge frequency.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecurringCharge withRecurringChargeAmount(Double recurringChargeAmount) {
         this.recurringChargeAmount = recurringChargeAmount;
         return this;
     }
-    
-    
+
     /**
      * The frequency at which the recurring charge amount is applied.
      *
@@ -99,14 +99,13 @@ public class RecurringCharge  implements Serializable  {
      * @param recurringChargeFrequency The frequency at which the recurring charge amount is applied.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecurringCharge withRecurringChargeFrequency(String recurringChargeFrequency) {
         this.recurringChargeFrequency = recurringChargeFrequency;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -118,8 +117,8 @@ public class RecurringCharge  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRecurringChargeAmount() != null) sb.append("RecurringChargeAmount: " + getRecurringChargeAmount() + ",");    	
+        sb.append("{");
+        if (getRecurringChargeAmount() != null) sb.append("RecurringChargeAmount: " + getRecurringChargeAmount() + ",");
         if (getRecurringChargeFrequency() != null) sb.append("RecurringChargeFrequency: " + getRecurringChargeFrequency() );
         sb.append("}");
         return sb.toString();

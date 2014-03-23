@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateDBSnapshotRequestMarshaller implements Marshaller<Request<Cre
     public Request<CreateDBSnapshotRequest> marshall(CreateDBSnapshotRequest createDBSnapshotRequest) {
 
         if (createDBSnapshotRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateDBSnapshotRequest> request = new DefaultRequest<CreateDBSnapshotRequest>(createDBSnapshotRequest, "AmazonRDS");
         request.addParameter("Action", "CreateDBSnapshot");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (createDBSnapshotRequest.getDBSnapshotIdentifier() != null) {
             request.addParameter("DBSnapshotIdentifier", StringUtils.fromString(createDBSnapshotRequest.getDBSnapshotIdentifier()));
@@ -47,6 +47,22 @@ public class CreateDBSnapshotRequestMarshaller implements Marshaller<Request<Cre
             request.addParameter("DBInstanceIdentifier", StringUtils.fromString(createDBSnapshotRequest.getDBInstanceIdentifier()));
         }
 
+        java.util.List<Tag> tagsList = createDBSnapshotRequest.getTags();
+        int tagsListIndex = 1;
+
+        for (Tag tagsListValue : tagsList) {
+            Tag tagMember = tagsListValue;
+            if (tagMember != null) {
+                if (tagMember.getKey() != null) {
+                    request.addParameter("Tags.Tag." + tagsListIndex + ".Key", StringUtils.fromString(tagMember.getKey()));
+                }
+                if (tagMember.getValue() != null) {
+                    request.addParameter("Tags.Tag." + tagsListIndex + ".Value", StringUtils.fromString(tagMember.getValue()));
+                }
+            }
+
+            tagsListIndex++;
+        }
 
         return request;
     }

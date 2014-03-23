@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A connection represents the physical network connection between the Direct Connect location and the customer.
+ * A connection represents the physical network connection between the
+ * AWS Direct Connect location and the customer.
  * </p>
  */
-public class Connection  implements Serializable  {
+public class Connection implements Serializable {
+
+    private String ownerAccount;
 
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
@@ -34,32 +38,80 @@ public class Connection  implements Serializable  {
     private String connectionName;
 
     /**
-     * State of the connection. <ul> <li><b>Requested</b>: The initial state
-     * of connection immediately after creation. The connection stays in the
-     * requested state until the Letter of Authorization (LOA) is sent to the
-     * customer.</li> <li><b>Pending</b>: A connection is pending after the
-     * customer receives the LOA and remains pending until the completion of
-     * the partner circuit.</li> <li><b>Available</b>: A connection that has
-     * a completed partner circuit and is ready for use. A connection must be
-     * available before virtual interfaces can be created.</li>
-     * <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     * of a hosted connection provisioned on an interconnect. The connection
+     * stays in the ordering state until the owner of the hosted connection
+     * confirms or declines the connection order.</li> <li><b>Requested</b>:
+     * The initial state of a standard connection. The connection stays in
+     * the requested state until the Letter of Authorization (LOA) is sent to
+     * the customer.</li> <li><b>Pending</b>: The connection has been
+     * approved, and is being initialized.</li> <li><b>Available</b>: The
+     * network link is up, and the connection is ready for use.</li>
+     * <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     * The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     * connection in the 'Ordering' state will enter the 'Rejected' state if
+     * it is deleted by the end customer.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>requested, pending, available, deleted
+     * <b>Allowed Values: </b>ordering, requested, pending, available, down, deleting, deleted, rejected
      */
     private String connectionState;
 
     /**
-     * The AWS region where the offering is located. <p>Example: us-east-1
+     * The AWS region where the connection is located. <p>Example: us-east-1
      * <p>Default: None
      */
     private String region;
 
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      */
     private String location;
+
+    /**
+     * Bandwidth of the connection. <p>Example: 1Gbps <p>Default: None
+     */
+    private String bandwidth;
+
+    /**
+     * The VLAN ID. <p>Example: 101
+     */
+    private Integer vlan;
+
+    private String partnerName;
+
+    /**
+     * Returns the value of the OwnerAccount property for this object.
+     *
+     * @return The value of the OwnerAccount property for this object.
+     */
+    public String getOwnerAccount() {
+        return ownerAccount;
+    }
+    
+    /**
+     * Sets the value of the OwnerAccount property for this object.
+     *
+     * @param ownerAccount The new value for the OwnerAccount property for this object.
+     */
+    public void setOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+    }
+    
+    /**
+     * Sets the value of the OwnerAccount property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param ownerAccount The new value for the OwnerAccount property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Connection withOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+        return this;
+    }
 
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
@@ -87,14 +139,13 @@ public class Connection  implements Serializable  {
      * @param connectionId ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Connection withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
     }
-    
-    
+
     /**
      * The name of the connection. <p>Example: "<i>1G Connection to AWS</i>"
      * <p>Default: None
@@ -127,37 +178,44 @@ public class Connection  implements Serializable  {
      *         <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Connection withConnectionName(String connectionName) {
         this.connectionName = connectionName;
         return this;
     }
-    
-    
+
     /**
-     * State of the connection. <ul> <li><b>Requested</b>: The initial state
-     * of connection immediately after creation. The connection stays in the
-     * requested state until the Letter of Authorization (LOA) is sent to the
-     * customer.</li> <li><b>Pending</b>: A connection is pending after the
-     * customer receives the LOA and remains pending until the completion of
-     * the partner circuit.</li> <li><b>Available</b>: A connection that has
-     * a completed partner circuit and is ready for use. A connection must be
-     * available before virtual interfaces can be created.</li>
-     * <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     * of a hosted connection provisioned on an interconnect. The connection
+     * stays in the ordering state until the owner of the hosted connection
+     * confirms or declines the connection order.</li> <li><b>Requested</b>:
+     * The initial state of a standard connection. The connection stays in
+     * the requested state until the Letter of Authorization (LOA) is sent to
+     * the customer.</li> <li><b>Pending</b>: The connection has been
+     * approved, and is being initialized.</li> <li><b>Available</b>: The
+     * network link is up, and the connection is ready for use.</li>
+     * <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     * The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     * connection in the 'Ordering' state will enter the 'Rejected' state if
+     * it is deleted by the end customer.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>requested, pending, available, deleted
+     * <b>Allowed Values: </b>ordering, requested, pending, available, down, deleting, deleted, rejected
      *
-     * @return State of the connection. <ul> <li><b>Requested</b>: The initial state
-     *         of connection immediately after creation. The connection stays in the
-     *         requested state until the Letter of Authorization (LOA) is sent to the
-     *         customer.</li> <li><b>Pending</b>: A connection is pending after the
-     *         customer receives the LOA and remains pending until the completion of
-     *         the partner circuit.</li> <li><b>Available</b>: A connection that has
-     *         a completed partner circuit and is ready for use. A connection must be
-     *         available before virtual interfaces can be created.</li>
-     *         <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * @return State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     *         of a hosted connection provisioned on an interconnect. The connection
+     *         stays in the ordering state until the owner of the hosted connection
+     *         confirms or declines the connection order.</li> <li><b>Requested</b>:
+     *         The initial state of a standard connection. The connection stays in
+     *         the requested state until the Letter of Authorization (LOA) is sent to
+     *         the customer.</li> <li><b>Pending</b>: The connection has been
+     *         approved, and is being initialized.</li> <li><b>Available</b>: The
+     *         network link is up, and the connection is ready for use.</li>
+     *         <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     *         The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     *         connection in the 'Ordering' state will enter the 'Rejected' state if
+     *         it is deleted by the end customer.</li> </ul>
      *
      * @see ConnectionState
      */
@@ -166,28 +224,36 @@ public class Connection  implements Serializable  {
     }
     
     /**
-     * State of the connection. <ul> <li><b>Requested</b>: The initial state
-     * of connection immediately after creation. The connection stays in the
-     * requested state until the Letter of Authorization (LOA) is sent to the
-     * customer.</li> <li><b>Pending</b>: A connection is pending after the
-     * customer receives the LOA and remains pending until the completion of
-     * the partner circuit.</li> <li><b>Available</b>: A connection that has
-     * a completed partner circuit and is ready for use. A connection must be
-     * available before virtual interfaces can be created.</li>
-     * <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     * of a hosted connection provisioned on an interconnect. The connection
+     * stays in the ordering state until the owner of the hosted connection
+     * confirms or declines the connection order.</li> <li><b>Requested</b>:
+     * The initial state of a standard connection. The connection stays in
+     * the requested state until the Letter of Authorization (LOA) is sent to
+     * the customer.</li> <li><b>Pending</b>: The connection has been
+     * approved, and is being initialized.</li> <li><b>Available</b>: The
+     * network link is up, and the connection is ready for use.</li>
+     * <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     * The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     * connection in the 'Ordering' state will enter the 'Rejected' state if
+     * it is deleted by the end customer.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>requested, pending, available, deleted
+     * <b>Allowed Values: </b>ordering, requested, pending, available, down, deleting, deleted, rejected
      *
-     * @param connectionState State of the connection. <ul> <li><b>Requested</b>: The initial state
-     *         of connection immediately after creation. The connection stays in the
-     *         requested state until the Letter of Authorization (LOA) is sent to the
-     *         customer.</li> <li><b>Pending</b>: A connection is pending after the
-     *         customer receives the LOA and remains pending until the completion of
-     *         the partner circuit.</li> <li><b>Available</b>: A connection that has
-     *         a completed partner circuit and is ready for use. A connection must be
-     *         available before virtual interfaces can be created.</li>
-     *         <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * @param connectionState State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     *         of a hosted connection provisioned on an interconnect. The connection
+     *         stays in the ordering state until the owner of the hosted connection
+     *         confirms or declines the connection order.</li> <li><b>Requested</b>:
+     *         The initial state of a standard connection. The connection stays in
+     *         the requested state until the Letter of Authorization (LOA) is sent to
+     *         the customer.</li> <li><b>Pending</b>: The connection has been
+     *         approved, and is being initialized.</li> <li><b>Available</b>: The
+     *         network link is up, and the connection is ready for use.</li>
+     *         <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     *         The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     *         connection in the 'Ordering' state will enter the 'Rejected' state if
+     *         it is deleted by the end customer.</li> </ul>
      *
      * @see ConnectionState
      */
@@ -196,33 +262,41 @@ public class Connection  implements Serializable  {
     }
     
     /**
-     * State of the connection. <ul> <li><b>Requested</b>: The initial state
-     * of connection immediately after creation. The connection stays in the
-     * requested state until the Letter of Authorization (LOA) is sent to the
-     * customer.</li> <li><b>Pending</b>: A connection is pending after the
-     * customer receives the LOA and remains pending until the completion of
-     * the partner circuit.</li> <li><b>Available</b>: A connection that has
-     * a completed partner circuit and is ready for use. A connection must be
-     * available before virtual interfaces can be created.</li>
-     * <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     * of a hosted connection provisioned on an interconnect. The connection
+     * stays in the ordering state until the owner of the hosted connection
+     * confirms or declines the connection order.</li> <li><b>Requested</b>:
+     * The initial state of a standard connection. The connection stays in
+     * the requested state until the Letter of Authorization (LOA) is sent to
+     * the customer.</li> <li><b>Pending</b>: The connection has been
+     * approved, and is being initialized.</li> <li><b>Available</b>: The
+     * network link is up, and the connection is ready for use.</li>
+     * <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     * The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     * connection in the 'Ordering' state will enter the 'Rejected' state if
+     * it is deleted by the end customer.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>requested, pending, available, deleted
+     * <b>Allowed Values: </b>ordering, requested, pending, available, down, deleting, deleted, rejected
      *
-     * @param connectionState State of the connection. <ul> <li><b>Requested</b>: The initial state
-     *         of connection immediately after creation. The connection stays in the
-     *         requested state until the Letter of Authorization (LOA) is sent to the
-     *         customer.</li> <li><b>Pending</b>: A connection is pending after the
-     *         customer receives the LOA and remains pending until the completion of
-     *         the partner circuit.</li> <li><b>Available</b>: A connection that has
-     *         a completed partner circuit and is ready for use. A connection must be
-     *         available before virtual interfaces can be created.</li>
-     *         <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * @param connectionState State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     *         of a hosted connection provisioned on an interconnect. The connection
+     *         stays in the ordering state until the owner of the hosted connection
+     *         confirms or declines the connection order.</li> <li><b>Requested</b>:
+     *         The initial state of a standard connection. The connection stays in
+     *         the requested state until the Letter of Authorization (LOA) is sent to
+     *         the customer.</li> <li><b>Pending</b>: The connection has been
+     *         approved, and is being initialized.</li> <li><b>Available</b>: The
+     *         network link is up, and the connection is ready for use.</li>
+     *         <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     *         The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     *         connection in the 'Ordering' state will enter the 'Rejected' state if
+     *         it is deleted by the end customer.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ConnectionState
      */
@@ -230,31 +304,38 @@ public class Connection  implements Serializable  {
         this.connectionState = connectionState;
         return this;
     }
-    
-    
+
     /**
-     * State of the connection. <ul> <li><b>Requested</b>: The initial state
-     * of connection immediately after creation. The connection stays in the
-     * requested state until the Letter of Authorization (LOA) is sent to the
-     * customer.</li> <li><b>Pending</b>: A connection is pending after the
-     * customer receives the LOA and remains pending until the completion of
-     * the partner circuit.</li> <li><b>Available</b>: A connection that has
-     * a completed partner circuit and is ready for use. A connection must be
-     * available before virtual interfaces can be created.</li>
-     * <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     * of a hosted connection provisioned on an interconnect. The connection
+     * stays in the ordering state until the owner of the hosted connection
+     * confirms or declines the connection order.</li> <li><b>Requested</b>:
+     * The initial state of a standard connection. The connection stays in
+     * the requested state until the Letter of Authorization (LOA) is sent to
+     * the customer.</li> <li><b>Pending</b>: The connection has been
+     * approved, and is being initialized.</li> <li><b>Available</b>: The
+     * network link is up, and the connection is ready for use.</li>
+     * <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     * The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     * connection in the 'Ordering' state will enter the 'Rejected' state if
+     * it is deleted by the end customer.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>requested, pending, available, deleted
+     * <b>Allowed Values: </b>ordering, requested, pending, available, down, deleting, deleted, rejected
      *
-     * @param connectionState State of the connection. <ul> <li><b>Requested</b>: The initial state
-     *         of connection immediately after creation. The connection stays in the
-     *         requested state until the Letter of Authorization (LOA) is sent to the
-     *         customer.</li> <li><b>Pending</b>: A connection is pending after the
-     *         customer receives the LOA and remains pending until the completion of
-     *         the partner circuit.</li> <li><b>Available</b>: A connection that has
-     *         a completed partner circuit and is ready for use. A connection must be
-     *         available before virtual interfaces can be created.</li>
-     *         <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * @param connectionState State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     *         of a hosted connection provisioned on an interconnect. The connection
+     *         stays in the ordering state until the owner of the hosted connection
+     *         confirms or declines the connection order.</li> <li><b>Requested</b>:
+     *         The initial state of a standard connection. The connection stays in
+     *         the requested state until the Letter of Authorization (LOA) is sent to
+     *         the customer.</li> <li><b>Pending</b>: The connection has been
+     *         approved, and is being initialized.</li> <li><b>Available</b>: The
+     *         network link is up, and the connection is ready for use.</li>
+     *         <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     *         The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     *         connection in the 'Ordering' state will enter the 'Rejected' state if
+     *         it is deleted by the end customer.</li> </ul>
      *
      * @see ConnectionState
      */
@@ -263,33 +344,41 @@ public class Connection  implements Serializable  {
     }
     
     /**
-     * State of the connection. <ul> <li><b>Requested</b>: The initial state
-     * of connection immediately after creation. The connection stays in the
-     * requested state until the Letter of Authorization (LOA) is sent to the
-     * customer.</li> <li><b>Pending</b>: A connection is pending after the
-     * customer receives the LOA and remains pending until the completion of
-     * the partner circuit.</li> <li><b>Available</b>: A connection that has
-     * a completed partner circuit and is ready for use. A connection must be
-     * available before virtual interfaces can be created.</li>
-     * <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     * of a hosted connection provisioned on an interconnect. The connection
+     * stays in the ordering state until the owner of the hosted connection
+     * confirms or declines the connection order.</li> <li><b>Requested</b>:
+     * The initial state of a standard connection. The connection stays in
+     * the requested state until the Letter of Authorization (LOA) is sent to
+     * the customer.</li> <li><b>Pending</b>: The connection has been
+     * approved, and is being initialized.</li> <li><b>Available</b>: The
+     * network link is up, and the connection is ready for use.</li>
+     * <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     * The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     * connection in the 'Ordering' state will enter the 'Rejected' state if
+     * it is deleted by the end customer.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>requested, pending, available, deleted
+     * <b>Allowed Values: </b>ordering, requested, pending, available, down, deleting, deleted, rejected
      *
-     * @param connectionState State of the connection. <ul> <li><b>Requested</b>: The initial state
-     *         of connection immediately after creation. The connection stays in the
-     *         requested state until the Letter of Authorization (LOA) is sent to the
-     *         customer.</li> <li><b>Pending</b>: A connection is pending after the
-     *         customer receives the LOA and remains pending until the completion of
-     *         the partner circuit.</li> <li><b>Available</b>: A connection that has
-     *         a completed partner circuit and is ready for use. A connection must be
-     *         available before virtual interfaces can be created.</li>
-     *         <li><b>Deleted</b>: A connection that has been deleted.</li> </ul>
+     * @param connectionState State of the connection. <ul> <li><b>Ordering</b>: The initial state
+     *         of a hosted connection provisioned on an interconnect. The connection
+     *         stays in the ordering state until the owner of the hosted connection
+     *         confirms or declines the connection order.</li> <li><b>Requested</b>:
+     *         The initial state of a standard connection. The connection stays in
+     *         the requested state until the Letter of Authorization (LOA) is sent to
+     *         the customer.</li> <li><b>Pending</b>: The connection has been
+     *         approved, and is being initialized.</li> <li><b>Available</b>: The
+     *         network link is up, and the connection is ready for use.</li>
+     *         <li><b>Down</b>: The network link is down.</li> <li><b>Deleted</b>:
+     *         The connection has been deleted.</li> <li><b>Rejected</b>: A hosted
+     *         connection in the 'Ordering' state will enter the 'Rejected' state if
+     *         it is deleted by the end customer.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ConnectionState
      */
@@ -297,12 +386,12 @@ public class Connection  implements Serializable  {
         this.connectionState = connectionState.toString();
         return this;
     }
-    
+
     /**
-     * The AWS region where the offering is located. <p>Example: us-east-1
+     * The AWS region where the connection is located. <p>Example: us-east-1
      * <p>Default: None
      *
-     * @return The AWS region where the offering is located. <p>Example: us-east-1
+     * @return The AWS region where the connection is located. <p>Example: us-east-1
      *         <p>Default: None
      */
     public String getRegion() {
@@ -310,10 +399,10 @@ public class Connection  implements Serializable  {
     }
     
     /**
-     * The AWS region where the offering is located. <p>Example: us-east-1
+     * The AWS region where the connection is located. <p>Example: us-east-1
      * <p>Default: None
      *
-     * @param region The AWS region where the offering is located. <p>Example: us-east-1
+     * @param region The AWS region where the connection is located. <p>Example: us-east-1
      *         <p>Default: None
      */
     public void setRegion(String region) {
@@ -321,63 +410,154 @@ public class Connection  implements Serializable  {
     }
     
     /**
-     * The AWS region where the offering is located. <p>Example: us-east-1
+     * The AWS region where the connection is located. <p>Example: us-east-1
      * <p>Default: None
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param region The AWS region where the offering is located. <p>Example: us-east-1
+     * @param region The AWS region where the connection is located. <p>Example: us-east-1
      *         <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Connection withRegion(String region) {
         this.region = region;
         return this;
     }
-    
-    
+
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      *
-     * @return Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     *         <p>Default: None
+     * @return Where the connection is located. <p>Example: EqSV5 <p>Default: None
      */
     public String getLocation() {
         return location;
     }
     
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      *
-     * @param location Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     *         <p>Default: None
+     * @param location Where the connection is located. <p>Example: EqSV5 <p>Default: None
      */
     public void setLocation(String location) {
         this.location = location;
     }
     
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param location Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     *         <p>Default: None
+     * @param location Where the connection is located. <p>Example: EqSV5 <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Connection withLocation(String location) {
         this.location = location;
         return this;
     }
+
+    /**
+     * Bandwidth of the connection. <p>Example: 1Gbps <p>Default: None
+     *
+     * @return Bandwidth of the connection. <p>Example: 1Gbps <p>Default: None
+     */
+    public String getBandwidth() {
+        return bandwidth;
+    }
     
+    /**
+     * Bandwidth of the connection. <p>Example: 1Gbps <p>Default: None
+     *
+     * @param bandwidth Bandwidth of the connection. <p>Example: 1Gbps <p>Default: None
+     */
+    public void setBandwidth(String bandwidth) {
+        this.bandwidth = bandwidth;
+    }
     
+    /**
+     * Bandwidth of the connection. <p>Example: 1Gbps <p>Default: None
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param bandwidth Bandwidth of the connection. <p>Example: 1Gbps <p>Default: None
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Connection withBandwidth(String bandwidth) {
+        this.bandwidth = bandwidth;
+        return this;
+    }
+
+    /**
+     * The VLAN ID. <p>Example: 101
+     *
+     * @return The VLAN ID. <p>Example: 101
+     */
+    public Integer getVlan() {
+        return vlan;
+    }
+    
+    /**
+     * The VLAN ID. <p>Example: 101
+     *
+     * @param vlan The VLAN ID. <p>Example: 101
+     */
+    public void setVlan(Integer vlan) {
+        this.vlan = vlan;
+    }
+    
+    /**
+     * The VLAN ID. <p>Example: 101
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param vlan The VLAN ID. <p>Example: 101
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Connection withVlan(Integer vlan) {
+        this.vlan = vlan;
+        return this;
+    }
+
+    /**
+     * Returns the value of the PartnerName property for this object.
+     *
+     * @return The value of the PartnerName property for this object.
+     */
+    public String getPartnerName() {
+        return partnerName;
+    }
+    
+    /**
+     * Sets the value of the PartnerName property for this object.
+     *
+     * @param partnerName The new value for the PartnerName property for this object.
+     */
+    public void setPartnerName(String partnerName) {
+        this.partnerName = partnerName;
+    }
+    
+    /**
+     * Sets the value of the PartnerName property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param partnerName The new value for the PartnerName property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Connection withPartnerName(String partnerName) {
+        this.partnerName = partnerName;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -389,12 +569,16 @@ public class Connection  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");    	
-        if (getConnectionName() != null) sb.append("ConnectionName: " + getConnectionName() + ",");    	
-        if (getConnectionState() != null) sb.append("ConnectionState: " + getConnectionState() + ",");    	
-        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");    	
-        if (getLocation() != null) sb.append("Location: " + getLocation() );
+        sb.append("{");
+        if (getOwnerAccount() != null) sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");
+        if (getConnectionName() != null) sb.append("ConnectionName: " + getConnectionName() + ",");
+        if (getConnectionState() != null) sb.append("ConnectionState: " + getConnectionState() + ",");
+        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");
+        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");
+        if (getBandwidth() != null) sb.append("Bandwidth: " + getBandwidth() + ",");
+        if (getVlan() != null) sb.append("Vlan: " + getVlan() + ",");
+        if (getPartnerName() != null) sb.append("PartnerName: " + getPartnerName() );
         sb.append("}");
         return sb.toString();
     }
@@ -404,11 +588,15 @@ public class Connection  implements Serializable  {
         final int prime = 31;
         int hashCode = 1;
         
+        hashCode = prime * hashCode + ((getOwnerAccount() == null) ? 0 : getOwnerAccount().hashCode()); 
         hashCode = prime * hashCode + ((getConnectionId() == null) ? 0 : getConnectionId().hashCode()); 
         hashCode = prime * hashCode + ((getConnectionName() == null) ? 0 : getConnectionName().hashCode()); 
         hashCode = prime * hashCode + ((getConnectionState() == null) ? 0 : getConnectionState().hashCode()); 
         hashCode = prime * hashCode + ((getRegion() == null) ? 0 : getRegion().hashCode()); 
         hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode()); 
+        hashCode = prime * hashCode + ((getBandwidth() == null) ? 0 : getBandwidth().hashCode()); 
+        hashCode = prime * hashCode + ((getVlan() == null) ? 0 : getVlan().hashCode()); 
+        hashCode = prime * hashCode + ((getPartnerName() == null) ? 0 : getPartnerName().hashCode()); 
         return hashCode;
     }
     
@@ -420,6 +608,8 @@ public class Connection  implements Serializable  {
         if (obj instanceof Connection == false) return false;
         Connection other = (Connection)obj;
         
+        if (other.getOwnerAccount() == null ^ this.getOwnerAccount() == null) return false;
+        if (other.getOwnerAccount() != null && other.getOwnerAccount().equals(this.getOwnerAccount()) == false) return false; 
         if (other.getConnectionId() == null ^ this.getConnectionId() == null) return false;
         if (other.getConnectionId() != null && other.getConnectionId().equals(this.getConnectionId()) == false) return false; 
         if (other.getConnectionName() == null ^ this.getConnectionName() == null) return false;
@@ -430,6 +620,12 @@ public class Connection  implements Serializable  {
         if (other.getRegion() != null && other.getRegion().equals(this.getRegion()) == false) return false; 
         if (other.getLocation() == null ^ this.getLocation() == null) return false;
         if (other.getLocation() != null && other.getLocation().equals(this.getLocation()) == false) return false; 
+        if (other.getBandwidth() == null ^ this.getBandwidth() == null) return false;
+        if (other.getBandwidth() != null && other.getBandwidth().equals(this.getBandwidth()) == false) return false; 
+        if (other.getVlan() == null ^ this.getVlan() == null) return false;
+        if (other.getVlan() != null && other.getVlan().equals(this.getVlan()) == false) return false; 
+        if (other.getPartnerName() == null ^ this.getPartnerName() == null) return false;
+        if (other.getPartnerName() != null && other.getPartnerName().equals(this.getPartnerName()) == false) return false; 
         return true;
     }
     

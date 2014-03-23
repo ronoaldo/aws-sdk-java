@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Account Attribute Value
+ * <p>
+ * Describes a value of an account attribute.
+ * </p>
  */
-public class AccountAttributeValue  implements Serializable  {
+public class AccountAttributeValue implements Serializable {
 
+    /**
+     * The value.
+     */
     private String attributeValue;
 
     /**
-     * Returns the value of the AttributeValue property for this object.
+     * The value.
      *
-     * @return The value of the AttributeValue property for this object.
+     * @return The value.
      */
     public String getAttributeValue() {
         return attributeValue;
     }
     
     /**
-     * Sets the value of the AttributeValue property for this object.
+     * The value.
      *
-     * @param attributeValue The new value for the AttributeValue property for this object.
+     * @param attributeValue The value.
      */
     public void setAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
     }
     
     /**
-     * Sets the value of the AttributeValue property for this object.
+     * The value.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeValue The new value for the AttributeValue property for this object.
+     * @param attributeValue The value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AccountAttributeValue withAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +72,7 @@ public class AccountAttributeValue  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttributeValue() != null) sb.append("AttributeValue: " + getAttributeValue() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing the bundle tasks for the user's account.
- * </p>
+ * 
  */
-public class DescribeBundleTasksResult  implements Serializable  {
+public class DescribeBundleTasksResult implements Serializable {
 
     /**
-     * The list of described bundle tasks.
+     * Information about one or more bundle tasks.
      */
-    private java.util.List<BundleTask> bundleTasks;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BundleTask> bundleTasks;
 
     /**
-     * The list of described bundle tasks.
+     * Information about one or more bundle tasks.
      *
-     * @return The list of described bundle tasks.
+     * @return Information about one or more bundle tasks.
      */
     public java.util.List<BundleTask> getBundleTasks() {
-        
         if (bundleTasks == null) {
-            bundleTasks = new java.util.ArrayList<BundleTask>();
+              bundleTasks = new com.amazonaws.internal.ListWithAutoConstructFlag<BundleTask>();
+              bundleTasks.setAutoConstruct(true);
         }
         return bundleTasks;
     }
     
     /**
-     * The list of described bundle tasks.
+     * Information about one or more bundle tasks.
      *
-     * @param bundleTasks The list of described bundle tasks.
+     * @param bundleTasks Information about one or more bundle tasks.
      */
     public void setBundleTasks(java.util.Collection<BundleTask> bundleTasks) {
         if (bundleTasks == null) {
             this.bundleTasks = null;
             return;
         }
-
-        java.util.List<BundleTask> bundleTasksCopy = new java.util.ArrayList<BundleTask>(bundleTasks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BundleTask> bundleTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BundleTask>(bundleTasks.size());
         bundleTasksCopy.addAll(bundleTasks);
         this.bundleTasks = bundleTasksCopy;
     }
     
     /**
-     * The list of described bundle tasks.
+     * Information about one or more bundle tasks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bundleTasks The list of described bundle tasks.
+     * @param bundleTasks Information about one or more bundle tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksResult withBundleTasks(BundleTask... bundleTasks) {
         if (getBundleTasks() == null) setBundleTasks(new java.util.ArrayList<BundleTask>(bundleTasks.length));
@@ -75,27 +73,27 @@ public class DescribeBundleTasksResult  implements Serializable  {
     }
     
     /**
-     * The list of described bundle tasks.
+     * Information about one or more bundle tasks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bundleTasks The list of described bundle tasks.
+     * @param bundleTasks Information about one or more bundle tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksResult withBundleTasks(java.util.Collection<BundleTask> bundleTasks) {
         if (bundleTasks == null) {
             this.bundleTasks = null;
         } else {
-            java.util.List<BundleTask> bundleTasksCopy = new java.util.ArrayList<BundleTask>(bundleTasks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BundleTask> bundleTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BundleTask>(bundleTasks.size());
             bundleTasksCopy.addAll(bundleTasks);
             this.bundleTasks = bundleTasksCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeBundleTasksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getBundleTasks() != null) sb.append("BundleTasks: " + getBundleTasks() );
         sb.append("}");
         return sb.toString();

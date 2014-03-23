@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
  * 
- * </p>
  */
-public class CreateDhcpOptionsResult  implements Serializable  {
+public class CreateDhcpOptionsResult implements Serializable {
 
     /**
-     * A set of one or more DHCP options.
+     * A set of DHCP options.
      */
     private DhcpOptions dhcpOptions;
 
     /**
-     * A set of one or more DHCP options.
+     * A set of DHCP options.
      *
-     * @return A set of one or more DHCP options.
+     * @return A set of DHCP options.
      */
     public DhcpOptions getDhcpOptions() {
         return dhcpOptions;
     }
     
     /**
-     * A set of one or more DHCP options.
+     * A set of DHCP options.
      *
-     * @param dhcpOptions A set of one or more DHCP options.
+     * @param dhcpOptions A set of DHCP options.
      */
     public void setDhcpOptions(DhcpOptions dhcpOptions) {
         this.dhcpOptions = dhcpOptions;
     }
     
     /**
-     * A set of one or more DHCP options.
+     * A set of DHCP options.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpOptions A set of one or more DHCP options.
+     * @param dhcpOptions A set of DHCP options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateDhcpOptionsResult withDhcpOptions(DhcpOptions dhcpOptions) {
         this.dhcpOptions = dhcpOptions;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class CreateDhcpOptionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDhcpOptions() != null) sb.append("DhcpOptions: " + getDhcpOptions() );
         sb.append("}");
         return sb.toString();

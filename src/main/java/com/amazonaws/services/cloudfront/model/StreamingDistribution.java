@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A streaming distribution.
  * </p>
  */
-public class StreamingDistribution  implements Serializable  {
+public class StreamingDistribution implements Serializable {
 
     /**
      * The identifier for the streaming distribution. For example:
@@ -102,14 +103,13 @@ public class StreamingDistribution  implements Serializable  {
      *         EGTXBD79H29TRA8.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistribution withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The current status of the streaming distribution. When the status is
      * Deployed, the distribution's information is fully propagated
@@ -148,14 +148,13 @@ public class StreamingDistribution  implements Serializable  {
      *         throughout the Amazon CloudFront system.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistribution withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The date and time the distribution was last modified.
      *
@@ -182,14 +181,13 @@ public class StreamingDistribution  implements Serializable  {
      * @param lastModifiedTime The date and time the distribution was last modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistribution withLastModifiedTime(java.util.Date lastModifiedTime) {
         this.lastModifiedTime = lastModifiedTime;
         return this;
     }
-    
-    
+
     /**
      * The domain name corresponding to the streaming distribution. For
      * example: s5c39gqb8ow64r.cloudfront.net.
@@ -222,14 +220,13 @@ public class StreamingDistribution  implements Serializable  {
      *         example: s5c39gqb8ow64r.cloudfront.net.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistribution withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * CloudFront automatically adds this element to the response only if
      * you've set up the distribution to serve private content with signed
@@ -304,14 +301,13 @@ public class StreamingDistribution  implements Serializable  {
      *         working signed URLs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistribution withActiveTrustedSigners(ActiveTrustedSigners activeTrustedSigners) {
         this.activeTrustedSigners = activeTrustedSigners;
         return this;
     }
-    
-    
+
     /**
      * The current configuration information for the streaming distribution.
      *
@@ -338,14 +334,13 @@ public class StreamingDistribution  implements Serializable  {
      * @param streamingDistributionConfig The current configuration information for the streaming distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistribution withStreamingDistributionConfig(StreamingDistributionConfig streamingDistributionConfig) {
         this.streamingDistributionConfig = streamingDistributionConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -357,12 +352,12 @@ public class StreamingDistribution  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getLastModifiedTime() != null) sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getActiveTrustedSigners() != null) sb.append("ActiveTrustedSigners: " + getActiveTrustedSigners() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getLastModifiedTime() != null) sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getActiveTrustedSigners() != null) sb.append("ActiveTrustedSigners: " + getActiveTrustedSigners() + ",");
         if (getStreamingDistributionConfig() != null) sb.append("StreamingDistributionConfig: " + getStreamingDistributionConfig() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provide details of the <code>ChildWorkflowExecutionCanceled</code> event.
+ * Provide details of the <code>ChildWorkflowExecutionCanceled</code>
+ * event.
  * </p>
  */
-public class ChildWorkflowExecutionCanceledEventAttributes  implements Serializable  {
+public class ChildWorkflowExecutionCanceledEventAttributes implements Serializable {
 
     /**
      * The child workflow execution that was canceled.
@@ -83,14 +85,13 @@ public class ChildWorkflowExecutionCanceledEventAttributes  implements Serializa
      * @param workflowExecution The child workflow execution that was canceled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCanceledEventAttributes withWorkflowExecution(WorkflowExecution workflowExecution) {
         this.workflowExecution = workflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The type of the child workflow execution.
      *
@@ -117,14 +118,13 @@ public class ChildWorkflowExecutionCanceledEventAttributes  implements Serializa
      * @param workflowType The type of the child workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCanceledEventAttributes withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * Details of the cancellation (if provided).
      * <p>
@@ -160,14 +160,13 @@ public class ChildWorkflowExecutionCanceledEventAttributes  implements Serializa
      * @param details Details of the cancellation (if provided).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCanceledEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>StartChildWorkflowExecutionInitiated</code> event
      * corresponding to the <code>StartChildWorkflowExecution</code>
@@ -218,14 +217,13 @@ public class ChildWorkflowExecutionCanceledEventAttributes  implements Serializa
      *         chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCanceledEventAttributes withInitiatedEventId(Long initiatedEventId) {
         this.initiatedEventId = initiatedEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>ChildWorkflowExecutionStarted</code> event
      * recorded when this child workflow execution was started. This
@@ -270,14 +268,13 @@ public class ChildWorkflowExecutionCanceledEventAttributes  implements Serializa
      *         chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChildWorkflowExecutionCanceledEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -289,11 +286,11 @@ public class ChildWorkflowExecutionCanceledEventAttributes  implements Serializa
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
-        if (getInitiatedEventId() != null) sb.append("InitiatedEventId: " + getInitiatedEventId() + ",");    	
+        sb.append("{");
+        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
+        if (getInitiatedEventId() != null) sb.append("InitiatedEventId: " + getInitiatedEventId() + ",");
         if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() );
         sb.append("}");
         return sb.toString();

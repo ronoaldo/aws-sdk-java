@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,51 +13,67 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.glacier.AmazonGlacier#uploadArchive(UploadArchiveRequest) UploadArchive operation}.
  * <p>
- * This operation adds an archive to a vault. This is a synchronous operation, and for a successful upload, your data is durably persisted. Amazon
- * Glacier returns the archive ID in the <code>x-amz-archive-id</code> header of the response.
+ * This operation adds an archive to a vault. This is a synchronous
+ * operation, and for a successful upload, your data is durably
+ * persisted. Amazon Glacier returns the archive ID in the
+ * <code>x-amz-archive-id</code> header of the response.
  * </p>
  * <p>
- * You must use the archive ID to access your data in Amazon Glacier. After you upload an archive, you should save the archive ID returned so that you
- * can retrieve or delete the archive later. Besides saving the archive ID, you can also index it and give it a friendly name to allow for better
- * searching. You can also use the optional archive description field to specify how the archive is referred to in an external index of archives, such as
- * you might create in Amazon DynamoDB. You can also get the vault inventory to obtain a list of archive IDs in a vault. For more information, see
- * InitiateJob.
+ * You must use the archive ID to access your data in Amazon Glacier.
+ * After you upload an archive, you should save the archive ID returned
+ * so that you can retrieve or delete the archive later. Besides saving
+ * the archive ID, you can also index it and give it a friendly name to
+ * allow for better searching. You can also use the optional archive
+ * description field to specify how the archive is referred to in an
+ * external index of archives, such as you might create in Amazon
+ * DynamoDB. You can also get the vault inventory to obtain a list of
+ * archive IDs in a vault. For more information, see InitiateJob.
  * </p>
  * <p>
- * You must provide a SHA256 tree hash of the data you are uploading. For information about computing a SHA256 tree hash, see <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/checksum-calculations.html"> Computing Checksums </a> .
+ * You must provide a SHA256 tree hash of the data you are uploading. For
+ * information about computing a SHA256 tree hash, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html"> Computing Checksums </a>
+ * .
  * </p>
  * <p>
- * You can optionally specify an archive description of up to 1,024 printable ASCII characters. You can get the archive description when you either
- * retrieve the archive or get the vault inventory. For more information, see InitiateJob. Amazon Glacier does not interpret the description in any way.
- * An archive description does not need to be unique. You cannot use the description to retrieve or sort the archive list.
+ * You can optionally specify an archive description of up to 1,024
+ * printable ASCII characters. You can get the archive description when
+ * you either retrieve the archive or get the vault inventory. For more
+ * information, see InitiateJob. Amazon Glacier does not interpret the
+ * description in any way. An archive description does not need to be
+ * unique. You cannot use the description to retrieve or sort the archive
+ * list.
  * </p>
  * <p>
- * Archives are immutable. After you upload an archive, you cannot edit the archive or its description.
+ * Archives are immutable. After you upload an archive, you cannot edit
+ * the archive or its description.
  * </p>
  * <p>
- * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any
- * permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access
- * Management (IAM) </a> .
+ * An AWS account has full permission to perform all operations
+ * (actions). However, AWS Identity and Access Management (IAM) users
+ * don't have any permissions by default. You must grant them explicit
+ * permission to perform specific actions. For more information, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+ * .
  * </p>
  * <p>
- * For conceptual information and underlying REST API, go to <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/uploading-an-archive.html"> Uploading an Archive in Amazon Glacier </a> and <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/api-archive-post.html"> Upload Archive </a> in the <i>Amazon Glacier Developer
- * Guide</i> .
+ * For conceptual information and underlying REST API, go to
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html"> Uploading an Archive in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html"> Upload Archive </a>
+ * in the <i>Amazon Glacier Developer Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.glacier.AmazonGlacier#uploadArchive(UploadArchiveRequest)
  */
-public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UploadArchiveRequest extends AmazonWebServiceRequest implements Serializable {
 
     private Long contentLength;
 
@@ -108,14 +124,12 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param body The data to upload.
      */
     public UploadArchiveRequest(String vaultName, String archiveDescription, String checksum, java.io.InputStream body) {
-        this.vaultName = vaultName;
-        this.archiveDescription = archiveDescription;
-        this.checksum = checksum;
-        this.body = body;
+        setVaultName(vaultName);
+        setArchiveDescription(archiveDescription);
+        setChecksum(checksum);
+        setBody(body);
     }
 
-    
-    
     /**
      * Constructs a new UploadArchiveRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -133,15 +147,13 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param body The data to upload.
      */
     public UploadArchiveRequest(String vaultName, String accountId, String archiveDescription, String checksum, java.io.InputStream body) {
-        this.vaultName = vaultName;
-        this.accountId = accountId;
-        this.archiveDescription = archiveDescription;
-        this.checksum = checksum;
-        this.body = body;
+        setVaultName(vaultName);
+        setAccountId(accountId);
+        setArchiveDescription(archiveDescription);
+        setChecksum(checksum);
+        setBody(body);
     }
 
-    
-    
     /**
      * Returns the value of the ContentLength property for this object.
      *
@@ -168,14 +180,13 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param contentLength The new value for the ContentLength property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadArchiveRequest withContentLength(Long contentLength) {
         this.contentLength = contentLength;
         return this;
     }
-    
-    
+
     /**
      * The name of the vault.
      *
@@ -202,14 +213,13 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param vaultName The name of the vault.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadArchiveRequest withVaultName(String vaultName) {
         this.vaultName = vaultName;
         return this;
     }
-    
-    
+
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
      * either the AWS Account ID or optionally a '-', in which case Amazon
@@ -260,14 +270,13 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      *         hyphens in it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadArchiveRequest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
     }
-    
-    
+
     /**
      * The optional description of the archive you are uploading.
      *
@@ -294,14 +303,13 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param archiveDescription The optional description of the archive you are uploading.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadArchiveRequest withArchiveDescription(String archiveDescription) {
         this.archiveDescription = archiveDescription;
         return this;
     }
-    
-    
+
     /**
      * The SHA256 checksum (a linear hash) of the payload.
      *
@@ -328,14 +336,13 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param checksum The SHA256 checksum (a linear hash) of the payload.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadArchiveRequest withChecksum(String checksum) {
         this.checksum = checksum;
         return this;
     }
-    
-    
+
     /**
      * The data to upload.
      *
@@ -362,14 +369,13 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param body The data to upload.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UploadArchiveRequest withBody(java.io.InputStream body) {
         this.body = body;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -381,12 +387,12 @@ public class UploadArchiveRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getContentLength() != null) sb.append("ContentLength: " + getContentLength() + ",");    	
-        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");    	
-        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");    	
-        if (getArchiveDescription() != null) sb.append("ArchiveDescription: " + getArchiveDescription() + ",");    	
-        if (getChecksum() != null) sb.append("Checksum: " + getChecksum() + ",");    	
+        sb.append("{");
+        if (getContentLength() != null) sb.append("ContentLength: " + getContentLength() + ",");
+        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");
+        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");
+        if (getArchiveDescription() != null) sb.append("ArchiveDescription: " + getArchiveDescription() + ",");
+        if (getChecksum() != null) sb.append("Checksum: " + getChecksum() + ",");
         if (getBody() != null) sb.append("Body: " + getBody() );
         sb.append("}");
         return sb.toString();

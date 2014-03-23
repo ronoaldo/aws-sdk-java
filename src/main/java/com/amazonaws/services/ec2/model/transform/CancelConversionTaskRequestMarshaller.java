@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CancelConversionTaskRequestMarshaller implements Marshaller<Request
     public Request<CancelConversionTaskRequest> marshall(CancelConversionTaskRequest cancelConversionTaskRequest) {
 
         if (cancelConversionTaskRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CancelConversionTaskRequest> request = new DefaultRequest<CancelConversionTaskRequest>(cancelConversionTaskRequest, "AmazonEC2");
         request.addParameter("Action", "CancelConversionTask");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (cancelConversionTaskRequest.getConversionTaskId() != null) {
             request.addParameter("ConversionTaskId", StringUtils.fromString(cancelConversionTaskRequest.getConversionTaskId()));
@@ -46,7 +46,6 @@ public class CancelConversionTaskRequestMarshaller implements Marshaller<Request
         if (cancelConversionTaskRequest.getReasonMessage() != null) {
             request.addParameter("ReasonMessage", StringUtils.fromString(cancelConversionTaskRequest.getReasonMessage()));
         }
-
 
         return request;
     }

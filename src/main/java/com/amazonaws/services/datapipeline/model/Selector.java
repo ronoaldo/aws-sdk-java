@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A comparision that is used to determine whether a query should return this object.
+ * A comparision that is used to determine whether a query should return
+ * this object.
  * </p>
  */
-public class Selector  implements Serializable  {
+public class Selector implements Serializable {
 
     /**
      * The name of the field that the operator will be applied to. The field
@@ -96,14 +98,13 @@ public class Selector  implements Serializable  {
      *         field is not set on the object, the condition fails.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Selector withFieldName(String fieldName) {
         this.fieldName = fieldName;
         return this;
     }
-    
-    
+
     /**
      * Contains a logical operation for comparing the value of a field with a
      * specified value.
@@ -136,14 +137,13 @@ public class Selector  implements Serializable  {
      *         specified value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Selector withOperator(Operator operator) {
         this.operator = operator;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +155,8 @@ public class Selector  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFieldName() != null) sb.append("FieldName: " + getFieldName() + ",");    	
+        sb.append("{");
+        if (getFieldName() != null) sb.append("FieldName: " + getFieldName() + ",");
         if (getOperator() != null) sb.append("Operator: " + getOperator() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the Amazon Glacier response to your request.
  * </p>
  * <p>
- * For information about the underlying REST API, go to <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/api-archive-post.html">
- * Upload Archive </a> . For conceptual information, go to <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/working-with-archives.html"> Working with Archives in Amazon Glacier </a> .
+ * For information about the underlying REST API, go to
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html"> Upload Archive </a> . For conceptual information, go to <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html"> Working with Archives in Amazon Glacier </a>
+ * .
  * </p>
  */
-public class CompleteMultipartUploadResult  implements Serializable  {
+public class CompleteMultipartUploadResult implements Serializable {
 
     /**
      * The relative URI path of the newly added archive resource.
@@ -69,14 +70,13 @@ public class CompleteMultipartUploadResult  implements Serializable  {
      * @param location The relative URI path of the newly added archive resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadResult withLocation(String location) {
         this.location = location;
         return this;
     }
-    
-    
+
     /**
      * The checksum of the archive computed by Amazon Glacier.
      *
@@ -103,14 +103,13 @@ public class CompleteMultipartUploadResult  implements Serializable  {
      * @param checksum The checksum of the archive computed by Amazon Glacier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadResult withChecksum(String checksum) {
         this.checksum = checksum;
         return this;
     }
-    
-    
+
     /**
      * The ID of the archive. This value is also included as part of the
      * location.
@@ -143,14 +142,13 @@ public class CompleteMultipartUploadResult  implements Serializable  {
      *         location.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadResult withArchiveId(String archiveId) {
         this.archiveId = archiveId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -162,9 +160,9 @@ public class CompleteMultipartUploadResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");    	
-        if (getChecksum() != null) sb.append("Checksum: " + getChecksum() + ",");    	
+        sb.append("{");
+        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");
+        if (getChecksum() != null) sb.append("Checksum: " + getChecksum() + ",");
         if (getArchiveId() != null) sb.append("ArchiveId: " + getArchiveId() );
         sb.append("}");
         return sb.toString();

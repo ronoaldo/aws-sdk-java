@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The HealthCheck data type.
  * </p>
  */
-public class HealthCheck  implements Serializable  {
+public class HealthCheck implements Serializable {
 
     /**
      * Specifies the instance being checked. The protocol is either TCP,
@@ -117,15 +118,13 @@ public class HealthCheck  implements Serializable  {
      * <i>Healthy</i> state.
      */
     public HealthCheck(String target, Integer interval, Integer timeout, Integer unhealthyThreshold, Integer healthyThreshold) {
-        this.target = target;
-        this.interval = interval;
-        this.timeout = timeout;
-        this.unhealthyThreshold = unhealthyThreshold;
-        this.healthyThreshold = healthyThreshold;
+        setTarget(target);
+        setInterval(interval);
+        setTimeout(timeout);
+        setUnhealthyThreshold(unhealthyThreshold);
+        setHealthyThreshold(healthyThreshold);
     }
 
-    
-    
     /**
      * Specifies the instance being checked. The protocol is either TCP,
      * HTTP, HTTPS, or SSL. The range of valid ports is one (1) through
@@ -236,14 +235,13 @@ public class HealthCheck  implements Serializable  {
      *         Unicode characters or less. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withTarget(String target) {
         this.target = target;
         return this;
     }
-    
-    
+
     /**
      * Specifies the approximate interval, in seconds, between health checks
      * of an individual instance.
@@ -285,14 +283,13 @@ public class HealthCheck  implements Serializable  {
      *         of an individual instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withInterval(Integer interval) {
         this.interval = interval;
         return this;
     }
-    
-    
+
     /**
      * Specifies the amount of time, in seconds, during which no response
      * means a failed health probe. <note> This value must be less than the
@@ -340,14 +337,13 @@ public class HealthCheck  implements Serializable  {
      *         <i>Interval</i> value. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withTimeout(Integer timeout) {
         this.timeout = timeout;
         return this;
     }
-    
-    
+
     /**
      * Specifies the number of consecutive health probe failures required
      * before moving the instance to the <i>Unhealthy</i> state.
@@ -389,14 +385,13 @@ public class HealthCheck  implements Serializable  {
      *         before moving the instance to the <i>Unhealthy</i> state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withUnhealthyThreshold(Integer unhealthyThreshold) {
         this.unhealthyThreshold = unhealthyThreshold;
         return this;
     }
-    
-    
+
     /**
      * Specifies the number of consecutive health probe successes required
      * before moving the instance to the <i>Healthy</i> state.
@@ -438,14 +433,13 @@ public class HealthCheck  implements Serializable  {
      *         before moving the instance to the <i>Healthy</i> state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withHealthyThreshold(Integer healthyThreshold) {
         this.healthyThreshold = healthyThreshold;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -457,11 +451,11 @@ public class HealthCheck  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTarget() != null) sb.append("Target: " + getTarget() + ",");    	
-        if (getInterval() != null) sb.append("Interval: " + getInterval() + ",");    	
-        if (getTimeout() != null) sb.append("Timeout: " + getTimeout() + ",");    	
-        if (getUnhealthyThreshold() != null) sb.append("UnhealthyThreshold: " + getUnhealthyThreshold() + ",");    	
+        sb.append("{");
+        if (getTarget() != null) sb.append("Target: " + getTarget() + ",");
+        if (getInterval() != null) sb.append("Interval: " + getInterval() + ",");
+        if (getTimeout() != null) sb.append("Timeout: " + getTimeout() + ",");
+        if (getUnhealthyThreshold() != null) sb.append("UnhealthyThreshold: " + getUnhealthyThreshold() + ",");
         if (getHealthyThreshold() != null) sb.append("HealthyThreshold: " + getHealthyThreshold() );
         sb.append("}");
         return sb.toString();

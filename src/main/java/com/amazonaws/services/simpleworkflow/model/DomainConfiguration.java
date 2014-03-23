@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the configuration settings of a domain.
  * </p>
  */
-public class DomainConfiguration  implements Serializable  {
+public class DomainConfiguration implements Serializable {
 
     /**
      * The retention period for workflow executions in this domain.
@@ -65,14 +66,13 @@ public class DomainConfiguration  implements Serializable  {
      * @param workflowExecutionRetentionPeriodInDays The retention period for workflow executions in this domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainConfiguration withWorkflowExecutionRetentionPeriodInDays(String workflowExecutionRetentionPeriodInDays) {
         this.workflowExecutionRetentionPeriodInDays = workflowExecutionRetentionPeriodInDays;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -84,7 +84,7 @@ public class DomainConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getWorkflowExecutionRetentionPeriodInDays() != null) sb.append("WorkflowExecutionRetentionPeriodInDays: " + getWorkflowExecutionRetentionPeriodInDays() );
         sb.append("}");
         return sb.toString();

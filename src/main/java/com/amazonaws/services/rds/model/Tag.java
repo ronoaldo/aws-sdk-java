@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,45 +13,47 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Metadata assigned to a DB Instance consisting of a key-value pair.
+ * Metadata assigned to an Amazon RDS resource consisting of a key-value
+ * pair.
  * </p>
  */
-public class Tag  implements Serializable  {
+public class Tag implements Serializable {
 
     /**
      * A key is the required name of the tag. The string value can be from 1
-     * to 128 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * to 128 Unicode characters in length and cannot be prefixed with "aws:"
+     * or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      */
     private String key;
 
     /**
      * A value is the optional value of the tag. The string value can be from
      * 1 to 256 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * "aws:" or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      */
     private String value;
 
     /**
      * A key is the required name of the tag. The string value can be from 1
-     * to 128 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * to 128 Unicode characters in length and cannot be prefixed with "aws:"
+     * or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      *
      * @return A key is the required name of the tag. The string value can be from 1
-     *         to 128 Unicode characters in length and cannot be prefixed with
-     *         "aws:". The string may only contain only the set of Unicode letters,
-     *         digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     *         "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     *         to 128 Unicode characters in length and cannot be prefixed with "aws:"
+     *         or "rds:". The string may only contain only the set of Unicode
+     *         letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     *         regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      */
     public String getKey() {
         return key;
@@ -59,16 +61,16 @@ public class Tag  implements Serializable  {
     
     /**
      * A key is the required name of the tag. The string value can be from 1
-     * to 128 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * to 128 Unicode characters in length and cannot be prefixed with "aws:"
+     * or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      *
      * @param key A key is the required name of the tag. The string value can be from 1
-     *         to 128 Unicode characters in length and cannot be prefixed with
-     *         "aws:". The string may only contain only the set of Unicode letters,
-     *         digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     *         "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     *         to 128 Unicode characters in length and cannot be prefixed with "aws:"
+     *         or "rds:". The string may only contain only the set of Unicode
+     *         letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     *         regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      */
     public void setKey(String key) {
         this.key = key;
@@ -76,40 +78,39 @@ public class Tag  implements Serializable  {
     
     /**
      * A key is the required name of the tag. The string value can be from 1
-     * to 128 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * to 128 Unicode characters in length and cannot be prefixed with "aws:"
+     * or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param key A key is the required name of the tag. The string value can be from 1
-     *         to 128 Unicode characters in length and cannot be prefixed with
-     *         "aws:". The string may only contain only the set of Unicode letters,
-     *         digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     *         "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     *         to 128 Unicode characters in length and cannot be prefixed with "aws:"
+     *         or "rds:". The string may only contain only the set of Unicode
+     *         letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     *         regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withKey(String key) {
         this.key = key;
         return this;
     }
-    
-    
+
     /**
      * A value is the optional value of the tag. The string value can be from
      * 1 to 256 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * "aws:" or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      *
      * @return A value is the optional value of the tag. The string value can be from
      *         1 to 256 Unicode characters in length and cannot be prefixed with
-     *         "aws:". The string may only contain only the set of Unicode letters,
-     *         digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     *         "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     *         "aws:" or "rds:". The string may only contain only the set of Unicode
+     *         letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     *         regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      */
     public String getValue() {
         return value;
@@ -118,15 +119,15 @@ public class Tag  implements Serializable  {
     /**
      * A value is the optional value of the tag. The string value can be from
      * 1 to 256 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * "aws:" or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      *
      * @param value A value is the optional value of the tag. The string value can be from
      *         1 to 256 Unicode characters in length and cannot be prefixed with
-     *         "aws:". The string may only contain only the set of Unicode letters,
-     *         digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     *         "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     *         "aws:" or "rds:". The string may only contain only the set of Unicode
+     *         letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     *         regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      */
     public void setValue(String value) {
         this.value = value;
@@ -135,27 +136,26 @@ public class Tag  implements Serializable  {
     /**
      * A value is the optional value of the tag. The string value can be from
      * 1 to 256 Unicode characters in length and cannot be prefixed with
-     * "aws:". The string may only contain only the set of Unicode letters,
-     * digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     * "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     * "aws:" or "rds:". The string may only contain only the set of Unicode
+     * letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     * regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param value A value is the optional value of the tag. The string value can be from
      *         1 to 256 Unicode characters in length and cannot be prefixed with
-     *         "aws:". The string may only contain only the set of Unicode letters,
-     *         digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-     *         "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+     *         "aws:" or "rds:". The string may only contain only the set of Unicode
+     *         letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
+     *         regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -167,8 +167,8 @@ public class Tag  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
+        sb.append("{");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

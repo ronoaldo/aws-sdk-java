@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes Challenge-Handshake Authentication Protocol (CHAP) information that supports authentication between your gateway and iSCSI initiators.
+ * Describes Challenge-Handshake Authentication Protocol (CHAP)
+ * information that supports authentication between your gateway and
+ * iSCSI initiators.
  * </p>
  */
-public class ChapInfo  implements Serializable  {
+public class ChapInfo implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the volume. <p><i>Valid Values</i>:
@@ -99,14 +102,13 @@ public class ChapInfo  implements Serializable  {
      *         50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChapInfo withTargetARN(String targetARN) {
         this.targetARN = targetARN;
         return this;
     }
-    
-    
+
     /**
      * The secret key that the initiator (e.g. Windows client) must provide
      * to participate in mutual CHAP with the target.
@@ -148,14 +150,13 @@ public class ChapInfo  implements Serializable  {
      *         to participate in mutual CHAP with the target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChapInfo withSecretToAuthenticateInitiator(String secretToAuthenticateInitiator) {
         this.secretToAuthenticateInitiator = secretToAuthenticateInitiator;
         return this;
     }
-    
-    
+
     /**
      * The iSCSI initiator that connects to the target.
      * <p>
@@ -194,14 +195,13 @@ public class ChapInfo  implements Serializable  {
      * @param initiatorName The iSCSI initiator that connects to the target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChapInfo withInitiatorName(String initiatorName) {
         this.initiatorName = initiatorName;
         return this;
     }
-    
-    
+
     /**
      * The secret key that the target must provide to participate in mutual
      * CHAP with the initiator (e.g. Windows client).
@@ -243,14 +243,13 @@ public class ChapInfo  implements Serializable  {
      *         CHAP with the initiator (e.g. Windows client).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChapInfo withSecretToAuthenticateTarget(String secretToAuthenticateTarget) {
         this.secretToAuthenticateTarget = secretToAuthenticateTarget;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -262,10 +261,10 @@ public class ChapInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");    	
-        if (getSecretToAuthenticateInitiator() != null) sb.append("SecretToAuthenticateInitiator: " + getSecretToAuthenticateInitiator() + ",");    	
-        if (getInitiatorName() != null) sb.append("InitiatorName: " + getInitiatorName() + ",");    	
+        sb.append("{");
+        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");
+        if (getSecretToAuthenticateInitiator() != null) sb.append("SecretToAuthenticateInitiator: " + getSecretToAuthenticateInitiator() + ",");
+        if (getInitiatorName() != null) sb.append("InitiatorName: " + getInitiatorName() + ",");
         if (getSecretToAuthenticateTarget() != null) sb.append("SecretToAuthenticateTarget: " + getSecretToAuthenticateTarget() );
         sb.append("}");
         return sb.toString();

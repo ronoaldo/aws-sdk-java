@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2013 Amazon Technologies, Inc.
+ * Copyright 2013-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,8 @@ public enum Regions {
     AP_SOUTHEAST_1("ap-southeast-1"), 
     AP_SOUTHEAST_2("ap-southeast-2"), 
     AP_NORTHEAST_1("ap-northeast-1"), 
-    SA_EAST_1("sa-east-1");
+    SA_EAST_1("sa-east-1"),
+    CN_NORTH_1("cn-north-1");
     
     /**
      * The default region that new customers in the US are encouraged to use
@@ -47,4 +48,21 @@ public enum Regions {
     public String getName() {
         return name;
     }
+    
+    /**
+     * Returns a region enum corresponding to the given region name.
+     * 
+     * @param regionName
+     *            The name of the region. Ex.: eu-west-1
+     * @return Region enum representing the given region name.
+     */
+    public static Regions fromName(String regionName) {
+        for (Regions region : Regions.values()) {
+            if (regionName.equals(region.getName())) {
+                return region;
+            }
+        }
+        throw new IllegalArgumentException("Cannot create enum from " + regionName + " value!");
+    } 
+    
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,19 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the
- * condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist.
+ * Specifies the conditions under which data should be updated. If an
+ * update condition is specified for a request, the data will only be
+ * updated if the condition is satisfied. For example, if an attribute
+ * with a specific name and value exists, or if a specific attribute
+ * doesn't exist.
  * </p>
  */
-public class UpdateCondition  implements Serializable  {
+public class UpdateCondition implements Serializable {
 
     /**
      * The name of the attribute involved in the condition.
@@ -67,13 +71,11 @@ public class UpdateCondition  implements Serializable  {
      * update condition to be satisfied.
      */
     public UpdateCondition(String name, String value, Boolean exists) {
-        this.name = name;
-        this.value = value;
-        this.exists = exists;
+        setName(name);
+        setValue(value);
+        setExists(exists);
     }
 
-    
-    
     /**
      * The name of the attribute involved in the condition.
      *
@@ -100,14 +102,13 @@ public class UpdateCondition  implements Serializable  {
      * @param name The name of the attribute involved in the condition.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateCondition withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The value of an attribute. This value can only be specified when the
      * <code>Exists</code> parameter is equal to <code>true</code>.
@@ -140,14 +141,13 @@ public class UpdateCondition  implements Serializable  {
      *         <code>Exists</code> parameter is equal to <code>true</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateCondition withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * A value specifying whether or not the specified attribute must exist
      * with the specified value in order for the update condition to be
@@ -204,14 +204,13 @@ public class UpdateCondition  implements Serializable  {
      *         satisfied.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateCondition withExists(Boolean exists) {
         this.exists = exists;
         return this;
     }
-    
-    
+
     /**
      * A value specifying whether or not the specified attribute must exist
      * with the specified value in order for the update condition to be
@@ -230,7 +229,7 @@ public class UpdateCondition  implements Serializable  {
     public Boolean getExists() {
         return exists;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -242,9 +241,9 @@ public class UpdateCondition  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (isExists() != null) sb.append("Exists: " + isExists() );
         sb.append("}");
         return sb.toString();

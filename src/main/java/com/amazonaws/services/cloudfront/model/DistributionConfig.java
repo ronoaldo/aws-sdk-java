@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A distribution Configuration.
  * </p>
  */
-public class DistributionConfig  implements Serializable  {
+public class DistributionConfig implements Serializable {
 
     /**
      * A unique number that ensures the request can't be replayed. If the
@@ -78,6 +79,12 @@ public class DistributionConfig  implements Serializable  {
     private CacheBehaviors cacheBehaviors;
 
     /**
+     * A complex type that contains zero or more CustomErrorResponse
+     * elements.
+     */
+    private CustomErrorResponses customErrorResponses;
+
+    /**
      * Any comments you want to include about the distribution.
      */
     private String comment;
@@ -102,6 +109,18 @@ public class DistributionConfig  implements Serializable  {
      * content.
      */
     private Boolean enabled;
+
+    /**
+     * A complex type that contains information about viewer certificates for
+     * this distribution.
+     */
+    private ViewerCertificate viewerCertificate;
+
+    /**
+     * A complex type that identifies ways in which you want to restrict
+     * distribution of your content.
+     */
+    private Restrictions restrictions;
 
     /**
      * Default constructor for a new DistributionConfig object.  Callers should use the
@@ -129,12 +148,10 @@ public class DistributionConfig  implements Serializable  {
      * requests for content.
      */
     public DistributionConfig(String callerReference, Boolean enabled) {
-        this.callerReference = callerReference;
-        this.enabled = enabled;
+        setCallerReference(callerReference);
+        setEnabled(enabled);
     }
 
-    
-    
     /**
      * A unique number that ensures the request can't be replayed. If the
      * CallerReference is new (no matter the content of the
@@ -221,14 +238,13 @@ public class DistributionConfig  implements Serializable  {
      *         DistributionAlreadyExists error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about CNAMEs (alternate
      * domain names), if any, for this distribution.
@@ -261,14 +277,13 @@ public class DistributionConfig  implements Serializable  {
      *         domain names), if any, for this distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withAliases(Aliases aliases) {
         this.aliases = aliases;
         return this;
     }
-    
-    
+
     /**
      * The object that you want CloudFront to return (for example,
      * index.html) when an end user requests the root URL for your
@@ -355,14 +370,13 @@ public class DistributionConfig  implements Serializable  {
      *         configuration and specify the new object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withDefaultRootObject(String defaultRootObject) {
         this.defaultRootObject = defaultRootObject;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about origins for this
      * distribution.
@@ -395,14 +409,13 @@ public class DistributionConfig  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withOrigins(Origins origins) {
         this.origins = origins;
         return this;
     }
-    
-    
+
     /**
      * A complex type that describes the default cache behavior if you do not
      * specify a CacheBehavior element or if files don't match any of the
@@ -447,14 +460,13 @@ public class DistributionConfig  implements Serializable  {
      *         exactly one default cache behavior.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withDefaultCacheBehavior(DefaultCacheBehavior defaultCacheBehavior) {
         this.defaultCacheBehavior = defaultCacheBehavior;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains zero or more CacheBehavior elements.
      *
@@ -481,14 +493,52 @@ public class DistributionConfig  implements Serializable  {
      * @param cacheBehaviors A complex type that contains zero or more CacheBehavior elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withCacheBehaviors(CacheBehaviors cacheBehaviors) {
         this.cacheBehaviors = cacheBehaviors;
         return this;
     }
+
+    /**
+     * A complex type that contains zero or more CustomErrorResponse
+     * elements.
+     *
+     * @return A complex type that contains zero or more CustomErrorResponse
+     *         elements.
+     */
+    public CustomErrorResponses getCustomErrorResponses() {
+        return customErrorResponses;
+    }
     
+    /**
+     * A complex type that contains zero or more CustomErrorResponse
+     * elements.
+     *
+     * @param customErrorResponses A complex type that contains zero or more CustomErrorResponse
+     *         elements.
+     */
+    public void setCustomErrorResponses(CustomErrorResponses customErrorResponses) {
+        this.customErrorResponses = customErrorResponses;
+    }
     
+    /**
+     * A complex type that contains zero or more CustomErrorResponse
+     * elements.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param customErrorResponses A complex type that contains zero or more CustomErrorResponse
+     *         elements.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DistributionConfig withCustomErrorResponses(CustomErrorResponses customErrorResponses) {
+        this.customErrorResponses = customErrorResponses;
+        return this;
+    }
+
     /**
      * Any comments you want to include about the distribution.
      *
@@ -515,14 +565,13 @@ public class DistributionConfig  implements Serializable  {
      * @param comment Any comments you want to include about the distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * A complex type that controls whether access logs are written for the
      * distribution.
@@ -555,14 +604,13 @@ public class DistributionConfig  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withLogging(LoggingConfig logging) {
         this.logging = logging;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about price class for this
      * distribution.
@@ -608,7 +656,7 @@ public class DistributionConfig  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PriceClass
      */
@@ -616,8 +664,7 @@ public class DistributionConfig  implements Serializable  {
         this.priceClass = priceClass;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about price class for this
      * distribution.
@@ -647,7 +694,7 @@ public class DistributionConfig  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PriceClass
      */
@@ -655,7 +702,7 @@ public class DistributionConfig  implements Serializable  {
         this.priceClass = priceClass.toString();
         return this;
     }
-    
+
     /**
      * Whether the distribution is enabled to accept end user requests for
      * content.
@@ -688,14 +735,13 @@ public class DistributionConfig  implements Serializable  {
      *         content.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DistributionConfig withEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * Whether the distribution is enabled to accept end user requests for
      * content.
@@ -706,7 +752,85 @@ public class DistributionConfig  implements Serializable  {
     public Boolean getEnabled() {
         return enabled;
     }
+
+    /**
+     * A complex type that contains information about viewer certificates for
+     * this distribution.
+     *
+     * @return A complex type that contains information about viewer certificates for
+     *         this distribution.
+     */
+    public ViewerCertificate getViewerCertificate() {
+        return viewerCertificate;
+    }
     
+    /**
+     * A complex type that contains information about viewer certificates for
+     * this distribution.
+     *
+     * @param viewerCertificate A complex type that contains information about viewer certificates for
+     *         this distribution.
+     */
+    public void setViewerCertificate(ViewerCertificate viewerCertificate) {
+        this.viewerCertificate = viewerCertificate;
+    }
+    
+    /**
+     * A complex type that contains information about viewer certificates for
+     * this distribution.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param viewerCertificate A complex type that contains information about viewer certificates for
+     *         this distribution.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DistributionConfig withViewerCertificate(ViewerCertificate viewerCertificate) {
+        this.viewerCertificate = viewerCertificate;
+        return this;
+    }
+
+    /**
+     * A complex type that identifies ways in which you want to restrict
+     * distribution of your content.
+     *
+     * @return A complex type that identifies ways in which you want to restrict
+     *         distribution of your content.
+     */
+    public Restrictions getRestrictions() {
+        return restrictions;
+    }
+    
+    /**
+     * A complex type that identifies ways in which you want to restrict
+     * distribution of your content.
+     *
+     * @param restrictions A complex type that identifies ways in which you want to restrict
+     *         distribution of your content.
+     */
+    public void setRestrictions(Restrictions restrictions) {
+        this.restrictions = restrictions;
+    }
+    
+    /**
+     * A complex type that identifies ways in which you want to restrict
+     * distribution of your content.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param restrictions A complex type that identifies ways in which you want to restrict
+     *         distribution of your content.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DistributionConfig withRestrictions(Restrictions restrictions) {
+        this.restrictions = restrictions;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -718,17 +842,20 @@ public class DistributionConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");    	
-        if (getAliases() != null) sb.append("Aliases: " + getAliases() + ",");    	
-        if (getDefaultRootObject() != null) sb.append("DefaultRootObject: " + getDefaultRootObject() + ",");    	
-        if (getOrigins() != null) sb.append("Origins: " + getOrigins() + ",");    	
-        if (getDefaultCacheBehavior() != null) sb.append("DefaultCacheBehavior: " + getDefaultCacheBehavior() + ",");    	
-        if (getCacheBehaviors() != null) sb.append("CacheBehaviors: " + getCacheBehaviors() + ",");    	
-        if (getComment() != null) sb.append("Comment: " + getComment() + ",");    	
-        if (getLogging() != null) sb.append("Logging: " + getLogging() + ",");    	
-        if (getPriceClass() != null) sb.append("PriceClass: " + getPriceClass() + ",");    	
-        if (isEnabled() != null) sb.append("Enabled: " + isEnabled() );
+        sb.append("{");
+        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");
+        if (getAliases() != null) sb.append("Aliases: " + getAliases() + ",");
+        if (getDefaultRootObject() != null) sb.append("DefaultRootObject: " + getDefaultRootObject() + ",");
+        if (getOrigins() != null) sb.append("Origins: " + getOrigins() + ",");
+        if (getDefaultCacheBehavior() != null) sb.append("DefaultCacheBehavior: " + getDefaultCacheBehavior() + ",");
+        if (getCacheBehaviors() != null) sb.append("CacheBehaviors: " + getCacheBehaviors() + ",");
+        if (getCustomErrorResponses() != null) sb.append("CustomErrorResponses: " + getCustomErrorResponses() + ",");
+        if (getComment() != null) sb.append("Comment: " + getComment() + ",");
+        if (getLogging() != null) sb.append("Logging: " + getLogging() + ",");
+        if (getPriceClass() != null) sb.append("PriceClass: " + getPriceClass() + ",");
+        if (isEnabled() != null) sb.append("Enabled: " + isEnabled() + ",");
+        if (getViewerCertificate() != null) sb.append("ViewerCertificate: " + getViewerCertificate() + ",");
+        if (getRestrictions() != null) sb.append("Restrictions: " + getRestrictions() );
         sb.append("}");
         return sb.toString();
     }
@@ -744,10 +871,13 @@ public class DistributionConfig  implements Serializable  {
         hashCode = prime * hashCode + ((getOrigins() == null) ? 0 : getOrigins().hashCode()); 
         hashCode = prime * hashCode + ((getDefaultCacheBehavior() == null) ? 0 : getDefaultCacheBehavior().hashCode()); 
         hashCode = prime * hashCode + ((getCacheBehaviors() == null) ? 0 : getCacheBehaviors().hashCode()); 
+        hashCode = prime * hashCode + ((getCustomErrorResponses() == null) ? 0 : getCustomErrorResponses().hashCode()); 
         hashCode = prime * hashCode + ((getComment() == null) ? 0 : getComment().hashCode()); 
         hashCode = prime * hashCode + ((getLogging() == null) ? 0 : getLogging().hashCode()); 
         hashCode = prime * hashCode + ((getPriceClass() == null) ? 0 : getPriceClass().hashCode()); 
         hashCode = prime * hashCode + ((isEnabled() == null) ? 0 : isEnabled().hashCode()); 
+        hashCode = prime * hashCode + ((getViewerCertificate() == null) ? 0 : getViewerCertificate().hashCode()); 
+        hashCode = prime * hashCode + ((getRestrictions() == null) ? 0 : getRestrictions().hashCode()); 
         return hashCode;
     }
     
@@ -771,6 +901,8 @@ public class DistributionConfig  implements Serializable  {
         if (other.getDefaultCacheBehavior() != null && other.getDefaultCacheBehavior().equals(this.getDefaultCacheBehavior()) == false) return false; 
         if (other.getCacheBehaviors() == null ^ this.getCacheBehaviors() == null) return false;
         if (other.getCacheBehaviors() != null && other.getCacheBehaviors().equals(this.getCacheBehaviors()) == false) return false; 
+        if (other.getCustomErrorResponses() == null ^ this.getCustomErrorResponses() == null) return false;
+        if (other.getCustomErrorResponses() != null && other.getCustomErrorResponses().equals(this.getCustomErrorResponses()) == false) return false; 
         if (other.getComment() == null ^ this.getComment() == null) return false;
         if (other.getComment() != null && other.getComment().equals(this.getComment()) == false) return false; 
         if (other.getLogging() == null ^ this.getLogging() == null) return false;
@@ -779,6 +911,10 @@ public class DistributionConfig  implements Serializable  {
         if (other.getPriceClass() != null && other.getPriceClass().equals(this.getPriceClass()) == false) return false; 
         if (other.isEnabled() == null ^ this.isEnabled() == null) return false;
         if (other.isEnabled() != null && other.isEnabled().equals(this.isEnabled()) == false) return false; 
+        if (other.getViewerCertificate() == null ^ this.getViewerCertificate() == null) return false;
+        if (other.getViewerCertificate() != null && other.getViewerCertificate().equals(this.getViewerCertificate()) == false) return false; 
+        if (other.getRestrictions() == null ^ this.getRestrictions() == null) return false;
+        if (other.getRestrictions() != null && other.getRestrictions().equals(this.getRestrictions()) == false) return false; 
         return true;
     }
     

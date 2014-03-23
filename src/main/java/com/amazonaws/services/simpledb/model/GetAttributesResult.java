@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
+
 import java.io.Serializable;
 
 /**
  * Get Attributes Result
  */
-public class GetAttributesResult  implements Serializable  {
+public class GetAttributesResult implements Serializable {
 
     /**
      * The list of attributes returned by the operation.
      */
-    private java.util.List<Attribute> attributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributes;
 
     /**
      * The list of attributes returned by the operation.
@@ -31,9 +32,9 @@ public class GetAttributesResult  implements Serializable  {
      * @return The list of attributes returned by the operation.
      */
     public java.util.List<Attribute> getAttributes() {
-        
         if (attributes == null) {
-            attributes = new java.util.ArrayList<Attribute>();
+              attributes = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>();
+              attributes.setAutoConstruct(true);
         }
         return attributes;
     }
@@ -48,8 +49,7 @@ public class GetAttributesResult  implements Serializable  {
             this.attributes = null;
             return;
         }
-
-        java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
         attributesCopy.addAll(attributes);
         this.attributes = attributesCopy;
     }
@@ -62,7 +62,7 @@ public class GetAttributesResult  implements Serializable  {
      * @param attributes The list of attributes returned by the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetAttributesResult withAttributes(Attribute... attributes) {
         if (getAttributes() == null) setAttributes(new java.util.ArrayList<Attribute>(attributes.length));
@@ -80,20 +80,20 @@ public class GetAttributesResult  implements Serializable  {
      * @param attributes The list of attributes returned by the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetAttributesResult withAttributes(java.util.Collection<Attribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
         } else {
-            java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
             attributesCopy.addAll(attributes);
             this.attributes = attributesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -105,7 +105,7 @@ public class GetAttributesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

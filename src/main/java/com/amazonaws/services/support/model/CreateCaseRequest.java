@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,51 +13,70 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.support.AWSSupport#createCase(CreateCaseRequest) CreateCase operation}.
  * <p>
- * Creates a new case in the AWS Support Center. This action is modeled on the behavior of the AWS Support Center <a
- * href="https://aws.amazon.com/support/createCase"> Open a new case </a> page. Its parameters require you to specify the following information:
+ * Creates a new case in the AWS Support Center. This operation is
+ * modeled on the behavior of the AWS Support Center
+ * <a href="https://aws.amazon.com/support/createCase"> Open a new case </a>
+ * page. Its parameters require you to specify the following
+ * information:
  * </p>
- * <ol> <li> <b>ServiceCode.</b> Represents a code for an AWS service. You obtain the <i>ServiceCode</i> by calling DescribeServices. </li>
- * <li> <b>CategoryCode</b> . Represents a category for the service defined for the ServiceCode value. You also obtain the cateogory code for a service
- * by calling DescribeServices. Each AWS service defines its own set of category codes. </li>
- * <li> <b>SeverityCode</b> . Represents a value that specifies the urgency of the case, and the time interval in which your service level agreement
- * specifies a response from AWS Support. You obtain the SeverityCode by calling DescribeSeverityLevels.</li>
- * <li> <b>Subject</b> . Represents the <b>Subject</b> field on the AWS Support Center <a href="https://aws.amazon.com/support/createCase"> Open a new
- * case </a> page.</li>
- * <li> <b>CommunicationBody</b> . Represents the <b>Description</b> field on the AWS Support Center <a
- * href="https://aws.amazon.com/support/createCase"> Open a new case </a> page.</li>
- * <li> <b>Language</b> . Specifies the human language in which AWS Support handles the case. The API currently supports English and Japanese.</li>
- * <li> <b>CcEmailAddresses</b> . Represents the AWS Support Center <b>CC</b> field on the <a href="https://aws.amazon.com/support/createCase"> Open a
- * new case </a> page. You can list email addresses to be copied on any correspondence about the case. The account that opens the case is already
- * identified by passing the AWS Credentials in the HTTP POST method or in a method or function call from one of the programming languages supported by
- * an <a href="http://aws.amazon.com/tools/"> AWS SDK </a> . </li>
+ * <ol> <li> <b>ServiceCode.</b> The code for an AWS service. You obtain
+ * the <code>ServiceCode</code> by calling DescribeServices. </li>
+ * <li> <b>CategoryCode.</b> The category for the service defined for
+ * the <code>ServiceCode</code> value. You also obtain the category code
+ * for a service by calling DescribeServices. Each AWS service defines
+ * its own set of category codes. </li>
+ * <li> <b>SeverityCode.</b> A value that indicates the urgency of the
+ * case, which in turn determines the response time according to your
+ * service level agreement with AWS Support. You obtain the SeverityCode
+ * by calling DescribeSeverityLevels.</li>
+ * <li> <b>Subject.</b> The <b>Subject</b> field on the AWS Support
+ * Center
+ * <a href="https://aws.amazon.com/support/createCase"> Open a new case </a>
+ * page.</li>
+ * <li> <b>CommunicationBody.</b> The <b>Description</b> field on the
+ * AWS Support Center
+ * <a href="https://aws.amazon.com/support/createCase"> Open a new case </a>
+ * page.</li>
+ * <li> <b>Language.</b> The human language in which AWS Support handles
+ * the case. English and Japanese are currently supported.</li>
+ * <li> <b>CcEmailAddresses.</b> The AWS Support Center <b>CC</b> field
+ * on the
+ * <a href="https://aws.amazon.com/support/createCase"> Open a new case </a> page. You can list email addresses to be copied on any correspondence about the case. The account that opens the case is already identified by passing the AWS Credentials in the HTTP POST method or in a method or function call from one of the programming languages supported by an <a href="http://aws.amazon.com/tools/"> AWS SDK </a>
+ * . </li>
+ * <li> <b>IssueType.</b> The type of issue for the case. You can
+ * specify either "customer-service" or "technical." If you do not
+ * indicate a value, the default is "technical." </li>
  * </ol> <p>
- * <b>NOTE:</b>The AWS Support API does not currently support the ability to add attachments to cases. You can, however, call AddCommunicationToCase to
- * add information to an open case.
+ * <b>NOTE:</b> The AWS Support API does not currently support the
+ * ability to add attachments to cases. You can, however, call
+ * AddCommunicationToCase to add information to an open case.
  * </p>
  * <p>
- * A successful CreateCase request returns an AWS Support case number. Case numbers are used by DescribeCases request to retrieve existing AWS Support
- * support cases.
+ * A successful CreateCase request returns an AWS Support case number.
+ * Case numbers are used by the DescribeCases action to retrieve existing
+ * AWS Support cases.
  * </p>
  *
  * @see com.amazonaws.services.support.AWSSupport#createCase(CreateCaseRequest)
  */
-public class CreateCaseRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateCaseRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * Title of the AWS Support case.
+     * The title of the AWS Support case.
      */
     private String subject;
 
     /**
-     * Code for the AWS service returned by the call to <a
-     * href="API_DescribeServices.html"
-     * title="DescribeServices">DescribeServices</a>.
+     * The code for the AWS service returned by the call to
+     * <a>DescribeServices</a>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>[0-9a-z\-_]+<br/>
@@ -65,24 +84,22 @@ public class CreateCaseRequest extends AmazonWebServiceRequest  implements Seria
     private String serviceCode;
 
     /**
-     * Code for the severity level returned by the call to <a
-     * href="API_DescribeSeverityLevels.html"
-     * title="DescribeSeverityLevels">DescribeSeverityLevels</a>. <note>The
-     * availability of severity levels depends on each customer's support
-     * subscription. In other words, your subscription may not necessarily
-     * require the urgent level of response time.</note>
+     * The code for the severity level returned by the call to
+     * <a>DescribeSeverityLevels</a>. <note><p>The availability of severity
+     * levels depends on each customer's support subscription. In other
+     * words, your subscription may not necessarily require the urgent level
+     * of response time.</note>
      */
     private String severityCode;
 
     /**
-     * Specifies the category of problem for the AWS Support case.
+     * The category of problem for the AWS Support case.
      */
     private String categoryCode;
 
     /**
-     * Parameter that represents the communication body text when you create
-     * an AWS Support case by calling <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a>.
+     * The communication body text when you create an AWS Support case by
+     * calling <a>CreateCase</a>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
@@ -90,296 +107,274 @@ public class CreateCaseRequest extends AmazonWebServiceRequest  implements Seria
     private String communicationBody;
 
     /**
-     * List of email addresses that AWS Support copies on case
+     * A list of email addresses that AWS Support copies on case
      * correspondence.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<String> ccEmailAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> ccEmailAddresses;
 
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      */
     private String language;
 
     /**
-     * Field passed as a parameter in a <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a> call.
+     * The type of issue for the case. You can specify either
+     * "customer-service" or "technical." If you do not indicate a value, the
+     * default is "technical."
      */
     private String issueType;
 
     /**
-     * Title of the AWS Support case.
+     * The title of the AWS Support case.
      *
-     * @return Title of the AWS Support case.
+     * @return The title of the AWS Support case.
      */
     public String getSubject() {
         return subject;
     }
     
     /**
-     * Title of the AWS Support case.
+     * The title of the AWS Support case.
      *
-     * @param subject Title of the AWS Support case.
+     * @param subject The title of the AWS Support case.
      */
     public void setSubject(String subject) {
         this.subject = subject;
     }
     
     /**
-     * Title of the AWS Support case.
+     * The title of the AWS Support case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subject Title of the AWS Support case.
+     * @param subject The title of the AWS Support case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withSubject(String subject) {
         this.subject = subject;
         return this;
     }
-    
-    
+
     /**
-     * Code for the AWS service returned by the call to <a
-     * href="API_DescribeServices.html"
-     * title="DescribeServices">DescribeServices</a>.
+     * The code for the AWS service returned by the call to
+     * <a>DescribeServices</a>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>[0-9a-z\-_]+<br/>
      *
-     * @return Code for the AWS service returned by the call to <a
-     *         href="API_DescribeServices.html"
-     *         title="DescribeServices">DescribeServices</a>.
+     * @return The code for the AWS service returned by the call to
+     *         <a>DescribeServices</a>.
      */
     public String getServiceCode() {
         return serviceCode;
     }
     
     /**
-     * Code for the AWS service returned by the call to <a
-     * href="API_DescribeServices.html"
-     * title="DescribeServices">DescribeServices</a>.
+     * The code for the AWS service returned by the call to
+     * <a>DescribeServices</a>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>[0-9a-z\-_]+<br/>
      *
-     * @param serviceCode Code for the AWS service returned by the call to <a
-     *         href="API_DescribeServices.html"
-     *         title="DescribeServices">DescribeServices</a>.
+     * @param serviceCode The code for the AWS service returned by the call to
+     *         <a>DescribeServices</a>.
      */
     public void setServiceCode(String serviceCode) {
         this.serviceCode = serviceCode;
     }
     
     /**
-     * Code for the AWS service returned by the call to <a
-     * href="API_DescribeServices.html"
-     * title="DescribeServices">DescribeServices</a>.
+     * The code for the AWS service returned by the call to
+     * <a>DescribeServices</a>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>[0-9a-z\-_]+<br/>
      *
-     * @param serviceCode Code for the AWS service returned by the call to <a
-     *         href="API_DescribeServices.html"
-     *         title="DescribeServices">DescribeServices</a>.
+     * @param serviceCode The code for the AWS service returned by the call to
+     *         <a>DescribeServices</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withServiceCode(String serviceCode) {
         this.serviceCode = serviceCode;
         return this;
     }
-    
-    
+
     /**
-     * Code for the severity level returned by the call to <a
-     * href="API_DescribeSeverityLevels.html"
-     * title="DescribeSeverityLevels">DescribeSeverityLevels</a>. <note>The
-     * availability of severity levels depends on each customer's support
-     * subscription. In other words, your subscription may not necessarily
-     * require the urgent level of response time.</note>
+     * The code for the severity level returned by the call to
+     * <a>DescribeSeverityLevels</a>. <note><p>The availability of severity
+     * levels depends on each customer's support subscription. In other
+     * words, your subscription may not necessarily require the urgent level
+     * of response time.</note>
      *
-     * @return Code for the severity level returned by the call to <a
-     *         href="API_DescribeSeverityLevels.html"
-     *         title="DescribeSeverityLevels">DescribeSeverityLevels</a>. <note>The
-     *         availability of severity levels depends on each customer's support
-     *         subscription. In other words, your subscription may not necessarily
-     *         require the urgent level of response time.</note>
+     * @return The code for the severity level returned by the call to
+     *         <a>DescribeSeverityLevels</a>. <note><p>The availability of severity
+     *         levels depends on each customer's support subscription. In other
+     *         words, your subscription may not necessarily require the urgent level
+     *         of response time.</note>
      */
     public String getSeverityCode() {
         return severityCode;
     }
     
     /**
-     * Code for the severity level returned by the call to <a
-     * href="API_DescribeSeverityLevels.html"
-     * title="DescribeSeverityLevels">DescribeSeverityLevels</a>. <note>The
-     * availability of severity levels depends on each customer's support
-     * subscription. In other words, your subscription may not necessarily
-     * require the urgent level of response time.</note>
+     * The code for the severity level returned by the call to
+     * <a>DescribeSeverityLevels</a>. <note><p>The availability of severity
+     * levels depends on each customer's support subscription. In other
+     * words, your subscription may not necessarily require the urgent level
+     * of response time.</note>
      *
-     * @param severityCode Code for the severity level returned by the call to <a
-     *         href="API_DescribeSeverityLevels.html"
-     *         title="DescribeSeverityLevels">DescribeSeverityLevels</a>. <note>The
-     *         availability of severity levels depends on each customer's support
-     *         subscription. In other words, your subscription may not necessarily
-     *         require the urgent level of response time.</note>
+     * @param severityCode The code for the severity level returned by the call to
+     *         <a>DescribeSeverityLevels</a>. <note><p>The availability of severity
+     *         levels depends on each customer's support subscription. In other
+     *         words, your subscription may not necessarily require the urgent level
+     *         of response time.</note>
      */
     public void setSeverityCode(String severityCode) {
         this.severityCode = severityCode;
     }
     
     /**
-     * Code for the severity level returned by the call to <a
-     * href="API_DescribeSeverityLevels.html"
-     * title="DescribeSeverityLevels">DescribeSeverityLevels</a>. <note>The
-     * availability of severity levels depends on each customer's support
-     * subscription. In other words, your subscription may not necessarily
-     * require the urgent level of response time.</note>
+     * The code for the severity level returned by the call to
+     * <a>DescribeSeverityLevels</a>. <note><p>The availability of severity
+     * levels depends on each customer's support subscription. In other
+     * words, your subscription may not necessarily require the urgent level
+     * of response time.</note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param severityCode Code for the severity level returned by the call to <a
-     *         href="API_DescribeSeverityLevels.html"
-     *         title="DescribeSeverityLevels">DescribeSeverityLevels</a>. <note>The
-     *         availability of severity levels depends on each customer's support
-     *         subscription. In other words, your subscription may not necessarily
-     *         require the urgent level of response time.</note>
+     * @param severityCode The code for the severity level returned by the call to
+     *         <a>DescribeSeverityLevels</a>. <note><p>The availability of severity
+     *         levels depends on each customer's support subscription. In other
+     *         words, your subscription may not necessarily require the urgent level
+     *         of response time.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withSeverityCode(String severityCode) {
         this.severityCode = severityCode;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the category of problem for the AWS Support case.
+     * The category of problem for the AWS Support case.
      *
-     * @return Specifies the category of problem for the AWS Support case.
+     * @return The category of problem for the AWS Support case.
      */
     public String getCategoryCode() {
         return categoryCode;
     }
     
     /**
-     * Specifies the category of problem for the AWS Support case.
+     * The category of problem for the AWS Support case.
      *
-     * @param categoryCode Specifies the category of problem for the AWS Support case.
+     * @param categoryCode The category of problem for the AWS Support case.
      */
     public void setCategoryCode(String categoryCode) {
         this.categoryCode = categoryCode;
     }
     
     /**
-     * Specifies the category of problem for the AWS Support case.
+     * The category of problem for the AWS Support case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param categoryCode Specifies the category of problem for the AWS Support case.
+     * @param categoryCode The category of problem for the AWS Support case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withCategoryCode(String categoryCode) {
         this.categoryCode = categoryCode;
         return this;
     }
-    
-    
+
     /**
-     * Parameter that represents the communication body text when you create
-     * an AWS Support case by calling <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a>.
+     * The communication body text when you create an AWS Support case by
+     * calling <a>CreateCase</a>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
      *
-     * @return Parameter that represents the communication body text when you create
-     *         an AWS Support case by calling <a href="API_CreateCase.html"
-     *         title="CreateCase">CreateCase</a>.
+     * @return The communication body text when you create an AWS Support case by
+     *         calling <a>CreateCase</a>.
      */
     public String getCommunicationBody() {
         return communicationBody;
     }
     
     /**
-     * Parameter that represents the communication body text when you create
-     * an AWS Support case by calling <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a>.
+     * The communication body text when you create an AWS Support case by
+     * calling <a>CreateCase</a>.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
      *
-     * @param communicationBody Parameter that represents the communication body text when you create
-     *         an AWS Support case by calling <a href="API_CreateCase.html"
-     *         title="CreateCase">CreateCase</a>.
+     * @param communicationBody The communication body text when you create an AWS Support case by
+     *         calling <a>CreateCase</a>.
      */
     public void setCommunicationBody(String communicationBody) {
         this.communicationBody = communicationBody;
     }
     
     /**
-     * Parameter that represents the communication body text when you create
-     * an AWS Support case by calling <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a>.
+     * The communication body text when you create an AWS Support case by
+     * calling <a>CreateCase</a>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
      *
-     * @param communicationBody Parameter that represents the communication body text when you create
-     *         an AWS Support case by calling <a href="API_CreateCase.html"
-     *         title="CreateCase">CreateCase</a>.
+     * @param communicationBody The communication body text when you create an AWS Support case by
+     *         calling <a>CreateCase</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withCommunicationBody(String communicationBody) {
         this.communicationBody = communicationBody;
         return this;
     }
-    
-    
+
     /**
-     * List of email addresses that AWS Support copies on case
+     * A list of email addresses that AWS Support copies on case
      * correspondence.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @return List of email addresses that AWS Support copies on case
+     * @return A list of email addresses that AWS Support copies on case
      *         correspondence.
      */
     public java.util.List<String> getCcEmailAddresses() {
-        
         if (ccEmailAddresses == null) {
-            ccEmailAddresses = new java.util.ArrayList<String>();
+              ccEmailAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              ccEmailAddresses.setAutoConstruct(true);
         }
         return ccEmailAddresses;
     }
     
     /**
-     * List of email addresses that AWS Support copies on case
+     * A list of email addresses that AWS Support copies on case
      * correspondence.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param ccEmailAddresses List of email addresses that AWS Support copies on case
+     * @param ccEmailAddresses A list of email addresses that AWS Support copies on case
      *         correspondence.
      */
     public void setCcEmailAddresses(java.util.Collection<String> ccEmailAddresses) {
@@ -387,14 +382,13 @@ public class CreateCaseRequest extends AmazonWebServiceRequest  implements Seria
             this.ccEmailAddresses = null;
             return;
         }
-
-        java.util.List<String> ccEmailAddressesCopy = new java.util.ArrayList<String>(ccEmailAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> ccEmailAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ccEmailAddresses.size());
         ccEmailAddressesCopy.addAll(ccEmailAddresses);
         this.ccEmailAddresses = ccEmailAddressesCopy;
     }
     
     /**
-     * List of email addresses that AWS Support copies on case
+     * A list of email addresses that AWS Support copies on case
      * correspondence.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -402,11 +396,11 @@ public class CreateCaseRequest extends AmazonWebServiceRequest  implements Seria
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param ccEmailAddresses List of email addresses that AWS Support copies on case
+     * @param ccEmailAddresses A list of email addresses that AWS Support copies on case
      *         correspondence.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withCcEmailAddresses(String... ccEmailAddresses) {
         if (getCcEmailAddresses() == null) setCcEmailAddresses(new java.util.ArrayList<String>(ccEmailAddresses.length));
@@ -417,7 +411,7 @@ public class CreateCaseRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * List of email addresses that AWS Support copies on case
+     * A list of email addresses that AWS Support copies on case
      * correspondence.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -425,116 +419,120 @@ public class CreateCaseRequest extends AmazonWebServiceRequest  implements Seria
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param ccEmailAddresses List of email addresses that AWS Support copies on case
+     * @param ccEmailAddresses A list of email addresses that AWS Support copies on case
      *         correspondence.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withCcEmailAddresses(java.util.Collection<String> ccEmailAddresses) {
         if (ccEmailAddresses == null) {
             this.ccEmailAddresses = null;
         } else {
-            java.util.List<String> ccEmailAddressesCopy = new java.util.ArrayList<String>(ccEmailAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> ccEmailAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ccEmailAddresses.size());
             ccEmailAddressesCopy.addAll(ccEmailAddresses);
             this.ccEmailAddresses = ccEmailAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @return Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @return The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public String getLanguage() {
         return language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public void setLanguage(String language) {
         this.language = language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withLanguage(String language) {
         this.language = language;
         return this;
     }
-    
-    
+
     /**
-     * Field passed as a parameter in a <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a> call.
+     * The type of issue for the case. You can specify either
+     * "customer-service" or "technical." If you do not indicate a value, the
+     * default is "technical."
      *
-     * @return Field passed as a parameter in a <a href="API_CreateCase.html"
-     *         title="CreateCase">CreateCase</a> call.
+     * @return The type of issue for the case. You can specify either
+     *         "customer-service" or "technical." If you do not indicate a value, the
+     *         default is "technical."
      */
     public String getIssueType() {
         return issueType;
     }
     
     /**
-     * Field passed as a parameter in a <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a> call.
+     * The type of issue for the case. You can specify either
+     * "customer-service" or "technical." If you do not indicate a value, the
+     * default is "technical."
      *
-     * @param issueType Field passed as a parameter in a <a href="API_CreateCase.html"
-     *         title="CreateCase">CreateCase</a> call.
+     * @param issueType The type of issue for the case. You can specify either
+     *         "customer-service" or "technical." If you do not indicate a value, the
+     *         default is "technical."
      */
     public void setIssueType(String issueType) {
         this.issueType = issueType;
     }
     
     /**
-     * Field passed as a parameter in a <a href="API_CreateCase.html"
-     * title="CreateCase">CreateCase</a> call.
+     * The type of issue for the case. You can specify either
+     * "customer-service" or "technical." If you do not indicate a value, the
+     * default is "technical."
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param issueType Field passed as a parameter in a <a href="API_CreateCase.html"
-     *         title="CreateCase">CreateCase</a> call.
+     * @param issueType The type of issue for the case. You can specify either
+     *         "customer-service" or "technical." If you do not indicate a value, the
+     *         default is "technical."
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCaseRequest withIssueType(String issueType) {
         this.issueType = issueType;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -546,14 +544,14 @@ public class CreateCaseRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubject() != null) sb.append("Subject: " + getSubject() + ",");    	
-        if (getServiceCode() != null) sb.append("ServiceCode: " + getServiceCode() + ",");    	
-        if (getSeverityCode() != null) sb.append("SeverityCode: " + getSeverityCode() + ",");    	
-        if (getCategoryCode() != null) sb.append("CategoryCode: " + getCategoryCode() + ",");    	
-        if (getCommunicationBody() != null) sb.append("CommunicationBody: " + getCommunicationBody() + ",");    	
-        if (getCcEmailAddresses() != null) sb.append("CcEmailAddresses: " + getCcEmailAddresses() + ",");    	
-        if (getLanguage() != null) sb.append("Language: " + getLanguage() + ",");    	
+        sb.append("{");
+        if (getSubject() != null) sb.append("Subject: " + getSubject() + ",");
+        if (getServiceCode() != null) sb.append("ServiceCode: " + getServiceCode() + ",");
+        if (getSeverityCode() != null) sb.append("SeverityCode: " + getSeverityCode() + ",");
+        if (getCategoryCode() != null) sb.append("CategoryCode: " + getCategoryCode() + ",");
+        if (getCommunicationBody() != null) sb.append("CommunicationBody: " + getCommunicationBody() + ",");
+        if (getCcEmailAddresses() != null) sb.append("CcEmailAddresses: " + getCcEmailAddresses() + ",");
+        if (getLanguage() != null) sb.append("Language: " + getLanguage() + ",");
         if (getIssueType() != null) sb.append("IssueType: " + getIssueType() );
         sb.append("}");
         return sb.toString();

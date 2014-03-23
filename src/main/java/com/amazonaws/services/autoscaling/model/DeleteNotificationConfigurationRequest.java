@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteNotificationConfiguration(DeleteNotificationConfigurationRequest) DeleteNotificationConfiguration operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteNotificationConfiguration(DeleteNotificationConfigurationRequest)
  */
-public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -83,14 +85,13 @@ public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequ
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteNotificationConfigurationRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
      * Service (SNS) topic.
@@ -135,14 +136,13 @@ public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequ
      *         Service (SNS) topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteNotificationConfigurationRequest withTopicARN(String topicARN) {
         this.topicARN = topicARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -154,8 +154,8 @@ public class DeleteNotificationConfigurationRequest extends AmazonWebServiceRequ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getTopicARN() != null) sb.append("TopicARN: " + getTopicARN() );
         sb.append("}");
         return sb.toString();

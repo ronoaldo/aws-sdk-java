@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class ListJobsRequestMarshaller implements Marshaller<Request<ListJobsRequest>, ListJobsRequest> {
 
-    
-
     public Request<ListJobsRequest> marshall(ListJobsRequest listJobsRequest) {
     if (listJobsRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,17 +49,15 @@ public class ListJobsRequestMarshaller implements Marshaller<Request<ListJobsReq
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.GET);
 
-
         String uriResourcePath = "/{accountId}/vaults/{vaultName}/jobs?marker={marker};limit={limit};completed={completed};statuscode={statuscode}"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(listJobsRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(listJobsRequest.getVaultName())); 
-        uriResourcePath = uriResourcePath.replace("{limit}", getString(listJobsRequest.getLimit())); 
-        uriResourcePath = uriResourcePath.replace("{marker}", getString(listJobsRequest.getMarker())); 
-        uriResourcePath = uriResourcePath.replace("{statuscode}", getString(listJobsRequest.getStatuscode())); 
-        uriResourcePath = uriResourcePath.replace("{completed}", getString(listJobsRequest.getCompleted())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (listJobsRequest.getAccountId() == null) ? "" : StringUtils.fromString(listJobsRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (listJobsRequest.getVaultName() == null) ? "" : StringUtils.fromString(listJobsRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{limit}", (listJobsRequest.getLimit() == null) ? "" : StringUtils.fromString(listJobsRequest.getLimit())); 
+        uriResourcePath = uriResourcePath.replace("{marker}", (listJobsRequest.getMarker() == null) ? "" : StringUtils.fromString(listJobsRequest.getMarker())); 
+        uriResourcePath = uriResourcePath.replace("{statuscode}", (listJobsRequest.getStatuscode() == null) ? "" : StringUtils.fromString(listJobsRequest.getStatuscode())); 
+        uriResourcePath = uriResourcePath.replace("{completed}", (listJobsRequest.getCompleted() == null) ? "" : StringUtils.fromString(listJobsRequest.getCompleted())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -81,16 +77,8 @@ public class ListJobsRequestMarshaller implements Marshaller<Request<ListJobsReq
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

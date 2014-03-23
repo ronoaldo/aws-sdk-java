@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,52 +22,55 @@ import com.amazonaws.services.opsworks.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Weekly Auto Scaling Schedule JSON Unmarshaller
  */
 public class WeeklyAutoScalingScheduleJsonUnmarshaller implements Unmarshaller<WeeklyAutoScalingSchedule, JsonUnmarshallerContext> {
 
-    
-
     public WeeklyAutoScalingSchedule unmarshall(JsonUnmarshallerContext context) throws Exception {
         WeeklyAutoScalingSchedule weeklyAutoScalingSchedule = new WeeklyAutoScalingSchedule();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("Monday", targetDepth)) {
+                    context.nextToken();
                     weeklyAutoScalingSchedule.setMonday(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Tuesday", targetDepth)) {
+                    context.nextToken();
                     weeklyAutoScalingSchedule.setTuesday(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Wednesday", targetDepth)) {
+                    context.nextToken();
                     weeklyAutoScalingSchedule.setWednesday(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Thursday", targetDepth)) {
+                    context.nextToken();
                     weeklyAutoScalingSchedule.setThursday(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Friday", targetDepth)) {
+                    context.nextToken();
                     weeklyAutoScalingSchedule.setFriday(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Saturday", targetDepth)) {
+                    context.nextToken();
                     weeklyAutoScalingSchedule.setSaturday(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Sunday", targetDepth)) {
+                    context.nextToken();
                     weeklyAutoScalingSchedule.setSunday(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
@@ -75,7 +78,6 @@ public class WeeklyAutoScalingScheduleJsonUnmarshaller implements Unmarshaller<W
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

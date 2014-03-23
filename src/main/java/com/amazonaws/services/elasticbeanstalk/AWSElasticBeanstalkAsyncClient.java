@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,36 +29,35 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.elasticbeanstalk.model.*;
 
-
 /**
  * Asynchronous client for accessing AWSElasticBeanstalk.
  * All asynchronous calls made using this client are non-blocking. Callers could either
  * process the result and handle the exceptions in the worker thread by providing a callback handler
  * when making the call, or use the returned Future object to check the result of the call in the calling thread.
  * AWS Elastic Beanstalk <p>
- * This is the AWS Elastic Beanstalk API Reference. This guide provides detailed information about AWS Elastic Beanstalk actions, data types,
+ * This is the AWS Elastic Beanstalk API Reference. This guide provides
+ * detailed information about AWS Elastic Beanstalk actions, data types,
  * parameters, and errors.
  * </p>
  * <p>
- * AWS Elastic Beanstalk is a tool that makes it easy for you to create, deploy, and manage scalable, fault-tolerant applications running on Amazon Web
- * Services cloud resources.
+ * AWS Elastic Beanstalk is a tool that makes it easy for you to create,
+ * deploy, and manage scalable, fault-tolerant applications running on
+ * Amazon Web Services cloud resources.
  * </p>
  * <p>
- * For more information about this product, go to the <a href="http://aws.amazon.com/elasticbeanstalk/"> AWS Elastic Beanstalk </a> details page. The
- * location of the lastest AWS Elastic Beanstalk WSDL is <a href="http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl">
- * http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl </a> .
+ * For more information about this product, go to the
+ * <a href="http://aws.amazon.com/elasticbeanstalk/"> AWS Elastic Beanstalk </a> details page. The location of the latest AWS Elastic Beanstalk WSDL is <a href="http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl"> http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl </a>
+ * .
  * </p>
  * <p>
  * <b>Endpoints</b>
  * </p>
  * <p>
- * AWS Elastic Beanstalk supports the following region-specific endpoint:
+ * For a list of region-specific endpoints that AWS Elastic Beanstalk
+ * supports, go to
+ * <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region"> Regions and Endpoints </a>
+ * in the <i>Amazon Web Services Glossary</i> .
  * </p>
- * 
- * <ul>
- * <li> https://elasticbeanstalk.us-east-1.amazonaws.com </li>
- * 
- * </ul>
  */
 public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         implements AWSElasticBeanstalkAsync {
@@ -68,6 +67,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -83,7 +83,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AWSElasticBeanstalkAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -107,16 +107,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      *                       client connects to AWSElasticBeanstalk
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AWSElasticBeanstalkAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AWSElasticBeanstalk using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -128,7 +128,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      *                       when authenticating with AWS services.
      */
     public AWSElasticBeanstalkAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -182,7 +182,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AWSElasticBeanstalk using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -195,7 +195,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      *            to authenticate requests with AWS services.
      */
     public AWSElasticBeanstalkAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -238,7 +238,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      */
     public AWSElasticBeanstalkAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -267,7 +267,6 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -283,7 +282,8 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -303,6 +303,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CheckDNSAvailability service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -317,11 +318,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<CheckDNSAvailabilityResult>() {
             public CheckDNSAvailabilityResult call() throws Exception {
                 return checkDNSAvailability(checkDNSAvailabilityRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Checks if the specified CNAME is available.
@@ -338,6 +338,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CheckDNSAvailability service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -353,17 +354,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CheckDNSAvailabilityResult>() {
             public CheckDNSAvailabilityResult call() throws Exception {
-            	CheckDNSAvailabilityResult result;
+              CheckDNSAvailabilityResult result;
                 try {
-            		result = checkDNSAvailability(checkDNSAvailabilityRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(checkDNSAvailabilityRequest, result);
-               	return result;
-		    }
-		});
+                result = checkDNSAvailability(checkDNSAvailabilityRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(checkDNSAvailabilityRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -382,6 +383,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationOptions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -396,11 +398,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<DescribeConfigurationOptionsResult>() {
             public DescribeConfigurationOptionsResult call() throws Exception {
                 return describeConfigurationOptions(describeConfigurationOptionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Describes the configuration options that are used in a particular
@@ -421,6 +422,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationOptions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -436,17 +438,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeConfigurationOptionsResult>() {
             public DescribeConfigurationOptionsResult call() throws Exception {
-            	DescribeConfigurationOptionsResult result;
+              DescribeConfigurationOptionsResult result;
                 try {
-            		result = describeConfigurationOptions(describeConfigurationOptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeConfigurationOptionsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeConfigurationOptions(describeConfigurationOptionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeConfigurationOptionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -467,6 +469,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DeleteConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -482,11 +485,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 deleteConfigurationTemplate(deleteConfigurationTemplateRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes the specified configuration template.
@@ -509,6 +511,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DeleteConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -524,16 +527,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteConfigurationTemplate(deleteConfigurationTemplateRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteConfigurationTemplateRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteConfigurationTemplate(deleteConfigurationTemplateRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteConfigurationTemplateRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -547,6 +550,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -561,11 +565,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<CreateEnvironmentResult>() {
             public CreateEnvironmentResult call() throws Exception {
                 return createEnvironment(createEnvironmentRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Launches an environment for the specified application using the
@@ -581,6 +584,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -596,17 +600,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateEnvironmentResult>() {
             public CreateEnvironmentResult call() throws Exception {
-            	CreateEnvironmentResult result;
+              CreateEnvironmentResult result;
                 try {
-            		result = createEnvironment(createEnvironmentRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createEnvironmentRequest, result);
-               	return result;
-		    }
-		});
+                result = createEnvironment(createEnvironmentRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createEnvironmentRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -624,6 +628,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CreateStorageLocation service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -638,11 +643,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<CreateStorageLocationResult>() {
             public CreateStorageLocationResult call() throws Exception {
                 return createStorageLocation(createStorageLocationRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates the Amazon S3 storage location for the account.
@@ -662,6 +666,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CreateStorageLocation service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -677,17 +682,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateStorageLocationResult>() {
             public CreateStorageLocationResult call() throws Exception {
-            	CreateStorageLocationResult result;
+              CreateStorageLocationResult result;
                 try {
-            		result = createStorageLocation(createStorageLocationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createStorageLocationRequest, result);
-               	return result;
-		    }
-		});
+                result = createStorageLocation(createStorageLocationRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createStorageLocationRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -717,6 +722,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         RequestEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -732,11 +738,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 requestEnvironmentInfo(requestEnvironmentInfoRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Initiates a request to compile the specified type of information of
@@ -768,6 +773,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         RequestEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -783,16 +789,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		requestEnvironmentInfo(requestEnvironmentInfoRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(requestEnvironmentInfoRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                requestEnvironmentInfo(requestEnvironmentInfoRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(requestEnvironmentInfoRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -814,6 +820,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CreateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -828,11 +835,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<CreateApplicationVersionResult>() {
             public CreateApplicationVersionResult call() throws Exception {
                 return createApplicationVersion(createApplicationVersionRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates an application version for the specified application.
@@ -856,6 +862,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CreateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -871,17 +878,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateApplicationVersionResult>() {
             public CreateApplicationVersionResult call() throws Exception {
-            	CreateApplicationVersionResult result;
+              CreateApplicationVersionResult result;
                 try {
-            		result = createApplicationVersion(createApplicationVersionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createApplicationVersionRequest, result);
-               	return result;
-		    }
-		});
+                result = createApplicationVersion(createApplicationVersionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createApplicationVersionRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -900,6 +907,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DeleteApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -915,11 +923,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 deleteApplicationVersion(deleteApplicationVersionRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes the specified version from the specified application.
@@ -940,6 +947,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DeleteApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -955,16 +963,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteApplicationVersion(deleteApplicationVersionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteApplicationVersionRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteApplicationVersion(deleteApplicationVersionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteApplicationVersionRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -979,6 +987,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeApplicationVersions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -993,11 +1002,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<DescribeApplicationVersionsResult>() {
             public DescribeApplicationVersionsResult call() throws Exception {
                 return describeApplicationVersions(describeApplicationVersionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns descriptions for existing application versions.
@@ -1014,6 +1022,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeApplicationVersions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1029,23 +1038,24 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeApplicationVersionsResult>() {
             public DescribeApplicationVersionsResult call() throws Exception {
-            	DescribeApplicationVersionsResult result;
+              DescribeApplicationVersionsResult result;
                 try {
-            		result = describeApplicationVersions(describeApplicationVersionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeApplicationVersionsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeApplicationVersions(describeApplicationVersionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeApplicationVersionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Deletes the specified application along with all associated versions
-     * and configurations.
+     * and configurations. The application versions will not be deleted from
+     * your Amazon S3 bucket.
      * </p>
      * <p>
      * <b>NOTE:</b>You cannot delete an application that has a running
@@ -1057,6 +1067,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1072,15 +1083,15 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 deleteApplication(deleteApplicationRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes the specified application along with all associated versions
-     * and configurations.
+     * and configurations. The application versions will not be deleted from
+     * your Amazon S3 bucket.
      * </p>
      * <p>
      * <b>NOTE:</b>You cannot delete an application that has a running
@@ -1096,6 +1107,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1111,16 +1123,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteApplication(deleteApplicationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteApplicationRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteApplication(deleteApplicationRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteApplicationRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1141,6 +1153,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         UpdateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1155,11 +1168,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<UpdateApplicationVersionResult>() {
             public UpdateApplicationVersionResult call() throws Exception {
                 return updateApplicationVersion(updateApplicationVersionRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Updates the specified application version to have the specified
@@ -1182,6 +1194,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         UpdateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1197,17 +1210,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateApplicationVersionResult>() {
             public UpdateApplicationVersionResult call() throws Exception {
-            	UpdateApplicationVersionResult result;
+              UpdateApplicationVersionResult result;
                 try {
-            		result = updateApplicationVersion(updateApplicationVersionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateApplicationVersionRequest, result);
-               	return result;
-		    }
-		});
+                result = updateApplicationVersion(updateApplicationVersionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateApplicationVersionRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1215,17 +1228,13 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * Creates an application that has one configuration template named
      * <code>default</code> and no application versions.
      * </p>
-     * <p>
-     * <b>NOTE:</b> The default configuration template is for a 32-bit
-     * version of the Amazon Linux operating system running the Tomcat 6
-     * application container.
-     * </p>
      *
      * @param createApplicationRequest Container for the necessary parameters
      *           to execute the CreateApplication operation on AWSElasticBeanstalk.
      * 
      * @return A Java Future object containing the response from the
      *         CreateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1240,20 +1249,14 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<CreateApplicationResult>() {
             public CreateApplicationResult call() throws Exception {
                 return createApplication(createApplicationRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates an application that has one configuration template named
      * <code>default</code> and no application versions.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> The default configuration template is for a 32-bit
-     * version of the Amazon Linux operating system running the Tomcat 6
-     * application container.
      * </p>
      *
      * @param createApplicationRequest Container for the necessary parameters
@@ -1265,6 +1268,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1280,17 +1284,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateApplicationResult>() {
             public CreateApplicationResult call() throws Exception {
-            	CreateApplicationResult result;
+              CreateApplicationResult result;
                 try {
-            		result = createApplication(createApplicationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createApplicationRequest, result);
-               	return result;
-		    }
-		});
+                result = createApplication(createApplicationRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createApplicationRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1305,6 +1309,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         SwapEnvironmentCNAMEs service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1320,11 +1325,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 swapEnvironmentCNAMEs(swapEnvironmentCNAMEsRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Swaps the CNAMEs of two environments.
@@ -1341,6 +1345,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         SwapEnvironmentCNAMEs service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1356,16 +1361,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		swapEnvironmentCNAMEs(swapEnvironmentCNAMEsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(swapEnvironmentCNAMEsRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                swapEnvironmentCNAMEs(swapEnvironmentCNAMEsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(swapEnvironmentCNAMEsRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1394,6 +1399,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         UpdateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1408,11 +1414,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<UpdateConfigurationTemplateResult>() {
             public UpdateConfigurationTemplateResult call() throws Exception {
                 return updateConfigurationTemplate(updateConfigurationTemplateRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Updates the specified configuration template to have the specified
@@ -1443,6 +1448,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         UpdateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1458,17 +1464,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateConfigurationTemplateResult>() {
             public UpdateConfigurationTemplateResult call() throws Exception {
-            	UpdateConfigurationTemplateResult result;
+              UpdateConfigurationTemplateResult result;
                 try {
-            		result = updateConfigurationTemplate(updateConfigurationTemplateRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateConfigurationTemplateRequest, result);
-               	return result;
-		    }
-		});
+                result = updateConfigurationTemplate(updateConfigurationTemplateRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateConfigurationTemplateRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1492,6 +1498,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         RetrieveEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1506,11 +1513,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<RetrieveEnvironmentInfoResult>() {
             public RetrieveEnvironmentInfoResult call() throws Exception {
                 return retrieveEnvironmentInfo(retrieveEnvironmentInfoRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Retrieves the compiled information from a RequestEnvironmentInfo
@@ -1536,6 +1542,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         RetrieveEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1551,17 +1558,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<RetrieveEnvironmentInfoResult>() {
             public RetrieveEnvironmentInfoResult call() throws Exception {
-            	RetrieveEnvironmentInfoResult result;
+              RetrieveEnvironmentInfoResult result;
                 try {
-            		result = retrieveEnvironmentInfo(retrieveEnvironmentInfoRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(retrieveEnvironmentInfoRequest, result);
-               	return result;
-		    }
-		});
+                result = retrieveEnvironmentInfo(retrieveEnvironmentInfoRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(retrieveEnvironmentInfoRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1576,6 +1583,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         ListAvailableSolutionStacks service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1590,11 +1598,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<ListAvailableSolutionStacksResult>() {
             public ListAvailableSolutionStacksResult call() throws Exception {
                 return listAvailableSolutionStacks(listAvailableSolutionStacksRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns a list of the available solution stack names.
@@ -1611,6 +1618,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         ListAvailableSolutionStacks service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1626,17 +1634,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListAvailableSolutionStacksResult>() {
             public ListAvailableSolutionStacksResult call() throws Exception {
-            	ListAvailableSolutionStacksResult result;
+              ListAvailableSolutionStacksResult result;
                 try {
-            		result = listAvailableSolutionStacks(listAvailableSolutionStacksRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listAvailableSolutionStacksRequest, result);
-               	return result;
-		    }
-		});
+                result = listAvailableSolutionStacks(listAvailableSolutionStacksRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listAvailableSolutionStacksRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1654,6 +1662,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         UpdateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1668,11 +1677,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<UpdateApplicationResult>() {
             public UpdateApplicationResult call() throws Exception {
                 return updateApplication(updateApplicationRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Updates the specified application to have the specified properties.
@@ -1692,6 +1700,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         UpdateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1707,17 +1716,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateApplicationResult>() {
             public UpdateApplicationResult call() throws Exception {
-            	UpdateApplicationResult result;
+              UpdateApplicationResult result;
                 try {
-            		result = updateApplication(updateApplicationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateApplicationRequest, result);
-               	return result;
-		    }
-		});
+                result = updateApplication(updateApplicationRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateApplicationRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1732,6 +1741,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeEnvironments service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1746,11 +1756,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<DescribeEnvironmentsResult>() {
             public DescribeEnvironmentsResult call() throws Exception {
                 return describeEnvironments(describeEnvironmentsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns descriptions for existing environments.
@@ -1767,6 +1776,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeEnvironments service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1782,17 +1792,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeEnvironmentsResult>() {
             public DescribeEnvironmentsResult call() throws Exception {
-            	DescribeEnvironmentsResult result;
+              DescribeEnvironmentsResult result;
                 try {
-            		result = describeEnvironments(describeEnvironmentsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeEnvironmentsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeEnvironments(describeEnvironmentsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeEnvironmentsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1807,6 +1817,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeEnvironmentResources service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1821,11 +1832,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<DescribeEnvironmentResourcesResult>() {
             public DescribeEnvironmentResourcesResult call() throws Exception {
                 return describeEnvironmentResources(describeEnvironmentResourcesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns AWS resources for this environment.
@@ -1842,6 +1852,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeEnvironmentResources service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1857,17 +1868,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeEnvironmentResourcesResult>() {
             public DescribeEnvironmentResourcesResult call() throws Exception {
-            	DescribeEnvironmentResourcesResult result;
+              DescribeEnvironmentResourcesResult result;
                 try {
-            		result = describeEnvironmentResources(describeEnvironmentResourcesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeEnvironmentResourcesRequest, result);
-               	return result;
-		    }
-		});
+                result = describeEnvironmentResources(describeEnvironmentResourcesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeEnvironmentResourcesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1882,6 +1893,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         TerminateEnvironment service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1896,11 +1908,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<TerminateEnvironmentResult>() {
             public TerminateEnvironmentResult call() throws Exception {
                 return terminateEnvironment(terminateEnvironmentRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Terminates the specified environment.
@@ -1917,6 +1928,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         TerminateEnvironment service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1932,17 +1944,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<TerminateEnvironmentResult>() {
             public TerminateEnvironmentResult call() throws Exception {
-            	TerminateEnvironmentResult result;
+              TerminateEnvironmentResult result;
                 try {
-            		result = terminateEnvironment(terminateEnvironmentRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(terminateEnvironmentRequest, result);
-               	return result;
-		    }
-		});
+                result = terminateEnvironment(terminateEnvironmentRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(terminateEnvironmentRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1963,6 +1975,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         ValidateConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1977,11 +1990,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<ValidateConfigurationSettingsResult>() {
             public ValidateConfigurationSettingsResult call() throws Exception {
                 return validateConfigurationSettings(validateConfigurationSettingsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Takes a set of configuration settings and either a configuration
@@ -2004,6 +2016,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         ValidateConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2019,17 +2032,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ValidateConfigurationSettingsResult>() {
             public ValidateConfigurationSettingsResult call() throws Exception {
-            	ValidateConfigurationSettingsResult result;
+              ValidateConfigurationSettingsResult result;
                 try {
-            		result = validateConfigurationSettings(validateConfigurationSettingsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(validateConfigurationSettingsRequest, result);
-               	return result;
-		    }
-		});
+                result = validateConfigurationSettings(validateConfigurationSettingsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(validateConfigurationSettingsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -2043,6 +2056,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         RestartAppServer service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2058,11 +2072,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 restartAppServer(restartAppServerRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Causes the environment to restart the application container server
@@ -2078,6 +2091,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         RestartAppServer service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2093,16 +2107,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		restartAppServer(restartAppServerRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(restartAppServerRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                restartAppServer(restartAppServerRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(restartAppServerRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -2127,6 +2141,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DeleteEnvironmentConfiguration service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2142,11 +2157,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 deleteEnvironmentConfiguration(deleteEnvironmentConfigurationRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes the draft configuration associated with the running
@@ -2173,6 +2187,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DeleteEnvironmentConfiguration service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2188,16 +2203,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteEnvironmentConfiguration(deleteEnvironmentConfigurationRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteEnvironmentConfigurationRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteEnvironmentConfiguration(deleteEnvironmentConfigurationRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteEnvironmentConfigurationRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -2224,6 +2239,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         UpdateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2238,11 +2254,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<UpdateEnvironmentResult>() {
             public UpdateEnvironmentResult call() throws Exception {
                 return updateEnvironment(updateEnvironmentRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Updates the environment description, deploys a new application
@@ -2271,6 +2286,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         UpdateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2286,17 +2302,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateEnvironmentResult>() {
             public UpdateEnvironmentResult call() throws Exception {
-            	UpdateEnvironmentResult result;
+              UpdateEnvironmentResult result;
                 try {
-            		result = updateEnvironment(updateEnvironmentRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateEnvironmentRequest, result);
-               	return result;
-		    }
-		});
+                result = updateEnvironment(updateEnvironmentRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateEnvironmentRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -2323,6 +2339,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CreateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2337,11 +2354,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<CreateConfigurationTemplateResult>() {
             public CreateConfigurationTemplateResult call() throws Exception {
                 return createConfigurationTemplate(createConfigurationTemplateRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates a configuration template. Templates are associated with a
@@ -2370,6 +2386,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         CreateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2385,17 +2402,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateConfigurationTemplateResult>() {
             public CreateConfigurationTemplateResult call() throws Exception {
-            	CreateConfigurationTemplateResult result;
+              CreateConfigurationTemplateResult result;
                 try {
-            		result = createConfigurationTemplate(createConfigurationTemplateRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createConfigurationTemplateRequest, result);
-               	return result;
-		    }
-		});
+                result = createConfigurationTemplate(createConfigurationTemplateRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createConfigurationTemplateRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -2427,6 +2444,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2441,11 +2459,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<DescribeConfigurationSettingsResult>() {
             public DescribeConfigurationSettingsResult call() throws Exception {
                 return describeConfigurationSettings(describeConfigurationSettingsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns a description of the settings for the specified configuration
@@ -2479,6 +2496,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2494,17 +2512,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeConfigurationSettingsResult>() {
             public DescribeConfigurationSettingsResult call() throws Exception {
-            	DescribeConfigurationSettingsResult result;
+              DescribeConfigurationSettingsResult result;
                 try {
-            		result = describeConfigurationSettings(describeConfigurationSettingsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeConfigurationSettingsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeConfigurationSettings(describeConfigurationSettingsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeConfigurationSettingsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -2519,6 +2537,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeApplications service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2533,11 +2552,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<DescribeApplicationsResult>() {
             public DescribeApplicationsResult call() throws Exception {
                 return describeApplications(describeApplicationsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the descriptions of existing applications.
@@ -2554,6 +2572,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * @return A Java Future object containing the response from the
      *         DescribeApplications service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2569,17 +2588,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeApplicationsResult>() {
             public DescribeApplicationsResult call() throws Exception {
-            	DescribeApplicationsResult result;
+              DescribeApplicationsResult result;
                 try {
-            		result = describeApplications(describeApplicationsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeApplicationsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeApplications(describeApplicationsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeApplicationsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -2595,6 +2614,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         RebuildEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2610,11 +2630,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
             public Void call() throws Exception {
                 rebuildEnvironment(rebuildEnvironmentRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes and recreates all of the AWS resources (for example: the Auto
@@ -2632,6 +2651,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         RebuildEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2647,16 +2667,16 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		rebuildEnvironment(rebuildEnvironmentRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(rebuildEnvironmentRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                rebuildEnvironment(rebuildEnvironmentRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(rebuildEnvironmentRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -2674,6 +2694,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeEvents service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2688,11 +2709,10 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
         return executorService.submit(new Callable<DescribeEventsResult>() {
             public DescribeEventsResult call() throws Exception {
                 return describeEvents(describeEventsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns list of event descriptions matching criteria up to the last 6
@@ -2712,6 +2732,7 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeEvents service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2727,17 +2748,17 @@ public class AWSElasticBeanstalkAsyncClient extends AWSElasticBeanstalkClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeEventsResult>() {
             public DescribeEventsResult call() throws Exception {
-            	DescribeEventsResult result;
+              DescribeEventsResult result;
                 try {
-            		result = describeEvents(describeEventsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeEventsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeEvents(describeEventsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeEventsRequest, result);
+                 return result;
+        }
+    });
     }
     
 }

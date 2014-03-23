@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Configuration of the script to run during a bootstrap action.
  * </p>
  */
-public class ScriptBootstrapActionConfig  implements Serializable  {
+public class ScriptBootstrapActionConfig implements Serializable {
 
     /**
      * Location of the script to run during a bootstrap action. Can be either
@@ -36,7 +37,7 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
      * A list of command line arguments to pass to the bootstrap action
      * script.
      */
-    private java.util.List<String> args;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> args;
 
     /**
      * Default constructor for a new ScriptBootstrapActionConfig object.  Callers should use the
@@ -55,12 +56,10 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
      * action script.
      */
     public ScriptBootstrapActionConfig(String path, java.util.List<String> args) {
-        this.path = path;
-        this.args = args;
+        setPath(path);
+        setArgs(args);
     }
 
-    
-    
     /**
      * Location of the script to run during a bootstrap action. Can be either
      * a location in Amazon S3 or on a local file system.
@@ -105,14 +104,13 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
      *         a location in Amazon S3 or on a local file system.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScriptBootstrapActionConfig withPath(String path) {
         this.path = path;
         return this;
     }
-    
-    
+
     /**
      * A list of command line arguments to pass to the bootstrap action
      * script.
@@ -121,9 +119,9 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
      *         script.
      */
     public java.util.List<String> getArgs() {
-        
         if (args == null) {
-            args = new java.util.ArrayList<String>();
+              args = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              args.setAutoConstruct(true);
         }
         return args;
     }
@@ -140,8 +138,7 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
             this.args = null;
             return;
         }
-
-        java.util.List<String> argsCopy = new java.util.ArrayList<String>(args.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> argsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(args.size());
         argsCopy.addAll(args);
         this.args = argsCopy;
     }
@@ -156,7 +153,7 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
      *         script.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScriptBootstrapActionConfig withArgs(String... args) {
         if (getArgs() == null) setArgs(new java.util.ArrayList<String>(args.length));
@@ -176,20 +173,20 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
      *         script.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScriptBootstrapActionConfig withArgs(java.util.Collection<String> args) {
         if (args == null) {
             this.args = null;
         } else {
-            java.util.List<String> argsCopy = new java.util.ArrayList<String>(args.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> argsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(args.size());
             argsCopy.addAll(args);
             this.args = argsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -201,8 +198,8 @@ public class ScriptBootstrapActionConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPath() != null) sb.append("Path: " + getPath() + ",");    	
+        sb.append("{");
+        if (getPath() != null) sb.append("Path: " + getPath() + ",");
         if (getArgs() != null) sb.append("Args: " + getArgs() );
         sb.append("}");
         return sb.toString();

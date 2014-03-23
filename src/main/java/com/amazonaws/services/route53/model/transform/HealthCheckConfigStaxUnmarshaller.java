@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * Health Check Config StAX Unmarshaller
  */
@@ -37,7 +36,6 @@ public class HealthCheckConfigStaxUnmarshaller implements Unmarshaller<HealthChe
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
         if (context.isStartOfDocument()) targetDepth += 1;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -62,6 +60,18 @@ public class HealthCheckConfigStaxUnmarshaller implements Unmarshaller<HealthChe
                 }
                 if (context.testExpression("FullyQualifiedDomainName", targetDepth)) {
                     healthCheckConfig.setFullyQualifiedDomainName(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("SearchString", targetDepth)) {
+                    healthCheckConfig.setSearchString(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("RequestInterval", targetDepth)) {
+                    healthCheckConfig.setRequestInterval(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("FailureThreshold", targetDepth)) {
+                    healthCheckConfig.setFailureThreshold(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

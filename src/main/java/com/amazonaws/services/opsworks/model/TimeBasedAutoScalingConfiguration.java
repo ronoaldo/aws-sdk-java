@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an instance's time-based auto scaling configuration.
  * </p>
  */
-public class TimeBasedAutoScalingConfiguration  implements Serializable  {
+public class TimeBasedAutoScalingConfiguration implements Serializable {
 
     /**
      * The instance ID.
@@ -59,14 +60,13 @@ public class TimeBasedAutoScalingConfiguration  implements Serializable  {
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimeBasedAutoScalingConfiguration withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * A <code>WeeklyAutoScalingSchedule</code> object with the instance
      * schedule.
@@ -99,14 +99,13 @@ public class TimeBasedAutoScalingConfiguration  implements Serializable  {
      *         schedule.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimeBasedAutoScalingConfiguration withAutoScalingSchedule(WeeklyAutoScalingSchedule autoScalingSchedule) {
         this.autoScalingSchedule = autoScalingSchedule;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -118,8 +117,8 @@ public class TimeBasedAutoScalingConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getAutoScalingSchedule() != null) sb.append("AutoScalingSchedule: " + getAutoScalingSchedule() );
         sb.append("}");
         return sb.toString();

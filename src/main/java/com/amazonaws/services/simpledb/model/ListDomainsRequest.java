@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpledb.AmazonSimpleDB#listDomains(ListDomainsRequest) ListDomains operation}.
  * <p>
- * The <code>ListDomains</code> operation lists all domains associated with the Access Key ID. It returns domain names up to the limit set by
- * MaxNumberOfDomains. A NextToken is returned if there are more than <code>MaxNumberOfDomains</code> domains. Calling <code>ListDomains</code>
- * successive times with the <code>NextToken</code> provided by the operation returns up to <code>MaxNumberOfDomains</code> more domain names with each
- * successive operation call.
+ * The <code>ListDomains</code> operation lists all domains associated
+ * with the Access Key ID. It returns domain names up to the limit set by
+ * MaxNumberOfDomains. A NextToken is returned if there are more than
+ * <code>MaxNumberOfDomains</code> domains. Calling
+ * <code>ListDomains</code> successive times with the
+ * <code>NextToken</code> provided by the operation returns up to
+ * <code>MaxNumberOfDomains</code> more domain names with each successive
+ * operation call.
  * </p>
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#listDomains(ListDomainsRequest)
  */
-public class ListDomainsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListDomainsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The maximum number of domain names you want returned. The range is 1
@@ -79,14 +85,13 @@ public class ListDomainsRequest extends AmazonWebServiceRequest  implements Seri
      *         to 100. The default setting is 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDomainsRequest withMaxNumberOfDomains(Integer maxNumberOfDomains) {
         this.maxNumberOfDomains = maxNumberOfDomains;
         return this;
     }
-    
-    
+
     /**
      * A string informing Amazon SimpleDB where to start the next list of
      * domain names.
@@ -119,14 +124,13 @@ public class ListDomainsRequest extends AmazonWebServiceRequest  implements Seri
      *         domain names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListDomainsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +142,8 @@ public class ListDomainsRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMaxNumberOfDomains() != null) sb.append("MaxNumberOfDomains: " + getMaxNumberOfDomains() + ",");    	
+        sb.append("{");
+        if (getMaxNumberOfDomains() != null) sb.append("MaxNumberOfDomains: " + getMaxNumberOfDomains() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

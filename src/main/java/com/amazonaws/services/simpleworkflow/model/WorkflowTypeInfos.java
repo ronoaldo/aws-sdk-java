@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains a paginated list of information structures about workflow types.
+ * Contains a paginated list of information structures about workflow
+ * types.
  * </p>
  */
-public class WorkflowTypeInfos  implements Serializable  {
+public class WorkflowTypeInfos implements Serializable {
 
     /**
      * The list of workflow type information.
      */
-    private java.util.List<WorkflowTypeInfo> typeInfos;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowTypeInfo> typeInfos;
 
     /**
      * The token for the next page of type information. If set then the list
@@ -44,9 +46,9 @@ public class WorkflowTypeInfos  implements Serializable  {
      * @return The list of workflow type information.
      */
     public java.util.List<WorkflowTypeInfo> getTypeInfos() {
-        
         if (typeInfos == null) {
-            typeInfos = new java.util.ArrayList<WorkflowTypeInfo>();
+              typeInfos = new com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowTypeInfo>();
+              typeInfos.setAutoConstruct(true);
         }
         return typeInfos;
     }
@@ -61,8 +63,7 @@ public class WorkflowTypeInfos  implements Serializable  {
             this.typeInfos = null;
             return;
         }
-
-        java.util.List<WorkflowTypeInfo> typeInfosCopy = new java.util.ArrayList<WorkflowTypeInfo>(typeInfos.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowTypeInfo> typeInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowTypeInfo>(typeInfos.size());
         typeInfosCopy.addAll(typeInfos);
         this.typeInfos = typeInfosCopy;
     }
@@ -75,7 +76,7 @@ public class WorkflowTypeInfos  implements Serializable  {
      * @param typeInfos The list of workflow type information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeInfos withTypeInfos(WorkflowTypeInfo... typeInfos) {
         if (getTypeInfos() == null) setTypeInfos(new java.util.ArrayList<WorkflowTypeInfo>(typeInfos.length));
@@ -93,20 +94,20 @@ public class WorkflowTypeInfos  implements Serializable  {
      * @param typeInfos The list of workflow type information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeInfos withTypeInfos(java.util.Collection<WorkflowTypeInfo> typeInfos) {
         if (typeInfos == null) {
             this.typeInfos = null;
         } else {
-            java.util.List<WorkflowTypeInfo> typeInfosCopy = new java.util.ArrayList<WorkflowTypeInfo>(typeInfos.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowTypeInfo> typeInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowTypeInfo>(typeInfos.size());
             typeInfosCopy.addAll(typeInfos);
             this.typeInfos = typeInfosCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The token for the next page of type information. If set then the list
      * consists of more than one page. You can retrieve the next page by
@@ -160,14 +161,13 @@ public class WorkflowTypeInfos  implements Serializable  {
      *         token and all other arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeInfos withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -179,8 +179,8 @@ public class WorkflowTypeInfos  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTypeInfos() != null) sb.append("TypeInfos: " + getTypeInfos() + ",");    	
+        sb.append("{");
+        if (getTypeInfos() != null) sb.append("TypeInfos: " + getTypeInfos() + ",");
         if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() );
         sb.append("}");
         return sb.toString();

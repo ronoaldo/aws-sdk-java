@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>ActivityTaskScheduled</code> event.
  * </p>
  */
-public class ActivityTaskScheduledEventAttributes  implements Serializable  {
+public class ActivityTaskScheduledEventAttributes implements Serializable {
 
     /**
      * The type of the activity task.
@@ -129,14 +130,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      * @param activityType The type of the activity task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withActivityType(ActivityType activityType) {
         this.activityType = activityType;
         return this;
     }
-    
-    
+
     /**
      * The unique id of the activity task.
      * <p>
@@ -172,14 +172,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      * @param activityId The unique id of the activity task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withActivityId(String activityId) {
         this.activityId = activityId;
         return this;
     }
-    
-    
+
     /**
      * The input provided to the activity task.
      * <p>
@@ -215,14 +214,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      * @param input The input provided to the activity task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent workflow tasks. This data is not sent to the activity.
@@ -264,14 +262,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      *         subsequent workflow tasks. This data is not sent to the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * The maximum amount of time the activity task can wait to be assigned
      * to a worker.
@@ -313,14 +310,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      *         to a worker.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withScheduleToStartTimeout(String scheduleToStartTimeout) {
         this.scheduleToStartTimeout = scheduleToStartTimeout;
         return this;
     }
-    
-    
+
     /**
      * The maximum amount of time for this activity task.
      * <p>
@@ -356,14 +352,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      * @param scheduleToCloseTimeout The maximum amount of time for this activity task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withScheduleToCloseTimeout(String scheduleToCloseTimeout) {
         this.scheduleToCloseTimeout = scheduleToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The maximum amount of time a worker may take to process the activity
      * task.
@@ -405,14 +400,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      *         task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withStartToCloseTimeout(String startToCloseTimeout) {
         this.startToCloseTimeout = startToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The task list in which the activity task has been scheduled.
      *
@@ -439,14 +433,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      * @param taskList The task list in which the activity task has been scheduled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision that resulted in the scheduling of this activity task.
@@ -491,14 +484,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      *         the chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * The maximum time before which the worker processing this task must
      * report progress by calling <a>RecordActivityTaskHeartbeat</a>. If the
@@ -558,14 +550,13 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
      *         result, it will be ignored.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskScheduledEventAttributes withHeartbeatTimeout(String heartbeatTimeout) {
         this.heartbeatTimeout = heartbeatTimeout;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -577,16 +568,16 @@ public class ActivityTaskScheduledEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");    	
-        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getControl() != null) sb.append("Control: " + getControl() + ",");    	
-        if (getScheduleToStartTimeout() != null) sb.append("ScheduleToStartTimeout: " + getScheduleToStartTimeout() + ",");    	
-        if (getScheduleToCloseTimeout() != null) sb.append("ScheduleToCloseTimeout: " + getScheduleToCloseTimeout() + ",");    	
-        if (getStartToCloseTimeout() != null) sb.append("StartToCloseTimeout: " + getStartToCloseTimeout() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");    	
+        sb.append("{");
+        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");
+        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getControl() != null) sb.append("Control: " + getControl() + ",");
+        if (getScheduleToStartTimeout() != null) sb.append("ScheduleToStartTimeout: " + getScheduleToStartTimeout() + ",");
+        if (getScheduleToCloseTimeout() != null) sb.append("ScheduleToCloseTimeout: " + getScheduleToCloseTimeout() + ",");
+        if (getStartToCloseTimeout() != null) sb.append("StartToCloseTimeout: " + getStartToCloseTimeout() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");
         if (getHeartbeatTimeout() != null) sb.append("HeartbeatTimeout: " + getHeartbeatTimeout() );
         sb.append("}");
         return sb.toString();

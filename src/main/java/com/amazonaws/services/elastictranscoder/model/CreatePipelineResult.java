@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * When you create a pipeline, Elastic Transcoder returns the values that
+ * you specified in the request.
+ * </p>
  */
-public class CreatePipelineResult  implements Serializable  {
+public class CreatePipelineResult implements Serializable {
 
     /**
      * A section of the response body that provides information about the
@@ -58,14 +62,13 @@ public class CreatePipelineResult  implements Serializable  {
      *         pipeline that is created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineResult withPipeline(Pipeline pipeline) {
         this.pipeline = pipeline;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -77,7 +80,7 @@ public class CreatePipelineResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPipeline() != null) sb.append("Pipeline: " + getPipeline() );
         sb.append("}");
         return sb.toString();

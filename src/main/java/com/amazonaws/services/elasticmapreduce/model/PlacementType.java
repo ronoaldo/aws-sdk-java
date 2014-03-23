@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies the Amazon EC2 location for the job flow.
+ * The Amazon EC2 location for the job flow.
  * </p>
  */
-public class PlacementType  implements Serializable  {
+public class PlacementType implements Serializable {
 
     /**
      * The Amazon EC2 Availability Zone for the job flow.
@@ -46,11 +47,9 @@ public class PlacementType  implements Serializable  {
      * flow.
      */
     public PlacementType(String availabilityZone) {
-        this.availabilityZone = availabilityZone;
+        setAvailabilityZone(availabilityZone);
     }
 
-    
-    
     /**
      * The Amazon EC2 Availability Zone for the job flow.
      * <p>
@@ -89,14 +88,13 @@ public class PlacementType  implements Serializable  {
      * @param availabilityZone The Amazon EC2 Availability Zone for the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PlacementType withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -108,7 +106,7 @@ public class PlacementType  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() );
         sb.append("}");
         return sb.toString();

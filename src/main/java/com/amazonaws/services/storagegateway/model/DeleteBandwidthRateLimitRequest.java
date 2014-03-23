@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#deleteBandwidthRateLimit(DeleteBandwidthRateLimitRequest) DeleteBandwidthRateLimit operation}.
  * <p>
- * This operation deletes the bandwidth rate limits of a gateway. You can delete either the upload and download bandwidth rate limit, or you can delete
- * both. If you delete only one of the limits, the other limit remains unchanged. To specify which gateway to work with, use the Amazon Resource Name
- * (ARN) of the gateway in your request.
+ * This operation deletes the bandwidth rate limits of a gateway. You can
+ * delete either the upload and download bandwidth rate limit, or you can
+ * delete both. If you delete only one of the limits, the other limit
+ * remains unchanged. To specify which gateway to work with, use the
+ * Amazon Resource Name (ARN) of the gateway in your request.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#deleteBandwidthRateLimit(DeleteBandwidthRateLimitRequest)
  */
-public class DeleteBandwidthRateLimitRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteBandwidthRateLimitRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -38,14 +42,6 @@ public class DeleteBandwidthRateLimitRequest extends AmazonWebServiceRequest  im
      */
     private String gatewayARN;
 
-    /**
-     * One of the <a>BandwidthType</a> values that indicates the gateway
-     * bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     * <code>Upload</code>, <code>Download</code>, <code>All</code>
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>UPLOAD, DOWNLOAD, ALL
-     */
     private String bandwidthType;
 
     /**
@@ -95,117 +91,55 @@ public class DeleteBandwidthRateLimitRequest extends AmazonWebServiceRequest  im
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteBandwidthRateLimitRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
-     * One of the <a>BandwidthType</a> values that indicates the gateway
-     * bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     * <code>Upload</code>, <code>Download</code>, <code>All</code>
+     * Returns the value of the BandwidthType property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>UPLOAD, DOWNLOAD, ALL
+     * <b>Length: </b>3 - 25<br/>
      *
-     * @return One of the <a>BandwidthType</a> values that indicates the gateway
-     *         bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     *         <code>Upload</code>, <code>Download</code>, <code>All</code>
-     *
-     * @see BandwidthType
+     * @return The value of the BandwidthType property for this object.
      */
     public String getBandwidthType() {
         return bandwidthType;
     }
     
     /**
-     * One of the <a>BandwidthType</a> values that indicates the gateway
-     * bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     * <code>Upload</code>, <code>Download</code>, <code>All</code>
+     * Sets the value of the BandwidthType property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>UPLOAD, DOWNLOAD, ALL
+     * <b>Length: </b>3 - 25<br/>
      *
-     * @param bandwidthType One of the <a>BandwidthType</a> values that indicates the gateway
-     *         bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     *         <code>Upload</code>, <code>Download</code>, <code>All</code>
-     *
-     * @see BandwidthType
+     * @param bandwidthType The new value for the BandwidthType property for this object.
      */
     public void setBandwidthType(String bandwidthType) {
         this.bandwidthType = bandwidthType;
     }
     
     /**
-     * One of the <a>BandwidthType</a> values that indicates the gateway
-     * bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     * <code>Upload</code>, <code>Download</code>, <code>All</code>
+     * Sets the value of the BandwidthType property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>UPLOAD, DOWNLOAD, ALL
+     * <b>Length: </b>3 - 25<br/>
      *
-     * @param bandwidthType One of the <a>BandwidthType</a> values that indicates the gateway
-     *         bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     *         <code>Upload</code>, <code>Download</code>, <code>All</code>
+     * @param bandwidthType The new value for the BandwidthType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see BandwidthType
+     *         together.
      */
     public DeleteBandwidthRateLimitRequest withBandwidthType(String bandwidthType) {
         this.bandwidthType = bandwidthType;
         return this;
     }
-    
-    
-    /**
-     * One of the <a>BandwidthType</a> values that indicates the gateway
-     * bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     * <code>Upload</code>, <code>Download</code>, <code>All</code>
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>UPLOAD, DOWNLOAD, ALL
-     *
-     * @param bandwidthType One of the <a>BandwidthType</a> values that indicates the gateway
-     *         bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     *         <code>Upload</code>, <code>Download</code>, <code>All</code>
-     *
-     * @see BandwidthType
-     */
-    public void setBandwidthType(BandwidthType bandwidthType) {
-        this.bandwidthType = bandwidthType.toString();
-    }
-    
-    /**
-     * One of the <a>BandwidthType</a> values that indicates the gateway
-     * bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     * <code>Upload</code>, <code>Download</code>, <code>All</code>
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>UPLOAD, DOWNLOAD, ALL
-     *
-     * @param bandwidthType One of the <a>BandwidthType</a> values that indicates the gateway
-     *         bandwidth rate limit to delete. <p><i>Valid Values</i>:
-     *         <code>Upload</code>, <code>Download</code>, <code>All</code>
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see BandwidthType
-     */
-    public DeleteBandwidthRateLimitRequest withBandwidthType(BandwidthType bandwidthType) {
-        this.bandwidthType = bandwidthType.toString();
-        return this;
-    }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -217,8 +151,8 @@ public class DeleteBandwidthRateLimitRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
         if (getBandwidthType() != null) sb.append("BandwidthType: " + getBandwidthType() );
         sb.append("}");
         return sb.toString();

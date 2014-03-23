@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * <i>Alias resource record sets only:</i> Information about the domain to which you are redirecting traffic.
+ * <i>Alias resource record sets only:</i> Information about the domain
+ * to which you are redirecting traffic.
  * </p>
  * <p>
- * For more information and an example, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingAliasRRSets.html"> Creating Alias
- * Resource Record Sets </a> in the <i>Amazon Route 53 Developer Guide</i>
+ * For more information and an example, see
+ * <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingAliasRRSets.html"> Creating Alias Resource Record Sets </a>
+ * in the <i>Amazon Route 53 Developer Guide</i>
  * </p>
  * <p>
  * .
  * </p>
  */
-public class AliasTarget  implements Serializable  {
+public class AliasTarget implements Serializable {
 
     /**
      * <i>Alias resource record sets only:</i> The value of the hosted zone
@@ -91,12 +94,10 @@ public class AliasTarget  implements Serializable  {
      * Guide</i>.
      */
     public AliasTarget(String hostedZoneId, String dNSName) {
-        this.hostedZoneId = hostedZoneId;
-        this.dNSName = dNSName;
+        setHostedZoneId(hostedZoneId);
+        setDNSName(dNSName);
     }
 
-    
-    
     /**
      * <i>Alias resource record sets only:</i> The value of the hosted zone
      * ID for the AWS resource. <p>For more information and an example, see
@@ -162,14 +163,13 @@ public class AliasTarget  implements Serializable  {
      *         Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AliasTarget withHostedZoneId(String hostedZoneId) {
         this.hostedZoneId = hostedZoneId;
         return this;
     }
-    
-    
+
     /**
      * <i>Alias resource record sets only:</i> The external DNS name
      * associated with the AWS Resource. <p>For more information and an
@@ -235,14 +235,13 @@ public class AliasTarget  implements Serializable  {
      *         Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AliasTarget withDNSName(String dNSName) {
         this.dNSName = dNSName;
         return this;
     }
-    
-    
+
     /**
      * <i>Alias resource record sets only:</i> A boolean value that indicates
      * whether this Resource Record Set should respect the health status of
@@ -305,14 +304,13 @@ public class AliasTarget  implements Serializable  {
      *         Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AliasTarget withEvaluateTargetHealth(Boolean evaluateTargetHealth) {
         this.evaluateTargetHealth = evaluateTargetHealth;
         return this;
     }
-    
-    
+
     /**
      * <i>Alias resource record sets only:</i> A boolean value that indicates
      * whether this Resource Record Set should respect the health status of
@@ -333,7 +331,7 @@ public class AliasTarget  implements Serializable  {
     public Boolean getEvaluateTargetHealth() {
         return evaluateTargetHealth;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -345,9 +343,9 @@ public class AliasTarget  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getHostedZoneId() != null) sb.append("HostedZoneId: " + getHostedZoneId() + ",");    	
-        if (getDNSName() != null) sb.append("DNSName: " + getDNSName() + ",");    	
+        sb.append("{");
+        if (getHostedZoneId() != null) sb.append("HostedZoneId: " + getHostedZoneId() + ",");
+        if (getDNSName() != null) sb.append("DNSName: " + getDNSName() + ",");
         if (isEvaluateTargetHealth() != null) sb.append("EvaluateTargetHealth: " + isEvaluateTargetHealth() );
         sb.append("}");
         return sb.toString();

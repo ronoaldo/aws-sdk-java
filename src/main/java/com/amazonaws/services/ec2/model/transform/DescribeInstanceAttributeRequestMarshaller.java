@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeInstanceAttributeRequestMarshaller implements Marshaller<Re
     public Request<DescribeInstanceAttributeRequest> marshall(DescribeInstanceAttributeRequest describeInstanceAttributeRequest) {
 
         if (describeInstanceAttributeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeInstanceAttributeRequest> request = new DefaultRequest<DescribeInstanceAttributeRequest>(describeInstanceAttributeRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeInstanceAttribute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (describeInstanceAttributeRequest.getInstanceId() != null) {
             request.addParameter("InstanceId", StringUtils.fromString(describeInstanceAttributeRequest.getInstanceId()));
@@ -46,7 +46,6 @@ public class DescribeInstanceAttributeRequestMarshaller implements Marshaller<Re
         if (describeInstanceAttributeRequest.getAttribute() != null) {
             request.addParameter("Attribute", StringUtils.fromString(describeInstanceAttributeRequest.getAttribute()));
         }
-
 
         return request;
     }

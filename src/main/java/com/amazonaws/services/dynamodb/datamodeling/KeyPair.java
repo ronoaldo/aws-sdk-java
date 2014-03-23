@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,9 @@
  */
 package com.amazonaws.services.dynamodb.datamodeling;
 
+/**
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.datamodeling.KeyPair} instead.
+ */
 @Deprecated
 public class KeyPair {
 	private Object hashKey;

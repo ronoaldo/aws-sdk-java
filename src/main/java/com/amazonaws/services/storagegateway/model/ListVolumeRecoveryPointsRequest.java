@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#listVolumeRecoveryPoints(ListVolumeRecoveryPointsRequest) ListVolumeRecoveryPoints operation}.
  * <p>
- * This operation lists the recovery points for a specified gateway. This operation is supported only for the gateway-cached volume architecture.
+ * This operation lists the recovery points for a specified gateway. This
+ * operation is supported only for the gateway-cached volume
+ * architecture.
  * </p>
  * <p>
- * Each gateway-cached volume has one recovery point. A volume recovery point is a point in time at which all data of the volume is consistent and from
- * which you can create a snapshot. To create a snapshot from a volume recovery point use the CreateSnapshotFromVolumeRecoveryPoint operation.
+ * Each gateway-cached volume has one recovery point. A volume recovery
+ * point is a point in time at which all data of the volume is consistent
+ * and from which you can create a snapshot. To create a snapshot from a
+ * volume recovery point use the CreateSnapshotFromVolumeRecoveryPoint
+ * operation.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#listVolumeRecoveryPoints(ListVolumeRecoveryPointsRequest)
  */
-public class ListVolumeRecoveryPointsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListVolumeRecoveryPointsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -87,14 +94,13 @@ public class ListVolumeRecoveryPointsRequest extends AmazonWebServiceRequest  im
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumeRecoveryPointsRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -106,7 +112,7 @@ public class ListVolumeRecoveryPointsRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

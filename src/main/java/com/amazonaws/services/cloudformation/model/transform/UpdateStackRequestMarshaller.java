@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateSt
     public Request<UpdateStackRequest> marshall(UpdateStackRequest updateStackRequest) {
 
         if (updateStackRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<UpdateStackRequest> request = new DefaultRequest<UpdateStackRequest>(updateStackRequest, "AmazonCloudFormation");
         request.addParameter("Action", "UpdateStack");
@@ -48,6 +48,12 @@ public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateSt
         }
         if (updateStackRequest.getTemplateURL() != null) {
             request.addParameter("TemplateURL", StringUtils.fromString(updateStackRequest.getTemplateURL()));
+        }
+        if (updateStackRequest.getStackPolicyDuringUpdateBody() != null) {
+            request.addParameter("StackPolicyDuringUpdateBody", StringUtils.fromString(updateStackRequest.getStackPolicyDuringUpdateBody()));
+        }
+        if (updateStackRequest.getStackPolicyDuringUpdateURL() != null) {
+            request.addParameter("StackPolicyDuringUpdateURL", StringUtils.fromString(updateStackRequest.getStackPolicyDuringUpdateURL()));
         }
 
         java.util.List<Parameter> parametersList = updateStackRequest.getParameters();
@@ -77,7 +83,12 @@ public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateSt
 
             capabilitiesListIndex++;
         }
-
+        if (updateStackRequest.getStackPolicyBody() != null) {
+            request.addParameter("StackPolicyBody", StringUtils.fromString(updateStackRequest.getStackPolicyBody()));
+        }
+        if (updateStackRequest.getStackPolicyURL() != null) {
+            request.addParameter("StackPolicyURL", StringUtils.fromString(updateStackRequest.getStackPolicyURL()));
+        }
 
         return request;
     }

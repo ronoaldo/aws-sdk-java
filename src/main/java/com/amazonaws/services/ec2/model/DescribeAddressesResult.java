@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing an account's available Elastic IPs.
- * </p>
+ * 
  */
-public class DescribeAddressesResult  implements Serializable  {
+public class DescribeAddressesResult implements Serializable {
 
     /**
-     * The list of Elastic IPs.
+     * Information about one or more Elastic IP addresses.
      */
-    private java.util.List<Address> addresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Address> addresses;
 
     /**
-     * The list of Elastic IPs.
+     * Information about one or more Elastic IP addresses.
      *
-     * @return The list of Elastic IPs.
+     * @return Information about one or more Elastic IP addresses.
      */
     public java.util.List<Address> getAddresses() {
-        
         if (addresses == null) {
-            addresses = new java.util.ArrayList<Address>();
+              addresses = new com.amazonaws.internal.ListWithAutoConstructFlag<Address>();
+              addresses.setAutoConstruct(true);
         }
         return addresses;
     }
     
     /**
-     * The list of Elastic IPs.
+     * Information about one or more Elastic IP addresses.
      *
-     * @param addresses The list of Elastic IPs.
+     * @param addresses Information about one or more Elastic IP addresses.
      */
     public void setAddresses(java.util.Collection<Address> addresses) {
         if (addresses == null) {
             this.addresses = null;
             return;
         }
-
-        java.util.List<Address> addressesCopy = new java.util.ArrayList<Address>(addresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Address> addressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Address>(addresses.size());
         addressesCopy.addAll(addresses);
         this.addresses = addressesCopy;
     }
     
     /**
-     * The list of Elastic IPs.
+     * Information about one or more Elastic IP addresses.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param addresses The list of Elastic IPs.
+     * @param addresses Information about one or more Elastic IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAddressesResult withAddresses(Address... addresses) {
         if (getAddresses() == null) setAddresses(new java.util.ArrayList<Address>(addresses.length));
@@ -75,27 +73,27 @@ public class DescribeAddressesResult  implements Serializable  {
     }
     
     /**
-     * The list of Elastic IPs.
+     * Information about one or more Elastic IP addresses.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param addresses The list of Elastic IPs.
+     * @param addresses Information about one or more Elastic IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAddressesResult withAddresses(java.util.Collection<Address> addresses) {
         if (addresses == null) {
             this.addresses = null;
         } else {
-            java.util.List<Address> addressesCopy = new java.util.ArrayList<Address>(addresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Address> addressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Address>(addresses.size());
             addressesCopy.addAll(addresses);
             this.addresses = addressesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeAddressesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAddresses() != null) sb.append("Addresses: " + getAddresses() );
         sb.append("}");
         return sb.toString();

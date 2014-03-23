@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeDBEngineVersions(DescribeDBEngineVersionsRequest) DescribeDBEngineVersions operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeDBEngineVersions(DescribeDBEngineVersionsRequest)
  */
-public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The database engine to return.
@@ -37,7 +39,7 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
     private String engineVersion;
 
     /**
-     * The name of a specific DB Parameter Group family to return details
+     * The name of a specific DB parameter group family to return details
      * for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      * characters</li> <li>First character must be a letter</li> <li>Cannot
      * end with a hyphen or contain two consecutive hyphens</li> </ul>
@@ -105,14 +107,13 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
      * @param engine The database engine to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsRequest withEngine(String engine) {
         this.engine = engine;
         return this;
     }
-    
-    
+
     /**
      * The database engine version to return. <p>Example: <code>5.1.49</code>
      *
@@ -139,21 +140,20 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
      * @param engineVersion The database engine version to return. <p>Example: <code>5.1.49</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsRequest withEngineVersion(String engineVersion) {
         this.engineVersion = engineVersion;
         return this;
     }
-    
-    
+
     /**
-     * The name of a specific DB Parameter Group family to return details
+     * The name of a specific DB parameter group family to return details
      * for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      * characters</li> <li>First character must be a letter</li> <li>Cannot
      * end with a hyphen or contain two consecutive hyphens</li> </ul>
      *
-     * @return The name of a specific DB Parameter Group family to return details
+     * @return The name of a specific DB parameter group family to return details
      *         for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      *         characters</li> <li>First character must be a letter</li> <li>Cannot
      *         end with a hyphen or contain two consecutive hyphens</li> </ul>
@@ -163,12 +163,12 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
     }
     
     /**
-     * The name of a specific DB Parameter Group family to return details
+     * The name of a specific DB parameter group family to return details
      * for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      * characters</li> <li>First character must be a letter</li> <li>Cannot
      * end with a hyphen or contain two consecutive hyphens</li> </ul>
      *
-     * @param dBParameterGroupFamily The name of a specific DB Parameter Group family to return details
+     * @param dBParameterGroupFamily The name of a specific DB parameter group family to return details
      *         for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      *         characters</li> <li>First character must be a letter</li> <li>Cannot
      *         end with a hyphen or contain two consecutive hyphens</li> </ul>
@@ -178,27 +178,26 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
     }
     
     /**
-     * The name of a specific DB Parameter Group family to return details
+     * The name of a specific DB parameter group family to return details
      * for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      * characters</li> <li>First character must be a letter</li> <li>Cannot
      * end with a hyphen or contain two consecutive hyphens</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupFamily The name of a specific DB Parameter Group family to return details
+     * @param dBParameterGroupFamily The name of a specific DB parameter group family to return details
      *         for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      *         characters</li> <li>First character must be a letter</li> <li>Cannot
      *         end with a hyphen or contain two consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsRequest withDBParameterGroupFamily(String dBParameterGroupFamily) {
         this.dBParameterGroupFamily = dBParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more than
      * the <code>MaxRecords</code> value is available, a pagination token
@@ -249,14 +248,13 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
      *         maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the
@@ -295,14 +293,13 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Indicates that only the default version of the specified engine or
      * engine and major version combination is returned.
@@ -335,14 +332,13 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
      *         engine and major version combination is returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsRequest withDefaultOnly(Boolean defaultOnly) {
         this.defaultOnly = defaultOnly;
         return this;
     }
-    
-    
+
     /**
      * Indicates that only the default version of the specified engine or
      * engine and major version combination is returned.
@@ -353,7 +349,7 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
     public Boolean getDefaultOnly() {
         return defaultOnly;
     }
-    
+
     /**
      * If this parameter is specified, and if the requested engine supports
      * the CharacterSetName parameter for CreateDBInstance, the response
@@ -392,14 +388,13 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
      *         includes a list of supported character sets for each engine version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBEngineVersionsRequest withListSupportedCharacterSets(Boolean listSupportedCharacterSets) {
         this.listSupportedCharacterSets = listSupportedCharacterSets;
         return this;
     }
-    
-    
+
     /**
      * If this parameter is specified, and if the requested engine supports
      * the CharacterSetName parameter for CreateDBInstance, the response
@@ -412,7 +407,7 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
     public Boolean getListSupportedCharacterSets() {
         return listSupportedCharacterSets;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -424,13 +419,13 @@ public class DescribeDBEngineVersionsRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");    	
-        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");    	
-        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
-        if (isDefaultOnly() != null) sb.append("DefaultOnly: " + isDefaultOnly() + ",");    	
+        sb.append("{");
+        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");
+        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");
+        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
+        if (isDefaultOnly() != null) sb.append("DefaultOnly: " + isDefaultOnly() + ",");
         if (isListSupportedCharacterSets() != null) sb.append("ListSupportedCharacterSets: " + isListSupportedCharacterSets() );
         sb.append("}");
         return sb.toString();

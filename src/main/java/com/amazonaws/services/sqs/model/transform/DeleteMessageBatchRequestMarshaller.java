@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteMessageBatchRequestMarshaller implements Marshaller<Request<D
     public Request<DeleteMessageBatchRequest> marshall(DeleteMessageBatchRequest deleteMessageBatchRequest) {
 
         if (deleteMessageBatchRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteMessageBatchRequest> request = new DefaultRequest<DeleteMessageBatchRequest>(deleteMessageBatchRequest, "AmazonSQS");
         request.addParameter("Action", "DeleteMessageBatch");
@@ -60,7 +60,6 @@ public class DeleteMessageBatchRequestMarshaller implements Marshaller<Request<D
 
             entriesListIndex++;
         }
-
 
         return request;
     }

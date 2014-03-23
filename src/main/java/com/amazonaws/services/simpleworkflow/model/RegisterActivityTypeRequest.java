@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,47 +13,63 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#registerActivityType(RegisterActivityTypeRequest) RegisterActivityType operation}.
  * <p>
- * Registers a new <i>activity type</i> along with its configuration settings in the specified domain.
+ * Registers a new <i>activity type</i> along with its configuration
+ * settings in the specified domain.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> A TypeAlreadyExists fault is returned if the type already exists in the domain. You cannot change any configuration settings of the
- * type after its registration, and it must be registered as a new version.
+ * <b>IMPORTANT:</b> A TypeAlreadyExists fault is returned if the type
+ * already exists in the domain. You cannot change any configuration
+ * settings of the type after its registration, and it must be registered
+ * as a new version.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys.
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>Constrain the following parameters by using a
+ * <code>Condition</code> element with the appropriate keys.
  * <ul>
- * <li> <code>defaultTaskList</code> : String constraint. The key is <code>swf:defaultTaskList.name</code> .</li>
- * <li> <code>name</code> : String constraint. The key is <code>swf:name</code> .</li>
- * <li> <code>version</code> : String constraint. The key is <code>swf:version</code> .</li>
+ * <li> <code>defaultTaskList</code> : String constraint. The key is
+ * <code>swf:defaultTaskList.name</code> .</li>
+ * <li> <code>name</code> : String constraint. The key is
+ * <code>swf:name</code> .</li>
+ * <li> <code>version</code> : String constraint. The key is
+ * <code>swf:version</code> .</li>
  * 
  * </ul>
  * </li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#registerActivityType(RegisterActivityTypeRequest)
  */
-public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RegisterActivityTypeRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which this activity is to be registered.
@@ -203,14 +219,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      * @param domain The name of the domain in which this activity is to be registered.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * The name of the activity type within the domain. <p>The specified
      * string must not start or end with whitespace. It must not contain a
@@ -270,14 +285,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      *         \u009f). Also, it must not contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The version of the activity type. <note> The activity type consists of
      * the name and version, the combination of which must be unique within
@@ -349,14 +363,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withVersion(String version) {
         this.version = version;
         return this;
     }
-    
-    
+
     /**
      * A textual description of the activity type.
      * <p>
@@ -392,14 +405,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      * @param description A textual description of the activity type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default maximum duration that a worker can take
      * to process tasks of this activity type. This default can be overridden
@@ -471,14 +483,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      *         can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withDefaultTaskStartToCloseTimeout(String defaultTaskStartToCloseTimeout) {
         this.defaultTaskStartToCloseTimeout = defaultTaskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default maximum time before which a worker
      * processing a task of this type must report progress by calling
@@ -592,14 +603,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      *         duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withDefaultTaskHeartbeatTimeout(String defaultTaskHeartbeatTimeout) {
         this.defaultTaskHeartbeatTimeout = defaultTaskHeartbeatTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default task list to use for scheduling tasks of
      * this activity type. This default task list is used if a task list is
@@ -644,14 +654,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      *         <code>ScheduleActivityTask</code> <a>Decision</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withDefaultTaskList(TaskList defaultTaskList) {
         this.defaultTaskList = defaultTaskList;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default maximum duration that a task of this
      * activity type can wait before being assigned to a worker. This default
@@ -723,14 +732,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      *         can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withDefaultTaskScheduleToStartTimeout(String defaultTaskScheduleToStartTimeout) {
         this.defaultTaskScheduleToStartTimeout = defaultTaskScheduleToStartTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default maximum duration for a task of this
      * activity type. This default can be overridden when scheduling an
@@ -802,14 +810,13 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
      *         unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterActivityTypeRequest withDefaultTaskScheduleToCloseTimeout(String defaultTaskScheduleToCloseTimeout) {
         this.defaultTaskScheduleToCloseTimeout = defaultTaskScheduleToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -821,15 +828,15 @@ public class RegisterActivityTypeRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getVersion() != null) sb.append("Version: " + getVersion() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getDefaultTaskStartToCloseTimeout() != null) sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");    	
-        if (getDefaultTaskHeartbeatTimeout() != null) sb.append("DefaultTaskHeartbeatTimeout: " + getDefaultTaskHeartbeatTimeout() + ",");    	
-        if (getDefaultTaskList() != null) sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");    	
-        if (getDefaultTaskScheduleToStartTimeout() != null) sb.append("DefaultTaskScheduleToStartTimeout: " + getDefaultTaskScheduleToStartTimeout() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getVersion() != null) sb.append("Version: " + getVersion() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getDefaultTaskStartToCloseTimeout() != null) sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");
+        if (getDefaultTaskHeartbeatTimeout() != null) sb.append("DefaultTaskHeartbeatTimeout: " + getDefaultTaskHeartbeatTimeout() + ",");
+        if (getDefaultTaskList() != null) sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");
+        if (getDefaultTaskScheduleToStartTimeout() != null) sb.append("DefaultTaskScheduleToStartTimeout: " + getDefaultTaskScheduleToStartTimeout() + ",");
         if (getDefaultTaskScheduleToCloseTimeout() != null) sb.append("DefaultTaskScheduleToCloseTimeout: " + getDefaultTaskScheduleToCloseTimeout() );
         sb.append("}");
         return sb.toString();

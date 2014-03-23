@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,59 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class DescribeServicesResult  implements Serializable  {
+public class DescribeServicesResult implements Serializable {
 
     /**
-     * JSON-formatted list of AWS services.
+     * A JSON-formatted list of AWS services.
      */
-    private java.util.List<Service> services;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Service> services;
 
     /**
-     * JSON-formatted list of AWS services.
+     * A JSON-formatted list of AWS services.
      *
-     * @return JSON-formatted list of AWS services.
+     * @return A JSON-formatted list of AWS services.
      */
     public java.util.List<Service> getServices() {
-        
         if (services == null) {
-            services = new java.util.ArrayList<Service>();
+              services = new com.amazonaws.internal.ListWithAutoConstructFlag<Service>();
+              services.setAutoConstruct(true);
         }
         return services;
     }
     
     /**
-     * JSON-formatted list of AWS services.
+     * A JSON-formatted list of AWS services.
      *
-     * @param services JSON-formatted list of AWS services.
+     * @param services A JSON-formatted list of AWS services.
      */
     public void setServices(java.util.Collection<Service> services) {
         if (services == null) {
             this.services = null;
             return;
         }
-
-        java.util.List<Service> servicesCopy = new java.util.ArrayList<Service>(services.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Service> servicesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Service>(services.size());
         servicesCopy.addAll(services);
         this.services = servicesCopy;
     }
     
     /**
-     * JSON-formatted list of AWS services.
+     * A JSON-formatted list of AWS services.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param services JSON-formatted list of AWS services.
+     * @param services A JSON-formatted list of AWS services.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeServicesResult withServices(Service... services) {
         if (getServices() == null) setServices(new java.util.ArrayList<Service>(services.length));
@@ -75,27 +76,27 @@ public class DescribeServicesResult  implements Serializable  {
     }
     
     /**
-     * JSON-formatted list of AWS services.
+     * A JSON-formatted list of AWS services.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param services JSON-formatted list of AWS services.
+     * @param services A JSON-formatted list of AWS services.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeServicesResult withServices(java.util.Collection<Service> services) {
         if (services == null) {
             this.services = null;
         } else {
-            java.util.List<Service> servicesCopy = new java.util.ArrayList<Service>(services.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Service> servicesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Service>(services.size());
             servicesCopy.addAll(services);
             this.services = servicesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +108,7 @@ public class DescribeServicesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getServices() != null) sb.append("Services: " + getServices() );
         sb.append("}");
         return sb.toString();

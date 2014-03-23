@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, you can omit the
- * <code>HostedZoneConfig</code> and <code>Comment</code> elements from the XML document.
+ * A complex type that contains an optional comment about your hosted
+ * zone. If you don't want to specify a comment, you can omit the
+ * <code>HostedZoneConfig</code> and <code>Comment</code> elements from
+ * the XML document.
  * </p>
  */
-public class HostedZoneConfig  implements Serializable  {
+public class HostedZoneConfig implements Serializable {
 
     /**
      * An optional comment about your hosted zone. If you don't want to
@@ -86,14 +89,13 @@ public class HostedZoneConfig  implements Serializable  {
      *         <code>Comment</code> elements from the XML document.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HostedZoneConfig withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -105,7 +107,7 @@ public class HostedZoneConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getComment() != null) sb.append("Comment: " + getComment() );
         sb.append("}");
         return sb.toString();

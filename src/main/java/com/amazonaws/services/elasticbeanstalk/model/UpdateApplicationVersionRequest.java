@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#updateApplicationVersion(UpdateApplicationVersionRequest) UpdateApplicationVersion operation}.
  * <p>
- * Updates the specified application version to have the specified properties.
+ * Updates the specified application version to have the specified
+ * properties.
  * </p>
  * <p>
- * <b>NOTE:</b> If a property (for example, description) is not provided, the value remains unchanged. To clear properties, specify an empty string.
+ * <b>NOTE:</b> If a property (for example, description) is not provided,
+ * the value remains unchanged. To clear properties, specify an empty
+ * string.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#updateApplicationVersion(UpdateApplicationVersionRequest)
  */
-public class UpdateApplicationVersionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateApplicationVersionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application associated with this version. <p> If no
@@ -78,12 +83,10 @@ public class UpdateApplicationVersionRequest extends AmazonWebServiceRequest  im
      * <code>InvalidParameterValue</code> error.
      */
     public UpdateApplicationVersionRequest(String applicationName, String versionLabel) {
-        this.applicationName = applicationName;
-        this.versionLabel = versionLabel;
+        setApplicationName(applicationName);
+        setVersionLabel(versionLabel);
     }
 
-    
-    
     /**
      * The name of the application associated with this version. <p> If no
      * application is found with this name, <code>UpdateApplication</code>
@@ -131,14 +134,13 @@ public class UpdateApplicationVersionRequest extends AmazonWebServiceRequest  im
      *         returns an <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateApplicationVersionRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The name of the version to update. <p> If no application version is
      * found with this label, <code>UpdateApplication</code> returns an
@@ -186,14 +188,13 @@ public class UpdateApplicationVersionRequest extends AmazonWebServiceRequest  im
      *         <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateApplicationVersionRequest withVersionLabel(String versionLabel) {
         this.versionLabel = versionLabel;
         return this;
     }
-    
-    
+
     /**
      * A new description for this release.
      * <p>
@@ -229,14 +230,13 @@ public class UpdateApplicationVersionRequest extends AmazonWebServiceRequest  im
      * @param description A new description for this release.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateApplicationVersionRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -248,9 +248,9 @@ public class UpdateApplicationVersionRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a unique message ID returned from a successful <code>SendRawEmail</code> request.
+ * Represents a unique message ID returned from a successful
+ * <code>SendRawEmail</code> request.
  * </p>
  */
-public class SendRawEmailResult  implements Serializable  {
+public class SendRawEmailResult implements Serializable {
 
     /**
      * The unique message identifier returned from the
@@ -60,14 +62,13 @@ public class SendRawEmailResult  implements Serializable  {
      *         <code>SendRawEmail</code> action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailResult withMessageId(String messageId) {
         this.messageId = messageId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +80,7 @@ public class SendRawEmailResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMessageId() != null) sb.append("MessageId: " + getMessageId() );
         sb.append("}");
         return sb.toString();

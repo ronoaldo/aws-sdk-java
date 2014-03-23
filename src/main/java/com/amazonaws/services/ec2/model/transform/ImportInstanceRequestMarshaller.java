@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ImportInstanceRequestMarshaller implements Marshaller<Request<Impor
     public Request<ImportInstanceRequest> marshall(ImportInstanceRequest importInstanceRequest) {
 
         if (importInstanceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ImportInstanceRequest> request = new DefaultRequest<ImportInstanceRequest>(importInstanceRequest, "AmazonEC2");
         request.addParameter("Action", "ImportInstance");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (importInstanceRequest.getDescription() != null) {
             request.addParameter("Description", StringUtils.fromString(importInstanceRequest.getDescription()));
@@ -49,15 +49,15 @@ public class ImportInstanceRequestMarshaller implements Marshaller<Request<Impor
                 request.addParameter("LaunchSpecification.Architecture", StringUtils.fromString(importInstanceLaunchSpecificationLaunchSpecification.getArchitecture()));
             }
 
-            java.util.List<String> securityGroupsList = importInstanceLaunchSpecificationLaunchSpecification.getSecurityGroups();
-            int securityGroupsListIndex = 1;
+            java.util.List<String> groupNamesList = importInstanceLaunchSpecificationLaunchSpecification.getGroupNames();
+            int groupNamesListIndex = 1;
 
-            for (String securityGroupsListValue : securityGroupsList) {
-                if (securityGroupsListValue != null) {
-                    request.addParameter("LaunchSpecification.SecurityGroup." + securityGroupsListIndex, StringUtils.fromString(securityGroupsListValue));
+            for (String groupNamesListValue : groupNamesList) {
+                if (groupNamesListValue != null) {
+                    request.addParameter("LaunchSpecification.GroupName." + groupNamesListIndex, StringUtils.fromString(groupNamesListValue));
                 }
 
-                securityGroupsListIndex++;
+                groupNamesListIndex++;
             }
             if (importInstanceLaunchSpecificationLaunchSpecification.getAdditionalInfo() != null) {
                 request.addParameter("LaunchSpecification.AdditionalInfo", StringUtils.fromString(importInstanceLaunchSpecificationLaunchSpecification.getAdditionalInfo()));
@@ -80,52 +80,11 @@ public class ImportInstanceRequestMarshaller implements Marshaller<Request<Impor
                     request.addParameter("LaunchSpecification.Placement.Tenancy", StringUtils.fromString(placementPlacement.getTenancy()));
                 }
             }
-
-            java.util.List<BlockDeviceMapping> blockDeviceMappingsList = importInstanceLaunchSpecificationLaunchSpecification.getBlockDeviceMappings();
-            int blockDeviceMappingsListIndex = 1;
-
-            for (BlockDeviceMapping blockDeviceMappingsListValue : blockDeviceMappingsList) {
-                BlockDeviceMapping blockDeviceMappingMember = blockDeviceMappingsListValue;
-                if (blockDeviceMappingMember != null) {
-                    if (blockDeviceMappingMember.getVirtualName() != null) {
-                        request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".VirtualName", StringUtils.fromString(blockDeviceMappingMember.getVirtualName()));
-                    }
-                    if (blockDeviceMappingMember.getDeviceName() != null) {
-                        request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".DeviceName", StringUtils.fromString(blockDeviceMappingMember.getDeviceName()));
-                    }
-                    EbsBlockDevice ebsBlockDeviceEbs = blockDeviceMappingMember.getEbs();
-                    if (ebsBlockDeviceEbs != null) {
-                        if (ebsBlockDeviceEbs.getSnapshotId() != null) {
-                            request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.SnapshotId", StringUtils.fromString(ebsBlockDeviceEbs.getSnapshotId()));
-                        }
-                        if (ebsBlockDeviceEbs.getVolumeSize() != null) {
-                            request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.VolumeSize", StringUtils.fromInteger(ebsBlockDeviceEbs.getVolumeSize()));
-                        }
-                        if (ebsBlockDeviceEbs.isDeleteOnTermination() != null) {
-                            request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.DeleteOnTermination", StringUtils.fromBoolean(ebsBlockDeviceEbs.isDeleteOnTermination()));
-                        }
-                        if (ebsBlockDeviceEbs.getVolumeType() != null) {
-                            request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.VolumeType", StringUtils.fromString(ebsBlockDeviceEbs.getVolumeType()));
-                        }
-                        if (ebsBlockDeviceEbs.getIops() != null) {
-                            request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.Iops", StringUtils.fromInteger(ebsBlockDeviceEbs.getIops()));
-                        }
-                    }
-                    if (blockDeviceMappingMember.getNoDevice() != null) {
-                        request.addParameter("LaunchSpecification.BlockDeviceMapping." + blockDeviceMappingsListIndex + ".NoDevice", StringUtils.fromString(blockDeviceMappingMember.getNoDevice()));
-                    }
-                }
-
-                blockDeviceMappingsListIndex++;
-            }
             if (importInstanceLaunchSpecificationLaunchSpecification.isMonitoring() != null) {
                 request.addParameter("LaunchSpecification.Monitoring", StringUtils.fromBoolean(importInstanceLaunchSpecificationLaunchSpecification.isMonitoring()));
             }
             if (importInstanceLaunchSpecificationLaunchSpecification.getSubnetId() != null) {
                 request.addParameter("LaunchSpecification.SubnetId", StringUtils.fromString(importInstanceLaunchSpecificationLaunchSpecification.getSubnetId()));
-            }
-            if (importInstanceLaunchSpecificationLaunchSpecification.isDisableApiTermination() != null) {
-                request.addParameter("LaunchSpecification.DisableApiTermination", StringUtils.fromBoolean(importInstanceLaunchSpecificationLaunchSpecification.isDisableApiTermination()));
             }
             if (importInstanceLaunchSpecificationLaunchSpecification.getInstanceInitiatedShutdownBehavior() != null) {
                 request.addParameter("LaunchSpecification.InstanceInitiatedShutdownBehavior", StringUtils.fromString(importInstanceLaunchSpecificationLaunchSpecification.getInstanceInitiatedShutdownBehavior()));
@@ -169,7 +128,6 @@ public class ImportInstanceRequestMarshaller implements Marshaller<Request<Impor
         if (importInstanceRequest.getPlatform() != null) {
             request.addParameter("Platform", StringUtils.fromString(importInstanceRequest.getPlatform()));
         }
-
 
         return request;
     }

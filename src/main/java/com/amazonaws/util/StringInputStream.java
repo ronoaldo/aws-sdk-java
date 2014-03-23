@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.util;
+import static com.amazonaws.util.StringUtils.UTF8;
 
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
@@ -23,21 +24,21 @@ import java.io.UnsupportedEncodingException;
  */
 public class StringInputStream extends ByteArrayInputStream {
 
-	private final String string;
+    private final String string;
 
-	public StringInputStream(String s) throws UnsupportedEncodingException {
-		super(s.getBytes("UTF-8"));
-		this.string = s;
-	}
+    public StringInputStream(String s) throws UnsupportedEncodingException {
+        super(s.getBytes(UTF8));
+        this.string = s;
+    }
 
-	/**
-	 * Returns the original string specified when this input stream was
-	 * constructed.
-	 *
-	 * @return The original string specified when this input stream was
-	 *         constructed.
-	 */
-	public String getString() {
-		return string;
-	}
+    /**
+     * Returns the original string specified when this input stream was
+     * constructed.
+     *
+     * @return The original string specified when this input stream was
+     *         constructed.
+     */
+    public String getString() {
+        return string;
+    }
 }

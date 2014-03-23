@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.importexport.AmazonImportExport#getStatus(GetStatusRequest) GetStatus operation}.
  * <p>
- * This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature
- * value associated with the job. You can only return information about jobs you own.
+ * This operation returns information about a job, including where the
+ * job is in the processing pipeline, the status of the results, and the
+ * signature value associated with the job. You can only return
+ * information about jobs you own.
  * </p>
  *
  * @see com.amazonaws.services.importexport.AmazonImportExport#getStatus(GetStatusRequest)
  */
-public class GetStatusRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetStatusRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A unique identifier which refers to a particular job.
@@ -58,14 +62,13 @@ public class GetStatusRequest extends AmazonWebServiceRequest  implements Serial
      * @param jobId A unique identifier which refers to a particular job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusRequest withJobId(String jobId) {
         this.jobId = jobId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -77,7 +80,7 @@ public class GetStatusRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getJobId() != null) sb.append("JobId: " + getJobId() );
         sb.append("}");
         return sb.toString();

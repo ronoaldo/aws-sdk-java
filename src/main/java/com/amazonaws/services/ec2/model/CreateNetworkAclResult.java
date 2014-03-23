@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Create Network Acl Result
+ * 
  */
-public class CreateNetworkAclResult  implements Serializable  {
+public class CreateNetworkAclResult implements Serializable {
 
+    /**
+     * Information about the network ACL.
+     */
     private NetworkAcl networkAcl;
 
     /**
-     * Returns the value of the NetworkAcl property for this object.
+     * Information about the network ACL.
      *
-     * @return The value of the NetworkAcl property for this object.
+     * @return Information about the network ACL.
      */
     public NetworkAcl getNetworkAcl() {
         return networkAcl;
     }
     
     /**
-     * Sets the value of the NetworkAcl property for this object.
+     * Information about the network ACL.
      *
-     * @param networkAcl The new value for the NetworkAcl property for this object.
+     * @param networkAcl Information about the network ACL.
      */
     public void setNetworkAcl(NetworkAcl networkAcl) {
         this.networkAcl = networkAcl;
     }
     
     /**
-     * Sets the value of the NetworkAcl property for this object.
+     * Information about the network ACL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkAcl The new value for the NetworkAcl property for this object.
+     * @param networkAcl Information about the network ACL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkAclResult withNetworkAcl(NetworkAcl networkAcl) {
         this.networkAcl = networkAcl;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +70,7 @@ public class CreateNetworkAclResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getNetworkAcl() != null) sb.append("NetworkAcl: " + getNetworkAcl() );
         sb.append("}");
         return sb.toString();

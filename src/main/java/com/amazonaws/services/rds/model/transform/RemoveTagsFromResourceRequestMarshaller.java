@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class RemoveTagsFromResourceRequestMarshaller implements Marshaller<Reque
     public Request<RemoveTagsFromResourceRequest> marshall(RemoveTagsFromResourceRequest removeTagsFromResourceRequest) {
 
         if (removeTagsFromResourceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RemoveTagsFromResourceRequest> request = new DefaultRequest<RemoveTagsFromResourceRequest>(removeTagsFromResourceRequest, "AmazonRDS");
         request.addParameter("Action", "RemoveTagsFromResource");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (removeTagsFromResourceRequest.getResourceName() != null) {
             request.addParameter("ResourceName", StringUtils.fromString(removeTagsFromResourceRequest.getResourceName()));
@@ -54,7 +54,6 @@ public class RemoveTagsFromResourceRequestMarshaller implements Marshaller<Reque
 
             tagKeysListIndex++;
         }
-
 
         return request;
     }

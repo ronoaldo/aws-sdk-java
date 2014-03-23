@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeCacheClustersRequestMarshaller implements Marshaller<Reques
     public Request<DescribeCacheClustersRequest> marshall(DescribeCacheClustersRequest describeCacheClustersRequest) {
 
         if (describeCacheClustersRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeCacheClustersRequest> request = new DefaultRequest<DescribeCacheClustersRequest>(describeCacheClustersRequest, "AmazonElastiCache");
         request.addParameter("Action", "DescribeCacheClusters");
-        request.addParameter("Version", "2012-11-15");
+        request.addParameter("Version", "2013-06-15");
 
         if (describeCacheClustersRequest.getCacheClusterId() != null) {
             request.addParameter("CacheClusterId", StringUtils.fromString(describeCacheClustersRequest.getCacheClusterId()));
@@ -52,7 +52,6 @@ public class DescribeCacheClustersRequestMarshaller implements Marshaller<Reques
         if (describeCacheClustersRequest.isShowCacheNodeInfo() != null) {
             request.addParameter("ShowCacheNodeInfo", StringUtils.fromBoolean(describeCacheClustersRequest.isShowCacheNodeInfo()));
         }
-
 
         return request;
     }

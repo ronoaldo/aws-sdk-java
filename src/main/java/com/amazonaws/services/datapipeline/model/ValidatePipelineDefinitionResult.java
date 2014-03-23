@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,19 +21,19 @@ import java.io.Serializable;
  * Contains the output from the ValidatePipelineDefinition action.
  * </p>
  */
-public class ValidatePipelineDefinitionResult  implements Serializable  {
+public class ValidatePipelineDefinitionResult implements Serializable {
 
     /**
      * Lists the validation errors that were found by
      * <a>ValidatePipelineDefinition</a>.
      */
-    private java.util.List<ValidationError> validationErrors;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError> validationErrors;
 
     /**
      * Lists the validation warnings that were found by
      * <a>ValidatePipelineDefinition</a>.
      */
-    private java.util.List<ValidationWarning> validationWarnings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning> validationWarnings;
 
     /**
      * If <code>True</code>, there were validation errors.
@@ -47,9 +48,9 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
      *         <a>ValidatePipelineDefinition</a>.
      */
     public java.util.List<ValidationError> getValidationErrors() {
-        
         if (validationErrors == null) {
-            validationErrors = new java.util.ArrayList<ValidationError>();
+              validationErrors = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError>();
+              validationErrors.setAutoConstruct(true);
         }
         return validationErrors;
     }
@@ -66,8 +67,7 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
             this.validationErrors = null;
             return;
         }
-
-        java.util.List<ValidationError> validationErrorsCopy = new java.util.ArrayList<ValidationError>(validationErrors.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError> validationErrorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError>(validationErrors.size());
         validationErrorsCopy.addAll(validationErrors);
         this.validationErrors = validationErrorsCopy;
     }
@@ -82,7 +82,7 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
      *         <a>ValidatePipelineDefinition</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionResult withValidationErrors(ValidationError... validationErrors) {
         if (getValidationErrors() == null) setValidationErrors(new java.util.ArrayList<ValidationError>(validationErrors.length));
@@ -102,20 +102,20 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
      *         <a>ValidatePipelineDefinition</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionResult withValidationErrors(java.util.Collection<ValidationError> validationErrors) {
         if (validationErrors == null) {
             this.validationErrors = null;
         } else {
-            java.util.List<ValidationError> validationErrorsCopy = new java.util.ArrayList<ValidationError>(validationErrors.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError> validationErrorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError>(validationErrors.size());
             validationErrorsCopy.addAll(validationErrors);
             this.validationErrors = validationErrorsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Lists the validation warnings that were found by
      * <a>ValidatePipelineDefinition</a>.
@@ -124,9 +124,9 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
      *         <a>ValidatePipelineDefinition</a>.
      */
     public java.util.List<ValidationWarning> getValidationWarnings() {
-        
         if (validationWarnings == null) {
-            validationWarnings = new java.util.ArrayList<ValidationWarning>();
+              validationWarnings = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning>();
+              validationWarnings.setAutoConstruct(true);
         }
         return validationWarnings;
     }
@@ -143,8 +143,7 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
             this.validationWarnings = null;
             return;
         }
-
-        java.util.List<ValidationWarning> validationWarningsCopy = new java.util.ArrayList<ValidationWarning>(validationWarnings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning> validationWarningsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning>(validationWarnings.size());
         validationWarningsCopy.addAll(validationWarnings);
         this.validationWarnings = validationWarningsCopy;
     }
@@ -159,7 +158,7 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
      *         <a>ValidatePipelineDefinition</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionResult withValidationWarnings(ValidationWarning... validationWarnings) {
         if (getValidationWarnings() == null) setValidationWarnings(new java.util.ArrayList<ValidationWarning>(validationWarnings.length));
@@ -179,20 +178,20 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
      *         <a>ValidatePipelineDefinition</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionResult withValidationWarnings(java.util.Collection<ValidationWarning> validationWarnings) {
         if (validationWarnings == null) {
             this.validationWarnings = null;
         } else {
-            java.util.List<ValidationWarning> validationWarningsCopy = new java.util.ArrayList<ValidationWarning>(validationWarnings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning> validationWarningsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning>(validationWarnings.size());
             validationWarningsCopy.addAll(validationWarnings);
             this.validationWarnings = validationWarningsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * If <code>True</code>, there were validation errors.
      *
@@ -219,14 +218,13 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
      * @param errored If <code>True</code>, there were validation errors.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionResult withErrored(Boolean errored) {
         this.errored = errored;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, there were validation errors.
      *
@@ -235,7 +233,7 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
     public Boolean getErrored() {
         return errored;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -247,9 +245,9 @@ public class ValidatePipelineDefinitionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getValidationErrors() != null) sb.append("ValidationErrors: " + getValidationErrors() + ",");    	
-        if (getValidationWarnings() != null) sb.append("ValidationWarnings: " + getValidationWarnings() + ",");    	
+        sb.append("{");
+        if (getValidationErrors() != null) sb.append("ValidationErrors: " + getValidationErrors() + ",");
+        if (getValidationWarnings() != null) sb.append("ValidationWarnings: " + getValidationWarnings() + ",");
         if (isErrored() != null) sb.append("Errored: " + isErrored() );
         sb.append("}");
         return sb.toString();

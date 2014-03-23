@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
  * 
- * </p>
  */
-public class CreateVpnConnectionResult  implements Serializable  {
+public class CreateVpnConnectionResult implements Serializable {
 
     /**
-     * 
+     * Information about the VPN connection.
      */
     private VpnConnection vpnConnection;
 
     /**
-     * 
+     * Information about the VPN connection.
      *
-     * @return 
+     * @return Information about the VPN connection.
      */
     public VpnConnection getVpnConnection() {
         return vpnConnection;
     }
     
     /**
-     * 
+     * Information about the VPN connection.
      *
-     * @param vpnConnection 
+     * @param vpnConnection Information about the VPN connection.
      */
     public void setVpnConnection(VpnConnection vpnConnection) {
         this.vpnConnection = vpnConnection;
     }
     
     /**
-     * 
+     * Information about the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpnConnection 
+     * @param vpnConnection Information about the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVpnConnectionResult withVpnConnection(VpnConnection vpnConnection) {
         this.vpnConnection = vpnConnection;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class CreateVpnConnectionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVpnConnection() != null) sb.append("VpnConnection: " + getVpnConnection() );
         sb.append("}");
         return sb.toString();

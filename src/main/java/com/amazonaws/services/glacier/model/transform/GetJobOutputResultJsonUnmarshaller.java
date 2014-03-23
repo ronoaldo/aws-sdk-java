@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,21 +22,18 @@ import com.amazonaws.services.glacier.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
+
+import com.amazonaws.util.ContentLengthValidationInputStream;
 
 /**
  * Get Job Output Result JSON Unmarshaller
  */
 public class GetJobOutputResultJsonUnmarshaller implements Unmarshaller<GetJobOutputResult, JsonUnmarshallerContext> {
 
-    
-
     public GetJobOutputResult unmarshall(JsonUnmarshallerContext context) throws Exception {
         GetJobOutputResult getJobOutputResult = new GetJobOutputResult();
-
-        
-        
 
         if (context.isStartOfDocument()) {
             if (context.getHeader("x-amz-sha256-tree-hash") != null)
@@ -51,7 +48,7 @@ public class GetJobOutputResultJsonUnmarshaller implements Unmarshaller<GetJobOu
                 getJobOutputResult.setArchiveDescription(context.getHeader("x-amz-archive-description"));
         }
         
-        getJobOutputResult.setStatus(context.getHttpResponse().getStatusCode());getJobOutputResult.setBody(context.getHttpResponse().getContent());
+        getJobOutputResult.setStatus(context.getHttpResponse().getStatusCode());getJobOutputResult.setBody(new ContentLengthValidationInputStream(context.getHttpResponse().getContent(),Long.parseLong(context.getHeader("Content-Length"))));
             
         return getJobOutputResult;
     }

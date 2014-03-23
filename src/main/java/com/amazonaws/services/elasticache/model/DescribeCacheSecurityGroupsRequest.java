@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,38 +13,41 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#describeCacheSecurityGroups(DescribeCacheSecurityGroupsRequest) DescribeCacheSecurityGroups operation}.
  * <p>
- * Returns a list of CacheSecurityGroup descriptions. If a CacheSecurityGroupName is specified, the list will contain only the description of the
- * specified CacheSecurityGroup.
+ * The <i>DescribeCacheSecurityGroups</i> operation returns a list of
+ * cache security group descriptions. If a cache security group name is
+ * specified, the list will contain only the description of that group.
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#describeCacheSecurityGroups(DescribeCacheSecurityGroupsRequest)
  */
-public class DescribeCacheSecurityGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeCacheSecurityGroupsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the Cache Security Group to return details for.
+     * The name of the cache security group to return details for.
      */
     private String cacheSecurityGroupName;
 
     /**
      * The maximum number of records to include in the response. If more
-     * records exist than the specified <i>MaxRecords</i> value, a marker is
-     * included in the response so that the remaining results may be
-     * retrieved. <p> Default: 100 <p> Constraints: minimum 20, maximum 100
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      */
     private Integer maxRecords;
 
     /**
-     * An optional marker provided in the previous DescribeCacheClusters
-     * request. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      */
     private String marker;
 
@@ -59,59 +62,56 @@ public class DescribeCacheSecurityGroupsRequest extends AmazonWebServiceRequest 
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param cacheSecurityGroupName The name of the Cache Security Group to
+     * @param cacheSecurityGroupName The name of the cache security group to
      * return details for.
      */
     public DescribeCacheSecurityGroupsRequest(String cacheSecurityGroupName) {
-        this.cacheSecurityGroupName = cacheSecurityGroupName;
+        setCacheSecurityGroupName(cacheSecurityGroupName);
     }
 
-    
-    
     /**
-     * The name of the Cache Security Group to return details for.
+     * The name of the cache security group to return details for.
      *
-     * @return The name of the Cache Security Group to return details for.
+     * @return The name of the cache security group to return details for.
      */
     public String getCacheSecurityGroupName() {
         return cacheSecurityGroupName;
     }
     
     /**
-     * The name of the Cache Security Group to return details for.
+     * The name of the cache security group to return details for.
      *
-     * @param cacheSecurityGroupName The name of the Cache Security Group to return details for.
+     * @param cacheSecurityGroupName The name of the cache security group to return details for.
      */
     public void setCacheSecurityGroupName(String cacheSecurityGroupName) {
         this.cacheSecurityGroupName = cacheSecurityGroupName;
     }
     
     /**
-     * The name of the Cache Security Group to return details for.
+     * The name of the cache security group to return details for.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSecurityGroupName The name of the Cache Security Group to return details for.
+     * @param cacheSecurityGroupName The name of the cache security group to return details for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheSecurityGroupsRequest withCacheSecurityGroupName(String cacheSecurityGroupName) {
         this.cacheSecurityGroupName = cacheSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more
-     * records exist than the specified <i>MaxRecords</i> value, a marker is
-     * included in the response so that the remaining results may be
-     * retrieved. <p> Default: 100 <p> Constraints: minimum 20, maximum 100
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      *
      * @return The maximum number of records to include in the response. If more
-     *         records exist than the specified <i>MaxRecords</i> value, a marker is
-     *         included in the response so that the remaining results may be
-     *         retrieved. <p> Default: 100 <p> Constraints: minimum 20, maximum 100
+     *         records exist than the specified <code>MaxRecords</code> value, a
+     *         marker is included in the response so that the remaining results can
+     *         be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      */
     public Integer getMaxRecords() {
         return maxRecords;
@@ -119,14 +119,14 @@ public class DescribeCacheSecurityGroupsRequest extends AmazonWebServiceRequest 
     
     /**
      * The maximum number of records to include in the response. If more
-     * records exist than the specified <i>MaxRecords</i> value, a marker is
-     * included in the response so that the remaining results may be
-     * retrieved. <p> Default: 100 <p> Constraints: minimum 20, maximum 100
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      *
      * @param maxRecords The maximum number of records to include in the response. If more
-     *         records exist than the specified <i>MaxRecords</i> value, a marker is
-     *         included in the response so that the remaining results may be
-     *         retrieved. <p> Default: 100 <p> Constraints: minimum 20, maximum 100
+     *         records exist than the specified <code>MaxRecords</code> value, a
+     *         marker is included in the response so that the remaining results can
+     *         be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      */
     public void setMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
@@ -134,78 +134,76 @@ public class DescribeCacheSecurityGroupsRequest extends AmazonWebServiceRequest 
     
     /**
      * The maximum number of records to include in the response. If more
-     * records exist than the specified <i>MaxRecords</i> value, a marker is
-     * included in the response so that the remaining results may be
-     * retrieved. <p> Default: 100 <p> Constraints: minimum 20, maximum 100
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param maxRecords The maximum number of records to include in the response. If more
-     *         records exist than the specified <i>MaxRecords</i> value, a marker is
-     *         included in the response so that the remaining results may be
-     *         retrieved. <p> Default: 100 <p> Constraints: minimum 20, maximum 100
+     *         records exist than the specified <code>MaxRecords</code> value, a
+     *         marker is included in the response so that the remaining results can
+     *         be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheSecurityGroupsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
-     * An optional marker provided in the previous DescribeCacheClusters
-     * request. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      *
-     * @return An optional marker provided in the previous DescribeCacheClusters
-     *         request. If this parameter is specified, the response includes only
-     *         records beyond the marker, up to the value specified by
-     *         <i>MaxRecords</i>.
+     * @return An optional marker returned from a prior request. Use this marker for
+     *         pagination of results from this operation. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <i>MaxRecords</i>.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * An optional marker provided in the previous DescribeCacheClusters
-     * request. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      *
-     * @param marker An optional marker provided in the previous DescribeCacheClusters
-     *         request. If this parameter is specified, the response includes only
-     *         records beyond the marker, up to the value specified by
-     *         <i>MaxRecords</i>.
+     * @param marker An optional marker returned from a prior request. Use this marker for
+     *         pagination of results from this operation. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <i>MaxRecords</i>.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * An optional marker provided in the previous DescribeCacheClusters
-     * request. If this parameter is specified, the response includes only
-     * records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker An optional marker provided in the previous DescribeCacheClusters
-     *         request. If this parameter is specified, the response includes only
-     *         records beyond the marker, up to the value specified by
-     *         <i>MaxRecords</i>.
+     * @param marker An optional marker returned from a prior request. Use this marker for
+     *         pagination of results from this operation. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <i>MaxRecords</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheSecurityGroupsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -217,9 +215,9 @@ public class DescribeCacheSecurityGroupsRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheSecurityGroupName() != null) sb.append("CacheSecurityGroupName: " + getCacheSecurityGroupName() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getCacheSecurityGroupName() != null) sb.append("CacheSecurityGroupName: " + getCacheSecurityGroupName() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

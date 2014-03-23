@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>ActivityTaskFailed</code> event.
  * </p>
  */
-public class ActivityTaskFailedEventAttributes  implements Serializable  {
+public class ActivityTaskFailedEventAttributes implements Serializable {
 
     /**
      * The reason provided for the failure (if any).
@@ -89,14 +90,13 @@ public class ActivityTaskFailedEventAttributes  implements Serializable  {
      * @param reason The reason provided for the failure (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskFailedEventAttributes withReason(String reason) {
         this.reason = reason;
         return this;
     }
-    
-    
+
     /**
      * The details of the failure (if any).
      * <p>
@@ -132,14 +132,13 @@ public class ActivityTaskFailedEventAttributes  implements Serializable  {
      * @param details The details of the failure (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskFailedEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>ActivityTaskScheduled</code> event that was
      * recorded when this activity task was scheduled. This information can
@@ -184,14 +183,13 @@ public class ActivityTaskFailedEventAttributes  implements Serializable  {
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskFailedEventAttributes withScheduledEventId(Long scheduledEventId) {
         this.scheduledEventId = scheduledEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>ActivityTaskStarted</code> event recorded when
      * this activity task was started. This information can be useful for
@@ -236,14 +234,13 @@ public class ActivityTaskFailedEventAttributes  implements Serializable  {
      *         this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskFailedEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -255,10 +252,10 @@ public class ActivityTaskFailedEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReason() != null) sb.append("Reason: " + getReason() + ",");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
-        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");    	
+        sb.append("{");
+        if (getReason() != null) sb.append("Reason: " + getReason() + ",");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
+        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");
         if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the possible values for a configuration option.
  * </p>
  */
-public class ConfigurationOptionDescription  implements Serializable  {
+public class ConfigurationOptionDescription implements Serializable {
 
     /**
      * A unique namespace identifying the option's associated AWS resource.
@@ -105,7 +106,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
      * If specified, values for the configuration option are selected from
      * this list.
      */
-    private java.util.List<String> valueOptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> valueOptions;
 
     /**
      * If specified, the configuration option must be a numeric value greater
@@ -163,14 +164,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      * @param namespace A unique namespace identifying the option's associated AWS resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withNamespace(String namespace) {
         this.namespace = namespace;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration option.
      *
@@ -197,14 +197,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      * @param name The name of the configuration option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The default value for this configuration option.
      *
@@ -231,14 +230,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      * @param defaultValue The default value for this configuration option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * An indication of which action is required if the value for this
      * configuration option changes: <enumValues> <value
@@ -379,14 +377,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withChangeSeverity(String changeSeverity) {
         this.changeSeverity = changeSeverity;
         return this;
     }
-    
-    
+
     /**
      * An indication of whether the user defined this configuration option:
      * <enumValues> <value name="true"> <p> <code>true</code> : This
@@ -485,14 +482,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         Values: <code>true</code> | <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withUserDefined(Boolean userDefined) {
         this.userDefined = userDefined;
         return this;
     }
-    
-    
+
     /**
      * An indication of whether the user defined this configuration option:
      * <enumValues> <value name="true"> <p> <code>true</code> : This
@@ -525,7 +521,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
     public Boolean getUserDefined() {
         return userDefined;
     }
-    
+
     /**
      * An indication of which type of values this option has and whether it
      * is allowable to select one or more than one of the possible values:
@@ -655,7 +651,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         either <code>true</code> or <code>false</code> . </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ConfigurationOptionValueType
      */
@@ -663,8 +659,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
         this.valueType = valueType;
         return this;
     }
-    
-    
+
     /**
      * An indication of which type of values this option has and whether it
      * is allowable to select one or more than one of the possible values:
@@ -750,7 +745,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         either <code>true</code> or <code>false</code> . </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ConfigurationOptionValueType
      */
@@ -758,7 +753,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
         this.valueType = valueType.toString();
         return this;
     }
-    
+
     /**
      * If specified, values for the configuration option are selected from
      * this list.
@@ -767,9 +762,9 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         this list.
      */
     public java.util.List<String> getValueOptions() {
-        
         if (valueOptions == null) {
-            valueOptions = new java.util.ArrayList<String>();
+              valueOptions = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              valueOptions.setAutoConstruct(true);
         }
         return valueOptions;
     }
@@ -786,8 +781,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
             this.valueOptions = null;
             return;
         }
-
-        java.util.List<String> valueOptionsCopy = new java.util.ArrayList<String>(valueOptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> valueOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(valueOptions.size());
         valueOptionsCopy.addAll(valueOptions);
         this.valueOptions = valueOptionsCopy;
     }
@@ -802,7 +796,7 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         this list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withValueOptions(String... valueOptions) {
         if (getValueOptions() == null) setValueOptions(new java.util.ArrayList<String>(valueOptions.length));
@@ -822,20 +816,20 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         this list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withValueOptions(java.util.Collection<String> valueOptions) {
         if (valueOptions == null) {
             this.valueOptions = null;
         } else {
-            java.util.List<String> valueOptionsCopy = new java.util.ArrayList<String>(valueOptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> valueOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(valueOptions.size());
             valueOptionsCopy.addAll(valueOptions);
             this.valueOptions = valueOptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * If specified, the configuration option must be a numeric value greater
      * than this value.
@@ -868,14 +862,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         than this value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withMinValue(Integer minValue) {
         this.minValue = minValue;
         return this;
     }
-    
-    
+
     /**
      * If specified, the configuration option must be a numeric value less
      * than this value.
@@ -908,14 +901,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         than this value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withMaxValue(Integer maxValue) {
         this.maxValue = maxValue;
         return this;
     }
-    
-    
+
     /**
      * If specified, the configuration option must be a string value no
      * longer than this value.
@@ -948,14 +940,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         longer than this value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withMaxLength(Integer maxLength) {
         this.maxLength = maxLength;
         return this;
     }
-    
-    
+
     /**
      * If specified, the configuration option must be a string value that
      * satisfies this regular expression.
@@ -988,14 +979,13 @@ public class ConfigurationOptionDescription  implements Serializable  {
      *         satisfies this regular expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationOptionDescription withRegex(OptionRestrictionRegex regex) {
         this.regex = regex;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1007,17 +997,17 @@ public class ConfigurationOptionDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
-        if (getChangeSeverity() != null) sb.append("ChangeSeverity: " + getChangeSeverity() + ",");    	
-        if (isUserDefined() != null) sb.append("UserDefined: " + isUserDefined() + ",");    	
-        if (getValueType() != null) sb.append("ValueType: " + getValueType() + ",");    	
-        if (getValueOptions() != null) sb.append("ValueOptions: " + getValueOptions() + ",");    	
-        if (getMinValue() != null) sb.append("MinValue: " + getMinValue() + ",");    	
-        if (getMaxValue() != null) sb.append("MaxValue: " + getMaxValue() + ",");    	
-        if (getMaxLength() != null) sb.append("MaxLength: " + getMaxLength() + ",");    	
+        sb.append("{");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
+        if (getChangeSeverity() != null) sb.append("ChangeSeverity: " + getChangeSeverity() + ",");
+        if (isUserDefined() != null) sb.append("UserDefined: " + isUserDefined() + ",");
+        if (getValueType() != null) sb.append("ValueType: " + getValueType() + ",");
+        if (getValueOptions() != null) sb.append("ValueOptions: " + getValueOptions() + ",");
+        if (getMinValue() != null) sb.append("MinValue: " + getMinValue() + ",");
+        if (getMaxValue() != null) sb.append("MaxValue: " + getMaxValue() + ",");
+        if (getMaxLength() != null) sb.append("MaxLength: " + getMaxLength() + ",");
         if (getRegex() != null) sb.append("Regex: " + getRegex() );
         sb.append("}");
         return sb.toString();

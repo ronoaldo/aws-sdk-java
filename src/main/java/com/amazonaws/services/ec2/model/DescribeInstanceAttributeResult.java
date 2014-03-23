@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing an instance's attribute.
- * </p>
+ * 
  */
-public class DescribeInstanceAttributeResult  implements Serializable  {
+public class DescribeInstanceAttributeResult implements Serializable {
 
     /**
-     * The described instance attribute.
+     * 
      */
     private InstanceAttribute instanceAttribute;
 
     /**
-     * The described instance attribute.
+     * 
      *
-     * @return The described instance attribute.
+     * @return 
      */
     public InstanceAttribute getInstanceAttribute() {
         return instanceAttribute;
     }
     
     /**
-     * The described instance attribute.
+     * 
      *
-     * @param instanceAttribute The described instance attribute.
+     * @param instanceAttribute 
      */
     public void setInstanceAttribute(InstanceAttribute instanceAttribute) {
         this.instanceAttribute = instanceAttribute;
     }
     
     /**
-     * The described instance attribute.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceAttribute The described instance attribute.
+     * @param instanceAttribute 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceAttributeResult withInstanceAttribute(InstanceAttribute instanceAttribute) {
         this.instanceAttribute = instanceAttribute;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class DescribeInstanceAttributeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceAttribute() != null) sb.append("InstanceAttribute: " + getInstanceAttribute() );
         sb.append("}");
         return sb.toString();

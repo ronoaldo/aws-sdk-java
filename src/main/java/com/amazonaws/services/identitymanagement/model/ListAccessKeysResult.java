@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the ListAccessKeys action.
+ * Contains the result of a successful invocation of the ListAccessKeys
+ * action.
  * </p>
  */
-public class ListAccessKeysResult  implements Serializable  {
+public class ListAccessKeysResult implements Serializable {
 
     /**
      * A list of access key metadata.
      */
-    private java.util.List<AccessKeyMetadata> accessKeyMetadata;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AccessKeyMetadata> accessKeyMetadata;
 
     /**
      * A flag that indicates whether there are more keys to list. If your
@@ -52,9 +54,9 @@ public class ListAccessKeysResult  implements Serializable  {
      * @return A list of access key metadata.
      */
     public java.util.List<AccessKeyMetadata> getAccessKeyMetadata() {
-        
         if (accessKeyMetadata == null) {
-            accessKeyMetadata = new java.util.ArrayList<AccessKeyMetadata>();
+              accessKeyMetadata = new com.amazonaws.internal.ListWithAutoConstructFlag<AccessKeyMetadata>();
+              accessKeyMetadata.setAutoConstruct(true);
         }
         return accessKeyMetadata;
     }
@@ -69,8 +71,7 @@ public class ListAccessKeysResult  implements Serializable  {
             this.accessKeyMetadata = null;
             return;
         }
-
-        java.util.List<AccessKeyMetadata> accessKeyMetadataCopy = new java.util.ArrayList<AccessKeyMetadata>(accessKeyMetadata.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AccessKeyMetadata> accessKeyMetadataCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccessKeyMetadata>(accessKeyMetadata.size());
         accessKeyMetadataCopy.addAll(accessKeyMetadata);
         this.accessKeyMetadata = accessKeyMetadataCopy;
     }
@@ -83,7 +84,7 @@ public class ListAccessKeysResult  implements Serializable  {
      * @param accessKeyMetadata A list of access key metadata.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccessKeysResult withAccessKeyMetadata(AccessKeyMetadata... accessKeyMetadata) {
         if (getAccessKeyMetadata() == null) setAccessKeyMetadata(new java.util.ArrayList<AccessKeyMetadata>(accessKeyMetadata.length));
@@ -101,20 +102,20 @@ public class ListAccessKeysResult  implements Serializable  {
      * @param accessKeyMetadata A list of access key metadata.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccessKeysResult withAccessKeyMetadata(java.util.Collection<AccessKeyMetadata> accessKeyMetadata) {
         if (accessKeyMetadata == null) {
             this.accessKeyMetadata = null;
         } else {
-            java.util.List<AccessKeyMetadata> accessKeyMetadataCopy = new java.util.ArrayList<AccessKeyMetadata>(accessKeyMetadata.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AccessKeyMetadata> accessKeyMetadataCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccessKeyMetadata>(accessKeyMetadata.size());
             accessKeyMetadataCopy.addAll(accessKeyMetadata);
             this.accessKeyMetadata = accessKeyMetadataCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A flag that indicates whether there are more keys to list. If your
      * results were truncated, you can make a subsequent pagination request
@@ -159,14 +160,13 @@ public class ListAccessKeysResult  implements Serializable  {
      *         in the list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccessKeysResult withIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
-    
-    
+
     /**
      * A flag that indicates whether there are more keys to list. If your
      * results were truncated, you can make a subsequent pagination request
@@ -181,7 +181,7 @@ public class ListAccessKeysResult  implements Serializable  {
     public Boolean getIsTruncated() {
         return isTruncated;
     }
-    
+
     /**
      * If <code>IsTruncated</code> is <code>true</code>, this element is
      * present and contains the value to use for the <code>Marker</code>
@@ -232,14 +232,13 @@ public class ListAccessKeysResult  implements Serializable  {
      *         parameter in a subsequent pagination request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccessKeysResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -251,9 +250,9 @@ public class ListAccessKeysResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAccessKeyMetadata() != null) sb.append("AccessKeyMetadata: " + getAccessKeyMetadata() + ",");    	
-        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");    	
+        sb.append("{");
+        if (getAccessKeyMetadata() != null) sb.append("AccessKeyMetadata: " + getAccessKeyMetadata() + ",");
+        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

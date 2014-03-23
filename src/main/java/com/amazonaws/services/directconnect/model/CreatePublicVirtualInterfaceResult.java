@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer.
+ * A virtual interface (VLAN) transmits the traffic between the AWS
+ * Direct Connect location and the customer.
  * </p>
  */
-public class CreatePublicVirtualInterfaceResult  implements Serializable  {
+public class CreatePublicVirtualInterfaceResult implements Serializable {
+
+    private String ownerAccount;
 
     /**
      * ID of the virtual interface. <p>Example: dxvif-123dfg56 <p>Default:
@@ -29,8 +33,7 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     private String virtualInterfaceId;
 
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      */
     private String location;
 
@@ -40,47 +43,54 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     private String connectionId;
 
     /**
-     * The type of virtual interface <p>Example: Private (Amazon VPC) or
-     * public (Amazon S3, Amazon DynamoDB, etc.)
+     * The type of virtual interface. <p>Example: private (Amazon VPC) or
+     * public (Amazon S3, Amazon DynamoDB, and so on.)
      */
     private String virtualInterfaceType;
 
     /**
-     * The name of the virtual interface assigned by the customer <p>Example:
-     * "Dev VPC"
+     * The name of the virtual interface assigned by the customer.
+     * <p>Example: "My VPC"
      */
     private String virtualInterfaceName;
 
     /**
-     * VLAN ID <p>Example: 101
+     * The VLAN ID. <p>Example: 101
      */
     private Integer vlan;
 
     /**
      * Autonomous system (AS) number for Border Gateway Protocol (BGP)
-     * configuration <p>Example: 65000
+     * configuration. <p>Example: 65000
      */
     private Integer asn;
 
     /**
-     * Authentication key for BGP configuration <p>Example: asdf34example
+     * Authentication key for BGP configuration. <p>Example: asdf34example
      */
     private String authKey;
 
     /**
-     * IP address assigned to the Amazon interface. <p>Example: 192.168.1.1
+     * IP address assigned to the Amazon interface. <p>Example:
+     * 192.168.1.1/30
      */
     private String amazonAddress;
 
     /**
-     * IP address assigned to the customer interface. <p>Example: 192.168.1.2
+     * IP address assigned to the customer interface. <p>Example:
+     * 192.168.1.2/30
      */
     private String customerAddress;
 
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -88,10 +98,13 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      */
     private String virtualInterfaceState;
 
@@ -101,14 +114,49 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     private String customerRouterConfig;
 
     /**
-     * Virtual private gateway to a VPC. <p>Example: vgw-123er56
+     * The ID of the virtual private gateway to a VPC. This only applies to
+     * private virtual interfaces. <p>Example: vgw-123er56
      */
     private String virtualGatewayId;
 
     /**
-     * A list of route filter prefixes.
+     * A list of routes to be advertised to the AWS network in this region
+     * (public virtual interface) or your VPC (private virtual interface).
      */
-    private java.util.List<RouteFilterPrefix> routeFilterPrefixes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RouteFilterPrefix> routeFilterPrefixes;
+
+    /**
+     * Returns the value of the OwnerAccount property for this object.
+     *
+     * @return The value of the OwnerAccount property for this object.
+     */
+    public String getOwnerAccount() {
+        return ownerAccount;
+    }
+    
+    /**
+     * Sets the value of the OwnerAccount property for this object.
+     *
+     * @param ownerAccount The new value for the OwnerAccount property for this object.
+     */
+    public void setOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+    }
+    
+    /**
+     * Sets the value of the OwnerAccount property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param ownerAccount The new value for the OwnerAccount property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreatePublicVirtualInterfaceResult withOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+        return this;
+    }
 
     /**
      * ID of the virtual interface. <p>Example: dxvif-123dfg56 <p>Default:
@@ -142,54 +190,46 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      *         None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withVirtualInterfaceId(String virtualInterfaceId) {
         this.virtualInterfaceId = virtualInterfaceId;
         return this;
     }
-    
-    
+
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      *
-     * @return Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     *         <p>Default: None
+     * @return Where the connection is located. <p>Example: EqSV5 <p>Default: None
      */
     public String getLocation() {
         return location;
     }
     
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      *
-     * @param location Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     *         <p>Default: None
+     * @param location Where the connection is located. <p>Example: EqSV5 <p>Default: None
      */
     public void setLocation(String location) {
         this.location = location;
     }
     
     /**
-     * Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     * <p>Default: None
+     * Where the connection is located. <p>Example: EqSV5 <p>Default: None
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param location Where the AWS Direct Connect offering is located. <p>Example: EqSV5
-     *         <p>Default: None
+     * @param location Where the connection is located. <p>Example: EqSV5 <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withLocation(String location) {
         this.location = location;
         return this;
     }
-    
-    
+
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
@@ -216,134 +256,130 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * @param connectionId ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
     }
-    
-    
+
     /**
-     * The type of virtual interface <p>Example: Private (Amazon VPC) or
-     * public (Amazon S3, Amazon DynamoDB, etc.)
+     * The type of virtual interface. <p>Example: private (Amazon VPC) or
+     * public (Amazon S3, Amazon DynamoDB, and so on.)
      *
-     * @return The type of virtual interface <p>Example: Private (Amazon VPC) or
-     *         public (Amazon S3, Amazon DynamoDB, etc.)
+     * @return The type of virtual interface. <p>Example: private (Amazon VPC) or
+     *         public (Amazon S3, Amazon DynamoDB, and so on.)
      */
     public String getVirtualInterfaceType() {
         return virtualInterfaceType;
     }
     
     /**
-     * The type of virtual interface <p>Example: Private (Amazon VPC) or
-     * public (Amazon S3, Amazon DynamoDB, etc.)
+     * The type of virtual interface. <p>Example: private (Amazon VPC) or
+     * public (Amazon S3, Amazon DynamoDB, and so on.)
      *
-     * @param virtualInterfaceType The type of virtual interface <p>Example: Private (Amazon VPC) or
-     *         public (Amazon S3, Amazon DynamoDB, etc.)
+     * @param virtualInterfaceType The type of virtual interface. <p>Example: private (Amazon VPC) or
+     *         public (Amazon S3, Amazon DynamoDB, and so on.)
      */
     public void setVirtualInterfaceType(String virtualInterfaceType) {
         this.virtualInterfaceType = virtualInterfaceType;
     }
     
     /**
-     * The type of virtual interface <p>Example: Private (Amazon VPC) or
-     * public (Amazon S3, Amazon DynamoDB, etc.)
+     * The type of virtual interface. <p>Example: private (Amazon VPC) or
+     * public (Amazon S3, Amazon DynamoDB, and so on.)
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param virtualInterfaceType The type of virtual interface <p>Example: Private (Amazon VPC) or
-     *         public (Amazon S3, Amazon DynamoDB, etc.)
+     * @param virtualInterfaceType The type of virtual interface. <p>Example: private (Amazon VPC) or
+     *         public (Amazon S3, Amazon DynamoDB, and so on.)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withVirtualInterfaceType(String virtualInterfaceType) {
         this.virtualInterfaceType = virtualInterfaceType;
         return this;
     }
-    
-    
+
     /**
-     * The name of the virtual interface assigned by the customer <p>Example:
-     * "Dev VPC"
+     * The name of the virtual interface assigned by the customer.
+     * <p>Example: "My VPC"
      *
-     * @return The name of the virtual interface assigned by the customer <p>Example:
-     *         "Dev VPC"
+     * @return The name of the virtual interface assigned by the customer.
+     *         <p>Example: "My VPC"
      */
     public String getVirtualInterfaceName() {
         return virtualInterfaceName;
     }
     
     /**
-     * The name of the virtual interface assigned by the customer <p>Example:
-     * "Dev VPC"
+     * The name of the virtual interface assigned by the customer.
+     * <p>Example: "My VPC"
      *
-     * @param virtualInterfaceName The name of the virtual interface assigned by the customer <p>Example:
-     *         "Dev VPC"
+     * @param virtualInterfaceName The name of the virtual interface assigned by the customer.
+     *         <p>Example: "My VPC"
      */
     public void setVirtualInterfaceName(String virtualInterfaceName) {
         this.virtualInterfaceName = virtualInterfaceName;
     }
     
     /**
-     * The name of the virtual interface assigned by the customer <p>Example:
-     * "Dev VPC"
+     * The name of the virtual interface assigned by the customer.
+     * <p>Example: "My VPC"
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param virtualInterfaceName The name of the virtual interface assigned by the customer <p>Example:
-     *         "Dev VPC"
+     * @param virtualInterfaceName The name of the virtual interface assigned by the customer.
+     *         <p>Example: "My VPC"
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withVirtualInterfaceName(String virtualInterfaceName) {
         this.virtualInterfaceName = virtualInterfaceName;
         return this;
     }
-    
-    
+
     /**
-     * VLAN ID <p>Example: 101
+     * The VLAN ID. <p>Example: 101
      *
-     * @return VLAN ID <p>Example: 101
+     * @return The VLAN ID. <p>Example: 101
      */
     public Integer getVlan() {
         return vlan;
     }
     
     /**
-     * VLAN ID <p>Example: 101
+     * The VLAN ID. <p>Example: 101
      *
-     * @param vlan VLAN ID <p>Example: 101
+     * @param vlan The VLAN ID. <p>Example: 101
      */
     public void setVlan(Integer vlan) {
         this.vlan = vlan;
     }
     
     /**
-     * VLAN ID <p>Example: 101
+     * The VLAN ID. <p>Example: 101
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vlan VLAN ID <p>Example: 101
+     * @param vlan The VLAN ID. <p>Example: 101
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withVlan(Integer vlan) {
         this.vlan = vlan;
         return this;
     }
-    
-    
+
     /**
      * Autonomous system (AS) number for Border Gateway Protocol (BGP)
-     * configuration <p>Example: 65000
+     * configuration. <p>Example: 65000
      *
      * @return Autonomous system (AS) number for Border Gateway Protocol (BGP)
-     *         configuration <p>Example: 65000
+     *         configuration. <p>Example: 65000
      */
     public Integer getAsn() {
         return asn;
@@ -351,10 +387,10 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     
     /**
      * Autonomous system (AS) number for Border Gateway Protocol (BGP)
-     * configuration <p>Example: 65000
+     * configuration. <p>Example: 65000
      *
      * @param asn Autonomous system (AS) number for Border Gateway Protocol (BGP)
-     *         configuration <p>Example: 65000
+     *         configuration. <p>Example: 65000
      */
     public void setAsn(Integer asn) {
         this.asn = asn;
@@ -362,128 +398,141 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     
     /**
      * Autonomous system (AS) number for Border Gateway Protocol (BGP)
-     * configuration <p>Example: 65000
+     * configuration. <p>Example: 65000
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param asn Autonomous system (AS) number for Border Gateway Protocol (BGP)
-     *         configuration <p>Example: 65000
+     *         configuration. <p>Example: 65000
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withAsn(Integer asn) {
         this.asn = asn;
         return this;
     }
-    
-    
+
     /**
-     * Authentication key for BGP configuration <p>Example: asdf34example
+     * Authentication key for BGP configuration. <p>Example: asdf34example
      *
-     * @return Authentication key for BGP configuration <p>Example: asdf34example
+     * @return Authentication key for BGP configuration. <p>Example: asdf34example
      */
     public String getAuthKey() {
         return authKey;
     }
     
     /**
-     * Authentication key for BGP configuration <p>Example: asdf34example
+     * Authentication key for BGP configuration. <p>Example: asdf34example
      *
-     * @param authKey Authentication key for BGP configuration <p>Example: asdf34example
+     * @param authKey Authentication key for BGP configuration. <p>Example: asdf34example
      */
     public void setAuthKey(String authKey) {
         this.authKey = authKey;
     }
     
     /**
-     * Authentication key for BGP configuration <p>Example: asdf34example
+     * Authentication key for BGP configuration. <p>Example: asdf34example
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param authKey Authentication key for BGP configuration <p>Example: asdf34example
+     * @param authKey Authentication key for BGP configuration. <p>Example: asdf34example
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withAuthKey(String authKey) {
         this.authKey = authKey;
         return this;
     }
-    
-    
+
     /**
-     * IP address assigned to the Amazon interface. <p>Example: 192.168.1.1
+     * IP address assigned to the Amazon interface. <p>Example:
+     * 192.168.1.1/30
      *
-     * @return IP address assigned to the Amazon interface. <p>Example: 192.168.1.1
+     * @return IP address assigned to the Amazon interface. <p>Example:
+     *         192.168.1.1/30
      */
     public String getAmazonAddress() {
         return amazonAddress;
     }
     
     /**
-     * IP address assigned to the Amazon interface. <p>Example: 192.168.1.1
+     * IP address assigned to the Amazon interface. <p>Example:
+     * 192.168.1.1/30
      *
-     * @param amazonAddress IP address assigned to the Amazon interface. <p>Example: 192.168.1.1
+     * @param amazonAddress IP address assigned to the Amazon interface. <p>Example:
+     *         192.168.1.1/30
      */
     public void setAmazonAddress(String amazonAddress) {
         this.amazonAddress = amazonAddress;
     }
     
     /**
-     * IP address assigned to the Amazon interface. <p>Example: 192.168.1.1
+     * IP address assigned to the Amazon interface. <p>Example:
+     * 192.168.1.1/30
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param amazonAddress IP address assigned to the Amazon interface. <p>Example: 192.168.1.1
+     * @param amazonAddress IP address assigned to the Amazon interface. <p>Example:
+     *         192.168.1.1/30
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withAmazonAddress(String amazonAddress) {
         this.amazonAddress = amazonAddress;
         return this;
     }
-    
-    
+
     /**
-     * IP address assigned to the customer interface. <p>Example: 192.168.1.2
+     * IP address assigned to the customer interface. <p>Example:
+     * 192.168.1.2/30
      *
-     * @return IP address assigned to the customer interface. <p>Example: 192.168.1.2
+     * @return IP address assigned to the customer interface. <p>Example:
+     *         192.168.1.2/30
      */
     public String getCustomerAddress() {
         return customerAddress;
     }
     
     /**
-     * IP address assigned to the customer interface. <p>Example: 192.168.1.2
+     * IP address assigned to the customer interface. <p>Example:
+     * 192.168.1.2/30
      *
-     * @param customerAddress IP address assigned to the customer interface. <p>Example: 192.168.1.2
+     * @param customerAddress IP address assigned to the customer interface. <p>Example:
+     *         192.168.1.2/30
      */
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
     }
     
     /**
-     * IP address assigned to the customer interface. <p>Example: 192.168.1.2
+     * IP address assigned to the customer interface. <p>Example:
+     * 192.168.1.2/30
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param customerAddress IP address assigned to the customer interface. <p>Example: 192.168.1.2
+     * @param customerAddress IP address assigned to the customer interface. <p>Example:
+     *         192.168.1.2/30
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
         return this;
     }
-    
-    
+
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -491,14 +540,22 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @return State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @return State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -506,7 +563,10 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @see VirtualInterfaceState
      */
@@ -515,9 +575,14 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     }
     
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -525,14 +590,22 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -540,7 +613,10 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @see VirtualInterfaceState
      */
@@ -549,9 +625,14 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     }
     
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -559,16 +640,24 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -576,10 +665,13 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualInterfaceState
      */
@@ -587,12 +679,16 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
         this.virtualInterfaceState = virtualInterfaceState;
         return this;
     }
-    
-    
+
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -600,14 +696,22 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -615,7 +719,10 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @see VirtualInterfaceState
      */
@@ -624,9 +731,14 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     }
     
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -634,16 +746,24 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -651,10 +771,13 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualInterfaceState
      */
@@ -662,7 +785,7 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
         this.virtualInterfaceState = virtualInterfaceState.toString();
         return this;
     }
-    
+
     /**
      * Information for generating the customer router configuration.
      *
@@ -689,86 +812,95 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
      * @param customerRouterConfig Information for generating the customer router configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withCustomerRouterConfig(String customerRouterConfig) {
         this.customerRouterConfig = customerRouterConfig;
         return this;
     }
-    
-    
+
     /**
-     * Virtual private gateway to a VPC. <p>Example: vgw-123er56
+     * The ID of the virtual private gateway to a VPC. This only applies to
+     * private virtual interfaces. <p>Example: vgw-123er56
      *
-     * @return Virtual private gateway to a VPC. <p>Example: vgw-123er56
+     * @return The ID of the virtual private gateway to a VPC. This only applies to
+     *         private virtual interfaces. <p>Example: vgw-123er56
      */
     public String getVirtualGatewayId() {
         return virtualGatewayId;
     }
     
     /**
-     * Virtual private gateway to a VPC. <p>Example: vgw-123er56
+     * The ID of the virtual private gateway to a VPC. This only applies to
+     * private virtual interfaces. <p>Example: vgw-123er56
      *
-     * @param virtualGatewayId Virtual private gateway to a VPC. <p>Example: vgw-123er56
+     * @param virtualGatewayId The ID of the virtual private gateway to a VPC. This only applies to
+     *         private virtual interfaces. <p>Example: vgw-123er56
      */
     public void setVirtualGatewayId(String virtualGatewayId) {
         this.virtualGatewayId = virtualGatewayId;
     }
     
     /**
-     * Virtual private gateway to a VPC. <p>Example: vgw-123er56
+     * The ID of the virtual private gateway to a VPC. This only applies to
+     * private virtual interfaces. <p>Example: vgw-123er56
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param virtualGatewayId Virtual private gateway to a VPC. <p>Example: vgw-123er56
+     * @param virtualGatewayId The ID of the virtual private gateway to a VPC. This only applies to
+     *         private virtual interfaces. <p>Example: vgw-123er56
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withVirtualGatewayId(String virtualGatewayId) {
         this.virtualGatewayId = virtualGatewayId;
         return this;
     }
-    
-    
+
     /**
-     * A list of route filter prefixes.
+     * A list of routes to be advertised to the AWS network in this region
+     * (public virtual interface) or your VPC (private virtual interface).
      *
-     * @return A list of route filter prefixes.
+     * @return A list of routes to be advertised to the AWS network in this region
+     *         (public virtual interface) or your VPC (private virtual interface).
      */
     public java.util.List<RouteFilterPrefix> getRouteFilterPrefixes() {
-        
         if (routeFilterPrefixes == null) {
-            routeFilterPrefixes = new java.util.ArrayList<RouteFilterPrefix>();
+              routeFilterPrefixes = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteFilterPrefix>();
+              routeFilterPrefixes.setAutoConstruct(true);
         }
         return routeFilterPrefixes;
     }
     
     /**
-     * A list of route filter prefixes.
+     * A list of routes to be advertised to the AWS network in this region
+     * (public virtual interface) or your VPC (private virtual interface).
      *
-     * @param routeFilterPrefixes A list of route filter prefixes.
+     * @param routeFilterPrefixes A list of routes to be advertised to the AWS network in this region
+     *         (public virtual interface) or your VPC (private virtual interface).
      */
     public void setRouteFilterPrefixes(java.util.Collection<RouteFilterPrefix> routeFilterPrefixes) {
         if (routeFilterPrefixes == null) {
             this.routeFilterPrefixes = null;
             return;
         }
-
-        java.util.List<RouteFilterPrefix> routeFilterPrefixesCopy = new java.util.ArrayList<RouteFilterPrefix>(routeFilterPrefixes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RouteFilterPrefix> routeFilterPrefixesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteFilterPrefix>(routeFilterPrefixes.size());
         routeFilterPrefixesCopy.addAll(routeFilterPrefixes);
         this.routeFilterPrefixes = routeFilterPrefixesCopy;
     }
     
     /**
-     * A list of route filter prefixes.
+     * A list of routes to be advertised to the AWS network in this region
+     * (public virtual interface) or your VPC (private virtual interface).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routeFilterPrefixes A list of route filter prefixes.
+     * @param routeFilterPrefixes A list of routes to be advertised to the AWS network in this region
+     *         (public virtual interface) or your VPC (private virtual interface).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withRouteFilterPrefixes(RouteFilterPrefix... routeFilterPrefixes) {
         if (getRouteFilterPrefixes() == null) setRouteFilterPrefixes(new java.util.ArrayList<RouteFilterPrefix>(routeFilterPrefixes.length));
@@ -779,27 +911,29 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     }
     
     /**
-     * A list of route filter prefixes.
+     * A list of routes to be advertised to the AWS network in this region
+     * (public virtual interface) or your VPC (private virtual interface).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routeFilterPrefixes A list of route filter prefixes.
+     * @param routeFilterPrefixes A list of routes to be advertised to the AWS network in this region
+     *         (public virtual interface) or your VPC (private virtual interface).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceResult withRouteFilterPrefixes(java.util.Collection<RouteFilterPrefix> routeFilterPrefixes) {
         if (routeFilterPrefixes == null) {
             this.routeFilterPrefixes = null;
         } else {
-            java.util.List<RouteFilterPrefix> routeFilterPrefixesCopy = new java.util.ArrayList<RouteFilterPrefix>(routeFilterPrefixes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RouteFilterPrefix> routeFilterPrefixesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteFilterPrefix>(routeFilterPrefixes.size());
             routeFilterPrefixesCopy.addAll(routeFilterPrefixes);
             this.routeFilterPrefixes = routeFilterPrefixesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -811,20 +945,21 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVirtualInterfaceId() != null) sb.append("VirtualInterfaceId: " + getVirtualInterfaceId() + ",");    	
-        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");    	
-        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");    	
-        if (getVirtualInterfaceType() != null) sb.append("VirtualInterfaceType: " + getVirtualInterfaceType() + ",");    	
-        if (getVirtualInterfaceName() != null) sb.append("VirtualInterfaceName: " + getVirtualInterfaceName() + ",");    	
-        if (getVlan() != null) sb.append("Vlan: " + getVlan() + ",");    	
-        if (getAsn() != null) sb.append("Asn: " + getAsn() + ",");    	
-        if (getAuthKey() != null) sb.append("AuthKey: " + getAuthKey() + ",");    	
-        if (getAmazonAddress() != null) sb.append("AmazonAddress: " + getAmazonAddress() + ",");    	
-        if (getCustomerAddress() != null) sb.append("CustomerAddress: " + getCustomerAddress() + ",");    	
-        if (getVirtualInterfaceState() != null) sb.append("VirtualInterfaceState: " + getVirtualInterfaceState() + ",");    	
-        if (getCustomerRouterConfig() != null) sb.append("CustomerRouterConfig: " + getCustomerRouterConfig() + ",");    	
-        if (getVirtualGatewayId() != null) sb.append("VirtualGatewayId: " + getVirtualGatewayId() + ",");    	
+        sb.append("{");
+        if (getOwnerAccount() != null) sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+        if (getVirtualInterfaceId() != null) sb.append("VirtualInterfaceId: " + getVirtualInterfaceId() + ",");
+        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");
+        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");
+        if (getVirtualInterfaceType() != null) sb.append("VirtualInterfaceType: " + getVirtualInterfaceType() + ",");
+        if (getVirtualInterfaceName() != null) sb.append("VirtualInterfaceName: " + getVirtualInterfaceName() + ",");
+        if (getVlan() != null) sb.append("Vlan: " + getVlan() + ",");
+        if (getAsn() != null) sb.append("Asn: " + getAsn() + ",");
+        if (getAuthKey() != null) sb.append("AuthKey: " + getAuthKey() + ",");
+        if (getAmazonAddress() != null) sb.append("AmazonAddress: " + getAmazonAddress() + ",");
+        if (getCustomerAddress() != null) sb.append("CustomerAddress: " + getCustomerAddress() + ",");
+        if (getVirtualInterfaceState() != null) sb.append("VirtualInterfaceState: " + getVirtualInterfaceState() + ",");
+        if (getCustomerRouterConfig() != null) sb.append("CustomerRouterConfig: " + getCustomerRouterConfig() + ",");
+        if (getVirtualGatewayId() != null) sb.append("VirtualGatewayId: " + getVirtualGatewayId() + ",");
         if (getRouteFilterPrefixes() != null) sb.append("RouteFilterPrefixes: " + getRouteFilterPrefixes() );
         sb.append("}");
         return sb.toString();
@@ -835,6 +970,7 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
         final int prime = 31;
         int hashCode = 1;
         
+        hashCode = prime * hashCode + ((getOwnerAccount() == null) ? 0 : getOwnerAccount().hashCode()); 
         hashCode = prime * hashCode + ((getVirtualInterfaceId() == null) ? 0 : getVirtualInterfaceId().hashCode()); 
         hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode()); 
         hashCode = prime * hashCode + ((getConnectionId() == null) ? 0 : getConnectionId().hashCode()); 
@@ -860,6 +996,8 @@ public class CreatePublicVirtualInterfaceResult  implements Serializable  {
         if (obj instanceof CreatePublicVirtualInterfaceResult == false) return false;
         CreatePublicVirtualInterfaceResult other = (CreatePublicVirtualInterfaceResult)obj;
         
+        if (other.getOwnerAccount() == null ^ this.getOwnerAccount() == null) return false;
+        if (other.getOwnerAccount() != null && other.getOwnerAccount().equals(this.getOwnerAccount()) == false) return false; 
         if (other.getVirtualInterfaceId() == null ^ this.getVirtualInterfaceId() == null) return false;
         if (other.getVirtualInterfaceId() != null && other.getVirtualInterfaceId().equals(this.getVirtualInterfaceId()) == false) return false; 
         if (other.getLocation() == null ^ this.getLocation() == null) return false;

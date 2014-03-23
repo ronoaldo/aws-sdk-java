@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getGroupPolicy(GetGroupPolicyRequest) GetGroupPolicy operation}.
  * <p>
- * Retrieves the specified policy document for the specified group. The returned policy is URL-encoded according to RFC 3986. For more information about
- * RFC 3986, go to <a href="http://www.faqs.org/rfcs/rfc3986.html"> http://www.faqs.org/rfcs/rfc3986.html </a> .
+ * Retrieves the specified policy document for the specified group. The
+ * returned policy is URL-encoded according to RFC 3986. For more
+ * information about RFC 3986, go to
+ * <a href="http://www.faqs.org/rfcs/rfc3986.html"> http://www.faqs.org/rfcs/rfc3986.html </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getGroupPolicy(GetGroupPolicyRequest)
  */
-public class GetGroupPolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetGroupPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the group the policy is associated with.
@@ -60,12 +65,10 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest  implements S
      * @param policyName Name of the policy document to get.
      */
     public GetGroupPolicyRequest(String groupName, String policyName) {
-        this.groupName = groupName;
-        this.policyName = policyName;
+        setGroupName(groupName);
+        setPolicyName(policyName);
     }
 
-    
-    
     /**
      * Name of the group the policy is associated with.
      * <p>
@@ -104,14 +107,13 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest  implements S
      * @param groupName Name of the group the policy is associated with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetGroupPolicyRequest withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * Name of the policy document to get.
      * <p>
@@ -150,14 +152,13 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest  implements S
      * @param policyName Name of the policy document to get.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetGroupPolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -169,8 +170,8 @@ public class GetGroupPolicyRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
         if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() );
         sb.append("}");
         return sb.toString();

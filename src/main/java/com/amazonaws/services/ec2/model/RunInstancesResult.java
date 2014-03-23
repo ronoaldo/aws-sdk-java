@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The result of calling the RunInstancesResult, contains the new reservation created by Amazon EC2.
+ * The result of the RunInstances call.
  * </p>
  */
-public class RunInstancesResult  implements Serializable  {
+public class RunInstancesResult implements Serializable {
 
     /**
-     * The newly created reservation, containing the new instances.
+     * One or more reservations.
      */
     private Reservation reservation;
 
     /**
-     * The newly created reservation, containing the new instances.
+     * One or more reservations.
      *
-     * @return The newly created reservation, containing the new instances.
+     * @return One or more reservations.
      */
     public Reservation getReservation() {
         return reservation;
     }
     
     /**
-     * The newly created reservation, containing the new instances.
+     * One or more reservations.
      *
-     * @param reservation The newly created reservation, containing the new instances.
+     * @param reservation One or more reservations.
      */
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
     
     /**
-     * The newly created reservation, containing the new instances.
+     * One or more reservations.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservation The newly created reservation, containing the new instances.
+     * @param reservation One or more reservations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RunInstancesResult withReservation(Reservation reservation) {
         this.reservation = reservation;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class RunInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservation() != null) sb.append("Reservation: " + getReservation() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents the output of a <i>GetItem</i> operation.
  * </p>
  */
-public class GetItemResult  implements Serializable  {
+public class GetItemResult implements Serializable {
 
     /**
      * A map of attribute names to <i>AttributeValue</i> objects, as
@@ -29,12 +30,13 @@ public class GetItemResult  implements Serializable  {
     private java.util.Map<String,AttributeValue> item;
 
     /**
-     * The table name that consumed provisioned throughput, and the number of
-     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
-     * returned if it was asked for in the request. For more information, see
-     * <a
+     * Represents the capacity units consumed by an operation. The data
+     * returned includes the total provisioned throughput consumed, along
+     * with statistics for the table and any indexes involved in the
+     * operation. <i>ConsumedCapacity</i> is only returned if it was asked
+     * for in the request. For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      */
     private ConsumedCapacity consumedCapacity;
 
@@ -48,7 +50,6 @@ public class GetItemResult  implements Serializable  {
     public java.util.Map<String,AttributeValue> getItem() {
         
         return item;
-
     }
     
     /**
@@ -72,77 +73,113 @@ public class GetItemResult  implements Serializable  {
      *         specified by <i>AttributesToGet</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetItemResult withItem(java.util.Map<String,AttributeValue> item) {
         setItem(item);
         return this;
     }
+
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects, as
+     * specified by <i>AttributesToGet</i>.
+     * <p>
+     * The method adds a new key-value pair into Item parameter, and returns
+     * a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Item.
+     * @param value The corresponding value of the entry to be added into Item.
+     */
+    public GetItemResult addItemEntry(String key, AttributeValue value) {
+        if (null == this.item) {
+            this.item = new java.util.HashMap<String,AttributeValue>();
+        }
+        if (this.item.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.item.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Item.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public GetItemResult clearItemEntries() {
+        this.item = null;
+        return this;
+    }
     
     /**
-     * The table name that consumed provisioned throughput, and the number of
-     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
-     * returned if it was asked for in the request. For more information, see
-     * <a
+     * Represents the capacity units consumed by an operation. The data
+     * returned includes the total provisioned throughput consumed, along
+     * with statistics for the table and any indexes involved in the
+     * operation. <i>ConsumedCapacity</i> is only returned if it was asked
+     * for in the request. For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      *
-     * @return The table name that consumed provisioned throughput, and the number of
-     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
-     *         returned if it was asked for in the request. For more information, see
-     *         <a
+     * @return Represents the capacity units consumed by an operation. The data
+     *         returned includes the total provisioned throughput consumed, along
+     *         with statistics for the table and any indexes involved in the
+     *         operation. <i>ConsumedCapacity</i> is only returned if it was asked
+     *         for in the request. For more information, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         Throughput</a> in the Amazon DynamoDB Developer Guide.
      */
     public ConsumedCapacity getConsumedCapacity() {
         return consumedCapacity;
     }
     
     /**
-     * The table name that consumed provisioned throughput, and the number of
-     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
-     * returned if it was asked for in the request. For more information, see
-     * <a
+     * Represents the capacity units consumed by an operation. The data
+     * returned includes the total provisioned throughput consumed, along
+     * with statistics for the table and any indexes involved in the
+     * operation. <i>ConsumedCapacity</i> is only returned if it was asked
+     * for in the request. For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      *
-     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
-     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
-     *         returned if it was asked for in the request. For more information, see
-     *         <a
+     * @param consumedCapacity Represents the capacity units consumed by an operation. The data
+     *         returned includes the total provisioned throughput consumed, along
+     *         with statistics for the table and any indexes involved in the
+     *         operation. <i>ConsumedCapacity</i> is only returned if it was asked
+     *         for in the request. For more information, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         Throughput</a> in the Amazon DynamoDB Developer Guide.
      */
     public void setConsumedCapacity(ConsumedCapacity consumedCapacity) {
         this.consumedCapacity = consumedCapacity;
     }
     
     /**
-     * The table name that consumed provisioned throughput, and the number of
-     * capacity units consumed by it. <i>ConsumedCapacity</i> is only
-     * returned if it was asked for in the request. For more information, see
-     * <a
+     * Represents the capacity units consumed by an operation. The data
+     * returned includes the total provisioned throughput consumed, along
+     * with statistics for the table and any indexes involved in the
+     * operation. <i>ConsumedCapacity</i> is only returned if it was asked
+     * for in the request. For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     * Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * Throughput</a> in the Amazon DynamoDB Developer Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param consumedCapacity The table name that consumed provisioned throughput, and the number of
-     *         capacity units consumed by it. <i>ConsumedCapacity</i> is only
-     *         returned if it was asked for in the request. For more information, see
-     *         <a
+     * @param consumedCapacity Represents the capacity units consumed by an operation. The data
+     *         returned includes the total provisioned throughput consumed, along
+     *         with statistics for the table and any indexes involved in the
+     *         operation. <i>ConsumedCapacity</i> is only returned if it was asked
+     *         for in the request. For more information, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
-     *         Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         Throughput</a> in the Amazon DynamoDB Developer Guide.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetItemResult withConsumedCapacity(ConsumedCapacity consumedCapacity) {
         this.consumedCapacity = consumedCapacity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -154,8 +191,8 @@ public class GetItemResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getItem() != null) sb.append("Item: " + getItem() + ",");    	
+        sb.append("{");
+        if (getItem() != null) sb.append("Item: " + getItem() + ",");
         if (getConsumedCapacity() != null) sb.append("ConsumedCapacity: " + getConsumedCapacity() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,39 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpledb.AmazonSimpleDB#putAttributes(PutAttributesRequest) PutAttributes operation}.
  * <p>
- * The PutAttributes operation creates or replaces attributes in an item. The client may specify new attributes using a combination of the
- * <code>Attribute.X.Name</code> and <code>Attribute.X.Value</code> parameters. The client specifies the first attribute by the parameters
+ * The PutAttributes operation creates or replaces attributes in an
+ * item. The client may specify new attributes using a combination of the
+ * <code>Attribute.X.Name</code> and <code>Attribute.X.Value</code>
+ * parameters. The client specifies the first attribute by the parameters
  * <code>Attribute.0.Name</code> and <code>Attribute.0.Value</code> ,
- * the second attribute by the parameters <code>Attribute.1.Name</code> and <code>Attribute.1.Value</code> , and so on.
+ * the second attribute by the parameters <code>Attribute.1.Name</code>
+ * and <code>Attribute.1.Value</code> , and so on.
  * </p>
  * <p>
- * Attributes are uniquely identified in an item by their name/value combination. For example, a single item can have the attributes <code>{
- * "first_name", "first_value" }</code> and <code>{ "first_name", second_value" }</code> . However, it cannot have two attribute instances where both the
- * <code>Attribute.X.Name</code> and <code>Attribute.X.Value</code> are the same.
+ * Attributes are uniquely identified in an item by their name/value
+ * combination. For example, a single item can have the attributes
+ * <code>{ "first_name", "first_value" }</code> and <code>{ "first_name",
+ * second_value" }</code> . However, it cannot have two attribute
+ * instances where both the <code>Attribute.X.Name</code> and
+ * <code>Attribute.X.Value</code> are the same.
  * </p>
  * <p>
- * Optionally, the requestor can supply the <code>Replace</code> parameter for each individual attribute. Setting this value to <code>true</code> causes
- * the new attribute value to replace the existing attribute value(s). For example, if an item has the attributes <code>{ 'a', '1' }</code> ,
+ * Optionally, the requestor can supply the <code>Replace</code>
+ * parameter for each individual attribute. Setting this value to
+ * <code>true</code> causes the new attribute value to replace the
+ * existing attribute value(s). For example, if an item has the
+ * attributes <code>{ 'a', '1' }</code> ,
  * 
- * <code>{ 'b', '2'}</code> and <code>{ 'b', '3' }</code> and the requestor calls <code>PutAttributes</code> using the attributes
- * <code>{ 'b', '4' }</code> with the <code>Replace</code> parameter set to true, the final attributes of the item are changed to <code>{ 'a', '1'
- * }</code> and <code>{ 'b', '4' }</code> , which replaces the previous values of the 'b' attribute with the new value.
+ * <code>{ 'b', '2'}</code> and <code>{ 'b', '3'
+ * }</code> and the requestor calls <code>PutAttributes</code> using the
+ * attributes <code>{ 'b', '4' }</code> with the <code>Replace</code>
+ * parameter set to true, the final attributes of the item are changed to
+ * <code>{ 'a', '1' }</code> and <code>{ 'b', '4' }</code> , which
+ * replaces the previous values of the 'b' attribute with the new value.
  * </p>
  * <p>
- * <b>NOTE:</b> Using PutAttributes to replace attribute values that do not exist will not result in an error response.
+ * <b>NOTE:</b> Using PutAttributes to replace attribute values that do
+ * not exist will not result in an error response.
  * </p>
  * <p>
  * You cannot specify an empty string as an attribute name.
  * </p>
  * <p>
- * Because Amazon SimpleDB makes multiple copies of client data and uses an eventual consistency update model, an immediate GetAttributes or Select
- * operation (read) immediately after a PutAttributes or DeleteAttributes operation (write) might not return the updated data.
+ * Because Amazon SimpleDB makes multiple copies of client data and uses
+ * an eventual consistency update model, an immediate GetAttributes or
+ * Select operation (read) immediately after a PutAttributes or
+ * DeleteAttributes operation (write) might not return the updated data.
  * </p>
  * <p>
  * The following limitations are enforced for this operation:
@@ -60,7 +77,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#putAttributes(PutAttributesRequest)
  */
-public class PutAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which to perform the operation.
@@ -75,7 +92,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
     /**
      * The list of attributes.
      */
-    private java.util.List<ReplaceableAttribute> attributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributes;
 
     /**
      * The update condition which, if specified, determines whether the
@@ -102,13 +119,11 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributes The list of attributes.
      */
     public PutAttributesRequest(String domainName, String itemName, java.util.List<ReplaceableAttribute> attributes) {
-        this.domainName = domainName;
-        this.itemName = itemName;
-        this.attributes = attributes;
+        setDomainName(domainName);
+        setItemName(itemName);
+        setAttributes(attributes);
     }
 
-    
-    
     /**
      * Constructs a new PutAttributesRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -124,14 +139,12 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * and the attributes to be updated.
      */
     public PutAttributesRequest(String domainName, String itemName, java.util.List<ReplaceableAttribute> attributes, UpdateCondition expected) {
-        this.domainName = domainName;
-        this.itemName = itemName;
-        this.attributes = attributes;
-        this.expected = expected;
+        setDomainName(domainName);
+        setItemName(itemName);
+        setAttributes(attributes);
+        setExpected(expected);
     }
 
-    
-    
     /**
      * The name of the domain in which to perform the operation.
      *
@@ -158,14 +171,13 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param domainName The name of the domain in which to perform the operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * The name of the item.
      *
@@ -192,23 +204,22 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param itemName The name of the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withItemName(String itemName) {
         this.itemName = itemName;
         return this;
     }
-    
-    
+
     /**
      * The list of attributes.
      *
      * @return The list of attributes.
      */
     public java.util.List<ReplaceableAttribute> getAttributes() {
-        
         if (attributes == null) {
-            attributes = new java.util.ArrayList<ReplaceableAttribute>();
+              attributes = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>();
+              attributes.setAutoConstruct(true);
         }
         return attributes;
     }
@@ -223,8 +234,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
             this.attributes = null;
             return;
         }
-
-        java.util.List<ReplaceableAttribute> attributesCopy = new java.util.ArrayList<ReplaceableAttribute>(attributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>(attributes.size());
         attributesCopy.addAll(attributes);
         this.attributes = attributesCopy;
     }
@@ -237,7 +247,7 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributes The list of attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withAttributes(ReplaceableAttribute... attributes) {
         if (getAttributes() == null) setAttributes(new java.util.ArrayList<ReplaceableAttribute>(attributes.length));
@@ -255,20 +265,20 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      * @param attributes The list of attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withAttributes(java.util.Collection<ReplaceableAttribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
         } else {
-            java.util.List<ReplaceableAttribute> attributesCopy = new java.util.ArrayList<ReplaceableAttribute>(attributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReplaceableAttribute>(attributes.size());
             attributesCopy.addAll(attributes);
             this.attributes = attributesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The update condition which, if specified, determines whether the
      * specified attributes will be updated or not. The update condition must
@@ -313,14 +323,13 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
      *         attributes to be updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutAttributesRequest withExpected(UpdateCondition expected) {
         this.expected = expected;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -332,10 +341,10 @@ public class PutAttributesRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");    	
-        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getItemName() != null) sb.append("ItemName: " + getItemName() + ",");
+        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");
         if (getExpected() != null) sb.append("Expected: " + getExpected() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#removePermission(RemovePermissionRequest) RemovePermission operation}.
  * <p>
- * The RemovePermission action removes a statement from a topic's access control policy.
+ * The <code>RemovePermission</code> action removes a statement from a
+ * topic's access control policy.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#removePermission(RemovePermissionRequest)
  */
-public class RemovePermissionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RemovePermissionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ARN of the topic whose access control policy you wish to modify.
@@ -52,12 +55,10 @@ public class RemovePermissionRequest extends AmazonWebServiceRequest  implements
      * @param label The unique label of the statement you want to remove.
      */
     public RemovePermissionRequest(String topicArn, String label) {
-        this.topicArn = topicArn;
-        this.label = label;
+        setTopicArn(topicArn);
+        setLabel(label);
     }
 
-    
-    
     /**
      * The ARN of the topic whose access control policy you wish to modify.
      *
@@ -84,14 +85,13 @@ public class RemovePermissionRequest extends AmazonWebServiceRequest  implements
      * @param topicArn The ARN of the topic whose access control policy you wish to modify.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RemovePermissionRequest withTopicArn(String topicArn) {
         this.topicArn = topicArn;
         return this;
     }
-    
-    
+
     /**
      * The unique label of the statement you want to remove.
      *
@@ -118,14 +118,13 @@ public class RemovePermissionRequest extends AmazonWebServiceRequest  implements
      * @param label The unique label of the statement you want to remove.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RemovePermissionRequest withLabel(String label) {
         this.label = label;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -137,8 +136,8 @@ public class RemovePermissionRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");    	
+        sb.append("{");
+        if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() + ",");
         if (getLabel() != null) sb.append("Label: " + getLabel() );
         sb.append("}");
         return sb.toString();

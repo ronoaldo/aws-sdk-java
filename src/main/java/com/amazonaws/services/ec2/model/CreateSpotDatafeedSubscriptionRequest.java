@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,31 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateSpotDatafeedSubscriptionRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#createSpotDatafeedSubscription(CreateSpotDatafeedSubscriptionRequest) CreateSpotDatafeedSubscription operation}.
  * <p>
- * Creates the data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per account.
- * </p>
- * <p>
- * For conceptual information about Spot Instances, refer to the Amazon Elastic Compute Cloud Developer Guide or Amazon Elastic Compute Cloud User Guide
- * .
- * 
+ * Creates a datafeed for Spot Instances, enabling you to view Spot
+ * Instance usage logs. You can create one data feed per AWS account. For
+ * more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html"> Spot Instances </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createSpotDatafeedSubscription(CreateSpotDatafeedSubscriptionRequest)
  */
-public class CreateSpotDatafeedSubscriptionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateSpotDatafeedSubscriptionRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateSpotDatafeedSubscriptionRequest> {
 
     /**
      * The Amazon S3 bucket in which to store the Spot Instance datafeed.
+     * <p>Constraints: Must be a valid bucket associated with your AWS
+     * account.
      */
     private String bucket;
 
     /**
-     * The prefix that is prepended to datafeed files.
+     * A prefix for the datafeed file names.
      */
     private String prefix;
 
@@ -53,18 +58,21 @@ public class CreateSpotDatafeedSubscriptionRequest extends AmazonWebServiceReque
      * initialize any additional object members.
      * 
      * @param bucket The Amazon S3 bucket in which to store the Spot Instance
-     * datafeed.
+     * datafeed. <p>Constraints: Must be a valid bucket associated with your
+     * AWS account.
      */
     public CreateSpotDatafeedSubscriptionRequest(String bucket) {
-        this.bucket = bucket;
+        setBucket(bucket);
     }
 
-    
-    
     /**
      * The Amazon S3 bucket in which to store the Spot Instance datafeed.
+     * <p>Constraints: Must be a valid bucket associated with your AWS
+     * account.
      *
      * @return The Amazon S3 bucket in which to store the Spot Instance datafeed.
+     *         <p>Constraints: Must be a valid bucket associated with your AWS
+     *         account.
      */
     public String getBucket() {
         return bucket;
@@ -72,8 +80,12 @@ public class CreateSpotDatafeedSubscriptionRequest extends AmazonWebServiceReque
     
     /**
      * The Amazon S3 bucket in which to store the Spot Instance datafeed.
+     * <p>Constraints: Must be a valid bucket associated with your AWS
+     * account.
      *
      * @param bucket The Amazon S3 bucket in which to store the Spot Instance datafeed.
+     *         <p>Constraints: Must be a valid bucket associated with your AWS
+     *         account.
      */
     public void setBucket(String bucket) {
         this.bucket = bucket;
@@ -81,53 +93,67 @@ public class CreateSpotDatafeedSubscriptionRequest extends AmazonWebServiceReque
     
     /**
      * The Amazon S3 bucket in which to store the Spot Instance datafeed.
+     * <p>Constraints: Must be a valid bucket associated with your AWS
+     * account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param bucket The Amazon S3 bucket in which to store the Spot Instance datafeed.
+     *         <p>Constraints: Must be a valid bucket associated with your AWS
+     *         account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSpotDatafeedSubscriptionRequest withBucket(String bucket) {
         this.bucket = bucket;
         return this;
     }
-    
-    
+
     /**
-     * The prefix that is prepended to datafeed files.
+     * A prefix for the datafeed file names.
      *
-     * @return The prefix that is prepended to datafeed files.
+     * @return A prefix for the datafeed file names.
      */
     public String getPrefix() {
         return prefix;
     }
     
     /**
-     * The prefix that is prepended to datafeed files.
+     * A prefix for the datafeed file names.
      *
-     * @param prefix The prefix that is prepended to datafeed files.
+     * @param prefix A prefix for the datafeed file names.
      */
     public void setPrefix(String prefix) {
         this.prefix = prefix;
     }
     
     /**
-     * The prefix that is prepended to datafeed files.
+     * A prefix for the datafeed file names.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param prefix The prefix that is prepended to datafeed files.
+     * @param prefix A prefix for the datafeed file names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSpotDatafeedSubscriptionRequest withPrefix(String prefix) {
         this.prefix = prefix;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateSpotDatafeedSubscriptionRequest> getDryRunRequest() {
+        Request<CreateSpotDatafeedSubscriptionRequest> request = new CreateSpotDatafeedSubscriptionRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -140,8 +166,8 @@ public class CreateSpotDatafeedSubscriptionRequest extends AmazonWebServiceReque
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");    	
+        sb.append("{");
+        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");
         if (getPrefix() != null) sb.append("Prefix: " + getPrefix() );
         sb.append("}");
         return sb.toString();

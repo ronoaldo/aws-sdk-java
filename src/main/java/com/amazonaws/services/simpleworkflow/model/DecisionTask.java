@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A structure that represents a decision task. Decision tasks are sent to deciders in order for them to make decisions.
+ * A structure that represents a decision task. Decision tasks are sent
+ * to deciders in order for them to make decisions.
  * </p>
  */
-public class DecisionTask  implements Serializable  {
+public class DecisionTask implements Serializable {
 
     /**
      * The opaque string used as a handle on the task. This token is used by
@@ -53,7 +55,7 @@ public class DecisionTask  implements Serializable  {
      * A paginated list of history events of the workflow execution. The
      * decider uses this during the processing of the decision task.
      */
-    private java.util.List<HistoryEvent> events;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent> events;
 
     /**
      * Returns a value if the results are paginated. To get the next page of
@@ -120,14 +122,13 @@ public class DecisionTask  implements Serializable  {
      *         system about the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withTaskToken(String taskToken) {
         this.taskToken = taskToken;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskStarted</code> event recorded in the
      * history.
@@ -160,14 +161,13 @@ public class DecisionTask  implements Serializable  {
      *         history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * The workflow execution for which this decision task was created.
      *
@@ -194,14 +194,13 @@ public class DecisionTask  implements Serializable  {
      * @param workflowExecution The workflow execution for which this decision task was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withWorkflowExecution(WorkflowExecution workflowExecution) {
         this.workflowExecution = workflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The type of the workflow execution for which this decision task was
      * created.
@@ -234,14 +233,13 @@ public class DecisionTask  implements Serializable  {
      *         created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * A paginated list of history events of the workflow execution. The
      * decider uses this during the processing of the decision task.
@@ -250,9 +248,9 @@ public class DecisionTask  implements Serializable  {
      *         decider uses this during the processing of the decision task.
      */
     public java.util.List<HistoryEvent> getEvents() {
-        
         if (events == null) {
-            events = new java.util.ArrayList<HistoryEvent>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
@@ -269,8 +267,7 @@ public class DecisionTask  implements Serializable  {
             this.events = null;
             return;
         }
-
-        java.util.List<HistoryEvent> eventsCopy = new java.util.ArrayList<HistoryEvent>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
@@ -285,7 +282,7 @@ public class DecisionTask  implements Serializable  {
      *         decider uses this during the processing of the decision task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withEvents(HistoryEvent... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<HistoryEvent>(events.length));
@@ -305,20 +302,20 @@ public class DecisionTask  implements Serializable  {
      *         decider uses this during the processing of the decision task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withEvents(java.util.Collection<HistoryEvent> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<HistoryEvent> eventsCopy = new java.util.ArrayList<HistoryEvent>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a value if the results are paginated. To get the next page of
      * results, repeat the request specifying this token and all other
@@ -366,14 +363,13 @@ public class DecisionTask  implements Serializable  {
      *         arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * The id of the DecisionTaskStarted event of the previous decision task
      * of this workflow execution that was processed by the decider. This can
@@ -418,14 +414,13 @@ public class DecisionTask  implements Serializable  {
      *         decision task received by the decider.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTask withPreviousStartedEventId(Long previousStartedEventId) {
         this.previousStartedEventId = previousStartedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -437,13 +432,13 @@ public class DecisionTask  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTaskToken() != null) sb.append("TaskToken: " + getTaskToken() + ",");    	
-        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");    	
-        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");    	
-        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");    	
+        sb.append("{");
+        if (getTaskToken() != null) sb.append("TaskToken: " + getTaskToken() + ",");
+        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");
+        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");
+        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");
         if (getPreviousStartedEventId() != null) sb.append("PreviousStartedEventId: " + getPreviousStartedEventId() );
         sb.append("}");
         return sb.toString();

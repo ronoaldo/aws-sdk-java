@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeDBParameters(DescribeDBParametersRequest) DescribeDBParameters operation}.
  * <p>
- * Returns the detailed parameter list for a particular DBParameterGroup.
+ * Returns the detailed parameter list for a particular DB parameter
+ * group.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeDBParameters(DescribeDBParametersRequest)
  */
-public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDBParametersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of a specific DB Parameter Group to return details for.
+     * The name of a specific DB parameter group to return details for.
      * <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric characters</li>
      * <li>First character must be a letter</li> <li>Cannot end with a hyphen
      * or contain two consecutive hyphens</li> </ul>
@@ -51,9 +54,9 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
 
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBParameters request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBParameters</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      */
     private String marker;
 
@@ -68,25 +71,23 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param dBParameterGroupName The name of a specific DB Parameter Group
+     * @param dBParameterGroupName The name of a specific DB parameter group
      * to return details for. <p>Constraints: <ul> <li>Must be 1 to 255
      * alphanumeric characters</li> <li>First character must be a letter</li>
      * <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
      * </ul>
      */
     public DescribeDBParametersRequest(String dBParameterGroupName) {
-        this.dBParameterGroupName = dBParameterGroupName;
+        setDBParameterGroupName(dBParameterGroupName);
     }
 
-    
-    
     /**
-     * The name of a specific DB Parameter Group to return details for.
+     * The name of a specific DB parameter group to return details for.
      * <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric characters</li>
      * <li>First character must be a letter</li> <li>Cannot end with a hyphen
      * or contain two consecutive hyphens</li> </ul>
      *
-     * @return The name of a specific DB Parameter Group to return details for.
+     * @return The name of a specific DB parameter group to return details for.
      *         <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric characters</li>
      *         <li>First character must be a letter</li> <li>Cannot end with a hyphen
      *         or contain two consecutive hyphens</li> </ul>
@@ -96,12 +97,12 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
     }
     
     /**
-     * The name of a specific DB Parameter Group to return details for.
+     * The name of a specific DB parameter group to return details for.
      * <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric characters</li>
      * <li>First character must be a letter</li> <li>Cannot end with a hyphen
      * or contain two consecutive hyphens</li> </ul>
      *
-     * @param dBParameterGroupName The name of a specific DB Parameter Group to return details for.
+     * @param dBParameterGroupName The name of a specific DB parameter group to return details for.
      *         <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric characters</li>
      *         <li>First character must be a letter</li> <li>Cannot end with a hyphen
      *         or contain two consecutive hyphens</li> </ul>
@@ -111,27 +112,26 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
     }
     
     /**
-     * The name of a specific DB Parameter Group to return details for.
+     * The name of a specific DB parameter group to return details for.
      * <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric characters</li>
      * <li>First character must be a letter</li> <li>Cannot end with a hyphen
      * or contain two consecutive hyphens</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupName The name of a specific DB Parameter Group to return details for.
+     * @param dBParameterGroupName The name of a specific DB parameter group to return details for.
      *         <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric characters</li>
      *         <li>First character must be a letter</li> <li>Cannot end with a hyphen
      *         or contain two consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBParametersRequest withDBParameterGroupName(String dBParameterGroupName) {
         this.dBParameterGroupName = dBParameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * The parameter types to return. <p>Default: All parameter types
      * returned <p>Valid Values: <code>user | system | engine-default</code>
@@ -164,14 +164,13 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
      *         returned <p>Valid Values: <code>user | system | engine-default</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBParametersRequest withSource(String source) {
         this.source = source;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -222,24 +221,23 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
      *         <p>Constraints: minimum 20, maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBParametersRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBParameters request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBParameters</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      *
      * @return An optional pagination token provided by a previous
-     *         DescribeDBParameters request. If this parameter is specified, the
-     *         response includes only records beyond the marker, up to the value
-     *         specified by <code>MaxRecords</code>.
+     *         <code>DescribeDBParameters</code> request. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <code>MaxRecords</code>.
      */
     public String getMarker() {
         return marker;
@@ -247,14 +245,14 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
     
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBParameters request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBParameters</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      *
      * @param marker An optional pagination token provided by a previous
-     *         DescribeDBParameters request. If this parameter is specified, the
-     *         response includes only records beyond the marker, up to the value
-     *         specified by <code>MaxRecords</code>.
+     *         <code>DescribeDBParameters</code> request. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <code>MaxRecords</code>.
      */
     public void setMarker(String marker) {
         this.marker = marker;
@@ -262,26 +260,25 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
     
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBParameters request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBParameters</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param marker An optional pagination token provided by a previous
-     *         DescribeDBParameters request. If this parameter is specified, the
-     *         response includes only records beyond the marker, up to the value
-     *         specified by <code>MaxRecords</code>.
+     *         <code>DescribeDBParameters</code> request. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBParametersRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -293,10 +290,10 @@ public class DescribeDBParametersRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() + ",");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getDBParameterGroupName() != null) sb.append("DBParameterGroupName: " + getDBParameterGroupName() + ",");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

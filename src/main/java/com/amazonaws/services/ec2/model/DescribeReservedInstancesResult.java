@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing the purchased Reserved Instances for your account.
- * </p>
+ * 
  */
-public class DescribeReservedInstancesResult  implements Serializable  {
+public class DescribeReservedInstancesResult implements Serializable {
 
     /**
-     * The list of described Reserved Instances.
+     * A list of Reserved Instances.
      */
-    private java.util.List<ReservedInstances> reservedInstances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstances> reservedInstances;
 
     /**
-     * The list of described Reserved Instances.
+     * A list of Reserved Instances.
      *
-     * @return The list of described Reserved Instances.
+     * @return A list of Reserved Instances.
      */
     public java.util.List<ReservedInstances> getReservedInstances() {
-        
         if (reservedInstances == null) {
-            reservedInstances = new java.util.ArrayList<ReservedInstances>();
+              reservedInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstances>();
+              reservedInstances.setAutoConstruct(true);
         }
         return reservedInstances;
     }
     
     /**
-     * The list of described Reserved Instances.
+     * A list of Reserved Instances.
      *
-     * @param reservedInstances The list of described Reserved Instances.
+     * @param reservedInstances A list of Reserved Instances.
      */
     public void setReservedInstances(java.util.Collection<ReservedInstances> reservedInstances) {
         if (reservedInstances == null) {
             this.reservedInstances = null;
             return;
         }
-
-        java.util.List<ReservedInstances> reservedInstancesCopy = new java.util.ArrayList<ReservedInstances>(reservedInstances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstances> reservedInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstances>(reservedInstances.size());
         reservedInstancesCopy.addAll(reservedInstances);
         this.reservedInstances = reservedInstancesCopy;
     }
     
     /**
-     * The list of described Reserved Instances.
+     * A list of Reserved Instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstances The list of described Reserved Instances.
+     * @param reservedInstances A list of Reserved Instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesResult withReservedInstances(ReservedInstances... reservedInstances) {
         if (getReservedInstances() == null) setReservedInstances(new java.util.ArrayList<ReservedInstances>(reservedInstances.length));
@@ -75,27 +73,27 @@ public class DescribeReservedInstancesResult  implements Serializable  {
     }
     
     /**
-     * The list of described Reserved Instances.
+     * A list of Reserved Instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstances The list of described Reserved Instances.
+     * @param reservedInstances A list of Reserved Instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesResult withReservedInstances(java.util.Collection<ReservedInstances> reservedInstances) {
         if (reservedInstances == null) {
             this.reservedInstances = null;
         } else {
-            java.util.List<ReservedInstances> reservedInstancesCopy = new java.util.ArrayList<ReservedInstances>(reservedInstances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstances> reservedInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstances>(reservedInstances.size());
             reservedInstancesCopy.addAll(reservedInstances);
             this.reservedInstances = reservedInstancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeReservedInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservedInstances() != null) sb.append("ReservedInstances: " + getReservedInstances() );
         sb.append("}");
         return sb.toString();

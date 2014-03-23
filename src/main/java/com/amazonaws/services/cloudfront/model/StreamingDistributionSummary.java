@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A summary of the information for an Amazon CloudFront streaming distribution.
+ * A summary of the information for an Amazon CloudFront streaming
+ * distribution.
  * </p>
  */
-public class StreamingDistributionSummary  implements Serializable  {
+public class StreamingDistributionSummary implements Serializable {
 
     /**
      * The identifier for the distribution. For example: EDFDVBD632BHDS5.
@@ -120,14 +122,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      * @param id The identifier for the distribution. For example: EDFDVBD632BHDS5.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Indicates the current status of the distribution. When the status is
      * Deployed, the distribution's information is fully propagated
@@ -166,14 +167,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      *         throughout the Amazon CloudFront system.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The date and time the distribution was last modified.
      *
@@ -200,14 +200,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      * @param lastModifiedTime The date and time the distribution was last modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withLastModifiedTime(java.util.Date lastModifiedTime) {
         this.lastModifiedTime = lastModifiedTime;
         return this;
     }
-    
-    
+
     /**
      * The domain name corresponding to the distribution. For example:
      * d604721fxaaqy9.cloudfront.net.
@@ -240,14 +239,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      *         d604721fxaaqy9.cloudfront.net.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about the Amazon S3 bucket
      * from which you want CloudFront to get your media files for
@@ -286,14 +284,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withS3Origin(S3Origin s3Origin) {
         this.s3Origin = s3Origin;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about CNAMEs (alternate
      * domain names), if any, for this streaming distribution.
@@ -326,14 +323,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      *         domain names), if any, for this streaming distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withAliases(Aliases aliases) {
         this.aliases = aliases;
         return this;
     }
-    
-    
+
     /**
      * A complex type that specifies the AWS accounts, if any, that you want
      * to allow to create signed URLs for private content. If you want to
@@ -432,14 +428,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withTrustedSigners(TrustedSigners trustedSigners) {
         this.trustedSigners = trustedSigners;
         return this;
     }
-    
-    
+
     /**
      * The comment originally specified when this distribution was created.
      *
@@ -466,14 +461,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      * @param comment The comment originally specified when this distribution was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the PriceClass property for this object.
      * <p>
@@ -513,7 +507,7 @@ public class StreamingDistributionSummary  implements Serializable  {
      * @param priceClass The new value for the PriceClass property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PriceClass
      */
@@ -521,8 +515,7 @@ public class StreamingDistributionSummary  implements Serializable  {
         this.priceClass = priceClass;
         return this;
     }
-    
-    
+
     /**
      * Sets the value of the PriceClass property for this object.
      * <p>
@@ -548,7 +541,7 @@ public class StreamingDistributionSummary  implements Serializable  {
      * @param priceClass The new value for the PriceClass property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PriceClass
      */
@@ -556,7 +549,7 @@ public class StreamingDistributionSummary  implements Serializable  {
         this.priceClass = priceClass.toString();
         return this;
     }
-    
+
     /**
      * Whether the distribution is enabled to accept end user requests for
      * content.
@@ -589,14 +582,13 @@ public class StreamingDistributionSummary  implements Serializable  {
      *         content.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StreamingDistributionSummary withEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * Whether the distribution is enabled to accept end user requests for
      * content.
@@ -607,7 +599,7 @@ public class StreamingDistributionSummary  implements Serializable  {
     public Boolean getEnabled() {
         return enabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -619,16 +611,16 @@ public class StreamingDistributionSummary  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getLastModifiedTime() != null) sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getS3Origin() != null) sb.append("S3Origin: " + getS3Origin() + ",");    	
-        if (getAliases() != null) sb.append("Aliases: " + getAliases() + ",");    	
-        if (getTrustedSigners() != null) sb.append("TrustedSigners: " + getTrustedSigners() + ",");    	
-        if (getComment() != null) sb.append("Comment: " + getComment() + ",");    	
-        if (getPriceClass() != null) sb.append("PriceClass: " + getPriceClass() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getLastModifiedTime() != null) sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getS3Origin() != null) sb.append("S3Origin: " + getS3Origin() + ",");
+        if (getAliases() != null) sb.append("Aliases: " + getAliases() + ",");
+        if (getTrustedSigners() != null) sb.append("TrustedSigners: " + getTrustedSigners() + ",");
+        if (getComment() != null) sb.append("Comment: " + getComment() + ",");
+        if (getPriceClass() != null) sb.append("PriceClass: " + getPriceClass() + ",");
         if (isEnabled() != null) sb.append("Enabled: " + isEnabled() );
         sb.append("}");
         return sb.toString();

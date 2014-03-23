@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Output structure for the UpateJob operation.
  * </p>
  */
-public class UpdateJobResult  implements Serializable  {
+public class UpdateJobResult implements Serializable {
 
     /**
      * Specifies whether (true) or not (false) AWS Import/Export updated your
@@ -66,14 +67,13 @@ public class UpdateJobResult  implements Serializable  {
      *         job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateJobResult withSuccess(Boolean success) {
         this.success = success;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether (true) or not (false) AWS Import/Export updated your
      * job.
@@ -84,7 +84,7 @@ public class UpdateJobResult  implements Serializable  {
     public Boolean getSuccess() {
         return success;
     }
-    
+
     /**
      * An optional message notifying you of non-fatal issues with the job,
      * such as use of an incompatible Amazon S3 bucket name.
@@ -117,14 +117,13 @@ public class UpdateJobResult  implements Serializable  {
      *         such as use of an incompatible Amazon S3 bucket name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateJobResult withWarningMessage(String warningMessage) {
         this.warningMessage = warningMessage;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -136,8 +135,8 @@ public class UpdateJobResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (isSuccess() != null) sb.append("Success: " + isSuccess() + ",");    	
+        sb.append("{");
+        if (isSuccess() != null) sb.append("Success: " + isSuccess() + ",");
         if (getWarningMessage() != null) sb.append("WarningMessage: " + getWarningMessage() );
         sb.append("}");
         return sb.toString();

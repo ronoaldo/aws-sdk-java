@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A scaling Activity is a long-running process that represents a change to your AutoScalingGroup, such as changing the size of the group. It can also
- * be a process to replace an instance, or a process to perform any other long-running operations supported by the API.
+ * A scaling Activity is a long-running process that represents a change
+ * to your AutoScalingGroup, such as changing the size of the group. It
+ * can also be a process to replace an instance, or a process to perform
+ * any other long-running operations supported by the API.
  * </p>
  */
-public class Activity  implements Serializable  {
+public class Activity implements Serializable {
 
     /**
      * Specifies the ID of the activity.
@@ -133,14 +136,13 @@ public class Activity  implements Serializable  {
      * @param activityId Specifies the ID of the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withActivityId(String activityId) {
         this.activityId = activityId;
         return this;
     }
-    
-    
+
     /**
      * The name of the Auto Scaling group.
      * <p>
@@ -179,14 +181,13 @@ public class Activity  implements Serializable  {
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * Contains a friendly, more verbose description of the scaling activity.
      * <p>
@@ -222,14 +223,13 @@ public class Activity  implements Serializable  {
      * @param description Contains a friendly, more verbose description of the scaling activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Contains the reason the activity was begun.
      * <p>
@@ -268,14 +268,13 @@ public class Activity  implements Serializable  {
      * @param cause Contains the reason the activity was begun.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withCause(String cause) {
         this.cause = cause;
         return this;
     }
-    
-    
+
     /**
      * Provides the start time of this activity.
      *
@@ -302,14 +301,13 @@ public class Activity  implements Serializable  {
      * @param startTime Provides the start time of this activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * Provides the end time of this activity.
      *
@@ -336,14 +334,13 @@ public class Activity  implements Serializable  {
      * @param endTime Provides the end time of this activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * Contains the current status of the activity.
      * <p>
@@ -383,7 +380,7 @@ public class Activity  implements Serializable  {
      * @param statusCode Contains the current status of the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalingActivityStatusCode
      */
@@ -391,8 +388,7 @@ public class Activity  implements Serializable  {
         this.statusCode = statusCode;
         return this;
     }
-    
-    
+
     /**
      * Contains the current status of the activity.
      * <p>
@@ -418,7 +414,7 @@ public class Activity  implements Serializable  {
      * @param statusCode Contains the current status of the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalingActivityStatusCode
      */
@@ -426,7 +422,7 @@ public class Activity  implements Serializable  {
         this.statusCode = statusCode.toString();
         return this;
     }
-    
+
     /**
      * Contains a friendly, more verbose description of the activity status.
      * <p>
@@ -465,14 +461,13 @@ public class Activity  implements Serializable  {
      * @param statusMessage Contains a friendly, more verbose description of the activity status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
         return this;
     }
-    
-    
+
     /**
      * Specifies a value between 0 and 100 that indicates the progress of the
      * activity.
@@ -505,14 +500,13 @@ public class Activity  implements Serializable  {
      *         activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withProgress(Integer progress) {
         this.progress = progress;
         return this;
     }
-    
-    
+
     /**
      * Contains details of the scaling activity.
      * <p>
@@ -548,14 +542,13 @@ public class Activity  implements Serializable  {
      * @param details Contains details of the scaling activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Activity withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -567,16 +560,16 @@ public class Activity  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getCause() != null) sb.append("Cause: " + getCause() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getStatusCode() != null) sb.append("StatusCode: " + getStatusCode() + ",");    	
-        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");    	
-        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");    	
+        sb.append("{");
+        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getCause() != null) sb.append("Cause: " + getCause() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getStatusCode() != null) sb.append("StatusCode: " + getStatusCode() + ",");
+        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");
+        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");
         if (getDetails() != null) sb.append("Details: " + getDetails() );
         sb.append("}");
         return sb.toString();

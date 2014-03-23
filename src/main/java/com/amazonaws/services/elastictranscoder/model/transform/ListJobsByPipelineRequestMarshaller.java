@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.elastictranscoder.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class ListJobsByPipelineRequestMarshaller implements Marshaller<Request<ListJobsByPipelineRequest>, ListJobsByPipelineRequest> {
 
-    
-
     public Request<ListJobsByPipelineRequest> marshall(ListJobsByPipelineRequest listJobsByPipelineRequest) {
     if (listJobsByPipelineRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,14 +49,12 @@ public class ListJobsByPipelineRequestMarshaller implements Marshaller<Request<L
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.GET);
 
-
         String uriResourcePath = "2012-09-25/jobsByPipeline/{PipelineId}?Ascending={Ascending};PageToken={PageToken}"; 
-        uriResourcePath = uriResourcePath.replace("{PipelineId}", getString(listJobsByPipelineRequest.getPipelineId())); 
-        uriResourcePath = uriResourcePath.replace("{Ascending}", getString(listJobsByPipelineRequest.getAscending())); 
-        uriResourcePath = uriResourcePath.replace("{PageToken}", getString(listJobsByPipelineRequest.getPageToken())); 
+        uriResourcePath = uriResourcePath.replace("{PipelineId}", (listJobsByPipelineRequest.getPipelineId() == null) ? "" : StringUtils.fromString(listJobsByPipelineRequest.getPipelineId())); 
+        uriResourcePath = uriResourcePath.replace("{Ascending}", (listJobsByPipelineRequest.getAscending() == null) ? "" : StringUtils.fromString(listJobsByPipelineRequest.getAscending())); 
+        uriResourcePath = uriResourcePath.replace("{PageToken}", (listJobsByPipelineRequest.getPageToken() == null) ? "" : StringUtils.fromString(listJobsByPipelineRequest.getPageToken())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -78,16 +74,8 @@ public class ListJobsByPipelineRequestMarshaller implements Marshaller<Request<L
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

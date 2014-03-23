@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that describes how CloudFront processes requests. You can create up to 10 cache behaviors.You must create at least as many cache
- * behaviors (including the default cache behavior) as you have origins if you want CloudFront to distribute objects from all of the origins. Each cache
- * behavior specifies the one origin from which you want CloudFront to get objects. If you have two origins and only the default cache behavior, the
- * default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin will never be used. If you don't want to
- * specify any cache behaviors, include only an empty CacheBehaviors element. Don't include an empty CacheBehavior element, or CloudFront returns a
- * MalformedXML error. To delete all cache behaviors in an existing distribution, update the distribution configuration and include only an empty
- * CacheBehaviors element. To add, change, or remove one or more cache behaviors, update the distribution configuration and specify all of the cache
- * behaviors that you want to include in the updated distribution.
+ * A complex type that describes how CloudFront processes requests. You
+ * can create up to 10 cache behaviors.You must create at least as many
+ * cache behaviors (including the default cache behavior) as you have
+ * origins if you want CloudFront to distribute objects from all of the
+ * origins. Each cache behavior specifies the one origin from which you
+ * want CloudFront to get objects. If you have two origins and only the
+ * default cache behavior, the default cache behavior will cause
+ * CloudFront to get objects from one of the origins, but the other
+ * origin will never be used. If you don't want to specify any cache
+ * behaviors, include only an empty CacheBehaviors element. Don't include
+ * an empty CacheBehavior element, or CloudFront returns a MalformedXML
+ * error. To delete all cache behaviors in an existing distribution,
+ * update the distribution configuration and include only an empty
+ * CacheBehaviors element. To add, change, or remove one or more cache
+ * behaviors, update the distribution configuration and specify all of
+ * the cache behaviors that you want to include in the updated
+ * distribution.
  * </p>
  */
-public class CacheBehavior  implements Serializable  {
+public class CacheBehavior implements Serializable {
 
     /**
      * The pattern (for example, images/*.jpg) that specifies which requests
@@ -76,10 +86,13 @@ public class CacheBehavior  implements Serializable  {
      * the files in the origin specified by TargetOriginId when a request
      * matches the path pattern in PathPattern. If you want CloudFront to
      * allow end users to use any available protocol, specify allow-all. If
-     * you want CloudFront to require HTTPS, specify https.
+     * you want CloudFront to require HTTPS, specify https. If you want
+     * CloudFront to respond to an HTTP request with an HTTP status code of
+     * 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     * The viewer then resubmits the request using the HTTPS URL.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>allow-all, https-only
+     * <b>Allowed Values: </b>allow-all, https-only, redirect-to-https
      */
     private String viewerProtocolPolicy;
 
@@ -90,6 +103,26 @@ public class CacheBehavior  implements Serializable  {
      * seconds (100 years).
      */
     private Long minTTL;
+
+    /**
+     * A complex type that controls which HTTP methods CloudFront processes
+     * and forwards to your Amazon S3 bucket or your custom origin. There are
+     * two options: - CloudFront forwards only GET and HEAD requests. -
+     * CloudFront forwards DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT
+     * requests. If you choose the second option, you may need to restrict
+     * access to your Amazon S3 bucket or to your custom origin so users
+     * can't perform operations that you don't want them to. For example, you
+     * may not want users to have permission to delete objects from your
+     * origin.
+     */
+    private AllowedMethods allowedMethods;
+
+    /**
+     * Indicates whether you want to distribute media files in Microsoft
+     * Smooth Streaming format using the origin that is associated with this
+     * cache behavior. If so, specify true; if not, specify false.
+     */
+    private Boolean smoothStreaming;
 
     /**
      * The pattern (for example, images/*.jpg) that specifies which requests
@@ -159,14 +192,13 @@ public class CacheBehavior  implements Serializable  {
      *         default cache behavior.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehavior withPathPattern(String pathPattern) {
         this.pathPattern = pathPattern;
         return this;
     }
-    
-    
+
     /**
      * The value of ID for the origin that you want CloudFront to route
      * requests to when a request matches the path pattern either for a cache
@@ -205,14 +237,13 @@ public class CacheBehavior  implements Serializable  {
      *         behavior or for the default cache behavior.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehavior withTargetOriginId(String targetOriginId) {
         this.targetOriginId = targetOriginId;
         return this;
     }
-    
-    
+
     /**
      * A complex type that specifies how CloudFront handles query strings and
      * cookies.
@@ -245,14 +276,13 @@ public class CacheBehavior  implements Serializable  {
      *         cookies.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehavior withForwardedValues(ForwardedValues forwardedValues) {
         this.forwardedValues = forwardedValues;
         return this;
     }
-    
-    
+
     /**
      * A complex type that specifies the AWS accounts, if any, that you want
      * to allow to create signed URLs for private content. If you want to
@@ -351,29 +381,34 @@ public class CacheBehavior  implements Serializable  {
      *         distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehavior withTrustedSigners(TrustedSigners trustedSigners) {
         this.trustedSigners = trustedSigners;
         return this;
     }
-    
-    
+
     /**
      * Use this element to specify the protocol that users can use to access
      * the files in the origin specified by TargetOriginId when a request
      * matches the path pattern in PathPattern. If you want CloudFront to
      * allow end users to use any available protocol, specify allow-all. If
-     * you want CloudFront to require HTTPS, specify https.
+     * you want CloudFront to require HTTPS, specify https. If you want
+     * CloudFront to respond to an HTTP request with an HTTP status code of
+     * 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     * The viewer then resubmits the request using the HTTPS URL.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>allow-all, https-only
+     * <b>Allowed Values: </b>allow-all, https-only, redirect-to-https
      *
      * @return Use this element to specify the protocol that users can use to access
      *         the files in the origin specified by TargetOriginId when a request
      *         matches the path pattern in PathPattern. If you want CloudFront to
      *         allow end users to use any available protocol, specify allow-all. If
-     *         you want CloudFront to require HTTPS, specify https.
+     *         you want CloudFront to require HTTPS, specify https. If you want
+     *         CloudFront to respond to an HTTP request with an HTTP status code of
+     *         301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     *         The viewer then resubmits the request using the HTTPS URL.
      *
      * @see ViewerProtocolPolicy
      */
@@ -386,16 +421,22 @@ public class CacheBehavior  implements Serializable  {
      * the files in the origin specified by TargetOriginId when a request
      * matches the path pattern in PathPattern. If you want CloudFront to
      * allow end users to use any available protocol, specify allow-all. If
-     * you want CloudFront to require HTTPS, specify https.
+     * you want CloudFront to require HTTPS, specify https. If you want
+     * CloudFront to respond to an HTTP request with an HTTP status code of
+     * 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     * The viewer then resubmits the request using the HTTPS URL.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>allow-all, https-only
+     * <b>Allowed Values: </b>allow-all, https-only, redirect-to-https
      *
      * @param viewerProtocolPolicy Use this element to specify the protocol that users can use to access
      *         the files in the origin specified by TargetOriginId when a request
      *         matches the path pattern in PathPattern. If you want CloudFront to
      *         allow end users to use any available protocol, specify allow-all. If
-     *         you want CloudFront to require HTTPS, specify https.
+     *         you want CloudFront to require HTTPS, specify https. If you want
+     *         CloudFront to respond to an HTTP request with an HTTP status code of
+     *         301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     *         The viewer then resubmits the request using the HTTPS URL.
      *
      * @see ViewerProtocolPolicy
      */
@@ -408,21 +449,27 @@ public class CacheBehavior  implements Serializable  {
      * the files in the origin specified by TargetOriginId when a request
      * matches the path pattern in PathPattern. If you want CloudFront to
      * allow end users to use any available protocol, specify allow-all. If
-     * you want CloudFront to require HTTPS, specify https.
+     * you want CloudFront to require HTTPS, specify https. If you want
+     * CloudFront to respond to an HTTP request with an HTTP status code of
+     * 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     * The viewer then resubmits the request using the HTTPS URL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>allow-all, https-only
+     * <b>Allowed Values: </b>allow-all, https-only, redirect-to-https
      *
      * @param viewerProtocolPolicy Use this element to specify the protocol that users can use to access
      *         the files in the origin specified by TargetOriginId when a request
      *         matches the path pattern in PathPattern. If you want CloudFront to
      *         allow end users to use any available protocol, specify allow-all. If
-     *         you want CloudFront to require HTTPS, specify https.
+     *         you want CloudFront to require HTTPS, specify https. If you want
+     *         CloudFront to respond to an HTTP request with an HTTP status code of
+     *         301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     *         The viewer then resubmits the request using the HTTPS URL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ViewerProtocolPolicy
      */
@@ -430,23 +477,28 @@ public class CacheBehavior  implements Serializable  {
         this.viewerProtocolPolicy = viewerProtocolPolicy;
         return this;
     }
-    
-    
+
     /**
      * Use this element to specify the protocol that users can use to access
      * the files in the origin specified by TargetOriginId when a request
      * matches the path pattern in PathPattern. If you want CloudFront to
      * allow end users to use any available protocol, specify allow-all. If
-     * you want CloudFront to require HTTPS, specify https.
+     * you want CloudFront to require HTTPS, specify https. If you want
+     * CloudFront to respond to an HTTP request with an HTTP status code of
+     * 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     * The viewer then resubmits the request using the HTTPS URL.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>allow-all, https-only
+     * <b>Allowed Values: </b>allow-all, https-only, redirect-to-https
      *
      * @param viewerProtocolPolicy Use this element to specify the protocol that users can use to access
      *         the files in the origin specified by TargetOriginId when a request
      *         matches the path pattern in PathPattern. If you want CloudFront to
      *         allow end users to use any available protocol, specify allow-all. If
-     *         you want CloudFront to require HTTPS, specify https.
+     *         you want CloudFront to require HTTPS, specify https. If you want
+     *         CloudFront to respond to an HTTP request with an HTTP status code of
+     *         301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     *         The viewer then resubmits the request using the HTTPS URL.
      *
      * @see ViewerProtocolPolicy
      */
@@ -459,21 +511,27 @@ public class CacheBehavior  implements Serializable  {
      * the files in the origin specified by TargetOriginId when a request
      * matches the path pattern in PathPattern. If you want CloudFront to
      * allow end users to use any available protocol, specify allow-all. If
-     * you want CloudFront to require HTTPS, specify https.
+     * you want CloudFront to require HTTPS, specify https. If you want
+     * CloudFront to respond to an HTTP request with an HTTP status code of
+     * 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     * The viewer then resubmits the request using the HTTPS URL.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>allow-all, https-only
+     * <b>Allowed Values: </b>allow-all, https-only, redirect-to-https
      *
      * @param viewerProtocolPolicy Use this element to specify the protocol that users can use to access
      *         the files in the origin specified by TargetOriginId when a request
      *         matches the path pattern in PathPattern. If you want CloudFront to
      *         allow end users to use any available protocol, specify allow-all. If
-     *         you want CloudFront to require HTTPS, specify https.
+     *         you want CloudFront to require HTTPS, specify https. If you want
+     *         CloudFront to respond to an HTTP request with an HTTP status code of
+     *         301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
+     *         The viewer then resubmits the request using the HTTPS URL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ViewerProtocolPolicy
      */
@@ -481,7 +539,7 @@ public class CacheBehavior  implements Serializable  {
         this.viewerProtocolPolicy = viewerProtocolPolicy.toString();
         return this;
     }
-    
+
     /**
      * The minimum amount of time that you want objects to stay in CloudFront
      * caches before CloudFront queries your origin to see whether the object
@@ -526,14 +584,152 @@ public class CacheBehavior  implements Serializable  {
      *         seconds (100 years).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehavior withMinTTL(Long minTTL) {
         this.minTTL = minTTL;
         return this;
     }
+
+    /**
+     * A complex type that controls which HTTP methods CloudFront processes
+     * and forwards to your Amazon S3 bucket or your custom origin. There are
+     * two options: - CloudFront forwards only GET and HEAD requests. -
+     * CloudFront forwards DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT
+     * requests. If you choose the second option, you may need to restrict
+     * access to your Amazon S3 bucket or to your custom origin so users
+     * can't perform operations that you don't want them to. For example, you
+     * may not want users to have permission to delete objects from your
+     * origin.
+     *
+     * @return A complex type that controls which HTTP methods CloudFront processes
+     *         and forwards to your Amazon S3 bucket or your custom origin. There are
+     *         two options: - CloudFront forwards only GET and HEAD requests. -
+     *         CloudFront forwards DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT
+     *         requests. If you choose the second option, you may need to restrict
+     *         access to your Amazon S3 bucket or to your custom origin so users
+     *         can't perform operations that you don't want them to. For example, you
+     *         may not want users to have permission to delete objects from your
+     *         origin.
+     */
+    public AllowedMethods getAllowedMethods() {
+        return allowedMethods;
+    }
     
+    /**
+     * A complex type that controls which HTTP methods CloudFront processes
+     * and forwards to your Amazon S3 bucket or your custom origin. There are
+     * two options: - CloudFront forwards only GET and HEAD requests. -
+     * CloudFront forwards DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT
+     * requests. If you choose the second option, you may need to restrict
+     * access to your Amazon S3 bucket or to your custom origin so users
+     * can't perform operations that you don't want them to. For example, you
+     * may not want users to have permission to delete objects from your
+     * origin.
+     *
+     * @param allowedMethods A complex type that controls which HTTP methods CloudFront processes
+     *         and forwards to your Amazon S3 bucket or your custom origin. There are
+     *         two options: - CloudFront forwards only GET and HEAD requests. -
+     *         CloudFront forwards DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT
+     *         requests. If you choose the second option, you may need to restrict
+     *         access to your Amazon S3 bucket or to your custom origin so users
+     *         can't perform operations that you don't want them to. For example, you
+     *         may not want users to have permission to delete objects from your
+     *         origin.
+     */
+    public void setAllowedMethods(AllowedMethods allowedMethods) {
+        this.allowedMethods = allowedMethods;
+    }
     
+    /**
+     * A complex type that controls which HTTP methods CloudFront processes
+     * and forwards to your Amazon S3 bucket or your custom origin. There are
+     * two options: - CloudFront forwards only GET and HEAD requests. -
+     * CloudFront forwards DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT
+     * requests. If you choose the second option, you may need to restrict
+     * access to your Amazon S3 bucket or to your custom origin so users
+     * can't perform operations that you don't want them to. For example, you
+     * may not want users to have permission to delete objects from your
+     * origin.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param allowedMethods A complex type that controls which HTTP methods CloudFront processes
+     *         and forwards to your Amazon S3 bucket or your custom origin. There are
+     *         two options: - CloudFront forwards only GET and HEAD requests. -
+     *         CloudFront forwards DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT
+     *         requests. If you choose the second option, you may need to restrict
+     *         access to your Amazon S3 bucket or to your custom origin so users
+     *         can't perform operations that you don't want them to. For example, you
+     *         may not want users to have permission to delete objects from your
+     *         origin.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CacheBehavior withAllowedMethods(AllowedMethods allowedMethods) {
+        this.allowedMethods = allowedMethods;
+        return this;
+    }
+
+    /**
+     * Indicates whether you want to distribute media files in Microsoft
+     * Smooth Streaming format using the origin that is associated with this
+     * cache behavior. If so, specify true; if not, specify false.
+     *
+     * @return Indicates whether you want to distribute media files in Microsoft
+     *         Smooth Streaming format using the origin that is associated with this
+     *         cache behavior. If so, specify true; if not, specify false.
+     */
+    public Boolean isSmoothStreaming() {
+        return smoothStreaming;
+    }
+    
+    /**
+     * Indicates whether you want to distribute media files in Microsoft
+     * Smooth Streaming format using the origin that is associated with this
+     * cache behavior. If so, specify true; if not, specify false.
+     *
+     * @param smoothStreaming Indicates whether you want to distribute media files in Microsoft
+     *         Smooth Streaming format using the origin that is associated with this
+     *         cache behavior. If so, specify true; if not, specify false.
+     */
+    public void setSmoothStreaming(Boolean smoothStreaming) {
+        this.smoothStreaming = smoothStreaming;
+    }
+    
+    /**
+     * Indicates whether you want to distribute media files in Microsoft
+     * Smooth Streaming format using the origin that is associated with this
+     * cache behavior. If so, specify true; if not, specify false.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param smoothStreaming Indicates whether you want to distribute media files in Microsoft
+     *         Smooth Streaming format using the origin that is associated with this
+     *         cache behavior. If so, specify true; if not, specify false.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CacheBehavior withSmoothStreaming(Boolean smoothStreaming) {
+        this.smoothStreaming = smoothStreaming;
+        return this;
+    }
+
+    /**
+     * Indicates whether you want to distribute media files in Microsoft
+     * Smooth Streaming format using the origin that is associated with this
+     * cache behavior. If so, specify true; if not, specify false.
+     *
+     * @return Indicates whether you want to distribute media files in Microsoft
+     *         Smooth Streaming format using the origin that is associated with this
+     *         cache behavior. If so, specify true; if not, specify false.
+     */
+    public Boolean getSmoothStreaming() {
+        return smoothStreaming;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -545,13 +741,15 @@ public class CacheBehavior  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPathPattern() != null) sb.append("PathPattern: " + getPathPattern() + ",");    	
-        if (getTargetOriginId() != null) sb.append("TargetOriginId: " + getTargetOriginId() + ",");    	
-        if (getForwardedValues() != null) sb.append("ForwardedValues: " + getForwardedValues() + ",");    	
-        if (getTrustedSigners() != null) sb.append("TrustedSigners: " + getTrustedSigners() + ",");    	
-        if (getViewerProtocolPolicy() != null) sb.append("ViewerProtocolPolicy: " + getViewerProtocolPolicy() + ",");    	
-        if (getMinTTL() != null) sb.append("MinTTL: " + getMinTTL() );
+        sb.append("{");
+        if (getPathPattern() != null) sb.append("PathPattern: " + getPathPattern() + ",");
+        if (getTargetOriginId() != null) sb.append("TargetOriginId: " + getTargetOriginId() + ",");
+        if (getForwardedValues() != null) sb.append("ForwardedValues: " + getForwardedValues() + ",");
+        if (getTrustedSigners() != null) sb.append("TrustedSigners: " + getTrustedSigners() + ",");
+        if (getViewerProtocolPolicy() != null) sb.append("ViewerProtocolPolicy: " + getViewerProtocolPolicy() + ",");
+        if (getMinTTL() != null) sb.append("MinTTL: " + getMinTTL() + ",");
+        if (getAllowedMethods() != null) sb.append("AllowedMethods: " + getAllowedMethods() + ",");
+        if (isSmoothStreaming() != null) sb.append("SmoothStreaming: " + isSmoothStreaming() );
         sb.append("}");
         return sb.toString();
     }
@@ -567,6 +765,8 @@ public class CacheBehavior  implements Serializable  {
         hashCode = prime * hashCode + ((getTrustedSigners() == null) ? 0 : getTrustedSigners().hashCode()); 
         hashCode = prime * hashCode + ((getViewerProtocolPolicy() == null) ? 0 : getViewerProtocolPolicy().hashCode()); 
         hashCode = prime * hashCode + ((getMinTTL() == null) ? 0 : getMinTTL().hashCode()); 
+        hashCode = prime * hashCode + ((getAllowedMethods() == null) ? 0 : getAllowedMethods().hashCode()); 
+        hashCode = prime * hashCode + ((isSmoothStreaming() == null) ? 0 : isSmoothStreaming().hashCode()); 
         return hashCode;
     }
     
@@ -590,6 +790,10 @@ public class CacheBehavior  implements Serializable  {
         if (other.getViewerProtocolPolicy() != null && other.getViewerProtocolPolicy().equals(this.getViewerProtocolPolicy()) == false) return false; 
         if (other.getMinTTL() == null ^ this.getMinTTL() == null) return false;
         if (other.getMinTTL() != null && other.getMinTTL().equals(this.getMinTTL()) == false) return false; 
+        if (other.getAllowedMethods() == null ^ this.getAllowedMethods() == null) return false;
+        if (other.getAllowedMethods() != null && other.getAllowedMethods().equals(this.getAllowedMethods()) == false) return false; 
+        if (other.isSmoothStreaming() == null ^ this.isSmoothStreaming() == null) return false;
+        if (other.isSmoothStreaming() != null && other.isSmoothStreaming().equals(this.isSmoothStreaming()) == false) return false; 
         return true;
     }
     

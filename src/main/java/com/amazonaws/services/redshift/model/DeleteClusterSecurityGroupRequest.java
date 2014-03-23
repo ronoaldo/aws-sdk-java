@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#deleteClusterSecurityGroup(DeleteClusterSecurityGroupRequest) DeleteClusterSecurityGroup operation}.
@@ -22,16 +24,18 @@ import java.io.Serializable;
  * Deletes an Amazon Redshift security group.
  * </p>
  * <p>
- * <b>NOTE:</b>You cannot delete a security group that is associated with any clusters. You cannot delete the default security group.
+ * <b>NOTE:</b>You cannot delete a security group that is associated with
+ * any clusters. You cannot delete the default security group.
  * </p>
  * <p>
- * For information about managing security groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">
- * Amazon Redshift Cluster Security Groups </a> in the <i>Amazon Redshift Management Guide</i> .
+ * For information about managing security groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html"> Amazon Redshift Cluster Security Groups </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#deleteClusterSecurityGroup(DeleteClusterSecurityGroupRequest)
  */
-public class DeleteClusterSecurityGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteClusterSecurityGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the cluster security group to be deleted.
@@ -64,14 +68,13 @@ public class DeleteClusterSecurityGroupRequest extends AmazonWebServiceRequest  
      * @param clusterSecurityGroupName The name of the cluster security group to be deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteClusterSecurityGroupRequest withClusterSecurityGroupName(String clusterSecurityGroupName) {
         this.clusterSecurityGroupName = clusterSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -83,7 +86,7 @@ public class DeleteClusterSecurityGroupRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getClusterSecurityGroupName() != null) sb.append("ClusterSecurityGroupName: " + getClusterSecurityGroupName() );
         sb.append("}");
         return sb.toString();

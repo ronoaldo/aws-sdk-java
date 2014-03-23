@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#createDistribution(CreateDistributionRequest) CreateDistribution operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#createDistribution(CreateDistributionRequest)
  */
-public class CreateDistributionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateDistributionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The distribution's configuration information.
@@ -46,11 +48,9 @@ public class CreateDistributionRequest extends AmazonWebServiceRequest  implemen
      * information.
      */
     public CreateDistributionRequest(DistributionConfig distributionConfig) {
-        this.distributionConfig = distributionConfig;
+        setDistributionConfig(distributionConfig);
     }
 
-    
-    
     /**
      * The distribution's configuration information.
      *
@@ -77,14 +77,13 @@ public class CreateDistributionRequest extends AmazonWebServiceRequest  implemen
      * @param distributionConfig The distribution's configuration information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateDistributionRequest withDistributionConfig(DistributionConfig distributionConfig) {
         this.distributionConfig = distributionConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -96,7 +95,7 @@ public class CreateDistributionRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDistributionConfig() != null) sb.append("DistributionConfig: " + getDistributionConfig() );
         sb.append("}");
         return sb.toString();

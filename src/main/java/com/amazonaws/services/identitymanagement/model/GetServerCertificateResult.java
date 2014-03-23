@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the GetServerCertificate action.
+ * Contains the result of a successful invocation of the
+ * GetServerCertificate action.
  * </p>
  */
-public class GetServerCertificateResult  implements Serializable  {
+public class GetServerCertificateResult implements Serializable {
 
     /**
      * Information about the server certificate.
@@ -53,14 +55,13 @@ public class GetServerCertificateResult  implements Serializable  {
      * @param serverCertificate Information about the server certificate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetServerCertificateResult withServerCertificate(ServerCertificate serverCertificate) {
         this.serverCertificate = serverCertificate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +73,7 @@ public class GetServerCertificateResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getServerCertificate() != null) sb.append("ServerCertificate: " + getServerCertificate() );
         sb.append("}");
         return sb.toString();

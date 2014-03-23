@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the AssumeRole action.
+ * Contains the result of a successful call to the AssumeRole action,
+ * including temporary AWS credentials that can be used to make AWS
+ * requests.
  * </p>
  */
-public class AssumeRoleResult  implements Serializable  {
+public class AssumeRoleResult implements Serializable {
 
     /**
      * The temporary security credentials, which include an access key ID, a
-     * secret access key, and a security token.
+     * secret access key, and a security (or session) token.
      */
     private Credentials credentials;
 
@@ -50,10 +53,10 @@ public class AssumeRoleResult  implements Serializable  {
 
     /**
      * The temporary security credentials, which include an access key ID, a
-     * secret access key, and a security token.
+     * secret access key, and a security (or session) token.
      *
      * @return The temporary security credentials, which include an access key ID, a
-     *         secret access key, and a security token.
+     *         secret access key, and a security (or session) token.
      */
     public Credentials getCredentials() {
         return credentials;
@@ -61,10 +64,10 @@ public class AssumeRoleResult  implements Serializable  {
     
     /**
      * The temporary security credentials, which include an access key ID, a
-     * secret access key, and a security token.
+     * secret access key, and a security (or session) token.
      *
      * @param credentials The temporary security credentials, which include an access key ID, a
-     *         secret access key, and a security token.
+     *         secret access key, and a security (or session) token.
      */
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
@@ -72,22 +75,21 @@ public class AssumeRoleResult  implements Serializable  {
     
     /**
      * The temporary security credentials, which include an access key ID, a
-     * secret access key, and a security token.
+     * secret access key, and a security (or session) token.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param credentials The temporary security credentials, which include an access key ID, a
-     *         secret access key, and a security token.
+     *         secret access key, and a security (or session) token.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleResult withCredentials(Credentials credentials) {
         this.credentials = credentials;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) and the assumed role ID, which are
      * identifiers that you can use to refer to the resulting temporary
@@ -144,14 +146,13 @@ public class AssumeRoleResult  implements Serializable  {
      *         you specified when you called <code>AssumeRole</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleResult withAssumedRoleUser(AssumedRoleUser assumedRoleUser) {
         this.assumedRoleUser = assumedRoleUser;
         return this;
     }
-    
-    
+
     /**
      * A percentage value that indicates the size of the policy in packed
      * form. The service rejects any policy with a packed size greater than
@@ -199,14 +200,13 @@ public class AssumeRoleResult  implements Serializable  {
      *         100 percent, which means the policy exceeded the allowed space.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleResult withPackedPolicySize(Integer packedPolicySize) {
         this.packedPolicySize = packedPolicySize;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -218,9 +218,9 @@ public class AssumeRoleResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");    	
-        if (getAssumedRoleUser() != null) sb.append("AssumedRoleUser: " + getAssumedRoleUser() + ",");    	
+        sb.append("{");
+        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");
+        if (getAssumedRoleUser() != null) sb.append("AssumedRoleUser: " + getAssumedRoleUser() + ",");
         if (getPackedPolicySize() != null) sb.append("PackedPolicySize: " + getPackedPolicySize() );
         sb.append("}");
         return sb.toString();

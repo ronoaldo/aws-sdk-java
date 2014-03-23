@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The SigningCertificate data type contains information about an X.509 signing certificate.
+ * The SigningCertificate data type contains information about an X.509
+ * signing certificate.
  * </p>
  * <p>
- * This data type is used as a response element in the actions UploadSigningCertificate and ListSigningCertificates.
+ * This data type is used as a response element in the actions
+ * UploadSigningCertificate and ListSigningCertificates.
  * </p>
  */
-public class SigningCertificate  implements Serializable  {
+public class SigningCertificate implements Serializable {
 
     /**
      * Name of the user the signing certificate is associated with.
@@ -87,14 +90,12 @@ public class SigningCertificate  implements Serializable  {
      * <code>Inactive</code> means it is not.
      */
     public SigningCertificate(String userName, String certificateId, String certificateBody, String status) {
-        this.userName = userName;
-        this.certificateId = certificateId;
-        this.certificateBody = certificateBody;
-        this.status = status;
+        setUserName(userName);
+        setCertificateId(certificateId);
+        setCertificateBody(certificateBody);
+        setStatus(status);
     }
 
-    
-    
     /**
      * Constructs a new SigningCertificate object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -114,7 +115,7 @@ public class SigningCertificate  implements Serializable  {
         this.certificateBody = certificateBody;
         this.status = status.toString();
     }
-    
+
     /**
      * Name of the user the signing certificate is associated with.
      * <p>
@@ -153,14 +154,13 @@ public class SigningCertificate  implements Serializable  {
      * @param userName Name of the user the signing certificate is associated with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SigningCertificate withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * The ID for the signing certificate.
      * <p>
@@ -199,14 +199,13 @@ public class SigningCertificate  implements Serializable  {
      * @param certificateId The ID for the signing certificate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SigningCertificate withCertificateId(String certificateId) {
         this.certificateId = certificateId;
         return this;
     }
-    
-    
+
     /**
      * The contents of the signing certificate.
      * <p>
@@ -245,14 +244,13 @@ public class SigningCertificate  implements Serializable  {
      * @param certificateBody The contents of the signing certificate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SigningCertificate withCertificateBody(String certificateBody) {
         this.certificateBody = certificateBody;
         return this;
     }
-    
-    
+
     /**
      * The status of the signing certificate. <code>Active</code> means the
      * key is valid for API calls, while <code>Inactive</code> means it is
@@ -304,7 +302,7 @@ public class SigningCertificate  implements Serializable  {
      *         not.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StatusType
      */
@@ -312,8 +310,7 @@ public class SigningCertificate  implements Serializable  {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The status of the signing certificate. <code>Active</code> means the
      * key is valid for API calls, while <code>Inactive</code> means it is
@@ -347,7 +344,7 @@ public class SigningCertificate  implements Serializable  {
      *         not.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StatusType
      */
@@ -355,7 +352,7 @@ public class SigningCertificate  implements Serializable  {
         this.status = status.toString();
         return this;
     }
-    
+
     /**
      * The date when the signing certificate was uploaded.
      *
@@ -382,14 +379,13 @@ public class SigningCertificate  implements Serializable  {
      * @param uploadDate The date when the signing certificate was uploaded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SigningCertificate withUploadDate(java.util.Date uploadDate) {
         this.uploadDate = uploadDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -401,11 +397,11 @@ public class SigningCertificate  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");    	
-        if (getCertificateId() != null) sb.append("CertificateId: " + getCertificateId() + ",");    	
-        if (getCertificateBody() != null) sb.append("CertificateBody: " + getCertificateBody() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");
+        if (getCertificateId() != null) sb.append("CertificateId: " + getCertificateId() + ",");
+        if (getCertificateBody() != null) sb.append("CertificateBody: " + getCertificateBody() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getUploadDate() != null) sb.append("UploadDate: " + getUploadDate() );
         sb.append("}");
         return sb.toString();

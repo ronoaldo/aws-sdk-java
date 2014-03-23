@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -23,29 +24,40 @@ import java.io.Serializable;
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this decision's access to Amazon SWF in much the same way as for the regular API:
+ * You can use IAM policies to control this decision's access to Amazon
+ * SWF in much the same way as for the regular API:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the decision to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to specify this decision.</li>
- * <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys.
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the decision to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * specify this decision.</li>
+ * <li>Constrain the following parameters by using a
+ * <code>Condition</code> element with the appropriate keys.
  * <ul>
- * <li> <code>activityType.name</code> : String constraint. The key is ???swf:activityType.name???.</li>
- * <li> <code>activityType.version</code> : String constraint. The key is ???swf:activityType.version???.</li>
- * <li> <code>taskList</code> : String constraint. The key is ???swf:taskList.name???.</li>
+ * <li> <code>activityType.name</code> : String constraint. The key is
+ * ???swf:activityType.name???.</li>
+ * <li> <code>activityType.version</code> : String constraint. The key
+ * is ???swf:activityType.version???.</li>
+ * <li> <code>taskList</code> : String constraint. The key is
+ * ???swf:taskList.name???.</li>
  * 
  * </ul>
  * </li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails. The associated event attribute's
+ * <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
+ * details and example IAM policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  */
-public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
+public class ScheduleActivityTaskDecisionAttributes implements Serializable {
 
     /**
      * The type of the activity task to schedule. This field is required.
@@ -192,14 +204,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      * @param activityType The type of the activity task to schedule. This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withActivityType(ActivityType activityType) {
         this.activityType = activityType;
         return this;
     }
-    
-    
+
     /**
      * The <code>activityId</code> of the activity task. This field is
      * required. <p>The specified string must not start or end with
@@ -265,14 +276,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withActivityId(String activityId) {
         this.activityId = activityId;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent workflow tasks. This data is not sent to the activity.
@@ -314,14 +324,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      *         subsequent workflow tasks. This data is not sent to the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * The input provided to the activity task.
      * <p>
@@ -357,14 +366,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      * @param input The input provided to the activity task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * The maximum duration for this activity task. <p>The valid values are
      * integers greater than or equal to <code>0</code>. An integer value can
@@ -442,14 +450,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      *         registration time then a fault will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withScheduleToCloseTimeout(String scheduleToCloseTimeout) {
         this.scheduleToCloseTimeout = scheduleToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the name of the task list in which to schedule the
      * activity task. If not specified, the <code>defaultTaskList</code>
@@ -536,14 +543,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the maximum duration the activity task can wait to
      * be assigned to a worker. This overrides the default schedule-to-start
@@ -639,14 +645,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      *         fault will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withScheduleToStartTimeout(String scheduleToStartTimeout) {
         this.scheduleToStartTimeout = scheduleToStartTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the maximum duration a worker may take to process
      * this activity task. This overrides the default start-to-close timeout
@@ -742,14 +747,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      *         will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withStartToCloseTimeout(String startToCloseTimeout) {
         this.startToCloseTimeout = startToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the maximum time before which a worker processing a
      * task of this type must report progress by calling
@@ -845,14 +849,13 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
      *         duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduleActivityTaskDecisionAttributes withHeartbeatTimeout(String heartbeatTimeout) {
         this.heartbeatTimeout = heartbeatTimeout;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -864,15 +867,15 @@ public class ScheduleActivityTaskDecisionAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");    	
-        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");    	
-        if (getControl() != null) sb.append("Control: " + getControl() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getScheduleToCloseTimeout() != null) sb.append("ScheduleToCloseTimeout: " + getScheduleToCloseTimeout() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getScheduleToStartTimeout() != null) sb.append("ScheduleToStartTimeout: " + getScheduleToStartTimeout() + ",");    	
-        if (getStartToCloseTimeout() != null) sb.append("StartToCloseTimeout: " + getStartToCloseTimeout() + ",");    	
+        sb.append("{");
+        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");
+        if (getActivityId() != null) sb.append("ActivityId: " + getActivityId() + ",");
+        if (getControl() != null) sb.append("Control: " + getControl() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getScheduleToCloseTimeout() != null) sb.append("ScheduleToCloseTimeout: " + getScheduleToCloseTimeout() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getScheduleToStartTimeout() != null) sb.append("ScheduleToStartTimeout: " + getScheduleToStartTimeout() + ",");
+        if (getStartToCloseTimeout() != null) sb.append("StartToCloseTimeout: " + getStartToCloseTimeout() + ",");
         if (getHeartbeatTimeout() != null) sb.append("HeartbeatTimeout: " + getHeartbeatTimeout() );
         sb.append("}");
         return sb.toString();

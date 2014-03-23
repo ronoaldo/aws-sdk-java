@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,10 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * Your request contains forward cookies option which doesn't match with the expectation for the whitelisted list of cookie names. Either list of cookie
- * names has been specified when not allowed or list of cookie names is missing when expected.
+ * Your request contains forward cookies option which doesn't match with
+ * the expectation for the whitelisted list of cookie names. Either list
+ * of cookie names has been specified when not allowed or list of cookie
+ * names is missing when expected.
  * </p>
  */        
 public class InvalidForwardCookiesException extends AmazonServiceException {

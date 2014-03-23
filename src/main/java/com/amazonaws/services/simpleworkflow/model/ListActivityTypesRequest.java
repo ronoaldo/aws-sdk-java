@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,38 +13,51 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#listActivityTypes(ListActivityTypesRequest) ListActivityTypes operation}.
  * <p>
- * Returns information about all activities registered in the specified domain that match the specified name and registration status. The result
- * includes information like creation date, current status of the activity, etc. The results may be split into multiple pages. To retrieve subsequent
- * pages, make the call again using the <code>nextPageToken</code> returned by the initial call.
+ * Returns information about all activities registered in the specified
+ * domain that match the specified name and registration status. The
+ * result includes information like creation date, current status of the
+ * activity, etc. The results may be split into multiple pages. To
+ * retrieve subsequent pages, make the call again using the
+ * <code>nextPageToken</code> returned by the initial call.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#listActivityTypes(ListActivityTypesRequest)
  */
-public class ListActivityTypesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListActivityTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which the activity types have been
@@ -143,14 +156,13 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
      *         registered.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListActivityTypesRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * If specified, only lists the activity types that have this name.
      * <p>
@@ -186,14 +198,13 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
      * @param name If specified, only lists the activity types that have this name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListActivityTypesRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Specifies the registration status of the activity types to list.
      * <p>
@@ -233,7 +244,7 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
      * @param registrationStatus Specifies the registration status of the activity types to list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -241,8 +252,7 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
         this.registrationStatus = registrationStatus;
         return this;
     }
-    
-    
+
     /**
      * Specifies the registration status of the activity types to list.
      * <p>
@@ -268,7 +278,7 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
      * @param registrationStatus Specifies the registration status of the activity types to list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -276,7 +286,7 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
         this.registrationStatus = registrationStatus.toString();
         return this;
     }
-    
+
     /**
      * If on a previous call to this method a <code>NextResultToken</code>
      * was returned, the results have more than one page. To get the next
@@ -330,14 +340,13 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
      *         and keep all other arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListActivityTypesRequest withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of results returned in each page. The default is
      * 100, but the caller can override this value to a page size
@@ -403,14 +412,13 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
      *         results than the maximumPageSize specified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListActivityTypesRequest withMaximumPageSize(Integer maximumPageSize) {
         this.maximumPageSize = maximumPageSize;
         return this;
     }
-    
-    
+
     /**
      * When set to <code>true</code>, returns the results in reverse order.
      * By default the results are returned in ascending alphabetical order of
@@ -449,14 +457,13 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
      *         the <code>name</code> of the activity types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListActivityTypesRequest withReverseOrder(Boolean reverseOrder) {
         this.reverseOrder = reverseOrder;
         return this;
     }
-    
-    
+
     /**
      * When set to <code>true</code>, returns the results in reverse order.
      * By default the results are returned in ascending alphabetical order of
@@ -469,7 +476,7 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
     public Boolean getReverseOrder() {
         return reverseOrder;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -481,12 +488,12 @@ public class ListActivityTypesRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getRegistrationStatus() != null) sb.append("RegistrationStatus: " + getRegistrationStatus() + ",");    	
-        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");    	
-        if (getMaximumPageSize() != null) sb.append("MaximumPageSize: " + getMaximumPageSize() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getRegistrationStatus() != null) sb.append("RegistrationStatus: " + getRegistrationStatus() + ",");
+        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");
+        if (getMaximumPageSize() != null) sb.append("MaximumPageSize: " + getMaximumPageSize() + ",");
         if (isReverseOrder() != null) sb.append("ReverseOrder: " + isReverseOrder() );
         sb.append("}");
         return sb.toString();

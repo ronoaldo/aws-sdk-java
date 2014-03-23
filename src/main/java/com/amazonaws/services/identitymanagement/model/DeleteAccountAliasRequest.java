@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteAccountAlias(DeleteAccountAliasRequest) DeleteAccountAlias operation}.
  * <p>
- * Deletes the specified AWS account alias. For information about using an AWS account alias, see <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/AccountAlias.html"> Using an Alias for Your AWS Account ID </a> in <i>Using AWS Identity
- * and Access Management</i> .
+ * Deletes the specified AWS account alias. For information about using
+ * an AWS account alias, see
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html"> Using an Alias for Your AWS Account ID </a>
+ * in <i>Using AWS Identity and Access Management</i> .
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteAccountAlias(DeleteAccountAliasRequest)
  */
-public class DeleteAccountAliasRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteAccountAliasRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the account alias to delete.
@@ -51,11 +54,9 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest  implemen
      * @param accountAlias Name of the account alias to delete.
      */
     public DeleteAccountAliasRequest(String accountAlias) {
-        this.accountAlias = accountAlias;
+        setAccountAlias(accountAlias);
     }
 
-    
-    
     /**
      * Name of the account alias to delete.
      * <p>
@@ -94,14 +95,13 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest  implemen
      * @param accountAlias Name of the account alias to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAccountAliasRequest withAccountAlias(String accountAlias) {
         this.accountAlias = accountAlias;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -113,7 +113,7 @@ public class DeleteAccountAliasRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAccountAlias() != null) sb.append("AccountAlias: " + getAccountAlias() );
         sb.append("}");
         return sb.toString();

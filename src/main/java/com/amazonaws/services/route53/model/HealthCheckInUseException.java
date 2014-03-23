@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,9 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * There are resource records associated with this health check. Before you can delete the health check, you must disassociate it from the resource
- * record sets.
+ * There are resource records associated with this health check. Before
+ * you can delete the health check, you must disassociate it from the
+ * resource record sets.
  * </p>
  */        
 public class HealthCheckInUseException extends AmazonServiceException {

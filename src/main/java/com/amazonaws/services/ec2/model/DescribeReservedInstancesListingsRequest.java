@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,134 +13,194 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeReservedInstancesListings(DescribeReservedInstancesListingsRequest) DescribeReservedInstancesListings operation}.
- * 
+ * <p>
+ * Describes your account's Reserved Instance listings in the Reserved
+ * Instance Marketplace.
+ * </p>
+ * <p>
+ * For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html"> Reserved Instance Marketplace </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeReservedInstancesListings(DescribeReservedInstancesListingsRequest)
  */
-public class DescribeReservedInstancesListingsRequest extends AmazonWebServiceRequest  implements Serializable  {
-
-    private String reservedInstancesId;
-
-    private String reservedInstancesListingId;
-
-    private java.util.List<Filter> filters;
+public class DescribeReservedInstancesListingsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * Returns the value of the ReservedInstancesId property for this object.
+     * One or more Reserved Instance IDs.
+     */
+    private String reservedInstancesId;
+
+    /**
+     * One or more Reserved Instance Listing IDs.
+     */
+    private String reservedInstancesListingId;
+
+    /**
+     * One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     * The ID of the Reserved Instances. </li> <li>
+     * <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     * Instances listing. </li> <li> <p><code>status</code> - The status of
+     * the Reserved Instance listing (<code>pending</code> |
+     * <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     * </li> <li> <p><code>status-message</code> - The reason for the status.
+     * </li> </ul>
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
+
+    /**
+     * One or more Reserved Instance IDs.
      *
-     * @return The value of the ReservedInstancesId property for this object.
+     * @return One or more Reserved Instance IDs.
      */
     public String getReservedInstancesId() {
         return reservedInstancesId;
     }
     
     /**
-     * Sets the value of the ReservedInstancesId property for this object.
+     * One or more Reserved Instance IDs.
      *
-     * @param reservedInstancesId The new value for the ReservedInstancesId property for this object.
+     * @param reservedInstancesId One or more Reserved Instance IDs.
      */
     public void setReservedInstancesId(String reservedInstancesId) {
         this.reservedInstancesId = reservedInstancesId;
     }
     
     /**
-     * Sets the value of the ReservedInstancesId property for this object.
+     * One or more Reserved Instance IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstancesId The new value for the ReservedInstancesId property for this object.
+     * @param reservedInstancesId One or more Reserved Instance IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesListingsRequest withReservedInstancesId(String reservedInstancesId) {
         this.reservedInstancesId = reservedInstancesId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the ReservedInstancesListingId property for this
-     * object.
+     * One or more Reserved Instance Listing IDs.
      *
-     * @return The value of the ReservedInstancesListingId property for this object.
+     * @return One or more Reserved Instance Listing IDs.
      */
     public String getReservedInstancesListingId() {
         return reservedInstancesListingId;
     }
     
     /**
-     * Sets the value of the ReservedInstancesListingId property for this
-     * object.
+     * One or more Reserved Instance Listing IDs.
      *
-     * @param reservedInstancesListingId The new value for the ReservedInstancesListingId property for this
-     *         object.
+     * @param reservedInstancesListingId One or more Reserved Instance Listing IDs.
      */
     public void setReservedInstancesListingId(String reservedInstancesListingId) {
         this.reservedInstancesListingId = reservedInstancesListingId;
     }
     
     /**
-     * Sets the value of the ReservedInstancesListingId property for this
-     * object.
+     * One or more Reserved Instance Listing IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstancesListingId The new value for the ReservedInstancesListingId property for this
-     *         object.
+     * @param reservedInstancesListingId One or more Reserved Instance Listing IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesListingsRequest withReservedInstancesListingId(String reservedInstancesListingId) {
         this.reservedInstancesListingId = reservedInstancesListingId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Filters property for this object.
+     * One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     * The ID of the Reserved Instances. </li> <li>
+     * <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     * Instances listing. </li> <li> <p><code>status</code> - The status of
+     * the Reserved Instance listing (<code>pending</code> |
+     * <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     * </li> <li> <p><code>status-message</code> - The reason for the status.
+     * </li> </ul>
      *
-     * @return The value of the Filters property for this object.
+     * @return One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     *         The ID of the Reserved Instances. </li> <li>
+     *         <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     *         Instances listing. </li> <li> <p><code>status</code> - The status of
+     *         the Reserved Instance listing (<code>pending</code> |
+     *         <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     *         </li> <li> <p><code>status-message</code> - The reason for the status.
+     *         </li> </ul>
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
     
     /**
-     * Sets the value of the Filters property for this object.
+     * One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     * The ID of the Reserved Instances. </li> <li>
+     * <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     * Instances listing. </li> <li> <p><code>status</code> - The status of
+     * the Reserved Instance listing (<code>pending</code> |
+     * <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     * </li> <li> <p><code>status-message</code> - The reason for the status.
+     * </li> </ul>
      *
-     * @param filters The new value for the Filters property for this object.
+     * @param filters One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     *         The ID of the Reserved Instances. </li> <li>
+     *         <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     *         Instances listing. </li> <li> <p><code>status</code> - The status of
+     *         the Reserved Instance listing (<code>pending</code> |
+     *         <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     *         </li> <li> <p><code>status-message</code> - The reason for the status.
+     *         </li> </ul>
      */
     public void setFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
     
     /**
-     * Sets the value of the Filters property for this object.
+     * One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     * The ID of the Reserved Instances. </li> <li>
+     * <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     * Instances listing. </li> <li> <p><code>status</code> - The status of
+     * the Reserved Instance listing (<code>pending</code> |
+     * <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     * </li> <li> <p><code>status-message</code> - The reason for the status.
+     * </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters The new value for the Filters property for this object.
+     * @param filters One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     *         The ID of the Reserved Instances. </li> <li>
+     *         <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     *         Instances listing. </li> <li> <p><code>status</code> - The status of
+     *         the Reserved Instance listing (<code>pending</code> |
+     *         <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     *         </li> <li> <p><code>status-message</code> - The reason for the status.
+     *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesListingsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -151,27 +211,41 @@ public class DescribeReservedInstancesListingsRequest extends AmazonWebServiceRe
     }
     
     /**
-     * Sets the value of the Filters property for this object.
+     * One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     * The ID of the Reserved Instances. </li> <li>
+     * <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     * Instances listing. </li> <li> <p><code>status</code> - The status of
+     * the Reserved Instance listing (<code>pending</code> |
+     * <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     * </li> <li> <p><code>status-message</code> - The reason for the status.
+     * </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters The new value for the Filters property for this object.
+     * @param filters One or more filters. <ul> <li> <p><code>reserved-instances-id</code> -
+     *         The ID of the Reserved Instances. </li> <li>
+     *         <p><code>reserved-instances-listing-id</code> - The ID of the Reserved
+     *         Instances listing. </li> <li> <p><code>status</code> - The status of
+     *         the Reserved Instance listing (<code>pending</code> |
+     *         <code>active</code> | <code>cancelled</code> | <code>closed</code>).
+     *         </li> <li> <p><code>status-message</code> - The reason for the status.
+     *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesListingsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -183,9 +257,9 @@ public class DescribeReservedInstancesListingsRequest extends AmazonWebServiceRe
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedInstancesId() != null) sb.append("ReservedInstancesId: " + getReservedInstancesId() + ",");    	
-        if (getReservedInstancesListingId() != null) sb.append("ReservedInstancesListingId: " + getReservedInstancesListingId() + ",");    	
+        sb.append("{");
+        if (getReservedInstancesId() != null) sb.append("ReservedInstancesId: " + getReservedInstancesId() + ",");
+        if (getReservedInstancesListingId() != null) sb.append("ReservedInstancesListingId: " + getReservedInstancesListingId() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

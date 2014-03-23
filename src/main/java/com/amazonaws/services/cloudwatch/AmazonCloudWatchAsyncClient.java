@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,38 +29,51 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.cloudwatch.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonCloudWatch.
  * All asynchronous calls made using this client are non-blocking. Callers could either
  * process the result and handle the exceptions in the worker thread by providing a callback handler
  * when making the call, or use the returned Future object to check the result of the call in the calling thread.
  * Amazon CloudWatch <p>
- * This is the <i>Amazon CloudWatch API Reference</i> . This guide provides detailed information about Amazon CloudWatch actions, data types, parameters,
- * and errors. For detailed information about Amazon CloudWatch features and their associated API calls, go to the <a
- * href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/DeveloperGuide"> Amazon CloudWatch Developer Guide </a> .
+ * This is the <i>Amazon CloudWatch API Reference</i> . This guide
+ * provides detailed information about Amazon CloudWatch actions, data
+ * types, parameters, and errors. For detailed information about Amazon
+ * CloudWatch features and their associated API calls, go to the
+ * <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/DeveloperGuide"> Amazon CloudWatch Developer Guide </a>
+ * .
  * </p>
  * <p>
- * Amazon CloudWatch is a web service that enables you to publish, monitor, and manage various metrics, as well as configure alarm actions based on data
- * from metrics. For more information about this product go to <a href="http://aws.amazon.com/cloudwatch"> http://aws.amazon.com/cloudwatch </a> .
+ * Amazon CloudWatch is a web service that enables you to publish,
+ * monitor, and manage various metrics, as well as configure alarm
+ * actions based on data from metrics. For more information about this
+ * product go to
+ * <a href="http://aws.amazon.com/cloudwatch"> http://aws.amazon.com/cloudwatch </a>
+ * .
  * </p>
  * <p>
- * Use the following links to get started using the <i>Amazon CloudWatch API Reference</i> :
+ * Use the following links to get started using the <i>Amazon CloudWatch
+ * API Reference</i> :
  * </p>
  * 
  * <ul>
- * <li> <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/API_Operations.html"> Actions </a> : An alphabetical list of all
- * Amazon CloudWatch actions.</li>
- * <li> <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/API_Types.html"> Data Types </a> : An alphabetical list of all
- * Amazon CloudWatch data types.</li>
- * <li> <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/CommonParameters.html"> Common Parameters </a> : Parameters that
- * all Query actions can use.</li>
- * <li> <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/CommonErrors.html"> Common Errors </a> : Client and server
- * errors that all actions can return.</li>
- * <li> <a href="http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html"> Regions and Endpoints </a> : Itemized regions and endpoints
- * for all AWS products.</li>
- * <li> <a href="http://monitoring.amazonaws.com/doc/2010-08-01/CloudWatch.wsdl"> WSDL Location </a> :
- * http://monitoring.amazonaws.com/doc/2010-08-01/CloudWatch.wsdl</li>
+ * <li>
+ * <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/API_Operations.html"> Actions </a>
+ * : An alphabetical list of all Amazon CloudWatch actions.</li>
+ * <li>
+ * <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/API_Types.html"> Data Types </a>
+ * : An alphabetical list of all Amazon CloudWatch data types.</li>
+ * <li>
+ * <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/CommonParameters.html"> Common Parameters </a>
+ * : Parameters that all Query actions can use.</li>
+ * <li>
+ * <a href="http://docs.amazonwebservices.com/AmazonCloudWatch/latest/APIReference/CommonErrors.html"> Common Errors </a>
+ * : Client and server errors that all actions can return.</li>
+ * <li>
+ * <a href="http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html"> Regions and Endpoints </a>
+ * : Itemized regions and endpoints for all AWS products.</li>
+ * <li>
+ * <a href="http://monitoring.amazonaws.com/doc/2010-08-01/CloudWatch.wsdl"> WSDL Location </a>
+ * : http://monitoring.amazonaws.com/doc/2010-08-01/CloudWatch.wsdl</li>
  * 
  * </ul>
  */
@@ -72,6 +85,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -87,7 +101,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudWatchAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -111,16 +125,16 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      *                       client connects to AmazonCloudWatch
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudWatchAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonCloudWatch using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -132,7 +146,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      *                       when authenticating with AWS services.
      */
     public AmazonCloudWatchAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -186,7 +200,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonCloudWatch using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -199,7 +213,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      *            to authenticate requests with AWS services.
      */
     public AmazonCloudWatchAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -242,7 +256,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      */
     public AmazonCloudWatchAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -271,7 +285,6 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -287,7 +300,8 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -317,6 +331,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricAlarm service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -332,11 +347,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
             public Void call() throws Exception {
                 putMetricAlarm(putMetricAlarmRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates or updates an alarm and associates it with the specified
@@ -363,6 +377,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricAlarm service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -378,16 +393,16 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		putMetricAlarm(putMetricAlarmRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(putMetricAlarmRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                putMetricAlarm(putMetricAlarmRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(putMetricAlarmRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -418,6 +433,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricData service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -433,11 +449,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
             public Void call() throws Exception {
                 putMetricData(putMetricDataRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Publishes metric data points to Amazon CloudWatch. Amazon Cloudwatch
@@ -470,6 +485,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         PutMetricData service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -485,16 +501,16 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		putMetricData(putMetricDataRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(putMetricDataRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                putMetricData(putMetricDataRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(putMetricDataRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -519,6 +535,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         ListMetrics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -533,11 +550,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
         return executorService.submit(new Callable<ListMetricsResult>() {
             public ListMetricsResult call() throws Exception {
                 return listMetrics(listMetricsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns a list of valid metrics stored for the AWS account owner.
@@ -564,6 +580,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         ListMetrics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -579,17 +596,17 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListMetricsResult>() {
             public ListMetricsResult call() throws Exception {
-            	ListMetricsResult result;
+              ListMetricsResult result;
                 try {
-            		result = listMetrics(listMetricsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listMetricsRequest, result);
-               	return result;
-		    }
-		});
+                result = listMetrics(listMetricsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listMetricsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -636,6 +653,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         GetMetricStatistics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -650,11 +668,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
         return executorService.submit(new Callable<GetMetricStatisticsResult>() {
             public GetMetricStatisticsResult call() throws Exception {
                 return getMetricStatistics(getMetricStatisticsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets statistics for the specified metric.
@@ -703,6 +720,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         GetMetricStatistics service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -718,17 +736,17 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetMetricStatisticsResult>() {
             public GetMetricStatisticsResult call() throws Exception {
-            	GetMetricStatisticsResult result;
+              GetMetricStatisticsResult result;
                 try {
-            		result = getMetricStatistics(getMetricStatisticsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getMetricStatisticsRequest, result);
-               	return result;
-		    }
-		});
+                result = getMetricStatistics(getMetricStatisticsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getMetricStatisticsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -744,6 +762,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DisableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -759,11 +778,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
             public Void call() throws Exception {
                 disableAlarmActions(disableAlarmActionsRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Disables actions for the specified alarms. When an alarm's actions
@@ -781,6 +799,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DisableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -796,16 +815,16 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		disableAlarmActions(disableAlarmActionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(disableAlarmActionsRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                disableAlarmActions(disableAlarmActionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(disableAlarmActionsRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -821,6 +840,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -835,11 +855,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
         return executorService.submit(new Callable<DescribeAlarmsResult>() {
             public DescribeAlarmsResult call() throws Exception {
                 return describeAlarms(describeAlarmsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Retrieves alarms with the specified names. If no name is specified,
@@ -857,6 +876,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -872,17 +892,17 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeAlarmsResult>() {
             public DescribeAlarmsResult call() throws Exception {
-            	DescribeAlarmsResult result;
+              DescribeAlarmsResult result;
                 try {
-            		result = describeAlarms(describeAlarmsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeAlarmsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeAlarms(describeAlarmsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeAlarmsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -898,6 +918,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * @return A Java Future object containing the response from the
      *         DescribeAlarmsForMetric service method, as returned by
      *         AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -912,11 +933,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
         return executorService.submit(new Callable<DescribeAlarmsForMetricResult>() {
             public DescribeAlarmsForMetricResult call() throws Exception {
                 return describeAlarmsForMetric(describeAlarmsForMetricRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Retrieves all alarms for a single metric. Specify a statistic,
@@ -934,6 +954,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * @return A Java Future object containing the response from the
      *         DescribeAlarmsForMetric service method, as returned by
      *         AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -949,17 +970,17 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeAlarmsForMetricResult>() {
             public DescribeAlarmsForMetricResult call() throws Exception {
-            	DescribeAlarmsForMetricResult result;
+              DescribeAlarmsForMetricResult result;
                 try {
-            		result = describeAlarmsForMetric(describeAlarmsForMetricRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeAlarmsForMetricRequest, result);
-               	return result;
-		    }
-		});
+                result = describeAlarmsForMetric(describeAlarmsForMetricRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeAlarmsForMetricRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -979,6 +1000,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarmHistory service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -993,11 +1015,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
         return executorService.submit(new Callable<DescribeAlarmHistoryResult>() {
             public DescribeAlarmHistoryResult call() throws Exception {
                 return describeAlarmHistory(describeAlarmHistoryRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Retrieves history for the specified alarm. Filter alarms by date
@@ -1019,6 +1040,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeAlarmHistory service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1034,17 +1056,17 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeAlarmHistoryResult>() {
             public DescribeAlarmHistoryResult call() throws Exception {
-            	DescribeAlarmHistoryResult result;
+              DescribeAlarmHistoryResult result;
                 try {
-            		result = describeAlarmHistory(describeAlarmHistoryRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeAlarmHistoryRequest, result);
-               	return result;
-		    }
-		});
+                result = describeAlarmHistory(describeAlarmHistoryRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeAlarmHistoryRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1058,6 +1080,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         EnableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1073,11 +1096,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
             public Void call() throws Exception {
                 enableAlarmActions(enableAlarmActionsRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Enables actions for the specified alarms.
@@ -1093,6 +1115,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         EnableAlarmActions service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1108,16 +1131,16 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		enableAlarmActions(enableAlarmActionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(enableAlarmActionsRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                enableAlarmActions(enableAlarmActionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(enableAlarmActionsRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1131,6 +1154,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1146,11 +1170,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
             public Void call() throws Exception {
                 deleteAlarms(deleteAlarmsRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes all specified alarms. In the event of an error, no alarms are
@@ -1166,6 +1189,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAlarms service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1181,16 +1205,16 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteAlarms(deleteAlarmsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteAlarmsRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteAlarms(deleteAlarmsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteAlarmsRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1207,6 +1231,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         SetAlarmState service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1222,11 +1247,10 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
             public Void call() throws Exception {
                 setAlarmState(setAlarmStateRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Temporarily sets the state of an alarm. When the updated
@@ -1245,6 +1269,7 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
      * 
      * @return A Java Future object containing the response from the
      *         SetAlarmState service method, as returned by AmazonCloudWatch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1260,16 +1285,16 @@ public class AmazonCloudWatchAsyncClient extends AmazonCloudWatchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		setAlarmState(setAlarmStateRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setAlarmStateRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                setAlarmState(setAlarmStateRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(setAlarmStateRequest, null);
+                 return null;
+        }
+    });
     }
     
 }

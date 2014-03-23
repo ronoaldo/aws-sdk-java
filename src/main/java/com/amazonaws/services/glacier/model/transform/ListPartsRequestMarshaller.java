@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class ListPartsRequestMarshaller implements Marshaller<Request<ListPartsRequest>, ListPartsRequest> {
 
-    
-
     public Request<ListPartsRequest> marshall(ListPartsRequest listPartsRequest) {
     if (listPartsRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,16 +49,14 @@ public class ListPartsRequestMarshaller implements Marshaller<Request<ListPartsR
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.GET);
 
-
         String uriResourcePath = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}?marker={marker};limit={limit}"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(listPartsRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(listPartsRequest.getVaultName())); 
-        uriResourcePath = uriResourcePath.replace("{uploadId}", getString(listPartsRequest.getUploadId())); 
-        uriResourcePath = uriResourcePath.replace("{marker}", getString(listPartsRequest.getMarker())); 
-        uriResourcePath = uriResourcePath.replace("{limit}", getString(listPartsRequest.getLimit())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (listPartsRequest.getAccountId() == null) ? "" : StringUtils.fromString(listPartsRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (listPartsRequest.getVaultName() == null) ? "" : StringUtils.fromString(listPartsRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{uploadId}", (listPartsRequest.getUploadId() == null) ? "" : StringUtils.fromString(listPartsRequest.getUploadId())); 
+        uriResourcePath = uriResourcePath.replace("{marker}", (listPartsRequest.getMarker() == null) ? "" : StringUtils.fromString(listPartsRequest.getMarker())); 
+        uriResourcePath = uriResourcePath.replace("{limit}", (listPartsRequest.getLimit() == null) ? "" : StringUtils.fromString(listPartsRequest.getLimit())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -80,16 +76,8 @@ public class ListPartsRequestMarshaller implements Marshaller<Request<ListPartsR
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

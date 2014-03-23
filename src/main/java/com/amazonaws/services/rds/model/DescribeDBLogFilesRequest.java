@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeDBLogFiles(DescribeDBLogFilesRequest) DescribeDBLogFiles operation}.
@@ -24,10 +26,10 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeDBLogFiles(DescribeDBLogFilesRequest)
  */
-public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -43,7 +45,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
 
     /**
      * Filters the available log files for files written since the specified
-     * date.
+     * date, in POSIX timestamp format.
      */
     private Long fileLastWritten;
 
@@ -69,13 +71,13 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
     private String marker;
 
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
      * consecutive hyphens</li> </ul>
      *
-     * @return The customer-assigned name of the DB Instance that contains the log
+     * @return The customer-assigned name of the DB instance that contains the log
      *         files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      *         to 63 alphanumeric characters or hyphens</li> <li>First character must
      *         be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -86,13 +88,13 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
     }
     
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
      * consecutive hyphens</li> </ul>
      *
-     * @param dBInstanceIdentifier The customer-assigned name of the DB Instance that contains the log
+     * @param dBInstanceIdentifier The customer-assigned name of the DB instance that contains the log
      *         files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      *         to 63 alphanumeric characters or hyphens</li> <li>First character must
      *         be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -103,7 +105,7 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
     }
     
     /**
-     * The customer-assigned name of the DB Instance that contains the log
+     * The customer-assigned name of the DB instance that contains the log
      * files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      * to 63 alphanumeric characters or hyphens</li> <li>First character must
      * be a letter</li> <li>Cannot end with a hyphen or contain two
@@ -111,21 +113,20 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBInstanceIdentifier The customer-assigned name of the DB Instance that contains the log
+     * @param dBInstanceIdentifier The customer-assigned name of the DB instance that contains the log
      *         files you want to list. <p>Constraints: <ul> <li>Must contain from 1
      *         to 63 alphanumeric characters or hyphens</li> <li>First character must
      *         be a letter</li> <li>Cannot end with a hyphen or contain two
      *         consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesRequest withDBInstanceIdentifier(String dBInstanceIdentifier) {
         this.dBInstanceIdentifier = dBInstanceIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Filters the available log files for log file names that contain the
      * specified string.
@@ -158,20 +159,19 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
      *         specified string.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesRequest withFilenameContains(String filenameContains) {
         this.filenameContains = filenameContains;
         return this;
     }
-    
-    
+
     /**
      * Filters the available log files for files written since the specified
-     * date.
+     * date, in POSIX timestamp format.
      *
      * @return Filters the available log files for files written since the specified
-     *         date.
+     *         date, in POSIX timestamp format.
      */
     public Long getFileLastWritten() {
         return fileLastWritten;
@@ -179,10 +179,10 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
     
     /**
      * Filters the available log files for files written since the specified
-     * date.
+     * date, in POSIX timestamp format.
      *
      * @param fileLastWritten Filters the available log files for files written since the specified
-     *         date.
+     *         date, in POSIX timestamp format.
      */
     public void setFileLastWritten(Long fileLastWritten) {
         this.fileLastWritten = fileLastWritten;
@@ -190,22 +190,21 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
     
     /**
      * Filters the available log files for files written since the specified
-     * date.
+     * date, in POSIX timestamp format.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param fileLastWritten Filters the available log files for files written since the specified
-     *         date.
+     *         date, in POSIX timestamp format.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesRequest withFileLastWritten(Long fileLastWritten) {
         this.fileLastWritten = fileLastWritten;
         return this;
     }
-    
-    
+
     /**
      * Filters the available log files for files larger than the specified
      * size.
@@ -238,14 +237,13 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
      *         size.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesRequest withFileSize(Long fileSize) {
         this.fileSize = fileSize;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified MaxRecords value, a pagination token
@@ -290,14 +288,13 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
      *         results can be retrieved.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * The pagination token provided in the previous request. If this
      * parameter is specified the response includes only records beyond the
@@ -336,14 +333,13 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
      *         marker, up to MaxRecords.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -355,12 +351,12 @@ public class DescribeDBLogFilesRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");    	
-        if (getFilenameContains() != null) sb.append("FilenameContains: " + getFilenameContains() + ",");    	
-        if (getFileLastWritten() != null) sb.append("FileLastWritten: " + getFileLastWritten() + ",");    	
-        if (getFileSize() != null) sb.append("FileSize: " + getFileSize() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+        if (getFilenameContains() != null) sb.append("FilenameContains: " + getFilenameContains() + ",");
+        if (getFileLastWritten() != null) sb.append("FileLastWritten: " + getFileLastWritten() + ",");
+        if (getFileSize() != null) sb.append("FileSize: " + getFileSize() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

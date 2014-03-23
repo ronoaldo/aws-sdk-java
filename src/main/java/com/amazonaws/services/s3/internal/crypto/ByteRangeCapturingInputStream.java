@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,14 +14,15 @@
  */
 package com.amazonaws.services.s3.internal.crypto;
 
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.amazonaws.internal.SdkFilterInputStream;
 
 /**
  * FilterInputStream that captures a range of bytes from a wrapped input stream.
  */
-public class ByteRangeCapturingInputStream extends FilterInputStream {
+public class ByteRangeCapturingInputStream extends SdkFilterInputStream {
 	private final long startingPosition;
 	private final long endingPosition;
 

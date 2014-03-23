@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A JSON object containing the GatewayARN of the gateway that was updated.
+ * A JSON object containing the of the gateway that was updated.
  * </p>
  */
-public class UpdateGatewaySoftwareNowResult  implements Serializable  {
+public class UpdateGatewaySoftwareNowResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -79,14 +80,13 @@ public class UpdateGatewaySoftwareNowResult  implements Serializable  {
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateGatewaySoftwareNowResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -98,7 +98,7 @@ public class UpdateGatewaySoftwareNowResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

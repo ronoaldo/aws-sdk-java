@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeStacks(DescribeStacksRequest) DescribeStacks operation}.
  * <p>
  * Requests a description of one or more stacks.
  * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Show, Deploy, or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeStacks(DescribeStacksRequest)
  */
-public class DescribeStacksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeStacksRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * An array of stack IDs that specify the stacks to be described. If you
      * omit this parameter, <code>DescribeStacks</code> returns a description
      * of every stack.
      */
-    private java.util.List<String> stackIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> stackIds;
 
     /**
      * An array of stack IDs that specify the stacks to be described. If you
@@ -43,9 +53,9 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
      *         of every stack.
      */
     public java.util.List<String> getStackIds() {
-        
         if (stackIds == null) {
-            stackIds = new java.util.ArrayList<String>();
+              stackIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              stackIds.setAutoConstruct(true);
         }
         return stackIds;
     }
@@ -64,8 +74,7 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
             this.stackIds = null;
             return;
         }
-
-        java.util.List<String> stackIdsCopy = new java.util.ArrayList<String>(stackIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> stackIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(stackIds.size());
         stackIdsCopy.addAll(stackIds);
         this.stackIds = stackIdsCopy;
     }
@@ -82,7 +91,7 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
      *         of every stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksRequest withStackIds(String... stackIds) {
         if (getStackIds() == null) setStackIds(new java.util.ArrayList<String>(stackIds.length));
@@ -104,20 +113,20 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
      *         of every stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksRequest withStackIds(java.util.Collection<String> stackIds) {
         if (stackIds == null) {
             this.stackIds = null;
         } else {
-            java.util.List<String> stackIdsCopy = new java.util.ArrayList<String>(stackIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> stackIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(stackIds.size());
             stackIdsCopy.addAll(stackIds);
             this.stackIds = stackIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -129,7 +138,7 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStackIds() != null) sb.append("StackIds: " + getStackIds() );
         sb.append("}");
         return sb.toString();

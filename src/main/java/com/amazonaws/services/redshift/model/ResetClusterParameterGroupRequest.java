@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#resetClusterParameterGroup(ResetClusterParameterGroupRequest) ResetClusterParameterGroup operation}.
  * <p>
- * Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to
- * "engine-default". To reset the entire parameter group specify the <i>ResetAllParameters</i> parameter. For parameter changes to take effect you must
- * reboot any associated clusters.
+ * Sets one or more parameters of the specified parameter group to their
+ * default values and sets the source values of the parameters to
+ * "engine-default". To reset the entire parameter group specify the
+ * <i>ResetAllParameters</i> parameter. For parameter changes to take
+ * effect you must reboot any associated clusters.
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#resetClusterParameterGroup(ResetClusterParameterGroupRequest)
  */
-public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the cluster parameter group to be reset.
@@ -45,7 +49,7 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
      * parameter name must be supplied. <p>Constraints: A maximum of 20
      * parameters can be reset in a single request.
      */
-    private java.util.List<Parameter> parameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parameters;
 
     /**
      * The name of the cluster parameter group to be reset.
@@ -73,14 +77,13 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
      * @param parameterGroupName The name of the cluster parameter group to be reset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetClusterParameterGroupRequest withParameterGroupName(String parameterGroupName) {
         this.parameterGroupName = parameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, all parameters in the specified parameter group
      * will be reset to their default values. <p>Default: <code>true</code>
@@ -113,14 +116,13 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
      *         will be reset to their default values. <p>Default: <code>true</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetClusterParameterGroupRequest withResetAllParameters(Boolean resetAllParameters) {
         this.resetAllParameters = resetAllParameters;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, all parameters in the specified parameter group
      * will be reset to their default values. <p>Default: <code>true</code>
@@ -131,7 +133,7 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
     public Boolean getResetAllParameters() {
         return resetAllParameters;
     }
-    
+
     /**
      * An array of names of parameters to be reset. If
      * <i>ResetAllParameters</i> option is not used, then at least one
@@ -144,9 +146,9 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
      *         parameters can be reset in a single request.
      */
     public java.util.List<Parameter> getParameters() {
-        
         if (parameters == null) {
-            parameters = new java.util.ArrayList<Parameter>();
+              parameters = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>();
+              parameters.setAutoConstruct(true);
         }
         return parameters;
     }
@@ -167,8 +169,7 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
             this.parameters = null;
             return;
         }
-
-        java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
         parametersCopy.addAll(parameters);
         this.parameters = parametersCopy;
     }
@@ -187,7 +188,7 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
      *         parameters can be reset in a single request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetClusterParameterGroupRequest withParameters(Parameter... parameters) {
         if (getParameters() == null) setParameters(new java.util.ArrayList<Parameter>(parameters.length));
@@ -211,20 +212,20 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
      *         parameters can be reset in a single request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetClusterParameterGroupRequest withParameters(java.util.Collection<Parameter> parameters) {
         if (parameters == null) {
             this.parameters = null;
         } else {
-            java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
             parametersCopy.addAll(parameters);
             this.parameters = parametersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -236,9 +237,9 @@ public class ResetClusterParameterGroupRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");    	
-        if (isResetAllParameters() != null) sb.append("ResetAllParameters: " + isResetAllParameters() + ",");    	
+        sb.append("{");
+        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");
+        if (isResetAllParameters() != null) sb.append("ResetAllParameters: " + isResetAllParameters() + ",");
         if (getParameters() != null) sb.append("Parameters: " + getParameters() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ChangeMessageVisibilityBatchRequestMarshaller implements Marshaller
     public Request<ChangeMessageVisibilityBatchRequest> marshall(ChangeMessageVisibilityBatchRequest changeMessageVisibilityBatchRequest) {
 
         if (changeMessageVisibilityBatchRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ChangeMessageVisibilityBatchRequest> request = new DefaultRequest<ChangeMessageVisibilityBatchRequest>(changeMessageVisibilityBatchRequest, "AmazonSQS");
         request.addParameter("Action", "ChangeMessageVisibilityBatch");
@@ -63,7 +63,6 @@ public class ChangeMessageVisibilityBatchRequestMarshaller implements Marshaller
 
             entriesListIndex++;
         }
-
 
         return request;
     }

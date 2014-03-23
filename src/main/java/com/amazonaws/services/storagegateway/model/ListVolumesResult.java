@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,13 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * A JSON object containing the following fields:
- * </p>
- * 
- * <ul>
- * <li> GatewayARN </li>
- * <li> ListVolumesOutput$Marker </li>
- * <li> ListVolumesOutput$VolumeInfos </li>
- * 
- * </ul>
+ * List Volumes Result
  */
-public class ListVolumesResult  implements Serializable  {
+public class ListVolumesResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -39,22 +31,9 @@ public class ListVolumesResult  implements Serializable  {
      */
     private String gatewayARN;
 
-    /**
-     * Use the marker in your next request to continue pagination of iSCSI
-     * volumes. If there are no more volumes to list, this field does not
-     * appear in the response body.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 1000<br/>
-     */
     private String marker;
 
-    /**
-     * An array of <a>VolumeInfo</a> objects, where each object describes an
-     * iSCSI volume. If no volumes are defined for the gateway, then
-     * <code>VolumeInfos</code> is an empty array "[]".
-     */
-    private java.util.List<VolumeInfo> volumeInfos;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeInfo> volumeInfos;
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -103,119 +82,92 @@ public class ListVolumesResult  implements Serializable  {
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumesResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
-     * Use the marker in your next request to continue pagination of iSCSI
-     * volumes. If there are no more volumes to list, this field does not
-     * appear in the response body.
+     * Returns the value of the Marker property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1000<br/>
      *
-     * @return Use the marker in your next request to continue pagination of iSCSI
-     *         volumes. If there are no more volumes to list, this field does not
-     *         appear in the response body.
+     * @return The value of the Marker property for this object.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * Use the marker in your next request to continue pagination of iSCSI
-     * volumes. If there are no more volumes to list, this field does not
-     * appear in the response body.
+     * Sets the value of the Marker property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1000<br/>
      *
-     * @param marker Use the marker in your next request to continue pagination of iSCSI
-     *         volumes. If there are no more volumes to list, this field does not
-     *         appear in the response body.
+     * @param marker The new value for the Marker property for this object.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * Use the marker in your next request to continue pagination of iSCSI
-     * volumes. If there are no more volumes to list, this field does not
-     * appear in the response body.
+     * Sets the value of the Marker property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1000<br/>
      *
-     * @param marker Use the marker in your next request to continue pagination of iSCSI
-     *         volumes. If there are no more volumes to list, this field does not
-     *         appear in the response body.
+     * @param marker The new value for the Marker property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * An array of <a>VolumeInfo</a> objects, where each object describes an
-     * iSCSI volume. If no volumes are defined for the gateway, then
-     * <code>VolumeInfos</code> is an empty array "[]".
+     * Returns the value of the VolumeInfos property for this object.
      *
-     * @return An array of <a>VolumeInfo</a> objects, where each object describes an
-     *         iSCSI volume. If no volumes are defined for the gateway, then
-     *         <code>VolumeInfos</code> is an empty array "[]".
+     * @return The value of the VolumeInfos property for this object.
      */
     public java.util.List<VolumeInfo> getVolumeInfos() {
-        
         if (volumeInfos == null) {
-            volumeInfos = new java.util.ArrayList<VolumeInfo>();
+              volumeInfos = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeInfo>();
+              volumeInfos.setAutoConstruct(true);
         }
         return volumeInfos;
     }
     
     /**
-     * An array of <a>VolumeInfo</a> objects, where each object describes an
-     * iSCSI volume. If no volumes are defined for the gateway, then
-     * <code>VolumeInfos</code> is an empty array "[]".
+     * Sets the value of the VolumeInfos property for this object.
      *
-     * @param volumeInfos An array of <a>VolumeInfo</a> objects, where each object describes an
-     *         iSCSI volume. If no volumes are defined for the gateway, then
-     *         <code>VolumeInfos</code> is an empty array "[]".
+     * @param volumeInfos The new value for the VolumeInfos property for this object.
      */
     public void setVolumeInfos(java.util.Collection<VolumeInfo> volumeInfos) {
         if (volumeInfos == null) {
             this.volumeInfos = null;
             return;
         }
-
-        java.util.List<VolumeInfo> volumeInfosCopy = new java.util.ArrayList<VolumeInfo>(volumeInfos.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeInfo> volumeInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeInfo>(volumeInfos.size());
         volumeInfosCopy.addAll(volumeInfos);
         this.volumeInfos = volumeInfosCopy;
     }
     
     /**
-     * An array of <a>VolumeInfo</a> objects, where each object describes an
-     * iSCSI volume. If no volumes are defined for the gateway, then
-     * <code>VolumeInfos</code> is an empty array "[]".
+     * Sets the value of the VolumeInfos property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeInfos An array of <a>VolumeInfo</a> objects, where each object describes an
-     *         iSCSI volume. If no volumes are defined for the gateway, then
-     *         <code>VolumeInfos</code> is an empty array "[]".
+     * @param volumeInfos The new value for the VolumeInfos property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumesResult withVolumeInfos(VolumeInfo... volumeInfos) {
         if (getVolumeInfos() == null) setVolumeInfos(new java.util.ArrayList<VolumeInfo>(volumeInfos.length));
@@ -226,31 +178,27 @@ public class ListVolumesResult  implements Serializable  {
     }
     
     /**
-     * An array of <a>VolumeInfo</a> objects, where each object describes an
-     * iSCSI volume. If no volumes are defined for the gateway, then
-     * <code>VolumeInfos</code> is an empty array "[]".
+     * Sets the value of the VolumeInfos property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeInfos An array of <a>VolumeInfo</a> objects, where each object describes an
-     *         iSCSI volume. If no volumes are defined for the gateway, then
-     *         <code>VolumeInfos</code> is an empty array "[]".
+     * @param volumeInfos The new value for the VolumeInfos property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumesResult withVolumeInfos(java.util.Collection<VolumeInfo> volumeInfos) {
         if (volumeInfos == null) {
             this.volumeInfos = null;
         } else {
-            java.util.List<VolumeInfo> volumeInfosCopy = new java.util.ArrayList<VolumeInfo>(volumeInfos.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeInfo> volumeInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeInfo>(volumeInfos.size());
             volumeInfosCopy.addAll(volumeInfos);
             this.volumeInfos = volumeInfosCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -262,9 +210,9 @@ public class ListVolumesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getVolumeInfos() != null) sb.append("VolumeInfos: " + getVolumeInfos() );
         sb.append("}");
         return sb.toString();

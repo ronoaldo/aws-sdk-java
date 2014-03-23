@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,113 +13,99 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing an EBS snapshot attribute.
- * </p>
+ * 
  */
-public class DescribeSnapshotAttributeResult  implements Serializable  {
+public class DescribeSnapshotAttributeResult implements Serializable {
 
     /**
-     * The ID of the snapshot whose attribute is being described.
+     * The ID of the Amazon EBS snapshot.
      */
     private String snapshotId;
 
     /**
-     * The list of permissions describing who can create a volume from the
-     * associated EBS snapshot. <p> Only available if the
-     * createVolumePermission attribute is requested.
+     * A list of permissions for creating volumes from the snapshot.
      */
-    private java.util.List<CreateVolumePermission> createVolumePermissions;
-
-    private java.util.List<ProductCode> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> createVolumePermissions;
 
     /**
-     * The ID of the snapshot whose attribute is being described.
+     * A list of product codes.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodes;
+
+    /**
+     * The ID of the Amazon EBS snapshot.
      *
-     * @return The ID of the snapshot whose attribute is being described.
+     * @return The ID of the Amazon EBS snapshot.
      */
     public String getSnapshotId() {
         return snapshotId;
     }
     
     /**
-     * The ID of the snapshot whose attribute is being described.
+     * The ID of the Amazon EBS snapshot.
      *
-     * @param snapshotId The ID of the snapshot whose attribute is being described.
+     * @param snapshotId The ID of the Amazon EBS snapshot.
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
     }
     
     /**
-     * The ID of the snapshot whose attribute is being described.
+     * The ID of the Amazon EBS snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param snapshotId The ID of the snapshot whose attribute is being described.
+     * @param snapshotId The ID of the Amazon EBS snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
-     * The list of permissions describing who can create a volume from the
-     * associated EBS snapshot. <p> Only available if the
-     * createVolumePermission attribute is requested.
+     * A list of permissions for creating volumes from the snapshot.
      *
-     * @return The list of permissions describing who can create a volume from the
-     *         associated EBS snapshot. <p> Only available if the
-     *         createVolumePermission attribute is requested.
+     * @return A list of permissions for creating volumes from the snapshot.
      */
     public java.util.List<CreateVolumePermission> getCreateVolumePermissions() {
-        
         if (createVolumePermissions == null) {
-            createVolumePermissions = new java.util.ArrayList<CreateVolumePermission>();
+              createVolumePermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>();
+              createVolumePermissions.setAutoConstruct(true);
         }
         return createVolumePermissions;
     }
     
     /**
-     * The list of permissions describing who can create a volume from the
-     * associated EBS snapshot. <p> Only available if the
-     * createVolumePermission attribute is requested.
+     * A list of permissions for creating volumes from the snapshot.
      *
-     * @param createVolumePermissions The list of permissions describing who can create a volume from the
-     *         associated EBS snapshot. <p> Only available if the
-     *         createVolumePermission attribute is requested.
+     * @param createVolumePermissions A list of permissions for creating volumes from the snapshot.
      */
     public void setCreateVolumePermissions(java.util.Collection<CreateVolumePermission> createVolumePermissions) {
         if (createVolumePermissions == null) {
             this.createVolumePermissions = null;
             return;
         }
-
-        java.util.List<CreateVolumePermission> createVolumePermissionsCopy = new java.util.ArrayList<CreateVolumePermission>(createVolumePermissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> createVolumePermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(createVolumePermissions.size());
         createVolumePermissionsCopy.addAll(createVolumePermissions);
         this.createVolumePermissions = createVolumePermissionsCopy;
     }
     
     /**
-     * The list of permissions describing who can create a volume from the
-     * associated EBS snapshot. <p> Only available if the
-     * createVolumePermission attribute is requested.
+     * A list of permissions for creating volumes from the snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param createVolumePermissions The list of permissions describing who can create a volume from the
-     *         associated EBS snapshot. <p> Only available if the
-     *         createVolumePermission attribute is requested.
+     * @param createVolumePermissions A list of permissions for creating volumes from the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withCreateVolumePermissions(CreateVolumePermission... createVolumePermissions) {
         if (getCreateVolumePermissions() == null) setCreateVolumePermissions(new java.util.ArrayList<CreateVolumePermission>(createVolumePermissions.length));
@@ -130,69 +116,64 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
     }
     
     /**
-     * The list of permissions describing who can create a volume from the
-     * associated EBS snapshot. <p> Only available if the
-     * createVolumePermission attribute is requested.
+     * A list of permissions for creating volumes from the snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param createVolumePermissions The list of permissions describing who can create a volume from the
-     *         associated EBS snapshot. <p> Only available if the
-     *         createVolumePermission attribute is requested.
+     * @param createVolumePermissions A list of permissions for creating volumes from the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withCreateVolumePermissions(java.util.Collection<CreateVolumePermission> createVolumePermissions) {
         if (createVolumePermissions == null) {
             this.createVolumePermissions = null;
         } else {
-            java.util.List<CreateVolumePermission> createVolumePermissionsCopy = new java.util.ArrayList<CreateVolumePermission>(createVolumePermissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission> createVolumePermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateVolumePermission>(createVolumePermissions.size());
             createVolumePermissionsCopy.addAll(createVolumePermissions);
             this.createVolumePermissions = createVolumePermissionsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the ProductCodes property for this object.
+     * A list of product codes.
      *
-     * @return The value of the ProductCodes property for this object.
+     * @return A list of product codes.
      */
     public java.util.List<ProductCode> getProductCodes() {
-        
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<ProductCode>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
     
     /**
-     * Sets the value of the ProductCodes property for this object.
+     * A list of product codes.
      *
-     * @param productCodes The new value for the ProductCodes property for this object.
+     * @param productCodes A list of product codes.
      */
     public void setProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
     
     /**
-     * Sets the value of the ProductCodes property for this object.
+     * A list of product codes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCodes The new value for the ProductCodes property for this object.
+     * @param productCodes A list of product codes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withProductCodes(ProductCode... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<ProductCode>(productCodes.length));
@@ -203,27 +184,27 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ProductCodes property for this object.
+     * A list of product codes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCodes The new value for the ProductCodes property for this object.
+     * @param productCodes A list of product codes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSnapshotAttributeResult withProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -235,9 +216,9 @@ public class DescribeSnapshotAttributeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getCreateVolumePermissions() != null) sb.append("CreateVolumePermissions: " + getCreateVolumePermissions() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getCreateVolumePermissions() != null) sb.append("CreateVolumePermissions: " + getCreateVolumePermissions() + ",");
         if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() );
         sb.append("}");
         return sb.toString();

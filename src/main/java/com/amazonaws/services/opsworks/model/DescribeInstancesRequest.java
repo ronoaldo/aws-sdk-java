@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeInstances(DescribeInstancesRequest) DescribeInstances operation}.
  * <p>
- * Requests a description of a set of instances associated with a specified ID or IDs.
+ * Requests a description of a set of instances.
+ * </p>
+ * <p>
+ * <b>NOTE:</b>You must specify at least one of the parameters.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Show, Deploy, or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeInstances(DescribeInstancesRequest)
  */
-public class DescribeInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeInstancesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A stack ID. If you use this parameter, <code>DescribeInstances</code>
@@ -45,7 +58,7 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
      * <code>DescribeInstances</code> returns a description of the specified
      * instances. Otherwise, it returns a description of every instance.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     /**
      * A stack ID. If you use this parameter, <code>DescribeInstances</code>
@@ -85,14 +98,13 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
      *         stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesRequest withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * A layer ID. If you use this parameter, <code>DescribeInstances</code>
      * returns descriptions of the instances associated with the specified
@@ -131,14 +143,13 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
      *         layer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesRequest withLayerId(String layerId) {
         this.layerId = layerId;
         return this;
     }
-    
-    
+
     /**
      * An array of instance IDs to be described. If you use this parameter,
      * <code>DescribeInstances</code> returns a description of the specified
@@ -149,9 +160,9 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
      *         instances. Otherwise, it returns a description of every instance.
      */
     public java.util.List<String> getInstanceIds() {
-        
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
@@ -170,8 +181,7 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
@@ -188,7 +198,7 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
      *         instances. Otherwise, it returns a description of every instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesRequest withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -210,20 +220,20 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
      *         instances. Otherwise, it returns a description of every instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesRequest withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -235,9 +245,9 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");    	
+        sb.append("{");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");
         if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() );
         sb.append("}");
         return sb.toString();

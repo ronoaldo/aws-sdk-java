@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a placement group into which multiple Amazon EC2 instances can be launched. A placement group ensures that Amazon EC2 instances are
- * physically located close enough to support HPC features, such as higher IO network connections between instances in the group.
+ * Describes a placement group.
  * </p>
  */
-public class PlacementGroup  implements Serializable  {
+public class PlacementGroup implements Serializable {
 
     /**
-     * The name of this <code>PlacementGroup</code>.
+     * The name of the placement group.
      */
     private String groupName;
 
     /**
-     * The strategy to use when allocating Amazon EC2 instances for the
-     * <code>PlacementGroup</code>.
+     * The placement strategy.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cluster
@@ -38,7 +37,7 @@ public class PlacementGroup  implements Serializable  {
     private String strategy;
 
     /**
-     * The state of this <code>PlacementGroup</code>.
+     * The state of the placement group.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, available, deleting, deleted
@@ -56,57 +55,52 @@ public class PlacementGroup  implements Serializable  {
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param groupName The name of this <code>PlacementGroup</code>.
+     * @param groupName The name of the placement group.
      */
     public PlacementGroup(String groupName) {
-        this.groupName = groupName;
+        setGroupName(groupName);
     }
 
-    
-    
     /**
-     * The name of this <code>PlacementGroup</code>.
+     * The name of the placement group.
      *
-     * @return The name of this <code>PlacementGroup</code>.
+     * @return The name of the placement group.
      */
     public String getGroupName() {
         return groupName;
     }
     
     /**
-     * The name of this <code>PlacementGroup</code>.
+     * The name of the placement group.
      *
-     * @param groupName The name of this <code>PlacementGroup</code>.
+     * @param groupName The name of the placement group.
      */
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
     
     /**
-     * The name of this <code>PlacementGroup</code>.
+     * The name of the placement group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupName The name of this <code>PlacementGroup</code>.
+     * @param groupName The name of the placement group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PlacementGroup withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
-     * The strategy to use when allocating Amazon EC2 instances for the
-     * <code>PlacementGroup</code>.
+     * The placement strategy.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cluster
      *
-     * @return The strategy to use when allocating Amazon EC2 instances for the
-     *         <code>PlacementGroup</code>.
+     * @return The placement strategy.
      *
      * @see PlacementStrategy
      */
@@ -115,14 +109,12 @@ public class PlacementGroup  implements Serializable  {
     }
     
     /**
-     * The strategy to use when allocating Amazon EC2 instances for the
-     * <code>PlacementGroup</code>.
+     * The placement strategy.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cluster
      *
-     * @param strategy The strategy to use when allocating Amazon EC2 instances for the
-     *         <code>PlacementGroup</code>.
+     * @param strategy The placement strategy.
      *
      * @see PlacementStrategy
      */
@@ -131,19 +123,17 @@ public class PlacementGroup  implements Serializable  {
     }
     
     /**
-     * The strategy to use when allocating Amazon EC2 instances for the
-     * <code>PlacementGroup</code>.
+     * The placement strategy.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cluster
      *
-     * @param strategy The strategy to use when allocating Amazon EC2 instances for the
-     *         <code>PlacementGroup</code>.
+     * @param strategy The placement strategy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementStrategy
      */
@@ -151,17 +141,14 @@ public class PlacementGroup  implements Serializable  {
         this.strategy = strategy;
         return this;
     }
-    
-    
+
     /**
-     * The strategy to use when allocating Amazon EC2 instances for the
-     * <code>PlacementGroup</code>.
+     * The placement strategy.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cluster
      *
-     * @param strategy The strategy to use when allocating Amazon EC2 instances for the
-     *         <code>PlacementGroup</code>.
+     * @param strategy The placement strategy.
      *
      * @see PlacementStrategy
      */
@@ -170,19 +157,17 @@ public class PlacementGroup  implements Serializable  {
     }
     
     /**
-     * The strategy to use when allocating Amazon EC2 instances for the
-     * <code>PlacementGroup</code>.
+     * The placement strategy.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cluster
      *
-     * @param strategy The strategy to use when allocating Amazon EC2 instances for the
-     *         <code>PlacementGroup</code>.
+     * @param strategy The placement strategy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementStrategy
      */
@@ -190,14 +175,14 @@ public class PlacementGroup  implements Serializable  {
         this.strategy = strategy.toString();
         return this;
     }
-    
+
     /**
-     * The state of this <code>PlacementGroup</code>.
+     * The state of the placement group.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @return The state of this <code>PlacementGroup</code>.
+     * @return The state of the placement group.
      *
      * @see PlacementGroupState
      */
@@ -206,12 +191,12 @@ public class PlacementGroup  implements Serializable  {
     }
     
     /**
-     * The state of this <code>PlacementGroup</code>.
+     * The state of the placement group.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state The state of this <code>PlacementGroup</code>.
+     * @param state The state of the placement group.
      *
      * @see PlacementGroupState
      */
@@ -220,17 +205,17 @@ public class PlacementGroup  implements Serializable  {
     }
     
     /**
-     * The state of this <code>PlacementGroup</code>.
+     * The state of the placement group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state The state of this <code>PlacementGroup</code>.
+     * @param state The state of the placement group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementGroupState
      */
@@ -238,15 +223,14 @@ public class PlacementGroup  implements Serializable  {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
-     * The state of this <code>PlacementGroup</code>.
+     * The state of the placement group.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state The state of this <code>PlacementGroup</code>.
+     * @param state The state of the placement group.
      *
      * @see PlacementGroupState
      */
@@ -255,17 +239,17 @@ public class PlacementGroup  implements Serializable  {
     }
     
     /**
-     * The state of this <code>PlacementGroup</code>.
+     * The state of the placement group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state The state of this <code>PlacementGroup</code>.
+     * @param state The state of the placement group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see PlacementGroupState
      */
@@ -273,7 +257,7 @@ public class PlacementGroup  implements Serializable  {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -285,9 +269,9 @@ public class PlacementGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getStrategy() != null) sb.append("Strategy: " + getStrategy() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getStrategy() != null) sb.append("Strategy: " + getStrategy() + ",");
         if (getState() != null) sb.append("State: " + getState() );
         sb.append("}");
         return sb.toString();

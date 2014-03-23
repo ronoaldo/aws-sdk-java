@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,13 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
+
 import java.io.Serializable;
 
 /**
  * Domain Metadata Result
  */
-public class DomainMetadataResult  implements Serializable  {
+public class DomainMetadataResult implements Serializable {
 
     /**
      * The number of all items in the domain.
@@ -82,14 +83,13 @@ public class DomainMetadataResult  implements Serializable  {
      * @param itemCount The number of all items in the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataResult withItemCount(Integer itemCount) {
         this.itemCount = itemCount;
         return this;
     }
-    
-    
+
     /**
      * The total size of all item names in the domain, in bytes.
      *
@@ -116,14 +116,13 @@ public class DomainMetadataResult  implements Serializable  {
      * @param itemNamesSizeBytes The total size of all item names in the domain, in bytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataResult withItemNamesSizeBytes(Long itemNamesSizeBytes) {
         this.itemNamesSizeBytes = itemNamesSizeBytes;
         return this;
     }
-    
-    
+
     /**
      * The number of unique attribute names in the domain.
      *
@@ -150,14 +149,13 @@ public class DomainMetadataResult  implements Serializable  {
      * @param attributeNameCount The number of unique attribute names in the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataResult withAttributeNameCount(Integer attributeNameCount) {
         this.attributeNameCount = attributeNameCount;
         return this;
     }
-    
-    
+
     /**
      * The total size of all unique attribute names in the domain, in bytes.
      *
@@ -184,14 +182,13 @@ public class DomainMetadataResult  implements Serializable  {
      * @param attributeNamesSizeBytes The total size of all unique attribute names in the domain, in bytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataResult withAttributeNamesSizeBytes(Long attributeNamesSizeBytes) {
         this.attributeNamesSizeBytes = attributeNamesSizeBytes;
         return this;
     }
-    
-    
+
     /**
      * The number of all attribute name/value pairs in the domain.
      *
@@ -218,14 +215,13 @@ public class DomainMetadataResult  implements Serializable  {
      * @param attributeValueCount The number of all attribute name/value pairs in the domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataResult withAttributeValueCount(Integer attributeValueCount) {
         this.attributeValueCount = attributeValueCount;
         return this;
     }
-    
-    
+
     /**
      * The total size of all attribute values in the domain, in bytes.
      *
@@ -252,14 +248,13 @@ public class DomainMetadataResult  implements Serializable  {
      * @param attributeValuesSizeBytes The total size of all attribute values in the domain, in bytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataResult withAttributeValuesSizeBytes(Long attributeValuesSizeBytes) {
         this.attributeValuesSizeBytes = attributeValuesSizeBytes;
         return this;
     }
-    
-    
+
     /**
      * The data and time when metadata was calculated, in Epoch (UNIX)
      * seconds.
@@ -292,14 +287,13 @@ public class DomainMetadataResult  implements Serializable  {
      *         seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainMetadataResult withTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -311,13 +305,13 @@ public class DomainMetadataResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getItemCount() != null) sb.append("ItemCount: " + getItemCount() + ",");    	
-        if (getItemNamesSizeBytes() != null) sb.append("ItemNamesSizeBytes: " + getItemNamesSizeBytes() + ",");    	
-        if (getAttributeNameCount() != null) sb.append("AttributeNameCount: " + getAttributeNameCount() + ",");    	
-        if (getAttributeNamesSizeBytes() != null) sb.append("AttributeNamesSizeBytes: " + getAttributeNamesSizeBytes() + ",");    	
-        if (getAttributeValueCount() != null) sb.append("AttributeValueCount: " + getAttributeValueCount() + ",");    	
-        if (getAttributeValuesSizeBytes() != null) sb.append("AttributeValuesSizeBytes: " + getAttributeValuesSizeBytes() + ",");    	
+        sb.append("{");
+        if (getItemCount() != null) sb.append("ItemCount: " + getItemCount() + ",");
+        if (getItemNamesSizeBytes() != null) sb.append("ItemNamesSizeBytes: " + getItemNamesSizeBytes() + ",");
+        if (getAttributeNameCount() != null) sb.append("AttributeNameCount: " + getAttributeNameCount() + ",");
+        if (getAttributeNamesSizeBytes() != null) sb.append("AttributeNamesSizeBytes: " + getAttributeNamesSizeBytes() + ",");
+        if (getAttributeValueCount() != null) sb.append("AttributeValueCount: " + getAttributeValueCount() + ",");
+        if (getAttributeValuesSizeBytes() != null) sb.append("AttributeValuesSizeBytes: " + getAttributeValuesSizeBytes() + ",");
         if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() );
         sb.append("}");
         return sb.toString();

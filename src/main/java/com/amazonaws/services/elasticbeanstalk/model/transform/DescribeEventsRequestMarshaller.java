@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeEventsRequestMarshaller implements Marshaller<Request<Descr
     public Request<DescribeEventsRequest> marshall(DescribeEventsRequest describeEventsRequest) {
 
         if (describeEventsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeEventsRequest> request = new DefaultRequest<DescribeEventsRequest>(describeEventsRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "DescribeEvents");
@@ -73,7 +73,6 @@ public class DescribeEventsRequestMarshaller implements Marshaller<Request<Descr
         if (describeEventsRequest.getNextToken() != null) {
             request.addParameter("NextToken", StringUtils.fromString(describeEventsRequest.getNextToken()));
         }
-
 
         return request;
     }

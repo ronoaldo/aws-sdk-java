@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The value of an <code>IndexField</code> and its current status.
  * </p>
  */
-public class IndexFieldStatus  implements Serializable  {
+public class IndexFieldStatus implements Serializable {
 
     /**
      * Defines a field in the index, including its name, type, and the source
@@ -80,14 +81,13 @@ public class IndexFieldStatus  implements Serializable  {
      *         other than the <code>IndexFieldType</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexFieldStatus withOptions(IndexField options) {
         this.options = options;
         return this;
     }
-    
-    
+
     /**
      * The status of an option, including when it was last updated and
      * whether it is actively in use for searches.
@@ -120,14 +120,13 @@ public class IndexFieldStatus  implements Serializable  {
      *         whether it is actively in use for searches.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexFieldStatus withStatus(OptionStatus status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -139,8 +138,8 @@ public class IndexFieldStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");    	
+        sb.append("{");
+        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

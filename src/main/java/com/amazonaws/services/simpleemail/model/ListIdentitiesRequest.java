@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#listIdentities(ListIdentitiesRequest) ListIdentities operation}.
  * <p>
- * Returns a list containing all of the identities (email addresses and domains) for a specific AWS Account, regardless of verification status.
+ * Returns a list containing all of the identities (email addresses and
+ * domains) for a specific AWS Account, regardless of verification
+ * status.
+ * </p>
+ * <p>
+ * This action is throttled at one request per second.
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#listIdentities(ListIdentitiesRequest)
  */
-public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListIdentitiesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The type of the identities to list. Possible values are "EmailAddress"
@@ -98,7 +105,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      *         be listed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see IdentityType
      */
@@ -106,8 +113,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
         this.identityType = identityType;
         return this;
     }
-    
-    
+
     /**
      * The type of the identities to list. Possible values are "EmailAddress"
      * and "Domain". If this parameter is omitted, then all identities will
@@ -141,7 +147,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      *         be listed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see IdentityType
      */
@@ -149,7 +155,7 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
         this.identityType = identityType.toString();
         return this;
     }
-    
+
     /**
      * The token to use for pagination.
      *
@@ -176,14 +182,13 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      * @param nextToken The token to use for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListIdentitiesRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of identities per page. Possible values are 1-100
      * inclusive.
@@ -216,14 +221,13 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
      *         inclusive.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListIdentitiesRequest withMaxItems(Integer maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -235,9 +239,9 @@ public class ListIdentitiesRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentityType() != null) sb.append("IdentityType: " + getIdentityType() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getIdentityType() != null) sb.append("IdentityType: " + getIdentityType() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

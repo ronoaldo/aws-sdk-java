@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a gateway's network interface.
  * </p>
  */
-public class NetworkInterface  implements Serializable  {
+public class NetworkInterface implements Serializable {
 
     /**
      * The Internet Protocol version 4 (IPv4) address of the interface.
@@ -65,14 +66,13 @@ public class NetworkInterface  implements Serializable  {
      * @param ipv4Address The Internet Protocol version 4 (IPv4) address of the interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withIpv4Address(String ipv4Address) {
         this.ipv4Address = ipv4Address;
         return this;
     }
-    
-    
+
     /**
      * The Media Access Control (MAC) address of the interface. <note>This is
      * currently unsupported and will not be returned in output.</note>
@@ -105,14 +105,13 @@ public class NetworkInterface  implements Serializable  {
      *         currently unsupported and will not be returned in output.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withMacAddress(String macAddress) {
         this.macAddress = macAddress;
         return this;
     }
-    
-    
+
     /**
      * The Internet Protocol version 6 (IPv6) address of the interface.
      * <i>Currently not supported</i>.
@@ -145,14 +144,13 @@ public class NetworkInterface  implements Serializable  {
      *         <i>Currently not supported</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterface withIpv6Address(String ipv6Address) {
         this.ipv6Address = ipv6Address;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -164,9 +162,9 @@ public class NetworkInterface  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIpv4Address() != null) sb.append("Ipv4Address: " + getIpv4Address() + ",");    	
-        if (getMacAddress() != null) sb.append("MacAddress: " + getMacAddress() + ",");    	
+        sb.append("{");
+        if (getIpv4Address() != null) sb.append("Ipv4Address: " + getIpv4Address() + ",");
+        if (getMacAddress() != null) sb.append("MacAddress: " + getMacAddress() + ",");
         if (getIpv6Address() != null) sb.append("Ipv6Address: " + getIpv6Address() );
         sb.append("}");
         return sb.toString();

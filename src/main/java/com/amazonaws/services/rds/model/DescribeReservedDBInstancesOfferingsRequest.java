@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeReservedDBInstancesOfferings(DescribeReservedDBInstancesOfferingsRequest) DescribeReservedDBInstancesOfferings operation}.
  * <p>
- * Lists available reserved DB Instance offerings.
+ * Lists available reserved DB instance offerings.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeReservedDBInstancesOfferings(DescribeReservedDBInstancesOfferingsRequest)
  */
-public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The offering identifier filter value. Specify this parameter to show
@@ -35,8 +37,8 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
     private String reservedDBInstancesOfferingId;
 
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      */
     private String dBInstanceClass;
 
@@ -133,54 +135,52 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
      *         <code>438012d3-4052-4cc7-b2e3-8d3372e0e706</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withReservedDBInstancesOfferingId(String reservedDBInstancesOfferingId) {
         this.reservedDBInstancesOfferingId = reservedDBInstancesOfferingId;
         return this;
     }
-    
-    
+
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      *
-     * @return The DB Instance class filter value. Specify this parameter to show
-     *         only the available offerings matching the specified DB Instance class.
+     * @return The DB instance class filter value. Specify this parameter to show
+     *         only the available offerings matching the specified DB instance class.
      */
     public String getDBInstanceClass() {
         return dBInstanceClass;
     }
     
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      *
-     * @param dBInstanceClass The DB Instance class filter value. Specify this parameter to show
-     *         only the available offerings matching the specified DB Instance class.
+     * @param dBInstanceClass The DB instance class filter value. Specify this parameter to show
+     *         only the available offerings matching the specified DB instance class.
      */
     public void setDBInstanceClass(String dBInstanceClass) {
         this.dBInstanceClass = dBInstanceClass;
     }
     
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBInstanceClass The DB Instance class filter value. Specify this parameter to show
-     *         only the available offerings matching the specified DB Instance class.
+     * @param dBInstanceClass The DB instance class filter value. Specify this parameter to show
+     *         only the available offerings matching the specified DB instance class.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withDBInstanceClass(String dBInstanceClass) {
         this.dBInstanceClass = dBInstanceClass;
         return this;
     }
-    
-    
+
     /**
      * Duration filter value, specified in years or seconds. Specify this
      * parameter to show only reservations for this duration. <p>Valid
@@ -219,14 +219,13 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
      *         Values: <code>1 | 3 | 31536000 | 94608000</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withDuration(String duration) {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
      * Product description filter value. Specify this parameter to show only
      * the available offerings matching the specified product description.
@@ -259,14 +258,13 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
      *         the available offerings matching the specified product description.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withProductDescription(String productDescription) {
         this.productDescription = productDescription;
         return this;
     }
-    
-    
+
     /**
      * The offering type filter value. Specify this parameter to show only
      * the available offerings matching the specified offering type. <p>Valid
@@ -311,14 +309,13 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
      *         Utilization" </code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withOfferingType(String offeringType) {
         this.offeringType = offeringType;
         return this;
     }
-    
-    
+
     /**
      * The Multi-AZ filter value. Specify this parameter to show only the
      * available offerings matching the specified Multi-AZ parameter.
@@ -351,14 +348,13 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
      *         available offerings matching the specified Multi-AZ parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withMultiAZ(Boolean multiAZ) {
         this.multiAZ = multiAZ;
         return this;
     }
-    
-    
+
     /**
      * The Multi-AZ filter value. Specify this parameter to show only the
      * available offerings matching the specified Multi-AZ parameter.
@@ -369,7 +365,7 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
     public Boolean getMultiAZ() {
         return multiAZ;
     }
-    
+
     /**
      * The maximum number of records to include in the response. If more than
      * the <code>MaxRecords</code> value is available, a pagination token
@@ -420,14 +416,13 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
      *         maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the
@@ -466,14 +461,13 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -485,14 +479,14 @@ public class DescribeReservedDBInstancesOfferingsRequest extends AmazonWebServic
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedDBInstancesOfferingId() != null) sb.append("ReservedDBInstancesOfferingId: " + getReservedDBInstancesOfferingId() + ",");    	
-        if (getDBInstanceClass() != null) sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");    	
-        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");    	
-        if (isMultiAZ() != null) sb.append("MultiAZ: " + isMultiAZ() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getReservedDBInstancesOfferingId() != null) sb.append("ReservedDBInstancesOfferingId: " + getReservedDBInstancesOfferingId() + ",");
+        if (getDBInstanceClass() != null) sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");
+        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");
+        if (isMultiAZ() != null) sb.append("MultiAZ: " + isMultiAZ() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

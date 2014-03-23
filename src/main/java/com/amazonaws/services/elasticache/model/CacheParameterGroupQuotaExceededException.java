@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * Request would result in user exceeding the allowed number of Cache Parameter Groups.
+ * The request cannot be processed because it would exceed the maximum
+ * number of cache security groups.
  * </p>
  */        
 public class CacheParameterGroupQuotaExceededException extends AmazonServiceException {

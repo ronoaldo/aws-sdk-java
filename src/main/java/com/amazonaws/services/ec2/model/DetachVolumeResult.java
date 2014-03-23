@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,61 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of detaching an EBS volume from an instance.
- * </p>
+ * 
  */
-public class DetachVolumeResult  implements Serializable  {
+public class DetachVolumeResult implements Serializable {
 
     /**
-     * The updated EBS volume attachment information after trying to detach
-     * the volume from the specified instance.
+     * 
      */
     private VolumeAttachment attachment;
 
     /**
-     * The updated EBS volume attachment information after trying to detach
-     * the volume from the specified instance.
+     * 
      *
-     * @return The updated EBS volume attachment information after trying to detach
-     *         the volume from the specified instance.
+     * @return 
      */
     public VolumeAttachment getAttachment() {
         return attachment;
     }
     
     /**
-     * The updated EBS volume attachment information after trying to detach
-     * the volume from the specified instance.
+     * 
      *
-     * @param attachment The updated EBS volume attachment information after trying to detach
-     *         the volume from the specified instance.
+     * @param attachment 
      */
     public void setAttachment(VolumeAttachment attachment) {
         this.attachment = attachment;
     }
     
     /**
-     * The updated EBS volume attachment information after trying to detach
-     * the volume from the specified instance.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attachment The updated EBS volume attachment information after trying to detach
-     *         the volume from the specified instance.
+     * @param attachment 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachVolumeResult withAttachment(VolumeAttachment attachment) {
         this.attachment = attachment;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +70,7 @@ public class DetachVolumeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttachment() != null) sb.append("Attachment: " + getAttachment() );
         sb.append("}");
         return sb.toString();

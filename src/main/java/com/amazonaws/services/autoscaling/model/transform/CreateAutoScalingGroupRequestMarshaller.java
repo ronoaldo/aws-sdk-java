@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateAutoScalingGroupRequestMarshaller implements Marshaller<Reque
     public Request<CreateAutoScalingGroupRequest> marshall(CreateAutoScalingGroupRequest createAutoScalingGroupRequest) {
 
         if (createAutoScalingGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateAutoScalingGroupRequest> request = new DefaultRequest<CreateAutoScalingGroupRequest>(createAutoScalingGroupRequest, "AmazonAutoScaling");
         request.addParameter("Action", "CreateAutoScalingGroup");
@@ -45,6 +45,9 @@ public class CreateAutoScalingGroupRequestMarshaller implements Marshaller<Reque
         }
         if (createAutoScalingGroupRequest.getLaunchConfigurationName() != null) {
             request.addParameter("LaunchConfigurationName", StringUtils.fromString(createAutoScalingGroupRequest.getLaunchConfigurationName()));
+        }
+        if (createAutoScalingGroupRequest.getInstanceId() != null) {
+            request.addParameter("InstanceId", StringUtils.fromString(createAutoScalingGroupRequest.getInstanceId()));
         }
         if (createAutoScalingGroupRequest.getMinSize() != null) {
             request.addParameter("MinSize", StringUtils.fromInteger(createAutoScalingGroupRequest.getMinSize()));
@@ -129,7 +132,6 @@ public class CreateAutoScalingGroupRequestMarshaller implements Marshaller<Reque
 
             tagsListIndex++;
         }
-
 
         return request;
     }

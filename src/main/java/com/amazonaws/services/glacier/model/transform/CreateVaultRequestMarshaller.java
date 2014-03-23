@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class CreateVaultRequestMarshaller implements Marshaller<Request<CreateVaultRequest>, CreateVaultRequest> {
 
-    
-
     public Request<CreateVaultRequest> marshall(CreateVaultRequest createVaultRequest) {
     if (createVaultRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,13 +49,11 @@ public class CreateVaultRequestMarshaller implements Marshaller<Request<CreateVa
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.PUT);
 
-
         String uriResourcePath = "/{accountId}/vaults/{vaultName}"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(createVaultRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(createVaultRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (createVaultRequest.getAccountId() == null) ? "" : StringUtils.fromString(createVaultRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (createVaultRequest.getVaultName() == null) ? "" : StringUtils.fromString(createVaultRequest.getVaultName())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -77,16 +73,8 @@ public class CreateVaultRequestMarshaller implements Marshaller<Request<CreateVa
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

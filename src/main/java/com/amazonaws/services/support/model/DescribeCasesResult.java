@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,70 +13,64 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns an array of CaseDetails objects and a <i>NextToken</i> that defines a point for pagination in the result set.
+ * Returns an array of CaseDetails objects and a <code>NextToken</code>
+ * that defines a point for pagination in the result set.
  * </p>
  */
-public class DescribeCasesResult  implements Serializable  {
+public class DescribeCasesResult implements Serializable {
 
     /**
-     * Array of <a href="API_CaseDetails.html"
-     * title="CaseDetails">CaseDetails</a> objects.
+     * The details for the cases that match the request.
      */
-    private java.util.List<CaseDetails> cases;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CaseDetails> cases;
 
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      */
     private String nextToken;
 
     /**
-     * Array of <a href="API_CaseDetails.html"
-     * title="CaseDetails">CaseDetails</a> objects.
+     * The details for the cases that match the request.
      *
-     * @return Array of <a href="API_CaseDetails.html"
-     *         title="CaseDetails">CaseDetails</a> objects.
+     * @return The details for the cases that match the request.
      */
     public java.util.List<CaseDetails> getCases() {
-        
         if (cases == null) {
-            cases = new java.util.ArrayList<CaseDetails>();
+              cases = new com.amazonaws.internal.ListWithAutoConstructFlag<CaseDetails>();
+              cases.setAutoConstruct(true);
         }
         return cases;
     }
     
     /**
-     * Array of <a href="API_CaseDetails.html"
-     * title="CaseDetails">CaseDetails</a> objects.
+     * The details for the cases that match the request.
      *
-     * @param cases Array of <a href="API_CaseDetails.html"
-     *         title="CaseDetails">CaseDetails</a> objects.
+     * @param cases The details for the cases that match the request.
      */
     public void setCases(java.util.Collection<CaseDetails> cases) {
         if (cases == null) {
             this.cases = null;
             return;
         }
-
-        java.util.List<CaseDetails> casesCopy = new java.util.ArrayList<CaseDetails>(cases.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CaseDetails> casesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CaseDetails>(cases.size());
         casesCopy.addAll(cases);
         this.cases = casesCopy;
     }
     
     /**
-     * Array of <a href="API_CaseDetails.html"
-     * title="CaseDetails">CaseDetails</a> objects.
+     * The details for the cases that match the request.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cases Array of <a href="API_CaseDetails.html"
-     *         title="CaseDetails">CaseDetails</a> objects.
+     * @param cases The details for the cases that match the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesResult withCases(CaseDetails... cases) {
         if (getCases() == null) setCases(new java.util.ArrayList<CaseDetails>(cases.length));
@@ -87,63 +81,60 @@ public class DescribeCasesResult  implements Serializable  {
     }
     
     /**
-     * Array of <a href="API_CaseDetails.html"
-     * title="CaseDetails">CaseDetails</a> objects.
+     * The details for the cases that match the request.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cases Array of <a href="API_CaseDetails.html"
-     *         title="CaseDetails">CaseDetails</a> objects.
+     * @param cases The details for the cases that match the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesResult withCases(java.util.Collection<CaseDetails> cases) {
         if (cases == null) {
             this.cases = null;
         } else {
-            java.util.List<CaseDetails> casesCopy = new java.util.ArrayList<CaseDetails>(cases.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CaseDetails> casesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CaseDetails>(cases.size());
             casesCopy.addAll(cases);
             this.cases = casesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @return Defines a resumption point for pagination.
+     * @return A resumption point for pagination.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +146,8 @@ public class DescribeCasesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCases() != null) sb.append("Cases: " + getCases() + ",");    	
+        sb.append("{");
+        if (getCases() != null) sb.append("Cases: " + getCases() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

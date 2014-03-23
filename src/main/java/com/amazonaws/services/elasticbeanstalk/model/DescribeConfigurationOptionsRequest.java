@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeConfigurationOptions(DescribeConfigurationOptionsRequest) DescribeConfigurationOptions operation}.
  * <p>
- * Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines.
- * The description includes the values the options, their default values, and an indication of the required action on a running environment if an option
- * value is changed.
+ * Describes the configuration options that are used in a particular
+ * configuration template or environment, or that a specified solution
+ * stack defines. The description includes the values the options, their
+ * default values, and an indication of the required action on a running
+ * environment if an option value is changed.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeConfigurationOptions(DescribeConfigurationOptionsRequest)
  */
-public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application associated with the configuration template
@@ -70,7 +74,7 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      * If specified, restricts the descriptions to only the specified
      * options.
      */
-    private java.util.List<OptionSpecification> options;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> options;
 
     /**
      * Default constructor for a new DescribeConfigurationOptionsRequest object.  Callers should use the
@@ -131,14 +135,13 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      *         environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration template whose configuration options you
      * want to describe.
@@ -180,14 +183,13 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      *         want to describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsRequest withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment whose configuration options you want to
      * describe.
@@ -229,14 +231,13 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      *         describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * The name of the solution stack whose configuration options you want to
      * describe.
@@ -278,14 +279,13 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      *         describe.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsRequest withSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
         return this;
     }
-    
-    
+
     /**
      * If specified, restricts the descriptions to only the specified
      * options.
@@ -294,9 +294,9 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      *         options.
      */
     public java.util.List<OptionSpecification> getOptions() {
-        
         if (options == null) {
-            options = new java.util.ArrayList<OptionSpecification>();
+              options = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>();
+              options.setAutoConstruct(true);
         }
         return options;
     }
@@ -313,8 +313,7 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
             this.options = null;
             return;
         }
-
-        java.util.List<OptionSpecification> optionsCopy = new java.util.ArrayList<OptionSpecification>(options.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>(options.size());
         optionsCopy.addAll(options);
         this.options = optionsCopy;
     }
@@ -329,7 +328,7 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      *         options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsRequest withOptions(OptionSpecification... options) {
         if (getOptions() == null) setOptions(new java.util.ArrayList<OptionSpecification>(options.length));
@@ -349,20 +348,20 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
      *         options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsRequest withOptions(java.util.Collection<OptionSpecification> options) {
         if (options == null) {
             this.options = null;
         } else {
-            java.util.List<OptionSpecification> optionsCopy = new java.util.ArrayList<OptionSpecification>(options.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>(options.size());
             optionsCopy.addAll(options);
             this.options = optionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -374,11 +373,11 @@ public class DescribeConfigurationOptionsRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
-        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");
         if (getOptions() != null) sb.append("Options: " + getOptions() );
         sb.append("}");
         return sb.toString();

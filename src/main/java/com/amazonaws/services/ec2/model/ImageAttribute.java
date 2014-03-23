@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,122 +13,126 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents an attribute of an <i>Amazon Machine Image</i> (AMI).
+ * Describes an image attribute.
  * </p>
  */
-public class ImageAttribute  implements Serializable  {
+public class ImageAttribute implements Serializable {
 
     /**
-     * The ID of the associated AMI.
+     * The ID of the AMI.
      */
     private String imageId;
 
     /**
-     * Launch permissions for the associated AMI.
+     * One or more launch permissions.
      */
-    private java.util.List<LaunchPermission> launchPermissions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission> launchPermissions;
 
     /**
-     * Product codes for the associated AMI.
+     * One or more product codes.
      */
-    private java.util.List<ProductCode> productCodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodes;
 
     /**
-     * Kernel ID of the associated AMI.
+     * The kernel ID.
      */
     private String kernelId;
 
     /**
-     * Ramdisk ID of the associated AMI.
+     * The RAM disk ID.
      */
     private String ramdiskId;
 
     /**
-     * User-created description of the associated AMI.
+     * A description for the AMI.
      */
     private String description;
 
     /**
-     * Block device mappings for the associated AMI.
+     * 
      */
-    private java.util.List<BlockDeviceMapping> blockDeviceMappings;
+    private String sriovNetSupport;
 
     /**
-     * The ID of the associated AMI.
+     * One or more block device mapping entries.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappings;
+
+    /**
+     * The ID of the AMI.
      *
-     * @return The ID of the associated AMI.
+     * @return The ID of the AMI.
      */
     public String getImageId() {
         return imageId;
     }
     
     /**
-     * The ID of the associated AMI.
+     * The ID of the AMI.
      *
-     * @param imageId The ID of the associated AMI.
+     * @param imageId The ID of the AMI.
      */
     public void setImageId(String imageId) {
         this.imageId = imageId;
     }
     
     /**
-     * The ID of the associated AMI.
+     * The ID of the AMI.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param imageId The ID of the associated AMI.
+     * @param imageId The ID of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withImageId(String imageId) {
         this.imageId = imageId;
         return this;
     }
-    
-    
+
     /**
-     * Launch permissions for the associated AMI.
+     * One or more launch permissions.
      *
-     * @return Launch permissions for the associated AMI.
+     * @return One or more launch permissions.
      */
     public java.util.List<LaunchPermission> getLaunchPermissions() {
-        
         if (launchPermissions == null) {
-            launchPermissions = new java.util.ArrayList<LaunchPermission>();
+              launchPermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission>();
+              launchPermissions.setAutoConstruct(true);
         }
         return launchPermissions;
     }
     
     /**
-     * Launch permissions for the associated AMI.
+     * One or more launch permissions.
      *
-     * @param launchPermissions Launch permissions for the associated AMI.
+     * @param launchPermissions One or more launch permissions.
      */
     public void setLaunchPermissions(java.util.Collection<LaunchPermission> launchPermissions) {
         if (launchPermissions == null) {
             this.launchPermissions = null;
             return;
         }
-
-        java.util.List<LaunchPermission> launchPermissionsCopy = new java.util.ArrayList<LaunchPermission>(launchPermissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission> launchPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission>(launchPermissions.size());
         launchPermissionsCopy.addAll(launchPermissions);
         this.launchPermissions = launchPermissionsCopy;
     }
     
     /**
-     * Launch permissions for the associated AMI.
+     * One or more launch permissions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param launchPermissions Launch permissions for the associated AMI.
+     * @param launchPermissions One or more launch permissions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withLaunchPermissions(LaunchPermission... launchPermissions) {
         if (getLaunchPermissions() == null) setLaunchPermissions(new java.util.ArrayList<LaunchPermission>(launchPermissions.length));
@@ -139,65 +143,64 @@ public class ImageAttribute  implements Serializable  {
     }
     
     /**
-     * Launch permissions for the associated AMI.
+     * One or more launch permissions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param launchPermissions Launch permissions for the associated AMI.
+     * @param launchPermissions One or more launch permissions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withLaunchPermissions(java.util.Collection<LaunchPermission> launchPermissions) {
         if (launchPermissions == null) {
             this.launchPermissions = null;
         } else {
-            java.util.List<LaunchPermission> launchPermissionsCopy = new java.util.ArrayList<LaunchPermission>(launchPermissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission> launchPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchPermission>(launchPermissions.size());
             launchPermissionsCopy.addAll(launchPermissions);
             this.launchPermissions = launchPermissionsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Product codes for the associated AMI.
+     * One or more product codes.
      *
-     * @return Product codes for the associated AMI.
+     * @return One or more product codes.
      */
     public java.util.List<ProductCode> getProductCodes() {
-        
         if (productCodes == null) {
-            productCodes = new java.util.ArrayList<ProductCode>();
+              productCodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>();
+              productCodes.setAutoConstruct(true);
         }
         return productCodes;
     }
     
     /**
-     * Product codes for the associated AMI.
+     * One or more product codes.
      *
-     * @param productCodes Product codes for the associated AMI.
+     * @param productCodes One or more product codes.
      */
     public void setProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
             return;
         }
-
-        java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
         productCodesCopy.addAll(productCodes);
         this.productCodes = productCodesCopy;
     }
     
     /**
-     * Product codes for the associated AMI.
+     * One or more product codes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCodes Product codes for the associated AMI.
+     * @param productCodes One or more product codes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withProductCodes(ProductCode... productCodes) {
         if (getProductCodes() == null) setProductCodes(new java.util.ArrayList<ProductCode>(productCodes.length));
@@ -208,167 +211,196 @@ public class ImageAttribute  implements Serializable  {
     }
     
     /**
-     * Product codes for the associated AMI.
+     * One or more product codes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCodes Product codes for the associated AMI.
+     * @param productCodes One or more product codes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withProductCodes(java.util.Collection<ProductCode> productCodes) {
         if (productCodes == null) {
             this.productCodes = null;
         } else {
-            java.util.List<ProductCode> productCodesCopy = new java.util.ArrayList<ProductCode>(productCodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode> productCodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ProductCode>(productCodes.size());
             productCodesCopy.addAll(productCodes);
             this.productCodes = productCodesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Kernel ID of the associated AMI.
+     * The kernel ID.
      *
-     * @return Kernel ID of the associated AMI.
+     * @return The kernel ID.
      */
     public String getKernelId() {
         return kernelId;
     }
     
     /**
-     * Kernel ID of the associated AMI.
+     * The kernel ID.
      *
-     * @param kernelId Kernel ID of the associated AMI.
+     * @param kernelId The kernel ID.
      */
     public void setKernelId(String kernelId) {
         this.kernelId = kernelId;
     }
     
     /**
-     * Kernel ID of the associated AMI.
+     * The kernel ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param kernelId Kernel ID of the associated AMI.
+     * @param kernelId The kernel ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withKernelId(String kernelId) {
         this.kernelId = kernelId;
         return this;
     }
-    
-    
+
     /**
-     * Ramdisk ID of the associated AMI.
+     * The RAM disk ID.
      *
-     * @return Ramdisk ID of the associated AMI.
+     * @return The RAM disk ID.
      */
     public String getRamdiskId() {
         return ramdiskId;
     }
     
     /**
-     * Ramdisk ID of the associated AMI.
+     * The RAM disk ID.
      *
-     * @param ramdiskId Ramdisk ID of the associated AMI.
+     * @param ramdiskId The RAM disk ID.
      */
     public void setRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
     }
     
     /**
-     * Ramdisk ID of the associated AMI.
+     * The RAM disk ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ramdiskId Ramdisk ID of the associated AMI.
+     * @param ramdiskId The RAM disk ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withRamdiskId(String ramdiskId) {
         this.ramdiskId = ramdiskId;
         return this;
     }
-    
-    
+
     /**
-     * User-created description of the associated AMI.
+     * A description for the AMI.
      *
-     * @return User-created description of the associated AMI.
+     * @return A description for the AMI.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * User-created description of the associated AMI.
+     * A description for the AMI.
      *
-     * @param description User-created description of the associated AMI.
+     * @param description A description for the AMI.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * User-created description of the associated AMI.
+     * A description for the AMI.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description User-created description of the associated AMI.
+     * @param description A description for the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withDescription(String description) {
         this.description = description;
         return this;
     }
-    
+
+    /**
+     * 
+     *
+     * @return 
+     */
+    public String getSriovNetSupport() {
+        return sriovNetSupport;
+    }
     
     /**
-     * Block device mappings for the associated AMI.
+     * 
      *
-     * @return Block device mappings for the associated AMI.
+     * @param sriovNetSupport 
+     */
+    public void setSriovNetSupport(String sriovNetSupport) {
+        this.sriovNetSupport = sriovNetSupport;
+    }
+    
+    /**
+     * 
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param sriovNetSupport 
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ImageAttribute withSriovNetSupport(String sriovNetSupport) {
+        this.sriovNetSupport = sriovNetSupport;
+        return this;
+    }
+
+    /**
+     * One or more block device mapping entries.
+     *
+     * @return One or more block device mapping entries.
      */
     public java.util.List<BlockDeviceMapping> getBlockDeviceMappings() {
-        
         if (blockDeviceMappings == null) {
-            blockDeviceMappings = new java.util.ArrayList<BlockDeviceMapping>();
+              blockDeviceMappings = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>();
+              blockDeviceMappings.setAutoConstruct(true);
         }
         return blockDeviceMappings;
     }
     
     /**
-     * Block device mappings for the associated AMI.
+     * One or more block device mapping entries.
      *
-     * @param blockDeviceMappings Block device mappings for the associated AMI.
+     * @param blockDeviceMappings One or more block device mapping entries.
      */
     public void setBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
             return;
         }
-
-        java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
         blockDeviceMappingsCopy.addAll(blockDeviceMappings);
         this.blockDeviceMappings = blockDeviceMappingsCopy;
     }
     
     /**
-     * Block device mappings for the associated AMI.
+     * One or more block device mapping entries.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param blockDeviceMappings Block device mappings for the associated AMI.
+     * @param blockDeviceMappings One or more block device mapping entries.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withBlockDeviceMappings(BlockDeviceMapping... blockDeviceMappings) {
         if (getBlockDeviceMappings() == null) setBlockDeviceMappings(new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.length));
@@ -379,27 +411,27 @@ public class ImageAttribute  implements Serializable  {
     }
     
     /**
-     * Block device mappings for the associated AMI.
+     * One or more block device mapping entries.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param blockDeviceMappings Block device mappings for the associated AMI.
+     * @param blockDeviceMappings One or more block device mapping entries.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImageAttribute withBlockDeviceMappings(java.util.Collection<BlockDeviceMapping> blockDeviceMappings) {
         if (blockDeviceMappings == null) {
             this.blockDeviceMappings = null;
         } else {
-            java.util.List<BlockDeviceMapping> blockDeviceMappingsCopy = new java.util.ArrayList<BlockDeviceMapping>(blockDeviceMappings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping> blockDeviceMappingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BlockDeviceMapping>(blockDeviceMappings.size());
             blockDeviceMappingsCopy.addAll(blockDeviceMappings);
             this.blockDeviceMappings = blockDeviceMappingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -411,13 +443,14 @@ public class ImageAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");    	
-        if (getLaunchPermissions() != null) sb.append("LaunchPermissions: " + getLaunchPermissions() + ",");    	
-        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");    	
-        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");    	
-        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getImageId() != null) sb.append("ImageId: " + getImageId() + ",");
+        if (getLaunchPermissions() != null) sb.append("LaunchPermissions: " + getLaunchPermissions() + ",");
+        if (getProductCodes() != null) sb.append("ProductCodes: " + getProductCodes() + ",");
+        if (getKernelId() != null) sb.append("KernelId: " + getKernelId() + ",");
+        if (getRamdiskId() != null) sb.append("RamdiskId: " + getRamdiskId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getSriovNetSupport() != null) sb.append("SriovNetSupport: " + getSriovNetSupport() + ",");
         if (getBlockDeviceMappings() != null) sb.append("BlockDeviceMappings: " + getBlockDeviceMappings() );
         sb.append("}");
         return sb.toString();
@@ -434,6 +467,7 @@ public class ImageAttribute  implements Serializable  {
         hashCode = prime * hashCode + ((getKernelId() == null) ? 0 : getKernelId().hashCode()); 
         hashCode = prime * hashCode + ((getRamdiskId() == null) ? 0 : getRamdiskId().hashCode()); 
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode()); 
+        hashCode = prime * hashCode + ((getSriovNetSupport() == null) ? 0 : getSriovNetSupport().hashCode()); 
         hashCode = prime * hashCode + ((getBlockDeviceMappings() == null) ? 0 : getBlockDeviceMappings().hashCode()); 
         return hashCode;
     }
@@ -458,6 +492,8 @@ public class ImageAttribute  implements Serializable  {
         if (other.getRamdiskId() != null && other.getRamdiskId().equals(this.getRamdiskId()) == false) return false; 
         if (other.getDescription() == null ^ this.getDescription() == null) return false;
         if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false) return false; 
+        if (other.getSriovNetSupport() == null ^ this.getSriovNetSupport() == null) return false;
+        if (other.getSriovNetSupport() != null && other.getSriovNetSupport().equals(this.getSriovNetSupport()) == false) return false; 
         if (other.getBlockDeviceMappings() == null ^ this.getBlockDeviceMappings() == null) return false;
         if (other.getBlockDeviceMappings() != null && other.getBlockDeviceMappings().equals(this.getBlockDeviceMappings()) == false) return false; 
         return true;

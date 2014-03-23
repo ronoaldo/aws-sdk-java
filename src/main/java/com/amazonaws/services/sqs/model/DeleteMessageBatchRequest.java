@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,50 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sqs.AmazonSQS#deleteMessageBatch(DeleteMessageBatchRequest) DeleteMessageBatch operation}.
  * <p>
- * This is a batch version of DeleteMessage. It takes multiple receipt handles and deletes each one of the messages. The result of the delete operation
- * on each message is reported individually in the response.
+ * Deletes multiple messages. This is a batch version of DeleteMessage.
+ * The result of the delete action on each message is reported
+ * individually in the response.
+ * </p>
+ * <p>
+ * <b>IMPORTANT:</b> Because the batch request can result in a
+ * combination of successful and unsuccessful actions, you should check
+ * for batch errors even when the call returns an HTTP status code of
+ * 200.
+ * </p>
+ * <p>
+ * <b>NOTE:</b>Some API actions take lists of parameters. These lists are
+ * specified using the param.n notation. Values of n are integers
+ * starting from 1. For example, a parameter list with two elements looks
+ * like this:
+ * </p>
+ * <p>
+ * <code>&Attribute.1=this</code>
+ * </p>
+ * <p>
+ * <code>&Attribute.2=that</code>
  * </p>
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#deleteMessageBatch(DeleteMessageBatchRequest)
  */
-public class DeleteMessageBatchRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteMessageBatchRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      */
     private String queueUrl;
 
     /**
      * A list of receipt handles for the messages to be deleted.
      */
-    private java.util.List<DeleteMessageBatchRequestEntry> entries;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DeleteMessageBatchRequestEntry> entries;
 
     /**
      * Default constructor for a new DeleteMessageBatchRequest object.  Callers should use the
@@ -48,73 +69,68 @@ public class DeleteMessageBatchRequest extends AmazonWebServiceRequest  implemen
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      */
     public DeleteMessageBatchRequest(String queueUrl) {
-        this.queueUrl = queueUrl;
+        setQueueUrl(queueUrl);
     }
 
-    
-    
     /**
      * Constructs a new DeleteMessageBatchRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      * @param entries A list of receipt handles for the messages to be
      * deleted.
      */
     public DeleteMessageBatchRequest(String queueUrl, java.util.List<DeleteMessageBatchRequestEntry> entries) {
-        this.queueUrl = queueUrl;
-        this.entries = entries;
+        setQueueUrl(queueUrl);
+        setEntries(entries);
     }
 
-    
-    
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      *
-     * @return The URL of the SQS queue to take action on.
+     * @return The URL of the Amazon SQS queue to take action on.
      */
     public String getQueueUrl() {
         return queueUrl;
     }
     
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      *
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      */
     public void setQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
     }
     
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
     }
-    
-    
+
     /**
      * A list of receipt handles for the messages to be deleted.
      *
      * @return A list of receipt handles for the messages to be deleted.
      */
     public java.util.List<DeleteMessageBatchRequestEntry> getEntries() {
-        
         if (entries == null) {
-            entries = new java.util.ArrayList<DeleteMessageBatchRequestEntry>();
+              entries = new com.amazonaws.internal.ListWithAutoConstructFlag<DeleteMessageBatchRequestEntry>();
+              entries.setAutoConstruct(true);
         }
         return entries;
     }
@@ -129,8 +145,7 @@ public class DeleteMessageBatchRequest extends AmazonWebServiceRequest  implemen
             this.entries = null;
             return;
         }
-
-        java.util.List<DeleteMessageBatchRequestEntry> entriesCopy = new java.util.ArrayList<DeleteMessageBatchRequestEntry>(entries.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DeleteMessageBatchRequestEntry> entriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DeleteMessageBatchRequestEntry>(entries.size());
         entriesCopy.addAll(entries);
         this.entries = entriesCopy;
     }
@@ -143,7 +158,7 @@ public class DeleteMessageBatchRequest extends AmazonWebServiceRequest  implemen
      * @param entries A list of receipt handles for the messages to be deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchRequest withEntries(DeleteMessageBatchRequestEntry... entries) {
         if (getEntries() == null) setEntries(new java.util.ArrayList<DeleteMessageBatchRequestEntry>(entries.length));
@@ -161,20 +176,20 @@ public class DeleteMessageBatchRequest extends AmazonWebServiceRequest  implemen
      * @param entries A list of receipt handles for the messages to be deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchRequest withEntries(java.util.Collection<DeleteMessageBatchRequestEntry> entries) {
         if (entries == null) {
             this.entries = null;
         } else {
-            java.util.List<DeleteMessageBatchRequestEntry> entriesCopy = new java.util.ArrayList<DeleteMessageBatchRequestEntry>(entries.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DeleteMessageBatchRequestEntry> entriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DeleteMessageBatchRequestEntry>(entries.size());
             entriesCopy.addAll(entries);
             this.entries = entriesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -186,8 +201,8 @@ public class DeleteMessageBatchRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
         if (getEntries() != null) sb.append("Entries: " + getEntries() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class ListVaultsRequestMarshaller implements Marshaller<Request<ListVaultsRequest>, ListVaultsRequest> {
 
-    
-
     public Request<ListVaultsRequest> marshall(ListVaultsRequest listVaultsRequest) {
     if (listVaultsRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,14 +49,12 @@ public class ListVaultsRequestMarshaller implements Marshaller<Request<ListVault
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.GET);
 
-
         String uriResourcePath = "/{accountId}/vaults?marker={marker};limit={limit}"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(listVaultsRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{marker}", getString(listVaultsRequest.getMarker())); 
-        uriResourcePath = uriResourcePath.replace("{limit}", getString(listVaultsRequest.getLimit())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (listVaultsRequest.getAccountId() == null) ? "" : StringUtils.fromString(listVaultsRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{marker}", (listVaultsRequest.getMarker() == null) ? "" : StringUtils.fromString(listVaultsRequest.getMarker())); 
+        uriResourcePath = uriResourcePath.replace("{limit}", (listVaultsRequest.getLimit() == null) ? "" : StringUtils.fromString(listVaultsRequest.getLimit())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -78,16 +74,8 @@ public class ListVaultsRequestMarshaller implements Marshaller<Request<ListVault
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a layer's load-based auto scaling configuration.
  * </p>
  */
-public class LoadBasedAutoScalingConfiguration  implements Serializable  {
+public class LoadBasedAutoScalingConfiguration implements Serializable {
 
     /**
      * The layer ID.
@@ -34,14 +35,14 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
 
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the upscaling configuration, which defines how and when OpsWorks
+     * the upscaling configuration, which defines how and when AWS OpsWorks
      * increases the number of instances.
      */
     private AutoScalingThresholds upScaling;
 
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the downscaling configuration, which defines how and when OpsWorks
+     * the downscaling configuration, which defines how and when AWS OpsWorks
      * reduces the number of instances.
      */
     private AutoScalingThresholds downScaling;
@@ -72,14 +73,13 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
      * @param layerId The layer ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBasedAutoScalingConfiguration withLayerId(String layerId) {
         this.layerId = layerId;
         return this;
     }
-    
-    
+
     /**
      * Whether load-based auto scaling is enabled for the layer.
      *
@@ -106,14 +106,13 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
      * @param enable Whether load-based auto scaling is enabled for the layer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBasedAutoScalingConfiguration withEnable(Boolean enable) {
         this.enable = enable;
         return this;
     }
-    
-    
+
     /**
      * Whether load-based auto scaling is enabled for the layer.
      *
@@ -122,14 +121,14 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
     public Boolean getEnable() {
         return enable;
     }
-    
+
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the upscaling configuration, which defines how and when OpsWorks
+     * the upscaling configuration, which defines how and when AWS OpsWorks
      * increases the number of instances.
      *
      * @return A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     *         the upscaling configuration, which defines how and when OpsWorks
+     *         the upscaling configuration, which defines how and when AWS OpsWorks
      *         increases the number of instances.
      */
     public AutoScalingThresholds getUpScaling() {
@@ -138,11 +137,11 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
     
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the upscaling configuration, which defines how and when OpsWorks
+     * the upscaling configuration, which defines how and when AWS OpsWorks
      * increases the number of instances.
      *
      * @param upScaling A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     *         the upscaling configuration, which defines how and when OpsWorks
+     *         the upscaling configuration, which defines how and when AWS OpsWorks
      *         increases the number of instances.
      */
     public void setUpScaling(AutoScalingThresholds upScaling) {
@@ -151,31 +150,30 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
     
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the upscaling configuration, which defines how and when OpsWorks
+     * the upscaling configuration, which defines how and when AWS OpsWorks
      * increases the number of instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param upScaling A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     *         the upscaling configuration, which defines how and when OpsWorks
+     *         the upscaling configuration, which defines how and when AWS OpsWorks
      *         increases the number of instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBasedAutoScalingConfiguration withUpScaling(AutoScalingThresholds upScaling) {
         this.upScaling = upScaling;
         return this;
     }
-    
-    
+
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the downscaling configuration, which defines how and when OpsWorks
+     * the downscaling configuration, which defines how and when AWS OpsWorks
      * reduces the number of instances.
      *
      * @return A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     *         the downscaling configuration, which defines how and when OpsWorks
+     *         the downscaling configuration, which defines how and when AWS OpsWorks
      *         reduces the number of instances.
      */
     public AutoScalingThresholds getDownScaling() {
@@ -184,11 +182,11 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
     
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the downscaling configuration, which defines how and when OpsWorks
+     * the downscaling configuration, which defines how and when AWS OpsWorks
      * reduces the number of instances.
      *
      * @param downScaling A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     *         the downscaling configuration, which defines how and when OpsWorks
+     *         the downscaling configuration, which defines how and when AWS OpsWorks
      *         reduces the number of instances.
      */
     public void setDownScaling(AutoScalingThresholds downScaling) {
@@ -197,24 +195,23 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
     
     /**
      * A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     * the downscaling configuration, which defines how and when OpsWorks
+     * the downscaling configuration, which defines how and when AWS OpsWorks
      * reduces the number of instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param downScaling A <code>LoadBasedAutoscalingInstruction</code> object that describes
-     *         the downscaling configuration, which defines how and when OpsWorks
+     *         the downscaling configuration, which defines how and when AWS OpsWorks
      *         reduces the number of instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBasedAutoScalingConfiguration withDownScaling(AutoScalingThresholds downScaling) {
         this.downScaling = downScaling;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -226,10 +223,10 @@ public class LoadBasedAutoScalingConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");    	
-        if (isEnable() != null) sb.append("Enable: " + isEnable() + ",");    	
-        if (getUpScaling() != null) sb.append("UpScaling: " + getUpScaling() + ",");    	
+        sb.append("{");
+        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");
+        if (isEnable() != null) sb.append("Enable: " + isEnable() + ",");
+        if (getUpScaling() != null) sb.append("UpScaling: " + getUpScaling() + ",");
         if (getDownScaling() != null) sb.append("DownScaling: " + getDownScaling() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,60 +13,74 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.support.AWSSupport#refreshTrustedAdvisorCheck(RefreshTrustedAdvisorCheckRequest) RefreshTrustedAdvisorCheck operation}.
  * <p>
- * This action enables you to query the service to request a refresh for a specific Trusted Advisor check. Your request body contains a <i>CheckId</i>
- * for which you are querying. The response body contains a RefreshTrustedAdvisorCheckResult object containing <i>Status</i> and
- * <i>TimeUntilNextRefresh</i> fields.
+ * Requests a refresh of the Trusted Advisor check that has the specified
+ * check ID. Check IDs can be obtained by calling
+ * DescribeTrustedAdvisorChecks.
  * </p>
+ * <p>
+ * The response contains a RefreshTrustedAdvisorCheckResult object, which
+ * contains these fields:
+ * </p>
+ * 
+ * <ul>
+ * <li> <b>Status.</b> The refresh status of the check: "none",
+ * "enqueued", "processing", "success", or "abandoned".</li>
+ * <li> <b>MillisUntilNextRefreshable.</b> The amount of time, in
+ * milliseconds, until the check is eligible for refresh.</li>
+ * <li> <b>CheckId.</b> The unique identifier for the check.</li>
+ * 
+ * </ul>
  *
  * @see com.amazonaws.services.support.AWSSupport#refreshTrustedAdvisorCheck(RefreshTrustedAdvisorCheckRequest)
  */
-public class RefreshTrustedAdvisorCheckRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RefreshTrustedAdvisorCheckRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      */
     private String checkId;
 
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @return 
+     * @return The unique identifier for the Trusted Advisor check.
      */
     public String getCheckId() {
         return checkId;
     }
     
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @param checkId 
+     * @param checkId The unique identifier for the Trusted Advisor check.
      */
     public void setCheckId(String checkId) {
         this.checkId = checkId;
     }
     
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param checkId 
+     * @param checkId The unique identifier for the Trusted Advisor check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RefreshTrustedAdvisorCheckRequest withCheckId(String checkId) {
         this.checkId = checkId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -78,7 +92,7 @@ public class RefreshTrustedAdvisorCheckRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCheckId() != null) sb.append("CheckId: " + getCheckId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,31 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#deleteOptionGroup(DeleteOptionGroupRequest) DeleteOptionGroup operation}.
  * <p>
- * Deletes an existing Option Group.
+ * Deletes an existing option group.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#deleteOptionGroup(DeleteOptionGroupRequest)
  */
-public class DeleteOptionGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteOptionGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the option group to be deleted. <note>You cannot delete
-     * default Option Groups.</note>
+     * default option groups.</note>
      */
     private String optionGroupName;
 
     /**
      * The name of the option group to be deleted. <note>You cannot delete
-     * default Option Groups.</note>
+     * default option groups.</note>
      *
      * @return The name of the option group to be deleted. <note>You cannot delete
-     *         default Option Groups.</note>
+     *         default option groups.</note>
      */
     public String getOptionGroupName() {
         return optionGroupName;
@@ -45,10 +47,10 @@ public class DeleteOptionGroupRequest extends AmazonWebServiceRequest  implement
     
     /**
      * The name of the option group to be deleted. <note>You cannot delete
-     * default Option Groups.</note>
+     * default option groups.</note>
      *
      * @param optionGroupName The name of the option group to be deleted. <note>You cannot delete
-     *         default Option Groups.</note>
+     *         default option groups.</note>
      */
     public void setOptionGroupName(String optionGroupName) {
         this.optionGroupName = optionGroupName;
@@ -56,22 +58,21 @@ public class DeleteOptionGroupRequest extends AmazonWebServiceRequest  implement
     
     /**
      * The name of the option group to be deleted. <note>You cannot delete
-     * default Option Groups.</note>
+     * default option groups.</note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param optionGroupName The name of the option group to be deleted. <note>You cannot delete
-     *         default Option Groups.</note>
+     *         default option groups.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteOptionGroupRequest withOptionGroupName(String optionGroupName) {
         this.optionGroupName = optionGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -83,7 +84,7 @@ public class DeleteOptionGroupRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getOptionGroupName() != null) sb.append("OptionGroupName: " + getOptionGroupName() );
         sb.append("}");
         return sb.toString();

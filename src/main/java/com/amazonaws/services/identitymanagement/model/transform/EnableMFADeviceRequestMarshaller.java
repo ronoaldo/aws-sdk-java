@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class EnableMFADeviceRequestMarshaller implements Marshaller<Request<Enab
     public Request<EnableMFADeviceRequest> marshall(EnableMFADeviceRequest enableMFADeviceRequest) {
 
         if (enableMFADeviceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<EnableMFADeviceRequest> request = new DefaultRequest<EnableMFADeviceRequest>(enableMFADeviceRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "EnableMFADevice");
@@ -52,7 +52,6 @@ public class EnableMFADeviceRequestMarshaller implements Marshaller<Request<Enab
         if (enableMFADeviceRequest.getAuthenticationCode2() != null) {
             request.addParameter("AuthenticationCode2", StringUtils.fromString(enableMFADeviceRequest.getAuthenticationCode2()));
         }
-
 
         return request;
     }

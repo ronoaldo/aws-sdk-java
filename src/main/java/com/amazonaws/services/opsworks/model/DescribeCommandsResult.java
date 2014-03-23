@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeCommands</code> request.
  * </p>
  */
-public class DescribeCommandsResult  implements Serializable  {
+public class DescribeCommandsResult implements Serializable {
 
     /**
      * An array of <code>Command</code> objects that describe each of the
      * specified commands.
      */
-    private java.util.List<Command> commands;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Command> commands;
 
     /**
      * An array of <code>Command</code> objects that describe each of the
@@ -36,9 +37,9 @@ public class DescribeCommandsResult  implements Serializable  {
      *         specified commands.
      */
     public java.util.List<Command> getCommands() {
-        
         if (commands == null) {
-            commands = new java.util.ArrayList<Command>();
+              commands = new com.amazonaws.internal.ListWithAutoConstructFlag<Command>();
+              commands.setAutoConstruct(true);
         }
         return commands;
     }
@@ -55,8 +56,7 @@ public class DescribeCommandsResult  implements Serializable  {
             this.commands = null;
             return;
         }
-
-        java.util.List<Command> commandsCopy = new java.util.ArrayList<Command>(commands.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Command> commandsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Command>(commands.size());
         commandsCopy.addAll(commands);
         this.commands = commandsCopy;
     }
@@ -71,7 +71,7 @@ public class DescribeCommandsResult  implements Serializable  {
      *         specified commands.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommandsResult withCommands(Command... commands) {
         if (getCommands() == null) setCommands(new java.util.ArrayList<Command>(commands.length));
@@ -91,20 +91,20 @@ public class DescribeCommandsResult  implements Serializable  {
      *         specified commands.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommandsResult withCommands(java.util.Collection<Command> commands) {
         if (commands == null) {
             this.commands = null;
         } else {
-            java.util.List<Command> commandsCopy = new java.util.ArrayList<Command>(commands.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Command> commandsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Command>(commands.size());
             commandsCopy.addAll(commands);
             this.commands = commandsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +116,7 @@ public class DescribeCommandsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCommands() != null) sb.append("Commands: " + getCommands() );
         sb.append("}");
         return sb.toString();

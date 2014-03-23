@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#createClusterParameterGroup(CreateClusterParameterGroupRequest) CreateClusterParameterGroup operation}.
@@ -22,19 +24,23 @@ import java.io.Serializable;
  * Creates an Amazon Redshift parameter group.
  * </p>
  * <p>
- * Creating parameter groups is independent of creating clusters. You can associate a cluster with a parameter group when you create the cluster. You can
- * also associate an existing cluster with a parameter group after the cluster is created by using ModifyCluster.
+ * Creating parameter groups is independent of creating clusters. You can
+ * associate a cluster with a parameter group when you create the
+ * cluster. You can also associate an existing cluster with a parameter
+ * group after the cluster is created by using ModifyCluster.
  * </p>
  * <p>
- * Parameters in the parameter group define specific behavior that applies to the databases you create on the cluster. For more information about
- * managing parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift
- * Parameter Groups </a> in the <i>Amazon Redshift Management Guide</i> .
+ * Parameters in the parameter group define specific behavior that
+ * applies to the databases you create on the cluster. For more
+ * information about managing parameter groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift Parameter Groups </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#createClusterParameterGroup(CreateClusterParameterGroupRequest)
  */
-public class CreateClusterParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateClusterParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the cluster parameter group. <p> Constraints: <ul>
@@ -120,14 +126,13 @@ public class CreateClusterParameterGroupRequest extends AmazonWebServiceRequest 
      *         string.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateClusterParameterGroupRequest withParameterGroupName(String parameterGroupName) {
         this.parameterGroupName = parameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Redshift engine version to which the cluster parameter
      * group applies. The cluster engine version determines the set of
@@ -202,14 +207,13 @@ public class CreateClusterParameterGroupRequest extends AmazonWebServiceRequest 
      *         values. For example, a valid family name is "redshift-1.0".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateClusterParameterGroupRequest withParameterGroupFamily(String parameterGroupFamily) {
         this.parameterGroupFamily = parameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * A description of the parameter group.
      *
@@ -236,14 +240,13 @@ public class CreateClusterParameterGroupRequest extends AmazonWebServiceRequest 
      * @param description A description of the parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateClusterParameterGroupRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -255,9 +258,9 @@ public class CreateClusterParameterGroupRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");    	
-        if (getParameterGroupFamily() != null) sb.append("ParameterGroupFamily: " + getParameterGroupFamily() + ",");    	
+        sb.append("{");
+        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");
+        if (getParameterGroupFamily() != null) sb.append("ParameterGroupFamily: " + getParameterGroupFamily() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

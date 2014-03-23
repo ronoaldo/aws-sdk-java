@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ModifyOptionGroupRequestMarshaller implements Marshaller<Request<Mo
     public Request<ModifyOptionGroupRequest> marshall(ModifyOptionGroupRequest modifyOptionGroupRequest) {
 
         if (modifyOptionGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ModifyOptionGroupRequest> request = new DefaultRequest<ModifyOptionGroupRequest>(modifyOptionGroupRequest, "AmazonRDS");
         request.addParameter("Action", "ModifyOptionGroup");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (modifyOptionGroupRequest.getOptionGroupName() != null) {
             request.addParameter("OptionGroupName", StringUtils.fromString(modifyOptionGroupRequest.getOptionGroupName()));
@@ -134,7 +134,6 @@ public class ModifyOptionGroupRequestMarshaller implements Marshaller<Request<Mo
         if (modifyOptionGroupRequest.isApplyImmediately() != null) {
             request.addParameter("ApplyImmediately", StringUtils.fromBoolean(modifyOptionGroupRequest.isApplyImmediately()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ResetClusterParameterGroupRequestMarshaller implements Marshaller<R
     public Request<ResetClusterParameterGroupRequest> marshall(ResetClusterParameterGroupRequest resetClusterParameterGroupRequest) {
 
         if (resetClusterParameterGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ResetClusterParameterGroupRequest> request = new DefaultRequest<ResetClusterParameterGroupRequest>(resetClusterParameterGroupRequest, "AmazonRedshift");
         request.addParameter("Action", "ResetClusterParameterGroup");
@@ -81,7 +81,6 @@ public class ResetClusterParameterGroupRequestMarshaller implements Marshaller<R
 
             parametersListIndex++;
         }
-
 
         return request;
     }

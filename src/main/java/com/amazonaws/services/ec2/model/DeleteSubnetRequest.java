@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteSubnetRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#deleteSubnet(DeleteSubnetRequest) DeleteSubnet operation}.
  * <p>
- * Deletes a subnet from a VPC. You must terminate all running instances in the subnet before deleting it, otherwise Amazon VPC returns an error.
+ * Deletes the specified subnet. You must terminate all running instances
+ * in the subnet before you can delete the subnet.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteSubnet(DeleteSubnetRequest)
  */
-public class DeleteSubnetRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteSubnetRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteSubnetRequest> {
 
     /**
-     * The ID of the subnet you want to delete.
+     * The ID of the subnet.
      */
     private String subnetId;
 
@@ -42,47 +47,56 @@ public class DeleteSubnetRequest extends AmazonWebServiceRequest  implements Ser
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param subnetId The ID of the subnet you want to delete.
+     * @param subnetId The ID of the subnet.
      */
     public DeleteSubnetRequest(String subnetId) {
-        this.subnetId = subnetId;
+        setSubnetId(subnetId);
     }
 
-    
-    
     /**
-     * The ID of the subnet you want to delete.
+     * The ID of the subnet.
      *
-     * @return The ID of the subnet you want to delete.
+     * @return The ID of the subnet.
      */
     public String getSubnetId() {
         return subnetId;
     }
     
     /**
-     * The ID of the subnet you want to delete.
+     * The ID of the subnet.
      *
-     * @param subnetId The ID of the subnet you want to delete.
+     * @param subnetId The ID of the subnet.
      */
     public void setSubnetId(String subnetId) {
         this.subnetId = subnetId;
     }
     
     /**
-     * The ID of the subnet you want to delete.
+     * The ID of the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetId The ID of the subnet you want to delete.
+     * @param subnetId The ID of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteSubnetRequest withSubnetId(String subnetId) {
         this.subnetId = subnetId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteSubnetRequest> getDryRunRequest() {
+        Request<DeleteSubnetRequest> request = new DeleteSubnetRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -95,7 +109,7 @@ public class DeleteSubnetRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() );
         sb.append("}");
         return sb.toString();

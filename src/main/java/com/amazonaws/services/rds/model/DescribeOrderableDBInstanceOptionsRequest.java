@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeOrderableDBInstanceOptions(DescribeOrderableDBInstanceOptionsRequest) DescribeOrderableDBInstanceOptions operation}.
  * <p>
- * Returns a list of orderable DB Instance options for the specified engine.
+ * Returns a list of orderable DB instance options for the specified
+ * engine.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeOrderableDBInstanceOptions(DescribeOrderableDBInstanceOptionsRequest)
  */
-public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the engine to retrieve DB Instance options for.
+     * The name of the engine to retrieve DB instance options for.
      */
     private String engine;
 
@@ -38,8 +41,8 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
     private String engineVersion;
 
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      */
     private String dBInstanceClass;
 
@@ -73,39 +76,38 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
     private String marker;
 
     /**
-     * The name of the engine to retrieve DB Instance options for.
+     * The name of the engine to retrieve DB instance options for.
      *
-     * @return The name of the engine to retrieve DB Instance options for.
+     * @return The name of the engine to retrieve DB instance options for.
      */
     public String getEngine() {
         return engine;
     }
     
     /**
-     * The name of the engine to retrieve DB Instance options for.
+     * The name of the engine to retrieve DB instance options for.
      *
-     * @param engine The name of the engine to retrieve DB Instance options for.
+     * @param engine The name of the engine to retrieve DB instance options for.
      */
     public void setEngine(String engine) {
         this.engine = engine;
     }
     
     /**
-     * The name of the engine to retrieve DB Instance options for.
+     * The name of the engine to retrieve DB instance options for.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param engine The name of the engine to retrieve DB Instance options for.
+     * @param engine The name of the engine to retrieve DB instance options for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsRequest withEngine(String engine) {
         this.engine = engine;
         return this;
     }
-    
-    
+
     /**
      * The engine version filter value. Specify this parameter to show only
      * the available offerings matching the specified engine version.
@@ -138,54 +140,52 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
      *         the available offerings matching the specified engine version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsRequest withEngineVersion(String engineVersion) {
         this.engineVersion = engineVersion;
         return this;
     }
-    
-    
+
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      *
-     * @return The DB Instance class filter value. Specify this parameter to show
-     *         only the available offerings matching the specified DB Instance class.
+     * @return The DB instance class filter value. Specify this parameter to show
+     *         only the available offerings matching the specified DB instance class.
      */
     public String getDBInstanceClass() {
         return dBInstanceClass;
     }
     
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      *
-     * @param dBInstanceClass The DB Instance class filter value. Specify this parameter to show
-     *         only the available offerings matching the specified DB Instance class.
+     * @param dBInstanceClass The DB instance class filter value. Specify this parameter to show
+     *         only the available offerings matching the specified DB instance class.
      */
     public void setDBInstanceClass(String dBInstanceClass) {
         this.dBInstanceClass = dBInstanceClass;
     }
     
     /**
-     * The DB Instance class filter value. Specify this parameter to show
-     * only the available offerings matching the specified DB Instance class.
+     * The DB instance class filter value. Specify this parameter to show
+     * only the available offerings matching the specified DB instance class.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBInstanceClass The DB Instance class filter value. Specify this parameter to show
-     *         only the available offerings matching the specified DB Instance class.
+     * @param dBInstanceClass The DB instance class filter value. Specify this parameter to show
+     *         only the available offerings matching the specified DB instance class.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsRequest withDBInstanceClass(String dBInstanceClass) {
         this.dBInstanceClass = dBInstanceClass;
         return this;
     }
-    
-    
+
     /**
      * The license model filter value. Specify this parameter to show only
      * the available offerings matching the specified license model.
@@ -218,14 +218,13 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
      *         the available offerings matching the specified license model.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsRequest withLicenseModel(String licenseModel) {
         this.licenseModel = licenseModel;
         return this;
     }
-    
-    
+
     /**
      * The VPC filter value. Specify this parameter to show only the
      * available VPC or non-VPC offerings.
@@ -258,14 +257,13 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
      *         available VPC or non-VPC offerings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsRequest withVpc(Boolean vpc) {
         this.vpc = vpc;
         return this;
     }
-    
-    
+
     /**
      * The VPC filter value. Specify this parameter to show only the
      * available VPC or non-VPC offerings.
@@ -276,7 +274,7 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
     public Boolean getVpc() {
         return vpc;
     }
-    
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -327,14 +325,13 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
      *         <p>Constraints: minimum 20, maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous
      * DescribeOrderableDBInstanceOptions request. If this parameter is
@@ -379,14 +376,13 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
      *         the value specified by <code>MaxRecords</code> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -398,13 +394,13 @@ public class DescribeOrderableDBInstanceOptionsRequest extends AmazonWebServiceR
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");    	
-        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");    	
-        if (getDBInstanceClass() != null) sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");    	
-        if (getLicenseModel() != null) sb.append("LicenseModel: " + getLicenseModel() + ",");    	
-        if (isVpc() != null) sb.append("Vpc: " + isVpc() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");
+        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");
+        if (getDBInstanceClass() != null) sb.append("DBInstanceClass: " + getDBInstanceClass() + ",");
+        if (getLicenseModel() != null) sb.append("LicenseModel: " + getLicenseModel() + ",");
+        if (isVpc() != null) sb.append("Vpc: " + isVpc() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,217 +13,226 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An Amazon EC2 security group, describing how EC2 instances in this group can receive network traffic.
+ * Describes a security group
  * </p>
  */
-public class SecurityGroup  implements Serializable  {
+public class SecurityGroup implements Serializable {
 
     /**
-     * The AWS Access Key ID of the owner of the security group.
+     * The AWS account ID of the owner of the security group.
      */
     private String ownerId;
 
     /**
-     * The name of this security group.
+     * The name of the security group.
      */
     private String groupName;
 
+    /**
+     * The ID of the security group.
+     */
     private String groupId;
 
     /**
-     * The description of this security group.
+     * A description of the security group.
      */
     private String description;
 
     /**
-     * The permissions enabled for this security group.
+     * One or more inbound rules associated with the security group.
      */
-    private java.util.List<IpPermission> ipPermissions;
-
-    private java.util.List<IpPermission> ipPermissionsEgress;
-
-    private String vpcId;
-
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissions;
 
     /**
-     * The AWS Access Key ID of the owner of the security group.
+     * [EC2-VPC] One or more outbound rules associated with the security
+     * group.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsEgress;
+
+    /**
+     * [EC2-VPC] The ID of the VPC for the security group.
+     */
+    private String vpcId;
+
+    /**
+     * Any tags assigned to the security group.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
+
+    /**
+     * The AWS account ID of the owner of the security group.
      *
-     * @return The AWS Access Key ID of the owner of the security group.
+     * @return The AWS account ID of the owner of the security group.
      */
     public String getOwnerId() {
         return ownerId;
     }
     
     /**
-     * The AWS Access Key ID of the owner of the security group.
+     * The AWS account ID of the owner of the security group.
      *
-     * @param ownerId The AWS Access Key ID of the owner of the security group.
+     * @param ownerId The AWS account ID of the owner of the security group.
      */
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
     
     /**
-     * The AWS Access Key ID of the owner of the security group.
+     * The AWS account ID of the owner of the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ownerId The AWS Access Key ID of the owner of the security group.
+     * @param ownerId The AWS account ID of the owner of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withOwnerId(String ownerId) {
         this.ownerId = ownerId;
         return this;
     }
-    
-    
+
     /**
-     * The name of this security group.
+     * The name of the security group.
      *
-     * @return The name of this security group.
+     * @return The name of the security group.
      */
     public String getGroupName() {
         return groupName;
     }
     
     /**
-     * The name of this security group.
+     * The name of the security group.
      *
-     * @param groupName The name of this security group.
+     * @param groupName The name of the security group.
      */
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
     
     /**
-     * The name of this security group.
+     * The name of the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupName The name of this security group.
+     * @param groupName The name of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the GroupId property for this object.
+     * The ID of the security group.
      *
-     * @return The value of the GroupId property for this object.
+     * @return The ID of the security group.
      */
     public String getGroupId() {
         return groupId;
     }
     
     /**
-     * Sets the value of the GroupId property for this object.
+     * The ID of the security group.
      *
-     * @param groupId The new value for the GroupId property for this object.
+     * @param groupId The ID of the security group.
      */
     public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
     
     /**
-     * Sets the value of the GroupId property for this object.
+     * The ID of the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupId The new value for the GroupId property for this object.
+     * @param groupId The ID of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withGroupId(String groupId) {
         this.groupId = groupId;
         return this;
     }
-    
-    
+
     /**
-     * The description of this security group.
+     * A description of the security group.
      *
-     * @return The description of this security group.
+     * @return A description of the security group.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * The description of this security group.
+     * A description of the security group.
      *
-     * @param description The description of this security group.
+     * @param description A description of the security group.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * The description of this security group.
+     * A description of the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The description of this security group.
+     * @param description A description of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * The permissions enabled for this security group.
+     * One or more inbound rules associated with the security group.
      *
-     * @return The permissions enabled for this security group.
+     * @return One or more inbound rules associated with the security group.
      */
     public java.util.List<IpPermission> getIpPermissions() {
-        
         if (ipPermissions == null) {
-            ipPermissions = new java.util.ArrayList<IpPermission>();
+              ipPermissions = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>();
+              ipPermissions.setAutoConstruct(true);
         }
         return ipPermissions;
     }
     
     /**
-     * The permissions enabled for this security group.
+     * One or more inbound rules associated with the security group.
      *
-     * @param ipPermissions The permissions enabled for this security group.
+     * @param ipPermissions One or more inbound rules associated with the security group.
      */
     public void setIpPermissions(java.util.Collection<IpPermission> ipPermissions) {
         if (ipPermissions == null) {
             this.ipPermissions = null;
             return;
         }
-
-        java.util.List<IpPermission> ipPermissionsCopy = new java.util.ArrayList<IpPermission>(ipPermissions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissions.size());
         ipPermissionsCopy.addAll(ipPermissions);
         this.ipPermissions = ipPermissionsCopy;
     }
     
     /**
-     * The permissions enabled for this security group.
+     * One or more inbound rules associated with the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ipPermissions The permissions enabled for this security group.
+     * @param ipPermissions One or more inbound rules associated with the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissions(IpPermission... ipPermissions) {
         if (getIpPermissions() == null) setIpPermissions(new java.util.ArrayList<IpPermission>(ipPermissions.length));
@@ -234,65 +243,70 @@ public class SecurityGroup  implements Serializable  {
     }
     
     /**
-     * The permissions enabled for this security group.
+     * One or more inbound rules associated with the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ipPermissions The permissions enabled for this security group.
+     * @param ipPermissions One or more inbound rules associated with the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissions(java.util.Collection<IpPermission> ipPermissions) {
         if (ipPermissions == null) {
             this.ipPermissions = null;
         } else {
-            java.util.List<IpPermission> ipPermissionsCopy = new java.util.ArrayList<IpPermission>(ipPermissions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissions.size());
             ipPermissionsCopy.addAll(ipPermissions);
             this.ipPermissions = ipPermissionsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the IpPermissionsEgress property for this object.
+     * [EC2-VPC] One or more outbound rules associated with the security
+     * group.
      *
-     * @return The value of the IpPermissionsEgress property for this object.
+     * @return [EC2-VPC] One or more outbound rules associated with the security
+     *         group.
      */
     public java.util.List<IpPermission> getIpPermissionsEgress() {
-        
         if (ipPermissionsEgress == null) {
-            ipPermissionsEgress = new java.util.ArrayList<IpPermission>();
+              ipPermissionsEgress = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>();
+              ipPermissionsEgress.setAutoConstruct(true);
         }
         return ipPermissionsEgress;
     }
     
     /**
-     * Sets the value of the IpPermissionsEgress property for this object.
+     * [EC2-VPC] One or more outbound rules associated with the security
+     * group.
      *
-     * @param ipPermissionsEgress The new value for the IpPermissionsEgress property for this object.
+     * @param ipPermissionsEgress [EC2-VPC] One or more outbound rules associated with the security
+     *         group.
      */
     public void setIpPermissionsEgress(java.util.Collection<IpPermission> ipPermissionsEgress) {
         if (ipPermissionsEgress == null) {
             this.ipPermissionsEgress = null;
             return;
         }
-
-        java.util.List<IpPermission> ipPermissionsEgressCopy = new java.util.ArrayList<IpPermission>(ipPermissionsEgress.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsEgressCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissionsEgress.size());
         ipPermissionsEgressCopy.addAll(ipPermissionsEgress);
         this.ipPermissionsEgress = ipPermissionsEgressCopy;
     }
     
     /**
-     * Sets the value of the IpPermissionsEgress property for this object.
+     * [EC2-VPC] One or more outbound rules associated with the security
+     * group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ipPermissionsEgress The new value for the IpPermissionsEgress property for this object.
+     * @param ipPermissionsEgress [EC2-VPC] One or more outbound rules associated with the security
+     *         group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissionsEgress(IpPermission... ipPermissionsEgress) {
         if (getIpPermissionsEgress() == null) setIpPermissionsEgress(new java.util.ArrayList<IpPermission>(ipPermissionsEgress.length));
@@ -303,99 +317,99 @@ public class SecurityGroup  implements Serializable  {
     }
     
     /**
-     * Sets the value of the IpPermissionsEgress property for this object.
+     * [EC2-VPC] One or more outbound rules associated with the security
+     * group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ipPermissionsEgress The new value for the IpPermissionsEgress property for this object.
+     * @param ipPermissionsEgress [EC2-VPC] One or more outbound rules associated with the security
+     *         group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withIpPermissionsEgress(java.util.Collection<IpPermission> ipPermissionsEgress) {
         if (ipPermissionsEgress == null) {
             this.ipPermissionsEgress = null;
         } else {
-            java.util.List<IpPermission> ipPermissionsEgressCopy = new java.util.ArrayList<IpPermission>(ipPermissionsEgress.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission> ipPermissionsEgressCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IpPermission>(ipPermissionsEgress.size());
             ipPermissionsEgressCopy.addAll(ipPermissionsEgress);
             this.ipPermissionsEgress = ipPermissionsEgressCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the VpcId property for this object.
+     * [EC2-VPC] The ID of the VPC for the security group.
      *
-     * @return The value of the VpcId property for this object.
+     * @return [EC2-VPC] The ID of the VPC for the security group.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * [EC2-VPC] The ID of the VPC for the security group.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId [EC2-VPC] The ID of the VPC for the security group.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * [EC2-VPC] The ID of the VPC for the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId [EC2-VPC] The ID of the VPC for the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Tags property for this object.
+     * Any tags assigned to the security group.
      *
-     * @return The value of the Tags property for this object.
+     * @return Any tags assigned to the security group.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the security group.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the security group.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -406,27 +420,27 @@ public class SecurityGroup  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SecurityGroup withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -438,14 +452,14 @@ public class SecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getGroupId() != null) sb.append("GroupId: " + getGroupId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getIpPermissions() != null) sb.append("IpPermissions: " + getIpPermissions() + ",");    	
-        if (getIpPermissionsEgress() != null) sb.append("IpPermissionsEgress: " + getIpPermissionsEgress() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
+        sb.append("{");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getGroupId() != null) sb.append("GroupId: " + getGroupId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getIpPermissions() != null) sb.append("IpPermissions: " + getIpPermissions() + ",");
+        if (getIpPermissionsEgress() != null) sb.append("IpPermissionsEgress: " + getIpPermissionsEgress() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

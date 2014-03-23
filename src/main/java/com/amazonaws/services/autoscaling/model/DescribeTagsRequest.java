@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#describeTags(DescribeTagsRequest) DescribeTags operation}.
@@ -22,17 +24,21 @@ import java.io.Serializable;
  * Lists the Auto Scaling group tags.
  * </p>
  * <p>
- * You can use filters to limit results when describing tags. For example, you can query for tags of a particular Auto Scaling group. You can specify
- * multiple values for a filter. A tag must match at least one of the specified values for it to be included in the results.
+ * You can use filters to limit results when describing tags. For
+ * example, you can query for tags of a particular Auto Scaling group.
+ * You can specify multiple values for a filter. A tag must match at
+ * least one of the specified values for it to be included in the
+ * results.
  * </p>
  * <p>
- * You can also specify multiple filters. The result includes information for a particular tag only if it matches all your filters. If there's no match,
- * no special message is returned.
+ * You can also specify multiple filters. The result includes
+ * information for a particular tag only if it matches all your filters.
+ * If there's no match, no special message is returned.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeTags(DescribeTagsRequest)
  */
-public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeTagsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The value of the filter type used to identify the tags to be returned.
@@ -41,7 +47,7 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
      * applied to instances launched after the tag is created
      * (PropagateAtLaunch).
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -73,9 +79,9 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
      *         (PropagateAtLaunch).
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
@@ -98,8 +104,7 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
@@ -120,7 +125,7 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
      *         (PropagateAtLaunch).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTagsRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -146,20 +151,20 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
      *         (PropagateAtLaunch).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTagsRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -195,14 +200,13 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTagsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to return.
      * <p>
@@ -238,14 +242,13 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
      * @param maxRecords The maximum number of records to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTagsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -257,9 +260,9 @@ public class DescribeTagsRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ListIdentitiesRequestMarshaller implements Marshaller<Request<ListI
     public Request<ListIdentitiesRequest> marshall(ListIdentitiesRequest listIdentitiesRequest) {
 
         if (listIdentitiesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ListIdentitiesRequest> request = new DefaultRequest<ListIdentitiesRequest>(listIdentitiesRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "ListIdentities");
@@ -49,7 +49,6 @@ public class ListIdentitiesRequestMarshaller implements Marshaller<Request<ListI
         if (listIdentitiesRequest.getMaxItems() != null) {
             request.addParameter("MaxItems", StringUtils.fromInteger(listIdentitiesRequest.getMaxItems()));
         }
-
 
         return request;
     }

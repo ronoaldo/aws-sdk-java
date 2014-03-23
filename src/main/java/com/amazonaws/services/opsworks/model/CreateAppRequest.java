@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,30 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#createApp(CreateAppRequest) CreateApp operation}.
  * <p>
- * Creates an app for a specified stack. For more information, see <a
- * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html"> Creating Apps </a> .
+ * Creates an app for a specified stack. For more information, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html"> Creating Apps </a>
+ * .
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Manage permissions level for the stack, or an attached policy
+ * that explicitly grants permissions. For more information on user
+ * permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#createApp(CreateAppRequest)
  */
-public class CreateAppRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateAppRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The stack ID.
@@ -50,8 +61,8 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
     /**
      * The app type. Each supported type is associated with a particular
      * layer. For example, PHP applications are associated with a PHP layer.
-     * OpsWorks deploys an application to those instances that are members of
-     * the corresponding layer.
+     * AWS OpsWorks deploys an application to those instances that are
+     * members of the corresponding layer.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>rails, php, nodejs, static, other
@@ -67,7 +78,7 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * The app virtual host settings, with multiple domains separated by
      * commas. For example: <code>'www.example.com, example.com'</code>
      */
-    private java.util.List<String> domains;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> domains;
 
     /**
      * Whether to enable SSL for the app.
@@ -111,14 +122,13 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param stackId The stack ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The app's short name.
      *
@@ -145,14 +155,13 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param shortname The app's short name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withShortname(String shortname) {
         this.shortname = shortname;
         return this;
     }
-    
-    
+
     /**
      * The app name.
      *
@@ -179,14 +188,13 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param name The app name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A description of the app.
      *
@@ -213,27 +221,26 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param description A description of the app.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The app type. Each supported type is associated with a particular
      * layer. For example, PHP applications are associated with a PHP layer.
-     * OpsWorks deploys an application to those instances that are members of
-     * the corresponding layer.
+     * AWS OpsWorks deploys an application to those instances that are
+     * members of the corresponding layer.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>rails, php, nodejs, static, other
      *
      * @return The app type. Each supported type is associated with a particular
      *         layer. For example, PHP applications are associated with a PHP layer.
-     *         OpsWorks deploys an application to those instances that are members of
-     *         the corresponding layer.
+     *         AWS OpsWorks deploys an application to those instances that are
+     *         members of the corresponding layer.
      *
      * @see AppType
      */
@@ -244,16 +251,16 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
     /**
      * The app type. Each supported type is associated with a particular
      * layer. For example, PHP applications are associated with a PHP layer.
-     * OpsWorks deploys an application to those instances that are members of
-     * the corresponding layer.
+     * AWS OpsWorks deploys an application to those instances that are
+     * members of the corresponding layer.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>rails, php, nodejs, static, other
      *
      * @param type The app type. Each supported type is associated with a particular
      *         layer. For example, PHP applications are associated with a PHP layer.
-     *         OpsWorks deploys an application to those instances that are members of
-     *         the corresponding layer.
+     *         AWS OpsWorks deploys an application to those instances that are
+     *         members of the corresponding layer.
      *
      * @see AppType
      */
@@ -264,8 +271,8 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
     /**
      * The app type. Each supported type is associated with a particular
      * layer. For example, PHP applications are associated with a PHP layer.
-     * OpsWorks deploys an application to those instances that are members of
-     * the corresponding layer.
+     * AWS OpsWorks deploys an application to those instances that are
+     * members of the corresponding layer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -274,11 +281,11 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      *
      * @param type The app type. Each supported type is associated with a particular
      *         layer. For example, PHP applications are associated with a PHP layer.
-     *         OpsWorks deploys an application to those instances that are members of
-     *         the corresponding layer.
+     *         AWS OpsWorks deploys an application to those instances that are
+     *         members of the corresponding layer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AppType
      */
@@ -286,21 +293,20 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * The app type. Each supported type is associated with a particular
      * layer. For example, PHP applications are associated with a PHP layer.
-     * OpsWorks deploys an application to those instances that are members of
-     * the corresponding layer.
+     * AWS OpsWorks deploys an application to those instances that are
+     * members of the corresponding layer.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>rails, php, nodejs, static, other
      *
      * @param type The app type. Each supported type is associated with a particular
      *         layer. For example, PHP applications are associated with a PHP layer.
-     *         OpsWorks deploys an application to those instances that are members of
-     *         the corresponding layer.
+     *         AWS OpsWorks deploys an application to those instances that are
+     *         members of the corresponding layer.
      *
      * @see AppType
      */
@@ -311,8 +317,8 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
     /**
      * The app type. Each supported type is associated with a particular
      * layer. For example, PHP applications are associated with a PHP layer.
-     * OpsWorks deploys an application to those instances that are members of
-     * the corresponding layer.
+     * AWS OpsWorks deploys an application to those instances that are
+     * members of the corresponding layer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -321,11 +327,11 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      *
      * @param type The app type. Each supported type is associated with a particular
      *         layer. For example, PHP applications are associated with a PHP layer.
-     *         OpsWorks deploys an application to those instances that are members of
-     *         the corresponding layer.
+     *         AWS OpsWorks deploys an application to those instances that are
+     *         members of the corresponding layer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AppType
      */
@@ -333,7 +339,7 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
         this.type = type.toString();
         return this;
     }
-    
+
     /**
      * A <code>Source</code> object that specifies the app repository.
      *
@@ -360,14 +366,13 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param appSource A <code>Source</code> object that specifies the app repository.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withAppSource(Source appSource) {
         this.appSource = appSource;
         return this;
     }
-    
-    
+
     /**
      * The app virtual host settings, with multiple domains separated by
      * commas. For example: <code>'www.example.com, example.com'</code>
@@ -376,9 +381,9 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         commas. For example: <code>'www.example.com, example.com'</code>
      */
     public java.util.List<String> getDomains() {
-        
         if (domains == null) {
-            domains = new java.util.ArrayList<String>();
+              domains = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              domains.setAutoConstruct(true);
         }
         return domains;
     }
@@ -395,8 +400,7 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
             this.domains = null;
             return;
         }
-
-        java.util.List<String> domainsCopy = new java.util.ArrayList<String>(domains.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> domainsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domains.size());
         domainsCopy.addAll(domains);
         this.domains = domainsCopy;
     }
@@ -411,7 +415,7 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         commas. For example: <code>'www.example.com, example.com'</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withDomains(String... domains) {
         if (getDomains() == null) setDomains(new java.util.ArrayList<String>(domains.length));
@@ -431,20 +435,20 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         commas. For example: <code>'www.example.com, example.com'</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withDomains(java.util.Collection<String> domains) {
         if (domains == null) {
             this.domains = null;
         } else {
-            java.util.List<String> domainsCopy = new java.util.ArrayList<String>(domains.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> domainsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domains.size());
             domainsCopy.addAll(domains);
             this.domains = domainsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Whether to enable SSL for the app.
      *
@@ -471,14 +475,13 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param enableSsl Whether to enable SSL for the app.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withEnableSsl(Boolean enableSsl) {
         this.enableSsl = enableSsl;
         return this;
     }
-    
-    
+
     /**
      * Whether to enable SSL for the app.
      *
@@ -487,7 +490,7 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
     public Boolean getEnableSsl() {
         return enableSsl;
     }
-    
+
     /**
      * An <code>SslConfiguration</code> object with the SSL configuration.
      *
@@ -514,14 +517,13 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param sslConfiguration An <code>SslConfiguration</code> object with the SSL configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withSslConfiguration(SslConfiguration sslConfiguration) {
         this.sslConfiguration = sslConfiguration;
         return this;
     }
-    
-    
+
     /**
      * One or more user-defined key/value pairs to be added to the stack
      * attributes bag.
@@ -535,7 +537,6 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
             attributes = new java.util.HashMap<String,String>();
         }
         return attributes;
-
     }
     
     /**
@@ -559,10 +560,41 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         attributes bag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateAppRequest withAttributes(java.util.Map<String,String> attributes) {
         setAttributes(attributes);
+        return this;
+    }
+
+    /**
+     * One or more user-defined key/value pairs to be added to the stack
+     * attributes bag.
+     * <p>
+     * The method adds a new key-value pair into Attributes parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Attributes.
+     * @param value The corresponding value of the entry to be added into Attributes.
+     */
+    public CreateAppRequest addAttributesEntry(String key, String value) {
+        if (null == this.attributes) {
+            this.attributes = new java.util.HashMap<String,String>();
+        }
+        if (this.attributes.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.attributes.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Attributes.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public CreateAppRequest clearAttributesEntries() {
+        this.attributes = null;
         return this;
     }
     
@@ -577,16 +609,16 @@ public class CreateAppRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getShortname() != null) sb.append("Shortname: " + getShortname() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getAppSource() != null) sb.append("AppSource: " + getAppSource() + ",");    	
-        if (getDomains() != null) sb.append("Domains: " + getDomains() + ",");    	
-        if (isEnableSsl() != null) sb.append("EnableSsl: " + isEnableSsl() + ",");    	
-        if (getSslConfiguration() != null) sb.append("SslConfiguration: " + getSslConfiguration() + ",");    	
+        sb.append("{");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getShortname() != null) sb.append("Shortname: " + getShortname() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getAppSource() != null) sb.append("AppSource: " + getAppSource() + ",");
+        if (getDomains() != null) sb.append("Domains: " + getDomains() + ",");
+        if (isEnableSsl() != null) sb.append("EnableSsl: " + isEnableSsl() + ",");
+        if (getSslConfiguration() != null) sb.append("SslConfiguration: " + getSslConfiguration() + ",");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

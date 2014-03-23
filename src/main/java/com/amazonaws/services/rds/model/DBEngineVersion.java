@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the action DescribeDBEngineVersions.
+ * This data type is used as a response element in the action
+ * DescribeDBEngineVersions.
  * </p>
  */
-public class DBEngineVersion  implements Serializable  {
+public class DBEngineVersion implements Serializable {
 
     /**
      * The name of the database engine.
@@ -33,7 +35,7 @@ public class DBEngineVersion  implements Serializable  {
     private String engineVersion;
 
     /**
-     * The name of the DBParameterGroupFamily for the database engine.
+     * The name of the DB parameter group family for the database engine.
      */
     private String dBParameterGroupFamily;
 
@@ -58,7 +60,7 @@ public class DBEngineVersion  implements Serializable  {
      * A list of the character sets supported by this engine for the
      * <code>CharacterSetName</code> parameter of the CreateDBInstance API.
      */
-    private java.util.List<CharacterSet> supportedCharacterSets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CharacterSet> supportedCharacterSets;
 
     /**
      * Default constructor for a new DBEngineVersion object.  Callers should use the
@@ -92,14 +94,13 @@ public class DBEngineVersion  implements Serializable  {
      * @param engine The name of the database engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withEngine(String engine) {
         this.engine = engine;
         return this;
     }
-    
-    
+
     /**
      * The version number of the database engine.
      *
@@ -126,48 +127,46 @@ public class DBEngineVersion  implements Serializable  {
      * @param engineVersion The version number of the database engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withEngineVersion(String engineVersion) {
         this.engineVersion = engineVersion;
         return this;
     }
-    
-    
+
     /**
-     * The name of the DBParameterGroupFamily for the database engine.
+     * The name of the DB parameter group family for the database engine.
      *
-     * @return The name of the DBParameterGroupFamily for the database engine.
+     * @return The name of the DB parameter group family for the database engine.
      */
     public String getDBParameterGroupFamily() {
         return dBParameterGroupFamily;
     }
     
     /**
-     * The name of the DBParameterGroupFamily for the database engine.
+     * The name of the DB parameter group family for the database engine.
      *
-     * @param dBParameterGroupFamily The name of the DBParameterGroupFamily for the database engine.
+     * @param dBParameterGroupFamily The name of the DB parameter group family for the database engine.
      */
     public void setDBParameterGroupFamily(String dBParameterGroupFamily) {
         this.dBParameterGroupFamily = dBParameterGroupFamily;
     }
     
     /**
-     * The name of the DBParameterGroupFamily for the database engine.
+     * The name of the DB parameter group family for the database engine.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupFamily The name of the DBParameterGroupFamily for the database engine.
+     * @param dBParameterGroupFamily The name of the DB parameter group family for the database engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withDBParameterGroupFamily(String dBParameterGroupFamily) {
         this.dBParameterGroupFamily = dBParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * The description of the database engine.
      *
@@ -194,14 +193,13 @@ public class DBEngineVersion  implements Serializable  {
      * @param dBEngineDescription The description of the database engine.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withDBEngineDescription(String dBEngineDescription) {
         this.dBEngineDescription = dBEngineDescription;
         return this;
     }
-    
-    
+
     /**
      * The description of the database engine version.
      *
@@ -228,14 +226,13 @@ public class DBEngineVersion  implements Serializable  {
      * @param dBEngineVersionDescription The description of the database engine version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withDBEngineVersionDescription(String dBEngineVersionDescription) {
         this.dBEngineVersionDescription = dBEngineVersionDescription;
         return this;
     }
-    
-    
+
     /**
      * The default character set for new instances of this engine version, if
      * the <code>CharacterSetName</code> parameter of the CreateDBInstance
@@ -274,14 +271,13 @@ public class DBEngineVersion  implements Serializable  {
      *         API is not specified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withDefaultCharacterSet(CharacterSet defaultCharacterSet) {
         this.defaultCharacterSet = defaultCharacterSet;
         return this;
     }
-    
-    
+
     /**
      * A list of the character sets supported by this engine for the
      * <code>CharacterSetName</code> parameter of the CreateDBInstance API.
@@ -290,9 +286,9 @@ public class DBEngineVersion  implements Serializable  {
      *         <code>CharacterSetName</code> parameter of the CreateDBInstance API.
      */
     public java.util.List<CharacterSet> getSupportedCharacterSets() {
-        
         if (supportedCharacterSets == null) {
-            supportedCharacterSets = new java.util.ArrayList<CharacterSet>();
+              supportedCharacterSets = new com.amazonaws.internal.ListWithAutoConstructFlag<CharacterSet>();
+              supportedCharacterSets.setAutoConstruct(true);
         }
         return supportedCharacterSets;
     }
@@ -309,8 +305,7 @@ public class DBEngineVersion  implements Serializable  {
             this.supportedCharacterSets = null;
             return;
         }
-
-        java.util.List<CharacterSet> supportedCharacterSetsCopy = new java.util.ArrayList<CharacterSet>(supportedCharacterSets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CharacterSet> supportedCharacterSetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CharacterSet>(supportedCharacterSets.size());
         supportedCharacterSetsCopy.addAll(supportedCharacterSets);
         this.supportedCharacterSets = supportedCharacterSetsCopy;
     }
@@ -325,7 +320,7 @@ public class DBEngineVersion  implements Serializable  {
      *         <code>CharacterSetName</code> parameter of the CreateDBInstance API.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withSupportedCharacterSets(CharacterSet... supportedCharacterSets) {
         if (getSupportedCharacterSets() == null) setSupportedCharacterSets(new java.util.ArrayList<CharacterSet>(supportedCharacterSets.length));
@@ -345,20 +340,20 @@ public class DBEngineVersion  implements Serializable  {
      *         <code>CharacterSetName</code> parameter of the CreateDBInstance API.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBEngineVersion withSupportedCharacterSets(java.util.Collection<CharacterSet> supportedCharacterSets) {
         if (supportedCharacterSets == null) {
             this.supportedCharacterSets = null;
         } else {
-            java.util.List<CharacterSet> supportedCharacterSetsCopy = new java.util.ArrayList<CharacterSet>(supportedCharacterSets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CharacterSet> supportedCharacterSetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CharacterSet>(supportedCharacterSets.size());
             supportedCharacterSetsCopy.addAll(supportedCharacterSets);
             this.supportedCharacterSets = supportedCharacterSetsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -370,13 +365,13 @@ public class DBEngineVersion  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");    	
-        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");    	
-        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");    	
-        if (getDBEngineDescription() != null) sb.append("DBEngineDescription: " + getDBEngineDescription() + ",");    	
-        if (getDBEngineVersionDescription() != null) sb.append("DBEngineVersionDescription: " + getDBEngineVersionDescription() + ",");    	
-        if (getDefaultCharacterSet() != null) sb.append("DefaultCharacterSet: " + getDefaultCharacterSet() + ",");    	
+        sb.append("{");
+        if (getEngine() != null) sb.append("Engine: " + getEngine() + ",");
+        if (getEngineVersion() != null) sb.append("EngineVersion: " + getEngineVersion() + ",");
+        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");
+        if (getDBEngineDescription() != null) sb.append("DBEngineDescription: " + getDBEngineDescription() + ",");
+        if (getDBEngineVersionDescription() != null) sb.append("DBEngineVersionDescription: " + getDBEngineVersionDescription() + ",");
+        if (getDefaultCharacterSet() != null) sb.append("DefaultCharacterSet: " + getDefaultCharacterSet() + ",");
         if (getSupportedCharacterSets() != null) sb.append("SupportedCharacterSets: " + getSupportedCharacterSets() );
         sb.append("}");
         return sb.toString();

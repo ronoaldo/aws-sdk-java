@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,215 +13,240 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An IP permission describing allowed incoming IP traffic to an Amazon EC2 security group.
+ * Describes a security group rule.
  * </p>
  */
-public class IpPermission  implements Serializable  {
+public class IpPermission implements Serializable {
 
     /**
-     * The IP protocol of this permission. <p> Valid protocol values:
-     * <code>tcp</code>, <code>udp</code>, <code>icmp</code>
+     * The protocol. <p>When you call <a>DescribeSecurityGroups</a>, the
+     * protocol value returned is the number. Exception: For TCP, UDP, and
+     * ICMP, the value returned is the name (for example, <code>tcp</code>,
+     * <code>udp</code>, or <code>icmp</code>). For a list of protocol
+     * numbers, see <a
+     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
+     * Numbers</a>.
      */
     private String ipProtocol;
 
     /**
-     * Start of port range for the TCP and UDP protocols, or an ICMP type
-     * number. An ICMP type number of <code>-1</code> indicates a wildcard
-     * (i.e., any ICMP type number).
+     * The start of port range for the TCP and UDP protocols, or an ICMP type
+     * number. A value of <code>-1</code> indicates all ICMP types.
      */
     private Integer fromPort;
 
     /**
-     * End of port range for the TCP and UDP protocols, or an ICMP code. An
-     * ICMP code of <code>-1</code> indicates a wildcard (i.e., any ICMP
-     * code).
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * A value of <code>-1</code> indicates all ICMP codes for the specified
+     * ICMP type.
      */
     private Integer toPort;
 
     /**
-     * The list of AWS user IDs and groups included in this permission.
+     * One or more security group and AWS account ID pairs.
      */
-    private java.util.List<UserIdGroupPair> userIdGroupPairs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair> userIdGroupPairs;
 
     /**
-     * The list of CIDR IP ranges included in this permission.
+     * One or more IP ranges.
      */
-    private java.util.List<String> ipRanges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> ipRanges;
 
     /**
-     * The IP protocol of this permission. <p> Valid protocol values:
-     * <code>tcp</code>, <code>udp</code>, <code>icmp</code>
+     * The protocol. <p>When you call <a>DescribeSecurityGroups</a>, the
+     * protocol value returned is the number. Exception: For TCP, UDP, and
+     * ICMP, the value returned is the name (for example, <code>tcp</code>,
+     * <code>udp</code>, or <code>icmp</code>). For a list of protocol
+     * numbers, see <a
+     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
+     * Numbers</a>.
      *
-     * @return The IP protocol of this permission. <p> Valid protocol values:
-     *         <code>tcp</code>, <code>udp</code>, <code>icmp</code>
+     * @return The protocol. <p>When you call <a>DescribeSecurityGroups</a>, the
+     *         protocol value returned is the number. Exception: For TCP, UDP, and
+     *         ICMP, the value returned is the name (for example, <code>tcp</code>,
+     *         <code>udp</code>, or <code>icmp</code>). For a list of protocol
+     *         numbers, see <a
+     *         href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
+     *         Numbers</a>.
      */
     public String getIpProtocol() {
         return ipProtocol;
     }
     
     /**
-     * The IP protocol of this permission. <p> Valid protocol values:
-     * <code>tcp</code>, <code>udp</code>, <code>icmp</code>
+     * The protocol. <p>When you call <a>DescribeSecurityGroups</a>, the
+     * protocol value returned is the number. Exception: For TCP, UDP, and
+     * ICMP, the value returned is the name (for example, <code>tcp</code>,
+     * <code>udp</code>, or <code>icmp</code>). For a list of protocol
+     * numbers, see <a
+     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
+     * Numbers</a>.
      *
-     * @param ipProtocol The IP protocol of this permission. <p> Valid protocol values:
-     *         <code>tcp</code>, <code>udp</code>, <code>icmp</code>
+     * @param ipProtocol The protocol. <p>When you call <a>DescribeSecurityGroups</a>, the
+     *         protocol value returned is the number. Exception: For TCP, UDP, and
+     *         ICMP, the value returned is the name (for example, <code>tcp</code>,
+     *         <code>udp</code>, or <code>icmp</code>). For a list of protocol
+     *         numbers, see <a
+     *         href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
+     *         Numbers</a>.
      */
     public void setIpProtocol(String ipProtocol) {
         this.ipProtocol = ipProtocol;
     }
     
     /**
-     * The IP protocol of this permission. <p> Valid protocol values:
-     * <code>tcp</code>, <code>udp</code>, <code>icmp</code>
+     * The protocol. <p>When you call <a>DescribeSecurityGroups</a>, the
+     * protocol value returned is the number. Exception: For TCP, UDP, and
+     * ICMP, the value returned is the name (for example, <code>tcp</code>,
+     * <code>udp</code>, or <code>icmp</code>). For a list of protocol
+     * numbers, see <a
+     * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
+     * Numbers</a>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ipProtocol The IP protocol of this permission. <p> Valid protocol values:
-     *         <code>tcp</code>, <code>udp</code>, <code>icmp</code>
+     * @param ipProtocol The protocol. <p>When you call <a>DescribeSecurityGroups</a>, the
+     *         protocol value returned is the number. Exception: For TCP, UDP, and
+     *         ICMP, the value returned is the name (for example, <code>tcp</code>,
+     *         <code>udp</code>, or <code>icmp</code>). For a list of protocol
+     *         numbers, see <a
+     *         href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
+     *         Numbers</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withIpProtocol(String ipProtocol) {
         this.ipProtocol = ipProtocol;
         return this;
     }
-    
-    
+
     /**
-     * Start of port range for the TCP and UDP protocols, or an ICMP type
-     * number. An ICMP type number of <code>-1</code> indicates a wildcard
-     * (i.e., any ICMP type number).
+     * The start of port range for the TCP and UDP protocols, or an ICMP type
+     * number. A value of <code>-1</code> indicates all ICMP types.
      *
-     * @return Start of port range for the TCP and UDP protocols, or an ICMP type
-     *         number. An ICMP type number of <code>-1</code> indicates a wildcard
-     *         (i.e., any ICMP type number).
+     * @return The start of port range for the TCP and UDP protocols, or an ICMP type
+     *         number. A value of <code>-1</code> indicates all ICMP types.
      */
     public Integer getFromPort() {
         return fromPort;
     }
     
     /**
-     * Start of port range for the TCP and UDP protocols, or an ICMP type
-     * number. An ICMP type number of <code>-1</code> indicates a wildcard
-     * (i.e., any ICMP type number).
+     * The start of port range for the TCP and UDP protocols, or an ICMP type
+     * number. A value of <code>-1</code> indicates all ICMP types.
      *
-     * @param fromPort Start of port range for the TCP and UDP protocols, or an ICMP type
-     *         number. An ICMP type number of <code>-1</code> indicates a wildcard
-     *         (i.e., any ICMP type number).
+     * @param fromPort The start of port range for the TCP and UDP protocols, or an ICMP type
+     *         number. A value of <code>-1</code> indicates all ICMP types.
      */
     public void setFromPort(Integer fromPort) {
         this.fromPort = fromPort;
     }
     
     /**
-     * Start of port range for the TCP and UDP protocols, or an ICMP type
-     * number. An ICMP type number of <code>-1</code> indicates a wildcard
-     * (i.e., any ICMP type number).
+     * The start of port range for the TCP and UDP protocols, or an ICMP type
+     * number. A value of <code>-1</code> indicates all ICMP types.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param fromPort Start of port range for the TCP and UDP protocols, or an ICMP type
-     *         number. An ICMP type number of <code>-1</code> indicates a wildcard
-     *         (i.e., any ICMP type number).
+     * @param fromPort The start of port range for the TCP and UDP protocols, or an ICMP type
+     *         number. A value of <code>-1</code> indicates all ICMP types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withFromPort(Integer fromPort) {
         this.fromPort = fromPort;
         return this;
     }
-    
-    
+
     /**
-     * End of port range for the TCP and UDP protocols, or an ICMP code. An
-     * ICMP code of <code>-1</code> indicates a wildcard (i.e., any ICMP
-     * code).
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * A value of <code>-1</code> indicates all ICMP codes for the specified
+     * ICMP type.
      *
-     * @return End of port range for the TCP and UDP protocols, or an ICMP code. An
-     *         ICMP code of <code>-1</code> indicates a wildcard (i.e., any ICMP
-     *         code).
+     * @return The end of port range for the TCP and UDP protocols, or an ICMP code.
+     *         A value of <code>-1</code> indicates all ICMP codes for the specified
+     *         ICMP type.
      */
     public Integer getToPort() {
         return toPort;
     }
     
     /**
-     * End of port range for the TCP and UDP protocols, or an ICMP code. An
-     * ICMP code of <code>-1</code> indicates a wildcard (i.e., any ICMP
-     * code).
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * A value of <code>-1</code> indicates all ICMP codes for the specified
+     * ICMP type.
      *
-     * @param toPort End of port range for the TCP and UDP protocols, or an ICMP code. An
-     *         ICMP code of <code>-1</code> indicates a wildcard (i.e., any ICMP
-     *         code).
+     * @param toPort The end of port range for the TCP and UDP protocols, or an ICMP code.
+     *         A value of <code>-1</code> indicates all ICMP codes for the specified
+     *         ICMP type.
      */
     public void setToPort(Integer toPort) {
         this.toPort = toPort;
     }
     
     /**
-     * End of port range for the TCP and UDP protocols, or an ICMP code. An
-     * ICMP code of <code>-1</code> indicates a wildcard (i.e., any ICMP
-     * code).
+     * The end of port range for the TCP and UDP protocols, or an ICMP code.
+     * A value of <code>-1</code> indicates all ICMP codes for the specified
+     * ICMP type.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param toPort End of port range for the TCP and UDP protocols, or an ICMP code. An
-     *         ICMP code of <code>-1</code> indicates a wildcard (i.e., any ICMP
-     *         code).
+     * @param toPort The end of port range for the TCP and UDP protocols, or an ICMP code.
+     *         A value of <code>-1</code> indicates all ICMP codes for the specified
+     *         ICMP type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withToPort(Integer toPort) {
         this.toPort = toPort;
         return this;
     }
-    
-    
+
     /**
-     * The list of AWS user IDs and groups included in this permission.
+     * One or more security group and AWS account ID pairs.
      *
-     * @return The list of AWS user IDs and groups included in this permission.
+     * @return One or more security group and AWS account ID pairs.
      */
     public java.util.List<UserIdGroupPair> getUserIdGroupPairs() {
-        
         if (userIdGroupPairs == null) {
-            userIdGroupPairs = new java.util.ArrayList<UserIdGroupPair>();
+              userIdGroupPairs = new com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair>();
+              userIdGroupPairs.setAutoConstruct(true);
         }
         return userIdGroupPairs;
     }
     
     /**
-     * The list of AWS user IDs and groups included in this permission.
+     * One or more security group and AWS account ID pairs.
      *
-     * @param userIdGroupPairs The list of AWS user IDs and groups included in this permission.
+     * @param userIdGroupPairs One or more security group and AWS account ID pairs.
      */
     public void setUserIdGroupPairs(java.util.Collection<UserIdGroupPair> userIdGroupPairs) {
         if (userIdGroupPairs == null) {
             this.userIdGroupPairs = null;
             return;
         }
-
-        java.util.List<UserIdGroupPair> userIdGroupPairsCopy = new java.util.ArrayList<UserIdGroupPair>(userIdGroupPairs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair> userIdGroupPairsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair>(userIdGroupPairs.size());
         userIdGroupPairsCopy.addAll(userIdGroupPairs);
         this.userIdGroupPairs = userIdGroupPairsCopy;
     }
     
     /**
-     * The list of AWS user IDs and groups included in this permission.
+     * One or more security group and AWS account ID pairs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userIdGroupPairs The list of AWS user IDs and groups included in this permission.
+     * @param userIdGroupPairs One or more security group and AWS account ID pairs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withUserIdGroupPairs(UserIdGroupPair... userIdGroupPairs) {
         if (getUserIdGroupPairs() == null) setUserIdGroupPairs(new java.util.ArrayList<UserIdGroupPair>(userIdGroupPairs.length));
@@ -232,65 +257,64 @@ public class IpPermission  implements Serializable  {
     }
     
     /**
-     * The list of AWS user IDs and groups included in this permission.
+     * One or more security group and AWS account ID pairs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userIdGroupPairs The list of AWS user IDs and groups included in this permission.
+     * @param userIdGroupPairs One or more security group and AWS account ID pairs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withUserIdGroupPairs(java.util.Collection<UserIdGroupPair> userIdGroupPairs) {
         if (userIdGroupPairs == null) {
             this.userIdGroupPairs = null;
         } else {
-            java.util.List<UserIdGroupPair> userIdGroupPairsCopy = new java.util.ArrayList<UserIdGroupPair>(userIdGroupPairs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair> userIdGroupPairsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UserIdGroupPair>(userIdGroupPairs.size());
             userIdGroupPairsCopy.addAll(userIdGroupPairs);
             this.userIdGroupPairs = userIdGroupPairsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The list of CIDR IP ranges included in this permission.
+     * One or more IP ranges.
      *
-     * @return The list of CIDR IP ranges included in this permission.
+     * @return One or more IP ranges.
      */
     public java.util.List<String> getIpRanges() {
-        
         if (ipRanges == null) {
-            ipRanges = new java.util.ArrayList<String>();
+              ipRanges = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              ipRanges.setAutoConstruct(true);
         }
         return ipRanges;
     }
     
     /**
-     * The list of CIDR IP ranges included in this permission.
+     * One or more IP ranges.
      *
-     * @param ipRanges The list of CIDR IP ranges included in this permission.
+     * @param ipRanges One or more IP ranges.
      */
     public void setIpRanges(java.util.Collection<String> ipRanges) {
         if (ipRanges == null) {
             this.ipRanges = null;
             return;
         }
-
-        java.util.List<String> ipRangesCopy = new java.util.ArrayList<String>(ipRanges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> ipRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ipRanges.size());
         ipRangesCopy.addAll(ipRanges);
         this.ipRanges = ipRangesCopy;
     }
     
     /**
-     * The list of CIDR IP ranges included in this permission.
+     * One or more IP ranges.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ipRanges The list of CIDR IP ranges included in this permission.
+     * @param ipRanges One or more IP ranges.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withIpRanges(String... ipRanges) {
         if (getIpRanges() == null) setIpRanges(new java.util.ArrayList<String>(ipRanges.length));
@@ -301,27 +325,27 @@ public class IpPermission  implements Serializable  {
     }
     
     /**
-     * The list of CIDR IP ranges included in this permission.
+     * One or more IP ranges.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ipRanges The list of CIDR IP ranges included in this permission.
+     * @param ipRanges One or more IP ranges.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IpPermission withIpRanges(java.util.Collection<String> ipRanges) {
         if (ipRanges == null) {
             this.ipRanges = null;
         } else {
-            java.util.List<String> ipRangesCopy = new java.util.ArrayList<String>(ipRanges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> ipRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ipRanges.size());
             ipRangesCopy.addAll(ipRanges);
             this.ipRanges = ipRangesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -333,11 +357,11 @@ public class IpPermission  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIpProtocol() != null) sb.append("IpProtocol: " + getIpProtocol() + ",");    	
-        if (getFromPort() != null) sb.append("FromPort: " + getFromPort() + ",");    	
-        if (getToPort() != null) sb.append("ToPort: " + getToPort() + ",");    	
-        if (getUserIdGroupPairs() != null) sb.append("UserIdGroupPairs: " + getUserIdGroupPairs() + ",");    	
+        sb.append("{");
+        if (getIpProtocol() != null) sb.append("IpProtocol: " + getIpProtocol() + ",");
+        if (getFromPort() != null) sb.append("FromPort: " + getFromPort() + ",");
+        if (getToPort() != null) sb.append("ToPort: " + getToPort() + ",");
+        if (getUserIdGroupPairs() != null) sb.append("UserIdGroupPairs: " + getUserIdGroupPairs() + ",");
         if (getIpRanges() != null) sb.append("IpRanges: " + getIpRanges() );
         sb.append("}");
         return sb.toString();

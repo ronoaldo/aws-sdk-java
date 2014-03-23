@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.elastictranscoder.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonElasticTranscoder.
  * All asynchronous calls made using this client are non-blocking. Callers could either
@@ -47,6 +46,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -62,7 +62,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonElasticTranscoderAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -86,16 +86,16 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *                       client connects to AmazonElasticTranscoder
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonElasticTranscoderAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonElasticTranscoder using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -107,7 +107,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *                       when authenticating with AWS services.
      */
     public AmazonElasticTranscoderAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -161,7 +161,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonElasticTranscoder using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -174,7 +174,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      *            to authenticate requests with AWS services.
      */
     public AmazonElasticTranscoderAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -217,7 +217,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      */
     public AmazonElasticTranscoderAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -246,7 +246,6 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -262,7 +261,8 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -272,10 +272,8 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
             
     /**
      * <p>
-     * To pause or reactivate a pipeline, so the pipeline stops or restarts
-     * processing jobs, update the status for the pipeline. Send a POST
-     * request to the <code>/2012-09-25/pipelines/[pipelineId]/status</code>
-     * resource.
+     * The UpdatePipelineStatus operation pauses or reactivates a pipeline,
+     * so that the pipeline stops or restarts the processing of jobs.
      * </p>
      * <p>
      * Changing the pipeline status is useful if you want to cancel one or
@@ -292,6 +290,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         UpdatePipelineStatus service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -306,17 +305,14 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<UpdatePipelineStatusResult>() {
             public UpdatePipelineStatusResult call() throws Exception {
                 return updatePipelineStatus(updatePipelineStatusRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To pause or reactivate a pipeline, so the pipeline stops or restarts
-     * processing jobs, update the status for the pipeline. Send a POST
-     * request to the <code>/2012-09-25/pipelines/[pipelineId]/status</code>
-     * resource.
+     * The UpdatePipelineStatus operation pauses or reactivates a pipeline,
+     * so that the pipeline stops or restarts the processing of jobs.
      * </p>
      * <p>
      * Changing the pipeline status is useful if you want to cancel one or
@@ -337,6 +333,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         UpdatePipelineStatus service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -352,25 +349,23 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdatePipelineStatusResult>() {
             public UpdatePipelineStatusResult call() throws Exception {
-            	UpdatePipelineStatusResult result;
+              UpdatePipelineStatusResult result;
                 try {
-            		result = updatePipelineStatus(updatePipelineStatusRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updatePipelineStatusRequest, result);
-               	return result;
-		    }
-		});
+                result = updatePipelineStatus(updatePipelineStatusRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updatePipelineStatusRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To update Amazon Simple Notification Service (Amazon SNS)
-     * notifications for a pipeline, send a POST request to the
-     * <code>/2012-09-25/pipelines/[pipelineId]/notifications</code>
-     * resource.
+     * With the UpdatePipelineNotifications operation, you can update Amazon
+     * Simple Notification Service (Amazon SNS) notifications for a pipeline.
      * </p>
      * <p>
      * When you update notifications for a pipeline, Elastic Transcoder
@@ -384,6 +379,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         UpdatePipelineNotifications service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -398,17 +394,14 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<UpdatePipelineNotificationsResult>() {
             public UpdatePipelineNotificationsResult call() throws Exception {
                 return updatePipelineNotifications(updatePipelineNotificationsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To update Amazon Simple Notification Service (Amazon SNS)
-     * notifications for a pipeline, send a POST request to the
-     * <code>/2012-09-25/pipelines/[pipelineId]/notifications</code>
-     * resource.
+     * With the UpdatePipelineNotifications operation, you can update Amazon
+     * Simple Notification Service (Amazon SNS) notifications for a pipeline.
      * </p>
      * <p>
      * When you update notifications for a pipeline, Elastic Transcoder
@@ -426,6 +419,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         UpdatePipelineNotifications service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -441,23 +435,22 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdatePipelineNotificationsResult>() {
             public UpdatePipelineNotificationsResult call() throws Exception {
-            	UpdatePipelineNotificationsResult result;
+              UpdatePipelineNotificationsResult result;
                 try {
-            		result = updatePipelineNotifications(updatePipelineNotificationsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updatePipelineNotificationsRequest, result);
-               	return result;
-		    }
-		});
+                result = updatePipelineNotifications(updatePipelineNotificationsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updatePipelineNotificationsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To get detailed information about a job, send a GET request to the
-     * <code>/2012-09-25/jobs/[jobId] </code> resource.
+     * The ReadJob operation returns detailed information about a job.
      * </p>
      *
      * @param readJobRequest Container for the necessary parameters to
@@ -465,6 +458,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the ReadJob
      *         service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -479,15 +473,13 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<ReadJobResult>() {
             public ReadJobResult call() throws Exception {
                 return readJob(readJobRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To get detailed information about a job, send a GET request to the
-     * <code>/2012-09-25/jobs/[jobId] </code> resource.
+     * The ReadJob operation returns detailed information about a job.
      * </p>
      *
      * @param readJobRequest Container for the necessary parameters to
@@ -499,6 +491,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the ReadJob
      *         service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -514,29 +507,24 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ReadJobResult>() {
             public ReadJobResult call() throws Exception {
-            	ReadJobResult result;
+              ReadJobResult result;
                 try {
-            		result = readJob(readJobRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(readJobRequest, result);
-               	return result;
-		    }
-		});
+                result = readJob(readJobRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(readJobRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To get a list of the jobs that have a specified status, send a GET
-     * request to the <code>/2012-09-25/jobsByStatus/[status] </code>
-     * resource.
-     * </p>
-     * <p>
-     * Elastic Transcoder returns all of the jobs that have the specified
-     * status. The response body contains one element for each job that
-     * satisfies the search criteria.
+     * The ListJobsByStatus operation gets a list of jobs that have a
+     * specified status. The response body contains one element for each job
+     * that satisfies the search criteria.
      * </p>
      *
      * @param listJobsByStatusRequest Container for the necessary parameters
@@ -545,6 +533,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         ListJobsByStatus service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -559,21 +548,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<ListJobsByStatusResult>() {
             public ListJobsByStatusResult call() throws Exception {
                 return listJobsByStatus(listJobsByStatusRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To get a list of the jobs that have a specified status, send a GET
-     * request to the <code>/2012-09-25/jobsByStatus/[status] </code>
-     * resource.
-     * </p>
-     * <p>
-     * Elastic Transcoder returns all of the jobs that have the specified
-     * status. The response body contains one element for each job that
-     * satisfies the search criteria.
+     * The ListJobsByStatus operation gets a list of jobs that have a
+     * specified status. The response body contains one element for each job
+     * that satisfies the search criteria.
      * </p>
      *
      * @param listJobsByStatusRequest Container for the necessary parameters
@@ -586,6 +569,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         ListJobsByStatus service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -601,23 +585,22 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListJobsByStatusResult>() {
             public ListJobsByStatusResult call() throws Exception {
-            	ListJobsByStatusResult result;
+              ListJobsByStatusResult result;
                 try {
-            		result = listJobsByStatus(listJobsByStatusRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listJobsByStatusRequest, result);
-               	return result;
-		    }
-		});
+                result = listJobsByStatus(listJobsByStatusRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listJobsByStatusRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To get detailed information about a preset, send a GET request to the
-     * <code>/2012-09-25/presets/[presetId] </code> resource.
+     * The ReadPreset operation gets detailed information about a preset.
      * </p>
      *
      * @param readPresetRequest Container for the necessary parameters to
@@ -625,6 +608,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ReadPreset service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -639,15 +623,13 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<ReadPresetResult>() {
             public ReadPresetResult call() throws Exception {
                 return readPreset(readPresetRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To get detailed information about a preset, send a GET request to the
-     * <code>/2012-09-25/presets/[presetId] </code> resource.
+     * The ReadPreset operation gets detailed information about a preset.
      * </p>
      *
      * @param readPresetRequest Container for the necessary parameters to
@@ -659,6 +641,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ReadPreset service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -674,23 +657,23 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ReadPresetResult>() {
             public ReadPresetResult call() throws Exception {
-            	ReadPresetResult result;
+              ReadPresetResult result;
                 try {
-            		result = readPreset(readPresetRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(readPresetRequest, result);
-               	return result;
-		    }
-		});
+                result = readPreset(readPresetRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(readPresetRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To create a pipeline, send a POST request to the
-     * <code>2012-09-25/pipelines</code> resource.
+     * The CreatePipeline operation creates a pipeline with settings that you
+     * specify.
      * </p>
      *
      * @param createPipelineRequest Container for the necessary parameters to
@@ -698,6 +681,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CreatePipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -712,15 +696,14 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<CreatePipelineResult>() {
             public CreatePipelineResult call() throws Exception {
                 return createPipeline(createPipelineRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To create a pipeline, send a POST request to the
-     * <code>2012-09-25/pipelines</code> resource.
+     * The CreatePipeline operation creates a pipeline with settings that you
+     * specify.
      * </p>
      *
      * @param createPipelineRequest Container for the necessary parameters to
@@ -732,6 +715,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CreatePipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -747,23 +731,22 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreatePipelineResult>() {
             public CreatePipelineResult call() throws Exception {
-            	CreatePipelineResult result;
+              CreatePipelineResult result;
                 try {
-            		result = createPipeline(createPipelineRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createPipelineRequest, result);
-               	return result;
-		    }
-		});
+                result = createPipeline(createPipelineRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createPipelineRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To cancel a job, send a DELETE request to the
-     * <code>/2012-09-25/jobs/[jobId] </code> resource.
+     * The CancelJob operation cancels an unfinished job.
      * </p>
      * <p>
      * <b>NOTE:</b>You can only cancel a job that has a status of Submitted.
@@ -777,6 +760,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CancelJob service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -791,15 +775,13 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<CancelJobResult>() {
             public CancelJobResult call() throws Exception {
                 return cancelJob(cancelJobRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To cancel a job, send a DELETE request to the
-     * <code>/2012-09-25/jobs/[jobId] </code> resource.
+     * The CancelJob operation cancels an unfinished job.
      * </p>
      * <p>
      * <b>NOTE:</b>You can only cancel a job that has a status of Submitted.
@@ -817,6 +799,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CancelJob service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -832,26 +815,37 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CancelJobResult>() {
             public CancelJobResult call() throws Exception {
-            	CancelJobResult result;
+              CancelJobResult result;
                 try {
-            		result = cancelJob(cancelJobRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(cancelJobRequest, result);
-               	return result;
-		    }
-		});
+                result = cancelJob(cancelJobRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(cancelJobRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
+     * <p>
+     * Use the <code>UpdatePipeline</code> operation to update settings for
+     * a pipeline. <p>
+     * <b>IMPORTANT:</b>When you change pipeline settings, your changes take
+     * effect immediately. Jobs that you have already submitted and that
+     * Elastic Transcoder has not started to process are affected in addition
+     * to jobs that you submit after you change settings.
+     * </p>
+     * 
+     * </p>
      *
      * @param updatePipelineRequest Container for the necessary parameters to
      *           execute the UpdatePipeline operation on AmazonElasticTranscoder.
      * 
      * @return A Java Future object containing the response from the
      *         UpdatePipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -866,12 +860,21 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<UpdatePipelineResult>() {
             public UpdatePipelineResult call() throws Exception {
                 return updatePipeline(updatePipelineRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
+     * <p>
+     * Use the <code>UpdatePipeline</code> operation to update settings for
+     * a pipeline. <p>
+     * <b>IMPORTANT:</b>When you change pipeline settings, your changes take
+     * effect immediately. Jobs that you have already submitted and that
+     * Elastic Transcoder has not started to process are affected in addition
+     * to jobs that you submit after you change settings.
+     * </p>
+     * 
+     * </p>
      *
      * @param updatePipelineRequest Container for the necessary parameters to
      *           execute the UpdatePipeline operation on AmazonElasticTranscoder.
@@ -882,6 +885,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         UpdatePipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -897,23 +901,24 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdatePipelineResult>() {
             public UpdatePipelineResult call() throws Exception {
-            	UpdatePipelineResult result;
+              UpdatePipelineResult result;
                 try {
-            		result = updatePipeline(updatePipelineRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updatePipelineRequest, result);
-               	return result;
-		    }
-		});
+                result = updatePipeline(updatePipelineRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updatePipelineRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To get a list of all presets associated with the current AWS account,
-     * send a GET request to the <code>/2012-09-25/presets</code> resource.
+     * The ListPresets operation gets a list of the default presets included
+     * with Elastic Transcoder and the presets that you've added in an AWS
+     * region.
      * </p>
      *
      * @param listPresetsRequest Container for the necessary parameters to
@@ -921,6 +926,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ListPresets service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -935,15 +941,15 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<ListPresetsResult>() {
             public ListPresetsResult call() throws Exception {
                 return listPresets(listPresetsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To get a list of all presets associated with the current AWS account,
-     * send a GET request to the <code>/2012-09-25/presets</code> resource.
+     * The ListPresets operation gets a list of the default presets included
+     * with Elastic Transcoder and the presets that you've added in an AWS
+     * region.
      * </p>
      *
      * @param listPresetsRequest Container for the necessary parameters to
@@ -955,6 +961,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ListPresets service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -970,23 +977,22 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListPresetsResult>() {
             public ListPresetsResult call() throws Exception {
-            	ListPresetsResult result;
+              ListPresetsResult result;
                 try {
-            		result = listPresets(listPresetsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listPresetsRequest, result);
-               	return result;
-		    }
-		});
+                result = listPresets(listPresetsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listPresetsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To delete a pipeline, send a DELETE request to the
-     * <code>/2012-09-25/pipelines/[pipelineId] </code> resource.
+     * The DeletePipeline operation removes a pipeline.
      * </p>
      * <p>
      * You can only delete a pipeline that has never been used or that is
@@ -1000,6 +1006,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         DeletePipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1014,15 +1021,13 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<DeletePipelineResult>() {
             public DeletePipelineResult call() throws Exception {
                 return deletePipeline(deletePipelineRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To delete a pipeline, send a DELETE request to the
-     * <code>/2012-09-25/pipelines/[pipelineId] </code> resource.
+     * The DeletePipeline operation removes a pipeline.
      * </p>
      * <p>
      * You can only delete a pipeline that has never been used or that is
@@ -1040,6 +1045,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         DeletePipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1055,24 +1061,22 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeletePipelineResult>() {
             public DeletePipelineResult call() throws Exception {
-            	DeletePipelineResult result;
+              DeletePipelineResult result;
                 try {
-            		result = deletePipeline(deletePipelineRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deletePipelineRequest, result);
-               	return result;
-		    }
-		});
+                result = deletePipeline(deletePipelineRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deletePipelineRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To test the IAM role that's used by Elastic Transcoder to create the
-     * pipeline, send a POST request to the
-     * <code>/2012-09-25/roleTests</code> resource.
+     * The TestRole operation tests the IAM role used to create the pipeline.
      * </p>
      * <p>
      * The <code>TestRole</code> action lets you determine whether the IAM
@@ -1088,6 +1092,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the TestRole
      *         service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1102,16 +1107,13 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<TestRoleResult>() {
             public TestRoleResult call() throws Exception {
                 return testRole(testRoleRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To test the IAM role that's used by Elastic Transcoder to create the
-     * pipeline, send a POST request to the
-     * <code>/2012-09-25/roleTests</code> resource.
+     * The TestRole operation tests the IAM role used to create the pipeline.
      * </p>
      * <p>
      * The <code>TestRole</code> action lets you determine whether the IAM
@@ -1131,6 +1133,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the TestRole
      *         service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1146,24 +1149,23 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<TestRoleResult>() {
             public TestRoleResult call() throws Exception {
-            	TestRoleResult result;
+              TestRoleResult result;
                 try {
-            		result = testRole(testRoleRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(testRoleRequest, result);
-               	return result;
-		    }
-		});
+                result = testRole(testRoleRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(testRoleRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To get a list of the pipelines associated with the current AWS
-     * account, send a GET request to the <code>/2012-09-25/pipelines</code>
-     * resource.
+     * The ListPipelines operation gets a list of the pipelines associated
+     * with the current AWS account.
      * </p>
      *
      * @param listPipelinesRequest Container for the necessary parameters to
@@ -1171,6 +1173,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ListPipelines service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1185,16 +1188,14 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<ListPipelinesResult>() {
             public ListPipelinesResult call() throws Exception {
                 return listPipelines(listPipelinesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To get a list of the pipelines associated with the current AWS
-     * account, send a GET request to the <code>/2012-09-25/pipelines</code>
-     * resource.
+     * The ListPipelines operation gets a list of the pipelines associated
+     * with the current AWS account.
      * </p>
      *
      * @param listPipelinesRequest Container for the necessary parameters to
@@ -1206,6 +1207,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ListPipelines service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1221,23 +1223,22 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListPipelinesResult>() {
             public ListPipelinesResult call() throws Exception {
-            	ListPipelinesResult result;
+              ListPipelinesResult result;
                 try {
-            		result = listPipelines(listPipelinesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listPipelinesRequest, result);
-               	return result;
-		    }
-		});
+                result = listPipelines(listPipelinesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listPipelinesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To get detailed information about a pipeline, send a GET request to
-     * the <code>/2012-09-25/pipelines/[pipelineId] </code> resource.
+     * The ReadPipeline operation gets detailed information about a pipeline.
      * </p>
      *
      * @param readPipelineRequest Container for the necessary parameters to
@@ -1245,6 +1246,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ReadPipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1259,15 +1261,13 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<ReadPipelineResult>() {
             public ReadPipelineResult call() throws Exception {
                 return readPipeline(readPipelineRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To get detailed information about a pipeline, send a GET request to
-     * the <code>/2012-09-25/pipelines/[pipelineId] </code> resource.
+     * The ReadPipeline operation gets detailed information about a pipeline.
      * </p>
      *
      * @param readPipelineRequest Container for the necessary parameters to
@@ -1279,6 +1279,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         ReadPipeline service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1294,36 +1295,36 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ReadPipelineResult>() {
             public ReadPipelineResult call() throws Exception {
-            	ReadPipelineResult result;
+              ReadPipelineResult result;
                 try {
-            		result = readPipeline(readPipelineRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(readPipelineRequest, result);
-               	return result;
-		    }
-		});
+                result = readPipeline(readPipelineRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(readPipelineRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To create a preset, send a POST request to the
-     * <code>/2012-09-25/presets</code> resource.
+     * The CreatePreset operation creates a preset with settings that you
+     * specify.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>Elastic Transcoder checks the settings that you
-     * specify to ensure that they meet Elastic Transcoder requirements and
-     * to determine whether they comply with H.264 standards. If your
-     * settings are not valid for Elastic Transcoder, Elastic Transcoder
-     * returns an HTTP 400 response (ValidationException) and does not create
-     * the preset. If the settings are valid for Elastic Transcoder but
-     * aren't strictly compliant with the H.264 standard, Elastic Transcoder
-     * creates the preset and returns a warning message in the response. This
-     * helps you determine whether your settings comply with the H.264
-     * standard while giving you greater flexibility with respect to the
-     * video that Elastic Transcoder produces.
+     * <b>IMPORTANT:</b>Elastic Transcoder checks the CreatePreset settings
+     * to ensure that they meet Elastic Transcoder requirements and to
+     * determine whether they comply with H.264 standards. If your settings
+     * are not valid for Elastic Transcoder, Elastic Transcoder returns an
+     * HTTP 400 response (ValidationException) and does not create the
+     * preset. If the settings are valid for Elastic Transcoder but aren't
+     * strictly compliant with the H.264 standard, Elastic Transcoder creates
+     * the preset and returns a warning message in the response. This helps
+     * you determine whether your settings comply with the H.264 standard
+     * while giving you greater flexibility with respect to the video that
+     * Elastic Transcoder produces.
      * </p>
      * <p>
      * Elastic Transcoder uses the H.264 video-compression format. For more
@@ -1337,6 +1338,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CreatePreset service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1351,28 +1353,27 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<CreatePresetResult>() {
             public CreatePresetResult call() throws Exception {
                 return createPreset(createPresetRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To create a preset, send a POST request to the
-     * <code>/2012-09-25/presets</code> resource.
+     * The CreatePreset operation creates a preset with settings that you
+     * specify.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>Elastic Transcoder checks the settings that you
-     * specify to ensure that they meet Elastic Transcoder requirements and
-     * to determine whether they comply with H.264 standards. If your
-     * settings are not valid for Elastic Transcoder, Elastic Transcoder
-     * returns an HTTP 400 response (ValidationException) and does not create
-     * the preset. If the settings are valid for Elastic Transcoder but
-     * aren't strictly compliant with the H.264 standard, Elastic Transcoder
-     * creates the preset and returns a warning message in the response. This
-     * helps you determine whether your settings comply with the H.264
-     * standard while giving you greater flexibility with respect to the
-     * video that Elastic Transcoder produces.
+     * <b>IMPORTANT:</b>Elastic Transcoder checks the CreatePreset settings
+     * to ensure that they meet Elastic Transcoder requirements and to
+     * determine whether they comply with H.264 standards. If your settings
+     * are not valid for Elastic Transcoder, Elastic Transcoder returns an
+     * HTTP 400 response (ValidationException) and does not create the
+     * preset. If the settings are valid for Elastic Transcoder but aren't
+     * strictly compliant with the H.264 standard, Elastic Transcoder creates
+     * the preset and returns a warning message in the response. This helps
+     * you determine whether your settings comply with the H.264 standard
+     * while giving you greater flexibility with respect to the video that
+     * Elastic Transcoder produces.
      * </p>
      * <p>
      * Elastic Transcoder uses the H.264 video-compression format. For more
@@ -1390,6 +1391,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CreatePreset service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1405,26 +1407,27 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreatePresetResult>() {
             public CreatePresetResult call() throws Exception {
-            	CreatePresetResult result;
+              CreatePresetResult result;
                 try {
-            		result = createPreset(createPresetRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createPresetRequest, result);
-               	return result;
-		    }
-		});
+                result = createPreset(createPresetRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createPresetRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To delete a preset, send a DELETE request to the
-     * <code>/2012-09-25/presets/[presetId] </code> resource.
+     * The DeletePreset operation removes a preset that you've added in an
+     * AWS region.
      * </p>
      * <p>
-     * <b>NOTE:</b> If the preset has been used, you cannot delete it.
+     * <b>NOTE:</b> You can't delete the default presets that are included
+     * with Elastic Transcoder.
      * </p>
      *
      * @param deletePresetRequest Container for the necessary parameters to
@@ -1432,6 +1435,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         DeletePreset service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1446,18 +1450,18 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<DeletePresetResult>() {
             public DeletePresetResult call() throws Exception {
                 return deletePreset(deletePresetRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To delete a preset, send a DELETE request to the
-     * <code>/2012-09-25/presets/[presetId] </code> resource.
+     * The DeletePreset operation removes a preset that you've added in an
+     * AWS region.
      * </p>
      * <p>
-     * <b>NOTE:</b> If the preset has been used, you cannot delete it.
+     * <b>NOTE:</b> You can't delete the default presets that are included
+     * with Elastic Transcoder.
      * </p>
      *
      * @param deletePresetRequest Container for the necessary parameters to
@@ -1469,6 +1473,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         DeletePreset service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1484,24 +1489,20 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeletePresetResult>() {
             public DeletePresetResult call() throws Exception {
-            	DeletePresetResult result;
+              DeletePresetResult result;
                 try {
-            		result = deletePreset(deletePresetRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deletePresetRequest, result);
-               	return result;
-		    }
-		});
+                result = deletePreset(deletePresetRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deletePresetRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
-     * <p>
-     * To create a job, send a POST request to the
-     * <code>/2012-09-25/jobs</code> resource.
-     * </p>
      * <p>
      * When you create a job, Elastic Transcoder returns JSON data that
      * includes the values that you specified plus information about the job
@@ -1519,6 +1520,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CreateJob service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1533,16 +1535,11 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<CreateJobResult>() {
             public CreateJobResult call() throws Exception {
                 return createJob(createJobRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
-     * <p>
-     * To create a job, send a POST request to the
-     * <code>/2012-09-25/jobs</code> resource.
-     * </p>
      * <p>
      * When you create a job, Elastic Transcoder returns JSON data that
      * includes the values that you specified plus information about the job
@@ -1564,6 +1561,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * 
      * @return A Java Future object containing the response from the
      *         CreateJob service method, as returned by AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1579,23 +1577,23 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateJobResult>() {
             public CreateJobResult call() throws Exception {
-            	CreateJobResult result;
+              CreateJobResult result;
                 try {
-            		result = createJob(createJobRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createJobRequest, result);
-               	return result;
-		    }
-		});
+                result = createJob(createJobRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createJobRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * To get a list of the jobs currently in a pipeline, send a GET request
-     * to the <code>/2012-09-25/jobsByPipeline/[pipelineId] </code> resource.
+     * The ListJobsByPipeline operation gets a list of the jobs currently in
+     * a pipeline.
      * </p>
      * <p>
      * Elastic Transcoder returns all of the jobs currently in the specified
@@ -1610,6 +1608,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         ListJobsByPipeline service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1624,15 +1623,14 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
         return executorService.submit(new Callable<ListJobsByPipelineResult>() {
             public ListJobsByPipelineResult call() throws Exception {
                 return listJobsByPipeline(listJobsByPipelineRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * To get a list of the jobs currently in a pipeline, send a GET request
-     * to the <code>/2012-09-25/jobsByPipeline/[pipelineId] </code> resource.
+     * The ListJobsByPipeline operation gets a list of the jobs currently in
+     * a pipeline.
      * </p>
      * <p>
      * Elastic Transcoder returns all of the jobs currently in the specified
@@ -1651,6 +1649,7 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
      * @return A Java Future object containing the response from the
      *         ListJobsByPipeline service method, as returned by
      *         AmazonElasticTranscoder.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1666,17 +1665,17 @@ public class AmazonElasticTranscoderAsyncClient extends AmazonElasticTranscoderC
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListJobsByPipelineResult>() {
             public ListJobsByPipelineResult call() throws Exception {
-            	ListJobsByPipelineResult result;
+              ListJobsByPipelineResult result;
                 try {
-            		result = listJobsByPipeline(listJobsByPipelineRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listJobsByPipelineRequest, result);
-               	return result;
-		    }
-		});
+                result = listJobsByPipeline(listJobsByPipelineRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listJobsByPipelineRequest, result);
+                 return result;
+        }
+    });
     }
     
 }

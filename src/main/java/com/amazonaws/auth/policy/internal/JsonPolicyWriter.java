@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -106,28 +106,48 @@ public class JsonPolicyWriter {
          * but use different condition keys. In JSON and XML, those conditions
          * must be siblings, otherwise data can be lost when they get parsed.
          */
-        Map<String, List<Condition>> conditionsByType = sortConditionsByType(conditions);
+        Map<String, List<Condition>> conditionsByType =
+            sortConditionsByType(conditions);
 
         generator.key("Condition").object();
-        for (String conditionType : conditionsByType.keySet()) {
+        for (Map.Entry<String, List<Condition>> entry
+                 : conditionsByType.entrySet()) {
+
+            String conditionType = entry.getKey();
             generator.key(conditionType).object();
 
-            /*
-             * We could also have multiple conditions that use the same type and
-             * same key, in which case, we need to push them together as one entry
-             * when we send the JSON representation.
-             */
-            Map<String, List<String>> conditionValuesByKey = sortConditionsByKey(conditionsByType.get(conditionType));
-            for (String conditionKey : conditionValuesByKey.keySet()) {
-                generator.key(conditionKey).array();
-                for (String value : conditionValuesByKey.get(conditionKey)) {
-                    generator.value(value);
-                }
-                generator.endArray();
-            }
+            writeConditions(entry.getValue(), generator);
+
             generator.endObject();
+
         }
         generator.endObject();
+    }
+
+    private void writeConditions(final List<Condition> conditions,
+                                 final JSONWriter generator)
+            throws IOException, JSONException {
+
+        /*
+         * We could also have multiple conditions that use the same type and
+         * same key, in which case, we need to push them together as one entry
+         * when we send the JSON representation.
+         */
+        Map<String, List<String>> conditionValuesByKey =
+            sortConditionsByKey(conditions);
+
+        for (Map.Entry<String, List<String>> entry
+                 : conditionValuesByKey.entrySet()) {
+
+            String conditionKey = entry.getKey();
+            generator.key(conditionKey).array();
+
+            for (String value : entry.getValue()) {
+                generator.value(value);
+            }
+
+            generator.endArray();
+        }
     }
 
     private Map<String, List<String>> sortConditionsByKey(List<Condition> conditions) {
@@ -189,26 +209,85 @@ public class JsonPolicyWriter {
      */
     private void writePrincipals(Statement statement, JSONWriter generator)
             throws IOException, JSONException {
+
+        boolean allAccessPrincipal = false;
+        boolean allUserAccessPrincipal = false;
+        boolean allServiceAccessPrincipal = false;
+        boolean allFederatedAccessPrincipal = false;
         List<Principal> principals = statement.getPrincipals();
         if (principals == null || principals.isEmpty()) return;
 
-        generator.key("Principal").object();
-        Map<String, List<String>> principalContentsByScheme = new HashMap<String, List<String>>();
+
+
+        Map<String, List<String>> principalContentsByScheme =
+            new HashMap<String, List<String>>();
+
         for (Principal p : principals) {
-            List<String> principalValues = principalContentsByScheme.get(p.getProvider());
+            if (p.equals(Principal.All)) {
+                allAccessPrincipal = true;
+            }
+
+            if (p.equals(Principal.AllUsers)) {
+                allUserAccessPrincipal = true;
+            }
+
+            if (p.equals(Principal.AllServices)) {
+                allServiceAccessPrincipal = true;
+            }
+
+            if (p.equals(Principal.AllWebProviders)) {
+                allFederatedAccessPrincipal = true;
+            }
+
+            List<String> principalValues =
+                principalContentsByScheme.get(p.getProvider());
+
             if (principalValues == null) {
                 principalValues = new ArrayList<String>();
-                principalContentsByScheme.put(p.getProvider(), principalValues);
+                principalContentsByScheme.put(p.getProvider(),
+                                              principalValues);
             }
-            	 principalValues.add(p.getId());
+
+            principalValues.add(p.getId());
         }
-        for (String scheme : principalContentsByScheme.keySet()) {
+
+        if (allAccessPrincipal == true) {
+            generator.key("Principal");
+            generator.value("*");
+            return;
+        }
+
+        generator.key("Principal").object();
+        if (allUserAccessPrincipal == true) {
+            principalContentsByScheme.remove("AWS");
+            generator.key("AWS").value("*");
+        }
+
+        if (allServiceAccessPrincipal == true) {
+            principalContentsByScheme.remove("Service");
+            generator.key("Service");
+            generator.value("*");
+        }
+
+        if (allFederatedAccessPrincipal == true) {
+            principalContentsByScheme.remove("Federated");
+            generator.key("Federated");
+            generator.value("*");
+        }
+
+        for (Map.Entry<String, List<String>> entry
+                 : principalContentsByScheme.entrySet()) {
+
+            String scheme = entry.getKey();
             generator.key(scheme).array();
-            for (String principalId : principalContentsByScheme.get(scheme)) {
+
+            for (String principalId : entry.getValue()) {
                 generator.value(principalId);
             }
+
             generator.endArray();
         }
+
         generator.endObject();
     }
 }

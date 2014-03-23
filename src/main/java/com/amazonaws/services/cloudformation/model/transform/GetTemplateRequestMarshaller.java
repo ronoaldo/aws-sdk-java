@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class GetTemplateRequestMarshaller implements Marshaller<Request<GetTempl
     public Request<GetTemplateRequest> marshall(GetTemplateRequest getTemplateRequest) {
 
         if (getTemplateRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetTemplateRequest> request = new DefaultRequest<GetTemplateRequest>(getTemplateRequest, "AmazonCloudFormation");
         request.addParameter("Action", "GetTemplate");
@@ -43,7 +43,6 @@ public class GetTemplateRequestMarshaller implements Marshaller<Request<GetTempl
         if (getTemplateRequest.getStackName() != null) {
             request.addParameter("StackName", StringUtils.fromString(getTemplateRequest.getStackName()));
         }
-
 
         return request;
     }

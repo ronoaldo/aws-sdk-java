@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,19 +29,21 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.simpleworkflow.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonSimpleWorkflow.
  * All asynchronous calls made using this client are non-blocking. Callers could either
  * process the result and handle the exceptions in the worker thread by providing a callback handler
  * when making the call, or use the returned Future object to check the result of the call in the calling thread.
  * Amazon Simple Workflow Service <p>
- * The Amazon Simple Workflow Service API Reference is intended for programmers who need detailed information about the Amazon SWF actions and data
- * types.
+ * The Amazon Simple Workflow Service API Reference is intended for
+ * programmers who need detailed information about the Amazon SWF actions
+ * and data types.
  * </p>
  * <p>
- * For an broader overview of the Amazon SWF programming model, please go to the <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/">
- * Amazon SWF Developer Guide </a> .
+ * For an broader overview of the Amazon SWF programming model, please
+ * go to the
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/"> Amazon SWF Developer Guide </a>
+ * .
  * </p>
  * <p>
  * This section provides an overview of Amazon SWF actions.
@@ -50,7 +52,8 @@ import com.amazonaws.services.simpleworkflow.model.*;
  * <b>Action Categories</b>
  * </p>
  * <p>
- * The Amazon SWF actions can be grouped into the following major categories.
+ * The Amazon SWF actions can be grouped into the following major
+ * categories.
  * </p>
  * 
  * <ul>
@@ -107,8 +110,10 @@ import com.amazonaws.services.simpleworkflow.model.*;
  * 
  * </ul>
  * <p>
- * Activity workers use the PollForActivityTask to get new activity tasks. After a worker receives an activity task from Amazon SWF, it performs the task
- * and responds using RespondActivityTaskCompleted if successful or RespondActivityTaskFailed if unsuccessful.
+ * Activity workers use the PollForActivityTask to get new activity
+ * tasks. After a worker receives an activity task from Amazon SWF, it
+ * performs the task and responds using RespondActivityTaskCompleted if
+ * successful or RespondActivityTaskFailed if unsuccessful.
  * </p>
  * <p>
  * <b>Actions related to Deciders</b>
@@ -129,8 +134,11 @@ import com.amazonaws.services.simpleworkflow.model.*;
  * 
  * </ul>
  * <p>
- * Deciders use PollForDecisionTask to get decision tasks. After a decider receives a decision task from Amazon SWF, it examines its workflow execution
- * history and decides what to do next. It calls RespondDecisionTaskCompletedto complete the decision task and provide zero or more next decisions.
+ * Deciders use PollForDecisionTask to get decision tasks. After a
+ * decider receives a decision task from Amazon SWF, it examines its
+ * workflow execution history and decides what to do next. It calls
+ * RespondDecisionTaskCompletedto complete the decision task and provide
+ * zero or more next decisions.
  * </p>
  * <p>
  * <b>Actions related to Workflow Executions</b>
@@ -162,8 +170,9 @@ import com.amazonaws.services.simpleworkflow.model.*;
  * <b>Actions related to Administration</b>
  * </p>
  * <p>
- * Although you can perform administrative tasks from the Amazon SWF console, you can use the actions in this section to automate functions or build your
- * own administrative tools.
+ * Although you can perform administrative tasks from the Amazon SWF
+ * console, you can use the actions in this section to automate functions
+ * or build your own administrative tools.
  * </p>
  * <p>
  * <b>Activity Management</b>
@@ -229,8 +238,9 @@ import com.amazonaws.services.simpleworkflow.model.*;
  * <b>Visibility Actions</b>
  * </p>
  * <p>
- * Although you can perform visibility actions from the Amazon SWF console, you can use the actions in this section to build your own console or
- * administrative tools.
+ * Although you can perform visibility actions from the Amazon SWF
+ * console, you can use the actions in this section to build your own
+ * console or administrative tools.
  * </p>
  * 
  * <ul>
@@ -336,6 +346,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -351,7 +362,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleWorkflowAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -375,16 +386,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      *                       client connects to AmazonSimpleWorkflow
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleWorkflowAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonSimpleWorkflow using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -396,7 +407,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      *                       when authenticating with AWS services.
      */
     public AmazonSimpleWorkflowAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -450,7 +461,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonSimpleWorkflow using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -463,7 +474,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      *            to authenticate requests with AWS services.
      */
     public AmazonSimpleWorkflowAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -506,7 +517,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      */
     public AmazonSimpleWorkflowAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -535,7 +546,6 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -551,7 +561,8 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -601,9 +612,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param deprecateWorkflowTypeRequest Container for the necessary
@@ -613,6 +624,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DeprecateWorkflowType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -628,11 +640,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 deprecateWorkflowType(deprecateWorkflowTypeRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deprecates the specified <i>workflow type</i> . After a workflow type
@@ -675,9 +686,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param deprecateWorkflowTypeRequest Container for the necessary
@@ -691,6 +702,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DeprecateWorkflowType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -706,16 +718,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deprecateWorkflowType(deprecateWorkflowTypeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deprecateWorkflowTypeRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deprecateWorkflowType(deprecateWorkflowTypeRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deprecateWorkflowTypeRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -753,9 +765,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param deprecateDomainRequest Container for the necessary parameters
@@ -763,6 +775,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         DeprecateDomain service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -778,11 +791,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 deprecateDomain(deprecateDomainRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deprecates the specified domain. After a domain has been deprecated
@@ -818,9 +830,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param deprecateDomainRequest Container for the necessary parameters
@@ -832,6 +844,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         DeprecateDomain service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -847,16 +860,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deprecateDomain(deprecateDomainRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deprecateDomainRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deprecateDomain(deprecateDomainRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deprecateDomainRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -906,9 +919,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param registerWorkflowTypeRequest Container for the necessary
@@ -918,6 +931,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RegisterWorkflowType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -933,11 +947,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 registerWorkflowType(registerWorkflowTypeRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Registers a new <i>workflow type</i> and its configuration settings
@@ -985,9 +998,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param registerWorkflowTypeRequest Container for the necessary
@@ -1001,6 +1014,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RegisterWorkflowType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1016,16 +1030,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		registerWorkflowType(registerWorkflowTypeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(registerWorkflowTypeRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                registerWorkflowType(registerWorkflowTypeRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(registerWorkflowTypeRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1056,9 +1070,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listWorkflowTypesRequest Container for the necessary parameters
@@ -1066,6 +1080,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         ListWorkflowTypes service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1080,11 +1095,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<WorkflowTypeInfos>() {
             public WorkflowTypeInfos call() throws Exception {
                 return listWorkflowTypes(listWorkflowTypesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns information about workflow types in the specified domain. The
@@ -1113,9 +1127,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listWorkflowTypesRequest Container for the necessary parameters
@@ -1127,6 +1141,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         ListWorkflowTypes service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1142,17 +1157,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<WorkflowTypeInfos>() {
             public WorkflowTypeInfos call() throws Exception {
-            	WorkflowTypeInfos result;
+              WorkflowTypeInfos result;
                 try {
-            		result = listWorkflowTypes(listWorkflowTypesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listWorkflowTypesRequest, result);
-               	return result;
-		    }
-		});
+                result = listWorkflowTypes(listWorkflowTypesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listWorkflowTypesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1205,9 +1220,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param startWorkflowExecutionRequest Container for the necessary
@@ -1217,6 +1232,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         StartWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1231,11 +1247,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<Run>() {
             public Run call() throws Exception {
                 return startWorkflowExecution(startWorkflowExecutionRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Starts an execution of the workflow type in the specified domain
@@ -1286,9 +1301,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param startWorkflowExecutionRequest Container for the necessary
@@ -1302,6 +1317,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         StartWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1317,17 +1333,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Run>() {
             public Run call() throws Exception {
-            	Run result;
+              Run result;
                 try {
-            		result = startWorkflowExecution(startWorkflowExecutionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(startWorkflowExecutionRequest, result);
-               	return result;
-		    }
-		});
+                result = startWorkflowExecution(startWorkflowExecutionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(startWorkflowExecutionRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1369,9 +1385,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param signalWorkflowExecutionRequest Container for the necessary
@@ -1381,6 +1397,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         SignalWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1396,11 +1413,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 signalWorkflowExecution(signalWorkflowExecutionRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Records a <code>WorkflowExecutionSignaled</code> event in the
@@ -1440,9 +1456,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param signalWorkflowExecutionRequest Container for the necessary
@@ -1456,6 +1472,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         SignalWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1471,16 +1488,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		signalWorkflowExecution(signalWorkflowExecutionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(signalWorkflowExecutionRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                signalWorkflowExecution(signalWorkflowExecutionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(signalWorkflowExecutionRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1517,9 +1534,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listDomainsRequest Container for the necessary parameters to
@@ -1527,6 +1544,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         ListDomains service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1541,11 +1559,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<DomainInfos>() {
             public DomainInfos call() throws Exception {
                 return listDomains(listDomainsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the list of domains registered in the account. The results
@@ -1580,9 +1597,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listDomainsRequest Container for the necessary parameters to
@@ -1594,6 +1611,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         ListDomains service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1609,17 +1627,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DomainInfos>() {
             public DomainInfos call() throws Exception {
-            	DomainInfos result;
+              DomainInfos result;
                 try {
-            		result = listDomains(listDomainsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listDomainsRequest, result);
-               	return result;
-		    }
-		});
+                result = listDomains(listDomainsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listDomainsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1664,9 +1682,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param requestCancelWorkflowExecutionRequest Container for the
@@ -1676,6 +1694,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RequestCancelWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1691,11 +1710,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 requestCancelWorkflowExecution(requestCancelWorkflowExecutionRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Records a <code>WorkflowExecutionCancelRequested</code> event in the
@@ -1738,9 +1756,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param requestCancelWorkflowExecutionRequest Container for the
@@ -1754,6 +1772,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RequestCancelWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1769,16 +1788,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		requestCancelWorkflowExecution(requestCancelWorkflowExecutionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(requestCancelWorkflowExecutionRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                requestCancelWorkflowExecution(requestCancelWorkflowExecutionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(requestCancelWorkflowExecutionRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1817,9 +1836,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeWorkflowTypeRequest Container for the necessary
@@ -1829,6 +1848,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DescribeWorkflowType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1843,11 +1863,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<WorkflowTypeDetail>() {
             public WorkflowTypeDetail call() throws Exception {
                 return describeWorkflowType(describeWorkflowTypeRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns information about the specified <i>workflow type</i> . This
@@ -1884,9 +1903,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeWorkflowTypeRequest Container for the necessary
@@ -1900,6 +1919,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DescribeWorkflowType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1915,17 +1935,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<WorkflowTypeDetail>() {
             public WorkflowTypeDetail call() throws Exception {
-            	WorkflowTypeDetail result;
+              WorkflowTypeDetail result;
                 try {
-            		result = describeWorkflowType(describeWorkflowTypeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeWorkflowTypeRequest, result);
-               	return result;
-		    }
-		});
+                result = describeWorkflowType(describeWorkflowTypeRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeWorkflowTypeRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1969,9 +1989,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param deprecateActivityTypeRequest Container for the necessary
@@ -1981,6 +2001,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DeprecateActivityType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1996,11 +2017,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 deprecateActivityType(deprecateActivityTypeRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deprecates the specified <i>activity type</i> .
@@ -2042,9 +2062,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param deprecateActivityTypeRequest Container for the necessary
@@ -2058,6 +2078,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DeprecateActivityType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2073,16 +2094,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deprecateActivityType(deprecateActivityTypeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deprecateActivityTypeRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deprecateActivityType(deprecateActivityTypeRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deprecateActivityTypeRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -2126,9 +2147,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countClosedWorkflowExecutionsRequest Container for the
@@ -2138,6 +2159,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountClosedWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2152,11 +2174,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<WorkflowExecutionCount>() {
             public WorkflowExecutionCount call() throws Exception {
                 return countClosedWorkflowExecutions(countClosedWorkflowExecutionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the number of closed workflow executions within the given
@@ -2198,9 +2219,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countClosedWorkflowExecutionsRequest Container for the
@@ -2214,6 +2235,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountClosedWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2229,17 +2251,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<WorkflowExecutionCount>() {
             public WorkflowExecutionCount call() throws Exception {
-            	WorkflowExecutionCount result;
+              WorkflowExecutionCount result;
                 try {
-            		result = countClosedWorkflowExecutions(countClosedWorkflowExecutionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(countClosedWorkflowExecutionsRequest, result);
-               	return result;
-		    }
-		});
+                result = countClosedWorkflowExecutions(countClosedWorkflowExecutionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(countClosedWorkflowExecutionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -2272,9 +2294,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countPendingActivityTasksRequest Container for the necessary
@@ -2284,6 +2306,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountPendingActivityTasks service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2298,11 +2321,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<PendingTaskCount>() {
             public PendingTaskCount call() throws Exception {
                 return countPendingActivityTasks(countPendingActivityTasksRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the estimated number of activity tasks in the specified task
@@ -2333,9 +2355,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countPendingActivityTasksRequest Container for the necessary
@@ -2349,6 +2371,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountPendingActivityTasks service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2364,17 +2387,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<PendingTaskCount>() {
             public PendingTaskCount call() throws Exception {
-            	PendingTaskCount result;
+              PendingTaskCount result;
                 try {
-            		result = countPendingActivityTasks(countPendingActivityTasksRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(countPendingActivityTasksRequest, result);
-               	return result;
-		    }
-		});
+                result = countPendingActivityTasks(countPendingActivityTasksRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(countPendingActivityTasksRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -2398,9 +2421,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * is closed. Therefore a task is reported as open while a worker is
      * processing it. A task is closed after it has been specified in a call
      * to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-     * RespondActivityTaskFailed, or the task has <a
-     * zonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">
-     * timed out </a> .
+     * RespondActivityTaskFailed, or the task has
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types"> timed out </a>
+     * .
      * </p>
      * <p>
      * <b>Access Control</b>
@@ -2424,9 +2447,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondActivityTaskCanceledRequest Container for the necessary
@@ -2436,6 +2459,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondActivityTaskCanceled service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2451,11 +2475,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 respondActivityTaskCanceled(respondActivityTaskCanceledRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Used by workers to tell the service that the ActivityTask identified
@@ -2477,9 +2500,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * is closed. Therefore a task is reported as open while a worker is
      * processing it. A task is closed after it has been specified in a call
      * to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-     * RespondActivityTaskFailed, or the task has <a
-     * zonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">
-     * timed out </a> .
+     * RespondActivityTaskFailed, or the task has
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types"> timed out </a>
+     * .
      * </p>
      * <p>
      * <b>Access Control</b>
@@ -2503,9 +2526,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondActivityTaskCanceledRequest Container for the necessary
@@ -2519,6 +2542,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondActivityTaskCanceled service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2534,16 +2558,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		respondActivityTaskCanceled(respondActivityTaskCanceledRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(respondActivityTaskCanceledRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                respondActivityTaskCanceled(respondActivityTaskCanceledRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(respondActivityTaskCanceledRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -2568,9 +2592,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * for the list of decisions in the <code>decisions</code> parameter in
      * the same way as for the regular API. This approach maintains a uniform
      * conceptual model and helps keep policies readable. For more
-     * information, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * information, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondDecisionTaskCompletedRequest Container for the necessary
@@ -2580,6 +2604,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondDecisionTaskCompleted service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2595,11 +2620,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 respondDecisionTaskCompleted(respondDecisionTaskCompletedRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Used by deciders to tell the service that the DecisionTask identified
@@ -2622,9 +2646,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * for the list of decisions in the <code>decisions</code> parameter in
      * the same way as for the regular API. This approach maintains a uniform
      * conceptual model and helps keep policies readable. For more
-     * information, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * information, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondDecisionTaskCompletedRequest Container for the necessary
@@ -2638,6 +2662,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondDecisionTaskCompleted service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2653,16 +2678,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		respondDecisionTaskCompleted(respondDecisionTaskCompletedRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(respondDecisionTaskCompletedRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                respondDecisionTaskCompleted(respondDecisionTaskCompletedRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(respondDecisionTaskCompletedRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -2684,9 +2709,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * is closed. Therefore a task is reported as open while a worker is
      * processing it. A task is closed after it has been specified in a call
      * to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-     * RespondActivityTaskFailed, or the task has <a
-     * zonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">
-     * timed out </a> .
+     * RespondActivityTaskFailed, or the task has
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types"> timed out </a>
+     * .
      * </p>
      * <p>
      * <b>Access Control</b>
@@ -2710,9 +2735,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondActivityTaskCompletedRequest Container for the necessary
@@ -2722,6 +2747,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondActivityTaskCompleted service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2737,11 +2763,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 respondActivityTaskCompleted(respondActivityTaskCompletedRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Used by workers to tell the service that the ActivityTask identified
@@ -2761,9 +2786,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * is closed. Therefore a task is reported as open while a worker is
      * processing it. A task is closed after it has been specified in a call
      * to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-     * RespondActivityTaskFailed, or the task has <a
-     * zonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">
-     * timed out </a> .
+     * RespondActivityTaskFailed, or the task has
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types"> timed out </a>
+     * .
      * </p>
      * <p>
      * <b>Access Control</b>
@@ -2787,9 +2812,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondActivityTaskCompletedRequest Container for the necessary
@@ -2803,6 +2828,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondActivityTaskCompleted service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2818,16 +2844,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		respondActivityTaskCompleted(respondActivityTaskCompletedRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(respondActivityTaskCompletedRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                respondActivityTaskCompleted(respondActivityTaskCompletedRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(respondActivityTaskCompletedRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -2871,9 +2897,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param pollForActivityTaskRequest Container for the necessary
@@ -2883,6 +2909,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         PollForActivityTask service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2897,11 +2924,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<ActivityTask>() {
             public ActivityTask call() throws Exception {
                 return pollForActivityTask(pollForActivityTaskRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Used by workers to get an ActivityTask from the specified activity
@@ -2943,9 +2969,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param pollForActivityTaskRequest Container for the necessary
@@ -2959,6 +2985,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         PollForActivityTask service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2974,17 +3001,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ActivityTask>() {
             public ActivityTask call() throws Exception {
-            	ActivityTask result;
+              ActivityTask result;
                 try {
-            		result = pollForActivityTask(pollForActivityTaskRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(pollForActivityTaskRequest, result);
-               	return result;
-		    }
-		});
+                result = pollForActivityTask(pollForActivityTaskRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(pollForActivityTaskRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -3028,9 +3055,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countOpenWorkflowExecutionsRequest Container for the necessary
@@ -3040,6 +3067,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountOpenWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3054,11 +3082,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<WorkflowExecutionCount>() {
             public WorkflowExecutionCount call() throws Exception {
                 return countOpenWorkflowExecutions(countOpenWorkflowExecutionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the number of open workflow executions within the given
@@ -3100,9 +3127,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countOpenWorkflowExecutionsRequest Container for the necessary
@@ -3116,6 +3143,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountOpenWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3131,17 +3159,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<WorkflowExecutionCount>() {
             public WorkflowExecutionCount call() throws Exception {
-            	WorkflowExecutionCount result;
+              WorkflowExecutionCount result;
                 try {
-            		result = countOpenWorkflowExecutions(countOpenWorkflowExecutionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(countOpenWorkflowExecutionsRequest, result);
-               	return result;
-		    }
-		});
+                result = countOpenWorkflowExecutions(countOpenWorkflowExecutionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(countOpenWorkflowExecutionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -3180,9 +3208,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeActivityTypeRequest Container for the necessary
@@ -3192,6 +3220,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DescribeActivityType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3206,11 +3235,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<ActivityTypeDetail>() {
             public ActivityTypeDetail call() throws Exception {
                 return describeActivityType(describeActivityTypeRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns information about the specified activity type. This includes
@@ -3247,9 +3275,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeActivityTypeRequest Container for the necessary
@@ -3263,6 +3291,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DescribeActivityType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3278,17 +3307,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ActivityTypeDetail>() {
             public ActivityTypeDetail call() throws Exception {
-            	ActivityTypeDetail result;
+              ActivityTypeDetail result;
                 try {
-            		result = describeActivityType(describeActivityTypeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeActivityTypeRequest, result);
-               	return result;
-		    }
-		});
+                result = describeActivityType(describeActivityTypeRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeActivityTypeRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -3334,9 +3363,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listOpenWorkflowExecutionsRequest Container for the necessary
@@ -3346,6 +3375,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         ListOpenWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3360,11 +3390,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<WorkflowExecutionInfos>() {
             public WorkflowExecutionInfos call() throws Exception {
                 return listOpenWorkflowExecutions(listOpenWorkflowExecutionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns a list of open workflow executions in the specified domain
@@ -3408,9 +3437,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listOpenWorkflowExecutionsRequest Container for the necessary
@@ -3424,6 +3453,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         ListOpenWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3439,17 +3469,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<WorkflowExecutionInfos>() {
             public WorkflowExecutionInfos call() throws Exception {
-            	WorkflowExecutionInfos result;
+              WorkflowExecutionInfos result;
                 try {
-            		result = listOpenWorkflowExecutions(listOpenWorkflowExecutionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listOpenWorkflowExecutionsRequest, result);
-               	return result;
-		    }
-		});
+                result = listOpenWorkflowExecutions(listOpenWorkflowExecutionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listOpenWorkflowExecutionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -3485,9 +3515,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param getWorkflowExecutionHistoryRequest Container for the necessary
@@ -3497,6 +3527,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         GetWorkflowExecutionHistory service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3511,11 +3542,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<History>() {
             public History call() throws Exception {
                 return getWorkflowExecutionHistory(getWorkflowExecutionHistoryRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the history of the specified workflow execution. The results
@@ -3549,9 +3579,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param getWorkflowExecutionHistoryRequest Container for the necessary
@@ -3565,6 +3595,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         GetWorkflowExecutionHistory service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3580,17 +3611,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<History>() {
             public History call() throws Exception {
-            	History result;
+              History result;
                 try {
-            		result = getWorkflowExecutionHistory(getWorkflowExecutionHistoryRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getWorkflowExecutionHistoryRequest, result);
-               	return result;
-		    }
-		});
+                result = getWorkflowExecutionHistory(getWorkflowExecutionHistoryRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getWorkflowExecutionHistoryRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -3620,9 +3651,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      * <p>
      * </p>
@@ -3632,6 +3663,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         RegisterDomain service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3647,11 +3679,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 registerDomain(registerDomainRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Registers a new domain.
@@ -3679,9 +3710,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      * <p>
      * </p>
@@ -3695,6 +3726,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         RegisterDomain service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3710,16 +3742,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		registerDomain(registerDomainRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(registerDomainRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                registerDomain(registerDomainRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(registerDomainRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -3765,9 +3797,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param registerActivityTypeRequest Container for the necessary
@@ -3777,6 +3809,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RegisterActivityType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3792,11 +3825,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 registerActivityType(registerActivityTypeRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Registers a new <i>activity type</i> along with its configuration
@@ -3840,9 +3872,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param registerActivityTypeRequest Container for the necessary
@@ -3856,6 +3888,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RegisterActivityType service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3871,16 +3904,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		registerActivityType(registerActivityTypeRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(registerActivityTypeRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                registerActivityType(registerActivityTypeRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(registerActivityTypeRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -3926,9 +3959,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listClosedWorkflowExecutionsRequest Container for the necessary
@@ -3938,6 +3971,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         ListClosedWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -3952,11 +3986,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<WorkflowExecutionInfos>() {
             public WorkflowExecutionInfos call() throws Exception {
                 return listClosedWorkflowExecutions(listClosedWorkflowExecutionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns a list of closed workflow executions in the specified domain
@@ -4000,9 +4033,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listClosedWorkflowExecutionsRequest Container for the necessary
@@ -4016,6 +4049,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         ListClosedWorkflowExecutions service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4031,17 +4065,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<WorkflowExecutionInfos>() {
             public WorkflowExecutionInfos call() throws Exception {
-            	WorkflowExecutionInfos result;
+              WorkflowExecutionInfos result;
                 try {
-            		result = listClosedWorkflowExecutions(listClosedWorkflowExecutionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listClosedWorkflowExecutionsRequest, result);
-               	return result;
-		    }
-		});
+                result = listClosedWorkflowExecutions(listClosedWorkflowExecutionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listClosedWorkflowExecutionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -4108,9 +4142,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param recordActivityTaskHeartbeatRequest Container for the necessary
@@ -4120,6 +4154,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RecordActivityTaskHeartbeat service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4134,11 +4169,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<ActivityTaskStatus>() {
             public ActivityTaskStatus call() throws Exception {
                 return recordActivityTaskHeartbeat(recordActivityTaskHeartbeatRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Used by activity workers to report to the service that the
@@ -4203,9 +4237,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param recordActivityTaskHeartbeatRequest Container for the necessary
@@ -4219,6 +4253,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RecordActivityTaskHeartbeat service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4234,17 +4269,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ActivityTaskStatus>() {
             public ActivityTaskStatus call() throws Exception {
-            	ActivityTaskStatus result;
+              ActivityTaskStatus result;
                 try {
-            		result = recordActivityTaskHeartbeat(recordActivityTaskHeartbeatRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(recordActivityTaskHeartbeatRequest, result);
-               	return result;
-		    }
-		});
+                result = recordActivityTaskHeartbeat(recordActivityTaskHeartbeatRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(recordActivityTaskHeartbeatRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -4301,9 +4336,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param pollForDecisionTaskRequest Container for the necessary
@@ -4313,6 +4348,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         PollForDecisionTask service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4327,11 +4363,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<DecisionTask>() {
             public DecisionTask call() throws Exception {
                 return pollForDecisionTask(pollForDecisionTaskRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Used by deciders to get a DecisionTask from the specified decision
@@ -4386,9 +4421,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param pollForDecisionTaskRequest Container for the necessary
@@ -4402,6 +4437,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         PollForDecisionTask service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4417,17 +4453,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DecisionTask>() {
             public DecisionTask call() throws Exception {
-            	DecisionTask result;
+              DecisionTask result;
                 try {
-            		result = pollForDecisionTask(pollForDecisionTaskRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(pollForDecisionTaskRequest, result);
-               	return result;
-		    }
-		});
+                result = pollForDecisionTask(pollForDecisionTaskRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(pollForDecisionTaskRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -4461,9 +4497,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listActivityTypesRequest Container for the necessary parameters
@@ -4471,6 +4507,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         ListActivityTypes service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4485,11 +4522,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<ActivityTypeInfos>() {
             public ActivityTypeInfos call() throws Exception {
                 return listActivityTypes(listActivityTypesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns information about all activities registered in the specified
@@ -4521,9 +4557,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param listActivityTypesRequest Container for the necessary parameters
@@ -4535,6 +4571,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         ListActivityTypes service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4550,17 +4587,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ActivityTypeInfos>() {
             public ActivityTypeInfos call() throws Exception {
-            	ActivityTypeInfos result;
+              ActivityTypeInfos result;
                 try {
-            		result = listActivityTypes(listActivityTypesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listActivityTypesRequest, result);
-               	return result;
-		    }
-		});
+                result = listActivityTypes(listActivityTypesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listActivityTypesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -4590,9 +4627,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeDomainRequest Container for the necessary parameters to
@@ -4600,6 +4637,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeDomain service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4614,11 +4652,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<DomainDetail>() {
             public DomainDetail call() throws Exception {
                 return describeDomain(describeDomainRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns information about the specified domain including description
@@ -4646,9 +4683,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeDomainRequest Container for the necessary parameters to
@@ -4660,6 +4697,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeDomain service method, as returned by AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4675,17 +4713,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DomainDetail>() {
             public DomainDetail call() throws Exception {
-            	DomainDetail result;
+              DomainDetail result;
                 try {
-            		result = describeDomain(describeDomainRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeDomainRequest, result);
-               	return result;
-		    }
-		});
+                result = describeDomain(describeDomainRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeDomainRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -4701,9 +4739,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * is closed. Therefore a task is reported as open while a worker is
      * processing it. A task is closed after it has been specified in a call
      * to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-     * RespondActivityTaskFailed, or the task has <a
-     * zonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">
-     * timed out </a> .
+     * RespondActivityTaskFailed, or the task has
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types"> timed out </a>
+     * .
      * </p>
      * <p>
      * <b>Access Control</b>
@@ -4727,9 +4765,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondActivityTaskFailedRequest Container for the necessary
@@ -4739,6 +4777,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondActivityTaskFailed service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4754,11 +4793,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 respondActivityTaskFailed(respondActivityTaskFailedRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Used by workers to tell the service that the ActivityTask identified
@@ -4772,9 +4810,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * is closed. Therefore a task is reported as open while a worker is
      * processing it. A task is closed after it has been specified in a call
      * to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-     * RespondActivityTaskFailed, or the task has <a
-     * zonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types">
-     * timed out </a> .
+     * RespondActivityTaskFailed, or the task has
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types"> timed out </a>
+     * .
      * </p>
      * <p>
      * <b>Access Control</b>
@@ -4798,9 +4836,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param respondActivityTaskFailedRequest Container for the necessary
@@ -4814,6 +4852,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         RespondActivityTaskFailed service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4829,16 +4868,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		respondActivityTaskFailed(respondActivityTaskFailedRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(respondActivityTaskFailedRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                respondActivityTaskFailed(respondActivityTaskFailedRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(respondActivityTaskFailedRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -4871,9 +4910,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countPendingDecisionTasksRequest Container for the necessary
@@ -4883,6 +4922,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountPendingDecisionTasks service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4897,11 +4937,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<PendingTaskCount>() {
             public PendingTaskCount call() throws Exception {
                 return countPendingDecisionTasks(countPendingDecisionTasksRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the estimated number of decision tasks in the specified task
@@ -4932,9 +4971,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param countPendingDecisionTasksRequest Container for the necessary
@@ -4948,6 +4987,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         CountPendingDecisionTasks service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -4963,17 +5003,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<PendingTaskCount>() {
             public PendingTaskCount call() throws Exception {
-            	PendingTaskCount result;
+              PendingTaskCount result;
                 try {
-            		result = countPendingDecisionTasks(countPendingDecisionTasksRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(countPendingDecisionTasksRequest, result);
-               	return result;
-		    }
-		});
+                result = countPendingDecisionTasks(countPendingDecisionTasksRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(countPendingDecisionTasksRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -5020,9 +5060,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param terminateWorkflowExecutionRequest Container for the necessary
@@ -5032,6 +5072,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         TerminateWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -5047,11 +5088,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
             public Void call() throws Exception {
                 terminateWorkflowExecution(terminateWorkflowExecutionRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Records a <code>WorkflowExecutionTerminated</code> event and forces
@@ -5096,9 +5136,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param terminateWorkflowExecutionRequest Container for the necessary
@@ -5112,6 +5152,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         TerminateWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -5127,16 +5168,16 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		terminateWorkflowExecution(terminateWorkflowExecutionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(terminateWorkflowExecutionRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                terminateWorkflowExecution(terminateWorkflowExecutionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(terminateWorkflowExecutionRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -5170,9 +5211,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeWorkflowExecutionRequest Container for the necessary
@@ -5182,6 +5223,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DescribeWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -5196,11 +5238,10 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
         return executorService.submit(new Callable<WorkflowExecutionDetail>() {
             public WorkflowExecutionDetail call() throws Exception {
                 return describeWorkflowExecution(describeWorkflowExecutionRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns information about the specified workflow execution including
@@ -5232,9 +5273,9 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * action, or the parameter values fall outside the specified
      * constraints, the action fails by throwing
      * <code>OperationNotPermitted</code> . For details and example IAM
-     * policies, see <a
-     * docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
-     * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+     * policies, see
+     * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+     * .
      * </p>
      *
      * @param describeWorkflowExecutionRequest Container for the necessary
@@ -5248,6 +5289,7 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
      * @return A Java Future object containing the response from the
      *         DescribeWorkflowExecution service method, as returned by
      *         AmazonSimpleWorkflow.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -5263,17 +5305,17 @@ public class AmazonSimpleWorkflowAsyncClient extends AmazonSimpleWorkflowClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<WorkflowExecutionDetail>() {
             public WorkflowExecutionDetail call() throws Exception {
-            	WorkflowExecutionDetail result;
+              WorkflowExecutionDetail result;
                 try {
-            		result = describeWorkflowExecution(describeWorkflowExecutionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeWorkflowExecutionRequest, result);
-               	return result;
-		    }
-		});
+                result = describeWorkflowExecution(describeWorkflowExecutionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeWorkflowExecutionRequest, result);
+                 return result;
+        }
+    });
     }
     
 }

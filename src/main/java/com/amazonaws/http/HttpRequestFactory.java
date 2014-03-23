@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -57,20 +57,13 @@ class HttpRequestFactory {
      */
     HttpRequestBase createHttpRequest(Request<?> request, ClientConfiguration clientConfiguration, HttpEntity previousEntity, ExecutionContext context) {
         URI endpoint = request.getEndpoint();
-        String uri = endpoint.toString();
-        if (request.getResourcePath() != null && request.getResourcePath().length() > 0) {
-            if (request.getResourcePath().startsWith("/")) {
-                if (uri.endsWith("/")) {
-                    uri = uri.substring(0, uri.length() - 1);
-                }
-            } else if (!uri.endsWith("/")) {
-                    uri += "/";
-            }
-            uri += HttpUtils.urlEncode(request.getResourcePath(), true);
-        } else if (!uri.endsWith("/")) {
-            uri += "/";
-        }
 
+        /*
+         * HttpClient cannot handle url in pattern of "http://host//path", so we
+         * have to escape the double-slash between endpoint and resource-path
+         * into "/%2F"
+         */
+        String uri = HttpUtils.appendUri(endpoint.toString(), request.getResourcePath(), true);
         String encodedParams = HttpUtils.encodeParameters(request);
 
         /*

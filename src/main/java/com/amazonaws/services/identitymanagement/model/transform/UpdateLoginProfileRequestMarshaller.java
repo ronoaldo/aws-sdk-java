@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class UpdateLoginProfileRequestMarshaller implements Marshaller<Request<U
     public Request<UpdateLoginProfileRequest> marshall(UpdateLoginProfileRequest updateLoginProfileRequest) {
 
         if (updateLoginProfileRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<UpdateLoginProfileRequest> request = new DefaultRequest<UpdateLoginProfileRequest>(updateLoginProfileRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "UpdateLoginProfile");
@@ -46,7 +46,6 @@ public class UpdateLoginProfileRequestMarshaller implements Marshaller<Request<U
         if (updateLoginProfileRequest.getPassword() != null) {
             request.addParameter("Password", StringUtils.fromString(updateLoginProfileRequest.getPassword()));
         }
-
 
         return request;
     }

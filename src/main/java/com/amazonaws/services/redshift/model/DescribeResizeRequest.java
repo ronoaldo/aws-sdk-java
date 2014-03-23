@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeResize(DescribeResizeRequest) DescribeResize operation}.
  * <p>
- * Returns information about the last resize operation for the specified cluster. If no resize operation has ever been initiated for the specified
- * cluster, a <code>HTTP 404</code> error is returned. If a resize operation was initiated and completed, the status of the resize remains as
- * <code>SUCCEEDED</code> until the next resize.
+ * Returns information about the last resize operation for the specified
+ * cluster. If no resize operation has ever been initiated for the
+ * specified cluster, a <code>HTTP 404</code> error is returned. If a
+ * resize operation was initiated and completed, the status of the resize
+ * remains as <code>SUCCEEDED</code> until the next resize.
  * </p>
  * <p>
- * A resize operation can be requested using ModifyCluster and specifying a different number or type of nodes for the cluster.
+ * A resize operation can be requested using ModifyCluster and
+ * specifying a different number or type of nodes for the cluster.
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeResize(DescribeResizeRequest)
  */
-public class DescribeResizeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeResizeRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The unique identifier of a cluster whose resize progress you are
@@ -76,14 +81,13 @@ public class DescribeResizeRequest extends AmazonWebServiceRequest  implements S
      *         operations for all clusters defined for an AWS account are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeRequest withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -95,7 +99,7 @@ public class DescribeResizeRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() );
         sb.append("}");
         return sb.toString();

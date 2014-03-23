@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that describes the Amazon S3 bucket or the HTTP server (for example, a web server) from which CloudFront gets your files.You must
- * create at least one origin.
+ * A complex type that describes the Amazon S3 bucket or the HTTP server
+ * (for example, a web server) from which CloudFront gets your files.You
+ * must create at least one origin.
  * </p>
  */
-public class Origin  implements Serializable  {
+public class Origin implements Serializable {
 
     /**
      * A unique identifier for the origin. The value of Id must be unique
@@ -104,14 +106,13 @@ public class Origin  implements Serializable  {
      *         behavior.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Origin withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Amazon S3 origins: The DNS name of the Amazon S3 bucket from which you
      * want CloudFront to get objects for this origin, for example,
@@ -162,14 +163,13 @@ public class Origin  implements Serializable  {
      *         origin, for example, www.example.com.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Origin withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about the Amazon S3 origin.
      * If the origin is a custom origin, use the CustomOriginConfig element
@@ -208,14 +208,13 @@ public class Origin  implements Serializable  {
      *         instead.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Origin withS3OriginConfig(S3OriginConfig s3OriginConfig) {
         this.s3OriginConfig = s3OriginConfig;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about a custom origin. If the
      * origin is an Amazon S3 bucket, use the S3OriginConfig element instead.
@@ -248,14 +247,13 @@ public class Origin  implements Serializable  {
      *         origin is an Amazon S3 bucket, use the S3OriginConfig element instead.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Origin withCustomOriginConfig(CustomOriginConfig customOriginConfig) {
         this.customOriginConfig = customOriginConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -267,10 +265,10 @@ public class Origin  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getS3OriginConfig() != null) sb.append("S3OriginConfig: " + getS3OriginConfig() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getS3OriginConfig() != null) sb.append("S3OriginConfig: " + getS3OriginConfig() + ",");
         if (getCustomOriginConfig() != null) sb.append("CustomOriginConfig: " + getCustomOriginConfig() );
         sb.append("}");
         return sb.toString();

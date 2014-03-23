@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,38 +22,35 @@ import com.amazonaws.services.elastictranscoder.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Video Parameters JSON Unmarshaller
  */
 public class VideoParametersJsonUnmarshaller implements Unmarshaller<VideoParameters, JsonUnmarshallerContext> {
 
-    
-
     public VideoParameters unmarshall(JsonUnmarshallerContext context) throws Exception {
         VideoParameters videoParameters = new VideoParameters();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("Codec", targetDepth)) {
                     context.nextToken();
                     videoParameters.setCodec(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("CodecOptions", targetDepth)) {
+                    context.nextToken();
                     videoParameters.setCodecOptions(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("KeyframesMaxDist", targetDepth)) {
@@ -71,6 +68,10 @@ public class VideoParametersJsonUnmarshaller implements Unmarshaller<VideoParame
                 if (context.testExpression("FrameRate", targetDepth)) {
                     context.nextToken();
                     videoParameters.setFrameRate(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("MaxFrameRate", targetDepth)) {
+                    context.nextToken();
+                    videoParameters.setMaxFrameRate(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("Resolution", targetDepth)) {
                     context.nextToken();
@@ -100,12 +101,15 @@ public class VideoParametersJsonUnmarshaller implements Unmarshaller<VideoParame
                     context.nextToken();
                     videoParameters.setPaddingPolicy(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("Watermarks", targetDepth)) {
+                    context.nextToken();
+                    videoParameters.setWatermarks(new ListUnmarshaller<PresetWatermark>(PresetWatermarkJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

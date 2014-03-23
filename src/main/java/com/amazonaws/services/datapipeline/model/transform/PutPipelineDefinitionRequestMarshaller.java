@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.datapipeline.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class PutPipelineDefinitionRequestMarshaller implements Marshaller<Request<PutPipelineDefinitionRequest>, PutPipelineDefinitionRequest> {
 
-    
-
     public Request<PutPipelineDefinitionRequest> marshall(PutPipelineDefinitionRequest putPipelineDefinitionRequest) {
     if (putPipelineDefinitionRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class PutPipelineDefinitionRequestMarshaller implements Marshaller<Reques
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.1");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,22 +71,18 @@ public class PutPipelineDefinitionRequestMarshaller implements Marshaller<Reques
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (putPipelineDefinitionRequest.getPipelineId() != null) {
                 jsonWriter.key("pipelineId").value(putPipelineDefinitionRequest.getPipelineId());
             }
 
-            java.util.List<PipelineObject> pipelineObjectsList = putPipelineDefinitionRequest.getPipelineObjects();
-            if (pipelineObjectsList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsList = (com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>)(putPipelineDefinitionRequest.getPipelineObjects());
+            if (pipelineObjectsList != null && !(pipelineObjectsList.isAutoConstruct() && pipelineObjectsList.isEmpty())) {
 
                 jsonWriter.key("pipelineObjects");
                 jsonWriter.array();
@@ -105,8 +97,8 @@ public class PutPipelineDefinitionRequestMarshaller implements Marshaller<Reques
                             jsonWriter.key("name").value(pipelineObjectsListValue.getName());
                         }
 
-                        java.util.List<Field> fieldsList = pipelineObjectsListValue.getFields();
-                        if (fieldsList != null) {
+                        com.amazonaws.internal.ListWithAutoConstructFlag<Field> fieldsList = (com.amazonaws.internal.ListWithAutoConstructFlag<Field>)(pipelineObjectsListValue.getFields());
+                        if (fieldsList != null && !(fieldsList.isAutoConstruct() && fieldsList.isEmpty())) {
 
                             jsonWriter.key("fields");
                             jsonWriter.array();
@@ -135,22 +127,15 @@ public class PutPipelineDefinitionRequestMarshaller implements Marshaller<Reques
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

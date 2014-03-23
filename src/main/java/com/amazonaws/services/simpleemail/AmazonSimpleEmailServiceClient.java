@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,28 +14,25 @@
  */
 package com.amazonaws.services.simpleemail;
 
-import org.w3c.dom.Node;
+import org.w3c.dom.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.net.*;
+import java.util.*;
 import java.util.Map.Entry;
 
 import com.amazonaws.*;
 import com.amazonaws.auth.*;
-import com.amazonaws.handlers.HandlerChainFactory;
-import com.amazonaws.handlers.RequestHandler;
-import com.amazonaws.http.StaxResponseHandler;
-import com.amazonaws.http.DefaultErrorResponseHandler;
-import com.amazonaws.http.ExecutionContext;
-import com.amazonaws.internal.StaticCredentialsProvider;
-import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.StaxUnmarshallerContext;
-import com.amazonaws.transform.StandardErrorUnmarshaller;
+import com.amazonaws.handlers.*;
+import com.amazonaws.http.*;
+import com.amazonaws.internal.*;
+import com.amazonaws.metrics.*;
+import com.amazonaws.regions.*;
+import com.amazonaws.transform.*;
+import com.amazonaws.util.*;
+import com.amazonaws.util.AWSRequestMetrics.Field;
 
 import com.amazonaws.services.simpleemail.model.*;
 import com.amazonaws.services.simpleemail.model.transform.*;
-
 
 /**
  * Client for accessing AmazonSimpleEmailService.  All service calls made
@@ -43,15 +40,16 @@ import com.amazonaws.services.simpleemail.model.transform.*;
  * completes.
  * <p>
  * Amazon Simple Email Service <p>
- * This is the API Reference for Amazon Simple Email Service (Amazon SES). This documentation is intended to be used in conjunction with the Amazon SES
- * Getting Started Guide and the Amazon SES Developer Guide.
+ * This is the API Reference for Amazon Simple Email Service (Amazon
+ * SES). This documentation is intended to be used in conjunction with
+ * the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  * <p>
- * For specific details on how to construct a service request, please consult the <a href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
- * Amazon SES Developer Guide </a> .
- * </p>
- * <p>
- * <b>NOTE:</b>The endpoint for Amazon SES is located at: https://email.us-east-1.amazonaws.com
+ * <b>NOTE:</b>For a list of Amazon SES endpoints to use in service
+ * requests, see Regions and Amazon SES in the Amazon SES Developer
+ * Guide.
  * </p>
  */
 public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient implements AmazonSimpleEmailService {
@@ -64,11 +62,6 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      */
     protected final List<Unmarshaller<AmazonServiceException, Node>> exceptionUnmarshallers
             = new ArrayList<Unmarshaller<AmazonServiceException, Node>>();
-
-    
-    /** AWS signer for authenticating requests. */
-    private AWS3Signer signer;
-
 
     /**
      * Constructs a new client to invoke service methods on
@@ -84,7 +77,7 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleEmailServiceClient() {
         this(new DefaultAWSCredentialsProviderChain(), new ClientConfiguration());
@@ -108,7 +101,7 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *                       client connects to AmazonSimpleEmailService
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleEmailServiceClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration);
@@ -183,7 +176,30 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *                       (ex: proxy settings, retry counts, etc.).
      */
     public AmazonSimpleEmailServiceClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
-        super(clientConfiguration);
+        this(awsCredentialsProvider, clientConfiguration, null);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on
+     * AmazonSimpleEmailService using the specified AWS account credentials
+     * provider, client configuration options, and request metric collector.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not
+     * return until the service call completes.
+     *
+     * @param awsCredentialsProvider
+     *            The AWS credentials provider which will provide credentials
+     *            to authenticate requests with AWS services.
+     * @param clientConfiguration The client configuration options controlling how this
+     *                       client connects to AmazonSimpleEmailService
+     *                       (ex: proxy settings, retry counts, etc.).
+     * @param requestMetricCollector optional request metric collector
+     */
+    public AmazonSimpleEmailServiceClient(AWSCredentialsProvider awsCredentialsProvider,
+            ClientConfiguration clientConfiguration,
+            RequestMetricCollector requestMetricCollector) {
+        super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
     }
@@ -192,21 +208,22 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
         exceptionUnmarshallers.add(new MessageRejectedExceptionUnmarshaller());
         
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
-        setEndpoint("email.us-east-1.amazonaws.com");
-
-        signer = new AWS3Signer();
-        
-
+        // calling this.setEndPoint(...) will also modify the signer accordingly
+        this.setEndpoint("email.us-east-1.amazonaws.com");
         HandlerChainFactory chainFactory = new HandlerChainFactory();
-		requestHandlers.addAll(chainFactory.newRequestHandlerChain(
+        requestHandler2s.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/simpleemail/request.handlers"));
+        requestHandler2s.addAll(chainFactory.newRequestHandler2Chain(
+                "/com/amazonaws/services/simpleemail/request.handler2s"));
     }
 
-    
     /**
      * <p>
      * Deletes the specified identity (email address or domain) from the list
      * of verified identities.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param deleteIdentityRequest Container for the necessary parameters to
@@ -224,10 +241,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public DeleteIdentityResult deleteIdentity(DeleteIdentityRequest deleteIdentityRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteIdentityRequest> request = new DeleteIdentityRequestMarshaller().marshall(deleteIdentityRequest);
-        return invoke(request, new DeleteIdentityResultStaxUnmarshaller());
+    public DeleteIdentityResult deleteIdentity(DeleteIdentityRequest deleteIdentityRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteIdentityRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteIdentityRequest> request = null;
+        Response<DeleteIdentityResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteIdentityRequestMarshaller().marshall(deleteIdentityRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new DeleteIdentityResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -239,6 +267,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * <b>IMPORTANT:</b>The ListVerifiedEmailAddresses action is deprecated
      * as of the May 15, 2012 release of Domain Verification. The
      * ListIdentities action is now preferred.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param listVerifiedEmailAddressesRequest Container for the necessary
@@ -257,10 +288,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListVerifiedEmailAddressesResult listVerifiedEmailAddresses(ListVerifiedEmailAddressesRequest listVerifiedEmailAddressesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<ListVerifiedEmailAddressesRequest> request = new ListVerifiedEmailAddressesRequestMarshaller().marshall(listVerifiedEmailAddressesRequest);
-        return invoke(request, new ListVerifiedEmailAddressesResultStaxUnmarshaller());
+    public ListVerifiedEmailAddressesResult listVerifiedEmailAddresses(ListVerifiedEmailAddressesRequest listVerifiedEmailAddressesRequest) {
+        ExecutionContext executionContext = createExecutionContext(listVerifiedEmailAddressesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<ListVerifiedEmailAddressesRequest> request = null;
+        Response<ListVerifiedEmailAddressesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new ListVerifiedEmailAddressesRequestMarshaller().marshall(listVerifiedEmailAddressesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new ListVerifiedEmailAddressesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -271,6 +313,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * <p>
      * Each data point in the list contains statistics for a 15-minute
      * interval.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getSendStatisticsRequest Container for the necessary parameters
@@ -289,16 +334,30 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetSendStatisticsResult getSendStatistics(GetSendStatisticsRequest getSendStatisticsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetSendStatisticsRequest> request = new GetSendStatisticsRequestMarshaller().marshall(getSendStatisticsRequest);
-        return invoke(request, new GetSendStatisticsResultStaxUnmarshaller());
+    public GetSendStatisticsResult getSendStatistics(GetSendStatisticsRequest getSendStatisticsRequest) {
+        ExecutionContext executionContext = createExecutionContext(getSendStatisticsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<GetSendStatisticsRequest> request = null;
+        Response<GetSendStatisticsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new GetSendStatisticsRequestMarshaller().marshall(getSendStatisticsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new GetSendStatisticsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
      * <p>
      * Verifies an email address. This action causes a confirmation email
      * message to be sent to the specified address.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyEmailIdentityRequest Container for the necessary
@@ -317,19 +376,35 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public VerifyEmailIdentityResult verifyEmailIdentity(VerifyEmailIdentityRequest verifyEmailIdentityRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<VerifyEmailIdentityRequest> request = new VerifyEmailIdentityRequestMarshaller().marshall(verifyEmailIdentityRequest);
-        return invoke(request, new VerifyEmailIdentityResultStaxUnmarshaller());
+    public VerifyEmailIdentityResult verifyEmailIdentity(VerifyEmailIdentityRequest verifyEmailIdentityRequest) {
+        ExecutionContext executionContext = createExecutionContext(verifyEmailIdentityRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<VerifyEmailIdentityRequest> request = null;
+        Response<VerifyEmailIdentityResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new VerifyEmailIdentityRequestMarshaller().marshall(verifyEmailIdentityRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new VerifyEmailIdentityResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
      * <p>
      * Given a list of verified identities (email addresses and/or domains),
-     * returns a structure describing identity notification attributes. For
-     * more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * returns a structure describing identity notification attributes.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityNotificationAttributesRequest Container for the
@@ -348,32 +423,45 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetIdentityNotificationAttributesResult getIdentityNotificationAttributes(GetIdentityNotificationAttributesRequest getIdentityNotificationAttributesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetIdentityNotificationAttributesRequest> request = new GetIdentityNotificationAttributesRequestMarshaller().marshall(getIdentityNotificationAttributesRequest);
-        return invoke(request, new GetIdentityNotificationAttributesResultStaxUnmarshaller());
+    public GetIdentityNotificationAttributesResult getIdentityNotificationAttributes(GetIdentityNotificationAttributesRequest getIdentityNotificationAttributesRequest) {
+        ExecutionContext executionContext = createExecutionContext(getIdentityNotificationAttributesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<GetIdentityNotificationAttributesRequest> request = null;
+        Response<GetIdentityNotificationAttributesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new GetIdentityNotificationAttributesRequestMarshaller().marshall(getIdentityNotificationAttributesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new GetIdentityNotificationAttributesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
      * <p>
-     * Returns a set of DNS records, or <i>tokens</i> , that must be
-     * published in the domain name's DNS to complete the DKIM verification
-     * process. These tokens are DNS <code>CNAME</code> records that point to
-     * DKIM public keys hosted by Amazon SES. To complete the DKIM
-     * verification process, these tokens must be published in the domain's
-     * DNS. The tokens must remain published in order for Easy DKIM signing
-     * to function correctly.
+     * Returns a set of DKIM tokens for a domain. DKIM <i>tokens</i> are
+     * character strings that represent your domain's identity. Using these
+     * tokens, you will need to create DNS CNAME records that point to DKIM
+     * public keys hosted by Amazon SES. Amazon Web Services will eventually
+     * detect that you have updated your DNS records; this detection process
+     * may take up to 72 hours. Upon successful detection, Amazon SES will be
+     * able to DKIM-sign email originating from that domain.
      * </p>
      * <p>
-     * After the tokens are added to the domain's DNS, Amazon SES will be
-     * able to DKIM-sign email originating from that domain. To enable or
-     * disable Easy DKIM signing for a domain, use the
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * To enable or disable Easy DKIM signing for a domain, use the
      * <code>SetIdentityDkimEnabled</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param verifyDomainDkimRequest Container for the necessary parameters
@@ -392,38 +480,53 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public VerifyDomainDkimResult verifyDomainDkim(VerifyDomainDkimRequest verifyDomainDkimRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<VerifyDomainDkimRequest> request = new VerifyDomainDkimRequestMarshaller().marshall(verifyDomainDkimRequest);
-        return invoke(request, new VerifyDomainDkimResultStaxUnmarshaller());
+    public VerifyDomainDkimResult verifyDomainDkim(VerifyDomainDkimRequest verifyDomainDkimRequest) {
+        ExecutionContext executionContext = createExecutionContext(verifyDomainDkimRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<VerifyDomainDkimRequest> request = null;
+        Response<VerifyDomainDkimResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new VerifyDomainDkimRequestMarshaller().marshall(verifyDomainDkimRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new VerifyDomainDkimResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
      * <p>
-     * Returns the DNS records, or <i>tokens</i> , that must be present in
-     * order for Easy DKIM to sign outgoing email messages.
+     * Returns the current status of Easy DKIM signing for an entity. For
+     * domain name identities, this action also returns the DKIM tokens that
+     * are required for Easy DKIM signing, and whether Amazon SES has
+     * successfully verified that these tokens have been published.
      * </p>
      * <p>
-     * This action takes a list of verified identities as input. It then
-     * returns the following information for each identity:
+     * This action takes a list of identities as input and returns the
+     * following information for each:
      * </p>
      * 
      * <ul>
      * <li>Whether Easy DKIM signing is enabled or disabled.</li>
-     * <li>The set of tokens that are required for Easy DKIM signing. These
-     * tokens must be published in the domain name's DNS records in order for
-     * DKIM verification to complete, and must remain published in order for
-     * Easy DKIM signing to operate correctly. (This information is only
-     * returned for domain name identities, not for email addresses.)</li>
+     * <li>A set of DKIM tokens that represent the identity. If the identity
+     * is an email address, the tokens represent the domain of that
+     * address.</li>
      * <li>Whether Amazon SES has successfully verified the DKIM tokens
-     * published in the domain name's DNS. (This information is only returned
-     * for domain name identities, not for email addresses.)</li>
+     * published in the domain's DNS. This information is only returned for
+     * domain name identities, not for email addresses.</li>
      * 
      * </ul>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityDkimAttributesRequest Container for the necessary
@@ -442,10 +545,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetIdentityDkimAttributesResult getIdentityDkimAttributes(GetIdentityDkimAttributesRequest getIdentityDkimAttributesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetIdentityDkimAttributesRequest> request = new GetIdentityDkimAttributesRequestMarshaller().marshall(getIdentityDkimAttributesRequest);
-        return invoke(request, new GetIdentityDkimAttributesResultStaxUnmarshaller());
+    public GetIdentityDkimAttributesResult getIdentityDkimAttributes(GetIdentityDkimAttributesRequest getIdentityDkimAttributesRequest) {
+        ExecutionContext executionContext = createExecutionContext(getIdentityDkimAttributesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<GetIdentityDkimAttributesRequest> request = null;
+        Response<GetIdentityDkimAttributesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new GetIdentityDkimAttributesRequestMarshaller().marshall(getIdentityDkimAttributesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new GetIdentityDkimAttributesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -458,10 +572,14 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * May 15, 2012 release of Domain Verification. The VerifyEmailIdentity
      * action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param verifyEmailAddressRequest Container for the necessary
      *           parameters to execute the VerifyEmailAddress service method on
      *           AmazonSimpleEmailService.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -472,10 +590,19 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void verifyEmailAddress(VerifyEmailAddressRequest verifyEmailAddressRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<VerifyEmailAddressRequest> request = new VerifyEmailAddressRequestMarshaller().marshall(verifyEmailAddressRequest);
-        invoke(request, null);
+    public void verifyEmailAddress(VerifyEmailAddressRequest verifyEmailAddressRequest) {
+        ExecutionContext executionContext = createExecutionContext(verifyEmailAddressRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<VerifyEmailAddressRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new VerifyEmailAddressRequestMarshaller().marshall(verifyEmailAddressRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -486,10 +613,11 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * Internet email standards; otherwise, the message cannot be sent.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB. This includes any
@@ -506,10 +634,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendRawEmailRequest Container for the necessary parameters to
@@ -528,10 +655,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public SendRawEmailResult sendRawEmail(SendRawEmailRequest sendRawEmailRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SendRawEmailRequest> request = new SendRawEmailRequestMarshaller().marshall(sendRawEmailRequest);
-        return invoke(request, new SendRawEmailResultStaxUnmarshaller());
+    public SendRawEmailResult sendRawEmail(SendRawEmailRequest sendRawEmailRequest) {
+        ExecutionContext executionContext = createExecutionContext(sendRawEmailRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SendRawEmailRequest> request = null;
+        Response<SendRawEmailResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SendRawEmailRequestMarshaller().marshall(sendRawEmailRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new SendRawEmailResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -539,6 +677,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * Returns a list containing all of the identities (email addresses and
      * domains) for a specific AWS Account, regardless of verification
      * status.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param listIdentitiesRequest Container for the necessary parameters to
@@ -556,10 +697,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListIdentitiesResult listIdentities(ListIdentitiesRequest listIdentitiesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<ListIdentitiesRequest> request = new ListIdentitiesRequestMarshaller().marshall(listIdentitiesRequest);
-        return invoke(request, new ListIdentitiesResultStaxUnmarshaller());
+    public ListIdentitiesResult listIdentities(ListIdentitiesRequest listIdentitiesRequest) {
+        ExecutionContext executionContext = createExecutionContext(listIdentitiesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<ListIdentitiesRequest> request = null;
+        Response<ListIdentitiesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new ListIdentitiesRequestMarshaller().marshall(listIdentitiesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new ListIdentitiesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -567,6 +719,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * Given a list of identities (email addresses and/or domains), returns
      * the verification status and (for domain identities) the verification
      * token for each identity.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getIdentityVerificationAttributesRequest Container for the
@@ -585,10 +740,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetIdentityVerificationAttributesResult getIdentityVerificationAttributes(GetIdentityVerificationAttributesRequest getIdentityVerificationAttributesRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetIdentityVerificationAttributesRequest> request = new GetIdentityVerificationAttributesRequestMarshaller().marshall(getIdentityVerificationAttributesRequest);
-        return invoke(request, new GetIdentityVerificationAttributesResultStaxUnmarshaller());
+    public GetIdentityVerificationAttributesResult getIdentityVerificationAttributes(GetIdentityVerificationAttributesRequest getIdentityVerificationAttributesRequest) {
+        ExecutionContext executionContext = createExecutionContext(getIdentityVerificationAttributesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<GetIdentityVerificationAttributesRequest> request = null;
+        Response<GetIdentityVerificationAttributesResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new GetIdentityVerificationAttributesRequestMarshaller().marshall(getIdentityVerificationAttributesRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new GetIdentityVerificationAttributesResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -612,9 +778,12 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * Console or the <code>VerifyDomainDkim</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about Easy DKIM signing, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityDkimEnabledRequest Container for the necessary
@@ -633,15 +802,29 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public SetIdentityDkimEnabledResult setIdentityDkimEnabled(SetIdentityDkimEnabledRequest setIdentityDkimEnabledRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SetIdentityDkimEnabledRequest> request = new SetIdentityDkimEnabledRequestMarshaller().marshall(setIdentityDkimEnabledRequest);
-        return invoke(request, new SetIdentityDkimEnabledResultStaxUnmarshaller());
+    public SetIdentityDkimEnabledResult setIdentityDkimEnabled(SetIdentityDkimEnabledRequest setIdentityDkimEnabledRequest) {
+        ExecutionContext executionContext = createExecutionContext(setIdentityDkimEnabledRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SetIdentityDkimEnabledRequest> request = null;
+        Response<SetIdentityDkimEnabledResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SetIdentityDkimEnabledRequestMarshaller().marshall(setIdentityDkimEnabledRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new SetIdentityDkimEnabledResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
      * <p>
      * Returns the user's current sending limits.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getSendQuotaRequest Container for the necessary parameters to
@@ -659,10 +842,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetSendQuotaResult getSendQuota(GetSendQuotaRequest getSendQuotaRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetSendQuotaRequest> request = new GetSendQuotaRequestMarshaller().marshall(getSendQuotaRequest);
-        return invoke(request, new GetSendQuotaResultStaxUnmarshaller());
+    public GetSendQuotaResult getSendQuota(GetSendQuotaRequest getSendQuotaRequest) {
+        ExecutionContext executionContext = createExecutionContext(getSendQuotaRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<GetSendQuotaRequest> request = null;
+        Response<GetSendQuotaResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new GetSendQuotaRequestMarshaller().marshall(getSendQuotaRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new GetSendQuotaResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -670,9 +864,15 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * Given an identity (email address or domain), enables or disables
      * whether Amazon SES forwards feedback notifications as email. Feedback
      * forwarding may only be disabled when both complaint and bounce topics
-     * are set. For more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * are set.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityFeedbackForwardingEnabledRequest Container for the
@@ -692,15 +892,29 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public SetIdentityFeedbackForwardingEnabledResult setIdentityFeedbackForwardingEnabled(SetIdentityFeedbackForwardingEnabledRequest setIdentityFeedbackForwardingEnabledRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SetIdentityFeedbackForwardingEnabledRequest> request = new SetIdentityFeedbackForwardingEnabledRequestMarshaller().marshall(setIdentityFeedbackForwardingEnabledRequest);
-        return invoke(request, new SetIdentityFeedbackForwardingEnabledResultStaxUnmarshaller());
+    public SetIdentityFeedbackForwardingEnabledResult setIdentityFeedbackForwardingEnabled(SetIdentityFeedbackForwardingEnabledRequest setIdentityFeedbackForwardingEnabledRequest) {
+        ExecutionContext executionContext = createExecutionContext(setIdentityFeedbackForwardingEnabledRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SetIdentityFeedbackForwardingEnabledRequest> request = null;
+        Response<SetIdentityFeedbackForwardingEnabledResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SetIdentityFeedbackForwardingEnabledRequestMarshaller().marshall(setIdentityFeedbackForwardingEnabledRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new SetIdentityFeedbackForwardingEnabledResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
      * <p>
      * Verifies a domain.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyDomainIdentityRequest Container for the necessary
@@ -719,10 +933,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public VerifyDomainIdentityResult verifyDomainIdentity(VerifyDomainIdentityRequest verifyDomainIdentityRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<VerifyDomainIdentityRequest> request = new VerifyDomainIdentityRequestMarshaller().marshall(verifyDomainIdentityRequest);
-        return invoke(request, new VerifyDomainIdentityResultStaxUnmarshaller());
+    public VerifyDomainIdentityResult verifyDomainIdentity(VerifyDomainIdentityRequest verifyDomainIdentityRequest) {
+        ExecutionContext executionContext = createExecutionContext(verifyDomainIdentityRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<VerifyDomainIdentityRequest> request = null;
+        Response<VerifyDomainIdentityResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new VerifyDomainIdentityRequestMarshaller().marshall(verifyDomainIdentityRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new VerifyDomainIdentityResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -731,10 +956,11 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * queues the message for sending.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB.
@@ -750,10 +976,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendEmailRequest Container for the necessary parameters to
@@ -772,10 +997,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public SendEmailResult sendEmail(SendEmailRequest sendEmailRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SendEmailRequest> request = new SendEmailRequestMarshaller().marshall(sendEmailRequest);
-        return invoke(request, new SendEmailResultStaxUnmarshaller());
+    public SendEmailResult sendEmail(SendEmailRequest sendEmailRequest) {
+        ExecutionContext executionContext = createExecutionContext(sendEmailRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SendEmailRequest> request = null;
+        Response<SendEmailResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SendEmailRequestMarshaller().marshall(sendEmailRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new SendEmailResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -788,10 +1024,14 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * as of the May 15, 2012 release of Domain Verification. The
      * DeleteIdentity action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param deleteVerifiedEmailAddressRequest Container for the necessary
      *           parameters to execute the DeleteVerifiedEmailAddress service method on
      *           AmazonSimpleEmailService.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -802,10 +1042,19 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public void deleteVerifiedEmailAddress(DeleteVerifiedEmailAddressRequest deleteVerifiedEmailAddressRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<DeleteVerifiedEmailAddressRequest> request = new DeleteVerifiedEmailAddressRequestMarshaller().marshall(deleteVerifiedEmailAddressRequest);
-        invoke(request, null);
+    public void deleteVerifiedEmailAddress(DeleteVerifiedEmailAddressRequest deleteVerifiedEmailAddressRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteVerifiedEmailAddressRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<DeleteVerifiedEmailAddressRequest> request = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new DeleteVerifiedEmailAddressRequestMarshaller().marshall(deleteVerifiedEmailAddressRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            invoke(request, null, executionContext);
+        } finally {
+            endClientExecution(awsRequestMetrics, request, null);
+        }
     }
     
     /**
@@ -814,10 +1063,15 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * to which Amazon SES will publish bounce and complaint notifications
      * for emails sent with that identity as the <code>Source</code> .
      * Publishing to topics may only be disabled when feedback
-     * forwarding is enabled. For more information about feedback
-     * notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * forwarding is enabled.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityNotificationTopicRequest Container for the necessary
@@ -836,10 +1090,21 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      *             If an error response is returned by AmazonSimpleEmailService indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public SetIdentityNotificationTopicResult setIdentityNotificationTopic(SetIdentityNotificationTopicRequest setIdentityNotificationTopicRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<SetIdentityNotificationTopicRequest> request = new SetIdentityNotificationTopicRequestMarshaller().marshall(setIdentityNotificationTopicRequest);
-        return invoke(request, new SetIdentityNotificationTopicResultStaxUnmarshaller());
+    public SetIdentityNotificationTopicResult setIdentityNotificationTopic(SetIdentityNotificationTopicRequest setIdentityNotificationTopicRequest) {
+        ExecutionContext executionContext = createExecutionContext(setIdentityNotificationTopicRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<SetIdentityNotificationTopicRequest> request = null;
+        Response<SetIdentityNotificationTopicResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new SetIdentityNotificationTopicRequestMarshaller().marshall(setIdentityNotificationTopicRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new SetIdentityNotificationTopicResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -851,6 +1116,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * <b>IMPORTANT:</b>The ListVerifiedEmailAddresses action is deprecated
      * as of the May 15, 2012 release of Domain Verification. The
      * ListIdentities action is now preferred.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      * 
      * @return The response from the ListVerifiedEmailAddresses service
@@ -878,6 +1146,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * Each data point in the list contains statistics for a 15-minute
      * interval.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      * 
      * @return The response from the GetSendStatistics service method, as
      *         returned by AmazonSimpleEmailService.
@@ -901,6 +1172,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * domains) for a specific AWS Account, regardless of verification
      * status.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      * 
      * @return The response from the ListIdentities service method, as
      *         returned by AmazonSimpleEmailService.
@@ -922,6 +1196,9 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
      * <p>
      * Returns the user's current sending limits.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      * 
      * @return The response from the GetSendQuota service method, as returned
      *         by AmazonSimpleEmailService.
@@ -938,12 +1215,6 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
     public GetSendQuotaResult getSendQuota() throws AmazonServiceException, AmazonClientException {
         return getSendQuota(new GetSendQuotaRequest());
     }
-    
-    @Override
-    protected String getServiceAbbreviation() {
-        return "email";
-    }
-    
 
     /**
      * Returns additional metadata for a previously executed successful, request, typically used for
@@ -965,27 +1236,27 @@ public class AmazonSimpleEmailServiceClient extends AmazonWebServiceClient imple
         return client.getResponseMetadataForRequest(request);
     }
 
-    private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request, Unmarshaller<X, StaxUnmarshallerContext> unmarshaller) {
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request,
+            Unmarshaller<X, StaxUnmarshallerContext> unmarshaller,
+            ExecutionContext executionContext)
+    {
         request.setEndpoint(endpoint);
         request.setTimeOffset(timeOffset);
-        for (Entry<String, String> entry : request.getOriginalRequest().copyPrivateRequestParameters().entrySet()) {
+        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
+        for (Entry<String, String> entry : originalRequest.copyPrivateRequestParameters().entrySet()) {
             request.addParameter(entry.getKey(), entry.getValue());
         }
 
         AWSCredentials credentials = awsCredentialsProvider.getCredentials();
-        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
-        if (originalRequest != null && originalRequest.getRequestCredentials() != null) {
-        	credentials = originalRequest.getRequestCredentials();
+        if (originalRequest.getRequestCredentials() != null) {
+            credentials = originalRequest.getRequestCredentials();
         }
 
-        ExecutionContext executionContext = createExecutionContext();
-        executionContext.setSigner(signer);
         executionContext.setCredentials(credentials);
         
         StaxResponseHandler<X> responseHandler = new StaxResponseHandler<X>(unmarshaller);
         DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);
-
-        return (X)client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 }
         

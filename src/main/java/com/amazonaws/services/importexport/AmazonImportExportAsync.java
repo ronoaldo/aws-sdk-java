@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport;
-            
+
 import java.util.concurrent.Future;
 
 import com.amazonaws.AmazonClientException;
@@ -26,11 +26,15 @@ import com.amazonaws.services.importexport.model.*;
  * Each asynchronous method will return a Java Future object, and users are also allowed
  * to provide a callback handler.
  * AWS Import/Export Service <p>
- * AWS Import/Export accelerates transferring large amounts of data between the AWS cloud and portable storage devices that you mail to us. AWS
- * Import/Export transfers data directly onto and off of your storage devices using Amazon's high-speed internal network and bypassing the Internet. For
- * large data sets, AWS Import/Export is often faster than Internet transfer and more cost effective than upgrading your connectivity.
- * </p> 
- */       
+ * AWS Import/Export accelerates transferring large amounts of data
+ * between the AWS cloud and portable storage devices that you mail to
+ * us. AWS Import/Export transfers data directly onto and off of your
+ * storage devices using Amazon's high-speed internal network and
+ * bypassing the Internet. For large data sets, AWS Import/Export is
+ * often faster than Internet transfer and more cost effective than
+ * upgrading your connectivity.
+ * </p>
+ */
 public interface AmazonImportExportAsync extends AmazonImportExport {
     /**
      * <p>
@@ -47,6 +51,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         CreateJob service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -78,6 +83,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         CreateJob service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -102,6 +108,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         CancelJob service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -129,6 +136,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         CancelJob service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -155,6 +163,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         GetStatus service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -184,6 +193,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         GetStatus service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -211,6 +221,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the ListJobs
      *         service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -241,6 +252,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the ListJobs
      *         service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -268,6 +280,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         UpdateJob service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -298,6 +311,7 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
      * 
      * @return A Java Future object containing the response from the
      *         UpdateJob service method, as returned by AmazonImportExport.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -310,6 +324,5 @@ public interface AmazonImportExportAsync extends AmazonImportExport {
     public Future<UpdateJobResult> updateJobAsync(UpdateJobRequest updateJobRequest,
             AsyncHandler<UpdateJobRequest, UpdateJobResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
-
 }
         

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,97 +13,103 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains one or more Cache Clusters.
+ * Represents the output of a <i>DescribeCacheClusters</i> operation.
  * </p>
  */
-public class DescribeCacheClustersResult  implements Serializable  {
+public class DescribeCacheClustersResult implements Serializable {
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
-     * A list of CacheClusters.
+     * A list of cache clusters. Each item in the list contains detailed
+     * information about one cache cluster.
      */
-    private java.util.List<CacheCluster> cacheClusters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CacheCluster> cacheClusters;
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return The marker obtained from a previous operation response.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheClustersResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of CacheClusters.
+     * A list of cache clusters. Each item in the list contains detailed
+     * information about one cache cluster.
      *
-     * @return A list of CacheClusters.
+     * @return A list of cache clusters. Each item in the list contains detailed
+     *         information about one cache cluster.
      */
     public java.util.List<CacheCluster> getCacheClusters() {
-        
         if (cacheClusters == null) {
-            cacheClusters = new java.util.ArrayList<CacheCluster>();
+              cacheClusters = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheCluster>();
+              cacheClusters.setAutoConstruct(true);
         }
         return cacheClusters;
     }
     
     /**
-     * A list of CacheClusters.
+     * A list of cache clusters. Each item in the list contains detailed
+     * information about one cache cluster.
      *
-     * @param cacheClusters A list of CacheClusters.
+     * @param cacheClusters A list of cache clusters. Each item in the list contains detailed
+     *         information about one cache cluster.
      */
     public void setCacheClusters(java.util.Collection<CacheCluster> cacheClusters) {
         if (cacheClusters == null) {
             this.cacheClusters = null;
             return;
         }
-
-        java.util.List<CacheCluster> cacheClustersCopy = new java.util.ArrayList<CacheCluster>(cacheClusters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CacheCluster> cacheClustersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheCluster>(cacheClusters.size());
         cacheClustersCopy.addAll(cacheClusters);
         this.cacheClusters = cacheClustersCopy;
     }
     
     /**
-     * A list of CacheClusters.
+     * A list of cache clusters. Each item in the list contains detailed
+     * information about one cache cluster.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheClusters A list of CacheClusters.
+     * @param cacheClusters A list of cache clusters. Each item in the list contains detailed
+     *         information about one cache cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheClustersResult withCacheClusters(CacheCluster... cacheClusters) {
         if (getCacheClusters() == null) setCacheClusters(new java.util.ArrayList<CacheCluster>(cacheClusters.length));
@@ -114,27 +120,29 @@ public class DescribeCacheClustersResult  implements Serializable  {
     }
     
     /**
-     * A list of CacheClusters.
+     * A list of cache clusters. Each item in the list contains detailed
+     * information about one cache cluster.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheClusters A list of CacheClusters.
+     * @param cacheClusters A list of cache clusters. Each item in the list contains detailed
+     *         information about one cache cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheClustersResult withCacheClusters(java.util.Collection<CacheCluster> cacheClusters) {
         if (cacheClusters == null) {
             this.cacheClusters = null;
         } else {
-            java.util.List<CacheCluster> cacheClustersCopy = new java.util.ArrayList<CacheCluster>(cacheClusters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CacheCluster> cacheClustersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheCluster>(cacheClusters.size());
             cacheClustersCopy.addAll(cacheClusters);
             this.cacheClusters = cacheClustersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +154,8 @@ public class DescribeCacheClustersResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getCacheClusters() != null) sb.append("CacheClusters: " + getCacheClusters() );
         sb.append("}");
         return sb.toString();

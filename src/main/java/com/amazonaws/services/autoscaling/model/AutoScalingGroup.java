@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The AutoScalingGroup data type.
  * </p>
  */
-public class AutoScalingGroup  implements Serializable  {
+public class AutoScalingGroup implements Serializable {
 
     /**
      * Specifies the name of the group.
@@ -76,12 +77,12 @@ public class AutoScalingGroup  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<String> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
      * A list of load balancers associated with this Auto Scaling group.
      */
-    private java.util.List<String> loadBalancerNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> loadBalancerNames;
 
     /**
      * The service of interest for the health status check, either "EC2" for
@@ -103,7 +104,7 @@ public class AutoScalingGroup  implements Serializable  {
     /**
      * Provides a summary list of Amazon EC2 instances.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * Specifies the date and time the Auto Scaling group was created.
@@ -113,12 +114,12 @@ public class AutoScalingGroup  implements Serializable  {
     /**
      * Suspended processes associated with this Auto Scaling group.
      */
-    private java.util.List<SuspendedProcess> suspendedProcesses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SuspendedProcess> suspendedProcesses;
 
     /**
      * The name of the cluster placement group, if applicable. For more
      * information, go to <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
      * Using Cluster Instances</a> in the Amazon EC2 User Guide.
      * <p>
      * <b>Constraints:</b><br/>
@@ -143,10 +144,11 @@ public class AutoScalingGroup  implements Serializable  {
     /**
      * A list of metrics enabled for this Auto Scaling group.
      */
-    private java.util.List<EnabledMetric> enabledMetrics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<EnabledMetric> enabledMetrics;
 
     /**
-     * A list of status conditions for the Auto Scaling group.
+     * The current state of the Auto Scaling group when a
+     * <a>DeleteAutoScalingGroup</a> action is in progress.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
@@ -157,13 +159,13 @@ public class AutoScalingGroup  implements Serializable  {
     /**
      * A list of tags for the Auto Scaling group.
      */
-    private java.util.List<TagDescription> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription> tags;
 
     /**
      * A standalone termination policy or a list of termination policies for
      * this Auto Scaling group.
      */
-    private java.util.List<String> terminationPolicies;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> terminationPolicies;
 
     /**
      * Specifies the name of the group.
@@ -203,14 +205,13 @@ public class AutoScalingGroup  implements Serializable  {
      * @param autoScalingGroupName Specifies the name of the group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of the Auto Scaling group.
      * <p>
@@ -249,14 +250,13 @@ public class AutoScalingGroup  implements Serializable  {
      * @param autoScalingGroupARN The Amazon Resource Name (ARN) of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withAutoScalingGroupARN(String autoScalingGroupARN) {
         this.autoScalingGroupARN = autoScalingGroupARN;
         return this;
     }
-    
-    
+
     /**
      * Specifies the name of the associated <a>LaunchConfiguration</a>.
      * <p>
@@ -295,14 +295,13 @@ public class AutoScalingGroup  implements Serializable  {
      * @param launchConfigurationName Specifies the name of the associated <a>LaunchConfiguration</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withLaunchConfigurationName(String launchConfigurationName) {
         this.launchConfigurationName = launchConfigurationName;
         return this;
     }
-    
-    
+
     /**
      * Contains the minimum size of the Auto Scaling group.
      *
@@ -329,14 +328,13 @@ public class AutoScalingGroup  implements Serializable  {
      * @param minSize Contains the minimum size of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withMinSize(Integer minSize) {
         this.minSize = minSize;
         return this;
     }
-    
-    
+
     /**
      * Contains the maximum size of the Auto Scaling group.
      *
@@ -363,14 +361,13 @@ public class AutoScalingGroup  implements Serializable  {
      * @param maxSize Contains the maximum size of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withMaxSize(Integer maxSize) {
         this.maxSize = maxSize;
         return this;
     }
-    
-    
+
     /**
      * Specifies the desired capacity for the Auto Scaling group.
      *
@@ -397,14 +394,13 @@ public class AutoScalingGroup  implements Serializable  {
      * @param desiredCapacity Specifies the desired capacity for the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withDesiredCapacity(Integer desiredCapacity) {
         this.desiredCapacity = desiredCapacity;
         return this;
     }
-    
-    
+
     /**
      * The number of seconds after a scaling activity completes before any
      * further scaling activities can start.
@@ -437,14 +433,13 @@ public class AutoScalingGroup  implements Serializable  {
      *         further scaling activities can start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withDefaultCooldown(Integer defaultCooldown) {
         this.defaultCooldown = defaultCooldown;
         return this;
     }
-    
-    
+
     /**
      * Contains a list of Availability Zones for the group.
      * <p>
@@ -454,9 +449,9 @@ public class AutoScalingGroup  implements Serializable  {
      * @return Contains a list of Availability Zones for the group.
      */
     public java.util.List<String> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
@@ -474,8 +469,7 @@ public class AutoScalingGroup  implements Serializable  {
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
@@ -491,7 +485,7 @@ public class AutoScalingGroup  implements Serializable  {
      * @param availabilityZones Contains a list of Availability Zones for the group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -512,29 +506,29 @@ public class AutoScalingGroup  implements Serializable  {
      * @param availabilityZones Contains a list of Availability Zones for the group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of load balancers associated with this Auto Scaling group.
      *
      * @return A list of load balancers associated with this Auto Scaling group.
      */
     public java.util.List<String> getLoadBalancerNames() {
-        
         if (loadBalancerNames == null) {
-            loadBalancerNames = new java.util.ArrayList<String>();
+              loadBalancerNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              loadBalancerNames.setAutoConstruct(true);
         }
         return loadBalancerNames;
     }
@@ -549,8 +543,7 @@ public class AutoScalingGroup  implements Serializable  {
             this.loadBalancerNames = null;
             return;
         }
-
-        java.util.List<String> loadBalancerNamesCopy = new java.util.ArrayList<String>(loadBalancerNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> loadBalancerNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(loadBalancerNames.size());
         loadBalancerNamesCopy.addAll(loadBalancerNames);
         this.loadBalancerNames = loadBalancerNamesCopy;
     }
@@ -563,7 +556,7 @@ public class AutoScalingGroup  implements Serializable  {
      * @param loadBalancerNames A list of load balancers associated with this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withLoadBalancerNames(String... loadBalancerNames) {
         if (getLoadBalancerNames() == null) setLoadBalancerNames(new java.util.ArrayList<String>(loadBalancerNames.length));
@@ -581,20 +574,20 @@ public class AutoScalingGroup  implements Serializable  {
      * @param loadBalancerNames A list of load balancers associated with this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withLoadBalancerNames(java.util.Collection<String> loadBalancerNames) {
         if (loadBalancerNames == null) {
             this.loadBalancerNames = null;
         } else {
-            java.util.List<String> loadBalancerNamesCopy = new java.util.ArrayList<String>(loadBalancerNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> loadBalancerNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(loadBalancerNames.size());
             loadBalancerNamesCopy.addAll(loadBalancerNames);
             this.loadBalancerNames = loadBalancerNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The service of interest for the health status check, either "EC2" for
      * Amazon EC2 or "ELB" for Elastic Load Balancing.
@@ -639,14 +632,13 @@ public class AutoScalingGroup  implements Serializable  {
      *         Amazon EC2 or "ELB" for Elastic Load Balancing.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withHealthCheckType(String healthCheckType) {
         this.healthCheckType = healthCheckType;
         return this;
     }
-    
-    
+
     /**
      * The length of time that Auto Scaling waits before checking an
      * instance's health status. The grace period begins when an instance
@@ -685,23 +677,22 @@ public class AutoScalingGroup  implements Serializable  {
      *         comes into service.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withHealthCheckGracePeriod(Integer healthCheckGracePeriod) {
         this.healthCheckGracePeriod = healthCheckGracePeriod;
         return this;
     }
-    
-    
+
     /**
      * Provides a summary list of Amazon EC2 instances.
      *
      * @return Provides a summary list of Amazon EC2 instances.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -716,8 +707,7 @@ public class AutoScalingGroup  implements Serializable  {
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -730,7 +720,7 @@ public class AutoScalingGroup  implements Serializable  {
      * @param instances Provides a summary list of Amazon EC2 instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -748,20 +738,20 @@ public class AutoScalingGroup  implements Serializable  {
      * @param instances Provides a summary list of Amazon EC2 instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Specifies the date and time the Auto Scaling group was created.
      *
@@ -788,23 +778,22 @@ public class AutoScalingGroup  implements Serializable  {
      * @param createdTime Specifies the date and time the Auto Scaling group was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withCreatedTime(java.util.Date createdTime) {
         this.createdTime = createdTime;
         return this;
     }
-    
-    
+
     /**
      * Suspended processes associated with this Auto Scaling group.
      *
      * @return Suspended processes associated with this Auto Scaling group.
      */
     public java.util.List<SuspendedProcess> getSuspendedProcesses() {
-        
         if (suspendedProcesses == null) {
-            suspendedProcesses = new java.util.ArrayList<SuspendedProcess>();
+              suspendedProcesses = new com.amazonaws.internal.ListWithAutoConstructFlag<SuspendedProcess>();
+              suspendedProcesses.setAutoConstruct(true);
         }
         return suspendedProcesses;
     }
@@ -819,8 +808,7 @@ public class AutoScalingGroup  implements Serializable  {
             this.suspendedProcesses = null;
             return;
         }
-
-        java.util.List<SuspendedProcess> suspendedProcessesCopy = new java.util.ArrayList<SuspendedProcess>(suspendedProcesses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SuspendedProcess> suspendedProcessesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SuspendedProcess>(suspendedProcesses.size());
         suspendedProcessesCopy.addAll(suspendedProcesses);
         this.suspendedProcesses = suspendedProcessesCopy;
     }
@@ -833,7 +821,7 @@ public class AutoScalingGroup  implements Serializable  {
      * @param suspendedProcesses Suspended processes associated with this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withSuspendedProcesses(SuspendedProcess... suspendedProcesses) {
         if (getSuspendedProcesses() == null) setSuspendedProcesses(new java.util.ArrayList<SuspendedProcess>(suspendedProcesses.length));
@@ -851,24 +839,24 @@ public class AutoScalingGroup  implements Serializable  {
      * @param suspendedProcesses Suspended processes associated with this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withSuspendedProcesses(java.util.Collection<SuspendedProcess> suspendedProcesses) {
         if (suspendedProcesses == null) {
             this.suspendedProcesses = null;
         } else {
-            java.util.List<SuspendedProcess> suspendedProcessesCopy = new java.util.ArrayList<SuspendedProcess>(suspendedProcesses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SuspendedProcess> suspendedProcessesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SuspendedProcess>(suspendedProcesses.size());
             suspendedProcessesCopy.addAll(suspendedProcesses);
             this.suspendedProcesses = suspendedProcessesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The name of the cluster placement group, if applicable. For more
      * information, go to <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
      * Using Cluster Instances</a> in the Amazon EC2 User Guide.
      * <p>
      * <b>Constraints:</b><br/>
@@ -877,7 +865,7 @@ public class AutoScalingGroup  implements Serializable  {
      *
      * @return The name of the cluster placement group, if applicable. For more
      *         information, go to <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
      *         Using Cluster Instances</a> in the Amazon EC2 User Guide.
      */
     public String getPlacementGroup() {
@@ -887,7 +875,7 @@ public class AutoScalingGroup  implements Serializable  {
     /**
      * The name of the cluster placement group, if applicable. For more
      * information, go to <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
      * Using Cluster Instances</a> in the Amazon EC2 User Guide.
      * <p>
      * <b>Constraints:</b><br/>
@@ -896,7 +884,7 @@ public class AutoScalingGroup  implements Serializable  {
      *
      * @param placementGroup The name of the cluster placement group, if applicable. For more
      *         information, go to <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
      *         Using Cluster Instances</a> in the Amazon EC2 User Guide.
      */
     public void setPlacementGroup(String placementGroup) {
@@ -906,7 +894,7 @@ public class AutoScalingGroup  implements Serializable  {
     /**
      * The name of the cluster placement group, if applicable. For more
      * information, go to <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
      * Using Cluster Instances</a> in the Amazon EC2 User Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -917,18 +905,17 @@ public class AutoScalingGroup  implements Serializable  {
      *
      * @param placementGroup The name of the cluster placement group, if applicable. For more
      *         information, go to <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">
      *         Using Cluster Instances</a> in the Amazon EC2 User Guide.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withPlacementGroup(String placementGroup) {
         this.placementGroup = placementGroup;
         return this;
     }
-    
-    
+
     /**
      * The subnet identifier for the Amazon VPC connection, if applicable.
      * You can specify several subnets in a comma-separated list. <p> When
@@ -991,23 +978,22 @@ public class AutoScalingGroup  implements Serializable  {
      *         Zones match the values you specify for <code>AvailabilityZones</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withVPCZoneIdentifier(String vPCZoneIdentifier) {
         this.vPCZoneIdentifier = vPCZoneIdentifier;
         return this;
     }
-    
-    
+
     /**
      * A list of metrics enabled for this Auto Scaling group.
      *
      * @return A list of metrics enabled for this Auto Scaling group.
      */
     public java.util.List<EnabledMetric> getEnabledMetrics() {
-        
         if (enabledMetrics == null) {
-            enabledMetrics = new java.util.ArrayList<EnabledMetric>();
+              enabledMetrics = new com.amazonaws.internal.ListWithAutoConstructFlag<EnabledMetric>();
+              enabledMetrics.setAutoConstruct(true);
         }
         return enabledMetrics;
     }
@@ -1022,8 +1008,7 @@ public class AutoScalingGroup  implements Serializable  {
             this.enabledMetrics = null;
             return;
         }
-
-        java.util.List<EnabledMetric> enabledMetricsCopy = new java.util.ArrayList<EnabledMetric>(enabledMetrics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<EnabledMetric> enabledMetricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EnabledMetric>(enabledMetrics.size());
         enabledMetricsCopy.addAll(enabledMetrics);
         this.enabledMetrics = enabledMetricsCopy;
     }
@@ -1036,7 +1021,7 @@ public class AutoScalingGroup  implements Serializable  {
      * @param enabledMetrics A list of metrics enabled for this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withEnabledMetrics(EnabledMetric... enabledMetrics) {
         if (getEnabledMetrics() == null) setEnabledMetrics(new java.util.ArrayList<EnabledMetric>(enabledMetrics.length));
@@ -1054,48 +1039,53 @@ public class AutoScalingGroup  implements Serializable  {
      * @param enabledMetrics A list of metrics enabled for this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withEnabledMetrics(java.util.Collection<EnabledMetric> enabledMetrics) {
         if (enabledMetrics == null) {
             this.enabledMetrics = null;
         } else {
-            java.util.List<EnabledMetric> enabledMetricsCopy = new java.util.ArrayList<EnabledMetric>(enabledMetrics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<EnabledMetric> enabledMetricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EnabledMetric>(enabledMetrics.size());
             enabledMetricsCopy.addAll(enabledMetrics);
             this.enabledMetrics = enabledMetricsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of status conditions for the Auto Scaling group.
+     * The current state of the Auto Scaling group when a
+     * <a>DeleteAutoScalingGroup</a> action is in progress.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @return A list of status conditions for the Auto Scaling group.
+     * @return The current state of the Auto Scaling group when a
+     *         <a>DeleteAutoScalingGroup</a> action is in progress.
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * A list of status conditions for the Auto Scaling group.
+     * The current state of the Auto Scaling group when a
+     * <a>DeleteAutoScalingGroup</a> action is in progress.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param status A list of status conditions for the Auto Scaling group.
+     * @param status The current state of the Auto Scaling group when a
+     *         <a>DeleteAutoScalingGroup</a> action is in progress.
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * A list of status conditions for the Auto Scaling group.
+     * The current state of the Auto Scaling group when a
+     * <a>DeleteAutoScalingGroup</a> action is in progress.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -1103,26 +1093,26 @@ public class AutoScalingGroup  implements Serializable  {
      * <b>Length: </b>1 - 255<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param status A list of status conditions for the Auto Scaling group.
+     * @param status The current state of the Auto Scaling group when a
+     *         <a>DeleteAutoScalingGroup</a> action is in progress.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * A list of tags for the Auto Scaling group.
      *
      * @return A list of tags for the Auto Scaling group.
      */
     public java.util.List<TagDescription> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<TagDescription>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -1137,8 +1127,7 @@ public class AutoScalingGroup  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<TagDescription> tagsCopy = new java.util.ArrayList<TagDescription>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -1151,7 +1140,7 @@ public class AutoScalingGroup  implements Serializable  {
      * @param tags A list of tags for the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withTags(TagDescription... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<TagDescription>(tags.length));
@@ -1169,20 +1158,20 @@ public class AutoScalingGroup  implements Serializable  {
      * @param tags A list of tags for the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withTags(java.util.Collection<TagDescription> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<TagDescription> tagsCopy = new java.util.ArrayList<TagDescription>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A standalone termination policy or a list of termination policies for
      * this Auto Scaling group.
@@ -1191,9 +1180,9 @@ public class AutoScalingGroup  implements Serializable  {
      *         this Auto Scaling group.
      */
     public java.util.List<String> getTerminationPolicies() {
-        
         if (terminationPolicies == null) {
-            terminationPolicies = new java.util.ArrayList<String>();
+              terminationPolicies = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              terminationPolicies.setAutoConstruct(true);
         }
         return terminationPolicies;
     }
@@ -1210,8 +1199,7 @@ public class AutoScalingGroup  implements Serializable  {
             this.terminationPolicies = null;
             return;
         }
-
-        java.util.List<String> terminationPoliciesCopy = new java.util.ArrayList<String>(terminationPolicies.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> terminationPoliciesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(terminationPolicies.size());
         terminationPoliciesCopy.addAll(terminationPolicies);
         this.terminationPolicies = terminationPoliciesCopy;
     }
@@ -1226,7 +1214,7 @@ public class AutoScalingGroup  implements Serializable  {
      *         this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withTerminationPolicies(String... terminationPolicies) {
         if (getTerminationPolicies() == null) setTerminationPolicies(new java.util.ArrayList<String>(terminationPolicies.length));
@@ -1246,20 +1234,20 @@ public class AutoScalingGroup  implements Serializable  {
      *         this Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AutoScalingGroup withTerminationPolicies(java.util.Collection<String> terminationPolicies) {
         if (terminationPolicies == null) {
             this.terminationPolicies = null;
         } else {
-            java.util.List<String> terminationPoliciesCopy = new java.util.ArrayList<String>(terminationPolicies.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> terminationPoliciesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(terminationPolicies.size());
             terminationPoliciesCopy.addAll(terminationPolicies);
             this.terminationPolicies = terminationPoliciesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1271,26 +1259,26 @@ public class AutoScalingGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getAutoScalingGroupARN() != null) sb.append("AutoScalingGroupARN: " + getAutoScalingGroupARN() + ",");    	
-        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");    	
-        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");    	
-        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");    	
-        if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() + ",");    	
-        if (getDefaultCooldown() != null) sb.append("DefaultCooldown: " + getDefaultCooldown() + ",");    	
-        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");    	
-        if (getLoadBalancerNames() != null) sb.append("LoadBalancerNames: " + getLoadBalancerNames() + ",");    	
-        if (getHealthCheckType() != null) sb.append("HealthCheckType: " + getHealthCheckType() + ",");    	
-        if (getHealthCheckGracePeriod() != null) sb.append("HealthCheckGracePeriod: " + getHealthCheckGracePeriod() + ",");    	
-        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");    	
-        if (getCreatedTime() != null) sb.append("CreatedTime: " + getCreatedTime() + ",");    	
-        if (getSuspendedProcesses() != null) sb.append("SuspendedProcesses: " + getSuspendedProcesses() + ",");    	
-        if (getPlacementGroup() != null) sb.append("PlacementGroup: " + getPlacementGroup() + ",");    	
-        if (getVPCZoneIdentifier() != null) sb.append("VPCZoneIdentifier: " + getVPCZoneIdentifier() + ",");    	
-        if (getEnabledMetrics() != null) sb.append("EnabledMetrics: " + getEnabledMetrics() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getAutoScalingGroupARN() != null) sb.append("AutoScalingGroupARN: " + getAutoScalingGroupARN() + ",");
+        if (getLaunchConfigurationName() != null) sb.append("LaunchConfigurationName: " + getLaunchConfigurationName() + ",");
+        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");
+        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");
+        if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() + ",");
+        if (getDefaultCooldown() != null) sb.append("DefaultCooldown: " + getDefaultCooldown() + ",");
+        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+        if (getLoadBalancerNames() != null) sb.append("LoadBalancerNames: " + getLoadBalancerNames() + ",");
+        if (getHealthCheckType() != null) sb.append("HealthCheckType: " + getHealthCheckType() + ",");
+        if (getHealthCheckGracePeriod() != null) sb.append("HealthCheckGracePeriod: " + getHealthCheckGracePeriod() + ",");
+        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");
+        if (getCreatedTime() != null) sb.append("CreatedTime: " + getCreatedTime() + ",");
+        if (getSuspendedProcesses() != null) sb.append("SuspendedProcesses: " + getSuspendedProcesses() + ",");
+        if (getPlacementGroup() != null) sb.append("PlacementGroup: " + getPlacementGroup() + ",");
+        if (getVPCZoneIdentifier() != null) sb.append("VPCZoneIdentifier: " + getVPCZoneIdentifier() + ",");
+        if (getEnabledMetrics() != null) sb.append("EnabledMetrics: " + getEnabledMetrics() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
         if (getTerminationPolicies() != null) sb.append("TerminationPolicies: " + getTerminationPolicies() );
         sb.append("}");
         return sb.toString();

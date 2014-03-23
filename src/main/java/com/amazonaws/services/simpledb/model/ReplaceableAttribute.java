@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,13 +13,14 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * </p>
  */
-public class ReplaceableAttribute  implements Serializable  {
+public class ReplaceableAttribute implements Serializable {
 
     /**
      * The name of the replaceable attribute.
@@ -56,13 +57,11 @@ public class ReplaceableAttribute  implements Serializable  {
      * setting is <code>false</code>.
      */
     public ReplaceableAttribute(String name, String value, Boolean replace) {
-        this.name = name;
-        this.value = value;
-        this.replace = replace;
+        setName(name);
+        setValue(value);
+        setReplace(replace);
     }
 
-    
-    
     /**
      * The name of the replaceable attribute.
      *
@@ -89,14 +88,13 @@ public class ReplaceableAttribute  implements Serializable  {
      * @param name The name of the replaceable attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableAttribute withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The value of the replaceable attribute.
      *
@@ -123,14 +121,13 @@ public class ReplaceableAttribute  implements Serializable  {
      * @param value The value of the replaceable attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableAttribute withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * A flag specifying whether or not to replace the attribute/value pair
      * or to add a new attribute/value pair. The default setting is
@@ -169,14 +166,13 @@ public class ReplaceableAttribute  implements Serializable  {
      *         <code>false</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceableAttribute withReplace(Boolean replace) {
         this.replace = replace;
         return this;
     }
-    
-    
+
     /**
      * A flag specifying whether or not to replace the attribute/value pair
      * or to add a new attribute/value pair. The default setting is
@@ -189,7 +185,7 @@ public class ReplaceableAttribute  implements Serializable  {
     public Boolean getReplace() {
         return replace;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -201,9 +197,9 @@ public class ReplaceableAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (isReplace() != null) sb.append("Replace: " + isReplace() );
         sb.append("}");
         return sb.toString();

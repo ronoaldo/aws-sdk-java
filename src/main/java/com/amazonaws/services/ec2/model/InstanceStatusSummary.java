@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,89 +13,148 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Instance Status Summary
+ * <p>
+ * Describes the status of an instance.
+ * </p>
  */
-public class InstanceStatusSummary  implements Serializable  {
-
-    private String status;
-
-    private java.util.List<InstanceStatusDetails> details;
+public class InstanceStatusSummary implements Serializable {
 
     /**
-     * Returns the value of the Status property for this object.
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data, not-applicable
+     */
+    private String status;
+
+    /**
+     * The system instance health or application instance health.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails> details;
+
+    /**
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data, not-applicable
      *
-     * @return The value of the Status property for this object.
+     * @return The status.
+     *
+     * @see SummaryStatus
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data, not-applicable
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status.
+     *
+     * @see SummaryStatus
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data, not-applicable
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see SummaryStatus
      */
     public InstanceStatusSummary withStatus(String status) {
         this.status = status;
         return this;
     }
-    
+
+    /**
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data, not-applicable
+     *
+     * @param status The status.
+     *
+     * @see SummaryStatus
+     */
+    public void setStatus(SummaryStatus status) {
+        this.status = status.toString();
+    }
     
     /**
-     * Returns the value of the Details property for this object.
+     * The status.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data, not-applicable
      *
-     * @return The value of the Details property for this object.
+     * @param status The status.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see SummaryStatus
+     */
+    public InstanceStatusSummary withStatus(SummaryStatus status) {
+        this.status = status.toString();
+        return this;
+    }
+
+    /**
+     * The system instance health or application instance health.
+     *
+     * @return The system instance health or application instance health.
      */
     public java.util.List<InstanceStatusDetails> getDetails() {
-        
         if (details == null) {
-            details = new java.util.ArrayList<InstanceStatusDetails>();
+              details = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails>();
+              details.setAutoConstruct(true);
         }
         return details;
     }
     
     /**
-     * Sets the value of the Details property for this object.
+     * The system instance health or application instance health.
      *
-     * @param details The new value for the Details property for this object.
+     * @param details The system instance health or application instance health.
      */
     public void setDetails(java.util.Collection<InstanceStatusDetails> details) {
         if (details == null) {
             this.details = null;
             return;
         }
-
-        java.util.List<InstanceStatusDetails> detailsCopy = new java.util.ArrayList<InstanceStatusDetails>(details.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails> detailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails>(details.size());
         detailsCopy.addAll(details);
         this.details = detailsCopy;
     }
     
     /**
-     * Sets the value of the Details property for this object.
+     * The system instance health or application instance health.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param details The new value for the Details property for this object.
+     * @param details The system instance health or application instance health.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusSummary withDetails(InstanceStatusDetails... details) {
         if (getDetails() == null) setDetails(new java.util.ArrayList<InstanceStatusDetails>(details.length));
@@ -106,27 +165,27 @@ public class InstanceStatusSummary  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Details property for this object.
+     * The system instance health or application instance health.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param details The new value for the Details property for this object.
+     * @param details The system instance health or application instance health.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusSummary withDetails(java.util.Collection<InstanceStatusDetails> details) {
         if (details == null) {
             this.details = null;
         } else {
-            java.util.List<InstanceStatusDetails> detailsCopy = new java.util.ArrayList<InstanceStatusDetails>(details.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails> detailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatusDetails>(details.size());
             detailsCopy.addAll(details);
             this.details = detailsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +197,8 @@ public class InstanceStatusSummary  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getDetails() != null) sb.append("Details: " + getDetails() );
         sb.append("}");
         return sb.toString();

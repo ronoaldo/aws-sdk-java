@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,39 +13,51 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>ContinueAsNewWorkflowExecution</code> decision.
+ * Provides details of the <code>ContinueAsNewWorkflowExecution</code>
+ * decision.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this decision's access to Amazon SWF in much the same way as for the regular API:
+ * You can use IAM policies to control this decision's access to Amazon
+ * SWF in much the same way as for the regular API:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the decision to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to specify this decision.</li>
- * <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys.
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the decision to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * specify this decision.</li>
+ * <li>Constrain the following parameters by using a
+ * <code>Condition</code> element with the appropriate keys.
  * <ul>
  * <li> <code>tag</code> : TBD.</li>
- * <li> <code>taskList</code> : String constraint. The key is "swf:taskList.name".</li>
- * <li> <code>workflowTypeVersion</code> : String constraint. The key is TBD.</li>
+ * <li> <code>taskList</code> : String constraint. The key is
+ * "swf:taskList.name".</li>
+ * <li> <code>workflowTypeVersion</code> : String constraint. The key is
+ * TBD.</li>
  * 
  * </ul>
  * </li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails. The associated event attribute's
+ * <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
+ * details and example IAM policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  */
-public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serializable  {
+public class ContinueAsNewWorkflowExecutionDecisionAttributes implements Serializable {
 
     /**
      * The input provided to the new workflow execution.
@@ -130,7 +142,7 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> tagList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tagList;
 
     private String workflowTypeVersion;
 
@@ -169,14 +181,13 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      * @param input The input provided to the new workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ContinueAsNewWorkflowExecutionDecisionAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the total duration for this workflow execution. This
      * overrides the <code>defaultExecutionStartToCloseTimeout</code>
@@ -272,14 +283,13 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      *         returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ContinueAsNewWorkflowExecutionDecisionAttributes withExecutionStartToCloseTimeout(String executionStartToCloseTimeout) {
         this.executionStartToCloseTimeout = executionStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * Represents a task list.
      *
@@ -306,14 +316,13 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      * @param taskList Represents a task list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ContinueAsNewWorkflowExecutionDecisionAttributes withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * Specifies the maximum duration of decision tasks for the new workflow
      * execution. This parameter overrides the
@@ -415,14 +424,13 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      *         will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ContinueAsNewWorkflowExecutionDecisionAttributes withTaskStartToCloseTimeout(String taskStartToCloseTimeout) {
         this.taskStartToCloseTimeout = taskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * of the new execution if it is terminated by calling the
@@ -558,7 +566,7 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      *         specified at registration time then a fault will be returned. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -566,8 +574,7 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * of the new execution if it is terminated by calling the
@@ -657,7 +664,7 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      *         specified at registration time then a fault will be returned. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -665,7 +672,7 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * The list of tags to associate with the new workflow execution. A
      * maximum of 5 tags can be specified. You can list workflow executions
@@ -681,9 +688,9 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      */
     public java.util.List<String> getTagList() {
-        
         if (tagList == null) {
-            tagList = new java.util.ArrayList<String>();
+              tagList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              tagList.setAutoConstruct(true);
         }
         return tagList;
     }
@@ -707,8 +714,7 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
             this.tagList = null;
             return;
         }
-
-        java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
         tagListCopy.addAll(tagList);
         this.tagList = tagListCopy;
     }
@@ -730,7 +736,7 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ContinueAsNewWorkflowExecutionDecisionAttributes withTagList(String... tagList) {
         if (getTagList() == null) setTagList(new java.util.ArrayList<String>(tagList.length));
@@ -757,20 +763,20 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ContinueAsNewWorkflowExecutionDecisionAttributes withTagList(java.util.Collection<String> tagList) {
         if (tagList == null) {
             this.tagList = null;
         } else {
-            java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
             tagListCopy.addAll(tagList);
             this.tagList = tagListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns the value of the WorkflowTypeVersion property for this object.
      * <p>
@@ -806,14 +812,13 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
      * @param workflowTypeVersion The new value for the WorkflowTypeVersion property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ContinueAsNewWorkflowExecutionDecisionAttributes withWorkflowTypeVersion(String workflowTypeVersion) {
         this.workflowTypeVersion = workflowTypeVersion;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -825,13 +830,13 @@ public class ContinueAsNewWorkflowExecutionDecisionAttributes  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");    	
-        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");    	
-        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");    	
+        sb.append("{");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");
+        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");
+        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");
         if (getWorkflowTypeVersion() != null) sb.append("WorkflowTypeVersion: " + getWorkflowTypeVersion() );
         sb.append("}");
         return sb.toString();

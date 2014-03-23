@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#createStorediSCSIVolume(CreateStorediSCSIVolumeRequest) CreateStorediSCSIVolume operation}.
  * <p>
- * This operation creates a volume on a specified gateway. This operation is supported only for the gateway-cached volume architecture.
+ * This operation creates a volume on a specified gateway. This operation
+ * is supported only for the gateway-cached volume architecture.
  * </p>
  * <p>
- * The size of the volume to create is inferred from the disk size. You can choose to preserve existing data on the disk, create volume from an existing
- * snapshot, or create an empty volume. If you choose to create an empty gateway volume, then any existing data on the disk is erased.
+ * The size of the volume to create is inferred from the disk size. You
+ * can choose to preserve existing data on the disk, create volume from
+ * an existing snapshot, or create an empty volume. If you choose to
+ * create an empty gateway volume, then any existing data on the disk is
+ * erased.
  * </p>
  * <p>
- * In the request you must specify the gateway and the disk information on which you are creating the volume. In response, AWS Storage Gateway creates
- * the volume and returns volume information such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that initiators can use to
- * connect to the volume target.
+ * In the request you must specify the gateway and the disk information
+ * on which you are creating the volume. In response, AWS Storage Gateway
+ * creates the volume and returns volume information such as the volume
+ * Amazon Resource Name (ARN), its size, and the iSCSI target ARN that
+ * initiators can use to connect to the volume target.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#createStorediSCSIVolume(CreateStorediSCSIVolumeRequest)
  */
-public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -48,7 +56,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
     /**
      * The unique identifier for the gateway local disk that is configured as
      * a stored volume. Use <a
-     * href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
+     * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
      * to list disk IDs for a gateway.
      * <p>
      * <b>Constraints:</b><br/>
@@ -61,7 +69,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      * the new stored volume. Specify this field if you want to create the
      * iSCSI storage volume from a snapshot otherwise do not include this
      * field. To list snapshots for your account use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
      * in the <i>Amazon Elastic Compute Cloud API Reference</i>.
      * <p>
      * <b>Constraints:</b><br/>
@@ -149,18 +157,17 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * The unique identifier for the gateway local disk that is configured as
      * a stored volume. Use <a
-     * href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
+     * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
      * to list disk IDs for a gateway.
      * <p>
      * <b>Constraints:</b><br/>
@@ -168,7 +175,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *
      * @return The unique identifier for the gateway local disk that is configured as
      *         a stored volume. Use <a
-     *         href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
+     *         href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
      *         to list disk IDs for a gateway.
      */
     public String getDiskId() {
@@ -178,7 +185,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
     /**
      * The unique identifier for the gateway local disk that is configured as
      * a stored volume. Use <a
-     * href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
+     * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
      * to list disk IDs for a gateway.
      * <p>
      * <b>Constraints:</b><br/>
@@ -186,7 +193,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *
      * @param diskId The unique identifier for the gateway local disk that is configured as
      *         a stored volume. Use <a
-     *         href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
+     *         href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
      *         to list disk IDs for a gateway.
      */
     public void setDiskId(String diskId) {
@@ -196,7 +203,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
     /**
      * The unique identifier for the gateway local disk that is configured as
      * a stored volume. Use <a
-     * href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
+     * href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
      * to list disk IDs for a gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -206,24 +213,23 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *
      * @param diskId The unique identifier for the gateway local disk that is configured as
      *         a stored volume. Use <a
-     *         href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
+     *         href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a>
      *         to list disk IDs for a gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeRequest withDiskId(String diskId) {
         this.diskId = diskId;
         return this;
     }
-    
-    
+
     /**
      * The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
      * the new stored volume. Specify this field if you want to create the
      * iSCSI storage volume from a snapshot otherwise do not include this
      * field. To list snapshots for your account use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
      * in the <i>Amazon Elastic Compute Cloud API Reference</i>.
      * <p>
      * <b>Constraints:</b><br/>
@@ -233,7 +239,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         the new stored volume. Specify this field if you want to create the
      *         iSCSI storage volume from a snapshot otherwise do not include this
      *         field. To list snapshots for your account use <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
      *         in the <i>Amazon Elastic Compute Cloud API Reference</i>.
      */
     public String getSnapshotId() {
@@ -245,7 +251,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      * the new stored volume. Specify this field if you want to create the
      * iSCSI storage volume from a snapshot otherwise do not include this
      * field. To list snapshots for your account use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
      * in the <i>Amazon Elastic Compute Cloud API Reference</i>.
      * <p>
      * <b>Constraints:</b><br/>
@@ -255,7 +261,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         the new stored volume. Specify this field if you want to create the
      *         iSCSI storage volume from a snapshot otherwise do not include this
      *         field. To list snapshots for your account use <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
      *         in the <i>Amazon Elastic Compute Cloud API Reference</i>.
      */
     public void setSnapshotId(String snapshotId) {
@@ -267,7 +273,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      * the new stored volume. Specify this field if you want to create the
      * iSCSI storage volume from a snapshot otherwise do not include this
      * field. To list snapshots for your account use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
      * in the <i>Amazon Elastic Compute Cloud API Reference</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -279,18 +285,17 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         the new stored volume. Specify this field if you want to create the
      *         iSCSI storage volume from a snapshot otherwise do not include this
      *         field. To list snapshots for your account use <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
      *         in the <i>Amazon Elastic Compute Cloud API Reference</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeRequest withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
      * Specify this field as true if you want to preserve the data on the
      * local disk. Otherwise, specifying this field as false creates an empty
@@ -329,14 +334,13 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         volume. <p><i>Valid Values</i>: true, false
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeRequest withPreserveExistingData(Boolean preserveExistingData) {
         this.preserveExistingData = preserveExistingData;
         return this;
     }
-    
-    
+
     /**
      * Specify this field as true if you want to preserve the data on the
      * local disk. Otherwise, specifying this field as false creates an empty
@@ -349,7 +353,7 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
     public Boolean getPreserveExistingData() {
         return preserveExistingData;
     }
-    
+
     /**
      * The name of the iSCSI target used by initiators to connect to the
      * target and as a suffix for the target ARN. For example, specifying
@@ -418,14 +422,13 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         The target name must be unique across all volumes of a gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeRequest withTargetName(String targetName) {
         this.targetName = targetName;
         return this;
     }
-    
-    
+
     /**
      * The network interface of the gateway on which to expose the iSCSI
      * target. Only IPv4 addresses are accepted. Use
@@ -485,14 +488,13 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeRequest withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -504,12 +506,12 @@ public class CreateStorediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getDiskId() != null) sb.append("DiskId: " + getDiskId() + ",");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (isPreserveExistingData() != null) sb.append("PreserveExistingData: " + isPreserveExistingData() + ",");    	
-        if (getTargetName() != null) sb.append("TargetName: " + getTargetName() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getDiskId() != null) sb.append("DiskId: " + getDiskId() + ",");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (isPreserveExistingData() != null) sb.append("PreserveExistingData: " + isPreserveExistingData() + ",");
+        if (getTargetName() != null) sb.append("TargetName: " + getTargetName() + ",");
         if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() );
         sb.append("}");
         return sb.toString();

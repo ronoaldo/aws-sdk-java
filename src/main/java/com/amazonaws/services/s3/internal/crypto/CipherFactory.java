@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ public class CipherFactory {
     private int cipherMode;
     private byte[] initVectorBytes;
     private Provider cryptoProvider;
-
 
     /**
      * Creates a new CipherFactory that will produce ciphers using the specified
@@ -75,4 +74,19 @@ public class CipherFactory {
         return cipher;
     }
 
+    public Provider getCryptoProvider() {
+        return cryptoProvider;
+    }
+
+    public SecretKey getSymmetricKey() {
+        return symmetricKey;
+    }
+
+    public int getCipherMode() {
+        return cipherMode;
+    }
+
+    public byte[] getIV() {
+        return initVectorBytes == null ? null : initVectorBytes.clone();
+    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The status of an option, including when it was last updated and whether it is actively in use for searches.
+ * The status of an option, including when it was last updated and
+ * whether it is actively in use for searches.
  * </p>
  */
-public class OptionStatus  implements Serializable  {
+public class OptionStatus implements Serializable {
 
     /**
      * A timestamp for when this option was created.
@@ -57,6 +59,11 @@ public class OptionStatus  implements Serializable  {
     private String state;
 
     /**
+     * Indicates that the option will be deleted once processing is complete.
+     */
+    private Boolean pendingDeletion;
+
+    /**
      * A timestamp for when this option was created.
      *
      * @return A timestamp for when this option was created.
@@ -82,14 +89,13 @@ public class OptionStatus  implements Serializable  {
      * @param creationDate A timestamp for when this option was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionStatus withCreationDate(java.util.Date creationDate) {
         this.creationDate = creationDate;
         return this;
     }
-    
-    
+
     /**
      * A timestamp for when this option was last updated.
      *
@@ -116,14 +122,13 @@ public class OptionStatus  implements Serializable  {
      * @param updateDate A timestamp for when this option was last updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionStatus withUpdateDate(java.util.Date updateDate) {
         this.updateDate = updateDate;
         return this;
     }
-    
-    
+
     /**
      * A unique integer that indicates when this option was last updated.
      * <p>
@@ -159,14 +164,13 @@ public class OptionStatus  implements Serializable  {
      * @param updateVersion A unique integer that indicates when this option was last updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionStatus withUpdateVersion(Integer updateVersion) {
         this.updateVersion = updateVersion;
         return this;
     }
-    
-    
+
     /**
      * The state of processing a change to an option. Possible values:<ul>
      * <li><code>RequiresIndexDocuments</code>: the option's latest value
@@ -254,7 +258,7 @@ public class OptionStatus  implements Serializable  {
      *         <code>Diagnostics</code>.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see OptionState
      */
@@ -262,8 +266,7 @@ public class OptionStatus  implements Serializable  {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * The state of processing a change to an option. Possible values:<ul>
      * <li><code>RequiresIndexDocuments</code>: the option's latest value
@@ -321,7 +324,7 @@ public class OptionStatus  implements Serializable  {
      *         <code>Diagnostics</code>.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see OptionState
      */
@@ -329,7 +332,49 @@ public class OptionStatus  implements Serializable  {
         this.state = state.toString();
         return this;
     }
+
+    /**
+     * Indicates that the option will be deleted once processing is complete.
+     *
+     * @return Indicates that the option will be deleted once processing is complete.
+     */
+    public Boolean isPendingDeletion() {
+        return pendingDeletion;
+    }
     
+    /**
+     * Indicates that the option will be deleted once processing is complete.
+     *
+     * @param pendingDeletion Indicates that the option will be deleted once processing is complete.
+     */
+    public void setPendingDeletion(Boolean pendingDeletion) {
+        this.pendingDeletion = pendingDeletion;
+    }
+    
+    /**
+     * Indicates that the option will be deleted once processing is complete.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param pendingDeletion Indicates that the option will be deleted once processing is complete.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public OptionStatus withPendingDeletion(Boolean pendingDeletion) {
+        this.pendingDeletion = pendingDeletion;
+        return this;
+    }
+
+    /**
+     * Indicates that the option will be deleted once processing is complete.
+     *
+     * @return Indicates that the option will be deleted once processing is complete.
+     */
+    public Boolean getPendingDeletion() {
+        return pendingDeletion;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -341,11 +386,12 @@ public class OptionStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");    	
-        if (getUpdateDate() != null) sb.append("UpdateDate: " + getUpdateDate() + ",");    	
-        if (getUpdateVersion() != null) sb.append("UpdateVersion: " + getUpdateVersion() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() );
+        sb.append("{");
+        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");
+        if (getUpdateDate() != null) sb.append("UpdateDate: " + getUpdateDate() + ",");
+        if (getUpdateVersion() != null) sb.append("UpdateVersion: " + getUpdateVersion() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (isPendingDeletion() != null) sb.append("PendingDeletion: " + isPendingDeletion() );
         sb.append("}");
         return sb.toString();
     }
@@ -359,6 +405,7 @@ public class OptionStatus  implements Serializable  {
         hashCode = prime * hashCode + ((getUpdateDate() == null) ? 0 : getUpdateDate().hashCode()); 
         hashCode = prime * hashCode + ((getUpdateVersion() == null) ? 0 : getUpdateVersion().hashCode()); 
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode()); 
+        hashCode = prime * hashCode + ((isPendingDeletion() == null) ? 0 : isPendingDeletion().hashCode()); 
         return hashCode;
     }
     
@@ -378,6 +425,8 @@ public class OptionStatus  implements Serializable  {
         if (other.getUpdateVersion() != null && other.getUpdateVersion().equals(this.getUpdateVersion()) == false) return false; 
         if (other.getState() == null ^ this.getState() == null) return false;
         if (other.getState() != null && other.getState().equals(this.getState()) == false) return false; 
+        if (other.isPendingDeletion() == null ^ this.isPendingDeletion() == null) return false;
+        if (other.isPendingDeletion() != null && other.isPendingDeletion().equals(this.isPendingDeletion()) == false) return false; 
         return true;
     }
     

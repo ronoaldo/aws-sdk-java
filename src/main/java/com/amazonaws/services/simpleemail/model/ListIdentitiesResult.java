@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Represents a list of all verified identities for the AWS Account.
  * </p>
  */
-public class ListIdentitiesResult  implements Serializable  {
+public class ListIdentitiesResult implements Serializable {
 
     /**
      * A list of identities.
      */
-    private java.util.List<String> identities;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> identities;
 
     /**
      * The token used for pagination.
@@ -38,9 +39,9 @@ public class ListIdentitiesResult  implements Serializable  {
      * @return A list of identities.
      */
     public java.util.List<String> getIdentities() {
-        
         if (identities == null) {
-            identities = new java.util.ArrayList<String>();
+              identities = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              identities.setAutoConstruct(true);
         }
         return identities;
     }
@@ -55,8 +56,7 @@ public class ListIdentitiesResult  implements Serializable  {
             this.identities = null;
             return;
         }
-
-        java.util.List<String> identitiesCopy = new java.util.ArrayList<String>(identities.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> identitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(identities.size());
         identitiesCopy.addAll(identities);
         this.identities = identitiesCopy;
     }
@@ -69,7 +69,7 @@ public class ListIdentitiesResult  implements Serializable  {
      * @param identities A list of identities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListIdentitiesResult withIdentities(String... identities) {
         if (getIdentities() == null) setIdentities(new java.util.ArrayList<String>(identities.length));
@@ -87,20 +87,20 @@ public class ListIdentitiesResult  implements Serializable  {
      * @param identities A list of identities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListIdentitiesResult withIdentities(java.util.Collection<String> identities) {
         if (identities == null) {
             this.identities = null;
         } else {
-            java.util.List<String> identitiesCopy = new java.util.ArrayList<String>(identities.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> identitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(identities.size());
             identitiesCopy.addAll(identities);
             this.identities = identitiesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The token used for pagination.
      *
@@ -127,14 +127,13 @@ public class ListIdentitiesResult  implements Serializable  {
      * @param nextToken The token used for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListIdentitiesResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +145,8 @@ public class ListIdentitiesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentities() != null) sb.append("Identities: " + getIdentities() + ",");    	
+        sb.append("{");
+        if (getIdentities() != null) sb.append("Identities: " + getIdentities() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

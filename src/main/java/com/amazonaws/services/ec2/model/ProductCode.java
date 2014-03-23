@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,90 +13,144 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An AWS DevPay product code.
+ * Describes a product code.
  * </p>
  */
-public class ProductCode  implements Serializable  {
+public class ProductCode implements Serializable {
 
     /**
-     * The unique ID of an AWS DevPay product code.
+     * The product code.
      */
     private String productCodeId;
 
+    /**
+     * The type of product code.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>devpay, marketplace
+     */
     private String productCodeType;
 
     /**
-     * The unique ID of an AWS DevPay product code.
+     * The product code.
      *
-     * @return The unique ID of an AWS DevPay product code.
+     * @return The product code.
      */
     public String getProductCodeId() {
         return productCodeId;
     }
     
     /**
-     * The unique ID of an AWS DevPay product code.
+     * The product code.
      *
-     * @param productCodeId The unique ID of an AWS DevPay product code.
+     * @param productCodeId The product code.
      */
     public void setProductCodeId(String productCodeId) {
         this.productCodeId = productCodeId;
     }
     
     /**
-     * The unique ID of an AWS DevPay product code.
+     * The product code.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCodeId The unique ID of an AWS DevPay product code.
+     * @param productCodeId The product code.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ProductCode withProductCodeId(String productCodeId) {
         this.productCodeId = productCodeId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the ProductCodeType property for this object.
+     * The type of product code.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>devpay, marketplace
      *
-     * @return The value of the ProductCodeType property for this object.
+     * @return The type of product code.
+     *
+     * @see ProductCodeValues
      */
     public String getProductCodeType() {
         return productCodeType;
     }
     
     /**
-     * Sets the value of the ProductCodeType property for this object.
+     * The type of product code.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>devpay, marketplace
      *
-     * @param productCodeType The new value for the ProductCodeType property for this object.
+     * @param productCodeType The type of product code.
+     *
+     * @see ProductCodeValues
      */
     public void setProductCodeType(String productCodeType) {
         this.productCodeType = productCodeType;
     }
     
     /**
-     * Sets the value of the ProductCodeType property for this object.
+     * The type of product code.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>devpay, marketplace
      *
-     * @param productCodeType The new value for the ProductCodeType property for this object.
+     * @param productCodeType The type of product code.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see ProductCodeValues
      */
     public ProductCode withProductCodeType(String productCodeType) {
         this.productCodeType = productCodeType;
         return this;
     }
+
+    /**
+     * The type of product code.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>devpay, marketplace
+     *
+     * @param productCodeType The type of product code.
+     *
+     * @see ProductCodeValues
+     */
+    public void setProductCodeType(ProductCodeValues productCodeType) {
+        this.productCodeType = productCodeType.toString();
+    }
     
-    
+    /**
+     * The type of product code.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>devpay, marketplace
+     *
+     * @param productCodeType The type of product code.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see ProductCodeValues
+     */
+    public ProductCode withProductCodeType(ProductCodeValues productCodeType) {
+        this.productCodeType = productCodeType.toString();
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -108,8 +162,8 @@ public class ProductCode  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProductCodeId() != null) sb.append("ProductCodeId: " + getProductCodeId() + ",");    	
+        sb.append("{");
+        if (getProductCodeId() != null) sb.append("ProductCodeId: " + getProductCodeId() + ",");
         if (getProductCodeType() != null) sb.append("ProductCodeType: " + getProductCodeType() );
         sb.append("}");
         return sb.toString();

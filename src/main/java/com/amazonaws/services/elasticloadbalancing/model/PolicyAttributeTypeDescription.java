@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The <code>PolicyAttributeTypeDescription</code> data type. This data type is used to describe values that are acceptable for the policy attribute.
+ * The <code>PolicyAttributeTypeDescription</code> data type. This data
+ * type is used to describe values that are acceptable for the policy
+ * attribute.
  * </p>
  */
-public class PolicyAttributeTypeDescription  implements Serializable  {
+public class PolicyAttributeTypeDescription implements Serializable {
 
     /**
      * The name of the attribute associated with the policy type.
@@ -77,14 +80,13 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param attributeName The name of the attribute associated with the policy type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withAttributeName(String attributeName) {
         this.attributeName = attributeName;
         return this;
     }
-    
-    
+
     /**
      * The type of attribute. For example, Boolean, Integer, etc.
      *
@@ -111,14 +113,13 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param attributeType The type of attribute. For example, Boolean, Integer, etc.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withAttributeType(String attributeType) {
         this.attributeType = attributeType;
         return this;
     }
-    
-    
+
     /**
      * A human-readable description of the attribute.
      *
@@ -145,14 +146,13 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param description A human-readable description of the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The default value of the attribute, if applicable.
      *
@@ -179,14 +179,13 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      * @param defaultValue The default value of the attribute, if applicable.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * The cardinality of the attribute. Valid Values: <ul> <li>ONE(1) :
      * Single value required</li> <li>ZERO_OR_ONE(0..1) : Up to one value can
@@ -237,14 +236,13 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
      *         are allowed</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyAttributeTypeDescription withCardinality(String cardinality) {
         this.cardinality = cardinality;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -256,11 +254,11 @@ public class PolicyAttributeTypeDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
-        if (getAttributeType() != null) sb.append("AttributeType: " + getAttributeType() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
+        if (getAttributeType() != null) sb.append("AttributeType: " + getAttributeType() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
         if (getCardinality() != null) sb.append("Cardinality: " + getCardinality() );
         sb.append("}");
         return sb.toString();

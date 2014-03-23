@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output of the DescribeAdjustmentTypes action.
  * </p>
  */
-public class DescribeAdjustmentTypesResult  implements Serializable  {
+public class DescribeAdjustmentTypesResult implements Serializable {
 
     /**
      * A list of specific policy adjustment types.
      */
-    private java.util.List<AdjustmentType> adjustmentTypes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AdjustmentType> adjustmentTypes;
 
     /**
      * A list of specific policy adjustment types.
@@ -33,9 +34,9 @@ public class DescribeAdjustmentTypesResult  implements Serializable  {
      * @return A list of specific policy adjustment types.
      */
     public java.util.List<AdjustmentType> getAdjustmentTypes() {
-        
         if (adjustmentTypes == null) {
-            adjustmentTypes = new java.util.ArrayList<AdjustmentType>();
+              adjustmentTypes = new com.amazonaws.internal.ListWithAutoConstructFlag<AdjustmentType>();
+              adjustmentTypes.setAutoConstruct(true);
         }
         return adjustmentTypes;
     }
@@ -50,8 +51,7 @@ public class DescribeAdjustmentTypesResult  implements Serializable  {
             this.adjustmentTypes = null;
             return;
         }
-
-        java.util.List<AdjustmentType> adjustmentTypesCopy = new java.util.ArrayList<AdjustmentType>(adjustmentTypes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AdjustmentType> adjustmentTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AdjustmentType>(adjustmentTypes.size());
         adjustmentTypesCopy.addAll(adjustmentTypes);
         this.adjustmentTypes = adjustmentTypesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeAdjustmentTypesResult  implements Serializable  {
      * @param adjustmentTypes A list of specific policy adjustment types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAdjustmentTypesResult withAdjustmentTypes(AdjustmentType... adjustmentTypes) {
         if (getAdjustmentTypes() == null) setAdjustmentTypes(new java.util.ArrayList<AdjustmentType>(adjustmentTypes.length));
@@ -82,20 +82,20 @@ public class DescribeAdjustmentTypesResult  implements Serializable  {
      * @param adjustmentTypes A list of specific policy adjustment types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAdjustmentTypesResult withAdjustmentTypes(java.util.Collection<AdjustmentType> adjustmentTypes) {
         if (adjustmentTypes == null) {
             this.adjustmentTypes = null;
         } else {
-            java.util.List<AdjustmentType> adjustmentTypesCopy = new java.util.ArrayList<AdjustmentType>(adjustmentTypes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AdjustmentType> adjustmentTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AdjustmentType>(adjustmentTypes.size());
             adjustmentTypesCopy.addAll(adjustmentTypes);
             this.adjustmentTypes = adjustmentTypesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeAdjustmentTypesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAdjustmentTypes() != null) sb.append("AdjustmentTypes: " + getAdjustmentTypes() );
         sb.append("}");
         return sb.toString();

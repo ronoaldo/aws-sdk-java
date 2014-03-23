@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,16 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a
- * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html"> Creating Apps </a> or <a
- * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-installingcustom.html"> Custom Recipes and Cookbooks </a> .
+ * Contains the information required to retrieve an app or cookbook from
+ * a repository. For more information, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html"> Creating Apps </a> or <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html"> Custom Recipes and Cookbooks </a>
+ * .
  * </p>
  */
-public class Source  implements Serializable  {
+public class Source implements Serializable {
 
     /**
      * The repository type.
@@ -59,9 +61,9 @@ public class Source  implements Serializable  {
     private String sshKey;
 
     /**
-     * The application's version. OpsWorks enables you to easily deploy new
-     * versions of an application. One of the simplest approaches is to have
-     * branches or revisions in your repository that represent different
+     * The application's version. AWS OpsWorks enables you to easily deploy
+     * new versions of an application. One of the simplest approaches is to
+     * have branches or revisions in your repository that represent different
      * versions that can potentially be deployed.
      */
     private String revision;
@@ -105,7 +107,7 @@ public class Source  implements Serializable  {
      * @param type The repository type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -113,8 +115,7 @@ public class Source  implements Serializable  {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * The repository type.
      * <p>
@@ -140,7 +141,7 @@ public class Source  implements Serializable  {
      * @param type The repository type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -148,7 +149,7 @@ public class Source  implements Serializable  {
         this.type = type.toString();
         return this;
     }
-    
+
     /**
      * The source URL.
      *
@@ -175,14 +176,13 @@ public class Source  implements Serializable  {
      * @param url The source URL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Source withUrl(String url) {
         this.url = url;
         return this;
     }
-    
-    
+
     /**
      * This parameter depends on the repository type. <ul> <li>For Amazon S3
      * bundles, set <code>Username</code> to the appropriate AWS access
@@ -227,14 +227,13 @@ public class Source  implements Serializable  {
      *         repositories, set <code>Username</code> to the user name.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Source withUsername(String username) {
         this.username = username;
         return this;
     }
-    
-    
+
     /**
      * This parameter depends on the repository type. <ul> <li>For Amazon S3
      * bundles, set <code>Password</code> to the appropriate AWS secret
@@ -279,14 +278,13 @@ public class Source  implements Serializable  {
      *         repositories, set <code>Password</code> to the password.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Source withPassword(String password) {
         this.password = password;
         return this;
     }
-    
-    
+
     /**
      * The repository's SSH key.
      *
@@ -313,23 +311,22 @@ public class Source  implements Serializable  {
      * @param sshKey The repository's SSH key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Source withSshKey(String sshKey) {
         this.sshKey = sshKey;
         return this;
     }
-    
-    
+
     /**
-     * The application's version. OpsWorks enables you to easily deploy new
-     * versions of an application. One of the simplest approaches is to have
-     * branches or revisions in your repository that represent different
+     * The application's version. AWS OpsWorks enables you to easily deploy
+     * new versions of an application. One of the simplest approaches is to
+     * have branches or revisions in your repository that represent different
      * versions that can potentially be deployed.
      *
-     * @return The application's version. OpsWorks enables you to easily deploy new
-     *         versions of an application. One of the simplest approaches is to have
-     *         branches or revisions in your repository that represent different
+     * @return The application's version. AWS OpsWorks enables you to easily deploy
+     *         new versions of an application. One of the simplest approaches is to
+     *         have branches or revisions in your repository that represent different
      *         versions that can potentially be deployed.
      */
     public String getRevision() {
@@ -337,14 +334,14 @@ public class Source  implements Serializable  {
     }
     
     /**
-     * The application's version. OpsWorks enables you to easily deploy new
-     * versions of an application. One of the simplest approaches is to have
-     * branches or revisions in your repository that represent different
+     * The application's version. AWS OpsWorks enables you to easily deploy
+     * new versions of an application. One of the simplest approaches is to
+     * have branches or revisions in your repository that represent different
      * versions that can potentially be deployed.
      *
-     * @param revision The application's version. OpsWorks enables you to easily deploy new
-     *         versions of an application. One of the simplest approaches is to have
-     *         branches or revisions in your repository that represent different
+     * @param revision The application's version. AWS OpsWorks enables you to easily deploy
+     *         new versions of an application. One of the simplest approaches is to
+     *         have branches or revisions in your repository that represent different
      *         versions that can potentially be deployed.
      */
     public void setRevision(String revision) {
@@ -352,27 +349,26 @@ public class Source  implements Serializable  {
     }
     
     /**
-     * The application's version. OpsWorks enables you to easily deploy new
-     * versions of an application. One of the simplest approaches is to have
-     * branches or revisions in your repository that represent different
+     * The application's version. AWS OpsWorks enables you to easily deploy
+     * new versions of an application. One of the simplest approaches is to
+     * have branches or revisions in your repository that represent different
      * versions that can potentially be deployed.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param revision The application's version. OpsWorks enables you to easily deploy new
-     *         versions of an application. One of the simplest approaches is to have
-     *         branches or revisions in your repository that represent different
+     * @param revision The application's version. AWS OpsWorks enables you to easily deploy
+     *         new versions of an application. One of the simplest approaches is to
+     *         have branches or revisions in your repository that represent different
      *         versions that can potentially be deployed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Source withRevision(String revision) {
         this.revision = revision;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -384,12 +380,12 @@ public class Source  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getUrl() != null) sb.append("Url: " + getUrl() + ",");    	
-        if (getUsername() != null) sb.append("Username: " + getUsername() + ",");    	
-        if (getPassword() != null) sb.append("Password: " + getPassword() + ",");    	
-        if (getSshKey() != null) sb.append("SshKey: " + getSshKey() + ",");    	
+        sb.append("{");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getUrl() != null) sb.append("Url: " + getUrl() + ",");
+        if (getUsername() != null) sb.append("Username: " + getUsername() + ",");
+        if (getPassword() != null) sb.append("Password: " + getPassword() + ",");
+        if (getSshKey() != null) sb.append("SshKey: " + getSshKey() + ",");
         if (getRevision() != null) sb.append("Revision: " + getRevision() );
         sb.append("}");
         return sb.toString();

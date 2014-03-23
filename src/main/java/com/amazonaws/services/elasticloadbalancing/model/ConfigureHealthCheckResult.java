@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The output for the ConfigureHealthCheck action.
  * </p>
  */
-public class ConfigureHealthCheckResult  implements Serializable  {
+public class ConfigureHealthCheckResult implements Serializable {
 
     /**
      * The updated healthcheck for the instances.
@@ -53,14 +54,13 @@ public class ConfigureHealthCheckResult  implements Serializable  {
      * @param healthCheck The updated healthcheck for the instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigureHealthCheckResult withHealthCheck(HealthCheck healthCheck) {
         this.healthCheck = healthCheck;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class ConfigureHealthCheckResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getHealthCheck() != null) sb.append("HealthCheck: " + getHealthCheck() );
         sb.append("}");
         return sb.toString();

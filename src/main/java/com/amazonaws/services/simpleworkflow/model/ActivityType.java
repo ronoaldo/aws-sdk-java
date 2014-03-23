@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents an activity type.
  * </p>
  */
-public class ActivityType  implements Serializable  {
+public class ActivityType implements Serializable {
 
     /**
      * The name of this activity. <note>The combination of activity type name
@@ -81,14 +82,13 @@ public class ActivityType  implements Serializable  {
      *         and version must be unique within a domain.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityType withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The version of this activity. <note>The combination of activity type
      * name and version must be unique with in a domain.</note>
@@ -130,14 +130,13 @@ public class ActivityType  implements Serializable  {
      *         name and version must be unique with in a domain.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityType withVersion(String version) {
         this.version = version;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -149,8 +148,8 @@ public class ActivityType  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getVersion() != null) sb.append("Version: " + getVersion() );
         sb.append("}");
         return sb.toString();

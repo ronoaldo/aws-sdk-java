@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A JSON object containing the UpdateSnapshotScheduleOutput$VolumeARN of the updated storage volume.
+ * A JSON object containing the of the updated storage volume.
  * </p>
  */
-public class UpdateSnapshotScheduleResult  implements Serializable  {
+public class UpdateSnapshotScheduleResult implements Serializable {
 
     /**
-     * The <a>UpdateSnapshotScheduleOutput$VolumeARN</a> of the storage
-     * volume whose snapshot schedule was updated. It is the same value you
-     * provided in your request.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
@@ -33,60 +32,47 @@ public class UpdateSnapshotScheduleResult  implements Serializable  {
     private String volumeARN;
 
     /**
-     * The <a>UpdateSnapshotScheduleOutput$VolumeARN</a> of the storage
-     * volume whose snapshot schedule was updated. It is the same value you
-     * provided in your request.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @return The <a>UpdateSnapshotScheduleOutput$VolumeARN</a> of the storage
-     *         volume whose snapshot schedule was updated. It is the same value you
-     *         provided in your request.
+     * @return 
      */
     public String getVolumeARN() {
         return volumeARN;
     }
     
     /**
-     * The <a>UpdateSnapshotScheduleOutput$VolumeARN</a> of the storage
-     * volume whose snapshot schedule was updated. It is the same value you
-     * provided in your request.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param volumeARN The <a>UpdateSnapshotScheduleOutput$VolumeARN</a> of the storage
-     *         volume whose snapshot schedule was updated. It is the same value you
-     *         provided in your request.
+     * @param volumeARN 
      */
     public void setVolumeARN(String volumeARN) {
         this.volumeARN = volumeARN;
     }
     
     /**
-     * The <a>UpdateSnapshotScheduleOutput$VolumeARN</a> of the storage
-     * volume whose snapshot schedule was updated. It is the same value you
-     * provided in your request.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param volumeARN The <a>UpdateSnapshotScheduleOutput$VolumeARN</a> of the storage
-     *         volume whose snapshot schedule was updated. It is the same value you
-     *         provided in your request.
+     * @param volumeARN 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateSnapshotScheduleResult withVolumeARN(String volumeARN) {
         this.volumeARN = volumeARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -98,7 +84,7 @@ public class UpdateSnapshotScheduleResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() );
         sb.append("}");
         return sb.toString();

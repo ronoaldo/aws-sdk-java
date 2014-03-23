@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,59 +13,74 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Import Instance Task Details
+ * 
  */
-public class ImportInstanceTaskDetails  implements Serializable  {
+public class ImportInstanceTaskDetails implements Serializable {
 
-    private java.util.List<ImportInstanceVolumeDetailItem> volumes;
+    /**
+     * 
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem> volumes;
 
+    /**
+     * 
+     */
     private String instanceId;
 
+    /**
+     * The instance operating system.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Windows
+     */
     private String platform;
 
+    /**
+     * 
+     */
     private String description;
 
     /**
-     * Returns the value of the Volumes property for this object.
+     * 
      *
-     * @return The value of the Volumes property for this object.
+     * @return 
      */
     public java.util.List<ImportInstanceVolumeDetailItem> getVolumes() {
-        
         if (volumes == null) {
-            volumes = new java.util.ArrayList<ImportInstanceVolumeDetailItem>();
+              volumes = new com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem>();
+              volumes.setAutoConstruct(true);
         }
         return volumes;
     }
     
     /**
-     * Sets the value of the Volumes property for this object.
+     * 
      *
-     * @param volumes The new value for the Volumes property for this object.
+     * @param volumes 
      */
     public void setVolumes(java.util.Collection<ImportInstanceVolumeDetailItem> volumes) {
         if (volumes == null) {
             this.volumes = null;
             return;
         }
-
-        java.util.List<ImportInstanceVolumeDetailItem> volumesCopy = new java.util.ArrayList<ImportInstanceVolumeDetailItem>(volumes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem>(volumes.size());
         volumesCopy.addAll(volumes);
         this.volumes = volumesCopy;
     }
     
     /**
-     * Sets the value of the Volumes property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumes The new value for the Volumes property for this object.
+     * @param volumes 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withVolumes(ImportInstanceVolumeDetailItem... volumes) {
         if (getVolumes() == null) setVolumes(new java.util.ArrayList<ImportInstanceVolumeDetailItem>(volumes.length));
@@ -76,129 +91,175 @@ public class ImportInstanceTaskDetails  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Volumes property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumes The new value for the Volumes property for this object.
+     * @param volumes 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withVolumes(java.util.Collection<ImportInstanceVolumeDetailItem> volumes) {
         if (volumes == null) {
             this.volumes = null;
         } else {
-            java.util.List<ImportInstanceVolumeDetailItem> volumesCopy = new java.util.ArrayList<ImportInstanceVolumeDetailItem>(volumes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ImportInstanceVolumeDetailItem>(volumes.size());
             volumesCopy.addAll(volumes);
             this.volumes = volumesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the InstanceId property for this object.
+     * 
      *
-     * @return The value of the InstanceId property for this object.
+     * @return 
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * Sets the value of the InstanceId property for this object.
+     * 
      *
-     * @param instanceId The new value for the InstanceId property for this object.
+     * @param instanceId 
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * Sets the value of the InstanceId property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The new value for the InstanceId property for this object.
+     * @param instanceId 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Platform property for this object.
+     * The instance operating system.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Windows
      *
-     * @return The value of the Platform property for this object.
+     * @return The instance operating system.
+     *
+     * @see PlatformValues
      */
     public String getPlatform() {
         return platform;
     }
     
     /**
-     * Sets the value of the Platform property for this object.
+     * The instance operating system.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Windows
      *
-     * @param platform The new value for the Platform property for this object.
+     * @param platform The instance operating system.
+     *
+     * @see PlatformValues
      */
     public void setPlatform(String platform) {
         this.platform = platform;
     }
     
     /**
-     * Sets the value of the Platform property for this object.
+     * The instance operating system.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Windows
      *
-     * @param platform The new value for the Platform property for this object.
+     * @param platform The instance operating system.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see PlatformValues
      */
     public ImportInstanceTaskDetails withPlatform(String platform) {
         this.platform = platform;
         return this;
     }
-    
+
+    /**
+     * The instance operating system.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Windows
+     *
+     * @param platform The instance operating system.
+     *
+     * @see PlatformValues
+     */
+    public void setPlatform(PlatformValues platform) {
+        this.platform = platform.toString();
+    }
     
     /**
-     * Returns the value of the Description property for this object.
+     * The instance operating system.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Windows
      *
-     * @return The value of the Description property for this object.
+     * @param platform The instance operating system.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see PlatformValues
+     */
+    public ImportInstanceTaskDetails withPlatform(PlatformValues platform) {
+        this.platform = platform.toString();
+        return this;
+    }
+
+    /**
+     * 
+     *
+     * @return 
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * 
      *
-     * @param description The new value for the Description property for this object.
+     * @param description 
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportInstanceTaskDetails withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -210,10 +271,10 @@ public class ImportInstanceTaskDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumes() != null) sb.append("Volumes: " + getVolumes() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");    	
+        sb.append("{");
+        if (getVolumes() != null) sb.append("Volumes: " + getVolumes() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getPlatform() != null) sb.append("Platform: " + getPlatform() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

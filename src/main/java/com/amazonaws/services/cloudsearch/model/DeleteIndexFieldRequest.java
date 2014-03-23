@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#deleteIndexField(DeleteIndexFieldRequest) DeleteIndexField operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#deleteIndexField(DeleteIndexFieldRequest)
  */
-public class DeleteIndexFieldRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteIndexFieldRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -114,14 +116,13 @@ public class DeleteIndexFieldRequest extends AmazonWebServiceRequest  implements
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteIndexFieldRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * A string that represents the name of an index field. Field names must
      * begin with a letter and can contain the following characters: a-z
@@ -184,14 +185,13 @@ public class DeleteIndexFieldRequest extends AmazonWebServiceRequest  implements
      *         reserved and cannot be specified as field or rank expression names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteIndexFieldRequest withIndexFieldName(String indexFieldName) {
         this.indexFieldName = indexFieldName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -203,8 +203,8 @@ public class DeleteIndexFieldRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getIndexFieldName() != null) sb.append("IndexFieldName: " + getIndexFieldName() );
         sb.append("}");
         return sb.toString();

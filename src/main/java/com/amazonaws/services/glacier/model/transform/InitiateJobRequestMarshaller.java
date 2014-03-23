@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class InitiateJobRequestMarshaller implements Marshaller<Request<InitiateJobRequest>, InitiateJobRequest> {
 
-    
-
     public Request<InitiateJobRequest> marshall(InitiateJobRequest initiateJobRequest) {
     if (initiateJobRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,13 +49,11 @@ public class InitiateJobRequestMarshaller implements Marshaller<Request<Initiate
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
 
-
         String uriResourcePath = "/{accountId}/vaults/{vaultName}/jobs"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(initiateJobRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(initiateJobRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (initiateJobRequest.getAccountId() == null) ? "" : StringUtils.fromString(initiateJobRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (initiateJobRequest.getVaultName() == null) ? "" : StringUtils.fromString(initiateJobRequest.getVaultName())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -77,14 +73,10 @@ public class InitiateJobRequestMarshaller implements Marshaller<Request<Initiate
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
             JobParameters jobParameters = initiateJobRequest.getJobParameters();
             if (jobParameters != null) {
 
@@ -108,24 +100,37 @@ public class InitiateJobRequestMarshaller implements Marshaller<Request<Initiate
                 if (jobParameters.getRetrievalByteRange() != null) {
                     jsonWriter.key("RetrievalByteRange").value(jobParameters.getRetrievalByteRange());
                 }
+                InventoryRetrievalJobInput inventoryRetrievalParameters = jobParameters.getInventoryRetrievalParameters();
+                if (inventoryRetrievalParameters != null) {
+
+                    jsonWriter.key("InventoryRetrievalParameters");
+                    jsonWriter.object();
+
+                    if (inventoryRetrievalParameters.getStartDate() != null) {
+                        jsonWriter.key("StartDate").value(inventoryRetrievalParameters.getStartDate());
+                    }
+                    if (inventoryRetrievalParameters.getEndDate() != null) {
+                        jsonWriter.key("EndDate").value(inventoryRetrievalParameters.getEndDate());
+                    }
+                    if (inventoryRetrievalParameters.getLimit() != null) {
+                        jsonWriter.key("Limit").value(inventoryRetrievalParameters.getLimit());
+                    }
+                    if (inventoryRetrievalParameters.getMarker() != null) {
+                        jsonWriter.key("Marker").value(inventoryRetrievalParameters.getMarker());
+                    }
+                    jsonWriter.endObject();
+                }
                 jsonWriter.endObject();
             }
 
-
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeClusters action.
  * </p>
  */
-public class DescribeClustersResult  implements Serializable  {
+public class DescribeClustersResult implements Serializable {
 
     /**
      * A marker at which to continue listing clusters in a new request. A
@@ -33,7 +34,7 @@ public class DescribeClustersResult  implements Serializable  {
      * A list of <a>Cluster</a> objects, where each object describes one
      * cluster.
      */
-    private java.util.List<Cluster> clusters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Cluster> clusters;
 
     /**
      * A marker at which to continue listing clusters in a new request. A
@@ -73,14 +74,13 @@ public class DescribeClustersResult  implements Serializable  {
      *         returned in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClustersResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>Cluster</a> objects, where each object describes one
      * cluster.
@@ -89,9 +89,9 @@ public class DescribeClustersResult  implements Serializable  {
      *         cluster.
      */
     public java.util.List<Cluster> getClusters() {
-        
         if (clusters == null) {
-            clusters = new java.util.ArrayList<Cluster>();
+              clusters = new com.amazonaws.internal.ListWithAutoConstructFlag<Cluster>();
+              clusters.setAutoConstruct(true);
         }
         return clusters;
     }
@@ -108,8 +108,7 @@ public class DescribeClustersResult  implements Serializable  {
             this.clusters = null;
             return;
         }
-
-        java.util.List<Cluster> clustersCopy = new java.util.ArrayList<Cluster>(clusters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Cluster> clustersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Cluster>(clusters.size());
         clustersCopy.addAll(clusters);
         this.clusters = clustersCopy;
     }
@@ -124,7 +123,7 @@ public class DescribeClustersResult  implements Serializable  {
      *         cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClustersResult withClusters(Cluster... clusters) {
         if (getClusters() == null) setClusters(new java.util.ArrayList<Cluster>(clusters.length));
@@ -144,20 +143,20 @@ public class DescribeClustersResult  implements Serializable  {
      *         cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClustersResult withClusters(java.util.Collection<Cluster> clusters) {
         if (clusters == null) {
             this.clusters = null;
         } else {
-            java.util.List<Cluster> clustersCopy = new java.util.ArrayList<Cluster>(clusters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Cluster> clustersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Cluster>(clusters.size());
             clustersCopy.addAll(clusters);
             this.clusters = clustersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -169,8 +168,8 @@ public class DescribeClustersResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getClusters() != null) sb.append("Clusters: " + getClusters() );
         sb.append("}");
         return sb.toString();

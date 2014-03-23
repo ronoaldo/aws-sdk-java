@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DeleteRouteRequestMarshaller implements Marshaller<Request<DeleteRo
     public Request<DeleteRouteRequest> marshall(DeleteRouteRequest deleteRouteRequest) {
 
         if (deleteRouteRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteRouteRequest> request = new DefaultRequest<DeleteRouteRequest>(deleteRouteRequest, "AmazonEC2");
         request.addParameter("Action", "DeleteRoute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (deleteRouteRequest.getRouteTableId() != null) {
             request.addParameter("RouteTableId", StringUtils.fromString(deleteRouteRequest.getRouteTableId()));
@@ -46,7 +46,6 @@ public class DeleteRouteRequestMarshaller implements Marshaller<Request<DeleteRo
         if (deleteRouteRequest.getDestinationCidrBlock() != null) {
             request.addParameter("DestinationCidrBlock", StringUtils.fromString(deleteRouteRequest.getDestinationCidrBlock()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Detailed information about an activity type.
  * </p>
  */
-public class ActivityTypeInfo  implements Serializable  {
+public class ActivityTypeInfo implements Serializable {
 
     /**
      * The <a>ActivityType</a> type structure representing the activity type.
@@ -82,14 +83,13 @@ public class ActivityTypeInfo  implements Serializable  {
      * @param activityType The <a>ActivityType</a> type structure representing the activity type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeInfo withActivityType(ActivityType activityType) {
         this.activityType = activityType;
         return this;
     }
-    
-    
+
     /**
      * The current status of the activity type.
      * <p>
@@ -129,7 +129,7 @@ public class ActivityTypeInfo  implements Serializable  {
      * @param status The current status of the activity type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -137,8 +137,7 @@ public class ActivityTypeInfo  implements Serializable  {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The current status of the activity type.
      * <p>
@@ -164,7 +163,7 @@ public class ActivityTypeInfo  implements Serializable  {
      * @param status The current status of the activity type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -172,7 +171,7 @@ public class ActivityTypeInfo  implements Serializable  {
         this.status = status.toString();
         return this;
     }
-    
+
     /**
      * The description of the activity type provided in
      * <a>RegisterActivityType</a>.
@@ -214,14 +213,13 @@ public class ActivityTypeInfo  implements Serializable  {
      *         <a>RegisterActivityType</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeInfo withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The date and time this activity type was created through
      * <a>RegisterActivityType</a>.
@@ -254,14 +252,13 @@ public class ActivityTypeInfo  implements Serializable  {
      *         <a>RegisterActivityType</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeInfo withCreationDate(java.util.Date creationDate) {
         this.creationDate = creationDate;
         return this;
     }
-    
-    
+
     /**
      * If DEPRECATED, the date and time <a>DeprecateActivityType</a> was
      * called.
@@ -294,14 +291,13 @@ public class ActivityTypeInfo  implements Serializable  {
      *         called.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeInfo withDeprecationDate(java.util.Date deprecationDate) {
         this.deprecationDate = deprecationDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -313,11 +309,11 @@ public class ActivityTypeInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");    	
+        sb.append("{");
+        if (getActivityType() != null) sb.append("ActivityType: " + getActivityType() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");
         if (getDeprecationDate() != null) sb.append("DeprecationDate: " + getDeprecationDate() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeEvents(DescribeEventsRequest) DescribeEvents operation}.
  * <p>
- * Returns list of event descriptions matching criteria up to the last 6 weeks.
+ * Returns list of event descriptions matching criteria up to the last 6
+ * weeks.
  * </p>
  * <p>
- * <b>NOTE:</b> This action returns the most recent 1,000 events from the specified NextToken.
+ * <b>NOTE:</b> This action returns the most recent 1,000 events from the
+ * specified NextToken.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeEvents(DescribeEventsRequest)
  */
-public class DescribeEventsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeEventsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
@@ -162,14 +166,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         descriptions to include only those associated with this application.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
      * descriptions to those associated with this application version.
@@ -211,14 +214,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         descriptions to those associated with this application version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withVersionLabel(String versionLabel) {
         this.versionLabel = versionLabel;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
      * descriptions to those that are associated with this environment
@@ -266,14 +268,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
      * descriptions to those associated with this environment.
@@ -306,14 +307,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         descriptions to those associated with this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
      * descriptions to those associated with this environment.
@@ -355,14 +355,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         descriptions to those associated with this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk restricts the described events to
      * include only those associated with this request ID.
@@ -395,14 +394,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         include only those associated with this request ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withRequestId(String requestId) {
         this.requestId = requestId;
         return this;
     }
-    
-    
+
     /**
      * If specified, limits the events returned from this call to include
      * only those with the specified severity or higher.
@@ -448,7 +446,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         only those with the specified severity or higher.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EventSeverity
      */
@@ -456,8 +454,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
         this.severity = severity;
         return this;
     }
-    
-    
+
     /**
      * If specified, limits the events returned from this call to include
      * only those with the specified severity or higher.
@@ -487,7 +484,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         only those with the specified severity or higher.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EventSeverity
      */
@@ -495,7 +492,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
         this.severity = severity.toString();
         return this;
     }
-    
+
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
      * descriptions to those that occur on or after this time.
@@ -528,14 +525,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         descriptions to those that occur on or after this time.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
      * descriptions to those that occur up to, but not including, the
@@ -574,14 +570,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         <code>EndTime</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * Specifies the maximum number of events that can be returned, beginning
      * with the most recent event.
@@ -623,14 +618,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         with the most recent event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * Pagination token. If specified, the events return the next batch of
      * results.
@@ -663,14 +657,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -682,17 +675,17 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
-        if (getRequestId() != null) sb.append("RequestId: " + getRequestId() + ",");    	
-        if (getSeverity() != null) sb.append("Severity: " + getSeverity() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+        if (getRequestId() != null) sb.append("RequestId: " + getRequestId() + ",");
+        if (getSeverity() != null) sb.append("Severity: " + getSeverity() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

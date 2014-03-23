@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A description of the Amazon EC2 instance running the job flow.
  * </p>
  */
-public class JobFlowInstancesConfig  implements Serializable  {
+public class JobFlowInstancesConfig implements Serializable {
 
     /**
      * The EC2 instance type of the master node.
@@ -48,11 +49,11 @@ public class JobFlowInstancesConfig  implements Serializable  {
     /**
      * Configuration for the job flow's instance groups.
      */
-    private java.util.List<InstanceGroupConfig> instanceGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupConfig> instanceGroups;
 
     /**
-     * Specifies the name of the Amazon EC2 key pair that can be used to ssh
-     * to the master node as the user called "hadoop."
+     * The name of the Amazon EC2 key pair that can be used to ssh to the
+     * master node as the user called "hadoop."
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
@@ -61,7 +62,7 @@ public class JobFlowInstancesConfig  implements Serializable  {
     private String ec2KeyName;
 
     /**
-     * Specifies the Availability Zone the job flow will run in.
+     * The Availability Zone the job flow will run in.
      */
     private PlacementType placement;
 
@@ -79,11 +80,11 @@ public class JobFlowInstancesConfig  implements Serializable  {
     private Boolean terminationProtected;
 
     /**
-     * Specifies the Hadoop version for the job flow. Valid inputs are
-     * "0.18", "0.20", or "0.20.205". If you do not set this value, the
-     * default of 0.18 is used, unless the AmiVersion parameter is set in the
-     * RunJobFlow call, in which case the default version of Hadoop for that
-     * AMI version is used.
+     * The Hadoop version for the job flow. Valid inputs are "0.18", "0.20",
+     * or "0.20.205". If you do not set this value, the default of 0.18 is
+     * used, unless the AmiVersion parameter is set in the RunJobFlow call,
+     * in which case the default version of Hadoop for that AMI version is
+     * used.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
@@ -151,14 +152,13 @@ public class JobFlowInstancesConfig  implements Serializable  {
      * @param masterInstanceType The EC2 instance type of the master node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withMasterInstanceType(String masterInstanceType) {
         this.masterInstanceType = masterInstanceType;
         return this;
     }
-    
-    
+
     /**
      * The EC2 instance type of the slave nodes.
      * <p>
@@ -197,14 +197,13 @@ public class JobFlowInstancesConfig  implements Serializable  {
      * @param slaveInstanceType The EC2 instance type of the slave nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withSlaveInstanceType(String slaveInstanceType) {
         this.slaveInstanceType = slaveInstanceType;
         return this;
     }
-    
-    
+
     /**
      * The number of Amazon EC2 instances used to execute the job flow.
      *
@@ -231,23 +230,22 @@ public class JobFlowInstancesConfig  implements Serializable  {
      * @param instanceCount The number of Amazon EC2 instances used to execute the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withInstanceCount(Integer instanceCount) {
         this.instanceCount = instanceCount;
         return this;
     }
-    
-    
+
     /**
      * Configuration for the job flow's instance groups.
      *
      * @return Configuration for the job flow's instance groups.
      */
     public java.util.List<InstanceGroupConfig> getInstanceGroups() {
-        
         if (instanceGroups == null) {
-            instanceGroups = new java.util.ArrayList<InstanceGroupConfig>();
+              instanceGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupConfig>();
+              instanceGroups.setAutoConstruct(true);
         }
         return instanceGroups;
     }
@@ -262,8 +260,7 @@ public class JobFlowInstancesConfig  implements Serializable  {
             this.instanceGroups = null;
             return;
         }
-
-        java.util.List<InstanceGroupConfig> instanceGroupsCopy = new java.util.ArrayList<InstanceGroupConfig>(instanceGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupConfig> instanceGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupConfig>(instanceGroups.size());
         instanceGroupsCopy.addAll(instanceGroups);
         this.instanceGroups = instanceGroupsCopy;
     }
@@ -276,7 +273,7 @@ public class JobFlowInstancesConfig  implements Serializable  {
      * @param instanceGroups Configuration for the job flow's instance groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withInstanceGroups(InstanceGroupConfig... instanceGroups) {
         if (getInstanceGroups() == null) setInstanceGroups(new java.util.ArrayList<InstanceGroupConfig>(instanceGroups.length));
@@ -294,53 +291,53 @@ public class JobFlowInstancesConfig  implements Serializable  {
      * @param instanceGroups Configuration for the job flow's instance groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withInstanceGroups(java.util.Collection<InstanceGroupConfig> instanceGroups) {
         if (instanceGroups == null) {
             this.instanceGroups = null;
         } else {
-            java.util.List<InstanceGroupConfig> instanceGroupsCopy = new java.util.ArrayList<InstanceGroupConfig>(instanceGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupConfig> instanceGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupConfig>(instanceGroups.size());
             instanceGroupsCopy.addAll(instanceGroups);
             this.instanceGroups = instanceGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Specifies the name of the Amazon EC2 key pair that can be used to ssh
-     * to the master node as the user called "hadoop."
+     * The name of the Amazon EC2 key pair that can be used to ssh to the
+     * master node as the user called "hadoop."
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @return Specifies the name of the Amazon EC2 key pair that can be used to ssh
-     *         to the master node as the user called "hadoop."
+     * @return The name of the Amazon EC2 key pair that can be used to ssh to the
+     *         master node as the user called "hadoop."
      */
     public String getEc2KeyName() {
         return ec2KeyName;
     }
     
     /**
-     * Specifies the name of the Amazon EC2 key pair that can be used to ssh
-     * to the master node as the user called "hadoop."
+     * The name of the Amazon EC2 key pair that can be used to ssh to the
+     * master node as the user called "hadoop."
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param ec2KeyName Specifies the name of the Amazon EC2 key pair that can be used to ssh
-     *         to the master node as the user called "hadoop."
+     * @param ec2KeyName The name of the Amazon EC2 key pair that can be used to ssh to the
+     *         master node as the user called "hadoop."
      */
     public void setEc2KeyName(String ec2KeyName) {
         this.ec2KeyName = ec2KeyName;
     }
     
     /**
-     * Specifies the name of the Amazon EC2 key pair that can be used to ssh
-     * to the master node as the user called "hadoop."
+     * The name of the Amazon EC2 key pair that can be used to ssh to the
+     * master node as the user called "hadoop."
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -348,52 +345,50 @@ public class JobFlowInstancesConfig  implements Serializable  {
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param ec2KeyName Specifies the name of the Amazon EC2 key pair that can be used to ssh
-     *         to the master node as the user called "hadoop."
+     * @param ec2KeyName The name of the Amazon EC2 key pair that can be used to ssh to the
+     *         master node as the user called "hadoop."
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withEc2KeyName(String ec2KeyName) {
         this.ec2KeyName = ec2KeyName;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the Availability Zone the job flow will run in.
+     * The Availability Zone the job flow will run in.
      *
-     * @return Specifies the Availability Zone the job flow will run in.
+     * @return The Availability Zone the job flow will run in.
      */
     public PlacementType getPlacement() {
         return placement;
     }
     
     /**
-     * Specifies the Availability Zone the job flow will run in.
+     * The Availability Zone the job flow will run in.
      *
-     * @param placement Specifies the Availability Zone the job flow will run in.
+     * @param placement The Availability Zone the job flow will run in.
      */
     public void setPlacement(PlacementType placement) {
         this.placement = placement;
     }
     
     /**
-     * Specifies the Availability Zone the job flow will run in.
+     * The Availability Zone the job flow will run in.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param placement Specifies the Availability Zone the job flow will run in.
+     * @param placement The Availability Zone the job flow will run in.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withPlacement(PlacementType placement) {
         this.placement = placement;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job flow should terminate after completing all
      * steps.
@@ -426,14 +421,13 @@ public class JobFlowInstancesConfig  implements Serializable  {
      *         steps.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withKeepJobFlowAliveWhenNoSteps(Boolean keepJobFlowAliveWhenNoSteps) {
         this.keepJobFlowAliveWhenNoSteps = keepJobFlowAliveWhenNoSteps;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job flow should terminate after completing all
      * steps.
@@ -444,7 +438,7 @@ public class JobFlowInstancesConfig  implements Serializable  {
     public Boolean getKeepJobFlowAliveWhenNoSteps() {
         return keepJobFlowAliveWhenNoSteps;
     }
-    
+
     /**
      * Specifies whether to lock the job flow to prevent the Amazon EC2
      * instances from being terminated by API call, user intervention, or in
@@ -483,14 +477,13 @@ public class JobFlowInstancesConfig  implements Serializable  {
      *         the event of a job flow error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withTerminationProtected(Boolean terminationProtected) {
         this.terminationProtected = terminationProtected;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether to lock the job flow to prevent the Amazon EC2
      * instances from being terminated by API call, user intervention, or in
@@ -503,55 +496,55 @@ public class JobFlowInstancesConfig  implements Serializable  {
     public Boolean getTerminationProtected() {
         return terminationProtected;
     }
-    
+
     /**
-     * Specifies the Hadoop version for the job flow. Valid inputs are
-     * "0.18", "0.20", or "0.20.205". If you do not set this value, the
-     * default of 0.18 is used, unless the AmiVersion parameter is set in the
-     * RunJobFlow call, in which case the default version of Hadoop for that
-     * AMI version is used.
+     * The Hadoop version for the job flow. Valid inputs are "0.18", "0.20",
+     * or "0.20.205". If you do not set this value, the default of 0.18 is
+     * used, unless the AmiVersion parameter is set in the RunJobFlow call,
+     * in which case the default version of Hadoop for that AMI version is
+     * used.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @return Specifies the Hadoop version for the job flow. Valid inputs are
-     *         "0.18", "0.20", or "0.20.205". If you do not set this value, the
-     *         default of 0.18 is used, unless the AmiVersion parameter is set in the
-     *         RunJobFlow call, in which case the default version of Hadoop for that
-     *         AMI version is used.
+     * @return The Hadoop version for the job flow. Valid inputs are "0.18", "0.20",
+     *         or "0.20.205". If you do not set this value, the default of 0.18 is
+     *         used, unless the AmiVersion parameter is set in the RunJobFlow call,
+     *         in which case the default version of Hadoop for that AMI version is
+     *         used.
      */
     public String getHadoopVersion() {
         return hadoopVersion;
     }
     
     /**
-     * Specifies the Hadoop version for the job flow. Valid inputs are
-     * "0.18", "0.20", or "0.20.205". If you do not set this value, the
-     * default of 0.18 is used, unless the AmiVersion parameter is set in the
-     * RunJobFlow call, in which case the default version of Hadoop for that
-     * AMI version is used.
+     * The Hadoop version for the job flow. Valid inputs are "0.18", "0.20",
+     * or "0.20.205". If you do not set this value, the default of 0.18 is
+     * used, unless the AmiVersion parameter is set in the RunJobFlow call,
+     * in which case the default version of Hadoop for that AMI version is
+     * used.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param hadoopVersion Specifies the Hadoop version for the job flow. Valid inputs are
-     *         "0.18", "0.20", or "0.20.205". If you do not set this value, the
-     *         default of 0.18 is used, unless the AmiVersion parameter is set in the
-     *         RunJobFlow call, in which case the default version of Hadoop for that
-     *         AMI version is used.
+     * @param hadoopVersion The Hadoop version for the job flow. Valid inputs are "0.18", "0.20",
+     *         or "0.20.205". If you do not set this value, the default of 0.18 is
+     *         used, unless the AmiVersion parameter is set in the RunJobFlow call,
+     *         in which case the default version of Hadoop for that AMI version is
+     *         used.
      */
     public void setHadoopVersion(String hadoopVersion) {
         this.hadoopVersion = hadoopVersion;
     }
     
     /**
-     * Specifies the Hadoop version for the job flow. Valid inputs are
-     * "0.18", "0.20", or "0.20.205". If you do not set this value, the
-     * default of 0.18 is used, unless the AmiVersion parameter is set in the
-     * RunJobFlow call, in which case the default version of Hadoop for that
-     * AMI version is used.
+     * The Hadoop version for the job flow. Valid inputs are "0.18", "0.20",
+     * or "0.20.205". If you do not set this value, the default of 0.18 is
+     * used, unless the AmiVersion parameter is set in the RunJobFlow call,
+     * in which case the default version of Hadoop for that AMI version is
+     * used.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -559,21 +552,20 @@ public class JobFlowInstancesConfig  implements Serializable  {
      * <b>Length: </b>0 - 256<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param hadoopVersion Specifies the Hadoop version for the job flow. Valid inputs are
-     *         "0.18", "0.20", or "0.20.205". If you do not set this value, the
-     *         default of 0.18 is used, unless the AmiVersion parameter is set in the
-     *         RunJobFlow call, in which case the default version of Hadoop for that
-     *         AMI version is used.
+     * @param hadoopVersion The Hadoop version for the job flow. Valid inputs are "0.18", "0.20",
+     *         or "0.20.205". If you do not set this value, the default of 0.18 is
+     *         used, unless the AmiVersion parameter is set in the RunJobFlow call,
+     *         in which case the default version of Hadoop for that AMI version is
+     *         used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withHadoopVersion(String hadoopVersion) {
         this.hadoopVersion = hadoopVersion;
         return this;
     }
-    
-    
+
     /**
      * To launch the job flow in Amazon Virtual Private Cloud (Amazon VPC),
      * set this parameter to the identifier of the Amazon VPC subnet where
@@ -654,14 +646,13 @@ public class JobFlowInstancesConfig  implements Serializable  {
      *         in a Amazon VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowInstancesConfig withEc2SubnetId(String ec2SubnetId) {
         this.ec2SubnetId = ec2SubnetId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -673,16 +664,16 @@ public class JobFlowInstancesConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMasterInstanceType() != null) sb.append("MasterInstanceType: " + getMasterInstanceType() + ",");    	
-        if (getSlaveInstanceType() != null) sb.append("SlaveInstanceType: " + getSlaveInstanceType() + ",");    	
-        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");    	
-        if (getInstanceGroups() != null) sb.append("InstanceGroups: " + getInstanceGroups() + ",");    	
-        if (getEc2KeyName() != null) sb.append("Ec2KeyName: " + getEc2KeyName() + ",");    	
-        if (getPlacement() != null) sb.append("Placement: " + getPlacement() + ",");    	
-        if (isKeepJobFlowAliveWhenNoSteps() != null) sb.append("KeepJobFlowAliveWhenNoSteps: " + isKeepJobFlowAliveWhenNoSteps() + ",");    	
-        if (isTerminationProtected() != null) sb.append("TerminationProtected: " + isTerminationProtected() + ",");    	
-        if (getHadoopVersion() != null) sb.append("HadoopVersion: " + getHadoopVersion() + ",");    	
+        sb.append("{");
+        if (getMasterInstanceType() != null) sb.append("MasterInstanceType: " + getMasterInstanceType() + ",");
+        if (getSlaveInstanceType() != null) sb.append("SlaveInstanceType: " + getSlaveInstanceType() + ",");
+        if (getInstanceCount() != null) sb.append("InstanceCount: " + getInstanceCount() + ",");
+        if (getInstanceGroups() != null) sb.append("InstanceGroups: " + getInstanceGroups() + ",");
+        if (getEc2KeyName() != null) sb.append("Ec2KeyName: " + getEc2KeyName() + ",");
+        if (getPlacement() != null) sb.append("Placement: " + getPlacement() + ",");
+        if (isKeepJobFlowAliveWhenNoSteps() != null) sb.append("KeepJobFlowAliveWhenNoSteps: " + isKeepJobFlowAliveWhenNoSteps() + ",");
+        if (isTerminationProtected() != null) sb.append("TerminationProtected: " + isTerminationProtected() + ",");
+        if (getHadoopVersion() != null) sb.append("HadoopVersion: " + getHadoopVersion() + ",");
         if (getEc2SubnetId() != null) sb.append("Ec2SubnetId: " + getEc2SubnetId() );
         sb.append("}");
         return sb.toString();

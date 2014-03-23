@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The <code>EnabledMetric</code> data type.
  * </p>
  */
-public class EnabledMetric  implements Serializable  {
+public class EnabledMetric implements Serializable {
 
     /**
      * The name of the enabled metric.
@@ -78,14 +79,13 @@ public class EnabledMetric  implements Serializable  {
      * @param metric The name of the enabled metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnabledMetric withMetric(String metric) {
         this.metric = metric;
         return this;
     }
-    
-    
+
     /**
      * The granularity of the enabled metric.
      * <p>
@@ -124,14 +124,13 @@ public class EnabledMetric  implements Serializable  {
      * @param granularity The granularity of the enabled metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnabledMetric withGranularity(String granularity) {
         this.granularity = granularity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -143,8 +142,8 @@ public class EnabledMetric  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMetric() != null) sb.append("Metric: " + getMetric() + ",");    	
+        sb.append("{");
+        if (getMetric() != null) sb.append("Metric: " + getMetric() + ",");
         if (getGranularity() != null) sb.append("Granularity: " + getGranularity() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.directconnect.AmazonDirectConnect#createPublicVirtualInterface(CreatePublicVirtualInterfaceRequest) CreatePublicVirtualInterface operation}.
  * <p>
- * Creates a new public virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A public virtual interface
- * supports sending traffic to public services of AWS such as Amazon Simple Storage Service (Amazon S3).
+ * Creates a new public virtual interface. A virtual interface is the
+ * VLAN that transports AWS Direct Connect traffic. A public virtual
+ * interface supports sending traffic to public services of AWS such as
+ * Amazon Simple Storage Service (Amazon S3).
  * </p>
  *
  * @see com.amazonaws.services.directconnect.AmazonDirectConnect#createPublicVirtualInterface(CreatePublicVirtualInterfaceRequest)
  */
-public class CreatePublicVirtualInterfaceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreatePublicVirtualInterfaceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
@@ -33,7 +37,7 @@ public class CreatePublicVirtualInterfaceRequest extends AmazonWebServiceRequest
     private String connectionId;
 
     /**
-     * Detailed information of the public virtual interface to be created.
+     * Detailed information for the public virtual interface to be created.
      * <p>Default: None
      */
     private NewPublicVirtualInterface newPublicVirtualInterface;
@@ -64,19 +68,18 @@ public class CreatePublicVirtualInterfaceRequest extends AmazonWebServiceRequest
      * @param connectionId ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
     }
-    
-    
+
     /**
-     * Detailed information of the public virtual interface to be created.
+     * Detailed information for the public virtual interface to be created.
      * <p>Default: None
      *
-     * @return Detailed information of the public virtual interface to be created.
+     * @return Detailed information for the public virtual interface to be created.
      *         <p>Default: None
      */
     public NewPublicVirtualInterface getNewPublicVirtualInterface() {
@@ -84,10 +87,10 @@ public class CreatePublicVirtualInterfaceRequest extends AmazonWebServiceRequest
     }
     
     /**
-     * Detailed information of the public virtual interface to be created.
+     * Detailed information for the public virtual interface to be created.
      * <p>Default: None
      *
-     * @param newPublicVirtualInterface Detailed information of the public virtual interface to be created.
+     * @param newPublicVirtualInterface Detailed information for the public virtual interface to be created.
      *         <p>Default: None
      */
     public void setNewPublicVirtualInterface(NewPublicVirtualInterface newPublicVirtualInterface) {
@@ -95,23 +98,22 @@ public class CreatePublicVirtualInterfaceRequest extends AmazonWebServiceRequest
     }
     
     /**
-     * Detailed information of the public virtual interface to be created.
+     * Detailed information for the public virtual interface to be created.
      * <p>Default: None
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param newPublicVirtualInterface Detailed information of the public virtual interface to be created.
+     * @param newPublicVirtualInterface Detailed information for the public virtual interface to be created.
      *         <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePublicVirtualInterfaceRequest withNewPublicVirtualInterface(NewPublicVirtualInterface newPublicVirtualInterface) {
         this.newPublicVirtualInterface = newPublicVirtualInterface;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -123,8 +125,8 @@ public class CreatePublicVirtualInterfaceRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");    	
+        sb.append("{");
+        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");
         if (getNewPublicVirtualInterface() != null) sb.append("NewPublicVirtualInterface: " + getNewPublicVirtualInterface() );
         sb.append("}");
         return sb.toString();

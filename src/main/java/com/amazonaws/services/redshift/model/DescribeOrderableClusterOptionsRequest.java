@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeOrderableClusterOptions(DescribeOrderableClusterOptionsRequest) DescribeOrderableClusterOptions operation}.
  * <p>
- * Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as
- * the EC2 Availability Zones (AZ) in the specific AWS region that you can specify, and the node types you can request. The node types differ by
- * available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify
- * values when creating a cluster. For more information about managing clusters, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a> in the <i>Amazon Redshift Management
- * Guide</i>
+ * Returns a list of orderable cluster options. Before you create a new
+ * cluster you can use this operation to find what options are available,
+ * such as the EC2 Availability Zones (AZ) in the specific AWS region
+ * that you can specify, and the node types you can request. The node
+ * types differ by available storage, memory, CPU and price. With the
+ * cost involved you might want to obtain a list of cluster options in
+ * the specific region and specify values when creating a cluster. For
+ * more information about managing clusters, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a>
+ * in the <i>Amazon Redshift Management Guide</i>
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeOrderableClusterOptions(DescribeOrderableClusterOptionsRequest)
  */
-public class DescribeOrderableClusterOptionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeOrderableClusterOptionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The version filter value. Specify this parameter to show only the
@@ -106,14 +112,13 @@ public class DescribeOrderableClusterOptionsRequest extends AmazonWebServiceRequ
      *         <a>DescribeClusterVersions</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableClusterOptionsRequest withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * The node type filter value. Specify this parameter to show only the
      * available offerings matching the specified node type.
@@ -146,14 +151,13 @@ public class DescribeOrderableClusterOptionsRequest extends AmazonWebServiceRequ
      *         available offerings matching the specified node type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableClusterOptionsRequest withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -204,14 +208,13 @@ public class DescribeOrderableClusterOptionsRequest extends AmazonWebServiceRequ
      *         maximum 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableClusterOptionsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional marker returned from a previous
      * <b>DescribeOrderableClusterOptions</b> request. If this parameter is
@@ -256,14 +259,13 @@ public class DescribeOrderableClusterOptionsRequest extends AmazonWebServiceRequ
      *         the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableClusterOptionsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -275,10 +277,10 @@ public class DescribeOrderableClusterOptionsRequest extends AmazonWebServiceRequ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

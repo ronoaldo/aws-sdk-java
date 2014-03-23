@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,33 +22,33 @@ import com.amazonaws.services.directconnect.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Create Public Virtual Interface Result JSON Unmarshaller
  */
 public class CreatePublicVirtualInterfaceResultJsonUnmarshaller implements Unmarshaller<CreatePublicVirtualInterfaceResult, JsonUnmarshallerContext> {
 
-    
-
     public CreatePublicVirtualInterfaceResult unmarshall(JsonUnmarshallerContext context) throws Exception {
         CreatePublicVirtualInterfaceResult createPublicVirtualInterfaceResult = new CreatePublicVirtualInterfaceResult();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("ownerAccount", targetDepth)) {
+                    context.nextToken();
+                    createPublicVirtualInterfaceResult.setOwnerAccount(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("virtualInterfaceId", targetDepth)) {
                     context.nextToken();
                     createPublicVirtualInterfaceResult.setVirtualInterfaceId(StringJsonUnmarshaller.getInstance().unmarshall(context));
@@ -102,6 +102,7 @@ public class CreatePublicVirtualInterfaceResultJsonUnmarshaller implements Unmar
                     createPublicVirtualInterfaceResult.setVirtualGatewayId(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("routeFilterPrefixes", targetDepth)) {
+                    context.nextToken();
                     createPublicVirtualInterfaceResult.setRouteFilterPrefixes(new ListUnmarshaller<RouteFilterPrefix>(RouteFilterPrefixJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
@@ -109,7 +110,6 @@ public class CreatePublicVirtualInterfaceResultJsonUnmarshaller implements Unmar
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

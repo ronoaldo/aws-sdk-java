@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudwatch.AmazonCloudWatch#describeAlarmHistory(DescribeAlarmHistoryRequest) DescribeAlarmHistory operation}.
  * <p>
- * Retrieves history for the specified alarm. Filter alarms by date range or item type. If an alarm name is not specified, Amazon CloudWatch returns
- * histories for all of the owner's alarms.
+ * Retrieves history for the specified alarm. Filter alarms by date
+ * range or item type. If an alarm name is not specified, Amazon
+ * CloudWatch returns histories for all of the owner's alarms.
  * </p>
  * <p>
- * <b>NOTE:</b> Amazon CloudWatch retains the history of an alarm for two weeks, whether or not you delete the alarm.
+ * <b>NOTE:</b> Amazon CloudWatch retains the history of an alarm for two
+ * weeks, whether or not you delete the alarm.
  * </p>
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#describeAlarmHistory(DescribeAlarmHistoryRequest)
  */
-public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the alarm.
@@ -105,14 +109,13 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param alarmName The name of the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withAlarmName(String alarmName) {
         this.alarmName = alarmName;
         return this;
     }
-    
-    
+
     /**
      * The type of alarm histories to retrieve.
      * <p>
@@ -152,7 +155,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param historyItemType The type of alarm histories to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HistoryItemType
      */
@@ -160,8 +163,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
         this.historyItemType = historyItemType;
         return this;
     }
-    
-    
+
     /**
      * The type of alarm histories to retrieve.
      * <p>
@@ -187,7 +189,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param historyItemType The type of alarm histories to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HistoryItemType
      */
@@ -195,7 +197,7 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
         this.historyItemType = historyItemType.toString();
         return this;
     }
-    
+
     /**
      * The starting date to retrieve alarm history.
      *
@@ -222,14 +224,13 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param startDate The starting date to retrieve alarm history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withStartDate(java.util.Date startDate) {
         this.startDate = startDate;
         return this;
     }
-    
-    
+
     /**
      * The ending date to retrieve alarm history.
      *
@@ -256,14 +257,13 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param endDate The ending date to retrieve alarm history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withEndDate(java.util.Date endDate) {
         this.endDate = endDate;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of alarm history records to retrieve.
      * <p>
@@ -299,14 +299,13 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      * @param maxRecords The maximum number of alarm history records to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * The token returned by a previous call to indicate that there is more
      * data available.
@@ -339,14 +338,13 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
      *         data available.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmHistoryRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -358,12 +356,12 @@ public class DescribeAlarmHistoryRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");    	
-        if (getHistoryItemType() != null) sb.append("HistoryItemType: " + getHistoryItemType() + ",");    	
-        if (getStartDate() != null) sb.append("StartDate: " + getStartDate() + ",");    	
-        if (getEndDate() != null) sb.append("EndDate: " + getEndDate() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");
+        if (getHistoryItemType() != null) sb.append("HistoryItemType: " + getHistoryItemType() + ",");
+        if (getStartDate() != null) sb.append("StartDate: " + getStartDate() + ",");
+        if (getEndDate() != null) sb.append("EndDate: " + getEndDate() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

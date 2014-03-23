@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,10 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * Returned when the named resource cannot be found with in the scope of this operation (region or domain). This could happen if the named resource was
- * never created or is no longer available for this operation.
+ * Returned when the named resource cannot be found with in the scope of
+ * this operation (region or domain). This could happen if the named
+ * resource was never created or is no longer available for this
+ * operation.
  * </p>
  */        
 public class UnknownResourceException extends AmazonServiceException {

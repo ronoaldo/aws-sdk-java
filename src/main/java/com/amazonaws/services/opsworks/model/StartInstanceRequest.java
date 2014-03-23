@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,30 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#startInstance(StartInstanceRequest) StartInstance operation}.
  * <p>
- * Starts a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">
- * Starting, Stopping, and Rebooting Instances </a> .
+ * Starts a specified instance. For more information, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html"> Starting, Stopping, and Rebooting Instances </a>
+ * .
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Manage permissions level for the stack, or an attached policy
+ * that explicitly grants permissions. For more information on user
+ * permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#startInstance(StartInstanceRequest)
  */
-public class StartInstanceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class StartInstanceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The instance ID.
@@ -58,14 +69,13 @@ public class StartInstanceRequest extends AmazonWebServiceRequest  implements Se
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartInstanceRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -77,7 +87,7 @@ public class StartInstanceRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() );
         sb.append("}");
         return sb.toString();

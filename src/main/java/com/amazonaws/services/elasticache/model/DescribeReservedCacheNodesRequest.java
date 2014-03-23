@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,213 +13,201 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#describeReservedCacheNodes(DescribeReservedCacheNodesRequest) DescribeReservedCacheNodes operation}.
  * <p>
- * Returns information about reserved Cache Nodes for this account, or about a specified reserved Cache Node.
+ * The <i>DescribeReservedCacheNodes</i> operation returns information
+ * about reserved cache nodes for this account, or about a specified
+ * reserved cache node.
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#describeReservedCacheNodes(DescribeReservedCacheNodesRequest)
  */
-public class DescribeReservedCacheNodesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeReservedCacheNodesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The reserved Cache Node identifier filter value. Specify this
-     * parameter to show only the reservation that matches the specified
-     * reservation ID.
+     * The reserved cache node identifier filter value. Use this parameter to
+     * show only the reservation that matches the specified reservation ID.
      */
     private String reservedCacheNodeId;
 
     /**
-     * The offering identifier filter value. Specify this parameter to show
-     * only purchased reservations matching the specified offering
-     * identifier.
+     * The offering identifier filter value. Use this parameter to show only
+     * purchased reservations matching the specified offering identifier.
      */
     private String reservedCacheNodesOfferingId;
 
     /**
-     * The Cache Node type filter value. Specify this parameter to show only
-     * those reservations matching the specified Cache Nodes type.
+     * The cache node type filter value. Use this parameter to show only
+     * those reservations matching the specified cache node type.
      */
     private String cacheNodeType;
 
     /**
-     * The duration filter value, specified in years or seconds. Specify this
+     * The duration filter value, specified in years or seconds. Use this
      * parameter to show only reservations for this duration. <p>Valid
      * Values: <code>1 | 3 | 31536000 | 94608000</code>
      */
     private String duration;
 
     /**
-     * The product description filter value. Specify this parameter to show
-     * only those reservations matching the specified product description.
+     * The product description filter value. Use this parameter to show only
+     * those reservations matching the specified product description.
      */
     private String productDescription;
 
     /**
-     * The offering type filter value. Specify this parameter to show only
-     * the available offerings matching the specified offering type. <p>Valid
-     * Values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
+     * The offering type filter value. Use this parameter to show only the
+     * available offerings matching the specified offering type. <p>Valid
+     * values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
      * Utilization" </code>
      */
     private String offeringType;
 
     /**
-     * The maximum number of records to include in the response. If more than
-     * the <code>MaxRecords</code> value is available, a marker is included
-     * in the response so that the following results can be retrieved.
-     * <p>Default: 100 <p>Constraints: minimum 20, maximum 100
+     * The maximum number of records to include in the response. If more
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      */
     private Integer maxRecords;
 
     /**
-     * The marker provided in the previous request. If this parameter is
-     * specified, the response includes records beyond the marker only, up to
-     * <code>MaxRecords</code>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      */
     private String marker;
 
     /**
-     * The reserved Cache Node identifier filter value. Specify this
-     * parameter to show only the reservation that matches the specified
-     * reservation ID.
+     * The reserved cache node identifier filter value. Use this parameter to
+     * show only the reservation that matches the specified reservation ID.
      *
-     * @return The reserved Cache Node identifier filter value. Specify this
-     *         parameter to show only the reservation that matches the specified
-     *         reservation ID.
+     * @return The reserved cache node identifier filter value. Use this parameter to
+     *         show only the reservation that matches the specified reservation ID.
      */
     public String getReservedCacheNodeId() {
         return reservedCacheNodeId;
     }
     
     /**
-     * The reserved Cache Node identifier filter value. Specify this
-     * parameter to show only the reservation that matches the specified
-     * reservation ID.
+     * The reserved cache node identifier filter value. Use this parameter to
+     * show only the reservation that matches the specified reservation ID.
      *
-     * @param reservedCacheNodeId The reserved Cache Node identifier filter value. Specify this
-     *         parameter to show only the reservation that matches the specified
-     *         reservation ID.
+     * @param reservedCacheNodeId The reserved cache node identifier filter value. Use this parameter to
+     *         show only the reservation that matches the specified reservation ID.
      */
     public void setReservedCacheNodeId(String reservedCacheNodeId) {
         this.reservedCacheNodeId = reservedCacheNodeId;
     }
     
     /**
-     * The reserved Cache Node identifier filter value. Specify this
-     * parameter to show only the reservation that matches the specified
-     * reservation ID.
+     * The reserved cache node identifier filter value. Use this parameter to
+     * show only the reservation that matches the specified reservation ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedCacheNodeId The reserved Cache Node identifier filter value. Specify this
-     *         parameter to show only the reservation that matches the specified
-     *         reservation ID.
+     * @param reservedCacheNodeId The reserved cache node identifier filter value. Use this parameter to
+     *         show only the reservation that matches the specified reservation ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withReservedCacheNodeId(String reservedCacheNodeId) {
         this.reservedCacheNodeId = reservedCacheNodeId;
         return this;
     }
-    
-    
+
     /**
-     * The offering identifier filter value. Specify this parameter to show
-     * only purchased reservations matching the specified offering
-     * identifier.
+     * The offering identifier filter value. Use this parameter to show only
+     * purchased reservations matching the specified offering identifier.
      *
-     * @return The offering identifier filter value. Specify this parameter to show
-     *         only purchased reservations matching the specified offering
-     *         identifier.
+     * @return The offering identifier filter value. Use this parameter to show only
+     *         purchased reservations matching the specified offering identifier.
      */
     public String getReservedCacheNodesOfferingId() {
         return reservedCacheNodesOfferingId;
     }
     
     /**
-     * The offering identifier filter value. Specify this parameter to show
-     * only purchased reservations matching the specified offering
-     * identifier.
+     * The offering identifier filter value. Use this parameter to show only
+     * purchased reservations matching the specified offering identifier.
      *
-     * @param reservedCacheNodesOfferingId The offering identifier filter value. Specify this parameter to show
-     *         only purchased reservations matching the specified offering
-     *         identifier.
+     * @param reservedCacheNodesOfferingId The offering identifier filter value. Use this parameter to show only
+     *         purchased reservations matching the specified offering identifier.
      */
     public void setReservedCacheNodesOfferingId(String reservedCacheNodesOfferingId) {
         this.reservedCacheNodesOfferingId = reservedCacheNodesOfferingId;
     }
     
     /**
-     * The offering identifier filter value. Specify this parameter to show
-     * only purchased reservations matching the specified offering
-     * identifier.
+     * The offering identifier filter value. Use this parameter to show only
+     * purchased reservations matching the specified offering identifier.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedCacheNodesOfferingId The offering identifier filter value. Specify this parameter to show
-     *         only purchased reservations matching the specified offering
-     *         identifier.
+     * @param reservedCacheNodesOfferingId The offering identifier filter value. Use this parameter to show only
+     *         purchased reservations matching the specified offering identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withReservedCacheNodesOfferingId(String reservedCacheNodesOfferingId) {
         this.reservedCacheNodesOfferingId = reservedCacheNodesOfferingId;
         return this;
     }
-    
-    
+
     /**
-     * The Cache Node type filter value. Specify this parameter to show only
-     * those reservations matching the specified Cache Nodes type.
+     * The cache node type filter value. Use this parameter to show only
+     * those reservations matching the specified cache node type.
      *
-     * @return The Cache Node type filter value. Specify this parameter to show only
-     *         those reservations matching the specified Cache Nodes type.
+     * @return The cache node type filter value. Use this parameter to show only
+     *         those reservations matching the specified cache node type.
      */
     public String getCacheNodeType() {
         return cacheNodeType;
     }
     
     /**
-     * The Cache Node type filter value. Specify this parameter to show only
-     * those reservations matching the specified Cache Nodes type.
+     * The cache node type filter value. Use this parameter to show only
+     * those reservations matching the specified cache node type.
      *
-     * @param cacheNodeType The Cache Node type filter value. Specify this parameter to show only
-     *         those reservations matching the specified Cache Nodes type.
+     * @param cacheNodeType The cache node type filter value. Use this parameter to show only
+     *         those reservations matching the specified cache node type.
      */
     public void setCacheNodeType(String cacheNodeType) {
         this.cacheNodeType = cacheNodeType;
     }
     
     /**
-     * The Cache Node type filter value. Specify this parameter to show only
-     * those reservations matching the specified Cache Nodes type.
+     * The cache node type filter value. Use this parameter to show only
+     * those reservations matching the specified cache node type.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeType The Cache Node type filter value. Specify this parameter to show only
-     *         those reservations matching the specified Cache Nodes type.
+     * @param cacheNodeType The cache node type filter value. Use this parameter to show only
+     *         those reservations matching the specified cache node type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withCacheNodeType(String cacheNodeType) {
         this.cacheNodeType = cacheNodeType;
         return this;
     }
-    
-    
+
     /**
-     * The duration filter value, specified in years or seconds. Specify this
+     * The duration filter value, specified in years or seconds. Use this
      * parameter to show only reservations for this duration. <p>Valid
      * Values: <code>1 | 3 | 31536000 | 94608000</code>
      *
-     * @return The duration filter value, specified in years or seconds. Specify this
+     * @return The duration filter value, specified in years or seconds. Use this
      *         parameter to show only reservations for this duration. <p>Valid
      *         Values: <code>1 | 3 | 31536000 | 94608000</code>
      */
@@ -228,11 +216,11 @@ public class DescribeReservedCacheNodesRequest extends AmazonWebServiceRequest  
     }
     
     /**
-     * The duration filter value, specified in years or seconds. Specify this
+     * The duration filter value, specified in years or seconds. Use this
      * parameter to show only reservations for this duration. <p>Valid
      * Values: <code>1 | 3 | 31536000 | 94608000</code>
      *
-     * @param duration The duration filter value, specified in years or seconds. Specify this
+     * @param duration The duration filter value, specified in years or seconds. Use this
      *         parameter to show only reservations for this duration. <p>Valid
      *         Values: <code>1 | 3 | 31536000 | 94608000</code>
      */
@@ -241,74 +229,72 @@ public class DescribeReservedCacheNodesRequest extends AmazonWebServiceRequest  
     }
     
     /**
-     * The duration filter value, specified in years or seconds. Specify this
+     * The duration filter value, specified in years or seconds. Use this
      * parameter to show only reservations for this duration. <p>Valid
      * Values: <code>1 | 3 | 31536000 | 94608000</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param duration The duration filter value, specified in years or seconds. Specify this
+     * @param duration The duration filter value, specified in years or seconds. Use this
      *         parameter to show only reservations for this duration. <p>Valid
      *         Values: <code>1 | 3 | 31536000 | 94608000</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withDuration(String duration) {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
-     * The product description filter value. Specify this parameter to show
-     * only those reservations matching the specified product description.
+     * The product description filter value. Use this parameter to show only
+     * those reservations matching the specified product description.
      *
-     * @return The product description filter value. Specify this parameter to show
-     *         only those reservations matching the specified product description.
+     * @return The product description filter value. Use this parameter to show only
+     *         those reservations matching the specified product description.
      */
     public String getProductDescription() {
         return productDescription;
     }
     
     /**
-     * The product description filter value. Specify this parameter to show
-     * only those reservations matching the specified product description.
+     * The product description filter value. Use this parameter to show only
+     * those reservations matching the specified product description.
      *
-     * @param productDescription The product description filter value. Specify this parameter to show
-     *         only those reservations matching the specified product description.
+     * @param productDescription The product description filter value. Use this parameter to show only
+     *         those reservations matching the specified product description.
      */
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
     }
     
     /**
-     * The product description filter value. Specify this parameter to show
-     * only those reservations matching the specified product description.
+     * The product description filter value. Use this parameter to show only
+     * those reservations matching the specified product description.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productDescription The product description filter value. Specify this parameter to show
-     *         only those reservations matching the specified product description.
+     * @param productDescription The product description filter value. Use this parameter to show only
+     *         those reservations matching the specified product description.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withProductDescription(String productDescription) {
         this.productDescription = productDescription;
         return this;
     }
-    
-    
+
     /**
-     * The offering type filter value. Specify this parameter to show only
-     * the available offerings matching the specified offering type. <p>Valid
-     * Values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
+     * The offering type filter value. Use this parameter to show only the
+     * available offerings matching the specified offering type. <p>Valid
+     * values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
      * Utilization" </code>
      *
-     * @return The offering type filter value. Specify this parameter to show only
-     *         the available offerings matching the specified offering type. <p>Valid
-     *         Values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
+     * @return The offering type filter value. Use this parameter to show only the
+     *         available offerings matching the specified offering type. <p>Valid
+     *         values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
      *         Utilization" </code>
      */
     public String getOfferingType() {
@@ -316,14 +302,14 @@ public class DescribeReservedCacheNodesRequest extends AmazonWebServiceRequest  
     }
     
     /**
-     * The offering type filter value. Specify this parameter to show only
-     * the available offerings matching the specified offering type. <p>Valid
-     * Values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
+     * The offering type filter value. Use this parameter to show only the
+     * available offerings matching the specified offering type. <p>Valid
+     * values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
      * Utilization" </code>
      *
-     * @param offeringType The offering type filter value. Specify this parameter to show only
-     *         the available offerings matching the specified offering type. <p>Valid
-     *         Values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
+     * @param offeringType The offering type filter value. Use this parameter to show only the
+     *         available offerings matching the specified offering type. <p>Valid
+     *         values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
      *         Utilization" </code>
      */
     public void setOfferingType(String offeringType) {
@@ -331,125 +317,128 @@ public class DescribeReservedCacheNodesRequest extends AmazonWebServiceRequest  
     }
     
     /**
-     * The offering type filter value. Specify this parameter to show only
-     * the available offerings matching the specified offering type. <p>Valid
-     * Values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
+     * The offering type filter value. Use this parameter to show only the
+     * available offerings matching the specified offering type. <p>Valid
+     * values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
      * Utilization" </code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param offeringType The offering type filter value. Specify this parameter to show only
-     *         the available offerings matching the specified offering type. <p>Valid
-     *         Values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
+     * @param offeringType The offering type filter value. Use this parameter to show only the
+     *         available offerings matching the specified offering type. <p>Valid
+     *         values: <code>"Light Utilization" | "Medium Utilization" | "Heavy
      *         Utilization" </code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withOfferingType(String offeringType) {
         this.offeringType = offeringType;
         return this;
     }
-    
-    
+
     /**
-     * The maximum number of records to include in the response. If more than
-     * the <code>MaxRecords</code> value is available, a marker is included
-     * in the response so that the following results can be retrieved.
-     * <p>Default: 100 <p>Constraints: minimum 20, maximum 100
+     * The maximum number of records to include in the response. If more
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      *
-     * @return The maximum number of records to include in the response. If more than
-     *         the <code>MaxRecords</code> value is available, a marker is included
-     *         in the response so that the following results can be retrieved.
-     *         <p>Default: 100 <p>Constraints: minimum 20, maximum 100
+     * @return The maximum number of records to include in the response. If more
+     *         records exist than the specified <code>MaxRecords</code> value, a
+     *         marker is included in the response so that the remaining results can
+     *         be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      */
     public Integer getMaxRecords() {
         return maxRecords;
     }
     
     /**
-     * The maximum number of records to include in the response. If more than
-     * the <code>MaxRecords</code> value is available, a marker is included
-     * in the response so that the following results can be retrieved.
-     * <p>Default: 100 <p>Constraints: minimum 20, maximum 100
+     * The maximum number of records to include in the response. If more
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      *
-     * @param maxRecords The maximum number of records to include in the response. If more than
-     *         the <code>MaxRecords</code> value is available, a marker is included
-     *         in the response so that the following results can be retrieved.
-     *         <p>Default: 100 <p>Constraints: minimum 20, maximum 100
+     * @param maxRecords The maximum number of records to include in the response. If more
+     *         records exist than the specified <code>MaxRecords</code> value, a
+     *         marker is included in the response so that the remaining results can
+     *         be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      */
     public void setMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
     }
     
     /**
-     * The maximum number of records to include in the response. If more than
-     * the <code>MaxRecords</code> value is available, a marker is included
-     * in the response so that the following results can be retrieved.
-     * <p>Default: 100 <p>Constraints: minimum 20, maximum 100
+     * The maximum number of records to include in the response. If more
+     * records exist than the specified <code>MaxRecords</code> value, a
+     * marker is included in the response so that the remaining results can
+     * be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param maxRecords The maximum number of records to include in the response. If more than
-     *         the <code>MaxRecords</code> value is available, a marker is included
-     *         in the response so that the following results can be retrieved.
-     *         <p>Default: 100 <p>Constraints: minimum 20, maximum 100
+     * @param maxRecords The maximum number of records to include in the response. If more
+     *         records exist than the specified <code>MaxRecords</code> value, a
+     *         marker is included in the response so that the remaining results can
+     *         be retrieved. <p>Default: 100<p>Constraints: minimum 20; maximum 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
-     * The marker provided in the previous request. If this parameter is
-     * specified, the response includes records beyond the marker only, up to
-     * <code>MaxRecords</code>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      *
-     * @return The marker provided in the previous request. If this parameter is
-     *         specified, the response includes records beyond the marker only, up to
-     *         <code>MaxRecords</code>.
+     * @return An optional marker returned from a prior request. Use this marker for
+     *         pagination of results from this operation. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <i>MaxRecords</i>.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The marker provided in the previous request. If this parameter is
-     * specified, the response includes records beyond the marker only, up to
-     * <code>MaxRecords</code>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      *
-     * @param marker The marker provided in the previous request. If this parameter is
-     *         specified, the response includes records beyond the marker only, up to
-     *         <code>MaxRecords</code>.
+     * @param marker An optional marker returned from a prior request. Use this marker for
+     *         pagination of results from this operation. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <i>MaxRecords</i>.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The marker provided in the previous request. If this parameter is
-     * specified, the response includes records beyond the marker only, up to
-     * <code>MaxRecords</code>.
+     * An optional marker returned from a prior request. Use this marker for
+     * pagination of results from this operation. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <i>MaxRecords</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The marker provided in the previous request. If this parameter is
-     *         specified, the response includes records beyond the marker only, up to
-     *         <code>MaxRecords</code>.
+     * @param marker An optional marker returned from a prior request. Use this marker for
+     *         pagination of results from this operation. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <i>MaxRecords</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -461,14 +450,14 @@ public class DescribeReservedCacheNodesRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedCacheNodeId() != null) sb.append("ReservedCacheNodeId: " + getReservedCacheNodeId() + ",");    	
-        if (getReservedCacheNodesOfferingId() != null) sb.append("ReservedCacheNodesOfferingId: " + getReservedCacheNodesOfferingId() + ",");    	
-        if (getCacheNodeType() != null) sb.append("CacheNodeType: " + getCacheNodeType() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");    	
-        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getReservedCacheNodeId() != null) sb.append("ReservedCacheNodeId: " + getReservedCacheNodeId() + ",");
+        if (getReservedCacheNodesOfferingId() != null) sb.append("ReservedCacheNodesOfferingId: " + getReservedCacheNodesOfferingId() + ",");
+        if (getCacheNodeType() != null) sb.append("CacheNodeType: " + getCacheNodeType() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getProductDescription() != null) sb.append("ProductDescription: " + getProductDescription() + ",");
+        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

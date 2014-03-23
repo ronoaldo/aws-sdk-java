@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains information about a pipeline object. This can be a logical, physical, or physical attempt pipeline object. The complete set of components of
- * a pipeline defines the pipeline.
+ * Contains information about a pipeline object. This can be a logical,
+ * physical, or physical attempt pipeline object. The complete set of
+ * components of a pipeline defines the pipeline.
  * </p>
  */
-public class PipelineObject  implements Serializable  {
+public class PipelineObject implements Serializable {
 
     /**
      * Identifier of the object.
@@ -44,7 +46,7 @@ public class PipelineObject  implements Serializable  {
     /**
      * Key-value pairs that define the properties of the object.
      */
-    private java.util.List<Field> fields;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Field> fields;
 
     /**
      * Identifier of the object.
@@ -84,14 +86,13 @@ public class PipelineObject  implements Serializable  {
      * @param id Identifier of the object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineObject withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Name of the object.
      * <p>
@@ -130,23 +131,22 @@ public class PipelineObject  implements Serializable  {
      * @param name Name of the object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineObject withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Key-value pairs that define the properties of the object.
      *
      * @return Key-value pairs that define the properties of the object.
      */
     public java.util.List<Field> getFields() {
-        
         if (fields == null) {
-            fields = new java.util.ArrayList<Field>();
+              fields = new com.amazonaws.internal.ListWithAutoConstructFlag<Field>();
+              fields.setAutoConstruct(true);
         }
         return fields;
     }
@@ -161,8 +161,7 @@ public class PipelineObject  implements Serializable  {
             this.fields = null;
             return;
         }
-
-        java.util.List<Field> fieldsCopy = new java.util.ArrayList<Field>(fields.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Field> fieldsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Field>(fields.size());
         fieldsCopy.addAll(fields);
         this.fields = fieldsCopy;
     }
@@ -175,7 +174,7 @@ public class PipelineObject  implements Serializable  {
      * @param fields Key-value pairs that define the properties of the object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineObject withFields(Field... fields) {
         if (getFields() == null) setFields(new java.util.ArrayList<Field>(fields.length));
@@ -193,20 +192,20 @@ public class PipelineObject  implements Serializable  {
      * @param fields Key-value pairs that define the properties of the object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineObject withFields(java.util.Collection<Field> fields) {
         if (fields == null) {
             this.fields = null;
         } else {
-            java.util.List<Field> fieldsCopy = new java.util.ArrayList<Field>(fields.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Field> fieldsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Field>(fields.size());
             fieldsCopy.addAll(fields);
             this.fields = fieldsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -218,9 +217,9 @@ public class PipelineObject  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getFields() != null) sb.append("Fields: " + getFields() );
         sb.append("}");
         return sb.toString();

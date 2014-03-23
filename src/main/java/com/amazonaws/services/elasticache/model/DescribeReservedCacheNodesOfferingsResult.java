@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,97 +13,104 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeReservedCacheNodesOfferings action.
+ * Represents the output of a <i>DescribeReservedCacheNodesOfferings</i>
+ * operation.
  * </p>
  */
-public class DescribeReservedCacheNodesOfferingsResult  implements Serializable  {
+public class DescribeReservedCacheNodesOfferingsResult implements Serializable {
 
     /**
-     * A marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
-     * A list of reserved Cache Node offerings.
+     * A list of reserved cache node offerings. Each element in the list
+     * contains detailed information about one offering.
      */
-    private java.util.List<ReservedCacheNodesOffering> reservedCacheNodesOfferings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNodesOffering> reservedCacheNodesOfferings;
 
     /**
-     * A marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return A marker provided for paginated results.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * A marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker A marker provided for paginated results.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * A marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker A marker provided for paginated results.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesOfferingsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of reserved Cache Node offerings.
+     * A list of reserved cache node offerings. Each element in the list
+     * contains detailed information about one offering.
      *
-     * @return A list of reserved Cache Node offerings.
+     * @return A list of reserved cache node offerings. Each element in the list
+     *         contains detailed information about one offering.
      */
     public java.util.List<ReservedCacheNodesOffering> getReservedCacheNodesOfferings() {
-        
         if (reservedCacheNodesOfferings == null) {
-            reservedCacheNodesOfferings = new java.util.ArrayList<ReservedCacheNodesOffering>();
+              reservedCacheNodesOfferings = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNodesOffering>();
+              reservedCacheNodesOfferings.setAutoConstruct(true);
         }
         return reservedCacheNodesOfferings;
     }
     
     /**
-     * A list of reserved Cache Node offerings.
+     * A list of reserved cache node offerings. Each element in the list
+     * contains detailed information about one offering.
      *
-     * @param reservedCacheNodesOfferings A list of reserved Cache Node offerings.
+     * @param reservedCacheNodesOfferings A list of reserved cache node offerings. Each element in the list
+     *         contains detailed information about one offering.
      */
     public void setReservedCacheNodesOfferings(java.util.Collection<ReservedCacheNodesOffering> reservedCacheNodesOfferings) {
         if (reservedCacheNodesOfferings == null) {
             this.reservedCacheNodesOfferings = null;
             return;
         }
-
-        java.util.List<ReservedCacheNodesOffering> reservedCacheNodesOfferingsCopy = new java.util.ArrayList<ReservedCacheNodesOffering>(reservedCacheNodesOfferings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNodesOffering> reservedCacheNodesOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNodesOffering>(reservedCacheNodesOfferings.size());
         reservedCacheNodesOfferingsCopy.addAll(reservedCacheNodesOfferings);
         this.reservedCacheNodesOfferings = reservedCacheNodesOfferingsCopy;
     }
     
     /**
-     * A list of reserved Cache Node offerings.
+     * A list of reserved cache node offerings. Each element in the list
+     * contains detailed information about one offering.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedCacheNodesOfferings A list of reserved Cache Node offerings.
+     * @param reservedCacheNodesOfferings A list of reserved cache node offerings. Each element in the list
+     *         contains detailed information about one offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesOfferingsResult withReservedCacheNodesOfferings(ReservedCacheNodesOffering... reservedCacheNodesOfferings) {
         if (getReservedCacheNodesOfferings() == null) setReservedCacheNodesOfferings(new java.util.ArrayList<ReservedCacheNodesOffering>(reservedCacheNodesOfferings.length));
@@ -114,27 +121,29 @@ public class DescribeReservedCacheNodesOfferingsResult  implements Serializable 
     }
     
     /**
-     * A list of reserved Cache Node offerings.
+     * A list of reserved cache node offerings. Each element in the list
+     * contains detailed information about one offering.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedCacheNodesOfferings A list of reserved Cache Node offerings.
+     * @param reservedCacheNodesOfferings A list of reserved cache node offerings. Each element in the list
+     *         contains detailed information about one offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesOfferingsResult withReservedCacheNodesOfferings(java.util.Collection<ReservedCacheNodesOffering> reservedCacheNodesOfferings) {
         if (reservedCacheNodesOfferings == null) {
             this.reservedCacheNodesOfferings = null;
         } else {
-            java.util.List<ReservedCacheNodesOffering> reservedCacheNodesOfferingsCopy = new java.util.ArrayList<ReservedCacheNodesOffering>(reservedCacheNodesOfferings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNodesOffering> reservedCacheNodesOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNodesOffering>(reservedCacheNodesOfferings.size());
             reservedCacheNodesOfferingsCopy.addAll(reservedCacheNodesOfferings);
             this.reservedCacheNodesOfferings = reservedCacheNodesOfferingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +155,8 @@ public class DescribeReservedCacheNodesOfferingsResult  implements Serializable 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getReservedCacheNodesOfferings() != null) sb.append("ReservedCacheNodesOfferings: " + getReservedCacheNodesOfferings() );
         sb.append("}");
         return sb.toString();

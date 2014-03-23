@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,6 +26,11 @@ public class GlacierErrorUnmarshaller extends JsonErrorUnmarshaller {
         super(exceptionClass);
     }
 
+    /**
+     * Different from other JSON services that return error code in the response content,
+     * Glacier uses "code" as the JSON field key, instead of the commonly-used "__type".
+     */
+    @Override
     public String parseErrorCode(JSONObject json) throws Exception {
         if (json.has("code")) {
             String type = json.getString("code");

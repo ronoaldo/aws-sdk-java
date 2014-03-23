@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * A JSON object containing the following fields:
  * </p>
- * 
- * <ul>
- * <li> GatewayARN </li>
- * <li> DescribeGatewayInformationOutput$GatewayId </li>
- * <li> DescribeGatewayInformationOutput$GatewayNetworkInterfaces </li>
- * <li> DescribeGatewayInformationOutput$GatewayState </li>
- * <li> DescribeGatewayInformationOutput$GatewayTimezone </li>
- * <li> DescribeGatewayInformationOutput$NextUpdateAvailabilityDate </li>
- * 
- * </ul>
  */
-public class DescribeGatewayInformationResult  implements Serializable  {
+public class DescribeGatewayInformationResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -51,20 +42,19 @@ public class DescribeGatewayInformationResult  implements Serializable  {
     private String gatewayId;
 
     /**
-     * One of the <a>GatewayTimezone</a> values that indicates the time zone
-     * configured for the gateway.
+     * One of the values that indicates the time zone configured for the
+     * gateway.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>3 - 10<br/>
      */
     private String gatewayTimezone;
 
     /**
-     * One of the <a>GatewayState</a> values that indicates the operating
-     * state of the gateway.
+     * One of the values that indicates the operating state of the gateway.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>RUNNING, SHUTDOWN
+     * <b>Length: </b>2 - 25<br/>
      */
     private String gatewayState;
 
@@ -72,22 +62,20 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      * A <a>NetworkInterface</a> array that contains descriptions of the
      * gateway network interfaces.
      */
-    private java.util.List<NetworkInterface> gatewayNetworkInterfaces;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface> gatewayNetworkInterfaces;
 
     /**
      * TBD
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED, CACHED
+     * <b>Length: </b>2 - 20<br/>
      */
     private String gatewayType;
 
     /**
      * The date at which an update to the gateway is available. This date is
      * in the time zone of the gateway. If the gateway is not available for
-     * an update this field is not returned in the response. <!-- Q: [eronh]
-     * This next sentence doesn't seem to agree with the preceding one, nor
-     * does it agree with the response example. -->
+     * an update this field is not returned in the response.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 25<br/>
@@ -141,14 +129,13 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeGatewayInformationResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * The gateway ID.
      * <p>
@@ -184,200 +171,103 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      * @param gatewayId The gateway ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeGatewayInformationResult withGatewayId(String gatewayId) {
         this.gatewayId = gatewayId;
         return this;
     }
-    
-    
+
     /**
-     * One of the <a>GatewayTimezone</a> values that indicates the time zone
-     * configured for the gateway.
+     * One of the values that indicates the time zone configured for the
+     * gateway.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>3 - 10<br/>
      *
-     * @return One of the <a>GatewayTimezone</a> values that indicates the time zone
-     *         configured for the gateway.
-     *
-     * @see GatewayTimezone
+     * @return One of the values that indicates the time zone configured for the
+     *         gateway.
      */
     public String getGatewayTimezone() {
         return gatewayTimezone;
     }
     
     /**
-     * One of the <a>GatewayTimezone</a> values that indicates the time zone
-     * configured for the gateway.
+     * One of the values that indicates the time zone configured for the
+     * gateway.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>3 - 10<br/>
      *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that indicates the time zone
-     *         configured for the gateway.
-     *
-     * @see GatewayTimezone
+     * @param gatewayTimezone One of the values that indicates the time zone configured for the
+     *         gateway.
      */
     public void setGatewayTimezone(String gatewayTimezone) {
         this.gatewayTimezone = gatewayTimezone;
     }
     
     /**
-     * One of the <a>GatewayTimezone</a> values that indicates the time zone
-     * configured for the gateway.
+     * One of the values that indicates the time zone configured for the
+     * gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>3 - 10<br/>
      *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that indicates the time zone
-     *         configured for the gateway.
+     * @param gatewayTimezone One of the values that indicates the time zone configured for the
+     *         gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayTimezone
+     *         together.
      */
     public DescribeGatewayInformationResult withGatewayTimezone(String gatewayTimezone) {
         this.gatewayTimezone = gatewayTimezone;
         return this;
     }
-    
-    
+
     /**
-     * One of the <a>GatewayTimezone</a> values that indicates the time zone
-     * configured for the gateway.
+     * One of the values that indicates the operating state of the gateway.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>2 - 25<br/>
      *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that indicates the time zone
-     *         configured for the gateway.
-     *
-     * @see GatewayTimezone
-     */
-    public void setGatewayTimezone(GatewayTimezone gatewayTimezone) {
-        this.gatewayTimezone = gatewayTimezone.toString();
-    }
-    
-    /**
-     * One of the <a>GatewayTimezone</a> values that indicates the time zone
-     * configured for the gateway.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
-     *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that indicates the time zone
-     *         configured for the gateway.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayTimezone
-     */
-    public DescribeGatewayInformationResult withGatewayTimezone(GatewayTimezone gatewayTimezone) {
-        this.gatewayTimezone = gatewayTimezone.toString();
-        return this;
-    }
-    
-    /**
-     * One of the <a>GatewayState</a> values that indicates the operating
-     * state of the gateway.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>RUNNING, SHUTDOWN
-     *
-     * @return One of the <a>GatewayState</a> values that indicates the operating
-     *         state of the gateway.
-     *
-     * @see GatewayState
+     * @return One of the values that indicates the operating state of the gateway.
      */
     public String getGatewayState() {
         return gatewayState;
     }
     
     /**
-     * One of the <a>GatewayState</a> values that indicates the operating
-     * state of the gateway.
+     * One of the values that indicates the operating state of the gateway.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>RUNNING, SHUTDOWN
+     * <b>Length: </b>2 - 25<br/>
      *
-     * @param gatewayState One of the <a>GatewayState</a> values that indicates the operating
-     *         state of the gateway.
-     *
-     * @see GatewayState
+     * @param gatewayState One of the values that indicates the operating state of the gateway.
      */
     public void setGatewayState(String gatewayState) {
         this.gatewayState = gatewayState;
     }
     
     /**
-     * One of the <a>GatewayState</a> values that indicates the operating
-     * state of the gateway.
+     * One of the values that indicates the operating state of the gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>RUNNING, SHUTDOWN
+     * <b>Length: </b>2 - 25<br/>
      *
-     * @param gatewayState One of the <a>GatewayState</a> values that indicates the operating
-     *         state of the gateway.
+     * @param gatewayState One of the values that indicates the operating state of the gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayState
+     *         together.
      */
     public DescribeGatewayInformationResult withGatewayState(String gatewayState) {
         this.gatewayState = gatewayState;
         return this;
     }
-    
-    
-    /**
-     * One of the <a>GatewayState</a> values that indicates the operating
-     * state of the gateway.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>RUNNING, SHUTDOWN
-     *
-     * @param gatewayState One of the <a>GatewayState</a> values that indicates the operating
-     *         state of the gateway.
-     *
-     * @see GatewayState
-     */
-    public void setGatewayState(GatewayState gatewayState) {
-        this.gatewayState = gatewayState.toString();
-    }
-    
-    /**
-     * One of the <a>GatewayState</a> values that indicates the operating
-     * state of the gateway.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>RUNNING, SHUTDOWN
-     *
-     * @param gatewayState One of the <a>GatewayState</a> values that indicates the operating
-     *         state of the gateway.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayState
-     */
-    public DescribeGatewayInformationResult withGatewayState(GatewayState gatewayState) {
-        this.gatewayState = gatewayState.toString();
-        return this;
-    }
-    
+
     /**
      * A <a>NetworkInterface</a> array that contains descriptions of the
      * gateway network interfaces.
@@ -386,9 +276,9 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      *         gateway network interfaces.
      */
     public java.util.List<NetworkInterface> getGatewayNetworkInterfaces() {
-        
         if (gatewayNetworkInterfaces == null) {
-            gatewayNetworkInterfaces = new java.util.ArrayList<NetworkInterface>();
+              gatewayNetworkInterfaces = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface>();
+              gatewayNetworkInterfaces.setAutoConstruct(true);
         }
         return gatewayNetworkInterfaces;
     }
@@ -405,8 +295,7 @@ public class DescribeGatewayInformationResult  implements Serializable  {
             this.gatewayNetworkInterfaces = null;
             return;
         }
-
-        java.util.List<NetworkInterface> gatewayNetworkInterfacesCopy = new java.util.ArrayList<NetworkInterface>(gatewayNetworkInterfaces.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface> gatewayNetworkInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface>(gatewayNetworkInterfaces.size());
         gatewayNetworkInterfacesCopy.addAll(gatewayNetworkInterfaces);
         this.gatewayNetworkInterfaces = gatewayNetworkInterfacesCopy;
     }
@@ -421,7 +310,7 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      *         gateway network interfaces.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeGatewayInformationResult withGatewayNetworkInterfaces(NetworkInterface... gatewayNetworkInterfaces) {
         if (getGatewayNetworkInterfaces() == null) setGatewayNetworkInterfaces(new java.util.ArrayList<NetworkInterface>(gatewayNetworkInterfaces.length));
@@ -441,29 +330,27 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      *         gateway network interfaces.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeGatewayInformationResult withGatewayNetworkInterfaces(java.util.Collection<NetworkInterface> gatewayNetworkInterfaces) {
         if (gatewayNetworkInterfaces == null) {
             this.gatewayNetworkInterfaces = null;
         } else {
-            java.util.List<NetworkInterface> gatewayNetworkInterfacesCopy = new java.util.ArrayList<NetworkInterface>(gatewayNetworkInterfaces.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface> gatewayNetworkInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface>(gatewayNetworkInterfaces.size());
             gatewayNetworkInterfacesCopy.addAll(gatewayNetworkInterfaces);
             this.gatewayNetworkInterfaces = gatewayNetworkInterfacesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * TBD
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED, CACHED
+     * <b>Length: </b>2 - 20<br/>
      *
      * @return TBD
-     *
-     * @see GatewayType
      */
     public String getGatewayType() {
         return gatewayType;
@@ -473,11 +360,9 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      * TBD
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED, CACHED
+     * <b>Length: </b>2 - 20<br/>
      *
      * @param gatewayType TBD
-     *
-     * @see GatewayType
      */
     public void setGatewayType(String gatewayType) {
         this.gatewayType = gatewayType;
@@ -489,70 +374,29 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED, CACHED
+     * <b>Length: </b>2 - 20<br/>
      *
      * @param gatewayType TBD
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayType
+     *         together.
      */
     public DescribeGatewayInformationResult withGatewayType(String gatewayType) {
         this.gatewayType = gatewayType;
         return this;
     }
-    
-    
-    /**
-     * TBD
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED, CACHED
-     *
-     * @param gatewayType TBD
-     *
-     * @see GatewayType
-     */
-    public void setGatewayType(GatewayType gatewayType) {
-        this.gatewayType = gatewayType.toString();
-    }
-    
-    /**
-     * TBD
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED, CACHED
-     *
-     * @param gatewayType TBD
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayType
-     */
-    public DescribeGatewayInformationResult withGatewayType(GatewayType gatewayType) {
-        this.gatewayType = gatewayType.toString();
-        return this;
-    }
-    
+
     /**
      * The date at which an update to the gateway is available. This date is
      * in the time zone of the gateway. If the gateway is not available for
-     * an update this field is not returned in the response. <!-- Q: [eronh]
-     * This next sentence doesn't seem to agree with the preceding one, nor
-     * does it agree with the response example. -->
+     * an update this field is not returned in the response.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 25<br/>
      *
      * @return The date at which an update to the gateway is available. This date is
      *         in the time zone of the gateway. If the gateway is not available for
-     *         an update this field is not returned in the response. <!-- Q: [eronh]
-     *         This next sentence doesn't seem to agree with the preceding one, nor
-     *         does it agree with the response example. -->
+     *         an update this field is not returned in the response.
      */
     public String getNextUpdateAvailabilityDate() {
         return nextUpdateAvailabilityDate;
@@ -561,18 +405,14 @@ public class DescribeGatewayInformationResult  implements Serializable  {
     /**
      * The date at which an update to the gateway is available. This date is
      * in the time zone of the gateway. If the gateway is not available for
-     * an update this field is not returned in the response. <!-- Q: [eronh]
-     * This next sentence doesn't seem to agree with the preceding one, nor
-     * does it agree with the response example. -->
+     * an update this field is not returned in the response.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 25<br/>
      *
      * @param nextUpdateAvailabilityDate The date at which an update to the gateway is available. This date is
      *         in the time zone of the gateway. If the gateway is not available for
-     *         an update this field is not returned in the response. <!-- Q: [eronh]
-     *         This next sentence doesn't seem to agree with the preceding one, nor
-     *         does it agree with the response example. -->
+     *         an update this field is not returned in the response.
      */
     public void setNextUpdateAvailabilityDate(String nextUpdateAvailabilityDate) {
         this.nextUpdateAvailabilityDate = nextUpdateAvailabilityDate;
@@ -581,9 +421,7 @@ public class DescribeGatewayInformationResult  implements Serializable  {
     /**
      * The date at which an update to the gateway is available. This date is
      * in the time zone of the gateway. If the gateway is not available for
-     * an update this field is not returned in the response. <!-- Q: [eronh]
-     * This next sentence doesn't seem to agree with the preceding one, nor
-     * does it agree with the response example. -->
+     * an update this field is not returned in the response.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -592,19 +430,16 @@ public class DescribeGatewayInformationResult  implements Serializable  {
      *
      * @param nextUpdateAvailabilityDate The date at which an update to the gateway is available. This date is
      *         in the time zone of the gateway. If the gateway is not available for
-     *         an update this field is not returned in the response. <!-- Q: [eronh]
-     *         This next sentence doesn't seem to agree with the preceding one, nor
-     *         does it agree with the response example. -->
+     *         an update this field is not returned in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeGatewayInformationResult withNextUpdateAvailabilityDate(String nextUpdateAvailabilityDate) {
         this.nextUpdateAvailabilityDate = nextUpdateAvailabilityDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -616,13 +451,13 @@ public class DescribeGatewayInformationResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getGatewayId() != null) sb.append("GatewayId: " + getGatewayId() + ",");    	
-        if (getGatewayTimezone() != null) sb.append("GatewayTimezone: " + getGatewayTimezone() + ",");    	
-        if (getGatewayState() != null) sb.append("GatewayState: " + getGatewayState() + ",");    	
-        if (getGatewayNetworkInterfaces() != null) sb.append("GatewayNetworkInterfaces: " + getGatewayNetworkInterfaces() + ",");    	
-        if (getGatewayType() != null) sb.append("GatewayType: " + getGatewayType() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getGatewayId() != null) sb.append("GatewayId: " + getGatewayId() + ",");
+        if (getGatewayTimezone() != null) sb.append("GatewayTimezone: " + getGatewayTimezone() + ",");
+        if (getGatewayState() != null) sb.append("GatewayState: " + getGatewayState() + ",");
+        if (getGatewayNetworkInterfaces() != null) sb.append("GatewayNetworkInterfaces: " + getGatewayNetworkInterfaces() + ",");
+        if (getGatewayType() != null) sb.append("GatewayType: " + getGatewayType() + ",");
         if (getNextUpdateAvailabilityDate() != null) sb.append("NextUpdateAvailabilityDate: " + getNextUpdateAvailabilityDate() );
         sb.append("}");
         return sb.toString();

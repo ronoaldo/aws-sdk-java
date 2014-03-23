@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
+
 import java.io.Serializable;
 
 /**
- * List Subscriptions By Topic Result
+ * <p>
+ * Response for ListSubscriptionsByTopic action.
+ * </p>
  */
-public class ListSubscriptionsByTopicResult  implements Serializable  {
+public class ListSubscriptionsByTopicResult implements Serializable {
 
     /**
      * A list of subscriptions.
      */
-    private java.util.List<Subscription> subscriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Subscription> subscriptions;
 
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      */
     private String nextToken;
 
@@ -37,9 +41,9 @@ public class ListSubscriptionsByTopicResult  implements Serializable  {
      * @return A list of subscriptions.
      */
     public java.util.List<Subscription> getSubscriptions() {
-        
         if (subscriptions == null) {
-            subscriptions = new java.util.ArrayList<Subscription>();
+              subscriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<Subscription>();
+              subscriptions.setAutoConstruct(true);
         }
         return subscriptions;
     }
@@ -54,8 +58,7 @@ public class ListSubscriptionsByTopicResult  implements Serializable  {
             this.subscriptions = null;
             return;
         }
-
-        java.util.List<Subscription> subscriptionsCopy = new java.util.ArrayList<Subscription>(subscriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Subscription> subscriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Subscription>(subscriptions.size());
         subscriptionsCopy.addAll(subscriptions);
         this.subscriptions = subscriptionsCopy;
     }
@@ -68,7 +71,7 @@ public class ListSubscriptionsByTopicResult  implements Serializable  {
      * @param subscriptions A list of subscriptions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListSubscriptionsByTopicResult withSubscriptions(Subscription... subscriptions) {
         if (getSubscriptions() == null) setSubscriptions(new java.util.ArrayList<Subscription>(subscriptions.length));
@@ -86,60 +89,65 @@ public class ListSubscriptionsByTopicResult  implements Serializable  {
      * @param subscriptions A list of subscriptions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListSubscriptionsByTopicResult withSubscriptions(java.util.Collection<Subscription> subscriptions) {
         if (subscriptions == null) {
             this.subscriptions = null;
         } else {
-            java.util.List<Subscription> subscriptionsCopy = new java.util.ArrayList<Subscription>(subscriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Subscription> subscriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Subscription>(subscriptions.size());
             subscriptionsCopy.addAll(subscriptions);
             this.subscriptions = subscriptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      *
-     * @return Token to pass along to the next ListSubscriptionsByTopic request. This
-     *         element is returned if there are more subscriptions to retrieve.
+     * @return Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     *         request. This element is returned if there are more subscriptions to
+     *         retrieve.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      *
-     * @param nextToken Token to pass along to the next ListSubscriptionsByTopic request. This
-     *         element is returned if there are more subscriptions to retrieve.
+     * @param nextToken Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     *         request. This element is returned if there are more subscriptions to
+     *         retrieve.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Token to pass along to the next ListSubscriptionsByTopic request. This
-     * element is returned if there are more subscriptions to retrieve.
+     * Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     * request. This element is returned if there are more subscriptions to
+     * retrieve.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Token to pass along to the next ListSubscriptionsByTopic request. This
-     *         element is returned if there are more subscriptions to retrieve.
+     * @param nextToken Token to pass along to the next <code>ListSubscriptionsByTopic</code>
+     *         request. This element is returned if there are more subscriptions to
+     *         retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListSubscriptionsByTopicResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -151,8 +159,8 @@ public class ListSubscriptionsByTopicResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubscriptions() != null) sb.append("Subscriptions: " + getSubscriptions() + ",");    	
+        sb.append("{");
+        if (getSubscriptions() != null) sb.append("Subscriptions: " + getSubscriptions() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

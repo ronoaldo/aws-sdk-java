@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * A response message that contains the status of one or more domains.
  * </p>
  */
-public class DescribeDomainsResult  implements Serializable  {
+public class DescribeDomainsResult implements Serializable {
 
     /**
      * The current status of all of your search domains.
      */
-    private java.util.List<DomainStatus> domainStatusList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DomainStatus> domainStatusList;
 
     /**
      * The current status of all of your search domains.
@@ -33,9 +34,9 @@ public class DescribeDomainsResult  implements Serializable  {
      * @return The current status of all of your search domains.
      */
     public java.util.List<DomainStatus> getDomainStatusList() {
-        
         if (domainStatusList == null) {
-            domainStatusList = new java.util.ArrayList<DomainStatus>();
+              domainStatusList = new com.amazonaws.internal.ListWithAutoConstructFlag<DomainStatus>();
+              domainStatusList.setAutoConstruct(true);
         }
         return domainStatusList;
     }
@@ -50,8 +51,7 @@ public class DescribeDomainsResult  implements Serializable  {
             this.domainStatusList = null;
             return;
         }
-
-        java.util.List<DomainStatus> domainStatusListCopy = new java.util.ArrayList<DomainStatus>(domainStatusList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DomainStatus> domainStatusListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DomainStatus>(domainStatusList.size());
         domainStatusListCopy.addAll(domainStatusList);
         this.domainStatusList = domainStatusListCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeDomainsResult  implements Serializable  {
      * @param domainStatusList The current status of all of your search domains.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDomainsResult withDomainStatusList(DomainStatus... domainStatusList) {
         if (getDomainStatusList() == null) setDomainStatusList(new java.util.ArrayList<DomainStatus>(domainStatusList.length));
@@ -82,20 +82,20 @@ public class DescribeDomainsResult  implements Serializable  {
      * @param domainStatusList The current status of all of your search domains.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDomainsResult withDomainStatusList(java.util.Collection<DomainStatus> domainStatusList) {
         if (domainStatusList == null) {
             this.domainStatusList = null;
         } else {
-            java.util.List<DomainStatus> domainStatusListCopy = new java.util.ArrayList<DomainStatus>(domainStatusList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DomainStatus> domainStatusListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DomainStatus>(domainStatusList.size());
             domainStatusListCopy.addAll(domainStatusList);
             this.domainStatusList = domainStatusListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeDomainsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomainStatusList() != null) sb.append("DomainStatusList: " + getDomainStatusList() );
         sb.append("}");
         return sb.toString();

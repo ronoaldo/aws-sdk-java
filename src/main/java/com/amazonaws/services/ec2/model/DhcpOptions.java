@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,102 +13,101 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The DhcpOptions data type.
+ * Describes a set of DHCP options.
  * </p>
  */
-public class DhcpOptions  implements Serializable  {
+public class DhcpOptions implements Serializable {
 
     /**
-     * Specifies the ID of the set of DHCP options.
+     * The ID of the set of DHCP options.
      */
     private String dhcpOptionsId;
 
     /**
-     * Contains information about the set of DHCP options.
+     * One or more DHCP options in the set.
      */
-    private java.util.List<DhcpConfiguration> dhcpConfigurations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration> dhcpConfigurations;
 
     /**
-     * A list of tags for the DhcpOptions.
+     * Any tags assigned to the DHCP options set.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
-     * Specifies the ID of the set of DHCP options.
+     * The ID of the set of DHCP options.
      *
-     * @return Specifies the ID of the set of DHCP options.
+     * @return The ID of the set of DHCP options.
      */
     public String getDhcpOptionsId() {
         return dhcpOptionsId;
     }
     
     /**
-     * Specifies the ID of the set of DHCP options.
+     * The ID of the set of DHCP options.
      *
-     * @param dhcpOptionsId Specifies the ID of the set of DHCP options.
+     * @param dhcpOptionsId The ID of the set of DHCP options.
      */
     public void setDhcpOptionsId(String dhcpOptionsId) {
         this.dhcpOptionsId = dhcpOptionsId;
     }
     
     /**
-     * Specifies the ID of the set of DHCP options.
+     * The ID of the set of DHCP options.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpOptionsId Specifies the ID of the set of DHCP options.
+     * @param dhcpOptionsId The ID of the set of DHCP options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DhcpOptions withDhcpOptionsId(String dhcpOptionsId) {
         this.dhcpOptionsId = dhcpOptionsId;
         return this;
     }
-    
-    
+
     /**
-     * Contains information about the set of DHCP options.
+     * One or more DHCP options in the set.
      *
-     * @return Contains information about the set of DHCP options.
+     * @return One or more DHCP options in the set.
      */
     public java.util.List<DhcpConfiguration> getDhcpConfigurations() {
-        
         if (dhcpConfigurations == null) {
-            dhcpConfigurations = new java.util.ArrayList<DhcpConfiguration>();
+              dhcpConfigurations = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration>();
+              dhcpConfigurations.setAutoConstruct(true);
         }
         return dhcpConfigurations;
     }
     
     /**
-     * Contains information about the set of DHCP options.
+     * One or more DHCP options in the set.
      *
-     * @param dhcpConfigurations Contains information about the set of DHCP options.
+     * @param dhcpConfigurations One or more DHCP options in the set.
      */
     public void setDhcpConfigurations(java.util.Collection<DhcpConfiguration> dhcpConfigurations) {
         if (dhcpConfigurations == null) {
             this.dhcpConfigurations = null;
             return;
         }
-
-        java.util.List<DhcpConfiguration> dhcpConfigurationsCopy = new java.util.ArrayList<DhcpConfiguration>(dhcpConfigurations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration> dhcpConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration>(dhcpConfigurations.size());
         dhcpConfigurationsCopy.addAll(dhcpConfigurations);
         this.dhcpConfigurations = dhcpConfigurationsCopy;
     }
     
     /**
-     * Contains information about the set of DHCP options.
+     * One or more DHCP options in the set.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpConfigurations Contains information about the set of DHCP options.
+     * @param dhcpConfigurations One or more DHCP options in the set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DhcpOptions withDhcpConfigurations(DhcpConfiguration... dhcpConfigurations) {
         if (getDhcpConfigurations() == null) setDhcpConfigurations(new java.util.ArrayList<DhcpConfiguration>(dhcpConfigurations.length));
@@ -119,65 +118,64 @@ public class DhcpOptions  implements Serializable  {
     }
     
     /**
-     * Contains information about the set of DHCP options.
+     * One or more DHCP options in the set.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpConfigurations Contains information about the set of DHCP options.
+     * @param dhcpConfigurations One or more DHCP options in the set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DhcpOptions withDhcpConfigurations(java.util.Collection<DhcpConfiguration> dhcpConfigurations) {
         if (dhcpConfigurations == null) {
             this.dhcpConfigurations = null;
         } else {
-            java.util.List<DhcpConfiguration> dhcpConfigurationsCopy = new java.util.ArrayList<DhcpConfiguration>(dhcpConfigurations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration> dhcpConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration>(dhcpConfigurations.size());
             dhcpConfigurationsCopy.addAll(dhcpConfigurations);
             this.dhcpConfigurations = dhcpConfigurationsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of tags for the DhcpOptions.
+     * Any tags assigned to the DHCP options set.
      *
-     * @return A list of tags for the DhcpOptions.
+     * @return Any tags assigned to the DHCP options set.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * A list of tags for the DhcpOptions.
+     * Any tags assigned to the DHCP options set.
      *
-     * @param tags A list of tags for the DhcpOptions.
+     * @param tags Any tags assigned to the DHCP options set.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * A list of tags for the DhcpOptions.
+     * Any tags assigned to the DHCP options set.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the DhcpOptions.
+     * @param tags Any tags assigned to the DHCP options set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DhcpOptions withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -188,27 +186,27 @@ public class DhcpOptions  implements Serializable  {
     }
     
     /**
-     * A list of tags for the DhcpOptions.
+     * Any tags assigned to the DHCP options set.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the DhcpOptions.
+     * @param tags Any tags assigned to the DHCP options set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DhcpOptions withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -220,9 +218,9 @@ public class DhcpOptions  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDhcpOptionsId() != null) sb.append("DhcpOptionsId: " + getDhcpOptionsId() + ",");    	
-        if (getDhcpConfigurations() != null) sb.append("DhcpConfigurations: " + getDhcpConfigurations() + ",");    	
+        sb.append("{");
+        if (getDhcpOptionsId() != null) sb.append("DhcpOptionsId: " + getDhcpOptionsId() + ",");
+        if (getDhcpConfigurations() != null) sb.append("DhcpConfigurations: " + getDhcpConfigurations() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

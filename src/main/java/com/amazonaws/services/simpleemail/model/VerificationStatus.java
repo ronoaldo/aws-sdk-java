@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,7 +22,8 @@ public enum VerificationStatus {
     Pending("Pending"),
     Success("Success"),
     Failed("Failed"),
-    TemporaryFailure("TemporaryFailure");
+    TemporaryFailure("TemporaryFailure"),
+    NotStarted("NotStarted");
 
     private String value;
 
@@ -54,6 +55,8 @@ public enum VerificationStatus {
             return VerificationStatus.Failed;
         } else if ("TemporaryFailure".equals(value)) {
             return VerificationStatus.TemporaryFailure;
+        } else if ("NotStarted".equals(value)) {
+            return VerificationStatus.NotStarted;
         } else {
             throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
         }

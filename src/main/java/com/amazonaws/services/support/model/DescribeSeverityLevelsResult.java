@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,65 +13,66 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class DescribeSeverityLevelsResult  implements Serializable  {
+public class DescribeSeverityLevelsResult implements Serializable {
 
     /**
-     * List of available severity levels for the support case. Available
-     * severity levels are defined by your service level agreement with AWS.
+     * The available severity levels for the support case. Available severity
+     * levels are defined by your service level agreement with AWS.
      */
-    private java.util.List<SeverityLevel> severityLevels;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SeverityLevel> severityLevels;
 
     /**
-     * List of available severity levels for the support case. Available
-     * severity levels are defined by your service level agreement with AWS.
+     * The available severity levels for the support case. Available severity
+     * levels are defined by your service level agreement with AWS.
      *
-     * @return List of available severity levels for the support case. Available
-     *         severity levels are defined by your service level agreement with AWS.
+     * @return The available severity levels for the support case. Available severity
+     *         levels are defined by your service level agreement with AWS.
      */
     public java.util.List<SeverityLevel> getSeverityLevels() {
-        
         if (severityLevels == null) {
-            severityLevels = new java.util.ArrayList<SeverityLevel>();
+              severityLevels = new com.amazonaws.internal.ListWithAutoConstructFlag<SeverityLevel>();
+              severityLevels.setAutoConstruct(true);
         }
         return severityLevels;
     }
     
     /**
-     * List of available severity levels for the support case. Available
-     * severity levels are defined by your service level agreement with AWS.
+     * The available severity levels for the support case. Available severity
+     * levels are defined by your service level agreement with AWS.
      *
-     * @param severityLevels List of available severity levels for the support case. Available
-     *         severity levels are defined by your service level agreement with AWS.
+     * @param severityLevels The available severity levels for the support case. Available severity
+     *         levels are defined by your service level agreement with AWS.
      */
     public void setSeverityLevels(java.util.Collection<SeverityLevel> severityLevels) {
         if (severityLevels == null) {
             this.severityLevels = null;
             return;
         }
-
-        java.util.List<SeverityLevel> severityLevelsCopy = new java.util.ArrayList<SeverityLevel>(severityLevels.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SeverityLevel> severityLevelsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SeverityLevel>(severityLevels.size());
         severityLevelsCopy.addAll(severityLevels);
         this.severityLevels = severityLevelsCopy;
     }
     
     /**
-     * List of available severity levels for the support case. Available
-     * severity levels are defined by your service level agreement with AWS.
+     * The available severity levels for the support case. Available severity
+     * levels are defined by your service level agreement with AWS.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param severityLevels List of available severity levels for the support case. Available
-     *         severity levels are defined by your service level agreement with AWS.
+     * @param severityLevels The available severity levels for the support case. Available severity
+     *         levels are defined by your service level agreement with AWS.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSeverityLevelsResult withSeverityLevels(SeverityLevel... severityLevels) {
         if (getSeverityLevels() == null) setSeverityLevels(new java.util.ArrayList<SeverityLevel>(severityLevels.length));
@@ -82,29 +83,29 @@ public class DescribeSeverityLevelsResult  implements Serializable  {
     }
     
     /**
-     * List of available severity levels for the support case. Available
-     * severity levels are defined by your service level agreement with AWS.
+     * The available severity levels for the support case. Available severity
+     * levels are defined by your service level agreement with AWS.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param severityLevels List of available severity levels for the support case. Available
-     *         severity levels are defined by your service level agreement with AWS.
+     * @param severityLevels The available severity levels for the support case. Available severity
+     *         levels are defined by your service level agreement with AWS.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSeverityLevelsResult withSeverityLevels(java.util.Collection<SeverityLevel> severityLevels) {
         if (severityLevels == null) {
             this.severityLevels = null;
         } else {
-            java.util.List<SeverityLevel> severityLevelsCopy = new java.util.ArrayList<SeverityLevel>(severityLevels.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SeverityLevel> severityLevelsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SeverityLevel>(severityLevels.size());
             severityLevelsCopy.addAll(severityLevels);
             this.severityLevels = severityLevelsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +117,7 @@ public class DescribeSeverityLevelsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSeverityLevels() != null) sb.append("SeverityLevels: " + getSeverityLevels() );
         sb.append("}");
         return sb.toString();

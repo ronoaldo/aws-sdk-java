@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Result message containing a list of environment descriptions.
  * </p>
  */
-public class DescribeEnvironmentsResult  implements Serializable  {
+public class DescribeEnvironmentsResult implements Serializable {
 
     /**
      * Returns an <a>EnvironmentDescription</a> list.
      */
-    private java.util.List<EnvironmentDescription> environments;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentDescription> environments;
 
     /**
      * Returns an <a>EnvironmentDescription</a> list.
@@ -33,9 +34,9 @@ public class DescribeEnvironmentsResult  implements Serializable  {
      * @return Returns an <a>EnvironmentDescription</a> list.
      */
     public java.util.List<EnvironmentDescription> getEnvironments() {
-        
         if (environments == null) {
-            environments = new java.util.ArrayList<EnvironmentDescription>();
+              environments = new com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentDescription>();
+              environments.setAutoConstruct(true);
         }
         return environments;
     }
@@ -50,8 +51,7 @@ public class DescribeEnvironmentsResult  implements Serializable  {
             this.environments = null;
             return;
         }
-
-        java.util.List<EnvironmentDescription> environmentsCopy = new java.util.ArrayList<EnvironmentDescription>(environments.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentDescription> environmentsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentDescription>(environments.size());
         environmentsCopy.addAll(environments);
         this.environments = environmentsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeEnvironmentsResult  implements Serializable  {
      * @param environments Returns an <a>EnvironmentDescription</a> list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEnvironmentsResult withEnvironments(EnvironmentDescription... environments) {
         if (getEnvironments() == null) setEnvironments(new java.util.ArrayList<EnvironmentDescription>(environments.length));
@@ -82,20 +82,20 @@ public class DescribeEnvironmentsResult  implements Serializable  {
      * @param environments Returns an <a>EnvironmentDescription</a> list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEnvironmentsResult withEnvironments(java.util.Collection<EnvironmentDescription> environments) {
         if (environments == null) {
             this.environments = null;
         } else {
-            java.util.List<EnvironmentDescription> environmentsCopy = new java.util.ArrayList<EnvironmentDescription>(environments.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentDescription> environmentsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentDescription>(environments.size());
             environmentsCopy.addAll(environments);
             this.environments = environmentsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeEnvironmentsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getEnvironments() != null) sb.append("Environments: " + getEnvironments() );
         sb.append("}");
         return sb.toString();

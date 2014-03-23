@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,31 +13,42 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteTagsRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#deleteTags(DeleteTagsRequest) DeleteTags operation}.
  * <p>
- * Deletes tags from the specified Amazon EC2 resources.
+ * Deletes the specified set of tags from the specified set of resources.
+ * This call is designed to follow a <code>DescribeTags</code> request.
+ * </p>
+ * <p>
+ * For more information about tags, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html"> Tagging Your Resources </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteTags(DeleteTagsRequest)
  */
-public class DeleteTagsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteTagsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteTagsRequest> {
 
     /**
-     * A list of one or more resource IDs. This could be the ID of an AMI, an
-     * instance, an EBS volume, or snapshot, etc.
+     * The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     * more than one resource ID.
      */
-    private java.util.List<String> resources;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> resources;
 
     /**
-     * The tags to delete from the specified resources. Each tag item
-     * consists of a key-value pair. <p> If a tag is specified without a
-     * value, the tag and all of its values are deleted.
+     * One or more tags to delete. If you omit the <code>value</code>
+     * parameter, we delete the tag regardless of its value. If you specify
+     * this parameter with an empty string as the value, we delete the key
+     * only if its value is an empty string.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
      * Default constructor for a new DeleteTagsRequest object.  Callers should use the
@@ -50,59 +61,56 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest  implements Seria
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param resources A list of one or more resource IDs. This could be the
-     * ID of an AMI, an instance, an EBS volume, or snapshot, etc.
+     * @param resources The ID of the resource. For example, ami-1a2b3c4d.
+     * You can specify more than one resource ID.
      */
     public DeleteTagsRequest(java.util.List<String> resources) {
-        this.resources = resources;
+        setResources(resources);
     }
 
-    
-    
     /**
-     * A list of one or more resource IDs. This could be the ID of an AMI, an
-     * instance, an EBS volume, or snapshot, etc.
+     * The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     * more than one resource ID.
      *
-     * @return A list of one or more resource IDs. This could be the ID of an AMI, an
-     *         instance, an EBS volume, or snapshot, etc.
+     * @return The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     *         more than one resource ID.
      */
     public java.util.List<String> getResources() {
-        
         if (resources == null) {
-            resources = new java.util.ArrayList<String>();
+              resources = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              resources.setAutoConstruct(true);
         }
         return resources;
     }
     
     /**
-     * A list of one or more resource IDs. This could be the ID of an AMI, an
-     * instance, an EBS volume, or snapshot, etc.
+     * The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     * more than one resource ID.
      *
-     * @param resources A list of one or more resource IDs. This could be the ID of an AMI, an
-     *         instance, an EBS volume, or snapshot, etc.
+     * @param resources The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     *         more than one resource ID.
      */
     public void setResources(java.util.Collection<String> resources) {
         if (resources == null) {
             this.resources = null;
             return;
         }
-
-        java.util.List<String> resourcesCopy = new java.util.ArrayList<String>(resources.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> resourcesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(resources.size());
         resourcesCopy.addAll(resources);
         this.resources = resourcesCopy;
     }
     
     /**
-     * A list of one or more resource IDs. This could be the ID of an AMI, an
-     * instance, an EBS volume, or snapshot, etc.
+     * The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     * more than one resource ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param resources A list of one or more resource IDs. This could be the ID of an AMI, an
-     *         instance, an EBS volume, or snapshot, etc.
+     * @param resources The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     *         more than one resource ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteTagsRequest withResources(String... resources) {
         if (getResources() == null) setResources(new java.util.ArrayList<String>(resources.length));
@@ -113,79 +121,84 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * A list of one or more resource IDs. This could be the ID of an AMI, an
-     * instance, an EBS volume, or snapshot, etc.
+     * The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     * more than one resource ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param resources A list of one or more resource IDs. This could be the ID of an AMI, an
-     *         instance, an EBS volume, or snapshot, etc.
+     * @param resources The ID of the resource. For example, ami-1a2b3c4d. You can specify
+     *         more than one resource ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteTagsRequest withResources(java.util.Collection<String> resources) {
         if (resources == null) {
             this.resources = null;
         } else {
-            java.util.List<String> resourcesCopy = new java.util.ArrayList<String>(resources.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> resourcesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(resources.size());
             resourcesCopy.addAll(resources);
             this.resources = resourcesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The tags to delete from the specified resources. Each tag item
-     * consists of a key-value pair. <p> If a tag is specified without a
-     * value, the tag and all of its values are deleted.
+     * One or more tags to delete. If you omit the <code>value</code>
+     * parameter, we delete the tag regardless of its value. If you specify
+     * this parameter with an empty string as the value, we delete the key
+     * only if its value is an empty string.
      *
-     * @return The tags to delete from the specified resources. Each tag item
-     *         consists of a key-value pair. <p> If a tag is specified without a
-     *         value, the tag and all of its values are deleted.
+     * @return One or more tags to delete. If you omit the <code>value</code>
+     *         parameter, we delete the tag regardless of its value. If you specify
+     *         this parameter with an empty string as the value, we delete the key
+     *         only if its value is an empty string.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * The tags to delete from the specified resources. Each tag item
-     * consists of a key-value pair. <p> If a tag is specified without a
-     * value, the tag and all of its values are deleted.
+     * One or more tags to delete. If you omit the <code>value</code>
+     * parameter, we delete the tag regardless of its value. If you specify
+     * this parameter with an empty string as the value, we delete the key
+     * only if its value is an empty string.
      *
-     * @param tags The tags to delete from the specified resources. Each tag item
-     *         consists of a key-value pair. <p> If a tag is specified without a
-     *         value, the tag and all of its values are deleted.
+     * @param tags One or more tags to delete. If you omit the <code>value</code>
+     *         parameter, we delete the tag regardless of its value. If you specify
+     *         this parameter with an empty string as the value, we delete the key
+     *         only if its value is an empty string.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * The tags to delete from the specified resources. Each tag item
-     * consists of a key-value pair. <p> If a tag is specified without a
-     * value, the tag and all of its values are deleted.
+     * One or more tags to delete. If you omit the <code>value</code>
+     * parameter, we delete the tag regardless of its value. If you specify
+     * this parameter with an empty string as the value, we delete the key
+     * only if its value is an empty string.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The tags to delete from the specified resources. Each tag item
-     *         consists of a key-value pair. <p> If a tag is specified without a
-     *         value, the tag and all of its values are deleted.
+     * @param tags One or more tags to delete. If you omit the <code>value</code>
+     *         parameter, we delete the tag regardless of its value. If you specify
+     *         this parameter with an empty string as the value, we delete the key
+     *         only if its value is an empty string.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteTagsRequest withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -196,29 +209,43 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest  implements Seria
     }
     
     /**
-     * The tags to delete from the specified resources. Each tag item
-     * consists of a key-value pair. <p> If a tag is specified without a
-     * value, the tag and all of its values are deleted.
+     * One or more tags to delete. If you omit the <code>value</code>
+     * parameter, we delete the tag regardless of its value. If you specify
+     * this parameter with an empty string as the value, we delete the key
+     * only if its value is an empty string.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The tags to delete from the specified resources. Each tag item
-     *         consists of a key-value pair. <p> If a tag is specified without a
-     *         value, the tag and all of its values are deleted.
+     * @param tags One or more tags to delete. If you omit the <code>value</code>
+     *         parameter, we delete the tag regardless of its value. If you specify
+     *         this parameter with an empty string as the value, we delete the key
+     *         only if its value is an empty string.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteTagsRequest withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteTagsRequest> getDryRunRequest() {
+        Request<DeleteTagsRequest> request = new DeleteTagsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -232,8 +259,8 @@ public class DeleteTagsRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResources() != null) sb.append("Resources: " + getResources() + ",");    	
+        sb.append("{");
+        if (getResources() != null) sb.append("Resources: " + getResources() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

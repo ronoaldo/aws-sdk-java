@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class SetLoadBalancerListenerSSLCertificateRequestMarshaller implements M
     public Request<SetLoadBalancerListenerSSLCertificateRequest> marshall(SetLoadBalancerListenerSSLCertificateRequest setLoadBalancerListenerSSLCertificateRequest) {
 
         if (setLoadBalancerListenerSSLCertificateRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<SetLoadBalancerListenerSSLCertificateRequest> request = new DefaultRequest<SetLoadBalancerListenerSSLCertificateRequest>(setLoadBalancerListenerSSLCertificateRequest, "AmazonElasticLoadBalancing");
         request.addParameter("Action", "SetLoadBalancerListenerSSLCertificate");
@@ -49,7 +49,6 @@ public class SetLoadBalancerListenerSSLCertificateRequestMarshaller implements M
         if (setLoadBalancerListenerSSLCertificateRequest.getSSLCertificateId() != null) {
             request.addParameter("SSLCertificateId", StringUtils.fromString(setLoadBalancerListenerSSLCertificateRequest.getSSLCertificateId()));
         }
-
 
         return request;
     }

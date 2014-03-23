@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,34 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeInstanceHealth(DescribeInstanceHealthRequest) DescribeInstanceHealth operation}.
  * <p>
- * Returns the current state of the instances of the specified LoadBalancer. If no instances are specified, the state of all the instances for the
- * LoadBalancer is returned.
+ * Returns the current state of the specified instances registered with
+ * the specified load balancer. If no instances are specified, the state
+ * of all the instances registered with the load balancer is returned.
  * </p>
  * <p>
- * <b>NOTE:</b> The client must have created the specified input LoadBalancer in order to retrieve this information; the client must provide the same
- * account credentials as those that were used to create the LoadBalancer.
+ * <b>NOTE:</b> You must provide the same account credentials as those
+ * that were used to create the load balancer.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeInstanceHealth(DescribeInstanceHealthRequest)
  */
-public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name of the load balancer.
      */
     private String loadBalancerName;
 
     /**
      * A list of instance IDs whose states are being queried.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * Default constructor for a new DescribeInstanceHealthRequest object.  Callers should use the
@@ -53,64 +55,54 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The name associated with the LoadBalancer. The
-     * name must be unique within the client AWS account.
+     * @param loadBalancerName The name of the load balancer.
      */
     public DescribeInstanceHealthRequest(String loadBalancerName) {
-        this.loadBalancerName = loadBalancerName;
+        setLoadBalancerName(loadBalancerName);
     }
 
-    
-    
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name of the load balancer.
      *
-     * @return The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @return The name of the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name of the load balancer.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name of the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer. The name must be unique
-     * within the client AWS account.
+     * The name of the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer. The name must be unique
-     *         within the client AWS account.
+     * @param loadBalancerName The name of the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * A list of instance IDs whose states are being queried.
      *
      * @return A list of instance IDs whose states are being queried.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -125,8 +117,7 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -139,7 +130,7 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      * @param instances A list of instance IDs whose states are being queried.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthRequest withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -157,20 +148,20 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
      * @param instances A list of instance IDs whose states are being queried.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceHealthRequest withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -182,8 +173,8 @@ public class DescribeInstanceHealthRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getInstances() != null) sb.append("Instances: " + getInstances() );
         sb.append("}");
         return sb.toString();

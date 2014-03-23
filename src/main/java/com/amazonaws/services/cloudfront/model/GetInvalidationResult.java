@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The returned result of the corresponding request.
  * </p>
  */
-public class GetInvalidationResult  implements Serializable  {
+public class GetInvalidationResult implements Serializable {
 
     /**
      * The invalidation's information.
@@ -53,14 +54,13 @@ public class GetInvalidationResult  implements Serializable  {
      * @param invalidation The invalidation's information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetInvalidationResult withInvalidation(Invalidation invalidation) {
         this.invalidation = invalidation;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class GetInvalidationResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInvalidation() != null) sb.append("Invalidation: " + getInvalidation() );
         sb.append("}");
         return sb.toString();

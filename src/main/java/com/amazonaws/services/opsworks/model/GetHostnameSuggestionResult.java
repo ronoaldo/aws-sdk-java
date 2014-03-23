@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the response to a <code>GetHostnameSuggestion</code> request.
  * </p>
  */
-public class GetHostnameSuggestionResult  implements Serializable  {
+public class GetHostnameSuggestionResult implements Serializable {
 
     /**
      * The layer ID.
@@ -28,7 +29,7 @@ public class GetHostnameSuggestionResult  implements Serializable  {
     private String layerId;
 
     /**
-     * The generated hostname.
+     * The generated host name.
      */
     private String hostname;
 
@@ -58,48 +59,46 @@ public class GetHostnameSuggestionResult  implements Serializable  {
      * @param layerId The layer ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetHostnameSuggestionResult withLayerId(String layerId) {
         this.layerId = layerId;
         return this;
     }
-    
-    
+
     /**
-     * The generated hostname.
+     * The generated host name.
      *
-     * @return The generated hostname.
+     * @return The generated host name.
      */
     public String getHostname() {
         return hostname;
     }
     
     /**
-     * The generated hostname.
+     * The generated host name.
      *
-     * @param hostname The generated hostname.
+     * @param hostname The generated host name.
      */
     public void setHostname(String hostname) {
         this.hostname = hostname;
     }
     
     /**
-     * The generated hostname.
+     * The generated host name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param hostname The generated hostname.
+     * @param hostname The generated host name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetHostnameSuggestionResult withHostname(String hostname) {
         this.hostname = hostname;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class GetHostnameSuggestionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");    	
+        sb.append("{");
+        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");
         if (getHostname() != null) sb.append("Hostname: " + getHostname() );
         sb.append("}");
         return sb.toString();

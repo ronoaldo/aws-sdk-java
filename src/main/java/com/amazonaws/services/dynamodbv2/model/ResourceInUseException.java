@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,9 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table, or tried to delete a table
- * currently in the <code>CREATING</code> state.
+ * The operation conflicts with the resource's availability. For example,
+ * you attempted to recreate an existing table, or tried to delete a
+ * table currently in the <code>CREATING</code> state.
  * </p>
  */        
 public class ResourceInUseException extends AmazonServiceException {

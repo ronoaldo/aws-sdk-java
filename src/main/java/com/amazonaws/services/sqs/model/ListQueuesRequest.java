@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sqs.AmazonSQS#listQueues(ListQueuesRequest) ListQueues operation}.
  * <p>
- * Returns a list of your queues.
+ * Returns a list of your queues. The maximum number of queues that can
+ * be returned is 1000. If you specify a value for the optional
+ * <code>QueueNamePrefix</code> parameter, only queues with a name
+ * beginning with the specified value are returned.
  * </p>
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#listQueues(ListQueuesRequest)
  */
-public class ListQueuesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListQueuesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string to use for filtering the list results. Only those queues
@@ -48,11 +53,9 @@ public class ListQueuesRequest extends AmazonWebServiceRequest  implements Seria
      * returned.
      */
     public ListQueuesRequest(String queueNamePrefix) {
-        this.queueNamePrefix = queueNamePrefix;
+        setQueueNamePrefix(queueNamePrefix);
     }
 
-    
-    
     /**
      * A string to use for filtering the list results. Only those queues
      * whose name begins with the specified string are returned.
@@ -85,14 +88,13 @@ public class ListQueuesRequest extends AmazonWebServiceRequest  implements Seria
      *         whose name begins with the specified string are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListQueuesRequest withQueueNamePrefix(String queueNamePrefix) {
         this.queueNamePrefix = queueNamePrefix;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -104,7 +106,7 @@ public class ListQueuesRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getQueueNamePrefix() != null) sb.append("QueueNamePrefix: " + getQueueNamePrefix() );
         sb.append("}");
         return sb.toString();

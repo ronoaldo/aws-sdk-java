@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#createUserProfile(CreateUserProfileRequest) CreateUserProfile operation}.
  * <p>
  * Creates a new user profile.
  * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have an attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#createUserProfile(CreateUserProfileRequest)
  */
-public class CreateUserProfileRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateUserProfileRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The user's IAM ARN.
@@ -40,6 +49,13 @@ public class CreateUserProfileRequest extends AmazonWebServiceRequest  implement
      * The user's public SSH key.
      */
     private String sshPublicKey;
+
+    /**
+     * Whether users can specify their own SSH public key through the My
+     * Settings page. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     */
+    private Boolean allowSelfManagement;
 
     /**
      * The user's IAM ARN.
@@ -67,14 +83,13 @@ public class CreateUserProfileRequest extends AmazonWebServiceRequest  implement
      * @param iamUserArn The user's IAM ARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateUserProfileRequest withIamUserArn(String iamUserArn) {
         this.iamUserArn = iamUserArn;
         return this;
     }
-    
-    
+
     /**
      * The user's SSH user name.
      *
@@ -101,14 +116,13 @@ public class CreateUserProfileRequest extends AmazonWebServiceRequest  implement
      * @param sshUsername The user's SSH user name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateUserProfileRequest withSshUsername(String sshUsername) {
         this.sshUsername = sshUsername;
         return this;
     }
-    
-    
+
     /**
      * The user's public SSH key.
      *
@@ -135,14 +149,71 @@ public class CreateUserProfileRequest extends AmazonWebServiceRequest  implement
      * @param sshPublicKey The user's public SSH key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateUserProfileRequest withSshPublicKey(String sshPublicKey) {
         this.sshPublicKey = sshPublicKey;
         return this;
     }
+
+    /**
+     * Whether users can specify their own SSH public key through the My
+     * Settings page. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     *
+     * @return Whether users can specify their own SSH public key through the My
+     *         Settings page. For more information, see <a
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     */
+    public Boolean isAllowSelfManagement() {
+        return allowSelfManagement;
+    }
     
+    /**
+     * Whether users can specify their own SSH public key through the My
+     * Settings page. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     *
+     * @param allowSelfManagement Whether users can specify their own SSH public key through the My
+     *         Settings page. For more information, see <a
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     */
+    public void setAllowSelfManagement(Boolean allowSelfManagement) {
+        this.allowSelfManagement = allowSelfManagement;
+    }
     
+    /**
+     * Whether users can specify their own SSH public key through the My
+     * Settings page. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param allowSelfManagement Whether users can specify their own SSH public key through the My
+     *         Settings page. For more information, see <a
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreateUserProfileRequest withAllowSelfManagement(Boolean allowSelfManagement) {
+        this.allowSelfManagement = allowSelfManagement;
+        return this;
+    }
+
+    /**
+     * Whether users can specify their own SSH public key through the My
+     * Settings page. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     *
+     * @return Whether users can specify their own SSH public key through the My
+     *         Settings page. For more information, see <a
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html"/>.
+     */
+    public Boolean getAllowSelfManagement() {
+        return allowSelfManagement;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -154,10 +225,11 @@ public class CreateUserProfileRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIamUserArn() != null) sb.append("IamUserArn: " + getIamUserArn() + ",");    	
-        if (getSshUsername() != null) sb.append("SshUsername: " + getSshUsername() + ",");    	
-        if (getSshPublicKey() != null) sb.append("SshPublicKey: " + getSshPublicKey() );
+        sb.append("{");
+        if (getIamUserArn() != null) sb.append("IamUserArn: " + getIamUserArn() + ",");
+        if (getSshUsername() != null) sb.append("SshUsername: " + getSshUsername() + ",");
+        if (getSshPublicKey() != null) sb.append("SshPublicKey: " + getSshPublicKey() + ",");
+        if (isAllowSelfManagement() != null) sb.append("AllowSelfManagement: " + isAllowSelfManagement() );
         sb.append("}");
         return sb.toString();
     }
@@ -170,6 +242,7 @@ public class CreateUserProfileRequest extends AmazonWebServiceRequest  implement
         hashCode = prime * hashCode + ((getIamUserArn() == null) ? 0 : getIamUserArn().hashCode()); 
         hashCode = prime * hashCode + ((getSshUsername() == null) ? 0 : getSshUsername().hashCode()); 
         hashCode = prime * hashCode + ((getSshPublicKey() == null) ? 0 : getSshPublicKey().hashCode()); 
+        hashCode = prime * hashCode + ((isAllowSelfManagement() == null) ? 0 : isAllowSelfManagement().hashCode()); 
         return hashCode;
     }
     
@@ -187,6 +260,8 @@ public class CreateUserProfileRequest extends AmazonWebServiceRequest  implement
         if (other.getSshUsername() != null && other.getSshUsername().equals(this.getSshUsername()) == false) return false; 
         if (other.getSshPublicKey() == null ^ this.getSshPublicKey() == null) return false;
         if (other.getSshPublicKey() != null && other.getSshPublicKey().equals(this.getSshPublicKey()) == false) return false; 
+        if (other.isAllowSelfManagement() == null ^ this.isAllowSelfManagement() == null) return false;
+        if (other.isAllowSelfManagement() != null && other.isAllowSelfManagement().equals(this.isAllowSelfManagement()) == false) return false; 
         return true;
     }
     

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.simpleworkflow.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class RespondDecisionTaskCompletedRequestMarshaller implements Marshaller<Request<RespondDecisionTaskCompletedRequest>, RespondDecisionTaskCompletedRequest> {
 
-    
-
     public Request<RespondDecisionTaskCompletedRequest> marshall(RespondDecisionTaskCompletedRequest respondDecisionTaskCompletedRequest) {
     if (respondDecisionTaskCompletedRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class RespondDecisionTaskCompletedRequestMarshaller implements Marshaller
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,22 +71,18 @@ public class RespondDecisionTaskCompletedRequestMarshaller implements Marshaller
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (respondDecisionTaskCompletedRequest.getTaskToken() != null) {
                 jsonWriter.key("taskToken").value(respondDecisionTaskCompletedRequest.getTaskToken());
             }
 
-            java.util.List<Decision> decisionsList = respondDecisionTaskCompletedRequest.getDecisions();
-            if (decisionsList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<Decision> decisionsList = (com.amazonaws.internal.ListWithAutoConstructFlag<Decision>)(respondDecisionTaskCompletedRequest.getDecisions());
+            if (decisionsList != null && !(decisionsList.isAutoConstruct() && decisionsList.isEmpty())) {
 
                 jsonWriter.key("decisions");
                 jsonWriter.array();
@@ -232,8 +224,8 @@ public class RespondDecisionTaskCompletedRequestMarshaller implements Marshaller
                                 jsonWriter.key("childPolicy").value(continueAsNewWorkflowExecutionDecisionAttributes.getChildPolicy());
                             }
 
-                            java.util.List<String> tagListList = continueAsNewWorkflowExecutionDecisionAttributes.getTagList();
-                            if (tagListList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(continueAsNewWorkflowExecutionDecisionAttributes.getTagList());
+                            if (tagListList != null && !(tagListList.isAutoConstruct() && tagListList.isEmpty())) {
 
                                 jsonWriter.key("tagList");
                                 jsonWriter.array();
@@ -382,8 +374,8 @@ public class RespondDecisionTaskCompletedRequestMarshaller implements Marshaller
                                 jsonWriter.key("childPolicy").value(startChildWorkflowExecutionDecisionAttributes.getChildPolicy());
                             }
 
-                            java.util.List<String> tagListList = startChildWorkflowExecutionDecisionAttributes.getTagList();
-                            if (tagListList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(startChildWorkflowExecutionDecisionAttributes.getTagList());
+                            if (tagListList != null && !(tagListList.isAutoConstruct() && tagListList.isEmpty())) {
 
                                 jsonWriter.key("tagList");
                                 jsonWriter.array();
@@ -407,22 +399,15 @@ public class RespondDecisionTaskCompletedRequestMarshaller implements Marshaller
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

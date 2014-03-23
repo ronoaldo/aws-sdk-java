@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,14 +20,14 @@ package com.amazonaws.services.elasticmapreduce.model;
 public enum InstanceGroupState {
     
     PROVISIONING("PROVISIONING"),
-    STARTING("STARTING"),
     BOOTSTRAPPING("BOOTSTRAPPING"),
     RUNNING("RUNNING"),
     RESIZING("RESIZING"),
+    SUSPENDED("SUSPENDED"),
+    TERMINATING("TERMINATING"),
+    TERMINATED("TERMINATED"),
     ARRESTED("ARRESTED"),
     SHUTTING_DOWN("SHUTTING_DOWN"),
-    TERMINATED("TERMINATED"),
-    FAILED("FAILED"),
     ENDED("ENDED");
 
     private String value;
@@ -54,22 +54,22 @@ public enum InstanceGroupState {
         
         } else if ("PROVISIONING".equals(value)) {
             return InstanceGroupState.PROVISIONING;
-        } else if ("STARTING".equals(value)) {
-            return InstanceGroupState.STARTING;
         } else if ("BOOTSTRAPPING".equals(value)) {
             return InstanceGroupState.BOOTSTRAPPING;
         } else if ("RUNNING".equals(value)) {
             return InstanceGroupState.RUNNING;
         } else if ("RESIZING".equals(value)) {
             return InstanceGroupState.RESIZING;
+        } else if ("SUSPENDED".equals(value)) {
+            return InstanceGroupState.SUSPENDED;
+        } else if ("TERMINATING".equals(value)) {
+            return InstanceGroupState.TERMINATING;
+        } else if ("TERMINATED".equals(value)) {
+            return InstanceGroupState.TERMINATED;
         } else if ("ARRESTED".equals(value)) {
             return InstanceGroupState.ARRESTED;
         } else if ("SHUTTING_DOWN".equals(value)) {
             return InstanceGroupState.SHUTTING_DOWN;
-        } else if ("TERMINATED".equals(value)) {
-            return InstanceGroupState.TERMINATED;
-        } else if ("FAILED".equals(value)) {
-            return InstanceGroupState.FAILED;
         } else if ("ENDED".equals(value)) {
             return InstanceGroupState.ENDED;
         } else {

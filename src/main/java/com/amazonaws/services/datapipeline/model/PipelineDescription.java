@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains pipeline metadata.
  * </p>
  */
-public class PipelineDescription  implements Serializable  {
+public class PipelineDescription implements Serializable {
 
     /**
      * The pipeline identifier that was assigned by AWS Data Pipeline. This
@@ -45,7 +46,7 @@ public class PipelineDescription  implements Serializable  {
      * A list of read-only fields that contain metadata about the pipeline:
      * @userId, @accountId, and @pipelineState.
      */
-    private java.util.List<Field> fields;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Field> fields;
 
     /**
      * Description of the pipeline.
@@ -100,14 +101,13 @@ public class PipelineDescription  implements Serializable  {
      *         is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineDescription withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * Name of the pipeline.
      * <p>
@@ -146,14 +146,13 @@ public class PipelineDescription  implements Serializable  {
      * @param name Name of the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineDescription withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A list of read-only fields that contain metadata about the pipeline:
      * @userId, @accountId, and @pipelineState.
@@ -162,9 +161,9 @@ public class PipelineDescription  implements Serializable  {
      *         @userId, @accountId, and @pipelineState.
      */
     public java.util.List<Field> getFields() {
-        
         if (fields == null) {
-            fields = new java.util.ArrayList<Field>();
+              fields = new com.amazonaws.internal.ListWithAutoConstructFlag<Field>();
+              fields.setAutoConstruct(true);
         }
         return fields;
     }
@@ -181,8 +180,7 @@ public class PipelineDescription  implements Serializable  {
             this.fields = null;
             return;
         }
-
-        java.util.List<Field> fieldsCopy = new java.util.ArrayList<Field>(fields.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Field> fieldsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Field>(fields.size());
         fieldsCopy.addAll(fields);
         this.fields = fieldsCopy;
     }
@@ -197,7 +195,7 @@ public class PipelineDescription  implements Serializable  {
      *         @userId, @accountId, and @pipelineState.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineDescription withFields(Field... fields) {
         if (getFields() == null) setFields(new java.util.ArrayList<Field>(fields.length));
@@ -217,20 +215,20 @@ public class PipelineDescription  implements Serializable  {
      *         @userId, @accountId, and @pipelineState.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineDescription withFields(java.util.Collection<Field> fields) {
         if (fields == null) {
             this.fields = null;
         } else {
-            java.util.List<Field> fieldsCopy = new java.util.ArrayList<Field>(fields.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Field> fieldsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Field>(fields.size());
             fieldsCopy.addAll(fields);
             this.fields = fieldsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Description of the pipeline.
      * <p>
@@ -269,14 +267,13 @@ public class PipelineDescription  implements Serializable  {
      * @param description Description of the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineDescription withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -288,10 +285,10 @@ public class PipelineDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getFields() != null) sb.append("Fields: " + getFields() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getFields() != null) sb.append("Fields: " + getFields() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

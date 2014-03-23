@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the solution stack.
  * </p>
  */
-public class SolutionStackDescription  implements Serializable  {
+public class SolutionStackDescription implements Serializable {
 
     /**
      * The name of the solution stack.
@@ -33,7 +34,7 @@ public class SolutionStackDescription  implements Serializable  {
     /**
      * The permitted file types allowed for a solution stack.
      */
-    private java.util.List<String> permittedFileTypes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> permittedFileTypes;
 
     /**
      * The name of the solution stack.
@@ -70,23 +71,22 @@ public class SolutionStackDescription  implements Serializable  {
      * @param solutionStackName The name of the solution stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SolutionStackDescription withSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
         return this;
     }
-    
-    
+
     /**
      * The permitted file types allowed for a solution stack.
      *
      * @return The permitted file types allowed for a solution stack.
      */
     public java.util.List<String> getPermittedFileTypes() {
-        
         if (permittedFileTypes == null) {
-            permittedFileTypes = new java.util.ArrayList<String>();
+              permittedFileTypes = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              permittedFileTypes.setAutoConstruct(true);
         }
         return permittedFileTypes;
     }
@@ -101,8 +101,7 @@ public class SolutionStackDescription  implements Serializable  {
             this.permittedFileTypes = null;
             return;
         }
-
-        java.util.List<String> permittedFileTypesCopy = new java.util.ArrayList<String>(permittedFileTypes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> permittedFileTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(permittedFileTypes.size());
         permittedFileTypesCopy.addAll(permittedFileTypes);
         this.permittedFileTypes = permittedFileTypesCopy;
     }
@@ -115,7 +114,7 @@ public class SolutionStackDescription  implements Serializable  {
      * @param permittedFileTypes The permitted file types allowed for a solution stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SolutionStackDescription withPermittedFileTypes(String... permittedFileTypes) {
         if (getPermittedFileTypes() == null) setPermittedFileTypes(new java.util.ArrayList<String>(permittedFileTypes.length));
@@ -133,20 +132,20 @@ public class SolutionStackDescription  implements Serializable  {
      * @param permittedFileTypes The permitted file types allowed for a solution stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SolutionStackDescription withPermittedFileTypes(java.util.Collection<String> permittedFileTypes) {
         if (permittedFileTypes == null) {
             this.permittedFileTypes = null;
         } else {
-            java.util.List<String> permittedFileTypesCopy = new java.util.ArrayList<String>(permittedFileTypes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> permittedFileTypesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(permittedFileTypes.size());
             permittedFileTypesCopy.addAll(permittedFileTypes);
             this.permittedFileTypes = permittedFileTypesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +157,8 @@ public class SolutionStackDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");    	
+        sb.append("{");
+        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");
         if (getPermittedFileTypes() != null) sb.append("PermittedFileTypes: " + getPermittedFileTypes() );
         sb.append("}");
         return sb.toString();

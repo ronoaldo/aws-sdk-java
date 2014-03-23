@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the response to a <code>CreateUserProfile</code> request.
  * </p>
  */
-public class CreateUserProfileResult  implements Serializable  {
+public class CreateUserProfileResult implements Serializable {
 
     /**
      * The user's IAM ARN.
@@ -53,14 +54,13 @@ public class CreateUserProfileResult  implements Serializable  {
      * @param iamUserArn The user's IAM ARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateUserProfileResult withIamUserArn(String iamUserArn) {
         this.iamUserArn = iamUserArn;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class CreateUserProfileResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getIamUserArn() != null) sb.append("IamUserArn: " + getIamUserArn() );
         sb.append("}");
         return sb.toString();

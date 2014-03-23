@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A regular expression representing a restriction on a string configuration option value.
+ * A regular expression representing a restriction on a string
+ * configuration option value.
  * </p>
  */
-public class OptionRestrictionRegex  implements Serializable  {
+public class OptionRestrictionRegex implements Serializable {
 
     /**
      * The regular expression pattern that a string configuration option
@@ -71,14 +73,13 @@ public class OptionRestrictionRegex  implements Serializable  {
      *         value with this restriction must match.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionRestrictionRegex withPattern(String pattern) {
         this.pattern = pattern;
         return this;
     }
-    
-    
+
     /**
      * A unique name representing this regular expression.
      *
@@ -105,14 +106,13 @@ public class OptionRestrictionRegex  implements Serializable  {
      * @param label A unique name representing this regular expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionRestrictionRegex withLabel(String label) {
         this.label = label;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -124,8 +124,8 @@ public class OptionRestrictionRegex  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPattern() != null) sb.append("Pattern: " + getPattern() + ",");    	
+        sb.append("{");
+        if (getPattern() != null) sb.append("Pattern: " + getPattern() + ",");
         if (getLabel() != null) sb.append("Label: " + getLabel() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateClusterRequestMarshaller implements Marshaller<Request<Create
     public Request<CreateClusterRequest> marshall(CreateClusterRequest createClusterRequest) {
 
         if (createClusterRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateClusterRequest> request = new DefaultRequest<CreateClusterRequest>(createClusterRequest, "AmazonRedshift");
         request.addParameter("Action", "CreateCluster");
@@ -113,7 +113,15 @@ public class CreateClusterRequestMarshaller implements Marshaller<Request<Create
         if (createClusterRequest.isEncrypted() != null) {
             request.addParameter("Encrypted", StringUtils.fromBoolean(createClusterRequest.isEncrypted()));
         }
-
+        if (createClusterRequest.getHsmClientCertificateIdentifier() != null) {
+            request.addParameter("HsmClientCertificateIdentifier", StringUtils.fromString(createClusterRequest.getHsmClientCertificateIdentifier()));
+        }
+        if (createClusterRequest.getHsmConfigurationIdentifier() != null) {
+            request.addParameter("HsmConfigurationIdentifier", StringUtils.fromString(createClusterRequest.getHsmConfigurationIdentifier()));
+        }
+        if (createClusterRequest.getElasticIp() != null) {
+            request.addParameter("ElasticIp", StringUtils.fromString(createClusterRequest.getElasticIp()));
+        }
 
         return request;
     }

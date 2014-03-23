@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,8 @@
  */
 package com.amazonaws.auth;
 
-import java.io.UnsupportedEncodingException;
+import static com.amazonaws.util.StringUtils.UTF8;
+
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,7 +38,6 @@ import com.amazonaws.util.HttpUtils;
  * Signer implementation that signs requests with the AWS3 signing protocol.
  */
 public class AWS3Signer extends AbstractAWSSigner {
-
     private static final String AUTHORIZATION_HEADER = "X-Amzn-Authorization";
     private static final String NONCE_HEADER = "x-amz-nonce";
     private static final String HTTP_SCHEME = "AWS3";
@@ -68,7 +68,9 @@ public class AWS3Signer extends AbstractAWSSigner {
 
         SigningAlgorithm algorithm = SigningAlgorithm.HmacSHA256;
         String nonce = UUID.randomUUID().toString();
-        Date dateValue = getSignatureDate(request.getTimeOffset());
+
+        int timeOffset = getTimeOffset(request);
+        Date dateValue = getSignatureDate(timeOffset);
         String date = dateUtils.formatRfc822Date(dateValue);
         boolean isHttps = false;
 
@@ -92,12 +94,10 @@ public class AWS3Signer extends AbstractAWSSigner {
         if (isHttps) {
             request.addHeader(NONCE_HEADER, nonce);
             stringToSign = date + nonce;
-            try {
-                bytesToSign = stringToSign.getBytes("UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                throw new AmazonClientException("Unable to serialize string to bytes: " + e.getMessage(), e);
-            }
+            bytesToSign = stringToSign.getBytes(UTF8);
         } else {
+            String path = HttpUtils.appendUri(request.getEndpoint().getPath(), request.getResourcePath());
+
             /*
              * AWS3 requires all query params to be listed on the third line of
              * the string to sign, even if those query params will be sent in
@@ -105,7 +105,7 @@ public class AWS3Signer extends AbstractAWSSigner {
              * params should *NOT* be included in the request payload.
              */
             stringToSign = request.getHttpMethod().toString() + "\n"
-                    + getCanonicalizedResourcePath(request.getResourcePath()) + "\n"
+                    + getCanonicalizedResourcePath(path) + "\n"
                     + getCanonicalizedQueryString(request.getParameters()) + "\n"
                     + getCanonicalizedHeadersForStringToSign(request) + "\n"
                     + getRequestPayloadWithoutQueryParams(request);

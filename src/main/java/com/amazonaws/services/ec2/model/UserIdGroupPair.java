@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,146 +13,130 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An AWS user ID identifiying an AWS account, and the name of a security group within that account.
+ * Describes a security group and AWS account ID pair for EC2-Classic.
  * </p>
  */
-public class UserIdGroupPair  implements Serializable  {
+public class UserIdGroupPair implements Serializable {
 
     /**
-     * The AWS user ID of an account.
+     * The ID of an AWS account.
      */
     private String userId;
 
     /**
-     * Name of the security group in the specified AWS account. Cannot be
-     * used when specifying a CIDR IP address range.
+     * The ID of the security group owned by the specified AWS account.
      */
     private String groupName;
 
     /**
-     * ID of the security group in the specified AWS account. Cannot be used
-     * when specifying a CIDR IP address range.
+     * The name of the security group in the specified AWS account.
      */
     private String groupId;
 
     /**
-     * The AWS user ID of an account.
+     * The ID of an AWS account.
      *
-     * @return The AWS user ID of an account.
+     * @return The ID of an AWS account.
      */
     public String getUserId() {
         return userId;
     }
     
     /**
-     * The AWS user ID of an account.
+     * The ID of an AWS account.
      *
-     * @param userId The AWS user ID of an account.
+     * @param userId The ID of an AWS account.
      */
     public void setUserId(String userId) {
         this.userId = userId;
     }
     
     /**
-     * The AWS user ID of an account.
+     * The ID of an AWS account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userId The AWS user ID of an account.
+     * @param userId The ID of an AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UserIdGroupPair withUserId(String userId) {
         this.userId = userId;
         return this;
     }
-    
-    
+
     /**
-     * Name of the security group in the specified AWS account. Cannot be
-     * used when specifying a CIDR IP address range.
+     * The ID of the security group owned by the specified AWS account.
      *
-     * @return Name of the security group in the specified AWS account. Cannot be
-     *         used when specifying a CIDR IP address range.
+     * @return The ID of the security group owned by the specified AWS account.
      */
     public String getGroupName() {
         return groupName;
     }
     
     /**
-     * Name of the security group in the specified AWS account. Cannot be
-     * used when specifying a CIDR IP address range.
+     * The ID of the security group owned by the specified AWS account.
      *
-     * @param groupName Name of the security group in the specified AWS account. Cannot be
-     *         used when specifying a CIDR IP address range.
+     * @param groupName The ID of the security group owned by the specified AWS account.
      */
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
     
     /**
-     * Name of the security group in the specified AWS account. Cannot be
-     * used when specifying a CIDR IP address range.
+     * The ID of the security group owned by the specified AWS account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupName Name of the security group in the specified AWS account. Cannot be
-     *         used when specifying a CIDR IP address range.
+     * @param groupName The ID of the security group owned by the specified AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UserIdGroupPair withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
-     * ID of the security group in the specified AWS account. Cannot be used
-     * when specifying a CIDR IP address range.
+     * The name of the security group in the specified AWS account.
      *
-     * @return ID of the security group in the specified AWS account. Cannot be used
-     *         when specifying a CIDR IP address range.
+     * @return The name of the security group in the specified AWS account.
      */
     public String getGroupId() {
         return groupId;
     }
     
     /**
-     * ID of the security group in the specified AWS account. Cannot be used
-     * when specifying a CIDR IP address range.
+     * The name of the security group in the specified AWS account.
      *
-     * @param groupId ID of the security group in the specified AWS account. Cannot be used
-     *         when specifying a CIDR IP address range.
+     * @param groupId The name of the security group in the specified AWS account.
      */
     public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
     
     /**
-     * ID of the security group in the specified AWS account. Cannot be used
-     * when specifying a CIDR IP address range.
+     * The name of the security group in the specified AWS account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupId ID of the security group in the specified AWS account. Cannot be used
-     *         when specifying a CIDR IP address range.
+     * @param groupId The name of the security group in the specified AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UserIdGroupPair withGroupId(String groupId) {
         this.groupId = groupId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -164,9 +148,9 @@ public class UserIdGroupPair  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
+        sb.append("{");
+        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
         if (getGroupId() != null) sb.append("GroupId: " + getGroupId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
  */
 package com.amazonaws.services.s3.transfer.internal;
 
-import com.amazonaws.services.s3.model.ProgressEvent;
-import com.amazonaws.services.s3.model.ProgressListener;
+import com.amazonaws.event.ProgressListener;
+import com.amazonaws.event.ProgressEvent;
 
 public class TransferProgressUpdatingListener implements ProgressListener {
     private final TransferProgressImpl transferProgress;
@@ -25,6 +25,6 @@ public class TransferProgressUpdatingListener implements ProgressListener {
     }
         
     public void progressChanged(ProgressEvent progressEvent) {
-        transferProgress.updateProgress(progressEvent.getBytesTransfered());
+        transferProgress.updateProgress(progressEvent.getBytesTransferred());
     }
 }

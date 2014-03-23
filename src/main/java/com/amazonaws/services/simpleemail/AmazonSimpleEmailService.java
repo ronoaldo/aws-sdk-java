@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,15 +21,16 @@ import com.amazonaws.services.simpleemail.model.*;
 /**
  * Interface for accessing AmazonSimpleEmailService.
  * Amazon Simple Email Service <p>
- * This is the API Reference for Amazon Simple Email Service (Amazon SES). This documentation is intended to be used in conjunction with the Amazon SES
- * Getting Started Guide and the Amazon SES Developer Guide.
+ * This is the API Reference for Amazon Simple Email Service (Amazon
+ * SES). This documentation is intended to be used in conjunction with
+ * the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  * <p>
- * For specific details on how to construct a service request, please consult the <a href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
- * Amazon SES Developer Guide </a> .
- * </p>
- * <p>
- * <b>NOTE:</b>The endpoint for Amazon SES is located at: https://email.us-east-1.amazonaws.com
+ * <b>NOTE:</b>For a list of Amazon SES endpoints to use in service
+ * requests, see Regions and Amazon SES in the Amazon SES Developer
+ * Guide.
  * </p>
  */
 public interface AmazonSimpleEmailService {
@@ -90,11 +91,14 @@ public interface AmazonSimpleEmailService {
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      */
     public void setRegion(Region region) throws java.lang.IllegalArgumentException;
-	
+    
     /**
      * <p>
      * Deletes the specified identity (email address or domain) from the list
      * of verified identities.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param deleteIdentityRequest Container for the necessary parameters to
@@ -125,6 +129,9 @@ public interface AmazonSimpleEmailService {
      * as of the May 15, 2012 release of Domain Verification. The
      * ListIdentities action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param listVerifiedEmailAddressesRequest Container for the necessary
      *           parameters to execute the ListVerifiedEmailAddresses service method on
@@ -154,6 +161,9 @@ public interface AmazonSimpleEmailService {
      * Each data point in the list contains statistics for a 15-minute
      * interval.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param getSendStatisticsRequest Container for the necessary parameters
      *           to execute the GetSendStatistics service method on
@@ -179,6 +189,9 @@ public interface AmazonSimpleEmailService {
      * Verifies an email address. This action causes a confirmation email
      * message to be sent to the specified address.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param verifyEmailIdentityRequest Container for the necessary
      *           parameters to execute the VerifyEmailIdentity service method on
@@ -202,10 +215,15 @@ public interface AmazonSimpleEmailService {
     /**
      * <p>
      * Given a list of verified identities (email addresses and/or domains),
-     * returns a structure describing identity notification attributes. For
-     * more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * returns a structure describing identity notification attributes.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityNotificationAttributesRequest Container for the
@@ -229,24 +247,26 @@ public interface AmazonSimpleEmailService {
 
     /**
      * <p>
-     * Returns a set of DNS records, or <i>tokens</i> , that must be
-     * published in the domain name's DNS to complete the DKIM verification
-     * process. These tokens are DNS <code>CNAME</code> records that point to
-     * DKIM public keys hosted by Amazon SES. To complete the DKIM
-     * verification process, these tokens must be published in the domain's
-     * DNS. The tokens must remain published in order for Easy DKIM signing
-     * to function correctly.
+     * Returns a set of DKIM tokens for a domain. DKIM <i>tokens</i> are
+     * character strings that represent your domain's identity. Using these
+     * tokens, you will need to create DNS CNAME records that point to DKIM
+     * public keys hosted by Amazon SES. Amazon Web Services will eventually
+     * detect that you have updated your DNS records; this detection process
+     * may take up to 72 hours. Upon successful detection, Amazon SES will be
+     * able to DKIM-sign email originating from that domain.
      * </p>
      * <p>
-     * After the tokens are added to the domain's DNS, Amazon SES will be
-     * able to DKIM-sign email originating from that domain. To enable or
-     * disable Easy DKIM signing for a domain, use the
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * To enable or disable Easy DKIM signing for a domain, use the
      * <code>SetIdentityDkimEnabled</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param verifyDomainDkimRequest Container for the necessary parameters
@@ -270,30 +290,34 @@ public interface AmazonSimpleEmailService {
 
     /**
      * <p>
-     * Returns the DNS records, or <i>tokens</i> , that must be present in
-     * order for Easy DKIM to sign outgoing email messages.
+     * Returns the current status of Easy DKIM signing for an entity. For
+     * domain name identities, this action also returns the DKIM tokens that
+     * are required for Easy DKIM signing, and whether Amazon SES has
+     * successfully verified that these tokens have been published.
      * </p>
      * <p>
-     * This action takes a list of verified identities as input. It then
-     * returns the following information for each identity:
+     * This action takes a list of identities as input and returns the
+     * following information for each:
      * </p>
      * 
      * <ul>
      * <li>Whether Easy DKIM signing is enabled or disabled.</li>
-     * <li>The set of tokens that are required for Easy DKIM signing. These
-     * tokens must be published in the domain name's DNS records in order for
-     * DKIM verification to complete, and must remain published in order for
-     * Easy DKIM signing to operate correctly. (This information is only
-     * returned for domain name identities, not for email addresses.)</li>
+     * <li>A set of DKIM tokens that represent the identity. If the identity
+     * is an email address, the tokens represent the domain of that
+     * address.</li>
      * <li>Whether Amazon SES has successfully verified the DKIM tokens
-     * published in the domain name's DNS. (This information is only returned
-     * for domain name identities, not for email addresses.)</li>
+     * published in the domain's DNS. This information is only returned for
+     * domain name identities, not for email addresses.</li>
      * 
      * </ul>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityDkimAttributesRequest Container for the necessary
@@ -325,10 +349,14 @@ public interface AmazonSimpleEmailService {
      * May 15, 2012 release of Domain Verification. The VerifyEmailIdentity
      * action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param verifyEmailAddressRequest Container for the necessary
      *           parameters to execute the VerifyEmailAddress service method on
      *           AmazonSimpleEmailService.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -350,10 +378,11 @@ public interface AmazonSimpleEmailService {
      * Internet email standards; otherwise, the message cannot be sent.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB. This includes any
@@ -370,10 +399,9 @@ public interface AmazonSimpleEmailService {
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendRawEmailRequest Container for the necessary parameters to
@@ -401,6 +429,9 @@ public interface AmazonSimpleEmailService {
      * domains) for a specific AWS Account, regardless of verification
      * status.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param listIdentitiesRequest Container for the necessary parameters to
      *           execute the ListIdentities service method on AmazonSimpleEmailService.
@@ -425,6 +456,9 @@ public interface AmazonSimpleEmailService {
      * Given a list of identities (email addresses and/or domains), returns
      * the verification status and (for domain identities) the verification
      * token for each identity.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getIdentityVerificationAttributesRequest Container for the
@@ -467,9 +501,12 @@ public interface AmazonSimpleEmailService {
      * Console or the <code>VerifyDomainDkim</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about Easy DKIM signing, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityDkimEnabledRequest Container for the necessary
@@ -495,6 +532,9 @@ public interface AmazonSimpleEmailService {
      * <p>
      * Returns the user's current sending limits.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param getSendQuotaRequest Container for the necessary parameters to
      *           execute the GetSendQuota service method on AmazonSimpleEmailService.
@@ -519,9 +559,15 @@ public interface AmazonSimpleEmailService {
      * Given an identity (email address or domain), enables or disables
      * whether Amazon SES forwards feedback notifications as email. Feedback
      * forwarding may only be disabled when both complaint and bounce topics
-     * are set. For more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * are set.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityFeedbackForwardingEnabledRequest Container for the
@@ -547,6 +593,9 @@ public interface AmazonSimpleEmailService {
     /**
      * <p>
      * Verifies a domain.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyDomainIdentityRequest Container for the necessary
@@ -574,10 +623,11 @@ public interface AmazonSimpleEmailService {
      * queues the message for sending.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB.
@@ -593,10 +643,9 @@ public interface AmazonSimpleEmailService {
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendEmailRequest Container for the necessary parameters to
@@ -628,10 +677,14 @@ public interface AmazonSimpleEmailService {
      * as of the May 15, 2012 release of Domain Verification. The
      * DeleteIdentity action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param deleteVerifiedEmailAddressRequest Container for the necessary
      *           parameters to execute the DeleteVerifiedEmailAddress service method on
      *           AmazonSimpleEmailService.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -651,10 +704,15 @@ public interface AmazonSimpleEmailService {
      * to which Amazon SES will publish bounce and complaint notifications
      * for emails sent with that identity as the <code>Source</code> .
      * Publishing to topics may only be disabled when feedback
-     * forwarding is enabled. For more information about feedback
-     * notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * forwarding is enabled.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityNotificationTopicRequest Container for the necessary
@@ -686,6 +744,9 @@ public interface AmazonSimpleEmailService {
      * as of the May 15, 2012 release of Domain Verification. The
      * ListIdentities action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      * 
      * @return The response from the ListVerifiedEmailAddresses service
      *         method, as returned by AmazonSimpleEmailService.
@@ -710,6 +771,9 @@ public interface AmazonSimpleEmailService {
      * Each data point in the list contains statistics for a 15-minute
      * interval.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      * 
      * @return The response from the GetSendStatistics service method, as
      *         returned by AmazonSimpleEmailService.
@@ -731,6 +795,9 @@ public interface AmazonSimpleEmailService {
      * domains) for a specific AWS Account, regardless of verification
      * status.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      * 
      * @return The response from the ListIdentities service method, as
      *         returned by AmazonSimpleEmailService.
@@ -749,6 +816,9 @@ public interface AmazonSimpleEmailService {
     /**
      * <p>
      * Returns the user's current sending limits.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      * 
      * @return The response from the GetSendQuota service method, as returned
@@ -791,6 +861,5 @@ public interface AmazonSimpleEmailService {
      *         is available.
      */
     public ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
-
 }
         

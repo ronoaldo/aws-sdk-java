@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,52 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Create Spot Datafeed Subscription Result
+ * 
  */
-public class CreateSpotDatafeedSubscriptionResult  implements Serializable  {
+public class CreateSpotDatafeedSubscriptionResult implements Serializable {
 
     /**
-     * The SpotDatafeedSubscriptionType data type.
+     * The Spot Instance datafeed subscription.
      */
     private SpotDatafeedSubscription spotDatafeedSubscription;
 
     /**
-     * The SpotDatafeedSubscriptionType data type.
+     * The Spot Instance datafeed subscription.
      *
-     * @return The SpotDatafeedSubscriptionType data type.
+     * @return The Spot Instance datafeed subscription.
      */
     public SpotDatafeedSubscription getSpotDatafeedSubscription() {
         return spotDatafeedSubscription;
     }
     
     /**
-     * The SpotDatafeedSubscriptionType data type.
+     * The Spot Instance datafeed subscription.
      *
-     * @param spotDatafeedSubscription The SpotDatafeedSubscriptionType data type.
+     * @param spotDatafeedSubscription The Spot Instance datafeed subscription.
      */
     public void setSpotDatafeedSubscription(SpotDatafeedSubscription spotDatafeedSubscription) {
         this.spotDatafeedSubscription = spotDatafeedSubscription;
     }
     
     /**
-     * The SpotDatafeedSubscriptionType data type.
+     * The Spot Instance datafeed subscription.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param spotDatafeedSubscription The SpotDatafeedSubscriptionType data type.
+     * @param spotDatafeedSubscription The Spot Instance datafeed subscription.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSpotDatafeedSubscriptionResult withSpotDatafeedSubscription(SpotDatafeedSubscription spotDatafeedSubscription) {
         this.spotDatafeedSubscription = spotDatafeedSubscription;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -70,7 +70,7 @@ public class CreateSpotDatafeedSubscriptionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSpotDatafeedSubscription() != null) sb.append("SpotDatafeedSubscription: " + getSpotDatafeedSubscription() );
         sb.append("}");
         return sb.toString();

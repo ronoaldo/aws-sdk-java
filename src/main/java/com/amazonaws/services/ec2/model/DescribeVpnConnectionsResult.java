@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
  * 
- * </p>
  */
-public class DescribeVpnConnectionsResult  implements Serializable  {
+public class DescribeVpnConnectionsResult implements Serializable {
 
     /**
-     * 
+     * Information about one or more VPN connections.
      */
-    private java.util.List<VpnConnection> vpnConnections;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VpnConnection> vpnConnections;
 
     /**
-     * 
+     * Information about one or more VPN connections.
      *
-     * @return 
+     * @return Information about one or more VPN connections.
      */
     public java.util.List<VpnConnection> getVpnConnections() {
-        
         if (vpnConnections == null) {
-            vpnConnections = new java.util.ArrayList<VpnConnection>();
+              vpnConnections = new com.amazonaws.internal.ListWithAutoConstructFlag<VpnConnection>();
+              vpnConnections.setAutoConstruct(true);
         }
         return vpnConnections;
     }
     
     /**
-     * 
+     * Information about one or more VPN connections.
      *
-     * @param vpnConnections 
+     * @param vpnConnections Information about one or more VPN connections.
      */
     public void setVpnConnections(java.util.Collection<VpnConnection> vpnConnections) {
         if (vpnConnections == null) {
             this.vpnConnections = null;
             return;
         }
-
-        java.util.List<VpnConnection> vpnConnectionsCopy = new java.util.ArrayList<VpnConnection>(vpnConnections.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VpnConnection> vpnConnectionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpnConnection>(vpnConnections.size());
         vpnConnectionsCopy.addAll(vpnConnections);
         this.vpnConnections = vpnConnectionsCopy;
     }
     
     /**
-     * 
+     * Information about one or more VPN connections.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpnConnections 
+     * @param vpnConnections Information about one or more VPN connections.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpnConnectionsResult withVpnConnections(VpnConnection... vpnConnections) {
         if (getVpnConnections() == null) setVpnConnections(new java.util.ArrayList<VpnConnection>(vpnConnections.length));
@@ -75,27 +73,27 @@ public class DescribeVpnConnectionsResult  implements Serializable  {
     }
     
     /**
-     * 
+     * Information about one or more VPN connections.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpnConnections 
+     * @param vpnConnections Information about one or more VPN connections.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpnConnectionsResult withVpnConnections(java.util.Collection<VpnConnection> vpnConnections) {
         if (vpnConnections == null) {
             this.vpnConnections = null;
         } else {
-            java.util.List<VpnConnection> vpnConnectionsCopy = new java.util.ArrayList<VpnConnection>(vpnConnections.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VpnConnection> vpnConnectionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpnConnection>(vpnConnections.size());
             vpnConnectionsCopy.addAll(vpnConnections);
             this.vpnConnections = vpnConnectionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeVpnConnectionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVpnConnections() != null) sb.append("VpnConnections: " + getVpnConnections() );
         sb.append("}");
         return sb.toString();

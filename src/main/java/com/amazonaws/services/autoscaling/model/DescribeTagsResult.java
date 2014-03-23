@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class DescribeTagsResult  implements Serializable  {
+public class DescribeTagsResult implements Serializable {
 
     /**
      * The list of tags.
      */
-    private java.util.List<TagDescription> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription> tags;
 
     /**
      * A string used to mark the start of the next batch of returned results.
@@ -41,9 +42,9 @@ public class DescribeTagsResult  implements Serializable  {
      * @return The list of tags.
      */
     public java.util.List<TagDescription> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<TagDescription>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
@@ -58,8 +59,7 @@ public class DescribeTagsResult  implements Serializable  {
             this.tags = null;
             return;
         }
-
-        java.util.List<TagDescription> tagsCopy = new java.util.ArrayList<TagDescription>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
@@ -72,7 +72,7 @@ public class DescribeTagsResult  implements Serializable  {
      * @param tags The list of tags.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTagsResult withTags(TagDescription... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<TagDescription>(tags.length));
@@ -90,20 +90,20 @@ public class DescribeTagsResult  implements Serializable  {
      * @param tags The list of tags.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTagsResult withTags(java.util.Collection<TagDescription> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<TagDescription> tagsCopy = new java.util.ArrayList<TagDescription>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TagDescription>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string used to mark the start of the next batch of returned results.
      * <p>
@@ -139,14 +139,13 @@ public class DescribeTagsResult  implements Serializable  {
      * @param nextToken A string used to mark the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTagsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +157,8 @@ public class DescribeTagsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
+        sb.append("{");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

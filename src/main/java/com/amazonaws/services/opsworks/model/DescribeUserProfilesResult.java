@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeUserProfiles</code> request.
  * </p>
  */
-public class DescribeUserProfilesResult  implements Serializable  {
+public class DescribeUserProfilesResult implements Serializable {
 
     /**
      * A <code>Users</code> object that describes the specified users.
      */
-    private java.util.List<UserProfile> userProfiles;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<UserProfile> userProfiles;
 
     /**
      * A <code>Users</code> object that describes the specified users.
@@ -33,9 +34,9 @@ public class DescribeUserProfilesResult  implements Serializable  {
      * @return A <code>Users</code> object that describes the specified users.
      */
     public java.util.List<UserProfile> getUserProfiles() {
-        
         if (userProfiles == null) {
-            userProfiles = new java.util.ArrayList<UserProfile>();
+              userProfiles = new com.amazonaws.internal.ListWithAutoConstructFlag<UserProfile>();
+              userProfiles.setAutoConstruct(true);
         }
         return userProfiles;
     }
@@ -50,8 +51,7 @@ public class DescribeUserProfilesResult  implements Serializable  {
             this.userProfiles = null;
             return;
         }
-
-        java.util.List<UserProfile> userProfilesCopy = new java.util.ArrayList<UserProfile>(userProfiles.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<UserProfile> userProfilesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UserProfile>(userProfiles.size());
         userProfilesCopy.addAll(userProfiles);
         this.userProfiles = userProfilesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeUserProfilesResult  implements Serializable  {
      * @param userProfiles A <code>Users</code> object that describes the specified users.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUserProfilesResult withUserProfiles(UserProfile... userProfiles) {
         if (getUserProfiles() == null) setUserProfiles(new java.util.ArrayList<UserProfile>(userProfiles.length));
@@ -82,20 +82,20 @@ public class DescribeUserProfilesResult  implements Serializable  {
      * @param userProfiles A <code>Users</code> object that describes the specified users.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUserProfilesResult withUserProfiles(java.util.Collection<UserProfile> userProfiles) {
         if (userProfiles == null) {
             this.userProfiles = null;
         } else {
-            java.util.List<UserProfile> userProfilesCopy = new java.util.ArrayList<UserProfile>(userProfiles.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<UserProfile> userProfilesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UserProfile>(userProfiles.size());
             userProfilesCopy.addAll(userProfiles);
             this.userProfiles = userProfilesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeUserProfilesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getUserProfiles() != null) sb.append("UserProfiles: " + getUserProfiles() );
         sb.append("}");
         return sb.toString();

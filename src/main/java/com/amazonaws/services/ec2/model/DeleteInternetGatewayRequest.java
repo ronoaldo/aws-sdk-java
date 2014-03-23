@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,73 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteInternetGatewayRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#deleteInternetGateway(DeleteInternetGatewayRequest) DeleteInternetGateway operation}.
  * <p>
- * Deletes an Internet gateway from your AWS account. The gateway must not be attached to a VPC. For more information about your VPC and Internet
- * gateway, go to Amazon Virtual Private Cloud User Guide.
+ * Deletes the specified Internet gateway. You must detach the Internet
+ * gateway from the VPC before you can delete it.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteInternetGateway(DeleteInternetGatewayRequest)
  */
-public class DeleteInternetGatewayRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteInternetGatewayRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteInternetGatewayRequest> {
 
     /**
-     * The ID of the Internet gateway to be deleted.
+     * The ID of the Internet gateway.
      */
     private String internetGatewayId;
 
     /**
-     * The ID of the Internet gateway to be deleted.
+     * The ID of the Internet gateway.
      *
-     * @return The ID of the Internet gateway to be deleted.
+     * @return The ID of the Internet gateway.
      */
     public String getInternetGatewayId() {
         return internetGatewayId;
     }
     
     /**
-     * The ID of the Internet gateway to be deleted.
+     * The ID of the Internet gateway.
      *
-     * @param internetGatewayId The ID of the Internet gateway to be deleted.
+     * @param internetGatewayId The ID of the Internet gateway.
      */
     public void setInternetGatewayId(String internetGatewayId) {
         this.internetGatewayId = internetGatewayId;
     }
     
     /**
-     * The ID of the Internet gateway to be deleted.
+     * The ID of the Internet gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param internetGatewayId The ID of the Internet gateway to be deleted.
+     * @param internetGatewayId The ID of the Internet gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteInternetGatewayRequest withInternetGatewayId(String internetGatewayId) {
         this.internetGatewayId = internetGatewayId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteInternetGatewayRequest> getDryRunRequest() {
+        Request<DeleteInternetGatewayRequest> request = new DeleteInternetGatewayRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -77,7 +92,7 @@ public class DeleteInternetGatewayRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInternetGatewayId() != null) sb.append("InternetGatewayId: " + getInternetGatewayId() );
         sb.append("}");
         return sb.toString();

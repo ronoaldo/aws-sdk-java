@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteServerCertificate(DeleteServerCertificateRequest) DeleteServerCertificate operation}.
@@ -22,15 +24,21 @@ import java.io.Serializable;
  * Deletes the specified server certificate.
  * </p>
  * <p>
- * <b>IMPORTANT:</b>If you are using a server certificate with Elastic Load Balancing, deleting the certificate could have implications for your
- * application. If Elastic Load Balancing doesn't detect the deletion of bound certificates, it may continue to use the certificates. This could cause
- * Elastic Load Balancing to stop accepting traffic. We recommend that you remove the reference to the certificate from Elastic Load Balancing before
- * using this command to delete the certificate. For more information, go to DeleteLoadBalancerListeners in the Elastic Load Balancing API Reference.
+ * <b>IMPORTANT:</b>If you are using a server certificate with Elastic
+ * Load Balancing, deleting the certificate could have implications for
+ * your application. If Elastic Load Balancing doesn't detect the
+ * deletion of bound certificates, it may continue to use the
+ * certificates. This could cause Elastic Load Balancing to stop
+ * accepting traffic. We recommend that you remove the reference to the
+ * certificate from Elastic Load Balancing before using this command to
+ * delete the certificate. For more information, go to
+ * DeleteLoadBalancerListeners in the Elastic Load Balancing API
+ * Reference.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteServerCertificate(DeleteServerCertificateRequest)
  */
-public class DeleteServerCertificateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteServerCertificateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the server certificate you want to delete.
@@ -56,11 +64,9 @@ public class DeleteServerCertificateRequest extends AmazonWebServiceRequest  imp
      * want to delete.
      */
     public DeleteServerCertificateRequest(String serverCertificateName) {
-        this.serverCertificateName = serverCertificateName;
+        setServerCertificateName(serverCertificateName);
     }
 
-    
-    
     /**
      * The name of the server certificate you want to delete.
      * <p>
@@ -99,14 +105,13 @@ public class DeleteServerCertificateRequest extends AmazonWebServiceRequest  imp
      * @param serverCertificateName The name of the server certificate you want to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteServerCertificateRequest withServerCertificateName(String serverCertificateName) {
         this.serverCertificateName = serverCertificateName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -118,7 +123,7 @@ public class DeleteServerCertificateRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getServerCertificateName() != null) sb.append("ServerCertificateName: " + getServerCertificateName() );
         sb.append("}");
         return sb.toString();

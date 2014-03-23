@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateSecurityGroupRequestMarshaller implements Marshaller<Request<
     public Request<CreateSecurityGroupRequest> marshall(CreateSecurityGroupRequest createSecurityGroupRequest) {
 
         if (createSecurityGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateSecurityGroupRequest> request = new DefaultRequest<CreateSecurityGroupRequest>(createSecurityGroupRequest, "AmazonEC2");
         request.addParameter("Action", "CreateSecurityGroup");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createSecurityGroupRequest.getGroupName() != null) {
             request.addParameter("GroupName", StringUtils.fromString(createSecurityGroupRequest.getGroupName()));
@@ -49,7 +49,6 @@ public class CreateSecurityGroupRequestMarshaller implements Marshaller<Request<
         if (createSecurityGroupRequest.getVpcId() != null) {
             request.addParameter("VpcId", StringUtils.fromString(createSecurityGroupRequest.getVpcId()));
         }
-
 
         return request;
     }

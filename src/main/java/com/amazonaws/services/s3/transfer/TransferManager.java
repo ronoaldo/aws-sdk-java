@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -25,7 +25,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,12 +36,20 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.event.ProgressEvent;
+import com.amazonaws.event.ProgressListener;
+import com.amazonaws.event.ProgressListenerCallbackExecutor;
+import com.amazonaws.event.ProgressListenerChain;
+import com.amazonaws.event.ProgressListenerChain.ProgressEventFilter;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3EncryptionClient;
 import com.amazonaws.services.s3.internal.Mimetypes;
 import com.amazonaws.services.s3.internal.ServiceUtils;
 import com.amazonaws.services.s3.model.AbortMultipartUploadRequest;
+import com.amazonaws.services.s3.model.CopyObjectRequest;
+import com.amazonaws.services.s3.model.GetObjectMetadataRequest;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ListMultipartUploadsRequest;
 import com.amazonaws.services.s3.model.ListObjectsRequest;
@@ -47,18 +57,19 @@ import com.amazonaws.services.s3.model.MultipartUpload;
 import com.amazonaws.services.s3.model.MultipartUploadListing;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.ProgressListener;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.transfer.Transfer.TransferState;
+import com.amazonaws.services.s3.transfer.internal.CopyCallable;
+import com.amazonaws.services.s3.transfer.internal.CopyImpl;
+import com.amazonaws.services.s3.transfer.internal.CopyMonitor;
 import com.amazonaws.services.s3.transfer.internal.DownloadImpl;
 import com.amazonaws.services.s3.transfer.internal.DownloadMonitor;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileDownloadImpl;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileTransfer;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileTransferMonitor;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileUploadImpl;
-import com.amazonaws.services.s3.transfer.internal.ProgressListenerChain;
 import com.amazonaws.services.s3.transfer.internal.TransferManagerUtils;
 import com.amazonaws.services.s3.transfer.internal.TransferProgressImpl;
 import com.amazonaws.services.s3.transfer.internal.TransferProgressUpdatingListener;
@@ -96,7 +107,7 @@ import com.amazonaws.util.VersionInfoUtils;
  * if (myUpload.isDone() == false) {
  *     System.out.println("Transfer: " + myUpload.getDescription());
  *     System.out.println("  - State: " + myUpload.getState());
- *     System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
+ *     System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransferred());
  * }
  *
  * // Transfers also allow you to set a <code>ProgressListener</code> to receive
@@ -124,10 +135,28 @@ public class TransferManager {
     private ThreadPoolExecutor threadPool;
 
     /** Thread used for periodicially checking transfers and updating thier state. */
-    private ScheduledExecutorService timedThreadPool = new ScheduledThreadPoolExecutor(1);
+    private ScheduledExecutorService timedThreadPool = new ScheduledThreadPoolExecutor(1, daemonThreadFactory);
 
     private static final Log log = LogFactory.getLog(TransferManager.class);
 
+
+    /**
+     * Constructs a new <code>TransferManager</code> and Amazon S3 client using
+     * the specified AWS security credentials provider.
+     * <p>
+     * <code>TransferManager</code> and client objects may pool connections and
+     * threads. Reuse <code>TransferManager</code> and client objects and share
+     * them throughout applications.
+     * <p>
+     * TransferManager and all AWS client objects are thread safe.
+     *
+     * @param credentialsProvider
+     *            The AWS security credentials provider to use when making
+     *            authenticated requests.
+     */
+    public TransferManager(AWSCredentialsProvider credentialsProvider) {
+        this(new AmazonS3Client(credentialsProvider));
+    }
 
     /**
      * Constructs a new <code>TransferManager</code> and Amazon S3 client using
@@ -243,7 +272,7 @@ public class TransferManager {
      * this can be very expensive, and should be avoided whenever possible.
      * </p>
      * <p>
-     * Use the returned <code>Upload<code> object to query the progress of the
+     * Use the returned <code>Upload</code> object to query the progress of the
      * transfer, add listeners for progress events, and wait for the upload to
      * complete.
      * </p>
@@ -265,7 +294,7 @@ public class TransferManager {
      *            including the size of the options, content type, additional
      *            custom user metadata, etc.
      *
-     * @return A new <code>Upload<code> object to use to check
+     * @return A new <code>Upload</code> object to use to check
      * 		   the state of the upload, listen for progress notifications,
      * 		   and otherwise manage the upload.
      *
@@ -324,7 +353,7 @@ public class TransferManager {
      * finished).
      * </p>
      * <p>
-     * Use the returned <code>Upload<code> object to query the progress of the
+     * Use the returned <code>Upload</code> object to query the progress of the
      * transfer, add listeners for progress events, and wait for the upload to
      * complete.
      * </p>
@@ -337,7 +366,7 @@ public class TransferManager {
      * @param putObjectRequest
      *            The request containing all the parameters for the upload.
      *
-     * @return A new <code>Upload<code> object to use to check
+     * @return A new <code>Upload</code> object to use to check
      * 		   the state of the upload, listen for progress notifications,
      * 		   and otherwise manage the upload.
      *
@@ -354,9 +383,36 @@ public class TransferManager {
     }
 
     /**
-     * Same as public version of upload, but attaches a
-     * {@link TransferStateChangeListener} to the upload object so that it can be
-     * monitored.
+     * <p>
+     * Schedules a new transfer to upload data to Amazon S3. This method is
+     * non-blocking and returns immediately (i.e. before the upload has
+     * finished).
+     * </p>
+     * <p>
+     * Use the returned <code>Upload</code> object to query the progress of the
+     * transfer, add listeners for progress events, and wait for the upload to
+     * complete.
+     * </p>
+     * <p>
+     * If resources are available, the upload will begin immediately. Otherwise,
+     * the upload is scheduled and started as soon as resources become
+     * available.
+     * </p>
+     *
+     * @param putObjectRequest
+     *            The request containing all the parameters for the upload.
+     * @param stateListener
+     *            The transfer state change listener to monitor the upload.
+     * @return A new <code>Upload</code> object to use to check the state of the
+     *         upload, listen for progress notifications, and otherwise manage
+     *         the upload.
+     *
+     * @throws AmazonClientException
+     *             If any errors are encountered in the client while making the
+     *             request or handling the response.
+     * @throws AmazonServiceException
+     *             If any errors occurred in Amazon S3 while processing the
+     *             request.
      */
     private Upload upload(final PutObjectRequest putObjectRequest, final TransferStateChangeListener stateListener)
             throws AmazonServiceException, AmazonClientException {
@@ -384,8 +440,8 @@ public class TransferManager {
             transferProgress.setTotalBytesToTransfer(TransferManagerUtils.getContentLength(putObjectRequest));
 
             ProgressListenerChain listenerChain = new ProgressListenerChain(new TransferProgressUpdatingListener(
-                    transferProgress), putObjectRequest.getProgressListener());
-            putObjectRequest.setProgressListener(listenerChain);
+                    transferProgress), putObjectRequest.getGeneralProgressListener());
+            putObjectRequest.setGeneralProgressListener(listenerChain);
 
             UploadImpl upload = new UploadImpl(description, transferProgress, listenerChain, stateListener);
 
@@ -470,14 +526,33 @@ public class TransferManager {
 
         String description = "Downloading from " + getObjectRequest.getBucketName() + "/" + getObjectRequest.getKey();
 
-        // Add our own transfer progress listener
         TransferProgressImpl transferProgress = new TransferProgressImpl();
-        ProgressListenerChain listenerChain = new ProgressListenerChain(new TransferProgressUpdatingListener(
-                transferProgress), getObjectRequest.getProgressListener());
-        getObjectRequest.setProgressListener(listenerChain);
+        ProgressListenerChain listenerChain = new ProgressListenerChain(
+                new TransferProgressUpdatingListener(transferProgress),   // The listener for updating transfer progress
+                getObjectRequest.getGeneralProgressListener());           // Listeners included in the original request
+
+        // The listener chain used by the low-level GetObject request.
+        // This listener chain ignores any COMPLETE event, so that we could
+        // delay firing the signal until the high-level download fully finishes.
+        ProgressListenerChain listenerChainForGetObjectRequest = new ProgressListenerChain(
+                new ProgressEventFilter() {
+                    @Override
+                    public ProgressEvent filter(ProgressEvent progressEvent) {
+                        if (progressEvent.getEventCode() == ProgressEvent.COMPLETED_EVENT_CODE) {
+                            // Block COMPLETE events from the low-level GetObject operation,
+                            // but we still want to keep the BytesTransferred
+                            progressEvent.setEventCode(0);
+                        }
+                        return progressEvent;
+                    }
+                },
+                listenerChain);
+        getObjectRequest.setGeneralProgressListener(listenerChainForGetObjectRequest);
+
         final ObjectMetadata objectMetadata = s3.getObjectMetadata(getObjectRequest.getBucketName(), getObjectRequest.getKey());
 
         final StartDownloadLock startDownloadLock = new StartDownloadLock();
+        // We still pass the unfiltered listener chain into DownloadImpl
         final DownloadImpl download = new DownloadImpl(description, transferProgress, listenerChain, null, stateListener);
         long contentLength = objectMetadata.getContentLength();
         if (getObjectRequest.getRange() != null && getObjectRequest.getRange().length == 2) {
@@ -503,33 +578,32 @@ public class TransferManager {
                      }
                     download.setState(TransferState.InProgress);
                     S3Object s3Object = ServiceUtils.retryableDownloadS3ObjectToFile(file, new ServiceUtils.RetryableS3DownloadTask() {
-						
-						@Override
-						public S3Object getS3ObjectStream() {
-							S3Object s3Object = s3.getObject(getObjectRequest);
-							download.setS3Object(s3Object);
-							return s3Object;
-						}
-						
-						@Override
-						public boolean needIntegrityCheck() {
-		                    // Don't perform the integrity check if the stream data is wrapped
-		                    // in a decryption stream, or if we're only looking at a range of
-		                    // the data, since otherwise the checksum won't match up.
-		                    boolean performIntegrityCheck = true;
-		                    if (getObjectRequest.getRange() != null) performIntegrityCheck = false;
-		                    if (s3 instanceof AmazonS3EncryptionClient) performIntegrityCheck = false;
-		                    return performIntegrityCheck;				
-						}
-					});
-                    
+
+                        @Override
+                        public S3Object getS3ObjectStream() {
+                            S3Object s3Object = s3.getObject(getObjectRequest);
+                            download.setS3Object(s3Object);
+                            return s3Object;
+                        }
+
+                        @Override
+                        public boolean needIntegrityCheck() {
+                            // Don't perform the integrity check if the stream data is wrapped
+                            // in a decryption stream, or if we're only looking at a range of
+                            // the data, since otherwise the checksum won't match up.
+                            boolean performIntegrityCheck = true;
+                            if (getObjectRequest.getRange() != null) performIntegrityCheck = false;
+                            if (s3 instanceof AmazonS3EncryptionClient) performIntegrityCheck = false;
+                            return performIntegrityCheck;
+                        }
+                    });
+
 
                     if (s3Object == null) {
                         download.setState(TransferState.Canceled);
                         download.setMonitor(new DownloadMonitor(download, null));
                         return download;
                     }
-
 
                     download.setState(TransferState.Completed);
                     return true;
@@ -608,19 +682,28 @@ public class TransferManager {
             } while ( listObjectsResponse.isTruncated() );
         } while ( !commonPrefixes.isEmpty() );
 
+        /* This is the hook for adding additional progress listeners */
+        ProgressListenerChain additionalProgressListenerChain = new ProgressListenerChain();
+
         TransferProgressImpl transferProgress = new TransferProgressImpl();
         transferProgress.setTotalBytesToTransfer(totalSize);
-        ProgressListener listener = new TransferProgressUpdatingListener(transferProgress);
+        /*
+         * Bind additional progress listeners to this
+         * MultipleFileTransferProgressUpdatingListener to receive
+         * ByteTransferred events from each single-file download implementation.
+         */
+        ProgressListener multipleFileTransferProgressListener = new MultipleFileTransferProgressUpdatingListener(
+                transferProgress, additionalProgressListenerChain);
 
         List<DownloadImpl> downloads = new ArrayList<DownloadImpl>();
 
         String description = "Downloading from " + bucketName + "/" + keyPrefix;
         final MultipleFileDownloadImpl multipleFileDownload = new MultipleFileDownloadImpl(description, transferProgress,
-                new ProgressListenerChain(listener), keyPrefix, bucketName, downloads);
+                additionalProgressListenerChain, keyPrefix, bucketName, downloads);
         multipleFileDownload.setMonitor(new MultipleFileTransferMonitor(multipleFileDownload, downloads));
 
         final AllDownloadsQueuedLock allTransfersQueuedLock = new AllDownloadsQueuedLock();
-        MultipleFileTransferStateChangeListener stateChangeListener = new MultipleFileTransferStateChangeListener(
+        MultipleFileTransferStateChangeListener multipleFileTransferStateChangeListener = new MultipleFileTransferStateChangeListener(
                 allTransfersQueuedLock, multipleFileDownload);
 
         for ( S3ObjectSummary summary : objectSummaries ) {
@@ -631,9 +714,16 @@ public class TransferManager {
                 throw new RuntimeException("Couldn't create parent directories for " + f.getAbsolutePath());
             }
 
+            // All the single-file downloads share the same
+            // MultipleFileTransferProgressUpdatingListener and
+            // MultipleFileTransferStateChangeListener
             downloads.add((DownloadImpl) download(
-                    new GetObjectRequest(summary.getBucketName(), summary.getKey()).withProgressListener(listener), f,
-                    stateChangeListener));
+                            new GetObjectRequest(summary.getBucketName(),
+                                    summary.getKey())
+                                    .withGeneralProgressListener(
+                                            multipleFileTransferProgressListener),
+                            f,
+                            multipleFileTransferStateChangeListener));
         }
 
         if ( downloads.isEmpty() ) {
@@ -707,6 +797,30 @@ public class TransferManager {
     };
 
     /**
+     * TransferProgressUpdatingListener for multiple-file transfer. In addition
+     * to updating the TransferProgress, it also sends out ByteTrasnferred
+     * events to a ProgressListenerChain.
+     */
+    private static final class MultipleFileTransferProgressUpdatingListener extends TransferProgressUpdatingListener {
+
+        private final ProgressListenerCallbackExecutor progressListenerCallbackExecutor;
+
+        public MultipleFileTransferProgressUpdatingListener(TransferProgressImpl transferProgress, ProgressListenerChain progressListenerChain) {
+            super(transferProgress);
+            this.progressListenerCallbackExecutor = ProgressListenerCallbackExecutor.wrapListener(progressListenerChain);
+        }
+
+        @Override
+        public void progressChanged(ProgressEvent progressEvent) {
+            super.progressChanged(progressEvent);
+
+            /* Only propagate the BytesTransferred to progress listener chain */
+            progressListenerCallbackExecutor.progressChanged(new ProgressEvent(
+                    progressEvent.getBytesTransferred()));
+        }
+    }
+
+    /**
      * Uploads all files in the directory given to the bucket named, optionally
      * recursing for all subdirectories.
      * <p>
@@ -727,14 +841,41 @@ public class TransferManager {
      *            appropriate concatenation to the key prefix.
      */
     public MultipleFileUpload uploadDirectory(String bucketName, String virtualDirectoryKeyPrefix, File directory, boolean includeSubdirectories) {
+        return uploadDirectory(bucketName, virtualDirectoryKeyPrefix, directory, includeSubdirectories, null);
+    }
 
+    /**
+     * Uploads all files in the directory given to the bucket named, optionally
+     * recursing for all subdirectories.
+     * <p>
+     * S3 will overwrite any existing objects that happen to have the same key,
+     * just as when uploading individual files, so use with caution.
+     *
+     * @param bucketName
+     *            The name of the bucket to upload objects to.
+     * @param virtualDirectoryKeyPrefix
+     *            The key prefix of the virtual directory to upload to. Use the
+     *            null or empty string to upload files to the root of the
+     *            bucket.
+     * @param directory
+     *            The directory to upload.
+     * @param includeSubdirectories
+     *            Whether to include subdirectories in the upload. If true,
+     *            files found in subdirectories will be included with an
+     *            appropriate concatenation to the key prefix.
+     * @param metadataProvider
+     * 			  A callback of type <code>ObjectMetadataProvider</code> which
+     *            is used to provide metadata for each file being uploaded.
+     */
+    public MultipleFileUpload uploadDirectory(String bucketName, String virtualDirectoryKeyPrefix, File directory, boolean includeSubdirectories, ObjectMetadataProvider metadataProvider) {
         if ( directory == null || !directory.exists() || !directory.isDirectory() ) {
             throw new IllegalArgumentException("Must provide a directory to upload");
         }
 
         List<File> files = new LinkedList<File>();
         listFiles(directory, files, includeSubdirectories);
-        return uploadFileList(bucketName, virtualDirectoryKeyPrefix, directory, files);
+
+        return uploadFileList(bucketName, virtualDirectoryKeyPrefix, directory, files, metadataProvider);
     }
 
     /**
@@ -760,6 +901,35 @@ public class TransferManager {
      *            virtualDirectoryKeyPrefix.
      */
     public MultipleFileUpload uploadFileList(String bucketName, String virtualDirectoryKeyPrefix, File directory, List<File> files) {
+        return uploadFileList(bucketName, virtualDirectoryKeyPrefix, directory, files, null);
+    }
+
+    /**
+     * Uploads all specified files to the bucket named, constructing
+     * relative keys depending on the commonParentDirectory given.
+     * <p>
+     * S3 will overwrite any existing objects that happen to have the same key,
+     * just as when uploading individual files, so use with caution.
+     *
+     * @param bucketName
+     *            The name of the bucket to upload objects to.
+     * @param virtualDirectoryKeyPrefix
+     *            The key prefix of the virtual directory to upload to. Use the
+     *            null or empty string to upload files to the root of the
+     *            bucket.
+     * @param directory
+     *            The common parent directory of files to upload. The keys
+     *            of the files in the list of files are constructed relative to
+     *            this directory and the virtualDirectoryKeyPrefix.
+     * @param files
+     *            A list of files to upload. The keys of the files are
+     *            calculated relative to the common parent directory and the
+     *            virtualDirectoryKeyPrefix.
+     * @param metadataProvider
+     * 			  A callback of type <code>ObjectMetadataProvider</code> which
+     *            is used to provide metadata for each file being uploaded.
+     */
+    public MultipleFileUpload uploadFileList(String bucketName, String virtualDirectoryKeyPrefix, File directory, List<File> files,ObjectMetadataProvider metadataProvider) {
 
         if ( directory == null || !directory.exists() || !directory.isDirectory() ) {
             throw new IllegalArgumentException("Must provide a common base directory for uploaded files");
@@ -771,31 +941,65 @@ public class TransferManager {
             virtualDirectoryKeyPrefix = virtualDirectoryKeyPrefix + "/";
         }
 
+        /* This is the hook for adding additional progress listeners */
+        ProgressListenerChain additionalProgressListenerChain = new ProgressListenerChain();
+
         TransferProgressImpl transferProgress = new TransferProgressImpl();
-        ProgressListener listener = new TransferProgressUpdatingListener(transferProgress);
+        /*
+         * Bind additional progress listeners to this
+         * MultipleFileTransferProgressUpdatingListener to receive
+         * ByteTransferred events from each single-file upload implementation.
+         */
+        ProgressListener multipleFileTransferProgressListener = new MultipleFileTransferProgressUpdatingListener(
+                transferProgress, additionalProgressListenerChain);
 
         List<UploadImpl> uploads = new LinkedList<UploadImpl>();
-        MultipleFileUploadImpl multipleFileUpload = new MultipleFileUploadImpl("Uploading etc", transferProgress, null, virtualDirectoryKeyPrefix, bucketName, uploads);
+        MultipleFileUploadImpl multipleFileUpload = new MultipleFileUploadImpl("Uploading etc", transferProgress, additionalProgressListenerChain, virtualDirectoryKeyPrefix, bucketName, uploads);
         multipleFileUpload.setMonitor(new MultipleFileTransferMonitor(multipleFileUpload, uploads));
 
         final AllDownloadsQueuedLock allTransfersQueuedLock = new AllDownloadsQueuedLock();
-        MultipleFileTransferStateChangeListener stateChangeListener = new MultipleFileTransferStateChangeListener(
+        MultipleFileTransferStateChangeListener multipleFileTransferStateChangeListener = new MultipleFileTransferStateChangeListener(
                 allTransfersQueuedLock, multipleFileUpload);
 
         if ( files == null || files.isEmpty()) {
             multipleFileUpload.setState(TransferState.Completed);
         }
 
+        /*
+         * If the absolute path for the common/base directory does NOT end in a
+         * separator (which is the case for anything but root directories), then
+         * we know there's still a separator between the base directory and the
+         * rest of the file's path, so we increment the starting position by one.
+         */
+        int startingPosition = directory.getAbsolutePath().length();
+        if (!(directory.getAbsolutePath().endsWith(File.separator))) startingPosition++;
+
         long totalSize = 0;
         for (File f : files) {
             //Check, if file, since only files can be uploaded.
             if (f.isFile()) {
                 totalSize += f.length();
-                String key = f.getAbsolutePath().substring(directory.getAbsolutePath().length() + 1)
-                        .replaceAll("\\\\", "/");
+
+                String key = f.getAbsolutePath().substring(startingPosition).replaceAll("\\\\", "/");
+
+                ObjectMetadata metadata=new ObjectMetadata();
+
+                // Invoke the callback if it's present.
+                // The callback allows the user to customize the metadata for each file being uploaded.
+                if (metadataProvider != null) {
+                    metadataProvider.provideObjectMetadata(f, metadata);
+                }
+
+                // All the single-file uploads share the same
+                // MultipleFileTransferProgressUpdatingListener and
+                // MultipleFileTransferStateChangeListener
                 uploads.add((UploadImpl) upload(
-                        new PutObjectRequest(bucketName, virtualDirectoryKeyPrefix + key, f).withProgressListener(listener),
-                        stateChangeListener));
+                        new PutObjectRequest(bucketName,
+                                virtualDirectoryKeyPrefix + key, f)
+                                .withMetadata(metadata)
+                                .withGeneralProgressListener(
+                                        multipleFileTransferProgressListener),
+                        multipleFileTransferStateChangeListener));
             }
         }
 
@@ -868,6 +1072,17 @@ public class TransferManager {
 
     /**
      * Forcefully shuts down this TransferManager instance - currently executing
+     * transfers will not be allowed to finish. It also by default shuts down
+     * the underlying Amazon S3 client.
+     *
+     * @see shutdownNow(boolean)
+     */
+    public void shutdownNow() {
+        shutdownNow(true);
+    }
+
+    /**
+     * Forcefully shuts down this TransferManager instance - currently executing
      * transfers will not be allowed to finish. Callers should use this method
      * when they either:
      * <ul>
@@ -881,22 +1096,228 @@ public class TransferManager {
      * upload may not always be automatically cleaned up, but callers can use
      * {@link #abortMultipartUploads(String, Date)} to clean up any upload
      * parts.
+     *
+     * @param shutDownS3Client
+     *            Whether to shut down the underlying Amazon S3 client.
      */
-    public void shutdownNow() {
+    public void shutdownNow(boolean shutDownS3Client) {
         threadPool.shutdownNow();
         timedThreadPool.shutdownNow();
 
-        if (s3 instanceof AmazonS3Client) {
-            ((AmazonS3Client)s3).shutdown();
+        if (shutDownS3Client) {
+            if (s3 instanceof AmazonS3Client) {
+                ((AmazonS3Client)s3).shutdown();
+            }
         }
     }
 
     public <X extends AmazonWebServiceRequest> X appendUserAgent(X request, String userAgent) {
-        request.getRequestClientOptions().addClientMarker(USER_AGENT);
+        request.getRequestClientOptions().appendUserAgent(userAgent);
         return request;
     }
 
     private static final String USER_AGENT = TransferManager.class.getName() + "/" + VersionInfoUtils.getVersion();
 
     private static final String DEFAULT_DELIMITER = "/";
+
+    /**
+     * There is no need for threads from timedThreadPool if there is no more running threads in current process,
+     * so we need a daemon thread factory for it.
+     */
+    private static final ThreadFactory daemonThreadFactory = new ThreadFactory() {
+        final AtomicInteger threadCount = new AtomicInteger( 0 );
+        public Thread newThread(Runnable r) {
+            int threadNumber = threadCount.incrementAndGet();
+            Thread thread = new Thread(r);
+            thread.setDaemon(true);
+            thread.setName("S3TransferManagerTimedThread-" + threadNumber);
+            return thread;
+        }
+    };
+
+    /**
+     * <p>
+     * Schedules a new transfer to copy data from one Amazon S3 location to
+     * another Amazon S3 location. The copy is carried out in a single chunk if
+     * the Amazon S3 object size is less than 5 GB. The copy is carried out in
+     * multiple parts if the S3 object is greater than 5 GB.
+     * </p>
+     * <p>
+     * <code>TransferManager</code> doesn't support copying of encrypted objects whose
+     * encryption materials is stored in instruction file.
+     * </p>
+     * <p>
+     * Use the returned <code>Copy</code> object to check if the copy is
+     * complete.
+     * </p>
+     * <p>
+     * If resources are available, the copy request will begin immediately.
+     * Otherwise, the copy is scheduled and started as soon as resources become
+     * available.
+     * </p>
+     *
+     * @param sourceBucketName
+     *             The name of the bucket from where the object is to be
+     *            copied.
+     * @param sourceKey
+     *             The name of the Amazon S3 object.
+     * @param destinationBucketName
+     *             The name of the bucket to where the Amazon S3 object has to
+     *            be copied.
+     * @param destinationKey
+     *             The name of the object in the destination bucket.
+     *
+     * @return A new <code>Copy</code> object to use to check the state of the
+     *         copy request being processed.
+     *
+     * @throws AmazonClientException
+     *             If any errors are encountered in the client while making the
+     *             request or handling the response.
+     * @throws AmazonServiceException
+     *             If any errors occurred in Amazon S3 while processing the
+     *             request.
+     */
+
+    public Copy copy(String sourceBucketName, String sourceKey,
+            String destinationBucketName, String destinationKey)
+            throws AmazonServiceException, AmazonClientException {
+        return copy(new CopyObjectRequest(sourceBucketName, sourceKey,
+                destinationBucketName, destinationKey));
+    }
+
+    /**
+     * <p>
+     * Schedules a new transfer to copy data from one Amazon S3 location to
+     * another Amazon S3 location. The copy is carried out in a single chunk if
+     * the Amazon S3 object size is less than 5 GB. The copy is carried out in
+     * multiple parts if the S3 object is greater than 5 GB.
+     * </p>
+     * <p>
+     * <code>TransferManager</code> doesn't support copying of encrypted objects whose
+     * encryption materials is stored i instruction file.
+     * </p>
+     * <p>
+     * Use the returned <code>Copy</code> object to check if the copy is
+     * complete.
+     * </p>
+     * <p>
+     * If resources are available, the copy request will begin immediately.
+     * Otherwise, the copy is scheduled and started as soon as resources become
+     * available.
+     * </p>
+     *
+     * @param copyObjectRequest
+     *            The request containing all the parameters for the copy.
+     *
+     * @return A new <code>Copy</code> object to use to check the state of the
+     *         copy request being processed.
+     *
+     * @throws AmazonClientException
+     *             If any errors are encountered in the client while making the
+     *             request or handling the response.
+     * @throws AmazonServiceException
+     *             If any errors occurred in Amazon S3 while processing the
+     *             request.
+     */
+    public Copy copy(final CopyObjectRequest copyObjectRequest){
+        return copy(copyObjectRequest,null);
+    }
+
+    /**
+     * <p>
+     * Schedules a new transfer to copy data from one Amazon S3 location to
+     * another Amazon S3 location. The copy is carried out in a single chunk if
+     * the Amazon S3 object size is less than 5 GB. The copy is carried out in
+     * multiple parts if the S3 object is greater than 5 GB.
+     * </p>
+     * <p>
+     * <code>TransferManager</code> doesn't support copying of encrypted objects whose
+     * encryption materials is stored in instruction file.
+     * </p>
+     * <p>
+     * Use the returned <code>Copy</code> object to check if the copy is
+     * complete.
+     * </p>
+     * <p>
+     * If resources are available, the copy request will begin immediately.
+     * Otherwise, the copy is scheduled and started as soon as resources become
+     * available.
+     * </p>
+     *
+     * @param copyObjectRequest
+     *            The request containing all the parameters for the copy.
+     * @param stateChangeListener
+     *            The transfer state change listener to monitor the copy request
+     * @return A new <code>Copy</code> object to use to check the state of the
+     *         copy request being processed.
+     *
+     * @throws AmazonClientException
+     *             If any errors are encountered in the client while making the
+     *             request or handling the response.
+     * @throws AmazonServiceException
+     *             If any errors occurred in Amazon S3 while processing the
+     *             request.
+     */
+
+    public Copy copy(final CopyObjectRequest copyObjectRequest,
+            final TransferStateChangeListener stateChangeListener)
+            throws AmazonServiceException, AmazonClientException {
+
+        appendUserAgent(copyObjectRequest, USER_AGENT);
+
+        assertParameterNotNull(copyObjectRequest.getSourceBucketName(),
+                "The source bucket name must be specified when a copy request is initiated.");
+        assertParameterNotNull(copyObjectRequest.getSourceKey(),
+                "The source object key must be specified when a copy request is initiated.");
+        assertParameterNotNull(
+                copyObjectRequest.getDestinationBucketName(),
+                "The destination bucket name must be specified when a copy request is initiated.");
+        assertParameterNotNull(
+                copyObjectRequest.getDestinationKey(),
+                "The destination object key must be specified when a copy request is initiated.");
+
+        String description = "Copying object from "
+                + copyObjectRequest.getSourceBucketName() + "/"
+                + copyObjectRequest.getSourceKey() + " to "
+                + copyObjectRequest.getDestinationBucketName() + "/"
+                + copyObjectRequest.getDestinationKey();
+
+        ObjectMetadata metadata = s3
+                .getObjectMetadata(new GetObjectMetadataRequest(
+                        copyObjectRequest.getSourceBucketName(),
+                        copyObjectRequest.getSourceKey()));
+
+        TransferProgressImpl transferProgress = new TransferProgressImpl();
+        transferProgress.setTotalBytesToTransfer(metadata.getContentLength());
+
+        ProgressListenerChain listenerChain = new ProgressListenerChain(
+                new TransferProgressUpdatingListener(transferProgress));
+        CopyImpl copy = new CopyImpl(description, transferProgress,
+                listenerChain, stateChangeListener);
+        CopyCallable copyCallable = new CopyCallable(this, threadPool, copy,
+                copyObjectRequest, metadata.getContentLength(), listenerChain);
+        CopyMonitor watcher = new CopyMonitor(this, copy, threadPool,
+                copyCallable, copyObjectRequest, listenerChain);
+        watcher.setTimedThreadPool(timedThreadPool);
+        copy.setMonitor(watcher);
+        return copy;
+    }
+
+    /**
+     * <p>
+     * Asserts that the specified parameter value is not <code>null</code> and if it is,
+     * throws an <code>IllegalArgumentException</code> with the specified error message.
+     * </p>
+     *
+     * @param parameterValue
+     *            The parameter value being checked.
+     * @param errorMessage
+     *            The error message to include in the IllegalArgumentException
+     *            if the specified parameter is null.
+     */
+    private void assertParameterNotNull(Object parameterValue, String errorMessage) {
+        if (parameterValue == null) throw new IllegalArgumentException(errorMessage);
+    }
+
+
 }

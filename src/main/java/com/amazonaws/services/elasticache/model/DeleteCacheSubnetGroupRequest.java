@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,33 +13,37 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#deleteCacheSubnetGroup(DeleteCacheSubnetGroupRequest) DeleteCacheSubnetGroup operation}.
  * <p>
- * Deletes a Cache Subnet Group.
+ * The <i>DeleteCacheSubnetGroup</i> operation deletes a cache subnet
+ * group.
  * </p>
  * <p>
- * <b>NOTE:</b>The specified Cache Subnet Group must not be associated with any Cache Clusters.
+ * <b>NOTE:</b>You cannot delete a cache subnet group if it is associated
+ * with any cache clusters.
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#deleteCacheSubnetGroup(DeleteCacheSubnetGroupRequest)
  */
-public class DeleteCacheSubnetGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteCacheSubnetGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the Cache Subnet Group to delete. <p>Constraints: Must
+     * The name of the cache subnet group to delete. <p>Constraints: Must
      * contain no more than 255 alphanumeric characters or hyphens.
      */
     private String cacheSubnetGroupName;
 
     /**
-     * The name of the Cache Subnet Group to delete. <p>Constraints: Must
+     * The name of the cache subnet group to delete. <p>Constraints: Must
      * contain no more than 255 alphanumeric characters or hyphens.
      *
-     * @return The name of the Cache Subnet Group to delete. <p>Constraints: Must
+     * @return The name of the cache subnet group to delete. <p>Constraints: Must
      *         contain no more than 255 alphanumeric characters or hyphens.
      */
     public String getCacheSubnetGroupName() {
@@ -47,10 +51,10 @@ public class DeleteCacheSubnetGroupRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The name of the Cache Subnet Group to delete. <p>Constraints: Must
+     * The name of the cache subnet group to delete. <p>Constraints: Must
      * contain no more than 255 alphanumeric characters or hyphens.
      *
-     * @param cacheSubnetGroupName The name of the Cache Subnet Group to delete. <p>Constraints: Must
+     * @param cacheSubnetGroupName The name of the cache subnet group to delete. <p>Constraints: Must
      *         contain no more than 255 alphanumeric characters or hyphens.
      */
     public void setCacheSubnetGroupName(String cacheSubnetGroupName) {
@@ -58,23 +62,22 @@ public class DeleteCacheSubnetGroupRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The name of the Cache Subnet Group to delete. <p>Constraints: Must
+     * The name of the cache subnet group to delete. <p>Constraints: Must
      * contain no more than 255 alphanumeric characters or hyphens.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSubnetGroupName The name of the Cache Subnet Group to delete. <p>Constraints: Must
+     * @param cacheSubnetGroupName The name of the cache subnet group to delete. <p>Constraints: Must
      *         contain no more than 255 alphanumeric characters or hyphens.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteCacheSubnetGroupRequest withCacheSubnetGroupName(String cacheSubnetGroupName) {
         this.cacheSubnetGroupName = cacheSubnetGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -86,7 +89,7 @@ public class DeleteCacheSubnetGroupRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCacheSubnetGroupName() != null) sb.append("CacheSubnetGroupName: " + getCacheSubnetGroupName() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,230 +13,296 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Export Task
+ * <p>
+ * Describes an export task.
+ * </p>
  */
-public class ExportTask  implements Serializable  {
+public class ExportTask implements Serializable {
 
+    /**
+     * The ID of the export task.
+     */
     private String exportTaskId;
 
+    /**
+     * A description of the resource being exported.
+     */
     private String description;
 
+    /**
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
+     */
     private String state;
 
+    /**
+     * The status message related to the export task.
+     */
     private String statusMessage;
 
+    /**
+     * The instance being exported.
+     */
     private InstanceExportDetails instanceExportDetails;
 
+    /**
+     * 
+     */
     private ExportToS3Task exportToS3Task;
 
     /**
-     * Returns the value of the ExportTaskId property for this object.
+     * The ID of the export task.
      *
-     * @return The value of the ExportTaskId property for this object.
+     * @return The ID of the export task.
      */
     public String getExportTaskId() {
         return exportTaskId;
     }
     
     /**
-     * Sets the value of the ExportTaskId property for this object.
+     * The ID of the export task.
      *
-     * @param exportTaskId The new value for the ExportTaskId property for this object.
+     * @param exportTaskId The ID of the export task.
      */
     public void setExportTaskId(String exportTaskId) {
         this.exportTaskId = exportTaskId;
     }
     
     /**
-     * Sets the value of the ExportTaskId property for this object.
+     * The ID of the export task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exportTaskId The new value for the ExportTaskId property for this object.
+     * @param exportTaskId The ID of the export task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withExportTaskId(String exportTaskId) {
         this.exportTaskId = exportTaskId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Description property for this object.
+     * A description of the resource being exported.
      *
-     * @return The value of the Description property for this object.
+     * @return A description of the resource being exported.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description of the resource being exported.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description of the resource being exported.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description of the resource being exported.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description of the resource being exported.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the State property for this object.
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @return The value of the State property for this object.
+     * @return The state of the conversion task.
+     *
+     * @see ExportTaskState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @param state The new value for the State property for this object.
+     * @param state The state of the conversion task.
+     *
+     * @see ExportTaskState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The state of the conversion task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @param state The new value for the State property for this object.
+     * @param state The state of the conversion task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see ExportTaskState
      */
     public ExportTask withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The state of the conversion task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
+     *
+     * @param state The state of the conversion task.
+     *
+     * @see ExportTaskState
+     */
+    public void setState(ExportTaskState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Returns the value of the StatusMessage property for this object.
+     * The state of the conversion task.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, cancelling, cancelled, completed
      *
-     * @return The value of the StatusMessage property for this object.
+     * @param state The state of the conversion task.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see ExportTaskState
+     */
+    public ExportTask withState(ExportTaskState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * The status message related to the export task.
+     *
+     * @return The status message related to the export task.
      */
     public String getStatusMessage() {
         return statusMessage;
     }
     
     /**
-     * Sets the value of the StatusMessage property for this object.
+     * The status message related to the export task.
      *
-     * @param statusMessage The new value for the StatusMessage property for this object.
+     * @param statusMessage The status message related to the export task.
      */
     public void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
     }
     
     /**
-     * Sets the value of the StatusMessage property for this object.
+     * The status message related to the export task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param statusMessage The new value for the StatusMessage property for this object.
+     * @param statusMessage The status message related to the export task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the InstanceExportDetails property for this
-     * object.
+     * The instance being exported.
      *
-     * @return The value of the InstanceExportDetails property for this object.
+     * @return The instance being exported.
      */
     public InstanceExportDetails getInstanceExportDetails() {
         return instanceExportDetails;
     }
     
     /**
-     * Sets the value of the InstanceExportDetails property for this object.
+     * The instance being exported.
      *
-     * @param instanceExportDetails The new value for the InstanceExportDetails property for this object.
+     * @param instanceExportDetails The instance being exported.
      */
     public void setInstanceExportDetails(InstanceExportDetails instanceExportDetails) {
         this.instanceExportDetails = instanceExportDetails;
     }
     
     /**
-     * Sets the value of the InstanceExportDetails property for this object.
+     * The instance being exported.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceExportDetails The new value for the InstanceExportDetails property for this object.
+     * @param instanceExportDetails The instance being exported.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withInstanceExportDetails(InstanceExportDetails instanceExportDetails) {
         this.instanceExportDetails = instanceExportDetails;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the ExportToS3Task property for this object.
+     * 
      *
-     * @return The value of the ExportToS3Task property for this object.
+     * @return 
      */
     public ExportToS3Task getExportToS3Task() {
         return exportToS3Task;
     }
     
     /**
-     * Sets the value of the ExportToS3Task property for this object.
+     * 
      *
-     * @param exportToS3Task The new value for the ExportToS3Task property for this object.
+     * @param exportToS3Task 
      */
     public void setExportToS3Task(ExportToS3Task exportToS3Task) {
         this.exportToS3Task = exportToS3Task;
     }
     
     /**
-     * Sets the value of the ExportToS3Task property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exportToS3Task The new value for the ExportToS3Task property for this object.
+     * @param exportToS3Task 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportTask withExportToS3Task(ExportToS3Task exportToS3Task) {
         this.exportToS3Task = exportToS3Task;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -248,12 +314,12 @@ public class ExportTask  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExportTaskId() != null) sb.append("ExportTaskId: " + getExportTaskId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");    	
-        if (getInstanceExportDetails() != null) sb.append("InstanceExportDetails: " + getInstanceExportDetails() + ",");    	
+        sb.append("{");
+        if (getExportTaskId() != null) sb.append("ExportTaskId: " + getExportTaskId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getStatusMessage() != null) sb.append("StatusMessage: " + getStatusMessage() + ",");
+        if (getInstanceExportDetails() != null) sb.append("InstanceExportDetails: " + getInstanceExportDetails() + ",");
         if (getExportToS3Task() != null) sb.append("ExportToS3Task: " + getExportToS3Task() );
         sb.append("}");
         return sb.toString();

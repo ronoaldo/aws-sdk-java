@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#describeStorediSCSIVolumes(DescribeStorediSCSIVolumesRequest) DescribeStorediSCSIVolumes operation}.
  * <p>
- * This operation returns description of the gateway volumes specified in the request. The list of gateway volumes in the request must be from one
- * gateway. In the response Amazon Storage Gateway returns volume information sorted by volume ARNs.
+ * This operation returns description of the gateway volumes specified in
+ * the request. The list of gateway volumes in the request must be from
+ * one gateway. In the response Amazon Storage Gateway returns volume
+ * information sorted by volume ARNs.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#describeStorediSCSIVolumes(DescribeStorediSCSIVolumesRequest)
  */
-public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * An array of strings where each string represents the Amazon Resource
@@ -33,7 +37,7 @@ public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest  
      * must from the same gateway. Use <a>ListVolumes</a> to get volume ARNs
      * for a gateway.
      */
-    private java.util.List<String> volumeARNs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeARNs;
 
     /**
      * An array of strings where each string represents the Amazon Resource
@@ -47,9 +51,9 @@ public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest  
      *         for a gateway.
      */
     public java.util.List<String> getVolumeARNs() {
-        
         if (volumeARNs == null) {
-            volumeARNs = new java.util.ArrayList<String>();
+              volumeARNs = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              volumeARNs.setAutoConstruct(true);
         }
         return volumeARNs;
     }
@@ -70,8 +74,7 @@ public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest  
             this.volumeARNs = null;
             return;
         }
-
-        java.util.List<String> volumeARNsCopy = new java.util.ArrayList<String>(volumeARNs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeARNsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(volumeARNs.size());
         volumeARNsCopy.addAll(volumeARNs);
         this.volumeARNs = volumeARNsCopy;
     }
@@ -90,7 +93,7 @@ public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest  
      *         for a gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStorediSCSIVolumesRequest withVolumeARNs(String... volumeARNs) {
         if (getVolumeARNs() == null) setVolumeARNs(new java.util.ArrayList<String>(volumeARNs.length));
@@ -114,20 +117,20 @@ public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest  
      *         for a gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStorediSCSIVolumesRequest withVolumeARNs(java.util.Collection<String> volumeARNs) {
         if (volumeARNs == null) {
             this.volumeARNs = null;
         } else {
-            java.util.List<String> volumeARNsCopy = new java.util.ArrayList<String>(volumeARNs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeARNsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(volumeARNs.size());
             volumeARNsCopy.addAll(volumeARNs);
             this.volumeARNs = volumeARNsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -139,7 +142,7 @@ public class DescribeStorediSCSIVolumesRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolumeARNs() != null) sb.append("VolumeARNs: " + getVolumeARNs() );
         sb.append("}");
         return sb.toString();

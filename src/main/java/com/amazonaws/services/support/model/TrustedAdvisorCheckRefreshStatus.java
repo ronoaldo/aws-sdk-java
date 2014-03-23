@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,167 +13,151 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the fields that indicate the statuses Trusted Advisor checks for which refreshes have been requested.
+ * The refresh status of a Trusted Advisor check.
  * </p>
  */
-public class TrustedAdvisorCheckRefreshStatus  implements Serializable  {
+public class TrustedAdvisorCheckRefreshStatus implements Serializable {
 
     /**
-     * String that specifies the <i>checkId</i> value of the Trusted Advisor
-     * check.
+     * The unique identifier for the Trusted Advisor check.
      */
     private String checkId;
 
     /**
-     * Indicates the status of the Trusted Advisor check for which a refresh
-     * has been requested.
+     * The status of the Trusted Advisor check for which a refresh has been
+     * requested: "none", "enqueued", "processing", "success", or
+     * "abandoned".
      */
     private String status;
 
     /**
-     * Indicates the time in milliseconds until a call to <a
-     * href="API_RefreshTrustedAdvisorCheck.html"
-     * title="RefreshTrustedAdvisorCheck">RefreshTrustedAdvisorCheck</a> can
-     * trigger a refresh.
+     * The amount of time, in milliseconds, until the Trusted Advisor check
+     * is eligible for refresh.
      */
     private Long millisUntilNextRefreshable;
 
     /**
-     * String that specifies the <i>checkId</i> value of the Trusted Advisor
-     * check.
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @return String that specifies the <i>checkId</i> value of the Trusted Advisor
-     *         check.
+     * @return The unique identifier for the Trusted Advisor check.
      */
     public String getCheckId() {
         return checkId;
     }
     
     /**
-     * String that specifies the <i>checkId</i> value of the Trusted Advisor
-     * check.
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @param checkId String that specifies the <i>checkId</i> value of the Trusted Advisor
-     *         check.
+     * @param checkId The unique identifier for the Trusted Advisor check.
      */
     public void setCheckId(String checkId) {
         this.checkId = checkId;
     }
     
     /**
-     * String that specifies the <i>checkId</i> value of the Trusted Advisor
-     * check.
+     * The unique identifier for the Trusted Advisor check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param checkId String that specifies the <i>checkId</i> value of the Trusted Advisor
-     *         check.
+     * @param checkId The unique identifier for the Trusted Advisor check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckRefreshStatus withCheckId(String checkId) {
         this.checkId = checkId;
         return this;
     }
-    
-    
+
     /**
-     * Indicates the status of the Trusted Advisor check for which a refresh
-     * has been requested.
+     * The status of the Trusted Advisor check for which a refresh has been
+     * requested: "none", "enqueued", "processing", "success", or
+     * "abandoned".
      *
-     * @return Indicates the status of the Trusted Advisor check for which a refresh
-     *         has been requested.
+     * @return The status of the Trusted Advisor check for which a refresh has been
+     *         requested: "none", "enqueued", "processing", "success", or
+     *         "abandoned".
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * Indicates the status of the Trusted Advisor check for which a refresh
-     * has been requested.
+     * The status of the Trusted Advisor check for which a refresh has been
+     * requested: "none", "enqueued", "processing", "success", or
+     * "abandoned".
      *
-     * @param status Indicates the status of the Trusted Advisor check for which a refresh
-     *         has been requested.
+     * @param status The status of the Trusted Advisor check for which a refresh has been
+     *         requested: "none", "enqueued", "processing", "success", or
+     *         "abandoned".
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * Indicates the status of the Trusted Advisor check for which a refresh
-     * has been requested.
+     * The status of the Trusted Advisor check for which a refresh has been
+     * requested: "none", "enqueued", "processing", "success", or
+     * "abandoned".
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param status Indicates the status of the Trusted Advisor check for which a refresh
-     *         has been requested.
+     * @param status The status of the Trusted Advisor check for which a refresh has been
+     *         requested: "none", "enqueued", "processing", "success", or
+     *         "abandoned".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckRefreshStatus withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
-     * Indicates the time in milliseconds until a call to <a
-     * href="API_RefreshTrustedAdvisorCheck.html"
-     * title="RefreshTrustedAdvisorCheck">RefreshTrustedAdvisorCheck</a> can
-     * trigger a refresh.
+     * The amount of time, in milliseconds, until the Trusted Advisor check
+     * is eligible for refresh.
      *
-     * @return Indicates the time in milliseconds until a call to <a
-     *         href="API_RefreshTrustedAdvisorCheck.html"
-     *         title="RefreshTrustedAdvisorCheck">RefreshTrustedAdvisorCheck</a> can
-     *         trigger a refresh.
+     * @return The amount of time, in milliseconds, until the Trusted Advisor check
+     *         is eligible for refresh.
      */
     public Long getMillisUntilNextRefreshable() {
         return millisUntilNextRefreshable;
     }
     
     /**
-     * Indicates the time in milliseconds until a call to <a
-     * href="API_RefreshTrustedAdvisorCheck.html"
-     * title="RefreshTrustedAdvisorCheck">RefreshTrustedAdvisorCheck</a> can
-     * trigger a refresh.
+     * The amount of time, in milliseconds, until the Trusted Advisor check
+     * is eligible for refresh.
      *
-     * @param millisUntilNextRefreshable Indicates the time in milliseconds until a call to <a
-     *         href="API_RefreshTrustedAdvisorCheck.html"
-     *         title="RefreshTrustedAdvisorCheck">RefreshTrustedAdvisorCheck</a> can
-     *         trigger a refresh.
+     * @param millisUntilNextRefreshable The amount of time, in milliseconds, until the Trusted Advisor check
+     *         is eligible for refresh.
      */
     public void setMillisUntilNextRefreshable(Long millisUntilNextRefreshable) {
         this.millisUntilNextRefreshable = millisUntilNextRefreshable;
     }
     
     /**
-     * Indicates the time in milliseconds until a call to <a
-     * href="API_RefreshTrustedAdvisorCheck.html"
-     * title="RefreshTrustedAdvisorCheck">RefreshTrustedAdvisorCheck</a> can
-     * trigger a refresh.
+     * The amount of time, in milliseconds, until the Trusted Advisor check
+     * is eligible for refresh.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param millisUntilNextRefreshable Indicates the time in milliseconds until a call to <a
-     *         href="API_RefreshTrustedAdvisorCheck.html"
-     *         title="RefreshTrustedAdvisorCheck">RefreshTrustedAdvisorCheck</a> can
-     *         trigger a refresh.
+     * @param millisUntilNextRefreshable The amount of time, in milliseconds, until the Trusted Advisor check
+     *         is eligible for refresh.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCheckRefreshStatus withMillisUntilNextRefreshable(Long millisUntilNextRefreshable) {
         this.millisUntilNextRefreshable = millisUntilNextRefreshable;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -185,9 +169,9 @@ public class TrustedAdvisorCheckRefreshStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCheckId() != null) sb.append("CheckId: " + getCheckId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getCheckId() != null) sb.append("CheckId: " + getCheckId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getMillisUntilNextRefreshable() != null) sb.append("MillisUntilNextRefreshable: " + getMillisUntilNextRefreshable() );
         sb.append("}");
         return sb.toString();

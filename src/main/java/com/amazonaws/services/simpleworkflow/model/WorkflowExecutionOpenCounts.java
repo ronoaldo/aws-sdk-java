@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the counts of open tasks, child workflow executions and timers for a workflow execution.
+ * Contains the counts of open tasks, child workflow executions and
+ * timers for a workflow execution.
  * </p>
  */
-public class WorkflowExecutionOpenCounts  implements Serializable  {
+public class WorkflowExecutionOpenCounts implements Serializable {
 
     /**
      * The count of activity tasks whose status is OPEN.
@@ -91,14 +93,13 @@ public class WorkflowExecutionOpenCounts  implements Serializable  {
      * @param openActivityTasks The count of activity tasks whose status is OPEN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionOpenCounts withOpenActivityTasks(Integer openActivityTasks) {
         this.openActivityTasks = openActivityTasks;
         return this;
     }
-    
-    
+
     /**
      * The count of decision tasks whose status is OPEN. A workflow execution
      * can have at most one open decision task.
@@ -140,14 +141,13 @@ public class WorkflowExecutionOpenCounts  implements Serializable  {
      *         can have at most one open decision task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionOpenCounts withOpenDecisionTasks(Integer openDecisionTasks) {
         this.openDecisionTasks = openDecisionTasks;
         return this;
     }
-    
-    
+
     /**
      * The count of timers started by this workflow execution that have not
      * fired yet.
@@ -189,14 +189,13 @@ public class WorkflowExecutionOpenCounts  implements Serializable  {
      *         fired yet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionOpenCounts withOpenTimers(Integer openTimers) {
         this.openTimers = openTimers;
         return this;
     }
-    
-    
+
     /**
      * The count of child workflow executions whose status is OPEN.
      * <p>
@@ -232,14 +231,13 @@ public class WorkflowExecutionOpenCounts  implements Serializable  {
      * @param openChildWorkflowExecutions The count of child workflow executions whose status is OPEN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionOpenCounts withOpenChildWorkflowExecutions(Integer openChildWorkflowExecutions) {
         this.openChildWorkflowExecutions = openChildWorkflowExecutions;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -251,10 +249,10 @@ public class WorkflowExecutionOpenCounts  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOpenActivityTasks() != null) sb.append("OpenActivityTasks: " + getOpenActivityTasks() + ",");    	
-        if (getOpenDecisionTasks() != null) sb.append("OpenDecisionTasks: " + getOpenDecisionTasks() + ",");    	
-        if (getOpenTimers() != null) sb.append("OpenTimers: " + getOpenTimers() + ",");    	
+        sb.append("{");
+        if (getOpenActivityTasks() != null) sb.append("OpenActivityTasks: " + getOpenActivityTasks() + ",");
+        if (getOpenDecisionTasks() != null) sb.append("OpenDecisionTasks: " + getOpenDecisionTasks() + ",");
+        if (getOpenTimers() != null) sb.append("OpenTimers: " + getOpenTimers() + ",");
         if (getOpenChildWorkflowExecutions() != null) sb.append("OpenChildWorkflowExecutions: " + getOpenChildWorkflowExecutions() );
         sb.append("}");
         return sb.toString();

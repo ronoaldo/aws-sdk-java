@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Presets are templates that contain most of the settings for
+ * transcoding media files from one format to another. Elastic Transcoder
+ * includes some default presets for common formats, for example, several
+ * iPod and iPhone versions. You can also create your own presets for
+ * formats that aren't included among the default presets. You specify
+ * which preset you want to use when you create a job.
+ * </p>
  */
-public class Preset  implements Serializable  {
+public class Preset implements Serializable {
 
     /**
      * Identifier for the new preset. You use this value to get settings for
@@ -28,6 +36,11 @@ public class Preset  implements Serializable  {
      * <b>Pattern: </b>^\d{13}-\w{6}$<br/>
      */
     private String id;
+
+    /**
+     * The Amazon Resource Name (ARN) for the preset.
+     */
+    private String arn;
 
     /**
      * The name of the preset.
@@ -46,11 +59,12 @@ public class Preset  implements Serializable  {
     private String description;
 
     /**
-     * The container type for the output file. This value must be
-     * <code>mp4</code>.
+     * The container type for the output file. Valid values include
+     * <code>mp3</code>, <code>mp4</code>, <code>ogg</code>, <code>ts</code>,
+     * and <code>webm</code>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)<br/>
+     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)|(^mp3$)|(^ogg$)<br/>
      */
     private String container;
 
@@ -123,14 +137,46 @@ public class Preset  implements Serializable  {
      *         the preset or to delete it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withId(String id) {
         this.id = id;
         return this;
     }
+
+    /**
+     * The Amazon Resource Name (ARN) for the preset.
+     *
+     * @return The Amazon Resource Name (ARN) for the preset.
+     */
+    public String getArn() {
+        return arn;
+    }
     
+    /**
+     * The Amazon Resource Name (ARN) for the preset.
+     *
+     * @param arn The Amazon Resource Name (ARN) for the preset.
+     */
+    public void setArn(String arn) {
+        this.arn = arn;
+    }
     
+    /**
+     * The Amazon Resource Name (ARN) for the preset.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param arn The Amazon Resource Name (ARN) for the preset.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Preset withArn(String arn) {
+        this.arn = arn;
+        return this;
+    }
+
     /**
      * The name of the preset.
      * <p>
@@ -166,14 +212,13 @@ public class Preset  implements Serializable  {
      * @param name The name of the preset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A description of the preset.
      * <p>
@@ -209,63 +254,67 @@ public class Preset  implements Serializable  {
      * @param description A description of the preset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * The container type for the output file. This value must be
-     * <code>mp4</code>.
+     * The container type for the output file. Valid values include
+     * <code>mp3</code>, <code>mp4</code>, <code>ogg</code>, <code>ts</code>,
+     * and <code>webm</code>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)<br/>
+     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)|(^mp3$)|(^ogg$)<br/>
      *
-     * @return The container type for the output file. This value must be
-     *         <code>mp4</code>.
+     * @return The container type for the output file. Valid values include
+     *         <code>mp3</code>, <code>mp4</code>, <code>ogg</code>, <code>ts</code>,
+     *         and <code>webm</code>.
      */
     public String getContainer() {
         return container;
     }
     
     /**
-     * The container type for the output file. This value must be
-     * <code>mp4</code>.
+     * The container type for the output file. Valid values include
+     * <code>mp3</code>, <code>mp4</code>, <code>ogg</code>, <code>ts</code>,
+     * and <code>webm</code>.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)<br/>
+     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)|(^mp3$)|(^ogg$)<br/>
      *
-     * @param container The container type for the output file. This value must be
-     *         <code>mp4</code>.
+     * @param container The container type for the output file. Valid values include
+     *         <code>mp3</code>, <code>mp4</code>, <code>ogg</code>, <code>ts</code>,
+     *         and <code>webm</code>.
      */
     public void setContainer(String container) {
         this.container = container;
     }
     
     /**
-     * The container type for the output file. This value must be
-     * <code>mp4</code>.
+     * The container type for the output file. Valid values include
+     * <code>mp3</code>, <code>mp4</code>, <code>ogg</code>, <code>ts</code>,
+     * and <code>webm</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)<br/>
+     * <b>Pattern: </b>(^mp4$)|(^ts$)|(^webm$)|(^mp3$)|(^ogg$)<br/>
      *
-     * @param container The container type for the output file. This value must be
-     *         <code>mp4</code>.
+     * @param container The container type for the output file. Valid values include
+     *         <code>mp3</code>, <code>mp4</code>, <code>ogg</code>, <code>ts</code>,
+     *         and <code>webm</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withContainer(String container) {
         this.container = container;
         return this;
     }
-    
-    
+
     /**
      * A section of the response body that provides information about the
      * audio preset values.
@@ -298,14 +347,13 @@ public class Preset  implements Serializable  {
      *         audio preset values.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withAudio(AudioParameters audio) {
         this.audio = audio;
         return this;
     }
-    
-    
+
     /**
      * A section of the response body that provides information about the
      * video preset values.
@@ -338,14 +386,13 @@ public class Preset  implements Serializable  {
      *         video preset values.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withVideo(VideoParameters video) {
         this.video = video;
         return this;
     }
-    
-    
+
     /**
      * A section of the response body that provides information about the
      * thumbnail preset values, if any.
@@ -378,14 +425,13 @@ public class Preset  implements Serializable  {
      *         thumbnail preset values, if any.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withThumbnails(Thumbnails thumbnails) {
         this.thumbnails = thumbnails;
         return this;
     }
-    
-    
+
     /**
      * Whether the preset is a default preset provided by Elastic Transcoder
      * (<code>System</code>) or a preset that you have defined
@@ -433,14 +479,13 @@ public class Preset  implements Serializable  {
      *         (<code>Custom</code>).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Preset withType(String type) {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -452,14 +497,15 @@ public class Preset  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getContainer() != null) sb.append("Container: " + getContainer() + ",");    	
-        if (getAudio() != null) sb.append("Audio: " + getAudio() + ",");    	
-        if (getVideo() != null) sb.append("Video: " + getVideo() + ",");    	
-        if (getThumbnails() != null) sb.append("Thumbnails: " + getThumbnails() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getContainer() != null) sb.append("Container: " + getContainer() + ",");
+        if (getAudio() != null) sb.append("Audio: " + getAudio() + ",");
+        if (getVideo() != null) sb.append("Video: " + getVideo() + ",");
+        if (getThumbnails() != null) sb.append("Thumbnails: " + getThumbnails() + ",");
         if (getType() != null) sb.append("Type: " + getType() );
         sb.append("}");
         return sb.toString();
@@ -471,6 +517,7 @@ public class Preset  implements Serializable  {
         int hashCode = 1;
         
         hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode()); 
+        hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode()); 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode()); 
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode()); 
         hashCode = prime * hashCode + ((getContainer() == null) ? 0 : getContainer().hashCode()); 
@@ -491,6 +538,8 @@ public class Preset  implements Serializable  {
         
         if (other.getId() == null ^ this.getId() == null) return false;
         if (other.getId() != null && other.getId().equals(this.getId()) == false) return false; 
+        if (other.getArn() == null ^ this.getArn() == null) return false;
+        if (other.getArn() != null && other.getArn().equals(this.getArn()) == false) return false; 
         if (other.getName() == null ^ this.getName() == null) return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false) return false; 
         if (other.getDescription() == null ^ this.getDescription() == null) return false;

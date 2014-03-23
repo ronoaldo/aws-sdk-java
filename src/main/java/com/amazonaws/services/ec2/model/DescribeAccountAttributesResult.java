@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Account Attributes Result
+ * 
  */
-public class DescribeAccountAttributesResult  implements Serializable  {
-
-    private java.util.List<AccountAttribute> accountAttributes;
+public class DescribeAccountAttributesResult implements Serializable {
 
     /**
-     * Returns the value of the AccountAttributes property for this object.
+     * Information about one or more account attributes.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute> accountAttributes;
+
+    /**
+     * Information about one or more account attributes.
      *
-     * @return The value of the AccountAttributes property for this object.
+     * @return Information about one or more account attributes.
      */
     public java.util.List<AccountAttribute> getAccountAttributes() {
-        
         if (accountAttributes == null) {
-            accountAttributes = new java.util.ArrayList<AccountAttribute>();
+              accountAttributes = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute>();
+              accountAttributes.setAutoConstruct(true);
         }
         return accountAttributes;
     }
     
     /**
-     * Sets the value of the AccountAttributes property for this object.
+     * Information about one or more account attributes.
      *
-     * @param accountAttributes The new value for the AccountAttributes property for this object.
+     * @param accountAttributes Information about one or more account attributes.
      */
     public void setAccountAttributes(java.util.Collection<AccountAttribute> accountAttributes) {
         if (accountAttributes == null) {
             this.accountAttributes = null;
             return;
         }
-
-        java.util.List<AccountAttribute> accountAttributesCopy = new java.util.ArrayList<AccountAttribute>(accountAttributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute> accountAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute>(accountAttributes.size());
         accountAttributesCopy.addAll(accountAttributes);
         this.accountAttributes = accountAttributesCopy;
     }
     
     /**
-     * Sets the value of the AccountAttributes property for this object.
+     * Information about one or more account attributes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param accountAttributes The new value for the AccountAttributes property for this object.
+     * @param accountAttributes Information about one or more account attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesResult withAccountAttributes(AccountAttribute... accountAttributes) {
         if (getAccountAttributes() == null) setAccountAttributes(new java.util.ArrayList<AccountAttribute>(accountAttributes.length));
@@ -70,27 +73,27 @@ public class DescribeAccountAttributesResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the AccountAttributes property for this object.
+     * Information about one or more account attributes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param accountAttributes The new value for the AccountAttributes property for this object.
+     * @param accountAttributes Information about one or more account attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesResult withAccountAttributes(java.util.Collection<AccountAttribute> accountAttributes) {
         if (accountAttributes == null) {
             this.accountAttributes = null;
         } else {
-            java.util.List<AccountAttribute> accountAttributesCopy = new java.util.ArrayList<AccountAttribute>(accountAttributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute> accountAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttribute>(accountAttributes.size());
             accountAttributesCopy.addAll(accountAttributes);
             this.accountAttributes = accountAttributesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeAccountAttributesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAccountAttributes() != null) sb.append("AccountAttributes: " + getAccountAttributes() );
         sb.append("}");
         return sb.toString();

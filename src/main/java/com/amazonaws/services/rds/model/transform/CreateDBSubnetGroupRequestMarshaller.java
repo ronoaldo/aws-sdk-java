@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateDBSubnetGroupRequestMarshaller implements Marshaller<Request<
     public Request<CreateDBSubnetGroupRequest> marshall(CreateDBSubnetGroupRequest createDBSubnetGroupRequest) {
 
         if (createDBSubnetGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateDBSubnetGroupRequest> request = new DefaultRequest<CreateDBSubnetGroupRequest>(createDBSubnetGroupRequest, "AmazonRDS");
         request.addParameter("Action", "CreateDBSubnetGroup");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (createDBSubnetGroupRequest.getDBSubnetGroupName() != null) {
             request.addParameter("DBSubnetGroupName", StringUtils.fromString(createDBSubnetGroupRequest.getDBSubnetGroupName()));
@@ -58,6 +58,22 @@ public class CreateDBSubnetGroupRequestMarshaller implements Marshaller<Request<
             subnetIdsListIndex++;
         }
 
+        java.util.List<Tag> tagsList = createDBSubnetGroupRequest.getTags();
+        int tagsListIndex = 1;
+
+        for (Tag tagsListValue : tagsList) {
+            Tag tagMember = tagsListValue;
+            if (tagMember != null) {
+                if (tagMember.getKey() != null) {
+                    request.addParameter("Tags.Tag." + tagsListIndex + ".Key", StringUtils.fromString(tagMember.getKey()));
+                }
+                if (tagMember.getValue() != null) {
+                    request.addParameter("Tags.Tag." + tagsListIndex + ".Value", StringUtils.fromString(tagMember.getValue()));
+                }
+            }
+
+            tagsListIndex++;
+        }
 
         return request;
     }

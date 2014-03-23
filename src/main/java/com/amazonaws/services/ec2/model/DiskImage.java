@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,121 +13,130 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Disk Image
+ * <p>
+ * Describes a disk image.
+ * </p>
  */
-public class DiskImage  implements Serializable  {
+public class DiskImage implements Serializable {
 
+    /**
+     * 
+     */
     private DiskImageDetail image;
 
+    /**
+     * 
+     */
     private String description;
 
+    /**
+     * 
+     */
     private VolumeDetail volume;
 
     /**
-     * Returns the value of the Image property for this object.
+     * 
      *
-     * @return The value of the Image property for this object.
+     * @return 
      */
     public DiskImageDetail getImage() {
         return image;
     }
     
     /**
-     * Sets the value of the Image property for this object.
+     * 
      *
-     * @param image The new value for the Image property for this object.
+     * @param image 
      */
     public void setImage(DiskImageDetail image) {
         this.image = image;
     }
     
     /**
-     * Sets the value of the Image property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param image The new value for the Image property for this object.
+     * @param image 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImage withImage(DiskImageDetail image) {
         this.image = image;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Description property for this object.
+     * 
      *
-     * @return The value of the Description property for this object.
+     * @return 
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * 
      *
-     * @param description The new value for the Description property for this object.
+     * @param description 
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImage withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Volume property for this object.
+     * 
      *
-     * @return The value of the Volume property for this object.
+     * @return 
      */
     public VolumeDetail getVolume() {
         return volume;
     }
     
     /**
-     * Sets the value of the Volume property for this object.
+     * 
      *
-     * @param volume The new value for the Volume property for this object.
+     * @param volume 
      */
     public void setVolume(VolumeDetail volume) {
         this.volume = volume;
     }
     
     /**
-     * Sets the value of the Volume property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volume The new value for the Volume property for this object.
+     * @param volume 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DiskImage withVolume(VolumeDetail volume) {
         this.volume = volume;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -139,9 +148,9 @@ public class DiskImage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImage() != null) sb.append("Image: " + getImage() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getImage() != null) sb.append("Image: " + getImage() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getVolume() != null) sb.append("Volume: " + getVolume() );
         sb.append("}");
         return sb.toString();

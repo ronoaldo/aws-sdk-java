@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#listLocalDisks(ListLocalDisksRequest) ListLocalDisks operation}.
  * <p>
- * This operation returns a list of the local disks of a gateway. To specify which gateway to describe you use the Amazon Resource Name (ARN) of the
- * gateway in the body of the request.
+ * This operation returns a list of the local disks of a gateway. To
+ * specify which gateway to describe you use the Amazon Resource Name
+ * (ARN) of the gateway in the body of the request.
  * </p>
  * <p>
- * The request returns all disks, specifying which are configured as working storage, stored volume or not configured at all.
+ * The request returns all disks, specifying which are configured as
+ * working storage, stored volume or not configured at all.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#listLocalDisks(ListLocalDisksRequest)
  */
-public class ListLocalDisksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListLocalDisksRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -87,14 +91,13 @@ public class ListLocalDisksRequest extends AmazonWebServiceRequest  implements S
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListLocalDisksRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -106,7 +109,7 @@ public class ListLocalDisksRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

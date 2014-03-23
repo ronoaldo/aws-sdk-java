@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,32 +22,28 @@ import com.amazonaws.services.support.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Case Details JSON Unmarshaller
  */
 public class CaseDetailsJsonUnmarshaller implements Unmarshaller<CaseDetails, JsonUnmarshallerContext> {
 
-    
-
     public CaseDetails unmarshall(JsonUnmarshallerContext context) throws Exception {
         CaseDetails caseDetails = new CaseDetails();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("caseId", targetDepth)) {
                     context.nextToken();
@@ -90,6 +86,7 @@ public class CaseDetailsJsonUnmarshaller implements Unmarshaller<CaseDetails, Js
                     caseDetails.setRecentCommunications(RecentCaseCommunicationsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("ccEmailAddresses", targetDepth)) {
+                    context.nextToken();
                     caseDetails.setCcEmailAddresses(new ListUnmarshaller<String>(StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("language", targetDepth)) {
@@ -101,7 +98,6 @@ public class CaseDetailsJsonUnmarshaller implements Unmarshaller<CaseDetails, Js
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

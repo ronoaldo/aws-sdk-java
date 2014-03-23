@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribePoliciesRequestMarshaller implements Marshaller<Request<Des
     public Request<DescribePoliciesRequest> marshall(DescribePoliciesRequest describePoliciesRequest) {
 
         if (describePoliciesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribePoliciesRequest> request = new DefaultRequest<DescribePoliciesRequest>(describePoliciesRequest, "AmazonAutoScaling");
         request.addParameter("Action", "DescribePolicies");
@@ -60,7 +60,6 @@ public class DescribePoliciesRequestMarshaller implements Marshaller<Request<Des
         if (describePoliciesRequest.getMaxRecords() != null) {
             request.addParameter("MaxRecords", StringUtils.fromInteger(describePoliciesRequest.getMaxRecords()));
         }
-
 
         return request;
     }

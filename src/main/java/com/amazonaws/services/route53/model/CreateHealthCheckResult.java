@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type containing the response information for the new health check.
+ * A complex type containing the response information for the new health
+ * check.
  * </p>
  */
-public class CreateHealthCheckResult  implements Serializable  {
+public class CreateHealthCheckResult implements Serializable {
 
     /**
      * A complex type that contains identifying information about the health
@@ -68,14 +70,13 @@ public class CreateHealthCheckResult  implements Serializable  {
      *         check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHealthCheckResult withHealthCheck(HealthCheck healthCheck) {
         this.healthCheck = healthCheck;
         return this;
     }
-    
-    
+
     /**
      * The unique URL representing the new health check.
      * <p>
@@ -111,14 +112,13 @@ public class CreateHealthCheckResult  implements Serializable  {
      * @param location The unique URL representing the new health check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHealthCheckResult withLocation(String location) {
         this.location = location;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -130,8 +130,8 @@ public class CreateHealthCheckResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getHealthCheck() != null) sb.append("HealthCheck: " + getHealthCheck() + ",");    	
+        sb.append("{");
+        if (getHealthCheck() != null) sb.append("HealthCheck: " + getHealthCheck() + ",");
         if (getLocation() != null) sb.append("Location: " + getLocation() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,85 +13,92 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Iam Instance Profile Specification
+ * <p>
+ * Describes an IAM instance profile.
+ * </p>
  */
-public class IamInstanceProfileSpecification  implements Serializable  {
+public class IamInstanceProfileSpecification implements Serializable {
 
+    /**
+     * The Amazon Resource Name (ARN) of the instance profile.
+     */
     private String arn;
 
+    /**
+     * The name of the instance profile.
+     */
     private String name;
 
     /**
-     * Returns the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) of the instance profile.
      *
-     * @return The value of the Arn property for this object.
+     * @return The Amazon Resource Name (ARN) of the instance profile.
      */
     public String getArn() {
         return arn;
     }
     
     /**
-     * Sets the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) of the instance profile.
      *
-     * @param arn The new value for the Arn property for this object.
+     * @param arn The Amazon Resource Name (ARN) of the instance profile.
      */
     public void setArn(String arn) {
         this.arn = arn;
     }
     
     /**
-     * Sets the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) of the instance profile.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param arn The new value for the Arn property for this object.
+     * @param arn The Amazon Resource Name (ARN) of the instance profile.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IamInstanceProfileSpecification withArn(String arn) {
         this.arn = arn;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Name property for this object.
+     * The name of the instance profile.
      *
-     * @return The value of the Name property for this object.
+     * @return The name of the instance profile.
      */
     public String getName() {
         return name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The name of the instance profile.
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The name of the instance profile.
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The name of the instance profile.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The name of the instance profile.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IamInstanceProfileSpecification withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,8 +110,8 @@ public class IamInstanceProfileSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getArn() != null) sb.append("Arn: " + getArn() + ",");    	
+        sb.append("{");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

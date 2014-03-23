@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,97 +13,104 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains a list of CacheParameterGroups.
+ * Represents the output of a <i>DescribeCacheParameterGroups</i>
+ * operation.
  * </p>
  */
-public class DescribeCacheParameterGroupsResult  implements Serializable  {
+public class DescribeCacheParameterGroupsResult implements Serializable {
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
-     * A list of <a>CacheParameterGroup</a> instances.
+     * A list of cache parameter groups. Each element in the list contains
+     * detailed information about one cache parameter group.
      */
-    private java.util.List<CacheParameterGroup> cacheParameterGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CacheParameterGroup> cacheParameterGroups;
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return The marker obtained from a previous operation response.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParameterGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of <a>CacheParameterGroup</a> instances.
+     * A list of cache parameter groups. Each element in the list contains
+     * detailed information about one cache parameter group.
      *
-     * @return A list of <a>CacheParameterGroup</a> instances.
+     * @return A list of cache parameter groups. Each element in the list contains
+     *         detailed information about one cache parameter group.
      */
     public java.util.List<CacheParameterGroup> getCacheParameterGroups() {
-        
         if (cacheParameterGroups == null) {
-            cacheParameterGroups = new java.util.ArrayList<CacheParameterGroup>();
+              cacheParameterGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheParameterGroup>();
+              cacheParameterGroups.setAutoConstruct(true);
         }
         return cacheParameterGroups;
     }
     
     /**
-     * A list of <a>CacheParameterGroup</a> instances.
+     * A list of cache parameter groups. Each element in the list contains
+     * detailed information about one cache parameter group.
      *
-     * @param cacheParameterGroups A list of <a>CacheParameterGroup</a> instances.
+     * @param cacheParameterGroups A list of cache parameter groups. Each element in the list contains
+     *         detailed information about one cache parameter group.
      */
     public void setCacheParameterGroups(java.util.Collection<CacheParameterGroup> cacheParameterGroups) {
         if (cacheParameterGroups == null) {
             this.cacheParameterGroups = null;
             return;
         }
-
-        java.util.List<CacheParameterGroup> cacheParameterGroupsCopy = new java.util.ArrayList<CacheParameterGroup>(cacheParameterGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CacheParameterGroup> cacheParameterGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheParameterGroup>(cacheParameterGroups.size());
         cacheParameterGroupsCopy.addAll(cacheParameterGroups);
         this.cacheParameterGroups = cacheParameterGroupsCopy;
     }
     
     /**
-     * A list of <a>CacheParameterGroup</a> instances.
+     * A list of cache parameter groups. Each element in the list contains
+     * detailed information about one cache parameter group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroups A list of <a>CacheParameterGroup</a> instances.
+     * @param cacheParameterGroups A list of cache parameter groups. Each element in the list contains
+     *         detailed information about one cache parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParameterGroupsResult withCacheParameterGroups(CacheParameterGroup... cacheParameterGroups) {
         if (getCacheParameterGroups() == null) setCacheParameterGroups(new java.util.ArrayList<CacheParameterGroup>(cacheParameterGroups.length));
@@ -114,27 +121,29 @@ public class DescribeCacheParameterGroupsResult  implements Serializable  {
     }
     
     /**
-     * A list of <a>CacheParameterGroup</a> instances.
+     * A list of cache parameter groups. Each element in the list contains
+     * detailed information about one cache parameter group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroups A list of <a>CacheParameterGroup</a> instances.
+     * @param cacheParameterGroups A list of cache parameter groups. Each element in the list contains
+     *         detailed information about one cache parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParameterGroupsResult withCacheParameterGroups(java.util.Collection<CacheParameterGroup> cacheParameterGroups) {
         if (cacheParameterGroups == null) {
             this.cacheParameterGroups = null;
         } else {
-            java.util.List<CacheParameterGroup> cacheParameterGroupsCopy = new java.util.ArrayList<CacheParameterGroup>(cacheParameterGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CacheParameterGroup> cacheParameterGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheParameterGroup>(cacheParameterGroups.size());
             cacheParameterGroupsCopy.addAll(cacheParameterGroups);
             this.cacheParameterGroups = cacheParameterGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +155,8 @@ public class DescribeCacheParameterGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getCacheParameterGroups() != null) sb.append("CacheParameterGroups: " + getCacheParameterGroups() );
         sb.append("}");
         return sb.toString();

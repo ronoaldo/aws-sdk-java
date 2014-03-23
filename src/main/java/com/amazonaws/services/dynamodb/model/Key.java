@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import java.io.Serializable;
  * The primary key that uniquely identifies each item in a table. A primary key can be a one attribute (hash) primary key or a two attribute
  * (hash-and-range) primary key.
  * </p>
+ * @deprecated This class is no longer supported by the latest service API.
  */
 @Deprecated
 public class Key  implements Serializable  {

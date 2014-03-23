@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing the available Amazon EC2 regions.
- * </p>
+ * 
  */
-public class DescribeRegionsResult  implements Serializable  {
+public class DescribeRegionsResult implements Serializable {
 
     /**
-     * The list of described Amazon EC2 regions.
+     * Information about one or more regions.
      */
-    private java.util.List<Region> regions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Region> regions;
 
     /**
-     * The list of described Amazon EC2 regions.
+     * Information about one or more regions.
      *
-     * @return The list of described Amazon EC2 regions.
+     * @return Information about one or more regions.
      */
     public java.util.List<Region> getRegions() {
-        
         if (regions == null) {
-            regions = new java.util.ArrayList<Region>();
+              regions = new com.amazonaws.internal.ListWithAutoConstructFlag<Region>();
+              regions.setAutoConstruct(true);
         }
         return regions;
     }
     
     /**
-     * The list of described Amazon EC2 regions.
+     * Information about one or more regions.
      *
-     * @param regions The list of described Amazon EC2 regions.
+     * @param regions Information about one or more regions.
      */
     public void setRegions(java.util.Collection<Region> regions) {
         if (regions == null) {
             this.regions = null;
             return;
         }
-
-        java.util.List<Region> regionsCopy = new java.util.ArrayList<Region>(regions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Region> regionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Region>(regions.size());
         regionsCopy.addAll(regions);
         this.regions = regionsCopy;
     }
     
     /**
-     * The list of described Amazon EC2 regions.
+     * Information about one or more regions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param regions The list of described Amazon EC2 regions.
+     * @param regions Information about one or more regions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsResult withRegions(Region... regions) {
         if (getRegions() == null) setRegions(new java.util.ArrayList<Region>(regions.length));
@@ -75,27 +73,27 @@ public class DescribeRegionsResult  implements Serializable  {
     }
     
     /**
-     * The list of described Amazon EC2 regions.
+     * Information about one or more regions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param regions The list of described Amazon EC2 regions.
+     * @param regions Information about one or more regions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRegionsResult withRegions(java.util.Collection<Region> regions) {
         if (regions == null) {
             this.regions = null;
         } else {
-            java.util.List<Region> regionsCopy = new java.util.ArrayList<Region>(regions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Region> regionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Region>(regions.size());
             regionsCopy.addAll(regions);
             this.regions = regionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeRegionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRegions() != null) sb.append("Regions: " + getRegions() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The configuration settings for a workflow execution including timeout values, tasklist etc. These configuration settings are determined from the
- * defaults specified when registering the workflow type and those specified when starting the workflow execution.
+ * The configuration settings for a workflow execution including timeout
+ * values, tasklist etc. These configuration settings are determined from
+ * the defaults specified when registering the workflow type and those
+ * specified when starting the workflow execution.
  * </p>
  */
-public class WorkflowExecutionConfiguration  implements Serializable  {
+public class WorkflowExecutionConfiguration implements Serializable {
 
     /**
      * The maximum duration allowed for decision tasks for this workflow
@@ -129,14 +132,13 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
      *         duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionConfiguration withTaskStartToCloseTimeout(String taskStartToCloseTimeout) {
         this.taskStartToCloseTimeout = taskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The total duration for this workflow execution. <p>The valid values
      * are integers greater than or equal to <code>0</code>. An integer value
@@ -190,14 +192,13 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
      *         can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionConfiguration withExecutionStartToCloseTimeout(String executionStartToCloseTimeout) {
         this.executionStartToCloseTimeout = executionStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The task list used for the decision tasks generated for this workflow
      * execution.
@@ -230,14 +231,13 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
      *         execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionConfiguration withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * The policy to use for the child workflow executions if this workflow
      * execution is terminated, by calling the
@@ -337,7 +337,7 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -345,8 +345,7 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * The policy to use for the child workflow executions if this workflow
      * execution is terminated, by calling the
@@ -412,7 +411,7 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -420,7 +419,7 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -432,10 +431,10 @@ public class WorkflowExecutionConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");    	
-        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
+        sb.append("{");
+        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");
+        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
         if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,44 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sqs.AmazonSQS#changeMessageVisibilityBatch(ChangeMessageVisibilityBatchRequest) ChangeMessageVisibilityBatch operation}.
  * <p>
- * This is a batch version of ChangeMessageVisibility. It takes multiple receipt handles and performs the operation on each of the them. The result of
- * the operation on each message is reported individually in the response.
+ * Changes the visibility timeout of multiple messages. This is a batch
+ * version of ChangeMessageVisibility. The result of the action on each
+ * message is reported individually in the response. You can send up to
+ * 10 ChangeMessageVisibility requests with each
+ * <code>ChangeMessageVisibilityBatch</code> action.
+ * </p>
+ * <p>
+ * <b>IMPORTANT:</b>Because the batch request can result in a combination
+ * of successful and unsuccessful actions, you should check for batch
+ * errors even when the call returns an HTTP status code of 200.
+ * </p>
+ * <p>
+ * <b>NOTE:</b>Some API actions take lists of parameters. These lists are
+ * specified using the param.n notation. Values of n are integers
+ * starting from 1. For example, a parameter list with two elements looks
+ * like this:
+ * </p>
+ * <p>
+ * <code>&Attribute.1=this</code>
+ * </p>
+ * <p>
+ * <code>&Attribute.2=that</code>
  * </p>
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#changeMessageVisibilityBatch(ChangeMessageVisibilityBatchRequest)
  */
-public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      */
     private String queueUrl;
 
@@ -36,7 +58,7 @@ public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest
      * A list of receipt handles of the messages for which the visibility
      * timeout must be changed.
      */
-    private java.util.List<ChangeMessageVisibilityBatchRequestEntry> entries;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchRequestEntry> entries;
 
     /**
      * Default constructor for a new ChangeMessageVisibilityBatchRequest object.  Callers should use the
@@ -49,51 +71,48 @@ public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      * @param entries A list of receipt handles of the messages for which the
      * visibility timeout must be changed.
      */
     public ChangeMessageVisibilityBatchRequest(String queueUrl, java.util.List<ChangeMessageVisibilityBatchRequestEntry> entries) {
-        this.queueUrl = queueUrl;
-        this.entries = entries;
+        setQueueUrl(queueUrl);
+        setEntries(entries);
     }
 
-    
-    
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      *
-     * @return The URL of the SQS queue to take action on.
+     * @return The URL of the Amazon SQS queue to take action on.
      */
     public String getQueueUrl() {
         return queueUrl;
     }
     
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      *
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      */
     public void setQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
     }
     
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
     }
-    
-    
+
     /**
      * A list of receipt handles of the messages for which the visibility
      * timeout must be changed.
@@ -102,9 +121,9 @@ public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest
      *         timeout must be changed.
      */
     public java.util.List<ChangeMessageVisibilityBatchRequestEntry> getEntries() {
-        
         if (entries == null) {
-            entries = new java.util.ArrayList<ChangeMessageVisibilityBatchRequestEntry>();
+              entries = new com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchRequestEntry>();
+              entries.setAutoConstruct(true);
         }
         return entries;
     }
@@ -121,8 +140,7 @@ public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest
             this.entries = null;
             return;
         }
-
-        java.util.List<ChangeMessageVisibilityBatchRequestEntry> entriesCopy = new java.util.ArrayList<ChangeMessageVisibilityBatchRequestEntry>(entries.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchRequestEntry> entriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchRequestEntry>(entries.size());
         entriesCopy.addAll(entries);
         this.entries = entriesCopy;
     }
@@ -137,7 +155,7 @@ public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest
      *         timeout must be changed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequest withEntries(ChangeMessageVisibilityBatchRequestEntry... entries) {
         if (getEntries() == null) setEntries(new java.util.ArrayList<ChangeMessageVisibilityBatchRequestEntry>(entries.length));
@@ -157,20 +175,20 @@ public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest
      *         timeout must be changed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequest withEntries(java.util.Collection<ChangeMessageVisibilityBatchRequestEntry> entries) {
         if (entries == null) {
             this.entries = null;
         } else {
-            java.util.List<ChangeMessageVisibilityBatchRequestEntry> entriesCopy = new java.util.ArrayList<ChangeMessageVisibilityBatchRequestEntry>(entries.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchRequestEntry> entriesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ChangeMessageVisibilityBatchRequestEntry>(entries.size());
             entriesCopy.addAll(entries);
             this.entries = entriesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -182,8 +200,8 @@ public class ChangeMessageVisibilityBatchRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
         if (getEntries() != null) sb.append("Entries: " + getEntries() );
         sb.append("}");
         return sb.toString();

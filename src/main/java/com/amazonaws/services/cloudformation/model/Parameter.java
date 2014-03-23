@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The Parameter data type.
  * </p>
  */
-public class Parameter  implements Serializable  {
+public class Parameter implements Serializable {
 
     /**
      * The key associated with the parameter.
@@ -58,14 +59,13 @@ public class Parameter  implements Serializable  {
      * @param parameterKey The key associated with the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withParameterKey(String parameterKey) {
         this.parameterKey = parameterKey;
         return this;
     }
-    
-    
+
     /**
      * The value associated with the parameter.
      *
@@ -92,14 +92,13 @@ public class Parameter  implements Serializable  {
      * @param parameterValue The value associated with the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withParameterValue(String parameterValue) {
         this.parameterValue = parameterValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class Parameter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterKey() != null) sb.append("ParameterKey: " + getParameterKey() + ",");    	
+        sb.append("{");
+        if (getParameterKey() != null) sb.append("ParameterKey: " + getParameterKey() + ",");
         if (getParameterValue() != null) sb.append("ParameterValue: " + getParameterValue() );
         sb.append("}");
         return sb.toString();

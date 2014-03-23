@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,15 +26,25 @@ public class MissingParameterValueExceptionUnmarshaller extends GlacierErrorUnma
         super(MissingParameterValueException.class);
     }
 
-    public AmazonServiceException unmarshall(JSONObject json) throws Exception {
-        // Bail out if this isn't the right error code that this
-        // marshaller understands.
-        String errorCode = parseErrorCode(json);
-        if (errorCode == null || !errorCode.equals("MissingParameterValueException"))
-            return null;
+    @Override
+    public boolean match(String errorTypeFromHeader, JSONObject json) throws Exception {
+        if (errorTypeFromHeader == null) {
+            // Parse error type from the JSON content if it's not available in the response headers
+            String errorCodeFromContent = parseErrorCode(json);
+            return (errorCodeFromContent != null && errorCodeFromContent.equals("MissingParameterValueException"));
+        } else {
+            return errorTypeFromHeader.equals("MissingParameterValueException");
+        }
+    }
 
+    @Override
+    public AmazonServiceException unmarshall(JSONObject json) throws Exception {
         MissingParameterValueException e = (MissingParameterValueException)super.unmarshall(json);
+        e.setErrorCode("MissingParameterValueException");
+
+        e.setType(parseMember("Type", json));
         
+        e.setCode(parseMember("Code", json));
         
         return e;
     }

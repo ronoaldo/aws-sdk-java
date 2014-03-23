@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.route53.AmazonRoute53#listHostedZones(ListHostedZonesRequest) ListHostedZones operation}.
  * <p>
- * To retrieve a list of your hosted zones, send a <code>GET</code> request to the <code>2012-12-12/hostedzone</code> resource. The response to this
- * request includes a <code>HostedZones</code> element with zero, one, or multiple <code>HostedZone</code> child elements. By default, the list of hosted
- * zones is displayed on a single page. You can control the length of the page that is displayed by using the <code>MaxItems</code> parameter. You can
- * use the <code>Marker</code> parameter to control the hosted zone that the list begins with.
+ * To retrieve a list of your hosted zones, send a <code>GET</code>
+ * request to the <code>2013-04-01/hostedzone</code> resource. The
+ * response to this request includes a <code>HostedZones</code> element
+ * with zero, one, or multiple <code>HostedZone</code> child elements. By
+ * default, the list of hosted zones is displayed on a single page. You
+ * can control the length of the page that is displayed by using the
+ * <code>MaxItems</code> parameter. You can use the <code>Marker</code>
+ * parameter to control the hosted zone that the list begins with.
  * </p>
  * <p>
- * <b>NOTE:</b> Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to a value greater than 100, Amazon Route 53 returns only the first
- * 100.
+ * <b>NOTE:</b> Amazon Route 53 returns a maximum of 100 items. If you
+ * set MaxItems to a value greater than 100, Amazon Route 53 returns only
+ * the first 100.
  * </p>
  *
  * @see com.amazonaws.services.route53.AmazonRoute53#listHostedZones(ListHostedZonesRequest)
  */
-public class ListHostedZonesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListHostedZonesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * If the request returned more than one page of results, submit another
@@ -109,14 +116,13 @@ public class ListHostedZonesRequest extends AmazonWebServiceRequest  implements 
      *         results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Specify the maximum number of hosted zones to return per page of
      * results.
@@ -149,14 +155,13 @@ public class ListHostedZonesRequest extends AmazonWebServiceRequest  implements 
      *         results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListHostedZonesRequest withMaxItems(String maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -168,8 +173,8 @@ public class ListHostedZonesRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce#describeJobFlows(DescribeJobFlowsRequest) DescribeJobFlows operation}.
  * <p>
- * DescribeJobFlows returns a list of job flows that match all of the supplied parameters. The parameters can include a list of job flow IDs, job flow
- * states, and restrictions on job flow creation date and time.
+ * DescribeJobFlows returns a list of job flows that match all of the
+ * supplied parameters. The parameters can include a list of job flow
+ * IDs, job flow states, and restrictions on job flow creation date and
+ * time.
  * </p>
  * <p>
- * Regardless of supplied parameters, only job flows created within the last two months are returned.
+ * Regardless of supplied parameters, only job flows created within the
+ * last two months are returned.
  * </p>
  * <p>
- * If no parameters are supplied, then job flows matching either of the following criteria are returned:
+ * If no parameters are supplied, then job flows matching either of the
+ * following criteria are returned:
  * </p>
  * 
  * <ul>
  * <li>Job flows created and completed in the last two weeks</li>
- * <li> Job flows created within the last two months that are in one of the following states: <code>RUNNING</code> ,
+ * <li> Job flows created within the last two months that are in one of
+ * the following states: <code>RUNNING</code> ,
  * <code>WAITING</code> ,
  * <code>SHUTTING_DOWN</code> ,
  * 
@@ -39,12 +46,13 @@ import java.io.Serializable;
  * 
  * </ul>
  * <p>
- * Amazon Elastic MapReduce can return a maximum of 512 job flow descriptions.
+ * Amazon Elastic MapReduce can return a maximum of 512 job flow
+ * descriptions.
  * </p>
  *
  * @see com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce#describeJobFlows(DescribeJobFlowsRequest)
  */
-public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeJobFlowsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Return only job flows created after this date and time.
@@ -59,12 +67,12 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
     /**
      * Return only job flows whose job flow ID is contained in this list.
      */
-    private java.util.List<String> jobFlowIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowIds;
 
     /**
      * Return only job flows whose state is contained in this list.
      */
-    private java.util.List<String> jobFlowStates;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowStates;
 
     /**
      * Default constructor for a new DescribeJobFlowsRequest object.  Callers should use the
@@ -81,11 +89,9 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
      * in this list.
      */
     public DescribeJobFlowsRequest(java.util.List<String> jobFlowIds) {
-        this.jobFlowIds = jobFlowIds;
+        setJobFlowIds(jobFlowIds);
     }
 
-    
-    
     /**
      * Return only job flows created after this date and time.
      *
@@ -112,14 +118,13 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
      * @param createdAfter Return only job flows created after this date and time.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsRequest withCreatedAfter(java.util.Date createdAfter) {
         this.createdAfter = createdAfter;
         return this;
     }
-    
-    
+
     /**
      * Return only job flows created before this date and time.
      *
@@ -146,23 +151,22 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
      * @param createdBefore Return only job flows created before this date and time.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsRequest withCreatedBefore(java.util.Date createdBefore) {
         this.createdBefore = createdBefore;
         return this;
     }
-    
-    
+
     /**
      * Return only job flows whose job flow ID is contained in this list.
      *
      * @return Return only job flows whose job flow ID is contained in this list.
      */
     public java.util.List<String> getJobFlowIds() {
-        
         if (jobFlowIds == null) {
-            jobFlowIds = new java.util.ArrayList<String>();
+              jobFlowIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              jobFlowIds.setAutoConstruct(true);
         }
         return jobFlowIds;
     }
@@ -177,8 +181,7 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
             this.jobFlowIds = null;
             return;
         }
-
-        java.util.List<String> jobFlowIdsCopy = new java.util.ArrayList<String>(jobFlowIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(jobFlowIds.size());
         jobFlowIdsCopy.addAll(jobFlowIds);
         this.jobFlowIds = jobFlowIdsCopy;
     }
@@ -191,7 +194,7 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
      * @param jobFlowIds Return only job flows whose job flow ID is contained in this list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsRequest withJobFlowIds(String... jobFlowIds) {
         if (getJobFlowIds() == null) setJobFlowIds(new java.util.ArrayList<String>(jobFlowIds.length));
@@ -209,29 +212,29 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
      * @param jobFlowIds Return only job flows whose job flow ID is contained in this list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsRequest withJobFlowIds(java.util.Collection<String> jobFlowIds) {
         if (jobFlowIds == null) {
             this.jobFlowIds = null;
         } else {
-            java.util.List<String> jobFlowIdsCopy = new java.util.ArrayList<String>(jobFlowIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(jobFlowIds.size());
             jobFlowIdsCopy.addAll(jobFlowIds);
             this.jobFlowIds = jobFlowIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Return only job flows whose state is contained in this list.
      *
      * @return Return only job flows whose state is contained in this list.
      */
     public java.util.List<String> getJobFlowStates() {
-        
         if (jobFlowStates == null) {
-            jobFlowStates = new java.util.ArrayList<String>();
+              jobFlowStates = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              jobFlowStates.setAutoConstruct(true);
         }
         return jobFlowStates;
     }
@@ -246,8 +249,7 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
             this.jobFlowStates = null;
             return;
         }
-
-        java.util.List<String> jobFlowStatesCopy = new java.util.ArrayList<String>(jobFlowStates.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowStatesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(jobFlowStates.size());
         jobFlowStatesCopy.addAll(jobFlowStates);
         this.jobFlowStates = jobFlowStatesCopy;
     }
@@ -260,7 +262,7 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
      * @param jobFlowStates Return only job flows whose state is contained in this list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsRequest withJobFlowStates(String... jobFlowStates) {
         if (getJobFlowStates() == null) setJobFlowStates(new java.util.ArrayList<String>(jobFlowStates.length));
@@ -278,20 +280,43 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
      * @param jobFlowStates Return only job flows whose state is contained in this list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsRequest withJobFlowStates(java.util.Collection<String> jobFlowStates) {
         if (jobFlowStates == null) {
             this.jobFlowStates = null;
         } else {
-            java.util.List<String> jobFlowStatesCopy = new java.util.ArrayList<String>(jobFlowStates.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowStatesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(jobFlowStates.size());
             jobFlowStatesCopy.addAll(jobFlowStates);
             this.jobFlowStates = jobFlowStatesCopy;
         }
 
         return this;
     }
-    
+
+    /**
+     * Return only job flows whose state is contained in this list.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param jobFlowStates Return only job flows whose state is contained in this list.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeJobFlowsRequest withJobFlowStates(JobFlowExecutionState... jobFlowStates) {
+        java.util.ArrayList<String> jobFlowStatesCopy = new java.util.ArrayList<String>(jobFlowStates.length);
+        for (JobFlowExecutionState member : jobFlowStates) {
+            jobFlowStatesCopy.add(member.toString());
+        }
+        if (getJobFlowStates() == null) {
+            setJobFlowStates(jobFlowStatesCopy);
+        } else {
+            getJobFlowStates().addAll(jobFlowStatesCopy);
+        }
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -303,10 +328,10 @@ public class DescribeJobFlowsRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCreatedAfter() != null) sb.append("CreatedAfter: " + getCreatedAfter() + ",");    	
-        if (getCreatedBefore() != null) sb.append("CreatedBefore: " + getCreatedBefore() + ",");    	
-        if (getJobFlowIds() != null) sb.append("JobFlowIds: " + getJobFlowIds() + ",");    	
+        sb.append("{");
+        if (getCreatedAfter() != null) sb.append("CreatedAfter: " + getCreatedAfter() + ",");
+        if (getCreatedBefore() != null) sb.append("CreatedBefore: " + getCreatedBefore() + ",");
+        if (getJobFlowIds() != null) sb.append("JobFlowIds: " + getJobFlowIds() + ",");
         if (getJobFlowStates() != null) sb.append("JobFlowStates: " + getJobFlowStates() );
         sb.append("}");
         return sb.toString();

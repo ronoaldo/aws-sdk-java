@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class TerminateEnvironmentRequestMarshaller implements Marshaller<Request
     public Request<TerminateEnvironmentRequest> marshall(TerminateEnvironmentRequest terminateEnvironmentRequest) {
 
         if (terminateEnvironmentRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<TerminateEnvironmentRequest> request = new DefaultRequest<TerminateEnvironmentRequest>(terminateEnvironmentRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "TerminateEnvironment");
@@ -49,7 +49,6 @@ public class TerminateEnvironmentRequestMarshaller implements Marshaller<Request
         if (terminateEnvironmentRequest.isTerminateResources() != null) {
             request.addParameter("TerminateResources", StringUtils.fromBoolean(terminateEnvironmentRequest.isTerminateResources()));
         }
-
 
         return request;
     }

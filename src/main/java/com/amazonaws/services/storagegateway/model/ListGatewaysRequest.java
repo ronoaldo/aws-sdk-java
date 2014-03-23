@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#listGateways(ListGatewaysRequest) ListGateways operation}.
  * <p>
- * This operation lists gateways owned by an AWS account in a region specified in the request. The returned list is ordered by gateway Amazon Resource
- * Name (ARN).
+ * This operation lists gateways owned by an AWS account in a region
+ * specified in the request. The returned list is ordered by gateway
+ * Amazon Resource Name (ARN).
  * </p>
  * <p>
- * By default, the operation returns a maximum of 100 gateways. This operation supports pagination that allows you to optionally reduce the number of
- * gateways returned in a response.
+ * By default, the operation returns a maximum of 100 gateways. This
+ * operation supports pagination that allows you to optionally reduce the
+ * number of gateways returned in a response.
  * </p>
  * <p>
- * If you have more gateways than are returned in a response-that is, the response returns only a truncated list of your gateways-the response contains a
- * marker that you can specify in your next request to fetch the next page of gateways.
+ * If you have more gateways than are returned in a response-that is, the
+ * response returns only a truncated list of your gateways-the response
+ * contains a marker that you can specify in your next request to fetch
+ * the next page of gateways.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#listGateways(ListGatewaysRequest)
  */
-public class ListGatewaysRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListGatewaysRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * An opaque string that indicates the position at which to begin the
@@ -94,14 +100,13 @@ public class ListGatewaysRequest extends AmazonWebServiceRequest  implements Ser
      *         returned list of gateways.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListGatewaysRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Specifies that the list of gateways returned be limited to the
      * specified number of items.
@@ -143,14 +148,13 @@ public class ListGatewaysRequest extends AmazonWebServiceRequest  implements Ser
      *         specified number of items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListGatewaysRequest withLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -162,8 +166,8 @@ public class ListGatewaysRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getLimit() != null) sb.append("Limit: " + getLimit() );
         sb.append("}");
         return sb.toString();

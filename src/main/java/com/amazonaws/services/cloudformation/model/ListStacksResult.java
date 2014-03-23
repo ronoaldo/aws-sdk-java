@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * The output for ListStacks action.
  * </p>
  */
-public class ListStacksResult  implements Serializable  {
+public class ListStacksResult implements Serializable {
 
     /**
      * A list of <code>StackSummary</code> structures containing information
      * about the specified stacks.
      */
-    private java.util.List<StackSummary> stackSummaries;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<StackSummary> stackSummaries;
 
     /**
      * String that identifies the start of the next list of stacks, if there
@@ -45,9 +46,9 @@ public class ListStacksResult  implements Serializable  {
      *         about the specified stacks.
      */
     public java.util.List<StackSummary> getStackSummaries() {
-        
         if (stackSummaries == null) {
-            stackSummaries = new java.util.ArrayList<StackSummary>();
+              stackSummaries = new com.amazonaws.internal.ListWithAutoConstructFlag<StackSummary>();
+              stackSummaries.setAutoConstruct(true);
         }
         return stackSummaries;
     }
@@ -64,8 +65,7 @@ public class ListStacksResult  implements Serializable  {
             this.stackSummaries = null;
             return;
         }
-
-        java.util.List<StackSummary> stackSummariesCopy = new java.util.ArrayList<StackSummary>(stackSummaries.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<StackSummary> stackSummariesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackSummary>(stackSummaries.size());
         stackSummariesCopy.addAll(stackSummaries);
         this.stackSummaries = stackSummariesCopy;
     }
@@ -80,7 +80,7 @@ public class ListStacksResult  implements Serializable  {
      *         about the specified stacks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStacksResult withStackSummaries(StackSummary... stackSummaries) {
         if (getStackSummaries() == null) setStackSummaries(new java.util.ArrayList<StackSummary>(stackSummaries.length));
@@ -100,20 +100,20 @@ public class ListStacksResult  implements Serializable  {
      *         about the specified stacks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStacksResult withStackSummaries(java.util.Collection<StackSummary> stackSummaries) {
         if (stackSummaries == null) {
             this.stackSummaries = null;
         } else {
-            java.util.List<StackSummary> stackSummariesCopy = new java.util.ArrayList<StackSummary>(stackSummaries.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<StackSummary> stackSummariesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackSummary>(stackSummaries.size());
             stackSummariesCopy.addAll(stackSummaries);
             this.stackSummaries = stackSummariesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * String that identifies the start of the next list of stacks, if there
      * is one.
@@ -155,14 +155,13 @@ public class ListStacksResult  implements Serializable  {
      *         is one.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStacksResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -174,8 +173,8 @@ public class ListStacksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackSummaries() != null) sb.append("StackSummaries: " + getStackSummaries() + ",");    	
+        sb.append("{");
+        if (getStackSummaries() != null) sb.append("StackSummaries: " + getStackSummaries() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

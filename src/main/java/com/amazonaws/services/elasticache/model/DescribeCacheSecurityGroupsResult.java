@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,97 +13,104 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains a list of CacheSecurityGroups.
+ * Represents the output of a <i>DescribeCacheSecurityGroups</i>
+ * operation.
  * </p>
  */
-public class DescribeCacheSecurityGroupsResult  implements Serializable  {
+public class DescribeCacheSecurityGroupsResult implements Serializable {
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
-     * A list of <a>CacheSecurityGroup</a> instances.
+     * A list of cache security groups. Each element in the list contains
+     * detailed information about one group.
      */
-    private java.util.List<CacheSecurityGroup> cacheSecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CacheSecurityGroup> cacheSecurityGroups;
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return The marker obtained from a previous operation response.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheSecurityGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of <a>CacheSecurityGroup</a> instances.
+     * A list of cache security groups. Each element in the list contains
+     * detailed information about one group.
      *
-     * @return A list of <a>CacheSecurityGroup</a> instances.
+     * @return A list of cache security groups. Each element in the list contains
+     *         detailed information about one group.
      */
     public java.util.List<CacheSecurityGroup> getCacheSecurityGroups() {
-        
         if (cacheSecurityGroups == null) {
-            cacheSecurityGroups = new java.util.ArrayList<CacheSecurityGroup>();
+              cacheSecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheSecurityGroup>();
+              cacheSecurityGroups.setAutoConstruct(true);
         }
         return cacheSecurityGroups;
     }
     
     /**
-     * A list of <a>CacheSecurityGroup</a> instances.
+     * A list of cache security groups. Each element in the list contains
+     * detailed information about one group.
      *
-     * @param cacheSecurityGroups A list of <a>CacheSecurityGroup</a> instances.
+     * @param cacheSecurityGroups A list of cache security groups. Each element in the list contains
+     *         detailed information about one group.
      */
     public void setCacheSecurityGroups(java.util.Collection<CacheSecurityGroup> cacheSecurityGroups) {
         if (cacheSecurityGroups == null) {
             this.cacheSecurityGroups = null;
             return;
         }
-
-        java.util.List<CacheSecurityGroup> cacheSecurityGroupsCopy = new java.util.ArrayList<CacheSecurityGroup>(cacheSecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CacheSecurityGroup> cacheSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheSecurityGroup>(cacheSecurityGroups.size());
         cacheSecurityGroupsCopy.addAll(cacheSecurityGroups);
         this.cacheSecurityGroups = cacheSecurityGroupsCopy;
     }
     
     /**
-     * A list of <a>CacheSecurityGroup</a> instances.
+     * A list of cache security groups. Each element in the list contains
+     * detailed information about one group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSecurityGroups A list of <a>CacheSecurityGroup</a> instances.
+     * @param cacheSecurityGroups A list of cache security groups. Each element in the list contains
+     *         detailed information about one group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheSecurityGroupsResult withCacheSecurityGroups(CacheSecurityGroup... cacheSecurityGroups) {
         if (getCacheSecurityGroups() == null) setCacheSecurityGroups(new java.util.ArrayList<CacheSecurityGroup>(cacheSecurityGroups.length));
@@ -114,27 +121,29 @@ public class DescribeCacheSecurityGroupsResult  implements Serializable  {
     }
     
     /**
-     * A list of <a>CacheSecurityGroup</a> instances.
+     * A list of cache security groups. Each element in the list contains
+     * detailed information about one group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSecurityGroups A list of <a>CacheSecurityGroup</a> instances.
+     * @param cacheSecurityGroups A list of cache security groups. Each element in the list contains
+     *         detailed information about one group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheSecurityGroupsResult withCacheSecurityGroups(java.util.Collection<CacheSecurityGroup> cacheSecurityGroups) {
         if (cacheSecurityGroups == null) {
             this.cacheSecurityGroups = null;
         } else {
-            java.util.List<CacheSecurityGroup> cacheSecurityGroupsCopy = new java.util.ArrayList<CacheSecurityGroup>(cacheSecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CacheSecurityGroup> cacheSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheSecurityGroup>(cacheSecurityGroups.size());
             cacheSecurityGroupsCopy.addAll(cacheSecurityGroups);
             this.cacheSecurityGroups = cacheSecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +155,8 @@ public class DescribeCacheSecurityGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getCacheSecurityGroups() != null) sb.append("CacheSecurityGroups: " + getCacheSecurityGroups() );
         sb.append("}");
         return sb.toString();

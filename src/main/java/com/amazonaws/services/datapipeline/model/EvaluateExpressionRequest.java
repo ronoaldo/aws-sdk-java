@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#evaluateExpression(EvaluateExpressionRequest) EvaluateExpression operation}.
  * <p>
- * Evaluates a string in the context of a specified object. A task runner can use this action to evaluate SQL queries stored in Amazon S3.
+ * Evaluates a string in the context of a specified object. A task runner
+ * can use this action to evaluate SQL queries stored in Amazon S3.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#evaluateExpression(EvaluateExpressionRequest)
  */
-public class EvaluateExpressionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class EvaluateExpressionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the pipeline.
@@ -91,14 +94,13 @@ public class EvaluateExpressionRequest extends AmazonWebServiceRequest  implemen
      * @param pipelineId The identifier of the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EvaluateExpressionRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * The identifier of the object.
      * <p>
@@ -137,14 +139,13 @@ public class EvaluateExpressionRequest extends AmazonWebServiceRequest  implemen
      * @param objectId The identifier of the object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EvaluateExpressionRequest withObjectId(String objectId) {
         this.objectId = objectId;
         return this;
     }
-    
-    
+
     /**
      * The expression to evaluate.
      * <p>
@@ -183,14 +184,13 @@ public class EvaluateExpressionRequest extends AmazonWebServiceRequest  implemen
      * @param expression The expression to evaluate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EvaluateExpressionRequest withExpression(String expression) {
         this.expression = expression;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -202,9 +202,9 @@ public class EvaluateExpressionRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getObjectId() != null) sb.append("ObjectId: " + getObjectId() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getObjectId() != null) sb.append("ObjectId: " + getObjectId() + ",");
         if (getExpression() != null) sb.append("Expression: " + getExpression() );
         sb.append("}");
         return sb.toString();

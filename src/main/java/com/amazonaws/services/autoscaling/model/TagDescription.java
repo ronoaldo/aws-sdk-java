@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The tag applied to an Auto Scaling group.
  * </p>
  */
-public class TagDescription  implements Serializable  {
+public class TagDescription implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -100,14 +101,13 @@ public class TagDescription  implements Serializable  {
      * @param resourceId The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withResourceId(String resourceId) {
         this.resourceId = resourceId;
         return this;
     }
-    
-    
+
     /**
      * The kind of resource to which the tag is applied. Currently, Auto
      * Scaling supports the <code>auto-scaling-group</code> resource type.
@@ -149,14 +149,13 @@ public class TagDescription  implements Serializable  {
      *         Scaling supports the <code>auto-scaling-group</code> resource type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withResourceType(String resourceType) {
         this.resourceType = resourceType;
         return this;
     }
-    
-    
+
     /**
      * The key of the tag.
      * <p>
@@ -195,14 +194,13 @@ public class TagDescription  implements Serializable  {
      * @param key The key of the tag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withKey(String key) {
         this.key = key;
         return this;
     }
-    
-    
+
     /**
      * The value of the tag.
      * <p>
@@ -241,14 +239,13 @@ public class TagDescription  implements Serializable  {
      * @param value The value of the tag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the new tag will be applied to instances launched
      * after the tag is created. The same behavior applies to updates: If you
@@ -293,14 +290,13 @@ public class TagDescription  implements Serializable  {
      *         launched after you made the change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TagDescription withPropagateAtLaunch(Boolean propagateAtLaunch) {
         this.propagateAtLaunch = propagateAtLaunch;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the new tag will be applied to instances launched
      * after the tag is created. The same behavior applies to updates: If you
@@ -315,7 +311,7 @@ public class TagDescription  implements Serializable  {
     public Boolean getPropagateAtLaunch() {
         return propagateAtLaunch;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -327,11 +323,11 @@ public class TagDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");    	
-        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getResourceId() != null) sb.append("ResourceId: " + getResourceId() + ",");
+        if (getResourceType() != null) sb.append("ResourceType: " + getResourceType() + ",");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (isPropagateAtLaunch() != null) sb.append("PropagateAtLaunch: " + isPropagateAtLaunch() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,52 +13,61 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
+
 import java.io.Serializable;
 
 /**
- * Publish Result
+ * <p>
+ * Response for Publish action.
+ * </p>
  */
-public class PublishResult  implements Serializable  {
+public class PublishResult implements Serializable {
 
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      */
     private String messageId;
 
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      *
-     * @return Unique identifier assigned to the published message.
+     * @return Unique identifier assigned to the published message. <p>Length
+     *         Constraint: Maximum 100 characters
      */
     public String getMessageId() {
         return messageId;
     }
     
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      *
-     * @param messageId Unique identifier assigned to the published message.
+     * @param messageId Unique identifier assigned to the published message. <p>Length
+     *         Constraint: Maximum 100 characters
      */
     public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
     
     /**
-     * Unique identifier assigned to the published message.
+     * Unique identifier assigned to the published message. <p>Length
+     * Constraint: Maximum 100 characters
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param messageId Unique identifier assigned to the published message.
+     * @param messageId Unique identifier assigned to the published message. <p>Length
+     *         Constraint: Maximum 100 characters
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PublishResult withMessageId(String messageId) {
         this.messageId = messageId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -70,7 +79,7 @@ public class PublishResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMessageId() != null) sb.append("MessageId: " + getMessageId() );
         sb.append("}");
         return sb.toString();

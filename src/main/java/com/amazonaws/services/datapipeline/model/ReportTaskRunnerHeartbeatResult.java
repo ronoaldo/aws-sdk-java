@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the ReportTaskRunnerHeartbeat action.
  * </p>
  */
-public class ReportTaskRunnerHeartbeatResult  implements Serializable  {
+public class ReportTaskRunnerHeartbeatResult implements Serializable {
 
     /**
      * Indicates whether the calling task runner should terminate. If
@@ -67,14 +68,13 @@ public class ReportTaskRunnerHeartbeatResult  implements Serializable  {
      *         <a>ReportTaskRunnerHeartbeat</a> should terminate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportTaskRunnerHeartbeatResult withTerminate(Boolean terminate) {
         this.terminate = terminate;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether the calling task runner should terminate. If
      * <code>True</code>, the task runner that called
@@ -87,7 +87,7 @@ public class ReportTaskRunnerHeartbeatResult  implements Serializable  {
     public Boolean getTerminate() {
         return terminate;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -99,7 +99,7 @@ public class ReportTaskRunnerHeartbeatResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (isTerminate() != null) sb.append("Terminate: " + isTerminate() );
         sb.append("}");
         return sb.toString();

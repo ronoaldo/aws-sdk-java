@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,70 +13,120 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Event within a workflow execution. A history event can be one of these types:
+ * Event within a workflow execution. A history event can be one of
+ * these types:
  * </p>
  * 
  * <ul>
- * <li> <b>WorkflowExecutionStarted</b> : The workflow execution was started. </li>
- * <li> <b>WorkflowExecutionCompleted</b> : The workflow execution was closed due to successful completion. </li>
- * <li> <b>WorkflowExecutionFailed</b> : The workflow execution closed due to a failure. </li>
- * <li> <b>WorkflowExecutionTimedOut</b> : The workflow execution was closed because a time out was exceeded. </li>
- * <li> <b>WorkflowExecutionCanceled</b> : The workflow execution was successfully canceled and closed. </li>
- * <li> <b>WorkflowExecutionTerminated</b> : The workflow execution was terminated. </li>
- * <li> <b>WorkflowExecutionContinuedAsNew</b> : The workflow execution was closed and a new execution of the same type was created with the same
- * workflowId. </li>
- * <li> <b>WorkflowExecutionCancelRequested</b> : A request to cancel this workflow execution was made. </li>
- * <li> <b>DecisionTaskScheduled</b> : A decision task was scheduled for the workflow execution. </li>
- * <li> <b>DecisionTaskStarted</b> : The decision task was dispatched to a decider. </li>
- * <li> <b>DecisionTaskCompleted</b> : The decider successfully completed a decision task by calling RespondDecisionTaskCompleted. </li>
- * <li> <b>DecisionTaskTimedOut</b> : The decision task timed out. </li>
- * <li> <b>ActivityTaskScheduled</b> : An activity task was scheduled for execution. </li>
- * <li> <b>ScheduleActivityTaskFailed</b> : Failed to process ScheduleActivityTask decision. This happens when the decision is not configured properly,
- * for example the activity type specified is not registered. </li>
- * <li> <b>ActivityTaskStarted</b> : The scheduled activity task was dispatched to a worker. </li>
- * <li> <b>ActivityTaskCompleted</b> : An activity worker successfully completed an activity task by calling RespondActivityTaskCompleted. </li>
- * <li> <b>ActivityTaskFailed</b> : An activity worker failed an activity task by calling RespondActivityTaskFailed. </li>
- * <li> <b>ActivityTaskTimedOut</b> : The activity task timed out. </li>
- * <li> <b>ActivityTaskCanceled</b> : The activity task was successfully canceled. </li>
- * <li> <b>ActivityTaskCancelRequested</b> : A <code>RequestCancelActivityTask</code> decision was received by the system. </li>
- * <li> <b>RequestCancelActivityTaskFailed</b> : Failed to process RequestCancelActivityTask decision. This happens when the decision is not configured
- * properly. </li>
- * <li> <b>WorkflowExecutionSignaled</b> : An external signal was received for the workflow execution. </li>
- * <li> <b>MarkerRecorded</b> : A marker was recorded in the workflow history as the result of a <code>RecordMarker</code> decision. </li>
- * <li> <b>TimerStarted</b> : A timer was started for the workflow execution due to a <code>StartTimer</code> decision. </li>
- * <li> <b>StartTimerFailed</b> : Failed to process StartTimer decision. This happens when the decision is not configured properly, for example a timer
- * already exists with the specified timer Id. </li>
- * <li> <b>TimerFired</b> : A timer, previously started for this workflow execution, fired. </li>
- * <li> <b>TimerCanceled</b> : A timer, previously started for this workflow execution, was successfully canceled. </li>
- * <li> <b>CancelTimerFailed</b> : Failed to process CancelTimer decision. This happens when the decision is not configured properly, for example no
- * timer exists with the specified timer Id. </li>
- * <li> <b>StartChildWorkflowExecutionInitiated</b> : A request was made to start a child workflow execution. </li>
- * <li> <b>StartChildWorkflowExecutionFailed</b> : Failed to process StartChildWorkflowExecution decision. This happens when the decision is not
- * configured properly, for example the workflow type specified is not registered. </li>
- * <li> <b>ChildWorkflowExecutionStarted</b> : A child workflow execution was successfully started. </li>
- * <li> <b>ChildWorkflowExecutionCompleted</b> : A child workflow execution, started by this workflow execution, completed successfully and was closed.
+ * <li> <b>WorkflowExecutionStarted</b> : The workflow execution was
+ * started. </li>
+ * <li> <b>WorkflowExecutionCompleted</b> : The workflow execution was
+ * closed due to successful completion. </li>
+ * <li> <b>WorkflowExecutionFailed</b> : The workflow execution closed
+ * due to a failure. </li>
+ * <li> <b>WorkflowExecutionTimedOut</b> : The workflow execution was
+ * closed because a time out was exceeded. </li>
+ * <li> <b>WorkflowExecutionCanceled</b> : The workflow execution was
+ * successfully canceled and closed. </li>
+ * <li> <b>WorkflowExecutionTerminated</b> : The workflow execution was
+ * terminated. </li>
+ * <li> <b>WorkflowExecutionContinuedAsNew</b> : The workflow execution
+ * was closed and a new execution of the same type was created with the
+ * same workflowId. </li>
+ * <li> <b>WorkflowExecutionCancelRequested</b> : A request to cancel
+ * this workflow execution was made. </li>
+ * <li> <b>DecisionTaskScheduled</b> : A decision task was scheduled for
+ * the workflow execution. </li>
+ * <li> <b>DecisionTaskStarted</b> : The decision task was dispatched to
+ * a decider. </li>
+ * <li> <b>DecisionTaskCompleted</b> : The decider successfully
+ * completed a decision task by calling RespondDecisionTaskCompleted.
  * </li>
- * <li> <b>ChildWorkflowExecutionFailed</b> : A child workflow execution, started by this workflow execution, failed to complete successfully and was
+ * <li> <b>DecisionTaskTimedOut</b> : The decision task timed out. </li>
+ * <li> <b>ActivityTaskScheduled</b> : An activity task was scheduled
+ * for execution. </li>
+ * <li> <b>ScheduleActivityTaskFailed</b> : Failed to process
+ * ScheduleActivityTask decision. This happens when the decision is not
+ * configured properly, for example the activity type specified is not
+ * registered. </li>
+ * <li> <b>ActivityTaskStarted</b> : The scheduled activity task was
+ * dispatched to a worker. </li>
+ * <li> <b>ActivityTaskCompleted</b> : An activity worker successfully
+ * completed an activity task by calling RespondActivityTaskCompleted.
+ * </li>
+ * <li> <b>ActivityTaskFailed</b> : An activity worker failed an
+ * activity task by calling RespondActivityTaskFailed. </li>
+ * <li> <b>ActivityTaskTimedOut</b> : The activity task timed out. </li>
+ * <li> <b>ActivityTaskCanceled</b> : The activity task was successfully
+ * canceled. </li>
+ * <li> <b>ActivityTaskCancelRequested</b> : A
+ * <code>RequestCancelActivityTask</code> decision was received by the
+ * system. </li>
+ * <li> <b>RequestCancelActivityTaskFailed</b> : Failed to process
+ * RequestCancelActivityTask decision. This happens when the decision is
+ * not configured properly. </li>
+ * <li> <b>WorkflowExecutionSignaled</b> : An external signal was
+ * received for the workflow execution. </li>
+ * <li> <b>MarkerRecorded</b> : A marker was recorded in the workflow
+ * history as the result of a <code>RecordMarker</code> decision. </li>
+ * <li> <b>TimerStarted</b> : A timer was started for the workflow
+ * execution due to a <code>StartTimer</code> decision. </li>
+ * <li> <b>StartTimerFailed</b> : Failed to process StartTimer decision.
+ * This happens when the decision is not configured properly, for example
+ * a timer already exists with the specified timer Id. </li>
+ * <li> <b>TimerFired</b> : A timer, previously started for this
+ * workflow execution, fired. </li>
+ * <li> <b>TimerCanceled</b> : A timer, previously started for this
+ * workflow execution, was successfully canceled. </li>
+ * <li> <b>CancelTimerFailed</b> : Failed to process CancelTimer
+ * decision. This happens when the decision is not configured properly,
+ * for example no timer exists with the specified timer Id. </li>
+ * <li> <b>StartChildWorkflowExecutionInitiated</b> : A request was made
+ * to start a child workflow execution. </li>
+ * <li> <b>StartChildWorkflowExecutionFailed</b> : Failed to process
+ * StartChildWorkflowExecution decision. This happens when the decision
+ * is not configured properly, for example the workflow type specified is
+ * not registered. </li>
+ * <li> <b>ChildWorkflowExecutionStarted</b> : A child workflow
+ * execution was successfully started. </li>
+ * <li> <b>ChildWorkflowExecutionCompleted</b> : A child workflow
+ * execution, started by this workflow execution, completed successfully
+ * and was closed. </li>
+ * <li> <b>ChildWorkflowExecutionFailed</b> : A child workflow
+ * execution, started by this workflow execution, failed to complete
+ * successfully and was closed. </li>
+ * <li> <b>ChildWorkflowExecutionTimedOut</b> : A child workflow
+ * execution, started by this workflow execution, timed out and was
  * closed. </li>
- * <li> <b>ChildWorkflowExecutionTimedOut</b> : A child workflow execution, started by this workflow execution, timed out and was closed. </li>
- * <li> <b>ChildWorkflowExecutionCanceled</b> : A child workflow execution, started by this workflow execution, was canceled and closed. </li>
- * <li> <b>ChildWorkflowExecutionTerminated</b> : A child workflow execution, started by this workflow execution, was terminated. </li>
- * <li> <b>SignalExternalWorkflowExecutionInitiated</b> : A request to signal an external workflow was made. </li>
- * <li> <b>ExternalWorkflowExecutionSignaled</b> : A signal, requested by this workflow execution, was successfully delivered to the target external
- * workflow execution. </li>
- * <li> <b>SignalExternalWorkflowExecutionFailed</b> : The request to signal an external workflow execution failed. </li>
- * <li> <b>RequestCancelExternalWorkflowExecutionInitiated</b> : A request was made to request the cancellation of an external workflow execution. </li>
- * <li> <b>ExternalWorkflowExecutionCancelRequested</b> : Request to cancel an external workflow execution was successfully delivered to the target
+ * <li> <b>ChildWorkflowExecutionCanceled</b> : A child workflow
+ * execution, started by this workflow execution, was canceled and
+ * closed. </li>
+ * <li> <b>ChildWorkflowExecutionTerminated</b> : A child workflow
+ * execution, started by this workflow execution, was terminated. </li>
+ * <li> <b>SignalExternalWorkflowExecutionInitiated</b> : A request to
+ * signal an external workflow was made. </li>
+ * <li> <b>ExternalWorkflowExecutionSignaled</b> : A signal, requested
+ * by this workflow execution, was successfully delivered to the target
+ * external workflow execution. </li>
+ * <li> <b>SignalExternalWorkflowExecutionFailed</b> : The request to
+ * signal an external workflow execution failed. </li>
+ * <li> <b>RequestCancelExternalWorkflowExecutionInitiated</b> : A
+ * request was made to request the cancellation of an external workflow
  * execution. </li>
- * <li> <b>RequestCancelExternalWorkflowExecutionFailed</b> : Request to cancel an external workflow execution failed. </li>
+ * <li> <b>ExternalWorkflowExecutionCancelRequested</b> : Request to
+ * cancel an external workflow execution was successfully delivered to
+ * the target execution. </li>
+ * <li> <b>RequestCancelExternalWorkflowExecutionFailed</b> : Request to
+ * cancel an external workflow execution failed. </li>
  * 
  * </ul>
  */
-public class HistoryEvent  implements Serializable  {
+public class HistoryEvent implements Serializable {
 
     /**
      * The date and time when the event occurred.
@@ -459,14 +509,13 @@ public class HistoryEvent  implements Serializable  {
      * @param eventTimestamp The date and time when the event occurred.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withEventTimestamp(java.util.Date eventTimestamp) {
         this.eventTimestamp = eventTimestamp;
         return this;
     }
-    
-    
+
     /**
      * The type of the history event.
      * <p>
@@ -506,7 +555,7 @@ public class HistoryEvent  implements Serializable  {
      * @param eventType The type of the history event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EventType
      */
@@ -514,8 +563,7 @@ public class HistoryEvent  implements Serializable  {
         this.eventType = eventType;
         return this;
     }
-    
-    
+
     /**
      * The type of the history event.
      * <p>
@@ -541,7 +589,7 @@ public class HistoryEvent  implements Serializable  {
      * @param eventType The type of the history event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EventType
      */
@@ -549,7 +597,7 @@ public class HistoryEvent  implements Serializable  {
         this.eventType = eventType.toString();
         return this;
     }
-    
+
     /**
      * The system generated id of the event. This id uniquely identifies the
      * event with in the workflow execution history.
@@ -582,14 +630,13 @@ public class HistoryEvent  implements Serializable  {
      *         event with in the workflow execution history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withEventId(Long eventId) {
         this.eventId = eventId;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionStarted</code> then
      * this member is set and provides detailed information about the event.
@@ -628,14 +675,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionStartedEventAttributes(WorkflowExecutionStartedEventAttributes workflowExecutionStartedEventAttributes) {
         this.workflowExecutionStartedEventAttributes = workflowExecutionStartedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionCompleted</code> then
      * this member is set and provides detailed information about the event.
@@ -674,14 +720,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionCompletedEventAttributes(WorkflowExecutionCompletedEventAttributes workflowExecutionCompletedEventAttributes) {
         this.workflowExecutionCompletedEventAttributes = workflowExecutionCompletedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>CompleteWorkflowExecutionFailed</code>
      * then this member is set and provides detailed information about the
@@ -720,14 +765,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withCompleteWorkflowExecutionFailedEventAttributes(CompleteWorkflowExecutionFailedEventAttributes completeWorkflowExecutionFailedEventAttributes) {
         this.completeWorkflowExecutionFailedEventAttributes = completeWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionFailed</code> then this
      * member is set and provides detailed information about the event. It is
@@ -766,14 +810,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionFailedEventAttributes(WorkflowExecutionFailedEventAttributes workflowExecutionFailedEventAttributes) {
         this.workflowExecutionFailedEventAttributes = workflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>FailWorkflowExecutionFailed</code> then
      * this member is set and provides detailed information about the event.
@@ -812,14 +855,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withFailWorkflowExecutionFailedEventAttributes(FailWorkflowExecutionFailedEventAttributes failWorkflowExecutionFailedEventAttributes) {
         this.failWorkflowExecutionFailedEventAttributes = failWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionTimedOut</code> then
      * this member is set and provides detailed information about the event.
@@ -858,14 +900,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionTimedOutEventAttributes(WorkflowExecutionTimedOutEventAttributes workflowExecutionTimedOutEventAttributes) {
         this.workflowExecutionTimedOutEventAttributes = workflowExecutionTimedOutEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionCanceled</code> then
      * this member is set and provides detailed information about the event.
@@ -904,14 +945,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionCanceledEventAttributes(WorkflowExecutionCanceledEventAttributes workflowExecutionCanceledEventAttributes) {
         this.workflowExecutionCanceledEventAttributes = workflowExecutionCanceledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>CancelWorkflowExecutionFailed</code>
      * then this member is set and provides detailed information about the
@@ -950,14 +990,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withCancelWorkflowExecutionFailedEventAttributes(CancelWorkflowExecutionFailedEventAttributes cancelWorkflowExecutionFailedEventAttributes) {
         this.cancelWorkflowExecutionFailedEventAttributes = cancelWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionContinuedAsNew</code>
      * then this member is set and provides detailed information about the
@@ -996,14 +1035,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionContinuedAsNewEventAttributes(WorkflowExecutionContinuedAsNewEventAttributes workflowExecutionContinuedAsNewEventAttributes) {
         this.workflowExecutionContinuedAsNewEventAttributes = workflowExecutionContinuedAsNewEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type
      * <code>ContinueAsNewWorkflowExecutionFailed</code> then this member is
@@ -1048,14 +1086,13 @@ public class HistoryEvent  implements Serializable  {
      *         for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withContinueAsNewWorkflowExecutionFailedEventAttributes(ContinueAsNewWorkflowExecutionFailedEventAttributes continueAsNewWorkflowExecutionFailedEventAttributes) {
         this.continueAsNewWorkflowExecutionFailedEventAttributes = continueAsNewWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionTerminated</code> then
      * this member is set and provides detailed information about the event.
@@ -1094,14 +1131,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionTerminatedEventAttributes(WorkflowExecutionTerminatedEventAttributes workflowExecutionTerminatedEventAttributes) {
         this.workflowExecutionTerminatedEventAttributes = workflowExecutionTerminatedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionCancelRequested</code>
      * then this member is set and provides detailed information about the
@@ -1140,14 +1176,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionCancelRequestedEventAttributes(WorkflowExecutionCancelRequestedEventAttributes workflowExecutionCancelRequestedEventAttributes) {
         this.workflowExecutionCancelRequestedEventAttributes = workflowExecutionCancelRequestedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>DecisionTaskScheduled</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1186,14 +1221,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withDecisionTaskScheduledEventAttributes(DecisionTaskScheduledEventAttributes decisionTaskScheduledEventAttributes) {
         this.decisionTaskScheduledEventAttributes = decisionTaskScheduledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>DecisionTaskStarted</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1232,14 +1266,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withDecisionTaskStartedEventAttributes(DecisionTaskStartedEventAttributes decisionTaskStartedEventAttributes) {
         this.decisionTaskStartedEventAttributes = decisionTaskStartedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>DecisionTaskCompleted</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1278,14 +1311,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withDecisionTaskCompletedEventAttributes(DecisionTaskCompletedEventAttributes decisionTaskCompletedEventAttributes) {
         this.decisionTaskCompletedEventAttributes = decisionTaskCompletedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>DecisionTaskTimedOut</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1324,14 +1356,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withDecisionTaskTimedOutEventAttributes(DecisionTaskTimedOutEventAttributes decisionTaskTimedOutEventAttributes) {
         this.decisionTaskTimedOutEventAttributes = decisionTaskTimedOutEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ActivityTaskScheduled</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1370,14 +1401,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withActivityTaskScheduledEventAttributes(ActivityTaskScheduledEventAttributes activityTaskScheduledEventAttributes) {
         this.activityTaskScheduledEventAttributes = activityTaskScheduledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ActivityTaskStarted</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1416,14 +1446,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withActivityTaskStartedEventAttributes(ActivityTaskStartedEventAttributes activityTaskStartedEventAttributes) {
         this.activityTaskStartedEventAttributes = activityTaskStartedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ActivityTaskCompleted</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1462,14 +1491,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withActivityTaskCompletedEventAttributes(ActivityTaskCompletedEventAttributes activityTaskCompletedEventAttributes) {
         this.activityTaskCompletedEventAttributes = activityTaskCompletedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ActivityTaskFailed</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1508,14 +1536,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withActivityTaskFailedEventAttributes(ActivityTaskFailedEventAttributes activityTaskFailedEventAttributes) {
         this.activityTaskFailedEventAttributes = activityTaskFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ActivityTaskTimedOut</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1554,14 +1581,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withActivityTaskTimedOutEventAttributes(ActivityTaskTimedOutEventAttributes activityTaskTimedOutEventAttributes) {
         this.activityTaskTimedOutEventAttributes = activityTaskTimedOutEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ActivityTaskCanceled</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1600,14 +1626,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withActivityTaskCanceledEventAttributes(ActivityTaskCanceledEventAttributes activityTaskCanceledEventAttributes) {
         this.activityTaskCanceledEventAttributes = activityTaskCanceledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ActivityTaskcancelRequested</code> then
      * this member is set and provides detailed information about the event.
@@ -1646,14 +1671,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withActivityTaskCancelRequestedEventAttributes(ActivityTaskCancelRequestedEventAttributes activityTaskCancelRequestedEventAttributes) {
         this.activityTaskCancelRequestedEventAttributes = activityTaskCancelRequestedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>WorkflowExecutionSignaled</code> then
      * this member is set and provides detailed information about the event.
@@ -1692,14 +1716,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withWorkflowExecutionSignaledEventAttributes(WorkflowExecutionSignaledEventAttributes workflowExecutionSignaledEventAttributes) {
         this.workflowExecutionSignaledEventAttributes = workflowExecutionSignaledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>MarkerRecorded</code> then this member
      * is set and provides detailed information about the event. It is not
@@ -1738,14 +1761,13 @@ public class HistoryEvent  implements Serializable  {
      *         set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withMarkerRecordedEventAttributes(MarkerRecordedEventAttributes markerRecordedEventAttributes) {
         this.markerRecordedEventAttributes = markerRecordedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>DecisionTaskFailed</code> then this
      * member is set and provides detailed information about the event. It is
@@ -1784,14 +1806,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withRecordMarkerFailedEventAttributes(RecordMarkerFailedEventAttributes recordMarkerFailedEventAttributes) {
         this.recordMarkerFailedEventAttributes = recordMarkerFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>TimerStarted</code> then this member is
      * set and provides detailed information about the event. It is not set
@@ -1830,14 +1851,13 @@ public class HistoryEvent  implements Serializable  {
      *         for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withTimerStartedEventAttributes(TimerStartedEventAttributes timerStartedEventAttributes) {
         this.timerStartedEventAttributes = timerStartedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>TimerFired</code> then this member is
      * set and provides detailed information about the event. It is not set
@@ -1876,14 +1896,13 @@ public class HistoryEvent  implements Serializable  {
      *         for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withTimerFiredEventAttributes(TimerFiredEventAttributes timerFiredEventAttributes) {
         this.timerFiredEventAttributes = timerFiredEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>TimerCanceled</code> then this member is
      * set and provides detailed information about the event. It is not set
@@ -1922,14 +1941,13 @@ public class HistoryEvent  implements Serializable  {
      *         for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withTimerCanceledEventAttributes(TimerCanceledEventAttributes timerCanceledEventAttributes) {
         this.timerCanceledEventAttributes = timerCanceledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type
      * <code>StartChildWorkflowExecutionInitiated</code> then this member is
@@ -1974,14 +1992,13 @@ public class HistoryEvent  implements Serializable  {
      *         for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withStartChildWorkflowExecutionInitiatedEventAttributes(StartChildWorkflowExecutionInitiatedEventAttributes startChildWorkflowExecutionInitiatedEventAttributes) {
         this.startChildWorkflowExecutionInitiatedEventAttributes = startChildWorkflowExecutionInitiatedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ChildWorkflowExecutionStarted</code>
      * then this member is set and provides detailed information about the
@@ -2020,14 +2037,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withChildWorkflowExecutionStartedEventAttributes(ChildWorkflowExecutionStartedEventAttributes childWorkflowExecutionStartedEventAttributes) {
         this.childWorkflowExecutionStartedEventAttributes = childWorkflowExecutionStartedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ChildWorkflowExecutionCompleted</code>
      * then this member is set and provides detailed information about the
@@ -2066,14 +2082,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withChildWorkflowExecutionCompletedEventAttributes(ChildWorkflowExecutionCompletedEventAttributes childWorkflowExecutionCompletedEventAttributes) {
         this.childWorkflowExecutionCompletedEventAttributes = childWorkflowExecutionCompletedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ChildWorkflowExecutionFailed</code> then
      * this member is set and provides detailed information about the event.
@@ -2112,14 +2127,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withChildWorkflowExecutionFailedEventAttributes(ChildWorkflowExecutionFailedEventAttributes childWorkflowExecutionFailedEventAttributes) {
         this.childWorkflowExecutionFailedEventAttributes = childWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ChildWorkflowExecutionTimedOut</code>
      * then this member is set and provides detailed information about the
@@ -2158,14 +2172,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withChildWorkflowExecutionTimedOutEventAttributes(ChildWorkflowExecutionTimedOutEventAttributes childWorkflowExecutionTimedOutEventAttributes) {
         this.childWorkflowExecutionTimedOutEventAttributes = childWorkflowExecutionTimedOutEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ChildWorkflowExecutionCanceled</code>
      * then this member is set and provides detailed information about the
@@ -2204,14 +2217,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withChildWorkflowExecutionCanceledEventAttributes(ChildWorkflowExecutionCanceledEventAttributes childWorkflowExecutionCanceledEventAttributes) {
         this.childWorkflowExecutionCanceledEventAttributes = childWorkflowExecutionCanceledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ChildWorkflowExecutionTerminated</code>
      * then this member is set and provides detailed information about the
@@ -2250,14 +2262,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withChildWorkflowExecutionTerminatedEventAttributes(ChildWorkflowExecutionTerminatedEventAttributes childWorkflowExecutionTerminatedEventAttributes) {
         this.childWorkflowExecutionTerminatedEventAttributes = childWorkflowExecutionTerminatedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type
      * <code>SignalExternalWorkflowExecutionInitiated</code> then this member
@@ -2302,14 +2313,13 @@ public class HistoryEvent  implements Serializable  {
      *         set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withSignalExternalWorkflowExecutionInitiatedEventAttributes(SignalExternalWorkflowExecutionInitiatedEventAttributes signalExternalWorkflowExecutionInitiatedEventAttributes) {
         this.signalExternalWorkflowExecutionInitiatedEventAttributes = signalExternalWorkflowExecutionInitiatedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ExternalWorkflowExecutionSignaled</code>
      * then this member is set and provides detailed information about the
@@ -2348,14 +2358,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withExternalWorkflowExecutionSignaledEventAttributes(ExternalWorkflowExecutionSignaledEventAttributes externalWorkflowExecutionSignaledEventAttributes) {
         this.externalWorkflowExecutionSignaledEventAttributes = externalWorkflowExecutionSignaledEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type
      * <code>SignalExternalWorkflowExecutionFailed</code> then this member is
@@ -2400,14 +2409,13 @@ public class HistoryEvent  implements Serializable  {
      *         for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withSignalExternalWorkflowExecutionFailedEventAttributes(SignalExternalWorkflowExecutionFailedEventAttributes signalExternalWorkflowExecutionFailedEventAttributes) {
         this.signalExternalWorkflowExecutionFailedEventAttributes = signalExternalWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type
      * <code>ExternalWorkflowExecutionCancelRequested</code> then this member
@@ -2452,14 +2460,13 @@ public class HistoryEvent  implements Serializable  {
      *         set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withExternalWorkflowExecutionCancelRequestedEventAttributes(ExternalWorkflowExecutionCancelRequestedEventAttributes externalWorkflowExecutionCancelRequestedEventAttributes) {
         this.externalWorkflowExecutionCancelRequestedEventAttributes = externalWorkflowExecutionCancelRequestedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type
      * <code>RequestCancelExternalWorkflowExecutionInitiated</code> then this
@@ -2504,14 +2511,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withRequestCancelExternalWorkflowExecutionInitiatedEventAttributes(RequestCancelExternalWorkflowExecutionInitiatedEventAttributes requestCancelExternalWorkflowExecutionInitiatedEventAttributes) {
         this.requestCancelExternalWorkflowExecutionInitiatedEventAttributes = requestCancelExternalWorkflowExecutionInitiatedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type
      * <code>RequestCancelExternalWorkflowExecutionFailed</code> then this
@@ -2556,14 +2562,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withRequestCancelExternalWorkflowExecutionFailedEventAttributes(RequestCancelExternalWorkflowExecutionFailedEventAttributes requestCancelExternalWorkflowExecutionFailedEventAttributes) {
         this.requestCancelExternalWorkflowExecutionFailedEventAttributes = requestCancelExternalWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>ScheduleActivityTaskFailed</code> then
      * this member is set and provides detailed information about the event.
@@ -2602,14 +2607,13 @@ public class HistoryEvent  implements Serializable  {
      *         It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withScheduleActivityTaskFailedEventAttributes(ScheduleActivityTaskFailedEventAttributes scheduleActivityTaskFailedEventAttributes) {
         this.scheduleActivityTaskFailedEventAttributes = scheduleActivityTaskFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>RequestCancelActivityTaskFailed</code>
      * then this member is set and provides detailed information about the
@@ -2648,14 +2652,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withRequestCancelActivityTaskFailedEventAttributes(RequestCancelActivityTaskFailedEventAttributes requestCancelActivityTaskFailedEventAttributes) {
         this.requestCancelActivityTaskFailedEventAttributes = requestCancelActivityTaskFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>StartTimerFailed</code> then this member
      * is set and provides detailed information about the event. It is not
@@ -2694,14 +2697,13 @@ public class HistoryEvent  implements Serializable  {
      *         set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withStartTimerFailedEventAttributes(StartTimerFailedEventAttributes startTimerFailedEventAttributes) {
         this.startTimerFailedEventAttributes = startTimerFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>CancelTimerFailed</code> then this
      * member is set and provides detailed information about the event. It is
@@ -2740,14 +2742,13 @@ public class HistoryEvent  implements Serializable  {
      *         not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withCancelTimerFailedEventAttributes(CancelTimerFailedEventAttributes cancelTimerFailedEventAttributes) {
         this.cancelTimerFailedEventAttributes = cancelTimerFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * If the event is of type <code>StartChildWorkflowExecutionFailed</code>
      * then this member is set and provides detailed information about the
@@ -2786,14 +2787,13 @@ public class HistoryEvent  implements Serializable  {
      *         event. It is not set for other event types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HistoryEvent withStartChildWorkflowExecutionFailedEventAttributes(StartChildWorkflowExecutionFailedEventAttributes startChildWorkflowExecutionFailedEventAttributes) {
         this.startChildWorkflowExecutionFailedEventAttributes = startChildWorkflowExecutionFailedEventAttributes;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -2805,56 +2805,56 @@ public class HistoryEvent  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEventTimestamp() != null) sb.append("EventTimestamp: " + getEventTimestamp() + ",");    	
-        if (getEventType() != null) sb.append("EventType: " + getEventType() + ",");    	
-        if (getEventId() != null) sb.append("EventId: " + getEventId() + ",");    	
-        if (getWorkflowExecutionStartedEventAttributes() != null) sb.append("WorkflowExecutionStartedEventAttributes: " + getWorkflowExecutionStartedEventAttributes() + ",");    	
-        if (getWorkflowExecutionCompletedEventAttributes() != null) sb.append("WorkflowExecutionCompletedEventAttributes: " + getWorkflowExecutionCompletedEventAttributes() + ",");    	
-        if (getCompleteWorkflowExecutionFailedEventAttributes() != null) sb.append("CompleteWorkflowExecutionFailedEventAttributes: " + getCompleteWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getWorkflowExecutionFailedEventAttributes() != null) sb.append("WorkflowExecutionFailedEventAttributes: " + getWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getFailWorkflowExecutionFailedEventAttributes() != null) sb.append("FailWorkflowExecutionFailedEventAttributes: " + getFailWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getWorkflowExecutionTimedOutEventAttributes() != null) sb.append("WorkflowExecutionTimedOutEventAttributes: " + getWorkflowExecutionTimedOutEventAttributes() + ",");    	
-        if (getWorkflowExecutionCanceledEventAttributes() != null) sb.append("WorkflowExecutionCanceledEventAttributes: " + getWorkflowExecutionCanceledEventAttributes() + ",");    	
-        if (getCancelWorkflowExecutionFailedEventAttributes() != null) sb.append("CancelWorkflowExecutionFailedEventAttributes: " + getCancelWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getWorkflowExecutionContinuedAsNewEventAttributes() != null) sb.append("WorkflowExecutionContinuedAsNewEventAttributes: " + getWorkflowExecutionContinuedAsNewEventAttributes() + ",");    	
-        if (getContinueAsNewWorkflowExecutionFailedEventAttributes() != null) sb.append("ContinueAsNewWorkflowExecutionFailedEventAttributes: " + getContinueAsNewWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getWorkflowExecutionTerminatedEventAttributes() != null) sb.append("WorkflowExecutionTerminatedEventAttributes: " + getWorkflowExecutionTerminatedEventAttributes() + ",");    	
-        if (getWorkflowExecutionCancelRequestedEventAttributes() != null) sb.append("WorkflowExecutionCancelRequestedEventAttributes: " + getWorkflowExecutionCancelRequestedEventAttributes() + ",");    	
-        if (getDecisionTaskScheduledEventAttributes() != null) sb.append("DecisionTaskScheduledEventAttributes: " + getDecisionTaskScheduledEventAttributes() + ",");    	
-        if (getDecisionTaskStartedEventAttributes() != null) sb.append("DecisionTaskStartedEventAttributes: " + getDecisionTaskStartedEventAttributes() + ",");    	
-        if (getDecisionTaskCompletedEventAttributes() != null) sb.append("DecisionTaskCompletedEventAttributes: " + getDecisionTaskCompletedEventAttributes() + ",");    	
-        if (getDecisionTaskTimedOutEventAttributes() != null) sb.append("DecisionTaskTimedOutEventAttributes: " + getDecisionTaskTimedOutEventAttributes() + ",");    	
-        if (getActivityTaskScheduledEventAttributes() != null) sb.append("ActivityTaskScheduledEventAttributes: " + getActivityTaskScheduledEventAttributes() + ",");    	
-        if (getActivityTaskStartedEventAttributes() != null) sb.append("ActivityTaskStartedEventAttributes: " + getActivityTaskStartedEventAttributes() + ",");    	
-        if (getActivityTaskCompletedEventAttributes() != null) sb.append("ActivityTaskCompletedEventAttributes: " + getActivityTaskCompletedEventAttributes() + ",");    	
-        if (getActivityTaskFailedEventAttributes() != null) sb.append("ActivityTaskFailedEventAttributes: " + getActivityTaskFailedEventAttributes() + ",");    	
-        if (getActivityTaskTimedOutEventAttributes() != null) sb.append("ActivityTaskTimedOutEventAttributes: " + getActivityTaskTimedOutEventAttributes() + ",");    	
-        if (getActivityTaskCanceledEventAttributes() != null) sb.append("ActivityTaskCanceledEventAttributes: " + getActivityTaskCanceledEventAttributes() + ",");    	
-        if (getActivityTaskCancelRequestedEventAttributes() != null) sb.append("ActivityTaskCancelRequestedEventAttributes: " + getActivityTaskCancelRequestedEventAttributes() + ",");    	
-        if (getWorkflowExecutionSignaledEventAttributes() != null) sb.append("WorkflowExecutionSignaledEventAttributes: " + getWorkflowExecutionSignaledEventAttributes() + ",");    	
-        if (getMarkerRecordedEventAttributes() != null) sb.append("MarkerRecordedEventAttributes: " + getMarkerRecordedEventAttributes() + ",");    	
-        if (getRecordMarkerFailedEventAttributes() != null) sb.append("RecordMarkerFailedEventAttributes: " + getRecordMarkerFailedEventAttributes() + ",");    	
-        if (getTimerStartedEventAttributes() != null) sb.append("TimerStartedEventAttributes: " + getTimerStartedEventAttributes() + ",");    	
-        if (getTimerFiredEventAttributes() != null) sb.append("TimerFiredEventAttributes: " + getTimerFiredEventAttributes() + ",");    	
-        if (getTimerCanceledEventAttributes() != null) sb.append("TimerCanceledEventAttributes: " + getTimerCanceledEventAttributes() + ",");    	
-        if (getStartChildWorkflowExecutionInitiatedEventAttributes() != null) sb.append("StartChildWorkflowExecutionInitiatedEventAttributes: " + getStartChildWorkflowExecutionInitiatedEventAttributes() + ",");    	
-        if (getChildWorkflowExecutionStartedEventAttributes() != null) sb.append("ChildWorkflowExecutionStartedEventAttributes: " + getChildWorkflowExecutionStartedEventAttributes() + ",");    	
-        if (getChildWorkflowExecutionCompletedEventAttributes() != null) sb.append("ChildWorkflowExecutionCompletedEventAttributes: " + getChildWorkflowExecutionCompletedEventAttributes() + ",");    	
-        if (getChildWorkflowExecutionFailedEventAttributes() != null) sb.append("ChildWorkflowExecutionFailedEventAttributes: " + getChildWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getChildWorkflowExecutionTimedOutEventAttributes() != null) sb.append("ChildWorkflowExecutionTimedOutEventAttributes: " + getChildWorkflowExecutionTimedOutEventAttributes() + ",");    	
-        if (getChildWorkflowExecutionCanceledEventAttributes() != null) sb.append("ChildWorkflowExecutionCanceledEventAttributes: " + getChildWorkflowExecutionCanceledEventAttributes() + ",");    	
-        if (getChildWorkflowExecutionTerminatedEventAttributes() != null) sb.append("ChildWorkflowExecutionTerminatedEventAttributes: " + getChildWorkflowExecutionTerminatedEventAttributes() + ",");    	
-        if (getSignalExternalWorkflowExecutionInitiatedEventAttributes() != null) sb.append("SignalExternalWorkflowExecutionInitiatedEventAttributes: " + getSignalExternalWorkflowExecutionInitiatedEventAttributes() + ",");    	
-        if (getExternalWorkflowExecutionSignaledEventAttributes() != null) sb.append("ExternalWorkflowExecutionSignaledEventAttributes: " + getExternalWorkflowExecutionSignaledEventAttributes() + ",");    	
-        if (getSignalExternalWorkflowExecutionFailedEventAttributes() != null) sb.append("SignalExternalWorkflowExecutionFailedEventAttributes: " + getSignalExternalWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getExternalWorkflowExecutionCancelRequestedEventAttributes() != null) sb.append("ExternalWorkflowExecutionCancelRequestedEventAttributes: " + getExternalWorkflowExecutionCancelRequestedEventAttributes() + ",");    	
-        if (getRequestCancelExternalWorkflowExecutionInitiatedEventAttributes() != null) sb.append("RequestCancelExternalWorkflowExecutionInitiatedEventAttributes: " + getRequestCancelExternalWorkflowExecutionInitiatedEventAttributes() + ",");    	
-        if (getRequestCancelExternalWorkflowExecutionFailedEventAttributes() != null) sb.append("RequestCancelExternalWorkflowExecutionFailedEventAttributes: " + getRequestCancelExternalWorkflowExecutionFailedEventAttributes() + ",");    	
-        if (getScheduleActivityTaskFailedEventAttributes() != null) sb.append("ScheduleActivityTaskFailedEventAttributes: " + getScheduleActivityTaskFailedEventAttributes() + ",");    	
-        if (getRequestCancelActivityTaskFailedEventAttributes() != null) sb.append("RequestCancelActivityTaskFailedEventAttributes: " + getRequestCancelActivityTaskFailedEventAttributes() + ",");    	
-        if (getStartTimerFailedEventAttributes() != null) sb.append("StartTimerFailedEventAttributes: " + getStartTimerFailedEventAttributes() + ",");    	
-        if (getCancelTimerFailedEventAttributes() != null) sb.append("CancelTimerFailedEventAttributes: " + getCancelTimerFailedEventAttributes() + ",");    	
+        sb.append("{");
+        if (getEventTimestamp() != null) sb.append("EventTimestamp: " + getEventTimestamp() + ",");
+        if (getEventType() != null) sb.append("EventType: " + getEventType() + ",");
+        if (getEventId() != null) sb.append("EventId: " + getEventId() + ",");
+        if (getWorkflowExecutionStartedEventAttributes() != null) sb.append("WorkflowExecutionStartedEventAttributes: " + getWorkflowExecutionStartedEventAttributes() + ",");
+        if (getWorkflowExecutionCompletedEventAttributes() != null) sb.append("WorkflowExecutionCompletedEventAttributes: " + getWorkflowExecutionCompletedEventAttributes() + ",");
+        if (getCompleteWorkflowExecutionFailedEventAttributes() != null) sb.append("CompleteWorkflowExecutionFailedEventAttributes: " + getCompleteWorkflowExecutionFailedEventAttributes() + ",");
+        if (getWorkflowExecutionFailedEventAttributes() != null) sb.append("WorkflowExecutionFailedEventAttributes: " + getWorkflowExecutionFailedEventAttributes() + ",");
+        if (getFailWorkflowExecutionFailedEventAttributes() != null) sb.append("FailWorkflowExecutionFailedEventAttributes: " + getFailWorkflowExecutionFailedEventAttributes() + ",");
+        if (getWorkflowExecutionTimedOutEventAttributes() != null) sb.append("WorkflowExecutionTimedOutEventAttributes: " + getWorkflowExecutionTimedOutEventAttributes() + ",");
+        if (getWorkflowExecutionCanceledEventAttributes() != null) sb.append("WorkflowExecutionCanceledEventAttributes: " + getWorkflowExecutionCanceledEventAttributes() + ",");
+        if (getCancelWorkflowExecutionFailedEventAttributes() != null) sb.append("CancelWorkflowExecutionFailedEventAttributes: " + getCancelWorkflowExecutionFailedEventAttributes() + ",");
+        if (getWorkflowExecutionContinuedAsNewEventAttributes() != null) sb.append("WorkflowExecutionContinuedAsNewEventAttributes: " + getWorkflowExecutionContinuedAsNewEventAttributes() + ",");
+        if (getContinueAsNewWorkflowExecutionFailedEventAttributes() != null) sb.append("ContinueAsNewWorkflowExecutionFailedEventAttributes: " + getContinueAsNewWorkflowExecutionFailedEventAttributes() + ",");
+        if (getWorkflowExecutionTerminatedEventAttributes() != null) sb.append("WorkflowExecutionTerminatedEventAttributes: " + getWorkflowExecutionTerminatedEventAttributes() + ",");
+        if (getWorkflowExecutionCancelRequestedEventAttributes() != null) sb.append("WorkflowExecutionCancelRequestedEventAttributes: " + getWorkflowExecutionCancelRequestedEventAttributes() + ",");
+        if (getDecisionTaskScheduledEventAttributes() != null) sb.append("DecisionTaskScheduledEventAttributes: " + getDecisionTaskScheduledEventAttributes() + ",");
+        if (getDecisionTaskStartedEventAttributes() != null) sb.append("DecisionTaskStartedEventAttributes: " + getDecisionTaskStartedEventAttributes() + ",");
+        if (getDecisionTaskCompletedEventAttributes() != null) sb.append("DecisionTaskCompletedEventAttributes: " + getDecisionTaskCompletedEventAttributes() + ",");
+        if (getDecisionTaskTimedOutEventAttributes() != null) sb.append("DecisionTaskTimedOutEventAttributes: " + getDecisionTaskTimedOutEventAttributes() + ",");
+        if (getActivityTaskScheduledEventAttributes() != null) sb.append("ActivityTaskScheduledEventAttributes: " + getActivityTaskScheduledEventAttributes() + ",");
+        if (getActivityTaskStartedEventAttributes() != null) sb.append("ActivityTaskStartedEventAttributes: " + getActivityTaskStartedEventAttributes() + ",");
+        if (getActivityTaskCompletedEventAttributes() != null) sb.append("ActivityTaskCompletedEventAttributes: " + getActivityTaskCompletedEventAttributes() + ",");
+        if (getActivityTaskFailedEventAttributes() != null) sb.append("ActivityTaskFailedEventAttributes: " + getActivityTaskFailedEventAttributes() + ",");
+        if (getActivityTaskTimedOutEventAttributes() != null) sb.append("ActivityTaskTimedOutEventAttributes: " + getActivityTaskTimedOutEventAttributes() + ",");
+        if (getActivityTaskCanceledEventAttributes() != null) sb.append("ActivityTaskCanceledEventAttributes: " + getActivityTaskCanceledEventAttributes() + ",");
+        if (getActivityTaskCancelRequestedEventAttributes() != null) sb.append("ActivityTaskCancelRequestedEventAttributes: " + getActivityTaskCancelRequestedEventAttributes() + ",");
+        if (getWorkflowExecutionSignaledEventAttributes() != null) sb.append("WorkflowExecutionSignaledEventAttributes: " + getWorkflowExecutionSignaledEventAttributes() + ",");
+        if (getMarkerRecordedEventAttributes() != null) sb.append("MarkerRecordedEventAttributes: " + getMarkerRecordedEventAttributes() + ",");
+        if (getRecordMarkerFailedEventAttributes() != null) sb.append("RecordMarkerFailedEventAttributes: " + getRecordMarkerFailedEventAttributes() + ",");
+        if (getTimerStartedEventAttributes() != null) sb.append("TimerStartedEventAttributes: " + getTimerStartedEventAttributes() + ",");
+        if (getTimerFiredEventAttributes() != null) sb.append("TimerFiredEventAttributes: " + getTimerFiredEventAttributes() + ",");
+        if (getTimerCanceledEventAttributes() != null) sb.append("TimerCanceledEventAttributes: " + getTimerCanceledEventAttributes() + ",");
+        if (getStartChildWorkflowExecutionInitiatedEventAttributes() != null) sb.append("StartChildWorkflowExecutionInitiatedEventAttributes: " + getStartChildWorkflowExecutionInitiatedEventAttributes() + ",");
+        if (getChildWorkflowExecutionStartedEventAttributes() != null) sb.append("ChildWorkflowExecutionStartedEventAttributes: " + getChildWorkflowExecutionStartedEventAttributes() + ",");
+        if (getChildWorkflowExecutionCompletedEventAttributes() != null) sb.append("ChildWorkflowExecutionCompletedEventAttributes: " + getChildWorkflowExecutionCompletedEventAttributes() + ",");
+        if (getChildWorkflowExecutionFailedEventAttributes() != null) sb.append("ChildWorkflowExecutionFailedEventAttributes: " + getChildWorkflowExecutionFailedEventAttributes() + ",");
+        if (getChildWorkflowExecutionTimedOutEventAttributes() != null) sb.append("ChildWorkflowExecutionTimedOutEventAttributes: " + getChildWorkflowExecutionTimedOutEventAttributes() + ",");
+        if (getChildWorkflowExecutionCanceledEventAttributes() != null) sb.append("ChildWorkflowExecutionCanceledEventAttributes: " + getChildWorkflowExecutionCanceledEventAttributes() + ",");
+        if (getChildWorkflowExecutionTerminatedEventAttributes() != null) sb.append("ChildWorkflowExecutionTerminatedEventAttributes: " + getChildWorkflowExecutionTerminatedEventAttributes() + ",");
+        if (getSignalExternalWorkflowExecutionInitiatedEventAttributes() != null) sb.append("SignalExternalWorkflowExecutionInitiatedEventAttributes: " + getSignalExternalWorkflowExecutionInitiatedEventAttributes() + ",");
+        if (getExternalWorkflowExecutionSignaledEventAttributes() != null) sb.append("ExternalWorkflowExecutionSignaledEventAttributes: " + getExternalWorkflowExecutionSignaledEventAttributes() + ",");
+        if (getSignalExternalWorkflowExecutionFailedEventAttributes() != null) sb.append("SignalExternalWorkflowExecutionFailedEventAttributes: " + getSignalExternalWorkflowExecutionFailedEventAttributes() + ",");
+        if (getExternalWorkflowExecutionCancelRequestedEventAttributes() != null) sb.append("ExternalWorkflowExecutionCancelRequestedEventAttributes: " + getExternalWorkflowExecutionCancelRequestedEventAttributes() + ",");
+        if (getRequestCancelExternalWorkflowExecutionInitiatedEventAttributes() != null) sb.append("RequestCancelExternalWorkflowExecutionInitiatedEventAttributes: " + getRequestCancelExternalWorkflowExecutionInitiatedEventAttributes() + ",");
+        if (getRequestCancelExternalWorkflowExecutionFailedEventAttributes() != null) sb.append("RequestCancelExternalWorkflowExecutionFailedEventAttributes: " + getRequestCancelExternalWorkflowExecutionFailedEventAttributes() + ",");
+        if (getScheduleActivityTaskFailedEventAttributes() != null) sb.append("ScheduleActivityTaskFailedEventAttributes: " + getScheduleActivityTaskFailedEventAttributes() + ",");
+        if (getRequestCancelActivityTaskFailedEventAttributes() != null) sb.append("RequestCancelActivityTaskFailedEventAttributes: " + getRequestCancelActivityTaskFailedEventAttributes() + ",");
+        if (getStartTimerFailedEventAttributes() != null) sb.append("StartTimerFailedEventAttributes: " + getStartTimerFailedEventAttributes() + ",");
+        if (getCancelTimerFailedEventAttributes() != null) sb.append("CancelTimerFailedEventAttributes: " + getCancelTimerFailedEventAttributes() + ",");
         if (getStartChildWorkflowExecutionFailedEventAttributes() != null) sb.append("StartChildWorkflowExecutionFailedEventAttributes: " + getStartChildWorkflowExecutionFailedEventAttributes() );
         sb.append("}");
         return sb.toString();

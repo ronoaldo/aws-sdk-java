@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,26 +19,27 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.annotation.ThreadSafe;
 
 /**
  * Utility class for accessing AWS SDK versioning information.
  */
+@ThreadSafe
 public class VersionInfoUtils {
-    
     /** The AWS SDK version info file with SDK versioning info */
-    private static final String VERSION_INFO_FILE = "com/amazonaws/sdk/versionInfo.properties";
+    static final String VERSION_INFO_FILE = "/com/amazonaws/sdk/versionInfo.properties";
     
     /** SDK version info */
-    private static String version = null;
+    private static volatile String version;
 
     /** SDK platform info */
-    private static String platform = null;
+    private static volatile String platform;
 
     /** User Agent info */
-    private static String userAgent = null;
+    private static volatile String userAgent;
 
     /** Shared logger for any issues while loading version information */
-    private static Log log = LogFactory.getLog(VersionInfoUtils.class);
+    private static final Log log = LogFactory.getLog(VersionInfoUtils.class);
 
     /**
      * Returns the current version for the AWS SDK in which this class is
@@ -52,9 +53,11 @@ public class VersionInfoUtils {
      */
     public static String getVersion() {
         if (version == null) {
-            initializeVersion();
+            synchronized(VersionInfoUtils.class) {
+                if (version == null)
+                    initializeVersion();
+            }
         }
-        
         return version;
     }
 
@@ -70,9 +73,11 @@ public class VersionInfoUtils {
      */
     public static String getPlatform() {
         if (platform == null) {
-            initializeVersion();
+            synchronized(VersionInfoUtils.class) {
+                if (platform == null)
+                    initializeVersion();
+            }
         }
-        
         return platform;
     }
 
@@ -83,9 +88,11 @@ public class VersionInfoUtils {
      */
     public static String getUserAgent() {
         if (userAgent == null) {
-            initializeUserAgent();
+            synchronized(VersionInfoUtils.class) {
+                if (userAgent == null)
+                    initializeUserAgent();
+            }
         }
-        
         return userAgent;
     }
 
@@ -95,7 +102,8 @@ public class VersionInfoUtils {
      * next time the data is needed.
      */
     private static void initializeVersion() {
-        InputStream inputStream = VersionInfoUtils.class.getClassLoader().getResourceAsStream(VERSION_INFO_FILE);
+        InputStream inputStream = ClassLoaderHelper.getResourceAsStream(
+                VERSION_INFO_FILE, true, VersionInfoUtils.class);
         Properties versionInfoProperties = new Properties();
         try {
             if (inputStream == null)
@@ -108,32 +116,61 @@ public class VersionInfoUtils {
             log.info("Unable to load version information for the running SDK: " + e.getMessage());
             version = "unknown-version";
             platform = "java";
+        } finally {
+            try {
+                inputStream.close();
+            } catch (Exception e) {}
         }
     }
 			
-   /**
+    /**
      * Loads the versionInfo.properties file from the AWS Java SDK and
      * stores the information so that the file doesn't have to be read the
      * next time the data is needed.
      */
-	private static void initializeUserAgent() {
-		StringBuilder buffer = new StringBuilder( 1024 );
-		buffer.append( "aws-sdk-" + VersionInfoUtils.getPlatform().toLowerCase() + "/" );
-		buffer.append( VersionInfoUtils.getVersion() );
-		buffer.append( " " );
-		buffer.append( System.getProperty( "os.name" ).replace( ' ', '_' ) + "/" + System.getProperty( "os.version" ).replace( ' ', '_' ) );
-		buffer.append( " " );
-		buffer.append( System.getProperty( "java.vm.name" ).replace( ' ', '_' ) + "/" + System.getProperty( "java.vm.version" ).replace( ' ', '_' ) );
-		
-		String region = "";
-		try {
-			region = " " + System.getProperty( "user.language" ).replace( ' ', '_' ) + "_" + System.getProperty( "user.region" ).replace( ' ', '_' );
-		}
-		catch ( Exception exception ) {
-		}
-		
-		buffer.append( region );
-	
-		userAgent = buffer.toString();
-	}
+    private static void initializeUserAgent() {
+        userAgent = userAgent();
+    }
+
+    static String userAgent() {
+        StringBuilder buffer = new StringBuilder(128);
+
+        buffer.append("aws-sdk-");
+        buffer.append(VersionInfoUtils.getPlatform().toLowerCase());
+        buffer.append("/");
+
+        buffer.append(VersionInfoUtils.getVersion());
+        buffer.append(" ");
+        buffer.append(replaceSpaces(System.getProperty("os.name")));
+        buffer.append("/");
+        buffer.append(replaceSpaces(System.getProperty("os.version")));
+
+        buffer.append(" ");
+        buffer.append(replaceSpaces(System.getProperty("java.vm.name")));
+        buffer.append("/");
+        buffer.append(replaceSpaces(System.getProperty("java.vm.version")));
+        buffer.append("/");
+        buffer.append(replaceSpaces(System.getProperty("java.version")));
+
+        String language = System.getProperty("user.language");
+        String region = System.getProperty("user.region");
+
+        if (language != null && region != null) {
+            buffer.append(" ");
+            buffer.append(replaceSpaces(language));
+            buffer.append("_");
+            buffer.append(replaceSpaces(region));
+        }
+        return buffer.toString();
+    }
+
+    /**
+     * Replace any spaces in the input with underscores.
+     *
+     * @param input the input
+     * @return the input with spaces replaced by underscores
+     */
+    private static String replaceSpaces(final String input) {
+        return input.replace(' ', '_');
+    }
 }

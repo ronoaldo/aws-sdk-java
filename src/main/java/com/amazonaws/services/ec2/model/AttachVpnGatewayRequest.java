@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AttachVpnGatewayRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#attachVpnGateway(AttachVpnGatewayRequest) AttachVpnGateway operation}.
  * <p>
- * Attaches a VPN gateway to a VPC. This is the last step required to get your VPC fully connected to your data center before launching instances in it.
- * For more information, go to Process for Using Amazon VPC in the Amazon Virtual Private Cloud Developer Guide.
+ * Attaches a virtual private gateway to a VPC. For more information, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html"> Adding a Hardware Virtual Private Gateway to Your VPC </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#attachVpnGateway(AttachVpnGatewayRequest)
  */
-public class AttachVpnGatewayRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AttachVpnGatewayRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AttachVpnGatewayRequest> {
 
     /**
-     * The ID of the VPN gateway to attach to the VPC.
+     * The ID of the virtual private gateway.
      */
     private String vpnGatewayId;
 
     /**
-     * The ID of the VPC to attach to the VPN gateway.
+     * The ID of the VPC.
      */
     private String vpcId;
 
@@ -48,83 +53,91 @@ public class AttachVpnGatewayRequest extends AmazonWebServiceRequest  implements
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param vpnGatewayId The ID of the VPN gateway to attach to the VPC.
-     * @param vpcId The ID of the VPC to attach to the VPN gateway.
+     * @param vpnGatewayId The ID of the virtual private gateway.
+     * @param vpcId The ID of the VPC.
      */
     public AttachVpnGatewayRequest(String vpnGatewayId, String vpcId) {
-        this.vpnGatewayId = vpnGatewayId;
-        this.vpcId = vpcId;
+        setVpnGatewayId(vpnGatewayId);
+        setVpcId(vpcId);
     }
 
-    
-    
     /**
-     * The ID of the VPN gateway to attach to the VPC.
+     * The ID of the virtual private gateway.
      *
-     * @return The ID of the VPN gateway to attach to the VPC.
+     * @return The ID of the virtual private gateway.
      */
     public String getVpnGatewayId() {
         return vpnGatewayId;
     }
     
     /**
-     * The ID of the VPN gateway to attach to the VPC.
+     * The ID of the virtual private gateway.
      *
-     * @param vpnGatewayId The ID of the VPN gateway to attach to the VPC.
+     * @param vpnGatewayId The ID of the virtual private gateway.
      */
     public void setVpnGatewayId(String vpnGatewayId) {
         this.vpnGatewayId = vpnGatewayId;
     }
     
     /**
-     * The ID of the VPN gateway to attach to the VPC.
+     * The ID of the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpnGatewayId The ID of the VPN gateway to attach to the VPC.
+     * @param vpnGatewayId The ID of the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachVpnGatewayRequest withVpnGatewayId(String vpnGatewayId) {
         this.vpnGatewayId = vpnGatewayId;
         return this;
     }
-    
-    
+
     /**
-     * The ID of the VPC to attach to the VPN gateway.
+     * The ID of the VPC.
      *
-     * @return The ID of the VPC to attach to the VPN gateway.
+     * @return The ID of the VPC.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * The ID of the VPC to attach to the VPN gateway.
+     * The ID of the VPC.
      *
-     * @param vpcId The ID of the VPC to attach to the VPN gateway.
+     * @param vpcId The ID of the VPC.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * The ID of the VPC to attach to the VPN gateway.
+     * The ID of the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId The ID of the VPC to attach to the VPN gateway.
+     * @param vpcId The ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachVpnGatewayRequest withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AttachVpnGatewayRequest> getDryRunRequest() {
+        Request<AttachVpnGatewayRequest> request = new AttachVpnGatewayRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -137,8 +150,8 @@ public class AttachVpnGatewayRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpnGatewayId() != null) sb.append("VpnGatewayId: " + getVpnGatewayId() + ",");    	
+        sb.append("{");
+        if (getVpnGatewayId() != null) sb.append("VpnGatewayId: " + getVpnGatewayId() + ",");
         if (getVpcId() != null) sb.append("VpcId: " + getVpcId() );
         sb.append("}");
         return sb.toString();

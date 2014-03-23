@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>WorkflowExecutionCanceled</code> event.
  * </p>
  */
-public class WorkflowExecutionCanceledEventAttributes  implements Serializable  {
+public class WorkflowExecutionCanceledEventAttributes implements Serializable {
 
     /**
      * Details for the cancellation (if any).
@@ -74,14 +75,13 @@ public class WorkflowExecutionCanceledEventAttributes  implements Serializable  
      * @param details Details for the cancellation (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionCanceledEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the
@@ -132,14 +132,13 @@ public class WorkflowExecutionCanceledEventAttributes  implements Serializable  
      *         tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionCanceledEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -151,8 +150,8 @@ public class WorkflowExecutionCanceledEventAttributes  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
+        sb.append("{");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
         if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() );
         sb.append("}");
         return sb.toString();

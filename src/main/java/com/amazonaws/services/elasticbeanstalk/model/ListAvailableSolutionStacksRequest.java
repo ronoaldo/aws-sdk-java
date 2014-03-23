@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#listAvailableSolutionStacks(ListAvailableSolutionStacksRequest) ListAvailableSolutionStacks operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#listAvailableSolutionStacks(ListAvailableSolutionStacksRequest)
  */
-public class ListAvailableSolutionStacksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListAvailableSolutionStacksRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Returns a string representation of this object; useful for testing and

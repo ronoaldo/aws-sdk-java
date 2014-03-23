@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * CloudFront origin access identity.
  * </p>
  */
-public class CloudFrontOriginAccessIdentity  implements Serializable  {
+public class CloudFrontOriginAccessIdentity implements Serializable {
 
     /**
      * The ID for the origin access identity. For example: E74FTE3AJFJ256A.
@@ -57,12 +58,10 @@ public class CloudFrontOriginAccessIdentity  implements Serializable  {
      * identity read permission to an object in Amazon S3.
      */
     public CloudFrontOriginAccessIdentity(String id, String s3CanonicalUserId) {
-        this.id = id;
-        this.s3CanonicalUserId = s3CanonicalUserId;
+        setId(id);
+        setS3CanonicalUserId(s3CanonicalUserId);
     }
 
-    
-    
     /**
      * The ID for the origin access identity. For example: E74FTE3AJFJ256A.
      *
@@ -89,14 +88,13 @@ public class CloudFrontOriginAccessIdentity  implements Serializable  {
      * @param id The ID for the origin access identity. For example: E74FTE3AJFJ256A.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CloudFrontOriginAccessIdentity withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The Amazon S3 canonical user ID for the origin access identity, which
      * you use when giving the origin access identity read permission to an
@@ -135,14 +133,13 @@ public class CloudFrontOriginAccessIdentity  implements Serializable  {
      *         object in Amazon S3.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CloudFrontOriginAccessIdentity withS3CanonicalUserId(String s3CanonicalUserId) {
         this.s3CanonicalUserId = s3CanonicalUserId;
         return this;
     }
-    
-    
+
     /**
      * The current configuration information for the identity.
      *
@@ -169,14 +166,13 @@ public class CloudFrontOriginAccessIdentity  implements Serializable  {
      * @param cloudFrontOriginAccessIdentityConfig The current configuration information for the identity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CloudFrontOriginAccessIdentity withCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig cloudFrontOriginAccessIdentityConfig) {
         this.cloudFrontOriginAccessIdentityConfig = cloudFrontOriginAccessIdentityConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -188,9 +184,9 @@ public class CloudFrontOriginAccessIdentity  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getS3CanonicalUserId() != null) sb.append("S3CanonicalUserId: " + getS3CanonicalUserId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getS3CanonicalUserId() != null) sb.append("S3CanonicalUserId: " + getS3CanonicalUserId() + ",");
         if (getCloudFrontOriginAccessIdentityConfig() != null) sb.append("CloudFrontOriginAccessIdentityConfig: " + getCloudFrontOriginAccessIdentityConfig() );
         sb.append("}");
         return sb.toString();

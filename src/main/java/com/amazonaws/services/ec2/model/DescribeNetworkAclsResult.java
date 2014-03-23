@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Network Acls Result
+ * 
  */
-public class DescribeNetworkAclsResult  implements Serializable  {
-
-    private java.util.List<NetworkAcl> networkAcls;
+public class DescribeNetworkAclsResult implements Serializable {
 
     /**
-     * Returns the value of the NetworkAcls property for this object.
+     * Information about one or more network ACLs.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAcl> networkAcls;
+
+    /**
+     * Information about one or more network ACLs.
      *
-     * @return The value of the NetworkAcls property for this object.
+     * @return Information about one or more network ACLs.
      */
     public java.util.List<NetworkAcl> getNetworkAcls() {
-        
         if (networkAcls == null) {
-            networkAcls = new java.util.ArrayList<NetworkAcl>();
+              networkAcls = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAcl>();
+              networkAcls.setAutoConstruct(true);
         }
         return networkAcls;
     }
     
     /**
-     * Sets the value of the NetworkAcls property for this object.
+     * Information about one or more network ACLs.
      *
-     * @param networkAcls The new value for the NetworkAcls property for this object.
+     * @param networkAcls Information about one or more network ACLs.
      */
     public void setNetworkAcls(java.util.Collection<NetworkAcl> networkAcls) {
         if (networkAcls == null) {
             this.networkAcls = null;
             return;
         }
-
-        java.util.List<NetworkAcl> networkAclsCopy = new java.util.ArrayList<NetworkAcl>(networkAcls.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAcl> networkAclsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAcl>(networkAcls.size());
         networkAclsCopy.addAll(networkAcls);
         this.networkAcls = networkAclsCopy;
     }
     
     /**
-     * Sets the value of the NetworkAcls property for this object.
+     * Information about one or more network ACLs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkAcls The new value for the NetworkAcls property for this object.
+     * @param networkAcls Information about one or more network ACLs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNetworkAclsResult withNetworkAcls(NetworkAcl... networkAcls) {
         if (getNetworkAcls() == null) setNetworkAcls(new java.util.ArrayList<NetworkAcl>(networkAcls.length));
@@ -70,27 +73,27 @@ public class DescribeNetworkAclsResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NetworkAcls property for this object.
+     * Information about one or more network ACLs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkAcls The new value for the NetworkAcls property for this object.
+     * @param networkAcls Information about one or more network ACLs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNetworkAclsResult withNetworkAcls(java.util.Collection<NetworkAcl> networkAcls) {
         if (networkAcls == null) {
             this.networkAcls = null;
         } else {
-            java.util.List<NetworkAcl> networkAclsCopy = new java.util.ArrayList<NetworkAcl>(networkAcls.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAcl> networkAclsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkAcl>(networkAcls.size());
             networkAclsCopy.addAll(networkAcls);
             this.networkAcls = networkAclsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeNetworkAclsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getNetworkAcls() != null) sb.append("NetworkAcls: " + getNetworkAcls() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeClusterSubnetGroups action.
  * </p>
  */
-public class DescribeClusterSubnetGroupsResult  implements Serializable  {
+public class DescribeClusterSubnetGroupsResult implements Serializable {
 
     /**
      * A marker at which to continue listing cluster subnet groups in a new
@@ -32,7 +33,7 @@ public class DescribeClusterSubnetGroupsResult  implements Serializable  {
     /**
      * A list of <a>ClusterSubnetGroup</a> instances.
      */
-    private java.util.List<ClusterSubnetGroup> clusterSubnetGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSubnetGroup> clusterSubnetGroups;
 
     /**
      * A marker at which to continue listing cluster subnet groups in a new
@@ -72,23 +73,22 @@ public class DescribeClusterSubnetGroupsResult  implements Serializable  {
      *         to list than were returned in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSubnetGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>ClusterSubnetGroup</a> instances.
      *
      * @return A list of <a>ClusterSubnetGroup</a> instances.
      */
     public java.util.List<ClusterSubnetGroup> getClusterSubnetGroups() {
-        
         if (clusterSubnetGroups == null) {
-            clusterSubnetGroups = new java.util.ArrayList<ClusterSubnetGroup>();
+              clusterSubnetGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSubnetGroup>();
+              clusterSubnetGroups.setAutoConstruct(true);
         }
         return clusterSubnetGroups;
     }
@@ -103,8 +103,7 @@ public class DescribeClusterSubnetGroupsResult  implements Serializable  {
             this.clusterSubnetGroups = null;
             return;
         }
-
-        java.util.List<ClusterSubnetGroup> clusterSubnetGroupsCopy = new java.util.ArrayList<ClusterSubnetGroup>(clusterSubnetGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSubnetGroup> clusterSubnetGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSubnetGroup>(clusterSubnetGroups.size());
         clusterSubnetGroupsCopy.addAll(clusterSubnetGroups);
         this.clusterSubnetGroups = clusterSubnetGroupsCopy;
     }
@@ -117,7 +116,7 @@ public class DescribeClusterSubnetGroupsResult  implements Serializable  {
      * @param clusterSubnetGroups A list of <a>ClusterSubnetGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSubnetGroupsResult withClusterSubnetGroups(ClusterSubnetGroup... clusterSubnetGroups) {
         if (getClusterSubnetGroups() == null) setClusterSubnetGroups(new java.util.ArrayList<ClusterSubnetGroup>(clusterSubnetGroups.length));
@@ -135,20 +134,20 @@ public class DescribeClusterSubnetGroupsResult  implements Serializable  {
      * @param clusterSubnetGroups A list of <a>ClusterSubnetGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSubnetGroupsResult withClusterSubnetGroups(java.util.Collection<ClusterSubnetGroup> clusterSubnetGroups) {
         if (clusterSubnetGroups == null) {
             this.clusterSubnetGroups = null;
         } else {
-            java.util.List<ClusterSubnetGroup> clusterSubnetGroupsCopy = new java.util.ArrayList<ClusterSubnetGroup>(clusterSubnetGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSubnetGroup> clusterSubnetGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSubnetGroup>(clusterSubnetGroups.size());
             clusterSubnetGroupsCopy.addAll(clusterSubnetGroups);
             this.clusterSubnetGroups = clusterSubnetGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +159,8 @@ public class DescribeClusterSubnetGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getClusterSubnetGroups() != null) sb.append("ClusterSubnetGroups: " + getClusterSubnetGroups() );
         sb.append("}");
         return sb.toString();

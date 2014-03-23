@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A response message that contains the synonym options for a search domain.
+ * A response message that contains the synonym options for a search
+ * domain.
  * </p>
  */
-public class DescribeSynonymOptionsResult  implements Serializable  {
+public class DescribeSynonymOptionsResult implements Serializable {
 
     /**
      * The synonym options configured for this search domain and the current
@@ -60,14 +62,13 @@ public class DescribeSynonymOptionsResult  implements Serializable  {
      *         status of those options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSynonymOptionsResult withSynonyms(SynonymOptionsStatus synonyms) {
         this.synonyms = synonyms;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +80,7 @@ public class DescribeSynonymOptionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSynonyms() != null) sb.append("Synonyms: " + getSynonyms() );
         sb.append("}");
         return sb.toString();

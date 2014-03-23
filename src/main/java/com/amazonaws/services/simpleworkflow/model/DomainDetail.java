@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains details of a domain.
  * </p>
  */
-public class DomainDetail  implements Serializable  {
+public class DomainDetail implements Serializable {
 
     /**
      * Contains general information about a domain.
@@ -58,14 +59,13 @@ public class DomainDetail  implements Serializable  {
      * @param domainInfo Contains general information about a domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainDetail withDomainInfo(DomainInfo domainInfo) {
         this.domainInfo = domainInfo;
         return this;
     }
-    
-    
+
     /**
      * Contains the configuration settings of a domain.
      *
@@ -92,14 +92,13 @@ public class DomainDetail  implements Serializable  {
      * @param configuration Contains the configuration settings of a domain.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainDetail withConfiguration(DomainConfiguration configuration) {
         this.configuration = configuration;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class DomainDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainInfo() != null) sb.append("DomainInfo: " + getDomainInfo() + ",");    	
+        sb.append("{");
+        if (getDomainInfo() != null) sb.append("DomainInfo: " + getDomainInfo() + ",");
         if (getConfiguration() != null) sb.append("Configuration: " + getConfiguration() );
         sb.append("}");
         return sb.toString();

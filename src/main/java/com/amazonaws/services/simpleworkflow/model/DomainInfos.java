@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains a paginated collection of DomainInfo structures.
  * </p>
  */
-public class DomainInfos  implements Serializable  {
+public class DomainInfos implements Serializable {
 
     /**
      * A list of DomainInfo structures.
      */
-    private java.util.List<DomainInfo> domainInfos;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DomainInfo> domainInfos;
 
     /**
      * Returns a value if the results are paginated. To get the next page of
@@ -43,9 +44,9 @@ public class DomainInfos  implements Serializable  {
      * @return A list of DomainInfo structures.
      */
     public java.util.List<DomainInfo> getDomainInfos() {
-        
         if (domainInfos == null) {
-            domainInfos = new java.util.ArrayList<DomainInfo>();
+              domainInfos = new com.amazonaws.internal.ListWithAutoConstructFlag<DomainInfo>();
+              domainInfos.setAutoConstruct(true);
         }
         return domainInfos;
     }
@@ -60,8 +61,7 @@ public class DomainInfos  implements Serializable  {
             this.domainInfos = null;
             return;
         }
-
-        java.util.List<DomainInfo> domainInfosCopy = new java.util.ArrayList<DomainInfo>(domainInfos.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DomainInfo> domainInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DomainInfo>(domainInfos.size());
         domainInfosCopy.addAll(domainInfos);
         this.domainInfos = domainInfosCopy;
     }
@@ -74,7 +74,7 @@ public class DomainInfos  implements Serializable  {
      * @param domainInfos A list of DomainInfo structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainInfos withDomainInfos(DomainInfo... domainInfos) {
         if (getDomainInfos() == null) setDomainInfos(new java.util.ArrayList<DomainInfo>(domainInfos.length));
@@ -92,20 +92,20 @@ public class DomainInfos  implements Serializable  {
      * @param domainInfos A list of DomainInfo structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainInfos withDomainInfos(java.util.Collection<DomainInfo> domainInfos) {
         if (domainInfos == null) {
             this.domainInfos = null;
         } else {
-            java.util.List<DomainInfo> domainInfosCopy = new java.util.ArrayList<DomainInfo>(domainInfos.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DomainInfo> domainInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DomainInfo>(domainInfos.size());
             domainInfosCopy.addAll(domainInfos);
             this.domainInfos = domainInfosCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a value if the results are paginated. To get the next page of
      * results, repeat the request specifying this token and all other
@@ -153,14 +153,13 @@ public class DomainInfos  implements Serializable  {
      *         arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainInfos withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -172,8 +171,8 @@ public class DomainInfos  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainInfos() != null) sb.append("DomainInfos: " + getDomainInfos() + ",");    	
+        sb.append("{");
+        if (getDomainInfos() != null) sb.append("DomainInfos: " + getDomainInfos() + ",");
         if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an instance.
  * </p>
  */
-public class Instance  implements Serializable  {
+public class Instance implements Serializable {
 
     /**
      * The instance ID.
@@ -45,17 +46,17 @@ public class Instance  implements Serializable  {
     /**
      * An array containing the instance layer IDs.
      */
-    private java.util.List<String> layerIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIds;
 
     /**
      * An array containing the instance security group IDs.
      */
-    private java.util.List<String> securityGroupIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupIds;
 
     /**
-     * The instance type. OpsWorks supports all instance types except Cluster
-     * Compute, Cluster GPU, and High Memory Cluster. For more information,
-     * see <a
+     * The instance type. AWS OpsWorks supports all instance types except
+     * Cluster Compute, Cluster GPU, and High Memory Cluster. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      * Families and Types</a>. The parameter values that specify the various
      * types are in the API Name column of the Available Instance Types
@@ -72,10 +73,12 @@ public class Instance  implements Serializable  {
     private String instanceProfileArn;
 
     /**
-     * The instance status: <ul> <li>requested</li> <li>booting</li>
-     * <li>running_setup</li> <li>online</li> <li>setup_failed</li>
-     * <li>start_failed</li> <li>terminating</li> <li>terminated</li>
-     * <li>stopped</li> <li>connection_lost</li> </ul>
+     * The instance status: <ul> <li><code>requested</code></li>
+     * <li><code>booting</code></li> <li><code>running_setup</code></li>
+     * <li><code>online</code></li> <li><code>setup_failed</code></li>
+     * <li><code>start_failed</code></li> <li><code>terminating</code></li>
+     * <li><code>terminated</code></li> <li><code>stopped</code></li>
+     * <li><code>connection_lost</code></li> </ul>
      */
     private String status;
 
@@ -85,11 +88,24 @@ public class Instance  implements Serializable  {
     private String os;
 
     /**
+     * A custom AMI ID to be used to create the instance. The AMI should be
+     * based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
+     * 12.04 LTS. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances.html">Instances</a>
+     */
+    private String amiId;
+
+    /**
      * The instance Availability Zone. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
      * and Endpoints</a>.
      */
     private String availabilityZone;
+
+    /**
+     * The instance's subnet ID, if the stack is running in a VPC.
+     */
+    private String subnetId;
 
     /**
      * The instance public DNS name.
@@ -182,6 +198,19 @@ public class Instance  implements Serializable  {
     private String rootDeviceVolumeId;
 
     /**
+     * Whether to install operating system and package updates when the
+     * instance boots. The default value is <code>true</code>. If this value
+     * is set to <code>false</code>, you must then update your instances
+     * manually by using <a>CreateDeployment</a> to run the
+     * <code>update_dependencies</code> stack command or manually running
+     * <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     * the instances. <note>We strongly recommend using the default value of
+     * <code>true</code>, to ensure that your instances have the latest
+     * security updates.</note>
+     */
+    private Boolean installUpdatesOnBoot;
+
+    /**
      * The instance ID.
      *
      * @return The instance ID.
@@ -207,14 +236,13 @@ public class Instance  implements Serializable  {
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The ID of the associated Amazon EC2 instance.
      *
@@ -241,14 +269,13 @@ public class Instance  implements Serializable  {
      * @param ec2InstanceId The ID of the associated Amazon EC2 instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withEc2InstanceId(String ec2InstanceId) {
         this.ec2InstanceId = ec2InstanceId;
         return this;
     }
-    
-    
+
     /**
      * The instance host name.
      *
@@ -275,14 +302,13 @@ public class Instance  implements Serializable  {
      * @param hostname The instance host name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withHostname(String hostname) {
         this.hostname = hostname;
         return this;
     }
-    
-    
+
     /**
      * The stack ID.
      *
@@ -309,23 +335,22 @@ public class Instance  implements Serializable  {
      * @param stackId The stack ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * An array containing the instance layer IDs.
      *
      * @return An array containing the instance layer IDs.
      */
     public java.util.List<String> getLayerIds() {
-        
         if (layerIds == null) {
-            layerIds = new java.util.ArrayList<String>();
+              layerIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              layerIds.setAutoConstruct(true);
         }
         return layerIds;
     }
@@ -340,8 +365,7 @@ public class Instance  implements Serializable  {
             this.layerIds = null;
             return;
         }
-
-        java.util.List<String> layerIdsCopy = new java.util.ArrayList<String>(layerIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(layerIds.size());
         layerIdsCopy.addAll(layerIds);
         this.layerIds = layerIdsCopy;
     }
@@ -354,7 +378,7 @@ public class Instance  implements Serializable  {
      * @param layerIds An array containing the instance layer IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withLayerIds(String... layerIds) {
         if (getLayerIds() == null) setLayerIds(new java.util.ArrayList<String>(layerIds.length));
@@ -372,29 +396,29 @@ public class Instance  implements Serializable  {
      * @param layerIds An array containing the instance layer IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withLayerIds(java.util.Collection<String> layerIds) {
         if (layerIds == null) {
             this.layerIds = null;
         } else {
-            java.util.List<String> layerIdsCopy = new java.util.ArrayList<String>(layerIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(layerIds.size());
             layerIdsCopy.addAll(layerIds);
             this.layerIds = layerIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An array containing the instance security group IDs.
      *
      * @return An array containing the instance security group IDs.
      */
     public java.util.List<String> getSecurityGroupIds() {
-        
         if (securityGroupIds == null) {
-            securityGroupIds = new java.util.ArrayList<String>();
+              securityGroupIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              securityGroupIds.setAutoConstruct(true);
         }
         return securityGroupIds;
     }
@@ -409,8 +433,7 @@ public class Instance  implements Serializable  {
             this.securityGroupIds = null;
             return;
         }
-
-        java.util.List<String> securityGroupIdsCopy = new java.util.ArrayList<String>(securityGroupIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroupIds.size());
         securityGroupIdsCopy.addAll(securityGroupIds);
         this.securityGroupIds = securityGroupIdsCopy;
     }
@@ -423,7 +446,7 @@ public class Instance  implements Serializable  {
      * @param securityGroupIds An array containing the instance security group IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSecurityGroupIds(String... securityGroupIds) {
         if (getSecurityGroupIds() == null) setSecurityGroupIds(new java.util.ArrayList<String>(securityGroupIds.length));
@@ -441,32 +464,32 @@ public class Instance  implements Serializable  {
      * @param securityGroupIds An array containing the instance security group IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSecurityGroupIds(java.util.Collection<String> securityGroupIds) {
         if (securityGroupIds == null) {
             this.securityGroupIds = null;
         } else {
-            java.util.List<String> securityGroupIdsCopy = new java.util.ArrayList<String>(securityGroupIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroupIds.size());
             securityGroupIdsCopy.addAll(securityGroupIds);
             this.securityGroupIds = securityGroupIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The instance type. OpsWorks supports all instance types except Cluster
-     * Compute, Cluster GPU, and High Memory Cluster. For more information,
-     * see <a
+     * The instance type. AWS OpsWorks supports all instance types except
+     * Cluster Compute, Cluster GPU, and High Memory Cluster. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      * Families and Types</a>. The parameter values that specify the various
      * types are in the API Name column of the Available Instance Types
      * table.
      *
-     * @return The instance type. OpsWorks supports all instance types except Cluster
-     *         Compute, Cluster GPU, and High Memory Cluster. For more information,
-     *         see <a
+     * @return The instance type. AWS OpsWorks supports all instance types except
+     *         Cluster Compute, Cluster GPU, and High Memory Cluster. For more
+     *         information, see <a
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      *         Families and Types</a>. The parameter values that specify the various
      *         types are in the API Name column of the Available Instance Types
@@ -477,17 +500,17 @@ public class Instance  implements Serializable  {
     }
     
     /**
-     * The instance type. OpsWorks supports all instance types except Cluster
-     * Compute, Cluster GPU, and High Memory Cluster. For more information,
-     * see <a
+     * The instance type. AWS OpsWorks supports all instance types except
+     * Cluster Compute, Cluster GPU, and High Memory Cluster. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      * Families and Types</a>. The parameter values that specify the various
      * types are in the API Name column of the Available Instance Types
      * table.
      *
-     * @param instanceType The instance type. OpsWorks supports all instance types except Cluster
-     *         Compute, Cluster GPU, and High Memory Cluster. For more information,
-     *         see <a
+     * @param instanceType The instance type. AWS OpsWorks supports all instance types except
+     *         Cluster Compute, Cluster GPU, and High Memory Cluster. For more
+     *         information, see <a
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      *         Families and Types</a>. The parameter values that specify the various
      *         types are in the API Name column of the Available Instance Types
@@ -498,9 +521,9 @@ public class Instance  implements Serializable  {
     }
     
     /**
-     * The instance type. OpsWorks supports all instance types except Cluster
-     * Compute, Cluster GPU, and High Memory Cluster. For more information,
-     * see <a
+     * The instance type. AWS OpsWorks supports all instance types except
+     * Cluster Compute, Cluster GPU, and High Memory Cluster. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      * Families and Types</a>. The parameter values that specify the various
      * types are in the API Name column of the Available Instance Types
@@ -508,23 +531,22 @@ public class Instance  implements Serializable  {
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceType The instance type. OpsWorks supports all instance types except Cluster
-     *         Compute, Cluster GPU, and High Memory Cluster. For more information,
-     *         see <a
+     * @param instanceType The instance type. AWS OpsWorks supports all instance types except
+     *         Cluster Compute, Cluster GPU, and High Memory Cluster. For more
+     *         information, see <a
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      *         Families and Types</a>. The parameter values that specify the various
      *         types are in the API Name column of the Available Instance Types
      *         table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceType(String instanceType) {
         this.instanceType = instanceType;
         return this;
     }
-    
-    
+
     /**
      * The ARN of the instance's IAM profile. For more information about IAM
      * ARNs, see <a
@@ -569,66 +591,76 @@ public class Instance  implements Serializable  {
      *         Identifiers</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceProfileArn(String instanceProfileArn) {
         this.instanceProfileArn = instanceProfileArn;
         return this;
     }
-    
-    
+
     /**
-     * The instance status: <ul> <li>requested</li> <li>booting</li>
-     * <li>running_setup</li> <li>online</li> <li>setup_failed</li>
-     * <li>start_failed</li> <li>terminating</li> <li>terminated</li>
-     * <li>stopped</li> <li>connection_lost</li> </ul>
+     * The instance status: <ul> <li><code>requested</code></li>
+     * <li><code>booting</code></li> <li><code>running_setup</code></li>
+     * <li><code>online</code></li> <li><code>setup_failed</code></li>
+     * <li><code>start_failed</code></li> <li><code>terminating</code></li>
+     * <li><code>terminated</code></li> <li><code>stopped</code></li>
+     * <li><code>connection_lost</code></li> </ul>
      *
-     * @return The instance status: <ul> <li>requested</li> <li>booting</li>
-     *         <li>running_setup</li> <li>online</li> <li>setup_failed</li>
-     *         <li>start_failed</li> <li>terminating</li> <li>terminated</li>
-     *         <li>stopped</li> <li>connection_lost</li> </ul>
+     * @return The instance status: <ul> <li><code>requested</code></li>
+     *         <li><code>booting</code></li> <li><code>running_setup</code></li>
+     *         <li><code>online</code></li> <li><code>setup_failed</code></li>
+     *         <li><code>start_failed</code></li> <li><code>terminating</code></li>
+     *         <li><code>terminated</code></li> <li><code>stopped</code></li>
+     *         <li><code>connection_lost</code></li> </ul>
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * The instance status: <ul> <li>requested</li> <li>booting</li>
-     * <li>running_setup</li> <li>online</li> <li>setup_failed</li>
-     * <li>start_failed</li> <li>terminating</li> <li>terminated</li>
-     * <li>stopped</li> <li>connection_lost</li> </ul>
+     * The instance status: <ul> <li><code>requested</code></li>
+     * <li><code>booting</code></li> <li><code>running_setup</code></li>
+     * <li><code>online</code></li> <li><code>setup_failed</code></li>
+     * <li><code>start_failed</code></li> <li><code>terminating</code></li>
+     * <li><code>terminated</code></li> <li><code>stopped</code></li>
+     * <li><code>connection_lost</code></li> </ul>
      *
-     * @param status The instance status: <ul> <li>requested</li> <li>booting</li>
-     *         <li>running_setup</li> <li>online</li> <li>setup_failed</li>
-     *         <li>start_failed</li> <li>terminating</li> <li>terminated</li>
-     *         <li>stopped</li> <li>connection_lost</li> </ul>
+     * @param status The instance status: <ul> <li><code>requested</code></li>
+     *         <li><code>booting</code></li> <li><code>running_setup</code></li>
+     *         <li><code>online</code></li> <li><code>setup_failed</code></li>
+     *         <li><code>start_failed</code></li> <li><code>terminating</code></li>
+     *         <li><code>terminated</code></li> <li><code>stopped</code></li>
+     *         <li><code>connection_lost</code></li> </ul>
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * The instance status: <ul> <li>requested</li> <li>booting</li>
-     * <li>running_setup</li> <li>online</li> <li>setup_failed</li>
-     * <li>start_failed</li> <li>terminating</li> <li>terminated</li>
-     * <li>stopped</li> <li>connection_lost</li> </ul>
+     * The instance status: <ul> <li><code>requested</code></li>
+     * <li><code>booting</code></li> <li><code>running_setup</code></li>
+     * <li><code>online</code></li> <li><code>setup_failed</code></li>
+     * <li><code>start_failed</code></li> <li><code>terminating</code></li>
+     * <li><code>terminated</code></li> <li><code>stopped</code></li>
+     * <li><code>connection_lost</code></li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param status The instance status: <ul> <li>requested</li> <li>booting</li>
-     *         <li>running_setup</li> <li>online</li> <li>setup_failed</li>
-     *         <li>start_failed</li> <li>terminating</li> <li>terminated</li>
-     *         <li>stopped</li> <li>connection_lost</li> </ul>
+     * @param status The instance status: <ul> <li><code>requested</code></li>
+     *         <li><code>booting</code></li> <li><code>running_setup</code></li>
+     *         <li><code>online</code></li> <li><code>setup_failed</code></li>
+     *         <li><code>start_failed</code></li> <li><code>terminating</code></li>
+     *         <li><code>terminated</code></li> <li><code>stopped</code></li>
+     *         <li><code>connection_lost</code></li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The instance operating system.
      *
@@ -655,14 +687,64 @@ public class Instance  implements Serializable  {
      * @param os The instance operating system.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withOs(String os) {
         this.os = os;
         return this;
     }
+
+    /**
+     * A custom AMI ID to be used to create the instance. The AMI should be
+     * based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
+     * 12.04 LTS. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances.html">Instances</a>
+     *
+     * @return A custom AMI ID to be used to create the instance. The AMI should be
+     *         based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
+     *         12.04 LTS. For more information, see <a
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances.html">Instances</a>
+     */
+    public String getAmiId() {
+        return amiId;
+    }
     
+    /**
+     * A custom AMI ID to be used to create the instance. The AMI should be
+     * based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
+     * 12.04 LTS. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances.html">Instances</a>
+     *
+     * @param amiId A custom AMI ID to be used to create the instance. The AMI should be
+     *         based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
+     *         12.04 LTS. For more information, see <a
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances.html">Instances</a>
+     */
+    public void setAmiId(String amiId) {
+        this.amiId = amiId;
+    }
     
+    /**
+     * A custom AMI ID to be used to create the instance. The AMI should be
+     * based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
+     * 12.04 LTS. For more information, see <a
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances.html">Instances</a>
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param amiId A custom AMI ID to be used to create the instance. The AMI should be
+     *         based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
+     *         12.04 LTS. For more information, see <a
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances.html">Instances</a>
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Instance withAmiId(String amiId) {
+        this.amiId = amiId;
+        return this;
+    }
+
     /**
      * The instance Availability Zone. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
@@ -701,14 +783,46 @@ public class Instance  implements Serializable  {
      *         and Endpoints</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
+
+    /**
+     * The instance's subnet ID, if the stack is running in a VPC.
+     *
+     * @return The instance's subnet ID, if the stack is running in a VPC.
+     */
+    public String getSubnetId() {
+        return subnetId;
+    }
     
+    /**
+     * The instance's subnet ID, if the stack is running in a VPC.
+     *
+     * @param subnetId The instance's subnet ID, if the stack is running in a VPC.
+     */
+    public void setSubnetId(String subnetId) {
+        this.subnetId = subnetId;
+    }
     
+    /**
+     * The instance's subnet ID, if the stack is running in a VPC.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param subnetId The instance's subnet ID, if the stack is running in a VPC.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Instance withSubnetId(String subnetId) {
+        this.subnetId = subnetId;
+        return this;
+    }
+
     /**
      * The instance public DNS name.
      *
@@ -735,14 +849,13 @@ public class Instance  implements Serializable  {
      * @param publicDns The instance public DNS name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPublicDns(String publicDns) {
         this.publicDns = publicDns;
         return this;
     }
-    
-    
+
     /**
      * The instance private DNS name.
      *
@@ -769,14 +882,13 @@ public class Instance  implements Serializable  {
      * @param privateDns The instance private DNS name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPrivateDns(String privateDns) {
         this.privateDns = privateDns;
         return this;
     }
-    
-    
+
     /**
      * The instance public IP address.
      *
@@ -803,14 +915,13 @@ public class Instance  implements Serializable  {
      * @param publicIp The instance public IP address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPublicIp(String publicIp) {
         this.publicIp = publicIp;
         return this;
     }
-    
-    
+
     /**
      * The instance private IP address.
      *
@@ -837,14 +948,13 @@ public class Instance  implements Serializable  {
      * @param privateIp The instance private IP address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withPrivateIp(String privateIp) {
         this.privateIp = privateIp;
         return this;
     }
-    
-    
+
     /**
      * The instance <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
@@ -883,14 +993,13 @@ public class Instance  implements Serializable  {
      *         IP address </a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withElasticIp(String elasticIp) {
         this.elasticIp = elasticIp;
         return this;
     }
-    
-    
+
     /**
      * The instance's auto scaling type, which has three possible values:
      * <ul> <li><b>AlwaysRunning</b>: A 24/7 instance, which is not affected
@@ -966,7 +1075,7 @@ public class Instance  implements Serializable  {
      *         metrics.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AutoScalingType
      */
@@ -974,8 +1083,7 @@ public class Instance  implements Serializable  {
         this.autoScalingType = autoScalingType;
         return this;
     }
-    
-    
+
     /**
      * The instance's auto scaling type, which has three possible values:
      * <ul> <li><b>AlwaysRunning</b>: A 24/7 instance, which is not affected
@@ -1025,7 +1133,7 @@ public class Instance  implements Serializable  {
      *         metrics.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AutoScalingType
      */
@@ -1033,7 +1141,7 @@ public class Instance  implements Serializable  {
         this.autoScalingType = autoScalingType.toString();
         return this;
     }
-    
+
     /**
      * The instance SSH key name.
      *
@@ -1060,14 +1168,13 @@ public class Instance  implements Serializable  {
      * @param sshKeyName The instance SSH key name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSshKeyName(String sshKeyName) {
         this.sshKeyName = sshKeyName;
         return this;
     }
-    
-    
+
     /**
      * The SSH key's RSA fingerprint.
      *
@@ -1094,14 +1201,13 @@ public class Instance  implements Serializable  {
      * @param sshHostRsaKeyFingerprint The SSH key's RSA fingerprint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSshHostRsaKeyFingerprint(String sshHostRsaKeyFingerprint) {
         this.sshHostRsaKeyFingerprint = sshHostRsaKeyFingerprint;
         return this;
     }
-    
-    
+
     /**
      * The SSH key's DSA fingerprint.
      *
@@ -1128,14 +1234,13 @@ public class Instance  implements Serializable  {
      * @param sshHostDsaKeyFingerprint The SSH key's DSA fingerprint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withSshHostDsaKeyFingerprint(String sshHostDsaKeyFingerprint) {
         this.sshHostDsaKeyFingerprint = sshHostDsaKeyFingerprint;
         return this;
     }
-    
-    
+
     /**
      * The time that the instance was created.
      *
@@ -1162,14 +1267,13 @@ public class Instance  implements Serializable  {
      * @param createdAt The time that the instance was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
     }
-    
-    
+
     /**
      * The ID of the last service error. For more information, call
      * <a>DescribeServiceErrors</a>.
@@ -1202,14 +1306,13 @@ public class Instance  implements Serializable  {
      *         <a>DescribeServiceErrors</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withLastServiceErrorId(String lastServiceErrorId) {
         this.lastServiceErrorId = lastServiceErrorId;
         return this;
     }
-    
-    
+
     /**
      * The instance architecture, "i386" or "x86_64".
      * <p>
@@ -1249,7 +1352,7 @@ public class Instance  implements Serializable  {
      * @param architecture The instance architecture, "i386" or "x86_64".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see Architecture
      */
@@ -1257,8 +1360,7 @@ public class Instance  implements Serializable  {
         this.architecture = architecture;
         return this;
     }
-    
-    
+
     /**
      * The instance architecture, "i386" or "x86_64".
      * <p>
@@ -1284,7 +1386,7 @@ public class Instance  implements Serializable  {
      * @param architecture The instance architecture, "i386" or "x86_64".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see Architecture
      */
@@ -1292,7 +1394,7 @@ public class Instance  implements Serializable  {
         this.architecture = architecture.toString();
         return this;
     }
-    
+
     /**
      * The instance root device type. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
@@ -1344,7 +1446,7 @@ public class Instance  implements Serializable  {
      *         for the Root Device</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RootDeviceType
      */
@@ -1352,8 +1454,7 @@ public class Instance  implements Serializable  {
         this.rootDeviceType = rootDeviceType;
         return this;
     }
-    
-    
+
     /**
      * The instance root device type. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
@@ -1387,7 +1488,7 @@ public class Instance  implements Serializable  {
      *         for the Root Device</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RootDeviceType
      */
@@ -1395,7 +1496,7 @@ public class Instance  implements Serializable  {
         this.rootDeviceType = rootDeviceType.toString();
         return this;
     }
-    
+
     /**
      * The root device volume ID.
      *
@@ -1422,14 +1523,119 @@ public class Instance  implements Serializable  {
      * @param rootDeviceVolumeId The root device volume ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withRootDeviceVolumeId(String rootDeviceVolumeId) {
         this.rootDeviceVolumeId = rootDeviceVolumeId;
         return this;
     }
+
+    /**
+     * Whether to install operating system and package updates when the
+     * instance boots. The default value is <code>true</code>. If this value
+     * is set to <code>false</code>, you must then update your instances
+     * manually by using <a>CreateDeployment</a> to run the
+     * <code>update_dependencies</code> stack command or manually running
+     * <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     * the instances. <note>We strongly recommend using the default value of
+     * <code>true</code>, to ensure that your instances have the latest
+     * security updates.</note>
+     *
+     * @return Whether to install operating system and package updates when the
+     *         instance boots. The default value is <code>true</code>. If this value
+     *         is set to <code>false</code>, you must then update your instances
+     *         manually by using <a>CreateDeployment</a> to run the
+     *         <code>update_dependencies</code> stack command or manually running
+     *         <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     *         the instances. <note>We strongly recommend using the default value of
+     *         <code>true</code>, to ensure that your instances have the latest
+     *         security updates.</note>
+     */
+    public Boolean isInstallUpdatesOnBoot() {
+        return installUpdatesOnBoot;
+    }
     
+    /**
+     * Whether to install operating system and package updates when the
+     * instance boots. The default value is <code>true</code>. If this value
+     * is set to <code>false</code>, you must then update your instances
+     * manually by using <a>CreateDeployment</a> to run the
+     * <code>update_dependencies</code> stack command or manually running
+     * <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     * the instances. <note>We strongly recommend using the default value of
+     * <code>true</code>, to ensure that your instances have the latest
+     * security updates.</note>
+     *
+     * @param installUpdatesOnBoot Whether to install operating system and package updates when the
+     *         instance boots. The default value is <code>true</code>. If this value
+     *         is set to <code>false</code>, you must then update your instances
+     *         manually by using <a>CreateDeployment</a> to run the
+     *         <code>update_dependencies</code> stack command or manually running
+     *         <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     *         the instances. <note>We strongly recommend using the default value of
+     *         <code>true</code>, to ensure that your instances have the latest
+     *         security updates.</note>
+     */
+    public void setInstallUpdatesOnBoot(Boolean installUpdatesOnBoot) {
+        this.installUpdatesOnBoot = installUpdatesOnBoot;
+    }
     
+    /**
+     * Whether to install operating system and package updates when the
+     * instance boots. The default value is <code>true</code>. If this value
+     * is set to <code>false</code>, you must then update your instances
+     * manually by using <a>CreateDeployment</a> to run the
+     * <code>update_dependencies</code> stack command or manually running
+     * <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     * the instances. <note>We strongly recommend using the default value of
+     * <code>true</code>, to ensure that your instances have the latest
+     * security updates.</note>
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param installUpdatesOnBoot Whether to install operating system and package updates when the
+     *         instance boots. The default value is <code>true</code>. If this value
+     *         is set to <code>false</code>, you must then update your instances
+     *         manually by using <a>CreateDeployment</a> to run the
+     *         <code>update_dependencies</code> stack command or manually running
+     *         <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     *         the instances. <note>We strongly recommend using the default value of
+     *         <code>true</code>, to ensure that your instances have the latest
+     *         security updates.</note>
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Instance withInstallUpdatesOnBoot(Boolean installUpdatesOnBoot) {
+        this.installUpdatesOnBoot = installUpdatesOnBoot;
+        return this;
+    }
+
+    /**
+     * Whether to install operating system and package updates when the
+     * instance boots. The default value is <code>true</code>. If this value
+     * is set to <code>false</code>, you must then update your instances
+     * manually by using <a>CreateDeployment</a> to run the
+     * <code>update_dependencies</code> stack command or manually running
+     * <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     * the instances. <note>We strongly recommend using the default value of
+     * <code>true</code>, to ensure that your instances have the latest
+     * security updates.</note>
+     *
+     * @return Whether to install operating system and package updates when the
+     *         instance boots. The default value is <code>true</code>. If this value
+     *         is set to <code>false</code>, you must then update your instances
+     *         manually by using <a>CreateDeployment</a> to run the
+     *         <code>update_dependencies</code> stack command or manually running
+     *         <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on
+     *         the instances. <note>We strongly recommend using the default value of
+     *         <code>true</code>, to ensure that your instances have the latest
+     *         security updates.</note>
+     */
+    public Boolean getInstallUpdatesOnBoot() {
+        return installUpdatesOnBoot;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1441,32 +1647,35 @@ public class Instance  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getEc2InstanceId() != null) sb.append("Ec2InstanceId: " + getEc2InstanceId() + ",");    	
-        if (getHostname() != null) sb.append("Hostname: " + getHostname() + ",");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getLayerIds() != null) sb.append("LayerIds: " + getLayerIds() + ",");    	
-        if (getSecurityGroupIds() != null) sb.append("SecurityGroupIds: " + getSecurityGroupIds() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getInstanceProfileArn() != null) sb.append("InstanceProfileArn: " + getInstanceProfileArn() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getOs() != null) sb.append("Os: " + getOs() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getPublicDns() != null) sb.append("PublicDns: " + getPublicDns() + ",");    	
-        if (getPrivateDns() != null) sb.append("PrivateDns: " + getPrivateDns() + ",");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
-        if (getPrivateIp() != null) sb.append("PrivateIp: " + getPrivateIp() + ",");    	
-        if (getElasticIp() != null) sb.append("ElasticIp: " + getElasticIp() + ",");    	
-        if (getAutoScalingType() != null) sb.append("AutoScalingType: " + getAutoScalingType() + ",");    	
-        if (getSshKeyName() != null) sb.append("SshKeyName: " + getSshKeyName() + ",");    	
-        if (getSshHostRsaKeyFingerprint() != null) sb.append("SshHostRsaKeyFingerprint: " + getSshHostRsaKeyFingerprint() + ",");    	
-        if (getSshHostDsaKeyFingerprint() != null) sb.append("SshHostDsaKeyFingerprint: " + getSshHostDsaKeyFingerprint() + ",");    	
-        if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() + ",");    	
-        if (getLastServiceErrorId() != null) sb.append("LastServiceErrorId: " + getLastServiceErrorId() + ",");    	
-        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");    	
-        if (getRootDeviceType() != null) sb.append("RootDeviceType: " + getRootDeviceType() + ",");    	
-        if (getRootDeviceVolumeId() != null) sb.append("RootDeviceVolumeId: " + getRootDeviceVolumeId() );
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getEc2InstanceId() != null) sb.append("Ec2InstanceId: " + getEc2InstanceId() + ",");
+        if (getHostname() != null) sb.append("Hostname: " + getHostname() + ",");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getLayerIds() != null) sb.append("LayerIds: " + getLayerIds() + ",");
+        if (getSecurityGroupIds() != null) sb.append("SecurityGroupIds: " + getSecurityGroupIds() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getInstanceProfileArn() != null) sb.append("InstanceProfileArn: " + getInstanceProfileArn() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getOs() != null) sb.append("Os: " + getOs() + ",");
+        if (getAmiId() != null) sb.append("AmiId: " + getAmiId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");
+        if (getPublicDns() != null) sb.append("PublicDns: " + getPublicDns() + ",");
+        if (getPrivateDns() != null) sb.append("PrivateDns: " + getPrivateDns() + ",");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
+        if (getPrivateIp() != null) sb.append("PrivateIp: " + getPrivateIp() + ",");
+        if (getElasticIp() != null) sb.append("ElasticIp: " + getElasticIp() + ",");
+        if (getAutoScalingType() != null) sb.append("AutoScalingType: " + getAutoScalingType() + ",");
+        if (getSshKeyName() != null) sb.append("SshKeyName: " + getSshKeyName() + ",");
+        if (getSshHostRsaKeyFingerprint() != null) sb.append("SshHostRsaKeyFingerprint: " + getSshHostRsaKeyFingerprint() + ",");
+        if (getSshHostDsaKeyFingerprint() != null) sb.append("SshHostDsaKeyFingerprint: " + getSshHostDsaKeyFingerprint() + ",");
+        if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() + ",");
+        if (getLastServiceErrorId() != null) sb.append("LastServiceErrorId: " + getLastServiceErrorId() + ",");
+        if (getArchitecture() != null) sb.append("Architecture: " + getArchitecture() + ",");
+        if (getRootDeviceType() != null) sb.append("RootDeviceType: " + getRootDeviceType() + ",");
+        if (getRootDeviceVolumeId() != null) sb.append("RootDeviceVolumeId: " + getRootDeviceVolumeId() + ",");
+        if (isInstallUpdatesOnBoot() != null) sb.append("InstallUpdatesOnBoot: " + isInstallUpdatesOnBoot() );
         sb.append("}");
         return sb.toString();
     }
@@ -1486,7 +1695,9 @@ public class Instance  implements Serializable  {
         hashCode = prime * hashCode + ((getInstanceProfileArn() == null) ? 0 : getInstanceProfileArn().hashCode()); 
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode()); 
         hashCode = prime * hashCode + ((getOs() == null) ? 0 : getOs().hashCode()); 
+        hashCode = prime * hashCode + ((getAmiId() == null) ? 0 : getAmiId().hashCode()); 
         hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode()); 
+        hashCode = prime * hashCode + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode()); 
         hashCode = prime * hashCode + ((getPublicDns() == null) ? 0 : getPublicDns().hashCode()); 
         hashCode = prime * hashCode + ((getPrivateDns() == null) ? 0 : getPrivateDns().hashCode()); 
         hashCode = prime * hashCode + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode()); 
@@ -1501,6 +1712,7 @@ public class Instance  implements Serializable  {
         hashCode = prime * hashCode + ((getArchitecture() == null) ? 0 : getArchitecture().hashCode()); 
         hashCode = prime * hashCode + ((getRootDeviceType() == null) ? 0 : getRootDeviceType().hashCode()); 
         hashCode = prime * hashCode + ((getRootDeviceVolumeId() == null) ? 0 : getRootDeviceVolumeId().hashCode()); 
+        hashCode = prime * hashCode + ((isInstallUpdatesOnBoot() == null) ? 0 : isInstallUpdatesOnBoot().hashCode()); 
         return hashCode;
     }
     
@@ -1532,8 +1744,12 @@ public class Instance  implements Serializable  {
         if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false) return false; 
         if (other.getOs() == null ^ this.getOs() == null) return false;
         if (other.getOs() != null && other.getOs().equals(this.getOs()) == false) return false; 
+        if (other.getAmiId() == null ^ this.getAmiId() == null) return false;
+        if (other.getAmiId() != null && other.getAmiId().equals(this.getAmiId()) == false) return false; 
         if (other.getAvailabilityZone() == null ^ this.getAvailabilityZone() == null) return false;
         if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false) return false; 
+        if (other.getSubnetId() == null ^ this.getSubnetId() == null) return false;
+        if (other.getSubnetId() != null && other.getSubnetId().equals(this.getSubnetId()) == false) return false; 
         if (other.getPublicDns() == null ^ this.getPublicDns() == null) return false;
         if (other.getPublicDns() != null && other.getPublicDns().equals(this.getPublicDns()) == false) return false; 
         if (other.getPrivateDns() == null ^ this.getPrivateDns() == null) return false;
@@ -1562,6 +1778,8 @@ public class Instance  implements Serializable  {
         if (other.getRootDeviceType() != null && other.getRootDeviceType().equals(this.getRootDeviceType()) == false) return false; 
         if (other.getRootDeviceVolumeId() == null ^ this.getRootDeviceVolumeId() == null) return false;
         if (other.getRootDeviceVolumeId() != null && other.getRootDeviceVolumeId().equals(this.getRootDeviceVolumeId()) == false) return false; 
+        if (other.isInstallUpdatesOnBoot() == null ^ this.isInstallUpdatesOnBoot() == null) return false;
+        if (other.isInstallUpdatesOnBoot() != null && other.isInstallUpdatesOnBoot().equals(this.isInstallUpdatesOnBoot()) == false) return false; 
         return true;
     }
     

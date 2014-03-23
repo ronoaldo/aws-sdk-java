@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A specification of a location in Amazon S3.
  * </p>
  */
-public class S3Location  implements Serializable  {
+public class S3Location implements Serializable {
 
     /**
      * The Amazon S3 bucket where the data is located.
@@ -53,12 +54,10 @@ public class S3Location  implements Serializable  {
      * @param s3Key The Amazon S3 key where the data is located.
      */
     public S3Location(String s3Bucket, String s3Key) {
-        this.s3Bucket = s3Bucket;
-        this.s3Key = s3Key;
+        setS3Bucket(s3Bucket);
+        setS3Key(s3Key);
     }
 
-    
-    
     /**
      * The Amazon S3 bucket where the data is located.
      * <p>
@@ -94,14 +93,13 @@ public class S3Location  implements Serializable  {
      * @param s3Bucket The Amazon S3 bucket where the data is located.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Location withS3Bucket(String s3Bucket) {
         this.s3Bucket = s3Bucket;
         return this;
     }
-    
-    
+
     /**
      * The Amazon S3 key where the data is located.
      * <p>
@@ -137,14 +135,13 @@ public class S3Location  implements Serializable  {
      * @param s3Key The Amazon S3 key where the data is located.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public S3Location withS3Key(String s3Key) {
         this.s3Key = s3Key;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -156,8 +153,8 @@ public class S3Location  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getS3Bucket() != null) sb.append("S3Bucket: " + getS3Bucket() + ",");    	
+        sb.append("{");
+        if (getS3Bucket() != null) sb.append("S3Bucket: " + getS3Bucket() + ",");
         if (getS3Key() != null) sb.append("S3Key: " + getS3Key() );
         sb.append("}");
         return sb.toString();

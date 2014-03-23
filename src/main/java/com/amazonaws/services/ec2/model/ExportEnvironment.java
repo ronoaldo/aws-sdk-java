@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ package com.amazonaws.services.ec2.model;
 public enum ExportEnvironment {
     
     Citrix("citrix"),
-    Vmware("vmware");
+    Vmware("vmware"),
+    Microsoft("microsoft");
 
     private String value;
 
@@ -48,6 +49,8 @@ public enum ExportEnvironment {
             return ExportEnvironment.Citrix;
         } else if ("vmware".equals(value)) {
             return ExportEnvironment.Vmware;
+        } else if ("microsoft".equals(value)) {
+            return ExportEnvironment.Microsoft;
         } else {
             throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
         }

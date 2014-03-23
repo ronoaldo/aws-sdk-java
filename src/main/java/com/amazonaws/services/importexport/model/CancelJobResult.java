@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Output structure for the CancelJob operation.
  * </p>
  */
-public class CancelJobResult  implements Serializable  {
+public class CancelJobResult implements Serializable {
 
     /**
      * Specifies whether (true) or not (false) AWS Import/Export updated your
@@ -60,14 +61,13 @@ public class CancelJobResult  implements Serializable  {
      *         job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelJobResult withSuccess(Boolean success) {
         this.success = success;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether (true) or not (false) AWS Import/Export updated your
      * job.
@@ -78,7 +78,7 @@ public class CancelJobResult  implements Serializable  {
     public Boolean getSuccess() {
         return success;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -90,7 +90,7 @@ public class CancelJobResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (isSuccess() != null) sb.append("Success: " + isSuccess() );
         sb.append("}");
         return sb.toString();

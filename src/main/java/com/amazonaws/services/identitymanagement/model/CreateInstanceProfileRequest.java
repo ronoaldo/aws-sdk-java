@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#createInstanceProfile(CreateInstanceProfileRequest) CreateInstanceProfile operation}.
  * <p>
- * Creates a new instance profile. For information about instance profiles, go to <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/AboutInstanceProfiles.html"> About Instance Profiles </a> .
+ * Creates a new instance profile. For information about instance
+ * profiles, go to
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html"> About Instance Profiles </a>
+ * .
  * </p>
  * <p>
- * For information about the number of instance profiles you can create, see <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a> in <i>Using AWS
- * Identity and Access Management</i> .
+ * For information about the number of instance profiles you can create,
+ * see
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?LimitationsOnEntities.html"> Limitations on IAM Entities </a>
+ * in <i>Using AWS Identity and Access Management</i> .
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#createInstanceProfile(CreateInstanceProfileRequest)
  */
-public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateInstanceProfileRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the instance profile to create.
@@ -44,7 +49,7 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
     /**
      * The path to the instance profile. For more information about paths,
      * see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -93,18 +98,17 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
      * @param instanceProfileName Name of the instance profile to create.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInstanceProfileRequest withInstanceProfileName(String instanceProfileName) {
         this.instanceProfileName = instanceProfileName;
         return this;
     }
-    
-    
+
     /**
      * The path to the instance profile. For more information about paths,
      * see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -115,7 +119,7 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
      *
      * @return The path to the instance profile. For more information about paths,
      *         see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>. <p>This parameter is optional. If
      *         it is not included, it defaults to a slash (/).
@@ -127,7 +131,7 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
     /**
      * The path to the instance profile. For more information about paths,
      * see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -138,7 +142,7 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
      *
      * @param path The path to the instance profile. For more information about paths,
      *         see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>. <p>This parameter is optional. If
      *         it is not included, it defaults to a slash (/).
@@ -150,7 +154,7 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
     /**
      * The path to the instance profile. For more information about paths,
      * see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>. <p>This parameter is optional. If
      * it is not included, it defaults to a slash (/).
@@ -163,20 +167,19 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
      *
      * @param path The path to the instance profile. For more information about paths,
      *         see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>. <p>This parameter is optional. If
      *         it is not included, it defaults to a slash (/).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInstanceProfileRequest withPath(String path) {
         this.path = path;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -188,8 +191,8 @@ public class CreateInstanceProfileRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceProfileName() != null) sb.append("InstanceProfileName: " + getInstanceProfileName() + ",");    	
+        sb.append("{");
+        if (getInstanceProfileName() != null) sb.append("InstanceProfileName: " + getInstanceProfileName() + ",");
         if (getPath() != null) sb.append("Path: " + getPath() );
         sb.append("}");
         return sb.toString();

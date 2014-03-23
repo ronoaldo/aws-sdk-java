@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeEvents(DescribeEventsRequest) DescribeEvents operation}.
  * <p>
- * Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days. Events specific to a particular cluster,
- * security group, snapshot or parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
+ * Returns events related to clusters, security groups, snapshots, and
+ * parameter groups for the past 14 days. Events specific to a particular
+ * cluster, security group, snapshot or parameter group can be obtained
+ * by providing the name as a parameter. By default, the past hour of
+ * events are returned.
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeEvents(DescribeEventsRequest)
  */
-public class DescribeEventsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeEventsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the event source for which events will be returned.
@@ -187,14 +192,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         <code>cluster-snapshot</code>.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withSourceIdentifier(String sourceIdentifier) {
         this.sourceIdentifier = sourceIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The event source to retrieve events for. If no value is specified, all
      * events are returned. <p>Constraints: <p>If <i>SourceType</i> is
@@ -294,7 +298,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         cluster snapshot identifier.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -302,8 +306,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
         this.sourceType = sourceType;
         return this;
     }
-    
-    
+
     /**
      * The event source to retrieve events for. If no value is specified, all
      * events are returned. <p>Constraints: <p>If <i>SourceType</i> is
@@ -369,7 +372,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         cluster snapshot identifier.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -377,7 +380,7 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
         this.sourceType = sourceType.toString();
         return this;
     }
-    
+
     /**
      * The beginning of the time interval to retrieve events for, specified
      * in ISO 8601 format. For more information about ISO 8601, go to the <a
@@ -422,14 +425,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         page.</a> <p>Example: <code>2009-07-08T18:00Z</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The end of the time interval for which to retrieve events, specified
      * in ISO 8601 format. For more information about ISO 8601, go to the <a
@@ -474,14 +476,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         page.</a> <p>Example: <code>2009-07-08T18:00Z</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * The number of minutes prior to the time of the request for which to
      * retrieve events. For example, if the request is sent at 18:00 and you
@@ -526,14 +527,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         17:00 will be returned. <p>Default: <code>60</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withDuration(Integer duration) {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -584,14 +584,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         be at least 20 and no more than 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional marker returned from a previous <b>DescribeEvents</b>
      * request. If this parameter is specified, the response includes only
@@ -636,14 +635,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
      *         <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -655,13 +653,13 @@ public class DescribeEventsRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() + ",");    	
-        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() + ",");
+        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

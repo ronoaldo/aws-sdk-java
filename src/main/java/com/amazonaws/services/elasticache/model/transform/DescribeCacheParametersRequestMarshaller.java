@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeCacheParametersRequestMarshaller implements Marshaller<Requ
     public Request<DescribeCacheParametersRequest> marshall(DescribeCacheParametersRequest describeCacheParametersRequest) {
 
         if (describeCacheParametersRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeCacheParametersRequest> request = new DefaultRequest<DescribeCacheParametersRequest>(describeCacheParametersRequest, "AmazonElastiCache");
         request.addParameter("Action", "DescribeCacheParameters");
-        request.addParameter("Version", "2012-11-15");
+        request.addParameter("Version", "2013-06-15");
 
         if (describeCacheParametersRequest.getCacheParameterGroupName() != null) {
             request.addParameter("CacheParameterGroupName", StringUtils.fromString(describeCacheParametersRequest.getCacheParameterGroupName()));
@@ -52,7 +52,6 @@ public class DescribeCacheParametersRequestMarshaller implements Marshaller<Requ
         if (describeCacheParametersRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeCacheParametersRequest.getMarker()));
         }
-
 
         return request;
     }

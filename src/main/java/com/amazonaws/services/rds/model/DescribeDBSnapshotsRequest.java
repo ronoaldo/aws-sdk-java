@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,45 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeDBSnapshots(DescribeDBSnapshotsRequest) DescribeDBSnapshots operation}.
  * <p>
- * Returns information about DBSnapshots. This API supports pagination.
+ * Returns information about DB snapshots. This API supports pagination.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeDBSnapshots(DescribeDBSnapshotsRequest)
  */
-public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * A DB Instance Identifier to retrieve the list of DB Snapshots for.
-     * Cannot be used in conjunction with DBSnapshotIdentifier. This
-     * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
-     * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
+     * A DB instance identifier to retrieve the list of DB snapshots for.
+     * Cannot be used in conjunction with <code>DBSnapshotIdentifier</code>.
+     * This parameter is not case sensitive. <p>Constraints: <ul> <li>Must
+     * contain from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
      * contain two consecutive hyphens</li> </ul>
      */
     private String dBInstanceIdentifier;
 
     /**
-     * A specific DB Snapshot Identifier to describe. Cannot be used in
-     * conjunction with DBInstanceIdentifier. This value is stored as a
-     * lowercase string. <p>Constraints: <ul> <li>Must be 1 to 255
-     * alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
-     * <li>If this is the identifier of an automated snapshot, the
-     * <code>SnapshotType</code> parameter must also be specified.</li> </ul>
+     * A specific DB snapshot identifier to describe. Cannot be used in
+     * conjunction with <code>DBInstanceIdentifier</code>. This value is
+     * stored as a lowercase string. <p>Constraints: <ul> <li>Must be 1 to
+     * 255 alphanumeric characters</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens</li> <li>If this is the identifier of an automated snapshot,
+     * the <code>SnapshotType</code> parameter must also be specified.</li>
+     * </ul>
      */
     private String dBSnapshotIdentifier;
 
     /**
-     * An optional snapshot type for which snapshots will be returned. If not
-     * specified, the returned results will include snapshots of all types.
+     * The type of snapshots that will be returned. Values can be "automated"
+     * or "manual." If not specified, the returned results will include all
+     * snapshots types.
      */
     private String snapshotType;
+
+    /**
+     * This parameter is not currently supported.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The maximum number of records to include in the response. If more
@@ -64,9 +73,9 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
 
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBSnapshots request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBSnapshots</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      */
     private String marker;
 
@@ -77,17 +86,17 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
     public DescribeDBSnapshotsRequest() {}
     
     /**
-     * A DB Instance Identifier to retrieve the list of DB Snapshots for.
-     * Cannot be used in conjunction with DBSnapshotIdentifier. This
-     * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
-     * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
+     * A DB instance identifier to retrieve the list of DB snapshots for.
+     * Cannot be used in conjunction with <code>DBSnapshotIdentifier</code>.
+     * This parameter is not case sensitive. <p>Constraints: <ul> <li>Must
+     * contain from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
      * contain two consecutive hyphens</li> </ul>
      *
-     * @return A DB Instance Identifier to retrieve the list of DB Snapshots for.
-     *         Cannot be used in conjunction with DBSnapshotIdentifier. This
-     *         parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
-     *         from 1 to 63 alphanumeric characters or hyphens</li> <li>First
+     * @return A DB instance identifier to retrieve the list of DB snapshots for.
+     *         Cannot be used in conjunction with <code>DBSnapshotIdentifier</code>.
+     *         This parameter is not case sensitive. <p>Constraints: <ul> <li>Must
+     *         contain from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      *         character must be a letter</li> <li>Cannot end with a hyphen or
      *         contain two consecutive hyphens</li> </ul>
      */
@@ -96,17 +105,17 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * A DB Instance Identifier to retrieve the list of DB Snapshots for.
-     * Cannot be used in conjunction with DBSnapshotIdentifier. This
-     * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
-     * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
+     * A DB instance identifier to retrieve the list of DB snapshots for.
+     * Cannot be used in conjunction with <code>DBSnapshotIdentifier</code>.
+     * This parameter is not case sensitive. <p>Constraints: <ul> <li>Must
+     * contain from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
      * contain two consecutive hyphens</li> </ul>
      *
-     * @param dBInstanceIdentifier A DB Instance Identifier to retrieve the list of DB Snapshots for.
-     *         Cannot be used in conjunction with DBSnapshotIdentifier. This
-     *         parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
-     *         from 1 to 63 alphanumeric characters or hyphens</li> <li>First
+     * @param dBInstanceIdentifier A DB instance identifier to retrieve the list of DB snapshots for.
+     *         Cannot be used in conjunction with <code>DBSnapshotIdentifier</code>.
+     *         This parameter is not case sensitive. <p>Constraints: <ul> <li>Must
+     *         contain from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      *         character must be a letter</li> <li>Cannot end with a hyphen or
      *         contain two consecutive hyphens</li> </ul>
      */
@@ -115,141 +124,218 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * A DB Instance Identifier to retrieve the list of DB Snapshots for.
-     * Cannot be used in conjunction with DBSnapshotIdentifier. This
-     * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
-     * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
+     * A DB instance identifier to retrieve the list of DB snapshots for.
+     * Cannot be used in conjunction with <code>DBSnapshotIdentifier</code>.
+     * This parameter is not case sensitive. <p>Constraints: <ul> <li>Must
+     * contain from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
      * contain two consecutive hyphens</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBInstanceIdentifier A DB Instance Identifier to retrieve the list of DB Snapshots for.
-     *         Cannot be used in conjunction with DBSnapshotIdentifier. This
-     *         parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
-     *         from 1 to 63 alphanumeric characters or hyphens</li> <li>First
+     * @param dBInstanceIdentifier A DB instance identifier to retrieve the list of DB snapshots for.
+     *         Cannot be used in conjunction with <code>DBSnapshotIdentifier</code>.
+     *         This parameter is not case sensitive. <p>Constraints: <ul> <li>Must
+     *         contain from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      *         character must be a letter</li> <li>Cannot end with a hyphen or
      *         contain two consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsRequest withDBInstanceIdentifier(String dBInstanceIdentifier) {
         this.dBInstanceIdentifier = dBInstanceIdentifier;
         return this;
     }
-    
-    
+
     /**
-     * A specific DB Snapshot Identifier to describe. Cannot be used in
-     * conjunction with DBInstanceIdentifier. This value is stored as a
-     * lowercase string. <p>Constraints: <ul> <li>Must be 1 to 255
-     * alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
-     * <li>If this is the identifier of an automated snapshot, the
-     * <code>SnapshotType</code> parameter must also be specified.</li> </ul>
+     * A specific DB snapshot identifier to describe. Cannot be used in
+     * conjunction with <code>DBInstanceIdentifier</code>. This value is
+     * stored as a lowercase string. <p>Constraints: <ul> <li>Must be 1 to
+     * 255 alphanumeric characters</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens</li> <li>If this is the identifier of an automated snapshot,
+     * the <code>SnapshotType</code> parameter must also be specified.</li>
+     * </ul>
      *
-     * @return A specific DB Snapshot Identifier to describe. Cannot be used in
-     *         conjunction with DBInstanceIdentifier. This value is stored as a
-     *         lowercase string. <p>Constraints: <ul> <li>Must be 1 to 255
-     *         alphanumeric characters</li> <li>First character must be a letter</li>
-     *         <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
-     *         <li>If this is the identifier of an automated snapshot, the
-     *         <code>SnapshotType</code> parameter must also be specified.</li> </ul>
+     * @return A specific DB snapshot identifier to describe. Cannot be used in
+     *         conjunction with <code>DBInstanceIdentifier</code>. This value is
+     *         stored as a lowercase string. <p>Constraints: <ul> <li>Must be 1 to
+     *         255 alphanumeric characters</li> <li>First character must be a
+     *         letter</li> <li>Cannot end with a hyphen or contain two consecutive
+     *         hyphens</li> <li>If this is the identifier of an automated snapshot,
+     *         the <code>SnapshotType</code> parameter must also be specified.</li>
+     *         </ul>
      */
     public String getDBSnapshotIdentifier() {
         return dBSnapshotIdentifier;
     }
     
     /**
-     * A specific DB Snapshot Identifier to describe. Cannot be used in
-     * conjunction with DBInstanceIdentifier. This value is stored as a
-     * lowercase string. <p>Constraints: <ul> <li>Must be 1 to 255
-     * alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
-     * <li>If this is the identifier of an automated snapshot, the
-     * <code>SnapshotType</code> parameter must also be specified.</li> </ul>
+     * A specific DB snapshot identifier to describe. Cannot be used in
+     * conjunction with <code>DBInstanceIdentifier</code>. This value is
+     * stored as a lowercase string. <p>Constraints: <ul> <li>Must be 1 to
+     * 255 alphanumeric characters</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens</li> <li>If this is the identifier of an automated snapshot,
+     * the <code>SnapshotType</code> parameter must also be specified.</li>
+     * </ul>
      *
-     * @param dBSnapshotIdentifier A specific DB Snapshot Identifier to describe. Cannot be used in
-     *         conjunction with DBInstanceIdentifier. This value is stored as a
-     *         lowercase string. <p>Constraints: <ul> <li>Must be 1 to 255
-     *         alphanumeric characters</li> <li>First character must be a letter</li>
-     *         <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
-     *         <li>If this is the identifier of an automated snapshot, the
-     *         <code>SnapshotType</code> parameter must also be specified.</li> </ul>
+     * @param dBSnapshotIdentifier A specific DB snapshot identifier to describe. Cannot be used in
+     *         conjunction with <code>DBInstanceIdentifier</code>. This value is
+     *         stored as a lowercase string. <p>Constraints: <ul> <li>Must be 1 to
+     *         255 alphanumeric characters</li> <li>First character must be a
+     *         letter</li> <li>Cannot end with a hyphen or contain two consecutive
+     *         hyphens</li> <li>If this is the identifier of an automated snapshot,
+     *         the <code>SnapshotType</code> parameter must also be specified.</li>
+     *         </ul>
      */
     public void setDBSnapshotIdentifier(String dBSnapshotIdentifier) {
         this.dBSnapshotIdentifier = dBSnapshotIdentifier;
     }
     
     /**
-     * A specific DB Snapshot Identifier to describe. Cannot be used in
-     * conjunction with DBInstanceIdentifier. This value is stored as a
-     * lowercase string. <p>Constraints: <ul> <li>Must be 1 to 255
-     * alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
-     * <li>If this is the identifier of an automated snapshot, the
-     * <code>SnapshotType</code> parameter must also be specified.</li> </ul>
+     * A specific DB snapshot identifier to describe. Cannot be used in
+     * conjunction with <code>DBInstanceIdentifier</code>. This value is
+     * stored as a lowercase string. <p>Constraints: <ul> <li>Must be 1 to
+     * 255 alphanumeric characters</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens</li> <li>If this is the identifier of an automated snapshot,
+     * the <code>SnapshotType</code> parameter must also be specified.</li>
+     * </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSnapshotIdentifier A specific DB Snapshot Identifier to describe. Cannot be used in
-     *         conjunction with DBInstanceIdentifier. This value is stored as a
-     *         lowercase string. <p>Constraints: <ul> <li>Must be 1 to 255
-     *         alphanumeric characters</li> <li>First character must be a letter</li>
-     *         <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
-     *         <li>If this is the identifier of an automated snapshot, the
-     *         <code>SnapshotType</code> parameter must also be specified.</li> </ul>
+     * @param dBSnapshotIdentifier A specific DB snapshot identifier to describe. Cannot be used in
+     *         conjunction with <code>DBInstanceIdentifier</code>. This value is
+     *         stored as a lowercase string. <p>Constraints: <ul> <li>Must be 1 to
+     *         255 alphanumeric characters</li> <li>First character must be a
+     *         letter</li> <li>Cannot end with a hyphen or contain two consecutive
+     *         hyphens</li> <li>If this is the identifier of an automated snapshot,
+     *         the <code>SnapshotType</code> parameter must also be specified.</li>
+     *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsRequest withDBSnapshotIdentifier(String dBSnapshotIdentifier) {
         this.dBSnapshotIdentifier = dBSnapshotIdentifier;
         return this;
     }
-    
-    
+
     /**
-     * An optional snapshot type for which snapshots will be returned. If not
-     * specified, the returned results will include snapshots of all types.
+     * The type of snapshots that will be returned. Values can be "automated"
+     * or "manual." If not specified, the returned results will include all
+     * snapshots types.
      *
-     * @return An optional snapshot type for which snapshots will be returned. If not
-     *         specified, the returned results will include snapshots of all types.
+     * @return The type of snapshots that will be returned. Values can be "automated"
+     *         or "manual." If not specified, the returned results will include all
+     *         snapshots types.
      */
     public String getSnapshotType() {
         return snapshotType;
     }
     
     /**
-     * An optional snapshot type for which snapshots will be returned. If not
-     * specified, the returned results will include snapshots of all types.
+     * The type of snapshots that will be returned. Values can be "automated"
+     * or "manual." If not specified, the returned results will include all
+     * snapshots types.
      *
-     * @param snapshotType An optional snapshot type for which snapshots will be returned. If not
-     *         specified, the returned results will include snapshots of all types.
+     * @param snapshotType The type of snapshots that will be returned. Values can be "automated"
+     *         or "manual." If not specified, the returned results will include all
+     *         snapshots types.
      */
     public void setSnapshotType(String snapshotType) {
         this.snapshotType = snapshotType;
     }
     
     /**
-     * An optional snapshot type for which snapshots will be returned. If not
-     * specified, the returned results will include snapshots of all types.
+     * The type of snapshots that will be returned. Values can be "automated"
+     * or "manual." If not specified, the returned results will include all
+     * snapshots types.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param snapshotType An optional snapshot type for which snapshots will be returned. If not
-     *         specified, the returned results will include snapshots of all types.
+     * @param snapshotType The type of snapshots that will be returned. Values can be "automated"
+     *         or "manual." If not specified, the returned results will include all
+     *         snapshots types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsRequest withSnapshotType(String snapshotType) {
         this.snapshotType = snapshotType;
         return this;
     }
+
+    /**
+     * This parameter is not currently supported.
+     *
+     * @return This parameter is not currently supported.
+     */
+    public java.util.List<Filter> getFilters() {
+        if (filters == null) {
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
+        }
+        return filters;
+    }
     
+    /**
+     * This parameter is not currently supported.
+     *
+     * @param filters This parameter is not currently supported.
+     */
+    public void setFilters(java.util.Collection<Filter> filters) {
+        if (filters == null) {
+            this.filters = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
+        filtersCopy.addAll(filters);
+        this.filters = filtersCopy;
+    }
     
+    /**
+     * This parameter is not currently supported.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param filters This parameter is not currently supported.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeDBSnapshotsRequest withFilters(Filter... filters) {
+        if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
+        for (Filter value : filters) {
+            getFilters().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * This parameter is not currently supported.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param filters This parameter is not currently supported.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeDBSnapshotsRequest withFilters(java.util.Collection<Filter> filters) {
+        if (filters == null) {
+            this.filters = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
+            filtersCopy.addAll(filters);
+            this.filters = filtersCopy;
+        }
+
+        return this;
+    }
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -300,24 +386,23 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
      *         <p>Constraints: minimum 20, maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBSnapshots request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBSnapshots</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      *
      * @return An optional pagination token provided by a previous
-     *         DescribeDBSnapshots request. If this parameter is specified, the
-     *         response includes only records beyond the marker, up to the value
-     *         specified by <code>MaxRecords</code>.
+     *         <code>DescribeDBSnapshots</code> request. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <code>MaxRecords</code>.
      */
     public String getMarker() {
         return marker;
@@ -325,14 +410,14 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
     
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBSnapshots request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBSnapshots</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      *
      * @param marker An optional pagination token provided by a previous
-     *         DescribeDBSnapshots request. If this parameter is specified, the
-     *         response includes only records beyond the marker, up to the value
-     *         specified by <code>MaxRecords</code>.
+     *         <code>DescribeDBSnapshots</code> request. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <code>MaxRecords</code>.
      */
     public void setMarker(String marker) {
         this.marker = marker;
@@ -340,26 +425,25 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
     
     /**
      * An optional pagination token provided by a previous
-     * DescribeDBSnapshots request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value
-     * specified by <code>MaxRecords</code>.
+     * <code>DescribeDBSnapshots</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to
+     * the value specified by <code>MaxRecords</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param marker An optional pagination token provided by a previous
-     *         DescribeDBSnapshots request. If this parameter is specified, the
-     *         response includes only records beyond the marker, up to the value
-     *         specified by <code>MaxRecords</code>.
+     *         <code>DescribeDBSnapshots</code> request. If this parameter is
+     *         specified, the response includes only records beyond the marker, up to
+     *         the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSnapshotsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -371,11 +455,12 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");    	
-        if (getDBSnapshotIdentifier() != null) sb.append("DBSnapshotIdentifier: " + getDBSnapshotIdentifier() + ",");    	
-        if (getSnapshotType() != null) sb.append("SnapshotType: " + getSnapshotType() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+        if (getDBSnapshotIdentifier() != null) sb.append("DBSnapshotIdentifier: " + getDBSnapshotIdentifier() + ",");
+        if (getSnapshotType() != null) sb.append("SnapshotType: " + getSnapshotType() + ",");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();
@@ -389,6 +474,7 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
         hashCode = prime * hashCode + ((getDBInstanceIdentifier() == null) ? 0 : getDBInstanceIdentifier().hashCode()); 
         hashCode = prime * hashCode + ((getDBSnapshotIdentifier() == null) ? 0 : getDBSnapshotIdentifier().hashCode()); 
         hashCode = prime * hashCode + ((getSnapshotType() == null) ? 0 : getSnapshotType().hashCode()); 
+        hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode()); 
         hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode()); 
         hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode()); 
         return hashCode;
@@ -408,6 +494,8 @@ public class DescribeDBSnapshotsRequest extends AmazonWebServiceRequest  impleme
         if (other.getDBSnapshotIdentifier() != null && other.getDBSnapshotIdentifier().equals(this.getDBSnapshotIdentifier()) == false) return false; 
         if (other.getSnapshotType() == null ^ this.getSnapshotType() == null) return false;
         if (other.getSnapshotType() != null && other.getSnapshotType().equals(this.getSnapshotType()) == false) return false; 
+        if (other.getFilters() == null ^ this.getFilters() == null) return false;
+        if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false) return false; 
         if (other.getMaxRecords() == null ^ this.getMaxRecords() == null) return false;
         if (other.getMaxRecords() != null && other.getMaxRecords().equals(this.getMaxRecords()) == false) return false; 
         if (other.getMarker() == null ^ this.getMarker() == null) return false;

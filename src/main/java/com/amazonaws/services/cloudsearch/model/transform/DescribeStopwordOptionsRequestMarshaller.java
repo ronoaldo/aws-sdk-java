@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeStopwordOptionsRequestMarshaller implements Marshaller<Requ
     public Request<DescribeStopwordOptionsRequest> marshall(DescribeStopwordOptionsRequest describeStopwordOptionsRequest) {
 
         if (describeStopwordOptionsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeStopwordOptionsRequest> request = new DefaultRequest<DescribeStopwordOptionsRequest>(describeStopwordOptionsRequest, "AmazonCloudSearch");
         request.addParameter("Action", "DescribeStopwordOptions");
@@ -43,7 +43,6 @@ public class DescribeStopwordOptionsRequestMarshaller implements Marshaller<Requ
         if (describeStopwordOptionsRequest.getDomainName() != null) {
             request.addParameter("DomainName", StringUtils.fromString(describeStopwordOptionsRequest.getDomainName()));
         }
-
 
         return request;
     }

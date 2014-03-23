@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#validateConfigurationSettings(ValidateConfigurationSettingsRequest) ValidateConfigurationSettings operation}.
  * <p>
- * Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid.
+ * Takes a set of configuration settings and either a configuration
+ * template or environment, and determines whether those values are
+ * valid.
  * </p>
  * <p>
- * This action returns a list of messages indicating any errors or warnings associated with the selection of option values.
+ * This action returns a list of messages indicating any errors or
+ * warnings associated with the selection of option values.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#validateConfigurationSettings(ValidateConfigurationSettingsRequest)
  */
-public class ValidateConfigurationSettingsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ValidateConfigurationSettingsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application that the configuration template or
@@ -61,7 +66,7 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
     /**
      * A list of the options and desired values to evaluate.
      */
-    private java.util.List<ConfigurationOptionSetting> optionSettings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettings;
 
     /**
      * Default constructor for a new ValidateConfigurationSettingsRequest object.  Callers should use the
@@ -80,12 +85,10 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
      * evaluate.
      */
     public ValidateConfigurationSettingsRequest(String applicationName, java.util.List<ConfigurationOptionSetting> optionSettings) {
-        this.applicationName = applicationName;
-        this.optionSettings = optionSettings;
+        setApplicationName(applicationName);
+        setOptionSettings(optionSettings);
     }
 
-    
-    
     /**
      * The name of the application that the configuration template or
      * environment belongs to.
@@ -127,14 +130,13 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
      *         environment belongs to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateConfigurationSettingsRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration template to validate the settings
      * against. <p> Condition: You cannot specify both this and an
@@ -182,14 +184,13 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
      *         environment name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateConfigurationSettingsRequest withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment to validate the settings against. <p>
      * Condition: You cannot specify both this and a configuration template
@@ -237,23 +238,22 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
      *         name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateConfigurationSettingsRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * A list of the options and desired values to evaluate.
      *
      * @return A list of the options and desired values to evaluate.
      */
     public java.util.List<ConfigurationOptionSetting> getOptionSettings() {
-        
         if (optionSettings == null) {
-            optionSettings = new java.util.ArrayList<ConfigurationOptionSetting>();
+              optionSettings = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>();
+              optionSettings.setAutoConstruct(true);
         }
         return optionSettings;
     }
@@ -268,8 +268,7 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
             this.optionSettings = null;
             return;
         }
-
-        java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
         optionSettingsCopy.addAll(optionSettings);
         this.optionSettings = optionSettingsCopy;
     }
@@ -282,7 +281,7 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
      * @param optionSettings A list of the options and desired values to evaluate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateConfigurationSettingsRequest withOptionSettings(ConfigurationOptionSetting... optionSettings) {
         if (getOptionSettings() == null) setOptionSettings(new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.length));
@@ -300,20 +299,20 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
      * @param optionSettings A list of the options and desired values to evaluate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateConfigurationSettingsRequest withOptionSettings(java.util.Collection<ConfigurationOptionSetting> optionSettings) {
         if (optionSettings == null) {
             this.optionSettings = null;
         } else {
-            java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
             optionSettingsCopy.addAll(optionSettings);
             this.optionSettings = optionSettingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -325,10 +324,10 @@ public class ValidateConfigurationSettingsRequest extends AmazonWebServiceReques
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
         if (getOptionSettings() != null) sb.append("OptionSettings: " + getOptionSettings() );
         sb.append("}");
         return sb.toString();

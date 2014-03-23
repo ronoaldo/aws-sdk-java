@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A description of the app.
  * </p>
  */
-public class App  implements Serializable  {
+public class App implements Serializable {
 
     /**
      * The app ID.
@@ -64,7 +65,7 @@ public class App  implements Serializable  {
      * The app vhost settings, with multiple domains separated by commas. For
      * example: <code>'www.example.com, example.com'</code>
      */
-    private java.util.List<String> domains;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> domains;
 
     /**
      * Whether to enable SSL for the app.
@@ -112,14 +113,13 @@ public class App  implements Serializable  {
      * @param appId The app ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withAppId(String appId) {
         this.appId = appId;
         return this;
     }
-    
-    
+
     /**
      * The app stack ID.
      *
@@ -146,14 +146,13 @@ public class App  implements Serializable  {
      * @param stackId The app stack ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The app's short name.
      *
@@ -180,14 +179,13 @@ public class App  implements Serializable  {
      * @param shortname The app's short name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withShortname(String shortname) {
         this.shortname = shortname;
         return this;
     }
-    
-    
+
     /**
      * The app name.
      *
@@ -214,14 +212,13 @@ public class App  implements Serializable  {
      * @param name The app name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A description of the app.
      *
@@ -248,14 +245,13 @@ public class App  implements Serializable  {
      * @param description A description of the app.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The app type.
      * <p>
@@ -295,7 +291,7 @@ public class App  implements Serializable  {
      * @param type The app type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AppType
      */
@@ -303,8 +299,7 @@ public class App  implements Serializable  {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * The app type.
      * <p>
@@ -330,7 +325,7 @@ public class App  implements Serializable  {
      * @param type The app type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AppType
      */
@@ -338,7 +333,7 @@ public class App  implements Serializable  {
         this.type = type.toString();
         return this;
     }
-    
+
     /**
      * A <code>Source</code> object that describes the app repository.
      *
@@ -365,14 +360,13 @@ public class App  implements Serializable  {
      * @param appSource A <code>Source</code> object that describes the app repository.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withAppSource(Source appSource) {
         this.appSource = appSource;
         return this;
     }
-    
-    
+
     /**
      * The app vhost settings, with multiple domains separated by commas. For
      * example: <code>'www.example.com, example.com'</code>
@@ -381,9 +375,9 @@ public class App  implements Serializable  {
      *         example: <code>'www.example.com, example.com'</code>
      */
     public java.util.List<String> getDomains() {
-        
         if (domains == null) {
-            domains = new java.util.ArrayList<String>();
+              domains = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              domains.setAutoConstruct(true);
         }
         return domains;
     }
@@ -400,8 +394,7 @@ public class App  implements Serializable  {
             this.domains = null;
             return;
         }
-
-        java.util.List<String> domainsCopy = new java.util.ArrayList<String>(domains.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> domainsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domains.size());
         domainsCopy.addAll(domains);
         this.domains = domainsCopy;
     }
@@ -416,7 +409,7 @@ public class App  implements Serializable  {
      *         example: <code>'www.example.com, example.com'</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withDomains(String... domains) {
         if (getDomains() == null) setDomains(new java.util.ArrayList<String>(domains.length));
@@ -436,20 +429,20 @@ public class App  implements Serializable  {
      *         example: <code>'www.example.com, example.com'</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withDomains(java.util.Collection<String> domains) {
         if (domains == null) {
             this.domains = null;
         } else {
-            java.util.List<String> domainsCopy = new java.util.ArrayList<String>(domains.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> domainsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domains.size());
             domainsCopy.addAll(domains);
             this.domains = domainsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Whether to enable SSL for the app.
      *
@@ -476,14 +469,13 @@ public class App  implements Serializable  {
      * @param enableSsl Whether to enable SSL for the app.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withEnableSsl(Boolean enableSsl) {
         this.enableSsl = enableSsl;
         return this;
     }
-    
-    
+
     /**
      * Whether to enable SSL for the app.
      *
@@ -492,7 +484,7 @@ public class App  implements Serializable  {
     public Boolean getEnableSsl() {
         return enableSsl;
     }
-    
+
     /**
      * An <code>SslConfiguration</code> object with the SSL configuration.
      *
@@ -519,14 +511,13 @@ public class App  implements Serializable  {
      * @param sslConfiguration An <code>SslConfiguration</code> object with the SSL configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withSslConfiguration(SslConfiguration sslConfiguration) {
         this.sslConfiguration = sslConfiguration;
         return this;
     }
-    
-    
+
     /**
      * The contents of the stack attributes bag.
      *
@@ -538,7 +529,6 @@ public class App  implements Serializable  {
             attributes = new java.util.HashMap<String,String>();
         }
         return attributes;
-
     }
     
     /**
@@ -558,10 +548,40 @@ public class App  implements Serializable  {
      * @param attributes The contents of the stack attributes bag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withAttributes(java.util.Map<String,String> attributes) {
         setAttributes(attributes);
+        return this;
+    }
+
+    /**
+     * The contents of the stack attributes bag.
+     * <p>
+     * The method adds a new key-value pair into Attributes parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Attributes.
+     * @param value The corresponding value of the entry to be added into Attributes.
+     */
+    public App addAttributesEntry(String key, String value) {
+        if (null == this.attributes) {
+            this.attributes = new java.util.HashMap<String,String>();
+        }
+        if (this.attributes.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.attributes.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Attributes.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public App clearAttributesEntries() {
+        this.attributes = null;
         return this;
     }
     
@@ -591,14 +611,13 @@ public class App  implements Serializable  {
      * @param createdAt When the app was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public App withCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -610,18 +629,18 @@ public class App  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getShortname() != null) sb.append("Shortname: " + getShortname() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getAppSource() != null) sb.append("AppSource: " + getAppSource() + ",");    	
-        if (getDomains() != null) sb.append("Domains: " + getDomains() + ",");    	
-        if (isEnableSsl() != null) sb.append("EnableSsl: " + isEnableSsl() + ",");    	
-        if (getSslConfiguration() != null) sb.append("SslConfiguration: " + getSslConfiguration() + ",");    	
-        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");    	
+        sb.append("{");
+        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getShortname() != null) sb.append("Shortname: " + getShortname() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getAppSource() != null) sb.append("AppSource: " + getAppSource() + ",");
+        if (getDomains() != null) sb.append("Domains: " + getDomains() + ",");
+        if (isEnableSsl() != null) sb.append("EnableSsl: " + isEnableSsl() + ",");
+        if (getSslConfiguration() != null) sb.append("SslConfiguration: " + getSslConfiguration() + ",");
+        if (getAttributes() != null) sb.append("Attributes: " + getAttributes() + ",");
         if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() );
         sb.append("}");
         return sb.toString();

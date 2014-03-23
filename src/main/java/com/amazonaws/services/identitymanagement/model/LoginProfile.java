@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The LoginProfile data type contains the user name and password create date for a user.
+ * The LoginProfile data type contains the user name and password create
+ * date for a user.
  * </p>
  * <p>
- * This data type is used as a response element in the actions CreateLoginProfile and GetLoginProfile.
+ * This data type is used as a response element in the actions
+ * CreateLoginProfile and GetLoginProfile.
  * </p>
  */
-public class LoginProfile  implements Serializable  {
+public class LoginProfile implements Serializable {
 
     /**
      * The name of the user, which can be used for signing into the AWS
@@ -56,12 +59,10 @@ public class LoginProfile  implements Serializable  {
      * @param createDate The date when the password for the user was created.
      */
     public LoginProfile(String userName, java.util.Date createDate) {
-        this.userName = userName;
-        this.createDate = createDate;
+        setUserName(userName);
+        setCreateDate(createDate);
     }
 
-    
-    
     /**
      * The name of the user, which can be used for signing into the AWS
      * Management Console.
@@ -106,14 +107,13 @@ public class LoginProfile  implements Serializable  {
      *         Management Console.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoginProfile withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * The date when the password for the user was created.
      *
@@ -140,14 +140,13 @@ public class LoginProfile  implements Serializable  {
      * @param createDate The date when the password for the user was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoginProfile withCreateDate(java.util.Date createDate) {
         this.createDate = createDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -159,8 +158,8 @@ public class LoginProfile  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");    	
+        sb.append("{");
+        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");
         if (getCreateDate() != null) sb.append("CreateDate: " + getCreateDate() );
         sb.append("}");
         return sb.toString();

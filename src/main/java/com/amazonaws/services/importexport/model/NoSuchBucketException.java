@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,10 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that
- * the account, as specified by the manifest's Access Key ID, has write permissions to.
+ * The specified bucket does not exist. Create the specified bucket or
+ * change the manifest's bucket, exportBucket, or logBucket field to a
+ * bucket that the account, as specified by the manifest's Access Key ID,
+ * has write permissions to.
  * </p>
  */        
 public class NoSuchBucketException extends AmazonServiceException {

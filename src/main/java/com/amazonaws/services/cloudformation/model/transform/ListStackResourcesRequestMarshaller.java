@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ListStackResourcesRequestMarshaller implements Marshaller<Request<L
     public Request<ListStackResourcesRequest> marshall(ListStackResourcesRequest listStackResourcesRequest) {
 
         if (listStackResourcesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ListStackResourcesRequest> request = new DefaultRequest<ListStackResourcesRequest>(listStackResourcesRequest, "AmazonCloudFormation");
         request.addParameter("Action", "ListStackResources");
@@ -46,7 +46,6 @@ public class ListStackResourcesRequestMarshaller implements Marshaller<Request<L
         if (listStackResourcesRequest.getNextToken() != null) {
             request.addParameter("NextToken", StringUtils.fromString(listStackResourcesRequest.getNextToken()));
         }
-
 
         return request;
     }

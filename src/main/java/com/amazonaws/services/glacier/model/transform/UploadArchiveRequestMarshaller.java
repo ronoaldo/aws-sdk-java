@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class UploadArchiveRequestMarshaller implements Marshaller<Request<UploadArchiveRequest>, UploadArchiveRequest> {
 
-    
-
     public Request<UploadArchiveRequest> marshall(UploadArchiveRequest uploadArchiveRequest) {
     if (uploadArchiveRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,7 +49,6 @@ public class UploadArchiveRequestMarshaller implements Marshaller<Request<Upload
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
         if (uploadArchiveRequest.getContentLength() != null)
           request.addHeader("x-amz-content-length", StringUtils.fromLong(uploadArchiveRequest.getContentLength()));
@@ -61,12 +58,10 @@ public class UploadArchiveRequestMarshaller implements Marshaller<Request<Upload
         
         if (uploadArchiveRequest.getChecksum() != null)
           request.addHeader("x-amz-sha256-tree-hash", StringUtils.fromString(uploadArchiveRequest.getChecksum()));
-        
-
 
         String uriResourcePath = "/{accountId}/vaults/{vaultName}/archives"; 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(uploadArchiveRequest.getVaultName())); 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(uploadArchiveRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (uploadArchiveRequest.getVaultName() == null) ? "" : StringUtils.fromString(uploadArchiveRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (uploadArchiveRequest.getAccountId() == null) ? "" : StringUtils.fromString(uploadArchiveRequest.getAccountId())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -86,17 +81,9 @@ public class UploadArchiveRequestMarshaller implements Marshaller<Request<Upload
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(uploadArchiveRequest.getBody());
         request.addHeader("Content-Type", "binary/octet-stream");
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

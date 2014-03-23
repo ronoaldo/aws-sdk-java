@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getRolePolicy(GetRolePolicyRequest) GetRolePolicy operation}.
  * <p>
- * Retrieves the specified policy document for the specified role. For more information about roles, go to <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/WorkingWithRoles.html"> Working with Roles </a> .
+ * Retrieves the specified policy document for the specified role. For
+ * more information about roles, go to
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html"> Working with Roles </a>
+ * .
  * </p>
  * <p>
- * The returned policy is URL-encoded according to RFC 3986. For more information about RFC 3986, go to <a href="http://www.faqs.org/rfcs/rfc3986.html">
- * http://www.faqs.org/rfcs/rfc3986.html </a> .
+ * The returned policy is URL-encoded according to RFC 3986. For more
+ * information about RFC 3986, go to
+ * <a href="http://www.faqs.org/rfcs/rfc3986.html"> http://www.faqs.org/rfcs/rfc3986.html </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getRolePolicy(GetRolePolicyRequest)
  */
-public class GetRolePolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetRolePolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the role associated with the policy.
@@ -87,14 +93,13 @@ public class GetRolePolicyRequest extends AmazonWebServiceRequest  implements Se
      * @param roleName Name of the role associated with the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetRolePolicyRequest withRoleName(String roleName) {
         this.roleName = roleName;
         return this;
     }
-    
-    
+
     /**
      * Name of the policy document to get.
      * <p>
@@ -133,14 +138,13 @@ public class GetRolePolicyRequest extends AmazonWebServiceRequest  implements Se
      * @param policyName Name of the policy document to get.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetRolePolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -152,8 +156,8 @@ public class GetRolePolicyRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRoleName() != null) sb.append("RoleName: " + getRoleName() + ",");    	
+        sb.append("{");
+        if (getRoleName() != null) sb.append("RoleName: " + getRoleName() + ",");
         if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() );
         sb.append("}");
         return sb.toString();

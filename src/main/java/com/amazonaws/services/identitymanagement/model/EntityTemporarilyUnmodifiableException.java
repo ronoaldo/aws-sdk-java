@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,11 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The request was rejected because it referenced an entity that is temporarily unmodifiable, such as a user name that was deleted and then recreated.
- * The error indicates that the request is likely to succeed if you try again after waiting several minutes. The error message describes the entity.
+ * The request was rejected because it referenced an entity that is
+ * temporarily unmodifiable, such as a user name that was deleted and
+ * then recreated. The error indicates that the request is likely to
+ * succeed if you try again after waiting several minutes. The error
+ * message describes the entity.
  * </p>
  */        
 public class EntityTemporarilyUnmodifiableException extends AmazonServiceException {

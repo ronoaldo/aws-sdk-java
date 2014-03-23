@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains identifying information about the health check.
+ * A complex type that contains identifying information about the health
+ * check.
  * </p>
  */
-public class HealthCheck  implements Serializable  {
+public class HealthCheck implements Serializable {
 
     /**
      * The ID of the specified health check.
@@ -79,14 +81,13 @@ public class HealthCheck  implements Serializable  {
      * @param id The ID of the specified health check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * A unique string that identifies the request to create the health
      * check.
@@ -128,14 +129,13 @@ public class HealthCheck  implements Serializable  {
      *         check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains the health check configuration.
      *
@@ -162,14 +162,13 @@ public class HealthCheck  implements Serializable  {
      * @param healthCheckConfig A complex type that contains the health check configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HealthCheck withHealthCheckConfig(HealthCheckConfig healthCheckConfig) {
         this.healthCheckConfig = healthCheckConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -181,9 +180,9 @@ public class HealthCheck  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");
         if (getHealthCheckConfig() != null) sb.append("HealthCheckConfig: " + getHealthCheckConfig() );
         sb.append("}");
         return sb.toString();

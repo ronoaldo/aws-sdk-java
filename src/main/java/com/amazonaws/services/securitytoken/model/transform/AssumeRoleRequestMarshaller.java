@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class AssumeRoleRequestMarshaller implements Marshaller<Request<AssumeRol
     public Request<AssumeRoleRequest> marshall(AssumeRoleRequest assumeRoleRequest) {
 
         if (assumeRoleRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AssumeRoleRequest> request = new DefaultRequest<AssumeRoleRequest>(assumeRoleRequest, "AWSSecurityTokenService");
         request.addParameter("Action", "AssumeRole");
@@ -55,7 +55,12 @@ public class AssumeRoleRequestMarshaller implements Marshaller<Request<AssumeRol
         if (assumeRoleRequest.getExternalId() != null) {
             request.addParameter("ExternalId", StringUtils.fromString(assumeRoleRequest.getExternalId()));
         }
-
+        if (assumeRoleRequest.getSerialNumber() != null) {
+            request.addParameter("SerialNumber", StringUtils.fromString(assumeRoleRequest.getSerialNumber()));
+        }
+        if (assumeRoleRequest.getTokenCode() != null) {
+            request.addParameter("TokenCode", StringUtils.fromString(assumeRoleRequest.getTokenCode()));
+        }
 
         return request;
     }

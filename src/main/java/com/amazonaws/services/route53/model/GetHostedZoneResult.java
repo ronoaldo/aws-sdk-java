@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A complex type containing information about the specified hosted zone.
  * </p>
  */
-public class GetHostedZoneResult  implements Serializable  {
+public class GetHostedZoneResult implements Serializable {
 
     /**
      * A complex type that contains the information about the specified
@@ -66,14 +67,13 @@ public class GetHostedZoneResult  implements Serializable  {
      *         hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetHostedZoneResult withHostedZone(HostedZone hostedZone) {
         this.hostedZone = hostedZone;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about the name servers for
      * the specified hosted zone.
@@ -106,14 +106,13 @@ public class GetHostedZoneResult  implements Serializable  {
      *         the specified hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetHostedZoneResult withDelegationSet(DelegationSet delegationSet) {
         this.delegationSet = delegationSet;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -125,8 +124,8 @@ public class GetHostedZoneResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getHostedZone() != null) sb.append("HostedZone: " + getHostedZone() + ",");    	
+        sb.append("{");
+        if (getHostedZone() != null) sb.append("HostedZone: " + getHostedZone() + ",");
         if (getDelegationSet() != null) sb.append("DelegationSet: " + getDelegationSet() );
         sb.append("}");
         return sb.toString();

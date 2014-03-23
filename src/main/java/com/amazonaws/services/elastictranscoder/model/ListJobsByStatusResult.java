@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * The <code>ListJobsByStatusResponse</code> structure.
+ * </p>
  */
-public class ListJobsByStatusResult  implements Serializable  {
+public class ListJobsByStatusResult implements Serializable {
 
     /**
      * An array of <code>Job</code> objects that have the specified status.
      */
-    private java.util.List<Job> jobs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Job> jobs;
 
     /**
      * A value that you use to access the second and subsequent pages of
@@ -42,7 +45,10 @@ public class ListJobsByStatusResult  implements Serializable  {
      * @return An array of <code>Job</code> objects that have the specified status.
      */
     public java.util.List<Job> getJobs() {
-        
+        if (jobs == null) {
+              jobs = new com.amazonaws.internal.ListWithAutoConstructFlag<Job>();
+              jobs.setAutoConstruct(true);
+        }
         return jobs;
     }
     
@@ -56,8 +62,7 @@ public class ListJobsByStatusResult  implements Serializable  {
             this.jobs = null;
             return;
         }
-
-        java.util.List<Job> jobsCopy = new java.util.ArrayList<Job>(jobs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Job> jobsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Job>(jobs.size());
         jobsCopy.addAll(jobs);
         this.jobs = jobsCopy;
     }
@@ -70,7 +75,7 @@ public class ListJobsByStatusResult  implements Serializable  {
      * @param jobs An array of <code>Job</code> objects that have the specified status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByStatusResult withJobs(Job... jobs) {
         if (getJobs() == null) setJobs(new java.util.ArrayList<Job>(jobs.length));
@@ -88,20 +93,20 @@ public class ListJobsByStatusResult  implements Serializable  {
      * @param jobs An array of <code>Job</code> objects that have the specified status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByStatusResult withJobs(java.util.Collection<Job> jobs) {
         if (jobs == null) {
             this.jobs = null;
         } else {
-            java.util.List<Job> jobsCopy = new java.util.ArrayList<Job>(jobs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Job> jobsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Job>(jobs.size());
             jobsCopy.addAll(jobs);
             this.jobs = jobsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A value that you use to access the second and subsequent pages of
      * results, if any. When the jobs in the specified pipeline fit on one
@@ -155,14 +160,13 @@ public class ListJobsByStatusResult  implements Serializable  {
      *         <code>NextPageToken</code> is <code>null</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByStatusResult withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -174,8 +178,8 @@ public class ListJobsByStatusResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobs() != null) sb.append("Jobs: " + getJobs() + ",");    	
+        sb.append("{");
+        if (getJobs() != null) sb.append("Jobs: " + getJobs() + ",");
         if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * An invalidation batch.
  * </p>
  */
-public class InvalidationBatch  implements Serializable  {
+public class InvalidationBatch implements Serializable {
 
     /**
      * The path of the object to invalidate. The path is relative to the
@@ -77,12 +78,10 @@ public class InvalidationBatch  implements Serializable  {
      * CloudFront returns an InvalidationBatchAlreadyExists error.
      */
     public InvalidationBatch(Paths paths, String callerReference) {
-        this.paths = paths;
-        this.callerReference = callerReference;
+        setPaths(paths);
+        setCallerReference(callerReference);
     }
 
-    
-    
     /**
      * Constructs a new InvalidationBatch object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -100,11 +99,9 @@ public class InvalidationBatch  implements Serializable  {
      * CloudFront returns an InvalidationBatchAlreadyExists error.
      */
     public InvalidationBatch(String callerReference) {
-        this.callerReference = callerReference;
+        setCallerReference(callerReference);
     }
 
-    
-    
     /**
      * The path of the object to invalidate. The path is relative to the
      * distribution and must begin with a slash (/). You must enclose each
@@ -167,14 +164,13 @@ public class InvalidationBatch  implements Serializable  {
      *         not invalidate the old version of the updated object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationBatch withPaths(Paths paths) {
         this.paths = paths;
         return this;
     }
-    
-    
+
     /**
      * A unique name that ensures the request can't be replayed. If the
      * CallerReference is new (no matter the content of the Path object), a
@@ -255,14 +251,13 @@ public class InvalidationBatch  implements Serializable  {
      *         InvalidationBatchAlreadyExists error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationBatch withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -274,8 +269,8 @@ public class InvalidationBatch  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPaths() != null) sb.append("Paths: " + getPaths() + ",");    	
+        sb.append("{");
+        if (getPaths() != null) sb.append("Paths: " + getPaths() + ",");
         if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() );
         sb.append("}");
         return sb.toString();

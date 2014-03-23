@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,100 +13,122 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#modifyOptionGroup(ModifyOptionGroupRequest) ModifyOptionGroup operation}.
  * <p>
- * Modifies an existing Option Group.
+ * Modifies an existing option group.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#modifyOptionGroup(ModifyOptionGroupRequest)
  */
-public class ModifyOptionGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyOptionGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the option group to be modified.
+     * The name of the option group to be modified. <p> Permanent options,
+     * such as the TDE option for Oracle Advanced Security TDE, cannot be
+     * removed from an option group, and that option group cannot be removed
+     * from a DB instance once it is associated with a DB instance
      */
     private String optionGroupName;
 
     /**
-     * Options in this list are added to the Option Group or, if already
+     * Options in this list are added to the option group or, if already
      * present, the specified configuration is used to update the existing
      * configuration.
      */
-    private java.util.List<OptionConfiguration> optionsToInclude;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<OptionConfiguration> optionsToInclude;
 
     /**
-     * Options in this list are removed from the Option Group.
+     * Options in this list are removed from the option group.
      */
-    private java.util.List<String> optionsToRemove;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> optionsToRemove;
 
     /**
      * Indicates whether the changes should be applied immediately, or during
      * the next maintenance window for each instance associated with the
-     * Option Group.
+     * option group.
      */
     private Boolean applyImmediately;
 
     /**
-     * The name of the option group to be modified.
+     * The name of the option group to be modified. <p> Permanent options,
+     * such as the TDE option for Oracle Advanced Security TDE, cannot be
+     * removed from an option group, and that option group cannot be removed
+     * from a DB instance once it is associated with a DB instance
      *
-     * @return The name of the option group to be modified.
+     * @return The name of the option group to be modified. <p> Permanent options,
+     *         such as the TDE option for Oracle Advanced Security TDE, cannot be
+     *         removed from an option group, and that option group cannot be removed
+     *         from a DB instance once it is associated with a DB instance
      */
     public String getOptionGroupName() {
         return optionGroupName;
     }
     
     /**
-     * The name of the option group to be modified.
+     * The name of the option group to be modified. <p> Permanent options,
+     * such as the TDE option for Oracle Advanced Security TDE, cannot be
+     * removed from an option group, and that option group cannot be removed
+     * from a DB instance once it is associated with a DB instance
      *
-     * @param optionGroupName The name of the option group to be modified.
+     * @param optionGroupName The name of the option group to be modified. <p> Permanent options,
+     *         such as the TDE option for Oracle Advanced Security TDE, cannot be
+     *         removed from an option group, and that option group cannot be removed
+     *         from a DB instance once it is associated with a DB instance
      */
     public void setOptionGroupName(String optionGroupName) {
         this.optionGroupName = optionGroupName;
     }
     
     /**
-     * The name of the option group to be modified.
+     * The name of the option group to be modified. <p> Permanent options,
+     * such as the TDE option for Oracle Advanced Security TDE, cannot be
+     * removed from an option group, and that option group cannot be removed
+     * from a DB instance once it is associated with a DB instance
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param optionGroupName The name of the option group to be modified.
+     * @param optionGroupName The name of the option group to be modified. <p> Permanent options,
+     *         such as the TDE option for Oracle Advanced Security TDE, cannot be
+     *         removed from an option group, and that option group cannot be removed
+     *         from a DB instance once it is associated with a DB instance
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyOptionGroupRequest withOptionGroupName(String optionGroupName) {
         this.optionGroupName = optionGroupName;
         return this;
     }
-    
-    
+
     /**
-     * Options in this list are added to the Option Group or, if already
+     * Options in this list are added to the option group or, if already
      * present, the specified configuration is used to update the existing
      * configuration.
      *
-     * @return Options in this list are added to the Option Group or, if already
+     * @return Options in this list are added to the option group or, if already
      *         present, the specified configuration is used to update the existing
      *         configuration.
      */
     public java.util.List<OptionConfiguration> getOptionsToInclude() {
-        
         if (optionsToInclude == null) {
-            optionsToInclude = new java.util.ArrayList<OptionConfiguration>();
+              optionsToInclude = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionConfiguration>();
+              optionsToInclude.setAutoConstruct(true);
         }
         return optionsToInclude;
     }
     
     /**
-     * Options in this list are added to the Option Group or, if already
+     * Options in this list are added to the option group or, if already
      * present, the specified configuration is used to update the existing
      * configuration.
      *
-     * @param optionsToInclude Options in this list are added to the Option Group or, if already
+     * @param optionsToInclude Options in this list are added to the option group or, if already
      *         present, the specified configuration is used to update the existing
      *         configuration.
      */
@@ -115,25 +137,24 @@ public class ModifyOptionGroupRequest extends AmazonWebServiceRequest  implement
             this.optionsToInclude = null;
             return;
         }
-
-        java.util.List<OptionConfiguration> optionsToIncludeCopy = new java.util.ArrayList<OptionConfiguration>(optionsToInclude.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<OptionConfiguration> optionsToIncludeCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionConfiguration>(optionsToInclude.size());
         optionsToIncludeCopy.addAll(optionsToInclude);
         this.optionsToInclude = optionsToIncludeCopy;
     }
     
     /**
-     * Options in this list are added to the Option Group or, if already
+     * Options in this list are added to the option group or, if already
      * present, the specified configuration is used to update the existing
      * configuration.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param optionsToInclude Options in this list are added to the Option Group or, if already
+     * @param optionsToInclude Options in this list are added to the option group or, if already
      *         present, the specified configuration is used to update the existing
      *         configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyOptionGroupRequest withOptionsToInclude(OptionConfiguration... optionsToInclude) {
         if (getOptionsToInclude() == null) setOptionsToInclude(new java.util.ArrayList<OptionConfiguration>(optionsToInclude.length));
@@ -144,69 +165,68 @@ public class ModifyOptionGroupRequest extends AmazonWebServiceRequest  implement
     }
     
     /**
-     * Options in this list are added to the Option Group or, if already
+     * Options in this list are added to the option group or, if already
      * present, the specified configuration is used to update the existing
      * configuration.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param optionsToInclude Options in this list are added to the Option Group or, if already
+     * @param optionsToInclude Options in this list are added to the option group or, if already
      *         present, the specified configuration is used to update the existing
      *         configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyOptionGroupRequest withOptionsToInclude(java.util.Collection<OptionConfiguration> optionsToInclude) {
         if (optionsToInclude == null) {
             this.optionsToInclude = null;
         } else {
-            java.util.List<OptionConfiguration> optionsToIncludeCopy = new java.util.ArrayList<OptionConfiguration>(optionsToInclude.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<OptionConfiguration> optionsToIncludeCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionConfiguration>(optionsToInclude.size());
             optionsToIncludeCopy.addAll(optionsToInclude);
             this.optionsToInclude = optionsToIncludeCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Options in this list are removed from the Option Group.
+     * Options in this list are removed from the option group.
      *
-     * @return Options in this list are removed from the Option Group.
+     * @return Options in this list are removed from the option group.
      */
     public java.util.List<String> getOptionsToRemove() {
-        
         if (optionsToRemove == null) {
-            optionsToRemove = new java.util.ArrayList<String>();
+              optionsToRemove = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              optionsToRemove.setAutoConstruct(true);
         }
         return optionsToRemove;
     }
     
     /**
-     * Options in this list are removed from the Option Group.
+     * Options in this list are removed from the option group.
      *
-     * @param optionsToRemove Options in this list are removed from the Option Group.
+     * @param optionsToRemove Options in this list are removed from the option group.
      */
     public void setOptionsToRemove(java.util.Collection<String> optionsToRemove) {
         if (optionsToRemove == null) {
             this.optionsToRemove = null;
             return;
         }
-
-        java.util.List<String> optionsToRemoveCopy = new java.util.ArrayList<String>(optionsToRemove.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> optionsToRemoveCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(optionsToRemove.size());
         optionsToRemoveCopy.addAll(optionsToRemove);
         this.optionsToRemove = optionsToRemoveCopy;
     }
     
     /**
-     * Options in this list are removed from the Option Group.
+     * Options in this list are removed from the option group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param optionsToRemove Options in this list are removed from the Option Group.
+     * @param optionsToRemove Options in this list are removed from the option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyOptionGroupRequest withOptionsToRemove(String... optionsToRemove) {
         if (getOptionsToRemove() == null) setOptionsToRemove(new java.util.ArrayList<String>(optionsToRemove.length));
@@ -217,35 +237,35 @@ public class ModifyOptionGroupRequest extends AmazonWebServiceRequest  implement
     }
     
     /**
-     * Options in this list are removed from the Option Group.
+     * Options in this list are removed from the option group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param optionsToRemove Options in this list are removed from the Option Group.
+     * @param optionsToRemove Options in this list are removed from the option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyOptionGroupRequest withOptionsToRemove(java.util.Collection<String> optionsToRemove) {
         if (optionsToRemove == null) {
             this.optionsToRemove = null;
         } else {
-            java.util.List<String> optionsToRemoveCopy = new java.util.ArrayList<String>(optionsToRemove.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> optionsToRemoveCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(optionsToRemove.size());
             optionsToRemoveCopy.addAll(optionsToRemove);
             this.optionsToRemove = optionsToRemoveCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Indicates whether the changes should be applied immediately, or during
      * the next maintenance window for each instance associated with the
-     * Option Group.
+     * option group.
      *
      * @return Indicates whether the changes should be applied immediately, or during
      *         the next maintenance window for each instance associated with the
-     *         Option Group.
+     *         option group.
      */
     public Boolean isApplyImmediately() {
         return applyImmediately;
@@ -254,11 +274,11 @@ public class ModifyOptionGroupRequest extends AmazonWebServiceRequest  implement
     /**
      * Indicates whether the changes should be applied immediately, or during
      * the next maintenance window for each instance associated with the
-     * Option Group.
+     * option group.
      *
      * @param applyImmediately Indicates whether the changes should be applied immediately, or during
      *         the next maintenance window for each instance associated with the
-     *         Option Group.
+     *         option group.
      */
     public void setApplyImmediately(Boolean applyImmediately) {
         this.applyImmediately = applyImmediately;
@@ -267,36 +287,35 @@ public class ModifyOptionGroupRequest extends AmazonWebServiceRequest  implement
     /**
      * Indicates whether the changes should be applied immediately, or during
      * the next maintenance window for each instance associated with the
-     * Option Group.
+     * option group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param applyImmediately Indicates whether the changes should be applied immediately, or during
      *         the next maintenance window for each instance associated with the
-     *         Option Group.
+     *         option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyOptionGroupRequest withApplyImmediately(Boolean applyImmediately) {
         this.applyImmediately = applyImmediately;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether the changes should be applied immediately, or during
      * the next maintenance window for each instance associated with the
-     * Option Group.
+     * option group.
      *
      * @return Indicates whether the changes should be applied immediately, or during
      *         the next maintenance window for each instance associated with the
-     *         Option Group.
+     *         option group.
      */
     public Boolean getApplyImmediately() {
         return applyImmediately;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -308,10 +327,10 @@ public class ModifyOptionGroupRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOptionGroupName() != null) sb.append("OptionGroupName: " + getOptionGroupName() + ",");    	
-        if (getOptionsToInclude() != null) sb.append("OptionsToInclude: " + getOptionsToInclude() + ",");    	
-        if (getOptionsToRemove() != null) sb.append("OptionsToRemove: " + getOptionsToRemove() + ",");    	
+        sb.append("{");
+        if (getOptionGroupName() != null) sb.append("OptionGroupName: " + getOptionGroupName() + ",");
+        if (getOptionsToInclude() != null) sb.append("OptionsToInclude: " + getOptionsToInclude() + ",");
+        if (getOptionsToRemove() != null) sb.append("OptionsToRemove: " + getOptionsToRemove() + ",");
         if (isApplyImmediately() != null) sb.append("ApplyImmediately: " + isApplyImmediately() );
         sb.append("}");
         return sb.toString();

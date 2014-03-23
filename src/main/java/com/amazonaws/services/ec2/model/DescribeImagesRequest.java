@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,125 +13,154 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeImagesRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeImages(DescribeImagesRequest) DescribeImages operation}.
  * <p>
- * The DescribeImages operation returns information about AMIs, AKIs, and ARIs available to the user. Information returned includes image type, product
- * codes, architecture, and kernel and RAM disk IDs. Images available to the user include public images available for any user to launch, private images
- * owned by the user making the request, and private images owned by other users for which the user has explicit launch permissions.
+ * Describes one or more of the images (AMIs, AKIs, and ARIs) available
+ * to you. Images available to you include public images, private images
+ * that you own, and private images owned by other AWS accounts but for
+ * which you have explicit launch permissions.
  * </p>
  * <p>
- * Launch permissions fall into three categories:
- * </p>
- * 
- * <ul>
- * <li> <b>Public:</b> The owner of the AMI granted launch permissions for the AMI to the all group. All users have launch permissions for these AMIs.
- * </li>
- * <li> <b>Explicit:</b> The owner of the AMI granted launch permissions to a specific user. </li>
- * <li> <b>Implicit:</b> A user has implicit launch permissions for all AMIs he or she owns. </li>
- * 
- * </ul>
- * <p>
- * The list of AMIs returned can be modified by specifying AMI IDs, AMI owners, or users with launch permissions. If no options are specified, Amazon
- * EC2 returns all AMIs for which the user has launch permissions.
- * </p>
- * <p>
- * If you specify one or more AMI IDs, only AMIs that have the specified IDs are returned. If you specify an invalid AMI ID, a fault is returned. If you
- * specify an AMI ID for which you do not have access, it will not be included in the returned results.
- * </p>
- * <p>
- * If you specify one or more AMI owners, only AMIs from the specified owners and for which you have access are returned. The results can include the
- * account IDs of the specified owners, amazon for AMIs owned by Amazon or self for AMIs that you own.
- * </p>
- * <p>
- * If you specify a list of executable users, only users that have launch permissions for the AMIs are returned. You can specify account IDs (if you own
- * the AMI(s)), self for AMIs for which you own or have explicit permissions, or all for public AMIs.
- * </p>
- * <p>
- * <b>NOTE:</b> Deregistered images are included in the returned results for an unspecified interval after deregistration.
+ * <b>NOTE:</b> Deregistered images are included in the returned results
+ * for an unspecified interval after deregistration.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeImages(DescribeImagesRequest)
  */
-public class DescribeImagesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeImagesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeImagesRequest> {
 
     /**
-     * An optional list of the AMI IDs to describe. If not specified, all
-     * AMIs will be described.
+     * One or more image IDs. <p>Default: Describes all images available to
+     * you.
      */
-    private java.util.List<String> imageIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> imageIds;
 
     /**
-     * The optional list of owners for the described AMIs. The IDs amazon,
-     * self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     * owned by the user, and AMIs for which the user has explicit launch
-     * permissions, respectively.
+     * Filters the images by the owner. Specify an AWS account ID,
+     * <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     * (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     * the request), or <code>all</code> (all owners).
      */
-    private java.util.List<String> owners;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> owners;
 
     /**
-     * The optional list of users with explicit launch permissions for the
-     * described AMIs. The user ID can be a user's account ID, 'self' to
-     * return AMIs for which the sender of the request has explicit launch
-     * permissions, or 'all' to return AMIs with public launch permissions.
+     * Scopes the images by users with explicit launch permissions. Specify
+     * an AWS account ID, <code>self</code> (the sender of the request), or
+     * <code>all</code> (public AMIs).
      */
-    private java.util.List<String> executableUsers;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> executableUsers;
 
     /**
-     * A list of filters used to match properties for Images. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>architecture</code> - The
+     * image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     * <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     * Boolean value that indicates whether the Amazon EBS volume is deleted
+     * on instance termination. </li> <li>
+     * <p><code>block-device-mapping.device-name</code> - The device name for
+     * the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     * <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     * snapshot used for the Amazon EBS volume. </li> <li>
+     * <p><code>block-device-mapping.volume-size</code> - The volume size of
+     * the Amazon EBS volume, in GiB. </li> <li>
+     * <p><code>block-device-mapping.volume-type</code> - The volume type of
+     * the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     * </li> <li> <p><code>description</code> - The description of the image
+     * (provided during image creation). </li> <li>
+     * <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     * <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     * image. </li> <li> <p><code>image-type</code> - The image type
+     * (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     * </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     * whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     * The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     * location of the image manifest. </li> <li> <p><code>name</code> - The
+     * name of the AMI (provided during image creation). </li> <li>
+     * <p><code>owner-alias</code> - The AWS account alias (for example,
+     * <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     * account ID of the image owner. </li> <li> <p><code>platform</code> -
+     * The platform. To only list Windows-based AMIs, use
+     * <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     * product code. </li> <li> <p><code>product-code.type</code> - The type
+     * of the product code (<code>devpay</code> | <code>marketplace</code>).
+     * </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     * <p><code>root-device-name</code> - The name of the root device volume
+     * (for example, <code>/dev/sda1</code>). </li> <li>
+     * <p><code>root-device-type</code> - The type of the root device volume
+     * (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     * <p><code>state</code> - The state of the image (<code>available</code>
+     * | <code>pending</code> | <code>failed</code>). </li> <li>
+     * <p><code>state-reason-code</code> - The reason code for the state
+     * change. </li> <li> <p><code>state-reason-message</code> - The message
+     * for the state change. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the tag-value filter. For example, if
+     * you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>virtualization-type</code> - The
+     * virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     * </li> </ul>
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
-     * An optional list of the AMI IDs to describe. If not specified, all
-     * AMIs will be described.
+     * One or more image IDs. <p>Default: Describes all images available to
+     * you.
      *
-     * @return An optional list of the AMI IDs to describe. If not specified, all
-     *         AMIs will be described.
+     * @return One or more image IDs. <p>Default: Describes all images available to
+     *         you.
      */
     public java.util.List<String> getImageIds() {
-        
         if (imageIds == null) {
-            imageIds = new java.util.ArrayList<String>();
+              imageIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              imageIds.setAutoConstruct(true);
         }
         return imageIds;
     }
     
     /**
-     * An optional list of the AMI IDs to describe. If not specified, all
-     * AMIs will be described.
+     * One or more image IDs. <p>Default: Describes all images available to
+     * you.
      *
-     * @param imageIds An optional list of the AMI IDs to describe. If not specified, all
-     *         AMIs will be described.
+     * @param imageIds One or more image IDs. <p>Default: Describes all images available to
+     *         you.
      */
     public void setImageIds(java.util.Collection<String> imageIds) {
         if (imageIds == null) {
             this.imageIds = null;
             return;
         }
-
-        java.util.List<String> imageIdsCopy = new java.util.ArrayList<String>(imageIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> imageIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(imageIds.size());
         imageIdsCopy.addAll(imageIds);
         this.imageIds = imageIdsCopy;
     }
     
     /**
-     * An optional list of the AMI IDs to describe. If not specified, all
-     * AMIs will be described.
+     * One or more image IDs. <p>Default: Describes all images available to
+     * you.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param imageIds An optional list of the AMI IDs to describe. If not specified, all
-     *         AMIs will be described.
+     * @param imageIds One or more image IDs. <p>Default: Describes all images available to
+     *         you.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withImageIds(String... imageIds) {
         if (getImageIds() == null) setImageIds(new java.util.ArrayList<String>(imageIds.length));
@@ -142,85 +171,84 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * An optional list of the AMI IDs to describe. If not specified, all
-     * AMIs will be described.
+     * One or more image IDs. <p>Default: Describes all images available to
+     * you.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param imageIds An optional list of the AMI IDs to describe. If not specified, all
-     *         AMIs will be described.
+     * @param imageIds One or more image IDs. <p>Default: Describes all images available to
+     *         you.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withImageIds(java.util.Collection<String> imageIds) {
         if (imageIds == null) {
             this.imageIds = null;
         } else {
-            java.util.List<String> imageIdsCopy = new java.util.ArrayList<String>(imageIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> imageIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(imageIds.size());
             imageIdsCopy.addAll(imageIds);
             this.imageIds = imageIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The optional list of owners for the described AMIs. The IDs amazon,
-     * self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     * owned by the user, and AMIs for which the user has explicit launch
-     * permissions, respectively.
+     * Filters the images by the owner. Specify an AWS account ID,
+     * <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     * (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     * the request), or <code>all</code> (all owners).
      *
-     * @return The optional list of owners for the described AMIs. The IDs amazon,
-     *         self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     *         owned by the user, and AMIs for which the user has explicit launch
-     *         permissions, respectively.
+     * @return Filters the images by the owner. Specify an AWS account ID,
+     *         <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     *         (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     *         the request), or <code>all</code> (all owners).
      */
     public java.util.List<String> getOwners() {
-        
         if (owners == null) {
-            owners = new java.util.ArrayList<String>();
+              owners = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              owners.setAutoConstruct(true);
         }
         return owners;
     }
     
     /**
-     * The optional list of owners for the described AMIs. The IDs amazon,
-     * self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     * owned by the user, and AMIs for which the user has explicit launch
-     * permissions, respectively.
+     * Filters the images by the owner. Specify an AWS account ID,
+     * <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     * (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     * the request), or <code>all</code> (all owners).
      *
-     * @param owners The optional list of owners for the described AMIs. The IDs amazon,
-     *         self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     *         owned by the user, and AMIs for which the user has explicit launch
-     *         permissions, respectively.
+     * @param owners Filters the images by the owner. Specify an AWS account ID,
+     *         <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     *         (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     *         the request), or <code>all</code> (all owners).
      */
     public void setOwners(java.util.Collection<String> owners) {
         if (owners == null) {
             this.owners = null;
             return;
         }
-
-        java.util.List<String> ownersCopy = new java.util.ArrayList<String>(owners.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> ownersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(owners.size());
         ownersCopy.addAll(owners);
         this.owners = ownersCopy;
     }
     
     /**
-     * The optional list of owners for the described AMIs. The IDs amazon,
-     * self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     * owned by the user, and AMIs for which the user has explicit launch
-     * permissions, respectively.
+     * Filters the images by the owner. Specify an AWS account ID,
+     * <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     * (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     * the request), or <code>all</code> (all owners).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param owners The optional list of owners for the described AMIs. The IDs amazon,
-     *         self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     *         owned by the user, and AMIs for which the user has explicit launch
-     *         permissions, respectively.
+     * @param owners Filters the images by the owner. Specify an AWS account ID,
+     *         <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     *         (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     *         the request), or <code>all</code> (all owners).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withOwners(String... owners) {
         if (getOwners() == null) setOwners(new java.util.ArrayList<String>(owners.length));
@@ -231,89 +259,82 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * The optional list of owners for the described AMIs. The IDs amazon,
-     * self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     * owned by the user, and AMIs for which the user has explicit launch
-     * permissions, respectively.
+     * Filters the images by the owner. Specify an AWS account ID,
+     * <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     * (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     * the request), or <code>all</code> (all owners).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param owners The optional list of owners for the described AMIs. The IDs amazon,
-     *         self, and explicit can be used to include AMIs owned by Amazon, AMIs
-     *         owned by the user, and AMIs for which the user has explicit launch
-     *         permissions, respectively.
+     * @param owners Filters the images by the owner. Specify an AWS account ID,
+     *         <code>amazon</code> (owner is Amazon), <code>aws-marketplace</code>
+     *         (owner is AWS Marketplace), <code>self</code> (owner is the sender of
+     *         the request), or <code>all</code> (all owners).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withOwners(java.util.Collection<String> owners) {
         if (owners == null) {
             this.owners = null;
         } else {
-            java.util.List<String> ownersCopy = new java.util.ArrayList<String>(owners.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> ownersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(owners.size());
             ownersCopy.addAll(owners);
             this.owners = ownersCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The optional list of users with explicit launch permissions for the
-     * described AMIs. The user ID can be a user's account ID, 'self' to
-     * return AMIs for which the sender of the request has explicit launch
-     * permissions, or 'all' to return AMIs with public launch permissions.
+     * Scopes the images by users with explicit launch permissions. Specify
+     * an AWS account ID, <code>self</code> (the sender of the request), or
+     * <code>all</code> (public AMIs).
      *
-     * @return The optional list of users with explicit launch permissions for the
-     *         described AMIs. The user ID can be a user's account ID, 'self' to
-     *         return AMIs for which the sender of the request has explicit launch
-     *         permissions, or 'all' to return AMIs with public launch permissions.
+     * @return Scopes the images by users with explicit launch permissions. Specify
+     *         an AWS account ID, <code>self</code> (the sender of the request), or
+     *         <code>all</code> (public AMIs).
      */
     public java.util.List<String> getExecutableUsers() {
-        
         if (executableUsers == null) {
-            executableUsers = new java.util.ArrayList<String>();
+              executableUsers = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              executableUsers.setAutoConstruct(true);
         }
         return executableUsers;
     }
     
     /**
-     * The optional list of users with explicit launch permissions for the
-     * described AMIs. The user ID can be a user's account ID, 'self' to
-     * return AMIs for which the sender of the request has explicit launch
-     * permissions, or 'all' to return AMIs with public launch permissions.
+     * Scopes the images by users with explicit launch permissions. Specify
+     * an AWS account ID, <code>self</code> (the sender of the request), or
+     * <code>all</code> (public AMIs).
      *
-     * @param executableUsers The optional list of users with explicit launch permissions for the
-     *         described AMIs. The user ID can be a user's account ID, 'self' to
-     *         return AMIs for which the sender of the request has explicit launch
-     *         permissions, or 'all' to return AMIs with public launch permissions.
+     * @param executableUsers Scopes the images by users with explicit launch permissions. Specify
+     *         an AWS account ID, <code>self</code> (the sender of the request), or
+     *         <code>all</code> (public AMIs).
      */
     public void setExecutableUsers(java.util.Collection<String> executableUsers) {
         if (executableUsers == null) {
             this.executableUsers = null;
             return;
         }
-
-        java.util.List<String> executableUsersCopy = new java.util.ArrayList<String>(executableUsers.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> executableUsersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(executableUsers.size());
         executableUsersCopy.addAll(executableUsers);
         this.executableUsers = executableUsersCopy;
     }
     
     /**
-     * The optional list of users with explicit launch permissions for the
-     * described AMIs. The user ID can be a user's account ID, 'self' to
-     * return AMIs for which the sender of the request has explicit launch
-     * permissions, or 'all' to return AMIs with public launch permissions.
+     * Scopes the images by users with explicit launch permissions. Specify
+     * an AWS account ID, <code>self</code> (the sender of the request), or
+     * <code>all</code> (public AMIs).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param executableUsers The optional list of users with explicit launch permissions for the
-     *         described AMIs. The user ID can be a user's account ID, 'self' to
-     *         return AMIs for which the sender of the request has explicit launch
-     *         permissions, or 'all' to return AMIs with public launch permissions.
+     * @param executableUsers Scopes the images by users with explicit launch permissions. Specify
+     *         an AWS account ID, <code>self</code> (the sender of the request), or
+     *         <code>all</code> (public AMIs).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withExecutableUsers(String... executableUsers) {
         if (getExecutableUsers() == null) setExecutableUsers(new java.util.ArrayList<String>(executableUsers.length));
@@ -324,89 +345,398 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * The optional list of users with explicit launch permissions for the
-     * described AMIs. The user ID can be a user's account ID, 'self' to
-     * return AMIs for which the sender of the request has explicit launch
-     * permissions, or 'all' to return AMIs with public launch permissions.
+     * Scopes the images by users with explicit launch permissions. Specify
+     * an AWS account ID, <code>self</code> (the sender of the request), or
+     * <code>all</code> (public AMIs).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param executableUsers The optional list of users with explicit launch permissions for the
-     *         described AMIs. The user ID can be a user's account ID, 'self' to
-     *         return AMIs for which the sender of the request has explicit launch
-     *         permissions, or 'all' to return AMIs with public launch permissions.
+     * @param executableUsers Scopes the images by users with explicit launch permissions. Specify
+     *         an AWS account ID, <code>self</code> (the sender of the request), or
+     *         <code>all</code> (public AMIs).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withExecutableUsers(java.util.Collection<String> executableUsers) {
         if (executableUsers == null) {
             this.executableUsers = null;
         } else {
-            java.util.List<String> executableUsersCopy = new java.util.ArrayList<String>(executableUsers.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> executableUsersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(executableUsers.size());
             executableUsersCopy.addAll(executableUsers);
             this.executableUsers = executableUsersCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of filters used to match properties for Images. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>architecture</code> - The
+     * image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     * <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     * Boolean value that indicates whether the Amazon EBS volume is deleted
+     * on instance termination. </li> <li>
+     * <p><code>block-device-mapping.device-name</code> - The device name for
+     * the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     * <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     * snapshot used for the Amazon EBS volume. </li> <li>
+     * <p><code>block-device-mapping.volume-size</code> - The volume size of
+     * the Amazon EBS volume, in GiB. </li> <li>
+     * <p><code>block-device-mapping.volume-type</code> - The volume type of
+     * the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     * </li> <li> <p><code>description</code> - The description of the image
+     * (provided during image creation). </li> <li>
+     * <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     * <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     * image. </li> <li> <p><code>image-type</code> - The image type
+     * (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     * </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     * whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     * The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     * location of the image manifest. </li> <li> <p><code>name</code> - The
+     * name of the AMI (provided during image creation). </li> <li>
+     * <p><code>owner-alias</code> - The AWS account alias (for example,
+     * <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     * account ID of the image owner. </li> <li> <p><code>platform</code> -
+     * The platform. To only list Windows-based AMIs, use
+     * <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     * product code. </li> <li> <p><code>product-code.type</code> - The type
+     * of the product code (<code>devpay</code> | <code>marketplace</code>).
+     * </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     * <p><code>root-device-name</code> - The name of the root device volume
+     * (for example, <code>/dev/sda1</code>). </li> <li>
+     * <p><code>root-device-type</code> - The type of the root device volume
+     * (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     * <p><code>state</code> - The state of the image (<code>available</code>
+     * | <code>pending</code> | <code>failed</code>). </li> <li>
+     * <p><code>state-reason-code</code> - The reason code for the state
+     * change. </li> <li> <p><code>state-reason-message</code> - The message
+     * for the state change. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the tag-value filter. For example, if
+     * you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>virtualization-type</code> - The
+     * virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     * </li> </ul>
      *
-     * @return A list of filters used to match properties for Images. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @return One or more filters. <ul> <li> <p><code>architecture</code> - The
+     *         image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     *         <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     *         Boolean value that indicates whether the Amazon EBS volume is deleted
+     *         on instance termination. </li> <li>
+     *         <p><code>block-device-mapping.device-name</code> - The device name for
+     *         the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     *         <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     *         snapshot used for the Amazon EBS volume. </li> <li>
+     *         <p><code>block-device-mapping.volume-size</code> - The volume size of
+     *         the Amazon EBS volume, in GiB. </li> <li>
+     *         <p><code>block-device-mapping.volume-type</code> - The volume type of
+     *         the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     *         </li> <li> <p><code>description</code> - The description of the image
+     *         (provided during image creation). </li> <li>
+     *         <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     *         <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     *         image. </li> <li> <p><code>image-type</code> - The image type
+     *         (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     *         </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     *         whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     *         The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     *         location of the image manifest. </li> <li> <p><code>name</code> - The
+     *         name of the AMI (provided during image creation). </li> <li>
+     *         <p><code>owner-alias</code> - The AWS account alias (for example,
+     *         <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     *         account ID of the image owner. </li> <li> <p><code>platform</code> -
+     *         The platform. To only list Windows-based AMIs, use
+     *         <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     *         product code. </li> <li> <p><code>product-code.type</code> - The type
+     *         of the product code (<code>devpay</code> | <code>marketplace</code>).
+     *         </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     *         <p><code>root-device-name</code> - The name of the root device volume
+     *         (for example, <code>/dev/sda1</code>). </li> <li>
+     *         <p><code>root-device-type</code> - The type of the root device volume
+     *         (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     *         <p><code>state</code> - The state of the image (<code>available</code>
+     *         | <code>pending</code> | <code>failed</code>). </li> <li>
+     *         <p><code>state-reason-code</code> - The reason code for the state
+     *         change. </li> <li> <p><code>state-reason-message</code> - The message
+     *         for the state change. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the tag-value filter. For example, if
+     *         you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>virtualization-type</code> - The
+     *         virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     *         </li> </ul>
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
     
     /**
-     * A list of filters used to match properties for Images. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>architecture</code> - The
+     * image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     * <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     * Boolean value that indicates whether the Amazon EBS volume is deleted
+     * on instance termination. </li> <li>
+     * <p><code>block-device-mapping.device-name</code> - The device name for
+     * the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     * <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     * snapshot used for the Amazon EBS volume. </li> <li>
+     * <p><code>block-device-mapping.volume-size</code> - The volume size of
+     * the Amazon EBS volume, in GiB. </li> <li>
+     * <p><code>block-device-mapping.volume-type</code> - The volume type of
+     * the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     * </li> <li> <p><code>description</code> - The description of the image
+     * (provided during image creation). </li> <li>
+     * <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     * <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     * image. </li> <li> <p><code>image-type</code> - The image type
+     * (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     * </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     * whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     * The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     * location of the image manifest. </li> <li> <p><code>name</code> - The
+     * name of the AMI (provided during image creation). </li> <li>
+     * <p><code>owner-alias</code> - The AWS account alias (for example,
+     * <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     * account ID of the image owner. </li> <li> <p><code>platform</code> -
+     * The platform. To only list Windows-based AMIs, use
+     * <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     * product code. </li> <li> <p><code>product-code.type</code> - The type
+     * of the product code (<code>devpay</code> | <code>marketplace</code>).
+     * </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     * <p><code>root-device-name</code> - The name of the root device volume
+     * (for example, <code>/dev/sda1</code>). </li> <li>
+     * <p><code>root-device-type</code> - The type of the root device volume
+     * (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     * <p><code>state</code> - The state of the image (<code>available</code>
+     * | <code>pending</code> | <code>failed</code>). </li> <li>
+     * <p><code>state-reason-code</code> - The reason code for the state
+     * change. </li> <li> <p><code>state-reason-message</code> - The message
+     * for the state change. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the tag-value filter. For example, if
+     * you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>virtualization-type</code> - The
+     * virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     * </li> </ul>
      *
-     * @param filters A list of filters used to match properties for Images. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>architecture</code> - The
+     *         image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     *         <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     *         Boolean value that indicates whether the Amazon EBS volume is deleted
+     *         on instance termination. </li> <li>
+     *         <p><code>block-device-mapping.device-name</code> - The device name for
+     *         the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     *         <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     *         snapshot used for the Amazon EBS volume. </li> <li>
+     *         <p><code>block-device-mapping.volume-size</code> - The volume size of
+     *         the Amazon EBS volume, in GiB. </li> <li>
+     *         <p><code>block-device-mapping.volume-type</code> - The volume type of
+     *         the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     *         </li> <li> <p><code>description</code> - The description of the image
+     *         (provided during image creation). </li> <li>
+     *         <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     *         <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     *         image. </li> <li> <p><code>image-type</code> - The image type
+     *         (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     *         </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     *         whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     *         The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     *         location of the image manifest. </li> <li> <p><code>name</code> - The
+     *         name of the AMI (provided during image creation). </li> <li>
+     *         <p><code>owner-alias</code> - The AWS account alias (for example,
+     *         <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     *         account ID of the image owner. </li> <li> <p><code>platform</code> -
+     *         The platform. To only list Windows-based AMIs, use
+     *         <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     *         product code. </li> <li> <p><code>product-code.type</code> - The type
+     *         of the product code (<code>devpay</code> | <code>marketplace</code>).
+     *         </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     *         <p><code>root-device-name</code> - The name of the root device volume
+     *         (for example, <code>/dev/sda1</code>). </li> <li>
+     *         <p><code>root-device-type</code> - The type of the root device volume
+     *         (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     *         <p><code>state</code> - The state of the image (<code>available</code>
+     *         | <code>pending</code> | <code>failed</code>). </li> <li>
+     *         <p><code>state-reason-code</code> - The reason code for the state
+     *         change. </li> <li> <p><code>state-reason-message</code> - The message
+     *         for the state change. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the tag-value filter. For example, if
+     *         you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>virtualization-type</code> - The
+     *         virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     *         </li> </ul>
      */
     public void setFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
     
     /**
-     * A list of filters used to match properties for Images. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>architecture</code> - The
+     * image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     * <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     * Boolean value that indicates whether the Amazon EBS volume is deleted
+     * on instance termination. </li> <li>
+     * <p><code>block-device-mapping.device-name</code> - The device name for
+     * the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     * <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     * snapshot used for the Amazon EBS volume. </li> <li>
+     * <p><code>block-device-mapping.volume-size</code> - The volume size of
+     * the Amazon EBS volume, in GiB. </li> <li>
+     * <p><code>block-device-mapping.volume-type</code> - The volume type of
+     * the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     * </li> <li> <p><code>description</code> - The description of the image
+     * (provided during image creation). </li> <li>
+     * <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     * <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     * image. </li> <li> <p><code>image-type</code> - The image type
+     * (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     * </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     * whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     * The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     * location of the image manifest. </li> <li> <p><code>name</code> - The
+     * name of the AMI (provided during image creation). </li> <li>
+     * <p><code>owner-alias</code> - The AWS account alias (for example,
+     * <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     * account ID of the image owner. </li> <li> <p><code>platform</code> -
+     * The platform. To only list Windows-based AMIs, use
+     * <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     * product code. </li> <li> <p><code>product-code.type</code> - The type
+     * of the product code (<code>devpay</code> | <code>marketplace</code>).
+     * </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     * <p><code>root-device-name</code> - The name of the root device volume
+     * (for example, <code>/dev/sda1</code>). </li> <li>
+     * <p><code>root-device-type</code> - The type of the root device volume
+     * (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     * <p><code>state</code> - The state of the image (<code>available</code>
+     * | <code>pending</code> | <code>failed</code>). </li> <li>
+     * <p><code>state-reason-code</code> - The reason code for the state
+     * change. </li> <li> <p><code>state-reason-message</code> - The message
+     * for the state change. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the tag-value filter. For example, if
+     * you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>virtualization-type</code> - The
+     * virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     * </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for Images. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>architecture</code> - The
+     *         image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     *         <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     *         Boolean value that indicates whether the Amazon EBS volume is deleted
+     *         on instance termination. </li> <li>
+     *         <p><code>block-device-mapping.device-name</code> - The device name for
+     *         the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     *         <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     *         snapshot used for the Amazon EBS volume. </li> <li>
+     *         <p><code>block-device-mapping.volume-size</code> - The volume size of
+     *         the Amazon EBS volume, in GiB. </li> <li>
+     *         <p><code>block-device-mapping.volume-type</code> - The volume type of
+     *         the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     *         </li> <li> <p><code>description</code> - The description of the image
+     *         (provided during image creation). </li> <li>
+     *         <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     *         <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     *         image. </li> <li> <p><code>image-type</code> - The image type
+     *         (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     *         </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     *         whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     *         The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     *         location of the image manifest. </li> <li> <p><code>name</code> - The
+     *         name of the AMI (provided during image creation). </li> <li>
+     *         <p><code>owner-alias</code> - The AWS account alias (for example,
+     *         <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     *         account ID of the image owner. </li> <li> <p><code>platform</code> -
+     *         The platform. To only list Windows-based AMIs, use
+     *         <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     *         product code. </li> <li> <p><code>product-code.type</code> - The type
+     *         of the product code (<code>devpay</code> | <code>marketplace</code>).
+     *         </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     *         <p><code>root-device-name</code> - The name of the root device volume
+     *         (for example, <code>/dev/sda1</code>). </li> <li>
+     *         <p><code>root-device-type</code> - The type of the root device volume
+     *         (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     *         <p><code>state</code> - The state of the image (<code>available</code>
+     *         | <code>pending</code> | <code>failed</code>). </li> <li>
+     *         <p><code>state-reason-code</code> - The reason code for the state
+     *         change. </li> <li> <p><code>state-reason-message</code> - The message
+     *         for the state change. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the tag-value filter. For example, if
+     *         you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>virtualization-type</code> - The
+     *         virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -417,31 +747,147 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest  implements S
     }
     
     /**
-     * A list of filters used to match properties for Images. For a complete
-     * reference to the available filter keys for this operation, see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>architecture</code> - The
+     * image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     * <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     * Boolean value that indicates whether the Amazon EBS volume is deleted
+     * on instance termination. </li> <li>
+     * <p><code>block-device-mapping.device-name</code> - The device name for
+     * the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     * <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     * snapshot used for the Amazon EBS volume. </li> <li>
+     * <p><code>block-device-mapping.volume-size</code> - The volume size of
+     * the Amazon EBS volume, in GiB. </li> <li>
+     * <p><code>block-device-mapping.volume-type</code> - The volume type of
+     * the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     * </li> <li> <p><code>description</code> - The description of the image
+     * (provided during image creation). </li> <li>
+     * <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     * <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     * image. </li> <li> <p><code>image-type</code> - The image type
+     * (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     * </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     * whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     * The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     * location of the image manifest. </li> <li> <p><code>name</code> - The
+     * name of the AMI (provided during image creation). </li> <li>
+     * <p><code>owner-alias</code> - The AWS account alias (for example,
+     * <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     * account ID of the image owner. </li> <li> <p><code>platform</code> -
+     * The platform. To only list Windows-based AMIs, use
+     * <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     * product code. </li> <li> <p><code>product-code.type</code> - The type
+     * of the product code (<code>devpay</code> | <code>marketplace</code>).
+     * </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     * <p><code>root-device-name</code> - The name of the root device volume
+     * (for example, <code>/dev/sda1</code>). </li> <li>
+     * <p><code>root-device-type</code> - The type of the root device volume
+     * (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     * <p><code>state</code> - The state of the image (<code>available</code>
+     * | <code>pending</code> | <code>failed</code>). </li> <li>
+     * <p><code>state-reason-code</code> - The reason code for the state
+     * change. </li> <li> <p><code>state-reason-message</code> - The message
+     * for the state change. </li> <li>
+     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     * combination of a tag assigned to the resource. </li> <li>
+     * <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     * This filter is independent of the tag-value filter. For example, if
+     * you use both the filter "tag-key=Purpose" and the filter
+     * "tag-value=X", you get any resources assigned both the tag key Purpose
+     * (regardless of what the tag's value is), and the tag value X
+     * (regardless of what the tag's key is). If you want to list only
+     * resources where Purpose is X, see the
+     * <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     * <p><code>tag-value</code> - The value of a tag assigned to the
+     * resource. This filter is independent of the <code>tag-key</code>
+     * filter. </li> <li> <p><code>virtualization-type</code> - The
+     * virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     * </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for Images. For a complete
-     *         reference to the available filter keys for this operation, see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>architecture</code> - The
+     *         image architecture (<code>i386</code> | <code>x86_64</code>). </li>
+     *         <li> <p><code>block-device-mapping.delete-on-termination</code> - A
+     *         Boolean value that indicates whether the Amazon EBS volume is deleted
+     *         on instance termination. </li> <li>
+     *         <p><code>block-device-mapping.device-name</code> - The device name for
+     *         the Amazon EBS volume (for example, <code>/dev/sdh</code>). </li> <li>
+     *         <p><code>block-device-mapping.snapshot-id</code> - The ID of the
+     *         snapshot used for the Amazon EBS volume. </li> <li>
+     *         <p><code>block-device-mapping.volume-size</code> - The volume size of
+     *         the Amazon EBS volume, in GiB. </li> <li>
+     *         <p><code>block-device-mapping.volume-type</code> - The volume type of
+     *         the Amazon EBS volume (<code>standard</code> | <code>io1</code>).
+     *         </li> <li> <p><code>description</code> - The description of the image
+     *         (provided during image creation). </li> <li>
+     *         <p><code>hypervisor</code> - The hypervisor type (<code>ovm</code> |
+     *         <code>xen</code>). </li> <li> <p><code>image-id</code> - The ID of the
+     *         image. </li> <li> <p><code>image-type</code> - The image type
+     *         (<code>machine</code> | <code>kernel</code> | <code>ramdisk</code>).
+     *         </li> <li> <p><code>is-public</code> - A Boolean that indicates
+     *         whether the image is public. </li> <li> <p><code>kernel-id</code> -
+     *         The kernel ID. </li> <li> <p><code>manifest-location</code> - The
+     *         location of the image manifest. </li> <li> <p><code>name</code> - The
+     *         name of the AMI (provided during image creation). </li> <li>
+     *         <p><code>owner-alias</code> - The AWS account alias (for example,
+     *         <code>amazon</code>). </li> <li> <p><code>owner-id</code> - The AWS
+     *         account ID of the image owner. </li> <li> <p><code>platform</code> -
+     *         The platform. To only list Windows-based AMIs, use
+     *         <code>windows</code>. </li> <li> <p><code>product-code</code> - The
+     *         product code. </li> <li> <p><code>product-code.type</code> - The type
+     *         of the product code (<code>devpay</code> | <code>marketplace</code>).
+     *         </li> <li> <p><code>ramdisk-id</code> - The RAM disk ID. </li> <li>
+     *         <p><code>root-device-name</code> - The name of the root device volume
+     *         (for example, <code>/dev/sda1</code>). </li> <li>
+     *         <p><code>root-device-type</code> - The type of the root device volume
+     *         (<code>ebs</code> | <code>instance-store</code>). </li> <li>
+     *         <p><code>state</code> - The state of the image (<code>available</code>
+     *         | <code>pending</code> | <code>failed</code>). </li> <li>
+     *         <p><code>state-reason-code</code> - The reason code for the state
+     *         change. </li> <li> <p><code>state-reason-message</code> - The message
+     *         for the state change. </li> <li>
+     *         <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value
+     *         combination of a tag assigned to the resource. </li> <li>
+     *         <p><code>tag-key</code> - The key of a tag assigned to the resource.
+     *         This filter is independent of the tag-value filter. For example, if
+     *         you use both the filter "tag-key=Purpose" and the filter
+     *         "tag-value=X", you get any resources assigned both the tag key Purpose
+     *         (regardless of what the tag's value is), and the tag value X
+     *         (regardless of what the tag's key is). If you want to list only
+     *         resources where Purpose is X, see the
+     *         <code>tag</code>:<i>key</i>=<i>value</i> filter. </li> <li>
+     *         <p><code>tag-value</code> - The value of a tag assigned to the
+     *         resource. This filter is independent of the <code>tag-key</code>
+     *         filter. </li> <li> <p><code>virtualization-type</code> - The
+     *         virtualization type (<code>paravirtual</code> | <code>hvm</code>).
+     *         </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeImagesRequest> getDryRunRequest() {
+        Request<DescribeImagesRequest> request = new DescribeImagesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -455,10 +901,10 @@ public class DescribeImagesRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getImageIds() != null) sb.append("ImageIds: " + getImageIds() + ",");    	
-        if (getOwners() != null) sb.append("Owners: " + getOwners() + ",");    	
-        if (getExecutableUsers() != null) sb.append("ExecutableUsers: " + getExecutableUsers() + ",");    	
+        sb.append("{");
+        if (getImageIds() != null) sb.append("ImageIds: " + getImageIds() + ",");
+        if (getOwners() != null) sb.append("Owners: " + getOwners() + ",");
+        if (getExecutableUsers() != null) sb.append("ExecutableUsers: " + getExecutableUsers() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,36 +13,68 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.StopInstancesRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#stopInstances(StopInstancesRequest) StopInstances operation}.
  * <p>
- * Stops an instance that uses an Amazon EBS volume as its root device. Instances that use Amazon EBS volumes as their root devices can be quickly
- * stopped and started. When an instance is stopped, the compute resources are released and you are not billed for hourly instance usage. However, your
- * root partition Amazon EBS volume remains, continues to persist your data, and you are charged for Amazon EBS volume usage. You can restart your
- * instance at any time.
+ * Stops an Amazon EBS-backed instance. Each time you transition an
+ * instance from stopped to started, Amazon EC2 charges a full instance
+ * hour, even if transitions happen multiple times within a single hour.
  * </p>
  * <p>
- * <b>NOTE:</b> Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data
- * stored in RAM. Performing this operation on an instance that uses an instance store as its root device returns an error.
+ * You can't start or stop Spot Instances.
+ * </p>
+ * <p>
+ * Instances that use Amazon EBS volumes as their root devices can be
+ * quickly stopped and started. When an instance is stopped, the compute
+ * resources are released and you are not billed for hourly instance
+ * usage. However, your root partition Amazon EBS volume remains,
+ * continues to persist your data, and you are charged for Amazon EBS
+ * volume usage. You can restart your instance at any time.
+ * </p>
+ * <p>
+ * Before stopping an instance, make sure it is in a state from which it
+ * can be restarted. Stopping an instance does not preserve data stored
+ * in RAM.
+ * </p>
+ * <p>
+ * Performing this operation on an instance that uses an instance store
+ * as its root device returns an error.
+ * </p>
+ * <p>
+ * You can stop, start, and terminate EBS-backed instances. You can only
+ * terminate instance store-backed instances. What happens to an instance
+ * differs if you stop it or terminate it. For example, when you stop an
+ * instance, the root device and any other devices attached to the
+ * instance persist. When you terminate an instance, the root device and
+ * any other devices attached during the instance launch are
+ * automatically deleted. For more information about the differences
+ * between stopping and terminating instances, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html"> Instance Lifecycle </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#stopInstances(StopInstancesRequest)
  */
-public class StopInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class StopInstancesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<StopInstancesRequest> {
 
     /**
-     * The list of Amazon EC2 instances to stop.
+     * One or more instance IDs.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     /**
-     * Forces the instance to stop. The instance will not have an opportunity
-     * to flush file system caches nor file system meta data. If you use this
+     * Forces the instances to stop. The instances do not have an opportunity
+     * to flush file system caches or file system metadata. If you use this
      * option, you must perform file system check and repair procedures. This
-     * option is not recommended for Windows instances.
+     * option is not recommended for Windows instances. <p>Default:
+     * <code>false</code>
      */
     private Boolean force;
 
@@ -57,52 +89,49 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param instanceIds The list of Amazon EC2 instances to stop.
+     * @param instanceIds One or more instance IDs.
      */
     public StopInstancesRequest(java.util.List<String> instanceIds) {
-        this.instanceIds = instanceIds;
+        setInstanceIds(instanceIds);
     }
 
-    
-    
     /**
-     * The list of Amazon EC2 instances to stop.
+     * One or more instance IDs.
      *
-     * @return The list of Amazon EC2 instances to stop.
+     * @return One or more instance IDs.
      */
     public java.util.List<String> getInstanceIds() {
-        
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
     
     /**
-     * The list of Amazon EC2 instances to stop.
+     * One or more instance IDs.
      *
-     * @param instanceIds The list of Amazon EC2 instances to stop.
+     * @param instanceIds One or more instance IDs.
      */
     public void setInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
     
     /**
-     * The list of Amazon EC2 instances to stop.
+     * One or more instance IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceIds The list of Amazon EC2 instances to stop.
+     * @param instanceIds One or more instance IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StopInstancesRequest withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -113,92 +142,111 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
     }
     
     /**
-     * The list of Amazon EC2 instances to stop.
+     * One or more instance IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceIds The list of Amazon EC2 instances to stop.
+     * @param instanceIds One or more instance IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StopInstancesRequest withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Forces the instance to stop. The instance will not have an opportunity
-     * to flush file system caches nor file system meta data. If you use this
+     * Forces the instances to stop. The instances do not have an opportunity
+     * to flush file system caches or file system metadata. If you use this
      * option, you must perform file system check and repair procedures. This
-     * option is not recommended for Windows instances.
+     * option is not recommended for Windows instances. <p>Default:
+     * <code>false</code>
      *
-     * @return Forces the instance to stop. The instance will not have an opportunity
-     *         to flush file system caches nor file system meta data. If you use this
+     * @return Forces the instances to stop. The instances do not have an opportunity
+     *         to flush file system caches or file system metadata. If you use this
      *         option, you must perform file system check and repair procedures. This
-     *         option is not recommended for Windows instances.
+     *         option is not recommended for Windows instances. <p>Default:
+     *         <code>false</code>
      */
     public Boolean isForce() {
         return force;
     }
     
     /**
-     * Forces the instance to stop. The instance will not have an opportunity
-     * to flush file system caches nor file system meta data. If you use this
+     * Forces the instances to stop. The instances do not have an opportunity
+     * to flush file system caches or file system metadata. If you use this
      * option, you must perform file system check and repair procedures. This
-     * option is not recommended for Windows instances.
+     * option is not recommended for Windows instances. <p>Default:
+     * <code>false</code>
      *
-     * @param force Forces the instance to stop. The instance will not have an opportunity
-     *         to flush file system caches nor file system meta data. If you use this
+     * @param force Forces the instances to stop. The instances do not have an opportunity
+     *         to flush file system caches or file system metadata. If you use this
      *         option, you must perform file system check and repair procedures. This
-     *         option is not recommended for Windows instances.
+     *         option is not recommended for Windows instances. <p>Default:
+     *         <code>false</code>
      */
     public void setForce(Boolean force) {
         this.force = force;
     }
     
     /**
-     * Forces the instance to stop. The instance will not have an opportunity
-     * to flush file system caches nor file system meta data. If you use this
+     * Forces the instances to stop. The instances do not have an opportunity
+     * to flush file system caches or file system metadata. If you use this
      * option, you must perform file system check and repair procedures. This
-     * option is not recommended for Windows instances.
+     * option is not recommended for Windows instances. <p>Default:
+     * <code>false</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param force Forces the instance to stop. The instance will not have an opportunity
-     *         to flush file system caches nor file system meta data. If you use this
+     * @param force Forces the instances to stop. The instances do not have an opportunity
+     *         to flush file system caches or file system metadata. If you use this
      *         option, you must perform file system check and repair procedures. This
-     *         option is not recommended for Windows instances.
+     *         option is not recommended for Windows instances. <p>Default:
+     *         <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StopInstancesRequest withForce(Boolean force) {
         this.force = force;
         return this;
     }
-    
-    
+
     /**
-     * Forces the instance to stop. The instance will not have an opportunity
-     * to flush file system caches nor file system meta data. If you use this
+     * Forces the instances to stop. The instances do not have an opportunity
+     * to flush file system caches or file system metadata. If you use this
      * option, you must perform file system check and repair procedures. This
-     * option is not recommended for Windows instances.
+     * option is not recommended for Windows instances. <p>Default:
+     * <code>false</code>
      *
-     * @return Forces the instance to stop. The instance will not have an opportunity
-     *         to flush file system caches nor file system meta data. If you use this
+     * @return Forces the instances to stop. The instances do not have an opportunity
+     *         to flush file system caches or file system metadata. If you use this
      *         option, you must perform file system check and repair procedures. This
-     *         option is not recommended for Windows instances.
+     *         option is not recommended for Windows instances. <p>Default:
+     *         <code>false</code>
      */
     public Boolean getForce() {
         return force;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<StopInstancesRequest> getDryRunRequest() {
+        Request<StopInstancesRequest> request = new StopInstancesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -212,8 +260,8 @@ public class StopInstancesRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");    	
+        sb.append("{");
+        if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() + ",");
         if (isForce() != null) sb.append("Force: " + isForce() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeLoadBasedAutoScaling(DescribeLoadBasedAutoScalingRequest) DescribeLoadBasedAutoScaling operation}.
  * <p>
  * Describes load-based auto scaling configurations for specified layers.
  * </p>
+ * <p>
+ * <b>NOTE:</b>You must specify at least one of the parameters.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Show, Deploy, or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeLoadBasedAutoScaling(DescribeLoadBasedAutoScalingRequest)
  */
-public class DescribeLoadBasedAutoScalingRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeLoadBasedAutoScalingRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * An array of layer IDs.
      */
-    private java.util.List<String> layerIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIds;
 
     /**
      * An array of layer IDs.
@@ -37,9 +50,9 @@ public class DescribeLoadBasedAutoScalingRequest extends AmazonWebServiceRequest
      * @return An array of layer IDs.
      */
     public java.util.List<String> getLayerIds() {
-        
         if (layerIds == null) {
-            layerIds = new java.util.ArrayList<String>();
+              layerIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              layerIds.setAutoConstruct(true);
         }
         return layerIds;
     }
@@ -54,8 +67,7 @@ public class DescribeLoadBasedAutoScalingRequest extends AmazonWebServiceRequest
             this.layerIds = null;
             return;
         }
-
-        java.util.List<String> layerIdsCopy = new java.util.ArrayList<String>(layerIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(layerIds.size());
         layerIdsCopy.addAll(layerIds);
         this.layerIds = layerIdsCopy;
     }
@@ -68,7 +80,7 @@ public class DescribeLoadBasedAutoScalingRequest extends AmazonWebServiceRequest
      * @param layerIds An array of layer IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBasedAutoScalingRequest withLayerIds(String... layerIds) {
         if (getLayerIds() == null) setLayerIds(new java.util.ArrayList<String>(layerIds.length));
@@ -86,20 +98,20 @@ public class DescribeLoadBasedAutoScalingRequest extends AmazonWebServiceRequest
      * @param layerIds An array of layer IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBasedAutoScalingRequest withLayerIds(java.util.Collection<String> layerIds) {
         if (layerIds == null) {
             this.layerIds = null;
         } else {
-            java.util.List<String> layerIdsCopy = new java.util.ArrayList<String>(layerIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(layerIds.size());
             layerIdsCopy.addAll(layerIds);
             this.layerIds = layerIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +123,7 @@ public class DescribeLoadBasedAutoScalingRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getLayerIds() != null) sb.append("LayerIds: " + getLayerIds() );
         sb.append("}");
         return sb.toString();

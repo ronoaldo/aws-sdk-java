@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ import com.amazonaws.AmazonServiceException;
  * <p>
  * This exception is thrown when an expected value does not match what was found in the system.
  * </p>
- */        
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException} instead.
+ */
 @Deprecated
 public class ConditionalCheckFailedException extends AmazonServiceException {
     private static final long serialVersionUID = 1L;

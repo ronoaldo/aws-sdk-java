@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeClusterSnapshots action.
  * </p>
  */
-public class DescribeClusterSnapshotsResult  implements Serializable  {
+public class DescribeClusterSnapshotsResult implements Serializable {
 
     /**
      * A marker that indicates the first snapshot that a subsequent
@@ -33,7 +34,7 @@ public class DescribeClusterSnapshotsResult  implements Serializable  {
     /**
      * A list of <a>Snapshot</a> instances.
      */
-    private java.util.List<Snapshot> snapshots;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Snapshot> snapshots;
 
     /**
      * A marker that indicates the first snapshot that a subsequent
@@ -79,23 +80,22 @@ public class DescribeClusterSnapshotsResult  implements Serializable  {
      *         current response can return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSnapshotsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>Snapshot</a> instances.
      *
      * @return A list of <a>Snapshot</a> instances.
      */
     public java.util.List<Snapshot> getSnapshots() {
-        
         if (snapshots == null) {
-            snapshots = new java.util.ArrayList<Snapshot>();
+              snapshots = new com.amazonaws.internal.ListWithAutoConstructFlag<Snapshot>();
+              snapshots.setAutoConstruct(true);
         }
         return snapshots;
     }
@@ -110,8 +110,7 @@ public class DescribeClusterSnapshotsResult  implements Serializable  {
             this.snapshots = null;
             return;
         }
-
-        java.util.List<Snapshot> snapshotsCopy = new java.util.ArrayList<Snapshot>(snapshots.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Snapshot> snapshotsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Snapshot>(snapshots.size());
         snapshotsCopy.addAll(snapshots);
         this.snapshots = snapshotsCopy;
     }
@@ -124,7 +123,7 @@ public class DescribeClusterSnapshotsResult  implements Serializable  {
      * @param snapshots A list of <a>Snapshot</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSnapshotsResult withSnapshots(Snapshot... snapshots) {
         if (getSnapshots() == null) setSnapshots(new java.util.ArrayList<Snapshot>(snapshots.length));
@@ -142,20 +141,20 @@ public class DescribeClusterSnapshotsResult  implements Serializable  {
      * @param snapshots A list of <a>Snapshot</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSnapshotsResult withSnapshots(java.util.Collection<Snapshot> snapshots) {
         if (snapshots == null) {
             this.snapshots = null;
         } else {
-            java.util.List<Snapshot> snapshotsCopy = new java.util.ArrayList<Snapshot>(snapshots.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Snapshot> snapshotsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Snapshot>(snapshots.size());
             snapshotsCopy.addAll(snapshots);
             this.snapshots = snapshotsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -167,8 +166,8 @@ public class DescribeClusterSnapshotsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getSnapshots() != null) sb.append("Snapshots: " + getSnapshots() );
         sb.append("}");
         return sb.toString();

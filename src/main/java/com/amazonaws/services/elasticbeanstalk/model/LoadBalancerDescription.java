@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the details of a LoadBalancer.
  * </p>
  */
-public class LoadBalancerDescription  implements Serializable  {
+public class LoadBalancerDescription implements Serializable {
 
     /**
      * The name of the LoadBalancer.
@@ -35,7 +36,7 @@ public class LoadBalancerDescription  implements Serializable  {
     /**
      * A list of Listeners used by the LoadBalancer.
      */
-    private java.util.List<Listener> listeners;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listeners;
 
     /**
      * The name of the LoadBalancer.
@@ -63,14 +64,13 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param loadBalancerName The name of the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The domain name of the LoadBalancer.
      *
@@ -97,23 +97,22 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param domain The domain name of the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * A list of Listeners used by the LoadBalancer.
      *
      * @return A list of Listeners used by the LoadBalancer.
      */
     public java.util.List<Listener> getListeners() {
-        
         if (listeners == null) {
-            listeners = new java.util.ArrayList<Listener>();
+              listeners = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>();
+              listeners.setAutoConstruct(true);
         }
         return listeners;
     }
@@ -128,8 +127,7 @@ public class LoadBalancerDescription  implements Serializable  {
             this.listeners = null;
             return;
         }
-
-        java.util.List<Listener> listenersCopy = new java.util.ArrayList<Listener>(listeners.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listenersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>(listeners.size());
         listenersCopy.addAll(listeners);
         this.listeners = listenersCopy;
     }
@@ -142,7 +140,7 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param listeners A list of Listeners used by the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withListeners(Listener... listeners) {
         if (getListeners() == null) setListeners(new java.util.ArrayList<Listener>(listeners.length));
@@ -160,20 +158,20 @@ public class LoadBalancerDescription  implements Serializable  {
      * @param listeners A list of Listeners used by the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoadBalancerDescription withListeners(java.util.Collection<Listener> listeners) {
         if (listeners == null) {
             this.listeners = null;
         } else {
-            java.util.List<Listener> listenersCopy = new java.util.ArrayList<Listener>(listeners.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Listener> listenersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Listener>(listeners.size());
             listenersCopy.addAll(listeners);
             this.listeners = listenersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -185,9 +183,9 @@ public class LoadBalancerDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
         if (getListeners() != null) sb.append("Listeners: " + getListeners() );
         sb.append("}");
         return sb.toString();

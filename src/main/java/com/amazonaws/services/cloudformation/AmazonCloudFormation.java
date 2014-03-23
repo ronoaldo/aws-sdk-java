@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,21 +21,31 @@ import com.amazonaws.services.cloudformation.model.*;
 /**
  * Interface for accessing AmazonCloudFormation.
  * AWS CloudFormation <p>
- * AWS CloudFormation enables you to create and manage AWS infrastructure deployments predictably and repeatedly. AWS CloudFormation helps you leverage
- * AWS products such as Amazon EC2, EBS, Amazon SNS, ELB, and Auto Scaling to build highly-reliable, highly scalable, cost effective applications without
- * worrying about creating and configuring the underlying the AWS infrastructure.
+ * AWS CloudFormation enables you to create and manage AWS infrastructure
+ * deployments predictably and repeatedly. AWS CloudFormation helps you
+ * leverage AWS products such as Amazon EC2, EBS, Amazon SNS, ELB, and
+ * Auto Scaling to build highly-reliable, highly scalable, cost effective
+ * applications without worrying about creating and configuring the
+ * underlying AWS infrastructure.
  * </p>
  * <p>
- * With AWS CloudFormation, you declare all of your resources and dependencies in a template file. The template defines a collection of resources as a
- * single unit called a stack. AWS CloudFormation creates and deletes all member resources of the stack together and manages all dependencies between the
- * resources for you.
+ * With AWS CloudFormation, you declare all of your resources and
+ * dependencies in a template file. The template defines a collection of
+ * resources as a single unit called a stack. AWS CloudFormation creates
+ * and deletes all member resources of the stack together and manages all
+ * dependencies between the resources for you.
  * </p>
  * <p>
- * For more information about this product, go to the <a href="http://aws.amazon.com/cloudformation/"> CloudFormation Product Page </a> .
+ * For more information about this product, go to the
+ * <a href="http://aws.amazon.com/cloudformation/"> CloudFormation Product Page </a>
+ * .
  * </p>
  * <p>
- * Amazon CloudFormation makes use of other AWS products. If you need additional technical information about a specific AWS product, you can find the
- * product's technical documentation at <a href="http://aws.amazon.com/documentation/"> http://aws.amazon.com/documentation/ </a> .
+ * Amazon CloudFormation makes use of other AWS products. If you need
+ * additional technical information about a specific AWS product, you can
+ * find the product's technical documentation at
+ * <a href="http://aws.amazon.com/documentation/"> http://aws.amazon.com/documentation/ </a>
+ * .
  * </p>
  */
 public interface AmazonCloudFormation {
@@ -96,7 +106,7 @@ public interface AmazonCloudFormation {
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      */
     public void setRegion(Region region) throws java.lang.IllegalArgumentException;
-	
+    
     /**
      * <p>
      * Validates a specified template.
@@ -147,7 +157,7 @@ public interface AmazonCloudFormation {
 
     /**
      * <p>
-     * Returns the template body for a specified stack name. You can get the
+     * Returns the template body for a specified stack. You can get the
      * template for running or deleted stacks.
      * </p>
      * <p>
@@ -175,6 +185,30 @@ public interface AmazonCloudFormation {
      *             either a problem with the data in the request, or a server side issue.
      */
     public GetTemplateResult getTemplate(GetTemplateRequest getTemplateRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Returns the stack policy for a specified stack. If a stack doesn't
+     * have a policy, a null value is returned.
+     * </p>
+     *
+     * @param getStackPolicyRequest Container for the necessary parameters to
+     *           execute the GetStackPolicy service method on AmazonCloudFormation.
+     * 
+     * @return The response from the GetStackPolicy service method, as
+     *         returned by AmazonCloudFormation.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonCloudFormation indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public GetStackPolicyResult getStackPolicy(GetStackPolicyRequest getStackPolicyRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -239,6 +273,27 @@ public interface AmazonCloudFormation {
 
     /**
      * <p>
+     * Sets a stack policy for a specified stack.
+     * </p>
+     *
+     * @param setStackPolicyRequest Container for the necessary parameters to
+     *           execute the SetStackPolicy service method on AmazonCloudFormation.
+     * 
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonCloudFormation indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void setStackPolicy(SetStackPolicyRequest setStackPolicyRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * Returns the estimated monthly cost of a template. The return value is
      * an AWS Simple Monthly Calculator URL with a query string that
      * describes the resources required to run the template.
@@ -265,13 +320,10 @@ public interface AmazonCloudFormation {
 
     /**
      * <p>
-     * Returns all the stack related events for the AWS account. If
-     * <code>StackName</code> is specified, returns events related to all the
-     * stacks with the given name. If <code>StackName</code> is not
-     * specified, returns all the events for the account. For more
-     * information about a stack's event history, go to the <a
-     * http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">
-     * AWS CloudFormation User Guide </a> .
+     * Returns all stack related events for a specified stack. For more
+     * information about a stack's event history, go to
+     * <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html"> Stacks </a>
+     * in the AWS CloudFormation User Guide.
      * </p>
      * <p>
      * <b>NOTE:</b>Events are returned, even if the stack never existed or
@@ -341,6 +393,7 @@ public interface AmazonCloudFormation {
      *           to execute the CancelUpdateStack service method on
      *           AmazonCloudFormation.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -355,6 +408,108 @@ public interface AmazonCloudFormation {
 
     /**
      * <p>
+     * Updates a stack as specified in the template. After the call completes
+     * successfully, the stack update starts. You can check the status of the
+     * stack via the DescribeStacks action.
+     * </p>
+     * <p>
+     * </p>
+     * <p>
+     * <b>Note: </b> You cannot update
+     * <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html"> AWS::S3::Bucket </a>
+     * resources, for example, to add or modify tags.
+     * </p>
+     * <p>
+     * </p>
+     * <p>
+     * To get a copy of the template for an existing stack, you can use the
+     * GetTemplate action.
+     * </p>
+     * <p>
+     * Tags that were associated with this stack during creation time will
+     * still be associated with the stack after an <code>UpdateStack</code>
+     * operation.
+     * </p>
+     * <p>
+     * For more information about creating an update template, updating a
+     * stack, and monitoring the progress of the update, see
+     * <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html"> Updating a Stack </a>
+     * .
+     * </p>
+     *
+     * @param updateStackRequest Container for the necessary parameters to
+     *           execute the UpdateStack service method on AmazonCloudFormation.
+     * 
+     * @return The response from the UpdateStack service method, as returned
+     *         by AmazonCloudFormation.
+     * 
+     * @throws InsufficientCapabilitiesException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonCloudFormation indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public UpdateStackResult updateStack(UpdateStackRequest updateStackRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Returns AWS resource descriptions for running and deleted stacks. If
+     * <code>StackName</code> is specified, all the associated resources that
+     * are part of the stack are returned. If <code>PhysicalResourceId</code>
+     * is specified, the associated resources of the stack that the resource
+     * belongs to are returned.
+     * </p>
+     * <p>
+     * <b>NOTE:</b>Only the first 100 resources will be returned. If your
+     * stack has more resources than this, you should use ListStackResources
+     * instead.
+     * </p>
+     * <p>
+     * For deleted stacks, <code>DescribeStackResources</code> returns
+     * resource information for up to 90 days after the stack has been
+     * deleted.
+     * </p>
+     * <p>
+     * You must specify either <code>StackName</code> or
+     * <code>PhysicalResourceId</code> , but not both. In addition, you can
+     * specify <code>LogicalResourceId</code> to filter the returned result.
+     * For more information about resources, the
+     * <code>LogicalResourceId</code> and <code>PhysicalResourceId</code> ,
+     * go to the
+     * <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide"> AWS CloudFormation User Guide </a>
+     * .
+     * </p>
+     * <p>
+     * <b>NOTE:</b>A ValidationError is returned if you specify both
+     * StackName and PhysicalResourceId in the same request.
+     * </p>
+     *
+     * @param describeStackResourcesRequest Container for the necessary
+     *           parameters to execute the DescribeStackResources service method on
+     *           AmazonCloudFormation.
+     * 
+     * @return The response from the DescribeStackResources service method,
+     *         as returned by AmazonCloudFormation.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonCloudFormation indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeStackResourcesResult describeStackResources(DescribeStackResourcesRequest describeStackResourcesRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * Deletes a specified stack. Once the call completes successfully, stack
      * deletion starts. Deleted stacks do not show up in the DescribeStacks
      * API if the deletion has been completed successfully.
@@ -362,6 +517,7 @@ public interface AmazonCloudFormation {
      *
      * @param deleteStackRequest Container for the necessary parameters to
      *           execute the DeleteStack service method on AmazonCloudFormation.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -401,99 +557,6 @@ public interface AmazonCloudFormation {
      *             either a problem with the data in the request, or a server side issue.
      */
     public ListStackResourcesResult listStackResources(ListStackResourcesRequest listStackResourcesRequest) 
-            throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
-     * Returns AWS resource descriptions for running and deleted stacks. If
-     * <code>StackName</code> is specified, all the associated resources that
-     * are part of the stack are returned. If <code>PhysicalResourceId</code>
-     * is specified, the associated resources of the stack that the resource
-     * belongs to are returned.
-     * </p>
-     * <p>
-     * <b>NOTE:</b>Only the first 100 resources will be returned. If your
-     * stack has more resources than this, you should use ListStackResources
-     * instead.
-     * </p>
-     * <p>
-     * For deleted stacks, <code>DescribeStackResources</code> returns
-     * resource information for up to 90 days after the stack has been
-     * deleted.
-     * </p>
-     * <p>
-     * You must specify either <code>StackName</code> or
-     * <code>PhysicalResourceId</code> , but not both. In addition, you can
-     * specify <code>LogicalResourceId</code> to filter the returned result.
-     * For more information about resources, the
-     * <code>LogicalResourceId</code> and <code>PhysicalResourceId</code> ,
-     * go to the <a
-     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide">
-     * AWS CloudFormation User Guide </a> .
-     * </p>
-     * <p>
-     * <b>NOTE:</b>A ValidationError is returned if you specify both
-     * StackName and PhysicalResourceId in the same request.
-     * </p>
-     *
-     * @param describeStackResourcesRequest Container for the necessary
-     *           parameters to execute the DescribeStackResources service method on
-     *           AmazonCloudFormation.
-     * 
-     * @return The response from the DescribeStackResources service method,
-     *         as returned by AmazonCloudFormation.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonCloudFormation indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public DescribeStackResourcesResult describeStackResources(DescribeStackResourcesRequest describeStackResourcesRequest) 
-            throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
-     * Updates a stack as specified in the template. After the call completes
-     * successfully, the stack update starts. You can check the status of the
-     * stack via the DescribeStacks action.
-     * </p>
-     * <p>
-     * To get a copy of the template for an existing stack, you can use the
-     * GetTemplate action.
-     * </p>
-     * <p>
-     * Tags that were associated with this stack during creation time will
-     * still be associated with the stack after an <code>UpdateStack</code>
-     * operation.
-     * </p>
-     * <p>
-     * For more information about creating an update template, updating a
-     * stack, and monitoring the progress of the update, see <a
-     * om/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html">
-     * Updating a Stack </a> .
-     * </p>
-     *
-     * @param updateStackRequest Container for the necessary parameters to
-     *           execute the UpdateStack service method on AmazonCloudFormation.
-     * 
-     * @return The response from the UpdateStack service method, as returned
-     *         by AmazonCloudFormation.
-     * 
-     * @throws InsufficientCapabilitiesException
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonCloudFormation indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public UpdateStackResult updateStack(UpdateStackRequest updateStackRequest) 
             throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -562,82 +625,6 @@ public interface AmazonCloudFormation {
     public EstimateTemplateCostResult estimateTemplateCost() throws AmazonServiceException, AmazonClientException;
     
     /**
-     * <p>
-     * Returns all the stack related events for the AWS account. If
-     * <code>StackName</code> is specified, returns events related to all the
-     * stacks with the given name. If <code>StackName</code> is not
-     * specified, returns all the events for the account. For more
-     * information about a stack's event history, go to the <a
-     * http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide">
-     * AWS CloudFormation User Guide </a> .
-     * </p>
-     * <p>
-     * <b>NOTE:</b>Events are returned, even if the stack never existed or
-     * has been successfully deleted.
-     * </p>
-     * 
-     * @return The response from the DescribeStackEvents service method, as
-     *         returned by AmazonCloudFormation.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonCloudFormation indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public DescribeStackEventsResult describeStackEvents() throws AmazonServiceException, AmazonClientException;
-    
-    /**
-     * <p>
-     * Returns AWS resource descriptions for running and deleted stacks. If
-     * <code>StackName</code> is specified, all the associated resources that
-     * are part of the stack are returned. If <code>PhysicalResourceId</code>
-     * is specified, the associated resources of the stack that the resource
-     * belongs to are returned.
-     * </p>
-     * <p>
-     * <b>NOTE:</b>Only the first 100 resources will be returned. If your
-     * stack has more resources than this, you should use ListStackResources
-     * instead.
-     * </p>
-     * <p>
-     * For deleted stacks, <code>DescribeStackResources</code> returns
-     * resource information for up to 90 days after the stack has been
-     * deleted.
-     * </p>
-     * <p>
-     * You must specify either <code>StackName</code> or
-     * <code>PhysicalResourceId</code> , but not both. In addition, you can
-     * specify <code>LogicalResourceId</code> to filter the returned result.
-     * For more information about resources, the
-     * <code>LogicalResourceId</code> and <code>PhysicalResourceId</code> ,
-     * go to the <a
-     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide">
-     * AWS CloudFormation User Guide </a> .
-     * </p>
-     * <p>
-     * <b>NOTE:</b>A ValidationError is returned if you specify both
-     * StackName and PhysicalResourceId in the same request.
-     * </p>
-     * 
-     * @return The response from the DescribeStackResources service method,
-     *         as returned by AmazonCloudFormation.
-     * 
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonCloudFormation indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public DescribeStackResourcesResult describeStackResources() throws AmazonServiceException, AmazonClientException;
-    
-    /**
      * Shuts down this client object, releasing any resources that might be held
      * open. This is an optional method, and callers are not expected to call
      * it, but can if they want to explicitly release any open resources. Once a
@@ -663,6 +650,5 @@ public interface AmazonCloudFormation {
      *         is available.
      */
     public ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
-
 }
         

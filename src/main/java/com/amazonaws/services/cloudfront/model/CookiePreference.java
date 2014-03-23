@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that specifies the cookie preferences associated with this cache behavior.
+ * A complex type that specifies the cookie preferences associated with
+ * this cache behavior.
  * </p>
  */
-public class CookiePreference  implements Serializable  {
+public class CookiePreference implements Serializable {
 
     /**
      * Use this element to specify whether you want CloudFront to forward
@@ -97,7 +99,7 @@ public class CookiePreference  implements Serializable  {
      *         forwards all cookies regardless of how many your application uses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ItemSelection
      */
@@ -105,8 +107,7 @@ public class CookiePreference  implements Serializable  {
         this.forward = forward;
         return this;
     }
-    
-    
+
     /**
      * Use this element to specify whether you want CloudFront to forward
      * cookies to the origin that is associated with this cache behavior. You
@@ -144,7 +145,7 @@ public class CookiePreference  implements Serializable  {
      *         forwards all cookies regardless of how many your application uses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ItemSelection
      */
@@ -152,7 +153,7 @@ public class CookiePreference  implements Serializable  {
         this.forward = forward.toString();
         return this;
     }
-    
+
     /**
      * A complex type that specifies the whitelisted cookies, if any, that
      * you want CloudFront to forward to your origin that is associated with
@@ -191,14 +192,13 @@ public class CookiePreference  implements Serializable  {
      *         this cache behavior.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CookiePreference withWhitelistedNames(CookieNames whitelistedNames) {
         this.whitelistedNames = whitelistedNames;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -210,8 +210,8 @@ public class CookiePreference  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getForward() != null) sb.append("Forward: " + getForward() + ",");    	
+        sb.append("{");
+        if (getForward() != null) sb.append("Forward: " + getForward() + ",");
         if (getWhitelistedNames() != null) sb.append("WhitelistedNames: " + getWhitelistedNames() );
         sb.append("}");
         return sb.toString();

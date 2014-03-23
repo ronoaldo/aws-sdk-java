@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,26 +13,34 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#startGateway(StartGatewayRequest) StartGateway operation}.
  * <p>
- * This operation starts a gateway that you previously shut down (see ShutdownGateway). After the gateway starts, you can then make other API calls, your
- * applications can read from or write to the gateway's storage volumes and you will be able to take snapshot backups.
+ * This operation starts a gateway that you previously shut down (see
+ * ShutdownGateway). After the gateway starts, you can then make other
+ * API calls, your applications can read from or write to the gateway's
+ * storage volumes and you will be able to take snapshot backups.
  * </p>
  * <p>
- * <b>NOTE:</b>When you make a request, you will get a 200 OK success response immediately. However, it might take some time for the gateway to be ready.
- * You should call DescribeGatewayInformation and check the status before making any additional API calls. For more information, see ActivateGateway.
+ * <b>NOTE:</b>When you make a request, you will get a 200 OK success
+ * response immediately. However, it might take some time for the gateway
+ * to be ready. You should call DescribeGatewayInformation and check the
+ * status before making any additional API calls. For more information,
+ * see ActivateGateway.
  * </p>
  * <p>
- * To specify which gateway to start, use the Amazon Resource Name (ARN) of the gateway in your request.
+ * To specify which gateway to start, use the Amazon Resource Name (ARN)
+ * of the gateway in your request.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#startGateway(StartGatewayRequest)
  */
-public class StartGatewayRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class StartGatewayRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -91,14 +99,13 @@ public class StartGatewayRequest extends AmazonWebServiceRequest  implements Ser
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartGatewayRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -110,7 +117,7 @@ public class StartGatewayRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#purchaseReservedNodeOffering(PurchaseReservedNodeOfferingRequest) PurchaseReservedNodeOffering operation}.
  * <p>
- * Allows you to purchase reserved nodes. Amazon Redshift offers a predefined set of reserved node offerings. You can purchase one of the offerings. You
- * can call the DescribeReservedNodeOfferings API to obtain the available reserved node offerings. You can call this API by providing a specific reserved
- * node offering and the number of nodes you want to reserve.
+ * Allows you to purchase reserved nodes. Amazon Redshift offers a
+ * predefined set of reserved node offerings. You can purchase one of the
+ * offerings. You can call the DescribeReservedNodeOfferings API to
+ * obtain the available reserved node offerings. You can call this API by
+ * providing a specific reserved node offering and the number of nodes
+ * you want to reserve.
  * </p>
  * <p>
- * For more information about managing parameter groups, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html"> Purchasing Reserved Nodes </a> in the <i>Amazon Redshift
- * Management Guide</i> .
+ * For more information about managing parameter groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html"> Purchasing Reserved Nodes </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * 
  * 
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#purchaseReservedNodeOffering(PurchaseReservedNodeOfferingRequest)
  */
-public class PurchaseReservedNodeOfferingRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PurchaseReservedNodeOfferingRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The unique identifier of the reserved node offering you want to
@@ -79,14 +84,13 @@ public class PurchaseReservedNodeOfferingRequest extends AmazonWebServiceRequest
      *         purchase.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PurchaseReservedNodeOfferingRequest withReservedNodeOfferingId(String reservedNodeOfferingId) {
         this.reservedNodeOfferingId = reservedNodeOfferingId;
         return this;
     }
-    
-    
+
     /**
      * The number of reserved nodes you want to purchase. <p>Default:
      * <code>1</code>
@@ -119,14 +123,13 @@ public class PurchaseReservedNodeOfferingRequest extends AmazonWebServiceRequest
      *         <code>1</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PurchaseReservedNodeOfferingRequest withNodeCount(Integer nodeCount) {
         this.nodeCount = nodeCount;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +141,8 @@ public class PurchaseReservedNodeOfferingRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedNodeOfferingId() != null) sb.append("ReservedNodeOfferingId: " + getReservedNodeOfferingId() + ",");    	
+        sb.append("{");
+        if (getReservedNodeOfferingId() != null) sb.append("ReservedNodeOfferingId: " + getReservedNodeOfferingId() + ",");
         if (getNodeCount() != null) sb.append("NodeCount: " + getNodeCount() );
         sb.append("}");
         return sb.toString();

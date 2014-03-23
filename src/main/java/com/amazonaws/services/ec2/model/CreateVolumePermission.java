@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,100 +13,160 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * Describes a permission allowing either a user or group to create a new EBS volume from a snapshot.
- * </p>
+ * 
  */
-public class CreateVolumePermission  implements Serializable  {
+public class CreateVolumePermission implements Serializable {
 
     /**
-     * The user ID of the user that can create volumes from the snapshot.
+     * The specific AWS account ID that is to be added or removed from a
+     * volume's list of create volume permissions.
      */
     private String userId;
 
     /**
-     * The group that is allowed to create volumes from the snapshot
-     * (currently supports "all").
+     * The specific group that is to be added or removed from a volume's list
+     * of create volume permissions.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      */
     private String group;
 
     /**
-     * The user ID of the user that can create volumes from the snapshot.
+     * The specific AWS account ID that is to be added or removed from a
+     * volume's list of create volume permissions.
      *
-     * @return The user ID of the user that can create volumes from the snapshot.
+     * @return The specific AWS account ID that is to be added or removed from a
+     *         volume's list of create volume permissions.
      */
     public String getUserId() {
         return userId;
     }
     
     /**
-     * The user ID of the user that can create volumes from the snapshot.
+     * The specific AWS account ID that is to be added or removed from a
+     * volume's list of create volume permissions.
      *
-     * @param userId The user ID of the user that can create volumes from the snapshot.
+     * @param userId The specific AWS account ID that is to be added or removed from a
+     *         volume's list of create volume permissions.
      */
     public void setUserId(String userId) {
         this.userId = userId;
     }
     
     /**
-     * The user ID of the user that can create volumes from the snapshot.
+     * The specific AWS account ID that is to be added or removed from a
+     * volume's list of create volume permissions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param userId The user ID of the user that can create volumes from the snapshot.
+     * @param userId The specific AWS account ID that is to be added or removed from a
+     *         volume's list of create volume permissions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVolumePermission withUserId(String userId) {
         this.userId = userId;
         return this;
     }
-    
-    
+
     /**
-     * The group that is allowed to create volumes from the snapshot
-     * (currently supports "all").
+     * The specific group that is to be added or removed from a volume's list
+     * of create volume permissions.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      *
-     * @return The group that is allowed to create volumes from the snapshot
-     *         (currently supports "all").
+     * @return The specific group that is to be added or removed from a volume's list
+     *         of create volume permissions.
+     *
+     * @see PermissionGroup
      */
     public String getGroup() {
         return group;
     }
     
     /**
-     * The group that is allowed to create volumes from the snapshot
-     * (currently supports "all").
+     * The specific group that is to be added or removed from a volume's list
+     * of create volume permissions.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      *
-     * @param group The group that is allowed to create volumes from the snapshot
-     *         (currently supports "all").
+     * @param group The specific group that is to be added or removed from a volume's list
+     *         of create volume permissions.
+     *
+     * @see PermissionGroup
      */
     public void setGroup(String group) {
         this.group = group;
     }
     
     /**
-     * The group that is allowed to create volumes from the snapshot
-     * (currently supports "all").
+     * The specific group that is to be added or removed from a volume's list
+     * of create volume permissions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
      *
-     * @param group The group that is allowed to create volumes from the snapshot
-     *         (currently supports "all").
+     * @param group The specific group that is to be added or removed from a volume's list
+     *         of create volume permissions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see PermissionGroup
      */
     public CreateVolumePermission withGroup(String group) {
         this.group = group;
         return this;
     }
+
+    /**
+     * The specific group that is to be added or removed from a volume's list
+     * of create volume permissions.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
+     *
+     * @param group The specific group that is to be added or removed from a volume's list
+     *         of create volume permissions.
+     *
+     * @see PermissionGroup
+     */
+    public void setGroup(PermissionGroup group) {
+        this.group = group.toString();
+    }
     
-    
+    /**
+     * The specific group that is to be added or removed from a volume's list
+     * of create volume permissions.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>all
+     *
+     * @param group The specific group that is to be added or removed from a volume's list
+     *         of create volume permissions.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see PermissionGroup
+     */
+    public CreateVolumePermission withGroup(PermissionGroup group) {
+        this.group = group.toString();
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -118,8 +178,8 @@ public class CreateVolumePermission  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");    	
+        sb.append("{");
+        if (getUserId() != null) sb.append("UserId: " + getUserId() + ",");
         if (getGroup() != null) sb.append("Group: " + getGroup() );
         sb.append("}");
         return sb.toString();

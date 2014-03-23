@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeDBInstances action.
+ * Contains the result of a successful invocation of the
+ * DescribeDBInstances action.
  * </p>
  */
-public class DescribeDBInstancesResult  implements Serializable  {
+public class DescribeDBInstancesResult implements Serializable {
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -32,7 +34,7 @@ public class DescribeDBInstancesResult  implements Serializable  {
     /**
      * A list of <a>DBInstance</a> instances.
      */
-    private java.util.List<DBInstance> dBInstances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DBInstance> dBInstances;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -72,23 +74,22 @@ public class DescribeDBInstancesResult  implements Serializable  {
      *         marker, up to the value specified by <code>MaxRecords</code> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBInstancesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>DBInstance</a> instances.
      *
      * @return A list of <a>DBInstance</a> instances.
      */
     public java.util.List<DBInstance> getDBInstances() {
-        
         if (dBInstances == null) {
-            dBInstances = new java.util.ArrayList<DBInstance>();
+              dBInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<DBInstance>();
+              dBInstances.setAutoConstruct(true);
         }
         return dBInstances;
     }
@@ -103,8 +104,7 @@ public class DescribeDBInstancesResult  implements Serializable  {
             this.dBInstances = null;
             return;
         }
-
-        java.util.List<DBInstance> dBInstancesCopy = new java.util.ArrayList<DBInstance>(dBInstances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DBInstance> dBInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBInstance>(dBInstances.size());
         dBInstancesCopy.addAll(dBInstances);
         this.dBInstances = dBInstancesCopy;
     }
@@ -117,7 +117,7 @@ public class DescribeDBInstancesResult  implements Serializable  {
      * @param dBInstances A list of <a>DBInstance</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBInstancesResult withDBInstances(DBInstance... dBInstances) {
         if (getDBInstances() == null) setDBInstances(new java.util.ArrayList<DBInstance>(dBInstances.length));
@@ -135,20 +135,20 @@ public class DescribeDBInstancesResult  implements Serializable  {
      * @param dBInstances A list of <a>DBInstance</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBInstancesResult withDBInstances(java.util.Collection<DBInstance> dBInstances) {
         if (dBInstances == null) {
             this.dBInstances = null;
         } else {
-            java.util.List<DBInstance> dBInstancesCopy = new java.util.ArrayList<DBInstance>(dBInstances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DBInstance> dBInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBInstance>(dBInstances.size());
             dBInstancesCopy.addAll(dBInstances);
             this.dBInstances = dBInstancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class DescribeDBInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getDBInstances() != null) sb.append("DBInstances: " + getDBInstances() );
         sb.append("}");
         return sb.toString();

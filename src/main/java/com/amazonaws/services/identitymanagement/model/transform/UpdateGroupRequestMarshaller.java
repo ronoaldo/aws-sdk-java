@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class UpdateGroupRequestMarshaller implements Marshaller<Request<UpdateGr
     public Request<UpdateGroupRequest> marshall(UpdateGroupRequest updateGroupRequest) {
 
         if (updateGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<UpdateGroupRequest> request = new DefaultRequest<UpdateGroupRequest>(updateGroupRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "UpdateGroup");
@@ -49,7 +49,6 @@ public class UpdateGroupRequestMarshaller implements Marshaller<Request<UpdateGr
         if (updateGroupRequest.getNewGroupName() != null) {
             request.addParameter("NewGroupName", StringUtils.fromString(updateGroupRequest.getNewGroupName()));
         }
-
 
         return request;
     }

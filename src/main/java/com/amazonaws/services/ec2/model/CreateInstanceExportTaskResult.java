@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Create Instance Export Task Result
+ * 
  */
-public class CreateInstanceExportTaskResult  implements Serializable  {
+public class CreateInstanceExportTaskResult implements Serializable {
 
+    /**
+     * 
+     */
     private ExportTask exportTask;
 
     /**
-     * Returns the value of the ExportTask property for this object.
+     * 
      *
-     * @return The value of the ExportTask property for this object.
+     * @return 
      */
     public ExportTask getExportTask() {
         return exportTask;
     }
     
     /**
-     * Sets the value of the ExportTask property for this object.
+     * 
      *
-     * @param exportTask The new value for the ExportTask property for this object.
+     * @param exportTask 
      */
     public void setExportTask(ExportTask exportTask) {
         this.exportTask = exportTask;
     }
     
     /**
-     * Sets the value of the ExportTask property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exportTask The new value for the ExportTask property for this object.
+     * @param exportTask 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInstanceExportTaskResult withExportTask(ExportTask exportTask) {
         this.exportTask = exportTask;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +70,7 @@ public class CreateInstanceExportTaskResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getExportTask() != null) sb.append("ExportTask: " + getExportTask() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeDefaultSearchFieldRequestMarshaller implements Marshaller<R
     public Request<DescribeDefaultSearchFieldRequest> marshall(DescribeDefaultSearchFieldRequest describeDefaultSearchFieldRequest) {
 
         if (describeDefaultSearchFieldRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeDefaultSearchFieldRequest> request = new DefaultRequest<DescribeDefaultSearchFieldRequest>(describeDefaultSearchFieldRequest, "AmazonCloudSearch");
         request.addParameter("Action", "DescribeDefaultSearchField");
@@ -43,7 +43,6 @@ public class DescribeDefaultSearchFieldRequestMarshaller implements Marshaller<R
         if (describeDefaultSearchFieldRequest.getDomainName() != null) {
             request.addParameter("DomainName", StringUtils.fromString(describeDefaultSearchFieldRequest.getDomainName()));
         }
-
 
         return request;
     }

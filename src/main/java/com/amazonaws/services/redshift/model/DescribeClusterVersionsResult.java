@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeClusterVersions action.
  * </p>
  */
-public class DescribeClusterVersionsResult  implements Serializable  {
+public class DescribeClusterVersionsResult implements Serializable {
 
     /**
      * The identifier returned to allow retrieval of paginated results.
@@ -30,7 +31,7 @@ public class DescribeClusterVersionsResult  implements Serializable  {
     /**
      * A list of <code>Version</code> elements.
      */
-    private java.util.List<ClusterVersion> clusterVersions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ClusterVersion> clusterVersions;
 
     /**
      * The identifier returned to allow retrieval of paginated results.
@@ -58,23 +59,22 @@ public class DescribeClusterVersionsResult  implements Serializable  {
      * @param marker The identifier returned to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterVersionsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <code>Version</code> elements.
      *
      * @return A list of <code>Version</code> elements.
      */
     public java.util.List<ClusterVersion> getClusterVersions() {
-        
         if (clusterVersions == null) {
-            clusterVersions = new java.util.ArrayList<ClusterVersion>();
+              clusterVersions = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterVersion>();
+              clusterVersions.setAutoConstruct(true);
         }
         return clusterVersions;
     }
@@ -89,8 +89,7 @@ public class DescribeClusterVersionsResult  implements Serializable  {
             this.clusterVersions = null;
             return;
         }
-
-        java.util.List<ClusterVersion> clusterVersionsCopy = new java.util.ArrayList<ClusterVersion>(clusterVersions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ClusterVersion> clusterVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterVersion>(clusterVersions.size());
         clusterVersionsCopy.addAll(clusterVersions);
         this.clusterVersions = clusterVersionsCopy;
     }
@@ -103,7 +102,7 @@ public class DescribeClusterVersionsResult  implements Serializable  {
      * @param clusterVersions A list of <code>Version</code> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterVersionsResult withClusterVersions(ClusterVersion... clusterVersions) {
         if (getClusterVersions() == null) setClusterVersions(new java.util.ArrayList<ClusterVersion>(clusterVersions.length));
@@ -121,20 +120,20 @@ public class DescribeClusterVersionsResult  implements Serializable  {
      * @param clusterVersions A list of <code>Version</code> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterVersionsResult withClusterVersions(java.util.Collection<ClusterVersion> clusterVersions) {
         if (clusterVersions == null) {
             this.clusterVersions = null;
         } else {
-            java.util.List<ClusterVersion> clusterVersionsCopy = new java.util.ArrayList<ClusterVersion>(clusterVersions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ClusterVersion> clusterVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterVersion>(clusterVersions.size());
             clusterVersionsCopy.addAll(clusterVersions);
             this.clusterVersions = clusterVersionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +145,8 @@ public class DescribeClusterVersionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getClusterVersions() != null) sb.append("ClusterVersions: " + getClusterVersions() );
         sb.append("}");
         return sb.toString();

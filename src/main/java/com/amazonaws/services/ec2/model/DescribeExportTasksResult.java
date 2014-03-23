@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Export Tasks Result
+ * 
  */
-public class DescribeExportTasksResult  implements Serializable  {
-
-    private java.util.List<ExportTask> exportTasks;
+public class DescribeExportTasksResult implements Serializable {
 
     /**
-     * Returns the value of the ExportTasks property for this object.
+     * 
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ExportTask> exportTasks;
+
+    /**
+     * 
      *
-     * @return The value of the ExportTasks property for this object.
+     * @return 
      */
     public java.util.List<ExportTask> getExportTasks() {
-        
         if (exportTasks == null) {
-            exportTasks = new java.util.ArrayList<ExportTask>();
+              exportTasks = new com.amazonaws.internal.ListWithAutoConstructFlag<ExportTask>();
+              exportTasks.setAutoConstruct(true);
         }
         return exportTasks;
     }
     
     /**
-     * Sets the value of the ExportTasks property for this object.
+     * 
      *
-     * @param exportTasks The new value for the ExportTasks property for this object.
+     * @param exportTasks 
      */
     public void setExportTasks(java.util.Collection<ExportTask> exportTasks) {
         if (exportTasks == null) {
             this.exportTasks = null;
             return;
         }
-
-        java.util.List<ExportTask> exportTasksCopy = new java.util.ArrayList<ExportTask>(exportTasks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ExportTask> exportTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ExportTask>(exportTasks.size());
         exportTasksCopy.addAll(exportTasks);
         this.exportTasks = exportTasksCopy;
     }
     
     /**
-     * Sets the value of the ExportTasks property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exportTasks The new value for the ExportTasks property for this object.
+     * @param exportTasks 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeExportTasksResult withExportTasks(ExportTask... exportTasks) {
         if (getExportTasks() == null) setExportTasks(new java.util.ArrayList<ExportTask>(exportTasks.length));
@@ -70,27 +73,27 @@ public class DescribeExportTasksResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ExportTasks property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exportTasks The new value for the ExportTasks property for this object.
+     * @param exportTasks 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeExportTasksResult withExportTasks(java.util.Collection<ExportTask> exportTasks) {
         if (exportTasks == null) {
             this.exportTasks = null;
         } else {
-            java.util.List<ExportTask> exportTasksCopy = new java.util.ArrayList<ExportTask>(exportTasks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ExportTask> exportTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ExportTask>(exportTasks.size());
             exportTasksCopy.addAll(exportTasks);
             this.exportTasks = exportTasksCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeExportTasksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getExportTasks() != null) sb.append("ExportTasks: " + getExportTasks() );
         sb.append("}");
         return sb.toString();

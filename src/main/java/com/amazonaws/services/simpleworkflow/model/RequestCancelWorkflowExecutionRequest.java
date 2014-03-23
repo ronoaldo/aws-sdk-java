@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,46 +13,62 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#requestCancelWorkflowExecution(RequestCancelWorkflowExecutionRequest) RequestCancelWorkflowExecution operation}.
  * <p>
- * Records a <code>WorkflowExecutionCancelRequested</code> event in the currently running workflow execution identified by the given domain, workflowId,
- * and runId. This logically requests the cancellation of the workflow execution as a whole. It is up to the decider to take appropriate actions when it
- * receives an execution history with this event.
+ * Records a <code>WorkflowExecutionCancelRequested</code> event in the
+ * currently running workflow execution identified by the given domain,
+ * workflowId, and runId. This logically requests the cancellation of the
+ * workflow execution as a whole. It is up to the decider to take
+ * appropriate actions when it receives an execution history with this
+ * event.
  * </p>
  * <p>
- * <b>NOTE:</b> If the runId is not specified, the WorkflowExecutionCancelRequested event is recorded in the history of the current open workflow
- * execution with the specified workflowId in the domain.
+ * <b>NOTE:</b> If the runId is not specified, the
+ * WorkflowExecutionCancelRequested event is recorded in the history of
+ * the current open workflow execution with the specified workflowId in
+ * the domain.
  * </p>
  * <p>
- * <b>NOTE:</b> Because this action allows the workflow to properly clean up and gracefully close, it should be used instead of
+ * <b>NOTE:</b> Because this action allows the workflow to properly clean
+ * up and gracefully close, it should be used instead of
  * TerminateWorkflowExecution when possible.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#requestCancelWorkflowExecution(RequestCancelWorkflowExecutionRequest)
  */
-public class RequestCancelWorkflowExecutionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RequestCancelWorkflowExecutionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain containing the workflow execution to cancel.
@@ -113,14 +129,13 @@ public class RequestCancelWorkflowExecutionRequest extends AmazonWebServiceReque
      * @param domain The name of the domain containing the workflow execution to cancel.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelWorkflowExecutionRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * The workflowId of the workflow execution to cancel.
      * <p>
@@ -156,14 +171,13 @@ public class RequestCancelWorkflowExecutionRequest extends AmazonWebServiceReque
      * @param workflowId The workflowId of the workflow execution to cancel.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelWorkflowExecutionRequest withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The runId of the workflow execution to cancel.
      * <p>
@@ -199,14 +213,13 @@ public class RequestCancelWorkflowExecutionRequest extends AmazonWebServiceReque
      * @param runId The runId of the workflow execution to cancel.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelWorkflowExecutionRequest withRunId(String runId) {
         this.runId = runId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -218,9 +231,9 @@ public class RequestCancelWorkflowExecutionRequest extends AmazonWebServiceReque
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
         if (getRunId() != null) sb.append("RunId: " + getRunId() );
         sb.append("}");
         return sb.toString();

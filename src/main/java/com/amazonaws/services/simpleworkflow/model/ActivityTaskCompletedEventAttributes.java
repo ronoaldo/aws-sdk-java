@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>ActivityTaskCompleted</code> event.
  * </p>
  */
-public class ActivityTaskCompletedEventAttributes  implements Serializable  {
+public class ActivityTaskCompletedEventAttributes implements Serializable {
 
     /**
      * The results of the activity task (if any).
@@ -81,14 +82,13 @@ public class ActivityTaskCompletedEventAttributes  implements Serializable  {
      * @param result The results of the activity task (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCompletedEventAttributes withResult(String result) {
         this.result = result;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>ActivityTaskScheduled</code> event that was
      * recorded when this activity task was scheduled. This information can
@@ -133,14 +133,13 @@ public class ActivityTaskCompletedEventAttributes  implements Serializable  {
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCompletedEventAttributes withScheduledEventId(Long scheduledEventId) {
         this.scheduledEventId = scheduledEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>ActivityTaskStarted</code> event recorded when
      * this activity task was started. This information can be useful for
@@ -185,14 +184,13 @@ public class ActivityTaskCompletedEventAttributes  implements Serializable  {
      *         this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskCompletedEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -204,9 +202,9 @@ public class ActivityTaskCompletedEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResult() != null) sb.append("Result: " + getResult() + ",");    	
-        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");    	
+        sb.append("{");
+        if (getResult() != null) sb.append("Result: " + getResult() + ",");
+        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");
         if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() );
         sb.append("}");
         return sb.toString();

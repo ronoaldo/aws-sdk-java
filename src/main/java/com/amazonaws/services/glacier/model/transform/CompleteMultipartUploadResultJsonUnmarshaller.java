@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,21 +22,16 @@ import com.amazonaws.services.glacier.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Complete Multipart Upload Result JSON Unmarshaller
  */
 public class CompleteMultipartUploadResultJsonUnmarshaller implements Unmarshaller<CompleteMultipartUploadResult, JsonUnmarshallerContext> {
 
-    
-
     public CompleteMultipartUploadResult unmarshall(JsonUnmarshallerContext context) throws Exception {
         CompleteMultipartUploadResult completeMultipartUploadResult = new CompleteMultipartUploadResult();
-
-        
-        
 
         if (context.isStartOfDocument()) {
             if (context.getHeader("Location") != null)

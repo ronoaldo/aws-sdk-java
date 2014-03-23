@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import java.io.Serializable;
  * Allows you to provide an attribute name, and whether or not Amazon DynamoDB should check to see if the attribute value already exists; or if the
  * attribute value exists and has a particular value before changing it.
  * </p>
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue} instead.
  */
 @Deprecated
 public class ExpectedAttributeValue  implements Serializable  {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the members of a VPC security group.
  * </p>
  */
-public class VpcSecurityGroupMembership  implements Serializable  {
+public class VpcSecurityGroupMembership implements Serializable {
 
     /**
      * 
@@ -58,14 +59,13 @@ public class VpcSecurityGroupMembership  implements Serializable  {
      * @param vpcSecurityGroupId 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpcSecurityGroupMembership withVpcSecurityGroupId(String vpcSecurityGroupId) {
         this.vpcSecurityGroupId = vpcSecurityGroupId;
         return this;
     }
-    
-    
+
     /**
      * 
      *
@@ -92,14 +92,13 @@ public class VpcSecurityGroupMembership  implements Serializable  {
      * @param status 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpcSecurityGroupMembership withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class VpcSecurityGroupMembership  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpcSecurityGroupId() != null) sb.append("VpcSecurityGroupId: " + getVpcSecurityGroupId() + ",");    	
+        sb.append("{");
+        if (getVpcSecurityGroupId() != null) sb.append("VpcSecurityGroupId: " + getVpcSecurityGroupId() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

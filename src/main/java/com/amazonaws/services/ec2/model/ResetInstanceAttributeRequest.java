@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,42 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ResetInstanceAttributeRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#resetInstanceAttribute(ResetInstanceAttributeRequest) ResetInstanceAttribute operation}.
  * <p>
- * Resets an attribute of an instance to its default value.
+ * Resets an attribute of an instance to its default value. To reset the
+ * kernel or RAM disk, the instance must be in a stopped state. To reset
+ * the <code>SourceDestCheck</code> , the instance can be either running
+ * or stopped.
+ * </p>
+ * <p>
+ * The <code>SourceDestCheck</code> attribute controls whether
+ * source/destination checking is enabled. The default value is
+ * <code>true</code> , which means checking is enabled. This value must
+ * be <code>false</code> for a NAT instance to perform NAT. For more
+ * information, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html"> NAT Instances </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#resetInstanceAttribute(ResetInstanceAttributeRequest)
  */
-public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ResetInstanceAttributeRequest> {
 
     /**
-     * The ID of the Amazon EC2 instance whose attribute is being reset.
+     * The ID of the instance.
      */
     private String instanceId;
 
     /**
-     * The name of the attribute being reset. <p> Available attribute names:
-     * <code>kernel</code>, <code>ramdisk</code>
+     * The attribute to reset.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>instanceType, kernel, ramdisk, userData, disableApiTermination, instanceInitiatedShutdownBehavior, rootDeviceName, blockDeviceMapping, productCodes, sourceDestCheck, groupSet, ebsOptimized
@@ -51,76 +66,67 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param instanceId The ID of the Amazon EC2 instance whose attribute is
-     * being reset.
-     * @param attribute The name of the attribute being reset. <p> Available
-     * attribute names: <code>kernel</code>, <code>ramdisk</code>
+     * @param instanceId The ID of the instance.
+     * @param attribute The attribute to reset.
      */
     public ResetInstanceAttributeRequest(String instanceId, String attribute) {
-        this.instanceId = instanceId;
-        this.attribute = attribute;
+        setInstanceId(instanceId);
+        setAttribute(attribute);
     }
 
-    
-    
     /**
      * Constructs a new ResetInstanceAttributeRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param instanceId The ID of the Amazon EC2 instance whose attribute is
-     * being reset.
-     * @param attribute The name of the attribute being reset. <p> Available
-     * attribute names: <code>kernel</code>, <code>ramdisk</code>
+     * @param instanceId The ID of the instance.
+     * @param attribute The attribute to reset.
      */
     public ResetInstanceAttributeRequest(String instanceId, InstanceAttributeName attribute) {
         this.instanceId = instanceId;
         this.attribute = attribute.toString();
     }
-    
+
     /**
-     * The ID of the Amazon EC2 instance whose attribute is being reset.
+     * The ID of the instance.
      *
-     * @return The ID of the Amazon EC2 instance whose attribute is being reset.
+     * @return The ID of the instance.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * The ID of the Amazon EC2 instance whose attribute is being reset.
+     * The ID of the instance.
      *
-     * @param instanceId The ID of the Amazon EC2 instance whose attribute is being reset.
+     * @param instanceId The ID of the instance.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * The ID of the Amazon EC2 instance whose attribute is being reset.
+     * The ID of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The ID of the Amazon EC2 instance whose attribute is being reset.
+     * @param instanceId The ID of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetInstanceAttributeRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * The name of the attribute being reset. <p> Available attribute names:
-     * <code>kernel</code>, <code>ramdisk</code>
+     * The attribute to reset.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>instanceType, kernel, ramdisk, userData, disableApiTermination, instanceInitiatedShutdownBehavior, rootDeviceName, blockDeviceMapping, productCodes, sourceDestCheck, groupSet, ebsOptimized
      *
-     * @return The name of the attribute being reset. <p> Available attribute names:
-     *         <code>kernel</code>, <code>ramdisk</code>
+     * @return The attribute to reset.
      *
      * @see InstanceAttributeName
      */
@@ -129,14 +135,12 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The name of the attribute being reset. <p> Available attribute names:
-     * <code>kernel</code>, <code>ramdisk</code>
+     * The attribute to reset.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>instanceType, kernel, ramdisk, userData, disableApiTermination, instanceInitiatedShutdownBehavior, rootDeviceName, blockDeviceMapping, productCodes, sourceDestCheck, groupSet, ebsOptimized
      *
-     * @param attribute The name of the attribute being reset. <p> Available attribute names:
-     *         <code>kernel</code>, <code>ramdisk</code>
+     * @param attribute The attribute to reset.
      *
      * @see InstanceAttributeName
      */
@@ -145,19 +149,17 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The name of the attribute being reset. <p> Available attribute names:
-     * <code>kernel</code>, <code>ramdisk</code>
+     * The attribute to reset.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>instanceType, kernel, ramdisk, userData, disableApiTermination, instanceInitiatedShutdownBehavior, rootDeviceName, blockDeviceMapping, productCodes, sourceDestCheck, groupSet, ebsOptimized
      *
-     * @param attribute The name of the attribute being reset. <p> Available attribute names:
-     *         <code>kernel</code>, <code>ramdisk</code>
+     * @param attribute The attribute to reset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
@@ -165,17 +167,14 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
         this.attribute = attribute;
         return this;
     }
-    
-    
+
     /**
-     * The name of the attribute being reset. <p> Available attribute names:
-     * <code>kernel</code>, <code>ramdisk</code>
+     * The attribute to reset.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>instanceType, kernel, ramdisk, userData, disableApiTermination, instanceInitiatedShutdownBehavior, rootDeviceName, blockDeviceMapping, productCodes, sourceDestCheck, groupSet, ebsOptimized
      *
-     * @param attribute The name of the attribute being reset. <p> Available attribute names:
-     *         <code>kernel</code>, <code>ramdisk</code>
+     * @param attribute The attribute to reset.
      *
      * @see InstanceAttributeName
      */
@@ -184,25 +183,35 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * The name of the attribute being reset. <p> Available attribute names:
-     * <code>kernel</code>, <code>ramdisk</code>
+     * The attribute to reset.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>instanceType, kernel, ramdisk, userData, disableApiTermination, instanceInitiatedShutdownBehavior, rootDeviceName, blockDeviceMapping, productCodes, sourceDestCheck, groupSet, ebsOptimized
      *
-     * @param attribute The name of the attribute being reset. <p> Available attribute names:
-     *         <code>kernel</code>, <code>ramdisk</code>
+     * @param attribute The attribute to reset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceAttributeName
      */
     public ResetInstanceAttributeRequest withAttribute(InstanceAttributeName attribute) {
         this.attribute = attribute.toString();
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ResetInstanceAttributeRequest> getDryRunRequest() {
+        Request<ResetInstanceAttributeRequest> request = new ResetInstanceAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -216,8 +225,8 @@ public class ResetInstanceAttributeRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getAttribute() != null) sb.append("Attribute: " + getAttribute() );
         sb.append("}");
         return sb.toString();

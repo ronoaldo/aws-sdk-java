@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpledb.AmazonSimpleDB#createDomain(CreateDomainRequest) CreateDomain operation}.
  * <p>
- * The <code>CreateDomain</code> operation creates a new domain. The domain name should be unique among the domains associated with the Access Key ID
- * provided in the request. The <code>CreateDomain</code> operation may take 10 or more seconds to complete.
+ * The <code>CreateDomain</code> operation creates a new domain. The
+ * domain name should be unique among the domains associated with the
+ * Access Key ID provided in the request. The <code>CreateDomain</code>
+ * operation may take 10 or more seconds to complete.
  * </p>
  * <p>
- * <b>NOTE:</b> CreateDomain is an idempotent operation; running it multiple times using the same domain name will not result in an error response.
+ * <b>NOTE:</b> CreateDomain is an idempotent operation; running it
+ * multiple times using the same domain name will not result in an error
+ * response.
  * </p>
  * <p>
  * The client can create up to 100 domains per account.
  * </p>
  * <p>
- * If the client requires additional domains, go to <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
- * http://aws.amazon.com/contact-us/simpledb-limit-request/ </a> .
+ * If the client requires additional domains, go to
+ * <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/"> http://aws.amazon.com/contact-us/simpledb-limit-request/ </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#createDomain(CreateDomainRequest)
  */
-public class CreateDomainRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateDomainRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain to create. The name can range between 3 and 255
@@ -60,11 +67,9 @@ public class CreateDomainRequest extends AmazonWebServiceRequest  implements Ser
      * a-z, A-Z, 0-9, '_', '-', and '.'.
      */
     public CreateDomainRequest(String domainName) {
-        this.domainName = domainName;
+        setDomainName(domainName);
     }
 
-    
-    
     /**
      * The name of the domain to create. The name can range between 3 and 255
      * characters and can contain the following characters: a-z, A-Z, 0-9,
@@ -103,14 +108,13 @@ public class CreateDomainRequest extends AmazonWebServiceRequest  implements Ser
      *         '_', '-', and '.'.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateDomainRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -122,7 +126,7 @@ public class CreateDomainRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomainName() != null) sb.append("DomainName: " + getDomainName() );
         sb.append("}");
         return sb.toString();

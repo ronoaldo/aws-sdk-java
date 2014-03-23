@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#restartAppServer(RestartAppServerRequest) RestartAppServer operation}.
  * <p>
- * Causes the environment to restart the application container server running on each Amazon EC2 instance.
+ * Causes the environment to restart the application container server
+ * running on each Amazon EC2 instance.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#restartAppServer(RestartAppServerRequest)
  */
-public class RestartAppServerRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RestartAppServerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the environment to restart the server for. <p> Condition:
@@ -95,14 +98,13 @@ public class RestartAppServerRequest extends AmazonWebServiceRequest  implements
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RestartAppServerRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment to restart the server for. <p> Condition:
      * You must specify either this or an EnvironmentId, or both. If you do
@@ -156,14 +158,13 @@ public class RestartAppServerRequest extends AmazonWebServiceRequest  implements
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RestartAppServerRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -175,8 +176,8 @@ public class RestartAppServerRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
+        sb.append("{");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
         if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() );
         sb.append("}");
         return sb.toString();

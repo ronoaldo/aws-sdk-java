@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,85 +13,92 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Iam Instance Profile
+ * <p>
+ * Describes an IAM instance profile.
+ * </p>
  */
-public class IamInstanceProfile  implements Serializable  {
+public class IamInstanceProfile implements Serializable {
 
+    /**
+     * The Amazon Resource Name (ARN) of the instance profile.
+     */
     private String arn;
 
+    /**
+     * The ID of the instance profile.
+     */
     private String id;
 
     /**
-     * Returns the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) of the instance profile.
      *
-     * @return The value of the Arn property for this object.
+     * @return The Amazon Resource Name (ARN) of the instance profile.
      */
     public String getArn() {
         return arn;
     }
     
     /**
-     * Sets the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) of the instance profile.
      *
-     * @param arn The new value for the Arn property for this object.
+     * @param arn The Amazon Resource Name (ARN) of the instance profile.
      */
     public void setArn(String arn) {
         this.arn = arn;
     }
     
     /**
-     * Sets the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) of the instance profile.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param arn The new value for the Arn property for this object.
+     * @param arn The Amazon Resource Name (ARN) of the instance profile.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IamInstanceProfile withArn(String arn) {
         this.arn = arn;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Id property for this object.
+     * The ID of the instance profile.
      *
-     * @return The value of the Id property for this object.
+     * @return The ID of the instance profile.
      */
     public String getId() {
         return id;
     }
     
     /**
-     * Sets the value of the Id property for this object.
+     * The ID of the instance profile.
      *
-     * @param id The new value for the Id property for this object.
+     * @param id The ID of the instance profile.
      */
     public void setId(String id) {
         this.id = id;
     }
     
     /**
-     * Sets the value of the Id property for this object.
+     * The ID of the instance profile.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param id The new value for the Id property for this object.
+     * @param id The ID of the instance profile.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IamInstanceProfile withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,8 +110,8 @@ public class IamInstanceProfile  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getArn() != null) sb.append("Arn: " + getArn() + ",");    	
+        sb.append("{");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
         if (getId() != null) sb.append("Id: " + getId() );
         sb.append("}");
         return sb.toString();

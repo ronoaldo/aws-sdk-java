@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for ValidateTemplate action.
  * </p>
  */
-public class ValidateTemplateResult  implements Serializable  {
+public class ValidateTemplateResult implements Serializable {
 
     /**
      * A list of <code>TemplateParameter</code> structures.
      */
-    private java.util.List<TemplateParameter> parameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<TemplateParameter> parameters;
 
     /**
      * The description found within the template.
@@ -33,14 +34,14 @@ public class ValidateTemplateResult  implements Serializable  {
     private String description;
 
     /**
-     * The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * The capabilities found within the template. Currently, CAPABILITY_IAM
      * is the only capability detected. If your template contains IAM
      * resources, you must specify the CAPABILITY_IAM value for this
      * parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
      * actions with your template; otherwise, those actions return an
      * InsufficientCapabilities error.
      */
-    private java.util.List<String> capabilities;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> capabilities;
 
     /**
      * The capabilities reason found within the template.
@@ -53,9 +54,9 @@ public class ValidateTemplateResult  implements Serializable  {
      * @return A list of <code>TemplateParameter</code> structures.
      */
     public java.util.List<TemplateParameter> getParameters() {
-        
         if (parameters == null) {
-            parameters = new java.util.ArrayList<TemplateParameter>();
+              parameters = new com.amazonaws.internal.ListWithAutoConstructFlag<TemplateParameter>();
+              parameters.setAutoConstruct(true);
         }
         return parameters;
     }
@@ -70,8 +71,7 @@ public class ValidateTemplateResult  implements Serializable  {
             this.parameters = null;
             return;
         }
-
-        java.util.List<TemplateParameter> parametersCopy = new java.util.ArrayList<TemplateParameter>(parameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<TemplateParameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TemplateParameter>(parameters.size());
         parametersCopy.addAll(parameters);
         this.parameters = parametersCopy;
     }
@@ -84,7 +84,7 @@ public class ValidateTemplateResult  implements Serializable  {
      * @param parameters A list of <code>TemplateParameter</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateTemplateResult withParameters(TemplateParameter... parameters) {
         if (getParameters() == null) setParameters(new java.util.ArrayList<TemplateParameter>(parameters.length));
@@ -102,20 +102,20 @@ public class ValidateTemplateResult  implements Serializable  {
      * @param parameters A list of <code>TemplateParameter</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateTemplateResult withParameters(java.util.Collection<TemplateParameter> parameters) {
         if (parameters == null) {
             this.parameters = null;
         } else {
-            java.util.List<TemplateParameter> parametersCopy = new java.util.ArrayList<TemplateParameter>(parameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<TemplateParameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TemplateParameter>(parameters.size());
             parametersCopy.addAll(parameters);
             this.parameters = parametersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The description found within the template.
      *
@@ -142,23 +142,22 @@ public class ValidateTemplateResult  implements Serializable  {
      * @param description The description found within the template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateTemplateResult withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * The capabilities found within the template. Currently, CAPABILITY_IAM
      * is the only capability detected. If your template contains IAM
      * resources, you must specify the CAPABILITY_IAM value for this
      * parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
      * actions with your template; otherwise, those actions return an
      * InsufficientCapabilities error.
      *
-     * @return The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * @return The capabilities found within the template. Currently, CAPABILITY_IAM
      *         is the only capability detected. If your template contains IAM
      *         resources, you must specify the CAPABILITY_IAM value for this
      *         parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
@@ -166,22 +165,22 @@ public class ValidateTemplateResult  implements Serializable  {
      *         InsufficientCapabilities error.
      */
     public java.util.List<String> getCapabilities() {
-        
         if (capabilities == null) {
-            capabilities = new java.util.ArrayList<String>();
+              capabilities = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              capabilities.setAutoConstruct(true);
         }
         return capabilities;
     }
     
     /**
-     * The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * The capabilities found within the template. Currently, CAPABILITY_IAM
      * is the only capability detected. If your template contains IAM
      * resources, you must specify the CAPABILITY_IAM value for this
      * parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
      * actions with your template; otherwise, those actions return an
      * InsufficientCapabilities error.
      *
-     * @param capabilities The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * @param capabilities The capabilities found within the template. Currently, CAPABILITY_IAM
      *         is the only capability detected. If your template contains IAM
      *         resources, you must specify the CAPABILITY_IAM value for this
      *         parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
@@ -193,14 +192,13 @@ public class ValidateTemplateResult  implements Serializable  {
             this.capabilities = null;
             return;
         }
-
-        java.util.List<String> capabilitiesCopy = new java.util.ArrayList<String>(capabilities.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> capabilitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(capabilities.size());
         capabilitiesCopy.addAll(capabilities);
         this.capabilities = capabilitiesCopy;
     }
     
     /**
-     * The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * The capabilities found within the template. Currently, CAPABILITY_IAM
      * is the only capability detected. If your template contains IAM
      * resources, you must specify the CAPABILITY_IAM value for this
      * parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
@@ -209,7 +207,7 @@ public class ValidateTemplateResult  implements Serializable  {
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param capabilities The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * @param capabilities The capabilities found within the template. Currently, CAPABILITY_IAM
      *         is the only capability detected. If your template contains IAM
      *         resources, you must specify the CAPABILITY_IAM value for this
      *         parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
@@ -217,7 +215,7 @@ public class ValidateTemplateResult  implements Serializable  {
      *         InsufficientCapabilities error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateTemplateResult withCapabilities(String... capabilities) {
         if (getCapabilities() == null) setCapabilities(new java.util.ArrayList<String>(capabilities.length));
@@ -228,7 +226,7 @@ public class ValidateTemplateResult  implements Serializable  {
     }
     
     /**
-     * The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * The capabilities found within the template. Currently, CAPABILITY_IAM
      * is the only capability detected. If your template contains IAM
      * resources, you must specify the CAPABILITY_IAM value for this
      * parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
@@ -237,7 +235,7 @@ public class ValidateTemplateResult  implements Serializable  {
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param capabilities The capabitilites found within the template. Currently, CAPABILITY_IAM
+     * @param capabilities The capabilities found within the template. Currently, CAPABILITY_IAM
      *         is the only capability detected. If your template contains IAM
      *         resources, you must specify the CAPABILITY_IAM value for this
      *         parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
@@ -245,20 +243,53 @@ public class ValidateTemplateResult  implements Serializable  {
      *         InsufficientCapabilities error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateTemplateResult withCapabilities(java.util.Collection<String> capabilities) {
         if (capabilities == null) {
             this.capabilities = null;
         } else {
-            java.util.List<String> capabilitiesCopy = new java.util.ArrayList<String>(capabilities.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> capabilitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(capabilities.size());
             capabilitiesCopy.addAll(capabilities);
             this.capabilities = capabilitiesCopy;
         }
 
         return this;
     }
-    
+
+    /**
+     * The capabilities found within the template. Currently, CAPABILITY_IAM
+     * is the only capability detected. If your template contains IAM
+     * resources, you must specify the CAPABILITY_IAM value for this
+     * parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
+     * actions with your template; otherwise, those actions return an
+     * InsufficientCapabilities error.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param capabilities The capabilities found within the template. Currently, CAPABILITY_IAM
+     *         is the only capability detected. If your template contains IAM
+     *         resources, you must specify the CAPABILITY_IAM value for this
+     *         parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a>
+     *         actions with your template; otherwise, those actions return an
+     *         InsufficientCapabilities error.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ValidateTemplateResult withCapabilities(Capability... capabilities) {
+        java.util.ArrayList<String> capabilitiesCopy = new java.util.ArrayList<String>(capabilities.length);
+        for (Capability member : capabilities) {
+            capabilitiesCopy.add(member.toString());
+        }
+        if (getCapabilities() == null) {
+            setCapabilities(capabilitiesCopy);
+        } else {
+            getCapabilities().addAll(capabilitiesCopy);
+        }
+        return this;
+    }
+
     /**
      * The capabilities reason found within the template.
      *
@@ -285,14 +316,13 @@ public class ValidateTemplateResult  implements Serializable  {
      * @param capabilitiesReason The capabilities reason found within the template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateTemplateResult withCapabilitiesReason(String capabilitiesReason) {
         this.capabilitiesReason = capabilitiesReason;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -304,10 +334,10 @@ public class ValidateTemplateResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameters() != null) sb.append("Parameters: " + getParameters() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getCapabilities() != null) sb.append("Capabilities: " + getCapabilities() + ",");    	
+        sb.append("{");
+        if (getParameters() != null) sb.append("Parameters: " + getParameters() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getCapabilities() != null) sb.append("Capabilities: " + getCapabilities() + ",");
         if (getCapabilitiesReason() != null) sb.append("CapabilitiesReason: " + getCapabilitiesReason() );
         sb.append("}");
         return sb.toString();

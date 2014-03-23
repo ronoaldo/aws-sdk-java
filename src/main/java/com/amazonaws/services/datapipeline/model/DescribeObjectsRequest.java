@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#describeObjects(DescribeObjectsRequest) DescribeObjects operation}.
  * <p>
- * Returns the object definitions for a set of objects associated with the pipeline. Object definitions are composed of a set of fields that define the
- * properties of the object.
+ * Returns the object definitions for a set of objects associated with
+ * the pipeline. Object definitions are composed of a set of fields that
+ * define the properties of the object.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#describeObjects(DescribeObjectsRequest)
  */
-public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeObjectsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Identifier of the pipeline that contains the object definitions.
@@ -41,7 +44,7 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
      * described. You can pass as many as 25 identifiers in a single call to
      * DescribeObjects.
      */
-    private java.util.List<String> objectIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> objectIds;
 
     /**
      * Indicates whether any expressions in the object should be evaluated
@@ -100,14 +103,13 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
      * @param pipelineId Identifier of the pipeline that contains the object definitions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * Identifiers of the pipeline objects that contain the definitions to be
      * described. You can pass as many as 25 identifiers in a single call to
@@ -118,9 +120,9 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
      *         DescribeObjects.
      */
     public java.util.List<String> getObjectIds() {
-        
         if (objectIds == null) {
-            objectIds = new java.util.ArrayList<String>();
+              objectIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              objectIds.setAutoConstruct(true);
         }
         return objectIds;
     }
@@ -139,8 +141,7 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
             this.objectIds = null;
             return;
         }
-
-        java.util.List<String> objectIdsCopy = new java.util.ArrayList<String>(objectIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> objectIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(objectIds.size());
         objectIdsCopy.addAll(objectIds);
         this.objectIds = objectIdsCopy;
     }
@@ -157,7 +158,7 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
      *         DescribeObjects.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsRequest withObjectIds(String... objectIds) {
         if (getObjectIds() == null) setObjectIds(new java.util.ArrayList<String>(objectIds.length));
@@ -179,20 +180,20 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
      *         DescribeObjects.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsRequest withObjectIds(java.util.Collection<String> objectIds) {
         if (objectIds == null) {
             this.objectIds = null;
         } else {
-            java.util.List<String> objectIdsCopy = new java.util.ArrayList<String>(objectIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> objectIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(objectIds.size());
             objectIdsCopy.addAll(objectIds);
             this.objectIds = objectIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Indicates whether any expressions in the object should be evaluated
      * when the object descriptions are returned.
@@ -225,14 +226,13 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
      *         when the object descriptions are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsRequest withEvaluateExpressions(Boolean evaluateExpressions) {
         this.evaluateExpressions = evaluateExpressions;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether any expressions in the object should be evaluated
      * when the object descriptions are returned.
@@ -243,7 +243,7 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
     public Boolean getEvaluateExpressions() {
         return evaluateExpressions;
     }
-    
+
     /**
      * The starting point for the results to be returned. The first time you
      * call <a>DescribeObjects</a>, this value should be empty. As long as
@@ -306,14 +306,13 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
      *         from the response to retrieve the next set of results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -325,10 +324,10 @@ public class DescribeObjectsRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getObjectIds() != null) sb.append("ObjectIds: " + getObjectIds() + ",");    	
-        if (isEvaluateExpressions() != null) sb.append("EvaluateExpressions: " + isEvaluateExpressions() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getObjectIds() != null) sb.append("ObjectIds: " + getObjectIds() + ",");
+        if (isEvaluateExpressions() != null) sb.append("EvaluateExpressions: " + isEvaluateExpressions() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

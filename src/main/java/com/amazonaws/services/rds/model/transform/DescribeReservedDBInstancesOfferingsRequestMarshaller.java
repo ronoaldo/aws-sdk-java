@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeReservedDBInstancesOfferingsRequestMarshaller implements Ma
     public Request<DescribeReservedDBInstancesOfferingsRequest> marshall(DescribeReservedDBInstancesOfferingsRequest describeReservedDBInstancesOfferingsRequest) {
 
         if (describeReservedDBInstancesOfferingsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeReservedDBInstancesOfferingsRequest> request = new DefaultRequest<DescribeReservedDBInstancesOfferingsRequest>(describeReservedDBInstancesOfferingsRequest, "AmazonRDS");
         request.addParameter("Action", "DescribeReservedDBInstancesOfferings");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (describeReservedDBInstancesOfferingsRequest.getReservedDBInstancesOfferingId() != null) {
             request.addParameter("ReservedDBInstancesOfferingId", StringUtils.fromString(describeReservedDBInstancesOfferingsRequest.getReservedDBInstancesOfferingId()));
@@ -64,7 +64,6 @@ public class DescribeReservedDBInstancesOfferingsRequestMarshaller implements Ma
         if (describeReservedDBInstancesOfferingsRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeReservedDBInstancesOfferingsRequest.getMarker()));
         }
-
 
         return request;
     }

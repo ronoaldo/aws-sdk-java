@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,17 @@ import java.io.Serializable;
  * The response received when DeleteVirtualInterface is called.
  * </p>
  */
-public class DeleteVirtualInterfaceResult  implements Serializable  {
+public class DeleteVirtualInterfaceResult implements Serializable {
 
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -33,17 +39,25 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      */
     private String virtualInterfaceState;
 
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -51,14 +65,22 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @return State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @return State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -66,7 +88,10 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @see VirtualInterfaceState
      */
@@ -75,9 +100,14 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
     }
     
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -85,14 +115,22 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -100,7 +138,10 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @see VirtualInterfaceState
      */
@@ -109,9 +150,14 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
     }
     
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -119,16 +165,24 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -136,10 +190,13 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualInterfaceState
      */
@@ -147,12 +204,16 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
         this.virtualInterfaceState = virtualInterfaceState;
         return this;
     }
-    
-    
+
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -160,14 +221,22 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -175,7 +244,10 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @see VirtualInterfaceState
      */
@@ -184,9 +256,14 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
     }
     
     /**
-     * State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     * only applies to public virtual interfaces. Each public virtual
-     * interface needs validation before the virtual interface can be
+     * State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     * creation of the virtual interface is pending confirmation from the
+     * virtual interface owner. If the owner of the virtual interface is
+     * different from the owner of the connection on which it is provisioned,
+     * then the virtual interface will remain in this state until it is
+     * confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     * This state only applies to public virtual interfaces. Each public
+     * virtual interface needs validation before the virtual interface can be
      * created.</li> <li><b>Pending</b>: A virtual interface is in this state
      * from the time that it is created until the virtual interface is ready
      * to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -194,16 +271,24 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      * interface is in this state immediately after calling
      * <i>DeleteVirtualInterface</i> until it can no longer forward
      * traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     * forward traffic.</li> </ul>
+     * forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     * has declined creation of the virtual interface. If a virtual interface
+     * in the 'Confirming' state is deleted by the virtual interface owner,
+     * the virtual interface will enter the 'Rejected' state.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>verifying, pending, available, deleting, deleted
+     * <b>Allowed Values: </b>confirming, verifying, pending, available, deleting, deleted, rejected
      *
-     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Verifying</b>: This state
-     *         only applies to public virtual interfaces. Each public virtual
-     *         interface needs validation before the virtual interface can be
+     * @param virtualInterfaceState State of the virtual interface. <ul> <li><b>Confirming</b>: The
+     *         creation of the virtual interface is pending confirmation from the
+     *         virtual interface owner. If the owner of the virtual interface is
+     *         different from the owner of the connection on which it is provisioned,
+     *         then the virtual interface will remain in this state until it is
+     *         confirmed by the virtual interface owner.</li> <li><b>Verifying</b>:
+     *         This state only applies to public virtual interfaces. Each public
+     *         virtual interface needs validation before the virtual interface can be
      *         created.</li> <li><b>Pending</b>: A virtual interface is in this state
      *         from the time that it is created until the virtual interface is ready
      *         to forward traffic.</li> <li><b>Available</b>: A virtual interface
@@ -211,10 +296,13 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
      *         interface is in this state immediately after calling
      *         <i>DeleteVirtualInterface</i> until it can no longer forward
      *         traffic.</li> <li><b>Deleted</b>: A virtual interface that cannot
-     *         forward traffic.</li> </ul>
+     *         forward traffic.</li> <li><b>Rejected</b>: The virtual interface owner
+     *         has declined creation of the virtual interface. If a virtual interface
+     *         in the 'Confirming' state is deleted by the virtual interface owner,
+     *         the virtual interface will enter the 'Rejected' state.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VirtualInterfaceState
      */
@@ -222,7 +310,7 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
         this.virtualInterfaceState = virtualInterfaceState.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -234,7 +322,7 @@ public class DeleteVirtualInterfaceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVirtualInterfaceState() != null) sb.append("VirtualInterfaceState: " + getVirtualInterfaceState() );
         sb.append("}");
         return sb.toString();

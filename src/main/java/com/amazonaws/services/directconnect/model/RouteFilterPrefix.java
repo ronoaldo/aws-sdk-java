@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A route filter prefix that the customer can advertise through Border Gateway Protocol (BGP) over a public virtual interface.
+ * A route filter prefix that the customer can advertise through Border
+ * Gateway Protocol (BGP) over a public virtual interface.
  * </p>
  */
-public class RouteFilterPrefix  implements Serializable  {
+public class RouteFilterPrefix implements Serializable {
 
     /**
      * CIDR notation for the advertised route. Multiple routes are separated
-     * by commas <p>Example: 10.10.10.0/24,10.10.11.0/24
+     * by commas. <p>Example: 10.10.10.0/24,10.10.11.0/24
      */
     private String cidr;
 
     /**
      * CIDR notation for the advertised route. Multiple routes are separated
-     * by commas <p>Example: 10.10.10.0/24,10.10.11.0/24
+     * by commas. <p>Example: 10.10.10.0/24,10.10.11.0/24
      *
      * @return CIDR notation for the advertised route. Multiple routes are separated
-     *         by commas <p>Example: 10.10.10.0/24,10.10.11.0/24
+     *         by commas. <p>Example: 10.10.10.0/24,10.10.11.0/24
      */
     public String getCidr() {
         return cidr;
@@ -41,10 +43,10 @@ public class RouteFilterPrefix  implements Serializable  {
     
     /**
      * CIDR notation for the advertised route. Multiple routes are separated
-     * by commas <p>Example: 10.10.10.0/24,10.10.11.0/24
+     * by commas. <p>Example: 10.10.10.0/24,10.10.11.0/24
      *
      * @param cidr CIDR notation for the advertised route. Multiple routes are separated
-     *         by commas <p>Example: 10.10.10.0/24,10.10.11.0/24
+     *         by commas. <p>Example: 10.10.10.0/24,10.10.11.0/24
      */
     public void setCidr(String cidr) {
         this.cidr = cidr;
@@ -52,22 +54,21 @@ public class RouteFilterPrefix  implements Serializable  {
     
     /**
      * CIDR notation for the advertised route. Multiple routes are separated
-     * by commas <p>Example: 10.10.10.0/24,10.10.11.0/24
+     * by commas. <p>Example: 10.10.10.0/24,10.10.11.0/24
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param cidr CIDR notation for the advertised route. Multiple routes are separated
-     *         by commas <p>Example: 10.10.10.0/24,10.10.11.0/24
+     *         by commas. <p>Example: 10.10.10.0/24,10.10.11.0/24
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteFilterPrefix withCidr(String cidr) {
         this.cidr = cidr;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +80,7 @@ public class RouteFilterPrefix  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCidr() != null) sb.append("Cidr: " + getCidr() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#createPipeline(CreatePipelineRequest) CreatePipeline operation}.
  * <p>
- * To create a pipeline, send a POST request to the <code>2012-09-25/pipelines</code> resource.
+ * The CreatePipeline operation creates a pipeline with settings that you
+ * specify.
  * </p>
  *
  * @see com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#createPipeline(CreatePipelineRequest)
  */
-public class CreatePipelineRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreatePipelineRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the pipeline. We recommend that the name be unique within
@@ -208,8 +211,8 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      * Amazon S3 bucket. </li> </ul> </li> <li> <b>StorageClass</b>: The
      * Amazon S3 storage class, <code>Standard</code> or
      * <code>ReducedRedundancy</code>, that you want Elastic Transcoder to
-     * assign to the thumbnails that it stores in your Amazon S3 bucket.
-     * </li> </ul>
+     * assign to the thumbnails that it stores in your Amazon S3 bucket.</li>
+     * </ul>
      */
     private PipelineOutputConfig thumbnailConfig;
 
@@ -260,14 +263,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         Maximum 40 characters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The Amazon S3 bucket in which you saved the media files that you want
      * to transcode.
@@ -309,14 +311,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         to transcode.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withInputBucket(String inputBucket) {
         this.inputBucket = inputBucket;
         return this;
     }
-    
-    
+
     /**
      * The Amazon S3 bucket in which you want Elastic Transcoder to save the
      * transcoded files. (Use this, or use ContentConfig:Bucket plus
@@ -460,14 +461,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         <code>ContentConfig</code> and <code>ThumbnailConfig</code> instead.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withOutputBucket(String outputBucket) {
         this.outputBucket = outputBucket;
         return this;
     }
-    
-    
+
     /**
      * The IAM Amazon Resource Name (ARN) for the role that you want Elastic
      * Transcoder to use to create the pipeline.
@@ -509,14 +509,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         Transcoder to use to create the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withRole(String role) {
         this.role = role;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Simple Notification Service (Amazon SNS) topic that you
      * want to notify to report job status. <important>To receive
@@ -657,14 +656,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         ARN that Amazon SNS returned when you created the topic.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withNotifications(Notifications notifications) {
         this.notifications = notifications;
         return this;
     }
-    
-    
+
     /**
      * The optional <code>ContentConfig</code> object specifies information
      * about the Amazon S3 bucket in which you want Elastic Transcoder to
@@ -1003,14 +1001,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         stores in your Amazon S3 bucket.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withContentConfig(PipelineOutputConfig contentConfig) {
         this.contentConfig = contentConfig;
         return this;
     }
-    
-    
+
     /**
      * The <code>ThumbnailConfig</code> object specifies several values,
      * including the Amazon S3 bucket in which you want Elastic Transcoder to
@@ -1058,8 +1055,8 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      * Amazon S3 bucket. </li> </ul> </li> <li> <b>StorageClass</b>: The
      * Amazon S3 storage class, <code>Standard</code> or
      * <code>ReducedRedundancy</code>, that you want Elastic Transcoder to
-     * assign to the thumbnails that it stores in your Amazon S3 bucket.
-     * </li> </ul>
+     * assign to the thumbnails that it stores in your Amazon S3 bucket.</li>
+     * </ul>
      *
      * @return The <code>ThumbnailConfig</code> object specifies several values,
      *         including the Amazon S3 bucket in which you want Elastic Transcoder to
@@ -1107,8 +1104,8 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         Amazon S3 bucket. </li> </ul> </li> <li> <b>StorageClass</b>: The
      *         Amazon S3 storage class, <code>Standard</code> or
      *         <code>ReducedRedundancy</code>, that you want Elastic Transcoder to
-     *         assign to the thumbnails that it stores in your Amazon S3 bucket.
-     *         </li> </ul>
+     *         assign to the thumbnails that it stores in your Amazon S3 bucket.</li>
+     *         </ul>
      */
     public PipelineOutputConfig getThumbnailConfig() {
         return thumbnailConfig;
@@ -1161,8 +1158,8 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      * Amazon S3 bucket. </li> </ul> </li> <li> <b>StorageClass</b>: The
      * Amazon S3 storage class, <code>Standard</code> or
      * <code>ReducedRedundancy</code>, that you want Elastic Transcoder to
-     * assign to the thumbnails that it stores in your Amazon S3 bucket.
-     * </li> </ul>
+     * assign to the thumbnails that it stores in your Amazon S3 bucket.</li>
+     * </ul>
      *
      * @param thumbnailConfig The <code>ThumbnailConfig</code> object specifies several values,
      *         including the Amazon S3 bucket in which you want Elastic Transcoder to
@@ -1210,8 +1207,8 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         Amazon S3 bucket. </li> </ul> </li> <li> <b>StorageClass</b>: The
      *         Amazon S3 storage class, <code>Standard</code> or
      *         <code>ReducedRedundancy</code>, that you want Elastic Transcoder to
-     *         assign to the thumbnails that it stores in your Amazon S3 bucket.
-     *         </li> </ul>
+     *         assign to the thumbnails that it stores in your Amazon S3 bucket.</li>
+     *         </ul>
      */
     public void setThumbnailConfig(PipelineOutputConfig thumbnailConfig) {
         this.thumbnailConfig = thumbnailConfig;
@@ -1264,8 +1261,8 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      * Amazon S3 bucket. </li> </ul> </li> <li> <b>StorageClass</b>: The
      * Amazon S3 storage class, <code>Standard</code> or
      * <code>ReducedRedundancy</code>, that you want Elastic Transcoder to
-     * assign to the thumbnails that it stores in your Amazon S3 bucket.
-     * </li> </ul>
+     * assign to the thumbnails that it stores in your Amazon S3 bucket.</li>
+     * </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -1315,18 +1312,17 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
      *         Amazon S3 bucket. </li> </ul> </li> <li> <b>StorageClass</b>: The
      *         Amazon S3 storage class, <code>Standard</code> or
      *         <code>ReducedRedundancy</code>, that you want Elastic Transcoder to
-     *         assign to the thumbnails that it stores in your Amazon S3 bucket.
-     *         </li> </ul>
+     *         assign to the thumbnails that it stores in your Amazon S3 bucket.</li>
+     *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePipelineRequest withThumbnailConfig(PipelineOutputConfig thumbnailConfig) {
         this.thumbnailConfig = thumbnailConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1338,13 +1334,13 @@ public class CreatePipelineRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getInputBucket() != null) sb.append("InputBucket: " + getInputBucket() + ",");    	
-        if (getOutputBucket() != null) sb.append("OutputBucket: " + getOutputBucket() + ",");    	
-        if (getRole() != null) sb.append("Role: " + getRole() + ",");    	
-        if (getNotifications() != null) sb.append("Notifications: " + getNotifications() + ",");    	
-        if (getContentConfig() != null) sb.append("ContentConfig: " + getContentConfig() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getInputBucket() != null) sb.append("InputBucket: " + getInputBucket() + ",");
+        if (getOutputBucket() != null) sb.append("OutputBucket: " + getOutputBucket() + ",");
+        if (getRole() != null) sb.append("Role: " + getRole() + ",");
+        if (getNotifications() != null) sb.append("Notifications: " + getNotifications() + ",");
+        if (getContentConfig() != null) sb.append("ContentConfig: " + getContentConfig() + ",");
         if (getThumbnailConfig() != null) sb.append("ThumbnailConfig: " + getThumbnailConfig() );
         sb.append("}");
         return sb.toString();

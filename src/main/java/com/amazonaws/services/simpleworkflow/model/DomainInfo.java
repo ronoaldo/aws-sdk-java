@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains general information about a domain.
  * </p>
  */
-public class DomainInfo  implements Serializable  {
+public class DomainInfo implements Serializable {
 
     /**
      * The name of the domain. This name is unique within the account.
@@ -86,14 +87,13 @@ public class DomainInfo  implements Serializable  {
      * @param name The name of the domain. This name is unique within the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainInfo withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The status of the domain: <ul> <li> <b>REGISTERED</b>: The domain is
      * properly registered and available. You can use this domain for
@@ -163,7 +163,7 @@ public class DomainInfo  implements Serializable  {
      *         workflow executions in this domain. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -171,8 +171,7 @@ public class DomainInfo  implements Serializable  {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The status of the domain: <ul> <li> <b>REGISTERED</b>: The domain is
      * properly registered and available. You can use this domain for
@@ -218,7 +217,7 @@ public class DomainInfo  implements Serializable  {
      *         workflow executions in this domain. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RegistrationStatus
      */
@@ -226,7 +225,7 @@ public class DomainInfo  implements Serializable  {
         this.status = status.toString();
         return this;
     }
-    
+
     /**
      * The description of the domain provided through <a>RegisterDomain</a>.
      * <p>
@@ -262,14 +261,13 @@ public class DomainInfo  implements Serializable  {
      * @param description The description of the domain provided through <a>RegisterDomain</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DomainInfo withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -281,9 +279,9 @@ public class DomainInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

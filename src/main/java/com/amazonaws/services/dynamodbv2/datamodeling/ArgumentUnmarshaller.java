@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
  * type-determination behavior necessary when turning a service result back
  * into an object.
  */
-interface ArgumentUnmarshaller {
+public interface ArgumentUnmarshaller {
 
     /**
      * Asserts that the value given can be processed using the setter given.

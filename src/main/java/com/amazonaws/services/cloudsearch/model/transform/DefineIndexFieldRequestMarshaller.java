@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DefineIndexFieldRequestMarshaller implements Marshaller<Request<Def
     public Request<DefineIndexFieldRequest> marshall(DefineIndexFieldRequest defineIndexFieldRequest) {
 
         if (defineIndexFieldRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DefineIndexFieldRequest> request = new DefaultRequest<DefineIndexFieldRequest>(defineIndexFieldRequest, "AmazonCloudSearch");
         request.addParameter("Action", "DefineIndexField");
@@ -82,6 +82,9 @@ public class DefineIndexFieldRequestMarshaller implements Marshaller<Request<Def
                 }
                 if (textOptionsTextOptions.isResultEnabled() != null) {
                     request.addParameter("IndexField.TextOptions.ResultEnabled", StringUtils.fromBoolean(textOptionsTextOptions.isResultEnabled()));
+                }
+                if (textOptionsTextOptions.getTextProcessor() != null) {
+                    request.addParameter("IndexField.TextOptions.TextProcessor", StringUtils.fromString(textOptionsTextOptions.getTextProcessor()));
                 }
             }
 
@@ -147,7 +150,6 @@ public class DefineIndexFieldRequestMarshaller implements Marshaller<Request<Def
                 sourceAttributesListIndex++;
             }
         }
-
 
         return request;
     }

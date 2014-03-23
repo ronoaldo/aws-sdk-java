@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>ExternalWorkflowExecutionSignaled</code> event.
+ * Provides details of the
+ * <code>ExternalWorkflowExecutionSignaled</code> event.
  * </p>
  */
-public class ExternalWorkflowExecutionSignaledEventAttributes  implements Serializable  {
+public class ExternalWorkflowExecutionSignaledEventAttributes implements Serializable {
 
     /**
      * The external workflow execution that the signal was delivered to.
@@ -62,14 +64,13 @@ public class ExternalWorkflowExecutionSignaledEventAttributes  implements Serial
      * @param workflowExecution The external workflow execution that the signal was delivered to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExternalWorkflowExecutionSignaledEventAttributes withWorkflowExecution(WorkflowExecution workflowExecution) {
         this.workflowExecution = workflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>SignalExternalWorkflowExecutionInitiated</code>
      * event corresponding to the
@@ -120,14 +121,13 @@ public class ExternalWorkflowExecutionSignaledEventAttributes  implements Serial
      *         tracing back the chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExternalWorkflowExecutionSignaledEventAttributes withInitiatedEventId(Long initiatedEventId) {
         this.initiatedEventId = initiatedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -139,8 +139,8 @@ public class ExternalWorkflowExecutionSignaledEventAttributes  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");    	
+        sb.append("{");
+        if (getWorkflowExecution() != null) sb.append("WorkflowExecution: " + getWorkflowExecution() + ",");
         if (getInitiatedEventId() != null) sb.append("InitiatedEventId: " + getInitiatedEventId() );
         sb.append("}");
         return sb.toString();

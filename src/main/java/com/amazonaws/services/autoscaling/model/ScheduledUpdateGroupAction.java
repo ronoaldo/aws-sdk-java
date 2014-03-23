@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type stores information about a scheduled update to an Auto Scaling group.
+ * This data type stores information about a scheduled update to an Auto
+ * Scaling group.
  * </p>
  */
-public class ScheduledUpdateGroupAction  implements Serializable  {
+public class ScheduledUpdateGroupAction implements Serializable {
 
     /**
      * The name of the Auto Scaling group to be updated.
@@ -133,14 +135,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      * @param autoScalingGroupName The name of the Auto Scaling group to be updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The name of this scheduled action.
      * <p>
@@ -179,14 +180,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      * @param scheduledActionName The name of this scheduled action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withScheduledActionName(String scheduledActionName) {
         this.scheduledActionName = scheduledActionName;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of this scheduled action.
      * <p>
@@ -225,14 +225,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      * @param scheduledActionARN The Amazon Resource Name (ARN) of this scheduled action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withScheduledActionARN(String scheduledActionARN) {
         this.scheduledActionARN = scheduledActionARN;
         return this;
     }
-    
-    
+
     /**
      * <code>Time</code> is deprecated. <p>The time that the action is
      * scheduled to begin. <code>Time</code> is an alias for
@@ -271,14 +270,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      *         <code>StartTime</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withTime(java.util.Date time) {
         this.time = time;
         return this;
     }
-    
-    
+
     /**
      * The time that the action is scheduled to begin. This value can be up
      * to one month in the future. <p>When <code>StartTime</code> and
@@ -323,14 +321,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      *         form the boundaries of when the recurring action will start and stop.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The time that the action is scheduled to end. This value can be up to
      * one month in the future.
@@ -363,14 +360,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      *         one month in the future.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * The regular schedule that an action occurs.
      * <p>
@@ -409,14 +405,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      * @param recurrence The regular schedule that an action occurs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withRecurrence(String recurrence) {
         this.recurrence = recurrence;
         return this;
     }
-    
-    
+
     /**
      * The minimum size of the Auto Scaling group.
      *
@@ -443,14 +438,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      * @param minSize The minimum size of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withMinSize(Integer minSize) {
         this.minSize = minSize;
         return this;
     }
-    
-    
+
     /**
      * The maximum size of the Auto Scaling group.
      *
@@ -477,14 +471,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      * @param maxSize The maximum size of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withMaxSize(Integer maxSize) {
         this.maxSize = maxSize;
         return this;
     }
-    
-    
+
     /**
      * The number of instances you prefer to maintain in your Auto Scaling
      * group.
@@ -517,14 +510,13 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
      *         group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScheduledUpdateGroupAction withDesiredCapacity(Integer desiredCapacity) {
         this.desiredCapacity = desiredCapacity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -536,16 +528,16 @@ public class ScheduledUpdateGroupAction  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() + ",");    	
-        if (getScheduledActionARN() != null) sb.append("ScheduledActionARN: " + getScheduledActionARN() + ",");    	
-        if (getTime() != null) sb.append("Time: " + getTime() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getRecurrence() != null) sb.append("Recurrence: " + getRecurrence() + ",");    	
-        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");    	
-        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() + ",");
+        if (getScheduledActionARN() != null) sb.append("ScheduledActionARN: " + getScheduledActionARN() + ",");
+        if (getTime() != null) sb.append("Time: " + getTime() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getRecurrence() != null) sb.append("Recurrence: " + getRecurrence() + ",");
+        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");
+        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");
         if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() );
         sb.append("}");
         return sb.toString();

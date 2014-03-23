@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,19 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeEngineDefaultParameters action.
+ * Contains the result of a successful invocation of the
+ * DescribeEngineDefaultParameters action.
  * </p>
  */
-public class EngineDefaults  implements Serializable  {
+public class EngineDefaults implements Serializable {
 
     /**
-     * Specifies the name of the DB Parameter Group Family which the engine
+     * Specifies the name of the DB parameter group family which the engine
      * default parameters apply to.
      */
     private String dBParameterGroupFamily;
@@ -39,13 +41,13 @@ public class EngineDefaults  implements Serializable  {
     /**
      * Contains a list of engine default parameters.
      */
-    private java.util.List<Parameter> parameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parameters;
 
     /**
-     * Specifies the name of the DB Parameter Group Family which the engine
+     * Specifies the name of the DB parameter group family which the engine
      * default parameters apply to.
      *
-     * @return Specifies the name of the DB Parameter Group Family which the engine
+     * @return Specifies the name of the DB parameter group family which the engine
      *         default parameters apply to.
      */
     public String getDBParameterGroupFamily() {
@@ -53,10 +55,10 @@ public class EngineDefaults  implements Serializable  {
     }
     
     /**
-     * Specifies the name of the DB Parameter Group Family which the engine
+     * Specifies the name of the DB parameter group family which the engine
      * default parameters apply to.
      *
-     * @param dBParameterGroupFamily Specifies the name of the DB Parameter Group Family which the engine
+     * @param dBParameterGroupFamily Specifies the name of the DB parameter group family which the engine
      *         default parameters apply to.
      */
     public void setDBParameterGroupFamily(String dBParameterGroupFamily) {
@@ -64,23 +66,22 @@ public class EngineDefaults  implements Serializable  {
     }
     
     /**
-     * Specifies the name of the DB Parameter Group Family which the engine
+     * Specifies the name of the DB parameter group family which the engine
      * default parameters apply to.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBParameterGroupFamily Specifies the name of the DB Parameter Group Family which the engine
+     * @param dBParameterGroupFamily Specifies the name of the DB parameter group family which the engine
      *         default parameters apply to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withDBParameterGroupFamily(String dBParameterGroupFamily) {
         this.dBParameterGroupFamily = dBParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous EngineDefaults
      * request. If this parameter is specified, the response includes only
@@ -125,23 +126,22 @@ public class EngineDefaults  implements Serializable  {
      *         <code>MaxRecords</code> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Contains a list of engine default parameters.
      *
      * @return Contains a list of engine default parameters.
      */
     public java.util.List<Parameter> getParameters() {
-        
         if (parameters == null) {
-            parameters = new java.util.ArrayList<Parameter>();
+              parameters = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>();
+              parameters.setAutoConstruct(true);
         }
         return parameters;
     }
@@ -156,8 +156,7 @@ public class EngineDefaults  implements Serializable  {
             this.parameters = null;
             return;
         }
-
-        java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
         parametersCopy.addAll(parameters);
         this.parameters = parametersCopy;
     }
@@ -170,7 +169,7 @@ public class EngineDefaults  implements Serializable  {
      * @param parameters Contains a list of engine default parameters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withParameters(Parameter... parameters) {
         if (getParameters() == null) setParameters(new java.util.ArrayList<Parameter>(parameters.length));
@@ -188,20 +187,20 @@ public class EngineDefaults  implements Serializable  {
      * @param parameters Contains a list of engine default parameters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withParameters(java.util.Collection<Parameter> parameters) {
         if (parameters == null) {
             this.parameters = null;
         } else {
-            java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
             parametersCopy.addAll(parameters);
             this.parameters = parametersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -213,9 +212,9 @@ public class EngineDefaults  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getDBParameterGroupFamily() != null) sb.append("DBParameterGroupFamily: " + getDBParameterGroupFamily() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getParameters() != null) sb.append("Parameters: " + getParameters() );
         sb.append("}");
         return sb.toString();

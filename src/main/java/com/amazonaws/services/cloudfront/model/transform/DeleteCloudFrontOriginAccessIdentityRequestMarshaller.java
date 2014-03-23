@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  */
 package com.amazonaws.services.cloudfront.model.transform;
 
+import static com.amazonaws.util.StringUtils.UTF8;
+
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.Request;
@@ -44,10 +45,9 @@ public class DeleteCloudFrontOriginAccessIdentityRequestMarshaller implements Ma
         Request<DeleteCloudFrontOriginAccessIdentityRequest> request = new DefaultRequest<DeleteCloudFrontOriginAccessIdentityRequest>(deleteCloudFrontOriginAccessIdentityRequest, "AmazonCloudFront");
         request.setHttpMethod(HttpMethodName.DELETE);
         if (deleteCloudFrontOriginAccessIdentityRequest.getIfMatch() != null)
-        	request.addHeader("If-Match", StringUtils.fromString(deleteCloudFrontOriginAccessIdentityRequest.getIfMatch()));
-        
+          request.addHeader("If-Match", StringUtils.fromString(deleteCloudFrontOriginAccessIdentityRequest.getIfMatch()));
 
-        String uriResourcePath = "2012-07-01/origin-access-identity/cloudfront/{Id}"; 
+        String uriResourcePath = "2014-01-31/origin-access-identity/cloudfront/{Id}"; 
         uriResourcePath = uriResourcePath.replace("{Id}", getString(deleteCloudFrontOriginAccessIdentityRequest.getId())); 
 
         if (uriResourcePath.contains("?")) {
@@ -65,8 +65,6 @@ public class DeleteCloudFrontOriginAccessIdentityRequestMarshaller implements Ma
         }
 
         request.setResourcePath(uriResourcePath);
-
-        
 
         return request;
     }

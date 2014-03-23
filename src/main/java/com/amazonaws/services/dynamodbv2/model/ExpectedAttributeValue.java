@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,16 +13,19 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An attribute value used with conditional <i>DeleteItem</i> ,
- * <i>PutItem</i> or <i>UpdateItem</i> operations. Amazon DynamoDB will check to see if the attribute value already exists; or if
- * the attribute exists and has a particular value before updating it.
+ * Represents an attribute value used with conditional <i>DeleteItem</i>
+ * ,
+ * <i>PutItem</i> or <i>UpdateItem</i> operations.
+ * DynamoDB will check to see if the attribute value already exists; or
+ * if the attribute exists and has a particular value before updating it.
  * </p>
  */
-public class ExpectedAttributeValue  implements Serializable  {
+public class ExpectedAttributeValue implements Serializable {
 
     /**
      * Represents the data for an attribute. You can set one, and only one,
@@ -31,21 +34,21 @@ public class ExpectedAttributeValue  implements Serializable  {
     private AttributeValue value;
 
     /**
-     * Causes Amazon DynamoDB to evaluate the value before attempting a
-     * conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     * value already exists in the table. If it is found, then the operation
-     * succeeds. If it is not found, the operation fails with a
+     * Causes DynamoDB to evaluate the value before attempting a conditional
+     * operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     * DynamoDB will check to see if that attribute value already exists in
+     * the table. If it is found, then the operation succeeds. If it is not
+     * found, the operation fails with a
      * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     * value does <i>not</i> exist in the table. If in fact the value does
-     * not exist, then the assumption is valid and the operation succeeds. If
-     * the value is found, despite the assumption that it does not exist, the
-     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     * the attribute exists: You don't have to set <i>Exists</i> to
-     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * is <code>false</code>, DynamoDB assumes that the attribute value does
+     * <i>not</i> exist in the table. If in fact the value does not exist,
+     * then the assumption is valid and the operation succeeds. If the value
+     * is found, despite the assumption that it does not exist, the operation
+     * fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     * <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     * supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     * exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     * because it is implied. <p>DynamoDB returns a
      * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      * <code>true</code> but there is no <i>Value</i> to check. (You expect a
      * value to exist, but don't specify what that value is.) </li> <li>
@@ -73,31 +76,29 @@ public class ExpectedAttributeValue  implements Serializable  {
      * and only one, of the elements.
      */
     public ExpectedAttributeValue(AttributeValue value) {
-        this.value = value;
+        setValue(value);
     }
 
-    
-    
     /**
      * Constructs a new ExpectedAttributeValue object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param exists Causes Amazon DynamoDB to evaluate the value before
-     * attempting a conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     * value already exists in the table. If it is found, then the operation
+     * @param exists Causes DynamoDB to evaluate the value before attempting
+     * a conditional operation: <ul> <li> <p>If <i>Exists</i> is
+     * <code>true</code>, DynamoDB will check to see if that attribute value
+     * already exists in the table. If it is found, then the operation
      * succeeds. If it is not found, the operation fails with a
      * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     * value does <i>not</i> exist in the table. If in fact the value does
-     * not exist, then the assumption is valid and the operation succeeds. If
-     * the value is found, despite the assumption that it does not exist, the
-     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     * the attribute exists: You don't have to set <i>Exists</i> to
-     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * is <code>false</code>, DynamoDB assumes that the attribute value does
+     * <i>not</i> exist in the table. If in fact the value does not exist,
+     * then the assumption is valid and the operation succeeds. If the value
+     * is found, despite the assumption that it does not exist, the operation
+     * fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     * <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     * supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     * exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     * because it is implied. <p>DynamoDB returns a
      * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      * <code>true</code> but there is no <i>Value</i> to check. (You expect a
      * value to exist, but don't specify what that value is.) </li> <li>
@@ -109,11 +110,9 @@ public class ExpectedAttributeValue  implements Serializable  {
      * Otherwise, the conditional operation will fail.
      */
     public ExpectedAttributeValue(Boolean exists) {
-        this.exists = exists;
+        setExists(exists);
     }
 
-    
-    
     /**
      * Represents the data for an attribute. You can set one, and only one,
      * of the elements.
@@ -146,30 +145,29 @@ public class ExpectedAttributeValue  implements Serializable  {
      *         of the elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExpectedAttributeValue withValue(AttributeValue value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
-     * Causes Amazon DynamoDB to evaluate the value before attempting a
-     * conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     * value already exists in the table. If it is found, then the operation
-     * succeeds. If it is not found, the operation fails with a
+     * Causes DynamoDB to evaluate the value before attempting a conditional
+     * operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     * DynamoDB will check to see if that attribute value already exists in
+     * the table. If it is found, then the operation succeeds. If it is not
+     * found, the operation fails with a
      * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     * value does <i>not</i> exist in the table. If in fact the value does
-     * not exist, then the assumption is valid and the operation succeeds. If
-     * the value is found, despite the assumption that it does not exist, the
-     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     * the attribute exists: You don't have to set <i>Exists</i> to
-     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * is <code>false</code>, DynamoDB assumes that the attribute value does
+     * <i>not</i> exist in the table. If in fact the value does not exist,
+     * then the assumption is valid and the operation succeeds. If the value
+     * is found, despite the assumption that it does not exist, the operation
+     * fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     * <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     * supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     * exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     * because it is implied. <p>DynamoDB returns a
      * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      * <code>true</code> but there is no <i>Value</i> to check. (You expect a
      * value to exist, but don't specify what that value is.) </li> <li>
@@ -180,21 +178,21 @@ public class ExpectedAttributeValue  implements Serializable  {
      * evaluate to true. (In other words, the conditions are ANDed together.)
      * Otherwise, the conditional operation will fail.
      *
-     * @return Causes Amazon DynamoDB to evaluate the value before attempting a
-     *         conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     *         value already exists in the table. If it is found, then the operation
-     *         succeeds. If it is not found, the operation fails with a
+     * @return Causes DynamoDB to evaluate the value before attempting a conditional
+     *         operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     *         DynamoDB will check to see if that attribute value already exists in
+     *         the table. If it is found, then the operation succeeds. If it is not
+     *         found, the operation fails with a
      *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     *         value does <i>not</i> exist in the table. If in fact the value does
-     *         not exist, then the assumption is valid and the operation succeeds. If
-     *         the value is found, despite the assumption that it does not exist, the
-     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     *         the attribute exists: You don't have to set <i>Exists</i> to
-     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         is <code>false</code>, DynamoDB assumes that the attribute value does
+     *         <i>not</i> exist in the table. If in fact the value does not exist,
+     *         then the assumption is valid and the operation succeeds. If the value
+     *         is found, despite the assumption that it does not exist, the operation
+     *         fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     *         <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     *         supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     *         exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     *         because it is implied. <p>DynamoDB returns a
      *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
      *         value to exist, but don't specify what that value is.) </li> <li>
@@ -210,21 +208,21 @@ public class ExpectedAttributeValue  implements Serializable  {
     }
     
     /**
-     * Causes Amazon DynamoDB to evaluate the value before attempting a
-     * conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     * value already exists in the table. If it is found, then the operation
-     * succeeds. If it is not found, the operation fails with a
+     * Causes DynamoDB to evaluate the value before attempting a conditional
+     * operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     * DynamoDB will check to see if that attribute value already exists in
+     * the table. If it is found, then the operation succeeds. If it is not
+     * found, the operation fails with a
      * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     * value does <i>not</i> exist in the table. If in fact the value does
-     * not exist, then the assumption is valid and the operation succeeds. If
-     * the value is found, despite the assumption that it does not exist, the
-     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     * the attribute exists: You don't have to set <i>Exists</i> to
-     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * is <code>false</code>, DynamoDB assumes that the attribute value does
+     * <i>not</i> exist in the table. If in fact the value does not exist,
+     * then the assumption is valid and the operation succeeds. If the value
+     * is found, despite the assumption that it does not exist, the operation
+     * fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     * <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     * supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     * exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     * because it is implied. <p>DynamoDB returns a
      * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      * <code>true</code> but there is no <i>Value</i> to check. (You expect a
      * value to exist, but don't specify what that value is.) </li> <li>
@@ -235,21 +233,21 @@ public class ExpectedAttributeValue  implements Serializable  {
      * evaluate to true. (In other words, the conditions are ANDed together.)
      * Otherwise, the conditional operation will fail.
      *
-     * @param exists Causes Amazon DynamoDB to evaluate the value before attempting a
-     *         conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     *         value already exists in the table. If it is found, then the operation
-     *         succeeds. If it is not found, the operation fails with a
+     * @param exists Causes DynamoDB to evaluate the value before attempting a conditional
+     *         operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     *         DynamoDB will check to see if that attribute value already exists in
+     *         the table. If it is found, then the operation succeeds. If it is not
+     *         found, the operation fails with a
      *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     *         value does <i>not</i> exist in the table. If in fact the value does
-     *         not exist, then the assumption is valid and the operation succeeds. If
-     *         the value is found, despite the assumption that it does not exist, the
-     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     *         the attribute exists: You don't have to set <i>Exists</i> to
-     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         is <code>false</code>, DynamoDB assumes that the attribute value does
+     *         <i>not</i> exist in the table. If in fact the value does not exist,
+     *         then the assumption is valid and the operation succeeds. If the value
+     *         is found, despite the assumption that it does not exist, the operation
+     *         fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     *         <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     *         supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     *         exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     *         because it is implied. <p>DynamoDB returns a
      *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
      *         value to exist, but don't specify what that value is.) </li> <li>
@@ -265,21 +263,21 @@ public class ExpectedAttributeValue  implements Serializable  {
     }
     
     /**
-     * Causes Amazon DynamoDB to evaluate the value before attempting a
-     * conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     * value already exists in the table. If it is found, then the operation
-     * succeeds. If it is not found, the operation fails with a
+     * Causes DynamoDB to evaluate the value before attempting a conditional
+     * operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     * DynamoDB will check to see if that attribute value already exists in
+     * the table. If it is found, then the operation succeeds. If it is not
+     * found, the operation fails with a
      * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     * value does <i>not</i> exist in the table. If in fact the value does
-     * not exist, then the assumption is valid and the operation succeeds. If
-     * the value is found, despite the assumption that it does not exist, the
-     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     * the attribute exists: You don't have to set <i>Exists</i> to
-     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * is <code>false</code>, DynamoDB assumes that the attribute value does
+     * <i>not</i> exist in the table. If in fact the value does not exist,
+     * then the assumption is valid and the operation succeeds. If the value
+     * is found, despite the assumption that it does not exist, the operation
+     * fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     * <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     * supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     * exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     * because it is implied. <p>DynamoDB returns a
      * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      * <code>true</code> but there is no <i>Value</i> to check. (You expect a
      * value to exist, but don't specify what that value is.) </li> <li>
@@ -292,21 +290,21 @@ public class ExpectedAttributeValue  implements Serializable  {
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exists Causes Amazon DynamoDB to evaluate the value before attempting a
-     *         conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     *         value already exists in the table. If it is found, then the operation
-     *         succeeds. If it is not found, the operation fails with a
+     * @param exists Causes DynamoDB to evaluate the value before attempting a conditional
+     *         operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     *         DynamoDB will check to see if that attribute value already exists in
+     *         the table. If it is found, then the operation succeeds. If it is not
+     *         found, the operation fails with a
      *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     *         value does <i>not</i> exist in the table. If in fact the value does
-     *         not exist, then the assumption is valid and the operation succeeds. If
-     *         the value is found, despite the assumption that it does not exist, the
-     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     *         the attribute exists: You don't have to set <i>Exists</i> to
-     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         is <code>false</code>, DynamoDB assumes that the attribute value does
+     *         <i>not</i> exist in the table. If in fact the value does not exist,
+     *         then the assumption is valid and the operation succeeds. If the value
+     *         is found, despite the assumption that it does not exist, the operation
+     *         fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     *         <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     *         supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     *         exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     *         because it is implied. <p>DynamoDB returns a
      *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
      *         value to exist, but don't specify what that value is.) </li> <li>
@@ -318,30 +316,29 @@ public class ExpectedAttributeValue  implements Serializable  {
      *         Otherwise, the conditional operation will fail.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExpectedAttributeValue withExists(Boolean exists) {
         this.exists = exists;
         return this;
     }
-    
-    
+
     /**
-     * Causes Amazon DynamoDB to evaluate the value before attempting a
-     * conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     * <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     * value already exists in the table. If it is found, then the operation
-     * succeeds. If it is not found, the operation fails with a
+     * Causes DynamoDB to evaluate the value before attempting a conditional
+     * operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     * DynamoDB will check to see if that attribute value already exists in
+     * the table. If it is found, then the operation succeeds. If it is not
+     * found, the operation fails with a
      * <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     * is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     * value does <i>not</i> exist in the table. If in fact the value does
-     * not exist, then the assumption is valid and the operation succeeds. If
-     * the value is found, despite the assumption that it does not exist, the
-     * operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     * </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     * If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     * the attribute exists: You don't have to set <i>Exists</i> to
-     * <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     * is <code>false</code>, DynamoDB assumes that the attribute value does
+     * <i>not</i> exist in the table. If in fact the value does not exist,
+     * then the assumption is valid and the operation succeeds. If the value
+     * is found, despite the assumption that it does not exist, the operation
+     * fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     * <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     * supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     * exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     * because it is implied. <p>DynamoDB returns a
      * <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      * <code>true</code> but there is no <i>Value</i> to check. (You expect a
      * value to exist, but don't specify what that value is.) </li> <li>
@@ -352,21 +349,21 @@ public class ExpectedAttributeValue  implements Serializable  {
      * evaluate to true. (In other words, the conditions are ANDed together.)
      * Otherwise, the conditional operation will fail.
      *
-     * @return Causes Amazon DynamoDB to evaluate the value before attempting a
-     *         conditional operation: <ul> <li> <p>If <i>Exists</i> is
-     *         <code>true</code>, Amazon DynamoDB will check to see if that attribute
-     *         value already exists in the table. If it is found, then the operation
-     *         succeeds. If it is not found, the operation fails with a
+     * @return Causes DynamoDB to evaluate the value before attempting a conditional
+     *         operation: <ul> <li> <p>If <i>Exists</i> is <code>true</code>,
+     *         DynamoDB will check to see if that attribute value already exists in
+     *         the table. If it is found, then the operation succeeds. If it is not
+     *         found, the operation fails with a
      *         <i>ConditionalCheckFailedException</i>. </li> <li> <p>If <i>Exists</i>
-     *         is <code>false</code>, Amazon DynamoDB assumes that the attribute
-     *         value does <i>not</i> exist in the table. If in fact the value does
-     *         not exist, then the assumption is valid and the operation succeeds. If
-     *         the value is found, despite the assumption that it does not exist, the
-     *         operation fails with a <i>ConditionalCheckFailedException</i>. </li>
-     *         </ul> <p>The default setting for <i>Exists</i> is <code>true</code>.
-     *         If you supply a <i>Value</i> all by itself, Amazon DynamoDB assumes
-     *         the attribute exists: You don't have to set <i>Exists</i> to
-     *         <code>true</code>, because it is implied. <p>Amazon DynamoDB returns a
+     *         is <code>false</code>, DynamoDB assumes that the attribute value does
+     *         <i>not</i> exist in the table. If in fact the value does not exist,
+     *         then the assumption is valid and the operation succeeds. If the value
+     *         is found, despite the assumption that it does not exist, the operation
+     *         fails with a <i>ConditionalCheckFailedException</i>. </li> </ul>
+     *         <p>The default setting for <i>Exists</i> is <code>true</code>. If you
+     *         supply a <i>Value</i> all by itself, DynamoDB assumes the attribute
+     *         exists: You don't have to set <i>Exists</i> to <code>true</code>,
+     *         because it is implied. <p>DynamoDB returns a
      *         <i>ValidationException</i> if: <ul> <li> <p><i>Exists</i> is
      *         <code>true</code> but there is no <i>Value</i> to check. (You expect a
      *         value to exist, but don't specify what that value is.) </li> <li>
@@ -380,7 +377,7 @@ public class ExpectedAttributeValue  implements Serializable  {
     public Boolean getExists() {
         return exists;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -392,8 +389,8 @@ public class ExpectedAttributeValue  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (isExists() != null) sb.append("Exists: " + isExists() );
         sb.append("}");
         return sb.toString();

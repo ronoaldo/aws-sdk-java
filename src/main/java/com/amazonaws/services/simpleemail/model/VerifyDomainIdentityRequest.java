@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyDomainIdentity(VerifyDomainIdentityRequest) VerifyDomainIdentity operation}.
  * <p>
  * Verifies a domain.
  * </p>
+ * <p>
+ * This action is throttled at one request per second.
+ * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#verifyDomainIdentity(VerifyDomainIdentityRequest)
  */
-public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The domain to be verified.
@@ -57,14 +62,13 @@ public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest  implem
      * @param domain The domain to be verified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyDomainIdentityRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -76,7 +80,7 @@ public class VerifyDomainIdentityRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomain() != null) sb.append("Domain: " + getDomain() );
         sb.append("}");
         return sb.toString();

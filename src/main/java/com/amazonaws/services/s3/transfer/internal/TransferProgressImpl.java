@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,11 +19,19 @@ import com.amazonaws.services.s3.transfer.TransferProgress;
 public class TransferProgressImpl extends TransferProgress {
     
     public synchronized void updateProgress(long bytes) {
-        this.bytesTransfered += bytes;
+        this.bytesTransferred += bytes;
     }
 
-    public void setBytesTransfered(long bytesTransfered) {
-        this.bytesTransfered = bytesTransfered;
+    /**
+     * @deprecated Replaced by {@link #setBytesTransferred()}
+     */
+    @Deprecated
+    public void setBytesTransfered(long bytesTransferred) {
+        setBytesTransferred(bytesTransferred);
+    }
+
+    public void setBytesTransferred(long bytesTransferred) {
+        this.bytesTransferred = bytesTransferred;
     }
 
     public void setTotalBytesToTransfer(long totalBytesToTransfer) {

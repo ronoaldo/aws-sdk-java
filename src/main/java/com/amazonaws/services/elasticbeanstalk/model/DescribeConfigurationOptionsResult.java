@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the settings for a specified configuration set.
  * </p>
  */
-public class DescribeConfigurationOptionsResult  implements Serializable  {
+public class DescribeConfigurationOptionsResult implements Serializable {
 
     /**
      * The name of the solution stack these configuration options belong to.
@@ -33,7 +34,7 @@ public class DescribeConfigurationOptionsResult  implements Serializable  {
     /**
      * A list of <a>ConfigurationOptionDescription</a>.
      */
-    private java.util.List<ConfigurationOptionDescription> options;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionDescription> options;
 
     /**
      * The name of the solution stack these configuration options belong to.
@@ -70,23 +71,22 @@ public class DescribeConfigurationOptionsResult  implements Serializable  {
      * @param solutionStackName The name of the solution stack these configuration options belong to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsResult withSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>ConfigurationOptionDescription</a>.
      *
      * @return A list of <a>ConfigurationOptionDescription</a>.
      */
     public java.util.List<ConfigurationOptionDescription> getOptions() {
-        
         if (options == null) {
-            options = new java.util.ArrayList<ConfigurationOptionDescription>();
+              options = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionDescription>();
+              options.setAutoConstruct(true);
         }
         return options;
     }
@@ -101,8 +101,7 @@ public class DescribeConfigurationOptionsResult  implements Serializable  {
             this.options = null;
             return;
         }
-
-        java.util.List<ConfigurationOptionDescription> optionsCopy = new java.util.ArrayList<ConfigurationOptionDescription>(options.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionDescription> optionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionDescription>(options.size());
         optionsCopy.addAll(options);
         this.options = optionsCopy;
     }
@@ -115,7 +114,7 @@ public class DescribeConfigurationOptionsResult  implements Serializable  {
      * @param options A list of <a>ConfigurationOptionDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsResult withOptions(ConfigurationOptionDescription... options) {
         if (getOptions() == null) setOptions(new java.util.ArrayList<ConfigurationOptionDescription>(options.length));
@@ -133,20 +132,20 @@ public class DescribeConfigurationOptionsResult  implements Serializable  {
      * @param options A list of <a>ConfigurationOptionDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationOptionsResult withOptions(java.util.Collection<ConfigurationOptionDescription> options) {
         if (options == null) {
             this.options = null;
         } else {
-            java.util.List<ConfigurationOptionDescription> optionsCopy = new java.util.ArrayList<ConfigurationOptionDescription>(options.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionDescription> optionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionDescription>(options.size());
             optionsCopy.addAll(options);
             this.options = optionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +157,8 @@ public class DescribeConfigurationOptionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");    	
+        sb.append("{");
+        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");
         if (getOptions() != null) sb.append("Options: " + getOptions() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,25 +14,25 @@
  */
 package com.amazonaws.services.s3.internal;
 
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.DigestInputStream;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import com.amazonaws.AmazonClientException;
-import com.amazonaws.services.s3.model.ProgressListener;
+import com.amazonaws.internal.SdkDigestInputStream;
 
 /**
  * Input stream extends MD5DigestValidationInputStream, when you finish reading the stream, it
  * will validate whether the computed digest equals the one from the server
  * side.
  */
-public class DigestValidationInputStream extends DigestInputStream {
+public class DigestValidationInputStream extends SdkDigestInputStream {
 
     private byte[] expectedHash;
+
+    //Flag do we don't validate twice.  See validateMD5Digest()
+    private boolean digestValidated = false;
 
     public DigestValidationInputStream(InputStream in, MessageDigest digest, byte[] serverSideHash) {
         super(in, digest);
@@ -68,7 +68,13 @@ public class DigestValidationInputStream extends DigestInputStream {
     }
 
     private void validateMD5Digest() {
-        if (expectedHash != null ) {
+        /*
+         * Some InputStream readers (e.g., java.util.Properties) read more than
+         * once at the end of the stream. This class validates the digest once
+         * -1 has been read so we must not validate twice.
+         */
+        if (expectedHash != null && !digestValidated ) {
+            digestValidated = true;
             if (!Arrays.equals(digest.digest(), expectedHash)) {
                 throw new AmazonClientException("Unable to verify integrity of data download.  "
                         + "Client calculated content hash didn't match hash calculated by Amazon S3.  "

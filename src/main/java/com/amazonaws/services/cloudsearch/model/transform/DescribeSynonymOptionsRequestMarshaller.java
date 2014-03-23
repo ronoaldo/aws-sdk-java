@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeSynonymOptionsRequestMarshaller implements Marshaller<Reque
     public Request<DescribeSynonymOptionsRequest> marshall(DescribeSynonymOptionsRequest describeSynonymOptionsRequest) {
 
         if (describeSynonymOptionsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeSynonymOptionsRequest> request = new DefaultRequest<DescribeSynonymOptionsRequest>(describeSynonymOptionsRequest, "AmazonCloudSearch");
         request.addParameter("Action", "DescribeSynonymOptions");
@@ -43,7 +43,6 @@ public class DescribeSynonymOptionsRequestMarshaller implements Marshaller<Reque
         if (describeSynonymOptionsRequest.getDomainName() != null) {
             request.addParameter("DomainName", StringUtils.fromString(describeSynonymOptionsRequest.getDomainName()));
         }
-
 
         return request;
     }

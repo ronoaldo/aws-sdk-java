@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.directconnect.AmazonDirectConnect#deleteVirtualInterface(DeleteVirtualInterfaceRequest) DeleteVirtualInterface operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.directconnect.AmazonDirectConnect#deleteVirtualInterface(DeleteVirtualInterfaceRequest)
  */
-public class DeleteVirtualInterfaceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteVirtualInterfaceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * ID of the virtual interface. <p>Example: dxvif-123dfg56 <p>Default:
@@ -64,14 +66,13 @@ public class DeleteVirtualInterfaceRequest extends AmazonWebServiceRequest  impl
      *         None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteVirtualInterfaceRequest withVirtualInterfaceId(String virtualInterfaceId) {
         this.virtualInterfaceId = virtualInterfaceId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -83,7 +84,7 @@ public class DeleteVirtualInterfaceRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVirtualInterfaceId() != null) sb.append("VirtualInterfaceId: " + getVirtualInterfaceId() );
         sb.append("}");
         return sb.toString();

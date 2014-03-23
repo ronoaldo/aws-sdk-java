@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeBundleTasksRequestMarshaller implements Marshaller<Request<
     public Request<DescribeBundleTasksRequest> marshall(DescribeBundleTasksRequest describeBundleTasksRequest) {
 
         if (describeBundleTasksRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeBundleTasksRequest> request = new DefaultRequest<DescribeBundleTasksRequest>(describeBundleTasksRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeBundleTasks");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> bundleIdsList = describeBundleTasksRequest.getBundleIds();
         int bundleIdsListIndex = 1;
@@ -76,7 +75,6 @@ public class DescribeBundleTasksRequestMarshaller implements Marshaller<Request<
 
             filtersListIndex++;
         }
-
 
         return request;
     }

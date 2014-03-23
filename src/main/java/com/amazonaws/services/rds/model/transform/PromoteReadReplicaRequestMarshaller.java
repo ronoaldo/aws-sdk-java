@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class PromoteReadReplicaRequestMarshaller implements Marshaller<Request<P
     public Request<PromoteReadReplicaRequest> marshall(PromoteReadReplicaRequest promoteReadReplicaRequest) {
 
         if (promoteReadReplicaRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PromoteReadReplicaRequest> request = new DefaultRequest<PromoteReadReplicaRequest>(promoteReadReplicaRequest, "AmazonRDS");
         request.addParameter("Action", "PromoteReadReplica");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (promoteReadReplicaRequest.getDBInstanceIdentifier() != null) {
             request.addParameter("DBInstanceIdentifier", StringUtils.fromString(promoteReadReplicaRequest.getDBInstanceIdentifier()));
@@ -49,7 +49,6 @@ public class PromoteReadReplicaRequestMarshaller implements Marshaller<Request<P
         if (promoteReadReplicaRequest.getPreferredBackupWindow() != null) {
             request.addParameter("PreferredBackupWindow", StringUtils.fromString(promoteReadReplicaRequest.getPreferredBackupWindow()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,30 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeletePlacementGroupRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#deletePlacementGroup(DeletePlacementGroupRequest) DeletePlacementGroup operation}.
  * <p>
- * Deletes a PlacementGroup from a user's account. Terminate all Amazon EC2 instances in the placement group before deletion.
+ * Deletes the specified placement group. You must terminate all
+ * instances in the placement group before you can delete the placement
+ * group. For more information about placement groups and cluster
+ * instances, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html"> Cluster Instances </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deletePlacementGroup(DeletePlacementGroupRequest)
  */
-public class DeletePlacementGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeletePlacementGroupRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeletePlacementGroupRequest> {
 
     /**
-     * The name of the <code>PlacementGroup</code> to delete.
+     * The name of the placement group.
      */
     private String groupName;
 
@@ -42,48 +51,56 @@ public class DeletePlacementGroupRequest extends AmazonWebServiceRequest  implem
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param groupName The name of the <code>PlacementGroup</code> to
-     * delete.
+     * @param groupName The name of the placement group.
      */
     public DeletePlacementGroupRequest(String groupName) {
-        this.groupName = groupName;
+        setGroupName(groupName);
     }
 
-    
-    
     /**
-     * The name of the <code>PlacementGroup</code> to delete.
+     * The name of the placement group.
      *
-     * @return The name of the <code>PlacementGroup</code> to delete.
+     * @return The name of the placement group.
      */
     public String getGroupName() {
         return groupName;
     }
     
     /**
-     * The name of the <code>PlacementGroup</code> to delete.
+     * The name of the placement group.
      *
-     * @param groupName The name of the <code>PlacementGroup</code> to delete.
+     * @param groupName The name of the placement group.
      */
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
     
     /**
-     * The name of the <code>PlacementGroup</code> to delete.
+     * The name of the placement group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupName The name of the <code>PlacementGroup</code> to delete.
+     * @param groupName The name of the placement group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeletePlacementGroupRequest withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeletePlacementGroupRequest> getDryRunRequest() {
+        Request<DeletePlacementGroupRequest> request = new DeletePlacementGroupRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -96,7 +113,7 @@ public class DeletePlacementGroupRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGroupName() != null) sb.append("GroupName: " + getGroupName() );
         sb.append("}");
         return sb.toString();

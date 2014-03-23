@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteClusterSecurityGroupRequestMarshaller implements Marshaller<R
     public Request<DeleteClusterSecurityGroupRequest> marshall(DeleteClusterSecurityGroupRequest deleteClusterSecurityGroupRequest) {
 
         if (deleteClusterSecurityGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteClusterSecurityGroupRequest> request = new DefaultRequest<DeleteClusterSecurityGroupRequest>(deleteClusterSecurityGroupRequest, "AmazonRedshift");
         request.addParameter("Action", "DeleteClusterSecurityGroup");
@@ -43,7 +43,6 @@ public class DeleteClusterSecurityGroupRequestMarshaller implements Marshaller<R
         if (deleteClusterSecurityGroupRequest.getClusterSecurityGroupName() != null) {
             request.addParameter("ClusterSecurityGroupName", StringUtils.fromString(deleteClusterSecurityGroupRequest.getClusterSecurityGroupName()));
         }
-
 
         return request;
     }

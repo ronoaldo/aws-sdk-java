@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,55 +13,61 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Volume Status Result
+ * 
  */
-public class DescribeVolumeStatusResult  implements Serializable  {
+public class DescribeVolumeStatusResult implements Serializable {
 
-    private java.util.List<VolumeStatusItem> volumeStatuses;
+    /**
+     * A list of volumes.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem> volumeStatuses;
 
+    /**
+     * The next paginated set of results to return.
+     */
     private String nextToken;
 
     /**
-     * Returns the value of the VolumeStatuses property for this object.
+     * A list of volumes.
      *
-     * @return The value of the VolumeStatuses property for this object.
+     * @return A list of volumes.
      */
     public java.util.List<VolumeStatusItem> getVolumeStatuses() {
-        
         if (volumeStatuses == null) {
-            volumeStatuses = new java.util.ArrayList<VolumeStatusItem>();
+              volumeStatuses = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem>();
+              volumeStatuses.setAutoConstruct(true);
         }
         return volumeStatuses;
     }
     
     /**
-     * Sets the value of the VolumeStatuses property for this object.
+     * A list of volumes.
      *
-     * @param volumeStatuses The new value for the VolumeStatuses property for this object.
+     * @param volumeStatuses A list of volumes.
      */
     public void setVolumeStatuses(java.util.Collection<VolumeStatusItem> volumeStatuses) {
         if (volumeStatuses == null) {
             this.volumeStatuses = null;
             return;
         }
-
-        java.util.List<VolumeStatusItem> volumeStatusesCopy = new java.util.ArrayList<VolumeStatusItem>(volumeStatuses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem> volumeStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem>(volumeStatuses.size());
         volumeStatusesCopy.addAll(volumeStatuses);
         this.volumeStatuses = volumeStatusesCopy;
     }
     
     /**
-     * Sets the value of the VolumeStatuses property for this object.
+     * A list of volumes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeStatuses The new value for the VolumeStatuses property for this object.
+     * @param volumeStatuses A list of volumes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusResult withVolumeStatuses(VolumeStatusItem... volumeStatuses) {
         if (getVolumeStatuses() == null) setVolumeStatuses(new java.util.ArrayList<VolumeStatusItem>(volumeStatuses.length));
@@ -72,61 +78,60 @@ public class DescribeVolumeStatusResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the VolumeStatuses property for this object.
+     * A list of volumes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeStatuses The new value for the VolumeStatuses property for this object.
+     * @param volumeStatuses A list of volumes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusResult withVolumeStatuses(java.util.Collection<VolumeStatusItem> volumeStatuses) {
         if (volumeStatuses == null) {
             this.volumeStatuses = null;
         } else {
-            java.util.List<VolumeStatusItem> volumeStatusesCopy = new java.util.ArrayList<VolumeStatusItem>(volumeStatuses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem> volumeStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusItem>(volumeStatuses.size());
             volumeStatusesCopy.addAll(volumeStatuses);
             this.volumeStatuses = volumeStatusesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the NextToken property for this object.
+     * The next paginated set of results to return.
      *
-     * @return The value of the NextToken property for this object.
+     * @return The next paginated set of results to return.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * The next paginated set of results to return.
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken The next paginated set of results to return.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * The next paginated set of results to return.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken The next paginated set of results to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumeStatusResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +143,8 @@ public class DescribeVolumeStatusResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeStatuses() != null) sb.append("VolumeStatuses: " + getVolumeStatuses() + ",");    	
+        sb.append("{");
+        if (getVolumeStatuses() != null) sb.append("VolumeStatuses: " + getVolumeStatuses() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

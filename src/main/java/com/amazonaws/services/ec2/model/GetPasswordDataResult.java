@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of the GetPasswordData operation.
- * </p>
+ * 
  */
-public class GetPasswordDataResult  implements Serializable  {
+public class GetPasswordDataResult implements Serializable {
 
     /**
-     * The ID of the instance whose Windows administrator password was
-     * requested.
+     * The ID of the Windows instance.
      */
     private String instanceId;
 
@@ -34,50 +32,43 @@ public class GetPasswordDataResult  implements Serializable  {
     private java.util.Date timestamp;
 
     /**
-     * The Windows administrator password of the specified instance.
+     * The password of the instance.
      */
     private String passwordData;
 
     /**
-     * The ID of the instance whose Windows administrator password was
-     * requested.
+     * The ID of the Windows instance.
      *
-     * @return The ID of the instance whose Windows administrator password was
-     *         requested.
+     * @return The ID of the Windows instance.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * The ID of the instance whose Windows administrator password was
-     * requested.
+     * The ID of the Windows instance.
      *
-     * @param instanceId The ID of the instance whose Windows administrator password was
-     *         requested.
+     * @param instanceId The ID of the Windows instance.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * The ID of the instance whose Windows administrator password was
-     * requested.
+     * The ID of the Windows instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The ID of the instance whose Windows administrator password was
-     *         requested.
+     * @param instanceId The ID of the Windows instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPasswordDataResult withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The time the data was last updated.
      *
@@ -104,48 +95,46 @@ public class GetPasswordDataResult  implements Serializable  {
      * @param timestamp The time the data was last updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPasswordDataResult withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
-     * The Windows administrator password of the specified instance.
+     * The password of the instance.
      *
-     * @return The Windows administrator password of the specified instance.
+     * @return The password of the instance.
      */
     public String getPasswordData() {
         return passwordData;
     }
     
     /**
-     * The Windows administrator password of the specified instance.
+     * The password of the instance.
      *
-     * @param passwordData The Windows administrator password of the specified instance.
+     * @param passwordData The password of the instance.
      */
     public void setPasswordData(String passwordData) {
         this.passwordData = passwordData;
     }
     
     /**
-     * The Windows administrator password of the specified instance.
+     * The password of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param passwordData The Windows administrator password of the specified instance.
+     * @param passwordData The password of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPasswordDataResult withPasswordData(String passwordData) {
         this.passwordData = passwordData;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -157,9 +146,9 @@ public class GetPasswordDataResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
         if (getPasswordData() != null) sb.append("PasswordData: " + getPasswordData() );
         sb.append("}");
         return sb.toString();

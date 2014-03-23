@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Output structure for the GetStatus operation.
  * </p>
  */
-public class GetStatusResult  implements Serializable  {
+public class GetStatusResult implements Serializable {
 
     /**
      * A unique identifier which refers to a particular job.
@@ -144,14 +145,13 @@ public class GetStatusResult  implements Serializable  {
      * @param jobId A unique identifier which refers to a particular job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withJobId(String jobId) {
         this.jobId = jobId;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -191,7 +191,7 @@ public class GetStatusResult  implements Serializable  {
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -199,8 +199,7 @@ public class GetStatusResult  implements Serializable  {
         this.jobType = jobType;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -226,7 +225,7 @@ public class GetStatusResult  implements Serializable  {
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -234,7 +233,7 @@ public class GetStatusResult  implements Serializable  {
         this.jobType = jobType.toString();
         return this;
     }
-    
+
     /**
      * Address you ship your storage device to.
      *
@@ -261,14 +260,13 @@ public class GetStatusResult  implements Serializable  {
      * @param awsShippingAddress Address you ship your storage device to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withAwsShippingAddress(String awsShippingAddress) {
         this.awsShippingAddress = awsShippingAddress;
         return this;
     }
-    
-    
+
     /**
      * A token representing the location of the storage device, such as
      * "AtAWS".
@@ -301,14 +299,13 @@ public class GetStatusResult  implements Serializable  {
      *         "AtAWS".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withLocationCode(String locationCode) {
         this.locationCode = locationCode;
         return this;
     }
-    
-    
+
     /**
      * A more human readable form of the physical location of the storage
      * device.
@@ -341,14 +338,13 @@ public class GetStatusResult  implements Serializable  {
      *         device.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withLocationMessage(String locationMessage) {
         this.locationMessage = locationMessage;
         return this;
     }
-    
-    
+
     /**
      * A token representing the state of the job, such as "Started".
      *
@@ -375,14 +371,13 @@ public class GetStatusResult  implements Serializable  {
      * @param progressCode A token representing the state of the job, such as "Started".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withProgressCode(String progressCode) {
         this.progressCode = progressCode;
         return this;
     }
-    
-    
+
     /**
      * A more human readable form of the job status.
      *
@@ -409,14 +404,13 @@ public class GetStatusResult  implements Serializable  {
      * @param progressMessage A more human readable form of the job status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withProgressMessage(String progressMessage) {
         this.progressMessage = progressMessage;
         return this;
     }
-    
-    
+
     /**
      * Name of the shipping company. This value is included when the
      * LocationCode is "Returned".
@@ -449,14 +443,13 @@ public class GetStatusResult  implements Serializable  {
      *         LocationCode is "Returned".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withCarrier(String carrier) {
         this.carrier = carrier;
         return this;
     }
-    
-    
+
     /**
      * The shipping tracking number assigned by AWS Import/Export to the
      * storage device when it's returned to you. We return this value when
@@ -495,14 +488,13 @@ public class GetStatusResult  implements Serializable  {
      *         the LocationCode is "Returned".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withTrackingNumber(String trackingNumber) {
         this.trackingNumber = trackingNumber;
         return this;
     }
-    
-    
+
     /**
      * Amazon S3 bucket for user logs.
      *
@@ -529,14 +521,13 @@ public class GetStatusResult  implements Serializable  {
      * @param logBucket Amazon S3 bucket for user logs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withLogBucket(String logBucket) {
         this.logBucket = logBucket;
         return this;
     }
-    
-    
+
     /**
      * The key where the user logs were stored.
      *
@@ -563,14 +554,13 @@ public class GetStatusResult  implements Serializable  {
      * @param logKey The key where the user logs were stored.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withLogKey(String logKey) {
         this.logKey = logKey;
         return this;
     }
-    
-    
+
     /**
      * Number of errors. We return this value when the ProgressCode is
      * Success or SuccessWithErrors.
@@ -603,14 +593,13 @@ public class GetStatusResult  implements Serializable  {
      *         Success or SuccessWithErrors.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withErrorCount(Integer errorCount) {
         this.errorCount = errorCount;
         return this;
     }
-    
-    
+
     /**
      * An encrypted code used to authenticate the request and response, for
      * example, "DV+TpDfx1/TdSE9ktyK9k/bDTVI=". Only use this value is you
@@ -655,14 +644,13 @@ public class GetStatusResult  implements Serializable  {
      *         the SignatureFileContents value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withSignature(String signature) {
         this.signature = signature;
         return this;
     }
-    
-    
+
     /**
      * An encrypted code used to authenticate the request and response, for
      * example, "DV+TpDfx1/TdSE9ktyK9k/bDTVI=". Only use this value is you
@@ -707,14 +695,13 @@ public class GetStatusResult  implements Serializable  {
      *         the SignatureFileContents value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withSignatureFileContents(String signatureFileContents) {
         this.signatureFileContents = signatureFileContents;
         return this;
     }
-    
-    
+
     /**
      * The last manifest submitted, which will be used to process the job.
      *
@@ -741,14 +728,13 @@ public class GetStatusResult  implements Serializable  {
      * @param currentManifest The last manifest submitted, which will be used to process the job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withCurrentManifest(String currentManifest) {
         this.currentManifest = currentManifest;
         return this;
     }
-    
-    
+
     /**
      * Timestamp of the CreateJob request in ISO8601 date format. For example
      * "2010-03-28T20:27:35Z".
@@ -781,14 +767,13 @@ public class GetStatusResult  implements Serializable  {
      *         "2010-03-28T20:27:35Z".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStatusResult withCreationDate(java.util.Date creationDate) {
         this.creationDate = creationDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -800,22 +785,22 @@ public class GetStatusResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");    	
-        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");    	
-        if (getAwsShippingAddress() != null) sb.append("AwsShippingAddress: " + getAwsShippingAddress() + ",");    	
-        if (getLocationCode() != null) sb.append("LocationCode: " + getLocationCode() + ",");    	
-        if (getLocationMessage() != null) sb.append("LocationMessage: " + getLocationMessage() + ",");    	
-        if (getProgressCode() != null) sb.append("ProgressCode: " + getProgressCode() + ",");    	
-        if (getProgressMessage() != null) sb.append("ProgressMessage: " + getProgressMessage() + ",");    	
-        if (getCarrier() != null) sb.append("Carrier: " + getCarrier() + ",");    	
-        if (getTrackingNumber() != null) sb.append("TrackingNumber: " + getTrackingNumber() + ",");    	
-        if (getLogBucket() != null) sb.append("LogBucket: " + getLogBucket() + ",");    	
-        if (getLogKey() != null) sb.append("LogKey: " + getLogKey() + ",");    	
-        if (getErrorCount() != null) sb.append("ErrorCount: " + getErrorCount() + ",");    	
-        if (getSignature() != null) sb.append("Signature: " + getSignature() + ",");    	
-        if (getSignatureFileContents() != null) sb.append("SignatureFileContents: " + getSignatureFileContents() + ",");    	
-        if (getCurrentManifest() != null) sb.append("CurrentManifest: " + getCurrentManifest() + ",");    	
+        sb.append("{");
+        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");
+        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");
+        if (getAwsShippingAddress() != null) sb.append("AwsShippingAddress: " + getAwsShippingAddress() + ",");
+        if (getLocationCode() != null) sb.append("LocationCode: " + getLocationCode() + ",");
+        if (getLocationMessage() != null) sb.append("LocationMessage: " + getLocationMessage() + ",");
+        if (getProgressCode() != null) sb.append("ProgressCode: " + getProgressCode() + ",");
+        if (getProgressMessage() != null) sb.append("ProgressMessage: " + getProgressMessage() + ",");
+        if (getCarrier() != null) sb.append("Carrier: " + getCarrier() + ",");
+        if (getTrackingNumber() != null) sb.append("TrackingNumber: " + getTrackingNumber() + ",");
+        if (getLogBucket() != null) sb.append("LogBucket: " + getLogBucket() + ",");
+        if (getLogKey() != null) sb.append("LogKey: " + getLogKey() + ",");
+        if (getErrorCount() != null) sb.append("ErrorCount: " + getErrorCount() + ",");
+        if (getSignature() != null) sb.append("Signature: " + getSignature() + ",");
+        if (getSignatureFileContents() != null) sb.append("SignatureFileContents: " + getSignatureFileContents() + ",");
+        if (getCurrentManifest() != null) sb.append("CurrentManifest: " + getCurrentManifest() + ",");
         if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() );
         sb.append("}");
         return sb.toString();

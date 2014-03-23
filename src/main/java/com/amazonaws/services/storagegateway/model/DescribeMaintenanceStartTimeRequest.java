@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#describeMaintenanceStartTime(DescribeMaintenanceStartTimeRequest) DescribeMaintenanceStartTime operation}.
  * <p>
- * This operation returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the
- * gateway's time zone.
+ * This operation returns your gateway's weekly maintenance start time
+ * including the day and time of the week. Note that values are in terms
+ * of the gateway's time zone.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#describeMaintenanceStartTime(DescribeMaintenanceStartTimeRequest)
  */
-public class DescribeMaintenanceStartTimeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeMaintenanceStartTimeRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -84,14 +87,13 @@ public class DescribeMaintenanceStartTimeRequest extends AmazonWebServiceRequest
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeMaintenanceStartTimeRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,7 +105,7 @@ public class DescribeMaintenanceStartTimeRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

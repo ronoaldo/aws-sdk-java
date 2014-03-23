@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an instance's Amazon EBS volume.
  * </p>
  */
-public class Volume  implements Serializable  {
+public class Volume implements Serializable {
 
     /**
      * The volume ID.
@@ -108,14 +109,13 @@ public class Volume  implements Serializable  {
      * @param volumeId The volume ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withVolumeId(String volumeId) {
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
      * The Amazon EC2 volume ID.
      *
@@ -142,14 +142,13 @@ public class Volume  implements Serializable  {
      * @param ec2VolumeId The Amazon EC2 volume ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withEc2VolumeId(String ec2VolumeId) {
         this.ec2VolumeId = ec2VolumeId;
         return this;
     }
-    
-    
+
     /**
      * The volume name.
      *
@@ -176,14 +175,13 @@ public class Volume  implements Serializable  {
      * @param name The volume name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The RAID array ID.
      *
@@ -210,14 +208,13 @@ public class Volume  implements Serializable  {
      * @param raidArrayId The RAID array ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withRaidArrayId(String raidArrayId) {
         this.raidArrayId = raidArrayId;
         return this;
     }
-    
-    
+
     /**
      * The instance ID.
      *
@@ -244,14 +241,13 @@ public class Volume  implements Serializable  {
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The value returned by <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html">DescribeVolumes</a>.
@@ -284,14 +280,13 @@ public class Volume  implements Serializable  {
      *         href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html">DescribeVolumes</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The volume size.
      *
@@ -318,14 +313,13 @@ public class Volume  implements Serializable  {
      * @param size The volume size.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withSize(Integer size) {
         this.size = size;
         return this;
     }
-    
-    
+
     /**
      * The device name.
      *
@@ -352,14 +346,13 @@ public class Volume  implements Serializable  {
      * @param device The device name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withDevice(String device) {
         this.device = device;
         return this;
     }
-    
-    
+
     /**
      * The volume mount point. For example "/dev/sdh".
      *
@@ -386,14 +379,13 @@ public class Volume  implements Serializable  {
      * @param mountPoint The volume mount point. For example "/dev/sdh".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withMountPoint(String mountPoint) {
         this.mountPoint = mountPoint;
         return this;
     }
-    
-    
+
     /**
      * The AWS region. For more information about AWS regions, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
@@ -432,14 +424,13 @@ public class Volume  implements Serializable  {
      *         and Endpoints</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withRegion(String region) {
         this.region = region;
         return this;
     }
-    
-    
+
     /**
      * The volume Availability Zone. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
@@ -478,14 +469,13 @@ public class Volume  implements Serializable  {
      *         and Endpoints</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Volume withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -497,17 +487,17 @@ public class Volume  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getEc2VolumeId() != null) sb.append("Ec2VolumeId: " + getEc2VolumeId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getRaidArrayId() != null) sb.append("RaidArrayId: " + getRaidArrayId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getSize() != null) sb.append("Size: " + getSize() + ",");    	
-        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");    	
-        if (getMountPoint() != null) sb.append("MountPoint: " + getMountPoint() + ",");    	
-        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getEc2VolumeId() != null) sb.append("Ec2VolumeId: " + getEc2VolumeId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getRaidArrayId() != null) sb.append("RaidArrayId: " + getRaidArrayId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getSize() != null) sb.append("Size: " + getSize() + ",");
+        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");
+        if (getMountPoint() != null) sb.append("MountPoint: " + getMountPoint() + ",");
+        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");
         if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() );
         sb.append("}");
         return sb.toString();

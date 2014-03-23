@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,94 +13,110 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Network Interface Attachment Changes
+ * <p>
+ * Describes an attachment change.
+ * </p>
  */
-public class NetworkInterfaceAttachmentChanges  implements Serializable  {
+public class NetworkInterfaceAttachmentChanges implements Serializable {
 
+    /**
+     * The ID of the network interface attachment.
+     */
     private String attachmentId;
 
+    /**
+     * Indicates whether the network interface is deleted when the instance
+     * is terminated.
+     */
     private Boolean deleteOnTermination;
 
     /**
-     * Returns the value of the AttachmentId property for this object.
+     * The ID of the network interface attachment.
      *
-     * @return The value of the AttachmentId property for this object.
+     * @return The ID of the network interface attachment.
      */
     public String getAttachmentId() {
         return attachmentId;
     }
     
     /**
-     * Sets the value of the AttachmentId property for this object.
+     * The ID of the network interface attachment.
      *
-     * @param attachmentId The new value for the AttachmentId property for this object.
+     * @param attachmentId The ID of the network interface attachment.
      */
     public void setAttachmentId(String attachmentId) {
         this.attachmentId = attachmentId;
     }
     
     /**
-     * Sets the value of the AttachmentId property for this object.
+     * The ID of the network interface attachment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attachmentId The new value for the AttachmentId property for this object.
+     * @param attachmentId The ID of the network interface attachment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterfaceAttachmentChanges withAttachmentId(String attachmentId) {
         this.attachmentId = attachmentId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the DeleteOnTermination property for this object.
+     * Indicates whether the network interface is deleted when the instance
+     * is terminated.
      *
-     * @return The value of the DeleteOnTermination property for this object.
+     * @return Indicates whether the network interface is deleted when the instance
+     *         is terminated.
      */
     public Boolean isDeleteOnTermination() {
         return deleteOnTermination;
     }
     
     /**
-     * Sets the value of the DeleteOnTermination property for this object.
+     * Indicates whether the network interface is deleted when the instance
+     * is terminated.
      *
-     * @param deleteOnTermination The new value for the DeleteOnTermination property for this object.
+     * @param deleteOnTermination Indicates whether the network interface is deleted when the instance
+     *         is terminated.
      */
     public void setDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
     }
     
     /**
-     * Sets the value of the DeleteOnTermination property for this object.
+     * Indicates whether the network interface is deleted when the instance
+     * is terminated.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param deleteOnTermination The new value for the DeleteOnTermination property for this object.
+     * @param deleteOnTermination Indicates whether the network interface is deleted when the instance
+     *         is terminated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public NetworkInterfaceAttachmentChanges withDeleteOnTermination(Boolean deleteOnTermination) {
         this.deleteOnTermination = deleteOnTermination;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the DeleteOnTermination property for this object.
+     * Indicates whether the network interface is deleted when the instance
+     * is terminated.
      *
-     * @return The value of the DeleteOnTermination property for this object.
+     * @return Indicates whether the network interface is deleted when the instance
+     *         is terminated.
      */
     public Boolean getDeleteOnTermination() {
         return deleteOnTermination;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -112,8 +128,8 @@ public class NetworkInterfaceAttachmentChanges  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttachmentId() != null) sb.append("AttachmentId: " + getAttachmentId() + ",");    	
+        sb.append("{");
+        if (getAttachmentId() != null) sb.append("AttachmentId: " + getAttachmentId() + ",");
         if (isDeleteOnTermination() != null) sb.append("DeleteOnTermination: " + isDeleteOnTermination() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class DeleteArchiveRequestMarshaller implements Marshaller<Request<DeleteArchiveRequest>, DeleteArchiveRequest> {
 
-    
-
     public Request<DeleteArchiveRequest> marshall(DeleteArchiveRequest deleteArchiveRequest) {
     if (deleteArchiveRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,14 +49,12 @@ public class DeleteArchiveRequestMarshaller implements Marshaller<Request<Delete
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.DELETE);
 
-
         String uriResourcePath = "/{accountId}/vaults/{vaultName}/archives/{archiveId}"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(deleteArchiveRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(deleteArchiveRequest.getVaultName())); 
-        uriResourcePath = uriResourcePath.replace("{archiveId}", getString(deleteArchiveRequest.getArchiveId())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (deleteArchiveRequest.getAccountId() == null) ? "" : StringUtils.fromString(deleteArchiveRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (deleteArchiveRequest.getVaultName() == null) ? "" : StringUtils.fromString(deleteArchiveRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{archiveId}", (deleteArchiveRequest.getArchiveId() == null) ? "" : StringUtils.fromString(deleteArchiveRequest.getArchiveId())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -78,16 +74,8 @@ public class DeleteArchiveRequestMarshaller implements Marshaller<Request<Delete
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

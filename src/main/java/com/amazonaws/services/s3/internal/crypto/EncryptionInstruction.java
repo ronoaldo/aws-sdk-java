@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ public class EncryptionInstruction {
     private final byte[] encryptedSymmetricKey;
     private final SecretKey symmetricKey;
     private final Cipher symmetricCipher;
-    private CipherFactory symmetricCipherFactory;
+    private final CipherFactory symmetricCipherFactory;
 
     /**
      * Construct a new EncryptionInstruction object with the provided fields.
@@ -48,6 +48,7 @@ public class EncryptionInstruction {
         this.encryptedSymmetricKey = encryptedSymmetricKey;
         this.symmetricKey = symmetricKey;
         this.symmetricCipher = symmetricCipher;
+        this.symmetricCipherFactory = null;
     }
 
     public EncryptionInstruction(Map<String, String> materialsDescription, byte[] encryptedSymmetricKey, SecretKey symmetricKey, CipherFactory symmetricCipherFactory) {

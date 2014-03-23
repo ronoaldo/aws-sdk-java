@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#modifyDBSubnetGroup(ModifyDBSubnetGroupRequest) ModifyDBSubnetGroup operation}.
  * <p>
- * Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the region.
+ * Modifies an existing DB subnet group. DB subnet groups must contain
+ * at least one subnet in at least two AZs in the region.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#modifyDBSubnetGroup(ModifyDBSubnetGroupRequest)
  */
-public class ModifyDBSubnetGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyDBSubnetGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name for the DB Subnet Group. This value is stored as a lowercase
+     * The name for the DB subnet group. This value is stored as a lowercase
      * string. <p>Constraints: Must contain no more than 255 alphanumeric
      * characters or hyphens. Must not be "Default". <p>Example:
      * <code>mySubnetgroup</code>
@@ -35,22 +38,22 @@ public class ModifyDBSubnetGroupRequest extends AmazonWebServiceRequest  impleme
     private String dBSubnetGroupName;
 
     /**
-     * The description for the DB Subnet Group.
+     * The description for the DB subnet group.
      */
     private String dBSubnetGroupDescription;
 
     /**
-     * The EC2 Subnet IDs for the DB Subnet Group.
+     * The EC2 subnet IDs for the DB subnet group.
      */
-    private java.util.List<String> subnetIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIds;
 
     /**
-     * The name for the DB Subnet Group. This value is stored as a lowercase
+     * The name for the DB subnet group. This value is stored as a lowercase
      * string. <p>Constraints: Must contain no more than 255 alphanumeric
      * characters or hyphens. Must not be "Default". <p>Example:
      * <code>mySubnetgroup</code>
      *
-     * @return The name for the DB Subnet Group. This value is stored as a lowercase
+     * @return The name for the DB subnet group. This value is stored as a lowercase
      *         string. <p>Constraints: Must contain no more than 255 alphanumeric
      *         characters or hyphens. Must not be "Default". <p>Example:
      *         <code>mySubnetgroup</code>
@@ -60,12 +63,12 @@ public class ModifyDBSubnetGroupRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * The name for the DB Subnet Group. This value is stored as a lowercase
+     * The name for the DB subnet group. This value is stored as a lowercase
      * string. <p>Constraints: Must contain no more than 255 alphanumeric
      * characters or hyphens. Must not be "Default". <p>Example:
      * <code>mySubnetgroup</code>
      *
-     * @param dBSubnetGroupName The name for the DB Subnet Group. This value is stored as a lowercase
+     * @param dBSubnetGroupName The name for the DB subnet group. This value is stored as a lowercase
      *         string. <p>Constraints: Must contain no more than 255 alphanumeric
      *         characters or hyphens. Must not be "Default". <p>Example:
      *         <code>mySubnetgroup</code>
@@ -75,99 +78,96 @@ public class ModifyDBSubnetGroupRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * The name for the DB Subnet Group. This value is stored as a lowercase
+     * The name for the DB subnet group. This value is stored as a lowercase
      * string. <p>Constraints: Must contain no more than 255 alphanumeric
      * characters or hyphens. Must not be "Default". <p>Example:
      * <code>mySubnetgroup</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSubnetGroupName The name for the DB Subnet Group. This value is stored as a lowercase
+     * @param dBSubnetGroupName The name for the DB subnet group. This value is stored as a lowercase
      *         string. <p>Constraints: Must contain no more than 255 alphanumeric
      *         characters or hyphens. Must not be "Default". <p>Example:
      *         <code>mySubnetgroup</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyDBSubnetGroupRequest withDBSubnetGroupName(String dBSubnetGroupName) {
         this.dBSubnetGroupName = dBSubnetGroupName;
         return this;
     }
-    
-    
+
     /**
-     * The description for the DB Subnet Group.
+     * The description for the DB subnet group.
      *
-     * @return The description for the DB Subnet Group.
+     * @return The description for the DB subnet group.
      */
     public String getDBSubnetGroupDescription() {
         return dBSubnetGroupDescription;
     }
     
     /**
-     * The description for the DB Subnet Group.
+     * The description for the DB subnet group.
      *
-     * @param dBSubnetGroupDescription The description for the DB Subnet Group.
+     * @param dBSubnetGroupDescription The description for the DB subnet group.
      */
     public void setDBSubnetGroupDescription(String dBSubnetGroupDescription) {
         this.dBSubnetGroupDescription = dBSubnetGroupDescription;
     }
     
     /**
-     * The description for the DB Subnet Group.
+     * The description for the DB subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSubnetGroupDescription The description for the DB Subnet Group.
+     * @param dBSubnetGroupDescription The description for the DB subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyDBSubnetGroupRequest withDBSubnetGroupDescription(String dBSubnetGroupDescription) {
         this.dBSubnetGroupDescription = dBSubnetGroupDescription;
         return this;
     }
-    
-    
+
     /**
-     * The EC2 Subnet IDs for the DB Subnet Group.
+     * The EC2 subnet IDs for the DB subnet group.
      *
-     * @return The EC2 Subnet IDs for the DB Subnet Group.
+     * @return The EC2 subnet IDs for the DB subnet group.
      */
     public java.util.List<String> getSubnetIds() {
-        
         if (subnetIds == null) {
-            subnetIds = new java.util.ArrayList<String>();
+              subnetIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnetIds.setAutoConstruct(true);
         }
         return subnetIds;
     }
     
     /**
-     * The EC2 Subnet IDs for the DB Subnet Group.
+     * The EC2 subnet IDs for the DB subnet group.
      *
-     * @param subnetIds The EC2 Subnet IDs for the DB Subnet Group.
+     * @param subnetIds The EC2 subnet IDs for the DB subnet group.
      */
     public void setSubnetIds(java.util.Collection<String> subnetIds) {
         if (subnetIds == null) {
             this.subnetIds = null;
             return;
         }
-
-        java.util.List<String> subnetIdsCopy = new java.util.ArrayList<String>(subnetIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
         subnetIdsCopy.addAll(subnetIds);
         this.subnetIds = subnetIdsCopy;
     }
     
     /**
-     * The EC2 Subnet IDs for the DB Subnet Group.
+     * The EC2 subnet IDs for the DB subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetIds The EC2 Subnet IDs for the DB Subnet Group.
+     * @param subnetIds The EC2 subnet IDs for the DB subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyDBSubnetGroupRequest withSubnetIds(String... subnetIds) {
         if (getSubnetIds() == null) setSubnetIds(new java.util.ArrayList<String>(subnetIds.length));
@@ -178,27 +178,27 @@ public class ModifyDBSubnetGroupRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * The EC2 Subnet IDs for the DB Subnet Group.
+     * The EC2 subnet IDs for the DB subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetIds The EC2 Subnet IDs for the DB Subnet Group.
+     * @param subnetIds The EC2 subnet IDs for the DB subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyDBSubnetGroupRequest withSubnetIds(java.util.Collection<String> subnetIds) {
         if (subnetIds == null) {
             this.subnetIds = null;
         } else {
-            java.util.List<String> subnetIdsCopy = new java.util.ArrayList<String>(subnetIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
             subnetIdsCopy.addAll(subnetIds);
             this.subnetIds = subnetIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -210,9 +210,9 @@ public class ModifyDBSubnetGroupRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBSubnetGroupName() != null) sb.append("DBSubnetGroupName: " + getDBSubnetGroupName() + ",");    	
-        if (getDBSubnetGroupDescription() != null) sb.append("DBSubnetGroupDescription: " + getDBSubnetGroupDescription() + ",");    	
+        sb.append("{");
+        if (getDBSubnetGroupName() != null) sb.append("DBSubnetGroupName: " + getDBSubnetGroupName() + ",");
+        if (getDBSubnetGroupDescription() != null) sb.append("DBSubnetGroupDescription: " + getDBSubnetGroupDescription() + ",");
         if (getSubnetIds() != null) sb.append("SubnetIds: " + getSubnetIds() );
         sb.append("}");
         return sb.toString();

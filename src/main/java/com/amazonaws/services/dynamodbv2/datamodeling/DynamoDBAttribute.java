@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,9 @@ import java.lang.annotation.Target;
 
 /**
  * Interface for marking a class property as an attribute in a DynamoDB table.
- * Applied to the getter method of a modeled property.
+ * Applied to the getter method or the class field for a modeled property. If
+ * the annotation is applied directly to the class field, the corresponding
+ * getter and setter must be declared in the same class.
  * <p>
  * This annotation is optional when the name of the DynamoDB attribute matches
  * the name of the property declared in the class. When they differ, use this
@@ -37,7 +39,7 @@ import java.lang.annotation.Target;
  * properties, unless marked with {@link DynamoDBIgnore}.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target({ElementType.FIELD, ElementType.METHOD})
 public @interface DynamoDBAttribute {
 
     /**

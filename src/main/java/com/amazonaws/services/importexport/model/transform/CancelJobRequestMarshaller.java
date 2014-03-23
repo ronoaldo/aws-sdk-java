@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CancelJobRequestMarshaller implements Marshaller<Request<CancelJobR
     public Request<CancelJobRequest> marshall(CancelJobRequest cancelJobRequest) {
 
         if (cancelJobRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CancelJobRequest> request = new DefaultRequest<CancelJobRequest>(cancelJobRequest, "AmazonImportExport");
         request.addParameter("Action", "CancelJob");
@@ -43,7 +43,6 @@ public class CancelJobRequestMarshaller implements Marshaller<Request<CancelJobR
         if (cancelJobRequest.getJobId() != null) {
             request.addParameter("JobId", StringUtils.fromString(cancelJobRequest.getJobId()));
         }
-
 
         return request;
     }

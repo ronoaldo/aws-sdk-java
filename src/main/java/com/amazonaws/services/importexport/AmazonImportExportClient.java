@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,28 +14,25 @@
  */
 package com.amazonaws.services.importexport;
 
-import org.w3c.dom.Node;
+import org.w3c.dom.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.net.*;
+import java.util.*;
 import java.util.Map.Entry;
 
 import com.amazonaws.*;
 import com.amazonaws.auth.*;
-import com.amazonaws.handlers.HandlerChainFactory;
-import com.amazonaws.handlers.RequestHandler;
-import com.amazonaws.http.StaxResponseHandler;
-import com.amazonaws.http.DefaultErrorResponseHandler;
-import com.amazonaws.http.ExecutionContext;
-import com.amazonaws.internal.StaticCredentialsProvider;
-import com.amazonaws.transform.Unmarshaller;
-import com.amazonaws.transform.StaxUnmarshallerContext;
-import com.amazonaws.transform.StandardErrorUnmarshaller;
+import com.amazonaws.handlers.*;
+import com.amazonaws.http.*;
+import com.amazonaws.internal.*;
+import com.amazonaws.metrics.*;
+import com.amazonaws.regions.*;
+import com.amazonaws.transform.*;
+import com.amazonaws.util.*;
+import com.amazonaws.util.AWSRequestMetrics.Field;
 
 import com.amazonaws.services.importexport.model.*;
 import com.amazonaws.services.importexport.model.transform.*;
-
 
 /**
  * Client for accessing AmazonImportExport.  All service calls made
@@ -43,9 +40,13 @@ import com.amazonaws.services.importexport.model.transform.*;
  * completes.
  * <p>
  * AWS Import/Export Service <p>
- * AWS Import/Export accelerates transferring large amounts of data between the AWS cloud and portable storage devices that you mail to us. AWS
- * Import/Export transfers data directly onto and off of your storage devices using Amazon's high-speed internal network and bypassing the Internet. For
- * large data sets, AWS Import/Export is often faster than Internet transfer and more cost effective than upgrading your connectivity.
+ * AWS Import/Export accelerates transferring large amounts of data
+ * between the AWS cloud and portable storage devices that you mail to
+ * us. AWS Import/Export transfers data directly onto and off of your
+ * storage devices using Amazon's high-speed internal network and
+ * bypassing the Internet. For large data sets, AWS Import/Export is
+ * often faster than Internet transfer and more cost effective than
+ * upgrading your connectivity.
  * </p>
  */
 public class AmazonImportExportClient extends AmazonWebServiceClient implements AmazonImportExport {
@@ -58,11 +59,6 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      */
     protected final List<Unmarshaller<AmazonServiceException, Node>> exceptionUnmarshallers
             = new ArrayList<Unmarshaller<AmazonServiceException, Node>>();
-
-    
-    /** AWS signer for authenticating requests. */
-    private QueryStringSigner signer;
-
 
     /**
      * Constructs a new client to invoke service methods on
@@ -78,7 +74,7 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonImportExportClient() {
         this(new DefaultAWSCredentialsProviderChain(), new ClientConfiguration());
@@ -102,7 +98,7 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *                       client connects to AmazonImportExport
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonImportExportClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration);
@@ -177,7 +173,30 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *                       (ex: proxy settings, retry counts, etc.).
      */
     public AmazonImportExportClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration) {
-        super(clientConfiguration);
+        this(awsCredentialsProvider, clientConfiguration, null);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on
+     * AmazonImportExport using the specified AWS account credentials
+     * provider, client configuration options, and request metric collector.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not
+     * return until the service call completes.
+     *
+     * @param awsCredentialsProvider
+     *            The AWS credentials provider which will provide credentials
+     *            to authenticate requests with AWS services.
+     * @param clientConfiguration The client configuration options controlling how this
+     *                       client connects to AmazonImportExport
+     *                       (ex: proxy settings, retry counts, etc.).
+     * @param requestMetricCollector optional request metric collector
+     */
+    public AmazonImportExportClient(AWSCredentialsProvider awsCredentialsProvider,
+            ClientConfiguration clientConfiguration,
+            RequestMetricCollector requestMetricCollector) {
+        super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
         init();
     }
@@ -202,17 +221,15 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
         exceptionUnmarshallers.add(new InvalidCustomsExceptionUnmarshaller());
         
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
-        setEndpoint("importexport.amazonaws.com");
-
-        signer = new QueryStringSigner();
-        
-
+        // calling this.setEndPoint(...) will also modify the signer accordingly
+        this.setEndpoint("importexport.amazonaws.com");
         HandlerChainFactory chainFactory = new HandlerChainFactory();
-		requestHandlers.addAll(chainFactory.newRequestHandlerChain(
+        requestHandler2s.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services/importexport/request.handlers"));
+        requestHandler2s.addAll(chainFactory.newRequestHandler2Chain(
+                "/com/amazonaws/services/importexport/request.handler2s"));
     }
 
-    
     /**
      * <p>
      * This operation initiates the process of scheduling an upload or
@@ -251,10 +268,21 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *             If an error response is returned by AmazonImportExport indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public CreateJobResult createJob(CreateJobRequest createJobRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<CreateJobRequest> request = new CreateJobRequestMarshaller().marshall(createJobRequest);
-        return invoke(request, new CreateJobResultStaxUnmarshaller());
+    public CreateJobResult createJob(CreateJobRequest createJobRequest) {
+        ExecutionContext executionContext = createExecutionContext(createJobRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<CreateJobRequest> request = null;
+        Response<CreateJobResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new CreateJobRequestMarshaller().marshall(createJobRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new CreateJobResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -283,10 +311,21 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *             If an error response is returned by AmazonImportExport indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public CancelJobResult cancelJob(CancelJobRequest cancelJobRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<CancelJobRequest> request = new CancelJobRequestMarshaller().marshall(cancelJobRequest);
-        return invoke(request, new CancelJobResultStaxUnmarshaller());
+    public CancelJobResult cancelJob(CancelJobRequest cancelJobRequest) {
+        ExecutionContext executionContext = createExecutionContext(cancelJobRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<CancelJobRequest> request = null;
+        Response<CancelJobResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new CancelJobRequestMarshaller().marshall(cancelJobRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new CancelJobResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -316,10 +355,21 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *             If an error response is returned by AmazonImportExport indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public GetStatusResult getStatus(GetStatusRequest getStatusRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<GetStatusRequest> request = new GetStatusRequestMarshaller().marshall(getStatusRequest);
-        return invoke(request, new GetStatusResultStaxUnmarshaller());
+    public GetStatusResult getStatus(GetStatusRequest getStatusRequest) {
+        ExecutionContext executionContext = createExecutionContext(getStatusRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<GetStatusRequest> request = null;
+        Response<GetStatusResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new GetStatusRequestMarshaller().marshall(getStatusRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new GetStatusResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -348,10 +398,21 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *             If an error response is returned by AmazonImportExport indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public ListJobsResult listJobs(ListJobsRequest listJobsRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<ListJobsRequest> request = new ListJobsRequestMarshaller().marshall(listJobsRequest);
-        return invoke(request, new ListJobsResultStaxUnmarshaller());
+    public ListJobsResult listJobs(ListJobsRequest listJobsRequest) {
+        ExecutionContext executionContext = createExecutionContext(listJobsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<ListJobsRequest> request = null;
+        Response<ListJobsResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new ListJobsRequestMarshaller().marshall(listJobsRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new ListJobsResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -394,10 +455,21 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
      *             If an error response is returned by AmazonImportExport indicating
      *             either a problem with the data in the request, or a server side issue.
      */
-    public UpdateJobResult updateJob(UpdateJobRequest updateJobRequest) 
-            throws AmazonServiceException, AmazonClientException {
-        Request<UpdateJobRequest> request = new UpdateJobRequestMarshaller().marshall(updateJobRequest);
-        return invoke(request, new UpdateJobResultStaxUnmarshaller());
+    public UpdateJobResult updateJob(UpdateJobRequest updateJobRequest) {
+        ExecutionContext executionContext = createExecutionContext(updateJobRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        Request<UpdateJobRequest> request = null;
+        Response<UpdateJobResult> response = null;
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        try {
+            request = new UpdateJobRequestMarshaller().marshall(updateJobRequest);
+            // Binds the request metrics to the current request.
+            request.setAWSRequestMetrics(awsRequestMetrics);
+            response = invoke(request, new UpdateJobResultStaxUnmarshaller(), executionContext);
+            return response.getAwsResponse();
+        } finally {
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
     
     /**
@@ -426,12 +498,6 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
     public ListJobsResult listJobs() throws AmazonServiceException, AmazonClientException {
         return listJobs(new ListJobsRequest());
     }
-    
-    @Override
-    protected String getServiceAbbreviation() {
-        return "importexport";
-    }
-    
 
     /**
      * Returns additional metadata for a previously executed successful, request, typically used for
@@ -453,27 +519,27 @@ public class AmazonImportExportClient extends AmazonWebServiceClient implements 
         return client.getResponseMetadataForRequest(request);
     }
 
-    private <X, Y extends AmazonWebServiceRequest> X invoke(Request<Y> request, Unmarshaller<X, StaxUnmarshallerContext> unmarshaller) {
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request,
+            Unmarshaller<X, StaxUnmarshallerContext> unmarshaller,
+            ExecutionContext executionContext)
+    {
         request.setEndpoint(endpoint);
         request.setTimeOffset(timeOffset);
-        for (Entry<String, String> entry : request.getOriginalRequest().copyPrivateRequestParameters().entrySet()) {
+        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
+        for (Entry<String, String> entry : originalRequest.copyPrivateRequestParameters().entrySet()) {
             request.addParameter(entry.getKey(), entry.getValue());
         }
 
         AWSCredentials credentials = awsCredentialsProvider.getCredentials();
-        AmazonWebServiceRequest originalRequest = request.getOriginalRequest();
-        if (originalRequest != null && originalRequest.getRequestCredentials() != null) {
-        	credentials = originalRequest.getRequestCredentials();
+        if (originalRequest.getRequestCredentials() != null) {
+            credentials = originalRequest.getRequestCredentials();
         }
 
-        ExecutionContext executionContext = createExecutionContext();
-        executionContext.setSigner(signer);
         executionContext.setCredentials(credentials);
         
         StaxResponseHandler<X> responseHandler = new StaxResponseHandler<X>(unmarshaller);
         DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);
-
-        return (X)client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 }
         

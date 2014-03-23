@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#setStatus(SetStatusRequest) SetStatus operation}.
  * <p>
- * Requests that the status of an array of physical or logical pipeline objects be updated in the pipeline. This update may not occur immediately, but is
- * eventually consistent. The status that can be set depends on the type of object.
+ * Requests that the status of an array of physical or logical pipeline
+ * objects be updated in the pipeline. This update may not occur
+ * immediately, but is eventually consistent. The status that can be set
+ * depends on the type of object.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#setStatus(SetStatusRequest)
  */
-public class SetStatusRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetStatusRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Identifies the pipeline that contains the objects.
@@ -40,7 +44,7 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
      * Identifies an array of objects. The corresponding objects can be
      * either physical or components, but not a mix of both types.
      */
-    private java.util.List<String> objectIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> objectIds;
 
     /**
      * Specifies the status to be set on all the objects in
@@ -93,14 +97,13 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
      * @param pipelineId Identifies the pipeline that contains the objects.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetStatusRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * Identifies an array of objects. The corresponding objects can be
      * either physical or components, but not a mix of both types.
@@ -109,9 +112,9 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
      *         either physical or components, but not a mix of both types.
      */
     public java.util.List<String> getObjectIds() {
-        
         if (objectIds == null) {
-            objectIds = new java.util.ArrayList<String>();
+              objectIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              objectIds.setAutoConstruct(true);
         }
         return objectIds;
     }
@@ -128,8 +131,7 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
             this.objectIds = null;
             return;
         }
-
-        java.util.List<String> objectIdsCopy = new java.util.ArrayList<String>(objectIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> objectIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(objectIds.size());
         objectIdsCopy.addAll(objectIds);
         this.objectIds = objectIdsCopy;
     }
@@ -144,7 +146,7 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
      *         either physical or components, but not a mix of both types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetStatusRequest withObjectIds(String... objectIds) {
         if (getObjectIds() == null) setObjectIds(new java.util.ArrayList<String>(objectIds.length));
@@ -164,20 +166,20 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
      *         either physical or components, but not a mix of both types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetStatusRequest withObjectIds(java.util.Collection<String> objectIds) {
         if (objectIds == null) {
             this.objectIds = null;
         } else {
-            java.util.List<String> objectIdsCopy = new java.util.ArrayList<String>(objectIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> objectIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(objectIds.size());
             objectIdsCopy.addAll(objectIds);
             this.objectIds = objectIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Specifies the status to be set on all the objects in
      * <code>objectIds</code>. For components, this can be either
@@ -240,14 +242,13 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
      *         <code>MARK_FINISHED</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetStatusRequest withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -259,9 +260,9 @@ public class SetStatusRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getObjectIds() != null) sb.append("ObjectIds: " + getObjectIds() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getObjectIds() != null) sb.append("ObjectIds: " + getObjectIds() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

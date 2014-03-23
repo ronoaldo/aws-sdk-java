@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class RevokeClusterSecurityGroupIngressRequestMarshaller implements Marsh
     public Request<RevokeClusterSecurityGroupIngressRequest> marshall(RevokeClusterSecurityGroupIngressRequest revokeClusterSecurityGroupIngressRequest) {
 
         if (revokeClusterSecurityGroupIngressRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RevokeClusterSecurityGroupIngressRequest> request = new DefaultRequest<RevokeClusterSecurityGroupIngressRequest>(revokeClusterSecurityGroupIngressRequest, "AmazonRedshift");
         request.addParameter("Action", "RevokeClusterSecurityGroupIngress");
@@ -52,7 +52,6 @@ public class RevokeClusterSecurityGroupIngressRequestMarshaller implements Marsh
         if (revokeClusterSecurityGroupIngressRequest.getEC2SecurityGroupOwnerId() != null) {
             request.addParameter("EC2SecurityGroupOwnerId", StringUtils.fromString(revokeClusterSecurityGroupIngressRequest.getEC2SecurityGroupOwnerId()));
         }
-
 
         return request;
     }

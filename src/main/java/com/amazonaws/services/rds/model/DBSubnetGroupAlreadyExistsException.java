@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * <i>DBSubnetGroupName</i> is already used by an existing DBSubnetGroup.
+ * <i>DBSubnetGroupName</i> is already used by an existing DB subnet
+ * group.
  * </p>
  */        
 public class DBSubnetGroupAlreadyExistsException extends AmazonServiceException {

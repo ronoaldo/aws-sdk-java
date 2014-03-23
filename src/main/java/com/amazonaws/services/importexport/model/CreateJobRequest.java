@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.importexport.AmazonImportExport#createJob(CreateJobRequest) CreateJob operation}.
  * <p>
- * This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data
- * transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your
- * storage device, and the address where you should ship your storage device.
+ * This operation initiates the process of scheduling an upload or
+ * download of your data. You include in the request a manifest that
+ * describes the data transfer specifics. The response to the request
+ * includes a job ID, which you can use in other operations, a signature
+ * that you use to identify your storage device, and the address where
+ * you should ship your storage device.
  * </p>
  *
  * @see com.amazonaws.services.importexport.AmazonImportExport#createJob(CreateJobRequest)
  */
-public class CreateJobRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateJobRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Specifies whether the job to initiate is an import or export job.
@@ -91,7 +96,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -99,8 +104,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
         this.jobType = jobType;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -126,7 +130,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -134,7 +138,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
         this.jobType = jobType.toString();
         return this;
     }
-    
+
     /**
      * The UTF-8 encoded text of the manifest file.
      *
@@ -161,14 +165,13 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param manifest The UTF-8 encoded text of the manifest file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withManifest(String manifest) {
         this.manifest = manifest;
         return this;
     }
-    
-    
+
     /**
      * For internal use only.
      *
@@ -195,14 +198,13 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param manifestAddendum For internal use only.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withManifestAddendum(String manifestAddendum) {
         this.manifestAddendum = manifestAddendum;
         return this;
     }
-    
-    
+
     /**
      * Validate the manifest and parameter values in the request but do not
      * actually create a job.
@@ -235,14 +237,13 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         actually create a job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withValidateOnly(Boolean validateOnly) {
         this.validateOnly = validateOnly;
         return this;
     }
-    
-    
+
     /**
      * Validate the manifest and parameter values in the request but do not
      * actually create a job.
@@ -253,7 +254,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
     public Boolean getValidateOnly() {
         return validateOnly;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -265,10 +266,10 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");    	
-        if (getManifest() != null) sb.append("Manifest: " + getManifest() + ",");    	
-        if (getManifestAddendum() != null) sb.append("ManifestAddendum: " + getManifestAddendum() + ",");    	
+        sb.append("{");
+        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");
+        if (getManifest() != null) sb.append("Manifest: " + getManifest() + ",");
+        if (getManifestAddendum() != null) sb.append("ManifestAddendum: " + getManifestAddendum() + ",");
         if (isValidateOnly() != null) sb.append("ValidateOnly: " + isValidateOnly() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,59 +13,73 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeConversionTasksRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeConversionTasks(DescribeConversionTasksRequest) DescribeConversionTasks operation}.
- * 
+ * <p>
+ * Describes one or more of your conversion tasks. For more information,
+ * see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UploadingYourInstancesandVolumes.html"> Using the Command Line Tools to Import Your Virtual Machine to Amazon EC2 </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeConversionTasks(DescribeConversionTasksRequest)
  */
-public class DescribeConversionTasksRequest extends AmazonWebServiceRequest  implements Serializable  {
-
-    private java.util.List<Filter> filters;
-
-    private java.util.List<String> conversionTaskIds;
+public class DescribeConversionTasksRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeConversionTasksRequest> {
 
     /**
-     * Returns the value of the Filters property for this object.
+     * 
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
+
+    /**
+     * One or more conversion task IDs.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> conversionTaskIds;
+
+    /**
+     * 
      *
-     * @return The value of the Filters property for this object.
+     * @return 
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
     
     /**
-     * Sets the value of the Filters property for this object.
+     * 
      *
-     * @param filters The new value for the Filters property for this object.
+     * @param filters 
      */
     public void setFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
     
     /**
-     * Sets the value of the Filters property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters The new value for the Filters property for this object.
+     * @param filters 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -76,65 +90,64 @@ public class DescribeConversionTasksRequest extends AmazonWebServiceRequest  imp
     }
     
     /**
-     * Sets the value of the Filters property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters The new value for the Filters property for this object.
+     * @param filters 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the ConversionTaskIds property for this object.
+     * One or more conversion task IDs.
      *
-     * @return The value of the ConversionTaskIds property for this object.
+     * @return One or more conversion task IDs.
      */
     public java.util.List<String> getConversionTaskIds() {
-        
         if (conversionTaskIds == null) {
-            conversionTaskIds = new java.util.ArrayList<String>();
+              conversionTaskIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              conversionTaskIds.setAutoConstruct(true);
         }
         return conversionTaskIds;
     }
     
     /**
-     * Sets the value of the ConversionTaskIds property for this object.
+     * One or more conversion task IDs.
      *
-     * @param conversionTaskIds The new value for the ConversionTaskIds property for this object.
+     * @param conversionTaskIds One or more conversion task IDs.
      */
     public void setConversionTaskIds(java.util.Collection<String> conversionTaskIds) {
         if (conversionTaskIds == null) {
             this.conversionTaskIds = null;
             return;
         }
-
-        java.util.List<String> conversionTaskIdsCopy = new java.util.ArrayList<String>(conversionTaskIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> conversionTaskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(conversionTaskIds.size());
         conversionTaskIdsCopy.addAll(conversionTaskIds);
         this.conversionTaskIds = conversionTaskIdsCopy;
     }
     
     /**
-     * Sets the value of the ConversionTaskIds property for this object.
+     * One or more conversion task IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param conversionTaskIds The new value for the ConversionTaskIds property for this object.
+     * @param conversionTaskIds One or more conversion task IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksRequest withConversionTaskIds(String... conversionTaskIds) {
         if (getConversionTaskIds() == null) setConversionTaskIds(new java.util.ArrayList<String>(conversionTaskIds.length));
@@ -145,25 +158,37 @@ public class DescribeConversionTasksRequest extends AmazonWebServiceRequest  imp
     }
     
     /**
-     * Sets the value of the ConversionTaskIds property for this object.
+     * One or more conversion task IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param conversionTaskIds The new value for the ConversionTaskIds property for this object.
+     * @param conversionTaskIds One or more conversion task IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksRequest withConversionTaskIds(java.util.Collection<String> conversionTaskIds) {
         if (conversionTaskIds == null) {
             this.conversionTaskIds = null;
         } else {
-            java.util.List<String> conversionTaskIdsCopy = new java.util.ArrayList<String>(conversionTaskIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> conversionTaskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(conversionTaskIds.size());
             conversionTaskIdsCopy.addAll(conversionTaskIds);
             this.conversionTaskIds = conversionTaskIdsCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeConversionTasksRequest> getDryRunRequest() {
+        Request<DescribeConversionTasksRequest> request = new DescribeConversionTasksRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -177,8 +202,8 @@ public class DescribeConversionTasksRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");    	
+        sb.append("{");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
         if (getConversionTaskIds() != null) sb.append("ConversionTaskIds: " + getConversionTaskIds() );
         sb.append("}");
         return sb.toString();

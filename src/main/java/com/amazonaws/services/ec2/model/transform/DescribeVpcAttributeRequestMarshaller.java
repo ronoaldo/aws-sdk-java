@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeVpcAttributeRequestMarshaller implements Marshaller<Request
     public Request<DescribeVpcAttributeRequest> marshall(DescribeVpcAttributeRequest describeVpcAttributeRequest) {
 
         if (describeVpcAttributeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeVpcAttributeRequest> request = new DefaultRequest<DescribeVpcAttributeRequest>(describeVpcAttributeRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeVpcAttribute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (describeVpcAttributeRequest.getVpcId() != null) {
             request.addParameter("VpcId", StringUtils.fromString(describeVpcAttributeRequest.getVpcId()));
@@ -46,7 +46,6 @@ public class DescribeVpcAttributeRequestMarshaller implements Marshaller<Request
         if (describeVpcAttributeRequest.getAttribute() != null) {
             request.addParameter("Attribute", StringUtils.fromString(describeVpcAttributeRequest.getAttribute()));
         }
-
 
         return request;
     }

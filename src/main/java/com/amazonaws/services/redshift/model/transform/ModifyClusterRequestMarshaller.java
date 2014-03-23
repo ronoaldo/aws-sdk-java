@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ModifyClusterRequestMarshaller implements Marshaller<Request<Modify
     public Request<ModifyClusterRequest> marshall(ModifyClusterRequest modifyClusterRequest) {
 
         if (modifyClusterRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ModifyClusterRequest> request = new DefaultRequest<ModifyClusterRequest>(modifyClusterRequest, "AmazonRedshift");
         request.addParameter("Action", "ModifyCluster");
@@ -92,7 +92,12 @@ public class ModifyClusterRequestMarshaller implements Marshaller<Request<Modify
         if (modifyClusterRequest.isAllowVersionUpgrade() != null) {
             request.addParameter("AllowVersionUpgrade", StringUtils.fromBoolean(modifyClusterRequest.isAllowVersionUpgrade()));
         }
-
+        if (modifyClusterRequest.getHsmClientCertificateIdentifier() != null) {
+            request.addParameter("HsmClientCertificateIdentifier", StringUtils.fromString(modifyClusterRequest.getHsmClientCertificateIdentifier()));
+        }
+        if (modifyClusterRequest.getHsmConfigurationIdentifier() != null) {
+            request.addParameter("HsmConfigurationIdentifier", StringUtils.fromString(modifyClusterRequest.getHsmConfigurationIdentifier()));
+        }
 
         return request;
     }

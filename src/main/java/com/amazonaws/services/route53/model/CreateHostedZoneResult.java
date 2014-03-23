@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type containing the response information for the new hosted zone.
+ * A complex type containing the response information for the new hosted
+ * zone.
  * </p>
  */
-public class CreateHostedZoneResult  implements Serializable  {
+public class CreateHostedZoneResult implements Serializable {
 
     /**
      * A complex type that contains identifying information about the hosted
@@ -81,14 +83,13 @@ public class CreateHostedZoneResult  implements Serializable  {
      *         zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHostedZoneResult withHostedZone(HostedZone hostedZone) {
         this.hostedZone = hostedZone;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains information about the request to create a
      * hosted zone. This includes an ID that you use when you call the
@@ -133,14 +134,13 @@ public class CreateHostedZoneResult  implements Serializable  {
      *         request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHostedZoneResult withChangeInfo(ChangeInfo changeInfo) {
         this.changeInfo = changeInfo;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains name server information.
      *
@@ -167,14 +167,13 @@ public class CreateHostedZoneResult  implements Serializable  {
      * @param delegationSet A complex type that contains name server information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHostedZoneResult withDelegationSet(DelegationSet delegationSet) {
         this.delegationSet = delegationSet;
         return this;
     }
-    
-    
+
     /**
      * The unique URL representing the new hosted zone.
      * <p>
@@ -210,14 +209,13 @@ public class CreateHostedZoneResult  implements Serializable  {
      * @param location The unique URL representing the new hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHostedZoneResult withLocation(String location) {
         this.location = location;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -229,10 +227,10 @@ public class CreateHostedZoneResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getHostedZone() != null) sb.append("HostedZone: " + getHostedZone() + ",");    	
-        if (getChangeInfo() != null) sb.append("ChangeInfo: " + getChangeInfo() + ",");    	
-        if (getDelegationSet() != null) sb.append("DelegationSet: " + getDelegationSet() + ",");    	
+        sb.append("{");
+        if (getHostedZone() != null) sb.append("HostedZone: " + getHostedZone() + ",");
+        if (getChangeInfo() != null) sb.append("ChangeInfo: " + getChangeInfo() + ",");
+        if (getDelegationSet() != null) sb.append("DelegationSet: " + getDelegationSet() + ",");
         if (getLocation() != null) sb.append("Location: " + getLocation() );
         sb.append("}");
         return sb.toString();

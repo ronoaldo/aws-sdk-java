@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Combines the execution state and configuration of a step.
  * </p>
  */
-public class StepDetail  implements Serializable  {
+public class StepDetail implements Serializable {
 
     /**
      * The step configuration.
@@ -47,12 +48,10 @@ public class StepDetail  implements Serializable  {
      * @param executionStatusDetail The description of the step status.
      */
     public StepDetail(StepConfig stepConfig, StepExecutionStatusDetail executionStatusDetail) {
-        this.stepConfig = stepConfig;
-        this.executionStatusDetail = executionStatusDetail;
+        setStepConfig(stepConfig);
+        setExecutionStatusDetail(executionStatusDetail);
     }
 
-    
-    
     /**
      * The step configuration.
      *
@@ -79,14 +78,13 @@ public class StepDetail  implements Serializable  {
      * @param stepConfig The step configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepDetail withStepConfig(StepConfig stepConfig) {
         this.stepConfig = stepConfig;
         return this;
     }
-    
-    
+
     /**
      * The description of the step status.
      *
@@ -113,14 +111,13 @@ public class StepDetail  implements Serializable  {
      * @param executionStatusDetail The description of the step status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepDetail withExecutionStatusDetail(StepExecutionStatusDetail executionStatusDetail) {
         this.executionStatusDetail = executionStatusDetail;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -132,8 +129,8 @@ public class StepDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStepConfig() != null) sb.append("StepConfig: " + getStepConfig() + ",");    	
+        sb.append("{");
+        if (getStepConfig() != null) sb.append("StepConfig: " + getStepConfig() + ",");
         if (getExecutionStatusDetail() != null) sb.append("ExecutionStatusDetail: " + getExecutionStatusDetail() );
         sb.append("}");
         return sb.toString();

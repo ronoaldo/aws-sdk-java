@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteAccessKey(DeleteAccessKeyRequest) DeleteAccessKey operation}.
@@ -22,13 +24,16 @@ import java.io.Serializable;
  * Deletes the access key associated with the specified user.
  * </p>
  * <p>
- * If you do not specify a user name, IAM determines the user name implicitly based on the AWS Access Key ID signing the request. Because this action
- * works for access keys under the AWS account, you can use this API to manage root credentials even if the AWS account has no associated users.
+ * If you do not specify a user name, IAM determines the user name
+ * implicitly based on the AWS access key ID signing the request. Because
+ * this action works for access keys under the AWS account, you can use
+ * this API to manage root credentials even if the AWS account has no
+ * associated users.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteAccessKey(DeleteAccessKeyRequest)
  */
-public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteAccessKeyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the user whose key you want to delete.
@@ -40,7 +45,7 @@ public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements 
     private String userName;
 
     /**
-     * The Access Key ID for the Access Key ID and Secret Access Key you want
+     * The access key ID for the access key ID and secret access key you want
      * to delete.
      * <p>
      * <b>Constraints:</b><br/>
@@ -60,15 +65,13 @@ public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements 
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param accessKeyId The Access Key ID for the Access Key ID and Secret
-     * Access Key you want to delete.
+     * @param accessKeyId The access key ID for the access key ID and secret
+     * access key you want to delete.
      */
     public DeleteAccessKeyRequest(String accessKeyId) {
-        this.accessKeyId = accessKeyId;
+        setAccessKeyId(accessKeyId);
     }
 
-    
-    
     /**
      * Name of the user whose key you want to delete.
      * <p>
@@ -107,23 +110,22 @@ public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements 
      * @param userName Name of the user whose key you want to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAccessKeyRequest withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
-     * The Access Key ID for the Access Key ID and Secret Access Key you want
+     * The access key ID for the access key ID and secret access key you want
      * to delete.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>16 - 32<br/>
      * <b>Pattern: </b>[\w]*<br/>
      *
-     * @return The Access Key ID for the Access Key ID and Secret Access Key you want
+     * @return The access key ID for the access key ID and secret access key you want
      *         to delete.
      */
     public String getAccessKeyId() {
@@ -131,14 +133,14 @@ public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements 
     }
     
     /**
-     * The Access Key ID for the Access Key ID and Secret Access Key you want
+     * The access key ID for the access key ID and secret access key you want
      * to delete.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>16 - 32<br/>
      * <b>Pattern: </b>[\w]*<br/>
      *
-     * @param accessKeyId The Access Key ID for the Access Key ID and Secret Access Key you want
+     * @param accessKeyId The access key ID for the access key ID and secret access key you want
      *         to delete.
      */
     public void setAccessKeyId(String accessKeyId) {
@@ -146,7 +148,7 @@ public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements 
     }
     
     /**
-     * The Access Key ID for the Access Key ID and Secret Access Key you want
+     * The access key ID for the access key ID and secret access key you want
      * to delete.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -155,18 +157,17 @@ public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements 
      * <b>Length: </b>16 - 32<br/>
      * <b>Pattern: </b>[\w]*<br/>
      *
-     * @param accessKeyId The Access Key ID for the Access Key ID and Secret Access Key you want
+     * @param accessKeyId The access key ID for the access key ID and secret access key you want
      *         to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAccessKeyRequest withAccessKeyId(String accessKeyId) {
         this.accessKeyId = accessKeyId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -178,8 +179,8 @@ public class DeleteAccessKeyRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");    	
+        sb.append("{");
+        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");
         if (getAccessKeyId() != null) sb.append("AccessKeyId: " + getAccessKeyId() );
         sb.append("}");
         return sb.toString();

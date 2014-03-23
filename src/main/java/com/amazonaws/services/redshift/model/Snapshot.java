@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a snapshot.
  * </p>
  */
-public class Snapshot  implements Serializable  {
+public class Snapshot implements Serializable {
 
     /**
      * The snapshot identifier that is provided in the request.
@@ -109,6 +110,68 @@ public class Snapshot  implements Serializable  {
     private Boolean encrypted;
 
     /**
+     * A boolean that indicates whether the snapshot data is encrypted using
+     * the HSM keys of the source cluster. <code>true</code> indicates that
+     * the data is encrypted using HSM keys.
+     */
+    private Boolean encryptedWithHSM;
+
+    /**
+     * A list of the AWS customer accounts authorized to restore the
+     * snapshot. Returns <code>null</code> if no accounts are authorized.
+     * Visible only to the snapshot owner.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AccountWithRestoreAccess> accountsWithRestoreAccess;
+
+    /**
+     * For manual snapshots, the AWS customer account used to create or copy
+     * the snapshot. For automatic snapshots, the owner of the cluster. The
+     * owner can perform all snapshot actions, such as sharing a manual
+     * snapshot.
+     */
+    private String ownerAccount;
+
+    /**
+     * The size of the complete set of backup data that would be used to
+     * restore the cluster.
+     */
+    private Double totalBackupSizeInMegaBytes;
+
+    /**
+     * The size of the incremental backup.
+     */
+    private Double actualIncrementalBackupSizeInMegaBytes;
+
+    /**
+     * The number of megabytes that have been transferred to the snapshot
+     * backup.
+     */
+    private Double backupProgressInMegaBytes;
+
+    /**
+     * The number of megabytes per second being transferred to the snapshot
+     * backup. Returns <code>0</code> for a completed backup.
+     */
+    private Double currentBackupRateInMegaBytesPerSecond;
+
+    /**
+     * The estimate of the time remaining before the snapshot backup will
+     * complete. Returns <code>0</code> for a completed backup.
+     */
+    private Long estimatedSecondsToCompletion;
+
+    /**
+     * The amount of time an in-progress snapshot backup has been running, or
+     * the amount of time it took a completed backup to finish.
+     */
+    private Long elapsedTimeInSeconds;
+
+    /**
+     * The source region from which the snapshot was copied.
+     */
+    private String sourceRegion;
+
+    /**
      * The snapshot identifier that is provided in the request.
      *
      * @return The snapshot identifier that is provided in the request.
@@ -134,14 +197,13 @@ public class Snapshot  implements Serializable  {
      * @param snapshotIdentifier The snapshot identifier that is provided in the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withSnapshotIdentifier(String snapshotIdentifier) {
         this.snapshotIdentifier = snapshotIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The identifier of the cluster for which the snapshot was taken.
      *
@@ -168,14 +230,13 @@ public class Snapshot  implements Serializable  {
      * @param clusterIdentifier The identifier of the cluster for which the snapshot was taken.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The time (UTC) when Amazon Redshift began the snapshot. A snapshot
      * contains a copy of the cluster data as of this exact time.
@@ -208,14 +269,13 @@ public class Snapshot  implements Serializable  {
      *         contains a copy of the cluster data as of this exact time.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withSnapshotCreateTime(java.util.Date snapshotCreateTime) {
         this.snapshotCreateTime = snapshotCreateTime;
         return this;
     }
-    
-    
+
     /**
      * The snapshot status. The value of the status depends on the API
      * operation used. <ul> <li><a>CreateClusterSnapshot</a> and
@@ -272,14 +332,13 @@ public class Snapshot  implements Serializable  {
      *         returns status as "deleted".</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The port that the cluster is listening on.
      *
@@ -306,14 +365,13 @@ public class Snapshot  implements Serializable  {
      * @param port The port that the cluster is listening on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withPort(Integer port) {
         this.port = port;
         return this;
     }
-    
-    
+
     /**
      * The Availability Zone in which the cluster was created.
      *
@@ -340,14 +398,13 @@ public class Snapshot  implements Serializable  {
      * @param availabilityZone The Availability Zone in which the cluster was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * The time (UTC) when the cluster was originally created.
      *
@@ -374,14 +431,13 @@ public class Snapshot  implements Serializable  {
      * @param clusterCreateTime The time (UTC) when the cluster was originally created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withClusterCreateTime(java.util.Date clusterCreateTime) {
         this.clusterCreateTime = clusterCreateTime;
         return this;
     }
-    
-    
+
     /**
      * The master user name for the cluster.
      *
@@ -408,14 +464,13 @@ public class Snapshot  implements Serializable  {
      * @param masterUsername The master user name for the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withMasterUsername(String masterUsername) {
         this.masterUsername = masterUsername;
         return this;
     }
-    
-    
+
     /**
      * The version ID of the Amazon Redshift engine that is running on the
      * cluster.
@@ -448,14 +503,13 @@ public class Snapshot  implements Serializable  {
      *         cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * The snapshot type. Snapshots created using
      * <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will be of
@@ -494,14 +548,13 @@ public class Snapshot  implements Serializable  {
      *         type "manual".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withSnapshotType(String snapshotType) {
         this.snapshotType = snapshotType;
         return this;
     }
-    
-    
+
     /**
      * The node type of the nodes in the cluster.
      *
@@ -528,14 +581,13 @@ public class Snapshot  implements Serializable  {
      * @param nodeType The node type of the nodes in the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * The number of nodes in the cluster.
      *
@@ -562,14 +614,13 @@ public class Snapshot  implements Serializable  {
      * @param numberOfNodes The number of nodes in the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withNumberOfNodes(Integer numberOfNodes) {
         this.numberOfNodes = numberOfNodes;
         return this;
     }
-    
-    
+
     /**
      * The name of the database that was created when the cluster was
      * created.
@@ -602,14 +653,13 @@ public class Snapshot  implements Serializable  {
      *         created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withDBName(String dBName) {
         this.dBName = dBName;
         return this;
     }
-    
-    
+
     /**
      * The VPC identifier of the cluster if the snapshot is from a cluster in
      * a VPC. Otherwise, this field is not in the output.
@@ -642,14 +692,13 @@ public class Snapshot  implements Serializable  {
      *         a VPC. Otherwise, this field is not in the output.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, the data in the snapshot is encrypted at rest.
      *
@@ -676,14 +725,13 @@ public class Snapshot  implements Serializable  {
      * @param encrypted If <code>true</code>, the data in the snapshot is encrypted at rest.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withEncrypted(Boolean encrypted) {
         this.encrypted = encrypted;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, the data in the snapshot is encrypted at rest.
      *
@@ -692,7 +740,461 @@ public class Snapshot  implements Serializable  {
     public Boolean getEncrypted() {
         return encrypted;
     }
+
+    /**
+     * A boolean that indicates whether the snapshot data is encrypted using
+     * the HSM keys of the source cluster. <code>true</code> indicates that
+     * the data is encrypted using HSM keys.
+     *
+     * @return A boolean that indicates whether the snapshot data is encrypted using
+     *         the HSM keys of the source cluster. <code>true</code> indicates that
+     *         the data is encrypted using HSM keys.
+     */
+    public Boolean isEncryptedWithHSM() {
+        return encryptedWithHSM;
+    }
     
+    /**
+     * A boolean that indicates whether the snapshot data is encrypted using
+     * the HSM keys of the source cluster. <code>true</code> indicates that
+     * the data is encrypted using HSM keys.
+     *
+     * @param encryptedWithHSM A boolean that indicates whether the snapshot data is encrypted using
+     *         the HSM keys of the source cluster. <code>true</code> indicates that
+     *         the data is encrypted using HSM keys.
+     */
+    public void setEncryptedWithHSM(Boolean encryptedWithHSM) {
+        this.encryptedWithHSM = encryptedWithHSM;
+    }
+    
+    /**
+     * A boolean that indicates whether the snapshot data is encrypted using
+     * the HSM keys of the source cluster. <code>true</code> indicates that
+     * the data is encrypted using HSM keys.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param encryptedWithHSM A boolean that indicates whether the snapshot data is encrypted using
+     *         the HSM keys of the source cluster. <code>true</code> indicates that
+     *         the data is encrypted using HSM keys.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withEncryptedWithHSM(Boolean encryptedWithHSM) {
+        this.encryptedWithHSM = encryptedWithHSM;
+        return this;
+    }
+
+    /**
+     * A boolean that indicates whether the snapshot data is encrypted using
+     * the HSM keys of the source cluster. <code>true</code> indicates that
+     * the data is encrypted using HSM keys.
+     *
+     * @return A boolean that indicates whether the snapshot data is encrypted using
+     *         the HSM keys of the source cluster. <code>true</code> indicates that
+     *         the data is encrypted using HSM keys.
+     */
+    public Boolean getEncryptedWithHSM() {
+        return encryptedWithHSM;
+    }
+
+    /**
+     * A list of the AWS customer accounts authorized to restore the
+     * snapshot. Returns <code>null</code> if no accounts are authorized.
+     * Visible only to the snapshot owner.
+     *
+     * @return A list of the AWS customer accounts authorized to restore the
+     *         snapshot. Returns <code>null</code> if no accounts are authorized.
+     *         Visible only to the snapshot owner.
+     */
+    public java.util.List<AccountWithRestoreAccess> getAccountsWithRestoreAccess() {
+        if (accountsWithRestoreAccess == null) {
+              accountsWithRestoreAccess = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountWithRestoreAccess>();
+              accountsWithRestoreAccess.setAutoConstruct(true);
+        }
+        return accountsWithRestoreAccess;
+    }
+    
+    /**
+     * A list of the AWS customer accounts authorized to restore the
+     * snapshot. Returns <code>null</code> if no accounts are authorized.
+     * Visible only to the snapshot owner.
+     *
+     * @param accountsWithRestoreAccess A list of the AWS customer accounts authorized to restore the
+     *         snapshot. Returns <code>null</code> if no accounts are authorized.
+     *         Visible only to the snapshot owner.
+     */
+    public void setAccountsWithRestoreAccess(java.util.Collection<AccountWithRestoreAccess> accountsWithRestoreAccess) {
+        if (accountsWithRestoreAccess == null) {
+            this.accountsWithRestoreAccess = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<AccountWithRestoreAccess> accountsWithRestoreAccessCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountWithRestoreAccess>(accountsWithRestoreAccess.size());
+        accountsWithRestoreAccessCopy.addAll(accountsWithRestoreAccess);
+        this.accountsWithRestoreAccess = accountsWithRestoreAccessCopy;
+    }
+    
+    /**
+     * A list of the AWS customer accounts authorized to restore the
+     * snapshot. Returns <code>null</code> if no accounts are authorized.
+     * Visible only to the snapshot owner.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param accountsWithRestoreAccess A list of the AWS customer accounts authorized to restore the
+     *         snapshot. Returns <code>null</code> if no accounts are authorized.
+     *         Visible only to the snapshot owner.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withAccountsWithRestoreAccess(AccountWithRestoreAccess... accountsWithRestoreAccess) {
+        if (getAccountsWithRestoreAccess() == null) setAccountsWithRestoreAccess(new java.util.ArrayList<AccountWithRestoreAccess>(accountsWithRestoreAccess.length));
+        for (AccountWithRestoreAccess value : accountsWithRestoreAccess) {
+            getAccountsWithRestoreAccess().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * A list of the AWS customer accounts authorized to restore the
+     * snapshot. Returns <code>null</code> if no accounts are authorized.
+     * Visible only to the snapshot owner.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param accountsWithRestoreAccess A list of the AWS customer accounts authorized to restore the
+     *         snapshot. Returns <code>null</code> if no accounts are authorized.
+     *         Visible only to the snapshot owner.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withAccountsWithRestoreAccess(java.util.Collection<AccountWithRestoreAccess> accountsWithRestoreAccess) {
+        if (accountsWithRestoreAccess == null) {
+            this.accountsWithRestoreAccess = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<AccountWithRestoreAccess> accountsWithRestoreAccessCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountWithRestoreAccess>(accountsWithRestoreAccess.size());
+            accountsWithRestoreAccessCopy.addAll(accountsWithRestoreAccess);
+            this.accountsWithRestoreAccess = accountsWithRestoreAccessCopy;
+        }
+
+        return this;
+    }
+
+    /**
+     * For manual snapshots, the AWS customer account used to create or copy
+     * the snapshot. For automatic snapshots, the owner of the cluster. The
+     * owner can perform all snapshot actions, such as sharing a manual
+     * snapshot.
+     *
+     * @return For manual snapshots, the AWS customer account used to create or copy
+     *         the snapshot. For automatic snapshots, the owner of the cluster. The
+     *         owner can perform all snapshot actions, such as sharing a manual
+     *         snapshot.
+     */
+    public String getOwnerAccount() {
+        return ownerAccount;
+    }
+    
+    /**
+     * For manual snapshots, the AWS customer account used to create or copy
+     * the snapshot. For automatic snapshots, the owner of the cluster. The
+     * owner can perform all snapshot actions, such as sharing a manual
+     * snapshot.
+     *
+     * @param ownerAccount For manual snapshots, the AWS customer account used to create or copy
+     *         the snapshot. For automatic snapshots, the owner of the cluster. The
+     *         owner can perform all snapshot actions, such as sharing a manual
+     *         snapshot.
+     */
+    public void setOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+    }
+    
+    /**
+     * For manual snapshots, the AWS customer account used to create or copy
+     * the snapshot. For automatic snapshots, the owner of the cluster. The
+     * owner can perform all snapshot actions, such as sharing a manual
+     * snapshot.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param ownerAccount For manual snapshots, the AWS customer account used to create or copy
+     *         the snapshot. For automatic snapshots, the owner of the cluster. The
+     *         owner can perform all snapshot actions, such as sharing a manual
+     *         snapshot.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+        return this;
+    }
+
+    /**
+     * The size of the complete set of backup data that would be used to
+     * restore the cluster.
+     *
+     * @return The size of the complete set of backup data that would be used to
+     *         restore the cluster.
+     */
+    public Double getTotalBackupSizeInMegaBytes() {
+        return totalBackupSizeInMegaBytes;
+    }
+    
+    /**
+     * The size of the complete set of backup data that would be used to
+     * restore the cluster.
+     *
+     * @param totalBackupSizeInMegaBytes The size of the complete set of backup data that would be used to
+     *         restore the cluster.
+     */
+    public void setTotalBackupSizeInMegaBytes(Double totalBackupSizeInMegaBytes) {
+        this.totalBackupSizeInMegaBytes = totalBackupSizeInMegaBytes;
+    }
+    
+    /**
+     * The size of the complete set of backup data that would be used to
+     * restore the cluster.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param totalBackupSizeInMegaBytes The size of the complete set of backup data that would be used to
+     *         restore the cluster.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withTotalBackupSizeInMegaBytes(Double totalBackupSizeInMegaBytes) {
+        this.totalBackupSizeInMegaBytes = totalBackupSizeInMegaBytes;
+        return this;
+    }
+
+    /**
+     * The size of the incremental backup.
+     *
+     * @return The size of the incremental backup.
+     */
+    public Double getActualIncrementalBackupSizeInMegaBytes() {
+        return actualIncrementalBackupSizeInMegaBytes;
+    }
+    
+    /**
+     * The size of the incremental backup.
+     *
+     * @param actualIncrementalBackupSizeInMegaBytes The size of the incremental backup.
+     */
+    public void setActualIncrementalBackupSizeInMegaBytes(Double actualIncrementalBackupSizeInMegaBytes) {
+        this.actualIncrementalBackupSizeInMegaBytes = actualIncrementalBackupSizeInMegaBytes;
+    }
+    
+    /**
+     * The size of the incremental backup.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param actualIncrementalBackupSizeInMegaBytes The size of the incremental backup.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withActualIncrementalBackupSizeInMegaBytes(Double actualIncrementalBackupSizeInMegaBytes) {
+        this.actualIncrementalBackupSizeInMegaBytes = actualIncrementalBackupSizeInMegaBytes;
+        return this;
+    }
+
+    /**
+     * The number of megabytes that have been transferred to the snapshot
+     * backup.
+     *
+     * @return The number of megabytes that have been transferred to the snapshot
+     *         backup.
+     */
+    public Double getBackupProgressInMegaBytes() {
+        return backupProgressInMegaBytes;
+    }
+    
+    /**
+     * The number of megabytes that have been transferred to the snapshot
+     * backup.
+     *
+     * @param backupProgressInMegaBytes The number of megabytes that have been transferred to the snapshot
+     *         backup.
+     */
+    public void setBackupProgressInMegaBytes(Double backupProgressInMegaBytes) {
+        this.backupProgressInMegaBytes = backupProgressInMegaBytes;
+    }
+    
+    /**
+     * The number of megabytes that have been transferred to the snapshot
+     * backup.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param backupProgressInMegaBytes The number of megabytes that have been transferred to the snapshot
+     *         backup.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withBackupProgressInMegaBytes(Double backupProgressInMegaBytes) {
+        this.backupProgressInMegaBytes = backupProgressInMegaBytes;
+        return this;
+    }
+
+    /**
+     * The number of megabytes per second being transferred to the snapshot
+     * backup. Returns <code>0</code> for a completed backup.
+     *
+     * @return The number of megabytes per second being transferred to the snapshot
+     *         backup. Returns <code>0</code> for a completed backup.
+     */
+    public Double getCurrentBackupRateInMegaBytesPerSecond() {
+        return currentBackupRateInMegaBytesPerSecond;
+    }
+    
+    /**
+     * The number of megabytes per second being transferred to the snapshot
+     * backup. Returns <code>0</code> for a completed backup.
+     *
+     * @param currentBackupRateInMegaBytesPerSecond The number of megabytes per second being transferred to the snapshot
+     *         backup. Returns <code>0</code> for a completed backup.
+     */
+    public void setCurrentBackupRateInMegaBytesPerSecond(Double currentBackupRateInMegaBytesPerSecond) {
+        this.currentBackupRateInMegaBytesPerSecond = currentBackupRateInMegaBytesPerSecond;
+    }
+    
+    /**
+     * The number of megabytes per second being transferred to the snapshot
+     * backup. Returns <code>0</code> for a completed backup.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param currentBackupRateInMegaBytesPerSecond The number of megabytes per second being transferred to the snapshot
+     *         backup. Returns <code>0</code> for a completed backup.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withCurrentBackupRateInMegaBytesPerSecond(Double currentBackupRateInMegaBytesPerSecond) {
+        this.currentBackupRateInMegaBytesPerSecond = currentBackupRateInMegaBytesPerSecond;
+        return this;
+    }
+
+    /**
+     * The estimate of the time remaining before the snapshot backup will
+     * complete. Returns <code>0</code> for a completed backup.
+     *
+     * @return The estimate of the time remaining before the snapshot backup will
+     *         complete. Returns <code>0</code> for a completed backup.
+     */
+    public Long getEstimatedSecondsToCompletion() {
+        return estimatedSecondsToCompletion;
+    }
+    
+    /**
+     * The estimate of the time remaining before the snapshot backup will
+     * complete. Returns <code>0</code> for a completed backup.
+     *
+     * @param estimatedSecondsToCompletion The estimate of the time remaining before the snapshot backup will
+     *         complete. Returns <code>0</code> for a completed backup.
+     */
+    public void setEstimatedSecondsToCompletion(Long estimatedSecondsToCompletion) {
+        this.estimatedSecondsToCompletion = estimatedSecondsToCompletion;
+    }
+    
+    /**
+     * The estimate of the time remaining before the snapshot backup will
+     * complete. Returns <code>0</code> for a completed backup.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param estimatedSecondsToCompletion The estimate of the time remaining before the snapshot backup will
+     *         complete. Returns <code>0</code> for a completed backup.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withEstimatedSecondsToCompletion(Long estimatedSecondsToCompletion) {
+        this.estimatedSecondsToCompletion = estimatedSecondsToCompletion;
+        return this;
+    }
+
+    /**
+     * The amount of time an in-progress snapshot backup has been running, or
+     * the amount of time it took a completed backup to finish.
+     *
+     * @return The amount of time an in-progress snapshot backup has been running, or
+     *         the amount of time it took a completed backup to finish.
+     */
+    public Long getElapsedTimeInSeconds() {
+        return elapsedTimeInSeconds;
+    }
+    
+    /**
+     * The amount of time an in-progress snapshot backup has been running, or
+     * the amount of time it took a completed backup to finish.
+     *
+     * @param elapsedTimeInSeconds The amount of time an in-progress snapshot backup has been running, or
+     *         the amount of time it took a completed backup to finish.
+     */
+    public void setElapsedTimeInSeconds(Long elapsedTimeInSeconds) {
+        this.elapsedTimeInSeconds = elapsedTimeInSeconds;
+    }
+    
+    /**
+     * The amount of time an in-progress snapshot backup has been running, or
+     * the amount of time it took a completed backup to finish.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param elapsedTimeInSeconds The amount of time an in-progress snapshot backup has been running, or
+     *         the amount of time it took a completed backup to finish.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withElapsedTimeInSeconds(Long elapsedTimeInSeconds) {
+        this.elapsedTimeInSeconds = elapsedTimeInSeconds;
+        return this;
+    }
+
+    /**
+     * The source region from which the snapshot was copied.
+     *
+     * @return The source region from which the snapshot was copied.
+     */
+    public String getSourceRegion() {
+        return sourceRegion;
+    }
+    
+    /**
+     * The source region from which the snapshot was copied.
+     *
+     * @param sourceRegion The source region from which the snapshot was copied.
+     */
+    public void setSourceRegion(String sourceRegion) {
+        this.sourceRegion = sourceRegion;
+    }
+    
+    /**
+     * The source region from which the snapshot was copied.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param sourceRegion The source region from which the snapshot was copied.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Snapshot withSourceRegion(String sourceRegion) {
+        this.sourceRegion = sourceRegion;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -704,22 +1206,32 @@ public class Snapshot  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotIdentifier() != null) sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");    	
-        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");    	
-        if (getSnapshotCreateTime() != null) sb.append("SnapshotCreateTime: " + getSnapshotCreateTime() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getPort() != null) sb.append("Port: " + getPort() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getClusterCreateTime() != null) sb.append("ClusterCreateTime: " + getClusterCreateTime() + ",");    	
-        if (getMasterUsername() != null) sb.append("MasterUsername: " + getMasterUsername() + ",");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
-        if (getSnapshotType() != null) sb.append("SnapshotType: " + getSnapshotType() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
-        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");    	
-        if (getDBName() != null) sb.append("DBName: " + getDBName() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (isEncrypted() != null) sb.append("Encrypted: " + isEncrypted() );
+        sb.append("{");
+        if (getSnapshotIdentifier() != null) sb.append("SnapshotIdentifier: " + getSnapshotIdentifier() + ",");
+        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+        if (getSnapshotCreateTime() != null) sb.append("SnapshotCreateTime: " + getSnapshotCreateTime() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getPort() != null) sb.append("Port: " + getPort() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getClusterCreateTime() != null) sb.append("ClusterCreateTime: " + getClusterCreateTime() + ",");
+        if (getMasterUsername() != null) sb.append("MasterUsername: " + getMasterUsername() + ",");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
+        if (getSnapshotType() != null) sb.append("SnapshotType: " + getSnapshotType() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
+        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");
+        if (getDBName() != null) sb.append("DBName: " + getDBName() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (isEncrypted() != null) sb.append("Encrypted: " + isEncrypted() + ",");
+        if (isEncryptedWithHSM() != null) sb.append("EncryptedWithHSM: " + isEncryptedWithHSM() + ",");
+        if (getAccountsWithRestoreAccess() != null) sb.append("AccountsWithRestoreAccess: " + getAccountsWithRestoreAccess() + ",");
+        if (getOwnerAccount() != null) sb.append("OwnerAccount: " + getOwnerAccount() + ",");
+        if (getTotalBackupSizeInMegaBytes() != null) sb.append("TotalBackupSizeInMegaBytes: " + getTotalBackupSizeInMegaBytes() + ",");
+        if (getActualIncrementalBackupSizeInMegaBytes() != null) sb.append("ActualIncrementalBackupSizeInMegaBytes: " + getActualIncrementalBackupSizeInMegaBytes() + ",");
+        if (getBackupProgressInMegaBytes() != null) sb.append("BackupProgressInMegaBytes: " + getBackupProgressInMegaBytes() + ",");
+        if (getCurrentBackupRateInMegaBytesPerSecond() != null) sb.append("CurrentBackupRateInMegaBytesPerSecond: " + getCurrentBackupRateInMegaBytesPerSecond() + ",");
+        if (getEstimatedSecondsToCompletion() != null) sb.append("EstimatedSecondsToCompletion: " + getEstimatedSecondsToCompletion() + ",");
+        if (getElapsedTimeInSeconds() != null) sb.append("ElapsedTimeInSeconds: " + getElapsedTimeInSeconds() + ",");
+        if (getSourceRegion() != null) sb.append("SourceRegion: " + getSourceRegion() );
         sb.append("}");
         return sb.toString();
     }
@@ -744,6 +1256,16 @@ public class Snapshot  implements Serializable  {
         hashCode = prime * hashCode + ((getDBName() == null) ? 0 : getDBName().hashCode()); 
         hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode()); 
         hashCode = prime * hashCode + ((isEncrypted() == null) ? 0 : isEncrypted().hashCode()); 
+        hashCode = prime * hashCode + ((isEncryptedWithHSM() == null) ? 0 : isEncryptedWithHSM().hashCode()); 
+        hashCode = prime * hashCode + ((getAccountsWithRestoreAccess() == null) ? 0 : getAccountsWithRestoreAccess().hashCode()); 
+        hashCode = prime * hashCode + ((getOwnerAccount() == null) ? 0 : getOwnerAccount().hashCode()); 
+        hashCode = prime * hashCode + ((getTotalBackupSizeInMegaBytes() == null) ? 0 : getTotalBackupSizeInMegaBytes().hashCode()); 
+        hashCode = prime * hashCode + ((getActualIncrementalBackupSizeInMegaBytes() == null) ? 0 : getActualIncrementalBackupSizeInMegaBytes().hashCode()); 
+        hashCode = prime * hashCode + ((getBackupProgressInMegaBytes() == null) ? 0 : getBackupProgressInMegaBytes().hashCode()); 
+        hashCode = prime * hashCode + ((getCurrentBackupRateInMegaBytesPerSecond() == null) ? 0 : getCurrentBackupRateInMegaBytesPerSecond().hashCode()); 
+        hashCode = prime * hashCode + ((getEstimatedSecondsToCompletion() == null) ? 0 : getEstimatedSecondsToCompletion().hashCode()); 
+        hashCode = prime * hashCode + ((getElapsedTimeInSeconds() == null) ? 0 : getElapsedTimeInSeconds().hashCode()); 
+        hashCode = prime * hashCode + ((getSourceRegion() == null) ? 0 : getSourceRegion().hashCode()); 
         return hashCode;
     }
     
@@ -785,6 +1307,26 @@ public class Snapshot  implements Serializable  {
         if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false) return false; 
         if (other.isEncrypted() == null ^ this.isEncrypted() == null) return false;
         if (other.isEncrypted() != null && other.isEncrypted().equals(this.isEncrypted()) == false) return false; 
+        if (other.isEncryptedWithHSM() == null ^ this.isEncryptedWithHSM() == null) return false;
+        if (other.isEncryptedWithHSM() != null && other.isEncryptedWithHSM().equals(this.isEncryptedWithHSM()) == false) return false; 
+        if (other.getAccountsWithRestoreAccess() == null ^ this.getAccountsWithRestoreAccess() == null) return false;
+        if (other.getAccountsWithRestoreAccess() != null && other.getAccountsWithRestoreAccess().equals(this.getAccountsWithRestoreAccess()) == false) return false; 
+        if (other.getOwnerAccount() == null ^ this.getOwnerAccount() == null) return false;
+        if (other.getOwnerAccount() != null && other.getOwnerAccount().equals(this.getOwnerAccount()) == false) return false; 
+        if (other.getTotalBackupSizeInMegaBytes() == null ^ this.getTotalBackupSizeInMegaBytes() == null) return false;
+        if (other.getTotalBackupSizeInMegaBytes() != null && other.getTotalBackupSizeInMegaBytes().equals(this.getTotalBackupSizeInMegaBytes()) == false) return false; 
+        if (other.getActualIncrementalBackupSizeInMegaBytes() == null ^ this.getActualIncrementalBackupSizeInMegaBytes() == null) return false;
+        if (other.getActualIncrementalBackupSizeInMegaBytes() != null && other.getActualIncrementalBackupSizeInMegaBytes().equals(this.getActualIncrementalBackupSizeInMegaBytes()) == false) return false; 
+        if (other.getBackupProgressInMegaBytes() == null ^ this.getBackupProgressInMegaBytes() == null) return false;
+        if (other.getBackupProgressInMegaBytes() != null && other.getBackupProgressInMegaBytes().equals(this.getBackupProgressInMegaBytes()) == false) return false; 
+        if (other.getCurrentBackupRateInMegaBytesPerSecond() == null ^ this.getCurrentBackupRateInMegaBytesPerSecond() == null) return false;
+        if (other.getCurrentBackupRateInMegaBytesPerSecond() != null && other.getCurrentBackupRateInMegaBytesPerSecond().equals(this.getCurrentBackupRateInMegaBytesPerSecond()) == false) return false; 
+        if (other.getEstimatedSecondsToCompletion() == null ^ this.getEstimatedSecondsToCompletion() == null) return false;
+        if (other.getEstimatedSecondsToCompletion() != null && other.getEstimatedSecondsToCompletion().equals(this.getEstimatedSecondsToCompletion()) == false) return false; 
+        if (other.getElapsedTimeInSeconds() == null ^ this.getElapsedTimeInSeconds() == null) return false;
+        if (other.getElapsedTimeInSeconds() != null && other.getElapsedTimeInSeconds().equals(this.getElapsedTimeInSeconds()) == false) return false; 
+        if (other.getSourceRegion() == null ^ this.getSourceRegion() == null) return false;
+        if (other.getSourceRegion() != null && other.getSourceRegion().equals(this.getSourceRegion()) == false) return false; 
         return true;
     }
     

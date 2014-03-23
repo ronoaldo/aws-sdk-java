@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The <code>ScalingPolicy</code> data type.
  * </p>
  */
-public class ScalingPolicy  implements Serializable  {
+public class ScalingPolicy implements Serializable {
 
     /**
      * The name of the Auto Scaling group associated with this scaling
@@ -78,7 +79,7 @@ public class ScalingPolicy  implements Serializable  {
     /**
      * A list of CloudWatch Alarms related to the policy.
      */
-    private java.util.List<Alarm> alarms;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Alarm> alarms;
 
     /**
      * Changes the <code>DesiredCapacity</code> of the Auto Scaling group by
@@ -130,14 +131,13 @@ public class ScalingPolicy  implements Serializable  {
      *         policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The name of the scaling policy.
      * <p>
@@ -176,14 +176,13 @@ public class ScalingPolicy  implements Serializable  {
      * @param policyName The name of the scaling policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * The number associated with the specified adjustment type. A positive
      * value adds to the current capacity and a negative value removes from
@@ -222,14 +221,13 @@ public class ScalingPolicy  implements Serializable  {
      *         the current capacity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withScalingAdjustment(Integer scalingAdjustment) {
         this.scalingAdjustment = scalingAdjustment;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the <code>ScalingAdjustment</code> is an absolute
      * number or a percentage of the current capacity. Valid values are
@@ -286,14 +284,13 @@ public class ScalingPolicy  implements Serializable  {
      *         <code>PercentChangeInCapacity</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withAdjustmentType(String adjustmentType) {
         this.adjustmentType = adjustmentType;
         return this;
     }
-    
-    
+
     /**
      * The amount of time, in seconds, after a scaling activity completes
      * before any further trigger-related scaling activities can start.
@@ -326,14 +323,13 @@ public class ScalingPolicy  implements Serializable  {
      *         before any further trigger-related scaling activities can start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withCooldown(Integer cooldown) {
         this.cooldown = cooldown;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of the policy.
      * <p>
@@ -372,23 +368,22 @@ public class ScalingPolicy  implements Serializable  {
      * @param policyARN The Amazon Resource Name (ARN) of the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withPolicyARN(String policyARN) {
         this.policyARN = policyARN;
         return this;
     }
-    
-    
+
     /**
      * A list of CloudWatch Alarms related to the policy.
      *
      * @return A list of CloudWatch Alarms related to the policy.
      */
     public java.util.List<Alarm> getAlarms() {
-        
         if (alarms == null) {
-            alarms = new java.util.ArrayList<Alarm>();
+              alarms = new com.amazonaws.internal.ListWithAutoConstructFlag<Alarm>();
+              alarms.setAutoConstruct(true);
         }
         return alarms;
     }
@@ -403,8 +398,7 @@ public class ScalingPolicy  implements Serializable  {
             this.alarms = null;
             return;
         }
-
-        java.util.List<Alarm> alarmsCopy = new java.util.ArrayList<Alarm>(alarms.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Alarm> alarmsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Alarm>(alarms.size());
         alarmsCopy.addAll(alarms);
         this.alarms = alarmsCopy;
     }
@@ -417,7 +411,7 @@ public class ScalingPolicy  implements Serializable  {
      * @param alarms A list of CloudWatch Alarms related to the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withAlarms(Alarm... alarms) {
         if (getAlarms() == null) setAlarms(new java.util.ArrayList<Alarm>(alarms.length));
@@ -435,20 +429,20 @@ public class ScalingPolicy  implements Serializable  {
      * @param alarms A list of CloudWatch Alarms related to the policy.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withAlarms(java.util.Collection<Alarm> alarms) {
         if (alarms == null) {
             this.alarms = null;
         } else {
-            java.util.List<Alarm> alarmsCopy = new java.util.ArrayList<Alarm>(alarms.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Alarm> alarmsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Alarm>(alarms.size());
             alarmsCopy.addAll(alarms);
             this.alarms = alarmsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Changes the <code>DesiredCapacity</code> of the Auto Scaling group by
      * at least the specified number of instances.
@@ -481,14 +475,13 @@ public class ScalingPolicy  implements Serializable  {
      *         at least the specified number of instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScalingPolicy withMinAdjustmentStep(Integer minAdjustmentStep) {
         this.minAdjustmentStep = minAdjustmentStep;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -500,14 +493,14 @@ public class ScalingPolicy  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
-        if (getScalingAdjustment() != null) sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");    	
-        if (getAdjustmentType() != null) sb.append("AdjustmentType: " + getAdjustmentType() + ",");    	
-        if (getCooldown() != null) sb.append("Cooldown: " + getCooldown() + ",");    	
-        if (getPolicyARN() != null) sb.append("PolicyARN: " + getPolicyARN() + ",");    	
-        if (getAlarms() != null) sb.append("Alarms: " + getAlarms() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
+        if (getScalingAdjustment() != null) sb.append("ScalingAdjustment: " + getScalingAdjustment() + ",");
+        if (getAdjustmentType() != null) sb.append("AdjustmentType: " + getAdjustmentType() + ",");
+        if (getCooldown() != null) sb.append("Cooldown: " + getCooldown() + ",");
+        if (getPolicyARN() != null) sb.append("PolicyARN: " + getPolicyARN() + ",");
+        if (getAlarms() != null) sb.append("Alarms: " + getAlarms() + ",");
         if (getMinAdjustmentStep() != null) sb.append("MinAdjustmentStep: " + getMinAdjustmentStep() );
         sb.append("}");
         return sb.toString();

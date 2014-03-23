@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,32 +22,28 @@ import com.amazonaws.services.opsworks.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Stack JSON Unmarshaller
  */
 public class StackJsonUnmarshaller implements Unmarshaller<Stack, JsonUnmarshallerContext> {
 
-    
-
     public Stack unmarshall(JsonUnmarshallerContext context) throws Exception {
         Stack stack = new Stack();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("StackId", targetDepth)) {
                     context.nextToken();
@@ -61,7 +57,12 @@ public class StackJsonUnmarshaller implements Unmarshaller<Stack, JsonUnmarshall
                     context.nextToken();
                     stack.setRegion(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("VpcId", targetDepth)) {
+                    context.nextToken();
+                    stack.setVpcId(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("Attributes", targetDepth)) {
+                    context.nextToken();
                     stack.setAttributes(new MapUnmarshaller<String,String>(StringJsonUnmarshaller.getInstance(), StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("ServiceRoleArn", targetDepth)) {
@@ -84,9 +85,17 @@ public class StackJsonUnmarshaller implements Unmarshaller<Stack, JsonUnmarshall
                     context.nextToken();
                     stack.setDefaultAvailabilityZone(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("DefaultSubnetId", targetDepth)) {
+                    context.nextToken();
+                    stack.setDefaultSubnetId(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("CustomJson", targetDepth)) {
                     context.nextToken();
                     stack.setCustomJson(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("ConfigurationManager", targetDepth)) {
+                    context.nextToken();
+                    stack.setConfigurationManager(StackConfigurationManagerJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("UseCustomCookbooks", targetDepth)) {
                     context.nextToken();
@@ -113,7 +122,6 @@ public class StackJsonUnmarshaller implements Unmarshaller<Stack, JsonUnmarshall
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

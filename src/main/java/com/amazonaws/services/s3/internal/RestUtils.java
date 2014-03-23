@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Portions copyright 2006-2009 James Murty. Please see LICENSE.txt
  * for applicable license terms and NOTICE.txt for applicable notices.
@@ -114,11 +114,14 @@ public class RestUtils {
         for (Iterator<Map.Entry<String, String>> i = interestingHeaders.entrySet().iterator(); i.hasNext(); ) {
             Map.Entry<String, String> entry = (Map.Entry<String, String>) i.next();
             String key = (String) entry.getKey();
-            Object value = entry.getValue();
+            String value = entry.getValue();
 
             if (key.startsWith(Headers.AMAZON_PREFIX)) {
-                buf.append(key).append(':').append(value);
-            } else {
+                buf.append(key).append(':');
+                if (value != null) {
+                    buf.append(value);
+                }
+            } else if (value != null) {
                 buf.append(value);
             }
             buf.append("\n");

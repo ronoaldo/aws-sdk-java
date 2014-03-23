@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * 
  * </p>
  */
-public class OptionGroup  implements Serializable  {
+public class OptionGroup implements Serializable {
 
     /**
      * Specifies the name of the option group.
@@ -45,7 +46,7 @@ public class OptionGroup  implements Serializable  {
     /**
      * Indicates what options are available in the option group.
      */
-    private java.util.List<Option> options;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Option> options;
 
     /**
      * Indicates whether this option group can be applied to both VPC and
@@ -90,14 +91,13 @@ public class OptionGroup  implements Serializable  {
      * @param optionGroupName Specifies the name of the option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withOptionGroupName(String optionGroupName) {
         this.optionGroupName = optionGroupName;
         return this;
     }
-    
-    
+
     /**
      * Provides the description of the option group.
      *
@@ -124,14 +124,13 @@ public class OptionGroup  implements Serializable  {
      * @param optionGroupDescription Provides the description of the option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withOptionGroupDescription(String optionGroupDescription) {
         this.optionGroupDescription = optionGroupDescription;
         return this;
     }
-    
-    
+
     /**
      * Engine name that this option group can be applied to.
      *
@@ -158,14 +157,13 @@ public class OptionGroup  implements Serializable  {
      * @param engineName Engine name that this option group can be applied to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withEngineName(String engineName) {
         this.engineName = engineName;
         return this;
     }
-    
-    
+
     /**
      * Indicates the major engine version associated with this option group.
      *
@@ -192,23 +190,22 @@ public class OptionGroup  implements Serializable  {
      * @param majorEngineVersion Indicates the major engine version associated with this option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withMajorEngineVersion(String majorEngineVersion) {
         this.majorEngineVersion = majorEngineVersion;
         return this;
     }
-    
-    
+
     /**
      * Indicates what options are available in the option group.
      *
      * @return Indicates what options are available in the option group.
      */
     public java.util.List<Option> getOptions() {
-        
         if (options == null) {
-            options = new java.util.ArrayList<Option>();
+              options = new com.amazonaws.internal.ListWithAutoConstructFlag<Option>();
+              options.setAutoConstruct(true);
         }
         return options;
     }
@@ -223,8 +220,7 @@ public class OptionGroup  implements Serializable  {
             this.options = null;
             return;
         }
-
-        java.util.List<Option> optionsCopy = new java.util.ArrayList<Option>(options.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Option> optionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Option>(options.size());
         optionsCopy.addAll(options);
         this.options = optionsCopy;
     }
@@ -237,7 +233,7 @@ public class OptionGroup  implements Serializable  {
      * @param options Indicates what options are available in the option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withOptions(Option... options) {
         if (getOptions() == null) setOptions(new java.util.ArrayList<Option>(options.length));
@@ -255,20 +251,20 @@ public class OptionGroup  implements Serializable  {
      * @param options Indicates what options are available in the option group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withOptions(java.util.Collection<Option> options) {
         if (options == null) {
             this.options = null;
         } else {
-            java.util.List<Option> optionsCopy = new java.util.ArrayList<Option>(options.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Option> optionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Option>(options.size());
             optionsCopy.addAll(options);
             this.options = optionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Indicates whether this option group can be applied to both VPC and
      * non-VPC instances. The value 'true' indicates the option group can be
@@ -307,14 +303,13 @@ public class OptionGroup  implements Serializable  {
      *         applied to both VPC and non-VPC instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withAllowsVpcAndNonVpcInstanceMemberships(Boolean allowsVpcAndNonVpcInstanceMemberships) {
         this.allowsVpcAndNonVpcInstanceMemberships = allowsVpcAndNonVpcInstanceMemberships;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether this option group can be applied to both VPC and
      * non-VPC instances. The value 'true' indicates the option group can be
@@ -327,7 +322,7 @@ public class OptionGroup  implements Serializable  {
     public Boolean getAllowsVpcAndNonVpcInstanceMemberships() {
         return allowsVpcAndNonVpcInstanceMemberships;
     }
-    
+
     /**
      * If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
      * blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
@@ -384,14 +379,13 @@ public class OptionGroup  implements Serializable  {
      *         by this field.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroup withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -403,13 +397,13 @@ public class OptionGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOptionGroupName() != null) sb.append("OptionGroupName: " + getOptionGroupName() + ",");    	
-        if (getOptionGroupDescription() != null) sb.append("OptionGroupDescription: " + getOptionGroupDescription() + ",");    	
-        if (getEngineName() != null) sb.append("EngineName: " + getEngineName() + ",");    	
-        if (getMajorEngineVersion() != null) sb.append("MajorEngineVersion: " + getMajorEngineVersion() + ",");    	
-        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");    	
-        if (isAllowsVpcAndNonVpcInstanceMemberships() != null) sb.append("AllowsVpcAndNonVpcInstanceMemberships: " + isAllowsVpcAndNonVpcInstanceMemberships() + ",");    	
+        sb.append("{");
+        if (getOptionGroupName() != null) sb.append("OptionGroupName: " + getOptionGroupName() + ",");
+        if (getOptionGroupDescription() != null) sb.append("OptionGroupDescription: " + getOptionGroupDescription() + ",");
+        if (getEngineName() != null) sb.append("EngineName: " + getEngineName() + ",");
+        if (getMajorEngineVersion() != null) sb.append("MajorEngineVersion: " + getMajorEngineVersion() + ",");
+        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");
+        if (isAllowsVpcAndNonVpcInstanceMemberships() != null) sb.append("AllowsVpcAndNonVpcInstanceMemberships: " + isAllowsVpcAndNonVpcInstanceMemberships() + ",");
         if (getVpcId() != null) sb.append("VpcId: " + getVpcId() );
         sb.append("}");
         return sb.toString();

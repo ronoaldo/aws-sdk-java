@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,15 +33,40 @@ public class DescribeDBSecurityGroupsRequestMarshaller implements Marshaller<Req
     public Request<DescribeDBSecurityGroupsRequest> marshall(DescribeDBSecurityGroupsRequest describeDBSecurityGroupsRequest) {
 
         if (describeDBSecurityGroupsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeDBSecurityGroupsRequest> request = new DefaultRequest<DescribeDBSecurityGroupsRequest>(describeDBSecurityGroupsRequest, "AmazonRDS");
         request.addParameter("Action", "DescribeDBSecurityGroups");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (describeDBSecurityGroupsRequest.getDBSecurityGroupName() != null) {
             request.addParameter("DBSecurityGroupName", StringUtils.fromString(describeDBSecurityGroupsRequest.getDBSecurityGroupName()));
+        }
+
+        java.util.List<Filter> filtersList = describeDBSecurityGroupsRequest.getFilters();
+        int filtersListIndex = 1;
+
+        for (Filter filtersListValue : filtersList) {
+            Filter filterMember = filtersListValue;
+            if (filterMember != null) {
+                if (filterMember.getFilterName() != null) {
+                    request.addParameter("Filters.Filter." + filtersListIndex + ".FilterName", StringUtils.fromString(filterMember.getFilterName()));
+                }
+
+                java.util.List<String> filterValueList = filterMember.getFilterValue();
+                int filterValueListIndex = 1;
+
+                for (String filterValueListValue : filterValueList) {
+                    if (filterValueListValue != null) {
+                        request.addParameter("Filters.Filter." + filtersListIndex + ".FilterValue.Value." + filterValueListIndex, StringUtils.fromString(filterValueListValue));
+                    }
+
+                    filterValueListIndex++;
+                }
+            }
+
+            filtersListIndex++;
         }
         if (describeDBSecurityGroupsRequest.getMaxRecords() != null) {
             request.addParameter("MaxRecords", StringUtils.fromInteger(describeDBSecurityGroupsRequest.getMaxRecords()));
@@ -49,7 +74,6 @@ public class DescribeDBSecurityGroupsRequestMarshaller implements Marshaller<Req
         if (describeDBSecurityGroupsRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeDBSecurityGroupsRequest.getMarker()));
         }
-
 
         return request;
     }

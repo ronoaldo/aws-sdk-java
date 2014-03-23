@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for the ListMetrics action.
  * </p>
  */
-public class ListMetricsResult  implements Serializable  {
+public class ListMetricsResult implements Serializable {
 
     /**
      * A list of metrics used to generate statistics for an AWS account.
      */
-    private java.util.List<Metric> metrics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Metric> metrics;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -38,9 +39,9 @@ public class ListMetricsResult  implements Serializable  {
      * @return A list of metrics used to generate statistics for an AWS account.
      */
     public java.util.List<Metric> getMetrics() {
-        
         if (metrics == null) {
-            metrics = new java.util.ArrayList<Metric>();
+              metrics = new com.amazonaws.internal.ListWithAutoConstructFlag<Metric>();
+              metrics.setAutoConstruct(true);
         }
         return metrics;
     }
@@ -55,8 +56,7 @@ public class ListMetricsResult  implements Serializable  {
             this.metrics = null;
             return;
         }
-
-        java.util.List<Metric> metricsCopy = new java.util.ArrayList<Metric>(metrics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Metric> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Metric>(metrics.size());
         metricsCopy.addAll(metrics);
         this.metrics = metricsCopy;
     }
@@ -69,7 +69,7 @@ public class ListMetricsResult  implements Serializable  {
      * @param metrics A list of metrics used to generate statistics for an AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsResult withMetrics(Metric... metrics) {
         if (getMetrics() == null) setMetrics(new java.util.ArrayList<Metric>(metrics.length));
@@ -87,20 +87,20 @@ public class ListMetricsResult  implements Serializable  {
      * @param metrics A list of metrics used to generate statistics for an AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsResult withMetrics(java.util.Collection<Metric> metrics) {
         if (metrics == null) {
             this.metrics = null;
         } else {
-            java.util.List<Metric> metricsCopy = new java.util.ArrayList<Metric>(metrics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Metric> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Metric>(metrics.size());
             metricsCopy.addAll(metrics);
             this.metrics = metricsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      *
@@ -127,14 +127,13 @@ public class ListMetricsResult  implements Serializable  {
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMetricsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +145,8 @@ public class ListMetricsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");    	
+        sb.append("{");
+        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

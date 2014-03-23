@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeOptionGroupOptionsRequestMarshaller implements Marshaller<R
     public Request<DescribeOptionGroupOptionsRequest> marshall(DescribeOptionGroupOptionsRequest describeOptionGroupOptionsRequest) {
 
         if (describeOptionGroupOptionsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeOptionGroupOptionsRequest> request = new DefaultRequest<DescribeOptionGroupOptionsRequest>(describeOptionGroupOptionsRequest, "AmazonRDS");
         request.addParameter("Action", "DescribeOptionGroupOptions");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (describeOptionGroupOptionsRequest.getEngineName() != null) {
             request.addParameter("EngineName", StringUtils.fromString(describeOptionGroupOptionsRequest.getEngineName()));
@@ -52,7 +52,6 @@ public class DescribeOptionGroupOptionsRequestMarshaller implements Marshaller<R
         if (describeOptionGroupOptionsRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeOptionGroupOptionsRequest.getMarker()));
         }
-
 
         return request;
     }

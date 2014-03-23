@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DetachVolumeRequestMarshaller implements Marshaller<Request<DetachV
     public Request<DetachVolumeRequest> marshall(DetachVolumeRequest detachVolumeRequest) {
 
         if (detachVolumeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DetachVolumeRequest> request = new DefaultRequest<DetachVolumeRequest>(detachVolumeRequest, "AmazonEC2");
         request.addParameter("Action", "DetachVolume");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (detachVolumeRequest.getVolumeId() != null) {
             request.addParameter("VolumeId", StringUtils.fromString(detachVolumeRequest.getVolumeId()));
@@ -52,7 +52,6 @@ public class DetachVolumeRequestMarshaller implements Marshaller<Request<DetachV
         if (detachVolumeRequest.isForce() != null) {
             request.addParameter("Force", StringUtils.fromBoolean(detachVolumeRequest.isForce()));
         }
-
 
         return request;
     }

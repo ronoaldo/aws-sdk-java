@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,147 +13,133 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#addCache(AddCacheRequest) AddCache operation}.
  * <p>
- * This operation configures one or more gateway local disks as cache for a cached-volume gateway. This operation is supported only for the
- * gateway-cached volume architecture (see <a href="http://docs.amazonwebservices.com/storagegateway/latest/userguide/StorageGatewayConcepts.html">
- * Storage Gateway Concepts </a> ).
+ * This operation configures one or more gateway local disks as cache for
+ * a cached-volume gateway. This operation is supported only for the
+ * gateway-cached volume architecture (see
+ * <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html"> Storage Gateway Concepts </a>
+ * ).
  * </p>
  * <p>
- * In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add cache, and one or more disk IDs that you want to configure
- * as cache.
+ * In the request, you specify the gateway Amazon Resource Name (ARN) to
+ * which you want to add cache, and one or more disk IDs that you want to
+ * configure as cache.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#addCache(AddCacheRequest)
  */
-public class AddCacheRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AddCacheRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-     * operation to return a list of gateways for your account and region.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      */
     private String gatewayARN;
 
-    /**
-     * An array of strings that identify disks that are to be configured as
-     * cache. Each string in the array must be minimum length of 1 and
-     * maximum length of 300. You can get the disk IDs from the
-     * ListLocalDisks API.
-     */
-    private java.util.List<String> diskIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIds;
 
     /**
-     * The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-     * operation to return a list of gateways for your account and region.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @return The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-     *         operation to return a list of gateways for your account and region.
+     * @return The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
+     *         account and region.
      */
     public String getGatewayARN() {
         return gatewayARN;
     }
     
     /**
-     * The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-     * operation to return a list of gateways for your account and region.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-     *         operation to return a list of gateways for your account and region.
+     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
+     *         account and region.
      */
     public void setGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
     }
     
     /**
-     * The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-     * operation to return a list of gateways for your account and region.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-     *         operation to return a list of gateways for your account and region.
+     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
+     *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCacheRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
-     * An array of strings that identify disks that are to be configured as
-     * cache. Each string in the array must be minimum length of 1 and
-     * maximum length of 300. You can get the disk IDs from the
-     * ListLocalDisks API.
+     * Returns the value of the DiskIds property for this object.
      *
-     * @return An array of strings that identify disks that are to be configured as
-     *         cache. Each string in the array must be minimum length of 1 and
-     *         maximum length of 300. You can get the disk IDs from the
-     *         ListLocalDisks API.
+     * @return The value of the DiskIds property for this object.
      */
     public java.util.List<String> getDiskIds() {
-        
         if (diskIds == null) {
-            diskIds = new java.util.ArrayList<String>();
+              diskIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              diskIds.setAutoConstruct(true);
         }
         return diskIds;
     }
     
     /**
-     * An array of strings that identify disks that are to be configured as
-     * cache. Each string in the array must be minimum length of 1 and
-     * maximum length of 300. You can get the disk IDs from the
-     * ListLocalDisks API.
+     * Sets the value of the DiskIds property for this object.
      *
-     * @param diskIds An array of strings that identify disks that are to be configured as
-     *         cache. Each string in the array must be minimum length of 1 and
-     *         maximum length of 300. You can get the disk IDs from the
-     *         ListLocalDisks API.
+     * @param diskIds The new value for the DiskIds property for this object.
      */
     public void setDiskIds(java.util.Collection<String> diskIds) {
         if (diskIds == null) {
             this.diskIds = null;
             return;
         }
-
-        java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
         diskIdsCopy.addAll(diskIds);
         this.diskIds = diskIdsCopy;
     }
     
     /**
-     * An array of strings that identify disks that are to be configured as
-     * cache. Each string in the array must be minimum length of 1 and
-     * maximum length of 300. You can get the disk IDs from the
-     * ListLocalDisks API.
+     * Sets the value of the DiskIds property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param diskIds An array of strings that identify disks that are to be configured as
-     *         cache. Each string in the array must be minimum length of 1 and
-     *         maximum length of 300. You can get the disk IDs from the
-     *         ListLocalDisks API.
+     * @param diskIds The new value for the DiskIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCacheRequest withDiskIds(String... diskIds) {
         if (getDiskIds() == null) setDiskIds(new java.util.ArrayList<String>(diskIds.length));
@@ -164,33 +150,27 @@ public class AddCacheRequest extends AmazonWebServiceRequest  implements Seriali
     }
     
     /**
-     * An array of strings that identify disks that are to be configured as
-     * cache. Each string in the array must be minimum length of 1 and
-     * maximum length of 300. You can get the disk IDs from the
-     * ListLocalDisks API.
+     * Sets the value of the DiskIds property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param diskIds An array of strings that identify disks that are to be configured as
-     *         cache. Each string in the array must be minimum length of 1 and
-     *         maximum length of 300. You can get the disk IDs from the
-     *         ListLocalDisks API.
+     * @param diskIds The new value for the DiskIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCacheRequest withDiskIds(java.util.Collection<String> diskIds) {
         if (diskIds == null) {
             this.diskIds = null;
         } else {
-            java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
             diskIdsCopy.addAll(diskIds);
             this.diskIds = diskIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -202,8 +182,8 @@ public class AddCacheRequest extends AmazonWebServiceRequest  implements Seriali
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
         if (getDiskIds() != null) sb.append("DiskIds: " + getDiskIds() );
         sb.append("}");
         return sb.toString();

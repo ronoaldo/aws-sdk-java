@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,175 +13,224 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An EC2 availability zone, separate and fault tolerant from other availability zones.
+ * Describes an Availability Zone.
  * </p>
  */
-public class AvailabilityZone  implements Serializable  {
+public class AvailabilityZone implements Serializable {
 
     /**
-     * Name of the Availability Zone.
+     * The name of the Availability Zone.
      */
     private String zoneName;
 
     /**
-     * State of the Availability Zone.
+     * The state of the Availability Zone.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available
      */
     private String state;
 
     /**
-     * Name of the region in which this zone resides.
+     * The name of the region.
      */
     private String regionName;
 
     /**
-     * A list of messages about the Availability Zone.
+     * Any messages about the Availability Zone.
      */
-    private java.util.List<AvailabilityZoneMessage> messages;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage> messages;
 
     /**
-     * Name of the Availability Zone.
+     * The name of the Availability Zone.
      *
-     * @return Name of the Availability Zone.
+     * @return The name of the Availability Zone.
      */
     public String getZoneName() {
         return zoneName;
     }
     
     /**
-     * Name of the Availability Zone.
+     * The name of the Availability Zone.
      *
-     * @param zoneName Name of the Availability Zone.
+     * @param zoneName The name of the Availability Zone.
      */
     public void setZoneName(String zoneName) {
         this.zoneName = zoneName;
     }
     
     /**
-     * Name of the Availability Zone.
+     * The name of the Availability Zone.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param zoneName Name of the Availability Zone.
+     * @param zoneName The name of the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withZoneName(String zoneName) {
         this.zoneName = zoneName;
         return this;
     }
-    
-    
+
     /**
-     * State of the Availability Zone.
+     * The state of the Availability Zone.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available
      *
-     * @return State of the Availability Zone.
+     * @return The state of the Availability Zone.
+     *
+     * @see AvailabilityZoneState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * State of the Availability Zone.
+     * The state of the Availability Zone.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available
      *
-     * @param state State of the Availability Zone.
+     * @param state The state of the Availability Zone.
+     *
+     * @see AvailabilityZoneState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * State of the Availability Zone.
+     * The state of the Availability Zone.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available
      *
-     * @param state State of the Availability Zone.
+     * @param state The state of the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see AvailabilityZoneState
      */
     public AvailabilityZone withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The state of the Availability Zone.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available
+     *
+     * @param state The state of the Availability Zone.
+     *
+     * @see AvailabilityZoneState
+     */
+    public void setState(AvailabilityZoneState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Name of the region in which this zone resides.
+     * The state of the Availability Zone.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>available
      *
-     * @return Name of the region in which this zone resides.
+     * @param state The state of the Availability Zone.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see AvailabilityZoneState
+     */
+    public AvailabilityZone withState(AvailabilityZoneState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * The name of the region.
+     *
+     * @return The name of the region.
      */
     public String getRegionName() {
         return regionName;
     }
     
     /**
-     * Name of the region in which this zone resides.
+     * The name of the region.
      *
-     * @param regionName Name of the region in which this zone resides.
+     * @param regionName The name of the region.
      */
     public void setRegionName(String regionName) {
         this.regionName = regionName;
     }
     
     /**
-     * Name of the region in which this zone resides.
+     * The name of the region.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param regionName Name of the region in which this zone resides.
+     * @param regionName The name of the region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withRegionName(String regionName) {
         this.regionName = regionName;
         return this;
     }
-    
-    
+
     /**
-     * A list of messages about the Availability Zone.
+     * Any messages about the Availability Zone.
      *
-     * @return A list of messages about the Availability Zone.
+     * @return Any messages about the Availability Zone.
      */
     public java.util.List<AvailabilityZoneMessage> getMessages() {
-        
         if (messages == null) {
-            messages = new java.util.ArrayList<AvailabilityZoneMessage>();
+              messages = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage>();
+              messages.setAutoConstruct(true);
         }
         return messages;
     }
     
     /**
-     * A list of messages about the Availability Zone.
+     * Any messages about the Availability Zone.
      *
-     * @param messages A list of messages about the Availability Zone.
+     * @param messages Any messages about the Availability Zone.
      */
     public void setMessages(java.util.Collection<AvailabilityZoneMessage> messages) {
         if (messages == null) {
             this.messages = null;
             return;
         }
-
-        java.util.List<AvailabilityZoneMessage> messagesCopy = new java.util.ArrayList<AvailabilityZoneMessage>(messages.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage>(messages.size());
         messagesCopy.addAll(messages);
         this.messages = messagesCopy;
     }
     
     /**
-     * A list of messages about the Availability Zone.
+     * Any messages about the Availability Zone.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param messages A list of messages about the Availability Zone.
+     * @param messages Any messages about the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withMessages(AvailabilityZoneMessage... messages) {
         if (getMessages() == null) setMessages(new java.util.ArrayList<AvailabilityZoneMessage>(messages.length));
@@ -192,27 +241,27 @@ public class AvailabilityZone  implements Serializable  {
     }
     
     /**
-     * A list of messages about the Availability Zone.
+     * Any messages about the Availability Zone.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param messages A list of messages about the Availability Zone.
+     * @param messages Any messages about the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZone withMessages(java.util.Collection<AvailabilityZoneMessage> messages) {
         if (messages == null) {
             this.messages = null;
         } else {
-            java.util.List<AvailabilityZoneMessage> messagesCopy = new java.util.ArrayList<AvailabilityZoneMessage>(messages.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZoneMessage>(messages.size());
             messagesCopy.addAll(messages);
             this.messages = messagesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -224,10 +273,10 @@ public class AvailabilityZone  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getZoneName() != null) sb.append("ZoneName: " + getZoneName() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getRegionName() != null) sb.append("RegionName: " + getRegionName() + ",");    	
+        sb.append("{");
+        if (getZoneName() != null) sb.append("ZoneName: " + getZoneName() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getRegionName() != null) sb.append("RegionName: " + getRegionName() + ",");
         if (getMessages() != null) sb.append("Messages: " + getMessages() );
         sb.append("}");
         return sb.toString();

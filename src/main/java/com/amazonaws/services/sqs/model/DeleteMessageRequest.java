@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,46 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sqs.AmazonSQS#deleteMessage(DeleteMessageRequest) DeleteMessage operation}.
  * <p>
- * The <code>DeleteMessage</code> action unconditionally removes the specified message from the specified queue. Even if the message is locked by another
- * reader due to the visibility timeout setting, it is still deleted from the queue.
+ * Deletes the specified message from the specified queue. You specify
+ * the message by using the message's <code>receipt handle</code> and not
+ * the <code>message ID</code> you received when you sent the message.
+ * Even if the message is locked by another reader due to the visibility
+ * timeout setting, it is still deleted from the queue. If you leave a
+ * message in the queue for longer than the queue's configured retention
+ * period, Amazon SQS automatically deletes it.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> The receipt handle is associated with a specific instance
+ * of receiving the message. If you receive a message more than once, the
+ * receipt handle you get each time you receive the message is different.
+ * When you request DeleteMessage, if you don't provide the most recently
+ * received receipt handle for the message, the request will still
+ * succeed, but the message might not be deleted.
+ * </p>
+ * <p>
+ * <b>IMPORTANT:</b> It is possible you will receive a message even after
+ * you have deleted it. This might happen on rare occasions if one of the
+ * servers storing a copy of the message is unavailable when you request
+ * to delete the message. The copy remains on the server and might be
+ * returned to you again on a subsequent receive request. You should
+ * create your system to be idempotent so that receiving a particular
+ * message more than once is not a problem.
  * </p>
  *
  * @see com.amazonaws.services.sqs.AmazonSQS#deleteMessage(DeleteMessageRequest)
  */
-public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteMessageRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      */
     private String queueUrl;
 
@@ -48,51 +72,48 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      * @param receiptHandle The receipt handle associated with the message to
      * delete.
      */
     public DeleteMessageRequest(String queueUrl, String receiptHandle) {
-        this.queueUrl = queueUrl;
-        this.receiptHandle = receiptHandle;
+        setQueueUrl(queueUrl);
+        setReceiptHandle(receiptHandle);
     }
 
-    
-    
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      *
-     * @return The URL of the SQS queue to take action on.
+     * @return The URL of the Amazon SQS queue to take action on.
      */
     public String getQueueUrl() {
         return queueUrl;
     }
     
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      *
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      */
     public void setQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
     }
     
     /**
-     * The URL of the SQS queue to take action on.
+     * The URL of the Amazon SQS queue to take action on.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param queueUrl The URL of the SQS queue to take action on.
+     * @param queueUrl The URL of the Amazon SQS queue to take action on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageRequest withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
     }
-    
-    
+
     /**
      * The receipt handle associated with the message to delete.
      *
@@ -119,14 +140,13 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
      * @param receiptHandle The receipt handle associated with the message to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageRequest withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +158,8 @@ public class DeleteMessageRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");    	
+        sb.append("{");
+        if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() + ",");
         if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() );
         sb.append("}");
         return sb.toString();

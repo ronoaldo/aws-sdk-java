@@ -1,20 +1,20 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
  * A copy of the License is located at
- * 
+ *
  *  http://aws.amazon.com/apache2.0
- * 
+ *
  * or in the "license" file accompanying this file. This file is distributed
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.s3.internal;
+import static com.amazonaws.util.StringUtils.UTF8;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class XmlWriter {
         tags.add(name);
         return this;
     }
-    
+
     public XmlWriter start(String name, String[] attrs, String[] values) {
         sb.append("<").append(name);
         for (int i = 0; i < Math.min(attrs.length, values.length); i++) {
@@ -72,13 +72,9 @@ public class XmlWriter {
 
     public byte[] getBytes() {
         assert(tags.size() == 0);
-        try {
-            return this.toString().getBytes(Constants.DEFAULT_ENCODING);
-        } catch (UnsupportedEncodingException e) {
-            return this.toString().toString().getBytes();
-        }
+        return this.toString().getBytes(UTF8);
     }
-    
+
     public String toString() {
         return sb.toString();
     }
@@ -98,7 +94,7 @@ public class XmlWriter {
      * Appends the specified string (with any non-XML-compatible characters
      * replaced with the corresponding escape code) to the specified
      * StringBuilder.
-     * 
+     *
      * @param s
      *            The string to escape and append to the specified
      *            StringBuilder.
@@ -129,7 +125,7 @@ public class XmlWriter {
                 escape = "&amp;";
                 break;
             case '"':
-                escape = "&quote;";
+                escape = "&quot;";
                 break;
             case '<':
                 escape = "&lt;";
@@ -141,7 +137,7 @@ public class XmlWriter {
                 escape = null;
                 break;
             }
-            
+
             // If we found an escape character, write all the characters up to that
             // character, then write the escaped char and get back to scanning
             if (escape != null) {
@@ -151,8 +147,8 @@ public class XmlWriter {
                 start = pos + 1;
             }
         }
-        
-        // Write anything that's left 
+
+        // Write anything that's left
         if (start < pos) sb.append(s, start, pos);
     }
 

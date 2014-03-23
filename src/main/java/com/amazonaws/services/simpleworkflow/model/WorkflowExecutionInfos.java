@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains a paginated list of information about workflow executions.
  * </p>
  */
-public class WorkflowExecutionInfos  implements Serializable  {
+public class WorkflowExecutionInfos implements Serializable {
 
     /**
      * The list of workflow information structures.
      */
-    private java.util.List<WorkflowExecutionInfo> executionInfos;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowExecutionInfo> executionInfos;
 
     /**
      * The token of the next page in the result. If set, the results have
@@ -43,9 +44,9 @@ public class WorkflowExecutionInfos  implements Serializable  {
      * @return The list of workflow information structures.
      */
     public java.util.List<WorkflowExecutionInfo> getExecutionInfos() {
-        
         if (executionInfos == null) {
-            executionInfos = new java.util.ArrayList<WorkflowExecutionInfo>();
+              executionInfos = new com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowExecutionInfo>();
+              executionInfos.setAutoConstruct(true);
         }
         return executionInfos;
     }
@@ -60,8 +61,7 @@ public class WorkflowExecutionInfos  implements Serializable  {
             this.executionInfos = null;
             return;
         }
-
-        java.util.List<WorkflowExecutionInfo> executionInfosCopy = new java.util.ArrayList<WorkflowExecutionInfo>(executionInfos.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowExecutionInfo> executionInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowExecutionInfo>(executionInfos.size());
         executionInfosCopy.addAll(executionInfos);
         this.executionInfos = executionInfosCopy;
     }
@@ -74,7 +74,7 @@ public class WorkflowExecutionInfos  implements Serializable  {
      * @param executionInfos The list of workflow information structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfos withExecutionInfos(WorkflowExecutionInfo... executionInfos) {
         if (getExecutionInfos() == null) setExecutionInfos(new java.util.ArrayList<WorkflowExecutionInfo>(executionInfos.length));
@@ -92,20 +92,20 @@ public class WorkflowExecutionInfos  implements Serializable  {
      * @param executionInfos The list of workflow information structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfos withExecutionInfos(java.util.Collection<WorkflowExecutionInfo> executionInfos) {
         if (executionInfos == null) {
             this.executionInfos = null;
         } else {
-            java.util.List<WorkflowExecutionInfo> executionInfosCopy = new java.util.ArrayList<WorkflowExecutionInfo>(executionInfos.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowExecutionInfo> executionInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<WorkflowExecutionInfo>(executionInfos.size());
             executionInfosCopy.addAll(executionInfos);
             this.executionInfos = executionInfosCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The token of the next page in the result. If set, the results have
      * more than one page. The next page can be retrieved by repeating the
@@ -153,14 +153,13 @@ public class WorkflowExecutionInfos  implements Serializable  {
      *         request with this token and all other arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfos withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -172,8 +171,8 @@ public class WorkflowExecutionInfos  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExecutionInfos() != null) sb.append("ExecutionInfos: " + getExecutionInfos() + ",");    	
+        sb.append("{");
+        if (getExecutionInfos() != null) sb.append("ExecutionInfos: " + getExecutionInfos() + ",");
         if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() );
         sb.append("}");
         return sb.toString();

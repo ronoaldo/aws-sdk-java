@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#swapEnvironmentCNAMEs(SwapEnvironmentCNAMEsRequest) SwapEnvironmentCNAMEs operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#swapEnvironmentCNAMEs(SwapEnvironmentCNAMEsRequest)
  */
-public class SwapEnvironmentCNAMEsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SwapEnvironmentCNAMEsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the source environment. <p> Condition: You must specify at
@@ -118,14 +120,13 @@ public class SwapEnvironmentCNAMEsRequest extends AmazonWebServiceRequest  imple
      *         <code>DestinationEnvironmentId</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SwapEnvironmentCNAMEsRequest withSourceEnvironmentId(String sourceEnvironmentId) {
         this.sourceEnvironmentId = sourceEnvironmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the source environment. <p> Condition: You must specify at
      * least the <code>SourceEnvironmentID</code> or the
@@ -185,14 +186,13 @@ public class SwapEnvironmentCNAMEsRequest extends AmazonWebServiceRequest  imple
      *         <code>DestinationEnvironmentName</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SwapEnvironmentCNAMEsRequest withSourceEnvironmentName(String sourceEnvironmentName) {
         this.sourceEnvironmentName = sourceEnvironmentName;
         return this;
     }
-    
-    
+
     /**
      * The ID of the destination environment. <p> Condition: You must specify
      * at least the <code>DestinationEnvironmentID</code> or the
@@ -243,14 +243,13 @@ public class SwapEnvironmentCNAMEsRequest extends AmazonWebServiceRequest  imple
      *         <code>DestinationEnvironmentId</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SwapEnvironmentCNAMEsRequest withDestinationEnvironmentId(String destinationEnvironmentId) {
         this.destinationEnvironmentId = destinationEnvironmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the destination environment. <p> Condition: You must
      * specify at least the <code>DestinationEnvironmentID</code> or the
@@ -310,14 +309,13 @@ public class SwapEnvironmentCNAMEsRequest extends AmazonWebServiceRequest  imple
      *         <code>DestinationEnvironmentName</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SwapEnvironmentCNAMEsRequest withDestinationEnvironmentName(String destinationEnvironmentName) {
         this.destinationEnvironmentName = destinationEnvironmentName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -329,10 +327,10 @@ public class SwapEnvironmentCNAMEsRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceEnvironmentId() != null) sb.append("SourceEnvironmentId: " + getSourceEnvironmentId() + ",");    	
-        if (getSourceEnvironmentName() != null) sb.append("SourceEnvironmentName: " + getSourceEnvironmentName() + ",");    	
-        if (getDestinationEnvironmentId() != null) sb.append("DestinationEnvironmentId: " + getDestinationEnvironmentId() + ",");    	
+        sb.append("{");
+        if (getSourceEnvironmentId() != null) sb.append("SourceEnvironmentId: " + getSourceEnvironmentId() + ",");
+        if (getSourceEnvironmentName() != null) sb.append("SourceEnvironmentName: " + getSourceEnvironmentName() + ",");
+        if (getDestinationEnvironmentId() != null) sb.append("DestinationEnvironmentId: " + getDestinationEnvironmentId() + ",");
         if (getDestinationEnvironmentName() != null) sb.append("DestinationEnvironmentName: " + getDestinationEnvironmentName() );
         sb.append("}");
         return sb.toString();

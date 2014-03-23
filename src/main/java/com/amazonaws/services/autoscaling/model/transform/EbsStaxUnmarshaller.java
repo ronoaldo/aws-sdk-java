@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * Ebs StAX Unmarshaller
  */
@@ -37,9 +36,7 @@ public class EbsStaxUnmarshaller implements Unmarshaller<Ebs, StaxUnmarshallerCo
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
 
-        
         if (context.isStartOfDocument()) targetDepth += 2;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -52,6 +49,18 @@ public class EbsStaxUnmarshaller implements Unmarshaller<Ebs, StaxUnmarshallerCo
                 }
                 if (context.testExpression("VolumeSize", targetDepth)) {
                     ebs.setVolumeSize(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("VolumeType", targetDepth)) {
+                    ebs.setVolumeType(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("DeleteOnTermination", targetDepth)) {
+                    ebs.setDeleteOnTermination(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("Iops", targetDepth)) {
+                    ebs.setIops(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

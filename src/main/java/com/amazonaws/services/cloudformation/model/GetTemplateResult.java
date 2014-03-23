@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,32 +21,32 @@ import java.io.Serializable;
  * The output for GetTemplate action.
  * </p>
  */
-public class GetTemplateResult  implements Serializable  {
+public class GetTemplateResult implements Serializable {
 
     /**
      * Structure containing the template body. (For more information, go to
-     * the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide/">AWS
-     * CloudFormation User Guide</a>.)
+     * <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+     * Anatomy</a> in the AWS CloudFormation User Guide.)
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 51200<br/>
+     * <b>Length: </b>1 - <br/>
      */
     private String templateBody;
 
     /**
      * Structure containing the template body. (For more information, go to
-     * the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide/">AWS
-     * CloudFormation User Guide</a>.)
+     * <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+     * Anatomy</a> in the AWS CloudFormation User Guide.)
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 51200<br/>
+     * <b>Length: </b>1 - <br/>
      *
      * @return Structure containing the template body. (For more information, go to
-     *         the <a
-     *         href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide/">AWS
-     *         CloudFormation User Guide</a>.)
+     *         <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+     *         Anatomy</a> in the AWS CloudFormation User Guide.)
      */
     public String getTemplateBody() {
         return templateBody;
@@ -53,17 +54,17 @@ public class GetTemplateResult  implements Serializable  {
     
     /**
      * Structure containing the template body. (For more information, go to
-     * the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide/">AWS
-     * CloudFormation User Guide</a>.)
+     * <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+     * Anatomy</a> in the AWS CloudFormation User Guide.)
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 51200<br/>
+     * <b>Length: </b>1 - <br/>
      *
      * @param templateBody Structure containing the template body. (For more information, go to
-     *         the <a
-     *         href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide/">AWS
-     *         CloudFormation User Guide</a>.)
+     *         <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+     *         Anatomy</a> in the AWS CloudFormation User Guide.)
      */
     public void setTemplateBody(String templateBody) {
         this.templateBody = templateBody;
@@ -71,29 +72,28 @@ public class GetTemplateResult  implements Serializable  {
     
     /**
      * Structure containing the template body. (For more information, go to
-     * the <a
-     * href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide/">AWS
-     * CloudFormation User Guide</a>.)
+     * <a
+     * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+     * Anatomy</a> in the AWS CloudFormation User Guide.)
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 51200<br/>
+     * <b>Length: </b>1 - <br/>
      *
      * @param templateBody Structure containing the template body. (For more information, go to
-     *         the <a
-     *         href="http://docs.amazonwebservices.com/AWSCloudFormation/latest/UserGuide/">AWS
-     *         CloudFormation User Guide</a>.)
+     *         <a
+     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+     *         Anatomy</a> in the AWS CloudFormation User Guide.)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetTemplateResult withTemplateBody(String templateBody) {
         this.templateBody = templateBody;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -105,7 +105,7 @@ public class GetTemplateResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTemplateBody() != null) sb.append("TemplateBody: " + getTemplateBody() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The <code>Dimension</code> data type further expands on the identity of a metric using a Name, Value pair.
+ * The <code>Dimension</code> data type further expands on the identity
+ * of a metric using a Name, Value pair.
  * </p>
  */
-public class Dimension  implements Serializable  {
+public class Dimension implements Serializable {
 
     /**
      * The name of the dimension.
@@ -73,14 +75,13 @@ public class Dimension  implements Serializable  {
      * @param name The name of the dimension.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Dimension withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The value representing the dimension measurement
      * <p>
@@ -116,14 +117,13 @@ public class Dimension  implements Serializable  {
      * @param value The value representing the dimension measurement
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Dimension withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -135,8 +135,8 @@ public class Dimension  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

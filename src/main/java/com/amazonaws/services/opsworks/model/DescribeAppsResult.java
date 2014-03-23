@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeApps</code> request.
  * </p>
  */
-public class DescribeAppsResult  implements Serializable  {
+public class DescribeAppsResult implements Serializable {
 
     /**
      * An array of <code>App</code> objects that describe the specified apps.
      */
-    private java.util.List<App> apps;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<App> apps;
 
     /**
      * An array of <code>App</code> objects that describe the specified apps.
@@ -33,9 +34,9 @@ public class DescribeAppsResult  implements Serializable  {
      * @return An array of <code>App</code> objects that describe the specified apps.
      */
     public java.util.List<App> getApps() {
-        
         if (apps == null) {
-            apps = new java.util.ArrayList<App>();
+              apps = new com.amazonaws.internal.ListWithAutoConstructFlag<App>();
+              apps.setAutoConstruct(true);
         }
         return apps;
     }
@@ -50,8 +51,7 @@ public class DescribeAppsResult  implements Serializable  {
             this.apps = null;
             return;
         }
-
-        java.util.List<App> appsCopy = new java.util.ArrayList<App>(apps.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<App> appsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<App>(apps.size());
         appsCopy.addAll(apps);
         this.apps = appsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeAppsResult  implements Serializable  {
      * @param apps An array of <code>App</code> objects that describe the specified apps.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAppsResult withApps(App... apps) {
         if (getApps() == null) setApps(new java.util.ArrayList<App>(apps.length));
@@ -82,20 +82,20 @@ public class DescribeAppsResult  implements Serializable  {
      * @param apps An array of <code>App</code> objects that describe the specified apps.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAppsResult withApps(java.util.Collection<App> apps) {
         if (apps == null) {
             this.apps = null;
         } else {
-            java.util.List<App> appsCopy = new java.util.ArrayList<App>(apps.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<App> appsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<App>(apps.size());
             appsCopy.addAll(apps);
             this.apps = appsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeAppsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getApps() != null) sb.append("Apps: " + getApps() );
         sb.append("}");
         return sb.toString();

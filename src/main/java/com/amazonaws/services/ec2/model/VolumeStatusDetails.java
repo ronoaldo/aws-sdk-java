@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,85 +13,144 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Volume Status Details
+ * <p>
+ * Describes a volume status.
+ * </p>
  */
-public class VolumeStatusDetails  implements Serializable  {
+public class VolumeStatusDetails implements Serializable {
 
+    /**
+     * The name of the volume status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>io-enabled, io-performance
+     */
     private String name;
 
+    /**
+     * The intended status of the volume status.
+     */
     private String status;
 
     /**
-     * Returns the value of the Name property for this object.
+     * The name of the volume status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>io-enabled, io-performance
      *
-     * @return The value of the Name property for this object.
+     * @return The name of the volume status.
+     *
+     * @see VolumeStatusName
      */
     public String getName() {
         return name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The name of the volume status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>io-enabled, io-performance
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The name of the volume status.
+     *
+     * @see VolumeStatusName
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The name of the volume status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>io-enabled, io-performance
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The name of the volume status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see VolumeStatusName
      */
     public VolumeStatusDetails withName(String name) {
         this.name = name;
         return this;
     }
-    
+
+    /**
+     * The name of the volume status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>io-enabled, io-performance
+     *
+     * @param name The name of the volume status.
+     *
+     * @see VolumeStatusName
+     */
+    public void setName(VolumeStatusName name) {
+        this.name = name.toString();
+    }
     
     /**
-     * Returns the value of the Status property for this object.
+     * The name of the volume status.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>io-enabled, io-performance
      *
-     * @return The value of the Status property for this object.
+     * @param name The name of the volume status.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see VolumeStatusName
+     */
+    public VolumeStatusDetails withName(VolumeStatusName name) {
+        this.name = name.toString();
+        return this;
+    }
+
+    /**
+     * The intended status of the volume status.
+     *
+     * @return The intended status of the volume status.
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The intended status of the volume status.
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The intended status of the volume status.
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The intended status of the volume status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The intended status of the volume status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusDetails withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,8 +162,8 @@ public class VolumeStatusDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ResetSnapshotAttributeRequestMarshaller implements Marshaller<Reque
     public Request<ResetSnapshotAttributeRequest> marshall(ResetSnapshotAttributeRequest resetSnapshotAttributeRequest) {
 
         if (resetSnapshotAttributeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ResetSnapshotAttributeRequest> request = new DefaultRequest<ResetSnapshotAttributeRequest>(resetSnapshotAttributeRequest, "AmazonEC2");
         request.addParameter("Action", "ResetSnapshotAttribute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (resetSnapshotAttributeRequest.getSnapshotId() != null) {
             request.addParameter("SnapshotId", StringUtils.fromString(resetSnapshotAttributeRequest.getSnapshotId()));
@@ -46,7 +46,6 @@ public class ResetSnapshotAttributeRequestMarshaller implements Marshaller<Reque
         if (resetSnapshotAttributeRequest.getAttribute() != null) {
             request.addParameter("Attribute", StringUtils.fromString(resetSnapshotAttributeRequest.getAttribute()));
         }
-
 
         return request;
     }

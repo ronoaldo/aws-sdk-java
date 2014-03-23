@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A scaling action that is scheduled for a future time and date. An action can be scheduled up to thirty days in advance.
+ * A scaling action that is scheduled for a future time and date. An
+ * action can be scheduled up to thirty days in advance.
  * </p>
  * <p>
- * Starting with API version 2011-01-01, you can use <code>recurrence</code> to specify that a scaling action occurs regularly on a schedule.
+ * Starting with API version 2011-01-01, you can use
+ * <code>recurrence</code> to specify that a scaling action occurs
+ * regularly on a schedule.
  * </p>
  */
-public class DescribeScheduledActionsResult  implements Serializable  {
+public class DescribeScheduledActionsResult implements Serializable {
 
     /**
      * A list of scheduled actions designed to update an Auto Scaling group.
      */
-    private java.util.List<ScheduledUpdateGroupAction> scheduledUpdateGroupActions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ScheduledUpdateGroupAction> scheduledUpdateGroupActions;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -44,9 +48,9 @@ public class DescribeScheduledActionsResult  implements Serializable  {
      * @return A list of scheduled actions designed to update an Auto Scaling group.
      */
     public java.util.List<ScheduledUpdateGroupAction> getScheduledUpdateGroupActions() {
-        
         if (scheduledUpdateGroupActions == null) {
-            scheduledUpdateGroupActions = new java.util.ArrayList<ScheduledUpdateGroupAction>();
+              scheduledUpdateGroupActions = new com.amazonaws.internal.ListWithAutoConstructFlag<ScheduledUpdateGroupAction>();
+              scheduledUpdateGroupActions.setAutoConstruct(true);
         }
         return scheduledUpdateGroupActions;
     }
@@ -61,8 +65,7 @@ public class DescribeScheduledActionsResult  implements Serializable  {
             this.scheduledUpdateGroupActions = null;
             return;
         }
-
-        java.util.List<ScheduledUpdateGroupAction> scheduledUpdateGroupActionsCopy = new java.util.ArrayList<ScheduledUpdateGroupAction>(scheduledUpdateGroupActions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ScheduledUpdateGroupAction> scheduledUpdateGroupActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ScheduledUpdateGroupAction>(scheduledUpdateGroupActions.size());
         scheduledUpdateGroupActionsCopy.addAll(scheduledUpdateGroupActions);
         this.scheduledUpdateGroupActions = scheduledUpdateGroupActionsCopy;
     }
@@ -75,7 +78,7 @@ public class DescribeScheduledActionsResult  implements Serializable  {
      * @param scheduledUpdateGroupActions A list of scheduled actions designed to update an Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsResult withScheduledUpdateGroupActions(ScheduledUpdateGroupAction... scheduledUpdateGroupActions) {
         if (getScheduledUpdateGroupActions() == null) setScheduledUpdateGroupActions(new java.util.ArrayList<ScheduledUpdateGroupAction>(scheduledUpdateGroupActions.length));
@@ -93,20 +96,20 @@ public class DescribeScheduledActionsResult  implements Serializable  {
      * @param scheduledUpdateGroupActions A list of scheduled actions designed to update an Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsResult withScheduledUpdateGroupActions(java.util.Collection<ScheduledUpdateGroupAction> scheduledUpdateGroupActions) {
         if (scheduledUpdateGroupActions == null) {
             this.scheduledUpdateGroupActions = null;
         } else {
-            java.util.List<ScheduledUpdateGroupAction> scheduledUpdateGroupActionsCopy = new java.util.ArrayList<ScheduledUpdateGroupAction>(scheduledUpdateGroupActions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ScheduledUpdateGroupAction> scheduledUpdateGroupActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ScheduledUpdateGroupAction>(scheduledUpdateGroupActions.size());
             scheduledUpdateGroupActionsCopy.addAll(scheduledUpdateGroupActions);
             this.scheduledUpdateGroupActions = scheduledUpdateGroupActionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -142,14 +145,13 @@ public class DescribeScheduledActionsResult  implements Serializable  {
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -161,8 +163,8 @@ public class DescribeScheduledActionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getScheduledUpdateGroupActions() != null) sb.append("ScheduledUpdateGroupActions: " + getScheduledUpdateGroupActions() + ",");    	
+        sb.append("{");
+        if (getScheduledUpdateGroupActions() != null) sb.append("ScheduledUpdateGroupActions: " + getScheduledUpdateGroupActions() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

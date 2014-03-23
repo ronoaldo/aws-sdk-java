@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#createCachediSCSIVolume(CreateCachediSCSIVolumeRequest) CreateCachediSCSIVolume operation}.
  * <p>
- * This operation creates a cached volume on a specified cached gateway. This operation is supported only for the gateway-cached volume architecture.
+ * This operation creates a cached volume on a specified cached gateway.
+ * This operation is supported only for the gateway-cached volume
+ * architecture.
  * </p>
  * <p>
- * <b>NOTE:</b>Cache storage must be allocated to the gateway before you can create a cached volume. Use the AddCache operation to add cache storage to a
- * gateway.
+ * <b>NOTE:</b>Cache storage must be allocated to the gateway before you
+ * can create a cached volume. Use the AddCache operation to add cache
+ * storage to a gateway.
  * </p>
  * <p>
- * In the request, you must specify the gateway, size of the volume in bytes, the iSCSI target name, an IP address on which to expose the target, and a
- * unique client token. In response, AWS Storage Gateway creates the volume and returns information about it such as the volume Amazon Resource Name
- * (ARN), its size, and the iSCSI target ARN that initiators can use to connect to the volume target.
+ * In the request, you must specify the gateway, size of the volume in
+ * bytes, the iSCSI target name, an IP address on which to expose the
+ * target, and a unique client token. In response, AWS Storage Gateway
+ * creates the volume and returns information about it such as the volume
+ * Amazon Resource Name (ARN), its size, and the iSCSI target ARN that
+ * initiators can use to connect to the volume target.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#createCachediSCSIVolume(CreateCachediSCSIVolumeRequest)
  */
-public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -45,54 +53,14 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      */
     private String gatewayARN;
 
-    /**
-     * The size of the cached volume.
-     */
     private Long volumeSizeInBytes;
 
-    /**
-     * The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
-     * the new stored volume. Specify this field if you want to create the
-     * iSCSI cached volume from a snapshot; otherwise, do not include this
-     * field. To list snapshots for your account, use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
-     * in Amazon Elastic Compute Cloud API Reference.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
-     */
     private String snapshotId;
 
-    /**
-     * The name of the iSCSI target used by initiators to connect to the
-     * target and as a suffix for the target ARN. For example, specifying
-     * <b>TargetName</b> as <i>myvolume</i> results in the target ARN of
-     * <i>arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume</i>.
-     * The target name must be unique across all volumes of a gateway.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 200<br/>
-     * <b>Pattern: </b>^[-\.;a-z0-9]+$<br/>
-     */
     private String targetName;
 
-    /**
-     * The network interface of the gateway on which to expose the iSCSI
-     * target. Only IPv4 addresses are accepted. Use the
-     * <a>DescribeGatewayInformation</a> operation to get a list of the
-     * network interfaces available on the gateway.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Pattern: </b>\A(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}\z<br/>
-     */
     private String networkInterfaceId;
 
-    /**
-     * A unique identifying string for the cached volume.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>5 - 100<br/>
-     */
     private String clientToken;
 
     /**
@@ -142,169 +110,116 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCachediSCSIVolumeRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
-     * The size of the cached volume.
+     * Returns the value of the VolumeSizeInBytes property for this object.
      *
-     * @return The size of the cached volume.
+     * @return The value of the VolumeSizeInBytes property for this object.
      */
     public Long getVolumeSizeInBytes() {
         return volumeSizeInBytes;
     }
     
     /**
-     * The size of the cached volume.
+     * Sets the value of the VolumeSizeInBytes property for this object.
      *
-     * @param volumeSizeInBytes The size of the cached volume.
+     * @param volumeSizeInBytes The new value for the VolumeSizeInBytes property for this object.
      */
     public void setVolumeSizeInBytes(Long volumeSizeInBytes) {
         this.volumeSizeInBytes = volumeSizeInBytes;
     }
     
     /**
-     * The size of the cached volume.
+     * Sets the value of the VolumeSizeInBytes property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeSizeInBytes The size of the cached volume.
+     * @param volumeSizeInBytes The new value for the VolumeSizeInBytes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCachediSCSIVolumeRequest withVolumeSizeInBytes(Long volumeSizeInBytes) {
         this.volumeSizeInBytes = volumeSizeInBytes;
         return this;
     }
-    
-    
+
     /**
-     * The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
-     * the new stored volume. Specify this field if you want to create the
-     * iSCSI cached volume from a snapshot; otherwise, do not include this
-     * field. To list snapshots for your account, use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
-     * in Amazon Elastic Compute Cloud API Reference.
+     * Returns the value of the SnapshotId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
      *
-     * @return The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
-     *         the new stored volume. Specify this field if you want to create the
-     *         iSCSI cached volume from a snapshot; otherwise, do not include this
-     *         field. To list snapshots for your account, use <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
-     *         in Amazon Elastic Compute Cloud API Reference.
+     * @return The value of the SnapshotId property for this object.
      */
     public String getSnapshotId() {
         return snapshotId;
     }
     
     /**
-     * The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
-     * the new stored volume. Specify this field if you want to create the
-     * iSCSI cached volume from a snapshot; otherwise, do not include this
-     * field. To list snapshots for your account, use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
-     * in Amazon Elastic Compute Cloud API Reference.
+     * Sets the value of the SnapshotId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
      *
-     * @param snapshotId The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
-     *         the new stored volume. Specify this field if you want to create the
-     *         iSCSI cached volume from a snapshot; otherwise, do not include this
-     *         field. To list snapshots for your account, use <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
-     *         in Amazon Elastic Compute Cloud API Reference.
+     * @param snapshotId The new value for the SnapshotId property for this object.
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
     }
     
     /**
-     * The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
-     * the new stored volume. Specify this field if you want to create the
-     * iSCSI cached volume from a snapshot; otherwise, do not include this
-     * field. To list snapshots for your account, use <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
-     * in Amazon Elastic Compute Cloud API Reference.
+     * Sets the value of the SnapshotId property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
      *
-     * @param snapshotId The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
-     *         the new stored volume. Specify this field if you want to create the
-     *         iSCSI cached volume from a snapshot; otherwise, do not include this
-     *         field. To list snapshots for your account, use <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a>
-     *         in Amazon Elastic Compute Cloud API Reference.
+     * @param snapshotId The new value for the SnapshotId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCachediSCSIVolumeRequest withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
-     * The name of the iSCSI target used by initiators to connect to the
-     * target and as a suffix for the target ARN. For example, specifying
-     * <b>TargetName</b> as <i>myvolume</i> results in the target ARN of
-     * <i>arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume</i>.
-     * The target name must be unique across all volumes of a gateway.
+     * Returns the value of the TargetName property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 200<br/>
      * <b>Pattern: </b>^[-\.;a-z0-9]+$<br/>
      *
-     * @return The name of the iSCSI target used by initiators to connect to the
-     *         target and as a suffix for the target ARN. For example, specifying
-     *         <b>TargetName</b> as <i>myvolume</i> results in the target ARN of
-     *         <i>arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume</i>.
-     *         The target name must be unique across all volumes of a gateway.
+     * @return The value of the TargetName property for this object.
      */
     public String getTargetName() {
         return targetName;
     }
     
     /**
-     * The name of the iSCSI target used by initiators to connect to the
-     * target and as a suffix for the target ARN. For example, specifying
-     * <b>TargetName</b> as <i>myvolume</i> results in the target ARN of
-     * <i>arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume</i>.
-     * The target name must be unique across all volumes of a gateway.
+     * Sets the value of the TargetName property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 200<br/>
      * <b>Pattern: </b>^[-\.;a-z0-9]+$<br/>
      *
-     * @param targetName The name of the iSCSI target used by initiators to connect to the
-     *         target and as a suffix for the target ARN. For example, specifying
-     *         <b>TargetName</b> as <i>myvolume</i> results in the target ARN of
-     *         <i>arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume</i>.
-     *         The target name must be unique across all volumes of a gateway.
+     * @param targetName The new value for the TargetName property for this object.
      */
     public void setTargetName(String targetName) {
         this.targetName = targetName;
     }
     
     /**
-     * The name of the iSCSI target used by initiators to connect to the
-     * target and as a suffix for the target ARN. For example, specifying
-     * <b>TargetName</b> as <i>myvolume</i> results in the target ARN of
-     * <i>arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume</i>.
-     * The target name must be unique across all volumes of a gateway.
+     * Sets the value of the TargetName property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -312,125 +227,100 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
      * <b>Length: </b>1 - 200<br/>
      * <b>Pattern: </b>^[-\.;a-z0-9]+$<br/>
      *
-     * @param targetName The name of the iSCSI target used by initiators to connect to the
-     *         target and as a suffix for the target ARN. For example, specifying
-     *         <b>TargetName</b> as <i>myvolume</i> results in the target ARN of
-     *         <i>arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume</i>.
-     *         The target name must be unique across all volumes of a gateway.
+     * @param targetName The new value for the TargetName property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCachediSCSIVolumeRequest withTargetName(String targetName) {
         this.targetName = targetName;
         return this;
     }
-    
-    
+
     /**
-     * The network interface of the gateway on which to expose the iSCSI
-     * target. Only IPv4 addresses are accepted. Use the
-     * <a>DescribeGatewayInformation</a> operation to get a list of the
-     * network interfaces available on the gateway.
+     * Returns the value of the NetworkInterfaceId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\A(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}\z<br/>
      *
-     * @return The network interface of the gateway on which to expose the iSCSI
-     *         target. Only IPv4 addresses are accepted. Use the
-     *         <a>DescribeGatewayInformation</a> operation to get a list of the
-     *         network interfaces available on the gateway.
+     * @return The value of the NetworkInterfaceId property for this object.
      */
     public String getNetworkInterfaceId() {
         return networkInterfaceId;
     }
     
     /**
-     * The network interface of the gateway on which to expose the iSCSI
-     * target. Only IPv4 addresses are accepted. Use the
-     * <a>DescribeGatewayInformation</a> operation to get a list of the
-     * network interfaces available on the gateway.
+     * Sets the value of the NetworkInterfaceId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\A(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}\z<br/>
      *
-     * @param networkInterfaceId The network interface of the gateway on which to expose the iSCSI
-     *         target. Only IPv4 addresses are accepted. Use the
-     *         <a>DescribeGatewayInformation</a> operation to get a list of the
-     *         network interfaces available on the gateway.
+     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
      */
     public void setNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
     }
     
     /**
-     * The network interface of the gateway on which to expose the iSCSI
-     * target. Only IPv4 addresses are accepted. Use the
-     * <a>DescribeGatewayInformation</a> operation to get a list of the
-     * network interfaces available on the gateway.
+     * Sets the value of the NetworkInterfaceId property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\A(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}\z<br/>
      *
-     * @param networkInterfaceId The network interface of the gateway on which to expose the iSCSI
-     *         target. Only IPv4 addresses are accepted. Use the
-     *         <a>DescribeGatewayInformation</a> operation to get a list of the
-     *         network interfaces available on the gateway.
+     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCachediSCSIVolumeRequest withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
         return this;
     }
-    
-    
+
     /**
-     * A unique identifying string for the cached volume.
+     * Returns the value of the ClientToken property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>5 - 100<br/>
      *
-     * @return A unique identifying string for the cached volume.
+     * @return The value of the ClientToken property for this object.
      */
     public String getClientToken() {
         return clientToken;
     }
     
     /**
-     * A unique identifying string for the cached volume.
+     * Sets the value of the ClientToken property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>5 - 100<br/>
      *
-     * @param clientToken A unique identifying string for the cached volume.
+     * @param clientToken The new value for the ClientToken property for this object.
      */
     public void setClientToken(String clientToken) {
         this.clientToken = clientToken;
     }
     
     /**
-     * A unique identifying string for the cached volume.
+     * Sets the value of the ClientToken property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>5 - 100<br/>
      *
-     * @param clientToken A unique identifying string for the cached volume.
+     * @param clientToken The new value for the ClientToken property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCachediSCSIVolumeRequest withClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -442,12 +332,12 @@ public class CreateCachediSCSIVolumeRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getVolumeSizeInBytes() != null) sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes() + ",");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getTargetName() != null) sb.append("TargetName: " + getTargetName() + ",");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getVolumeSizeInBytes() != null) sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes() + ",");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getTargetName() != null) sb.append("TargetName: " + getTargetName() + ",");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
         if (getClientToken() != null) sb.append("ClientToken: " + getClientToken() );
         sb.append("}");
         return sb.toString();

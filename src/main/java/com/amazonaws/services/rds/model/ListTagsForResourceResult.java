@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,19 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * </p>
  */
-public class ListTagsForResourceResult  implements Serializable  {
+public class ListTagsForResourceResult implements Serializable {
 
     /**
      * List of tags returned by the ListTagsForResource operation.
      */
-    private java.util.List<Tag> tagList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagList;
 
     /**
      * List of tags returned by the ListTagsForResource operation.
@@ -32,9 +33,9 @@ public class ListTagsForResourceResult  implements Serializable  {
      * @return List of tags returned by the ListTagsForResource operation.
      */
     public java.util.List<Tag> getTagList() {
-        
         if (tagList == null) {
-            tagList = new java.util.ArrayList<Tag>();
+              tagList = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tagList.setAutoConstruct(true);
         }
         return tagList;
     }
@@ -49,8 +50,7 @@ public class ListTagsForResourceResult  implements Serializable  {
             this.tagList = null;
             return;
         }
-
-        java.util.List<Tag> tagListCopy = new java.util.ArrayList<Tag>(tagList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tagList.size());
         tagListCopy.addAll(tagList);
         this.tagList = tagListCopy;
     }
@@ -63,7 +63,7 @@ public class ListTagsForResourceResult  implements Serializable  {
      * @param tagList List of tags returned by the ListTagsForResource operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTagsForResourceResult withTagList(Tag... tagList) {
         if (getTagList() == null) setTagList(new java.util.ArrayList<Tag>(tagList.length));
@@ -81,20 +81,20 @@ public class ListTagsForResourceResult  implements Serializable  {
      * @param tagList List of tags returned by the ListTagsForResource operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTagsForResourceResult withTagList(java.util.Collection<Tag> tagList) {
         if (tagList == null) {
             this.tagList = null;
         } else {
-            java.util.List<Tag> tagListCopy = new java.util.ArrayList<Tag>(tagList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tagList.size());
             tagListCopy.addAll(tagList);
             this.tagList = tagListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -106,7 +106,7 @@ public class ListTagsForResourceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTagList() != null) sb.append("TagList: " + getTagList() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,17 +33,16 @@ public class DeleteDBSecurityGroupRequestMarshaller implements Marshaller<Reques
     public Request<DeleteDBSecurityGroupRequest> marshall(DeleteDBSecurityGroupRequest deleteDBSecurityGroupRequest) {
 
         if (deleteDBSecurityGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteDBSecurityGroupRequest> request = new DefaultRequest<DeleteDBSecurityGroupRequest>(deleteDBSecurityGroupRequest, "AmazonRDS");
         request.addParameter("Action", "DeleteDBSecurityGroup");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (deleteDBSecurityGroupRequest.getDBSecurityGroupName() != null) {
             request.addParameter("DBSecurityGroupName", StringUtils.fromString(deleteDBSecurityGroupRequest.getDBSecurityGroupName()));
         }
-
 
         return request;
     }

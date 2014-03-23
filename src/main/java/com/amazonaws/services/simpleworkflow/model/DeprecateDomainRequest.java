@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,41 +13,55 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#deprecateDomain(DeprecateDomainRequest) DeprecateDomain operation}.
  * <p>
- * Deprecates the specified domain. After a domain has been deprecated it cannot be used to create new workflow executions or register new types.
- * However, you can still use visibility actions on this domain. Deprecating a domain also deprecates all activity and workflow types registered in the
- * domain. Executions that were started before the domain was deprecated will continue to run.
+ * Deprecates the specified domain. After a domain has been deprecated
+ * it cannot be used to create new workflow executions or register new
+ * types. However, you can still use visibility actions on this domain.
+ * Deprecating a domain also deprecates all activity and workflow types
+ * registered in the domain. Executions that were started before the
+ * domain was deprecated will continue to run.
  * </p>
  * <p>
- * <b>NOTE:</b> This operation is eventually consistent. The results are best effort and may not exactly reflect recent updates and changes.
+ * <b>NOTE:</b> This operation is eventually consistent. The results are
+ * best effort and may not exactly reflect recent updates and changes.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#deprecateDomain(DeprecateDomainRequest)
  */
-public class DeprecateDomainRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeprecateDomainRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain to deprecate.
@@ -92,14 +106,13 @@ public class DeprecateDomainRequest extends AmazonWebServiceRequest  implements 
      * @param name The name of the domain to deprecate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeprecateDomainRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +124,7 @@ public class DeprecateDomainRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

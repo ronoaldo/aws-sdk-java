@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2013 Amazon Technologies, Inc.
+ * Copyright 2012-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,10 @@ package com.amazonaws.services.s3.transfer.internal;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.event.ProgressListenerChain;
 import com.amazonaws.services.s3.transfer.Download;
 import com.amazonaws.services.s3.transfer.MultipleFileDownload;
 import com.amazonaws.services.s3.transfer.Transfer;
@@ -40,6 +38,16 @@ public class MultipleFileDownloadImpl extends MultipleFileTransfer implements Mu
         super(description, transferProgress, progressListenerChain, downloads);
         this.keyPrefix = keyPrefix;
         this.bucketName = bucketName;
+    }
+    
+    /**
+     * @deprecated Replaced by {@link #MultipleFileDownloadImpl(String, TransferProgress, ProgressListenerChain, String, String, Collection)}
+     */
+    @Deprecated
+    public MultipleFileDownloadImpl(String description, TransferProgress transferProgress,
+            com.amazonaws.services.s3.transfer.internal.ProgressListenerChain progressListenerChain, String keyPrefix, String bucketName, Collection<? extends Download> downloads) {
+        this(description, transferProgress, progressListenerChain.transformToGeneralProgressListenerChain(), 
+                keyPrefix, bucketName, downloads);
     }
 
     /**
@@ -73,8 +81,8 @@ public class MultipleFileDownloadImpl extends MultipleFileTransfer implements Mu
     @Override
     public void waitForCompletion()
             throws AmazonClientException, AmazonServiceException, InterruptedException {
-    	if (subTransfers.isEmpty())
-    		return;
+        if (subTransfers.isEmpty())
+            return;
         super.waitForCompletion();
     }
     
@@ -82,8 +90,31 @@ public class MultipleFileDownloadImpl extends MultipleFileTransfer implements Mu
      * Aborts all outstanding downloads.
      */
     public void abort() throws IOException {
+        /*
+         * The abort() method of DownloadImpl would attempt to notify its
+         * TransferStateChangeListener BEFORE it releases its intrinsic lock.
+         * And according to the implementation of
+         * MultipleFileTransferStateChangeListener which is actually shared by
+         * all sub-transfers, it will call the synchronized method isDone() on
+         * ALL sub-transfer objects. This would result in serious
+         * contention with the worker threads who try to acquire the same set of
+         * locks to call setState().
+         * In order to prevent this. we should first cancel all download jobs and
+         * then notify the listener.
+         */
+        
+        /* First abort all the download jobs without notifying the state change listener.*/
         for (Transfer fileDownload : subTransfers) {
-            ((Download)fileDownload).abort();
+            ((DownloadImpl)fileDownload).abortWithoutNotifyingStateChangeListener();
+        }
+        
+        /*
+         * All sub-transfers are already in CANCELED state. Now the main thread
+         * is able to check isDone() on each sub-transfer object without
+         * contention with worker threads.
+         */
+        for (Transfer fileDownload : subTransfers) {
+            ((DownloadImpl)fileDownload).notifyStateChangeListeners(TransferState.Canceled);
         }
     }
 }

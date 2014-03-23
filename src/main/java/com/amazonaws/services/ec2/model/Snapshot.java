@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a snapshot of an Amazon EC2 EBS volume.
+ * Describes a snapshot.
  * </p>
  */
-public class Snapshot  implements Serializable  {
+public class Snapshot implements Serializable {
 
     /**
-     * The unique ID of this snapshot.
+     * The ID of the snapshot.
      */
     private String snapshotId;
 
     /**
-     * The ID of the volume from which this snapshot was created.
+     * The ID of the volume.
      */
     private String volumeId;
 
     /**
-     * Snapshot state (e.g., pending, completed, or error).
+     * The snapshot state.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, completed, error
@@ -41,116 +42,114 @@ public class Snapshot  implements Serializable  {
     private String state;
 
     /**
-     * Time stamp when the snapshot was initiated.
+     * The time stamp when the snapshot was initiated.
      */
     private java.util.Date startTime;
 
     /**
-     * The progress of the snapshot, in percentage.
+     * The progress of the snapshot, as a percentage.
      */
     private String progress;
 
     /**
-     * AWS Access Key ID of the user who owns the snapshot.
+     * The AWS account ID of the Amazon EBS snapshot owner.
      */
     private String ownerId;
 
     /**
-     * Description of the snapshot.
+     * The description for the snapshot.
      */
     private String description;
 
     /**
-     * The size of the volume, in gigabytes.
+     * The size of the volume, in GiB.
      */
     private Integer volumeSize;
 
     /**
-     * The AWS account alias (e.g., "amazon", "redhat", "self", etc.) or AWS
-     * account ID that owns the AMI.
+     * The AWS account alias (for example, <code>amazon</code>,
+     * <code>self</code>) or AWS account ID that owns the snapshot.
      */
     private String ownerAlias;
 
     /**
-     * A list of tags for the Snapshot.
+     * Any tags assigned to the snapshot.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
-     * The unique ID of this snapshot.
+     * The ID of the snapshot.
      *
-     * @return The unique ID of this snapshot.
+     * @return The ID of the snapshot.
      */
     public String getSnapshotId() {
         return snapshotId;
     }
     
     /**
-     * The unique ID of this snapshot.
+     * The ID of the snapshot.
      *
-     * @param snapshotId The unique ID of this snapshot.
+     * @param snapshotId The ID of the snapshot.
      */
     public void setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
     }
     
     /**
-     * The unique ID of this snapshot.
+     * The ID of the snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param snapshotId The unique ID of this snapshot.
+     * @param snapshotId The ID of the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
         return this;
     }
-    
-    
+
     /**
-     * The ID of the volume from which this snapshot was created.
+     * The ID of the volume.
      *
-     * @return The ID of the volume from which this snapshot was created.
+     * @return The ID of the volume.
      */
     public String getVolumeId() {
         return volumeId;
     }
     
     /**
-     * The ID of the volume from which this snapshot was created.
+     * The ID of the volume.
      *
-     * @param volumeId The ID of the volume from which this snapshot was created.
+     * @param volumeId The ID of the volume.
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
     
     /**
-     * The ID of the volume from which this snapshot was created.
+     * The ID of the volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeId The ID of the volume from which this snapshot was created.
+     * @param volumeId The ID of the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withVolumeId(String volumeId) {
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
-     * Snapshot state (e.g., pending, completed, or error).
+     * The snapshot state.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, completed, error
      *
-     * @return Snapshot state (e.g., pending, completed, or error).
+     * @return The snapshot state.
      *
      * @see SnapshotState
      */
@@ -159,12 +158,12 @@ public class Snapshot  implements Serializable  {
     }
     
     /**
-     * Snapshot state (e.g., pending, completed, or error).
+     * The snapshot state.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, completed, error
      *
-     * @param state Snapshot state (e.g., pending, completed, or error).
+     * @param state The snapshot state.
      *
      * @see SnapshotState
      */
@@ -173,17 +172,17 @@ public class Snapshot  implements Serializable  {
     }
     
     /**
-     * Snapshot state (e.g., pending, completed, or error).
+     * The snapshot state.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, completed, error
      *
-     * @param state Snapshot state (e.g., pending, completed, or error).
+     * @param state The snapshot state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotState
      */
@@ -191,15 +190,14 @@ public class Snapshot  implements Serializable  {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
-     * Snapshot state (e.g., pending, completed, or error).
+     * The snapshot state.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, completed, error
      *
-     * @param state Snapshot state (e.g., pending, completed, or error).
+     * @param state The snapshot state.
      *
      * @see SnapshotState
      */
@@ -208,17 +206,17 @@ public class Snapshot  implements Serializable  {
     }
     
     /**
-     * Snapshot state (e.g., pending, completed, or error).
+     * The snapshot state.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>pending, completed, error
      *
-     * @param state Snapshot state (e.g., pending, completed, or error).
+     * @param state The snapshot state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SnapshotState
      */
@@ -226,255 +224,248 @@ public class Snapshot  implements Serializable  {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
-     * Time stamp when the snapshot was initiated.
+     * The time stamp when the snapshot was initiated.
      *
-     * @return Time stamp when the snapshot was initiated.
+     * @return The time stamp when the snapshot was initiated.
      */
     public java.util.Date getStartTime() {
         return startTime;
     }
     
     /**
-     * Time stamp when the snapshot was initiated.
+     * The time stamp when the snapshot was initiated.
      *
-     * @param startTime Time stamp when the snapshot was initiated.
+     * @param startTime The time stamp when the snapshot was initiated.
      */
     public void setStartTime(java.util.Date startTime) {
         this.startTime = startTime;
     }
     
     /**
-     * Time stamp when the snapshot was initiated.
+     * The time stamp when the snapshot was initiated.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param startTime Time stamp when the snapshot was initiated.
+     * @param startTime The time stamp when the snapshot was initiated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
-     * The progress of the snapshot, in percentage.
+     * The progress of the snapshot, as a percentage.
      *
-     * @return The progress of the snapshot, in percentage.
+     * @return The progress of the snapshot, as a percentage.
      */
     public String getProgress() {
         return progress;
     }
     
     /**
-     * The progress of the snapshot, in percentage.
+     * The progress of the snapshot, as a percentage.
      *
-     * @param progress The progress of the snapshot, in percentage.
+     * @param progress The progress of the snapshot, as a percentage.
      */
     public void setProgress(String progress) {
         this.progress = progress;
     }
     
     /**
-     * The progress of the snapshot, in percentage.
+     * The progress of the snapshot, as a percentage.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param progress The progress of the snapshot, in percentage.
+     * @param progress The progress of the snapshot, as a percentage.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withProgress(String progress) {
         this.progress = progress;
         return this;
     }
-    
-    
+
     /**
-     * AWS Access Key ID of the user who owns the snapshot.
+     * The AWS account ID of the Amazon EBS snapshot owner.
      *
-     * @return AWS Access Key ID of the user who owns the snapshot.
+     * @return The AWS account ID of the Amazon EBS snapshot owner.
      */
     public String getOwnerId() {
         return ownerId;
     }
     
     /**
-     * AWS Access Key ID of the user who owns the snapshot.
+     * The AWS account ID of the Amazon EBS snapshot owner.
      *
-     * @param ownerId AWS Access Key ID of the user who owns the snapshot.
+     * @param ownerId The AWS account ID of the Amazon EBS snapshot owner.
      */
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
     
     /**
-     * AWS Access Key ID of the user who owns the snapshot.
+     * The AWS account ID of the Amazon EBS snapshot owner.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ownerId AWS Access Key ID of the user who owns the snapshot.
+     * @param ownerId The AWS account ID of the Amazon EBS snapshot owner.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withOwnerId(String ownerId) {
         this.ownerId = ownerId;
         return this;
     }
-    
-    
+
     /**
-     * Description of the snapshot.
+     * The description for the snapshot.
      *
-     * @return Description of the snapshot.
+     * @return The description for the snapshot.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Description of the snapshot.
+     * The description for the snapshot.
      *
-     * @param description Description of the snapshot.
+     * @param description The description for the snapshot.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Description of the snapshot.
+     * The description for the snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description Description of the snapshot.
+     * @param description The description for the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * The size of the volume, in gigabytes.
+     * The size of the volume, in GiB.
      *
-     * @return The size of the volume, in gigabytes.
+     * @return The size of the volume, in GiB.
      */
     public Integer getVolumeSize() {
         return volumeSize;
     }
     
     /**
-     * The size of the volume, in gigabytes.
+     * The size of the volume, in GiB.
      *
-     * @param volumeSize The size of the volume, in gigabytes.
+     * @param volumeSize The size of the volume, in GiB.
      */
     public void setVolumeSize(Integer volumeSize) {
         this.volumeSize = volumeSize;
     }
     
     /**
-     * The size of the volume, in gigabytes.
+     * The size of the volume, in GiB.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeSize The size of the volume, in gigabytes.
+     * @param volumeSize The size of the volume, in GiB.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withVolumeSize(Integer volumeSize) {
         this.volumeSize = volumeSize;
         return this;
     }
-    
-    
+
     /**
-     * The AWS account alias (e.g., "amazon", "redhat", "self", etc.) or AWS
-     * account ID that owns the AMI.
+     * The AWS account alias (for example, <code>amazon</code>,
+     * <code>self</code>) or AWS account ID that owns the snapshot.
      *
-     * @return The AWS account alias (e.g., "amazon", "redhat", "self", etc.) or AWS
-     *         account ID that owns the AMI.
+     * @return The AWS account alias (for example, <code>amazon</code>,
+     *         <code>self</code>) or AWS account ID that owns the snapshot.
      */
     public String getOwnerAlias() {
         return ownerAlias;
     }
     
     /**
-     * The AWS account alias (e.g., "amazon", "redhat", "self", etc.) or AWS
-     * account ID that owns the AMI.
+     * The AWS account alias (for example, <code>amazon</code>,
+     * <code>self</code>) or AWS account ID that owns the snapshot.
      *
-     * @param ownerAlias The AWS account alias (e.g., "amazon", "redhat", "self", etc.) or AWS
-     *         account ID that owns the AMI.
+     * @param ownerAlias The AWS account alias (for example, <code>amazon</code>,
+     *         <code>self</code>) or AWS account ID that owns the snapshot.
      */
     public void setOwnerAlias(String ownerAlias) {
         this.ownerAlias = ownerAlias;
     }
     
     /**
-     * The AWS account alias (e.g., "amazon", "redhat", "self", etc.) or AWS
-     * account ID that owns the AMI.
+     * The AWS account alias (for example, <code>amazon</code>,
+     * <code>self</code>) or AWS account ID that owns the snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ownerAlias The AWS account alias (e.g., "amazon", "redhat", "self", etc.) or AWS
-     *         account ID that owns the AMI.
+     * @param ownerAlias The AWS account alias (for example, <code>amazon</code>,
+     *         <code>self</code>) or AWS account ID that owns the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withOwnerAlias(String ownerAlias) {
         this.ownerAlias = ownerAlias;
         return this;
     }
-    
-    
+
     /**
-     * A list of tags for the Snapshot.
+     * Any tags assigned to the snapshot.
      *
-     * @return A list of tags for the Snapshot.
+     * @return Any tags assigned to the snapshot.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * A list of tags for the Snapshot.
+     * Any tags assigned to the snapshot.
      *
-     * @param tags A list of tags for the Snapshot.
+     * @param tags Any tags assigned to the snapshot.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * A list of tags for the Snapshot.
+     * Any tags assigned to the snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the Snapshot.
+     * @param tags Any tags assigned to the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -485,27 +476,27 @@ public class Snapshot  implements Serializable  {
     }
     
     /**
-     * A list of tags for the Snapshot.
+     * Any tags assigned to the snapshot.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the Snapshot.
+     * @param tags Any tags assigned to the snapshot.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Snapshot withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -517,16 +508,16 @@ public class Snapshot  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");    	
-        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() + ",");    	
-        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");    	
+        sb.append("{");
+        if (getSnapshotId() != null) sb.append("SnapshotId: " + getSnapshotId() + ",");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");
+        if (getOwnerId() != null) sb.append("OwnerId: " + getOwnerId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getVolumeSize() != null) sb.append("VolumeSize: " + getVolumeSize() + ",");
+        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

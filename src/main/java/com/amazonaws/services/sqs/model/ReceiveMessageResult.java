@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * A list of received messages.
+ * </p>
  */
-public class ReceiveMessageResult  implements Serializable  {
+public class ReceiveMessageResult implements Serializable {
 
     /**
      * A list of messages.
      */
-    private java.util.List<Message> messages;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Message> messages;
 
     /**
      * A list of messages.
@@ -31,9 +34,9 @@ public class ReceiveMessageResult  implements Serializable  {
      * @return A list of messages.
      */
     public java.util.List<Message> getMessages() {
-        
         if (messages == null) {
-            messages = new java.util.ArrayList<Message>();
+              messages = new com.amazonaws.internal.ListWithAutoConstructFlag<Message>();
+              messages.setAutoConstruct(true);
         }
         return messages;
     }
@@ -48,8 +51,7 @@ public class ReceiveMessageResult  implements Serializable  {
             this.messages = null;
             return;
         }
-
-        java.util.List<Message> messagesCopy = new java.util.ArrayList<Message>(messages.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Message> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Message>(messages.size());
         messagesCopy.addAll(messages);
         this.messages = messagesCopy;
     }
@@ -62,7 +64,7 @@ public class ReceiveMessageResult  implements Serializable  {
      * @param messages A list of messages.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReceiveMessageResult withMessages(Message... messages) {
         if (getMessages() == null) setMessages(new java.util.ArrayList<Message>(messages.length));
@@ -80,20 +82,20 @@ public class ReceiveMessageResult  implements Serializable  {
      * @param messages A list of messages.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReceiveMessageResult withMessages(java.util.Collection<Message> messages) {
         if (messages == null) {
             this.messages = null;
         } else {
-            java.util.List<Message> messagesCopy = new java.util.ArrayList<Message>(messages.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Message> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Message>(messages.size());
             messagesCopy.addAll(messages);
             this.messages = messagesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -105,7 +107,7 @@ public class ReceiveMessageResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMessages() != null) sb.append("Messages: " + getMessages() );
         sb.append("}");
         return sb.toString();

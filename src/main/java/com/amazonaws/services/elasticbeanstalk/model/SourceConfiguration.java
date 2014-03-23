@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A specification for an environment configuration
  * </p>
  */
-public class SourceConfiguration  implements Serializable  {
+public class SourceConfiguration implements Serializable {
 
     /**
      * The name of the application associated with the configuration.
@@ -79,14 +80,13 @@ public class SourceConfiguration  implements Serializable  {
      * @param applicationName The name of the application associated with the configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceConfiguration withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration template.
      * <p>
@@ -122,14 +122,13 @@ public class SourceConfiguration  implements Serializable  {
      * @param templateName The name of the configuration template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceConfiguration withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -141,8 +140,8 @@ public class SourceConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
         if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() );
         sb.append("}");
         return sb.toString();

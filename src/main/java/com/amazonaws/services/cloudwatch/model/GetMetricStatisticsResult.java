@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The output for the GetMetricStatistics action.
  * </p>
  */
-public class GetMetricStatisticsResult  implements Serializable  {
+public class GetMetricStatisticsResult implements Serializable {
 
     /**
      * A label describing the specified metric.
@@ -30,7 +31,7 @@ public class GetMetricStatisticsResult  implements Serializable  {
     /**
      * The datapoints for the specified metric.
      */
-    private java.util.List<Datapoint> datapoints;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Datapoint> datapoints;
 
     /**
      * A label describing the specified metric.
@@ -58,23 +59,22 @@ public class GetMetricStatisticsResult  implements Serializable  {
      * @param label A label describing the specified metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsResult withLabel(String label) {
         this.label = label;
         return this;
     }
-    
-    
+
     /**
      * The datapoints for the specified metric.
      *
      * @return The datapoints for the specified metric.
      */
     public java.util.List<Datapoint> getDatapoints() {
-        
         if (datapoints == null) {
-            datapoints = new java.util.ArrayList<Datapoint>();
+              datapoints = new com.amazonaws.internal.ListWithAutoConstructFlag<Datapoint>();
+              datapoints.setAutoConstruct(true);
         }
         return datapoints;
     }
@@ -89,8 +89,7 @@ public class GetMetricStatisticsResult  implements Serializable  {
             this.datapoints = null;
             return;
         }
-
-        java.util.List<Datapoint> datapointsCopy = new java.util.ArrayList<Datapoint>(datapoints.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Datapoint> datapointsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Datapoint>(datapoints.size());
         datapointsCopy.addAll(datapoints);
         this.datapoints = datapointsCopy;
     }
@@ -103,7 +102,7 @@ public class GetMetricStatisticsResult  implements Serializable  {
      * @param datapoints The datapoints for the specified metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsResult withDatapoints(Datapoint... datapoints) {
         if (getDatapoints() == null) setDatapoints(new java.util.ArrayList<Datapoint>(datapoints.length));
@@ -121,20 +120,20 @@ public class GetMetricStatisticsResult  implements Serializable  {
      * @param datapoints The datapoints for the specified metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsResult withDatapoints(java.util.Collection<Datapoint> datapoints) {
         if (datapoints == null) {
             this.datapoints = null;
         } else {
-            java.util.List<Datapoint> datapointsCopy = new java.util.ArrayList<Datapoint>(datapoints.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Datapoint> datapointsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Datapoint>(datapoints.size());
             datapointsCopy.addAll(datapoints);
             this.datapoints = datapointsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +145,8 @@ public class GetMetricStatisticsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLabel() != null) sb.append("Label: " + getLabel() + ",");    	
+        sb.append("{");
+        if (getLabel() != null) sb.append("Label: " + getLabel() + ",");
         if (getDatapoints() != null) sb.append("Datapoints: " + getDatapoints() );
         sb.append("}");
         return sb.toString();

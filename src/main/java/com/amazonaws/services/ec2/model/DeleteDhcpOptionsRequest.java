@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteDhcpOptionsRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#deleteDhcpOptions(DeleteDhcpOptionsRequest) DeleteDhcpOptions operation}.
  * <p>
- * Deletes a set of DHCP options that you specify. Amazon VPC returns an error if the set of options you specify is currently associated with a VPC. You
- * can disassociate the set of options by associating either a new set of options or the default options with the VPC.
+ * Deletes the specified set of DHCP options. You must disassociate the
+ * set of DHCP options before you can delete it. You can disassociate the
+ * set of DHCP options by associating either a new set of options or the
+ * default set of options with the VPC.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteDhcpOptions(DeleteDhcpOptionsRequest)
  */
-public class DeleteDhcpOptionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteDhcpOptionsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteDhcpOptionsRequest> {
 
     /**
-     * The ID of the DHCP options set to delete.
+     * The ID of the DHCP options set.
      */
     private String dhcpOptionsId;
 
@@ -43,47 +49,56 @@ public class DeleteDhcpOptionsRequest extends AmazonWebServiceRequest  implement
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param dhcpOptionsId The ID of the DHCP options set to delete.
+     * @param dhcpOptionsId The ID of the DHCP options set.
      */
     public DeleteDhcpOptionsRequest(String dhcpOptionsId) {
-        this.dhcpOptionsId = dhcpOptionsId;
+        setDhcpOptionsId(dhcpOptionsId);
     }
 
-    
-    
     /**
-     * The ID of the DHCP options set to delete.
+     * The ID of the DHCP options set.
      *
-     * @return The ID of the DHCP options set to delete.
+     * @return The ID of the DHCP options set.
      */
     public String getDhcpOptionsId() {
         return dhcpOptionsId;
     }
     
     /**
-     * The ID of the DHCP options set to delete.
+     * The ID of the DHCP options set.
      *
-     * @param dhcpOptionsId The ID of the DHCP options set to delete.
+     * @param dhcpOptionsId The ID of the DHCP options set.
      */
     public void setDhcpOptionsId(String dhcpOptionsId) {
         this.dhcpOptionsId = dhcpOptionsId;
     }
     
     /**
-     * The ID of the DHCP options set to delete.
+     * The ID of the DHCP options set.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpOptionsId The ID of the DHCP options set to delete.
+     * @param dhcpOptionsId The ID of the DHCP options set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteDhcpOptionsRequest withDhcpOptionsId(String dhcpOptionsId) {
         this.dhcpOptionsId = dhcpOptionsId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteDhcpOptionsRequest> getDryRunRequest() {
+        Request<DeleteDhcpOptionsRequest> request = new DeleteDhcpOptionsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -96,7 +111,7 @@ public class DeleteDhcpOptionsRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDhcpOptionsId() != null) sb.append("DhcpOptionsId: " + getDhcpOptionsId() );
         sb.append("}");
         return sb.toString();

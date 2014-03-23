@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>DecisionTaskTimedOut</code> event.
  * </p>
  */
-public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
+public class DecisionTaskTimedOutEventAttributes implements Serializable {
 
     /**
      * The type of timeout that expired before the decision task could be
@@ -92,7 +93,7 @@ public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
      *         completed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DecisionTaskTimeoutType
      */
@@ -100,8 +101,7 @@ public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
         this.timeoutType = timeoutType;
         return this;
     }
-    
-    
+
     /**
      * The type of timeout that expired before the decision task could be
      * completed.
@@ -131,7 +131,7 @@ public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
      *         completed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DecisionTaskTimeoutType
      */
@@ -139,7 +139,7 @@ public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
         this.timeoutType = timeoutType.toString();
         return this;
     }
-    
+
     /**
      * The id of the <code>DecisionTaskScheduled</code> event that was
      * recorded when this decision task was scheduled. This information can
@@ -184,14 +184,13 @@ public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTaskTimedOutEventAttributes withScheduledEventId(Long scheduledEventId) {
         this.scheduledEventId = scheduledEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>DecisionTaskStarted</code> event recorded when
      * this decision task was started. This information can be useful for
@@ -236,14 +235,13 @@ public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
      *         this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTaskTimedOutEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -255,9 +253,9 @@ public class DecisionTaskTimedOutEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimeoutType() != null) sb.append("TimeoutType: " + getTimeoutType() + ",");    	
-        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");    	
+        sb.append("{");
+        if (getTimeoutType() != null) sb.append("TimeoutType: " + getTimeoutType() + ",");
+        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");
         if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() );
         sb.append("}");
         return sb.toString();

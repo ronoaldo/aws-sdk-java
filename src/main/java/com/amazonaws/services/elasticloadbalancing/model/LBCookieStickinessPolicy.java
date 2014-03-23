@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,11 +21,11 @@ import java.io.Serializable;
  * The LBCookieStickinessPolicy data type.
  * </p>
  */
-public class LBCookieStickinessPolicy  implements Serializable  {
+public class LBCookieStickinessPolicy implements Serializable {
 
     /**
      * The name for the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      */
     private String policyName;
 
@@ -47,25 +48,23 @@ public class LBCookieStickinessPolicy  implements Serializable  {
      * initialize any additional object members.
      * 
      * @param policyName The name for the policy being created. The name must
-     * be unique within the set of policies for this LoadBalancer.
+     * be unique within the set of policies for this load balancer.
      * @param cookieExpirationPeriod The time period in seconds after which
      * the cookie should be considered stale. Not specifying this parameter
      * indicates that the stickiness session will last for the duration of
      * the browser session.
      */
     public LBCookieStickinessPolicy(String policyName, Long cookieExpirationPeriod) {
-        this.policyName = policyName;
-        this.cookieExpirationPeriod = cookieExpirationPeriod;
+        setPolicyName(policyName);
+        setCookieExpirationPeriod(cookieExpirationPeriod);
     }
 
-    
-    
     /**
      * The name for the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      *
      * @return The name for the policy being created. The name must be unique within
-     *         the set of policies for this LoadBalancer.
+     *         the set of policies for this load balancer.
      */
     public String getPolicyName() {
         return policyName;
@@ -73,10 +72,10 @@ public class LBCookieStickinessPolicy  implements Serializable  {
     
     /**
      * The name for the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      *
      * @param policyName The name for the policy being created. The name must be unique within
-     *         the set of policies for this LoadBalancer.
+     *         the set of policies for this load balancer.
      */
     public void setPolicyName(String policyName) {
         this.policyName = policyName;
@@ -84,22 +83,21 @@ public class LBCookieStickinessPolicy  implements Serializable  {
     
     /**
      * The name for the policy being created. The name must be unique within
-     * the set of policies for this LoadBalancer.
+     * the set of policies for this load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param policyName The name for the policy being created. The name must be unique within
-     *         the set of policies for this LoadBalancer.
+     *         the set of policies for this load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LBCookieStickinessPolicy withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * The time period in seconds after which the cookie should be considered
      * stale. Not specifying this parameter indicates that the stickiness
@@ -138,14 +136,13 @@ public class LBCookieStickinessPolicy  implements Serializable  {
      *         session will last for the duration of the browser session.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LBCookieStickinessPolicy withCookieExpirationPeriod(Long cookieExpirationPeriod) {
         this.cookieExpirationPeriod = cookieExpirationPeriod;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -157,8 +154,8 @@ public class LBCookieStickinessPolicy  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (getCookieExpirationPeriod() != null) sb.append("CookieExpirationPeriod: " + getCookieExpirationPeriod() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a reserved node.
  * </p>
  */
-public class ReservedNode  implements Serializable  {
+public class ReservedNode implements Serializable {
 
     /**
      * The unique identifier for the reservation.
@@ -87,7 +88,7 @@ public class ReservedNode  implements Serializable  {
     /**
      * The recurring charges for the reserved node.
      */
-    private java.util.List<RecurringCharge> recurringCharges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringCharges;
 
     /**
      * The unique identifier for the reservation.
@@ -115,14 +116,13 @@ public class ReservedNode  implements Serializable  {
      * @param reservedNodeId The unique identifier for the reservation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withReservedNodeId(String reservedNodeId) {
         this.reservedNodeId = reservedNodeId;
         return this;
     }
-    
-    
+
     /**
      * The identifier for the reserved node offering.
      *
@@ -149,14 +149,13 @@ public class ReservedNode  implements Serializable  {
      * @param reservedNodeOfferingId The identifier for the reserved node offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withReservedNodeOfferingId(String reservedNodeOfferingId) {
         this.reservedNodeOfferingId = reservedNodeOfferingId;
         return this;
     }
-    
-    
+
     /**
      * The node type of the reserved node.
      *
@@ -183,14 +182,13 @@ public class ReservedNode  implements Serializable  {
      * @param nodeType The node type of the reserved node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * The time the reservation started. You purchase a reserved node
      * offering for a duration. This is the start time of that duration.
@@ -223,14 +221,13 @@ public class ReservedNode  implements Serializable  {
      *         offering for a duration. This is the start time of that duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The duration of the node reservation in seconds.
      *
@@ -257,14 +254,13 @@ public class ReservedNode  implements Serializable  {
      * @param duration The duration of the node reservation in seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withDuration(Integer duration) {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
      * The fixed cost Amazon Redshift charged you for this reserved node.
      *
@@ -291,14 +287,13 @@ public class ReservedNode  implements Serializable  {
      * @param fixedPrice The fixed cost Amazon Redshift charged you for this reserved node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withFixedPrice(Double fixedPrice) {
         this.fixedPrice = fixedPrice;
         return this;
     }
-    
-    
+
     /**
      * The hourly rate Amazon Redshift charge you for this reserved node.
      *
@@ -325,14 +320,13 @@ public class ReservedNode  implements Serializable  {
      * @param usagePrice The hourly rate Amazon Redshift charge you for this reserved node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withUsagePrice(Double usagePrice) {
         this.usagePrice = usagePrice;
         return this;
     }
-    
-    
+
     /**
      * The currency code for the reserved cluster.
      *
@@ -359,14 +353,13 @@ public class ReservedNode  implements Serializable  {
      * @param currencyCode The currency code for the reserved cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
         return this;
     }
-    
-    
+
     /**
      * The number of reserved compute nodes.
      *
@@ -393,14 +386,13 @@ public class ReservedNode  implements Serializable  {
      * @param nodeCount The number of reserved compute nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withNodeCount(Integer nodeCount) {
         this.nodeCount = nodeCount;
         return this;
     }
-    
-    
+
     /**
      * The state of the reserved Compute Node. <p>Possible Values: <ul>
      * <li>pending-payment-This reserved node has recently been purchased,
@@ -457,14 +449,13 @@ public class ReservedNode  implements Serializable  {
      *         the purchase attempt.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withState(String state) {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * The anticipated utilization of the reserved node, as defined in the
      * reserved node offering.
@@ -497,23 +488,22 @@ public class ReservedNode  implements Serializable  {
      *         reserved node offering.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withOfferingType(String offeringType) {
         this.offeringType = offeringType;
         return this;
     }
-    
-    
+
     /**
      * The recurring charges for the reserved node.
      *
      * @return The recurring charges for the reserved node.
      */
     public java.util.List<RecurringCharge> getRecurringCharges() {
-        
         if (recurringCharges == null) {
-            recurringCharges = new java.util.ArrayList<RecurringCharge>();
+              recurringCharges = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>();
+              recurringCharges.setAutoConstruct(true);
         }
         return recurringCharges;
     }
@@ -528,8 +518,7 @@ public class ReservedNode  implements Serializable  {
             this.recurringCharges = null;
             return;
         }
-
-        java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
         recurringChargesCopy.addAll(recurringCharges);
         this.recurringCharges = recurringChargesCopy;
     }
@@ -542,7 +531,7 @@ public class ReservedNode  implements Serializable  {
      * @param recurringCharges The recurring charges for the reserved node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withRecurringCharges(RecurringCharge... recurringCharges) {
         if (getRecurringCharges() == null) setRecurringCharges(new java.util.ArrayList<RecurringCharge>(recurringCharges.length));
@@ -560,20 +549,20 @@ public class ReservedNode  implements Serializable  {
      * @param recurringCharges The recurring charges for the reserved node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedNode withRecurringCharges(java.util.Collection<RecurringCharge> recurringCharges) {
         if (recurringCharges == null) {
             this.recurringCharges = null;
         } else {
-            java.util.List<RecurringCharge> recurringChargesCopy = new java.util.ArrayList<RecurringCharge>(recurringCharges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge> recurringChargesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RecurringCharge>(recurringCharges.size());
             recurringChargesCopy.addAll(recurringCharges);
             this.recurringCharges = recurringChargesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -585,18 +574,18 @@ public class ReservedNode  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedNodeId() != null) sb.append("ReservedNodeId: " + getReservedNodeId() + ",");    	
-        if (getReservedNodeOfferingId() != null) sb.append("ReservedNodeOfferingId: " + getReservedNodeOfferingId() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");    	
-        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");    	
-        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");    	
-        if (getNodeCount() != null) sb.append("NodeCount: " + getNodeCount() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");    	
+        sb.append("{");
+        if (getReservedNodeId() != null) sb.append("ReservedNodeId: " + getReservedNodeId() + ",");
+        if (getReservedNodeOfferingId() != null) sb.append("ReservedNodeOfferingId: " + getReservedNodeOfferingId() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getFixedPrice() != null) sb.append("FixedPrice: " + getFixedPrice() + ",");
+        if (getUsagePrice() != null) sb.append("UsagePrice: " + getUsagePrice() + ",");
+        if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() + ",");
+        if (getNodeCount() != null) sb.append("NodeCount: " + getNodeCount() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getOfferingType() != null) sb.append("OfferingType: " + getOfferingType() + ",");
         if (getRecurringCharges() != null) sb.append("RecurringCharges: " + getRecurringCharges() );
         sb.append("}");
         return sb.toString();

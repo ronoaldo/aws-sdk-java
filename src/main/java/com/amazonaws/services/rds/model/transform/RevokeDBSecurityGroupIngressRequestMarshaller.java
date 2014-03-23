@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class RevokeDBSecurityGroupIngressRequestMarshaller implements Marshaller
     public Request<RevokeDBSecurityGroupIngressRequest> marshall(RevokeDBSecurityGroupIngressRequest revokeDBSecurityGroupIngressRequest) {
 
         if (revokeDBSecurityGroupIngressRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RevokeDBSecurityGroupIngressRequest> request = new DefaultRequest<RevokeDBSecurityGroupIngressRequest>(revokeDBSecurityGroupIngressRequest, "AmazonRDS");
         request.addParameter("Action", "RevokeDBSecurityGroupIngress");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (revokeDBSecurityGroupIngressRequest.getDBSecurityGroupName() != null) {
             request.addParameter("DBSecurityGroupName", StringUtils.fromString(revokeDBSecurityGroupIngressRequest.getDBSecurityGroupName()));
@@ -55,7 +55,6 @@ public class RevokeDBSecurityGroupIngressRequestMarshaller implements Marshaller
         if (revokeDBSecurityGroupIngressRequest.getEC2SecurityGroupOwnerId() != null) {
             request.addParameter("EC2SecurityGroupOwnerId", StringUtils.fromString(revokeDBSecurityGroupIngressRequest.getEC2SecurityGroupOwnerId()));
         }
-
 
         return request;
     }

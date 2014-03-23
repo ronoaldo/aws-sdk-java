@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,28 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancers(DescribeLoadBalancersRequest) DescribeLoadBalancers operation}.
  * <p>
- * Returns detailed configuration information for the specified LoadBalancers. If no LoadBalancers are specified, the operation returns configuration
- * information for all LoadBalancers created by the caller.
+ * Returns detailed configuration information for all the load balancers
+ * created for the account. If you specify load balancer names, the
+ * action returns configuration information of the specified load
+ * balancers.
  * </p>
  * <p>
- * <b>NOTE:</b> The client must have created the specified input LoadBalancers in order to retrieve this information; the client must provide the same
- * account credentials as those that were used to create the LoadBalancer.
+ * <b>NOTE:</b> In order to retrieve this information, you must provide
+ * the same account credentials that was used to create the load
+ * balancer.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancers(DescribeLoadBalancersRequest)
  */
-public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      */
-    private java.util.List<String> loadBalancerNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> loadBalancerNames;
 
     /**
      * An optional parameter reserved for future use.
@@ -52,53 +57,50 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest  imple
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerNames A list of names associated with the
-     * LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with
+     * the account.
      */
     public DescribeLoadBalancersRequest(java.util.List<String> loadBalancerNames) {
-        this.loadBalancerNames = loadBalancerNames;
+        setLoadBalancerNames(loadBalancerNames);
     }
 
-    
-    
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      *
-     * @return A list of names associated with the LoadBalancers at creation time.
+     * @return A list of load balancer names associated with the account.
      */
     public java.util.List<String> getLoadBalancerNames() {
-        
         if (loadBalancerNames == null) {
-            loadBalancerNames = new java.util.ArrayList<String>();
+              loadBalancerNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              loadBalancerNames.setAutoConstruct(true);
         }
         return loadBalancerNames;
     }
     
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      *
-     * @param loadBalancerNames A list of names associated with the LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with the account.
      */
     public void setLoadBalancerNames(java.util.Collection<String> loadBalancerNames) {
         if (loadBalancerNames == null) {
             this.loadBalancerNames = null;
             return;
         }
-
-        java.util.List<String> loadBalancerNamesCopy = new java.util.ArrayList<String>(loadBalancerNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> loadBalancerNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(loadBalancerNames.size());
         loadBalancerNamesCopy.addAll(loadBalancerNames);
         this.loadBalancerNames = loadBalancerNamesCopy;
     }
     
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerNames A list of names associated with the LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancersRequest withLoadBalancerNames(String... loadBalancerNames) {
         if (getLoadBalancerNames() == null) setLoadBalancerNames(new java.util.ArrayList<String>(loadBalancerNames.length));
@@ -109,27 +111,27 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest  imple
     }
     
     /**
-     * A list of names associated with the LoadBalancers at creation time.
+     * A list of load balancer names associated with the account.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerNames A list of names associated with the LoadBalancers at creation time.
+     * @param loadBalancerNames A list of load balancer names associated with the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancersRequest withLoadBalancerNames(java.util.Collection<String> loadBalancerNames) {
         if (loadBalancerNames == null) {
             this.loadBalancerNames = null;
         } else {
-            java.util.List<String> loadBalancerNamesCopy = new java.util.ArrayList<String>(loadBalancerNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> loadBalancerNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(loadBalancerNames.size());
             loadBalancerNamesCopy.addAll(loadBalancerNames);
             this.loadBalancerNames = loadBalancerNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An optional parameter reserved for future use.
      *
@@ -156,14 +158,13 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest  imple
      * @param marker An optional parameter reserved for future use.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancersRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -175,8 +176,8 @@ public class DescribeLoadBalancersRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerNames() != null) sb.append("LoadBalancerNames: " + getLoadBalancerNames() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerNames() != null) sb.append("LoadBalancerNames: " + getLoadBalancerNames() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeRaidArrays(DescribeRaidArraysRequest) DescribeRaidArrays operation}.
  * <p>
  * Describe an instance's RAID arrays.
  * </p>
+ * <p>
+ * <b>NOTE:</b>You must specify at least one of the parameters.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Show, Deploy, or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeRaidArrays(DescribeRaidArraysRequest)
  */
-public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeRaidArraysRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The instance ID. If you use this parameter,
@@ -38,7 +51,7 @@ public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implemen
      * <code>DescribeRaidArrays</code> returns descriptions of the specified
      * arrays. Otherwise, it returns a description of every array.
      */
-    private java.util.List<String> raidArrayIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> raidArrayIds;
 
     /**
      * The instance ID. If you use this parameter,
@@ -78,14 +91,13 @@ public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implemen
      *         arrays associated with the specified instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRaidArraysRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * An array of RAID array IDs. If you use this parameter,
      * <code>DescribeRaidArrays</code> returns descriptions of the specified
@@ -96,9 +108,9 @@ public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implemen
      *         arrays. Otherwise, it returns a description of every array.
      */
     public java.util.List<String> getRaidArrayIds() {
-        
         if (raidArrayIds == null) {
-            raidArrayIds = new java.util.ArrayList<String>();
+              raidArrayIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              raidArrayIds.setAutoConstruct(true);
         }
         return raidArrayIds;
     }
@@ -117,8 +129,7 @@ public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implemen
             this.raidArrayIds = null;
             return;
         }
-
-        java.util.List<String> raidArrayIdsCopy = new java.util.ArrayList<String>(raidArrayIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> raidArrayIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(raidArrayIds.size());
         raidArrayIdsCopy.addAll(raidArrayIds);
         this.raidArrayIds = raidArrayIdsCopy;
     }
@@ -135,7 +146,7 @@ public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implemen
      *         arrays. Otherwise, it returns a description of every array.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRaidArraysRequest withRaidArrayIds(String... raidArrayIds) {
         if (getRaidArrayIds() == null) setRaidArrayIds(new java.util.ArrayList<String>(raidArrayIds.length));
@@ -157,20 +168,20 @@ public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implemen
      *         arrays. Otherwise, it returns a description of every array.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRaidArraysRequest withRaidArrayIds(java.util.Collection<String> raidArrayIds) {
         if (raidArrayIds == null) {
             this.raidArrayIds = null;
         } else {
-            java.util.List<String> raidArrayIdsCopy = new java.util.ArrayList<String>(raidArrayIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> raidArrayIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(raidArrayIds.size());
             raidArrayIdsCopy.addAll(raidArrayIds);
             this.raidArrayIds = raidArrayIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -182,8 +193,8 @@ public class DescribeRaidArraysRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getRaidArrayIds() != null) sb.append("RaidArrayIds: " + getRaidArrayIds() );
         sb.append("}");
         return sb.toString();

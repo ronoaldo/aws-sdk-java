@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Thumbnails for videos.
+ * </p>
  */
-public class Thumbnails  implements Serializable  {
+public class Thumbnails implements Serializable {
 
     /**
      * The format of thumbnails, if any. Valid values are <code>jpg</code>
@@ -188,14 +191,13 @@ public class Thumbnails  implements Serializable  {
      *         Transcoder to create thumbnails when you create a job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withFormat(String format) {
         this.format = format;
         return this;
     }
-    
-    
+
     /**
      * The number of seconds between thumbnails. Specify an integer value.
      * <p>
@@ -231,14 +233,13 @@ public class Thumbnails  implements Serializable  {
      * @param interval The number of seconds between thumbnails. Specify an integer value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withInterval(String interval) {
         this.interval = interval;
         return this;
     }
-    
-    
+
     /**
      * <important> <p>To better control resolution and aspect ratio of
      * thumbnails, we recommend that you use the values
@@ -334,14 +335,13 @@ public class Thumbnails  implements Serializable  {
      *         <code>Video:Resolution</code> object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withResolution(String resolution) {
         this.resolution = resolution;
         return this;
     }
-    
-    
+
     /**
      * <important> <p>To better control resolution and aspect ratio of
      * thumbnails, we recommend that you use the values
@@ -437,14 +437,13 @@ public class Thumbnails  implements Serializable  {
      *         ratio of the video in the output file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withAspectRatio(String aspectRatio) {
         this.aspectRatio = aspectRatio;
         return this;
     }
-    
-    
+
     /**
      * The maximum width of thumbnails in pixels. If you specify auto,
      * Elastic Transcoder uses 1920 (Full HD) as the default value. If you
@@ -492,14 +491,13 @@ public class Thumbnails  implements Serializable  {
      *         specify a numeric value, enter an even integer between 32 and 4096.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withMaxWidth(String maxWidth) {
         this.maxWidth = maxWidth;
         return this;
     }
-    
-    
+
     /**
      * The maximum height of thumbnails in pixels. If you specify auto,
      * Elastic Transcoder uses 1080 (Full HD) as the default value. If you
@@ -547,14 +545,13 @@ public class Thumbnails  implements Serializable  {
      *         specify a numeric value, enter an even integer between 32 and 3072.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withMaxHeight(String maxHeight) {
         this.maxHeight = maxHeight;
         return this;
     }
-    
-    
+
     /**
      * Specify one of the following values to control scaling of thumbnails:
      * <p> <ul> <li><code>Fit</code>: Elastic Transcoder scales thumbnails so
@@ -752,14 +749,13 @@ public class Thumbnails  implements Serializable  {
      *         up.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withSizingPolicy(String sizingPolicy) {
         this.sizingPolicy = sizingPolicy;
         return this;
     }
-    
-    
+
     /**
      * When you set <code>PaddingPolicy</code> to <code>Pad</code>, Elastic
      * Transcoder may add black bars to the top and bottom and/or left and
@@ -819,14 +815,13 @@ public class Thumbnails  implements Serializable  {
      *         <code>MaxWidth</code> and <code>MaxHeight</code> settings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Thumbnails withPaddingPolicy(String paddingPolicy) {
         this.paddingPolicy = paddingPolicy;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -838,14 +833,14 @@ public class Thumbnails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");    	
-        if (getInterval() != null) sb.append("Interval: " + getInterval() + ",");    	
-        if (getResolution() != null) sb.append("Resolution: " + getResolution() + ",");    	
-        if (getAspectRatio() != null) sb.append("AspectRatio: " + getAspectRatio() + ",");    	
-        if (getMaxWidth() != null) sb.append("MaxWidth: " + getMaxWidth() + ",");    	
-        if (getMaxHeight() != null) sb.append("MaxHeight: " + getMaxHeight() + ",");    	
-        if (getSizingPolicy() != null) sb.append("SizingPolicy: " + getSizingPolicy() + ",");    	
+        sb.append("{");
+        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");
+        if (getInterval() != null) sb.append("Interval: " + getInterval() + ",");
+        if (getResolution() != null) sb.append("Resolution: " + getResolution() + ",");
+        if (getAspectRatio() != null) sb.append("AspectRatio: " + getAspectRatio() + ",");
+        if (getMaxWidth() != null) sb.append("MaxWidth: " + getMaxWidth() + ",");
+        if (getMaxHeight() != null) sb.append("MaxHeight: " + getMaxHeight() + ",");
+        if (getSizingPolicy() != null) sb.append("SizingPolicy: " + getSizingPolicy() + ",");
         if (getPaddingPolicy() != null) sb.append("PaddingPolicy: " + getPaddingPolicy() );
         sb.append("}");
         return sb.toString();

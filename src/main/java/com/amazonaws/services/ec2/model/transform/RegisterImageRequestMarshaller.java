@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class RegisterImageRequestMarshaller implements Marshaller<Request<Regist
     public Request<RegisterImageRequest> marshall(RegisterImageRequest registerImageRequest) {
 
         if (registerImageRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RegisterImageRequest> request = new DefaultRequest<RegisterImageRequest>(registerImageRequest, "AmazonEC2");
         request.addParameter("Action", "RegisterImage");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (registerImageRequest.getImageLocation() != null) {
             request.addParameter("ImageLocation", StringUtils.fromString(registerImageRequest.getImageLocation()));
@@ -99,7 +99,12 @@ public class RegisterImageRequestMarshaller implements Marshaller<Request<Regist
 
             blockDeviceMappingsListIndex++;
         }
-
+        if (registerImageRequest.getVirtualizationType() != null) {
+            request.addParameter("VirtualizationType", StringUtils.fromString(registerImageRequest.getVirtualizationType()));
+        }
+        if (registerImageRequest.getSriovNetSupport() != null) {
+            request.addParameter("SriovNetSupport", StringUtils.fromString(registerImageRequest.getSriovNetSupport()));
+        }
 
         return request;
     }

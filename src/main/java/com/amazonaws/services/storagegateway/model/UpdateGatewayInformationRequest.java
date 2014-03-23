@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#updateGatewayInformation(UpdateGatewayInformationRequest) UpdateGatewayInformation operation}.
  * <p>
- * This operation updates a gateway's metadata, which includes the gateway's name and time zone. To specify which gateway to update, use the Amazon
- * Resource Name (ARN) of the gateway in your request.
+ * This operation updates a gateway's metadata, which includes the
+ * gateway's name and time zone. To specify which gateway to update, use
+ * the Amazon Resource Name (ARN) of the gateway in your request.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#updateGatewayInformation(UpdateGatewayInformationRequest)
  */
-public class UpdateGatewayInformationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateGatewayInformationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -48,14 +51,6 @@ public class UpdateGatewayInformationRequest extends AmazonWebServiceRequest  im
      */
     private String gatewayName;
 
-    /**
-     * One of the <a>GatewayTimezone</a> values that represents the time zone
-     * for your gateway. The time zone is used, for example, when a time
-     * stamp is given to a snapshot.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
-     */
     private String gatewayTimezone;
 
     /**
@@ -105,14 +100,13 @@ public class UpdateGatewayInformationRequest extends AmazonWebServiceRequest  im
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateGatewayInformationRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * A unique identifier for your gateway. This name becomes part of the
      * gateway Amazon Resources Name (ARN) which is what you use as an input
@@ -163,117 +157,55 @@ public class UpdateGatewayInformationRequest extends AmazonWebServiceRequest  im
      *         to other operations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateGatewayInformationRequest withGatewayName(String gatewayName) {
         this.gatewayName = gatewayName;
         return this;
     }
-    
-    
+
     /**
-     * One of the <a>GatewayTimezone</a> values that represents the time zone
-     * for your gateway. The time zone is used, for example, when a time
-     * stamp is given to a snapshot.
+     * Returns the value of the GatewayTimezone property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>3 - 10<br/>
      *
-     * @return One of the <a>GatewayTimezone</a> values that represents the time zone
-     *         for your gateway. The time zone is used, for example, when a time
-     *         stamp is given to a snapshot.
-     *
-     * @see GatewayTimezone
+     * @return The value of the GatewayTimezone property for this object.
      */
     public String getGatewayTimezone() {
         return gatewayTimezone;
     }
     
     /**
-     * One of the <a>GatewayTimezone</a> values that represents the time zone
-     * for your gateway. The time zone is used, for example, when a time
-     * stamp is given to a snapshot.
+     * Sets the value of the GatewayTimezone property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>3 - 10<br/>
      *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that represents the time zone
-     *         for your gateway. The time zone is used, for example, when a time
-     *         stamp is given to a snapshot.
-     *
-     * @see GatewayTimezone
+     * @param gatewayTimezone The new value for the GatewayTimezone property for this object.
      */
     public void setGatewayTimezone(String gatewayTimezone) {
         this.gatewayTimezone = gatewayTimezone;
     }
     
     /**
-     * One of the <a>GatewayTimezone</a> values that represents the time zone
-     * for your gateway. The time zone is used, for example, when a time
-     * stamp is given to a snapshot.
+     * Sets the value of the GatewayTimezone property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
+     * <b>Length: </b>3 - 10<br/>
      *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that represents the time zone
-     *         for your gateway. The time zone is used, for example, when a time
-     *         stamp is given to a snapshot.
+     * @param gatewayTimezone The new value for the GatewayTimezone property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayTimezone
+     *         together.
      */
     public UpdateGatewayInformationRequest withGatewayTimezone(String gatewayTimezone) {
         this.gatewayTimezone = gatewayTimezone;
         return this;
     }
-    
-    
-    /**
-     * One of the <a>GatewayTimezone</a> values that represents the time zone
-     * for your gateway. The time zone is used, for example, when a time
-     * stamp is given to a snapshot.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
-     *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that represents the time zone
-     *         for your gateway. The time zone is used, for example, when a time
-     *         stamp is given to a snapshot.
-     *
-     * @see GatewayTimezone
-     */
-    public void setGatewayTimezone(GatewayTimezone gatewayTimezone) {
-        this.gatewayTimezone = gatewayTimezone.toString();
-    }
-    
-    /**
-     * One of the <a>GatewayTimezone</a> values that represents the time zone
-     * for your gateway. The time zone is used, for example, when a time
-     * stamp is given to a snapshot.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>GMT-12:00, GMT-11:00, GMT-10:00, GMT-9:00, GMT-8:00, GMT-7:00, GMT-6:00, GMT-5:00, GMT-4:00, GMT-3:30, GMT-3:00, GMT-2:00, GMT-1:00, GMT, GMT+1:00, GMT+2:00, GMT+3:00, GMT+3:30, GMT+4:00, GMT+4:30, GMT+5:00, GMT+5:30, GMT+5:45, GMT+6:00, GMT+7:00, GMT+8:00, GMT+9:00, GMT+9:30, GMT+10:00, GMT+11:00, GMT+12:00
-     *
-     * @param gatewayTimezone One of the <a>GatewayTimezone</a> values that represents the time zone
-     *         for your gateway. The time zone is used, for example, when a time
-     *         stamp is given to a snapshot.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see GatewayTimezone
-     */
-    public UpdateGatewayInformationRequest withGatewayTimezone(GatewayTimezone gatewayTimezone) {
-        this.gatewayTimezone = gatewayTimezone.toString();
-        return this;
-    }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -285,9 +217,9 @@ public class UpdateGatewayInformationRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getGatewayName() != null) sb.append("GatewayName: " + getGatewayName() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getGatewayName() != null) sb.append("GatewayName: " + getGatewayName() + ",");
         if (getGatewayTimezone() != null) sb.append("GatewayTimezone: " + getGatewayTimezone() );
         sb.append("}");
         return sb.toString();

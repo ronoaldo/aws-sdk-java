@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * The result of an <code>IndexDocuments</code> action.
  * </p>
  */
-public class IndexDocumentsResult  implements Serializable  {
+public class IndexDocumentsResult implements Serializable {
 
     /**
      * The names of the fields that are currently being processed due to an
      * <code>IndexDocuments</code> action.
      */
-    private java.util.List<String> fieldNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> fieldNames;
 
     /**
      * The names of the fields that are currently being processed due to an
@@ -36,9 +37,9 @@ public class IndexDocumentsResult  implements Serializable  {
      *         <code>IndexDocuments</code> action.
      */
     public java.util.List<String> getFieldNames() {
-        
         if (fieldNames == null) {
-            fieldNames = new java.util.ArrayList<String>();
+              fieldNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              fieldNames.setAutoConstruct(true);
         }
         return fieldNames;
     }
@@ -55,8 +56,7 @@ public class IndexDocumentsResult  implements Serializable  {
             this.fieldNames = null;
             return;
         }
-
-        java.util.List<String> fieldNamesCopy = new java.util.ArrayList<String>(fieldNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> fieldNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(fieldNames.size());
         fieldNamesCopy.addAll(fieldNames);
         this.fieldNames = fieldNamesCopy;
     }
@@ -71,7 +71,7 @@ public class IndexDocumentsResult  implements Serializable  {
      *         <code>IndexDocuments</code> action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexDocumentsResult withFieldNames(String... fieldNames) {
         if (getFieldNames() == null) setFieldNames(new java.util.ArrayList<String>(fieldNames.length));
@@ -91,20 +91,20 @@ public class IndexDocumentsResult  implements Serializable  {
      *         <code>IndexDocuments</code> action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexDocumentsResult withFieldNames(java.util.Collection<String> fieldNames) {
         if (fieldNames == null) {
             this.fieldNames = null;
         } else {
-            java.util.List<String> fieldNamesCopy = new java.util.ArrayList<String>(fieldNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> fieldNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(fieldNames.size());
             fieldNamesCopy.addAll(fieldNames);
             this.fieldNames = fieldNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +116,7 @@ public class IndexDocumentsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getFieldNames() != null) sb.append("FieldNames: " + getFieldNames() );
         sb.append("}");
         return sb.toString();

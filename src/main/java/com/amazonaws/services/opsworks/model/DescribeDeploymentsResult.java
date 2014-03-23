@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeDeployments</code> request.
  * </p>
  */
-public class DescribeDeploymentsResult  implements Serializable  {
+public class DescribeDeploymentsResult implements Serializable {
 
     /**
      * An array of <code>Deployment</code> objects that describe the
      * deployments.
      */
-    private java.util.List<Deployment> deployments;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Deployment> deployments;
 
     /**
      * An array of <code>Deployment</code> objects that describe the
@@ -36,9 +37,9 @@ public class DescribeDeploymentsResult  implements Serializable  {
      *         deployments.
      */
     public java.util.List<Deployment> getDeployments() {
-        
         if (deployments == null) {
-            deployments = new java.util.ArrayList<Deployment>();
+              deployments = new com.amazonaws.internal.ListWithAutoConstructFlag<Deployment>();
+              deployments.setAutoConstruct(true);
         }
         return deployments;
     }
@@ -55,8 +56,7 @@ public class DescribeDeploymentsResult  implements Serializable  {
             this.deployments = null;
             return;
         }
-
-        java.util.List<Deployment> deploymentsCopy = new java.util.ArrayList<Deployment>(deployments.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Deployment> deploymentsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Deployment>(deployments.size());
         deploymentsCopy.addAll(deployments);
         this.deployments = deploymentsCopy;
     }
@@ -71,7 +71,7 @@ public class DescribeDeploymentsResult  implements Serializable  {
      *         deployments.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDeploymentsResult withDeployments(Deployment... deployments) {
         if (getDeployments() == null) setDeployments(new java.util.ArrayList<Deployment>(deployments.length));
@@ -91,20 +91,20 @@ public class DescribeDeploymentsResult  implements Serializable  {
      *         deployments.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDeploymentsResult withDeployments(java.util.Collection<Deployment> deployments) {
         if (deployments == null) {
             this.deployments = null;
         } else {
-            java.util.List<Deployment> deploymentsCopy = new java.util.ArrayList<Deployment>(deployments.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Deployment> deploymentsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Deployment>(deployments.size());
             deploymentsCopy.addAll(deployments);
             this.deployments = deploymentsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +116,7 @@ public class DescribeDeploymentsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDeployments() != null) sb.append("Deployments: " + getDeployments() );
         sb.append("}");
         return sb.toString();

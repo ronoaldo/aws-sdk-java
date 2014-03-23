@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,36 +22,36 @@ import com.amazonaws.services.elastictranscoder.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Job JSON Unmarshaller
  */
 public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerContext> {
 
-    
-
     public Job unmarshall(JsonUnmarshallerContext context) throws Exception {
         Job job = new Job();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("Id", targetDepth)) {
                     context.nextToken();
                     job.setId(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("Arn", targetDepth)) {
+                    context.nextToken();
+                    job.setArn(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("PipelineId", targetDepth)) {
                     context.nextToken();
@@ -66,6 +66,7 @@ public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerCo
                     job.setOutput(JobOutputJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("Outputs", targetDepth)) {
+                    context.nextToken();
                     job.setOutputs(new ListUnmarshaller<JobOutput>(JobOutputJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("OutputKeyPrefix", targetDepth)) {
@@ -73,6 +74,7 @@ public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerCo
                     job.setOutputKeyPrefix(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("Playlists", targetDepth)) {
+                    context.nextToken();
                     job.setPlaylists(new ListUnmarshaller<Playlist>(PlaylistJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Status", targetDepth)) {
@@ -84,7 +86,6 @@ public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerCo
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

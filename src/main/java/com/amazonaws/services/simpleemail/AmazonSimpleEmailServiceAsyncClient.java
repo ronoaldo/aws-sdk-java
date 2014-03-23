@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,22 +29,22 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.simpleemail.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonSimpleEmailService.
  * All asynchronous calls made using this client are non-blocking. Callers could either
  * process the result and handle the exceptions in the worker thread by providing a callback handler
  * when making the call, or use the returned Future object to check the result of the call in the calling thread.
  * Amazon Simple Email Service <p>
- * This is the API Reference for Amazon Simple Email Service (Amazon SES). This documentation is intended to be used in conjunction with the Amazon SES
- * Getting Started Guide and the Amazon SES Developer Guide.
+ * This is the API Reference for Amazon Simple Email Service (Amazon
+ * SES). This documentation is intended to be used in conjunction with
+ * the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  * <p>
- * For specific details on how to construct a service request, please consult the <a href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
- * Amazon SES Developer Guide </a> .
- * </p>
- * <p>
- * <b>NOTE:</b>The endpoint for Amazon SES is located at: https://email.us-east-1.amazonaws.com
+ * <b>NOTE:</b>For a list of Amazon SES endpoints to use in service
+ * requests, see Regions and Amazon SES in the Amazon SES Developer
+ * Guide.
  * </p>
  */
 public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServiceClient
@@ -55,6 +55,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -70,7 +71,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleEmailServiceAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -94,16 +95,16 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      *                       client connects to AmazonSimpleEmailService
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleEmailServiceAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonSimpleEmailService using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -115,7 +116,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      *                       when authenticating with AWS services.
      */
     public AmazonSimpleEmailServiceAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -169,7 +170,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonSimpleEmailService using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -182,7 +183,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      *            to authenticate requests with AWS services.
      */
     public AmazonSimpleEmailServiceAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -225,7 +226,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      */
     public AmazonSimpleEmailServiceAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -254,7 +255,6 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -270,7 +270,8 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -283,6 +284,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Deletes the specified identity (email address or domain) from the list
      * of verified identities.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param deleteIdentityRequest Container for the necessary parameters to
      *           execute the DeleteIdentity operation on AmazonSimpleEmailService.
@@ -290,6 +294,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -304,15 +309,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<DeleteIdentityResult>() {
             public DeleteIdentityResult call() throws Exception {
                 return deleteIdentity(deleteIdentityRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes the specified identity (email address or domain) from the list
      * of verified identities.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param deleteIdentityRequest Container for the necessary parameters to
@@ -325,6 +332,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -340,17 +348,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeleteIdentityResult>() {
             public DeleteIdentityResult call() throws Exception {
-            	DeleteIdentityResult result;
+              DeleteIdentityResult result;
                 try {
-            		result = deleteIdentity(deleteIdentityRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteIdentityRequest, result);
-               	return result;
-		    }
-		});
+                result = deleteIdentity(deleteIdentityRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteIdentityRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -363,6 +371,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * as of the May 15, 2012 release of Domain Verification. The
      * ListIdentities action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param listVerifiedEmailAddressesRequest Container for the necessary
      *           parameters to execute the ListVerifiedEmailAddresses operation on
@@ -371,6 +382,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListVerifiedEmailAddresses service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -385,11 +397,10 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<ListVerifiedEmailAddressesResult>() {
             public ListVerifiedEmailAddressesResult call() throws Exception {
                 return listVerifiedEmailAddresses(listVerifiedEmailAddressesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns a list containing all of the email addresses that have been
@@ -399,6 +410,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * <b>IMPORTANT:</b>The ListVerifiedEmailAddresses action is deprecated
      * as of the May 15, 2012 release of Domain Verification. The
      * ListIdentities action is now preferred.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param listVerifiedEmailAddressesRequest Container for the necessary
@@ -412,6 +426,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListVerifiedEmailAddresses service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -427,17 +442,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListVerifiedEmailAddressesResult>() {
             public ListVerifiedEmailAddressesResult call() throws Exception {
-            	ListVerifiedEmailAddressesResult result;
+              ListVerifiedEmailAddressesResult result;
                 try {
-            		result = listVerifiedEmailAddresses(listVerifiedEmailAddressesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listVerifiedEmailAddressesRequest, result);
-               	return result;
-		    }
-		});
+                result = listVerifiedEmailAddresses(listVerifiedEmailAddressesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listVerifiedEmailAddressesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -449,6 +464,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Each data point in the list contains statistics for a 15-minute
      * interval.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param getSendStatisticsRequest Container for the necessary parameters
      *           to execute the GetSendStatistics operation on
@@ -457,6 +475,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetSendStatistics service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -471,11 +490,10 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<GetSendStatisticsResult>() {
             public GetSendStatisticsResult call() throws Exception {
                 return getSendStatistics(getSendStatisticsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the user's sending statistics. The result is a list of data
@@ -484,6 +502,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * <p>
      * Each data point in the list contains statistics for a 15-minute
      * interval.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getSendStatisticsRequest Container for the necessary parameters
@@ -497,6 +518,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetSendStatistics service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -512,23 +534,26 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetSendStatisticsResult>() {
             public GetSendStatisticsResult call() throws Exception {
-            	GetSendStatisticsResult result;
+              GetSendStatisticsResult result;
                 try {
-            		result = getSendStatistics(getSendStatisticsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getSendStatisticsRequest, result);
-               	return result;
-		    }
-		});
+                result = getSendStatistics(getSendStatisticsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getSendStatisticsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Verifies an email address. This action causes a confirmation email
      * message to be sent to the specified address.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyEmailIdentityRequest Container for the necessary
@@ -538,6 +563,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -552,15 +578,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<VerifyEmailIdentityResult>() {
             public VerifyEmailIdentityResult call() throws Exception {
                 return verifyEmailIdentity(verifyEmailIdentityRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Verifies an email address. This action causes a confirmation email
      * message to be sent to the specified address.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyEmailIdentityRequest Container for the necessary
@@ -574,6 +602,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -589,26 +618,31 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<VerifyEmailIdentityResult>() {
             public VerifyEmailIdentityResult call() throws Exception {
-            	VerifyEmailIdentityResult result;
+              VerifyEmailIdentityResult result;
                 try {
-            		result = verifyEmailIdentity(verifyEmailIdentityRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(verifyEmailIdentityRequest, result);
-               	return result;
-		    }
-		});
+                result = verifyEmailIdentity(verifyEmailIdentityRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(verifyEmailIdentityRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Given a list of verified identities (email addresses and/or domains),
-     * returns a structure describing identity notification attributes. For
-     * more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * returns a structure describing identity notification attributes.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityNotificationAttributesRequest Container for the
@@ -618,6 +652,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityNotificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -632,18 +667,22 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<GetIdentityNotificationAttributesResult>() {
             public GetIdentityNotificationAttributesResult call() throws Exception {
                 return getIdentityNotificationAttributes(getIdentityNotificationAttributesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Given a list of verified identities (email addresses and/or domains),
-     * returns a structure describing identity notification attributes. For
-     * more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * returns a structure describing identity notification attributes.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityNotificationAttributesRequest Container for the
@@ -657,6 +696,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityNotificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -672,39 +712,41 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetIdentityNotificationAttributesResult>() {
             public GetIdentityNotificationAttributesResult call() throws Exception {
-            	GetIdentityNotificationAttributesResult result;
+              GetIdentityNotificationAttributesResult result;
                 try {
-            		result = getIdentityNotificationAttributes(getIdentityNotificationAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getIdentityNotificationAttributesRequest, result);
-               	return result;
-		    }
-		});
+                result = getIdentityNotificationAttributes(getIdentityNotificationAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getIdentityNotificationAttributesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * Returns a set of DNS records, or <i>tokens</i> , that must be
-     * published in the domain name's DNS to complete the DKIM verification
-     * process. These tokens are DNS <code>CNAME</code> records that point to
-     * DKIM public keys hosted by Amazon SES. To complete the DKIM
-     * verification process, these tokens must be published in the domain's
-     * DNS. The tokens must remain published in order for Easy DKIM signing
-     * to function correctly.
+     * Returns a set of DKIM tokens for a domain. DKIM <i>tokens</i> are
+     * character strings that represent your domain's identity. Using these
+     * tokens, you will need to create DNS CNAME records that point to DKIM
+     * public keys hosted by Amazon SES. Amazon Web Services will eventually
+     * detect that you have updated your DNS records; this detection process
+     * may take up to 72 hours. Upon successful detection, Amazon SES will be
+     * able to DKIM-sign email originating from that domain.
      * </p>
      * <p>
-     * After the tokens are added to the domain's DNS, Amazon SES will be
-     * able to DKIM-sign email originating from that domain. To enable or
-     * disable Easy DKIM signing for a domain, use the
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * To enable or disable Easy DKIM signing for a domain, use the
      * <code>SetIdentityDkimEnabled</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param verifyDomainDkimRequest Container for the necessary parameters
@@ -713,6 +755,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainDkim service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -727,31 +770,32 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<VerifyDomainDkimResult>() {
             public VerifyDomainDkimResult call() throws Exception {
                 return verifyDomainDkim(verifyDomainDkimRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * Returns a set of DNS records, or <i>tokens</i> , that must be
-     * published in the domain name's DNS to complete the DKIM verification
-     * process. These tokens are DNS <code>CNAME</code> records that point to
-     * DKIM public keys hosted by Amazon SES. To complete the DKIM
-     * verification process, these tokens must be published in the domain's
-     * DNS. The tokens must remain published in order for Easy DKIM signing
-     * to function correctly.
+     * Returns a set of DKIM tokens for a domain. DKIM <i>tokens</i> are
+     * character strings that represent your domain's identity. Using these
+     * tokens, you will need to create DNS CNAME records that point to DKIM
+     * public keys hosted by Amazon SES. Amazon Web Services will eventually
+     * detect that you have updated your DNS records; this detection process
+     * may take up to 72 hours. Upon successful detection, Amazon SES will be
+     * able to DKIM-sign email originating from that domain.
      * </p>
      * <p>
-     * After the tokens are added to the domain's DNS, Amazon SES will be
-     * able to DKIM-sign email originating from that domain. To enable or
-     * disable Easy DKIM signing for a domain, use the
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * To enable or disable Easy DKIM signing for a domain, use the
      * <code>SetIdentityDkimEnabled</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param verifyDomainDkimRequest Container for the necessary parameters
@@ -764,6 +808,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainDkim service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -779,45 +824,49 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<VerifyDomainDkimResult>() {
             public VerifyDomainDkimResult call() throws Exception {
-            	VerifyDomainDkimResult result;
+              VerifyDomainDkimResult result;
                 try {
-            		result = verifyDomainDkim(verifyDomainDkimRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(verifyDomainDkimRequest, result);
-               	return result;
-		    }
-		});
+                result = verifyDomainDkim(verifyDomainDkimRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(verifyDomainDkimRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
-     * Returns the DNS records, or <i>tokens</i> , that must be present in
-     * order for Easy DKIM to sign outgoing email messages.
+     * Returns the current status of Easy DKIM signing for an entity. For
+     * domain name identities, this action also returns the DKIM tokens that
+     * are required for Easy DKIM signing, and whether Amazon SES has
+     * successfully verified that these tokens have been published.
      * </p>
      * <p>
-     * This action takes a list of verified identities as input. It then
-     * returns the following information for each identity:
+     * This action takes a list of identities as input and returns the
+     * following information for each:
      * </p>
      * 
      * <ul>
      * <li>Whether Easy DKIM signing is enabled or disabled.</li>
-     * <li>The set of tokens that are required for Easy DKIM signing. These
-     * tokens must be published in the domain name's DNS records in order for
-     * DKIM verification to complete, and must remain published in order for
-     * Easy DKIM signing to operate correctly. (This information is only
-     * returned for domain name identities, not for email addresses.)</li>
+     * <li>A set of DKIM tokens that represent the identity. If the identity
+     * is an email address, the tokens represent the domain of that
+     * address.</li>
      * <li>Whether Amazon SES has successfully verified the DKIM tokens
-     * published in the domain name's DNS. (This information is only returned
-     * for domain name identities, not for email addresses.)</li>
+     * published in the domain's DNS. This information is only returned for
+     * domain name identities, not for email addresses.</li>
      * 
      * </ul>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityDkimAttributesRequest Container for the necessary
@@ -827,6 +876,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityDkimAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -841,37 +891,40 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<GetIdentityDkimAttributesResult>() {
             public GetIdentityDkimAttributesResult call() throws Exception {
                 return getIdentityDkimAttributes(getIdentityDkimAttributesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
-     * Returns the DNS records, or <i>tokens</i> , that must be present in
-     * order for Easy DKIM to sign outgoing email messages.
+     * Returns the current status of Easy DKIM signing for an entity. For
+     * domain name identities, this action also returns the DKIM tokens that
+     * are required for Easy DKIM signing, and whether Amazon SES has
+     * successfully verified that these tokens have been published.
      * </p>
      * <p>
-     * This action takes a list of verified identities as input. It then
-     * returns the following information for each identity:
+     * This action takes a list of identities as input and returns the
+     * following information for each:
      * </p>
      * 
      * <ul>
      * <li>Whether Easy DKIM signing is enabled or disabled.</li>
-     * <li>The set of tokens that are required for Easy DKIM signing. These
-     * tokens must be published in the domain name's DNS records in order for
-     * DKIM verification to complete, and must remain published in order for
-     * Easy DKIM signing to operate correctly. (This information is only
-     * returned for domain name identities, not for email addresses.)</li>
+     * <li>A set of DKIM tokens that represent the identity. If the identity
+     * is an email address, the tokens represent the domain of that
+     * address.</li>
      * <li>Whether Amazon SES has successfully verified the DKIM tokens
-     * published in the domain name's DNS. (This information is only returned
-     * for domain name identities, not for email addresses.)</li>
+     * published in the domain's DNS. This information is only returned for
+     * domain name identities, not for email addresses.</li>
      * 
      * </ul>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about creating DNS records using DKIM tokens, go
+     * to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param getIdentityDkimAttributesRequest Container for the necessary
@@ -885,6 +938,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityDkimAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -900,17 +954,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetIdentityDkimAttributesResult>() {
             public GetIdentityDkimAttributesResult call() throws Exception {
-            	GetIdentityDkimAttributesResult result;
+              GetIdentityDkimAttributesResult result;
                 try {
-            		result = getIdentityDkimAttributes(getIdentityDkimAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getIdentityDkimAttributesRequest, result);
-               	return result;
-		    }
-		});
+                result = getIdentityDkimAttributes(getIdentityDkimAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getIdentityDkimAttributesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -923,6 +977,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * May 15, 2012 release of Domain Verification. The VerifyEmailIdentity
      * action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param verifyEmailAddressRequest Container for the necessary
      *           parameters to execute the VerifyEmailAddress operation on
@@ -931,6 +988,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -946,11 +1004,10 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
             public Void call() throws Exception {
                 verifyEmailAddress(verifyEmailAddressRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Verifies an email address. This action causes a confirmation email
@@ -960,6 +1017,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * <b>IMPORTANT:</b>The VerifyEmailAddress action is deprecated as of the
      * May 15, 2012 release of Domain Verification. The VerifyEmailIdentity
      * action is now preferred.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyEmailAddressRequest Container for the necessary
@@ -973,6 +1033,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -988,16 +1049,16 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		verifyEmailAddress(verifyEmailAddressRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(verifyEmailAddressRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                verifyEmailAddress(verifyEmailAddressRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(verifyEmailAddressRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1008,10 +1069,11 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Internet email standards; otherwise, the message cannot be sent.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB. This includes any
@@ -1028,10 +1090,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendRawEmailRequest Container for the necessary parameters to
@@ -1039,6 +1100,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendRawEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1053,11 +1115,10 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<SendRawEmailResult>() {
             public SendRawEmailResult call() throws Exception {
                 return sendRawEmail(sendRawEmailRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Sends an email message, with header and content specified by the
@@ -1066,10 +1127,11 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Internet email standards; otherwise, the message cannot be sent.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB. This includes any
@@ -1086,10 +1148,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendRawEmailRequest Container for the necessary parameters to
@@ -1101,6 +1162,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendRawEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1116,17 +1178,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<SendRawEmailResult>() {
             public SendRawEmailResult call() throws Exception {
-            	SendRawEmailResult result;
+              SendRawEmailResult result;
                 try {
-            		result = sendRawEmail(sendRawEmailRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(sendRawEmailRequest, result);
-               	return result;
-		    }
-		});
+                result = sendRawEmail(sendRawEmailRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(sendRawEmailRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1135,6 +1197,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * domains) for a specific AWS Account, regardless of verification
      * status.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param listIdentitiesRequest Container for the necessary parameters to
      *           execute the ListIdentities operation on AmazonSimpleEmailService.
@@ -1142,6 +1207,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListIdentities service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1156,16 +1222,18 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<ListIdentitiesResult>() {
             public ListIdentitiesResult call() throws Exception {
                 return listIdentities(listIdentitiesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns a list containing all of the identities (email addresses and
      * domains) for a specific AWS Account, regardless of verification
      * status.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param listIdentitiesRequest Container for the necessary parameters to
@@ -1178,6 +1246,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         ListIdentities service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1193,17 +1262,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListIdentitiesResult>() {
             public ListIdentitiesResult call() throws Exception {
-            	ListIdentitiesResult result;
+              ListIdentitiesResult result;
                 try {
-            		result = listIdentities(listIdentitiesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listIdentitiesRequest, result);
-               	return result;
-		    }
-		});
+                result = listIdentities(listIdentitiesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listIdentitiesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1211,6 +1280,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Given a list of identities (email addresses and/or domains), returns
      * the verification status and (for domain identities) the verification
      * token for each identity.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getIdentityVerificationAttributesRequest Container for the
@@ -1220,6 +1292,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityVerificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1234,16 +1307,18 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<GetIdentityVerificationAttributesResult>() {
             public GetIdentityVerificationAttributesResult call() throws Exception {
                 return getIdentityVerificationAttributes(getIdentityVerificationAttributesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Given a list of identities (email addresses and/or domains), returns
      * the verification status and (for domain identities) the verification
      * token for each identity.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getIdentityVerificationAttributesRequest Container for the
@@ -1257,6 +1332,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         GetIdentityVerificationAttributes service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1272,17 +1348,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetIdentityVerificationAttributesResult>() {
             public GetIdentityVerificationAttributesResult call() throws Exception {
-            	GetIdentityVerificationAttributesResult result;
+              GetIdentityVerificationAttributesResult result;
                 try {
-            		result = getIdentityVerificationAttributes(getIdentityVerificationAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getIdentityVerificationAttributesRequest, result);
-               	return result;
-		    }
-		});
+                result = getIdentityVerificationAttributes(getIdentityVerificationAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getIdentityVerificationAttributesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1306,9 +1382,12 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Console or the <code>VerifyDomainDkim</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about Easy DKIM signing, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityDkimEnabledRequest Container for the necessary
@@ -1318,6 +1397,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityDkimEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1332,11 +1412,10 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<SetIdentityDkimEnabledResult>() {
             public SetIdentityDkimEnabledResult call() throws Exception {
                 return setIdentityDkimEnabled(setIdentityDkimEnabledRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Enables or disables Easy DKIM signing of email sent from an identity:
@@ -1358,9 +1437,12 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Console or the <code>VerifyDomainDkim</code> action.
      * </p>
      * <p>
-     * For more information about Easy DKIM signing, go to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about Easy DKIM signing, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityDkimEnabledRequest Container for the necessary
@@ -1374,6 +1456,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityDkimEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1389,22 +1472,25 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<SetIdentityDkimEnabledResult>() {
             public SetIdentityDkimEnabledResult call() throws Exception {
-            	SetIdentityDkimEnabledResult result;
+              SetIdentityDkimEnabledResult result;
                 try {
-            		result = setIdentityDkimEnabled(setIdentityDkimEnabledRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setIdentityDkimEnabledRequest, result);
-               	return result;
-		    }
-		});
+                result = setIdentityDkimEnabled(setIdentityDkimEnabledRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(setIdentityDkimEnabledRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Returns the user's current sending limits.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getSendQuotaRequest Container for the necessary parameters to
@@ -1412,6 +1498,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         GetSendQuota service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1426,14 +1513,16 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<GetSendQuotaResult>() {
             public GetSendQuotaResult call() throws Exception {
                 return getSendQuota(getSendQuotaRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns the user's current sending limits.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param getSendQuotaRequest Container for the necessary parameters to
@@ -1445,6 +1534,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         GetSendQuota service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1460,17 +1550,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetSendQuotaResult>() {
             public GetSendQuotaResult call() throws Exception {
-            	GetSendQuotaResult result;
+              GetSendQuotaResult result;
                 try {
-            		result = getSendQuota(getSendQuotaRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getSendQuotaRequest, result);
-               	return result;
-		    }
-		});
+                result = getSendQuota(getSendQuotaRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getSendQuotaRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1478,9 +1568,15 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * Given an identity (email address or domain), enables or disables
      * whether Amazon SES forwards feedback notifications as email. Feedback
      * forwarding may only be disabled when both complaint and bounce topics
-     * are set. For more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * are set.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityFeedbackForwardingEnabledRequest Container for the
@@ -1491,6 +1587,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityFeedbackForwardingEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1505,19 +1602,24 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<SetIdentityFeedbackForwardingEnabledResult>() {
             public SetIdentityFeedbackForwardingEnabledResult call() throws Exception {
                 return setIdentityFeedbackForwardingEnabled(setIdentityFeedbackForwardingEnabledRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Given an identity (email address or domain), enables or disables
      * whether Amazon SES forwards feedback notifications as email. Feedback
      * forwarding may only be disabled when both complaint and bounce topics
-     * are set. For more information about feedback notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * are set.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityFeedbackForwardingEnabledRequest Container for the
@@ -1532,6 +1634,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityFeedbackForwardingEnabled service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1547,22 +1650,25 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<SetIdentityFeedbackForwardingEnabledResult>() {
             public SetIdentityFeedbackForwardingEnabledResult call() throws Exception {
-            	SetIdentityFeedbackForwardingEnabledResult result;
+              SetIdentityFeedbackForwardingEnabledResult result;
                 try {
-            		result = setIdentityFeedbackForwardingEnabled(setIdentityFeedbackForwardingEnabledRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setIdentityFeedbackForwardingEnabledRequest, result);
-               	return result;
-		    }
-		});
+                result = setIdentityFeedbackForwardingEnabled(setIdentityFeedbackForwardingEnabledRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(setIdentityFeedbackForwardingEnabledRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Verifies a domain.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyDomainIdentityRequest Container for the necessary
@@ -1572,6 +1678,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1586,14 +1693,16 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<VerifyDomainIdentityResult>() {
             public VerifyDomainIdentityResult call() throws Exception {
                 return verifyDomainIdentity(verifyDomainIdentityRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Verifies a domain.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param verifyDomainIdentityRequest Container for the necessary
@@ -1607,6 +1716,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         VerifyDomainIdentity service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1622,17 +1732,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<VerifyDomainIdentityResult>() {
             public VerifyDomainIdentityResult call() throws Exception {
-            	VerifyDomainIdentityResult result;
+              VerifyDomainIdentityResult result;
                 try {
-            		result = verifyDomainIdentity(verifyDomainIdentityRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(verifyDomainIdentityRequest, result);
-               	return result;
-		    }
-		});
+                result = verifyDomainIdentity(verifyDomainIdentityRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(verifyDomainIdentityRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1641,10 +1751,11 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * queues the message for sending.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB.
@@ -1660,10 +1771,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendEmailRequest Container for the necessary parameters to
@@ -1671,6 +1781,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1685,21 +1796,21 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<SendEmailResult>() {
             public SendEmailResult call() throws Exception {
                 return sendEmail(sendEmailRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Composes an email message based on input data, and then immediately
      * queues the message for sending.
      * </p>
      * <p>
-     * <b>IMPORTANT:</b>If you have not yet requested production access to
-     * Amazon SES, then you will only be able to send email to and from
-     * verified email addresses and domains. For more information, go to the
-     * Amazon SES Developer Guide.
+     * <b>IMPORTANT:</b> You can only send email from verified email
+     * addresses and domains. If you have not requested production access to
+     * Amazon SES, you must also verify every recipient email address except
+     * for the recipients provided by the Amazon SES mailbox simulator. For
+     * more information, go to the Amazon SES Developer Guide.
      * </p>
      * <p>
      * The total size of the message cannot exceed 10 MB.
@@ -1715,10 +1826,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * For every message that you send, the total number of recipients (To:,
      * CC: and BCC:) is counted against your <i>sending quota</i> - the
      * maximum number of emails you can send in a 24-hour period. For
-     * information about your sending quota, go to the "Managing Your Sending
-     * Activity" section of the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * information about your sending quota, go to the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param sendEmailRequest Container for the necessary parameters to
@@ -1730,6 +1840,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * 
      * @return A Java Future object containing the response from the
      *         SendEmail service method, as returned by AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1745,17 +1856,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<SendEmailResult>() {
             public SendEmailResult call() throws Exception {
-            	SendEmailResult result;
+              SendEmailResult result;
                 try {
-            		result = sendEmail(sendEmailRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(sendEmailRequest, result);
-               	return result;
-		    }
-		});
+                result = sendEmail(sendEmailRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(sendEmailRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1768,6 +1879,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * as of the May 15, 2012 release of Domain Verification. The
      * DeleteIdentity action is now preferred.
      * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
      *
      * @param deleteVerifiedEmailAddressRequest Container for the necessary
      *           parameters to execute the DeleteVerifiedEmailAddress operation on
@@ -1776,6 +1890,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteVerifiedEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1791,11 +1906,10 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
             public Void call() throws Exception {
                 deleteVerifiedEmailAddress(deleteVerifiedEmailAddressRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes the specified email address from the list of verified
@@ -1805,6 +1919,9 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * <b>IMPORTANT:</b>The DeleteVerifiedEmailAddress action is deprecated
      * as of the May 15, 2012 release of Domain Verification. The
      * DeleteIdentity action is now preferred.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
      * </p>
      *
      * @param deleteVerifiedEmailAddressRequest Container for the necessary
@@ -1818,6 +1935,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         DeleteVerifiedEmailAddress service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1833,16 +1951,16 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteVerifiedEmailAddress(deleteVerifiedEmailAddressRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteVerifiedEmailAddressRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteVerifiedEmailAddress(deleteVerifiedEmailAddressRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteVerifiedEmailAddressRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1851,10 +1969,15 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * to which Amazon SES will publish bounce and complaint notifications
      * for emails sent with that identity as the <code>Source</code> .
      * Publishing to topics may only be disabled when feedback
-     * forwarding is enabled. For more information about feedback
-     * notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * forwarding is enabled.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityNotificationTopicRequest Container for the necessary
@@ -1864,6 +1987,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityNotificationTopic service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1878,21 +2002,25 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
         return executorService.submit(new Callable<SetIdentityNotificationTopicResult>() {
             public SetIdentityNotificationTopicResult call() throws Exception {
                 return setIdentityNotificationTopic(setIdentityNotificationTopicRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Given an identity (email address or domain), sets the Amazon SNS topic
      * to which Amazon SES will publish bounce and complaint notifications
      * for emails sent with that identity as the <code>Source</code> .
      * Publishing to topics may only be disabled when feedback
-     * forwarding is enabled. For more information about feedback
-     * notification, see the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">
-     * Amazon SES Developer Guide </a> .
+     * forwarding is enabled.
+     * </p>
+     * <p>
+     * This action is throttled at one request per second.
+     * </p>
+     * <p>
+     * For more information about feedback notification, see the
+     * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+     * .
      * </p>
      *
      * @param setIdentityNotificationTopicRequest Container for the necessary
@@ -1906,6 +2034,7 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
      * @return A Java Future object containing the response from the
      *         SetIdentityNotificationTopic service method, as returned by
      *         AmazonSimpleEmailService.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1921,17 +2050,17 @@ public class AmazonSimpleEmailServiceAsyncClient extends AmazonSimpleEmailServic
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<SetIdentityNotificationTopicResult>() {
             public SetIdentityNotificationTopicResult call() throws Exception {
-            	SetIdentityNotificationTopicResult result;
+              SetIdentityNotificationTopicResult result;
                 try {
-            		result = setIdentityNotificationTopic(setIdentityNotificationTopicRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(setIdentityNotificationTopicRequest, result);
-               	return result;
-		    }
-		});
+                result = setIdentityNotificationTopic(setIdentityNotificationTopicRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(setIdentityNotificationTopicRequest, result);
+                 return result;
+        }
+    });
     }
     
 }

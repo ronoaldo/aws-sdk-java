@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Encloses the id an entry in DeleteMessageBatchRequest.
+ * Encloses the id an entry in DeleteMessageBatch.
  * </p>
  */
-public class DeleteMessageBatchResultEntry  implements Serializable  {
+public class DeleteMessageBatchResultEntry implements Serializable {
 
     /**
      * Represents a successfully deleted message.
@@ -53,14 +54,13 @@ public class DeleteMessageBatchResultEntry  implements Serializable  {
      * @param id Represents a successfully deleted message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchResultEntry withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class DeleteMessageBatchResultEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getId() != null) sb.append("Id: " + getId() );
         sb.append("}");
         return sb.toString();

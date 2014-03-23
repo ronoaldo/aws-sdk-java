@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ public class AdjustedRangeInputStream extends InputStream {
         }
         // The number of bytes the user may read is equal to the number of the bytes in the range.
         // Note that the range includes the endpoints.
-        this.virtualAvailable = (int)(rangeEnd - rangeBeginning) + 1;
+        this.virtualAvailable = (rangeEnd - rangeBeginning) + 1;
     }
 
     /* (non-Javadoc)

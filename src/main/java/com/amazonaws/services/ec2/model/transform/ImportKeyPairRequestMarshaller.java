@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ImportKeyPairRequestMarshaller implements Marshaller<Request<Import
     public Request<ImportKeyPairRequest> marshall(ImportKeyPairRequest importKeyPairRequest) {
 
         if (importKeyPairRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ImportKeyPairRequest> request = new DefaultRequest<ImportKeyPairRequest>(importKeyPairRequest, "AmazonEC2");
         request.addParameter("Action", "ImportKeyPair");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (importKeyPairRequest.getKeyName() != null) {
             request.addParameter("KeyName", StringUtils.fromString(importKeyPairRequest.getKeyName()));
@@ -46,7 +46,6 @@ public class ImportKeyPairRequestMarshaller implements Marshaller<Request<Import
         if (importKeyPairRequest.getPublicKeyMaterial() != null) {
             request.addParameter("PublicKeyMaterial", StringUtils.fromString(importKeyPairRequest.getPublicKeyMaterial()));
         }
-
 
         return request;
     }

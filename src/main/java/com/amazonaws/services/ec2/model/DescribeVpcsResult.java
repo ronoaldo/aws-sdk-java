@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
  * 
- * </p>
  */
-public class DescribeVpcsResult  implements Serializable  {
+public class DescribeVpcsResult implements Serializable {
 
     /**
-     * 
+     * Information about one or more VPCs.
      */
-    private java.util.List<Vpc> vpcs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Vpc> vpcs;
 
     /**
-     * 
+     * Information about one or more VPCs.
      *
-     * @return 
+     * @return Information about one or more VPCs.
      */
     public java.util.List<Vpc> getVpcs() {
-        
         if (vpcs == null) {
-            vpcs = new java.util.ArrayList<Vpc>();
+              vpcs = new com.amazonaws.internal.ListWithAutoConstructFlag<Vpc>();
+              vpcs.setAutoConstruct(true);
         }
         return vpcs;
     }
     
     /**
-     * 
+     * Information about one or more VPCs.
      *
-     * @param vpcs 
+     * @param vpcs Information about one or more VPCs.
      */
     public void setVpcs(java.util.Collection<Vpc> vpcs) {
         if (vpcs == null) {
             this.vpcs = null;
             return;
         }
-
-        java.util.List<Vpc> vpcsCopy = new java.util.ArrayList<Vpc>(vpcs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Vpc> vpcsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Vpc>(vpcs.size());
         vpcsCopy.addAll(vpcs);
         this.vpcs = vpcsCopy;
     }
     
     /**
-     * 
+     * Information about one or more VPCs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcs 
+     * @param vpcs Information about one or more VPCs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsResult withVpcs(Vpc... vpcs) {
         if (getVpcs() == null) setVpcs(new java.util.ArrayList<Vpc>(vpcs.length));
@@ -75,27 +73,27 @@ public class DescribeVpcsResult  implements Serializable  {
     }
     
     /**
-     * 
+     * Information about one or more VPCs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcs 
+     * @param vpcs Information about one or more VPCs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVpcsResult withVpcs(java.util.Collection<Vpc> vpcs) {
         if (vpcs == null) {
             this.vpcs = null;
         } else {
-            java.util.List<Vpc> vpcsCopy = new java.util.ArrayList<Vpc>(vpcs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Vpc> vpcsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Vpc>(vpcs.size());
             vpcsCopy.addAll(vpcs);
             this.vpcs = vpcsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeVpcsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVpcs() != null) sb.append("Vpcs: " + getVpcs() );
         sb.append("}");
         return sb.toString();

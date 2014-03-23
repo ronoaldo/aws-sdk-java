@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,35 +13,48 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudformation.AmazonCloudFormation#describeStackResources(DescribeStackResourcesRequest) DescribeStackResources operation}.
  * <p>
- * Returns AWS resource descriptions for running and deleted stacks. If <code>StackName</code> is specified, all the associated resources that are part
- * of the stack are returned. If <code>PhysicalResourceId</code> is specified, the associated resources of the stack that the resource belongs to are
- * returned.
+ * Returns AWS resource descriptions for running and deleted stacks. If
+ * <code>StackName</code> is specified, all the associated resources that
+ * are part of the stack are returned. If <code>PhysicalResourceId</code>
+ * is specified, the associated resources of the stack that the resource
+ * belongs to are returned.
  * </p>
  * <p>
- * <b>NOTE:</b>Only the first 100 resources will be returned. If your stack has more resources than this, you should use ListStackResources instead.
+ * <b>NOTE:</b>Only the first 100 resources will be returned. If your
+ * stack has more resources than this, you should use ListStackResources
+ * instead.
  * </p>
  * <p>
- * For deleted stacks, <code>DescribeStackResources</code> returns resource information for up to 90 days after the stack has been deleted.
+ * For deleted stacks, <code>DescribeStackResources</code> returns
+ * resource information for up to 90 days after the stack has been
+ * deleted.
  * </p>
  * <p>
- * You must specify either <code>StackName</code> or <code>PhysicalResourceId</code> , but not both. In addition, you can specify
- * <code>LogicalResourceId</code> to filter the returned result. For more information about resources, the <code>LogicalResourceId</code> and
- * <code>PhysicalResourceId</code> , go to the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide"> AWS CloudFormation User Guide
- * </a> .
+ * You must specify either <code>StackName</code> or
+ * <code>PhysicalResourceId</code> , but not both. In addition, you can
+ * specify <code>LogicalResourceId</code> to filter the returned result.
+ * For more information about resources, the
+ * <code>LogicalResourceId</code> and <code>PhysicalResourceId</code> ,
+ * go to the
+ * <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide"> AWS CloudFormation User Guide </a>
+ * .
  * </p>
  * <p>
- * <b>NOTE:</b>A ValidationError is returned if you specify both StackName and PhysicalResourceId in the same request.
+ * <b>NOTE:</b>A ValidationError is returned if you specify both
+ * StackName and PhysicalResourceId in the same request.
  * </p>
  *
  * @see com.amazonaws.services.cloudformation.AmazonCloudFormation#describeStackResources(DescribeStackResourcesRequest)
  */
-public class DescribeStackResourcesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeStackResourcesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or the unique identifier associated with the stack.
@@ -122,14 +135,13 @@ public class DescribeStackResourcesRequest extends AmazonWebServiceRequest  impl
      *         value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourcesRequest withStackName(String stackName) {
         this.stackName = stackName;
         return this;
     }
-    
-    
+
     /**
      * The logical name of the resource as specified in the template.
      * <p>Default: There is no default value.
@@ -162,14 +174,13 @@ public class DescribeStackResourcesRequest extends AmazonWebServiceRequest  impl
      *         <p>Default: There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourcesRequest withLogicalResourceId(String logicalResourceId) {
         this.logicalResourceId = logicalResourceId;
         return this;
     }
-    
-    
+
     /**
      * The name or unique identifier that corresponds to a physical instance
      * ID of a resource supported by AWS CloudFormation. <p>For example, for
@@ -250,14 +261,13 @@ public class DescribeStackResourcesRequest extends AmazonWebServiceRequest  impl
      *         <code>StackName</code>. <p>Default: There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourcesRequest withPhysicalResourceId(String physicalResourceId) {
         this.physicalResourceId = physicalResourceId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -269,9 +279,9 @@ public class DescribeStackResourcesRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");    	
-        if (getLogicalResourceId() != null) sb.append("LogicalResourceId: " + getLogicalResourceId() + ",");    	
+        sb.append("{");
+        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");
+        if (getLogicalResourceId() != null) sb.append("LogicalResourceId: " + getLogicalResourceId() + ",");
         if (getPhysicalResourceId() != null) sb.append("PhysicalResourceId: " + getPhysicalResourceId() );
         sb.append("}");
         return sb.toString();

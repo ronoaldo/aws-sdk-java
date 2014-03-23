@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeClusterSubnetGroupsRequestMarshaller implements Marshaller<
     public Request<DescribeClusterSubnetGroupsRequest> marshall(DescribeClusterSubnetGroupsRequest describeClusterSubnetGroupsRequest) {
 
         if (describeClusterSubnetGroupsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeClusterSubnetGroupsRequest> request = new DefaultRequest<DescribeClusterSubnetGroupsRequest>(describeClusterSubnetGroupsRequest, "AmazonRedshift");
         request.addParameter("Action", "DescribeClusterSubnetGroups");
@@ -49,7 +49,6 @@ public class DescribeClusterSubnetGroupsRequestMarshaller implements Marshaller<
         if (describeClusterSubnetGroupsRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeClusterSubnetGroupsRequest.getMarker()));
         }
-
 
         return request;
     }

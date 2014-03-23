@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an Amazon EC2 security group.
  * </p>
  */
-public class EC2SecurityGroup  implements Serializable  {
+public class EC2SecurityGroup implements Serializable {
 
     /**
      * The status of the EC2 security group.
@@ -64,14 +65,13 @@ public class EC2SecurityGroup  implements Serializable  {
      * @param status The status of the EC2 security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EC2SecurityGroup withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The name of the EC2 Security Group.
      *
@@ -98,14 +98,13 @@ public class EC2SecurityGroup  implements Serializable  {
      * @param eC2SecurityGroupName The name of the EC2 Security Group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EC2SecurityGroup withEC2SecurityGroupName(String eC2SecurityGroupName) {
         this.eC2SecurityGroupName = eC2SecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * The AWS ID of the owner of the EC2 security group specified in the
      * <code>EC2SecurityGroupName</code> field.
@@ -138,14 +137,13 @@ public class EC2SecurityGroup  implements Serializable  {
      *         <code>EC2SecurityGroupName</code> field.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EC2SecurityGroup withEC2SecurityGroupOwnerId(String eC2SecurityGroupOwnerId) {
         this.eC2SecurityGroupOwnerId = eC2SecurityGroupOwnerId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -157,9 +155,9 @@ public class EC2SecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getEC2SecurityGroupName() != null) sb.append("EC2SecurityGroupName: " + getEC2SecurityGroupName() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getEC2SecurityGroupName() != null) sb.append("EC2SecurityGroupName: " + getEC2SecurityGroupName() + ",");
         if (getEC2SecurityGroupOwnerId() != null) sb.append("EC2SecurityGroupOwnerId: " + getEC2SecurityGroupOwnerId() );
         sb.append("}");
         return sb.toString();

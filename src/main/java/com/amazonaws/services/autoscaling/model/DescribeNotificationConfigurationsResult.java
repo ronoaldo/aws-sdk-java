@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output of the DescribeNotificationConfigurations action.
  * </p>
  */
-public class DescribeNotificationConfigurationsResult  implements Serializable  {
+public class DescribeNotificationConfigurationsResult implements Serializable {
 
     /**
      * The list of notification configurations.
      */
-    private java.util.List<NotificationConfiguration> notificationConfigurations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<NotificationConfiguration> notificationConfigurations;
 
     /**
      * A string that is used to mark the start of the next batch of returned
@@ -42,9 +43,9 @@ public class DescribeNotificationConfigurationsResult  implements Serializable  
      * @return The list of notification configurations.
      */
     public java.util.List<NotificationConfiguration> getNotificationConfigurations() {
-        
         if (notificationConfigurations == null) {
-            notificationConfigurations = new java.util.ArrayList<NotificationConfiguration>();
+              notificationConfigurations = new com.amazonaws.internal.ListWithAutoConstructFlag<NotificationConfiguration>();
+              notificationConfigurations.setAutoConstruct(true);
         }
         return notificationConfigurations;
     }
@@ -59,8 +60,7 @@ public class DescribeNotificationConfigurationsResult  implements Serializable  
             this.notificationConfigurations = null;
             return;
         }
-
-        java.util.List<NotificationConfiguration> notificationConfigurationsCopy = new java.util.ArrayList<NotificationConfiguration>(notificationConfigurations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<NotificationConfiguration> notificationConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NotificationConfiguration>(notificationConfigurations.size());
         notificationConfigurationsCopy.addAll(notificationConfigurations);
         this.notificationConfigurations = notificationConfigurationsCopy;
     }
@@ -73,7 +73,7 @@ public class DescribeNotificationConfigurationsResult  implements Serializable  
      * @param notificationConfigurations The list of notification configurations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsResult withNotificationConfigurations(NotificationConfiguration... notificationConfigurations) {
         if (getNotificationConfigurations() == null) setNotificationConfigurations(new java.util.ArrayList<NotificationConfiguration>(notificationConfigurations.length));
@@ -91,20 +91,20 @@ public class DescribeNotificationConfigurationsResult  implements Serializable  
      * @param notificationConfigurations The list of notification configurations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsResult withNotificationConfigurations(java.util.Collection<NotificationConfiguration> notificationConfigurations) {
         if (notificationConfigurations == null) {
             this.notificationConfigurations = null;
         } else {
-            java.util.List<NotificationConfiguration> notificationConfigurationsCopy = new java.util.ArrayList<NotificationConfiguration>(notificationConfigurations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<NotificationConfiguration> notificationConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NotificationConfiguration>(notificationConfigurations.size());
             notificationConfigurationsCopy.addAll(notificationConfigurations);
             this.notificationConfigurations = notificationConfigurationsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that is used to mark the start of the next batch of returned
      * results for pagination.
@@ -146,14 +146,13 @@ public class DescribeNotificationConfigurationsResult  implements Serializable  
      *         results for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -165,8 +164,8 @@ public class DescribeNotificationConfigurationsResult  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNotificationConfigurations() != null) sb.append("NotificationConfigurations: " + getNotificationConfigurations() + ",");    	
+        sb.append("{");
+        if (getNotificationConfigurations() != null) sb.append("NotificationConfigurations: " + getNotificationConfigurations() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

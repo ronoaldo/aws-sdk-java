@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
     public Request<CreateStackRequest> marshall(CreateStackRequest createStackRequest) {
 
         if (createStackRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateStackRequest> request = new DefaultRequest<CreateStackRequest>(createStackRequest, "AmazonCloudFormation");
         request.addParameter("Action", "CreateStack");
@@ -97,6 +97,12 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
         if (createStackRequest.getOnFailure() != null) {
             request.addParameter("OnFailure", StringUtils.fromString(createStackRequest.getOnFailure()));
         }
+        if (createStackRequest.getStackPolicyBody() != null) {
+            request.addParameter("StackPolicyBody", StringUtils.fromString(createStackRequest.getStackPolicyBody()));
+        }
+        if (createStackRequest.getStackPolicyURL() != null) {
+            request.addParameter("StackPolicyURL", StringUtils.fromString(createStackRequest.getStackPolicyURL()));
+        }
 
         java.util.List<Tag> tagsList = createStackRequest.getTags();
         int tagsListIndex = 1;
@@ -114,7 +120,6 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
 
             tagsListIndex++;
         }
-
 
         return request;
     }

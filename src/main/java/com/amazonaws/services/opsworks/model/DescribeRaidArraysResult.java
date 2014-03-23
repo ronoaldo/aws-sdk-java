@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeRaidArrays</code> request.
  * </p>
  */
-public class DescribeRaidArraysResult  implements Serializable  {
+public class DescribeRaidArraysResult implements Serializable {
 
     /**
      * A <code>RaidArrays</code> object that describes the specified RAID
      * arrays.
      */
-    private java.util.List<RaidArray> raidArrays;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RaidArray> raidArrays;
 
     /**
      * A <code>RaidArrays</code> object that describes the specified RAID
@@ -36,9 +37,9 @@ public class DescribeRaidArraysResult  implements Serializable  {
      *         arrays.
      */
     public java.util.List<RaidArray> getRaidArrays() {
-        
         if (raidArrays == null) {
-            raidArrays = new java.util.ArrayList<RaidArray>();
+              raidArrays = new com.amazonaws.internal.ListWithAutoConstructFlag<RaidArray>();
+              raidArrays.setAutoConstruct(true);
         }
         return raidArrays;
     }
@@ -55,8 +56,7 @@ public class DescribeRaidArraysResult  implements Serializable  {
             this.raidArrays = null;
             return;
         }
-
-        java.util.List<RaidArray> raidArraysCopy = new java.util.ArrayList<RaidArray>(raidArrays.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RaidArray> raidArraysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RaidArray>(raidArrays.size());
         raidArraysCopy.addAll(raidArrays);
         this.raidArrays = raidArraysCopy;
     }
@@ -71,7 +71,7 @@ public class DescribeRaidArraysResult  implements Serializable  {
      *         arrays.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRaidArraysResult withRaidArrays(RaidArray... raidArrays) {
         if (getRaidArrays() == null) setRaidArrays(new java.util.ArrayList<RaidArray>(raidArrays.length));
@@ -91,20 +91,20 @@ public class DescribeRaidArraysResult  implements Serializable  {
      *         arrays.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRaidArraysResult withRaidArrays(java.util.Collection<RaidArray> raidArrays) {
         if (raidArrays == null) {
             this.raidArrays = null;
         } else {
-            java.util.List<RaidArray> raidArraysCopy = new java.util.ArrayList<RaidArray>(raidArrays.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RaidArray> raidArraysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RaidArray>(raidArrays.size());
             raidArraysCopy.addAll(raidArrays);
             this.raidArrays = raidArraysCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +116,7 @@ public class DescribeRaidArraysResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRaidArrays() != null) sb.append("RaidArrays: " + getRaidArrays() );
         sb.append("}");
         return sb.toString();

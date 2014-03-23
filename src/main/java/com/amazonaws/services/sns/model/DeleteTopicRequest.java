@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#deleteTopic(DeleteTopicRequest) DeleteTopic operation}.
  * <p>
- * The DeleteTopic action deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the topic from being
- * delivered to subscribers. This action is idempotent, so deleting a topic that does not exist will not result in an error.
+ * The <code>DeleteTopic</code> action deletes a topic and all its
+ * subscriptions. Deleting a topic might prevent some messages previously
+ * sent to the topic from being delivered to subscribers. This action is
+ * idempotent, so deleting a topic that does not exist does not result in
+ * an error.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#deleteTopic(DeleteTopicRequest)
  */
-public class DeleteTopicRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteTopicRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ARN of the topic you want to delete. <examples> <queryrequest>
@@ -68,11 +73,9 @@ public class DeleteTopicRequest extends AmazonWebServiceRequest  implements Seri
      * </examples>
      */
     public DeleteTopicRequest(String topicArn) {
-        this.topicArn = topicArn;
+        setTopicArn(topicArn);
     }
 
-    
-    
     /**
      * The ARN of the topic you want to delete. <examples> <queryrequest>
      * http://sns.us-east-1.amazonaws.com/
@@ -165,14 +168,13 @@ public class DeleteTopicRequest extends AmazonWebServiceRequest  implements Seri
      *         </examples>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteTopicRequest withTopicArn(String topicArn) {
         this.topicArn = topicArn;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -184,7 +186,7 @@ public class DeleteTopicRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() );
         sb.append("}");
         return sb.toString();

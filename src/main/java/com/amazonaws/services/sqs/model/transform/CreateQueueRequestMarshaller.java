@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateQueueRequestMarshaller implements Marshaller<Request<CreateQu
     public Request<CreateQueueRequest> marshall(CreateQueueRequest createQueueRequest) {
 
         if (createQueueRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateQueueRequest> request = new DefaultRequest<CreateQueueRequest>(createQueueRequest, "AmazonSQS");
         request.addParameter("Action", "CreateQueue");
@@ -58,7 +58,6 @@ public class CreateQueueRequestMarshaller implements Marshaller<Request<CreateQu
                 }
             }
         }
-
 
         return request;
     }

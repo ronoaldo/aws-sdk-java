@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getUser(GetUserRequest) GetUser operation}.
  * <p>
- * Retrieves information about the specified user, including the user's path, GUID, and ARN.
+ * Retrieves information about the specified user, including the user's
+ * path, unique ID, and ARN.
  * </p>
  * <p>
- * If you do not specify a user name, IAM determines the user name implicitly based on the AWS Access Key ID signing the request.
+ * If you do not specify a user name, IAM determines the user name
+ * implicitly based on the AWS access key ID signing the request.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getUser(GetUserRequest)
  */
-public class GetUserRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetUserRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the user to get information about. <p>This parameter is
@@ -96,14 +100,13 @@ public class GetUserRequest extends AmazonWebServiceRequest  implements Serializ
      *         request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetUserRequest withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -115,7 +118,7 @@ public class GetUserRequest extends AmazonWebServiceRequest  implements Serializ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getUserName() != null) sb.append("UserName: " + getUserName() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#terminateEnvironment(TerminateEnvironmentRequest) TerminateEnvironment operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#terminateEnvironment(TerminateEnvironmentRequest)
  */
-public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class TerminateEnvironmentRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the environment to terminate. <p> Condition: You must
@@ -59,9 +61,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      * resource management is removed from the environment, but the AWS
      * resources continue to operate. </li> </ul> <p> For more information,
      * see the <a
-     * href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     * AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     * <p> Valid Values: <code>true</code> | <code>false</code>
+     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     * Valid Values: <code>true</code> | <code>false</code>
      */
     private Boolean terminateResources;
 
@@ -115,14 +117,13 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateEnvironmentRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment to terminate. <p> Condition: You must
      * specify either this or an EnvironmentId, or both. If you do not
@@ -176,14 +177,13 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateEnvironmentRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether the associated AWS resources should shut down when
      * the environment is terminated: <enumValues> <value name="true"> <p>
@@ -198,9 +198,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      * resource management is removed from the environment, but the AWS
      * resources continue to operate. </li> </ul> <p> For more information,
      * see the <a
-     * href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     * AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     * <p> Valid Values: <code>true</code> | <code>false</code>
+     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     * Valid Values: <code>true</code> | <code>false</code>
      *
      * @return Indicates whether the associated AWS resources should shut down when
      *         the environment is terminated: <enumValues> <value name="true"> <p>
@@ -215,9 +215,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      *         resource management is removed from the environment, but the AWS
      *         resources continue to operate. </li> </ul> <p> For more information,
      *         see the <a
-     *         href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     *         AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     *         <p> Valid Values: <code>true</code> | <code>false</code>
+     *         href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     *         Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     *         Valid Values: <code>true</code> | <code>false</code>
      */
     public Boolean isTerminateResources() {
         return terminateResources;
@@ -237,9 +237,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      * resource management is removed from the environment, but the AWS
      * resources continue to operate. </li> </ul> <p> For more information,
      * see the <a
-     * href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     * AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     * <p> Valid Values: <code>true</code> | <code>false</code>
+     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     * Valid Values: <code>true</code> | <code>false</code>
      *
      * @param terminateResources Indicates whether the associated AWS resources should shut down when
      *         the environment is terminated: <enumValues> <value name="true"> <p>
@@ -254,9 +254,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      *         resource management is removed from the environment, but the AWS
      *         resources continue to operate. </li> </ul> <p> For more information,
      *         see the <a
-     *         href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     *         AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     *         <p> Valid Values: <code>true</code> | <code>false</code>
+     *         href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     *         Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     *         Valid Values: <code>true</code> | <code>false</code>
      */
     public void setTerminateResources(Boolean terminateResources) {
         this.terminateResources = terminateResources;
@@ -276,9 +276,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      * resource management is removed from the environment, but the AWS
      * resources continue to operate. </li> </ul> <p> For more information,
      * see the <a
-     * href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     * AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     * <p> Valid Values: <code>true</code> | <code>false</code>
+     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     * Valid Values: <code>true</code> | <code>false</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -295,19 +295,18 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      *         resource management is removed from the environment, but the AWS
      *         resources continue to operate. </li> </ul> <p> For more information,
      *         see the <a
-     *         href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     *         AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     *         <p> Valid Values: <code>true</code> | <code>false</code>
+     *         href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     *         Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     *         Valid Values: <code>true</code> | <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateEnvironmentRequest withTerminateResources(Boolean terminateResources) {
         this.terminateResources = terminateResources;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether the associated AWS resources should shut down when
      * the environment is terminated: <enumValues> <value name="true"> <p>
@@ -322,9 +321,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      * resource management is removed from the environment, but the AWS
      * resources continue to operate. </li> </ul> <p> For more information,
      * see the <a
-     * href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     * AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     * <p> Valid Values: <code>true</code> | <code>false</code>
+     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     * Valid Values: <code>true</code> | <code>false</code>
      *
      * @return Indicates whether the associated AWS resources should shut down when
      *         the environment is terminated: <enumValues> <value name="true"> <p>
@@ -339,14 +338,14 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
      *         resource management is removed from the environment, but the AWS
      *         resources continue to operate. </li> </ul> <p> For more information,
      *         see the <a
-     *         href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/ug/">
-     *         AWS Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code>
-     *         <p> Valid Values: <code>true</code> | <code>false</code>
+     *         href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     *         Elastic Beanstalk User Guide. </a> <p> Default: <code>true</code> <p>
+     *         Valid Values: <code>true</code> | <code>false</code>
      */
     public Boolean getTerminateResources() {
         return terminateResources;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -358,9 +357,9 @@ public class TerminateEnvironmentRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
+        sb.append("{");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
         if (isTerminateResources() != null) sb.append("TerminateResources: " + isTerminateResources() );
         sb.append("}");
         return sb.toString();

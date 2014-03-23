@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An event represents something interesting that has happened in the system.
+ * Represents a single occurrence of something interesting within the
+ * system. Some examples of events are creating a cache cluster, adding
+ * or removing a cache node, or rebooting a node.
  * </p>
  */
-public class Event  implements Serializable  {
+public class Event implements Serializable {
 
     /**
-     * Provides the identifier for the source of the event.
+     * The identifier for the source of the event. For example, if the event
+     * occurred at the cache cluster level, the identifier would be the name
+     * of the cache cluster.
      */
     private String sourceIdentifier;
 
     /**
-     * Specifies the source type for this event.
+     * Specifies the origin of this event - a cache cluster, a parameter
+     * group, a security group, etc.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cache-cluster, cache-parameter-group, cache-security-group, cache-subnet-group
@@ -36,12 +42,12 @@ public class Event  implements Serializable  {
     private String sourceType;
 
     /**
-     * Provides the text of this event.
+     * The text of the event.
      */
     private String message;
 
     /**
-     * Specifies the date and time of the event.
+     * The date and time when the event occurred.
      */
     private java.util.Date date;
 
@@ -52,46 +58,59 @@ public class Event  implements Serializable  {
     public Event() {}
     
     /**
-     * Provides the identifier for the source of the event.
+     * The identifier for the source of the event. For example, if the event
+     * occurred at the cache cluster level, the identifier would be the name
+     * of the cache cluster.
      *
-     * @return Provides the identifier for the source of the event.
+     * @return The identifier for the source of the event. For example, if the event
+     *         occurred at the cache cluster level, the identifier would be the name
+     *         of the cache cluster.
      */
     public String getSourceIdentifier() {
         return sourceIdentifier;
     }
     
     /**
-     * Provides the identifier for the source of the event.
+     * The identifier for the source of the event. For example, if the event
+     * occurred at the cache cluster level, the identifier would be the name
+     * of the cache cluster.
      *
-     * @param sourceIdentifier Provides the identifier for the source of the event.
+     * @param sourceIdentifier The identifier for the source of the event. For example, if the event
+     *         occurred at the cache cluster level, the identifier would be the name
+     *         of the cache cluster.
      */
     public void setSourceIdentifier(String sourceIdentifier) {
         this.sourceIdentifier = sourceIdentifier;
     }
     
     /**
-     * Provides the identifier for the source of the event.
+     * The identifier for the source of the event. For example, if the event
+     * occurred at the cache cluster level, the identifier would be the name
+     * of the cache cluster.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sourceIdentifier Provides the identifier for the source of the event.
+     * @param sourceIdentifier The identifier for the source of the event. For example, if the event
+     *         occurred at the cache cluster level, the identifier would be the name
+     *         of the cache cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withSourceIdentifier(String sourceIdentifier) {
         this.sourceIdentifier = sourceIdentifier;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the source type for this event.
+     * Specifies the origin of this event - a cache cluster, a parameter
+     * group, a security group, etc.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cache-cluster, cache-parameter-group, cache-security-group, cache-subnet-group
      *
-     * @return Specifies the source type for this event.
+     * @return Specifies the origin of this event - a cache cluster, a parameter
+     *         group, a security group, etc.
      *
      * @see SourceType
      */
@@ -100,12 +119,14 @@ public class Event  implements Serializable  {
     }
     
     /**
-     * Specifies the source type for this event.
+     * Specifies the origin of this event - a cache cluster, a parameter
+     * group, a security group, etc.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cache-cluster, cache-parameter-group, cache-security-group, cache-subnet-group
      *
-     * @param sourceType Specifies the source type for this event.
+     * @param sourceType Specifies the origin of this event - a cache cluster, a parameter
+     *         group, a security group, etc.
      *
      * @see SourceType
      */
@@ -114,17 +135,19 @@ public class Event  implements Serializable  {
     }
     
     /**
-     * Specifies the source type for this event.
+     * Specifies the origin of this event - a cache cluster, a parameter
+     * group, a security group, etc.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cache-cluster, cache-parameter-group, cache-security-group, cache-subnet-group
      *
-     * @param sourceType Specifies the source type for this event.
+     * @param sourceType Specifies the origin of this event - a cache cluster, a parameter
+     *         group, a security group, etc.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -132,15 +155,16 @@ public class Event  implements Serializable  {
         this.sourceType = sourceType;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the source type for this event.
+     * Specifies the origin of this event - a cache cluster, a parameter
+     * group, a security group, etc.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cache-cluster, cache-parameter-group, cache-security-group, cache-subnet-group
      *
-     * @param sourceType Specifies the source type for this event.
+     * @param sourceType Specifies the origin of this event - a cache cluster, a parameter
+     *         group, a security group, etc.
      *
      * @see SourceType
      */
@@ -149,17 +173,19 @@ public class Event  implements Serializable  {
     }
     
     /**
-     * Specifies the source type for this event.
+     * Specifies the origin of this event - a cache cluster, a parameter
+     * group, a security group, etc.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>cache-cluster, cache-parameter-group, cache-security-group, cache-subnet-group
      *
-     * @param sourceType Specifies the source type for this event.
+     * @param sourceType Specifies the origin of this event - a cache cluster, a parameter
+     *         group, a security group, etc.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceType
      */
@@ -167,75 +193,73 @@ public class Event  implements Serializable  {
         this.sourceType = sourceType.toString();
         return this;
     }
-    
+
     /**
-     * Provides the text of this event.
+     * The text of the event.
      *
-     * @return Provides the text of this event.
+     * @return The text of the event.
      */
     public String getMessage() {
         return message;
     }
     
     /**
-     * Provides the text of this event.
+     * The text of the event.
      *
-     * @param message Provides the text of this event.
+     * @param message The text of the event.
      */
     public void setMessage(String message) {
         this.message = message;
     }
     
     /**
-     * Provides the text of this event.
+     * The text of the event.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param message Provides the text of this event.
+     * @param message The text of the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the date and time of the event.
+     * The date and time when the event occurred.
      *
-     * @return Specifies the date and time of the event.
+     * @return The date and time when the event occurred.
      */
     public java.util.Date getDate() {
         return date;
     }
     
     /**
-     * Specifies the date and time of the event.
+     * The date and time when the event occurred.
      *
-     * @param date Specifies the date and time of the event.
+     * @param date The date and time when the event occurred.
      */
     public void setDate(java.util.Date date) {
         this.date = date;
     }
     
     /**
-     * Specifies the date and time of the event.
+     * The date and time when the event occurred.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param date Specifies the date and time of the event.
+     * @param date The date and time when the event occurred.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Event withDate(java.util.Date date) {
         this.date = date;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -247,10 +271,10 @@ public class Event  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() + ",");    	
-        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");    	
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
+        sb.append("{");
+        if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() + ",");
+        if (getSourceType() != null) sb.append("SourceType: " + getSourceType() + ",");
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");
         if (getDate() != null) sb.append("Date: " + getDate() );
         sb.append("}");
         return sb.toString();

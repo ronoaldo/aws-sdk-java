@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,59 +13,78 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateRouteTableRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#createRouteTable(CreateRouteTableRequest) CreateRouteTable operation}.
  * <p>
- * Creates a new route table within a VPC. After you create a new route table, you can add routes and associate the table with a subnet. For more
- * information about route tables, go to <a href="http://docs.amazonwebservices.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route Tables </a>
- * in the Amazon Virtual Private Cloud User Guide.
+ * Creates a route table for the specified VPC. After you create a route
+ * table, you can add routes and associate the table with a subnet.
+ * </p>
+ * <p>
+ * For more information about route tables, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route Tables </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createRouteTable(CreateRouteTableRequest)
  */
-public class CreateRouteTableRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateRouteTableRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateRouteTableRequest> {
 
     /**
-     * The ID of the VPC where the route table will be created.
+     * The ID of the VPC.
      */
     private String vpcId;
 
     /**
-     * The ID of the VPC where the route table will be created.
+     * The ID of the VPC.
      *
-     * @return The ID of the VPC where the route table will be created.
+     * @return The ID of the VPC.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * The ID of the VPC where the route table will be created.
+     * The ID of the VPC.
      *
-     * @param vpcId The ID of the VPC where the route table will be created.
+     * @param vpcId The ID of the VPC.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * The ID of the VPC where the route table will be created.
+     * The ID of the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId The ID of the VPC where the route table will be created.
+     * @param vpcId The ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateRouteTableRequest withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateRouteTableRequest> getDryRunRequest() {
+        Request<CreateRouteTableRequest> request = new CreateRouteTableRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -78,7 +97,7 @@ public class CreateRouteTableRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVpcId() != null) sb.append("VpcId: " + getVpcId() );
         sb.append("}");
         return sb.toString();

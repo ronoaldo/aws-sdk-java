@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import java.io.Serializable;
  * This structure is a Union of PutRequest and DeleteRequest. It can contain exactly one of <code>PutRequest</code> or <code>DeleteRequest</code> . Never
  * Both. This is enforced in the code.
  * </p>
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.WriteRequest} instead.
  */
 @Deprecated
 public class WriteRequest  implements Serializable  {

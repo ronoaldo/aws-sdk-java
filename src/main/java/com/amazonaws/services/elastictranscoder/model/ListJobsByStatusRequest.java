@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#listJobsByStatus(ListJobsByStatusRequest) ListJobsByStatus operation}.
  * <p>
- * To get a list of the jobs that have a specified status, send a GET request to the <code>/2012-09-25/jobsByStatus/[status] </code> resource.
- * </p>
- * <p>
- * Elastic Transcoder returns all of the jobs that have the specified status. The response body contains one element for each job that satisfies the
- * search criteria.
+ * The ListJobsByStatus operation gets a list of jobs that have a
+ * specified status. The response body contains one element for each job
+ * that satisfies the search criteria.
  * </p>
  *
  * @see com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#listJobsByStatus(ListJobsByStatusRequest)
  */
-public class ListJobsByStatusRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListJobsByStatusRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * To get information about all of the jobs associated with the current
@@ -114,14 +114,13 @@ public class ListJobsByStatusRequest extends AmazonWebServiceRequest  implements
      *         <code>Complete</code>, <code>Canceled</code>, or <code>Error</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByStatusRequest withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * To list jobs in chronological order by the date and time that they
      * were submitted, enter <code>true</code>. To list jobs in reverse
@@ -169,14 +168,13 @@ public class ListJobsByStatusRequest extends AmazonWebServiceRequest  implements
      *         chronological order, enter <code>false</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByStatusRequest withAscending(String ascending) {
         this.ascending = ascending;
         return this;
     }
-    
-    
+
     /**
      * When Elastic Transcoder returns more than one page of results, use
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get
@@ -224,14 +222,13 @@ public class ListJobsByStatusRequest extends AmazonWebServiceRequest  implements
      *         each successive page of results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByStatusRequest withPageToken(String pageToken) {
         this.pageToken = pageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -243,9 +240,9 @@ public class ListJobsByStatusRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getAscending() != null) sb.append("Ascending: " + getAscending() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getAscending() != null) sb.append("Ascending: " + getAscending() + ",");
         if (getPageToken() != null) sb.append("PageToken: " + getPageToken() );
         sb.append("}");
         return sb.toString();

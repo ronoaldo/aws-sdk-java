@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.glacier.AmazonGlacier#createVault(CreateVaultRequest) CreateVault operation}.
  * <p>
- * This operation creates a new vault with the specified name. The name of the vault must be unique within a region for an AWS account. You can create up
- * to 1,000 vaults per account. If you need to create more vaults, contact Amazon Glacier.
+ * This operation creates a new vault with the specified name. The name
+ * of the vault must be unique within a region for an AWS account. You
+ * can create up to 1,000 vaults per account. If you need to create more
+ * vaults, contact Amazon Glacier.
  * </p>
  * <p>
  * You must use the following guidelines when naming a vault.
@@ -33,7 +37,8 @@ import java.io.Serializable;
  * </p>
  * </li>
  * <li> <p>
- * Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
+ * Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen),
+ * and '.' (period).
  * </p>
  * </li>
  * 
@@ -44,21 +49,23 @@ import java.io.Serializable;
  * This operation is idempotent.
  * </p>
  * <p>
- * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any
- * permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access
- * Management (IAM) </a> .
+ * An AWS account has full permission to perform all operations
+ * (actions). However, AWS Identity and Access Management (IAM) users
+ * don't have any permissions by default. You must grant them explicit
+ * permission to perform specific actions. For more information, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+ * .
  * </p>
  * <p>
- * For conceptual information and underlying REST API, go to <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/creating-vaults.html">
- * Creating a Vault in Amazon Glacier </a> and <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/api-vault-put.html"> Create Vault
- * </a> in the <i>Amazon Glacier Developer Guide</i> .
+ * For conceptual information and underlying REST API, go to
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html"> Creating a Vault in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html"> Create Vault </a>
+ * in the <i>Amazon Glacier Developer Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.glacier.AmazonGlacier#createVault(CreateVaultRequest)
  */
-public class CreateVaultRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateVaultRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
@@ -88,11 +95,9 @@ public class CreateVaultRequest extends AmazonWebServiceRequest  implements Seri
      * @param vaultName The name of the vault.
      */
     public CreateVaultRequest(String vaultName) {
-        this.vaultName = vaultName;
+        setVaultName(vaultName);
     }
 
-    
-    
     /**
      * Constructs a new CreateVaultRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -106,12 +111,10 @@ public class CreateVaultRequest extends AmazonWebServiceRequest  implements Seri
      * @param vaultName The name of the vault.
      */
     public CreateVaultRequest(String accountId, String vaultName) {
-        this.accountId = accountId;
-        this.vaultName = vaultName;
+        setAccountId(accountId);
+        setVaultName(vaultName);
     }
 
-    
-    
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
      * either the AWS Account ID or optionally a '-', in which case Amazon
@@ -162,14 +165,13 @@ public class CreateVaultRequest extends AmazonWebServiceRequest  implements Seri
      *         hyphens in it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVaultRequest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
     }
-    
-    
+
     /**
      * The name of the vault.
      *
@@ -196,14 +198,13 @@ public class CreateVaultRequest extends AmazonWebServiceRequest  implements Seri
      * @param vaultName The name of the vault.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVaultRequest withVaultName(String vaultName) {
         this.vaultName = vaultName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -215,8 +216,8 @@ public class CreateVaultRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");    	
+        sb.append("{");
+        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");
         if (getVaultName() != null) sb.append("VaultName: " + getVaultName() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The <code>AlarmHistoryItem</code> data type contains descriptive information about the history of a specific alarm. If you call DescribeAlarmHistory,
- * Amazon CloudWatch returns this data type as part of the DescribeAlarmHistoryResult data type.
+ * The <code>AlarmHistoryItem</code> data type contains descriptive
+ * information about the history of a specific alarm. If you call
+ * DescribeAlarmHistory, Amazon CloudWatch returns this data type as part
+ * of the DescribeAlarmHistoryResult data type.
  * </p>
  */
-public class AlarmHistoryItem  implements Serializable  {
+public class AlarmHistoryItem implements Serializable {
 
     /**
      * The descriptive name for the alarm.
@@ -95,14 +98,13 @@ public class AlarmHistoryItem  implements Serializable  {
      * @param alarmName The descriptive name for the alarm.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AlarmHistoryItem withAlarmName(String alarmName) {
         this.alarmName = alarmName;
         return this;
     }
-    
-    
+
     /**
      * The time stamp for the alarm history item.
      *
@@ -129,14 +131,13 @@ public class AlarmHistoryItem  implements Serializable  {
      * @param timestamp The time stamp for the alarm history item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AlarmHistoryItem withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
      * The type of alarm history item.
      * <p>
@@ -176,7 +177,7 @@ public class AlarmHistoryItem  implements Serializable  {
      * @param historyItemType The type of alarm history item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HistoryItemType
      */
@@ -184,8 +185,7 @@ public class AlarmHistoryItem  implements Serializable  {
         this.historyItemType = historyItemType;
         return this;
     }
-    
-    
+
     /**
      * The type of alarm history item.
      * <p>
@@ -211,7 +211,7 @@ public class AlarmHistoryItem  implements Serializable  {
      * @param historyItemType The type of alarm history item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see HistoryItemType
      */
@@ -219,7 +219,7 @@ public class AlarmHistoryItem  implements Serializable  {
         this.historyItemType = historyItemType.toString();
         return this;
     }
-    
+
     /**
      * A human-readable summary of the alarm history.
      * <p>
@@ -255,14 +255,13 @@ public class AlarmHistoryItem  implements Serializable  {
      * @param historySummary A human-readable summary of the alarm history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AlarmHistoryItem withHistorySummary(String historySummary) {
         this.historySummary = historySummary;
         return this;
     }
-    
-    
+
     /**
      * Machine-readable data about the alarm in JSON format.
      * <p>
@@ -298,14 +297,13 @@ public class AlarmHistoryItem  implements Serializable  {
      * @param historyData Machine-readable data about the alarm in JSON format.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AlarmHistoryItem withHistoryData(String historyData) {
         this.historyData = historyData;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -317,11 +315,11 @@ public class AlarmHistoryItem  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
-        if (getHistoryItemType() != null) sb.append("HistoryItemType: " + getHistoryItemType() + ",");    	
-        if (getHistorySummary() != null) sb.append("HistorySummary: " + getHistorySummary() + ",");    	
+        sb.append("{");
+        if (getAlarmName() != null) sb.append("AlarmName: " + getAlarmName() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
+        if (getHistoryItemType() != null) sb.append("HistoryItemType: " + getHistoryItemType() + ",");
+        if (getHistorySummary() != null) sb.append("HistorySummary: " + getHistorySummary() + ",");
         if (getHistoryData() != null) sb.append("HistoryData: " + getHistoryData() );
         sb.append("}");
         return sb.toString();

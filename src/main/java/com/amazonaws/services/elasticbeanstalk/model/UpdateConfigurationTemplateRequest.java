@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#updateConfigurationTemplate(UpdateConfigurationTemplateRequest) UpdateConfigurationTemplate operation}.
  * <p>
- * Updates the specified configuration template to have the specified properties or configuration option values.
+ * Updates the specified configuration template to have the specified
+ * properties or configuration option values.
  * </p>
  * <p>
- * <b>NOTE:</b> If a property (for example, ApplicationName) is not provided, its value remains unchanged. To clear such properties, specify an empty
- * string.
+ * <b>NOTE:</b> If a property (for example, ApplicationName) is not
+ * provided, its value remains unchanged. To clear such properties,
+ * specify an empty string.
  * </p>
  * <p>
  * Related Topics
@@ -36,7 +40,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#updateConfigurationTemplate(UpdateConfigurationTemplateRequest)
  */
-public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application associated with the configuration template
@@ -72,14 +76,14 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * A list of configuration option settings to update with the new
      * specified option value.
      */
-    private java.util.List<ConfigurationOptionSetting> optionSettings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettings;
 
     /**
      * A list of configuration options to remove from the configuration set.
      * <p> Constraint: You can remove only <code>UserDefined</code>
      * configuration options.
      */
-    private java.util.List<OptionSpecification> optionsToRemove;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsToRemove;
 
     /**
      * Default constructor for a new UpdateConfigurationTemplateRequest object.  Callers should use the
@@ -102,12 +106,10 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * <code>InvalidParameterValue</code> error.
      */
     public UpdateConfigurationTemplateRequest(String applicationName, String templateName) {
-        this.applicationName = applicationName;
-        this.templateName = templateName;
+        setApplicationName(applicationName);
+        setTemplateName(templateName);
     }
 
-    
-    
     /**
      * The name of the application associated with the configuration template
      * to update. <p> If no application is found with this name,
@@ -161,14 +163,13 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateConfigurationTemplateRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration template to update. <p> If no
      * configuration template is found with this name,
@@ -222,14 +223,13 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateConfigurationTemplateRequest withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * A new description for the configuration.
      * <p>
@@ -265,14 +265,13 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * @param description A new description for the configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateConfigurationTemplateRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * A list of configuration option settings to update with the new
      * specified option value.
@@ -281,9 +280,9 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         specified option value.
      */
     public java.util.List<ConfigurationOptionSetting> getOptionSettings() {
-        
         if (optionSettings == null) {
-            optionSettings = new java.util.ArrayList<ConfigurationOptionSetting>();
+              optionSettings = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>();
+              optionSettings.setAutoConstruct(true);
         }
         return optionSettings;
     }
@@ -300,8 +299,7 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
             this.optionSettings = null;
             return;
         }
-
-        java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
         optionSettingsCopy.addAll(optionSettings);
         this.optionSettings = optionSettingsCopy;
     }
@@ -316,7 +314,7 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         specified option value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateConfigurationTemplateRequest withOptionSettings(ConfigurationOptionSetting... optionSettings) {
         if (getOptionSettings() == null) setOptionSettings(new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.length));
@@ -336,20 +334,20 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         specified option value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateConfigurationTemplateRequest withOptionSettings(java.util.Collection<ConfigurationOptionSetting> optionSettings) {
         if (optionSettings == null) {
             this.optionSettings = null;
         } else {
-            java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
             optionSettingsCopy.addAll(optionSettings);
             this.optionSettings = optionSettingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of configuration options to remove from the configuration set.
      * <p> Constraint: You can remove only <code>UserDefined</code>
@@ -360,9 +358,9 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         configuration options.
      */
     public java.util.List<OptionSpecification> getOptionsToRemove() {
-        
         if (optionsToRemove == null) {
-            optionsToRemove = new java.util.ArrayList<OptionSpecification>();
+              optionsToRemove = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>();
+              optionsToRemove.setAutoConstruct(true);
         }
         return optionsToRemove;
     }
@@ -381,8 +379,7 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
             this.optionsToRemove = null;
             return;
         }
-
-        java.util.List<OptionSpecification> optionsToRemoveCopy = new java.util.ArrayList<OptionSpecification>(optionsToRemove.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsToRemoveCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>(optionsToRemove.size());
         optionsToRemoveCopy.addAll(optionsToRemove);
         this.optionsToRemove = optionsToRemoveCopy;
     }
@@ -399,7 +396,7 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         configuration options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateConfigurationTemplateRequest withOptionsToRemove(OptionSpecification... optionsToRemove) {
         if (getOptionsToRemove() == null) setOptionsToRemove(new java.util.ArrayList<OptionSpecification>(optionsToRemove.length));
@@ -421,20 +418,20 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         configuration options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateConfigurationTemplateRequest withOptionsToRemove(java.util.Collection<OptionSpecification> optionsToRemove) {
         if (optionsToRemove == null) {
             this.optionsToRemove = null;
         } else {
-            java.util.List<OptionSpecification> optionsToRemoveCopy = new java.util.ArrayList<OptionSpecification>(optionsToRemove.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsToRemoveCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>(optionsToRemove.size());
             optionsToRemoveCopy.addAll(optionsToRemove);
             this.optionsToRemove = optionsToRemoveCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -446,11 +443,11 @@ public class UpdateConfigurationTemplateRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getOptionSettings() != null) sb.append("OptionSettings: " + getOptionSettings() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getOptionSettings() != null) sb.append("OptionSettings: " + getOptionSettings() + ",");
         if (getOptionsToRemove() != null) sb.append("OptionsToRemove: " + getOptionsToRemove() );
         sb.append("}");
         return sb.toString();

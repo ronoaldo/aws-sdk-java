@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,105 +13,92 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Describes a range of ports.
+ * </p>
  */
-public class PortRange  implements Serializable  {
+public class PortRange implements Serializable {
 
     /**
-     * The first port in the range. Required if specifying <code>tcp</code>
-     * or <code>udp</code> for the protocol.
+     * The first port in the range.
      */
     private Integer from;
 
     /**
-     * The last port in the range. Required if specifying <code>tcp</code> or
-     * <code>udp</code> for the protocol.
+     * The last port in the range.
      */
     private Integer to;
 
     /**
-     * The first port in the range. Required if specifying <code>tcp</code>
-     * or <code>udp</code> for the protocol.
+     * The first port in the range.
      *
-     * @return The first port in the range. Required if specifying <code>tcp</code>
-     *         or <code>udp</code> for the protocol.
+     * @return The first port in the range.
      */
     public Integer getFrom() {
         return from;
     }
     
     /**
-     * The first port in the range. Required if specifying <code>tcp</code>
-     * or <code>udp</code> for the protocol.
+     * The first port in the range.
      *
-     * @param from The first port in the range. Required if specifying <code>tcp</code>
-     *         or <code>udp</code> for the protocol.
+     * @param from The first port in the range.
      */
     public void setFrom(Integer from) {
         this.from = from;
     }
     
     /**
-     * The first port in the range. Required if specifying <code>tcp</code>
-     * or <code>udp</code> for the protocol.
+     * The first port in the range.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param from The first port in the range. Required if specifying <code>tcp</code>
-     *         or <code>udp</code> for the protocol.
+     * @param from The first port in the range.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PortRange withFrom(Integer from) {
         this.from = from;
         return this;
     }
-    
-    
+
     /**
-     * The last port in the range. Required if specifying <code>tcp</code> or
-     * <code>udp</code> for the protocol.
+     * The last port in the range.
      *
-     * @return The last port in the range. Required if specifying <code>tcp</code> or
-     *         <code>udp</code> for the protocol.
+     * @return The last port in the range.
      */
     public Integer getTo() {
         return to;
     }
     
     /**
-     * The last port in the range. Required if specifying <code>tcp</code> or
-     * <code>udp</code> for the protocol.
+     * The last port in the range.
      *
-     * @param to The last port in the range. Required if specifying <code>tcp</code> or
-     *         <code>udp</code> for the protocol.
+     * @param to The last port in the range.
      */
     public void setTo(Integer to) {
         this.to = to;
     }
     
     /**
-     * The last port in the range. Required if specifying <code>tcp</code> or
-     * <code>udp</code> for the protocol.
+     * The last port in the range.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param to The last port in the range. Required if specifying <code>tcp</code> or
-     *         <code>udp</code> for the protocol.
+     * @param to The last port in the range.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PortRange withTo(Integer to) {
         this.to = to;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -123,8 +110,8 @@ public class PortRange  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFrom() != null) sb.append("From: " + getFrom() + ",");    	
+        sb.append("{");
+        if (getFrom() != null) sb.append("From: " + getFrom() + ",");
         if (getTo() != null) sb.append("To: " + getTo() );
         sb.append("}");
         return sb.toString();

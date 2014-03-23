@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,26 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#pollForTask(PollForTaskRequest) PollForTask operation}.
  * <p>
- * Task runners call this action to receive a task to perform from AWS Data Pipeline. The task runner specifies which tasks it can perform by setting a
- * value for the workerGroup parameter of the PollForTask call. The task returned by PollForTask may come from any of the pipelines that match the
- * workerGroup value passed in by the task runner and that was launched using the IAM user credentials specified by the task runner.
+ * Task runners call this action to receive a task to perform from AWS
+ * Data Pipeline. The task runner specifies which tasks it can perform by
+ * setting a value for the workerGroup parameter of the PollForTask call.
+ * The task returned by PollForTask may come from any of the pipelines
+ * that match the workerGroup value passed in by the task runner and that
+ * was launched using the IAM user credentials specified by the task
+ * runner.
  * </p>
  * <p>
- * If tasks are ready in the work queue, PollForTask returns a response immediately. If no tasks are available in the queue, PollForTask uses
- * long-polling and holds on to a poll connection for up to a 90 seconds during which time the first newly scheduled task is handed to the task runner.
- * To accomodate this, set the socket timeout in your task runner to 90 seconds. The task runner should not call PollForTask again on the same
- * <code>workerGroup</code> until it receives a response, and this may take up to 90 seconds.
+ * If tasks are ready in the work queue, PollForTask returns a response
+ * immediately. If no tasks are available in the queue, PollForTask uses
+ * long-polling and holds on to a poll connection for up to a 90 seconds
+ * during which time the first newly scheduled task is handed to the task
+ * runner. To accomodate this, set the socket timeout in your task runner
+ * to 90 seconds. The task runner should not call PollForTask again on
+ * the same <code>workerGroup</code> until it receives a response, and
+ * this may take up to 90 seconds.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#pollForTask(PollForTaskRequest)
  */
-public class PollForTaskRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PollForTaskRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Indicates the type of task the task runner is configured to accept and
@@ -138,14 +148,13 @@ public class PollForTaskRequest extends AmazonWebServiceRequest  implements Seri
      *         must be an exact, case-sensitive, match.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForTaskRequest withWorkerGroup(String workerGroup) {
         this.workerGroup = workerGroup;
         return this;
     }
-    
-    
+
     /**
      * The public DNS name of the calling task runner.
      * <p>
@@ -184,14 +193,13 @@ public class PollForTaskRequest extends AmazonWebServiceRequest  implements Seri
      * @param hostname The public DNS name of the calling task runner.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForTaskRequest withHostname(String hostname) {
         this.hostname = hostname;
         return this;
     }
-    
-    
+
     /**
      * Identity information for the Amazon EC2 instance that is hosting the
      * task runner. You can get this value by calling the URI,
@@ -266,14 +274,13 @@ public class PollForTaskRequest extends AmazonWebServiceRequest  implements Seri
      *         are applied to your pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForTaskRequest withInstanceIdentity(InstanceIdentity instanceIdentity) {
         this.instanceIdentity = instanceIdentity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -285,9 +292,9 @@ public class PollForTaskRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkerGroup() != null) sb.append("WorkerGroup: " + getWorkerGroup() + ",");    	
-        if (getHostname() != null) sb.append("Hostname: " + getHostname() + ",");    	
+        sb.append("{");
+        if (getWorkerGroup() != null) sb.append("WorkerGroup: " + getWorkerGroup() + ",");
+        if (getHostname() != null) sb.append("Hostname: " + getHostname() + ",");
         if (getInstanceIdentity() != null) sb.append("InstanceIdentity: " + getInstanceIdentity() );
         sb.append("}");
         return sb.toString();

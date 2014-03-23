@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the count of tasks in a task list.
  * </p>
  */
-public class PendingTaskCount  implements Serializable  {
+public class PendingTaskCount implements Serializable {
 
     /**
      * The number of tasks in the task list.
@@ -72,14 +73,13 @@ public class PendingTaskCount  implements Serializable  {
      * @param count The number of tasks in the task list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingTaskCount withCount(Integer count) {
         this.count = count;
         return this;
     }
-    
-    
+
     /**
      * If set to true, indicates that the actual count was more than the
      * maximum supported by this API and the count returned is the truncated
@@ -118,14 +118,13 @@ public class PendingTaskCount  implements Serializable  {
      *         value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingTaskCount withTruncated(Boolean truncated) {
         this.truncated = truncated;
         return this;
     }
-    
-    
+
     /**
      * If set to true, indicates that the actual count was more than the
      * maximum supported by this API and the count returned is the truncated
@@ -138,7 +137,7 @@ public class PendingTaskCount  implements Serializable  {
     public Boolean getTruncated() {
         return truncated;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,8 +149,8 @@ public class PendingTaskCount  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCount() != null) sb.append("Count: " + getCount() + ",");    	
+        sb.append("{");
+        if (getCount() != null) sb.append("Count: " + getCount() + ",");
         if (isTruncated() != null) sb.append("Truncated: " + isTruncated() );
         sb.append("}");
         return sb.toString();

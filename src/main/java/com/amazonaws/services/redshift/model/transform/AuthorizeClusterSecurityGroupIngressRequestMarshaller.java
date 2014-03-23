@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class AuthorizeClusterSecurityGroupIngressRequestMarshaller implements Ma
     public Request<AuthorizeClusterSecurityGroupIngressRequest> marshall(AuthorizeClusterSecurityGroupIngressRequest authorizeClusterSecurityGroupIngressRequest) {
 
         if (authorizeClusterSecurityGroupIngressRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AuthorizeClusterSecurityGroupIngressRequest> request = new DefaultRequest<AuthorizeClusterSecurityGroupIngressRequest>(authorizeClusterSecurityGroupIngressRequest, "AmazonRedshift");
         request.addParameter("Action", "AuthorizeClusterSecurityGroupIngress");
@@ -52,7 +52,6 @@ public class AuthorizeClusterSecurityGroupIngressRequestMarshaller implements Ma
         if (authorizeClusterSecurityGroupIngressRequest.getEC2SecurityGroupOwnerId() != null) {
             request.addParameter("EC2SecurityGroupOwnerId", StringUtils.fromString(authorizeClusterSecurityGroupIngressRequest.getEC2SecurityGroupOwnerId()));
         }
-
 
         return request;
     }

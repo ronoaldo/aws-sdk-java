@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Used to filter workflow execution query results by type. Each parameter, if specified, defines a rule that must be satisfied by each returned result.
+ * Used to filter workflow execution query results by type. Each
+ * parameter, if specified, defines a rule that must be satisfied by each
+ * returned result.
  * </p>
  */
-public class WorkflowTypeFilter  implements Serializable  {
+public class WorkflowTypeFilter implements Serializable {
 
     /**
      * Name of the workflow type. This field is required.
@@ -73,14 +76,13 @@ public class WorkflowTypeFilter  implements Serializable  {
      * @param name Name of the workflow type. This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeFilter withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Version of the workflow type.
      * <p>
@@ -116,14 +118,13 @@ public class WorkflowTypeFilter  implements Serializable  {
      * @param version Version of the workflow type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeFilter withVersion(String version) {
         this.version = version;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -135,8 +136,8 @@ public class WorkflowTypeFilter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getVersion() != null) sb.append("Version: " + getVersion() );
         sb.append("}");
         return sb.toString();

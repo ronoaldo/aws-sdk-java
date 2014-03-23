@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.util;
+import static com.amazonaws.util.StringUtils.UTF8;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -80,7 +81,7 @@ public class S3UploadPolicy {
                 .append("\"]")
                 .append("]}");
         try {
-            this.policyString = base64Encode(builder.toString().getBytes("UTF-8"));
+            this.policyString = base64Encode(builder.toString().getBytes(UTF8));
             this.policySignature = signPolicy(awsSecretKey, policyString);
         } catch (Exception ex) {
             throw new RuntimeException ("Unable to generate S3 upload policy", ex);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies the execution state of a step.
+ * The execution state of a step.
  * </p>
  */
-public class StepExecutionStatusDetail  implements Serializable  {
+public class StepExecutionStatusDetail implements Serializable {
 
     /**
      * The state of the job flow step.
@@ -69,12 +70,10 @@ public class StepExecutionStatusDetail  implements Serializable  {
      * @param creationDateTime The creation date and time of the step.
      */
     public StepExecutionStatusDetail(String state, java.util.Date creationDateTime) {
-        this.state = state;
-        this.creationDateTime = creationDateTime;
+        setState(state);
+        setCreationDateTime(creationDateTime);
     }
 
-    
-    
     /**
      * Constructs a new StepExecutionStatusDetail object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -87,7 +86,7 @@ public class StepExecutionStatusDetail  implements Serializable  {
         this.state = state.toString();
         this.creationDateTime = creationDateTime;
     }
-    
+
     /**
      * The state of the job flow step.
      * <p>
@@ -127,7 +126,7 @@ public class StepExecutionStatusDetail  implements Serializable  {
      * @param state The state of the job flow step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StepExecutionState
      */
@@ -135,8 +134,7 @@ public class StepExecutionStatusDetail  implements Serializable  {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * The state of the job flow step.
      * <p>
@@ -162,7 +160,7 @@ public class StepExecutionStatusDetail  implements Serializable  {
      * @param state The state of the job flow step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StepExecutionState
      */
@@ -170,7 +168,7 @@ public class StepExecutionStatusDetail  implements Serializable  {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * The creation date and time of the step.
      *
@@ -197,14 +195,13 @@ public class StepExecutionStatusDetail  implements Serializable  {
      * @param creationDateTime The creation date and time of the step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepExecutionStatusDetail withCreationDateTime(java.util.Date creationDateTime) {
         this.creationDateTime = creationDateTime;
         return this;
     }
-    
-    
+
     /**
      * The start date and time of the step.
      *
@@ -231,14 +228,13 @@ public class StepExecutionStatusDetail  implements Serializable  {
      * @param startDateTime The start date and time of the step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepExecutionStatusDetail withStartDateTime(java.util.Date startDateTime) {
         this.startDateTime = startDateTime;
         return this;
     }
-    
-    
+
     /**
      * The completion date and time of the step.
      *
@@ -265,14 +261,13 @@ public class StepExecutionStatusDetail  implements Serializable  {
      * @param endDateTime The completion date and time of the step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepExecutionStatusDetail withEndDateTime(java.util.Date endDateTime) {
         this.endDateTime = endDateTime;
         return this;
     }
-    
-    
+
     /**
      * A description of the step's current state.
      * <p>
@@ -311,14 +306,13 @@ public class StepExecutionStatusDetail  implements Serializable  {
      * @param lastStateChangeReason A description of the step's current state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepExecutionStatusDetail withLastStateChangeReason(String lastStateChangeReason) {
         this.lastStateChangeReason = lastStateChangeReason;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -330,11 +324,11 @@ public class StepExecutionStatusDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getCreationDateTime() != null) sb.append("CreationDateTime: " + getCreationDateTime() + ",");    	
-        if (getStartDateTime() != null) sb.append("StartDateTime: " + getStartDateTime() + ",");    	
-        if (getEndDateTime() != null) sb.append("EndDateTime: " + getEndDateTime() + ",");    	
+        sb.append("{");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getCreationDateTime() != null) sb.append("CreationDateTime: " + getCreationDateTime() + ",");
+        if (getStartDateTime() != null) sb.append("StartDateTime: " + getStartDateTime() + ",");
+        if (getEndDateTime() != null) sb.append("EndDateTime: " + getEndDateTime() + ",");
         if (getLastStateChangeReason() != null) sb.append("LastStateChangeReason: " + getLastStateChangeReason() );
         sb.append("}");
         return sb.toString();

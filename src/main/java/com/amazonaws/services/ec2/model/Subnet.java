@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,403 +13,457 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The Subnet data type.
+ * Describes a subnet.
  * </p>
  */
-public class Subnet  implements Serializable  {
+public class Subnet implements Serializable {
 
     /**
-     * Specifies the ID of the subnet.
+     * The ID of the subnet.
      */
     private String subnetId;
 
     /**
-     * Describes the current state of the subnet. The state of the subnet may
-     * be either <code>pending</code> or <code>available</code>.
+     * The current state of the subnet.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      */
     private String state;
 
     /**
-     * Contains the ID of the VPC the subnet is in.
+     * The ID of the VPC the subnet is in.
      */
     private String vpcId;
 
     /**
-     * Specifies the CIDR block assigned to the subnet.
+     * The CIDR block assigned to the subnet.
      */
     private String cidrBlock;
 
     /**
-     * Specifies the number of unused IP addresses in the subnet. <note> <p>
-     * The IP addresses for any stopped instances are considered unavailable.
-     * </note>
+     * The number of unused IP addresses in the subnet. Note that the IP
+     * addresses for any stopped instances are considered unavailable.
      */
     private Integer availableIpAddressCount;
 
     /**
-     * Specifies the Availability Zone the subnet is in.
+     * The Availability Zone of the subnet.
      */
     private String availabilityZone;
 
+    /**
+     * Indicates whether this is the default subnet for the Availability
+     * Zone.
+     */
     private Boolean defaultForAz;
 
+    /**
+     * Indicates whether instances launched in this subnet receive a public
+     * IP address.
+     */
     private Boolean mapPublicIpOnLaunch;
 
     /**
-     * A list of tags for the Subnet.
+     * Any tags assigned to the subnet.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
-     * Specifies the ID of the subnet.
+     * The ID of the subnet.
      *
-     * @return Specifies the ID of the subnet.
+     * @return The ID of the subnet.
      */
     public String getSubnetId() {
         return subnetId;
     }
     
     /**
-     * Specifies the ID of the subnet.
+     * The ID of the subnet.
      *
-     * @param subnetId Specifies the ID of the subnet.
+     * @param subnetId The ID of the subnet.
      */
     public void setSubnetId(String subnetId) {
         this.subnetId = subnetId;
     }
     
     /**
-     * Specifies the ID of the subnet.
+     * The ID of the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetId Specifies the ID of the subnet.
+     * @param subnetId The ID of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withSubnetId(String subnetId) {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
-     * Describes the current state of the subnet. The state of the subnet may
-     * be either <code>pending</code> or <code>available</code>.
+     * The current state of the subnet.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @return Describes the current state of the subnet. The state of the subnet may
-     *         be either <code>pending</code> or <code>available</code>.
+     * @return The current state of the subnet.
+     *
+     * @see SubnetState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Describes the current state of the subnet. The state of the subnet may
-     * be either <code>pending</code> or <code>available</code>.
+     * The current state of the subnet.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @param state Describes the current state of the subnet. The state of the subnet may
-     *         be either <code>pending</code> or <code>available</code>.
+     * @param state The current state of the subnet.
+     *
+     * @see SubnetState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Describes the current state of the subnet. The state of the subnet may
-     * be either <code>pending</code> or <code>available</code>.
+     * The current state of the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @param state Describes the current state of the subnet. The state of the subnet may
-     *         be either <code>pending</code> or <code>available</code>.
+     * @param state The current state of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see SubnetState
      */
     public Subnet withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The current state of the subnet.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
+     *
+     * @param state The current state of the subnet.
+     *
+     * @see SubnetState
+     */
+    public void setState(SubnetState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Contains the ID of the VPC the subnet is in.
+     * The current state of the subnet.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available
      *
-     * @return Contains the ID of the VPC the subnet is in.
+     * @param state The current state of the subnet.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see SubnetState
+     */
+    public Subnet withState(SubnetState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * The ID of the VPC the subnet is in.
+     *
+     * @return The ID of the VPC the subnet is in.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Contains the ID of the VPC the subnet is in.
+     * The ID of the VPC the subnet is in.
      *
-     * @param vpcId Contains the ID of the VPC the subnet is in.
+     * @param vpcId The ID of the VPC the subnet is in.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Contains the ID of the VPC the subnet is in.
+     * The ID of the VPC the subnet is in.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId Contains the ID of the VPC the subnet is in.
+     * @param vpcId The ID of the VPC the subnet is in.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the CIDR block assigned to the subnet.
+     * The CIDR block assigned to the subnet.
      *
-     * @return Specifies the CIDR block assigned to the subnet.
+     * @return The CIDR block assigned to the subnet.
      */
     public String getCidrBlock() {
         return cidrBlock;
     }
     
     /**
-     * Specifies the CIDR block assigned to the subnet.
+     * The CIDR block assigned to the subnet.
      *
-     * @param cidrBlock Specifies the CIDR block assigned to the subnet.
+     * @param cidrBlock The CIDR block assigned to the subnet.
      */
     public void setCidrBlock(String cidrBlock) {
         this.cidrBlock = cidrBlock;
     }
     
     /**
-     * Specifies the CIDR block assigned to the subnet.
+     * The CIDR block assigned to the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cidrBlock Specifies the CIDR block assigned to the subnet.
+     * @param cidrBlock The CIDR block assigned to the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withCidrBlock(String cidrBlock) {
         this.cidrBlock = cidrBlock;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the number of unused IP addresses in the subnet. <note> <p>
-     * The IP addresses for any stopped instances are considered unavailable.
-     * </note>
+     * The number of unused IP addresses in the subnet. Note that the IP
+     * addresses for any stopped instances are considered unavailable.
      *
-     * @return Specifies the number of unused IP addresses in the subnet. <note> <p>
-     *         The IP addresses for any stopped instances are considered unavailable.
-     *         </note>
+     * @return The number of unused IP addresses in the subnet. Note that the IP
+     *         addresses for any stopped instances are considered unavailable.
      */
     public Integer getAvailableIpAddressCount() {
         return availableIpAddressCount;
     }
     
     /**
-     * Specifies the number of unused IP addresses in the subnet. <note> <p>
-     * The IP addresses for any stopped instances are considered unavailable.
-     * </note>
+     * The number of unused IP addresses in the subnet. Note that the IP
+     * addresses for any stopped instances are considered unavailable.
      *
-     * @param availableIpAddressCount Specifies the number of unused IP addresses in the subnet. <note> <p>
-     *         The IP addresses for any stopped instances are considered unavailable.
-     *         </note>
+     * @param availableIpAddressCount The number of unused IP addresses in the subnet. Note that the IP
+     *         addresses for any stopped instances are considered unavailable.
      */
     public void setAvailableIpAddressCount(Integer availableIpAddressCount) {
         this.availableIpAddressCount = availableIpAddressCount;
     }
     
     /**
-     * Specifies the number of unused IP addresses in the subnet. <note> <p>
-     * The IP addresses for any stopped instances are considered unavailable.
-     * </note>
+     * The number of unused IP addresses in the subnet. Note that the IP
+     * addresses for any stopped instances are considered unavailable.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availableIpAddressCount Specifies the number of unused IP addresses in the subnet. <note> <p>
-     *         The IP addresses for any stopped instances are considered unavailable.
-     *         </note>
+     * @param availableIpAddressCount The number of unused IP addresses in the subnet. Note that the IP
+     *         addresses for any stopped instances are considered unavailable.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withAvailableIpAddressCount(Integer availableIpAddressCount) {
         this.availableIpAddressCount = availableIpAddressCount;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the Availability Zone the subnet is in.
+     * The Availability Zone of the subnet.
      *
-     * @return Specifies the Availability Zone the subnet is in.
+     * @return The Availability Zone of the subnet.
      */
     public String getAvailabilityZone() {
         return availabilityZone;
     }
     
     /**
-     * Specifies the Availability Zone the subnet is in.
+     * The Availability Zone of the subnet.
      *
-     * @param availabilityZone Specifies the Availability Zone the subnet is in.
+     * @param availabilityZone The Availability Zone of the subnet.
      */
     public void setAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
     }
     
     /**
-     * Specifies the Availability Zone the subnet is in.
+     * The Availability Zone of the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZone Specifies the Availability Zone the subnet is in.
+     * @param availabilityZone The Availability Zone of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the DefaultForAz property for this object.
+     * Indicates whether this is the default subnet for the Availability
+     * Zone.
      *
-     * @return The value of the DefaultForAz property for this object.
+     * @return Indicates whether this is the default subnet for the Availability
+     *         Zone.
      */
     public Boolean isDefaultForAz() {
         return defaultForAz;
     }
     
     /**
-     * Sets the value of the DefaultForAz property for this object.
+     * Indicates whether this is the default subnet for the Availability
+     * Zone.
      *
-     * @param defaultForAz The new value for the DefaultForAz property for this object.
+     * @param defaultForAz Indicates whether this is the default subnet for the Availability
+     *         Zone.
      */
     public void setDefaultForAz(Boolean defaultForAz) {
         this.defaultForAz = defaultForAz;
     }
     
     /**
-     * Sets the value of the DefaultForAz property for this object.
+     * Indicates whether this is the default subnet for the Availability
+     * Zone.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param defaultForAz The new value for the DefaultForAz property for this object.
+     * @param defaultForAz Indicates whether this is the default subnet for the Availability
+     *         Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withDefaultForAz(Boolean defaultForAz) {
         this.defaultForAz = defaultForAz;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the DefaultForAz property for this object.
+     * Indicates whether this is the default subnet for the Availability
+     * Zone.
      *
-     * @return The value of the DefaultForAz property for this object.
+     * @return Indicates whether this is the default subnet for the Availability
+     *         Zone.
      */
     public Boolean getDefaultForAz() {
         return defaultForAz;
     }
-    
+
     /**
-     * Returns the value of the MapPublicIpOnLaunch property for this object.
+     * Indicates whether instances launched in this subnet receive a public
+     * IP address.
      *
-     * @return The value of the MapPublicIpOnLaunch property for this object.
+     * @return Indicates whether instances launched in this subnet receive a public
+     *         IP address.
      */
     public Boolean isMapPublicIpOnLaunch() {
         return mapPublicIpOnLaunch;
     }
     
     /**
-     * Sets the value of the MapPublicIpOnLaunch property for this object.
+     * Indicates whether instances launched in this subnet receive a public
+     * IP address.
      *
-     * @param mapPublicIpOnLaunch The new value for the MapPublicIpOnLaunch property for this object.
+     * @param mapPublicIpOnLaunch Indicates whether instances launched in this subnet receive a public
+     *         IP address.
      */
     public void setMapPublicIpOnLaunch(Boolean mapPublicIpOnLaunch) {
         this.mapPublicIpOnLaunch = mapPublicIpOnLaunch;
     }
     
     /**
-     * Sets the value of the MapPublicIpOnLaunch property for this object.
+     * Indicates whether instances launched in this subnet receive a public
+     * IP address.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param mapPublicIpOnLaunch The new value for the MapPublicIpOnLaunch property for this object.
+     * @param mapPublicIpOnLaunch Indicates whether instances launched in this subnet receive a public
+     *         IP address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withMapPublicIpOnLaunch(Boolean mapPublicIpOnLaunch) {
         this.mapPublicIpOnLaunch = mapPublicIpOnLaunch;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the MapPublicIpOnLaunch property for this object.
+     * Indicates whether instances launched in this subnet receive a public
+     * IP address.
      *
-     * @return The value of the MapPublicIpOnLaunch property for this object.
+     * @return Indicates whether instances launched in this subnet receive a public
+     *         IP address.
      */
     public Boolean getMapPublicIpOnLaunch() {
         return mapPublicIpOnLaunch;
     }
-    
+
     /**
-     * A list of tags for the Subnet.
+     * Any tags assigned to the subnet.
      *
-     * @return A list of tags for the Subnet.
+     * @return Any tags assigned to the subnet.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * A list of tags for the Subnet.
+     * Any tags assigned to the subnet.
      *
-     * @param tags A list of tags for the Subnet.
+     * @param tags Any tags assigned to the subnet.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * A list of tags for the Subnet.
+     * Any tags assigned to the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the Subnet.
+     * @param tags Any tags assigned to the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -420,27 +474,27 @@ public class Subnet  implements Serializable  {
     }
     
     /**
-     * A list of tags for the Subnet.
+     * Any tags assigned to the subnet.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the Subnet.
+     * @param tags Any tags assigned to the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Subnet withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -452,15 +506,15 @@ public class Subnet  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getCidrBlock() != null) sb.append("CidrBlock: " + getCidrBlock() + ",");    	
-        if (getAvailableIpAddressCount() != null) sb.append("AvailableIpAddressCount: " + getAvailableIpAddressCount() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (isDefaultForAz() != null) sb.append("DefaultForAz: " + isDefaultForAz() + ",");    	
-        if (isMapPublicIpOnLaunch() != null) sb.append("MapPublicIpOnLaunch: " + isMapPublicIpOnLaunch() + ",");    	
+        sb.append("{");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getCidrBlock() != null) sb.append("CidrBlock: " + getCidrBlock() + ",");
+        if (getAvailableIpAddressCount() != null) sb.append("AvailableIpAddressCount: " + getAvailableIpAddressCount() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (isDefaultForAz() != null) sb.append("DefaultForAz: " + isDefaultForAz() + ",");
+        if (isMapPublicIpOnLaunch() != null) sb.append("MapPublicIpOnLaunch: " + isMapPublicIpOnLaunch() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

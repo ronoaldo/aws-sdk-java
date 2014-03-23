@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ package com.amazonaws.services.cloudfront.model;
 public enum ViewerProtocolPolicy {
     
     AllowAll("allow-all"),
-    HttpsOnly("https-only");
+    HttpsOnly("https-only"),
+    RedirectToHttps("redirect-to-https");
 
     private String value;
 
@@ -48,6 +49,8 @@ public enum ViewerProtocolPolicy {
             return ViewerProtocolPolicy.AllowAll;
         } else if ("https-only".equals(value)) {
             return ViewerProtocolPolicy.HttpsOnly;
+        } else if ("redirect-to-https".equals(value)) {
+            return ViewerProtocolPolicy.RedirectToHttps;
         } else {
             throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
         }

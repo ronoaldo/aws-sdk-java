@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains information about the current resource record set.
+ * A complex type that contains information about the current resource
+ * record set.
  * </p>
  */
-public class ResourceRecordSet  implements Serializable  {
+public class ResourceRecordSet implements Serializable {
 
     /**
      * The domain name of the current resource record set.
@@ -66,7 +68,7 @@ public class ResourceRecordSet  implements Serializable  {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 64<br/>
-     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1
+     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1
      */
     private String region;
 
@@ -108,7 +110,7 @@ public class ResourceRecordSet  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<ResourceRecord> resourceRecords;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecord> resourceRecords;
 
     /**
      * <i>Alias resource record sets only:</i> Information about the AWS
@@ -141,12 +143,10 @@ public class ResourceRecordSet  implements Serializable  {
      * @param type The type of the current resource record set.
      */
     public ResourceRecordSet(String name, String type) {
-        this.name = name;
-        this.type = type;
+        setName(name);
+        setType(type);
     }
 
-    
-    
     /**
      * Constructs a new ResourceRecordSet object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -159,7 +159,7 @@ public class ResourceRecordSet  implements Serializable  {
         this.name = name;
         this.type = type.toString();
     }
-    
+
     /**
      * The domain name of the current resource record set.
      * <p>
@@ -195,14 +195,13 @@ public class ResourceRecordSet  implements Serializable  {
      * @param name The domain name of the current resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The type of the current resource record set.
      * <p>
@@ -242,7 +241,7 @@ public class ResourceRecordSet  implements Serializable  {
      * @param type The type of the current resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RRType
      */
@@ -250,8 +249,7 @@ public class ResourceRecordSet  implements Serializable  {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * The type of the current resource record set.
      * <p>
@@ -277,7 +275,7 @@ public class ResourceRecordSet  implements Serializable  {
      * @param type The type of the current resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RRType
      */
@@ -285,7 +283,7 @@ public class ResourceRecordSet  implements Serializable  {
         this.type = type.toString();
         return this;
     }
-    
+
     /**
      * <i>Weighted, Regional, and Failover resource record sets only:</i> An
      * identifier that differentiates among multiple resource record sets
@@ -333,14 +331,13 @@ public class ResourceRecordSet  implements Serializable  {
      *         that have the same combination of DNS name and type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withSetIdentifier(String setIdentifier) {
         this.setIdentifier = setIdentifier;
         return this;
     }
-    
-    
+
     /**
      * <i>Weighted resource record sets only:</i> Among resource record sets
      * that have the same combination of DNS name and type, a value that
@@ -394,14 +391,13 @@ public class ResourceRecordSet  implements Serializable  {
      *         is routed to the associated location.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withWeight(Long weight) {
         this.weight = weight;
         return this;
     }
-    
-    
+
     /**
      * <i>Regional resource record sets only:</i> Among resource record sets
      * that have the same combination of DNS name and type, a value that
@@ -409,7 +405,7 @@ public class ResourceRecordSet  implements Serializable  {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 64<br/>
-     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1
+     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1
      *
      * @return <i>Regional resource record sets only:</i> Among resource record sets
      *         that have the same combination of DNS name and type, a value that
@@ -428,7 +424,7 @@ public class ResourceRecordSet  implements Serializable  {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 64<br/>
-     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1
+     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1
      *
      * @param region <i>Regional resource record sets only:</i> Among resource record sets
      *         that have the same combination of DNS name and type, a value that
@@ -449,14 +445,14 @@ public class ResourceRecordSet  implements Serializable  {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 64<br/>
-     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1
+     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1
      *
      * @param region <i>Regional resource record sets only:</i> Among resource record sets
      *         that have the same combination of DNS name and type, a value that
      *         specifies the AWS region for the current resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceRecordSetRegion
      */
@@ -464,8 +460,7 @@ public class ResourceRecordSet  implements Serializable  {
         this.region = region;
         return this;
     }
-    
-    
+
     /**
      * <i>Regional resource record sets only:</i> Among resource record sets
      * that have the same combination of DNS name and type, a value that
@@ -473,7 +468,7 @@ public class ResourceRecordSet  implements Serializable  {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 64<br/>
-     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1
+     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1
      *
      * @param region <i>Regional resource record sets only:</i> Among resource record sets
      *         that have the same combination of DNS name and type, a value that
@@ -494,14 +489,14 @@ public class ResourceRecordSet  implements Serializable  {
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 64<br/>
-     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1
+     * <b>Allowed Values: </b>us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1
      *
      * @param region <i>Regional resource record sets only:</i> Among resource record sets
      *         that have the same combination of DNS name and type, a value that
      *         specifies the AWS region for the current resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceRecordSetRegion
      */
@@ -509,7 +504,7 @@ public class ResourceRecordSet  implements Serializable  {
         this.region = region.toString();
         return this;
     }
-    
+
     /**
      * <i>Failover resource record sets only:</i> Among resource record sets
      * that have the same combination of DNS name and type, a value that
@@ -639,7 +634,7 @@ public class ResourceRecordSet  implements Serializable  {
      *         <code>SECONDARY</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceRecordSetFailover
      */
@@ -647,8 +642,7 @@ public class ResourceRecordSet  implements Serializable  {
         this.failover = failover;
         return this;
     }
-    
-    
+
     /**
      * <i>Failover resource record sets only:</i> Among resource record sets
      * that have the same combination of DNS name and type, a value that
@@ -734,7 +728,7 @@ public class ResourceRecordSet  implements Serializable  {
      *         <code>SECONDARY</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ResourceRecordSetFailover
      */
@@ -742,7 +736,7 @@ public class ResourceRecordSet  implements Serializable  {
         this.failover = failover.toString();
         return this;
     }
-    
+
     /**
      * The cache time to live for the current resource record set.
      * <p>
@@ -778,14 +772,13 @@ public class ResourceRecordSet  implements Serializable  {
      * @param tTL The cache time to live for the current resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withTTL(Long tTL) {
         this.tTL = tTL;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains the resource records for the current
      * resource record set.
@@ -797,9 +790,9 @@ public class ResourceRecordSet  implements Serializable  {
      *         resource record set.
      */
     public java.util.List<ResourceRecord> getResourceRecords() {
-        
         if (resourceRecords == null) {
-            resourceRecords = new java.util.ArrayList<ResourceRecord>();
+              resourceRecords = new com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecord>();
+              resourceRecords.setAutoConstruct(true);
         }
         return resourceRecords;
     }
@@ -819,8 +812,7 @@ public class ResourceRecordSet  implements Serializable  {
             this.resourceRecords = null;
             return;
         }
-
-        java.util.List<ResourceRecord> resourceRecordsCopy = new java.util.ArrayList<ResourceRecord>(resourceRecords.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecord> resourceRecordsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecord>(resourceRecords.size());
         resourceRecordsCopy.addAll(resourceRecords);
         this.resourceRecords = resourceRecordsCopy;
     }
@@ -838,7 +830,7 @@ public class ResourceRecordSet  implements Serializable  {
      *         resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withResourceRecords(ResourceRecord... resourceRecords) {
         if (getResourceRecords() == null) setResourceRecords(new java.util.ArrayList<ResourceRecord>(resourceRecords.length));
@@ -861,20 +853,20 @@ public class ResourceRecordSet  implements Serializable  {
      *         resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withResourceRecords(java.util.Collection<ResourceRecord> resourceRecords) {
         if (resourceRecords == null) {
             this.resourceRecords = null;
         } else {
-            java.util.List<ResourceRecord> resourceRecordsCopy = new java.util.ArrayList<ResourceRecord>(resourceRecords.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecord> resourceRecordsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecord>(resourceRecords.size());
             resourceRecordsCopy.addAll(resourceRecords);
             this.resourceRecords = resourceRecordsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * <i>Alias resource record sets only:</i> Information about the AWS
      * resource to which you are redirecting traffic.
@@ -907,14 +899,13 @@ public class ResourceRecordSet  implements Serializable  {
      *         resource to which you are redirecting traffic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withAliasTarget(AliasTarget aliasTarget) {
         this.aliasTarget = aliasTarget;
         return this;
     }
-    
-    
+
     /**
      * <i>Health Check resource record sets only, not required for alias
      * resource record sets:</i> An identifier that is used to identify
@@ -962,14 +953,13 @@ public class ResourceRecordSet  implements Serializable  {
      *         health check associated with the resource record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecordSet withHealthCheckId(String healthCheckId) {
         this.healthCheckId = healthCheckId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -981,16 +971,16 @@ public class ResourceRecordSet  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getSetIdentifier() != null) sb.append("SetIdentifier: " + getSetIdentifier() + ",");    	
-        if (getWeight() != null) sb.append("Weight: " + getWeight() + ",");    	
-        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");    	
-        if (getFailover() != null) sb.append("Failover: " + getFailover() + ",");    	
-        if (getTTL() != null) sb.append("TTL: " + getTTL() + ",");    	
-        if (getResourceRecords() != null) sb.append("ResourceRecords: " + getResourceRecords() + ",");    	
-        if (getAliasTarget() != null) sb.append("AliasTarget: " + getAliasTarget() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getSetIdentifier() != null) sb.append("SetIdentifier: " + getSetIdentifier() + ",");
+        if (getWeight() != null) sb.append("Weight: " + getWeight() + ",");
+        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");
+        if (getFailover() != null) sb.append("Failover: " + getFailover() + ",");
+        if (getTTL() != null) sb.append("TTL: " + getTTL() + ",");
+        if (getResourceRecords() != null) sb.append("ResourceRecords: " + getResourceRecords() + ",");
+        if (getAliasTarget() != null) sb.append("AliasTarget: " + getAliasTarget() + ",");
         if (getHealthCheckId() != null) sb.append("HealthCheckId: " + getHealthCheckId() );
         sb.append("}");
         return sb.toString();

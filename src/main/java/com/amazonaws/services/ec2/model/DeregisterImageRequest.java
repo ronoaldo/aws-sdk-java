@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeregisterImageRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#deregisterImage(DeregisterImageRequest) DeregisterImage operation}.
  * <p>
- * The DeregisterImage operation deregisters an AMI. Once deregistered, instances of the AMI can no longer be launched.
+ * Deregisters the specified AMI. After you deregister an AMI, it can't
+ * be used to launch new instances.
+ * </p>
+ * <p>
+ * This command does not delete the AMI.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deregisterImage(DeregisterImageRequest)
  */
-public class DeregisterImageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeregisterImageRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeregisterImageRequest> {
 
     /**
-     * The ID of the AMI to deregister.
+     * The ID of the AMI.
      */
     private String imageId;
 
@@ -42,47 +50,56 @@ public class DeregisterImageRequest extends AmazonWebServiceRequest  implements 
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param imageId The ID of the AMI to deregister.
+     * @param imageId The ID of the AMI.
      */
     public DeregisterImageRequest(String imageId) {
-        this.imageId = imageId;
+        setImageId(imageId);
     }
 
-    
-    
     /**
-     * The ID of the AMI to deregister.
+     * The ID of the AMI.
      *
-     * @return The ID of the AMI to deregister.
+     * @return The ID of the AMI.
      */
     public String getImageId() {
         return imageId;
     }
     
     /**
-     * The ID of the AMI to deregister.
+     * The ID of the AMI.
      *
-     * @param imageId The ID of the AMI to deregister.
+     * @param imageId The ID of the AMI.
      */
     public void setImageId(String imageId) {
         this.imageId = imageId;
     }
     
     /**
-     * The ID of the AMI to deregister.
+     * The ID of the AMI.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param imageId The ID of the AMI to deregister.
+     * @param imageId The ID of the AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeregisterImageRequest withImageId(String imageId) {
         this.imageId = imageId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeregisterImageRequest> getDryRunRequest() {
+        Request<DeregisterImageRequest> request = new DeregisterImageRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -95,7 +112,7 @@ public class DeregisterImageRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageId() != null) sb.append("ImageId: " + getImageId() );
         sb.append("}");
         return sb.toString();

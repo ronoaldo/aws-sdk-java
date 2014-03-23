@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The <code>InstanceMonitoring</code> data type.
  * </p>
  */
-public class InstanceMonitoring  implements Serializable  {
+public class InstanceMonitoring implements Serializable {
 
     /**
      * If <code>True</code>, instance monitoring is enabled.
@@ -53,14 +54,13 @@ public class InstanceMonitoring  implements Serializable  {
      * @param enabled If <code>True</code>, instance monitoring is enabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceMonitoring withEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, instance monitoring is enabled.
      *
@@ -69,7 +69,7 @@ public class InstanceMonitoring  implements Serializable  {
     public Boolean getEnabled() {
         return enabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -81,7 +81,7 @@ public class InstanceMonitoring  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (isEnabled() != null) sb.append("Enabled: " + isEnabled() );
         sb.append("}");
         return sb.toString();

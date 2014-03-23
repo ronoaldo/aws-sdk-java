@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Contains the output from the DescribeOrderableClusterOptions action.
  * </p>
  */
-public class DescribeOrderableClusterOptionsResult  implements Serializable  {
+public class DescribeOrderableClusterOptionsResult implements Serializable {
 
     /**
      * An <a>OrderableClusterOption</a> structure containing information
      * about orderable options for the Cluster.
      */
-    private java.util.List<OrderableClusterOption> orderableClusterOptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<OrderableClusterOption> orderableClusterOptions;
 
     /**
      * A marker that can be used to retrieve paginated results.
@@ -41,9 +42,9 @@ public class DescribeOrderableClusterOptionsResult  implements Serializable  {
      *         about orderable options for the Cluster.
      */
     public java.util.List<OrderableClusterOption> getOrderableClusterOptions() {
-        
         if (orderableClusterOptions == null) {
-            orderableClusterOptions = new java.util.ArrayList<OrderableClusterOption>();
+              orderableClusterOptions = new com.amazonaws.internal.ListWithAutoConstructFlag<OrderableClusterOption>();
+              orderableClusterOptions.setAutoConstruct(true);
         }
         return orderableClusterOptions;
     }
@@ -60,8 +61,7 @@ public class DescribeOrderableClusterOptionsResult  implements Serializable  {
             this.orderableClusterOptions = null;
             return;
         }
-
-        java.util.List<OrderableClusterOption> orderableClusterOptionsCopy = new java.util.ArrayList<OrderableClusterOption>(orderableClusterOptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<OrderableClusterOption> orderableClusterOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OrderableClusterOption>(orderableClusterOptions.size());
         orderableClusterOptionsCopy.addAll(orderableClusterOptions);
         this.orderableClusterOptions = orderableClusterOptionsCopy;
     }
@@ -76,7 +76,7 @@ public class DescribeOrderableClusterOptionsResult  implements Serializable  {
      *         about orderable options for the Cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableClusterOptionsResult withOrderableClusterOptions(OrderableClusterOption... orderableClusterOptions) {
         if (getOrderableClusterOptions() == null) setOrderableClusterOptions(new java.util.ArrayList<OrderableClusterOption>(orderableClusterOptions.length));
@@ -96,20 +96,20 @@ public class DescribeOrderableClusterOptionsResult  implements Serializable  {
      *         about orderable options for the Cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableClusterOptionsResult withOrderableClusterOptions(java.util.Collection<OrderableClusterOption> orderableClusterOptions) {
         if (orderableClusterOptions == null) {
             this.orderableClusterOptions = null;
         } else {
-            java.util.List<OrderableClusterOption> orderableClusterOptionsCopy = new java.util.ArrayList<OrderableClusterOption>(orderableClusterOptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<OrderableClusterOption> orderableClusterOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OrderableClusterOption>(orderableClusterOptions.size());
             orderableClusterOptionsCopy.addAll(orderableClusterOptions);
             this.orderableClusterOptions = orderableClusterOptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A marker that can be used to retrieve paginated results.
      *
@@ -136,14 +136,13 @@ public class DescribeOrderableClusterOptionsResult  implements Serializable  {
      * @param marker A marker that can be used to retrieve paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableClusterOptionsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +154,8 @@ public class DescribeOrderableClusterOptionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOrderableClusterOptions() != null) sb.append("OrderableClusterOptions: " + getOrderableClusterOptions() + ",");    	
+        sb.append("{");
+        if (getOrderableClusterOptions() != null) sb.append("OrderableClusterOptions: " + getOrderableClusterOptions() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

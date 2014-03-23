@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
     public Request<RunInstancesRequest> marshall(RunInstancesRequest runInstancesRequest) {
 
         if (runInstancesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RunInstancesRequest> request = new DefaultRequest<RunInstancesRequest>(runInstancesRequest, "AmazonEC2");
         request.addParameter("Action", "RunInstances");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (runInstancesRequest.getImageId() != null) {
             request.addParameter("ImageId", StringUtils.fromString(runInstancesRequest.getImageId()));
@@ -148,12 +148,6 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
         if (runInstancesRequest.getInstanceInitiatedShutdownBehavior() != null) {
             request.addParameter("InstanceInitiatedShutdownBehavior", StringUtils.fromString(runInstancesRequest.getInstanceInitiatedShutdownBehavior()));
         }
-        InstanceLicenseSpecification instanceLicenseSpecificationLicense = runInstancesRequest.getLicense();
-        if (instanceLicenseSpecificationLicense != null) {
-            if (instanceLicenseSpecificationLicense.getPool() != null) {
-                request.addParameter("License.Pool", StringUtils.fromString(instanceLicenseSpecificationLicense.getPool()));
-            }
-        }
         if (runInstancesRequest.getPrivateIpAddress() != null) {
             request.addParameter("PrivateIpAddress", StringUtils.fromString(runInstancesRequest.getPrivateIpAddress()));
         }
@@ -219,6 +213,9 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
                 if (instanceNetworkInterfaceSpecificationMember.getSecondaryPrivateIpAddressCount() != null) {
                     request.addParameter("NetworkInterface." + networkInterfacesListIndex + ".SecondaryPrivateIpAddressCount", StringUtils.fromInteger(instanceNetworkInterfaceSpecificationMember.getSecondaryPrivateIpAddressCount()));
                 }
+                if (instanceNetworkInterfaceSpecificationMember.isAssociatePublicIpAddress() != null) {
+                    request.addParameter("NetworkInterface." + networkInterfacesListIndex + ".AssociatePublicIpAddress", StringUtils.fromBoolean(instanceNetworkInterfaceSpecificationMember.isAssociatePublicIpAddress()));
+                }
             }
 
             networkInterfacesListIndex++;
@@ -235,7 +232,6 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
         if (runInstancesRequest.isEbsOptimized() != null) {
             request.addParameter("EbsOptimized", StringUtils.fromBoolean(runInstancesRequest.isEbsOptimized()));
         }
-
 
         return request;
     }

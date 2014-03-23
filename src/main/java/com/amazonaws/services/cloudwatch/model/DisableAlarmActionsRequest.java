@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudwatch.AmazonCloudWatch#disableAlarmActions(DisableAlarmActionsRequest) DisableAlarmActions operation}.
  * <p>
- * Disables actions for the specified alarms. When an alarm's actions are disabled the alarm's state may change, but none of the alarm's actions will
- * execute.
+ * Disables actions for the specified alarms. When an alarm's actions
+ * are disabled the alarm's state may change, but none of the alarm's
+ * actions will execute.
  * </p>
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#disableAlarmActions(DisableAlarmActionsRequest)
  */
-public class DisableAlarmActionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DisableAlarmActionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The names of the alarms to disable actions for.
@@ -33,7 +36,7 @@ public class DisableAlarmActionsRequest extends AmazonWebServiceRequest  impleme
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      */
-    private java.util.List<String> alarmNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNames;
 
     /**
      * The names of the alarms to disable actions for.
@@ -44,9 +47,9 @@ public class DisableAlarmActionsRequest extends AmazonWebServiceRequest  impleme
      * @return The names of the alarms to disable actions for.
      */
     public java.util.List<String> getAlarmNames() {
-        
         if (alarmNames == null) {
-            alarmNames = new java.util.ArrayList<String>();
+              alarmNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              alarmNames.setAutoConstruct(true);
         }
         return alarmNames;
     }
@@ -64,8 +67,7 @@ public class DisableAlarmActionsRequest extends AmazonWebServiceRequest  impleme
             this.alarmNames = null;
             return;
         }
-
-        java.util.List<String> alarmNamesCopy = new java.util.ArrayList<String>(alarmNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmNames.size());
         alarmNamesCopy.addAll(alarmNames);
         this.alarmNames = alarmNamesCopy;
     }
@@ -81,7 +83,7 @@ public class DisableAlarmActionsRequest extends AmazonWebServiceRequest  impleme
      * @param alarmNames The names of the alarms to disable actions for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableAlarmActionsRequest withAlarmNames(String... alarmNames) {
         if (getAlarmNames() == null) setAlarmNames(new java.util.ArrayList<String>(alarmNames.length));
@@ -102,20 +104,20 @@ public class DisableAlarmActionsRequest extends AmazonWebServiceRequest  impleme
      * @param alarmNames The names of the alarms to disable actions for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableAlarmActionsRequest withAlarmNames(java.util.Collection<String> alarmNames) {
         if (alarmNames == null) {
             this.alarmNames = null;
         } else {
-            java.util.List<String> alarmNamesCopy = new java.util.ArrayList<String>(alarmNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> alarmNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(alarmNames.size());
             alarmNamesCopy.addAll(alarmNames);
             this.alarmNames = alarmNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -127,7 +129,7 @@ public class DisableAlarmActionsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAlarmNames() != null) sb.append("AlarmNames: " + getAlarmNames() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,32 +13,42 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>SignalExternalWorkflowExecution</code> decision.
+ * Provides details of the <code>SignalExternalWorkflowExecution</code>
+ * decision.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this decision's access to Amazon SWF in much the same way as for the regular API:
+ * You can use IAM policies to control this decision's access to Amazon
+ * SWF in much the same way as for the regular API:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the decision to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to specify this decision.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the decision to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * specify this decision.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails. The associated event attribute's
+ * <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
+ * details and example IAM policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  */
-public class SignalExternalWorkflowExecutionDecisionAttributes  implements Serializable  {
+public class SignalExternalWorkflowExecutionDecisionAttributes implements Serializable {
 
     /**
      * The <code>workflowId</code> of the workflow execution to be signaled.
@@ -125,14 +135,13 @@ public class SignalExternalWorkflowExecutionDecisionAttributes  implements Seria
      *         This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalExternalWorkflowExecutionDecisionAttributes withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The <code>runId</code> of the workflow execution to be signaled.
      * <p>
@@ -168,14 +177,13 @@ public class SignalExternalWorkflowExecutionDecisionAttributes  implements Seria
      * @param runId The <code>runId</code> of the workflow execution to be signaled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalExternalWorkflowExecutionDecisionAttributes withRunId(String runId) {
         this.runId = runId;
         return this;
     }
-    
-    
+
     /**
      * The name of the signal.The target workflow execution will use the
      * signal name and input to process the signal. This field is required.
@@ -217,14 +225,13 @@ public class SignalExternalWorkflowExecutionDecisionAttributes  implements Seria
      *         signal name and input to process the signal. This field is required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalExternalWorkflowExecutionDecisionAttributes withSignalName(String signalName) {
         this.signalName = signalName;
         return this;
     }
-    
-    
+
     /**
      * Optional input to be provided with the signal.The target workflow
      * execution will use the signal name and input to process the signal.
@@ -266,14 +273,13 @@ public class SignalExternalWorkflowExecutionDecisionAttributes  implements Seria
      *         execution will use the signal name and input to process the signal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalExternalWorkflowExecutionDecisionAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent decision tasks.
@@ -315,14 +321,13 @@ public class SignalExternalWorkflowExecutionDecisionAttributes  implements Seria
      *         subsequent decision tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalExternalWorkflowExecutionDecisionAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -334,11 +339,11 @@ public class SignalExternalWorkflowExecutionDecisionAttributes  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");    	
-        if (getSignalName() != null) sb.append("SignalName: " + getSignalName() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
+        sb.append("{");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");
+        if (getSignalName() != null) sb.append("SignalName: " + getSignalName() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
         if (getControl() != null) sb.append("Control: " + getControl() );
         sb.append("}");
         return sb.toString();

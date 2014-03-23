@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -255,7 +255,7 @@ public class StaxUnmarshallerContext {
      * Simple container for the details of a metadata expression this
      * unmarshaller context is looking for.
      */
-    private class MetadataExpression {
+    private static class MetadataExpression {
         public String expression;
         public int targetDepth;
         public String key;

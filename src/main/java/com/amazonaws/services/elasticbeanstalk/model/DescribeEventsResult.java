@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Result message wrapping a list of event descriptions.
  * </p>
  */
-public class DescribeEventsResult  implements Serializable  {
+public class DescribeEventsResult implements Serializable {
 
     /**
      * A list of <a>EventDescription</a>.
      */
-    private java.util.List<EventDescription> events;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<EventDescription> events;
 
     /**
      * If returned, this indicates that there are more results to obtain. Use
@@ -40,9 +41,9 @@ public class DescribeEventsResult  implements Serializable  {
      * @return A list of <a>EventDescription</a>.
      */
     public java.util.List<EventDescription> getEvents() {
-        
         if (events == null) {
-            events = new java.util.ArrayList<EventDescription>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<EventDescription>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
@@ -57,8 +58,7 @@ public class DescribeEventsResult  implements Serializable  {
             this.events = null;
             return;
         }
-
-        java.util.List<EventDescription> eventsCopy = new java.util.ArrayList<EventDescription>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<EventDescription> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EventDescription>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
@@ -71,7 +71,7 @@ public class DescribeEventsResult  implements Serializable  {
      * @param events A list of <a>EventDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withEvents(EventDescription... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<EventDescription>(events.length));
@@ -89,20 +89,20 @@ public class DescribeEventsResult  implements Serializable  {
      * @param events A list of <a>EventDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withEvents(java.util.Collection<EventDescription> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<EventDescription> eventsCopy = new java.util.ArrayList<EventDescription>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<EventDescription> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EventDescription>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * If returned, this indicates that there are more results to obtain. Use
      * this token in the next <a>DescribeEvents</a> call to get the next
@@ -141,14 +141,13 @@ public class DescribeEventsResult  implements Serializable  {
      *         batch of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +159,8 @@ public class DescribeEventsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");    	
+        sb.append("{");
+        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

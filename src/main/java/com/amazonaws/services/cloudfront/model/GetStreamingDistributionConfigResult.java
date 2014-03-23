@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The returned result of the corresponding request.
  * </p>
  */
-public class GetStreamingDistributionConfigResult  implements Serializable  {
+public class GetStreamingDistributionConfigResult implements Serializable {
 
     /**
      * The streaming distribution's configuration information.
@@ -58,14 +59,13 @@ public class GetStreamingDistributionConfigResult  implements Serializable  {
      * @param streamingDistributionConfig The streaming distribution's configuration information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStreamingDistributionConfigResult withStreamingDistributionConfig(StreamingDistributionConfig streamingDistributionConfig) {
         this.streamingDistributionConfig = streamingDistributionConfig;
         return this;
     }
-    
-    
+
     /**
      * The current version of the configuration. For example: E2QWRUHAPOMQZL.
      *
@@ -92,14 +92,13 @@ public class GetStreamingDistributionConfigResult  implements Serializable  {
      * @param eTag The current version of the configuration. For example: E2QWRUHAPOMQZL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetStreamingDistributionConfigResult withETag(String eTag) {
         this.eTag = eTag;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class GetStreamingDistributionConfigResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStreamingDistributionConfig() != null) sb.append("StreamingDistributionConfig: " + getStreamingDistributionConfig() + ",");    	
+        sb.append("{");
+        if (getStreamingDistributionConfig() != null) sb.append("StreamingDistributionConfig: " + getStreamingDistributionConfig() + ",");
         if (getETag() != null) sb.append("ETag: " + getETag() );
         sb.append("}");
         return sb.toString();

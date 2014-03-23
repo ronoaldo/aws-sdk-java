@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ModifyCacheClusterRequestMarshaller implements Marshaller<Request<M
     public Request<ModifyCacheClusterRequest> marshall(ModifyCacheClusterRequest modifyCacheClusterRequest) {
 
         if (modifyCacheClusterRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ModifyCacheClusterRequest> request = new DefaultRequest<ModifyCacheClusterRequest>(modifyCacheClusterRequest, "AmazonElastiCache");
         request.addParameter("Action", "ModifyCacheCluster");
-        request.addParameter("Version", "2012-11-15");
+        request.addParameter("Version", "2013-06-15");
 
         if (modifyCacheClusterRequest.getCacheClusterId() != null) {
             request.addParameter("CacheClusterId", StringUtils.fromString(modifyCacheClusterRequest.getCacheClusterId()));
@@ -100,7 +100,6 @@ public class ModifyCacheClusterRequestMarshaller implements Marshaller<Request<M
         if (modifyCacheClusterRequest.isAutoMinorVersionUpgrade() != null) {
             request.addParameter("AutoMinorVersionUpgrade", StringUtils.fromBoolean(modifyCacheClusterRequest.isAutoMinorVersionUpgrade()));
         }
-
 
         return request;
     }

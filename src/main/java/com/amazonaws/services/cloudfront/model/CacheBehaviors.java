@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A complex type that contains zero or more CacheBehavior elements.
  * </p>
  */
-public class CacheBehaviors  implements Serializable  {
+public class CacheBehaviors implements Serializable {
 
     /**
      * The number of cache behaviors for this distribution.
@@ -31,7 +32,7 @@ public class CacheBehaviors  implements Serializable  {
      * Optional: A complex type that contains cache behaviors for this
      * distribution. If Quantity is 0, you can omit Items.
      */
-    private java.util.List<CacheBehavior> items;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CacheBehavior> items;
 
     /**
      * The number of cache behaviors for this distribution.
@@ -59,14 +60,13 @@ public class CacheBehaviors  implements Serializable  {
      * @param quantity The number of cache behaviors for this distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehaviors withQuantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
-    
-    
+
     /**
      * Optional: A complex type that contains cache behaviors for this
      * distribution. If Quantity is 0, you can omit Items.
@@ -75,9 +75,9 @@ public class CacheBehaviors  implements Serializable  {
      *         distribution. If Quantity is 0, you can omit Items.
      */
     public java.util.List<CacheBehavior> getItems() {
-        
         if (items == null) {
-            items = new java.util.ArrayList<CacheBehavior>();
+              items = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheBehavior>();
+              items.setAutoConstruct(true);
         }
         return items;
     }
@@ -94,8 +94,7 @@ public class CacheBehaviors  implements Serializable  {
             this.items = null;
             return;
         }
-
-        java.util.List<CacheBehavior> itemsCopy = new java.util.ArrayList<CacheBehavior>(items.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CacheBehavior> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheBehavior>(items.size());
         itemsCopy.addAll(items);
         this.items = itemsCopy;
     }
@@ -110,7 +109,7 @@ public class CacheBehaviors  implements Serializable  {
      *         distribution. If Quantity is 0, you can omit Items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehaviors withItems(CacheBehavior... items) {
         if (getItems() == null) setItems(new java.util.ArrayList<CacheBehavior>(items.length));
@@ -130,20 +129,20 @@ public class CacheBehaviors  implements Serializable  {
      *         distribution. If Quantity is 0, you can omit Items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheBehaviors withItems(java.util.Collection<CacheBehavior> items) {
         if (items == null) {
             this.items = null;
         } else {
-            java.util.List<CacheBehavior> itemsCopy = new java.util.ArrayList<CacheBehavior>(items.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CacheBehavior> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheBehavior>(items.size());
             itemsCopy.addAll(items);
             this.items = itemsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +154,8 @@ public class CacheBehaviors  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");    	
+        sb.append("{");
+        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");
         if (getItems() != null) sb.append("Items: " + getItems() );
         sb.append("}");
         return sb.toString();

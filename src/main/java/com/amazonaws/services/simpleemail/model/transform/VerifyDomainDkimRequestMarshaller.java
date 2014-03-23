@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class VerifyDomainDkimRequestMarshaller implements Marshaller<Request<Ver
     public Request<VerifyDomainDkimRequest> marshall(VerifyDomainDkimRequest verifyDomainDkimRequest) {
 
         if (verifyDomainDkimRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<VerifyDomainDkimRequest> request = new DefaultRequest<VerifyDomainDkimRequest>(verifyDomainDkimRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "VerifyDomainDkim");
@@ -43,7 +43,6 @@ public class VerifyDomainDkimRequestMarshaller implements Marshaller<Request<Ver
         if (verifyDomainDkimRequest.getDomain() != null) {
             request.addParameter("Domain", StringUtils.fromString(verifyDomainDkimRequest.getDomain()));
         }
-
 
         return request;
     }

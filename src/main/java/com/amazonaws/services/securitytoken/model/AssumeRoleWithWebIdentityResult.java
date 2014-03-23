@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the AssumeRoleWithWebIdentity action, including temporary AWS credentials that can be used to make
- * AWS requests.
+ * Contains the result of a successful call to the
+ * AssumeRoleWithWebIdentity action, including temporary AWS credentials
+ * that can be used to make AWS requests.
  * </p>
  */
-public class AssumeRoleWithWebIdentityResult  implements Serializable  {
+public class AssumeRoleWithWebIdentityResult implements Serializable {
 
     /**
      * The temporary security credentials, which include an access key ID, a
@@ -96,14 +98,13 @@ public class AssumeRoleWithWebIdentityResult  implements Serializable  {
      *         secret access key, and a security token.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityResult withCredentials(Credentials credentials) {
         this.credentials = credentials;
         return this;
     }
-    
-    
+
     /**
      * The unique user identifier that is returned by the identity provider.
      * This identifier is associated with the <code>WebIdentityToken</code>
@@ -181,14 +182,13 @@ public class AssumeRoleWithWebIdentityResult  implements Serializable  {
      *         provider as the token's <code>sub</code> (Subject) claim.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityResult withSubjectFromWebIdentityToken(String subjectFromWebIdentityToken) {
         this.subjectFromWebIdentityToken = subjectFromWebIdentityToken;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) and the assumed role ID, which are
      * identifiers that you can use to refer to the resulting temporary
@@ -245,14 +245,13 @@ public class AssumeRoleWithWebIdentityResult  implements Serializable  {
      *         you specified when you called <code>AssumeRole</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityResult withAssumedRoleUser(AssumedRoleUser assumedRoleUser) {
         this.assumedRoleUser = assumedRoleUser;
         return this;
     }
-    
-    
+
     /**
      * A percentage value that indicates the size of the policy in packed
      * form. The service rejects any policy with a packed size greater than
@@ -300,14 +299,13 @@ public class AssumeRoleWithWebIdentityResult  implements Serializable  {
      *         100 percent, which means the policy exceeded the allowed space.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityResult withPackedPolicySize(Integer packedPolicySize) {
         this.packedPolicySize = packedPolicySize;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -319,10 +317,10 @@ public class AssumeRoleWithWebIdentityResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");    	
-        if (getSubjectFromWebIdentityToken() != null) sb.append("SubjectFromWebIdentityToken: " + getSubjectFromWebIdentityToken() + ",");    	
-        if (getAssumedRoleUser() != null) sb.append("AssumedRoleUser: " + getAssumedRoleUser() + ",");    	
+        sb.append("{");
+        if (getCredentials() != null) sb.append("Credentials: " + getCredentials() + ",");
+        if (getSubjectFromWebIdentityToken() != null) sb.append("SubjectFromWebIdentityToken: " + getSubjectFromWebIdentityToken() + ",");
+        if (getAssumedRoleUser() != null) sb.append("AssumedRoleUser: " + getAssumedRoleUser() + ",");
         if (getPackedPolicySize() != null) sb.append("PackedPolicySize: " + getPackedPolicySize() );
         sb.append("}");
         return sb.toString();

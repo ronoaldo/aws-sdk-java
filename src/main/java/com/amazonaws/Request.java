@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import java.net.URI;
 import java.util.Map;
 
 import com.amazonaws.http.HttpMethodName;
+import com.amazonaws.util.AWSRequestMetrics;
 
 /**
  * Represents a request being sent to an Amazon Web Service, including the
@@ -205,7 +206,17 @@ public interface Request<T> {
      * @return The updated request object.
      */
     public Request<T> withTimeOffset(int timeOffset);
-    
-    
 
+    /**
+     * Returns the request metrics.
+     */
+    public AWSRequestMetrics getAWSRequestMetrics();
+
+    /**
+     * Bind the request metrics to the request. Note metrics can be captured
+     * before the request is created.
+     * 
+     * @throws IllegalStateException if the binding has already occurred
+     */
+    public void setAWSRequestMetrics(AWSRequestMetrics metrics);
 }

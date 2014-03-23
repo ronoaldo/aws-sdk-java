@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Result message wrapping a single description of an application version.
+ * Result message wrapping a single description of an application
+ * version.
  * </p>
  */
-public class UpdateApplicationVersionResult  implements Serializable  {
+public class UpdateApplicationVersionResult implements Serializable {
 
     /**
      * The <a>ApplicationVersionDescription</a> of the application version.
@@ -53,14 +55,13 @@ public class UpdateApplicationVersionResult  implements Serializable  {
      * @param applicationVersion The <a>ApplicationVersionDescription</a> of the application version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateApplicationVersionResult withApplicationVersion(ApplicationVersionDescription applicationVersion) {
         this.applicationVersion = applicationVersion;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +73,7 @@ public class UpdateApplicationVersionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getApplicationVersion() != null) sb.append("ApplicationVersion: " + getApplicationVersion() );
         sb.append("}");
         return sb.toString();

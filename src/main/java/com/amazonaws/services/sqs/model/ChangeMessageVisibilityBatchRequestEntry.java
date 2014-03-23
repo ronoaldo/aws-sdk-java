@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Encloses a receipt handle and an entry id for each message in ChangeMessageVisibilityBatchRequest.
+ * Encloses a receipt handle and an entry id for each message in
+ * ChangeMessageVisibilityBatch.
+ * </p>
+ * <p>
+ * <b>IMPORTANT:</b> All of the following parameters are list parameters
+ * that must be prefixed with ChangeMessageVisibilityBatchRequestEntry.n,
+ * where n is an integer value starting with 1. For example, a parameter
+ * list for this action might look like this:
+ * </p>
+ * <p>
+ * MessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2</code>
+ * </p>
+ * <p>
+ * MessageVisibilityBatchRequestEntry.1.ReceiptHandle=Your_Receipt_Handle
+ * </code>
+ * </p>
+ * <p>
+ * ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45</code>
  * </p>
  */
-public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  {
+public class ChangeMessageVisibilityBatchRequestEntry implements Serializable {
 
     /**
      * An identifier for this particular receipt handle. This is used to
@@ -56,12 +74,10 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      * @param receiptHandle A receipt handle.
      */
     public ChangeMessageVisibilityBatchRequestEntry(String id, String receiptHandle) {
-        this.id = id;
-        this.receiptHandle = receiptHandle;
+        setId(id);
+        setReceiptHandle(receiptHandle);
     }
 
-    
-    
     /**
      * An identifier for this particular receipt handle. This is used to
      * communicate the result. Note that the <code>Id</code>s of a batch
@@ -100,14 +116,13 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      *         request need to be unique within the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequestEntry withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * A receipt handle.
      *
@@ -134,14 +149,13 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      * @param receiptHandle A receipt handle.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequestEntry withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
         return this;
     }
-    
-    
+
     /**
      * The new value (in seconds) for the message's visibility timeout.
      *
@@ -168,14 +182,13 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
      * @param visibilityTimeout The new value (in seconds) for the message's visibility timeout.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchRequestEntry withVisibilityTimeout(Integer visibilityTimeout) {
         this.visibilityTimeout = visibilityTimeout;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -187,9 +200,9 @@ public class ChangeMessageVisibilityBatchRequestEntry  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() + ",");
         if (getVisibilityTimeout() != null) sb.append("VisibilityTimeout: " + getVisibilityTimeout() );
         sb.append("}");
         return sb.toString();

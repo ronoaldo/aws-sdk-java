@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,57 +13,65 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeAccountAttributesRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeAccountAttributes(DescribeAccountAttributesRequest) DescribeAccountAttributes operation}.
- * 
+ * <p>
+ * Describes the specified attribute of your AWS account.
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeAccountAttributes(DescribeAccountAttributesRequest)
  */
-public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
-
-    private java.util.List<String> attributeNames;
+public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeAccountAttributesRequest> {
 
     /**
-     * Returns the value of the AttributeNames property for this object.
+     * One or more account attribute names.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNames;
+
+    /**
+     * One or more account attribute names.
      *
-     * @return The value of the AttributeNames property for this object.
+     * @return One or more account attribute names.
      */
     public java.util.List<String> getAttributeNames() {
-        
         if (attributeNames == null) {
-            attributeNames = new java.util.ArrayList<String>();
+              attributeNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              attributeNames.setAutoConstruct(true);
         }
         return attributeNames;
     }
     
     /**
-     * Sets the value of the AttributeNames property for this object.
+     * One or more account attribute names.
      *
-     * @param attributeNames The new value for the AttributeNames property for this object.
+     * @param attributeNames One or more account attribute names.
      */
     public void setAttributeNames(java.util.Collection<String> attributeNames) {
         if (attributeNames == null) {
             this.attributeNames = null;
             return;
         }
-
-        java.util.List<String> attributeNamesCopy = new java.util.ArrayList<String>(attributeNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributeNames.size());
         attributeNamesCopy.addAll(attributeNames);
         this.attributeNames = attributeNamesCopy;
     }
     
     /**
-     * Sets the value of the AttributeNames property for this object.
+     * One or more account attribute names.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeNames The new value for the AttributeNames property for this object.
+     * @param attributeNames One or more account attribute names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesRequest withAttributeNames(String... attributeNames) {
         if (getAttributeNames() == null) setAttributeNames(new java.util.ArrayList<String>(attributeNames.length));
@@ -74,25 +82,60 @@ public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  i
     }
     
     /**
-     * Sets the value of the AttributeNames property for this object.
+     * One or more account attribute names.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeNames The new value for the AttributeNames property for this object.
+     * @param attributeNames One or more account attribute names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAccountAttributesRequest withAttributeNames(java.util.Collection<String> attributeNames) {
         if (attributeNames == null) {
             this.attributeNames = null;
         } else {
-            java.util.List<String> attributeNamesCopy = new java.util.ArrayList<String>(attributeNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> attributeNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributeNames.size());
             attributeNamesCopy.addAll(attributeNames);
             this.attributeNames = attributeNamesCopy;
         }
 
         return this;
+    }
+
+    /**
+     * One or more account attribute names.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param attributeNames One or more account attribute names.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeAccountAttributesRequest withAttributeNames(AccountAttributeName... attributeNames) {
+        java.util.ArrayList<String> attributeNamesCopy = new java.util.ArrayList<String>(attributeNames.length);
+        for (AccountAttributeName member : attributeNames) {
+            attributeNamesCopy.add(member.toString());
+        }
+        if (getAttributeNames() == null) {
+            setAttributeNames(attributeNamesCopy);
+        } else {
+            getAttributeNames().addAll(attributeNamesCopy);
+        }
+        return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeAccountAttributesRequest> getDryRunRequest() {
+        Request<DescribeAccountAttributesRequest> request = new DescribeAccountAttributesRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -106,7 +149,7 @@ public class DescribeAccountAttributesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAttributeNames() != null) sb.append("AttributeNames: " + getAttributeNames() );
         sb.append("}");
         return sb.toString();

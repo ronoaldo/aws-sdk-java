@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,89 +13,98 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#enableVgwRoutePropagation(EnableVgwRoutePropagationRequest) EnableVgwRoutePropagation operation}.
- * 
+ * <p>
+ * Enables a virtual private gateway (VGW) to propagate routes to the
+ * routing tables of a VPC.
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#enableVgwRoutePropagation(EnableVgwRoutePropagationRequest)
  */
-public class EnableVgwRoutePropagationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class EnableVgwRoutePropagationRequest extends AmazonWebServiceRequest implements Serializable {
 
+    /**
+     * The ID of the routing table.
+     */
     private String routeTableId;
 
+    /**
+     * The ID of the virtual private gateway.
+     */
     private String gatewayId;
 
     /**
-     * Returns the value of the RouteTableId property for this object.
+     * The ID of the routing table.
      *
-     * @return The value of the RouteTableId property for this object.
+     * @return The ID of the routing table.
      */
     public String getRouteTableId() {
         return routeTableId;
     }
     
     /**
-     * Sets the value of the RouteTableId property for this object.
+     * The ID of the routing table.
      *
-     * @param routeTableId The new value for the RouteTableId property for this object.
+     * @param routeTableId The ID of the routing table.
      */
     public void setRouteTableId(String routeTableId) {
         this.routeTableId = routeTableId;
     }
     
     /**
-     * Sets the value of the RouteTableId property for this object.
+     * The ID of the routing table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routeTableId The new value for the RouteTableId property for this object.
+     * @param routeTableId The ID of the routing table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableVgwRoutePropagationRequest withRouteTableId(String routeTableId) {
         this.routeTableId = routeTableId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the GatewayId property for this object.
+     * The ID of the virtual private gateway.
      *
-     * @return The value of the GatewayId property for this object.
+     * @return The ID of the virtual private gateway.
      */
     public String getGatewayId() {
         return gatewayId;
     }
     
     /**
-     * Sets the value of the GatewayId property for this object.
+     * The ID of the virtual private gateway.
      *
-     * @param gatewayId The new value for the GatewayId property for this object.
+     * @param gatewayId The ID of the virtual private gateway.
      */
     public void setGatewayId(String gatewayId) {
         this.gatewayId = gatewayId;
     }
     
     /**
-     * Sets the value of the GatewayId property for this object.
+     * The ID of the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param gatewayId The new value for the GatewayId property for this object.
+     * @param gatewayId The ID of the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableVgwRoutePropagationRequest withGatewayId(String gatewayId) {
         this.gatewayId = gatewayId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,8 +116,8 @@ public class EnableVgwRoutePropagationRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRouteTableId() != null) sb.append("RouteTableId: " + getRouteTableId() + ",");    	
+        sb.append("{");
+        if (getRouteTableId() != null) sb.append("RouteTableId: " + getRouteTableId() + ",");
         if (getGatewayId() != null) sb.append("GatewayId: " + getGatewayId() );
         sb.append("}");
         return sb.toString();

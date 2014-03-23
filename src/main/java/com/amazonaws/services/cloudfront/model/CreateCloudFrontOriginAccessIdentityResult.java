@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The returned result of the corresponding request.
  * </p>
  */
-public class CreateCloudFrontOriginAccessIdentityResult  implements Serializable  {
+public class CreateCloudFrontOriginAccessIdentityResult implements Serializable {
 
     /**
      * The origin access identity's information.
@@ -65,14 +66,13 @@ public class CreateCloudFrontOriginAccessIdentityResult  implements Serializable
      * @param cloudFrontOriginAccessIdentity The origin access identity's information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCloudFrontOriginAccessIdentityResult withCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentity cloudFrontOriginAccessIdentity) {
         this.cloudFrontOriginAccessIdentity = cloudFrontOriginAccessIdentity;
         return this;
     }
-    
-    
+
     /**
      * The fully qualified URI of the new origin access identity just
      * created. For example:
@@ -111,14 +111,13 @@ public class CreateCloudFrontOriginAccessIdentityResult  implements Serializable
      *         https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCloudFrontOriginAccessIdentityResult withLocation(String location) {
         this.location = location;
         return this;
     }
-    
-    
+
     /**
      * The current version of the origin access identity created.
      *
@@ -145,14 +144,13 @@ public class CreateCloudFrontOriginAccessIdentityResult  implements Serializable
      * @param eTag The current version of the origin access identity created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCloudFrontOriginAccessIdentityResult withETag(String eTag) {
         this.eTag = eTag;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -164,9 +162,9 @@ public class CreateCloudFrontOriginAccessIdentityResult  implements Serializable
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCloudFrontOriginAccessIdentity() != null) sb.append("CloudFrontOriginAccessIdentity: " + getCloudFrontOriginAccessIdentity() + ",");    	
-        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");    	
+        sb.append("{");
+        if (getCloudFrontOriginAccessIdentity() != null) sb.append("CloudFrontOriginAccessIdentity: " + getCloudFrontOriginAccessIdentity() + ",");
+        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");
         if (getETag() != null) sb.append("ETag: " + getETag() );
         sb.append("}");
         return sb.toString();

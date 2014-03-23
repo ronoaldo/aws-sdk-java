@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,57 +13,63 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeExportTasks(DescribeExportTasksRequest) DescribeExportTasks operation}.
- * 
+ * <p>
+ * Describes one or more of your export tasks.
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeExportTasks(DescribeExportTasksRequest)
  */
-public class DescribeExportTasksRequest extends AmazonWebServiceRequest  implements Serializable  {
-
-    private java.util.List<String> exportTaskIds;
+public class DescribeExportTasksRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * Returns the value of the ExportTaskIds property for this object.
+     * One or more export task IDs.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> exportTaskIds;
+
+    /**
+     * One or more export task IDs.
      *
-     * @return The value of the ExportTaskIds property for this object.
+     * @return One or more export task IDs.
      */
     public java.util.List<String> getExportTaskIds() {
-        
         if (exportTaskIds == null) {
-            exportTaskIds = new java.util.ArrayList<String>();
+              exportTaskIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              exportTaskIds.setAutoConstruct(true);
         }
         return exportTaskIds;
     }
     
     /**
-     * Sets the value of the ExportTaskIds property for this object.
+     * One or more export task IDs.
      *
-     * @param exportTaskIds The new value for the ExportTaskIds property for this object.
+     * @param exportTaskIds One or more export task IDs.
      */
     public void setExportTaskIds(java.util.Collection<String> exportTaskIds) {
         if (exportTaskIds == null) {
             this.exportTaskIds = null;
             return;
         }
-
-        java.util.List<String> exportTaskIdsCopy = new java.util.ArrayList<String>(exportTaskIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> exportTaskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(exportTaskIds.size());
         exportTaskIdsCopy.addAll(exportTaskIds);
         this.exportTaskIds = exportTaskIdsCopy;
     }
     
     /**
-     * Sets the value of the ExportTaskIds property for this object.
+     * One or more export task IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exportTaskIds The new value for the ExportTaskIds property for this object.
+     * @param exportTaskIds One or more export task IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeExportTasksRequest withExportTaskIds(String... exportTaskIds) {
         if (getExportTaskIds() == null) setExportTaskIds(new java.util.ArrayList<String>(exportTaskIds.length));
@@ -74,27 +80,27 @@ public class DescribeExportTasksRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * Sets the value of the ExportTaskIds property for this object.
+     * One or more export task IDs.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param exportTaskIds The new value for the ExportTaskIds property for this object.
+     * @param exportTaskIds One or more export task IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeExportTasksRequest withExportTaskIds(java.util.Collection<String> exportTaskIds) {
         if (exportTaskIds == null) {
             this.exportTaskIds = null;
         } else {
-            java.util.List<String> exportTaskIdsCopy = new java.util.ArrayList<String>(exportTaskIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> exportTaskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(exportTaskIds.size());
             exportTaskIdsCopy.addAll(exportTaskIds);
             this.exportTaskIds = exportTaskIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -106,7 +112,7 @@ public class DescribeExportTasksRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getExportTaskIds() != null) sb.append("ExportTaskIds: " + getExportTaskIds() );
         sb.append("}");
         return sb.toString();

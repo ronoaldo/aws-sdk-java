@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,38 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateDhcpOptionsRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#createDhcpOptions(CreateDhcpOptionsRequest) CreateDhcpOptions operation}.
  * <p>
- * Creates a set of DHCP options that you can then associate with one or more VPCs, causing all existing and new instances that you launch in those VPCs
- * to use the set of DHCP options. The following table lists the individual DHCP options you can specify. For more information about the options, go to
- * <a href="http://www.ietf.org/rfc/rfc2132.txt"> http://www.ietf.org/rfc/rfc2132.txt </a>
+ * Creates a set of DHCP options for your VPC. After creating the set,
+ * you must associate it with the VPC, causing all existing and new
+ * instances that you launch in the VPC to use this set of DHCP options.
+ * The following are the individual DHCP options you can specify. For
+ * more information about the options, see
+ * <a href="http://www.ietf.org/rfc/rfc2132.txt"> RFC 2132 </a>
+ * .
+ * </p>
+ * <p>
+ * For more information about DHCP options, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html"> DHCP Options Sets </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createDhcpOptions(CreateDhcpOptionsRequest)
  */
-public class CreateDhcpOptionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateDhcpOptionsRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateDhcpOptionsRequest> {
 
     /**
-     * A set of one or more DHCP configurations.
+     * A DHCP configuration option.
      */
-    private java.util.List<DhcpConfiguration> dhcpConfigurations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration> dhcpConfigurations;
 
     /**
      * Default constructor for a new CreateDhcpOptionsRequest object.  Callers should use the
@@ -44,52 +57,49 @@ public class CreateDhcpOptionsRequest extends AmazonWebServiceRequest  implement
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param dhcpConfigurations A set of one or more DHCP configurations.
+     * @param dhcpConfigurations A DHCP configuration option.
      */
     public CreateDhcpOptionsRequest(java.util.List<DhcpConfiguration> dhcpConfigurations) {
-        this.dhcpConfigurations = dhcpConfigurations;
+        setDhcpConfigurations(dhcpConfigurations);
     }
 
-    
-    
     /**
-     * A set of one or more DHCP configurations.
+     * A DHCP configuration option.
      *
-     * @return A set of one or more DHCP configurations.
+     * @return A DHCP configuration option.
      */
     public java.util.List<DhcpConfiguration> getDhcpConfigurations() {
-        
         if (dhcpConfigurations == null) {
-            dhcpConfigurations = new java.util.ArrayList<DhcpConfiguration>();
+              dhcpConfigurations = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration>();
+              dhcpConfigurations.setAutoConstruct(true);
         }
         return dhcpConfigurations;
     }
     
     /**
-     * A set of one or more DHCP configurations.
+     * A DHCP configuration option.
      *
-     * @param dhcpConfigurations A set of one or more DHCP configurations.
+     * @param dhcpConfigurations A DHCP configuration option.
      */
     public void setDhcpConfigurations(java.util.Collection<DhcpConfiguration> dhcpConfigurations) {
         if (dhcpConfigurations == null) {
             this.dhcpConfigurations = null;
             return;
         }
-
-        java.util.List<DhcpConfiguration> dhcpConfigurationsCopy = new java.util.ArrayList<DhcpConfiguration>(dhcpConfigurations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration> dhcpConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration>(dhcpConfigurations.size());
         dhcpConfigurationsCopy.addAll(dhcpConfigurations);
         this.dhcpConfigurations = dhcpConfigurationsCopy;
     }
     
     /**
-     * A set of one or more DHCP configurations.
+     * A DHCP configuration option.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpConfigurations A set of one or more DHCP configurations.
+     * @param dhcpConfigurations A DHCP configuration option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateDhcpOptionsRequest withDhcpConfigurations(DhcpConfiguration... dhcpConfigurations) {
         if (getDhcpConfigurations() == null) setDhcpConfigurations(new java.util.ArrayList<DhcpConfiguration>(dhcpConfigurations.length));
@@ -100,25 +110,37 @@ public class CreateDhcpOptionsRequest extends AmazonWebServiceRequest  implement
     }
     
     /**
-     * A set of one or more DHCP configurations.
+     * A DHCP configuration option.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dhcpConfigurations A set of one or more DHCP configurations.
+     * @param dhcpConfigurations A DHCP configuration option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateDhcpOptionsRequest withDhcpConfigurations(java.util.Collection<DhcpConfiguration> dhcpConfigurations) {
         if (dhcpConfigurations == null) {
             this.dhcpConfigurations = null;
         } else {
-            java.util.List<DhcpConfiguration> dhcpConfigurationsCopy = new java.util.ArrayList<DhcpConfiguration>(dhcpConfigurations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration> dhcpConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DhcpConfiguration>(dhcpConfigurations.size());
             dhcpConfigurationsCopy.addAll(dhcpConfigurations);
             this.dhcpConfigurations = dhcpConfigurationsCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateDhcpOptionsRequest> getDryRunRequest() {
+        Request<CreateDhcpOptionsRequest> request = new CreateDhcpOptionsRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -132,7 +154,7 @@ public class CreateDhcpOptionsRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDhcpConfigurations() != null) sb.append("DhcpConfigurations: " + getDhcpConfigurations() );
         sb.append("}");
         return sb.toString();

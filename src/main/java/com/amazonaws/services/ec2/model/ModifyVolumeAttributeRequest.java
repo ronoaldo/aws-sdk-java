@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,96 +13,139 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ModifyVolumeAttributeRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#modifyVolumeAttribute(ModifyVolumeAttributeRequest) ModifyVolumeAttribute operation}.
- * 
+ * <p>
+ * Modifies a volume attribute.
+ * </p>
+ * <p>
+ * By default, all I/O operations for the volume are suspended when the
+ * data on the volume is determined to be potentially inconsistent, to
+ * prevent undetectable, latent data corruption. The I/O access to the
+ * volume can be resumed by first enabling I/O access and then checking
+ * the data consistency on your volume.
+ * </p>
+ * <p>
+ * You can change the default behavior to resume I/O operations. We
+ * recommend that you change this only for boot volumes or for volumes
+ * that are stateless or disposable.
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifyVolumeAttribute(ModifyVolumeAttributeRequest)
  */
-public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifyVolumeAttributeRequest> {
 
+    /**
+     * The ID of the volume.
+     */
     private String volumeId;
 
+    /**
+     * Indicates whether the volume should be auto-enabled for I/O
+     * operations.
+     */
     private Boolean autoEnableIO;
 
     /**
-     * Returns the value of the VolumeId property for this object.
+     * The ID of the volume.
      *
-     * @return The value of the VolumeId property for this object.
+     * @return The ID of the volume.
      */
     public String getVolumeId() {
         return volumeId;
     }
     
     /**
-     * Sets the value of the VolumeId property for this object.
+     * The ID of the volume.
      *
-     * @param volumeId The new value for the VolumeId property for this object.
+     * @param volumeId The ID of the volume.
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
     
     /**
-     * Sets the value of the VolumeId property for this object.
+     * The ID of the volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeId The new value for the VolumeId property for this object.
+     * @param volumeId The ID of the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyVolumeAttributeRequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the AutoEnableIO property for this object.
+     * Indicates whether the volume should be auto-enabled for I/O
+     * operations.
      *
-     * @return The value of the AutoEnableIO property for this object.
+     * @return Indicates whether the volume should be auto-enabled for I/O
+     *         operations.
      */
     public Boolean isAutoEnableIO() {
         return autoEnableIO;
     }
     
     /**
-     * Sets the value of the AutoEnableIO property for this object.
+     * Indicates whether the volume should be auto-enabled for I/O
+     * operations.
      *
-     * @param autoEnableIO The new value for the AutoEnableIO property for this object.
+     * @param autoEnableIO Indicates whether the volume should be auto-enabled for I/O
+     *         operations.
      */
     public void setAutoEnableIO(Boolean autoEnableIO) {
         this.autoEnableIO = autoEnableIO;
     }
     
     /**
-     * Sets the value of the AutoEnableIO property for this object.
+     * Indicates whether the volume should be auto-enabled for I/O
+     * operations.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param autoEnableIO The new value for the AutoEnableIO property for this object.
+     * @param autoEnableIO Indicates whether the volume should be auto-enabled for I/O
+     *         operations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyVolumeAttributeRequest withAutoEnableIO(Boolean autoEnableIO) {
         this.autoEnableIO = autoEnableIO;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the AutoEnableIO property for this object.
+     * Indicates whether the volume should be auto-enabled for I/O
+     * operations.
      *
-     * @return The value of the AutoEnableIO property for this object.
+     * @return Indicates whether the volume should be auto-enabled for I/O
+     *         operations.
      */
     public Boolean getAutoEnableIO() {
         return autoEnableIO;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ModifyVolumeAttributeRequest> getDryRunRequest() {
+        Request<ModifyVolumeAttributeRequest> request = new ModifyVolumeAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -116,8 +159,8 @@ public class ModifyVolumeAttributeRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
+        sb.append("{");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
         if (isAutoEnableIO() != null) sb.append("AutoEnableIO: " + isAutoEnableIO() );
         sb.append("}");
         return sb.toString();

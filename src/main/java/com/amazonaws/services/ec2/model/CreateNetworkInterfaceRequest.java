@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,169 +13,215 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateNetworkInterfaceRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#createNetworkInterface(CreateNetworkInterfaceRequest) CreateNetworkInterface operation}.
- * 
+ * <p>
+ * Creates a network interface in the specified subnet.
+ * </p>
+ * <p>
+ * For more information about network interfaces, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html"> Elastic Network Interfaces </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createNetworkInterface(CreateNetworkInterfaceRequest)
  */
-public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateNetworkInterfaceRequest> {
 
+    /**
+     * The ID of the subnet to associate with the network interface.
+     */
     private String subnetId;
 
+    /**
+     * A description for the network interface.
+     */
     private String description;
 
+    /**
+     * The primary private IP address of the network interface. If you don't
+     * specify an IP address, Amazon EC2 selects one for you from the subnet
+     * range.
+     */
     private String privateIpAddress;
 
-    private java.util.List<String> groups;
+    /**
+     * The IDs of one or more security groups.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groups;
 
-    private java.util.List<PrivateIpAddressSpecification> privateIpAddresses;
+    /**
+     * One or more private IP addresses.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification> privateIpAddresses;
 
+    /**
+     * The number of secondary private IP addresses to assign to a network
+     * interface. When you specify a number of secondary IP addresses, Amazon
+     * EC2 selects these IP addresses within the subnet range. <p>The number
+     * of IP addresses you can assign to a network interface varies by
+     * instance type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private
+     * IP Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic
+     * Compute Cloud User Guide</i>.
+     */
     private Integer secondaryPrivateIpAddressCount;
 
     /**
-     * Returns the value of the SubnetId property for this object.
+     * The ID of the subnet to associate with the network interface.
      *
-     * @return The value of the SubnetId property for this object.
+     * @return The ID of the subnet to associate with the network interface.
      */
     public String getSubnetId() {
         return subnetId;
     }
     
     /**
-     * Sets the value of the SubnetId property for this object.
+     * The ID of the subnet to associate with the network interface.
      *
-     * @param subnetId The new value for the SubnetId property for this object.
+     * @param subnetId The ID of the subnet to associate with the network interface.
      */
     public void setSubnetId(String subnetId) {
         this.subnetId = subnetId;
     }
     
     /**
-     * Sets the value of the SubnetId property for this object.
+     * The ID of the subnet to associate with the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetId The new value for the SubnetId property for this object.
+     * @param subnetId The ID of the subnet to associate with the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withSubnetId(String subnetId) {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Description property for this object.
+     * A description for the network interface.
      *
-     * @return The value of the Description property for this object.
+     * @return A description for the network interface.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description for the network interface.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description for the network interface.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * A description for the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description A description for the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the PrivateIpAddress property for this object.
+     * The primary private IP address of the network interface. If you don't
+     * specify an IP address, Amazon EC2 selects one for you from the subnet
+     * range.
      *
-     * @return The value of the PrivateIpAddress property for this object.
+     * @return The primary private IP address of the network interface. If you don't
+     *         specify an IP address, Amazon EC2 selects one for you from the subnet
+     *         range.
      */
     public String getPrivateIpAddress() {
         return privateIpAddress;
     }
     
     /**
-     * Sets the value of the PrivateIpAddress property for this object.
+     * The primary private IP address of the network interface. If you don't
+     * specify an IP address, Amazon EC2 selects one for you from the subnet
+     * range.
      *
-     * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
+     * @param privateIpAddress The primary private IP address of the network interface. If you don't
+     *         specify an IP address, Amazon EC2 selects one for you from the subnet
+     *         range.
      */
     public void setPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
     }
     
     /**
-     * Sets the value of the PrivateIpAddress property for this object.
+     * The primary private IP address of the network interface. If you don't
+     * specify an IP address, Amazon EC2 selects one for you from the subnet
+     * range.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateIpAddress The new value for the PrivateIpAddress property for this object.
+     * @param privateIpAddress The primary private IP address of the network interface. If you don't
+     *         specify an IP address, Amazon EC2 selects one for you from the subnet
+     *         range.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withPrivateIpAddress(String privateIpAddress) {
         this.privateIpAddress = privateIpAddress;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Groups property for this object.
+     * The IDs of one or more security groups.
      *
-     * @return The value of the Groups property for this object.
+     * @return The IDs of one or more security groups.
      */
     public java.util.List<String> getGroups() {
-        
         if (groups == null) {
-            groups = new java.util.ArrayList<String>();
+              groups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groups.setAutoConstruct(true);
         }
         return groups;
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * The IDs of one or more security groups.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups The IDs of one or more security groups.
      */
     public void setGroups(java.util.Collection<String> groups) {
         if (groups == null) {
             this.groups = null;
             return;
         }
-
-        java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
         groupsCopy.addAll(groups);
         this.groups = groupsCopy;
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * The IDs of one or more security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups The IDs of one or more security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withGroups(String... groups) {
         if (getGroups() == null) setGroups(new java.util.ArrayList<String>(groups.length));
@@ -186,65 +232,64 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * The IDs of one or more security groups.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups The IDs of one or more security groups.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withGroups(java.util.Collection<String> groups) {
         if (groups == null) {
             this.groups = null;
         } else {
-            java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
             groupsCopy.addAll(groups);
             this.groups = groupsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the PrivateIpAddresses property for this object.
+     * One or more private IP addresses.
      *
-     * @return The value of the PrivateIpAddresses property for this object.
+     * @return One or more private IP addresses.
      */
     public java.util.List<PrivateIpAddressSpecification> getPrivateIpAddresses() {
-        
         if (privateIpAddresses == null) {
-            privateIpAddresses = new java.util.ArrayList<PrivateIpAddressSpecification>();
+              privateIpAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification>();
+              privateIpAddresses.setAutoConstruct(true);
         }
         return privateIpAddresses;
     }
     
     /**
-     * Sets the value of the PrivateIpAddresses property for this object.
+     * One or more private IP addresses.
      *
-     * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
+     * @param privateIpAddresses One or more private IP addresses.
      */
     public void setPrivateIpAddresses(java.util.Collection<PrivateIpAddressSpecification> privateIpAddresses) {
         if (privateIpAddresses == null) {
             this.privateIpAddresses = null;
             return;
         }
-
-        java.util.List<PrivateIpAddressSpecification> privateIpAddressesCopy = new java.util.ArrayList<PrivateIpAddressSpecification>(privateIpAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification> privateIpAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification>(privateIpAddresses.size());
         privateIpAddressesCopy.addAll(privateIpAddresses);
         this.privateIpAddresses = privateIpAddressesCopy;
     }
     
     /**
-     * Sets the value of the PrivateIpAddresses property for this object.
+     * One or more private IP addresses.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
+     * @param privateIpAddresses One or more private IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withPrivateIpAddresses(PrivateIpAddressSpecification... privateIpAddresses) {
         if (getPrivateIpAddresses() == null) setPrivateIpAddresses(new java.util.ArrayList<PrivateIpAddressSpecification>(privateIpAddresses.length));
@@ -255,66 +300,113 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * Sets the value of the PrivateIpAddresses property for this object.
+     * One or more private IP addresses.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param privateIpAddresses The new value for the PrivateIpAddresses property for this object.
+     * @param privateIpAddresses One or more private IP addresses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withPrivateIpAddresses(java.util.Collection<PrivateIpAddressSpecification> privateIpAddresses) {
         if (privateIpAddresses == null) {
             this.privateIpAddresses = null;
         } else {
-            java.util.List<PrivateIpAddressSpecification> privateIpAddressesCopy = new java.util.ArrayList<PrivateIpAddressSpecification>(privateIpAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification> privateIpAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PrivateIpAddressSpecification>(privateIpAddresses.size());
             privateIpAddressesCopy.addAll(privateIpAddresses);
             this.privateIpAddresses = privateIpAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the SecondaryPrivateIpAddressCount property for
-     * this object.
+     * The number of secondary private IP addresses to assign to a network
+     * interface. When you specify a number of secondary IP addresses, Amazon
+     * EC2 selects these IP addresses within the subnet range. <p>The number
+     * of IP addresses you can assign to a network interface varies by
+     * instance type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private
+     * IP Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic
+     * Compute Cloud User Guide</i>.
      *
-     * @return The value of the SecondaryPrivateIpAddressCount property for this
-     *         object.
+     * @return The number of secondary private IP addresses to assign to a network
+     *         interface. When you specify a number of secondary IP addresses, Amazon
+     *         EC2 selects these IP addresses within the subnet range. <p>The number
+     *         of IP addresses you can assign to a network interface varies by
+     *         instance type. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private
+     *         IP Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic
+     *         Compute Cloud User Guide</i>.
      */
     public Integer getSecondaryPrivateIpAddressCount() {
         return secondaryPrivateIpAddressCount;
     }
     
     /**
-     * Sets the value of the SecondaryPrivateIpAddressCount property for this
-     * object.
+     * The number of secondary private IP addresses to assign to a network
+     * interface. When you specify a number of secondary IP addresses, Amazon
+     * EC2 selects these IP addresses within the subnet range. <p>The number
+     * of IP addresses you can assign to a network interface varies by
+     * instance type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private
+     * IP Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic
+     * Compute Cloud User Guide</i>.
      *
-     * @param secondaryPrivateIpAddressCount The new value for the SecondaryPrivateIpAddressCount property for this
-     *         object.
+     * @param secondaryPrivateIpAddressCount The number of secondary private IP addresses to assign to a network
+     *         interface. When you specify a number of secondary IP addresses, Amazon
+     *         EC2 selects these IP addresses within the subnet range. <p>The number
+     *         of IP addresses you can assign to a network interface varies by
+     *         instance type. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private
+     *         IP Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic
+     *         Compute Cloud User Guide</i>.
      */
     public void setSecondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
         this.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
     }
     
     /**
-     * Sets the value of the SecondaryPrivateIpAddressCount property for this
-     * object.
+     * The number of secondary private IP addresses to assign to a network
+     * interface. When you specify a number of secondary IP addresses, Amazon
+     * EC2 selects these IP addresses within the subnet range. <p>The number
+     * of IP addresses you can assign to a network interface varies by
+     * instance type. For more information, see <a
+     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private
+     * IP Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic
+     * Compute Cloud User Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param secondaryPrivateIpAddressCount The new value for the SecondaryPrivateIpAddressCount property for this
-     *         object.
+     * @param secondaryPrivateIpAddressCount The number of secondary private IP addresses to assign to a network
+     *         interface. When you specify a number of secondary IP addresses, Amazon
+     *         EC2 selects these IP addresses within the subnet range. <p>The number
+     *         of IP addresses you can assign to a network interface varies by
+     *         instance type. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">Private
+     *         IP Addresses Per ENI Per Instance Type</a> in the <i>Amazon Elastic
+     *         Compute Cloud User Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceRequest withSecondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
         this.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateNetworkInterfaceRequest> getDryRunRequest() {
+        Request<CreateNetworkInterfaceRequest> request = new CreateNetworkInterfaceRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -327,12 +419,12 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");    	
-        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");    	
-        if (getPrivateIpAddresses() != null) sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() + ",");    	
+        sb.append("{");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getPrivateIpAddress() != null) sb.append("PrivateIpAddress: " + getPrivateIpAddress() + ",");
+        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");
+        if (getPrivateIpAddresses() != null) sb.append("PrivateIpAddresses: " + getPrivateIpAddresses() + ",");
         if (getSecondaryPrivateIpAddressCount() != null) sb.append("SecondaryPrivateIpAddressCount: " + getSecondaryPrivateIpAddressCount() );
         sb.append("}");
         return sb.toString();

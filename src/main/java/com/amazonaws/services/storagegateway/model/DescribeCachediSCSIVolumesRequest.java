@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,88 +13,67 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#describeCachediSCSIVolumes(DescribeCachediSCSIVolumesRequest) DescribeCachediSCSIVolumes operation}.
  * <p>
- * This operation returns a description of the gateway volumes specified in the request. This operation is supported only for the gateway-cached volume
- * architecture.
+ * This operation returns a description of the gateway volumes specified
+ * in the request. This operation is supported only for the
+ * gateway-cached volume architecture.
  * </p>
  * <p>
- * The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by
- * volume Amazon Resource Name (ARN).
+ * The list of gateway volumes in the request must be from one gateway.
+ * In the response Amazon Storage Gateway returns volume information
+ * sorted by volume Amazon Resource Name (ARN).
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#describeCachediSCSIVolumes(DescribeCachediSCSIVolumesRequest)
  */
-public class DescribeCachediSCSIVolumesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeCachediSCSIVolumesRequest extends AmazonWebServiceRequest implements Serializable {
+
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeARNs;
 
     /**
-     * An array of strings, where each string represents the Amazon Resource
-     * Name (ARN) of a cached volume. All of the specified cached volumes
-     * must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     * ARNs of a gateway.
-     */
-    private java.util.List<String> volumeARNs;
-
-    /**
-     * An array of strings, where each string represents the Amazon Resource
-     * Name (ARN) of a cached volume. All of the specified cached volumes
-     * must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     * ARNs of a gateway.
+     * Returns the value of the VolumeARNs property for this object.
      *
-     * @return An array of strings, where each string represents the Amazon Resource
-     *         Name (ARN) of a cached volume. All of the specified cached volumes
-     *         must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     *         ARNs of a gateway.
+     * @return The value of the VolumeARNs property for this object.
      */
     public java.util.List<String> getVolumeARNs() {
-        
         if (volumeARNs == null) {
-            volumeARNs = new java.util.ArrayList<String>();
+              volumeARNs = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              volumeARNs.setAutoConstruct(true);
         }
         return volumeARNs;
     }
     
     /**
-     * An array of strings, where each string represents the Amazon Resource
-     * Name (ARN) of a cached volume. All of the specified cached volumes
-     * must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     * ARNs of a gateway.
+     * Sets the value of the VolumeARNs property for this object.
      *
-     * @param volumeARNs An array of strings, where each string represents the Amazon Resource
-     *         Name (ARN) of a cached volume. All of the specified cached volumes
-     *         must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     *         ARNs of a gateway.
+     * @param volumeARNs The new value for the VolumeARNs property for this object.
      */
     public void setVolumeARNs(java.util.Collection<String> volumeARNs) {
         if (volumeARNs == null) {
             this.volumeARNs = null;
             return;
         }
-
-        java.util.List<String> volumeARNsCopy = new java.util.ArrayList<String>(volumeARNs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeARNsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(volumeARNs.size());
         volumeARNsCopy.addAll(volumeARNs);
         this.volumeARNs = volumeARNsCopy;
     }
     
     /**
-     * An array of strings, where each string represents the Amazon Resource
-     * Name (ARN) of a cached volume. All of the specified cached volumes
-     * must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     * ARNs of a gateway.
+     * Sets the value of the VolumeARNs property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeARNs An array of strings, where each string represents the Amazon Resource
-     *         Name (ARN) of a cached volume. All of the specified cached volumes
-     *         must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     *         ARNs of a gateway.
+     * @param volumeARNs The new value for the VolumeARNs property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCachediSCSIVolumesRequest withVolumeARNs(String... volumeARNs) {
         if (getVolumeARNs() == null) setVolumeARNs(new java.util.ArrayList<String>(volumeARNs.length));
@@ -105,33 +84,27 @@ public class DescribeCachediSCSIVolumesRequest extends AmazonWebServiceRequest  
     }
     
     /**
-     * An array of strings, where each string represents the Amazon Resource
-     * Name (ARN) of a cached volume. All of the specified cached volumes
-     * must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     * ARNs of a gateway.
+     * Sets the value of the VolumeARNs property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeARNs An array of strings, where each string represents the Amazon Resource
-     *         Name (ARN) of a cached volume. All of the specified cached volumes
-     *         must be from the same gateway. Use <a>ListVolumes</a> to get volume
-     *         ARNs of a gateway.
+     * @param volumeARNs The new value for the VolumeARNs property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCachediSCSIVolumesRequest withVolumeARNs(java.util.Collection<String> volumeARNs) {
         if (volumeARNs == null) {
             this.volumeARNs = null;
         } else {
-            java.util.List<String> volumeARNsCopy = new java.util.ArrayList<String>(volumeARNs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeARNsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(volumeARNs.size());
             volumeARNsCopy.addAll(volumeARNs);
             this.volumeARNs = volumeARNsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -143,7 +116,7 @@ public class DescribeCachediSCSIVolumesRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolumeARNs() != null) sb.append("VolumeARNs: " + getVolumeARNs() );
         sb.append("}");
         return sb.toString();

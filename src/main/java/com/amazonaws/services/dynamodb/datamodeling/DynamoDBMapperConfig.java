@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,8 @@ package com.amazonaws.services.dynamodb.datamodeling;
  * // Delete the object even if the version field is out of date
  * mapper.delete(obj, new DynamoDBMapperConfig(SaveBehavior.CLOBBER));
  * </pre>
+ * 
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig} instead.
  */
 @Deprecated
 public class DynamoDBMapperConfig {

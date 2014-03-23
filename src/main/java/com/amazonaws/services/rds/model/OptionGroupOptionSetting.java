@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Option Group option settings are used to display settings available for each option with their default values and other information. These values are
- * used with the DescribeOptionGroupOptions action.
+ * option group option settings are used to display settings available
+ * for each option with their default values and other information. These
+ * values are used with the DescribeOptionGroupOptions action.
  * </p>
  */
-public class OptionGroupOptionSetting  implements Serializable  {
+public class OptionGroupOptionSetting implements Serializable {
 
     /**
      * The name of the option group option.
@@ -80,14 +82,13 @@ public class OptionGroupOptionSetting  implements Serializable  {
      * @param settingName The name of the option group option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupOptionSetting withSettingName(String settingName) {
         this.settingName = settingName;
         return this;
     }
-    
-    
+
     /**
      * The description of the option group option.
      *
@@ -114,14 +115,13 @@ public class OptionGroupOptionSetting  implements Serializable  {
      * @param settingDescription The description of the option group option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupOptionSetting withSettingDescription(String settingDescription) {
         this.settingDescription = settingDescription;
         return this;
     }
-    
-    
+
     /**
      * The default value for the option group option.
      *
@@ -148,14 +148,13 @@ public class OptionGroupOptionSetting  implements Serializable  {
      * @param defaultValue The default value for the option group option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupOptionSetting withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * The DB engine specific parameter type for the option group option.
      *
@@ -182,14 +181,13 @@ public class OptionGroupOptionSetting  implements Serializable  {
      * @param applyType The DB engine specific parameter type for the option group option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupOptionSetting withApplyType(String applyType) {
         this.applyType = applyType;
         return this;
     }
-    
-    
+
     /**
      * Indicates the acceptable values for the option group option.
      *
@@ -216,14 +214,13 @@ public class OptionGroupOptionSetting  implements Serializable  {
      * @param allowedValues Indicates the acceptable values for the option group option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupOptionSetting withAllowedValues(String allowedValues) {
         this.allowedValues = allowedValues;
         return this;
     }
-    
-    
+
     /**
      * Boolean value where true indicates that this option group option can
      * be changed from the default value.
@@ -256,14 +253,13 @@ public class OptionGroupOptionSetting  implements Serializable  {
      *         be changed from the default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupOptionSetting withIsModifiable(Boolean isModifiable) {
         this.isModifiable = isModifiable;
         return this;
     }
-    
-    
+
     /**
      * Boolean value where true indicates that this option group option can
      * be changed from the default value.
@@ -274,7 +270,7 @@ public class OptionGroupOptionSetting  implements Serializable  {
     public Boolean getIsModifiable() {
         return isModifiable;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -286,12 +282,12 @@ public class OptionGroupOptionSetting  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSettingName() != null) sb.append("SettingName: " + getSettingName() + ",");    	
-        if (getSettingDescription() != null) sb.append("SettingDescription: " + getSettingDescription() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
-        if (getApplyType() != null) sb.append("ApplyType: " + getApplyType() + ",");    	
-        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");    	
+        sb.append("{");
+        if (getSettingName() != null) sb.append("SettingName: " + getSettingName() + ",");
+        if (getSettingDescription() != null) sb.append("SettingDescription: " + getSettingDescription() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
+        if (getApplyType() != null) sb.append("ApplyType: " + getApplyType() + ",");
+        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");
         if (isModifiable() != null) sb.append("IsModifiable: " + isModifiable() );
         sb.append("}");
         return sb.toString();

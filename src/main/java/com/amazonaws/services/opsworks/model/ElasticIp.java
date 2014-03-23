@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,17 +21,22 @@ import java.io.Serializable;
  * Describes an Elastic IP address.
  * </p>
  */
-public class ElasticIp  implements Serializable  {
+public class ElasticIp implements Serializable {
 
     /**
-     * The Elastic IP address
+     * The IP address.
      */
     private String ip;
 
     /**
-     * The Elastic IP address name.
+     * The name.
      */
     private String name;
+
+    /**
+     * The domain.
+     */
+    private String domain;
 
     /**
      * The AWS region. For more information, see <a
@@ -40,73 +46,109 @@ public class ElasticIp  implements Serializable  {
     private String region;
 
     /**
-     * The Elastic IP address
+     * The ID of the instance that the address is attached to.
+     */
+    private String instanceId;
+
+    /**
+     * The IP address.
      *
-     * @return The Elastic IP address
+     * @return The IP address.
      */
     public String getIp() {
         return ip;
     }
     
     /**
-     * The Elastic IP address
+     * The IP address.
      *
-     * @param ip The Elastic IP address
+     * @param ip The IP address.
      */
     public void setIp(String ip) {
         this.ip = ip;
     }
     
     /**
-     * The Elastic IP address
+     * The IP address.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param ip The Elastic IP address
+     * @param ip The IP address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticIp withIp(String ip) {
         this.ip = ip;
         return this;
     }
-    
-    
+
     /**
-     * The Elastic IP address name.
+     * The name.
      *
-     * @return The Elastic IP address name.
+     * @return The name.
      */
     public String getName() {
         return name;
     }
     
     /**
-     * The Elastic IP address name.
+     * The name.
      *
-     * @param name The Elastic IP address name.
+     * @param name The name.
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * The Elastic IP address name.
+     * The name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param name The Elastic IP address name.
+     * @param name The name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticIp withName(String name) {
         this.name = name;
         return this;
     }
+
+    /**
+     * The domain.
+     *
+     * @return The domain.
+     */
+    public String getDomain() {
+        return domain;
+    }
     
+    /**
+     * The domain.
+     *
+     * @param domain The domain.
+     */
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
     
+    /**
+     * The domain.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param domain The domain.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ElasticIp withDomain(String domain) {
+        this.domain = domain;
+        return this;
+    }
+
     /**
      * The AWS region. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
@@ -145,14 +187,46 @@ public class ElasticIp  implements Serializable  {
      *         and Endpoints</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticIp withRegion(String region) {
         this.region = region;
         return this;
     }
+
+    /**
+     * The ID of the instance that the address is attached to.
+     *
+     * @return The ID of the instance that the address is attached to.
+     */
+    public String getInstanceId() {
+        return instanceId;
+    }
     
+    /**
+     * The ID of the instance that the address is attached to.
+     *
+     * @param instanceId The ID of the instance that the address is attached to.
+     */
+    public void setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
+    }
     
+    /**
+     * The ID of the instance that the address is attached to.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param instanceId The ID of the instance that the address is attached to.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ElasticIp withInstanceId(String instanceId) {
+        this.instanceId = instanceId;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -164,10 +238,12 @@ public class ElasticIp  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIp() != null) sb.append("Ip: " + getIp() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getRegion() != null) sb.append("Region: " + getRegion() );
+        sb.append("{");
+        if (getIp() != null) sb.append("Ip: " + getIp() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() );
         sb.append("}");
         return sb.toString();
     }
@@ -179,7 +255,9 @@ public class ElasticIp  implements Serializable  {
         
         hashCode = prime * hashCode + ((getIp() == null) ? 0 : getIp().hashCode()); 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode()); 
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode()); 
         hashCode = prime * hashCode + ((getRegion() == null) ? 0 : getRegion().hashCode()); 
+        hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode()); 
         return hashCode;
     }
     
@@ -195,8 +273,12 @@ public class ElasticIp  implements Serializable  {
         if (other.getIp() != null && other.getIp().equals(this.getIp()) == false) return false; 
         if (other.getName() == null ^ this.getName() == null) return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false) return false; 
+        if (other.getDomain() == null ^ this.getDomain() == null) return false;
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false) return false; 
         if (other.getRegion() == null ^ this.getRegion() == null) return false;
         if (other.getRegion() != null && other.getRegion().equals(this.getRegion()) == false) return false; 
+        if (other.getInstanceId() == null ^ this.getInstanceId() == null) return false;
+        if (other.getInstanceId() != null && other.getInstanceId().equals(this.getInstanceId()) == false) return false; 
         return true;
     }
     

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The Tag type is used by <code>CreateStack</code> in the <code>Tags</code> parameter. It allows you to specify a key/value pair that can be used to
- * store information related to cost allocation for an AWS CloudFormation stack.
+ * The Tag type is used by <code>CreateStack</code> in the
+ * <code>Tags</code> parameter. It allows you to specify a key/value pair
+ * that can be used to store information related to cost allocation for
+ * an AWS CloudFormation stack.
  * </p>
  */
-public class Tag  implements Serializable  {
+public class Tag implements Serializable {
 
     /**
      * <i>Required</i>. A string used to identify this tag. You can specify a
@@ -74,14 +77,13 @@ public class Tag  implements Serializable  {
      *         Services (AWS) have the reserved prefix: <code>aws:</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withKey(String key) {
         this.key = key;
         return this;
     }
-    
-    
+
     /**
      * <i>Required</i>. A string containing the value for this tag. You can
      * specify a maximum of 256 characters for a tag value.
@@ -114,14 +116,13 @@ public class Tag  implements Serializable  {
      *         specify a maximum of 256 characters for a tag value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Tag withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -133,8 +134,8 @@ public class Tag  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
+        sb.append("{");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

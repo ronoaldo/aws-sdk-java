@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains information about the resource record sets that are returned by the request and information about the response.
+ * A complex type that contains information about the resource record
+ * sets that are returned by the request and information about the
+ * response.
  * </p>
  */
-public class ListResourceRecordSetsResult  implements Serializable  {
+public class ListResourceRecordSetsResult implements Serializable {
 
     /**
      * A complex type that contains information about the resource record
      * sets that are returned by the request.
      */
-    private java.util.List<ResourceRecordSet> resourceRecordSets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecordSet> resourceRecordSets;
 
     /**
      * A flag that indicates whether there are more resource record sets to
@@ -82,9 +85,9 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         sets that are returned by the request.
      */
     public java.util.List<ResourceRecordSet> getResourceRecordSets() {
-        
         if (resourceRecordSets == null) {
-            resourceRecordSets = new java.util.ArrayList<ResourceRecordSet>();
+              resourceRecordSets = new com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecordSet>();
+              resourceRecordSets.setAutoConstruct(true);
         }
         return resourceRecordSets;
     }
@@ -101,8 +104,7 @@ public class ListResourceRecordSetsResult  implements Serializable  {
             this.resourceRecordSets = null;
             return;
         }
-
-        java.util.List<ResourceRecordSet> resourceRecordSetsCopy = new java.util.ArrayList<ResourceRecordSet>(resourceRecordSets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecordSet> resourceRecordSetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecordSet>(resourceRecordSets.size());
         resourceRecordSetsCopy.addAll(resourceRecordSets);
         this.resourceRecordSets = resourceRecordSetsCopy;
     }
@@ -117,7 +119,7 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         sets that are returned by the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsResult withResourceRecordSets(ResourceRecordSet... resourceRecordSets) {
         if (getResourceRecordSets() == null) setResourceRecordSets(new java.util.ArrayList<ResourceRecordSet>(resourceRecordSets.length));
@@ -137,20 +139,20 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         sets that are returned by the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsResult withResourceRecordSets(java.util.Collection<ResourceRecordSet> resourceRecordSets) {
         if (resourceRecordSets == null) {
             this.resourceRecordSets = null;
         } else {
-            java.util.List<ResourceRecordSet> resourceRecordSetsCopy = new java.util.ArrayList<ResourceRecordSet>(resourceRecordSets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecordSet> resourceRecordSetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ResourceRecordSet>(resourceRecordSets.size());
             resourceRecordSetsCopy.addAll(resourceRecordSets);
             this.resourceRecordSets = resourceRecordSetsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A flag that indicates whether there are more resource record sets to
      * be listed. If your results were truncated, you can make a follow-up
@@ -201,14 +203,13 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         Values: <code>true</code> | <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsResult withIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
-    
-    
+
     /**
      * A flag that indicates whether there are more resource record sets to
      * be listed. If your results were truncated, you can make a follow-up
@@ -225,7 +226,7 @@ public class ListResourceRecordSetsResult  implements Serializable  {
     public Boolean getIsTruncated() {
         return isTruncated;
     }
-    
+
     /**
      * If the results were truncated, the name of the next record in the
      * list. This element is present only if
@@ -273,14 +274,13 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         <a>ListResourceRecordSetsResponse$IsTruncated</a> is true.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsResult withNextRecordName(String nextRecordName) {
         this.nextRecordName = nextRecordName;
         return this;
     }
-    
-    
+
     /**
      * If the results were truncated, the type of the next record in the
      * list. This element is present only if
@@ -332,7 +332,7 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         <a>ListResourceRecordSetsResponse$IsTruncated</a> is true.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RRType
      */
@@ -340,8 +340,7 @@ public class ListResourceRecordSetsResult  implements Serializable  {
         this.nextRecordType = nextRecordType;
         return this;
     }
-    
-    
+
     /**
      * If the results were truncated, the type of the next record in the
      * list. This element is present only if
@@ -375,7 +374,7 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         <a>ListResourceRecordSetsResponse$IsTruncated</a> is true.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RRType
      */
@@ -383,7 +382,7 @@ public class ListResourceRecordSetsResult  implements Serializable  {
         this.nextRecordType = nextRecordType.toString();
         return this;
     }
-    
+
     /**
      * <i>Weighted resource record sets only:</i> If results were truncated
      * for a given DNS name and type, the value of <code>SetIdentifier</code>
@@ -437,14 +436,13 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsResult withNextRecordIdentifier(String nextRecordIdentifier) {
         this.nextRecordIdentifier = nextRecordIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records you requested. The maximum value of
      * <code>MaxItems</code> is 100.
@@ -477,14 +475,13 @@ public class ListResourceRecordSetsResult  implements Serializable  {
      *         <code>MaxItems</code> is 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsResult withMaxItems(String maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -496,12 +493,12 @@ public class ListResourceRecordSetsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResourceRecordSets() != null) sb.append("ResourceRecordSets: " + getResourceRecordSets() + ",");    	
-        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");    	
-        if (getNextRecordName() != null) sb.append("NextRecordName: " + getNextRecordName() + ",");    	
-        if (getNextRecordType() != null) sb.append("NextRecordType: " + getNextRecordType() + ",");    	
-        if (getNextRecordIdentifier() != null) sb.append("NextRecordIdentifier: " + getNextRecordIdentifier() + ",");    	
+        sb.append("{");
+        if (getResourceRecordSets() != null) sb.append("ResourceRecordSets: " + getResourceRecordSets() + ",");
+        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");
+        if (getNextRecordName() != null) sb.append("NextRecordName: " + getNextRecordName() + ",");
+        if (getNextRecordType() != null) sb.append("NextRecordType: " + getNextRecordType() + ",");
+        if (getNextRecordIdentifier() != null) sb.append("NextRecordIdentifier: " + getNextRecordIdentifier() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

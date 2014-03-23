@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest) DeleteLoadBalancerPolicy operation}.
  * <p>
- * Deletes a policy from the LoadBalancer. The specified policy must not be enabled for any listeners.
+ * Deletes a policy from the load balancer. The specified policy must
+ * not be enabled for any listeners.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest)
  */
-public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      */
     private String loadBalancerName;
 
@@ -48,57 +50,48 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The mnemonic name associated with the
-     * LoadBalancer. The name must be unique within your AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load
+     * balancer.
      * @param policyName The mnemonic name for the policy being deleted.
      */
     public DeleteLoadBalancerPolicyRequest(String loadBalancerName, String policyName) {
-        this.loadBalancerName = loadBalancerName;
-        this.policyName = policyName;
+        setLoadBalancerName(loadBalancerName);
+        setPolicyName(policyName);
     }
 
-    
-    
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      *
-     * @return The mnemonic name associated with the LoadBalancer. The name must be
-     *         unique within your AWS account.
+     * @return The mnemonic name associated with the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. The name must be
-     *         unique within your AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. The name must be
-     * unique within your AWS account.
+     * The mnemonic name associated with the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. The name must be
-     *         unique within your AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteLoadBalancerPolicyRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The mnemonic name for the policy being deleted.
      *
@@ -125,14 +118,13 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
      * @param policyName The mnemonic name for the policy being deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteLoadBalancerPolicyRequest withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -144,8 +136,8 @@ public class DeleteLoadBalancerPolicyRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() );
         sb.append("}");
         return sb.toString();

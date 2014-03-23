@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeReservedDBInstances action.
+ * Contains the result of a successful invocation of the
+ * DescribeReservedDBInstances action.
  * </p>
  */
-public class DescribeReservedDBInstancesResult  implements Serializable  {
+public class DescribeReservedDBInstancesResult implements Serializable {
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -30,9 +32,9 @@ public class DescribeReservedDBInstancesResult  implements Serializable  {
     private String marker;
 
     /**
-     * A list of of reserved DB Instances.
+     * A list of reserved DB instances.
      */
-    private java.util.List<ReservedDBInstance> reservedDBInstances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstance> reservedDBInstances;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -72,52 +74,50 @@ public class DescribeReservedDBInstancesResult  implements Serializable  {
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of of reserved DB Instances.
+     * A list of reserved DB instances.
      *
-     * @return A list of of reserved DB Instances.
+     * @return A list of reserved DB instances.
      */
     public java.util.List<ReservedDBInstance> getReservedDBInstances() {
-        
         if (reservedDBInstances == null) {
-            reservedDBInstances = new java.util.ArrayList<ReservedDBInstance>();
+              reservedDBInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstance>();
+              reservedDBInstances.setAutoConstruct(true);
         }
         return reservedDBInstances;
     }
     
     /**
-     * A list of of reserved DB Instances.
+     * A list of reserved DB instances.
      *
-     * @param reservedDBInstances A list of of reserved DB Instances.
+     * @param reservedDBInstances A list of reserved DB instances.
      */
     public void setReservedDBInstances(java.util.Collection<ReservedDBInstance> reservedDBInstances) {
         if (reservedDBInstances == null) {
             this.reservedDBInstances = null;
             return;
         }
-
-        java.util.List<ReservedDBInstance> reservedDBInstancesCopy = new java.util.ArrayList<ReservedDBInstance>(reservedDBInstances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstance> reservedDBInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstance>(reservedDBInstances.size());
         reservedDBInstancesCopy.addAll(reservedDBInstances);
         this.reservedDBInstances = reservedDBInstancesCopy;
     }
     
     /**
-     * A list of of reserved DB Instances.
+     * A list of reserved DB instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedDBInstances A list of of reserved DB Instances.
+     * @param reservedDBInstances A list of reserved DB instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesResult withReservedDBInstances(ReservedDBInstance... reservedDBInstances) {
         if (getReservedDBInstances() == null) setReservedDBInstances(new java.util.ArrayList<ReservedDBInstance>(reservedDBInstances.length));
@@ -128,27 +128,27 @@ public class DescribeReservedDBInstancesResult  implements Serializable  {
     }
     
     /**
-     * A list of of reserved DB Instances.
+     * A list of reserved DB instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedDBInstances A list of of reserved DB Instances.
+     * @param reservedDBInstances A list of reserved DB instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesResult withReservedDBInstances(java.util.Collection<ReservedDBInstance> reservedDBInstances) {
         if (reservedDBInstances == null) {
             this.reservedDBInstances = null;
         } else {
-            java.util.List<ReservedDBInstance> reservedDBInstancesCopy = new java.util.ArrayList<ReservedDBInstance>(reservedDBInstances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstance> reservedDBInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstance>(reservedDBInstances.size());
             reservedDBInstancesCopy.addAll(reservedDBInstances);
             this.reservedDBInstances = reservedDBInstancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class DescribeReservedDBInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getReservedDBInstances() != null) sb.append("ReservedDBInstances: " + getReservedDBInstances() );
         sb.append("}");
         return sb.toString();

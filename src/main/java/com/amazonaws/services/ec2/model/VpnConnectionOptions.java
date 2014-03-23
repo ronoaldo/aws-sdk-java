@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,72 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Vpn Connection Options
+ * <p>
+ * Describes VPN connection options.
+ * </p>
  */
-public class VpnConnectionOptions  implements Serializable  {
+public class VpnConnectionOptions implements Serializable {
 
+    /**
+     * Indicates whether the VPN connection uses static routes only. Static
+     * routes must be used for devices that don't support BGP.
+     */
     private Boolean staticRoutesOnly;
 
     /**
-     * Returns the value of the StaticRoutesOnly property for this object.
+     * Indicates whether the VPN connection uses static routes only. Static
+     * routes must be used for devices that don't support BGP.
      *
-     * @return The value of the StaticRoutesOnly property for this object.
+     * @return Indicates whether the VPN connection uses static routes only. Static
+     *         routes must be used for devices that don't support BGP.
      */
     public Boolean isStaticRoutesOnly() {
         return staticRoutesOnly;
     }
     
     /**
-     * Sets the value of the StaticRoutesOnly property for this object.
+     * Indicates whether the VPN connection uses static routes only. Static
+     * routes must be used for devices that don't support BGP.
      *
-     * @param staticRoutesOnly The new value for the StaticRoutesOnly property for this object.
+     * @param staticRoutesOnly Indicates whether the VPN connection uses static routes only. Static
+     *         routes must be used for devices that don't support BGP.
      */
     public void setStaticRoutesOnly(Boolean staticRoutesOnly) {
         this.staticRoutesOnly = staticRoutesOnly;
     }
     
     /**
-     * Sets the value of the StaticRoutesOnly property for this object.
+     * Indicates whether the VPN connection uses static routes only. Static
+     * routes must be used for devices that don't support BGP.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param staticRoutesOnly The new value for the StaticRoutesOnly property for this object.
+     * @param staticRoutesOnly Indicates whether the VPN connection uses static routes only. Static
+     *         routes must be used for devices that don't support BGP.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnectionOptions withStaticRoutesOnly(Boolean staticRoutesOnly) {
         this.staticRoutesOnly = staticRoutesOnly;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the StaticRoutesOnly property for this object.
+     * Indicates whether the VPN connection uses static routes only. Static
+     * routes must be used for devices that don't support BGP.
      *
-     * @return The value of the StaticRoutesOnly property for this object.
+     * @return Indicates whether the VPN connection uses static routes only. Static
+     *         routes must be used for devices that don't support BGP.
      */
     public Boolean getStaticRoutesOnly() {
         return staticRoutesOnly;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -76,7 +90,7 @@ public class VpnConnectionOptions  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (isStaticRoutesOnly() != null) sb.append("StaticRoutesOnly: " + isStaticRoutesOnly() );
         sb.append("}");
         return sb.toString();

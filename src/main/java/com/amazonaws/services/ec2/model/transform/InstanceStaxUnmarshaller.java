@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * Instance StAX Unmarshaller
  */
@@ -37,9 +36,7 @@ public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnma
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
 
-        
         if (context.isStartOfDocument()) targetDepth += 1;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -158,10 +155,6 @@ public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnma
                     instance.setSpotInstanceRequestId(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
-                if (context.testExpression("license", targetDepth)) {
-                    instance.setLicense(InstanceLicenseStaxUnmarshaller.getInstance().unmarshall(context));
-                    continue;
-                }
                 if (context.testExpression("clientToken", targetDepth)) {
                     instance.setClientToken(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -192,6 +185,10 @@ public class InstanceStaxUnmarshaller implements Unmarshaller<Instance, StaxUnma
                 }
                 if (context.testExpression("ebsOptimized", targetDepth)) {
                     instance.setEbsOptimized(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("sriovNetSupport", targetDepth)) {
+                    instance.setSriovNetSupport(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

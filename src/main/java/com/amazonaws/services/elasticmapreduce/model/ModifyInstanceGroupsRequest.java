@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce#modifyInstanceGroups(ModifyInstanceGroupsRequest) ModifyInstanceGroups operation}.
  * <p>
- * ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target
- * instance count for the group and the instance group ID. The call will either succeed or fail atomically.
+ * ModifyInstanceGroups modifies the number of nodes and configuration
+ * settings of an instance group. The input parameters include the new
+ * target instance count for the group and the instance group ID. The
+ * call will either succeed or fail atomically.
  * </p>
  *
  * @see com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce#modifyInstanceGroups(ModifyInstanceGroupsRequest)
  */
-public class ModifyInstanceGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyInstanceGroupsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Instance groups to change.
      */
-    private java.util.List<InstanceGroupModifyConfig> instanceGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupModifyConfig> instanceGroups;
 
     /**
      * Default constructor for a new ModifyInstanceGroupsRequest object.  Callers should use the
@@ -46,20 +50,18 @@ public class ModifyInstanceGroupsRequest extends AmazonWebServiceRequest  implem
      * @param instanceGroups Instance groups to change.
      */
     public ModifyInstanceGroupsRequest(java.util.List<InstanceGroupModifyConfig> instanceGroups) {
-        this.instanceGroups = instanceGroups;
+        setInstanceGroups(instanceGroups);
     }
 
-    
-    
     /**
      * Instance groups to change.
      *
      * @return Instance groups to change.
      */
     public java.util.List<InstanceGroupModifyConfig> getInstanceGroups() {
-        
         if (instanceGroups == null) {
-            instanceGroups = new java.util.ArrayList<InstanceGroupModifyConfig>();
+              instanceGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupModifyConfig>();
+              instanceGroups.setAutoConstruct(true);
         }
         return instanceGroups;
     }
@@ -74,8 +76,7 @@ public class ModifyInstanceGroupsRequest extends AmazonWebServiceRequest  implem
             this.instanceGroups = null;
             return;
         }
-
-        java.util.List<InstanceGroupModifyConfig> instanceGroupsCopy = new java.util.ArrayList<InstanceGroupModifyConfig>(instanceGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupModifyConfig> instanceGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupModifyConfig>(instanceGroups.size());
         instanceGroupsCopy.addAll(instanceGroups);
         this.instanceGroups = instanceGroupsCopy;
     }
@@ -88,7 +89,7 @@ public class ModifyInstanceGroupsRequest extends AmazonWebServiceRequest  implem
      * @param instanceGroups Instance groups to change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceGroupsRequest withInstanceGroups(InstanceGroupModifyConfig... instanceGroups) {
         if (getInstanceGroups() == null) setInstanceGroups(new java.util.ArrayList<InstanceGroupModifyConfig>(instanceGroups.length));
@@ -106,20 +107,20 @@ public class ModifyInstanceGroupsRequest extends AmazonWebServiceRequest  implem
      * @param instanceGroups Instance groups to change.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyInstanceGroupsRequest withInstanceGroups(java.util.Collection<InstanceGroupModifyConfig> instanceGroups) {
         if (instanceGroups == null) {
             this.instanceGroups = null;
         } else {
-            java.util.List<InstanceGroupModifyConfig> instanceGroupsCopy = new java.util.ArrayList<InstanceGroupModifyConfig>(instanceGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupModifyConfig> instanceGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceGroupModifyConfig>(instanceGroups.size());
             instanceGroupsCopy.addAll(instanceGroups);
             this.instanceGroups = instanceGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -131,7 +132,7 @@ public class ModifyInstanceGroupsRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceGroups() != null) sb.append("InstanceGroups: " + getInstanceGroups() );
         sb.append("}");
         return sb.toString();

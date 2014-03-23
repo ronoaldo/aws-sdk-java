@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Network Interfaces Result
+ * 
  */
-public class DescribeNetworkInterfacesResult  implements Serializable  {
-
-    private java.util.List<NetworkInterface> networkInterfaces;
+public class DescribeNetworkInterfacesResult implements Serializable {
 
     /**
-     * Returns the value of the NetworkInterfaces property for this object.
+     * Information about one or more network interfaces.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface> networkInterfaces;
+
+    /**
+     * Information about one or more network interfaces.
      *
-     * @return The value of the NetworkInterfaces property for this object.
+     * @return Information about one or more network interfaces.
      */
     public java.util.List<NetworkInterface> getNetworkInterfaces() {
-        
         if (networkInterfaces == null) {
-            networkInterfaces = new java.util.ArrayList<NetworkInterface>();
+              networkInterfaces = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface>();
+              networkInterfaces.setAutoConstruct(true);
         }
         return networkInterfaces;
     }
     
     /**
-     * Sets the value of the NetworkInterfaces property for this object.
+     * Information about one or more network interfaces.
      *
-     * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
+     * @param networkInterfaces Information about one or more network interfaces.
      */
     public void setNetworkInterfaces(java.util.Collection<NetworkInterface> networkInterfaces) {
         if (networkInterfaces == null) {
             this.networkInterfaces = null;
             return;
         }
-
-        java.util.List<NetworkInterface> networkInterfacesCopy = new java.util.ArrayList<NetworkInterface>(networkInterfaces.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface> networkInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface>(networkInterfaces.size());
         networkInterfacesCopy.addAll(networkInterfaces);
         this.networkInterfaces = networkInterfacesCopy;
     }
     
     /**
-     * Sets the value of the NetworkInterfaces property for this object.
+     * Information about one or more network interfaces.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
+     * @param networkInterfaces Information about one or more network interfaces.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNetworkInterfacesResult withNetworkInterfaces(NetworkInterface... networkInterfaces) {
         if (getNetworkInterfaces() == null) setNetworkInterfaces(new java.util.ArrayList<NetworkInterface>(networkInterfaces.length));
@@ -70,27 +73,27 @@ public class DescribeNetworkInterfacesResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the NetworkInterfaces property for this object.
+     * Information about one or more network interfaces.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterfaces The new value for the NetworkInterfaces property for this object.
+     * @param networkInterfaces Information about one or more network interfaces.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNetworkInterfacesResult withNetworkInterfaces(java.util.Collection<NetworkInterface> networkInterfaces) {
         if (networkInterfaces == null) {
             this.networkInterfaces = null;
         } else {
-            java.util.List<NetworkInterface> networkInterfacesCopy = new java.util.ArrayList<NetworkInterface>(networkInterfaces.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface> networkInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<NetworkInterface>(networkInterfaces.size());
             networkInterfacesCopy.addAll(networkInterfaces);
             this.networkInterfaces = networkInterfacesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeNetworkInterfacesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getNetworkInterfaces() != null) sb.append("NetworkInterfaces: " + getNetworkInterfaces() );
         sb.append("}");
         return sb.toString();

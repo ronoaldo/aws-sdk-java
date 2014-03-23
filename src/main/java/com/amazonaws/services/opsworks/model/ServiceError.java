@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes an OpsWorks service error.
+ * Describes an AWS OpsWorks service error.
  * </p>
  */
-public class ServiceError  implements Serializable  {
+public class ServiceError implements Serializable {
 
     /**
      * The error ID.
@@ -78,14 +79,13 @@ public class ServiceError  implements Serializable  {
      * @param serviceErrorId The error ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceError withServiceErrorId(String serviceErrorId) {
         this.serviceErrorId = serviceErrorId;
         return this;
     }
-    
-    
+
     /**
      * The stack ID.
      *
@@ -112,14 +112,13 @@ public class ServiceError  implements Serializable  {
      * @param stackId The stack ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceError withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The instance ID.
      *
@@ -146,14 +145,13 @@ public class ServiceError  implements Serializable  {
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceError withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The error type.
      *
@@ -180,14 +178,13 @@ public class ServiceError  implements Serializable  {
      * @param type The error type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceError withType(String type) {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * A message that describes the error.
      *
@@ -214,14 +211,13 @@ public class ServiceError  implements Serializable  {
      * @param message A message that describes the error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceError withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * When the error occurred.
      *
@@ -248,14 +244,13 @@ public class ServiceError  implements Serializable  {
      * @param createdAt When the error occurred.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceError withCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -267,12 +262,12 @@ public class ServiceError  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getServiceErrorId() != null) sb.append("ServiceErrorId: " + getServiceErrorId() + ",");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
+        sb.append("{");
+        if (getServiceErrorId() != null) sb.append("ServiceErrorId: " + getServiceErrorId() + ",");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");
         if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() );
         sb.append("}");
         return sb.toString();

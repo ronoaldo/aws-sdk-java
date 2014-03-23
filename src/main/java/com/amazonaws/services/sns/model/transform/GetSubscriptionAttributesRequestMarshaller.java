@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class GetSubscriptionAttributesRequestMarshaller implements Marshaller<Re
     public Request<GetSubscriptionAttributesRequest> marshall(GetSubscriptionAttributesRequest getSubscriptionAttributesRequest) {
 
         if (getSubscriptionAttributesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetSubscriptionAttributesRequest> request = new DefaultRequest<GetSubscriptionAttributesRequest>(getSubscriptionAttributesRequest, "AmazonSNS");
         request.addParameter("Action", "GetSubscriptionAttributes");
@@ -43,7 +43,6 @@ public class GetSubscriptionAttributesRequestMarshaller implements Marshaller<Re
         if (getSubscriptionAttributesRequest.getSubscriptionArn() != null) {
             request.addParameter("SubscriptionArn", StringUtils.fromString(getSubscriptionAttributesRequest.getSubscriptionArn()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Representation of a job returned by the ListJobs operation.
  * </p>
  */
-public class Job  implements Serializable  {
+public class Job implements Serializable {
 
     /**
      * A unique identifier which refers to a particular job.
@@ -72,14 +73,13 @@ public class Job  implements Serializable  {
      * @param jobId A unique identifier which refers to a particular job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withJobId(String jobId) {
         this.jobId = jobId;
         return this;
     }
-    
-    
+
     /**
      * Timestamp of the CreateJob request in ISO8601 date format. For example
      * "2010-03-28T20:27:35Z".
@@ -112,14 +112,13 @@ public class Job  implements Serializable  {
      *         "2010-03-28T20:27:35Z".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withCreationDate(java.util.Date creationDate) {
         this.creationDate = creationDate;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether the job was canceled.
      *
@@ -146,14 +145,13 @@ public class Job  implements Serializable  {
      * @param isCanceled Indicates whether the job was canceled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Job withIsCanceled(Boolean isCanceled) {
         this.isCanceled = isCanceled;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether the job was canceled.
      *
@@ -162,7 +160,7 @@ public class Job  implements Serializable  {
     public Boolean getIsCanceled() {
         return isCanceled;
     }
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -202,7 +200,7 @@ public class Job  implements Serializable  {
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -210,8 +208,7 @@ public class Job  implements Serializable  {
         this.jobType = jobType;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -237,7 +234,7 @@ public class Job  implements Serializable  {
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -245,7 +242,7 @@ public class Job  implements Serializable  {
         this.jobType = jobType.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -257,10 +254,10 @@ public class Job  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");    	
-        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");    	
-        if (isCanceled() != null) sb.append("IsCanceled: " + isCanceled() + ",");    	
+        sb.append("{");
+        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");
+        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");
+        if (isCanceled() != null) sb.append("IsCanceled: " + isCanceled() + ",");
         if (getJobType() != null) sb.append("JobType: " + getJobType() );
         sb.append("}");
         return sb.toString();

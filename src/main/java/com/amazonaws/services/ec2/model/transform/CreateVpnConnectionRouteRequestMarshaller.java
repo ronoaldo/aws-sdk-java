@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateVpnConnectionRouteRequestMarshaller implements Marshaller<Req
     public Request<CreateVpnConnectionRouteRequest> marshall(CreateVpnConnectionRouteRequest createVpnConnectionRouteRequest) {
 
         if (createVpnConnectionRouteRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateVpnConnectionRouteRequest> request = new DefaultRequest<CreateVpnConnectionRouteRequest>(createVpnConnectionRouteRequest, "AmazonEC2");
         request.addParameter("Action", "CreateVpnConnectionRoute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createVpnConnectionRouteRequest.getVpnConnectionId() != null) {
             request.addParameter("VpnConnectionId", StringUtils.fromString(createVpnConnectionRouteRequest.getVpnConnectionId()));
@@ -46,7 +46,6 @@ public class CreateVpnConnectionRouteRequestMarshaller implements Marshaller<Req
         if (createVpnConnectionRouteRequest.getDestinationCidrBlock() != null) {
             request.addParameter("DestinationCidrBlock", StringUtils.fromString(createVpnConnectionRouteRequest.getDestinationCidrBlock()));
         }
-
 
         return request;
     }

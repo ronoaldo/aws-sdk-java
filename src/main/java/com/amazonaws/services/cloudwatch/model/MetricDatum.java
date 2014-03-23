@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The <code>MetricDatum</code> data type encapsulates the information sent with PutMetricData to either create a new metric or add new values to be
- * aggregated into an existing metric.
+ * The <code>MetricDatum</code> data type encapsulates the information
+ * sent with PutMetricData to either create a new metric or add new
+ * values to be aggregated into an existing metric.
  * </p>
  */
-public class MetricDatum  implements Serializable  {
+public class MetricDatum implements Serializable {
 
     /**
      * The name of the metric.
@@ -37,7 +39,7 @@ public class MetricDatum  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<Dimension> dimensions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensions;
 
     /**
      * The time stamp used for the metric. If not specified, the default
@@ -103,14 +105,13 @@ public class MetricDatum  implements Serializable  {
      * @param metricName The name of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withMetricName(String metricName) {
         this.metricName = metricName;
         return this;
     }
-    
-    
+
     /**
      * A list of dimensions associated with the metric.
      * <p>
@@ -120,9 +121,9 @@ public class MetricDatum  implements Serializable  {
      * @return A list of dimensions associated with the metric.
      */
     public java.util.List<Dimension> getDimensions() {
-        
         if (dimensions == null) {
-            dimensions = new java.util.ArrayList<Dimension>();
+              dimensions = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>();
+              dimensions.setAutoConstruct(true);
         }
         return dimensions;
     }
@@ -140,8 +141,7 @@ public class MetricDatum  implements Serializable  {
             this.dimensions = null;
             return;
         }
-
-        java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
         dimensionsCopy.addAll(dimensions);
         this.dimensions = dimensionsCopy;
     }
@@ -157,7 +157,7 @@ public class MetricDatum  implements Serializable  {
      * @param dimensions A list of dimensions associated with the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withDimensions(Dimension... dimensions) {
         if (getDimensions() == null) setDimensions(new java.util.ArrayList<Dimension>(dimensions.length));
@@ -178,20 +178,20 @@ public class MetricDatum  implements Serializable  {
      * @param dimensions A list of dimensions associated with the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
         } else {
-            java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
             dimensionsCopy.addAll(dimensions);
             this.dimensions = dimensionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The time stamp used for the metric. If not specified, the default
      * value is set to the time the metric data was received.
@@ -224,14 +224,13 @@ public class MetricDatum  implements Serializable  {
      *         value is set to the time the metric data was received.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
      * The value for the metric. <important>Although the <code>Value</code>
      * parameter accepts numbers of type <code>Double</code>, Amazon
@@ -288,14 +287,13 @@ public class MetricDatum  implements Serializable  {
      *         are also truncated. </important>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withValue(Double value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * A set of statistical values describing the metric.
      *
@@ -322,14 +320,13 @@ public class MetricDatum  implements Serializable  {
      * @param statisticValues A set of statistical values describing the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MetricDatum withStatisticValues(StatisticSet statisticValues) {
         this.statisticValues = statisticValues;
         return this;
     }
-    
-    
+
     /**
      * The unit of the metric.
      * <p>
@@ -369,7 +366,7 @@ public class MetricDatum  implements Serializable  {
      * @param unit The unit of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -377,8 +374,7 @@ public class MetricDatum  implements Serializable  {
         this.unit = unit;
         return this;
     }
-    
-    
+
     /**
      * The unit of the metric.
      * <p>
@@ -404,7 +400,7 @@ public class MetricDatum  implements Serializable  {
      * @param unit The unit of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -412,7 +408,7 @@ public class MetricDatum  implements Serializable  {
         this.unit = unit.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -424,12 +420,12 @@ public class MetricDatum  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
-        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
-        if (getStatisticValues() != null) sb.append("StatisticValues: " + getStatisticValues() + ",");    	
+        sb.append("{");
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");
+        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
+        if (getStatisticValues() != null) sb.append("StatisticValues: " + getStatisticValues() + ",");
         if (getUnit() != null) sb.append("Unit: " + getUnit() );
         sb.append("}");
         return sb.toString();

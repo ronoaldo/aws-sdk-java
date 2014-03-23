@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#reportTaskRunnerHeartbeat(ReportTaskRunnerHeartbeatRequest) ReportTaskRunnerHeartbeat operation}.
  * <p>
- * Task runners call ReportTaskRunnerHeartbeat every 15 minutes to indicate that they are operational. In the case of AWS Data Pipeline Task Runner
- * launched on a resource managed by AWS Data Pipeline, the web service can use this call to detect when the task runner application has failed and
- * restart a new instance.
+ * Task runners call ReportTaskRunnerHeartbeat every 15 minutes to
+ * indicate that they are operational. In the case of AWS Data Pipeline
+ * Task Runner launched on a resource managed by AWS Data Pipeline, the
+ * web service can use this call to detect when the task runner
+ * application has failed and restart a new instance.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#reportTaskRunnerHeartbeat(ReportTaskRunnerHeartbeatRequest)
  */
-public class ReportTaskRunnerHeartbeatRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ReportTaskRunnerHeartbeatRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the task runner. This value should be unique across
@@ -134,14 +138,13 @@ public class ReportTaskRunnerHeartbeatRequest extends AmazonWebServiceRequest  i
      *         identifier for the task runner.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportTaskRunnerHeartbeatRequest withTaskrunnerId(String taskrunnerId) {
         this.taskrunnerId = taskrunnerId;
         return this;
     }
-    
-    
+
     /**
      * Indicates the type of task the task runner is configured to accept and
      * process. The worker group is set as a field on objects in the pipeline
@@ -216,14 +219,13 @@ public class ReportTaskRunnerHeartbeatRequest extends AmazonWebServiceRequest  i
      *         case-sensitive, match.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportTaskRunnerHeartbeatRequest withWorkerGroup(String workerGroup) {
         this.workerGroup = workerGroup;
         return this;
     }
-    
-    
+
     /**
      * The public DNS name of the calling task runner.
      * <p>
@@ -262,14 +264,13 @@ public class ReportTaskRunnerHeartbeatRequest extends AmazonWebServiceRequest  i
      * @param hostname The public DNS name of the calling task runner.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReportTaskRunnerHeartbeatRequest withHostname(String hostname) {
         this.hostname = hostname;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -281,9 +282,9 @@ public class ReportTaskRunnerHeartbeatRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTaskrunnerId() != null) sb.append("TaskrunnerId: " + getTaskrunnerId() + ",");    	
-        if (getWorkerGroup() != null) sb.append("WorkerGroup: " + getWorkerGroup() + ",");    	
+        sb.append("{");
+        if (getTaskrunnerId() != null) sb.append("TaskrunnerId: " + getTaskrunnerId() + ",");
+        if (getWorkerGroup() != null) sb.append("WorkerGroup: " + getWorkerGroup() + ",");
         if (getHostname() != null) sb.append("Hostname: " + getHostname() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,60 +13,61 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing Reserved Instance offerings.
- * </p>
+ * 
  */
-public class DescribeReservedInstancesOfferingsResult  implements Serializable  {
+public class DescribeReservedInstancesOfferingsResult implements Serializable {
 
     /**
-     * The list of described Reserved Instance offerings.
+     * A list of Reserved Instances offerings.
      */
-    private java.util.List<ReservedInstancesOffering> reservedInstancesOfferings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesOffering> reservedInstancesOfferings;
 
+    /**
+     * The next paginated set of results to return.
+     */
     private String nextToken;
 
     /**
-     * The list of described Reserved Instance offerings.
+     * A list of Reserved Instances offerings.
      *
-     * @return The list of described Reserved Instance offerings.
+     * @return A list of Reserved Instances offerings.
      */
     public java.util.List<ReservedInstancesOffering> getReservedInstancesOfferings() {
-        
         if (reservedInstancesOfferings == null) {
-            reservedInstancesOfferings = new java.util.ArrayList<ReservedInstancesOffering>();
+              reservedInstancesOfferings = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesOffering>();
+              reservedInstancesOfferings.setAutoConstruct(true);
         }
         return reservedInstancesOfferings;
     }
     
     /**
-     * The list of described Reserved Instance offerings.
+     * A list of Reserved Instances offerings.
      *
-     * @param reservedInstancesOfferings The list of described Reserved Instance offerings.
+     * @param reservedInstancesOfferings A list of Reserved Instances offerings.
      */
     public void setReservedInstancesOfferings(java.util.Collection<ReservedInstancesOffering> reservedInstancesOfferings) {
         if (reservedInstancesOfferings == null) {
             this.reservedInstancesOfferings = null;
             return;
         }
-
-        java.util.List<ReservedInstancesOffering> reservedInstancesOfferingsCopy = new java.util.ArrayList<ReservedInstancesOffering>(reservedInstancesOfferings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesOffering> reservedInstancesOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesOffering>(reservedInstancesOfferings.size());
         reservedInstancesOfferingsCopy.addAll(reservedInstancesOfferings);
         this.reservedInstancesOfferings = reservedInstancesOfferingsCopy;
     }
     
     /**
-     * The list of described Reserved Instance offerings.
+     * A list of Reserved Instances offerings.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstancesOfferings The list of described Reserved Instance offerings.
+     * @param reservedInstancesOfferings A list of Reserved Instances offerings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsResult withReservedInstancesOfferings(ReservedInstancesOffering... reservedInstancesOfferings) {
         if (getReservedInstancesOfferings() == null) setReservedInstancesOfferings(new java.util.ArrayList<ReservedInstancesOffering>(reservedInstancesOfferings.length));
@@ -77,61 +78,60 @@ public class DescribeReservedInstancesOfferingsResult  implements Serializable  
     }
     
     /**
-     * The list of described Reserved Instance offerings.
+     * A list of Reserved Instances offerings.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstancesOfferings The list of described Reserved Instance offerings.
+     * @param reservedInstancesOfferings A list of Reserved Instances offerings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsResult withReservedInstancesOfferings(java.util.Collection<ReservedInstancesOffering> reservedInstancesOfferings) {
         if (reservedInstancesOfferings == null) {
             this.reservedInstancesOfferings = null;
         } else {
-            java.util.List<ReservedInstancesOffering> reservedInstancesOfferingsCopy = new java.util.ArrayList<ReservedInstancesOffering>(reservedInstancesOfferings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesOffering> reservedInstancesOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesOffering>(reservedInstancesOfferings.size());
             reservedInstancesOfferingsCopy.addAll(reservedInstancesOfferings);
             this.reservedInstancesOfferings = reservedInstancesOfferingsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the NextToken property for this object.
+     * The next paginated set of results to return.
      *
-     * @return The value of the NextToken property for this object.
+     * @return The next paginated set of results to return.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * The next paginated set of results to return.
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken The next paginated set of results to return.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * The next paginated set of results to return.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken The next paginated set of results to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedInstancesOfferingsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -143,8 +143,8 @@ public class DescribeReservedInstancesOfferingsResult  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservedInstancesOfferings() != null) sb.append("ReservedInstancesOfferings: " + getReservedInstancesOfferings() + ",");    	
+        sb.append("{");
+        if (getReservedInstancesOfferings() != null) sb.append("ReservedInstancesOfferings: " + getReservedInstancesOfferings() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

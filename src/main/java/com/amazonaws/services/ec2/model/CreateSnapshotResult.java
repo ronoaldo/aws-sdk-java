@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of creating a snapshot from an EBS volume.
- * </p>
+ * 
  */
-public class CreateSnapshotResult  implements Serializable  {
+public class CreateSnapshotResult implements Serializable {
 
     /**
-     * The new snapshot.
+     * 
      */
     private Snapshot snapshot;
 
     /**
-     * The new snapshot.
+     * 
      *
-     * @return The new snapshot.
+     * @return 
      */
     public Snapshot getSnapshot() {
         return snapshot;
     }
     
     /**
-     * The new snapshot.
+     * 
      *
-     * @param snapshot The new snapshot.
+     * @param snapshot 
      */
     public void setSnapshot(Snapshot snapshot) {
         this.snapshot = snapshot;
     }
     
     /**
-     * The new snapshot.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param snapshot The new snapshot.
+     * @param snapshot 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotResult withSnapshot(Snapshot snapshot) {
         this.snapshot = snapshot;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class CreateSnapshotResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSnapshot() != null) sb.append("Snapshot: " + getSnapshot() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,8 @@ import java.lang.annotation.Target;
  * <p>
  * Even getter method not marked with this annotation are assumed to be modeled
  * properties, unless marked with {@link DynamoDBIgnore}.
+ * 
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute} instead.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

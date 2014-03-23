@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A specification identifying an individual configuration option.
  * </p>
  */
-public class OptionSpecification  implements Serializable  {
+public class OptionSpecification implements Serializable {
 
     /**
      * A unique namespace identifying the option's associated AWS resource.
@@ -64,14 +65,13 @@ public class OptionSpecification  implements Serializable  {
      * @param namespace A unique namespace identifying the option's associated AWS resource.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSpecification withNamespace(String namespace) {
         this.namespace = namespace;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration option.
      *
@@ -98,14 +98,13 @@ public class OptionSpecification  implements Serializable  {
      * @param optionName The name of the configuration option.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionSpecification withOptionName(String optionName) {
         this.optionName = optionName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -117,8 +116,8 @@ public class OptionSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
+        sb.append("{");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
         if (getOptionName() != null) sb.append("OptionName: " + getOptionName() );
         sb.append("}");
         return sb.toString();

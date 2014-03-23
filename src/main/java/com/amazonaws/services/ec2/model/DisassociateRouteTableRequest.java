@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,12 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DisassociateRouteTableRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#disassociateRouteTable(DisassociateRouteTableRequest) DisassociateRouteTable operation}.
@@ -22,14 +26,16 @@ import java.io.Serializable;
  * Disassociates a subnet from a route table.
  * </p>
  * <p>
- * After you perform this action, the subnet no longer uses the routes in the route table. Instead it uses the routes in the VPC's main route table. For
- * more information about route tables, go to <a href="http://docs.amazonwebservices.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route Tables
- * </a> in the Amazon Virtual Private Cloud User Guide.
+ * After you perform this action, the subnet no longer uses the routes in
+ * the route table. Instead, it uses the routes in the VPC's main route
+ * table. For more information about route tables, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route Tables </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#disassociateRouteTable(DisassociateRouteTableRequest)
  */
-public class DisassociateRouteTableRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DisassociateRouteTableRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DisassociateRouteTableRequest> {
 
     /**
      * The association ID representing the current association between the
@@ -69,13 +75,24 @@ public class DisassociateRouteTableRequest extends AmazonWebServiceRequest  impl
      *         route table and subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisassociateRouteTableRequest withAssociationId(String associationId) {
         this.associationId = associationId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DisassociateRouteTableRequest> getDryRunRequest() {
+        Request<DisassociateRouteTableRequest> request = new DisassociateRouteTableRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -88,7 +105,7 @@ public class DisassociateRouteTableRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,13 +21,13 @@ import java.io.Serializable;
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
-public class ListJobsResult  implements Serializable  {
+public class ListJobsResult implements Serializable {
 
     /**
      * A list of job objects. Each job object contains metadata describing
      * the job.
      */
-    private java.util.List<GlacierJobDescription> jobList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<GlacierJobDescription> jobList;
 
     /**
      * An opaque string that represents where to continue pagination of the
@@ -44,9 +45,9 @@ public class ListJobsResult  implements Serializable  {
      *         the job.
      */
     public java.util.List<GlacierJobDescription> getJobList() {
-        
         if (jobList == null) {
-            jobList = new java.util.ArrayList<GlacierJobDescription>();
+              jobList = new com.amazonaws.internal.ListWithAutoConstructFlag<GlacierJobDescription>();
+              jobList.setAutoConstruct(true);
         }
         return jobList;
     }
@@ -63,8 +64,7 @@ public class ListJobsResult  implements Serializable  {
             this.jobList = null;
             return;
         }
-
-        java.util.List<GlacierJobDescription> jobListCopy = new java.util.ArrayList<GlacierJobDescription>(jobList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<GlacierJobDescription> jobListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlacierJobDescription>(jobList.size());
         jobListCopy.addAll(jobList);
         this.jobList = jobListCopy;
     }
@@ -79,7 +79,7 @@ public class ListJobsResult  implements Serializable  {
      *         the job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsResult withJobList(GlacierJobDescription... jobList) {
         if (getJobList() == null) setJobList(new java.util.ArrayList<GlacierJobDescription>(jobList.length));
@@ -99,20 +99,20 @@ public class ListJobsResult  implements Serializable  {
      *         the job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsResult withJobList(java.util.Collection<GlacierJobDescription> jobList) {
         if (jobList == null) {
             this.jobList = null;
         } else {
-            java.util.List<GlacierJobDescription> jobListCopy = new java.util.ArrayList<GlacierJobDescription>(jobList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<GlacierJobDescription> jobListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<GlacierJobDescription>(jobList.size());
             jobListCopy.addAll(jobList);
             this.jobList = jobListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An opaque string that represents where to continue pagination of the
      * results. You use this value in a new List Jobs request to obtain more
@@ -157,14 +157,13 @@ public class ListJobsResult  implements Serializable  {
      *         <code>null</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -176,8 +175,8 @@ public class ListJobsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobList() != null) sb.append("JobList: " + getJobList() + ",");    	
+        sb.append("{");
+        if (getJobList() != null) sb.append("JobList: " + getJobList() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

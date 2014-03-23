@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The StackSummary Data Type
  * </p>
  */
-public class StackSummary  implements Serializable  {
+public class StackSummary implements Serializable {
 
     /**
      * Unique stack identifier.
@@ -92,14 +93,13 @@ public class StackSummary  implements Serializable  {
      * @param stackId Unique stack identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackSummary withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The name associated with the stack.
      *
@@ -126,14 +126,13 @@ public class StackSummary  implements Serializable  {
      * @param stackName The name associated with the stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackSummary withStackName(String stackName) {
         this.stackName = stackName;
         return this;
     }
-    
-    
+
     /**
      * The template description of the template used to create the stack.
      *
@@ -160,14 +159,13 @@ public class StackSummary  implements Serializable  {
      * @param templateDescription The template description of the template used to create the stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackSummary withTemplateDescription(String templateDescription) {
         this.templateDescription = templateDescription;
         return this;
     }
-    
-    
+
     /**
      * The time the stack was created.
      *
@@ -194,14 +192,13 @@ public class StackSummary  implements Serializable  {
      * @param creationTime The time the stack was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackSummary withCreationTime(java.util.Date creationTime) {
         this.creationTime = creationTime;
         return this;
     }
-    
-    
+
     /**
      * The time the stack was last updated. This field will only be returned
      * if the stack has been updated at least once.
@@ -234,14 +231,13 @@ public class StackSummary  implements Serializable  {
      *         if the stack has been updated at least once.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackSummary withLastUpdatedTime(java.util.Date lastUpdatedTime) {
         this.lastUpdatedTime = lastUpdatedTime;
         return this;
     }
-    
-    
+
     /**
      * The time the stack was deleted.
      *
@@ -268,14 +264,13 @@ public class StackSummary  implements Serializable  {
      * @param deletionTime The time the stack was deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackSummary withDeletionTime(java.util.Date deletionTime) {
         this.deletionTime = deletionTime;
         return this;
     }
-    
-    
+
     /**
      * The current status of the stack.
      * <p>
@@ -315,7 +310,7 @@ public class StackSummary  implements Serializable  {
      * @param stackStatus The current status of the stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StackStatus
      */
@@ -323,8 +318,7 @@ public class StackSummary  implements Serializable  {
         this.stackStatus = stackStatus;
         return this;
     }
-    
-    
+
     /**
      * The current status of the stack.
      * <p>
@@ -350,7 +344,7 @@ public class StackSummary  implements Serializable  {
      * @param stackStatus The current status of the stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StackStatus
      */
@@ -358,7 +352,7 @@ public class StackSummary  implements Serializable  {
         this.stackStatus = stackStatus.toString();
         return this;
     }
-    
+
     /**
      * Success/Failure message associated with the stack status.
      *
@@ -385,14 +379,13 @@ public class StackSummary  implements Serializable  {
      * @param stackStatusReason Success/Failure message associated with the stack status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StackSummary withStackStatusReason(String stackStatusReason) {
         this.stackStatusReason = stackStatusReason;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -404,14 +397,14 @@ public class StackSummary  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");    	
-        if (getTemplateDescription() != null) sb.append("TemplateDescription: " + getTemplateDescription() + ",");    	
-        if (getCreationTime() != null) sb.append("CreationTime: " + getCreationTime() + ",");    	
-        if (getLastUpdatedTime() != null) sb.append("LastUpdatedTime: " + getLastUpdatedTime() + ",");    	
-        if (getDeletionTime() != null) sb.append("DeletionTime: " + getDeletionTime() + ",");    	
-        if (getStackStatus() != null) sb.append("StackStatus: " + getStackStatus() + ",");    	
+        sb.append("{");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");
+        if (getTemplateDescription() != null) sb.append("TemplateDescription: " + getTemplateDescription() + ",");
+        if (getCreationTime() != null) sb.append("CreationTime: " + getCreationTime() + ",");
+        if (getLastUpdatedTime() != null) sb.append("LastUpdatedTime: " + getLastUpdatedTime() + ",");
+        if (getDeletionTime() != null) sb.append("DeletionTime: " + getDeletionTime() + ",");
+        if (getStackStatus() != null) sb.append("StackStatus: " + getStackStatus() + ",");
         if (getStackStatusReason() != null) sb.append("StackStatusReason: " + getStackStatusReason() );
         sb.append("}");
         return sb.toString();

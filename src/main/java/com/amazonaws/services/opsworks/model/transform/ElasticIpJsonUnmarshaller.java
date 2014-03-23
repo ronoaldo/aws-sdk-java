@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,32 +22,28 @@ import com.amazonaws.services.opsworks.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Elastic Ip JSON Unmarshaller
  */
 public class ElasticIpJsonUnmarshaller implements Unmarshaller<ElasticIp, JsonUnmarshallerContext> {
 
-    
-
     public ElasticIp unmarshall(JsonUnmarshallerContext context) throws Exception {
         ElasticIp elasticIp = new ElasticIp();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("Ip", targetDepth)) {
                     context.nextToken();
@@ -57,16 +53,23 @@ public class ElasticIpJsonUnmarshaller implements Unmarshaller<ElasticIp, JsonUn
                     context.nextToken();
                     elasticIp.setName(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("Domain", targetDepth)) {
+                    context.nextToken();
+                    elasticIp.setDomain(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("Region", targetDepth)) {
                     context.nextToken();
                     elasticIp.setRegion(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("InstanceId", targetDepth)) {
+                    context.nextToken();
+                    elasticIp.setInstanceId(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -30,24 +30,23 @@ import com.amazonaws.Request;
  * according to the various signature versions and hashing algorithms.
  */
 public class QueryStringSigner extends AbstractAWSSigner implements Signer {
-
     /** Date override for testing only */
     private Date overriddenDate;
 
-	/**
-	 * This signer will add "Signature" parameter to the request. Default
-	 * signature version is "2" and default signing algorithm is "HmacSHA256".
-	 *
-	 * AWSAccessKeyId SignatureVersion SignatureMethod Timestamp Signature
-	 *
-	 * @param request
-	 *            request to be signed.
-	 * @param credentials
-	 *            The credentials used to use to sign the request.
-	 */
-	public void sign(Request<?> request, AWSCredentials credentials) throws AmazonClientException {
+    /**
+     * This signer will add "Signature" parameter to the request. Default
+     * signature version is "2" and default signing algorithm is "HmacSHA256".
+     *
+     * AWSAccessKeyId SignatureVersion SignatureMethod Timestamp Signature
+     *
+     * @param request
+     *            request to be signed.
+     * @param credentials
+     *            The credentials used to use to sign the request.
+     */
+    public void sign(Request<?> request, AWSCredentials credentials) throws AmazonClientException {
         sign(request, SignatureVersion.V2, SigningAlgorithm.HmacSHA256, credentials);
-	}
+    }
 
     /**
      * This signer will add following authentication parameters to the request:
@@ -64,15 +63,17 @@ public class QueryStringSigner extends AbstractAWSSigner implements Signer {
      *            signature algorithm. "HmacSHA256" is recommended.
      */
     public void sign(Request<?> request, SignatureVersion version, SigningAlgorithm algorithm, AWSCredentials credentials) throws AmazonClientException {
-    	// annonymous credentials, don't sign
-    	if ( credentials instanceof AnonymousAWSCredentials ) {
-    		return;
-    	}
-    	
-    	AWSCredentials sanitizedCredentials = sanitizeCredentials(credentials);
+        // annonymous credentials, don't sign
+        if ( credentials instanceof AnonymousAWSCredentials ) {
+            return;
+        }
+
+        AWSCredentials sanitizedCredentials = sanitizeCredentials(credentials);
         request.addParameter("AWSAccessKeyId", sanitizedCredentials.getAWSAccessKeyId());
         request.addParameter("SignatureVersion", version.toString());
-        request.addParameter("Timestamp", getFormattedTimestamp(request.getTimeOffset()));
+
+        int timeOffset = getTimeOffset(request);
+        request.addParameter("Timestamp", getFormattedTimestamp(timeOffset));
 
         if ( sanitizedCredentials instanceof AWSSessionCredentials ) {
             addSessionCredentials(request, (AWSSessionCredentials) sanitizedCredentials);
@@ -106,9 +107,9 @@ public class QueryStringSigner extends AbstractAWSSigner implements Signer {
             new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
         sorted.putAll(parameters);
 
-        for (String key : sorted.keySet()) {
-            data.append(key);
-            data.append(sorted.get(key));
+        for (Map.Entry<String, String> entry : sorted.entrySet()) {
+            data.append(entry.getKey());
+            data.append(entry.getValue());
         }
 
         return data.toString();
@@ -152,6 +153,8 @@ public class QueryStringSigner extends AbstractAWSSigner implements Signer {
             }
 
             resourcePath += request.getResourcePath();
+        } else if (!resourcePath.endsWith("/")) {
+            resourcePath += "/";
         }
 
         if (!resourcePath.startsWith("/")) {

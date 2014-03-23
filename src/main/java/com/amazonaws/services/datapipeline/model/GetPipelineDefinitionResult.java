@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the output from the GetPipelineDefinition action.
  * </p>
  */
-public class GetPipelineDefinitionResult  implements Serializable  {
+public class GetPipelineDefinitionResult implements Serializable {
 
     /**
      * An array of objects defined in the pipeline.
      */
-    private java.util.List<PipelineObject> pipelineObjects;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjects;
 
     /**
      * An array of objects defined in the pipeline.
@@ -33,9 +34,9 @@ public class GetPipelineDefinitionResult  implements Serializable  {
      * @return An array of objects defined in the pipeline.
      */
     public java.util.List<PipelineObject> getPipelineObjects() {
-        
         if (pipelineObjects == null) {
-            pipelineObjects = new java.util.ArrayList<PipelineObject>();
+              pipelineObjects = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>();
+              pipelineObjects.setAutoConstruct(true);
         }
         return pipelineObjects;
     }
@@ -50,8 +51,7 @@ public class GetPipelineDefinitionResult  implements Serializable  {
             this.pipelineObjects = null;
             return;
         }
-
-        java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
         pipelineObjectsCopy.addAll(pipelineObjects);
         this.pipelineObjects = pipelineObjectsCopy;
     }
@@ -64,7 +64,7 @@ public class GetPipelineDefinitionResult  implements Serializable  {
      * @param pipelineObjects An array of objects defined in the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPipelineDefinitionResult withPipelineObjects(PipelineObject... pipelineObjects) {
         if (getPipelineObjects() == null) setPipelineObjects(new java.util.ArrayList<PipelineObject>(pipelineObjects.length));
@@ -82,20 +82,20 @@ public class GetPipelineDefinitionResult  implements Serializable  {
      * @param pipelineObjects An array of objects defined in the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetPipelineDefinitionResult withPipelineObjects(java.util.Collection<PipelineObject> pipelineObjects) {
         if (pipelineObjects == null) {
             this.pipelineObjects = null;
         } else {
-            java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
             pipelineObjectsCopy.addAll(pipelineObjects);
             this.pipelineObjects = pipelineObjectsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class GetPipelineDefinitionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPipelineObjects() != null) sb.append("PipelineObjects: " + getPipelineObjects() );
         sb.append("}");
         return sb.toString();

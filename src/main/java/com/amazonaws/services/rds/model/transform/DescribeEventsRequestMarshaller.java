@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeEventsRequestMarshaller implements Marshaller<Request<Descr
     public Request<DescribeEventsRequest> marshall(DescribeEventsRequest describeEventsRequest) {
 
         if (describeEventsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeEventsRequest> request = new DefaultRequest<DescribeEventsRequest>(describeEventsRequest, "AmazonRDS");
         request.addParameter("Action", "DescribeEvents");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (describeEventsRequest.getSourceIdentifier() != null) {
             request.addParameter("SourceIdentifier", StringUtils.fromString(describeEventsRequest.getSourceIdentifier()));
@@ -72,7 +72,6 @@ public class DescribeEventsRequestMarshaller implements Marshaller<Request<Descr
         if (describeEventsRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeEventsRequest.getMarker()));
         }
-
 
         return request;
     }

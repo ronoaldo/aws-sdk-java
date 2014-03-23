@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.elastictranscoder.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class CreatePresetRequestMarshaller implements Marshaller<Request<CreatePresetRequest>, CreatePresetRequest> {
 
-    
-
     public Request<CreatePresetRequest> marshall(CreatePresetRequest createPresetRequest) {
     if (createPresetRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class CreatePresetRequestMarshaller implements Marshaller<Request<CreateP
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = "2012-09-25/presets"; 
 
@@ -75,14 +71,10 @@ public class CreatePresetRequestMarshaller implements Marshaller<Request<CreateP
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (createPresetRequest.getName() != null) {
@@ -127,6 +119,9 @@ public class CreatePresetRequestMarshaller implements Marshaller<Request<CreateP
                 if (video.getFrameRate() != null) {
                     jsonWriter.key("FrameRate").value(video.getFrameRate());
                 }
+                if (video.getMaxFrameRate() != null) {
+                    jsonWriter.key("MaxFrameRate").value(video.getMaxFrameRate());
+                }
                 if (video.getResolution() != null) {
                     jsonWriter.key("Resolution").value(video.getResolution());
                 }
@@ -148,6 +143,51 @@ public class CreatePresetRequestMarshaller implements Marshaller<Request<CreateP
                 if (video.getPaddingPolicy() != null) {
                     jsonWriter.key("PaddingPolicy").value(video.getPaddingPolicy());
                 }
+
+                com.amazonaws.internal.ListWithAutoConstructFlag<PresetWatermark> watermarksList = (com.amazonaws.internal.ListWithAutoConstructFlag<PresetWatermark>)(video.getWatermarks());
+                if (watermarksList != null && !(watermarksList.isAutoConstruct() && watermarksList.isEmpty())) {
+
+                    jsonWriter.key("Watermarks");
+                    jsonWriter.array();
+
+                    for (PresetWatermark watermarksListValue : watermarksList) {
+                        if (watermarksListValue != null) {
+                            jsonWriter.object();
+                            if (watermarksListValue.getId() != null) {
+                                jsonWriter.key("Id").value(watermarksListValue.getId());
+                            }
+                            if (watermarksListValue.getMaxWidth() != null) {
+                                jsonWriter.key("MaxWidth").value(watermarksListValue.getMaxWidth());
+                            }
+                            if (watermarksListValue.getMaxHeight() != null) {
+                                jsonWriter.key("MaxHeight").value(watermarksListValue.getMaxHeight());
+                            }
+                            if (watermarksListValue.getSizingPolicy() != null) {
+                                jsonWriter.key("SizingPolicy").value(watermarksListValue.getSizingPolicy());
+                            }
+                            if (watermarksListValue.getHorizontalAlign() != null) {
+                                jsonWriter.key("HorizontalAlign").value(watermarksListValue.getHorizontalAlign());
+                            }
+                            if (watermarksListValue.getHorizontalOffset() != null) {
+                                jsonWriter.key("HorizontalOffset").value(watermarksListValue.getHorizontalOffset());
+                            }
+                            if (watermarksListValue.getVerticalAlign() != null) {
+                                jsonWriter.key("VerticalAlign").value(watermarksListValue.getVerticalAlign());
+                            }
+                            if (watermarksListValue.getVerticalOffset() != null) {
+                                jsonWriter.key("VerticalOffset").value(watermarksListValue.getVerticalOffset());
+                            }
+                            if (watermarksListValue.getOpacity() != null) {
+                                jsonWriter.key("Opacity").value(watermarksListValue.getOpacity());
+                            }
+                            if (watermarksListValue.getTarget() != null) {
+                                jsonWriter.key("Target").value(watermarksListValue.getTarget());
+                            }
+                            jsonWriter.endObject();
+                        }
+                    }
+                    jsonWriter.endArray();
+                }
                 jsonWriter.endObject();
             }
             AudioParameters audio = createPresetRequest.getAudio();
@@ -167,6 +207,17 @@ public class CreatePresetRequestMarshaller implements Marshaller<Request<CreateP
                 }
                 if (audio.getChannels() != null) {
                     jsonWriter.key("Channels").value(audio.getChannels());
+                }
+                AudioCodecOptions codecOptions = audio.getCodecOptions();
+                if (codecOptions != null) {
+
+                    jsonWriter.key("CodecOptions");
+                    jsonWriter.object();
+
+                    if (codecOptions.getProfile() != null) {
+                        jsonWriter.key("Profile").value(codecOptions.getProfile());
+                    }
+                    jsonWriter.endObject();
                 }
                 jsonWriter.endObject();
             }
@@ -204,22 +255,15 @@ public class CreatePresetRequestMarshaller implements Marshaller<Request<CreateP
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

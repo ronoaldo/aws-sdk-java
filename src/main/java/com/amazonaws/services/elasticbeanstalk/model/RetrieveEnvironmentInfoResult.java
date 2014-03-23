@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Result message containing a description of the requested environment info.
+ * Result message containing a description of the requested environment
+ * info.
  * </p>
  */
-public class RetrieveEnvironmentInfoResult  implements Serializable  {
+public class RetrieveEnvironmentInfoResult implements Serializable {
 
     /**
      * The <a>EnvironmentInfoDescription</a> of the environment.
      */
-    private java.util.List<EnvironmentInfoDescription> environmentInfo;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentInfoDescription> environmentInfo;
 
     /**
      * The <a>EnvironmentInfoDescription</a> of the environment.
@@ -33,9 +35,9 @@ public class RetrieveEnvironmentInfoResult  implements Serializable  {
      * @return The <a>EnvironmentInfoDescription</a> of the environment.
      */
     public java.util.List<EnvironmentInfoDescription> getEnvironmentInfo() {
-        
         if (environmentInfo == null) {
-            environmentInfo = new java.util.ArrayList<EnvironmentInfoDescription>();
+              environmentInfo = new com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentInfoDescription>();
+              environmentInfo.setAutoConstruct(true);
         }
         return environmentInfo;
     }
@@ -50,8 +52,7 @@ public class RetrieveEnvironmentInfoResult  implements Serializable  {
             this.environmentInfo = null;
             return;
         }
-
-        java.util.List<EnvironmentInfoDescription> environmentInfoCopy = new java.util.ArrayList<EnvironmentInfoDescription>(environmentInfo.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentInfoDescription> environmentInfoCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentInfoDescription>(environmentInfo.size());
         environmentInfoCopy.addAll(environmentInfo);
         this.environmentInfo = environmentInfoCopy;
     }
@@ -64,7 +65,7 @@ public class RetrieveEnvironmentInfoResult  implements Serializable  {
      * @param environmentInfo The <a>EnvironmentInfoDescription</a> of the environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RetrieveEnvironmentInfoResult withEnvironmentInfo(EnvironmentInfoDescription... environmentInfo) {
         if (getEnvironmentInfo() == null) setEnvironmentInfo(new java.util.ArrayList<EnvironmentInfoDescription>(environmentInfo.length));
@@ -82,20 +83,20 @@ public class RetrieveEnvironmentInfoResult  implements Serializable  {
      * @param environmentInfo The <a>EnvironmentInfoDescription</a> of the environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RetrieveEnvironmentInfoResult withEnvironmentInfo(java.util.Collection<EnvironmentInfoDescription> environmentInfo) {
         if (environmentInfo == null) {
             this.environmentInfo = null;
         } else {
-            java.util.List<EnvironmentInfoDescription> environmentInfoCopy = new java.util.ArrayList<EnvironmentInfoDescription>(environmentInfo.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentInfoDescription> environmentInfoCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EnvironmentInfoDescription>(environmentInfo.size());
             environmentInfoCopy.addAll(environmentInfo);
             this.environmentInfo = environmentInfoCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +108,7 @@ public class RetrieveEnvironmentInfoResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getEnvironmentInfo() != null) sb.append("EnvironmentInfo: " + getEnvironmentInfo() );
         sb.append("}");
         return sb.toString();

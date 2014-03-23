@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,76 +13,106 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#removeTagsFromResource(RemoveTagsFromResourceRequest) RemoveTagsFromResource operation}.
  * <p>
- * Removes metadata tags from a DB Instance.
+ * Removes metadata tags from an Amazon RDS resource.
  * </p>
  * <p>
- * For an overview on tagging DB Instances, see <a href="http://docs.amazonwebservices.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html"> DB Instance
- * Tags. </a>
+ * For an overview on tagging an Amazon RDS resource, see
+ * <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html"> Tagging Amazon RDS Resources </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#removeTagsFromResource(RemoveTagsFromResourceRequest)
  */
-public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The DB Instance the tags will be removed from.
+     * The Amazon RDS resource the tags will be removed from. This value is
+     * an Amazon Resource Name (ARN). For information about creating an ARN,
+     * see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      */
     private String resourceName;
 
     /**
      * The tag key (name) of the tag to be removed.
      */
-    private java.util.List<String> tagKeys;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tagKeys;
 
     /**
-     * The DB Instance the tags will be removed from.
+     * The Amazon RDS resource the tags will be removed from. This value is
+     * an Amazon Resource Name (ARN). For information about creating an ARN,
+     * see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      *
-     * @return The DB Instance the tags will be removed from.
+     * @return The Amazon RDS resource the tags will be removed from. This value is
+     *         an Amazon Resource Name (ARN). For information about creating an ARN,
+     *         see <a
+     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     *         Constructing an RDS Amazon Resource Name (ARN)</a>.
      */
     public String getResourceName() {
         return resourceName;
     }
     
     /**
-     * The DB Instance the tags will be removed from.
+     * The Amazon RDS resource the tags will be removed from. This value is
+     * an Amazon Resource Name (ARN). For information about creating an ARN,
+     * see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      *
-     * @param resourceName The DB Instance the tags will be removed from.
+     * @param resourceName The Amazon RDS resource the tags will be removed from. This value is
+     *         an Amazon Resource Name (ARN). For information about creating an ARN,
+     *         see <a
+     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     *         Constructing an RDS Amazon Resource Name (ARN)</a>.
      */
     public void setResourceName(String resourceName) {
         this.resourceName = resourceName;
     }
     
     /**
-     * The DB Instance the tags will be removed from.
+     * The Amazon RDS resource the tags will be removed from. This value is
+     * an Amazon Resource Name (ARN). For information about creating an ARN,
+     * see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param resourceName The DB Instance the tags will be removed from.
+     * @param resourceName The Amazon RDS resource the tags will be removed from. This value is
+     *         an Amazon Resource Name (ARN). For information about creating an ARN,
+     *         see <a
+     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     *         Constructing an RDS Amazon Resource Name (ARN)</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RemoveTagsFromResourceRequest withResourceName(String resourceName) {
         this.resourceName = resourceName;
         return this;
     }
-    
-    
+
     /**
      * The tag key (name) of the tag to be removed.
      *
      * @return The tag key (name) of the tag to be removed.
      */
     public java.util.List<String> getTagKeys() {
-        
         if (tagKeys == null) {
-            tagKeys = new java.util.ArrayList<String>();
+              tagKeys = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              tagKeys.setAutoConstruct(true);
         }
         return tagKeys;
     }
@@ -97,8 +127,7 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest  impl
             this.tagKeys = null;
             return;
         }
-
-        java.util.List<String> tagKeysCopy = new java.util.ArrayList<String>(tagKeys.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tagKeysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagKeys.size());
         tagKeysCopy.addAll(tagKeys);
         this.tagKeys = tagKeysCopy;
     }
@@ -111,7 +140,7 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest  impl
      * @param tagKeys The tag key (name) of the tag to be removed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RemoveTagsFromResourceRequest withTagKeys(String... tagKeys) {
         if (getTagKeys() == null) setTagKeys(new java.util.ArrayList<String>(tagKeys.length));
@@ -129,20 +158,20 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest  impl
      * @param tagKeys The tag key (name) of the tag to be removed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RemoveTagsFromResourceRequest withTagKeys(java.util.Collection<String> tagKeys) {
         if (tagKeys == null) {
             this.tagKeys = null;
         } else {
-            java.util.List<String> tagKeysCopy = new java.util.ArrayList<String>(tagKeys.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagKeysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagKeys.size());
             tagKeysCopy.addAll(tagKeys);
             this.tagKeys = tagKeysCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -154,8 +183,8 @@ public class RemoveTagsFromResourceRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getResourceName() != null) sb.append("ResourceName: " + getResourceName() + ",");    	
+        sb.append("{");
+        if (getResourceName() != null) sb.append("ResourceName: " + getResourceName() + ",");
         if (getTagKeys() != null) sb.append("TagKeys: " + getTagKeys() );
         sb.append("}");
         return sb.toString();

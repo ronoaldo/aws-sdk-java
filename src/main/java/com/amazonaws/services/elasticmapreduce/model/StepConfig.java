@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Specification of a job flow step.
  * </p>
  */
-public class StepConfig  implements Serializable  {
+public class StepConfig implements Serializable {
 
     /**
      * The name of the job flow step.
@@ -32,15 +33,15 @@ public class StepConfig  implements Serializable  {
     private String name;
 
     /**
-     * Specifies the action to take if the job flow step fails.
+     * The action to take if the job flow step fails.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, CANCEL_AND_WAIT, CONTINUE
+     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE
      */
     private String actionOnFailure;
 
     /**
-     * Specifies the JAR file used for the job flow step.
+     * The JAR file used for the job flow step.
      */
     private HadoopJarStepConfig hadoopJarStep;
 
@@ -56,16 +57,13 @@ public class StepConfig  implements Serializable  {
      * initialize any additional object members.
      * 
      * @param name The name of the job flow step.
-     * @param hadoopJarStep Specifies the JAR file used for the job flow
-     * step.
+     * @param hadoopJarStep The JAR file used for the job flow step.
      */
     public StepConfig(String name, HadoopJarStepConfig hadoopJarStep) {
-        this.name = name;
-        this.hadoopJarStep = hadoopJarStep;
+        setName(name);
+        setHadoopJarStep(hadoopJarStep);
     }
 
-    
-    
     /**
      * The name of the job flow step.
      * <p>
@@ -104,21 +102,20 @@ public class StepConfig  implements Serializable  {
      * @param name The name of the job flow step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepConfig withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the action to take if the job flow step fails.
+     * The action to take if the job flow step fails.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, CANCEL_AND_WAIT, CONTINUE
+     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE
      *
-     * @return Specifies the action to take if the job flow step fails.
+     * @return The action to take if the job flow step fails.
      *
      * @see ActionOnFailure
      */
@@ -127,12 +124,12 @@ public class StepConfig  implements Serializable  {
     }
     
     /**
-     * Specifies the action to take if the job flow step fails.
+     * The action to take if the job flow step fails.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, CANCEL_AND_WAIT, CONTINUE
+     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE
      *
-     * @param actionOnFailure Specifies the action to take if the job flow step fails.
+     * @param actionOnFailure The action to take if the job flow step fails.
      *
      * @see ActionOnFailure
      */
@@ -141,17 +138,17 @@ public class StepConfig  implements Serializable  {
     }
     
     /**
-     * Specifies the action to take if the job flow step fails.
+     * The action to take if the job flow step fails.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, CANCEL_AND_WAIT, CONTINUE
+     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE
      *
-     * @param actionOnFailure Specifies the action to take if the job flow step fails.
+     * @param actionOnFailure The action to take if the job flow step fails.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ActionOnFailure
      */
@@ -159,15 +156,14 @@ public class StepConfig  implements Serializable  {
         this.actionOnFailure = actionOnFailure;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the action to take if the job flow step fails.
+     * The action to take if the job flow step fails.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, CANCEL_AND_WAIT, CONTINUE
+     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE
      *
-     * @param actionOnFailure Specifies the action to take if the job flow step fails.
+     * @param actionOnFailure The action to take if the job flow step fails.
      *
      * @see ActionOnFailure
      */
@@ -176,17 +172,17 @@ public class StepConfig  implements Serializable  {
     }
     
     /**
-     * Specifies the action to take if the job flow step fails.
+     * The action to take if the job flow step fails.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, CANCEL_AND_WAIT, CONTINUE
+     * <b>Allowed Values: </b>TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE
      *
-     * @param actionOnFailure Specifies the action to take if the job flow step fails.
+     * @param actionOnFailure The action to take if the job flow step fails.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ActionOnFailure
      */
@@ -194,41 +190,40 @@ public class StepConfig  implements Serializable  {
         this.actionOnFailure = actionOnFailure.toString();
         return this;
     }
-    
+
     /**
-     * Specifies the JAR file used for the job flow step.
+     * The JAR file used for the job flow step.
      *
-     * @return Specifies the JAR file used for the job flow step.
+     * @return The JAR file used for the job flow step.
      */
     public HadoopJarStepConfig getHadoopJarStep() {
         return hadoopJarStep;
     }
     
     /**
-     * Specifies the JAR file used for the job flow step.
+     * The JAR file used for the job flow step.
      *
-     * @param hadoopJarStep Specifies the JAR file used for the job flow step.
+     * @param hadoopJarStep The JAR file used for the job flow step.
      */
     public void setHadoopJarStep(HadoopJarStepConfig hadoopJarStep) {
         this.hadoopJarStep = hadoopJarStep;
     }
     
     /**
-     * Specifies the JAR file used for the job flow step.
+     * The JAR file used for the job flow step.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param hadoopJarStep Specifies the JAR file used for the job flow step.
+     * @param hadoopJarStep The JAR file used for the job flow step.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StepConfig withHadoopJarStep(HadoopJarStepConfig hadoopJarStep) {
         this.hadoopJarStep = hadoopJarStep;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -240,9 +235,9 @@ public class StepConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getActionOnFailure() != null) sb.append("ActionOnFailure: " + getActionOnFailure() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getActionOnFailure() != null) sb.append("ActionOnFailure: " + getActionOnFailure() + ",");
         if (getHadoopJarStep() != null) sb.append("HadoopJarStep: " + getHadoopJarStep() );
         sb.append("}");
         return sb.toString();

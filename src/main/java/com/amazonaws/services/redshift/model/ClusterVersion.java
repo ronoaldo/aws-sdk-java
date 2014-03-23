@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes a cluster version, including the parameter group family and description of the version.
+ * Describes a cluster version, including the parameter group family and
+ * description of the version.
  * </p>
  */
-public class ClusterVersion  implements Serializable  {
+public class ClusterVersion implements Serializable {
 
     /**
      * The version number used by the cluster.
@@ -63,14 +65,13 @@ public class ClusterVersion  implements Serializable  {
      * @param clusterVersion The version number used by the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterVersion withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * The name of the cluster parameter group family for the cluster.
      *
@@ -97,14 +98,13 @@ public class ClusterVersion  implements Serializable  {
      * @param clusterParameterGroupFamily The name of the cluster parameter group family for the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterVersion withClusterParameterGroupFamily(String clusterParameterGroupFamily) {
         this.clusterParameterGroupFamily = clusterParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * The description of the cluster version.
      *
@@ -131,14 +131,13 @@ public class ClusterVersion  implements Serializable  {
      * @param description The description of the cluster version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterVersion withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,9 +149,9 @@ public class ClusterVersion  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
-        if (getClusterParameterGroupFamily() != null) sb.append("ClusterParameterGroupFamily: " + getClusterParameterGroupFamily() + ",");    	
+        sb.append("{");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
+        if (getClusterParameterGroupFamily() != null) sb.append("ClusterParameterGroupFamily: " + getClusterParameterGroupFamily() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

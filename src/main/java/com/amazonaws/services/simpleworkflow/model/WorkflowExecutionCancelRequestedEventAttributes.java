@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>WorkflowExecutionCancelRequested</code> event.
+ * Provides details of the <code>WorkflowExecutionCancelRequested</code>
+ * event.
  * </p>
  */
-public class WorkflowExecutionCancelRequestedEventAttributes  implements Serializable  {
+public class WorkflowExecutionCancelRequestedEventAttributes implements Serializable {
 
     /**
      * The external workflow execution for which the cancellation was
@@ -83,14 +85,13 @@ public class WorkflowExecutionCancelRequestedEventAttributes  implements Seriali
      *         requested.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionCancelRequestedEventAttributes withExternalWorkflowExecution(WorkflowExecution externalWorkflowExecution) {
         this.externalWorkflowExecution = externalWorkflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The id of the
      * <code>RequestCancelExternalWorkflowExecutionInitiated</code> event
@@ -159,14 +160,13 @@ public class WorkflowExecutionCancelRequestedEventAttributes  implements Seriali
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionCancelRequestedEventAttributes withExternalInitiatedEventId(Long externalInitiatedEventId) {
         this.externalInitiatedEventId = externalInitiatedEventId;
         return this;
     }
-    
-    
+
     /**
      * If set, indicates that the request to cancel the workflow execution
      * was automatically generated, and specifies the cause. This happens if
@@ -224,7 +224,7 @@ public class WorkflowExecutionCancelRequestedEventAttributes  implements Seriali
      *         child policy is set to cancel child executions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see WorkflowExecutionCancelRequestedCause
      */
@@ -232,8 +232,7 @@ public class WorkflowExecutionCancelRequestedEventAttributes  implements Seriali
         this.cause = cause;
         return this;
     }
-    
-    
+
     /**
      * If set, indicates that the request to cancel the workflow execution
      * was automatically generated, and specifies the cause. This happens if
@@ -271,7 +270,7 @@ public class WorkflowExecutionCancelRequestedEventAttributes  implements Seriali
      *         child policy is set to cancel child executions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see WorkflowExecutionCancelRequestedCause
      */
@@ -279,7 +278,7 @@ public class WorkflowExecutionCancelRequestedEventAttributes  implements Seriali
         this.cause = cause.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -291,9 +290,9 @@ public class WorkflowExecutionCancelRequestedEventAttributes  implements Seriali
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExternalWorkflowExecution() != null) sb.append("ExternalWorkflowExecution: " + getExternalWorkflowExecution() + ",");    	
-        if (getExternalInitiatedEventId() != null) sb.append("ExternalInitiatedEventId: " + getExternalInitiatedEventId() + ",");    	
+        sb.append("{");
+        if (getExternalWorkflowExecution() != null) sb.append("ExternalWorkflowExecution: " + getExternalWorkflowExecution() + ",");
+        if (getExternalInitiatedEventId() != null) sb.append("ExternalInitiatedEventId: " + getExternalInitiatedEventId() + ",");
         if (getCause() != null) sb.append("Cause: " + getCause() );
         sb.append("}");
         return sb.toString();

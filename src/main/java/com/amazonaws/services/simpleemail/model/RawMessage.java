@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,14 +21,14 @@ import java.io.Serializable;
  * Represents the raw data of the message.
  * </p>
  */
-public class RawMessage  implements Serializable  {
+public class RawMessage implements Serializable {
 
     /**
      * The raw data of the message. The client must ensure that the message
      * format complies with Internet email standards regarding email header
      * fields, MIME types, MIME encoding, and base64 encoding (if necessary).
-     * <p>For more information, go to the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     * <p>For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      * SES Developer Guide</a>.
      */
     private java.nio.ByteBuffer data;
@@ -46,29 +47,27 @@ public class RawMessage  implements Serializable  {
      * @param data The raw data of the message. The client must ensure that
      * the message format complies with Internet email standards regarding
      * email header fields, MIME types, MIME encoding, and base64 encoding
-     * (if necessary). <p>For more information, go to the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     * (if necessary). <p>For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      * SES Developer Guide</a>.
      */
     public RawMessage(java.nio.ByteBuffer data) {
-        this.data = data;
+        setData(data);
     }
 
-    
-    
     /**
      * The raw data of the message. The client must ensure that the message
      * format complies with Internet email standards regarding email header
      * fields, MIME types, MIME encoding, and base64 encoding (if necessary).
-     * <p>For more information, go to the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     * <p>For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      * SES Developer Guide</a>.
      *
      * @return The raw data of the message. The client must ensure that the message
      *         format complies with Internet email standards regarding email header
      *         fields, MIME types, MIME encoding, and base64 encoding (if necessary).
-     *         <p>For more information, go to the<a
-     *         href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     *         <p>For more information, go to the <a
+     *         href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      *         SES Developer Guide</a>.
      */
     public java.nio.ByteBuffer getData() {
@@ -79,15 +78,15 @@ public class RawMessage  implements Serializable  {
      * The raw data of the message. The client must ensure that the message
      * format complies with Internet email standards regarding email header
      * fields, MIME types, MIME encoding, and base64 encoding (if necessary).
-     * <p>For more information, go to the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     * <p>For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      * SES Developer Guide</a>.
      *
      * @param data The raw data of the message. The client must ensure that the message
      *         format complies with Internet email standards regarding email header
      *         fields, MIME types, MIME encoding, and base64 encoding (if necessary).
-     *         <p>For more information, go to the<a
-     *         href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     *         <p>For more information, go to the <a
+     *         href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      *         SES Developer Guide</a>.
      */
     public void setData(java.nio.ByteBuffer data) {
@@ -98,8 +97,8 @@ public class RawMessage  implements Serializable  {
      * The raw data of the message. The client must ensure that the message
      * format complies with Internet email standards regarding email header
      * fields, MIME types, MIME encoding, and base64 encoding (if necessary).
-     * <p>For more information, go to the<a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     * <p>For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      * SES Developer Guide</a>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -107,19 +106,18 @@ public class RawMessage  implements Serializable  {
      * @param data The raw data of the message. The client must ensure that the message
      *         format complies with Internet email standards regarding email header
      *         fields, MIME types, MIME encoding, and base64 encoding (if necessary).
-     *         <p>For more information, go to the<a
-     *         href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
+     *         <p>For more information, go to the <a
+     *         href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon
      *         SES Developer Guide</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RawMessage withData(java.nio.ByteBuffer data) {
         this.data = data;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -131,7 +129,7 @@ public class RawMessage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getData() != null) sb.append("Data: " + getData() );
         sb.append("}");
         return sb.toString();

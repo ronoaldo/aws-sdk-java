@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>ActivityTaskTimedOut</code> event.
  * </p>
  */
-public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
+public class ActivityTaskTimedOutEventAttributes implements Serializable {
 
     /**
      * The type of the timeout that caused this event.
@@ -95,7 +96,7 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
      * @param timeoutType The type of the timeout that caused this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ActivityTaskTimeoutType
      */
@@ -103,8 +104,7 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
         this.timeoutType = timeoutType;
         return this;
     }
-    
-    
+
     /**
      * The type of the timeout that caused this event.
      * <p>
@@ -130,7 +130,7 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
      * @param timeoutType The type of the timeout that caused this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ActivityTaskTimeoutType
      */
@@ -138,7 +138,7 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
         this.timeoutType = timeoutType.toString();
         return this;
     }
-    
+
     /**
      * The id of the <code>ActivityTaskScheduled</code> event that was
      * recorded when this activity task was scheduled. This information can
@@ -183,14 +183,13 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
      *         leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskTimedOutEventAttributes withScheduledEventId(Long scheduledEventId) {
         this.scheduledEventId = scheduledEventId;
         return this;
     }
-    
-    
+
     /**
      * The Id of the <code>ActivityTaskStarted</code> event recorded when
      * this activity task was started. This information can be useful for
@@ -235,14 +234,13 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
      *         this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskTimedOutEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Contains the content of the <code>details</code> parameter for the
      * last call made by the activity to
@@ -290,14 +288,13 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
      *         <code>RecordActivityTaskHeartbeat</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTaskTimedOutEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -309,10 +306,10 @@ public class ActivityTaskTimedOutEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimeoutType() != null) sb.append("TimeoutType: " + getTimeoutType() + ",");    	
-        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");    	
-        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");    	
+        sb.append("{");
+        if (getTimeoutType() != null) sb.append("TimeoutType: " + getTimeoutType() + ",");
+        if (getScheduledEventId() != null) sb.append("ScheduledEventId: " + getScheduledEventId() + ",");
+        if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() + ",");
         if (getDetails() != null) sb.append("Details: " + getDetails() );
         sb.append("}");
         return sb.toString();

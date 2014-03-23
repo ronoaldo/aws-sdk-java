@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#updateServiceAccessPolicies(UpdateServiceAccessPoliciesRequest) UpdateServiceAccessPolicies operation}.
  * <p>
- * Configures the policies that control access to the domain's document and search services. The maximum size of an access policy document is 100KB.
+ * Configures the policies that control access to the domain's document
+ * and search services. The maximum size of an access policy document is
+ * 100 KB.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#updateServiceAccessPolicies(UpdateServiceAccessPoliciesRequest)
  */
-public class UpdateServiceAccessPoliciesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateServiceAccessPoliciesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -41,16 +45,16 @@ public class UpdateServiceAccessPoliciesRequest extends AmazonWebServiceRequest 
 
     /**
      * An IAM access policy as described in <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
      * target="_blank">The Access Policy Language</a> in <i>Using AWS
      * Identity and Access Management</i>. The maximum size of an access
-     * policy document is 100KB. <p>Example: <code>{"Statement":
+     * policy document is 100 KB. <p>Example: <code>{"Statement":
      * [{"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:search/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }},
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }},
      * {"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:documents/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
      */
     private String accessPolicies;
 
@@ -116,38 +120,37 @@ public class UpdateServiceAccessPoliciesRequest extends AmazonWebServiceRequest 
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateServiceAccessPoliciesRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * An IAM access policy as described in <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
      * target="_blank">The Access Policy Language</a> in <i>Using AWS
      * Identity and Access Management</i>. The maximum size of an access
-     * policy document is 100KB. <p>Example: <code>{"Statement":
+     * policy document is 100 KB. <p>Example: <code>{"Statement":
      * [{"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:search/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }},
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }},
      * {"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:documents/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
      *
      * @return An IAM access policy as described in <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
      *         target="_blank">The Access Policy Language</a> in <i>Using AWS
      *         Identity and Access Management</i>. The maximum size of an access
-     *         policy document is 100KB. <p>Example: <code>{"Statement":
+     *         policy document is 100 KB. <p>Example: <code>{"Statement":
      *         [{"Effect":"Allow", "Action": "*", "Resource":
      *         "arn:aws:cs:us-east-1:1234567890:search/movies", "Condition": {
-     *         "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }},
+     *         "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }},
      *         {"Effect":"Allow", "Action": "*", "Resource":
      *         "arn:aws:cs:us-east-1:1234567890:documents/movies", "Condition": {
-     *         "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
+     *         "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
      */
     public String getAccessPolicies() {
         return accessPolicies;
@@ -155,28 +158,28 @@ public class UpdateServiceAccessPoliciesRequest extends AmazonWebServiceRequest 
     
     /**
      * An IAM access policy as described in <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
      * target="_blank">The Access Policy Language</a> in <i>Using AWS
      * Identity and Access Management</i>. The maximum size of an access
-     * policy document is 100KB. <p>Example: <code>{"Statement":
+     * policy document is 100 KB. <p>Example: <code>{"Statement":
      * [{"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:search/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }},
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }},
      * {"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:documents/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
      *
      * @param accessPolicies An IAM access policy as described in <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
      *         target="_blank">The Access Policy Language</a> in <i>Using AWS
      *         Identity and Access Management</i>. The maximum size of an access
-     *         policy document is 100KB. <p>Example: <code>{"Statement":
+     *         policy document is 100 KB. <p>Example: <code>{"Statement":
      *         [{"Effect":"Allow", "Action": "*", "Resource":
      *         "arn:aws:cs:us-east-1:1234567890:search/movies", "Condition": {
-     *         "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }},
+     *         "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }},
      *         {"Effect":"Allow", "Action": "*", "Resource":
      *         "arn:aws:cs:us-east-1:1234567890:documents/movies", "Condition": {
-     *         "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
+     *         "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
      */
     public void setAccessPolicies(String accessPolicies) {
         this.accessPolicies = accessPolicies;
@@ -184,40 +187,39 @@ public class UpdateServiceAccessPoliciesRequest extends AmazonWebServiceRequest 
     
     /**
      * An IAM access policy as described in <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
      * target="_blank">The Access Policy Language</a> in <i>Using AWS
      * Identity and Access Management</i>. The maximum size of an access
-     * policy document is 100KB. <p>Example: <code>{"Statement":
+     * policy document is 100 KB. <p>Example: <code>{"Statement":
      * [{"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:search/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }},
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }},
      * {"Effect":"Allow", "Action": "*", "Resource":
      * "arn:aws:cs:us-east-1:1234567890:documents/movies", "Condition": {
-     * "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
+     * "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param accessPolicies An IAM access policy as described in <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?AccessPolicyLanguage.html"
      *         target="_blank">The Access Policy Language</a> in <i>Using AWS
      *         Identity and Access Management</i>. The maximum size of an access
-     *         policy document is 100KB. <p>Example: <code>{"Statement":
+     *         policy document is 100 KB. <p>Example: <code>{"Statement":
      *         [{"Effect":"Allow", "Action": "*", "Resource":
      *         "arn:aws:cs:us-east-1:1234567890:search/movies", "Condition": {
-     *         "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }},
+     *         "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }},
      *         {"Effect":"Allow", "Action": "*", "Resource":
      *         "arn:aws:cs:us-east-1:1234567890:documents/movies", "Condition": {
-     *         "IpAddress": { aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
+     *         "IpAddress": { "aws:SourceIp": ["203.0.113.1/32"] } }} ] }</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateServiceAccessPoliciesRequest withAccessPolicies(String accessPolicies) {
         this.accessPolicies = accessPolicies;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -229,8 +231,8 @@ public class UpdateServiceAccessPoliciesRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getAccessPolicies() != null) sb.append("AccessPolicies: " + getAccessPolicies() );
         sb.append("}");
         return sb.toString();

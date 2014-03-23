@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains details about a workflow execution.
  * </p>
  */
-public class WorkflowExecutionDetail  implements Serializable  {
+public class WorkflowExecutionDetail implements Serializable {
 
     /**
      * Information about the workflow execution.
@@ -84,14 +85,13 @@ public class WorkflowExecutionDetail  implements Serializable  {
      * @param executionInfo Information about the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionDetail withExecutionInfo(WorkflowExecutionInfo executionInfo) {
         this.executionInfo = executionInfo;
         return this;
     }
-    
-    
+
     /**
      * The configuration settings for this workflow execution including
      * timeout values, tasklist etc.
@@ -124,14 +124,13 @@ public class WorkflowExecutionDetail  implements Serializable  {
      *         timeout values, tasklist etc.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionDetail withExecutionConfiguration(WorkflowExecutionConfiguration executionConfiguration) {
         this.executionConfiguration = executionConfiguration;
         return this;
     }
-    
-    
+
     /**
      * The number of tasks for this workflow execution. This includes open
      * and closed tasks of all types.
@@ -164,14 +163,13 @@ public class WorkflowExecutionDetail  implements Serializable  {
      *         and closed tasks of all types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionDetail withOpenCounts(WorkflowExecutionOpenCounts openCounts) {
         this.openCounts = openCounts;
         return this;
     }
-    
-    
+
     /**
      * The time when the last activity task was scheduled for this workflow
      * execution. You can use this information to determine if the workflow
@@ -216,14 +214,13 @@ public class WorkflowExecutionDetail  implements Serializable  {
      *         require a corrective action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionDetail withLatestActivityTaskTimestamp(java.util.Date latestActivityTaskTimestamp) {
         this.latestActivityTaskTimestamp = latestActivityTaskTimestamp;
         return this;
     }
-    
-    
+
     /**
      * The latest executionContext provided by the decider for this workflow
      * execution. A decider can provide an executionContext, which is a free
@@ -277,14 +274,13 @@ public class WorkflowExecutionDetail  implements Serializable  {
      *         <a>RespondDecisionTaskCompleted</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionDetail withLatestExecutionContext(String latestExecutionContext) {
         this.latestExecutionContext = latestExecutionContext;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -296,11 +292,11 @@ public class WorkflowExecutionDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExecutionInfo() != null) sb.append("ExecutionInfo: " + getExecutionInfo() + ",");    	
-        if (getExecutionConfiguration() != null) sb.append("ExecutionConfiguration: " + getExecutionConfiguration() + ",");    	
-        if (getOpenCounts() != null) sb.append("OpenCounts: " + getOpenCounts() + ",");    	
-        if (getLatestActivityTaskTimestamp() != null) sb.append("LatestActivityTaskTimestamp: " + getLatestActivityTaskTimestamp() + ",");    	
+        sb.append("{");
+        if (getExecutionInfo() != null) sb.append("ExecutionInfo: " + getExecutionInfo() + ",");
+        if (getExecutionConfiguration() != null) sb.append("ExecutionConfiguration: " + getExecutionConfiguration() + ",");
+        if (getOpenCounts() != null) sb.append("OpenCounts: " + getOpenCounts() + ",");
+        if (getLatestActivityTaskTimestamp() != null) sb.append("LatestActivityTaskTimestamp: " + getLatestActivityTaskTimestamp() + ",");
         if (getLatestExecutionContext() != null) sb.append("LatestExecutionContext: " + getLatestExecutionContext() );
         sb.append("}");
         return sb.toString();

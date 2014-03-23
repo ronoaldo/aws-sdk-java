@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -37,7 +37,22 @@ public class Principal {
      * identity of the requester, but instead on other identifying
      * characteristics such as the requester's IP address.
      */
-    public static final Principal AllUsers = new Principal("*");
+    public static final Principal AllUsers = new Principal("AWS", "*");
+
+    /**
+     * Principal instance that includes all AWS web services.
+     */
+    public static final Principal AllServices = new Principal("Service", "*");
+
+    /**
+     * Principal instance that includes all the web identity providers.
+     */
+    public static final Principal AllWebProviders = new Principal("Federated", "*");
+
+    /**
+     * Principal instance that includes all the AWS accounts, AWS web services and web identity providers.
+     */
+    public static final Principal All = new Principal("*", "*");
 
     private final String id;
     private final String provider;
@@ -59,6 +74,17 @@ public class Principal {
     }
 
     /**
+     * Constructs a new principal with the specified id and provider.
+     */
+    public Principal(String provider, String id) {
+        this.provider = provider;
+        if (provider.equals("AWS")) {
+            id = id.replaceAll("-", "");
+        }
+        this.id = id;
+    }
+
+    /**
      * Constructs a new principal with the specified AWS account ID.
      *
      * @param accountId
@@ -68,8 +94,23 @@ public class Principal {
         if (accountId == null) {
             throw new IllegalArgumentException("Null AWS account ID specified");
         }
+
         this.id = accountId.replaceAll("-", "");
         provider = "AWS";
+    }
+
+    /**
+     * Constructs a new principal with the specified web identity provider.
+     *
+     * @param webIdentityProvider
+     *            An web identity provider.
+     */
+    public Principal(WebIdentityProviders webIdentityProvider) {
+        if (webIdentityProvider == null) {
+            throw new IllegalArgumentException("Null web identity provider specified");
+        }
+        this.id = webIdentityProvider.getWebIdentityProvider();
+        provider = "Federated";
     }
 
     /**
@@ -103,7 +144,9 @@ public class Principal {
         AWSDataPipeline("datapipeline.amazonaws.com"),
         AmazonElasticTranscoder("elastictranscoder.amazonaws.com"),
         AmazonEC2("ec2.amazonaws.com"),
-        AWSOpsWorks("opsworks.amazonaws.com");
+        AWSOpsWorks("opsworks.amazonaws.com"),
+        AWSCloudHSM("cloudhsm.amazonaws.com"),
+        AllServices("*");
         private String serviceId;
 
         /**
@@ -134,5 +177,82 @@ public class Principal {
 
 
     }
+
+    /**
+     * Web identity providers, such as Login with Amazon, Facebook, or Google.
+     */
+    static public enum WebIdentityProviders {
+
+        Facebook("graph.facebook.com"),
+        Google("accounts.google.com"),
+        Amazon("www.amazon.com"),
+        AllProviders("*");
+
+        private String webIdentityProvider;
+
+        /**
+         * The web identity provider which has the right to assume the role.
+         */
+        private WebIdentityProviders(String webIdentityProvider) {
+            this.webIdentityProvider = webIdentityProvider;
+        }
+
+        public String getWebIdentityProvider() {
+            return webIdentityProvider;
+        }
+
+        /**
+         * Construct the Services object from a string representing web identity provider.
+         */
+        public static WebIdentityProviders fromString(String webIdentityProvider) {
+            if (webIdentityProvider != null) {
+                for (WebIdentityProviders provider : WebIdentityProviders.values()) {
+                    if (provider.getWebIdentityProvider().equalsIgnoreCase(webIdentityProvider)) {
+                        return provider;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int hashCode = 1;
+
+        hashCode = prime * hashCode + provider.hashCode();
+        hashCode = prime * hashCode + id.hashCode();
+        return hashCode;
+    }
+
+    @Override
+    public boolean equals(Object principal) {
+        if (this == principal) {
+            return true;
+        }
+
+        if (principal == null) {
+            return false;
+        }
+
+        if (principal instanceof Principal == false) {
+            return false;
+        }
+
+        Principal other = (Principal) principal;
+
+        if (this.getProvider().equals(other.getProvider())
+                && this.getId().equals(other.getId())) {
+            return true;
+        }
+
+        return false;
+    }
+
+
 
 }

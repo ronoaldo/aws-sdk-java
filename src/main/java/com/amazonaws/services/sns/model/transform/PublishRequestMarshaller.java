@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class PublishRequestMarshaller implements Marshaller<Request<PublishReque
     public Request<PublishRequest> marshall(PublishRequest publishRequest) {
 
         if (publishRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PublishRequest> request = new DefaultRequest<PublishRequest>(publishRequest, "AmazonSNS");
         request.addParameter("Action", "Publish");
@@ -42,6 +42,9 @@ public class PublishRequestMarshaller implements Marshaller<Request<PublishReque
 
         if (publishRequest.getTopicArn() != null) {
             request.addParameter("TopicArn", StringUtils.fromString(publishRequest.getTopicArn()));
+        }
+        if (publishRequest.getTargetArn() != null) {
+            request.addParameter("TargetArn", StringUtils.fromString(publishRequest.getTargetArn()));
         }
         if (publishRequest.getMessage() != null) {
             request.addParameter("Message", StringUtils.fromString(publishRequest.getMessage()));
@@ -52,7 +55,6 @@ public class PublishRequestMarshaller implements Marshaller<Request<PublishReque
         if (publishRequest.getMessageStructure() != null) {
             request.addParameter("MessageStructure", StringUtils.fromString(publishRequest.getMessageStructure()));
         }
-
 
         return request;
     }

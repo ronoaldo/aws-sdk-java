@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#createEnvironment(CreateEnvironmentRequest) CreateEnvironment operation}.
  * <p>
- * Launches an environment for the specified application using the specified configuration.
+ * Launches an environment for the specified application using the
+ * specified configuration.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#createEnvironment(CreateEnvironmentRequest)
  */
-public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateEnvironmentRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application that contains the version to be deployed.
@@ -36,19 +39,6 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      * <b>Length: </b>1 - 100<br/>
      */
     private String applicationName;
-
-    /**
-     * The name of the application version to deploy. <p> If the specified
-     * application has no associated application versions, AWS Elastic
-     * Beanstalk <code>UpdateEnvironment</code> returns an
-     * <code>InvalidParameterValue</code> error. <p> Default: If not
-     * specified, AWS Elastic Beanstalk attempts to launch the most recently
-     * created application version.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 100<br/>
-     */
-    private String versionLabel;
 
     /**
      * A unique name for the deployment environment. Used in the application
@@ -64,6 +54,42 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      * <b>Length: </b>4 - 23<br/>
      */
     private String environmentName;
+
+    /**
+     * Describes this environment.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>0 - 200<br/>
+     */
+    private String description;
+
+    /**
+     * If specified, the environment attempts to use this value as the prefix
+     * for the CNAME. If not specified, the CNAME is generated automatically
+     * by appending a random alphanumeric string to the environment name.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>4 - 63<br/>
+     */
+    private String cNAMEPrefix;
+
+    /**
+     * This specifies the tier to use for creating this environment.
+     */
+    private EnvironmentTier tier;
+
+    /**
+     * The name of the application version to deploy. <p> If the specified
+     * application has no associated application versions, AWS Elastic
+     * Beanstalk <code>UpdateEnvironment</code> returns an
+     * <code>InvalidParameterValue</code> error. <p> Default: If not
+     * specified, AWS Elastic Beanstalk attempts to launch the sample
+     * application in the container.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 100<br/>
+     */
+    private String versionLabel;
 
     /**
      * The name of the configuration template to use in deployment. If no
@@ -96,36 +122,18 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
     private String solutionStackName;
 
     /**
-     * If specified, the environment attempts to use this value as the prefix
-     * for the CNAME. If not specified, the environment uses the environment
-     * name.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>4 - 63<br/>
-     */
-    private String cNAMEPrefix;
-
-    /**
-     * Describes this environment.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>0 - 200<br/>
-     */
-    private String description;
-
-    /**
      * If specified, AWS Elastic Beanstalk sets the specified configuration
      * options to the requested value in the configuration set for the new
      * environment. These override the values obtained from the solution
      * stack or the configuration template.
      */
-    private java.util.List<ConfigurationOptionSetting> optionSettings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettings;
 
     /**
      * A list of custom user-defined configuration options to remove from the
      * configuration set for this new environment.
      */
-    private java.util.List<OptionSpecification> optionsToRemove;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsToRemove;
 
     /**
      * Default constructor for a new CreateEnvironmentRequest object.  Callers should use the
@@ -153,12 +161,10 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      * for your application.
      */
     public CreateEnvironmentRequest(String applicationName, String environmentName) {
-        this.applicationName = applicationName;
-        this.environmentName = environmentName;
+        setApplicationName(applicationName);
+        setEnvironmentName(environmentName);
     }
 
-    
-    
     /**
      * The name of the application that contains the version to be deployed.
      * <p> If no application is found with this name,
@@ -212,87 +218,13 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
-    /**
-     * The name of the application version to deploy. <p> If the specified
-     * application has no associated application versions, AWS Elastic
-     * Beanstalk <code>UpdateEnvironment</code> returns an
-     * <code>InvalidParameterValue</code> error. <p> Default: If not
-     * specified, AWS Elastic Beanstalk attempts to launch the most recently
-     * created application version.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 100<br/>
-     *
-     * @return The name of the application version to deploy. <p> If the specified
-     *         application has no associated application versions, AWS Elastic
-     *         Beanstalk <code>UpdateEnvironment</code> returns an
-     *         <code>InvalidParameterValue</code> error. <p> Default: If not
-     *         specified, AWS Elastic Beanstalk attempts to launch the most recently
-     *         created application version.
-     */
-    public String getVersionLabel() {
-        return versionLabel;
-    }
-    
-    /**
-     * The name of the application version to deploy. <p> If the specified
-     * application has no associated application versions, AWS Elastic
-     * Beanstalk <code>UpdateEnvironment</code> returns an
-     * <code>InvalidParameterValue</code> error. <p> Default: If not
-     * specified, AWS Elastic Beanstalk attempts to launch the most recently
-     * created application version.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 100<br/>
-     *
-     * @param versionLabel The name of the application version to deploy. <p> If the specified
-     *         application has no associated application versions, AWS Elastic
-     *         Beanstalk <code>UpdateEnvironment</code> returns an
-     *         <code>InvalidParameterValue</code> error. <p> Default: If not
-     *         specified, AWS Elastic Beanstalk attempts to launch the most recently
-     *         created application version.
-     */
-    public void setVersionLabel(String versionLabel) {
-        this.versionLabel = versionLabel;
-    }
-    
-    /**
-     * The name of the application version to deploy. <p> If the specified
-     * application has no associated application versions, AWS Elastic
-     * Beanstalk <code>UpdateEnvironment</code> returns an
-     * <code>InvalidParameterValue</code> error. <p> Default: If not
-     * specified, AWS Elastic Beanstalk attempts to launch the most recently
-     * created application version.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>1 - 100<br/>
-     *
-     * @param versionLabel The name of the application version to deploy. <p> If the specified
-     *         application has no associated application versions, AWS Elastic
-     *         Beanstalk <code>UpdateEnvironment</code> returns an
-     *         <code>InvalidParameterValue</code> error. <p> Default: If not
-     *         specified, AWS Elastic Beanstalk attempts to launch the most recently
-     *         created application version.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     */
-    public CreateEnvironmentRequest withVersionLabel(String versionLabel) {
-        this.versionLabel = versionLabel;
-        return this;
-    }
-    
-    
+
     /**
      * A unique name for the deployment environment. Used in the application
      * URL. <p>Constraint: Must be from 4 to 23 characters in length. The
@@ -370,14 +302,214 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         CNAME, and therefore part of the visible URL for your application.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
+
+    /**
+     * Describes this environment.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>0 - 200<br/>
+     *
+     * @return Describes this environment.
+     */
+    public String getDescription() {
+        return description;
+    }
     
+    /**
+     * Describes this environment.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>0 - 200<br/>
+     *
+     * @param description Describes this environment.
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
+    /**
+     * Describes this environment.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>0 - 200<br/>
+     *
+     * @param description Describes this environment.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreateEnvironmentRequest withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * If specified, the environment attempts to use this value as the prefix
+     * for the CNAME. If not specified, the CNAME is generated automatically
+     * by appending a random alphanumeric string to the environment name.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>4 - 63<br/>
+     *
+     * @return If specified, the environment attempts to use this value as the prefix
+     *         for the CNAME. If not specified, the CNAME is generated automatically
+     *         by appending a random alphanumeric string to the environment name.
+     */
+    public String getCNAMEPrefix() {
+        return cNAMEPrefix;
+    }
+    
+    /**
+     * If specified, the environment attempts to use this value as the prefix
+     * for the CNAME. If not specified, the CNAME is generated automatically
+     * by appending a random alphanumeric string to the environment name.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>4 - 63<br/>
+     *
+     * @param cNAMEPrefix If specified, the environment attempts to use this value as the prefix
+     *         for the CNAME. If not specified, the CNAME is generated automatically
+     *         by appending a random alphanumeric string to the environment name.
+     */
+    public void setCNAMEPrefix(String cNAMEPrefix) {
+        this.cNAMEPrefix = cNAMEPrefix;
+    }
+    
+    /**
+     * If specified, the environment attempts to use this value as the prefix
+     * for the CNAME. If not specified, the CNAME is generated automatically
+     * by appending a random alphanumeric string to the environment name.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>4 - 63<br/>
+     *
+     * @param cNAMEPrefix If specified, the environment attempts to use this value as the prefix
+     *         for the CNAME. If not specified, the CNAME is generated automatically
+     *         by appending a random alphanumeric string to the environment name.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreateEnvironmentRequest withCNAMEPrefix(String cNAMEPrefix) {
+        this.cNAMEPrefix = cNAMEPrefix;
+        return this;
+    }
+
+    /**
+     * This specifies the tier to use for creating this environment.
+     *
+     * @return This specifies the tier to use for creating this environment.
+     */
+    public EnvironmentTier getTier() {
+        return tier;
+    }
+    
+    /**
+     * This specifies the tier to use for creating this environment.
+     *
+     * @param tier This specifies the tier to use for creating this environment.
+     */
+    public void setTier(EnvironmentTier tier) {
+        this.tier = tier;
+    }
+    
+    /**
+     * This specifies the tier to use for creating this environment.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param tier This specifies the tier to use for creating this environment.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreateEnvironmentRequest withTier(EnvironmentTier tier) {
+        this.tier = tier;
+        return this;
+    }
+
+    /**
+     * The name of the application version to deploy. <p> If the specified
+     * application has no associated application versions, AWS Elastic
+     * Beanstalk <code>UpdateEnvironment</code> returns an
+     * <code>InvalidParameterValue</code> error. <p> Default: If not
+     * specified, AWS Elastic Beanstalk attempts to launch the sample
+     * application in the container.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 100<br/>
+     *
+     * @return The name of the application version to deploy. <p> If the specified
+     *         application has no associated application versions, AWS Elastic
+     *         Beanstalk <code>UpdateEnvironment</code> returns an
+     *         <code>InvalidParameterValue</code> error. <p> Default: If not
+     *         specified, AWS Elastic Beanstalk attempts to launch the sample
+     *         application in the container.
+     */
+    public String getVersionLabel() {
+        return versionLabel;
+    }
+    
+    /**
+     * The name of the application version to deploy. <p> If the specified
+     * application has no associated application versions, AWS Elastic
+     * Beanstalk <code>UpdateEnvironment</code> returns an
+     * <code>InvalidParameterValue</code> error. <p> Default: If not
+     * specified, AWS Elastic Beanstalk attempts to launch the sample
+     * application in the container.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 100<br/>
+     *
+     * @param versionLabel The name of the application version to deploy. <p> If the specified
+     *         application has no associated application versions, AWS Elastic
+     *         Beanstalk <code>UpdateEnvironment</code> returns an
+     *         <code>InvalidParameterValue</code> error. <p> Default: If not
+     *         specified, AWS Elastic Beanstalk attempts to launch the sample
+     *         application in the container.
+     */
+    public void setVersionLabel(String versionLabel) {
+        this.versionLabel = versionLabel;
+    }
+    
+    /**
+     * The name of the application version to deploy. <p> If the specified
+     * application has no associated application versions, AWS Elastic
+     * Beanstalk <code>UpdateEnvironment</code> returns an
+     * <code>InvalidParameterValue</code> error. <p> Default: If not
+     * specified, AWS Elastic Beanstalk attempts to launch the sample
+     * application in the container.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 100<br/>
+     *
+     * @param versionLabel The name of the application version to deploy. <p> If the specified
+     *         application has no associated application versions, AWS Elastic
+     *         Beanstalk <code>UpdateEnvironment</code> returns an
+     *         <code>InvalidParameterValue</code> error. <p> Default: If not
+     *         specified, AWS Elastic Beanstalk attempts to launch the sample
+     *         application in the container.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public CreateEnvironmentRequest withVersionLabel(String versionLabel) {
+        this.versionLabel = versionLabel;
+        return this;
+    }
+
     /**
      * The name of the configuration template to use in deployment. If no
      * configuration template is found with this name, AWS Elastic Beanstalk
@@ -455,14 +587,13 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * This is an alternative to specifying a configuration name. If
      * specified, AWS Elastic Beanstalk sets the configuration values to the
@@ -540,112 +671,13 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
         return this;
     }
-    
-    
-    /**
-     * If specified, the environment attempts to use this value as the prefix
-     * for the CNAME. If not specified, the environment uses the environment
-     * name.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>4 - 63<br/>
-     *
-     * @return If specified, the environment attempts to use this value as the prefix
-     *         for the CNAME. If not specified, the environment uses the environment
-     *         name.
-     */
-    public String getCNAMEPrefix() {
-        return cNAMEPrefix;
-    }
-    
-    /**
-     * If specified, the environment attempts to use this value as the prefix
-     * for the CNAME. If not specified, the environment uses the environment
-     * name.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>4 - 63<br/>
-     *
-     * @param cNAMEPrefix If specified, the environment attempts to use this value as the prefix
-     *         for the CNAME. If not specified, the environment uses the environment
-     *         name.
-     */
-    public void setCNAMEPrefix(String cNAMEPrefix) {
-        this.cNAMEPrefix = cNAMEPrefix;
-    }
-    
-    /**
-     * If specified, the environment attempts to use this value as the prefix
-     * for the CNAME. If not specified, the environment uses the environment
-     * name.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>4 - 63<br/>
-     *
-     * @param cNAMEPrefix If specified, the environment attempts to use this value as the prefix
-     *         for the CNAME. If not specified, the environment uses the environment
-     *         name.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     */
-    public CreateEnvironmentRequest withCNAMEPrefix(String cNAMEPrefix) {
-        this.cNAMEPrefix = cNAMEPrefix;
-        return this;
-    }
-    
-    
-    /**
-     * Describes this environment.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>0 - 200<br/>
-     *
-     * @return Describes this environment.
-     */
-    public String getDescription() {
-        return description;
-    }
-    
-    /**
-     * Describes this environment.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>0 - 200<br/>
-     *
-     * @param description Describes this environment.
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    /**
-     * Describes this environment.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>0 - 200<br/>
-     *
-     * @param description Describes this environment.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     */
-    public CreateEnvironmentRequest withDescription(String description) {
-        this.description = description;
-        return this;
-    }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk sets the specified configuration
      * options to the requested value in the configuration set for the new
@@ -658,9 +690,9 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         stack or the configuration template.
      */
     public java.util.List<ConfigurationOptionSetting> getOptionSettings() {
-        
         if (optionSettings == null) {
-            optionSettings = new java.util.ArrayList<ConfigurationOptionSetting>();
+              optionSettings = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>();
+              optionSettings.setAutoConstruct(true);
         }
         return optionSettings;
     }
@@ -681,8 +713,7 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
             this.optionSettings = null;
             return;
         }
-
-        java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
         optionSettingsCopy.addAll(optionSettings);
         this.optionSettings = optionSettingsCopy;
     }
@@ -701,7 +732,7 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         stack or the configuration template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withOptionSettings(ConfigurationOptionSetting... optionSettings) {
         if (getOptionSettings() == null) setOptionSettings(new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.length));
@@ -725,20 +756,20 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         stack or the configuration template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withOptionSettings(java.util.Collection<ConfigurationOptionSetting> optionSettings) {
         if (optionSettings == null) {
             this.optionSettings = null;
         } else {
-            java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
             optionSettingsCopy.addAll(optionSettings);
             this.optionSettings = optionSettingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of custom user-defined configuration options to remove from the
      * configuration set for this new environment.
@@ -747,9 +778,9 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         configuration set for this new environment.
      */
     public java.util.List<OptionSpecification> getOptionsToRemove() {
-        
         if (optionsToRemove == null) {
-            optionsToRemove = new java.util.ArrayList<OptionSpecification>();
+              optionsToRemove = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>();
+              optionsToRemove.setAutoConstruct(true);
         }
         return optionsToRemove;
     }
@@ -766,8 +797,7 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
             this.optionsToRemove = null;
             return;
         }
-
-        java.util.List<OptionSpecification> optionsToRemoveCopy = new java.util.ArrayList<OptionSpecification>(optionsToRemove.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsToRemoveCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>(optionsToRemove.size());
         optionsToRemoveCopy.addAll(optionsToRemove);
         this.optionsToRemove = optionsToRemoveCopy;
     }
@@ -782,7 +812,7 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         configuration set for this new environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withOptionsToRemove(OptionSpecification... optionsToRemove) {
         if (getOptionsToRemove() == null) setOptionsToRemove(new java.util.ArrayList<OptionSpecification>(optionsToRemove.length));
@@ -802,20 +832,20 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
      *         configuration set for this new environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateEnvironmentRequest withOptionsToRemove(java.util.Collection<OptionSpecification> optionsToRemove) {
         if (optionsToRemove == null) {
             this.optionsToRemove = null;
         } else {
-            java.util.List<OptionSpecification> optionsToRemoveCopy = new java.util.ArrayList<OptionSpecification>(optionsToRemove.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification> optionsToRemoveCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OptionSpecification>(optionsToRemove.size());
             optionsToRemoveCopy.addAll(optionsToRemove);
             this.optionsToRemove = optionsToRemoveCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -827,15 +857,16 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");    	
-        if (getCNAMEPrefix() != null) sb.append("CNAMEPrefix: " + getCNAMEPrefix() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getOptionSettings() != null) sb.append("OptionSettings: " + getOptionSettings() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getCNAMEPrefix() != null) sb.append("CNAMEPrefix: " + getCNAMEPrefix() + ",");
+        if (getTier() != null) sb.append("Tier: " + getTier() + ",");
+        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");
+        if (getOptionSettings() != null) sb.append("OptionSettings: " + getOptionSettings() + ",");
         if (getOptionsToRemove() != null) sb.append("OptionsToRemove: " + getOptionsToRemove() );
         sb.append("}");
         return sb.toString();
@@ -847,12 +878,13 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
         int hashCode = 1;
         
         hashCode = prime * hashCode + ((getApplicationName() == null) ? 0 : getApplicationName().hashCode()); 
-        hashCode = prime * hashCode + ((getVersionLabel() == null) ? 0 : getVersionLabel().hashCode()); 
         hashCode = prime * hashCode + ((getEnvironmentName() == null) ? 0 : getEnvironmentName().hashCode()); 
+        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode()); 
+        hashCode = prime * hashCode + ((getCNAMEPrefix() == null) ? 0 : getCNAMEPrefix().hashCode()); 
+        hashCode = prime * hashCode + ((getTier() == null) ? 0 : getTier().hashCode()); 
+        hashCode = prime * hashCode + ((getVersionLabel() == null) ? 0 : getVersionLabel().hashCode()); 
         hashCode = prime * hashCode + ((getTemplateName() == null) ? 0 : getTemplateName().hashCode()); 
         hashCode = prime * hashCode + ((getSolutionStackName() == null) ? 0 : getSolutionStackName().hashCode()); 
-        hashCode = prime * hashCode + ((getCNAMEPrefix() == null) ? 0 : getCNAMEPrefix().hashCode()); 
-        hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode()); 
         hashCode = prime * hashCode + ((getOptionSettings() == null) ? 0 : getOptionSettings().hashCode()); 
         hashCode = prime * hashCode + ((getOptionsToRemove() == null) ? 0 : getOptionsToRemove().hashCode()); 
         return hashCode;
@@ -868,18 +900,20 @@ public class CreateEnvironmentRequest extends AmazonWebServiceRequest  implement
         
         if (other.getApplicationName() == null ^ this.getApplicationName() == null) return false;
         if (other.getApplicationName() != null && other.getApplicationName().equals(this.getApplicationName()) == false) return false; 
-        if (other.getVersionLabel() == null ^ this.getVersionLabel() == null) return false;
-        if (other.getVersionLabel() != null && other.getVersionLabel().equals(this.getVersionLabel()) == false) return false; 
         if (other.getEnvironmentName() == null ^ this.getEnvironmentName() == null) return false;
         if (other.getEnvironmentName() != null && other.getEnvironmentName().equals(this.getEnvironmentName()) == false) return false; 
+        if (other.getDescription() == null ^ this.getDescription() == null) return false;
+        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false) return false; 
+        if (other.getCNAMEPrefix() == null ^ this.getCNAMEPrefix() == null) return false;
+        if (other.getCNAMEPrefix() != null && other.getCNAMEPrefix().equals(this.getCNAMEPrefix()) == false) return false; 
+        if (other.getTier() == null ^ this.getTier() == null) return false;
+        if (other.getTier() != null && other.getTier().equals(this.getTier()) == false) return false; 
+        if (other.getVersionLabel() == null ^ this.getVersionLabel() == null) return false;
+        if (other.getVersionLabel() != null && other.getVersionLabel().equals(this.getVersionLabel()) == false) return false; 
         if (other.getTemplateName() == null ^ this.getTemplateName() == null) return false;
         if (other.getTemplateName() != null && other.getTemplateName().equals(this.getTemplateName()) == false) return false; 
         if (other.getSolutionStackName() == null ^ this.getSolutionStackName() == null) return false;
         if (other.getSolutionStackName() != null && other.getSolutionStackName().equals(this.getSolutionStackName()) == false) return false; 
-        if (other.getCNAMEPrefix() == null ^ this.getCNAMEPrefix() == null) return false;
-        if (other.getCNAMEPrefix() != null && other.getCNAMEPrefix().equals(this.getCNAMEPrefix()) == false) return false; 
-        if (other.getDescription() == null ^ this.getDescription() == null) return false;
-        if (other.getDescription() != null && other.getDescription().equals(this.getDescription()) == false) return false; 
         if (other.getOptionSettings() == null ^ this.getOptionSettings() == null) return false;
         if (other.getOptionSettings() != null && other.getOptionSettings().equals(this.getOptionSettings()) == false) return false; 
         if (other.getOptionsToRemove() == null ^ this.getOptionsToRemove() == null) return false;

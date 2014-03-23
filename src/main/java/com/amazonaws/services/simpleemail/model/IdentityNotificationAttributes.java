@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents the notification attributes of an identity, including whether a bounce or complaint topic are set, and whether feedback forwarding is
- * enabled.
+ * Represents the notification attributes of an identity, including
+ * whether a bounce or complaint topic are set, and whether feedback
+ * forwarding is enabled.
  * </p>
  */
-public class IdentityNotificationAttributes  implements Serializable  {
+public class IdentityNotificationAttributes implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
@@ -83,14 +85,13 @@ public class IdentityNotificationAttributes  implements Serializable  {
      *         notifications.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityNotificationAttributes withBounceTopic(String bounceTopic) {
         this.bounceTopic = bounceTopic;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
      * Service (SNS) topic where Amazon SES will publish complaint
@@ -129,14 +130,13 @@ public class IdentityNotificationAttributes  implements Serializable  {
      *         notifications.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityNotificationAttributes withComplaintTopic(String complaintTopic) {
         this.complaintTopic = complaintTopic;
         return this;
     }
-    
-    
+
     /**
      * Describes whether Amazon SES will forward feedback as email.
      * <code>true</code> indicates that Amazon SES will forward feedback as
@@ -181,14 +181,13 @@ public class IdentityNotificationAttributes  implements Serializable  {
      *         published only to the specified Bounce and Complaint topics.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityNotificationAttributes withForwardingEnabled(Boolean forwardingEnabled) {
         this.forwardingEnabled = forwardingEnabled;
         return this;
     }
-    
-    
+
     /**
      * Describes whether Amazon SES will forward feedback as email.
      * <code>true</code> indicates that Amazon SES will forward feedback as
@@ -203,7 +202,7 @@ public class IdentityNotificationAttributes  implements Serializable  {
     public Boolean getForwardingEnabled() {
         return forwardingEnabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -215,9 +214,9 @@ public class IdentityNotificationAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBounceTopic() != null) sb.append("BounceTopic: " + getBounceTopic() + ",");    	
-        if (getComplaintTopic() != null) sb.append("ComplaintTopic: " + getComplaintTopic() + ",");    	
+        sb.append("{");
+        if (getBounceTopic() != null) sb.append("BounceTopic: " + getBounceTopic() + ",");
+        if (getComplaintTopic() != null) sb.append("ComplaintTopic: " + getComplaintTopic() + ",");
         if (isForwardingEnabled() != null) sb.append("ForwardingEnabled: " + isForwardingEnabled() );
         sb.append("}");
         return sb.toString();

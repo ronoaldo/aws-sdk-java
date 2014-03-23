@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,69 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * Describes a cached storage volume.
- * </p>
+ * Cachedi S C S I Volume
  */
-public class CachediSCSIVolume  implements Serializable  {
+public class CachediSCSIVolume implements Serializable {
 
-    /**
-     * The Amazon Resource Name (ARN) of the storage volume.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>50 - 500<br/>
-     */
     private String volumeARN;
 
-    /**
-     * The unique identifier of the storage volume, e.g. vol-1122AABB.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Length: </b>12 - 30<br/>
-     */
     private String volumeId;
 
-    /**
-     * A value describing the type of volume.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED iSCSI, CACHED iSCSI
-     */
     private String volumeType;
 
-    /**
-     * A value that indicates the state of the volume.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATING, AVAILABLE, RESTORING, BOOTSTRAPPING, IRRECOVERABLE, PASS THROUGH, RESTORE AND PASS THROUGH, DELETED, WORKING STORAGE NOT CONFIGURED, UPLOAD BUFFER NOT CONFIGURED
-     */
     private String volumeStatus;
 
-    /**
-     * The size of the volume in bytes that was specified in the
-     * <a>API_CreateCachediSCSIVolume</a> operation.
-     */
     private Long volumeSizeInBytes;
 
-    /**
-     * The percentage complete if the volume is restoring or bootstrapping
-     * that represents the percent of data transferred. This field does not
-     * appear in the response if the stored volume is not restoring or
-     * bootstrapping.
-     */
     private Double volumeProgress;
 
-    /**
-     * If the cached volume was created from a snapshot, this field contains
-     * the snapshot ID used, e.g. snap-1122aabb. Otherwise, this field is not
-     * included.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
-     */
     private String sourceSnapshotId;
 
     /**
@@ -84,404 +41,281 @@ public class CachediSCSIVolume  implements Serializable  {
     private VolumeiSCSIAttributes volumeiSCSIAttributes;
 
     /**
-     * The Amazon Resource Name (ARN) of the storage volume.
+     * Returns the value of the VolumeARN property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @return The Amazon Resource Name (ARN) of the storage volume.
+     * @return The value of the VolumeARN property for this object.
      */
     public String getVolumeARN() {
         return volumeARN;
     }
     
     /**
-     * The Amazon Resource Name (ARN) of the storage volume.
+     * Sets the value of the VolumeARN property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param volumeARN The Amazon Resource Name (ARN) of the storage volume.
+     * @param volumeARN The new value for the VolumeARN property for this object.
      */
     public void setVolumeARN(String volumeARN) {
         this.volumeARN = volumeARN;
     }
     
     /**
-     * The Amazon Resource Name (ARN) of the storage volume.
+     * Sets the value of the VolumeARN property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param volumeARN The Amazon Resource Name (ARN) of the storage volume.
+     * @param volumeARN The new value for the VolumeARN property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CachediSCSIVolume withVolumeARN(String volumeARN) {
         this.volumeARN = volumeARN;
         return this;
     }
-    
-    
+
     /**
-     * The unique identifier of the storage volume, e.g. vol-1122AABB.
+     * Returns the value of the VolumeId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>12 - 30<br/>
      *
-     * @return The unique identifier of the storage volume, e.g. vol-1122AABB.
+     * @return The value of the VolumeId property for this object.
      */
     public String getVolumeId() {
         return volumeId;
     }
     
     /**
-     * The unique identifier of the storage volume, e.g. vol-1122AABB.
+     * Sets the value of the VolumeId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>12 - 30<br/>
      *
-     * @param volumeId The unique identifier of the storage volume, e.g. vol-1122AABB.
+     * @param volumeId The new value for the VolumeId property for this object.
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
     
     /**
-     * The unique identifier of the storage volume, e.g. vol-1122AABB.
+     * Sets the value of the VolumeId property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>12 - 30<br/>
      *
-     * @param volumeId The unique identifier of the storage volume, e.g. vol-1122AABB.
+     * @param volumeId The new value for the VolumeId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CachediSCSIVolume withVolumeId(String volumeId) {
         this.volumeId = volumeId;
         return this;
     }
-    
-    
+
     /**
-     * A value describing the type of volume.
+     * Returns the value of the VolumeType property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED iSCSI, CACHED iSCSI
+     * <b>Length: </b>3 - 100<br/>
      *
-     * @return A value describing the type of volume.
-     *
-     * @see VolumeType
+     * @return The value of the VolumeType property for this object.
      */
     public String getVolumeType() {
         return volumeType;
     }
     
     /**
-     * A value describing the type of volume.
+     * Sets the value of the VolumeType property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED iSCSI, CACHED iSCSI
+     * <b>Length: </b>3 - 100<br/>
      *
-     * @param volumeType A value describing the type of volume.
-     *
-     * @see VolumeType
+     * @param volumeType The new value for the VolumeType property for this object.
      */
     public void setVolumeType(String volumeType) {
         this.volumeType = volumeType;
     }
     
     /**
-     * A value describing the type of volume.
+     * Sets the value of the VolumeType property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED iSCSI, CACHED iSCSI
+     * <b>Length: </b>3 - 100<br/>
      *
-     * @param volumeType A value describing the type of volume.
+     * @param volumeType The new value for the VolumeType property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see VolumeType
+     *         together.
      */
     public CachediSCSIVolume withVolumeType(String volumeType) {
         this.volumeType = volumeType;
         return this;
     }
-    
-    
+
     /**
-     * A value describing the type of volume.
+     * Returns the value of the VolumeStatus property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED iSCSI, CACHED iSCSI
+     * <b>Length: </b>3 - 50<br/>
      *
-     * @param volumeType A value describing the type of volume.
-     *
-     * @see VolumeType
-     */
-    public void setVolumeType(VolumeType volumeType) {
-        this.volumeType = volumeType.toString();
-    }
-    
-    /**
-     * A value describing the type of volume.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>STORED iSCSI, CACHED iSCSI
-     *
-     * @param volumeType A value describing the type of volume.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see VolumeType
-     */
-    public CachediSCSIVolume withVolumeType(VolumeType volumeType) {
-        this.volumeType = volumeType.toString();
-        return this;
-    }
-    
-    /**
-     * A value that indicates the state of the volume.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATING, AVAILABLE, RESTORING, BOOTSTRAPPING, IRRECOVERABLE, PASS THROUGH, RESTORE AND PASS THROUGH, DELETED, WORKING STORAGE NOT CONFIGURED, UPLOAD BUFFER NOT CONFIGURED
-     *
-     * @return A value that indicates the state of the volume.
-     *
-     * @see VolumeStatus
+     * @return The value of the VolumeStatus property for this object.
      */
     public String getVolumeStatus() {
         return volumeStatus;
     }
     
     /**
-     * A value that indicates the state of the volume.
+     * Sets the value of the VolumeStatus property for this object.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATING, AVAILABLE, RESTORING, BOOTSTRAPPING, IRRECOVERABLE, PASS THROUGH, RESTORE AND PASS THROUGH, DELETED, WORKING STORAGE NOT CONFIGURED, UPLOAD BUFFER NOT CONFIGURED
+     * <b>Length: </b>3 - 50<br/>
      *
-     * @param volumeStatus A value that indicates the state of the volume.
-     *
-     * @see VolumeStatus
+     * @param volumeStatus The new value for the VolumeStatus property for this object.
      */
     public void setVolumeStatus(String volumeStatus) {
         this.volumeStatus = volumeStatus;
     }
     
     /**
-     * A value that indicates the state of the volume.
+     * Sets the value of the VolumeStatus property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATING, AVAILABLE, RESTORING, BOOTSTRAPPING, IRRECOVERABLE, PASS THROUGH, RESTORE AND PASS THROUGH, DELETED, WORKING STORAGE NOT CONFIGURED, UPLOAD BUFFER NOT CONFIGURED
+     * <b>Length: </b>3 - 50<br/>
      *
-     * @param volumeStatus A value that indicates the state of the volume.
+     * @param volumeStatus The new value for the VolumeStatus property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see VolumeStatus
+     *         together.
      */
     public CachediSCSIVolume withVolumeStatus(String volumeStatus) {
         this.volumeStatus = volumeStatus;
         return this;
     }
-    
-    
+
     /**
-     * A value that indicates the state of the volume.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATING, AVAILABLE, RESTORING, BOOTSTRAPPING, IRRECOVERABLE, PASS THROUGH, RESTORE AND PASS THROUGH, DELETED, WORKING STORAGE NOT CONFIGURED, UPLOAD BUFFER NOT CONFIGURED
+     * Returns the value of the VolumeSizeInBytes property for this object.
      *
-     * @param volumeStatus A value that indicates the state of the volume.
-     *
-     * @see VolumeStatus
-     */
-    public void setVolumeStatus(VolumeStatus volumeStatus) {
-        this.volumeStatus = volumeStatus.toString();
-    }
-    
-    /**
-     * A value that indicates the state of the volume.
-     * <p>
-     * Returns a reference to this object so that method calls can be chained together.
-     * <p>
-     * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATING, AVAILABLE, RESTORING, BOOTSTRAPPING, IRRECOVERABLE, PASS THROUGH, RESTORE AND PASS THROUGH, DELETED, WORKING STORAGE NOT CONFIGURED, UPLOAD BUFFER NOT CONFIGURED
-     *
-     * @param volumeStatus A value that indicates the state of the volume.
-     *
-     * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
-     *
-     * @see VolumeStatus
-     */
-    public CachediSCSIVolume withVolumeStatus(VolumeStatus volumeStatus) {
-        this.volumeStatus = volumeStatus.toString();
-        return this;
-    }
-    
-    /**
-     * The size of the volume in bytes that was specified in the
-     * <a>API_CreateCachediSCSIVolume</a> operation.
-     *
-     * @return The size of the volume in bytes that was specified in the
-     *         <a>API_CreateCachediSCSIVolume</a> operation.
+     * @return The value of the VolumeSizeInBytes property for this object.
      */
     public Long getVolumeSizeInBytes() {
         return volumeSizeInBytes;
     }
     
     /**
-     * The size of the volume in bytes that was specified in the
-     * <a>API_CreateCachediSCSIVolume</a> operation.
+     * Sets the value of the VolumeSizeInBytes property for this object.
      *
-     * @param volumeSizeInBytes The size of the volume in bytes that was specified in the
-     *         <a>API_CreateCachediSCSIVolume</a> operation.
+     * @param volumeSizeInBytes The new value for the VolumeSizeInBytes property for this object.
      */
     public void setVolumeSizeInBytes(Long volumeSizeInBytes) {
         this.volumeSizeInBytes = volumeSizeInBytes;
     }
     
     /**
-     * The size of the volume in bytes that was specified in the
-     * <a>API_CreateCachediSCSIVolume</a> operation.
+     * Sets the value of the VolumeSizeInBytes property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeSizeInBytes The size of the volume in bytes that was specified in the
-     *         <a>API_CreateCachediSCSIVolume</a> operation.
+     * @param volumeSizeInBytes The new value for the VolumeSizeInBytes property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CachediSCSIVolume withVolumeSizeInBytes(Long volumeSizeInBytes) {
         this.volumeSizeInBytes = volumeSizeInBytes;
         return this;
     }
-    
-    
+
     /**
-     * The percentage complete if the volume is restoring or bootstrapping
-     * that represents the percent of data transferred. This field does not
-     * appear in the response if the stored volume is not restoring or
-     * bootstrapping.
+     * Returns the value of the VolumeProgress property for this object.
      *
-     * @return The percentage complete if the volume is restoring or bootstrapping
-     *         that represents the percent of data transferred. This field does not
-     *         appear in the response if the stored volume is not restoring or
-     *         bootstrapping.
+     * @return The value of the VolumeProgress property for this object.
      */
     public Double getVolumeProgress() {
         return volumeProgress;
     }
     
     /**
-     * The percentage complete if the volume is restoring or bootstrapping
-     * that represents the percent of data transferred. This field does not
-     * appear in the response if the stored volume is not restoring or
-     * bootstrapping.
+     * Sets the value of the VolumeProgress property for this object.
      *
-     * @param volumeProgress The percentage complete if the volume is restoring or bootstrapping
-     *         that represents the percent of data transferred. This field does not
-     *         appear in the response if the stored volume is not restoring or
-     *         bootstrapping.
+     * @param volumeProgress The new value for the VolumeProgress property for this object.
      */
     public void setVolumeProgress(Double volumeProgress) {
         this.volumeProgress = volumeProgress;
     }
     
     /**
-     * The percentage complete if the volume is restoring or bootstrapping
-     * that represents the percent of data transferred. This field does not
-     * appear in the response if the stored volume is not restoring or
-     * bootstrapping.
+     * Sets the value of the VolumeProgress property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeProgress The percentage complete if the volume is restoring or bootstrapping
-     *         that represents the percent of data transferred. This field does not
-     *         appear in the response if the stored volume is not restoring or
-     *         bootstrapping.
+     * @param volumeProgress The new value for the VolumeProgress property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CachediSCSIVolume withVolumeProgress(Double volumeProgress) {
         this.volumeProgress = volumeProgress;
         return this;
     }
-    
-    
+
     /**
-     * If the cached volume was created from a snapshot, this field contains
-     * the snapshot ID used, e.g. snap-1122aabb. Otherwise, this field is not
-     * included.
+     * Returns the value of the SourceSnapshotId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
      *
-     * @return If the cached volume was created from a snapshot, this field contains
-     *         the snapshot ID used, e.g. snap-1122aabb. Otherwise, this field is not
-     *         included.
+     * @return The value of the SourceSnapshotId property for this object.
      */
     public String getSourceSnapshotId() {
         return sourceSnapshotId;
     }
     
     /**
-     * If the cached volume was created from a snapshot, this field contains
-     * the snapshot ID used, e.g. snap-1122aabb. Otherwise, this field is not
-     * included.
+     * Sets the value of the SourceSnapshotId property for this object.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
      *
-     * @param sourceSnapshotId If the cached volume was created from a snapshot, this field contains
-     *         the snapshot ID used, e.g. snap-1122aabb. Otherwise, this field is not
-     *         included.
+     * @param sourceSnapshotId The new value for the SourceSnapshotId property for this object.
      */
     public void setSourceSnapshotId(String sourceSnapshotId) {
         this.sourceSnapshotId = sourceSnapshotId;
     }
     
     /**
-     * If the cached volume was created from a snapshot, this field contains
-     * the snapshot ID used, e.g. snap-1122aabb. Otherwise, this field is not
-     * included.
+     * Sets the value of the SourceSnapshotId property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>\Asnap-[0-9a-fA-F]{8}\z<br/>
      *
-     * @param sourceSnapshotId If the cached volume was created from a snapshot, this field contains
-     *         the snapshot ID used, e.g. snap-1122aabb. Otherwise, this field is not
-     *         included.
+     * @param sourceSnapshotId The new value for the SourceSnapshotId property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CachediSCSIVolume withSourceSnapshotId(String sourceSnapshotId) {
         this.sourceSnapshotId = sourceSnapshotId;
         return this;
     }
-    
-    
+
     /**
      * Lists iSCSI information about a volume.
      *
@@ -508,14 +342,13 @@ public class CachediSCSIVolume  implements Serializable  {
      * @param volumeiSCSIAttributes Lists iSCSI information about a volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CachediSCSIVolume withVolumeiSCSIAttributes(VolumeiSCSIAttributes volumeiSCSIAttributes) {
         this.volumeiSCSIAttributes = volumeiSCSIAttributes;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -527,14 +360,14 @@ public class CachediSCSIVolume  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");    	
-        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");    	
-        if (getVolumeType() != null) sb.append("VolumeType: " + getVolumeType() + ",");    	
-        if (getVolumeStatus() != null) sb.append("VolumeStatus: " + getVolumeStatus() + ",");    	
-        if (getVolumeSizeInBytes() != null) sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes() + ",");    	
-        if (getVolumeProgress() != null) sb.append("VolumeProgress: " + getVolumeProgress() + ",");    	
-        if (getSourceSnapshotId() != null) sb.append("SourceSnapshotId: " + getSourceSnapshotId() + ",");    	
+        sb.append("{");
+        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");
+        if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() + ",");
+        if (getVolumeType() != null) sb.append("VolumeType: " + getVolumeType() + ",");
+        if (getVolumeStatus() != null) sb.append("VolumeStatus: " + getVolumeStatus() + ",");
+        if (getVolumeSizeInBytes() != null) sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes() + ",");
+        if (getVolumeProgress() != null) sb.append("VolumeProgress: " + getVolumeProgress() + ",");
+        if (getSourceSnapshotId() != null) sb.append("SourceSnapshotId: " + getSourceSnapshotId() + ",");
         if (getVolumeiSCSIAttributes() != null) sb.append("VolumeiSCSIAttributes: " + getVolumeiSCSIAttributes() );
         sb.append("}");
         return sb.toString();

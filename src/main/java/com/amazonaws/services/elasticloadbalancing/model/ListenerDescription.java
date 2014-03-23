@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The ListenerDescription data type.
  * </p>
  */
-public class ListenerDescription  implements Serializable  {
+public class ListenerDescription implements Serializable {
 
     /**
      * The Listener data type.
@@ -31,7 +32,7 @@ public class ListenerDescription  implements Serializable  {
      * A list of policies enabled for this listener. An empty list indicates
      * that no policies are enabled.
      */
-    private java.util.List<String> policyNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNames;
 
     /**
      * Default constructor for a new ListenerDescription object.  Callers should use the
@@ -65,14 +66,13 @@ public class ListenerDescription  implements Serializable  {
      * @param listener The Listener data type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListenerDescription withListener(Listener listener) {
         this.listener = listener;
         return this;
     }
-    
-    
+
     /**
      * A list of policies enabled for this listener. An empty list indicates
      * that no policies are enabled.
@@ -81,9 +81,9 @@ public class ListenerDescription  implements Serializable  {
      *         that no policies are enabled.
      */
     public java.util.List<String> getPolicyNames() {
-        
         if (policyNames == null) {
-            policyNames = new java.util.ArrayList<String>();
+              policyNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              policyNames.setAutoConstruct(true);
         }
         return policyNames;
     }
@@ -100,8 +100,7 @@ public class ListenerDescription  implements Serializable  {
             this.policyNames = null;
             return;
         }
-
-        java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
         policyNamesCopy.addAll(policyNames);
         this.policyNames = policyNamesCopy;
     }
@@ -116,7 +115,7 @@ public class ListenerDescription  implements Serializable  {
      *         that no policies are enabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListenerDescription withPolicyNames(String... policyNames) {
         if (getPolicyNames() == null) setPolicyNames(new java.util.ArrayList<String>(policyNames.length));
@@ -136,20 +135,20 @@ public class ListenerDescription  implements Serializable  {
      *         that no policies are enabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListenerDescription withPolicyNames(java.util.Collection<String> policyNames) {
         if (policyNames == null) {
             this.policyNames = null;
         } else {
-            java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
             policyNamesCopy.addAll(policyNames);
             this.policyNames = policyNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -161,8 +160,8 @@ public class ListenerDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getListener() != null) sb.append("Listener: " + getListener() + ",");    	
+        sb.append("{");
+        if (getListener() != null) sb.append("Listener: " + getListener() + ",");
         if (getPolicyNames() != null) sb.append("PolicyNames: " + getPolicyNames() );
         sb.append("}");
         return sb.toString();

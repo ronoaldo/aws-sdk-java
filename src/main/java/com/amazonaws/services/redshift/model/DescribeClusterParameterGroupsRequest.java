@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,30 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeClusterParameterGroups(DescribeClusterParameterGroupsRequest) DescribeClusterParameterGroups operation}.
  * <p>
- * Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group. For each parameter group,
- * the response includes the parameter group name, description, and parameter group family name. You can optionally specify a name to retrieve the
- * description of a specific parameter group.
+ * Returns a list of Amazon Redshift parameter groups, including
+ * parameter groups you created and the default parameter group. For each
+ * parameter group, the response includes the parameter group name,
+ * description, and parameter group family name. You can optionally
+ * specify a name to retrieve the description of a specific parameter
+ * group.
  * </p>
  * <p>
- * For more information about managing parameter groups, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift Parameter Groups </a> in the <i>Amazon
- * Redshift Management Guide</i> .
+ * For more information about managing parameter groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift Parameter Groups </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeClusterParameterGroups(DescribeClusterParameterGroupsRequest)
  */
-public class DescribeClusterParameterGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeClusterParameterGroupsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of a specific parameter group for which to return details. By
@@ -95,14 +100,13 @@ public class DescribeClusterParameterGroupsRequest extends AmazonWebServiceReque
      *         group are returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParameterGroupsRequest withParameterGroupName(String parameterGroupName) {
         this.parameterGroupName = parameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of parameter group records to include in the
      * response. If more records exist than the specified
@@ -159,14 +163,13 @@ public class DescribeClusterParameterGroupsRequest extends AmazonWebServiceReque
      *         <p>Constraints: Value must be at least 20 and no more than 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParameterGroupsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional marker returned by a previous
      * <a>DescribeClusterParameterGroups</a> request to indicate the first
@@ -205,14 +208,13 @@ public class DescribeClusterParameterGroupsRequest extends AmazonWebServiceReque
      *         parameter group that the current request will return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParameterGroupsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -224,9 +226,9 @@ public class DescribeClusterParameterGroupsRequest extends AmazonWebServiceReque
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

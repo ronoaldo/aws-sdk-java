@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Output structure for the CreateJob operation.
  * </p>
  */
-public class CreateJobResult  implements Serializable  {
+public class CreateJobResult implements Serializable {
 
     /**
      * A unique identifier which refers to a particular job.
@@ -85,14 +86,13 @@ public class CreateJobResult  implements Serializable  {
      * @param jobId A unique identifier which refers to a particular job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobResult withJobId(String jobId) {
         this.jobId = jobId;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -132,7 +132,7 @@ public class CreateJobResult  implements Serializable  {
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -140,8 +140,7 @@ public class CreateJobResult  implements Serializable  {
         this.jobType = jobType;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job to initiate is an import or export job.
      * <p>
@@ -167,7 +166,7 @@ public class CreateJobResult  implements Serializable  {
      * @param jobType Specifies whether the job to initiate is an import or export job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see JobType
      */
@@ -175,7 +174,7 @@ public class CreateJobResult  implements Serializable  {
         this.jobType = jobType.toString();
         return this;
     }
-    
+
     /**
      * Address you ship your storage device to.
      *
@@ -202,14 +201,13 @@ public class CreateJobResult  implements Serializable  {
      * @param awsShippingAddress Address you ship your storage device to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobResult withAwsShippingAddress(String awsShippingAddress) {
         this.awsShippingAddress = awsShippingAddress;
         return this;
     }
-    
-    
+
     /**
      * An encrypted code used to authenticate the request and response, for
      * example, "DV+TpDfx1/TdSE9ktyK9k/bDTVI=". Only use this value is you
@@ -254,14 +252,13 @@ public class CreateJobResult  implements Serializable  {
      *         the SignatureFileContents value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobResult withSignature(String signature) {
         this.signature = signature;
         return this;
     }
-    
-    
+
     /**
      * The actual text of the SIGNATURE file to be written to disk.
      *
@@ -288,14 +285,13 @@ public class CreateJobResult  implements Serializable  {
      * @param signatureFileContents The actual text of the SIGNATURE file to be written to disk.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobResult withSignatureFileContents(String signatureFileContents) {
         this.signatureFileContents = signatureFileContents;
         return this;
     }
-    
-    
+
     /**
      * An optional message notifying you of non-fatal issues with the job,
      * such as use of an incompatible Amazon S3 bucket name.
@@ -328,14 +324,13 @@ public class CreateJobResult  implements Serializable  {
      *         such as use of an incompatible Amazon S3 bucket name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobResult withWarningMessage(String warningMessage) {
         this.warningMessage = warningMessage;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -347,12 +342,12 @@ public class CreateJobResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");    	
-        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");    	
-        if (getAwsShippingAddress() != null) sb.append("AwsShippingAddress: " + getAwsShippingAddress() + ",");    	
-        if (getSignature() != null) sb.append("Signature: " + getSignature() + ",");    	
-        if (getSignatureFileContents() != null) sb.append("SignatureFileContents: " + getSignatureFileContents() + ",");    	
+        sb.append("{");
+        if (getJobId() != null) sb.append("JobId: " + getJobId() + ",");
+        if (getJobType() != null) sb.append("JobType: " + getJobType() + ",");
+        if (getAwsShippingAddress() != null) sb.append("AwsShippingAddress: " + getAwsShippingAddress() + ",");
+        if (getSignature() != null) sb.append("Signature: " + getSignature() + ",");
+        if (getSignatureFileContents() != null) sb.append("SignatureFileContents: " + getSignatureFileContents() + ",");
         if (getWarningMessage() != null) sb.append("WarningMessage: " + getWarningMessage() );
         sb.append("}");
         return sb.toString();

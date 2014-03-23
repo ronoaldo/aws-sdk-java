@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,40 +13,53 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>StartChildWorkflowExecution</code> decision.
+ * Provides details of the <code>StartChildWorkflowExecution</code>
+ * decision.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this decision's access to Amazon SWF in much the same way as for the regular API:
+ * You can use IAM policies to control this decision's access to Amazon
+ * SWF in much the same way as for the regular API:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the decision to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to specify this decision.</li>
- * <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys.
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the decision to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * specify this decision.</li>
+ * <li>Constrain the following parameters by using a
+ * <code>Condition</code> element with the appropriate keys.
  * <ul>
  * <li> <code>tagList.member.N</code> : TBD</li>
- * <li> <code>taskList</code> :String constraint. The key is "swf:taskList.name".</li>
- * <li> <code>workflowType.name</code> : String constraint. The key is ???swf:workflowType.name???.</li>
- * <li> <code>workflowType.version</code> : String constraint. The key is ???swf:workflowType.version???.</li>
+ * <li> <code>taskList</code> :String constraint. The key is
+ * "swf:taskList.name".</li>
+ * <li> <code>workflowType.name</code> : String constraint. The key is
+ * ???swf:workflowType.name???.</li>
+ * <li> <code>workflowType.version</code> : String constraint. The key
+ * is ???swf:workflowType.version???.</li>
  * 
  * </ul>
  * </li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails. The associated event attribute's
+ * <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
+ * details and example IAM policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  */
-public class StartChildWorkflowExecutionDecisionAttributes  implements Serializable  {
+public class StartChildWorkflowExecutionDecisionAttributes implements Serializable {
 
     /**
      * The type of the workflow execution to be started. This field is
@@ -169,7 +182,7 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> tagList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tagList;
 
     /**
      * The type of the workflow execution to be started. This field is
@@ -203,14 +216,13 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         required.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * The <code>workflowId</code> of the workflow execution. This field is
      * required. <p>The specified string must not start or end with
@@ -276,14 +288,13 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent workflow tasks. This data is not sent to the child workflow
@@ -331,14 +342,13 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * The input to be provided to the workflow execution.
      * <p>
@@ -374,14 +384,13 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      * @param input The input to be provided to the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * The total duration for this workflow execution. This overrides the
      * defaultExecutionStartToCloseTimeout specified when registering the
@@ -471,14 +480,13 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         registration time then a fault will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withExecutionStartToCloseTimeout(String executionStartToCloseTimeout) {
         this.executionStartToCloseTimeout = executionStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The name of the task list to be used for decision tasks of the child
      * workflow execution. <note>A task list for this workflow execution must
@@ -559,14 +567,13 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * Specifies the maximum duration of decision tasks for this workflow
      * execution. This parameter overrides the
@@ -668,14 +675,13 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withTaskStartToCloseTimeout(String taskStartToCloseTimeout) {
         this.taskStartToCloseTimeout = taskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * if the workflow execution being started is terminated by calling the
@@ -817,7 +823,7 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         returned. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -825,8 +831,7 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * if the workflow execution being started is terminated by calling the
@@ -920,7 +925,7 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         returned. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -928,7 +933,7 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * The list of tags to associate with the child workflow execution. A
      * maximum of 5 tags can be specified. You can list workflow executions
@@ -944,9 +949,9 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      */
     public java.util.List<String> getTagList() {
-        
         if (tagList == null) {
-            tagList = new java.util.ArrayList<String>();
+              tagList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              tagList.setAutoConstruct(true);
         }
         return tagList;
     }
@@ -970,8 +975,7 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
             this.tagList = null;
             return;
         }
-
-        java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
         tagListCopy.addAll(tagList);
         this.tagList = tagListCopy;
     }
@@ -993,7 +997,7 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withTagList(String... tagList) {
         if (getTagList() == null) setTagList(new java.util.ArrayList<String>(tagList.length));
@@ -1020,20 +1024,20 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionDecisionAttributes withTagList(java.util.Collection<String> tagList) {
         if (tagList == null) {
             this.tagList = null;
         } else {
-            java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
             tagListCopy.addAll(tagList);
             this.tagList = tagListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1045,15 +1049,15 @@ public class StartChildWorkflowExecutionDecisionAttributes  implements Serializa
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getControl() != null) sb.append("Control: " + getControl() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");    	
-        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");    	
+        sb.append("{");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getControl() != null) sb.append("Control: " + getControl() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");
+        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");
         if (getTagList() != null) sb.append("TagList: " + getTagList() );
         sb.append("}");
         return sb.toString();

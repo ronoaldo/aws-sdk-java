@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#validatePipelineDefinition(ValidatePipelineDefinitionRequest) ValidatePipelineDefinition operation}.
  * <p>
- * Tests the pipeline definition with a set of validation checks to ensure that it is well formed and can run without error.
+ * Tests the pipeline definition with a set of validation checks to
+ * ensure that it is well formed and can run without error.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#validatePipelineDefinition(ValidatePipelineDefinitionRequest)
  */
-public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Identifies the pipeline whose definition is to be validated.
@@ -39,7 +42,7 @@ public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  
      * A list of objects that define the pipeline changes to validate against
      * the pipeline.
      */
-    private java.util.List<PipelineObject> pipelineObjects;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjects;
 
     /**
      * Identifies the pipeline whose definition is to be validated.
@@ -79,14 +82,13 @@ public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  
      * @param pipelineId Identifies the pipeline whose definition is to be validated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * A list of objects that define the pipeline changes to validate against
      * the pipeline.
@@ -95,9 +97,9 @@ public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  
      *         the pipeline.
      */
     public java.util.List<PipelineObject> getPipelineObjects() {
-        
         if (pipelineObjects == null) {
-            pipelineObjects = new java.util.ArrayList<PipelineObject>();
+              pipelineObjects = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>();
+              pipelineObjects.setAutoConstruct(true);
         }
         return pipelineObjects;
     }
@@ -114,8 +116,7 @@ public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  
             this.pipelineObjects = null;
             return;
         }
-
-        java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
         pipelineObjectsCopy.addAll(pipelineObjects);
         this.pipelineObjects = pipelineObjectsCopy;
     }
@@ -130,7 +131,7 @@ public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  
      *         the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionRequest withPipelineObjects(PipelineObject... pipelineObjects) {
         if (getPipelineObjects() == null) setPipelineObjects(new java.util.ArrayList<PipelineObject>(pipelineObjects.length));
@@ -150,20 +151,20 @@ public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  
      *         the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidatePipelineDefinitionRequest withPipelineObjects(java.util.Collection<PipelineObject> pipelineObjects) {
         if (pipelineObjects == null) {
             this.pipelineObjects = null;
         } else {
-            java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
             pipelineObjectsCopy.addAll(pipelineObjects);
             this.pipelineObjects = pipelineObjectsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -175,8 +176,8 @@ public class ValidatePipelineDefinitionRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
         if (getPipelineObjects() != null) sb.append("PipelineObjects: " + getPipelineObjects() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The Amazon S3 origin server specified does not refer to a valid Amazon S3 bucket.
+ * The Amazon S3 origin server specified does not refer to a valid
+ * Amazon S3 bucket.
  * </p>
  */        
 public class InvalidOriginException extends AmazonServiceException {

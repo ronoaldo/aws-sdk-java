@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type containing information about the specified health check.
+ * A complex type containing information about the specified health
+ * check.
  * </p>
  */
-public class GetHealthCheckResult  implements Serializable  {
+public class GetHealthCheckResult implements Serializable {
 
     /**
      * A complex type that contains the information about the specified
@@ -60,14 +62,13 @@ public class GetHealthCheckResult  implements Serializable  {
      *         health check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetHealthCheckResult withHealthCheck(HealthCheck healthCheck) {
         this.healthCheck = healthCheck;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +80,7 @@ public class GetHealthCheckResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getHealthCheck() != null) sb.append("HealthCheck: " + getHealthCheck() );
         sb.append("}");
         return sb.toString();

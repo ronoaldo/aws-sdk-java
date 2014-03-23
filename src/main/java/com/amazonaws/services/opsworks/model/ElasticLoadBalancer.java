@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an Elastic Load Balancing instance.
  * </p>
  */
-public class ElasticLoadBalancer  implements Serializable  {
+public class ElasticLoadBalancer implements Serializable {
 
     /**
      * The Elastic Load Balancing instance's name.
@@ -48,15 +49,25 @@ public class ElasticLoadBalancer  implements Serializable  {
     private String layerId;
 
     /**
-     * The instance's Availability Zones.
+     * The VPC ID.
      */
-    private java.util.List<String> availabilityZones;
+    private String vpcId;
+
+    /**
+     * A list of Availability Zones.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
+
+    /**
+     * A list of subnet IDs, if the stack is running in a VPC.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIds;
 
     /**
      * A list of the EC2 instances that the Elastic Load Balancing instance
      * is managing traffic for.
      */
-    private java.util.List<String> ec2InstanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> ec2InstanceIds;
 
     /**
      * The Elastic Load Balancing instance's name.
@@ -84,14 +95,13 @@ public class ElasticLoadBalancer  implements Serializable  {
      * @param elasticLoadBalancerName The Elastic Load Balancing instance's name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withElasticLoadBalancerName(String elasticLoadBalancerName) {
         this.elasticLoadBalancerName = elasticLoadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The instance's AWS region.
      *
@@ -118,14 +128,13 @@ public class ElasticLoadBalancer  implements Serializable  {
      * @param region The instance's AWS region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withRegion(String region) {
         this.region = region;
         return this;
     }
-    
-    
+
     /**
      * The instance's public DNS name.
      *
@@ -152,14 +161,13 @@ public class ElasticLoadBalancer  implements Serializable  {
      * @param dnsName The instance's public DNS name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withDnsName(String dnsName) {
         this.dnsName = dnsName;
         return this;
     }
-    
-    
+
     /**
      * The ID of the stack that the instance is associated with.
      *
@@ -186,14 +194,13 @@ public class ElasticLoadBalancer  implements Serializable  {
      * @param stackId The ID of the stack that the instance is associated with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The ID of the layer that the instance is attached to.
      *
@@ -220,52 +227,83 @@ public class ElasticLoadBalancer  implements Serializable  {
      * @param layerId The ID of the layer that the instance is attached to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withLayerId(String layerId) {
         this.layerId = layerId;
         return this;
     }
-    
+
+    /**
+     * The VPC ID.
+     *
+     * @return The VPC ID.
+     */
+    public String getVpcId() {
+        return vpcId;
+    }
     
     /**
-     * The instance's Availability Zones.
+     * The VPC ID.
      *
-     * @return The instance's Availability Zones.
+     * @param vpcId The VPC ID.
+     */
+    public void setVpcId(String vpcId) {
+        this.vpcId = vpcId;
+    }
+    
+    /**
+     * The VPC ID.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param vpcId The VPC ID.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ElasticLoadBalancer withVpcId(String vpcId) {
+        this.vpcId = vpcId;
+        return this;
+    }
+
+    /**
+     * A list of Availability Zones.
+     *
+     * @return A list of Availability Zones.
      */
     public java.util.List<String> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
     
     /**
-     * The instance's Availability Zones.
+     * A list of Availability Zones.
      *
-     * @param availabilityZones The instance's Availability Zones.
+     * @param availabilityZones A list of Availability Zones.
      */
     public void setAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
     
     /**
-     * The instance's Availability Zones.
+     * A list of Availability Zones.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones The instance's Availability Zones.
+     * @param availabilityZones A list of Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -276,27 +314,95 @@ public class ElasticLoadBalancer  implements Serializable  {
     }
     
     /**
-     * The instance's Availability Zones.
+     * A list of Availability Zones.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones The instance's Availability Zones.
+     * @param availabilityZones A list of Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
 
         return this;
     }
+
+    /**
+     * A list of subnet IDs, if the stack is running in a VPC.
+     *
+     * @return A list of subnet IDs, if the stack is running in a VPC.
+     */
+    public java.util.List<String> getSubnetIds() {
+        if (subnetIds == null) {
+              subnetIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnetIds.setAutoConstruct(true);
+        }
+        return subnetIds;
+    }
     
+    /**
+     * A list of subnet IDs, if the stack is running in a VPC.
+     *
+     * @param subnetIds A list of subnet IDs, if the stack is running in a VPC.
+     */
+    public void setSubnetIds(java.util.Collection<String> subnetIds) {
+        if (subnetIds == null) {
+            this.subnetIds = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
+        subnetIdsCopy.addAll(subnetIds);
+        this.subnetIds = subnetIdsCopy;
+    }
+    
+    /**
+     * A list of subnet IDs, if the stack is running in a VPC.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param subnetIds A list of subnet IDs, if the stack is running in a VPC.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ElasticLoadBalancer withSubnetIds(String... subnetIds) {
+        if (getSubnetIds() == null) setSubnetIds(new java.util.ArrayList<String>(subnetIds.length));
+        for (String value : subnetIds) {
+            getSubnetIds().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * A list of subnet IDs, if the stack is running in a VPC.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param subnetIds A list of subnet IDs, if the stack is running in a VPC.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ElasticLoadBalancer withSubnetIds(java.util.Collection<String> subnetIds) {
+        if (subnetIds == null) {
+            this.subnetIds = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnetIds.size());
+            subnetIdsCopy.addAll(subnetIds);
+            this.subnetIds = subnetIdsCopy;
+        }
+
+        return this;
+    }
+
     /**
      * A list of the EC2 instances that the Elastic Load Balancing instance
      * is managing traffic for.
@@ -305,9 +411,9 @@ public class ElasticLoadBalancer  implements Serializable  {
      *         is managing traffic for.
      */
     public java.util.List<String> getEc2InstanceIds() {
-        
         if (ec2InstanceIds == null) {
-            ec2InstanceIds = new java.util.ArrayList<String>();
+              ec2InstanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              ec2InstanceIds.setAutoConstruct(true);
         }
         return ec2InstanceIds;
     }
@@ -324,8 +430,7 @@ public class ElasticLoadBalancer  implements Serializable  {
             this.ec2InstanceIds = null;
             return;
         }
-
-        java.util.List<String> ec2InstanceIdsCopy = new java.util.ArrayList<String>(ec2InstanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> ec2InstanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ec2InstanceIds.size());
         ec2InstanceIdsCopy.addAll(ec2InstanceIds);
         this.ec2InstanceIds = ec2InstanceIdsCopy;
     }
@@ -340,7 +445,7 @@ public class ElasticLoadBalancer  implements Serializable  {
      *         is managing traffic for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withEc2InstanceIds(String... ec2InstanceIds) {
         if (getEc2InstanceIds() == null) setEc2InstanceIds(new java.util.ArrayList<String>(ec2InstanceIds.length));
@@ -360,20 +465,20 @@ public class ElasticLoadBalancer  implements Serializable  {
      *         is managing traffic for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ElasticLoadBalancer withEc2InstanceIds(java.util.Collection<String> ec2InstanceIds) {
         if (ec2InstanceIds == null) {
             this.ec2InstanceIds = null;
         } else {
-            java.util.List<String> ec2InstanceIdsCopy = new java.util.ArrayList<String>(ec2InstanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> ec2InstanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ec2InstanceIds.size());
             ec2InstanceIdsCopy.addAll(ec2InstanceIds);
             this.ec2InstanceIds = ec2InstanceIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -385,13 +490,15 @@ public class ElasticLoadBalancer  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getElasticLoadBalancerName() != null) sb.append("ElasticLoadBalancerName: " + getElasticLoadBalancerName() + ",");    	
-        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");    	
-        if (getDnsName() != null) sb.append("DnsName: " + getDnsName() + ",");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");    	
-        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");    	
+        sb.append("{");
+        if (getElasticLoadBalancerName() != null) sb.append("ElasticLoadBalancerName: " + getElasticLoadBalancerName() + ",");
+        if (getRegion() != null) sb.append("Region: " + getRegion() + ",");
+        if (getDnsName() != null) sb.append("DnsName: " + getDnsName() + ",");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getLayerId() != null) sb.append("LayerId: " + getLayerId() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() + ",");
+        if (getSubnetIds() != null) sb.append("SubnetIds: " + getSubnetIds() + ",");
         if (getEc2InstanceIds() != null) sb.append("Ec2InstanceIds: " + getEc2InstanceIds() );
         sb.append("}");
         return sb.toString();
@@ -407,7 +514,9 @@ public class ElasticLoadBalancer  implements Serializable  {
         hashCode = prime * hashCode + ((getDnsName() == null) ? 0 : getDnsName().hashCode()); 
         hashCode = prime * hashCode + ((getStackId() == null) ? 0 : getStackId().hashCode()); 
         hashCode = prime * hashCode + ((getLayerId() == null) ? 0 : getLayerId().hashCode()); 
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode()); 
         hashCode = prime * hashCode + ((getAvailabilityZones() == null) ? 0 : getAvailabilityZones().hashCode()); 
+        hashCode = prime * hashCode + ((getSubnetIds() == null) ? 0 : getSubnetIds().hashCode()); 
         hashCode = prime * hashCode + ((getEc2InstanceIds() == null) ? 0 : getEc2InstanceIds().hashCode()); 
         return hashCode;
     }
@@ -430,8 +539,12 @@ public class ElasticLoadBalancer  implements Serializable  {
         if (other.getStackId() != null && other.getStackId().equals(this.getStackId()) == false) return false; 
         if (other.getLayerId() == null ^ this.getLayerId() == null) return false;
         if (other.getLayerId() != null && other.getLayerId().equals(this.getLayerId()) == false) return false; 
+        if (other.getVpcId() == null ^ this.getVpcId() == null) return false;
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false) return false; 
         if (other.getAvailabilityZones() == null ^ this.getAvailabilityZones() == null) return false;
         if (other.getAvailabilityZones() != null && other.getAvailabilityZones().equals(this.getAvailabilityZones()) == false) return false; 
+        if (other.getSubnetIds() == null ^ this.getSubnetIds() == null) return false;
+        if (other.getSubnetIds() != null && other.getSubnetIds().equals(this.getSubnetIds()) == false) return false; 
         if (other.getEc2InstanceIds() == null ^ this.getEc2InstanceIds() == null) return false;
         if (other.getEc2InstanceIds() != null && other.getEc2InstanceIds().equals(this.getEc2InstanceIds()) == false) return false; 
         return true;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A description of a job flow.
  * </p>
  */
-public class JobFlowDetail  implements Serializable  {
+public class JobFlowDetail implements Serializable {
 
     /**
      * The job flow identifier.
@@ -76,19 +77,19 @@ public class JobFlowDetail  implements Serializable  {
     /**
      * A list of steps run by the job flow.
      */
-    private java.util.List<StepDetail> steps;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<StepDetail> steps;
 
     /**
      * A list of the bootstrap actions run by the job flow.
      */
-    private java.util.List<BootstrapActionDetail> bootstrapActions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BootstrapActionDetail> bootstrapActions;
 
     /**
      * A list of strings set by third party software when the job flow is
      * launched. If you are not using third party software to manage the job
      * flow this value is empty.
      */
-    private java.util.List<String> supportedProducts;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> supportedProducts;
 
     /**
      * Specifies whether the job flow is visible to all IAM users of the AWS
@@ -129,14 +130,12 @@ public class JobFlowDetail  implements Serializable  {
      * @param instances Describes the Amazon EC2 instances of the job flow.
      */
     public JobFlowDetail(String jobFlowId, String name, JobFlowExecutionStatusDetail executionStatusDetail, JobFlowInstancesDetail instances) {
-        this.jobFlowId = jobFlowId;
-        this.name = name;
-        this.executionStatusDetail = executionStatusDetail;
-        this.instances = instances;
+        setJobFlowId(jobFlowId);
+        setName(name);
+        setExecutionStatusDetail(executionStatusDetail);
+        setInstances(instances);
     }
 
-    
-    
     /**
      * The job flow identifier.
      * <p>
@@ -175,14 +174,13 @@ public class JobFlowDetail  implements Serializable  {
      * @param jobFlowId The job flow identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withJobFlowId(String jobFlowId) {
         this.jobFlowId = jobFlowId;
         return this;
     }
-    
-    
+
     /**
      * The name of the job flow.
      * <p>
@@ -221,14 +219,13 @@ public class JobFlowDetail  implements Serializable  {
      * @param name The name of the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The location in Amazon S3 where log files for the job are stored.
      * <p>
@@ -267,14 +264,13 @@ public class JobFlowDetail  implements Serializable  {
      * @param logUri The location in Amazon S3 where log files for the job are stored.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withLogUri(String logUri) {
         this.logUri = logUri;
         return this;
     }
-    
-    
+
     /**
      * The version of the AMI used to initialize Amazon EC2 instances in the
      * job flow. For a list of AMI versions currently supported by Amazon
@@ -343,14 +339,13 @@ public class JobFlowDetail  implements Serializable  {
      *         MapReduce Developer's Guide.</i>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withAmiVersion(String amiVersion) {
         this.amiVersion = amiVersion;
         return this;
     }
-    
-    
+
     /**
      * Describes the execution status of the job flow.
      *
@@ -377,14 +372,13 @@ public class JobFlowDetail  implements Serializable  {
      * @param executionStatusDetail Describes the execution status of the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withExecutionStatusDetail(JobFlowExecutionStatusDetail executionStatusDetail) {
         this.executionStatusDetail = executionStatusDetail;
         return this;
     }
-    
-    
+
     /**
      * Describes the Amazon EC2 instances of the job flow.
      *
@@ -411,23 +405,22 @@ public class JobFlowDetail  implements Serializable  {
      * @param instances Describes the Amazon EC2 instances of the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withInstances(JobFlowInstancesDetail instances) {
         this.instances = instances;
         return this;
     }
-    
-    
+
     /**
      * A list of steps run by the job flow.
      *
      * @return A list of steps run by the job flow.
      */
     public java.util.List<StepDetail> getSteps() {
-        
         if (steps == null) {
-            steps = new java.util.ArrayList<StepDetail>();
+              steps = new com.amazonaws.internal.ListWithAutoConstructFlag<StepDetail>();
+              steps.setAutoConstruct(true);
         }
         return steps;
     }
@@ -442,8 +435,7 @@ public class JobFlowDetail  implements Serializable  {
             this.steps = null;
             return;
         }
-
-        java.util.List<StepDetail> stepsCopy = new java.util.ArrayList<StepDetail>(steps.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<StepDetail> stepsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StepDetail>(steps.size());
         stepsCopy.addAll(steps);
         this.steps = stepsCopy;
     }
@@ -456,7 +448,7 @@ public class JobFlowDetail  implements Serializable  {
      * @param steps A list of steps run by the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withSteps(StepDetail... steps) {
         if (getSteps() == null) setSteps(new java.util.ArrayList<StepDetail>(steps.length));
@@ -474,29 +466,29 @@ public class JobFlowDetail  implements Serializable  {
      * @param steps A list of steps run by the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withSteps(java.util.Collection<StepDetail> steps) {
         if (steps == null) {
             this.steps = null;
         } else {
-            java.util.List<StepDetail> stepsCopy = new java.util.ArrayList<StepDetail>(steps.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<StepDetail> stepsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StepDetail>(steps.size());
             stepsCopy.addAll(steps);
             this.steps = stepsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of the bootstrap actions run by the job flow.
      *
      * @return A list of the bootstrap actions run by the job flow.
      */
     public java.util.List<BootstrapActionDetail> getBootstrapActions() {
-        
         if (bootstrapActions == null) {
-            bootstrapActions = new java.util.ArrayList<BootstrapActionDetail>();
+              bootstrapActions = new com.amazonaws.internal.ListWithAutoConstructFlag<BootstrapActionDetail>();
+              bootstrapActions.setAutoConstruct(true);
         }
         return bootstrapActions;
     }
@@ -511,8 +503,7 @@ public class JobFlowDetail  implements Serializable  {
             this.bootstrapActions = null;
             return;
         }
-
-        java.util.List<BootstrapActionDetail> bootstrapActionsCopy = new java.util.ArrayList<BootstrapActionDetail>(bootstrapActions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BootstrapActionDetail> bootstrapActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BootstrapActionDetail>(bootstrapActions.size());
         bootstrapActionsCopy.addAll(bootstrapActions);
         this.bootstrapActions = bootstrapActionsCopy;
     }
@@ -525,7 +516,7 @@ public class JobFlowDetail  implements Serializable  {
      * @param bootstrapActions A list of the bootstrap actions run by the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withBootstrapActions(BootstrapActionDetail... bootstrapActions) {
         if (getBootstrapActions() == null) setBootstrapActions(new java.util.ArrayList<BootstrapActionDetail>(bootstrapActions.length));
@@ -543,20 +534,20 @@ public class JobFlowDetail  implements Serializable  {
      * @param bootstrapActions A list of the bootstrap actions run by the job flow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withBootstrapActions(java.util.Collection<BootstrapActionDetail> bootstrapActions) {
         if (bootstrapActions == null) {
             this.bootstrapActions = null;
         } else {
-            java.util.List<BootstrapActionDetail> bootstrapActionsCopy = new java.util.ArrayList<BootstrapActionDetail>(bootstrapActions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BootstrapActionDetail> bootstrapActionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BootstrapActionDetail>(bootstrapActions.size());
             bootstrapActionsCopy.addAll(bootstrapActions);
             this.bootstrapActions = bootstrapActionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of strings set by third party software when the job flow is
      * launched. If you are not using third party software to manage the job
@@ -567,9 +558,9 @@ public class JobFlowDetail  implements Serializable  {
      *         flow this value is empty.
      */
     public java.util.List<String> getSupportedProducts() {
-        
         if (supportedProducts == null) {
-            supportedProducts = new java.util.ArrayList<String>();
+              supportedProducts = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              supportedProducts.setAutoConstruct(true);
         }
         return supportedProducts;
     }
@@ -588,8 +579,7 @@ public class JobFlowDetail  implements Serializable  {
             this.supportedProducts = null;
             return;
         }
-
-        java.util.List<String> supportedProductsCopy = new java.util.ArrayList<String>(supportedProducts.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> supportedProductsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(supportedProducts.size());
         supportedProductsCopy.addAll(supportedProducts);
         this.supportedProducts = supportedProductsCopy;
     }
@@ -606,7 +596,7 @@ public class JobFlowDetail  implements Serializable  {
      *         flow this value is empty.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withSupportedProducts(String... supportedProducts) {
         if (getSupportedProducts() == null) setSupportedProducts(new java.util.ArrayList<String>(supportedProducts.length));
@@ -628,20 +618,20 @@ public class JobFlowDetail  implements Serializable  {
      *         flow this value is empty.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withSupportedProducts(java.util.Collection<String> supportedProducts) {
         if (supportedProducts == null) {
             this.supportedProducts = null;
         } else {
-            java.util.List<String> supportedProductsCopy = new java.util.ArrayList<String>(supportedProducts.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> supportedProductsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(supportedProducts.size());
             supportedProductsCopy.addAll(supportedProducts);
             this.supportedProducts = supportedProductsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Specifies whether the job flow is visible to all IAM users of the AWS
      * account associated with the job flow. If this value is set to
@@ -704,14 +694,13 @@ public class JobFlowDetail  implements Serializable  {
      *         <a>SetVisibleToAllUsers</a> action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withVisibleToAllUsers(Boolean visibleToAllUsers) {
         this.visibleToAllUsers = visibleToAllUsers;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the job flow is visible to all IAM users of the AWS
      * account associated with the job flow. If this value is set to
@@ -732,7 +721,7 @@ public class JobFlowDetail  implements Serializable  {
     public Boolean getVisibleToAllUsers() {
         return visibleToAllUsers;
     }
-    
+
     /**
      * The IAM role that was specified when the job flow was launched. The
      * EC2 instances of the job flow assume this role.
@@ -777,14 +766,13 @@ public class JobFlowDetail  implements Serializable  {
      *         EC2 instances of the job flow assume this role.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobFlowDetail withJobFlowRole(String jobFlowRole) {
         this.jobFlowRole = jobFlowRole;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -796,17 +784,17 @@ public class JobFlowDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobFlowId() != null) sb.append("JobFlowId: " + getJobFlowId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getLogUri() != null) sb.append("LogUri: " + getLogUri() + ",");    	
-        if (getAmiVersion() != null) sb.append("AmiVersion: " + getAmiVersion() + ",");    	
-        if (getExecutionStatusDetail() != null) sb.append("ExecutionStatusDetail: " + getExecutionStatusDetail() + ",");    	
-        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");    	
-        if (getSteps() != null) sb.append("Steps: " + getSteps() + ",");    	
-        if (getBootstrapActions() != null) sb.append("BootstrapActions: " + getBootstrapActions() + ",");    	
-        if (getSupportedProducts() != null) sb.append("SupportedProducts: " + getSupportedProducts() + ",");    	
-        if (isVisibleToAllUsers() != null) sb.append("VisibleToAllUsers: " + isVisibleToAllUsers() + ",");    	
+        sb.append("{");
+        if (getJobFlowId() != null) sb.append("JobFlowId: " + getJobFlowId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getLogUri() != null) sb.append("LogUri: " + getLogUri() + ",");
+        if (getAmiVersion() != null) sb.append("AmiVersion: " + getAmiVersion() + ",");
+        if (getExecutionStatusDetail() != null) sb.append("ExecutionStatusDetail: " + getExecutionStatusDetail() + ",");
+        if (getInstances() != null) sb.append("Instances: " + getInstances() + ",");
+        if (getSteps() != null) sb.append("Steps: " + getSteps() + ",");
+        if (getBootstrapActions() != null) sb.append("BootstrapActions: " + getBootstrapActions() + ",");
+        if (getSupportedProducts() != null) sb.append("SupportedProducts: " + getSupportedProducts() + ",");
+        if (isVisibleToAllUsers() != null) sb.append("VisibleToAllUsers: " + isVisibleToAllUsers() + ",");
         if (getJobFlowRole() != null) sb.append("JobFlowRole: " + getJobFlowRole() );
         sb.append("}");
         return sb.toString();

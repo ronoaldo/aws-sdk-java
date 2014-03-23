@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A complex type that contains name server information.
  * </p>
  */
-public class DelegationSet  implements Serializable  {
+public class DelegationSet implements Serializable {
 
     /**
      * A complex type that contains the authoritative name servers for the
@@ -31,7 +32,7 @@ public class DelegationSet  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<String> nameServers;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> nameServers;
 
     /**
      * Default constructor for a new DelegationSet object.  Callers should use the
@@ -50,11 +51,9 @@ public class DelegationSet  implements Serializable  {
      * <code>NameServer</code> that is assigned to your hosted zone.
      */
     public DelegationSet(java.util.List<String> nameServers) {
-        this.nameServers = nameServers;
+        setNameServers(nameServers);
     }
 
-    
-    
     /**
      * A complex type that contains the authoritative name servers for the
      * hosted zone. Use the method provided by your domain registrar to add
@@ -70,9 +69,9 @@ public class DelegationSet  implements Serializable  {
      *         assigned to your hosted zone.
      */
     public java.util.List<String> getNameServers() {
-        
         if (nameServers == null) {
-            nameServers = new java.util.ArrayList<String>();
+              nameServers = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              nameServers.setAutoConstruct(true);
         }
         return nameServers;
     }
@@ -96,8 +95,7 @@ public class DelegationSet  implements Serializable  {
             this.nameServers = null;
             return;
         }
-
-        java.util.List<String> nameServersCopy = new java.util.ArrayList<String>(nameServers.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> nameServersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(nameServers.size());
         nameServersCopy.addAll(nameServers);
         this.nameServers = nameServersCopy;
     }
@@ -119,7 +117,7 @@ public class DelegationSet  implements Serializable  {
      *         assigned to your hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DelegationSet withNameServers(String... nameServers) {
         if (getNameServers() == null) setNameServers(new java.util.ArrayList<String>(nameServers.length));
@@ -146,20 +144,20 @@ public class DelegationSet  implements Serializable  {
      *         assigned to your hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DelegationSet withNameServers(java.util.Collection<String> nameServers) {
         if (nameServers == null) {
             this.nameServers = null;
         } else {
-            java.util.List<String> nameServersCopy = new java.util.ArrayList<String>(nameServers.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> nameServersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(nameServers.size());
             nameServersCopy.addAll(nameServers);
             this.nameServers = nameServersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -171,7 +169,7 @@ public class DelegationSet  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getNameServers() != null) sb.append("NameServers: " + getNameServers() );
         sb.append("}");
         return sb.toString();

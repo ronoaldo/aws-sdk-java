@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,34 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getIdentityNotificationAttributes(GetIdentityNotificationAttributesRequest) GetIdentityNotificationAttributes operation}.
  * <p>
- * Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes. For more
- * information about feedback notification, see the <a href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide"> Amazon SES Developer Guide
- * </a> .
+ * Given a list of verified identities (email addresses and/or domains),
+ * returns a structure describing identity notification attributes.
+ * </p>
+ * <p>
+ * This action is throttled at one request per second.
+ * </p>
+ * <p>
+ * For more information about feedback notification, see the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getIdentityNotificationAttributes(GetIdentityNotificationAttributesRequest)
  */
-public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list of one or more identities.
      */
-    private java.util.List<String> identities;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> identities;
 
     /**
      * A list of one or more identities.
@@ -39,9 +48,9 @@ public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRe
      * @return A list of one or more identities.
      */
     public java.util.List<String> getIdentities() {
-        
         if (identities == null) {
-            identities = new java.util.ArrayList<String>();
+              identities = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              identities.setAutoConstruct(true);
         }
         return identities;
     }
@@ -56,8 +65,7 @@ public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRe
             this.identities = null;
             return;
         }
-
-        java.util.List<String> identitiesCopy = new java.util.ArrayList<String>(identities.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> identitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(identities.size());
         identitiesCopy.addAll(identities);
         this.identities = identitiesCopy;
     }
@@ -70,7 +78,7 @@ public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRe
      * @param identities A list of one or more identities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetIdentityNotificationAttributesRequest withIdentities(String... identities) {
         if (getIdentities() == null) setIdentities(new java.util.ArrayList<String>(identities.length));
@@ -88,20 +96,20 @@ public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRe
      * @param identities A list of one or more identities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetIdentityNotificationAttributesRequest withIdentities(java.util.Collection<String> identities) {
         if (identities == null) {
             this.identities = null;
         } else {
-            java.util.List<String> identitiesCopy = new java.util.ArrayList<String>(identities.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> identitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(identities.size());
             identitiesCopy.addAll(identities);
             this.identities = identitiesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -113,7 +121,7 @@ public class GetIdentityNotificationAttributesRequest extends AmazonWebServiceRe
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getIdentities() != null) sb.append("Identities: " + getIdentities() );
         sb.append("}");
         return sb.toString();

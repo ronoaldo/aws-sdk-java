@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteClusterRequestMarshaller implements Marshaller<Request<Delete
     public Request<DeleteClusterRequest> marshall(DeleteClusterRequest deleteClusterRequest) {
 
         if (deleteClusterRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteClusterRequest> request = new DefaultRequest<DeleteClusterRequest>(deleteClusterRequest, "AmazonRedshift");
         request.addParameter("Action", "DeleteCluster");
@@ -49,7 +49,6 @@ public class DeleteClusterRequestMarshaller implements Marshaller<Request<Delete
         if (deleteClusterRequest.getFinalClusterSnapshotIdentifier() != null) {
             request.addParameter("FinalClusterSnapshotIdentifier", StringUtils.fromString(deleteClusterRequest.getFinalClusterSnapshotIdentifier()));
         }
-
 
         return request;
     }

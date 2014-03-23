@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class CreateOrUpdateTagsRequestMarshaller implements Marshaller<Request<C
     public Request<CreateOrUpdateTagsRequest> marshall(CreateOrUpdateTagsRequest createOrUpdateTagsRequest) {
 
         if (createOrUpdateTagsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateOrUpdateTagsRequest> request = new DefaultRequest<CreateOrUpdateTagsRequest>(createOrUpdateTagsRequest, "AmazonAutoScaling");
         request.addParameter("Action", "CreateOrUpdateTags");
         request.addParameter("Version", "2011-01-01");
-
 
         java.util.List<Tag> tagsList = createOrUpdateTagsRequest.getTags();
         int tagsListIndex = 1;
@@ -66,7 +65,6 @@ public class CreateOrUpdateTagsRequestMarshaller implements Marshaller<Request<C
 
             tagsListIndex++;
         }
-
 
         return request;
     }

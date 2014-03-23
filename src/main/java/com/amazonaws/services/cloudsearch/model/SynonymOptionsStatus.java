@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The synonym options configured for this search domain and the current status of those options.
+ * The synonym options configured for this search domain and the current
+ * status of those options.
  * </p>
  */
-public class SynonymOptionsStatus  implements Serializable  {
+public class SynonymOptionsStatus implements Serializable {
 
     /**
      * Maps terms to their synonyms, serialized as a JSON document. The
      * document has a single object with one property "synonyms" whose value
      * is an object mapping terms to their synonyms. Each synonym is a simple
      * string or an array of strings. The maximum size of a stopwords
-     * document is 100KB. Example: <code>{ "synonyms": {"cat": ["feline",
+     * document is 100 KB. Example: <code>{ "synonyms": {"cat": ["feline",
      * "kitten"], "puppy": "dog"} }</code>
      */
     private String options;
@@ -43,14 +45,14 @@ public class SynonymOptionsStatus  implements Serializable  {
      * document has a single object with one property "synonyms" whose value
      * is an object mapping terms to their synonyms. Each synonym is a simple
      * string or an array of strings. The maximum size of a stopwords
-     * document is 100KB. Example: <code>{ "synonyms": {"cat": ["feline",
+     * document is 100 KB. Example: <code>{ "synonyms": {"cat": ["feline",
      * "kitten"], "puppy": "dog"} }</code>
      *
      * @return Maps terms to their synonyms, serialized as a JSON document. The
      *         document has a single object with one property "synonyms" whose value
      *         is an object mapping terms to their synonyms. Each synonym is a simple
      *         string or an array of strings. The maximum size of a stopwords
-     *         document is 100KB. Example: <code>{ "synonyms": {"cat": ["feline",
+     *         document is 100 KB. Example: <code>{ "synonyms": {"cat": ["feline",
      *         "kitten"], "puppy": "dog"} }</code>
      */
     public String getOptions() {
@@ -62,14 +64,14 @@ public class SynonymOptionsStatus  implements Serializable  {
      * document has a single object with one property "synonyms" whose value
      * is an object mapping terms to their synonyms. Each synonym is a simple
      * string or an array of strings. The maximum size of a stopwords
-     * document is 100KB. Example: <code>{ "synonyms": {"cat": ["feline",
+     * document is 100 KB. Example: <code>{ "synonyms": {"cat": ["feline",
      * "kitten"], "puppy": "dog"} }</code>
      *
      * @param options Maps terms to their synonyms, serialized as a JSON document. The
      *         document has a single object with one property "synonyms" whose value
      *         is an object mapping terms to their synonyms. Each synonym is a simple
      *         string or an array of strings. The maximum size of a stopwords
-     *         document is 100KB. Example: <code>{ "synonyms": {"cat": ["feline",
+     *         document is 100 KB. Example: <code>{ "synonyms": {"cat": ["feline",
      *         "kitten"], "puppy": "dog"} }</code>
      */
     public void setOptions(String options) {
@@ -81,7 +83,7 @@ public class SynonymOptionsStatus  implements Serializable  {
      * document has a single object with one property "synonyms" whose value
      * is an object mapping terms to their synonyms. Each synonym is a simple
      * string or an array of strings. The maximum size of a stopwords
-     * document is 100KB. Example: <code>{ "synonyms": {"cat": ["feline",
+     * document is 100 KB. Example: <code>{ "synonyms": {"cat": ["feline",
      * "kitten"], "puppy": "dog"} }</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -90,18 +92,17 @@ public class SynonymOptionsStatus  implements Serializable  {
      *         document has a single object with one property "synonyms" whose value
      *         is an object mapping terms to their synonyms. Each synonym is a simple
      *         string or an array of strings. The maximum size of a stopwords
-     *         document is 100KB. Example: <code>{ "synonyms": {"cat": ["feline",
+     *         document is 100 KB. Example: <code>{ "synonyms": {"cat": ["feline",
      *         "kitten"], "puppy": "dog"} }</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SynonymOptionsStatus withOptions(String options) {
         this.options = options;
         return this;
     }
-    
-    
+
     /**
      * The status of an option, including when it was last updated and
      * whether it is actively in use for searches.
@@ -134,14 +135,13 @@ public class SynonymOptionsStatus  implements Serializable  {
      *         whether it is actively in use for searches.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SynonymOptionsStatus withStatus(OptionStatus status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -153,8 +153,8 @@ public class SynonymOptionsStatus  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");    	
+        sb.append("{");
+        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

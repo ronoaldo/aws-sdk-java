@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,17 +33,16 @@ public class EnableVolumeIORequestMarshaller implements Marshaller<Request<Enabl
     public Request<EnableVolumeIORequest> marshall(EnableVolumeIORequest enableVolumeIORequest) {
 
         if (enableVolumeIORequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<EnableVolumeIORequest> request = new DefaultRequest<EnableVolumeIORequest>(enableVolumeIORequest, "AmazonEC2");
         request.addParameter("Action", "EnableVolumeIO");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (enableVolumeIORequest.getVolumeId() != null) {
             request.addParameter("VolumeId", StringUtils.fromString(enableVolumeIORequest.getVolumeId()));
         }
-
 
         return request;
     }

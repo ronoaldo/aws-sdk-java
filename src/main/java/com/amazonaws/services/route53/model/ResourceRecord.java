@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains the value of the <code>Value</code> element for the current resource record set.
+ * A complex type that contains the value of the <code>Value</code>
+ * element for the current resource record set.
  * </p>
  */
-public class ResourceRecord  implements Serializable  {
+public class ResourceRecord implements Serializable {
 
     /**
      * The value of the <code>Value</code> element for the current resource
@@ -46,11 +48,9 @@ public class ResourceRecord  implements Serializable  {
      * current resource record set.
      */
     public ResourceRecord(String value) {
-        this.value = value;
+        setValue(value);
     }
 
-    
-    
     /**
      * The value of the <code>Value</code> element for the current resource
      * record set.
@@ -92,14 +92,13 @@ public class ResourceRecord  implements Serializable  {
      *         record set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResourceRecord withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +110,7 @@ public class ResourceRecord  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

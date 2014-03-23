@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a deployment of a stack or app.
  * </p>
  */
-public class Deployment  implements Serializable  {
+public class Deployment implements Serializable {
 
     /**
      * The deployment ID.
@@ -79,15 +80,15 @@ public class Deployment  implements Serializable  {
      * stack. The string should be in the following format and must escape
      * characters such as '"'.: <code>"{\"key1\": \"value1\", \"key2\":
      * \"value2\",...}"</code> <p>For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">
-     * Use Custom JSON to Modify the Stack Configuration JSON</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use
+     * Custom JSON to Modify the Stack Configuration JSON</a>.
      */
     private String customJson;
 
     /**
      * The IDs of the target instances.
      */
-    private java.util.List<String> instanceIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIds;
 
     /**
      * The deployment ID.
@@ -115,14 +116,13 @@ public class Deployment  implements Serializable  {
      * @param deploymentId The deployment ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withDeploymentId(String deploymentId) {
         this.deploymentId = deploymentId;
         return this;
     }
-    
-    
+
     /**
      * The stack ID.
      *
@@ -149,14 +149,13 @@ public class Deployment  implements Serializable  {
      * @param stackId The stack ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The app ID.
      *
@@ -183,14 +182,13 @@ public class Deployment  implements Serializable  {
      * @param appId The app ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withAppId(String appId) {
         this.appId = appId;
         return this;
     }
-    
-    
+
     /**
      * Date when the deployment was created.
      *
@@ -217,14 +215,13 @@ public class Deployment  implements Serializable  {
      * @param createdAt Date when the deployment was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
     }
-    
-    
+
     /**
      * Date when the deployment completed.
      *
@@ -251,14 +248,13 @@ public class Deployment  implements Serializable  {
      * @param completedAt Date when the deployment completed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withCompletedAt(String completedAt) {
         this.completedAt = completedAt;
         return this;
     }
-    
-    
+
     /**
      * The deployment duration.
      *
@@ -285,14 +281,13 @@ public class Deployment  implements Serializable  {
      * @param duration The deployment duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withDuration(Integer duration) {
         this.duration = duration;
         return this;
     }
-    
-    
+
     /**
      * The user's IAM ARN.
      *
@@ -319,14 +314,13 @@ public class Deployment  implements Serializable  {
      * @param iamUserArn The user's IAM ARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withIamUserArn(String iamUserArn) {
         this.iamUserArn = iamUserArn;
         return this;
     }
-    
-    
+
     /**
      * A user-defined comment.
      *
@@ -353,14 +347,13 @@ public class Deployment  implements Serializable  {
      * @param comment A user-defined comment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * Used to specify a deployment operation.
      *
@@ -387,14 +380,13 @@ public class Deployment  implements Serializable  {
      * @param command Used to specify a deployment operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withCommand(DeploymentCommand command) {
         this.command = command;
         return this;
     }
-    
-    
+
     /**
      * The deployment status: <ul> <li>running</li> <li>successful</li>
      * <li>failed</li> </ul>
@@ -427,30 +419,29 @@ public class Deployment  implements Serializable  {
      *         <li>failed</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * A string that contains user-defined custom JSON. It is used to
      * override the corresponding default stack configuration JSON values for
      * stack. The string should be in the following format and must escape
      * characters such as '"'.: <code>"{\"key1\": \"value1\", \"key2\":
      * \"value2\",...}"</code> <p>For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">
-     * Use Custom JSON to Modify the Stack Configuration JSON</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use
+     * Custom JSON to Modify the Stack Configuration JSON</a>.
      *
      * @return A string that contains user-defined custom JSON. It is used to
      *         override the corresponding default stack configuration JSON values for
      *         stack. The string should be in the following format and must escape
      *         characters such as '"'.: <code>"{\"key1\": \"value1\", \"key2\":
      *         \"value2\",...}"</code> <p>For more information on custom JSON, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">
-     *         Use Custom JSON to Modify the Stack Configuration JSON</a>.
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use
+     *         Custom JSON to Modify the Stack Configuration JSON</a>.
      */
     public String getCustomJson() {
         return customJson;
@@ -462,16 +453,16 @@ public class Deployment  implements Serializable  {
      * stack. The string should be in the following format and must escape
      * characters such as '"'.: <code>"{\"key1\": \"value1\", \"key2\":
      * \"value2\",...}"</code> <p>For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">
-     * Use Custom JSON to Modify the Stack Configuration JSON</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use
+     * Custom JSON to Modify the Stack Configuration JSON</a>.
      *
      * @param customJson A string that contains user-defined custom JSON. It is used to
      *         override the corresponding default stack configuration JSON values for
      *         stack. The string should be in the following format and must escape
      *         characters such as '"'.: <code>"{\"key1\": \"value1\", \"key2\":
      *         \"value2\",...}"</code> <p>For more information on custom JSON, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">
-     *         Use Custom JSON to Modify the Stack Configuration JSON</a>.
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use
+     *         Custom JSON to Modify the Stack Configuration JSON</a>.
      */
     public void setCustomJson(String customJson) {
         this.customJson = customJson;
@@ -483,8 +474,8 @@ public class Deployment  implements Serializable  {
      * stack. The string should be in the following format and must escape
      * characters such as '"'.: <code>"{\"key1\": \"value1\", \"key2\":
      * \"value2\",...}"</code> <p>For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">
-     * Use Custom JSON to Modify the Stack Configuration JSON</a>.
+     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use
+     * Custom JSON to Modify the Stack Configuration JSON</a>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -493,27 +484,26 @@ public class Deployment  implements Serializable  {
      *         stack. The string should be in the following format and must escape
      *         characters such as '"'.: <code>"{\"key1\": \"value1\", \"key2\":
      *         \"value2\",...}"</code> <p>For more information on custom JSON, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">
-     *         Use Custom JSON to Modify the Stack Configuration JSON</a>.
+     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use
+     *         Custom JSON to Modify the Stack Configuration JSON</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withCustomJson(String customJson) {
         this.customJson = customJson;
         return this;
     }
-    
-    
+
     /**
      * The IDs of the target instances.
      *
      * @return The IDs of the target instances.
      */
     public java.util.List<String> getInstanceIds() {
-        
         if (instanceIds == null) {
-            instanceIds = new java.util.ArrayList<String>();
+              instanceIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              instanceIds.setAutoConstruct(true);
         }
         return instanceIds;
     }
@@ -528,8 +518,7 @@ public class Deployment  implements Serializable  {
             this.instanceIds = null;
             return;
         }
-
-        java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
         instanceIdsCopy.addAll(instanceIds);
         this.instanceIds = instanceIdsCopy;
     }
@@ -542,7 +531,7 @@ public class Deployment  implements Serializable  {
      * @param instanceIds The IDs of the target instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withInstanceIds(String... instanceIds) {
         if (getInstanceIds() == null) setInstanceIds(new java.util.ArrayList<String>(instanceIds.length));
@@ -560,20 +549,20 @@ public class Deployment  implements Serializable  {
      * @param instanceIds The IDs of the target instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Deployment withInstanceIds(java.util.Collection<String> instanceIds) {
         if (instanceIds == null) {
             this.instanceIds = null;
         } else {
-            java.util.List<String> instanceIdsCopy = new java.util.ArrayList<String>(instanceIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> instanceIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(instanceIds.size());
             instanceIdsCopy.addAll(instanceIds);
             this.instanceIds = instanceIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -585,18 +574,18 @@ public class Deployment  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDeploymentId() != null) sb.append("DeploymentId: " + getDeploymentId() + ",");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");    	
-        if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() + ",");    	
-        if (getCompletedAt() != null) sb.append("CompletedAt: " + getCompletedAt() + ",");    	
-        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");    	
-        if (getIamUserArn() != null) sb.append("IamUserArn: " + getIamUserArn() + ",");    	
-        if (getComment() != null) sb.append("Comment: " + getComment() + ",");    	
-        if (getCommand() != null) sb.append("Command: " + getCommand() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getCustomJson() != null) sb.append("CustomJson: " + getCustomJson() + ",");    	
+        sb.append("{");
+        if (getDeploymentId() != null) sb.append("DeploymentId: " + getDeploymentId() + ",");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");
+        if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() + ",");
+        if (getCompletedAt() != null) sb.append("CompletedAt: " + getCompletedAt() + ",");
+        if (getDuration() != null) sb.append("Duration: " + getDuration() + ",");
+        if (getIamUserArn() != null) sb.append("IamUserArn: " + getIamUserArn() + ",");
+        if (getComment() != null) sb.append("Comment: " + getComment() + ",");
+        if (getCommand() != null) sb.append("Command: " + getCommand() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getCustomJson() != null) sb.append("CustomJson: " + getCustomJson() + ",");
         if (getInstanceIds() != null) sb.append("InstanceIds: " + getInstanceIds() );
         sb.append("}");
         return sb.toString();

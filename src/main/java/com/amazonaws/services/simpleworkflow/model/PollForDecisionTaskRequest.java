@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,51 +13,74 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#pollForDecisionTask(PollForDecisionTaskRequest) PollForDecisionTask operation}.
  * <p>
- * Used by deciders to get a DecisionTask from the specified decision <code>taskList</code> .
- * A decision task may be returned for any open workflow execution that is using the specified task list. The task includes a paginated view of the
- * history of the workflow execution. The decider should use the workflow type and the history to determine how to properly handle the task.
+ * Used by deciders to get a DecisionTask from the specified decision
+ * <code>taskList</code> .
+ * A decision task may be returned for any open workflow execution
+ * that is using the specified task list. The task includes a paginated
+ * view of the history of the workflow execution. The decider should use
+ * the workflow type and the history to determine how to properly handle
+ * the task.
  * </p>
  * <p>
- * This action initiates a long poll, where the service holds the HTTP connection open and responds as soon a task becomes available. If no decision
- * task is available in the specified task list before the timeout of 60 seconds expires, an empty result is returned. An empty result, in this context,
- * means that a DecisionTask is returned, but that the value of taskToken is an empty string.
+ * This action initiates a long poll, where the service holds the HTTP
+ * connection open and responds as soon a task becomes available. If no
+ * decision task is available in the specified task list before the
+ * timeout of 60 seconds expires, an empty result is returned. An empty
+ * result, in this context, means that a DecisionTask is returned, but
+ * that the value of taskToken is an empty string.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> Deciders should set their client side socket timeout to at least 70 seconds (10 seconds higher than the timeout).
+ * <b>IMPORTANT:</b> Deciders should set their client side socket timeout
+ * to at least 70 seconds (10 seconds higher than the timeout).
  * </p>
  * <p>
- * <b>IMPORTANT:</b> Because the number of workflow history events for a single workflow execution might be very large, the result returned might be
- * split up across a number of pages. To retrieve subsequent pages, make additional calls to PollForDecisionTask using the nextPageToken returned by the
- * initial call. Note that you do not call GetWorkflowExecutionHistory with this nextPageToken. Instead, call PollForDecisionTask again.
+ * <b>IMPORTANT:</b> Because the number of workflow history events for a
+ * single workflow execution might be very large, the result returned
+ * might be split up across a number of pages. To retrieve subsequent
+ * pages, make additional calls to PollForDecisionTask using the
+ * nextPageToken returned by the initial call. Note that you do not call
+ * GetWorkflowExecutionHistory with this nextPageToken. Instead, call
+ * PollForDecisionTask again.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>Use a <b>Condition</b> element with the <code>swf:taskList.name</code> key to allow the action to access only certain task lists.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>Use a <b>Condition</b> element with the
+ * <code>swf:taskList.name</code> key to allow the action to access only
+ * certain task lists.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#pollForDecisionTask(PollForDecisionTaskRequest)
  */
-public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PollForDecisionTaskRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain containing the task lists to poll.
@@ -159,14 +182,13 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
      * @param domain The name of the domain containing the task lists to poll.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForDecisionTaskRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * Specifies the task list to poll for decision tasks. <p>The specified
      * string must not start or end with whitespace. It must not contain a
@@ -217,14 +239,13 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
      *         \u009f). Also, it must not contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForDecisionTaskRequest withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * Identity of the decider making the request, which is recorded in the
      * DecisionTaskStarted event in the workflow history. This enables
@@ -278,14 +299,13 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
      *         user defined.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForDecisionTaskRequest withIdentity(String identity) {
         this.identity = identity;
         return this;
     }
-    
-    
+
     /**
      * If on a previous call to this method a <code>NextPageToken</code> was
      * returned, the results are being paginated. To get the next page of
@@ -375,14 +395,13 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
      *         task.</note>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForDecisionTaskRequest withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of history events returned in each page. The
      * default is 100, but the caller can override this value to a page size
@@ -448,14 +467,13 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
      *         results than the maximumPageSize specified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForDecisionTaskRequest withMaximumPageSize(Integer maximumPageSize) {
         this.maximumPageSize = maximumPageSize;
         return this;
     }
-    
-    
+
     /**
      * When set to <code>true</code>, returns the events in reverse order. By
      * default the results are returned in ascending order of the
@@ -494,14 +512,13 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
      *         <code>eventTimestamp</code> of the events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForDecisionTaskRequest withReverseOrder(Boolean reverseOrder) {
         this.reverseOrder = reverseOrder;
         return this;
     }
-    
-    
+
     /**
      * When set to <code>true</code>, returns the events in reverse order. By
      * default the results are returned in ascending order of the
@@ -514,7 +531,7 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
     public Boolean getReverseOrder() {
         return reverseOrder;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -526,12 +543,12 @@ public class PollForDecisionTaskRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");    	
-        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");    	
-        if (getMaximumPageSize() != null) sb.append("MaximumPageSize: " + getMaximumPageSize() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");
+        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");
+        if (getMaximumPageSize() != null) sb.append("MaximumPageSize: " + getMaximumPageSize() + ",");
         if (isReverseOrder() != null) sb.append("ReverseOrder: " + isReverseOrder() );
         sb.append("}");
         return sb.toString();

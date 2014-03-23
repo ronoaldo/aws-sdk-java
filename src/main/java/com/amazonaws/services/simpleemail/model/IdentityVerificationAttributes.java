@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,14 +21,14 @@ import java.io.Serializable;
  * Represents the verification attributes of a single identity.
  * </p>
  */
-public class IdentityVerificationAttributes  implements Serializable  {
+public class IdentityVerificationAttributes implements Serializable {
 
     /**
      * The verification status of the identity: "Pending", "Success",
      * "Failed", or "TemporaryFailure".
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure
+     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure, NotStarted
      */
     private String verificationStatus;
 
@@ -42,7 +43,7 @@ public class IdentityVerificationAttributes  implements Serializable  {
      * "Failed", or "TemporaryFailure".
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure
+     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure, NotStarted
      *
      * @return The verification status of the identity: "Pending", "Success",
      *         "Failed", or "TemporaryFailure".
@@ -58,7 +59,7 @@ public class IdentityVerificationAttributes  implements Serializable  {
      * "Failed", or "TemporaryFailure".
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure
+     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure, NotStarted
      *
      * @param verificationStatus The verification status of the identity: "Pending", "Success",
      *         "Failed", or "TemporaryFailure".
@@ -76,13 +77,13 @@ public class IdentityVerificationAttributes  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure
+     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure, NotStarted
      *
      * @param verificationStatus The verification status of the identity: "Pending", "Success",
      *         "Failed", or "TemporaryFailure".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VerificationStatus
      */
@@ -90,14 +91,13 @@ public class IdentityVerificationAttributes  implements Serializable  {
         this.verificationStatus = verificationStatus;
         return this;
     }
-    
-    
+
     /**
      * The verification status of the identity: "Pending", "Success",
      * "Failed", or "TemporaryFailure".
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure
+     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure, NotStarted
      *
      * @param verificationStatus The verification status of the identity: "Pending", "Success",
      *         "Failed", or "TemporaryFailure".
@@ -115,13 +115,13 @@ public class IdentityVerificationAttributes  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure
+     * <b>Allowed Values: </b>Pending, Success, Failed, TemporaryFailure, NotStarted
      *
      * @param verificationStatus The verification status of the identity: "Pending", "Success",
      *         "Failed", or "TemporaryFailure".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see VerificationStatus
      */
@@ -129,7 +129,7 @@ public class IdentityVerificationAttributes  implements Serializable  {
         this.verificationStatus = verificationStatus.toString();
         return this;
     }
-    
+
     /**
      * The verification token for a domain identity. Null for email address
      * identities.
@@ -162,14 +162,13 @@ public class IdentityVerificationAttributes  implements Serializable  {
      *         identities.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IdentityVerificationAttributes withVerificationToken(String verificationToken) {
         this.verificationToken = verificationToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -181,8 +180,8 @@ public class IdentityVerificationAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVerificationStatus() != null) sb.append("VerificationStatus: " + getVerificationStatus() + ",");    	
+        sb.append("{");
+        if (getVerificationStatus() != null) sb.append("VerificationStatus: " + getVerificationStatus() + ",");
         if (getVerificationToken() != null) sb.append("VerificationToken: " + getVerificationToken() );
         sb.append("}");
         return sb.toString();

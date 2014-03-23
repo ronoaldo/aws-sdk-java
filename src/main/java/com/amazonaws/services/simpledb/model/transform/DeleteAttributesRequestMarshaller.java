@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteAttributesRequestMarshaller implements Marshaller<Request<Del
     public Request<DeleteAttributesRequest> marshall(DeleteAttributesRequest deleteAttributesRequest) {
 
         if (deleteAttributesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteAttributesRequest> request = new DefaultRequest<DeleteAttributesRequest>(deleteAttributesRequest, "AmazonSimpleDB");
         request.addParameter("Action", "DeleteAttributes");
@@ -81,7 +81,6 @@ public class DeleteAttributesRequestMarshaller implements Marshaller<Request<Del
                 request.addParameter("Expected.Exists", StringUtils.fromBoolean(updateConditionExpected.isExists()));
             }
         }
-
 
         return request;
     }

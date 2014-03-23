@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing an AMI attribute.
- * </p>
+ * 
  */
-public class DescribeImageAttributeResult  implements Serializable  {
+public class DescribeImageAttributeResult implements Serializable {
 
     /**
-     * The described image attribute of the associated AMI.
+     * Information about the image attribute.
      */
     private ImageAttribute imageAttribute;
 
     /**
-     * The described image attribute of the associated AMI.
+     * Information about the image attribute.
      *
-     * @return The described image attribute of the associated AMI.
+     * @return Information about the image attribute.
      */
     public ImageAttribute getImageAttribute() {
         return imageAttribute;
     }
     
     /**
-     * The described image attribute of the associated AMI.
+     * Information about the image attribute.
      *
-     * @param imageAttribute The described image attribute of the associated AMI.
+     * @param imageAttribute Information about the image attribute.
      */
     public void setImageAttribute(ImageAttribute imageAttribute) {
         this.imageAttribute = imageAttribute;
     }
     
     /**
-     * The described image attribute of the associated AMI.
+     * Information about the image attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param imageAttribute The described image attribute of the associated AMI.
+     * @param imageAttribute Information about the image attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImageAttributeResult withImageAttribute(ImageAttribute imageAttribute) {
         this.imageAttribute = imageAttribute;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class DescribeImageAttributeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageAttribute() != null) sb.append("ImageAttribute: " + getImageAttribute() );
         sb.append("}");
         return sb.toString();

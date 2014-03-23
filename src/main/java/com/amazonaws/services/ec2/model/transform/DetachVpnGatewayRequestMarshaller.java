@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DetachVpnGatewayRequestMarshaller implements Marshaller<Request<Det
     public Request<DetachVpnGatewayRequest> marshall(DetachVpnGatewayRequest detachVpnGatewayRequest) {
 
         if (detachVpnGatewayRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DetachVpnGatewayRequest> request = new DefaultRequest<DetachVpnGatewayRequest>(detachVpnGatewayRequest, "AmazonEC2");
         request.addParameter("Action", "DetachVpnGateway");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (detachVpnGatewayRequest.getVpnGatewayId() != null) {
             request.addParameter("VpnGatewayId", StringUtils.fromString(detachVpnGatewayRequest.getVpnGatewayId()));
@@ -46,7 +46,6 @@ public class DetachVpnGatewayRequestMarshaller implements Marshaller<Request<Det
         if (detachVpnGatewayRequest.getVpcId() != null) {
             request.addParameter("VpcId", StringUtils.fromString(detachVpnGatewayRequest.getVpcId()));
         }
-
 
         return request;
     }

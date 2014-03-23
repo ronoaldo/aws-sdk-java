@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * The <code>CreatePresetResponse</code> structure.
+ * </p>
  */
-public class CreatePresetResult  implements Serializable  {
+public class CreatePresetResult implements Serializable {
 
     /**
      * A section of the response body that provides information about the
@@ -67,14 +70,13 @@ public class CreatePresetResult  implements Serializable  {
      *         preset that is created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePresetResult withPreset(Preset preset) {
         this.preset = preset;
         return this;
     }
-    
-    
+
     /**
      * If the preset settings don't comply with the standards for the video
      * codec but Elastic Transcoder created the preset, this message explains
@@ -125,14 +127,13 @@ public class CreatePresetResult  implements Serializable  {
      *         acceptable output.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePresetResult withWarning(String warning) {
         this.warning = warning;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -144,8 +145,8 @@ public class CreatePresetResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPreset() != null) sb.append("Preset: " + getPreset() + ",");    	
+        sb.append("{");
+        if (getPreset() != null) sb.append("Preset: " + getPreset() + ",");
         if (getWarning() != null) sb.append("Warning: " + getWarning() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,68 +13,55 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class DescribeTrustedAdvisorCheckResultResult  implements Serializable  {
+public class DescribeTrustedAdvisorCheckResultResult implements Serializable {
 
     /**
-     * Returns a <a href="API_TrustedAdvisorCheckResult.html"
-     * title="TrustedAdvisorCheckResult">TrustedAdvisorCheckResult</a>
-     * object.
+     * The detailed results of the Trusted Advisor check.
      */
     private TrustedAdvisorCheckResult result;
 
     /**
-     * Returns a <a href="API_TrustedAdvisorCheckResult.html"
-     * title="TrustedAdvisorCheckResult">TrustedAdvisorCheckResult</a>
-     * object.
+     * The detailed results of the Trusted Advisor check.
      *
-     * @return Returns a <a href="API_TrustedAdvisorCheckResult.html"
-     *         title="TrustedAdvisorCheckResult">TrustedAdvisorCheckResult</a>
-     *         object.
+     * @return The detailed results of the Trusted Advisor check.
      */
     public TrustedAdvisorCheckResult getResult() {
         return result;
     }
     
     /**
-     * Returns a <a href="API_TrustedAdvisorCheckResult.html"
-     * title="TrustedAdvisorCheckResult">TrustedAdvisorCheckResult</a>
-     * object.
+     * The detailed results of the Trusted Advisor check.
      *
-     * @param result Returns a <a href="API_TrustedAdvisorCheckResult.html"
-     *         title="TrustedAdvisorCheckResult">TrustedAdvisorCheckResult</a>
-     *         object.
+     * @param result The detailed results of the Trusted Advisor check.
      */
     public void setResult(TrustedAdvisorCheckResult result) {
         this.result = result;
     }
     
     /**
-     * Returns a <a href="API_TrustedAdvisorCheckResult.html"
-     * title="TrustedAdvisorCheckResult">TrustedAdvisorCheckResult</a>
-     * object.
+     * The detailed results of the Trusted Advisor check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param result Returns a <a href="API_TrustedAdvisorCheckResult.html"
-     *         title="TrustedAdvisorCheckResult">TrustedAdvisorCheckResult</a>
-     *         object.
+     * @param result The detailed results of the Trusted Advisor check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckResultResult withResult(TrustedAdvisorCheckResult result) {
         this.result = result;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -86,7 +73,7 @@ public class DescribeTrustedAdvisorCheckResultResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getResult() != null) sb.append("Result: " + getResult() );
         sb.append("}");
         return sb.toString();

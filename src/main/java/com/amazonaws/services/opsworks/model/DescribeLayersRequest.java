@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeLayers(DescribeLayersRequest) DescribeLayers operation}.
  * <p>
  * Requests a description of one or more layers in a specified stack.
  * </p>
+ * <p>
+ * <b>NOTE:</b>You must specify at least one of the parameters.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Show, Deploy, or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeLayers(DescribeLayersRequest)
  */
-public class DescribeLayersRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeLayersRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The stack ID.
@@ -36,7 +49,7 @@ public class DescribeLayersRequest extends AmazonWebServiceRequest  implements S
      * omit this parameter, <code>DescribeLayers</code> returns a description
      * of every layer in the specified stack.
      */
-    private java.util.List<String> layerIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIds;
 
     /**
      * The stack ID.
@@ -64,14 +77,13 @@ public class DescribeLayersRequest extends AmazonWebServiceRequest  implements S
      * @param stackId The stack ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLayersRequest withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * An array of layer IDs that specify the layers to be described. If you
      * omit this parameter, <code>DescribeLayers</code> returns a description
@@ -82,9 +94,9 @@ public class DescribeLayersRequest extends AmazonWebServiceRequest  implements S
      *         of every layer in the specified stack.
      */
     public java.util.List<String> getLayerIds() {
-        
         if (layerIds == null) {
-            layerIds = new java.util.ArrayList<String>();
+              layerIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              layerIds.setAutoConstruct(true);
         }
         return layerIds;
     }
@@ -103,8 +115,7 @@ public class DescribeLayersRequest extends AmazonWebServiceRequest  implements S
             this.layerIds = null;
             return;
         }
-
-        java.util.List<String> layerIdsCopy = new java.util.ArrayList<String>(layerIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(layerIds.size());
         layerIdsCopy.addAll(layerIds);
         this.layerIds = layerIdsCopy;
     }
@@ -121,7 +132,7 @@ public class DescribeLayersRequest extends AmazonWebServiceRequest  implements S
      *         of every layer in the specified stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLayersRequest withLayerIds(String... layerIds) {
         if (getLayerIds() == null) setLayerIds(new java.util.ArrayList<String>(layerIds.length));
@@ -143,20 +154,20 @@ public class DescribeLayersRequest extends AmazonWebServiceRequest  implements S
      *         of every layer in the specified stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLayersRequest withLayerIds(java.util.Collection<String> layerIds) {
         if (layerIds == null) {
             this.layerIds = null;
         } else {
-            java.util.List<String> layerIdsCopy = new java.util.ArrayList<String>(layerIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> layerIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(layerIds.size());
             layerIdsCopy.addAll(layerIds);
             this.layerIds = layerIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -168,8 +179,8 @@ public class DescribeLayersRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
+        sb.append("{");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
         if (getLayerIds() != null) sb.append("LayerIds: " + getLayerIds() );
         sb.append("}");
         return sb.toString();

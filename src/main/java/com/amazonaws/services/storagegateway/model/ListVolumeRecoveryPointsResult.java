@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,136 +13,122 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * A JSON object containing the following fields:
- * </p>
- * 
- * <ul>
- * <li> ListVolumeRecoveryPointsOutput$GatewayARN </li>
- * <li> ListVolumeRecoveryPointsOutput$VolumeRecoveryPointInfos </li>
- * 
- * </ul>
+ * List Volume Recovery Points Result
  */
-public class ListVolumeRecoveryPointsResult  implements Serializable  {
+public class ListVolumeRecoveryPointsResult implements Serializable {
 
     /**
-     * The Amazon Resource Name (ARN) of the activated gateway whose local
-     * disk information is returned.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      */
     private String gatewayARN;
 
-    /**
-     * An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     * describes a recovery point. If no recovery points are defined for the
-     * volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
-     */
-    private java.util.List<VolumeRecoveryPointInfo> volumeRecoveryPointInfos;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeRecoveryPointInfo> volumeRecoveryPointInfos;
 
     /**
-     * The Amazon Resource Name (ARN) of the activated gateway whose local
-     * disk information is returned.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @return The Amazon Resource Name (ARN) of the activated gateway whose local
-     *         disk information is returned.
+     * @return The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
+     *         account and region.
      */
     public String getGatewayARN() {
         return gatewayARN;
     }
     
     /**
-     * The Amazon Resource Name (ARN) of the activated gateway whose local
-     * disk information is returned.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param gatewayARN The Amazon Resource Name (ARN) of the activated gateway whose local
-     *         disk information is returned.
+     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
+     *         account and region.
      */
     public void setGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
     }
     
     /**
-     * The Amazon Resource Name (ARN) of the activated gateway whose local
-     * disk information is returned.
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
+     * account and region.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param gatewayARN The Amazon Resource Name (ARN) of the activated gateway whose local
-     *         disk information is returned.
+     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
+     *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumeRecoveryPointsResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
-     * An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     * describes a recovery point. If no recovery points are defined for the
-     * volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * Returns the value of the VolumeRecoveryPointInfos property for this
+     * object.
      *
-     * @return An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     *         describes a recovery point. If no recovery points are defined for the
-     *         volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * @return The value of the VolumeRecoveryPointInfos property for this object.
      */
     public java.util.List<VolumeRecoveryPointInfo> getVolumeRecoveryPointInfos() {
-        
         if (volumeRecoveryPointInfos == null) {
-            volumeRecoveryPointInfos = new java.util.ArrayList<VolumeRecoveryPointInfo>();
+              volumeRecoveryPointInfos = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeRecoveryPointInfo>();
+              volumeRecoveryPointInfos.setAutoConstruct(true);
         }
         return volumeRecoveryPointInfos;
     }
     
     /**
-     * An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     * describes a recovery point. If no recovery points are defined for the
-     * volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * Sets the value of the VolumeRecoveryPointInfos property for this
+     * object.
      *
-     * @param volumeRecoveryPointInfos An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     *         describes a recovery point. If no recovery points are defined for the
-     *         volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * @param volumeRecoveryPointInfos The new value for the VolumeRecoveryPointInfos property for this
+     *         object.
      */
     public void setVolumeRecoveryPointInfos(java.util.Collection<VolumeRecoveryPointInfo> volumeRecoveryPointInfos) {
         if (volumeRecoveryPointInfos == null) {
             this.volumeRecoveryPointInfos = null;
             return;
         }
-
-        java.util.List<VolumeRecoveryPointInfo> volumeRecoveryPointInfosCopy = new java.util.ArrayList<VolumeRecoveryPointInfo>(volumeRecoveryPointInfos.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeRecoveryPointInfo> volumeRecoveryPointInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeRecoveryPointInfo>(volumeRecoveryPointInfos.size());
         volumeRecoveryPointInfosCopy.addAll(volumeRecoveryPointInfos);
         this.volumeRecoveryPointInfos = volumeRecoveryPointInfosCopy;
     }
     
     /**
-     * An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     * describes a recovery point. If no recovery points are defined for the
-     * volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * Sets the value of the VolumeRecoveryPointInfos property for this
+     * object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeRecoveryPointInfos An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     *         describes a recovery point. If no recovery points are defined for the
-     *         volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * @param volumeRecoveryPointInfos The new value for the VolumeRecoveryPointInfos property for this
+     *         object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumeRecoveryPointsResult withVolumeRecoveryPointInfos(VolumeRecoveryPointInfo... volumeRecoveryPointInfos) {
         if (getVolumeRecoveryPointInfos() == null) setVolumeRecoveryPointInfos(new java.util.ArrayList<VolumeRecoveryPointInfo>(volumeRecoveryPointInfos.length));
@@ -153,31 +139,29 @@ public class ListVolumeRecoveryPointsResult  implements Serializable  {
     }
     
     /**
-     * An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     * describes a recovery point. If no recovery points are defined for the
-     * volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * Sets the value of the VolumeRecoveryPointInfos property for this
+     * object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeRecoveryPointInfos An array of <a>VolumeRecoveryPointInfo</a> objects, where each object
-     *         describes a recovery point. If no recovery points are defined for the
-     *         volume, then <i>VolumeRecoveryPointInfos</i> is an empty array "[]"
+     * @param volumeRecoveryPointInfos The new value for the VolumeRecoveryPointInfos property for this
+     *         object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumeRecoveryPointsResult withVolumeRecoveryPointInfos(java.util.Collection<VolumeRecoveryPointInfo> volumeRecoveryPointInfos) {
         if (volumeRecoveryPointInfos == null) {
             this.volumeRecoveryPointInfos = null;
         } else {
-            java.util.List<VolumeRecoveryPointInfo> volumeRecoveryPointInfosCopy = new java.util.ArrayList<VolumeRecoveryPointInfo>(volumeRecoveryPointInfos.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeRecoveryPointInfo> volumeRecoveryPointInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeRecoveryPointInfo>(volumeRecoveryPointInfos.size());
             volumeRecoveryPointInfosCopy.addAll(volumeRecoveryPointInfos);
             this.volumeRecoveryPointInfos = volumeRecoveryPointInfosCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -189,8 +173,8 @@ public class ListVolumeRecoveryPointsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
         if (getVolumeRecoveryPointInfos() != null) sb.append("VolumeRecoveryPointInfos: " + getVolumeRecoveryPointInfos() );
         sb.append("}");
         return sb.toString();

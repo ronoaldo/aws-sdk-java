@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Internet Gateways Result
+ * 
  */
-public class DescribeInternetGatewaysResult  implements Serializable  {
-
-    private java.util.List<InternetGateway> internetGateways;
+public class DescribeInternetGatewaysResult implements Serializable {
 
     /**
-     * Returns the value of the InternetGateways property for this object.
+     * Information about one or more Internet gateways.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InternetGateway> internetGateways;
+
+    /**
+     * Information about one or more Internet gateways.
      *
-     * @return The value of the InternetGateways property for this object.
+     * @return Information about one or more Internet gateways.
      */
     public java.util.List<InternetGateway> getInternetGateways() {
-        
         if (internetGateways == null) {
-            internetGateways = new java.util.ArrayList<InternetGateway>();
+              internetGateways = new com.amazonaws.internal.ListWithAutoConstructFlag<InternetGateway>();
+              internetGateways.setAutoConstruct(true);
         }
         return internetGateways;
     }
     
     /**
-     * Sets the value of the InternetGateways property for this object.
+     * Information about one or more Internet gateways.
      *
-     * @param internetGateways The new value for the InternetGateways property for this object.
+     * @param internetGateways Information about one or more Internet gateways.
      */
     public void setInternetGateways(java.util.Collection<InternetGateway> internetGateways) {
         if (internetGateways == null) {
             this.internetGateways = null;
             return;
         }
-
-        java.util.List<InternetGateway> internetGatewaysCopy = new java.util.ArrayList<InternetGateway>(internetGateways.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InternetGateway> internetGatewaysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InternetGateway>(internetGateways.size());
         internetGatewaysCopy.addAll(internetGateways);
         this.internetGateways = internetGatewaysCopy;
     }
     
     /**
-     * Sets the value of the InternetGateways property for this object.
+     * Information about one or more Internet gateways.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param internetGateways The new value for the InternetGateways property for this object.
+     * @param internetGateways Information about one or more Internet gateways.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInternetGatewaysResult withInternetGateways(InternetGateway... internetGateways) {
         if (getInternetGateways() == null) setInternetGateways(new java.util.ArrayList<InternetGateway>(internetGateways.length));
@@ -70,27 +73,27 @@ public class DescribeInternetGatewaysResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the InternetGateways property for this object.
+     * Information about one or more Internet gateways.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param internetGateways The new value for the InternetGateways property for this object.
+     * @param internetGateways Information about one or more Internet gateways.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInternetGatewaysResult withInternetGateways(java.util.Collection<InternetGateway> internetGateways) {
         if (internetGateways == null) {
             this.internetGateways = null;
         } else {
-            java.util.List<InternetGateway> internetGatewaysCopy = new java.util.ArrayList<InternetGateway>(internetGateways.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InternetGateway> internetGatewaysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InternetGateway>(internetGateways.size());
             internetGatewaysCopy.addAll(internetGateways);
             this.internetGateways = internetGatewaysCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeInternetGatewaysResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInternetGateways() != null) sb.append("InternetGateways: " + getInternetGateways() );
         sb.append("}");
         return sb.toString();

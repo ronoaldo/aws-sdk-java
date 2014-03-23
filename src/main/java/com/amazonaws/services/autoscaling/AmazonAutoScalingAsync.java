@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling;
-            
+
 import java.util.concurrent.Future;
 
 import com.amazonaws.AmazonClientException;
@@ -26,29 +26,141 @@ import com.amazonaws.services.autoscaling.model.*;
  * Each asynchronous method will return a Java Future object, and users are also allowed
  * to provide a callback handler.
  * Auto Scaling <p>
- * This guide provides detailed information about Auto Scaling actions, data types, parameters, and errors. For detailed information about Auto Scaling
- * features and their associated API calls, go to the <a href="http://docs.amazonwebservices.com/AutoScaling/latest/DeveloperGuide/"> Auto Scaling
- * Developer Guide </a> .
+ * Auto Scaling is a web service designed to automatically launch or
+ * terminate Amazon Elastic Compute Cloud (Amazon EC2) instances based on
+ * user-defined policies, schedules, and health checks. This service is
+ * used in conjunction with Amazon CloudWatch and Elastic Load Balancing
+ * services.
  * </p>
  * <p>
- * Auto Scaling is a web service designed to automatically launch or terminate Amazon Elastic Compute Cloud (Amazon EC2) instances based on user-defined
- * policies, schedules, and health checks. This service is used in conjunction with Amazon CloudWatch and Elastic Load Balancing services.
+ * Auto Scaling provides APIs that you can call by submitting a Query
+ * Request. Query requests are HTTP or HTTPS requests that use the HTTP
+ * verbs GET or POST and a Query parameter named <i>Action</i> or
+ * <i>Operation</i> that specifies the API you are calling. Action is
+ * used throughout this documentation, although Operation is also
+ * supported for backward compatibility with other Amazon Web Services
+ * (AWS) Query APIs.
+ * </p>
+ * <p>
+ * Calling the API using a Query request is the most direct way to access
+ * the web service, but requires that your application handle low-level
+ * details such as generating the hash to sign the request and error
+ * handling. The benefit of calling the service using a Query request is
+ * that you are assured of having access to the complete functionality of
+ * the API. For information about signing a a query request, see
+ * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/api_requests.html"> Use Query Requests to Call Auto Scaling APIs </a>
+ * 
+ * </p>
+ * <p>
+ * This guide provides detailed information about Auto Scaling actions,
+ * data types, parameters, and errors. For detailed information about
+ * Auto Scaling features and their associated API actions, go to the
+ * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/"> Auto Scaling Developer Guide </a>
+ * .
  * </p>
  * <p>
  * This reference is based on the current WSDL, which is available at:
  * </p>
  * <p>
+ * 
  * <a href="http://autoscaling.amazonaws.com/doc/2011-01-01/AutoScaling.wsdl"> http://autoscaling.amazonaws.com/doc/2011-01-01/AutoScaling.wsdl </a>
+ * 
  * </p>
  * <p>
  * <b>Endpoints</b>
  * </p>
  * <p>
- * For information about this product's regions and endpoints, go to <a href="http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html">
- * Regions and Endpoints </a> in the Amazon Web Services General Reference.
- * </p> 
- */       
+ * The examples in this guide assume that your instances are launched in
+ * the US East (Northern Virginia) region and use us-east-1 as the
+ * endpoint.
+ * </p>
+ * <p>
+ * You can set up your Auto Scaling infrastructure in other AWS regions.
+ * For information about this product's regions and endpoints, see
+ * <a href="http://docs.aws.amazon.com/general/latest/gr/index.html?rande.html"> Regions and Endpoints </a>
+ * in the Amazon Web Services General Reference.
+ * </p>
+ */
 public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
+    /**
+     * <p>
+     * Returns the limits for the Auto Scaling resources currently allowed
+     * for your AWS account.
+     * </p>
+     * <p>
+     * Your AWS account comes with default limits on resources for Auto
+     * Scaling. There is a default limit of <code>20</code> Auto Scaling
+     * groups and <code>100</code> launch configurations per region.
+     * </p>
+     * <p>
+     * If you reach the limits for the number of Auto Scaling groups or the
+     * launch configurations, you can go to the
+     * <a href="https://aws.amazon.com/support/"> Support Center </a>
+     * and place a request to raise the limits.
+     * </p>
+     *
+     * @param describeAccountLimitsRequest Container for the necessary
+     *           parameters to execute the DescribeAccountLimits operation on
+     *           AmazonAutoScaling.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeAccountLimits service method, as returned by
+     *         AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeAccountLimitsResult> describeAccountLimitsAsync(DescribeAccountLimitsRequest describeAccountLimitsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Returns the limits for the Auto Scaling resources currently allowed
+     * for your AWS account.
+     * </p>
+     * <p>
+     * Your AWS account comes with default limits on resources for Auto
+     * Scaling. There is a default limit of <code>20</code> Auto Scaling
+     * groups and <code>100</code> launch configurations per region.
+     * </p>
+     * <p>
+     * If you reach the limits for the number of Auto Scaling groups or the
+     * launch configurations, you can go to the
+     * <a href="https://aws.amazon.com/support/"> Support Center </a>
+     * and place a request to raise the limits.
+     * </p>
+     *
+     * @param describeAccountLimitsRequest Container for the necessary
+     *           parameters to execute the DescribeAccountLimits operation on
+     *           AmazonAutoScaling.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeAccountLimits service method, as returned by
+     *         AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeAccountLimitsResult> describeAccountLimitsAsync(DescribeAccountLimitsRequest describeAccountLimitsRequest,
+            AsyncHandler<DescribeAccountLimitsRequest, DescribeAccountLimitsResult> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
     /**
      * <p>
      * Returns a full description of each Auto Scaling group in the given
@@ -69,6 +181,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingGroups service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -105,6 +218,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingGroups service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -126,7 +240,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * <code>Metrics</code> parameter.
      * </p>
      * <p>
-     * Auto scaling metrics collection can be turned on only if the
+     * Auto Scaling metrics collection can be turned on only if the
      * <code>InstanceMonitoring</code> flag, in the Auto Scaling group's
      * launch configuration, is set to <code>True</code> .
      * 
@@ -139,6 +253,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         EnableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -159,7 +274,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * <code>Metrics</code> parameter.
      * </p>
      * <p>
-     * Auto scaling metrics collection can be turned on only if the
+     * Auto Scaling metrics collection can be turned on only if the
      * <code>InstanceMonitoring</code> flag, in the Auto Scaling group's
      * launch configuration, is set to <code>True</code> .
      * 
@@ -176,6 +291,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         EnableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -191,8 +307,11 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Resumes Auto Scaling processes for an Auto Scaling group. For more
-     * information, see SuspendProcesses and ProcessType.
+     * Resumes all suspended Auto Scaling processes for an Auto Scaling
+     * group. For information on suspending and resuming Auto Scaling
+     * process, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html"> Suspend and Resume Auto Scaling Process </a>
+     * .
      * </p>
      *
      * @param resumeProcessesRequest Container for the necessary parameters
@@ -200,6 +319,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         ResumeProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -214,8 +334,11 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Resumes Auto Scaling processes for an Auto Scaling group. For more
-     * information, see SuspendProcesses and ProcessType.
+     * Resumes all suspended Auto Scaling processes for an Auto Scaling
+     * group. For information on suspending and resuming Auto Scaling
+     * process, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html"> Suspend and Resume Auto Scaling Process </a>
+     * .
      * </p>
      *
      * @param resumeProcessesRequest Container for the necessary parameters
@@ -227,6 +350,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         ResumeProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -257,6 +381,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteLaunchConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -290,6 +415,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteLaunchConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -316,6 +442,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DescribePolicies service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -345,6 +472,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DescribePolicies service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -371,6 +499,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeScalingProcessTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -400,6 +529,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeScalingProcessTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -421,8 +551,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * </p>
      * <p>
      * <b>NOTE:</b> The Auto Scaling group name must be unique within the
-     * scope of your AWS account, and under the quota of Auto Scaling groups
-     * allowed for your account.
+     * scope of your AWS account.
      * </p>
      *
      * @param createAutoScalingGroupRequest Container for the necessary
@@ -432,6 +561,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         CreateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -452,8 +582,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * </p>
      * <p>
      * <b>NOTE:</b> The Auto Scaling group name must be unique within the
-     * scope of your AWS account, and under the quota of Auto Scaling groups
-     * allowed for your account.
+     * scope of your AWS account.
      * </p>
      *
      * @param createAutoScalingGroupRequest Container for the necessary
@@ -467,6 +596,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         CreateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -482,12 +612,77 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
+     * Attaches one or more Amazon EC2 instances to an existing Auto Scaling
+     * group. After the instance(s) is attached, it becomes a part of the
+     * Auto Scaling group.
+     * </p>
+     * <p>
+     * For more information, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-instance-asg.html"> Attach Amazon EC2 Instance(s) to Your Existing Auto Scaling Group </a>
+     * in the <i>Auto Scaling Developer Guide</i> .
+     * </p>
+     *
+     * @param attachInstancesRequest Container for the necessary parameters
+     *           to execute the AttachInstances operation on AmazonAutoScaling.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AttachInstances service method, as returned by AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> attachInstancesAsync(AttachInstancesRequest attachInstancesRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Attaches one or more Amazon EC2 instances to an existing Auto Scaling
+     * group. After the instance(s) is attached, it becomes a part of the
+     * Auto Scaling group.
+     * </p>
+     * <p>
+     * For more information, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-instance-asg.html"> Attach Amazon EC2 Instance(s) to Your Existing Auto Scaling Group </a>
+     * in the <i>Auto Scaling Developer Guide</i> .
+     * </p>
+     *
+     * @param attachInstancesRequest Container for the necessary parameters
+     *           to execute the AttachInstances operation on AmazonAutoScaling.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         AttachInstances service method, as returned by AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> attachInstancesAsync(AttachInstancesRequest attachInstancesRequest,
+            AsyncHandler<AttachInstancesRequest, Void> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * Returns the scaling activities for the specified Auto Scaling group.
      * </p>
      * <p>
      * If the specified <code>ActivityIds</code> list is empty, all the
      * activities from the past six weeks are returned. Activities are sorted
-     * by completion time. Activities still in progress appear first on the
+     * by the start time. Activities still in progress appear first on the
      * list.
      * </p>
      * <p>
@@ -504,6 +699,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeScalingActivities service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -523,7 +719,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * <p>
      * If the specified <code>ActivityIds</code> list is empty, all the
      * activities from the past six weeks are returned. Activities are sorted
-     * by completion time. Activities still in progress appear first on the
+     * by the start time. Activities still in progress appear first on the
      * list.
      * </p>
      * <p>
@@ -544,6 +740,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeScalingActivities service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -570,6 +767,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeNotificationConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -599,6 +797,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeNotificationConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -624,6 +823,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeTerminationPolicyTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -652,6 +852,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeTerminationPolicyTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -687,6 +888,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -725,6 +927,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -740,57 +943,6 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Runs the policy you create for your Auto Scaling group in
-     * PutScalingPolicy.
-     * </p>
-     *
-     * @param executePolicyRequest Container for the necessary parameters to
-     *           execute the ExecutePolicy operation on AmazonAutoScaling.
-     * 
-     * @return A Java Future object containing the response from the
-     *         ExecutePolicy service method, as returned by AmazonAutoScaling.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonAutoScaling indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<Void> executePolicyAsync(ExecutePolicyRequest executePolicyRequest) 
-            throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
-     * Runs the policy you create for your Auto Scaling group in
-     * PutScalingPolicy.
-     * </p>
-     *
-     * @param executePolicyRequest Container for the necessary parameters to
-     *           execute the ExecutePolicy operation on AmazonAutoScaling.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         ExecutePolicy service method, as returned by AmazonAutoScaling.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonAutoScaling indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<Void> executePolicyAsync(ExecutePolicyRequest executePolicyRequest,
-            AsyncHandler<ExecutePolicyRequest, Void> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
      * Removes the specified tags or a set of tags from a set of resources.
      * </p>
      *
@@ -799,6 +951,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -825,6 +978,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -840,6 +994,57 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
+     * Executes the specified policy.
+     * </p>
+     *
+     * @param executePolicyRequest Container for the necessary parameters to
+     *           execute the ExecutePolicy operation on AmazonAutoScaling.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ExecutePolicy service method, as returned by AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> executePolicyAsync(ExecutePolicyRequest executePolicyRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Executes the specified policy.
+     * </p>
+     *
+     * @param executePolicyRequest Container for the necessary parameters to
+     *           execute the ExecutePolicy operation on AmazonAutoScaling.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ExecutePolicy service method, as returned by AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> executePolicyAsync(ExecutePolicyRequest executePolicyRequest,
+            AsyncHandler<ExecutePolicyRequest, Void> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
      * Creates or updates a policy for an Auto Scaling group. To update an
      * existing policy, use the existing policy name and set the parameter(s)
      * you want to change. Any existing parameter not changed in an update to
@@ -851,6 +1056,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         PutScalingPolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -880,6 +1086,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         PutScalingPolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -900,8 +1107,13 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * events delivered to an endpoint such as a web server or email address.
      * </p>
      * <p>
-     * A new <code>PutNotificationConfiguration</code> overwrites an
-     * existing configuration.
+     * For more information see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASGettingNotifications.html"> Get Email Notifications When Your Auto Scaling Group Changes </a>
+     * 
+     * </p>
+     * <p>
+     * A new <code>PutNotificationConfiguration</code> overwrites an existing
+     * configuration.
      * </p>
      *
      * @param putNotificationConfigurationRequest Container for the necessary
@@ -911,6 +1123,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         PutNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -930,8 +1143,13 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * events delivered to an endpoint such as a web server or email address.
      * </p>
      * <p>
-     * A new <code>PutNotificationConfiguration</code> overwrites an
-     * existing configuration.
+     * For more information see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASGettingNotifications.html"> Get Email Notifications When Your Auto Scaling Group Changes </a>
+     * 
+     * </p>
+     * <p>
+     * A new <code>PutNotificationConfiguration</code> overwrites an existing
+     * configuration.
      * </p>
      *
      * @param putNotificationConfigurationRequest Container for the necessary
@@ -945,6 +1163,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         PutNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -968,6 +1187,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DeletePolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -994,6 +1214,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         DeletePolicy service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1019,6 +1240,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1047,6 +1269,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteNotificationConfiguration service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1073,6 +1296,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteScheduledAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1102,6 +1326,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteScheduledAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1117,7 +1342,13 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Sets the health status of an instance.
+     * Sets the health status of a specified instance that belongs to any of
+     * your Auto Scaling groups.
+     * </p>
+     * <p>
+     * For more information, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-configure-healthcheck.html"> Configure Health Checks for Your Auto Scaling group </a>
+     * .
      * </p>
      *
      * @param setInstanceHealthRequest Container for the necessary parameters
@@ -1125,6 +1356,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         SetInstanceHealth service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1139,7 +1371,13 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Sets the health status of an instance.
+     * Sets the health status of a specified instance that belongs to any of
+     * your Auto Scaling groups.
+     * </p>
+     * <p>
+     * For more information, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-configure-healthcheck.html"> Configure Health Checks for Your Auto Scaling group </a>
+     * .
      * </p>
      *
      * @param setInstanceHealthRequest Container for the necessary parameters
@@ -1151,6 +1389,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         SetInstanceHealth service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1177,6 +1416,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingNotificationTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1206,6 +1446,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingNotificationTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1229,6 +1470,11 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * flag are optional parameters. See the Request Parameters for more
      * information.
      * </p>
+     * <p>
+     * For information on creating tags for your Auto Scaling group, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html"> Tag Your Auto Scaling Groups and Amazon EC2 Instances </a>
+     * .
+     * </p>
      *
      * @param createOrUpdateTagsRequest Container for the necessary
      *           parameters to execute the CreateOrUpdateTags operation on
@@ -1236,6 +1482,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         CreateOrUpdateTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1258,6 +1505,11 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * flag are optional parameters. See the Request Parameters for more
      * information.
      * </p>
+     * <p>
+     * For information on creating tags for your Auto Scaling group, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html"> Tag Your Auto Scaling Groups and Amazon EC2 Instances </a>
+     * .
+     * </p>
      *
      * @param createOrUpdateTagsRequest Container for the necessary
      *           parameters to execute the CreateOrUpdateTags operation on
@@ -1269,6 +1521,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         CreateOrUpdateTags service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1293,11 +1546,13 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * <p>
      * <b>IMPORTANT:</b> Suspending either of the two primary process types,
      * Launch or Terminate, can prevent other process types from functioning
-     * properly. For more information about processes and their dependencies,
-     * see ProcessType.
+     * properly.
      * </p>
      * <p>
-     * To resume processes that have been suspended, use ResumeProcesses.
+     * To resume processes that have been suspended, use ResumeProcesses For
+     * more information on suspending and resuming Auto Scaling process, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html"> Suspend and Resume Auto Scaling Process </a>
+     * .
      * </p>
      *
      * @param suspendProcessesRequest Container for the necessary parameters
@@ -1305,6 +1560,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         SuspendProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1328,11 +1584,13 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * <p>
      * <b>IMPORTANT:</b> Suspending either of the two primary process types,
      * Launch or Terminate, can prevent other process types from functioning
-     * properly. For more information about processes and their dependencies,
-     * see ProcessType.
+     * properly.
      * </p>
      * <p>
-     * To resume processes that have been suspended, use ResumeProcesses.
+     * To resume processes that have been suspended, use ResumeProcesses For
+     * more information on suspending and resuming Auto Scaling process, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html"> Suspend and Resume Auto Scaling Process </a>
+     * .
      * </p>
      *
      * @param suspendProcessesRequest Container for the necessary parameters
@@ -1344,6 +1602,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         SuspendProcesses service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1355,6 +1614,69 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      */
     public Future<Void> suspendProcessesAsync(SuspendProcessesRequest suspendProcessesRequest,
             AsyncHandler<SuspendProcessesRequest, Void> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Creates a new launch configuration. The launch configuration name
+     * must be unique within the scope of the client's AWS account. The
+     * maximum limit of launch configurations, which by default is 100, must
+     * not yet have been met; otherwise, the call will fail. When created,
+     * the new launch configuration is available for immediate use.
+     * </p>
+     *
+     * @param createLaunchConfigurationRequest Container for the necessary
+     *           parameters to execute the CreateLaunchConfiguration operation on
+     *           AmazonAutoScaling.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateLaunchConfiguration service method, as returned by
+     *         AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> createLaunchConfigurationAsync(CreateLaunchConfigurationRequest createLaunchConfigurationRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Creates a new launch configuration. The launch configuration name
+     * must be unique within the scope of the client's AWS account. The
+     * maximum limit of launch configurations, which by default is 100, must
+     * not yet have been met; otherwise, the call will fail. When created,
+     * the new launch configuration is available for immediate use.
+     * </p>
+     *
+     * @param createLaunchConfigurationRequest Container for the necessary
+     *           parameters to execute the CreateLaunchConfiguration operation on
+     *           AmazonAutoScaling.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateLaunchConfiguration service method, as returned by
+     *         AmazonAutoScaling.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonAutoScaling indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> createLaunchConfigurationAsync(CreateLaunchConfigurationRequest createLaunchConfigurationRequest,
+            AsyncHandler<CreateLaunchConfigurationRequest, Void> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -1377,6 +1699,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingInstances service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1413,6 +1736,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAutoScalingInstances service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1424,87 +1748,6 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      */
     public Future<DescribeAutoScalingInstancesResult> describeAutoScalingInstancesAsync(DescribeAutoScalingInstancesRequest describeAutoScalingInstancesRequest,
             AsyncHandler<DescribeAutoScalingInstancesRequest, DescribeAutoScalingInstancesResult> asyncHandler)
-                    throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
-     * Creates a new launch configuration. The launch configuration name
-     * must be unique within the scope of the client's AWS account. The
-     * maximum limit of launch configurations, which by default is 100, must
-     * not yet have been met; otherwise, the call will fail. When created,
-     * the new launch configuration is available for immediate use.
-     * </p>
-     * <p>
-     * You can create a launch configuration with Amazon EC2 security groups
-     * or with Amazon VPC security groups. However, you can't use Amazon EC2
-     * security groups together with Amazon VPC security groups, or vice
-     * versa.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> At this time, Auto Scaling launch configurations don't
-     * support compressed (e.g. zipped) user data files.
-     * </p>
-     *
-     * @param createLaunchConfigurationRequest Container for the necessary
-     *           parameters to execute the CreateLaunchConfiguration operation on
-     *           AmazonAutoScaling.
-     * 
-     * @return A Java Future object containing the response from the
-     *         CreateLaunchConfiguration service method, as returned by
-     *         AmazonAutoScaling.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonAutoScaling indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<Void> createLaunchConfigurationAsync(CreateLaunchConfigurationRequest createLaunchConfigurationRequest) 
-            throws AmazonServiceException, AmazonClientException;
-
-    /**
-     * <p>
-     * Creates a new launch configuration. The launch configuration name
-     * must be unique within the scope of the client's AWS account. The
-     * maximum limit of launch configurations, which by default is 100, must
-     * not yet have been met; otherwise, the call will fail. When created,
-     * the new launch configuration is available for immediate use.
-     * </p>
-     * <p>
-     * You can create a launch configuration with Amazon EC2 security groups
-     * or with Amazon VPC security groups. However, you can't use Amazon EC2
-     * security groups together with Amazon VPC security groups, or vice
-     * versa.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> At this time, Auto Scaling launch configurations don't
-     * support compressed (e.g. zipped) user data files.
-     * </p>
-     *
-     * @param createLaunchConfigurationRequest Container for the necessary
-     *           parameters to execute the CreateLaunchConfiguration operation on
-     *           AmazonAutoScaling.
-     * @param asyncHandler Asynchronous callback handler for events in the
-     *           life-cycle of the request. Users could provide the implementation of
-     *           the four callback methods in this interface to process the operation
-     *           result or handle the exception.
-     * 
-     * @return A Java Future object containing the response from the
-     *         CreateLaunchConfiguration service method, as returned by
-     *         AmazonAutoScaling.
-     *
-     * @throws AmazonClientException
-     *             If any internal errors are encountered inside the client while
-     *             attempting to make the request or handle the response.  For example
-     *             if a network connection is not available.
-     * @throws AmazonServiceException
-     *             If an error response is returned by AmazonAutoScaling indicating
-     *             either a problem with the data in the request, or a server side issue.
-     */
-    public Future<Void> createLaunchConfigurationAsync(CreateLaunchConfigurationRequest createLaunchConfigurationRequest,
-            AsyncHandler<CreateLaunchConfigurationRequest, Void> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
 
     /**
@@ -1525,6 +1768,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1559,6 +1803,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DeleteAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1587,6 +1832,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DisableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1618,6 +1864,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DisableMetricsCollection service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1646,7 +1893,8 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * <p>
      * The new settings are registered upon the completion of this call. Any
      * launch configuration settings take effect on any triggers after this
-     * call returns. Triggers that are currently in progress aren't affected.
+     * call returns. Scaling activities that are currently in progress aren't
+     * affected.
      * </p>
      * <p>
      * <b>NOTE:</b> If a new value is specified for MinSize without
@@ -1667,6 +1915,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         UpdateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1694,7 +1943,8 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * <p>
      * The new settings are registered upon the completion of this call. Any
      * launch configuration settings take effect on any triggers after this
-     * call returns. Triggers that are currently in progress aren't affected.
+     * call returns. Scaling activities that are currently in progress aren't
+     * affected.
      * </p>
      * <p>
      * <b>NOTE:</b> If a new value is specified for MinSize without
@@ -1719,6 +1969,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         UpdateAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1749,6 +2000,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeLaunchConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1782,6 +2034,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeLaunchConfigurations service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1808,6 +2061,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAdjustmentTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1837,6 +2091,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeAdjustmentTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1864,6 +2119,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeScheduledActions service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1894,6 +2150,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeScheduledActions service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1909,9 +2166,20 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Creates a scheduled scaling action for an Auto Scaling group. If you
-     * leave a parameter unspecified, the corresponding value remains
-     * unchanged in the affected Auto Scaling group.
+     * Creates or updates a scheduled scaling action for an Auto Scaling
+     * group. When updating a scheduled scaling action, if you leave a
+     * parameter unspecified, the corresponding value remains unchanged in
+     * the affected Auto Scaling group.
+     * </p>
+     * <p>
+     * For information on creating or updating a scheduled action for your
+     * Auto Scaling group, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html"> Scale Based on a Schedule </a>
+     * .
+     * </p>
+     * <p>
+     * <b>NOTE:</b> Auto Scaling supports the date and time expressed in
+     * "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only.
      * </p>
      *
      * @param putScheduledUpdateGroupActionRequest Container for the
@@ -1921,6 +2189,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         PutScheduledUpdateGroupAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1935,9 +2204,20 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Creates a scheduled scaling action for an Auto Scaling group. If you
-     * leave a parameter unspecified, the corresponding value remains
-     * unchanged in the affected Auto Scaling group.
+     * Creates or updates a scheduled scaling action for an Auto Scaling
+     * group. When updating a scheduled scaling action, if you leave a
+     * parameter unspecified, the corresponding value remains unchanged in
+     * the affected Auto Scaling group.
+     * </p>
+     * <p>
+     * For information on creating or updating a scheduled action for your
+     * Auto Scaling group, see
+     * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html"> Scale Based on a Schedule </a>
+     * .
+     * </p>
+     * <p>
+     * <b>NOTE:</b> Auto Scaling supports the date and time expressed in
+     * "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only.
      * </p>
      *
      * @param putScheduledUpdateGroupActionRequest Container for the
@@ -1951,6 +2231,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         PutScheduledUpdateGroupAction service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1977,6 +2258,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeMetricCollectionTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2006,6 +2288,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         DescribeMetricCollectionTypes service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2021,37 +2304,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Adjusts the desired size of the AutoScalingGroup by initiating
-     * scaling activities. When reducing the size of the group, it is not
-     * possible to define which Amazon EC2 instances will be terminated. This
-     * applies to any Auto Scaling decisions that might result in terminating
-     * instances.
-     * </p>
-     * <p>
-     * There are two common use cases for <code>SetDesiredCapacity</code> :
-     * one for users of the Auto Scaling triggering system, and
-     * another for developers who write their own triggering systems. Both
-     * use cases relate to the concept of cooldown.
-     * </p>
-     * <p>
-     * In the first case, if you use the Auto Scaling triggering system,
-     * <code>SetDesiredCapacity</code> changes the size of your Auto Scaling
-     * group without regard to the cooldown period. This could be useful, for
-     * example, if Auto Scaling did something unexpected for some reason. If
-     * your cooldown period is 10 minutes, Auto Scaling would normally reject
-     * requests to change the size of the group for that entire 10-minute
-     * period. The <code>SetDesiredCapacity</code> command allows you to
-     * circumvent this restriction and change the size of the group before
-     * the end of the cooldown period.
-     * </p>
-     * <p>
-     * In the second case, if you write your own triggering system, you can
-     * use <code>SetDesiredCapacity</code> to control the size of your Auto
-     * Scaling group. If you want the same cooldown functionality that Auto
-     * Scaling offers, you can configure <code>SetDesiredCapacity</code> to
-     * honor cooldown by setting the <code>HonorCooldown</code> parameter to
-     * <code>true</code> .
-     * 
+     * Sets the desired size of the specified AutoScalingGroup.
      * </p>
      *
      * @param setDesiredCapacityRequest Container for the necessary
@@ -2060,6 +2313,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         SetDesiredCapacity service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2074,37 +2328,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
 
     /**
      * <p>
-     * Adjusts the desired size of the AutoScalingGroup by initiating
-     * scaling activities. When reducing the size of the group, it is not
-     * possible to define which Amazon EC2 instances will be terminated. This
-     * applies to any Auto Scaling decisions that might result in terminating
-     * instances.
-     * </p>
-     * <p>
-     * There are two common use cases for <code>SetDesiredCapacity</code> :
-     * one for users of the Auto Scaling triggering system, and
-     * another for developers who write their own triggering systems. Both
-     * use cases relate to the concept of cooldown.
-     * </p>
-     * <p>
-     * In the first case, if you use the Auto Scaling triggering system,
-     * <code>SetDesiredCapacity</code> changes the size of your Auto Scaling
-     * group without regard to the cooldown period. This could be useful, for
-     * example, if Auto Scaling did something unexpected for some reason. If
-     * your cooldown period is 10 minutes, Auto Scaling would normally reject
-     * requests to change the size of the group for that entire 10-minute
-     * period. The <code>SetDesiredCapacity</code> command allows you to
-     * circumvent this restriction and change the size of the group before
-     * the end of the cooldown period.
-     * </p>
-     * <p>
-     * In the second case, if you write your own triggering system, you can
-     * use <code>SetDesiredCapacity</code> to control the size of your Auto
-     * Scaling group. If you want the same cooldown functionality that Auto
-     * Scaling offers, you can configure <code>SetDesiredCapacity</code> to
-     * honor cooldown by setting the <code>HonorCooldown</code> parameter to
-     * <code>true</code> .
-     * 
+     * Sets the desired size of the specified AutoScalingGroup.
      * </p>
      *
      * @param setDesiredCapacityRequest Container for the necessary
@@ -2117,6 +2341,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * 
      * @return A Java Future object containing the response from the
      *         SetDesiredCapacity service method, as returned by AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2147,6 +2372,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         TerminateInstanceInAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2180,6 +2406,7 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
      * @return A Java Future object containing the response from the
      *         TerminateInstanceInAutoScalingGroup service method, as returned by
      *         AmazonAutoScaling.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -2192,6 +2419,5 @@ public interface AmazonAutoScalingAsync extends AmazonAutoScaling {
     public Future<TerminateInstanceInAutoScalingGroupResult> terminateInstanceInAutoScalingGroupAsync(TerminateInstanceInAutoScalingGroupRequest terminateInstanceInAutoScalingGroupRequest,
             AsyncHandler<TerminateInstanceInAutoScalingGroupRequest, TerminateInstanceInAutoScalingGroupResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
-
 }
         

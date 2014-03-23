@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Portions copyright 2006-2009 James Murty. Please see LICENSE.txt
  * for applicable license terms and NOTICE.txt for applicable notices.
@@ -16,6 +16,8 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.s3.model.transform;
+
+import static com.amazonaws.util.StringUtils.UTF8;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -78,9 +80,9 @@ import com.amazonaws.services.s3.model.Owner;
 import com.amazonaws.services.s3.model.PartListing;
 import com.amazonaws.services.s3.model.PartSummary;
 import com.amazonaws.services.s3.model.Permission;
+import com.amazonaws.services.s3.model.RedirectRule;
 import com.amazonaws.services.s3.model.RoutingRule;
 import com.amazonaws.services.s3.model.RoutingRuleCondition;
-import com.amazonaws.services.s3.model.RedirectRule;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.model.S3VersionSummary;
@@ -188,7 +190,7 @@ public class XmlResponsesSaxParser {
                 String listingDoc = listingDocBuffer.toString().replaceAll("\r", "&#013;");
 
                 sanitizedInputStream = new ByteArrayInputStream(
-                    listingDoc.getBytes(Constants.DEFAULT_ENCODING));
+                    listingDoc.getBytes(UTF8));
             } catch (Throwable t) {
                 try {
                     inputStream.close();
@@ -488,6 +490,7 @@ public class XmlResponsesSaxParser {
         private String requestMarker = null;
         private int requestMaxKeys = 0;
         private String requestDelimiter = null;
+        private String requestEncodingType = null;
         private boolean listingTruncated = false;
         private String lastKey = null;
         private String nextMarker = null;
@@ -505,6 +508,7 @@ public class XmlResponsesSaxParser {
             objectListing.setMaxKeys(requestMaxKeys);
             objectListing.setPrefix(requestPrefix);
             objectListing.setTruncated(listingTruncated);
+            objectListing.setEncodingType(requestEncodingType);
 
             /*
              * S3 only includes the NextMarker XML element if the request
@@ -631,6 +635,8 @@ public class XmlResponsesSaxParser {
                 requestMaxKeys = parseInt(elementText);
             } else if (name.equals("Delimiter")) {
                 requestDelimiter = checkForEmptyString(elementText);
+            } else if (name.equals("EncodingType")) {
+                requestEncodingType = checkForEmptyString(elementText);
             } else if (name.equals("IsTruncated")) {
                 String isTruncatedStr = elementText.toLowerCase(Locale.getDefault());
                 if (isTruncatedStr.startsWith("false")) {
@@ -1212,6 +1218,7 @@ public class XmlResponsesSaxParser {
             } else if (name.equals("Name")) {
             } else if (name.equals("Prefix")) {
             } else if (name.equals("Delimiter")) {
+            } else if (name.equals("EncodingType")) {
             } else if (name.equals("KeyMarker")) {
             } else if (name.equals("VersionIdMarker")) {
             } else if (name.equals("MaxKeys")) {
@@ -1262,6 +1269,8 @@ public class XmlResponsesSaxParser {
                 versionListing.setMaxKeys(Integer.parseInt(text.toString()));
             } else if (name.equals("Delimiter")) {
                 versionListing.setDelimiter(checkForEmptyString(text.toString()));
+            } else if (name.equals("EncodingType")) {
+                versionListing.setEncodingType(checkForEmptyString(text.toString()));
             } else if (name.equals("NextKeyMarker")) {
                 versionListing.setNextKeyMarker(text.toString());
             } else if (name.equals("NextVersionIdMarker")) {
@@ -1795,6 +1804,7 @@ public class XmlResponsesSaxParser {
             } else if (name.equals("NextKeyMarker")) {
             } else if (name.equals("NextUploadIdMarker")) {
             } else if (name.equals("MaxUploads")) {
+            } else if (name.equals("EncodingType")) {
             } else if (name.equals("IsTruncated")) {
             } else if (name.equals("Upload")) {
                 currentMultipartUpload = new MultipartUpload();
@@ -1835,6 +1845,8 @@ public class XmlResponsesSaxParser {
                 result.setNextUploadIdMarker(checkForEmptyString(text.toString()));
             } else if (name.equals("MaxUploads")) {
                 result.setMaxUploads(Integer.parseInt(text.toString()));
+            } else if (name.equals("EncodingType")) {
+                result.setEncodingType(checkForEmptyString(text.toString()));
             } else if (name.equals("IsTruncated")) {
                 result.setTruncated(Boolean.parseBoolean(text.toString()));
             } else if (name.equals("Upload")) {
@@ -1953,6 +1965,7 @@ public class XmlResponsesSaxParser {
             } else if (name.equals("PartNumberMarker")) {
             } else if (name.equals("NextPartNumberMarker")) {
             } else if (name.equals("MaxParts")) {
+            } else if (name.equals("EncodingType")) {
             } else if (name.equals("IsTruncated")) {
             } else if (name.equals("Part")) {
                 currentPart = new PartSummary();
@@ -2001,6 +2014,8 @@ public class XmlResponsesSaxParser {
                 result.setNextPartNumberMarker(parseInteger(text.toString()));
             } else if (name.equals("MaxParts")) {
                 result.setMaxParts(parseInteger(text.toString()));
+            } else if (name.equals("EncodingType")) {
+                result.setEncodingType(checkForEmptyString(text.toString()));
             } else if (name.equals("IsTruncated")) {
                 result.setTruncated(Boolean.parseBoolean(text.toString()));
             } else if (name.equals("Part")) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,51 +21,50 @@ import java.io.Serializable;
  * The output for the DisableAvailabilityZonesForLoadBalancer action.
  * </p>
  */
-public class DisableAvailabilityZonesForLoadBalancerResult  implements Serializable  {
+public class DisableAvailabilityZonesForLoadBalancerResult implements Serializable {
 
     /**
-     * A list of updated Availability Zones for the LoadBalancer.
+     * A list of updated Availability Zones for the load balancer.
      */
-    private java.util.List<String> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZones;
 
     /**
-     * A list of updated Availability Zones for the LoadBalancer.
+     * A list of updated Availability Zones for the load balancer.
      *
-     * @return A list of updated Availability Zones for the LoadBalancer.
+     * @return A list of updated Availability Zones for the load balancer.
      */
     public java.util.List<String> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<String>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
     
     /**
-     * A list of updated Availability Zones for the LoadBalancer.
+     * A list of updated Availability Zones for the load balancer.
      *
-     * @param availabilityZones A list of updated Availability Zones for the LoadBalancer.
+     * @param availabilityZones A list of updated Availability Zones for the load balancer.
      */
     public void setAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
     
     /**
-     * A list of updated Availability Zones for the LoadBalancer.
+     * A list of updated Availability Zones for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones A list of updated Availability Zones for the LoadBalancer.
+     * @param availabilityZones A list of updated Availability Zones for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableAvailabilityZonesForLoadBalancerResult withAvailabilityZones(String... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<String>(availabilityZones.length));
@@ -75,27 +75,27 @@ public class DisableAvailabilityZonesForLoadBalancerResult  implements Serializa
     }
     
     /**
-     * A list of updated Availability Zones for the LoadBalancer.
+     * A list of updated Availability Zones for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones A list of updated Availability Zones for the LoadBalancer.
+     * @param availabilityZones A list of updated Availability Zones for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableAvailabilityZonesForLoadBalancerResult withAvailabilityZones(java.util.Collection<String> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<String> availabilityZonesCopy = new java.util.ArrayList<String>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DisableAvailabilityZonesForLoadBalancerResult  implements Serializa
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() );
         sb.append("}");
         return sb.toString();

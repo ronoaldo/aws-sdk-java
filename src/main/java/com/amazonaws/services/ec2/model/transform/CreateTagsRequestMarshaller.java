@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class CreateTagsRequestMarshaller implements Marshaller<Request<CreateTag
     public Request<CreateTagsRequest> marshall(CreateTagsRequest createTagsRequest) {
 
         if (createTagsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateTagsRequest> request = new DefaultRequest<CreateTagsRequest>(createTagsRequest, "AmazonEC2");
         request.addParameter("Action", "CreateTags");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> resourcesList = createTagsRequest.getResources();
         int resourcesListIndex = 1;
@@ -68,7 +67,6 @@ public class CreateTagsRequestMarshaller implements Marshaller<Request<CreateTag
 
             tagsListIndex++;
         }
-
 
         return request;
     }

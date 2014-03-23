@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#activatePipeline(ActivatePipelineRequest) ActivatePipeline operation}.
  * <p>
- * Validates a pipeline and initiates processing. If the pipeline does not pass validation, activation fails.
+ * Validates a pipeline and initiates processing. If the pipeline does
+ * not pass validation, activation fails.
  * </p>
  * <p>
- * Call this action to start processing pipeline tasks of a pipeline you've created using the CreatePipeline and PutPipelineDefinition actions. A
- * pipeline cannot be modified after it has been successfully activated.
+ * Call this action to start processing pipeline tasks of a pipeline
+ * you've created using the CreatePipeline and PutPipelineDefinition
+ * actions. A pipeline cannot be modified after it has been successfully
+ * activated.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#activatePipeline(ActivatePipelineRequest)
  */
-public class ActivatePipelineRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ActivatePipelineRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the pipeline to activate.
@@ -77,14 +82,13 @@ public class ActivatePipelineRequest extends AmazonWebServiceRequest  implements
      * @param pipelineId The identifier of the pipeline to activate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivatePipelineRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -96,7 +100,7 @@ public class ActivatePipelineRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() );
         sb.append("}");
         return sb.toString();

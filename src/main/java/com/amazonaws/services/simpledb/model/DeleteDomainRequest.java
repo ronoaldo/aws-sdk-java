@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpledb.AmazonSimpleDB#deleteDomain(DeleteDomainRequest) DeleteDomain operation}.
  * <p>
- * The <code>DeleteDomain</code> operation deletes a domain. Any items (and their attributes) in the domain are deleted as well. The
- * <code>DeleteDomain</code> operation might take 10 or more seconds to complete.
+ * The <code>DeleteDomain</code> operation deletes a domain. Any items
+ * (and their attributes) in the domain are deleted as well. The
+ * <code>DeleteDomain</code> operation might take 10 or more seconds to
+ * complete.
  * </p>
  * <p>
- * <b>NOTE:</b> Running DeleteDomain on a domain that does not exist or running the function multiple times using the same domain name will not result in
- * an error response.
+ * <b>NOTE:</b> Running DeleteDomain on a domain that does not exist or
+ * running the function multiple times using the same domain name will
+ * not result in an error response.
  * </p>
  *
  * @see com.amazonaws.services.simpledb.AmazonSimpleDB#deleteDomain(DeleteDomainRequest)
  */
-public class DeleteDomainRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteDomainRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain to delete.
@@ -50,11 +55,9 @@ public class DeleteDomainRequest extends AmazonWebServiceRequest  implements Ser
      * @param domainName The name of the domain to delete.
      */
     public DeleteDomainRequest(String domainName) {
-        this.domainName = domainName;
+        setDomainName(domainName);
     }
 
-    
-    
     /**
      * The name of the domain to delete.
      *
@@ -81,14 +84,13 @@ public class DeleteDomainRequest extends AmazonWebServiceRequest  implements Ser
      * @param domainName The name of the domain to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteDomainRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -100,7 +102,7 @@ public class DeleteDomainRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomainName() != null) sb.append("DomainName: " + getDomainName() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains an optional comment and the changes that you want to make with a change batch request.
+ * A complex type that contains an optional comment and the changes that
+ * you want to make with a change batch request.
  * </p>
  */
-public class ChangeBatch  implements Serializable  {
+public class ChangeBatch implements Serializable {
 
     /**
      * <i>Optional:</i> Any comments you want to include about a change batch
@@ -38,7 +40,7 @@ public class ChangeBatch  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<Change> changes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Change> changes;
 
     /**
      * Default constructor for a new ChangeBatch object.  Callers should use the
@@ -56,11 +58,9 @@ public class ChangeBatch  implements Serializable  {
      * delete.
      */
     public ChangeBatch(java.util.List<Change> changes) {
-        this.changes = changes;
+        setChanges(changes);
     }
 
-    
-    
     /**
      * <i>Optional:</i> Any comments you want to include about a change batch
      * request.
@@ -102,14 +102,13 @@ public class ChangeBatch  implements Serializable  {
      *         request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeBatch withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains one <code>Change</code> element for each
      * resource record set that you want to create or delete.
@@ -121,9 +120,9 @@ public class ChangeBatch  implements Serializable  {
      *         resource record set that you want to create or delete.
      */
     public java.util.List<Change> getChanges() {
-        
         if (changes == null) {
-            changes = new java.util.ArrayList<Change>();
+              changes = new com.amazonaws.internal.ListWithAutoConstructFlag<Change>();
+              changes.setAutoConstruct(true);
         }
         return changes;
     }
@@ -143,8 +142,7 @@ public class ChangeBatch  implements Serializable  {
             this.changes = null;
             return;
         }
-
-        java.util.List<Change> changesCopy = new java.util.ArrayList<Change>(changes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Change> changesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Change>(changes.size());
         changesCopy.addAll(changes);
         this.changes = changesCopy;
     }
@@ -162,7 +160,7 @@ public class ChangeBatch  implements Serializable  {
      *         resource record set that you want to create or delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeBatch withChanges(Change... changes) {
         if (getChanges() == null) setChanges(new java.util.ArrayList<Change>(changes.length));
@@ -185,20 +183,20 @@ public class ChangeBatch  implements Serializable  {
      *         resource record set that you want to create or delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeBatch withChanges(java.util.Collection<Change> changes) {
         if (changes == null) {
             this.changes = null;
         } else {
-            java.util.List<Change> changesCopy = new java.util.ArrayList<Change>(changes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Change> changesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Change>(changes.size());
             changesCopy.addAll(changes);
             this.changes = changesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -210,8 +208,8 @@ public class ChangeBatch  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getComment() != null) sb.append("Comment: " + getComment() + ",");    	
+        sb.append("{");
+        if (getComment() != null) sb.append("Comment: " + getComment() + ",");
         if (getChanges() != null) sb.append("Changes: " + getChanges() );
         sb.append("}");
         return sb.toString();

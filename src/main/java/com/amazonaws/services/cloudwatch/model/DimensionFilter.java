@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The <code>DimensionFilter</code> data type is used to filter ListMetrics results.
+ * The <code>DimensionFilter</code> data type is used to filter
+ * ListMetrics results.
  * </p>
  */
-public class DimensionFilter  implements Serializable  {
+public class DimensionFilter implements Serializable {
 
     /**
      * The dimension name to be matched.
@@ -75,14 +77,13 @@ public class DimensionFilter  implements Serializable  {
      * @param name The dimension name to be matched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DimensionFilter withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The value of the dimension to be matched. <note> Specifying a
      * <code>Name</code> without specifying a <code>Value</code> returns all
@@ -130,14 +131,13 @@ public class DimensionFilter  implements Serializable  {
      *         values associated with that <code>Name</code>. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DimensionFilter withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -149,8 +149,8 @@ public class DimensionFilter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

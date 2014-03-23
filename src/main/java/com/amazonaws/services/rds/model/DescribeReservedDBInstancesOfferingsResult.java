@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeReservedDBInstancesOfferings action.
+ * Contains the result of a successful invocation of the
+ * DescribeReservedDBInstancesOfferings action.
  * </p>
  */
-public class DescribeReservedDBInstancesOfferingsResult  implements Serializable  {
+public class DescribeReservedDBInstancesOfferingsResult implements Serializable {
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -30,9 +32,9 @@ public class DescribeReservedDBInstancesOfferingsResult  implements Serializable
     private String marker;
 
     /**
-     * A list of reserved DB Instance offerings.
+     * A list of reserved DB instance offerings.
      */
-    private java.util.List<ReservedDBInstancesOffering> reservedDBInstancesOfferings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstancesOffering> reservedDBInstancesOfferings;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -72,52 +74,50 @@ public class DescribeReservedDBInstancesOfferingsResult  implements Serializable
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of reserved DB Instance offerings.
+     * A list of reserved DB instance offerings.
      *
-     * @return A list of reserved DB Instance offerings.
+     * @return A list of reserved DB instance offerings.
      */
     public java.util.List<ReservedDBInstancesOffering> getReservedDBInstancesOfferings() {
-        
         if (reservedDBInstancesOfferings == null) {
-            reservedDBInstancesOfferings = new java.util.ArrayList<ReservedDBInstancesOffering>();
+              reservedDBInstancesOfferings = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstancesOffering>();
+              reservedDBInstancesOfferings.setAutoConstruct(true);
         }
         return reservedDBInstancesOfferings;
     }
     
     /**
-     * A list of reserved DB Instance offerings.
+     * A list of reserved DB instance offerings.
      *
-     * @param reservedDBInstancesOfferings A list of reserved DB Instance offerings.
+     * @param reservedDBInstancesOfferings A list of reserved DB instance offerings.
      */
     public void setReservedDBInstancesOfferings(java.util.Collection<ReservedDBInstancesOffering> reservedDBInstancesOfferings) {
         if (reservedDBInstancesOfferings == null) {
             this.reservedDBInstancesOfferings = null;
             return;
         }
-
-        java.util.List<ReservedDBInstancesOffering> reservedDBInstancesOfferingsCopy = new java.util.ArrayList<ReservedDBInstancesOffering>(reservedDBInstancesOfferings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstancesOffering> reservedDBInstancesOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstancesOffering>(reservedDBInstancesOfferings.size());
         reservedDBInstancesOfferingsCopy.addAll(reservedDBInstancesOfferings);
         this.reservedDBInstancesOfferings = reservedDBInstancesOfferingsCopy;
     }
     
     /**
-     * A list of reserved DB Instance offerings.
+     * A list of reserved DB instance offerings.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedDBInstancesOfferings A list of reserved DB Instance offerings.
+     * @param reservedDBInstancesOfferings A list of reserved DB instance offerings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsResult withReservedDBInstancesOfferings(ReservedDBInstancesOffering... reservedDBInstancesOfferings) {
         if (getReservedDBInstancesOfferings() == null) setReservedDBInstancesOfferings(new java.util.ArrayList<ReservedDBInstancesOffering>(reservedDBInstancesOfferings.length));
@@ -128,27 +128,27 @@ public class DescribeReservedDBInstancesOfferingsResult  implements Serializable
     }
     
     /**
-     * A list of reserved DB Instance offerings.
+     * A list of reserved DB instance offerings.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedDBInstancesOfferings A list of reserved DB Instance offerings.
+     * @param reservedDBInstancesOfferings A list of reserved DB instance offerings.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedDBInstancesOfferingsResult withReservedDBInstancesOfferings(java.util.Collection<ReservedDBInstancesOffering> reservedDBInstancesOfferings) {
         if (reservedDBInstancesOfferings == null) {
             this.reservedDBInstancesOfferings = null;
         } else {
-            java.util.List<ReservedDBInstancesOffering> reservedDBInstancesOfferingsCopy = new java.util.ArrayList<ReservedDBInstancesOffering>(reservedDBInstancesOfferings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstancesOffering> reservedDBInstancesOfferingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedDBInstancesOffering>(reservedDBInstancesOfferings.size());
             reservedDBInstancesOfferingsCopy.addAll(reservedDBInstancesOfferings);
             this.reservedDBInstancesOfferings = reservedDBInstancesOfferingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class DescribeReservedDBInstancesOfferingsResult  implements Serializable
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getReservedDBInstancesOfferings() != null) sb.append("ReservedDBInstancesOfferings: " + getReservedDBInstancesOfferings() );
         sb.append("}");
         return sb.toString();

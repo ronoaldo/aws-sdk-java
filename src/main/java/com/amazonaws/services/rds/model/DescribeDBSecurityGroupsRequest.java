@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeDBSecurityGroups(DescribeDBSecurityGroupsRequest) DescribeDBSecurityGroups operation}.
  * <p>
- * Returns a list of DBSecurityGroup descriptions. If a DBSecurityGroupName is specified, the list will contain only the descriptions of the specified
- * DBSecurityGroup.
- * </p>
- * <p>
- * For an overview of CIDR ranges, go to the <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing"> Wikipedia Tutorial </a> .
+ * Returns a list of <code>DBSecurityGroup</code> descriptions. If a
+ * <code>DBSecurityGroupName</code> is specified, the list will contain
+ * only the descriptions of the specified DB security group.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeDBSecurityGroups(DescribeDBSecurityGroupsRequest)
  */
-public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the DB Security Group to return details for.
+     * The name of the DB security group to return details for.
      */
     private String dBSecurityGroupName;
+
+    /**
+     * This parameter is not currently supported.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The maximum number of records to include in the response. If more
@@ -59,39 +64,106 @@ public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest  im
     public DescribeDBSecurityGroupsRequest() {}
     
     /**
-     * The name of the DB Security Group to return details for.
+     * The name of the DB security group to return details for.
      *
-     * @return The name of the DB Security Group to return details for.
+     * @return The name of the DB security group to return details for.
      */
     public String getDBSecurityGroupName() {
         return dBSecurityGroupName;
     }
     
     /**
-     * The name of the DB Security Group to return details for.
+     * The name of the DB security group to return details for.
      *
-     * @param dBSecurityGroupName The name of the DB Security Group to return details for.
+     * @param dBSecurityGroupName The name of the DB security group to return details for.
      */
     public void setDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
     }
     
     /**
-     * The name of the DB Security Group to return details for.
+     * The name of the DB security group to return details for.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSecurityGroupName The name of the DB Security Group to return details for.
+     * @param dBSecurityGroupName The name of the DB security group to return details for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSecurityGroupsRequest withDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
         return this;
     }
+
+    /**
+     * This parameter is not currently supported.
+     *
+     * @return This parameter is not currently supported.
+     */
+    public java.util.List<Filter> getFilters() {
+        if (filters == null) {
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
+        }
+        return filters;
+    }
     
+    /**
+     * This parameter is not currently supported.
+     *
+     * @param filters This parameter is not currently supported.
+     */
+    public void setFilters(java.util.Collection<Filter> filters) {
+        if (filters == null) {
+            this.filters = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
+        filtersCopy.addAll(filters);
+        this.filters = filtersCopy;
+    }
     
+    /**
+     * This parameter is not currently supported.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param filters This parameter is not currently supported.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeDBSecurityGroupsRequest withFilters(Filter... filters) {
+        if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
+        for (Filter value : filters) {
+            getFilters().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * This parameter is not currently supported.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param filters This parameter is not currently supported.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeDBSecurityGroupsRequest withFilters(java.util.Collection<Filter> filters) {
+        if (filters == null) {
+            this.filters = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
+            filtersCopy.addAll(filters);
+            this.filters = filtersCopy;
+        }
+
+        return this;
+    }
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -142,14 +214,13 @@ public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest  im
      *         <p>Constraints: minimum 20, maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSecurityGroupsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous
      * DescribeDBSecurityGroups request. If this parameter is specified, the
@@ -194,14 +265,13 @@ public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest  im
      *         specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSecurityGroupsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -213,9 +283,10 @@ public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBSecurityGroupName() != null) sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getDBSecurityGroupName() != null) sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() + ",");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();
@@ -227,6 +298,7 @@ public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest  im
         int hashCode = 1;
         
         hashCode = prime * hashCode + ((getDBSecurityGroupName() == null) ? 0 : getDBSecurityGroupName().hashCode()); 
+        hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode()); 
         hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode()); 
         hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode()); 
         return hashCode;
@@ -242,6 +314,8 @@ public class DescribeDBSecurityGroupsRequest extends AmazonWebServiceRequest  im
         
         if (other.getDBSecurityGroupName() == null ^ this.getDBSecurityGroupName() == null) return false;
         if (other.getDBSecurityGroupName() != null && other.getDBSecurityGroupName().equals(this.getDBSecurityGroupName()) == false) return false; 
+        if (other.getFilters() == null ^ this.getFilters() == null) return false;
+        if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false) return false; 
         if (other.getMaxRecords() == null ^ this.getMaxRecords() == null) return false;
         if (other.getMaxRecords() != null && other.getMaxRecords().equals(this.getMaxRecords()) == false) return false; 
         if (other.getMarker() == null ^ this.getMarker() == null) return false;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents a request to perform a <i>PutItem</i> operation on an item.
  * </p>
  */
-public class PutRequest  implements Serializable  {
+public class PutRequest implements Serializable {
 
     /**
      * A map of attribute name to attribute values, representing the primary
@@ -31,6 +32,28 @@ public class PutRequest  implements Serializable  {
      * types must match the index key schema.
      */
     private java.util.Map<String,AttributeValue> item;
+
+    /**
+     * Default constructor for a new PutRequest object.  Callers should use the
+     * setter or fluent setter (with...) methods to initialize this object after creating it.
+     */
+    public PutRequest() {}
+    
+    /**
+     * Constructs a new PutRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param item A map of attribute name to attribute values, representing
+     * the primary key of an item to be processed by <i>PutItem</i>. All of
+     * the table's primary key attributes must be specified, and their data
+     * types must match those of the table's key schema. If any attributes
+     * are present in the item which are part of an index key schema for the
+     * table, their types must match the index key schema.
+     */
+    public PutRequest(java.util.Map<String,AttributeValue> item) {
+        setItem(item);
+    }
 
     /**
      * A map of attribute name to attribute values, representing the primary
@@ -50,7 +73,6 @@ public class PutRequest  implements Serializable  {
     public java.util.Map<String,AttributeValue> getItem() {
         
         return item;
-
     }
     
     /**
@@ -90,10 +112,45 @@ public class PutRequest  implements Serializable  {
      *         types must match the index key schema.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutRequest withItem(java.util.Map<String,AttributeValue> item) {
         setItem(item);
+        return this;
+    }
+
+    /**
+     * A map of attribute name to attribute values, representing the primary
+     * key of an item to be processed by <i>PutItem</i>. All of the table's
+     * primary key attributes must be specified, and their data types must
+     * match those of the table's key schema. If any attributes are present
+     * in the item which are part of an index key schema for the table, their
+     * types must match the index key schema.
+     * <p>
+     * The method adds a new key-value pair into Item parameter, and returns
+     * a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Item.
+     * @param value The corresponding value of the entry to be added into Item.
+     */
+    public PutRequest addItemEntry(String key, AttributeValue value) {
+        if (null == this.item) {
+            this.item = new java.util.HashMap<String,AttributeValue>();
+        }
+        if (this.item.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.item.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Item.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public PutRequest clearItemEntries() {
+        this.item = null;
         return this;
     }
     
@@ -108,7 +165,7 @@ public class PutRequest  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getItem() != null) sb.append("Item: " + getItem() );
         sb.append("}");
         return sb.toString();

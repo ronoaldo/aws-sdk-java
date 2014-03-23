@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,37 +13,44 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#resetCacheParameterGroup(ResetCacheParameterGroupRequest) ResetCacheParameterGroup operation}.
  * <p>
- * Modifies the parameters of a CacheParameterGroup to the engine or system default value. To reset specific parameters submit a list of the parameter
- * names. To reset the entire CacheParameterGroup, specify the CacheParameterGroup name and ResetAllParameters parameters.
+ * The <i>ResetCacheParameterGroup</i> operation modifies the parameters
+ * of a cache parameter group to the engine or system default value. You
+ * can reset specific parameters by submitting a list of parameter names.
+ * To reset the entire cache parameter group, specify the
+ * <i>ResetAllParameters</i> and <i>CacheParameterGroupName</i>
+ * parameters.
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#resetCacheParameterGroup(ResetCacheParameterGroupRequest)
  */
-public class ResetCacheParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ResetCacheParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the Cache Parameter Group.
+     * The name of the cache parameter group to reset.
      */
     private String cacheParameterGroupName;
 
     /**
-     * Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     * parameters in the Cache Parameter Group to default values.
+     * If <i>true</i>, all parameters in the cache parameter group will be
+     * reset to default values. If <i>false</i>, no such action occurs.
+     * <p>Valid values: <code>true</code> | <code>false</code>
      */
     private Boolean resetAllParameters;
 
     /**
-     * An array of parameter names which should be reset. If not resetting
-     * the entire CacheParameterGroup, at least one parameter name must be
-     * supplied.
+     * An array of parameter names to be reset. If you are not resetting the
+     * entire cache parameter group, you must specify at least one parameter
+     * name.
      */
-    private java.util.List<ParameterNameValue> parameterNameValues;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ParameterNameValue> parameterNameValues;
 
     /**
      * Default constructor for a new ResetCacheParameterGroupRequest object.  Callers should use the
@@ -56,153 +63,157 @@ public class ResetCacheParameterGroupRequest extends AmazonWebServiceRequest  im
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param cacheParameterGroupName The name of the Cache Parameter Group.
-     * @param parameterNameValues An array of parameter names which should be
-     * reset. If not resetting the entire CacheParameterGroup, at least one
-     * parameter name must be supplied.
+     * @param cacheParameterGroupName The name of the cache parameter group
+     * to reset.
+     * @param parameterNameValues An array of parameter names to be reset. If
+     * you are not resetting the entire cache parameter group, you must
+     * specify at least one parameter name.
      */
     public ResetCacheParameterGroupRequest(String cacheParameterGroupName, java.util.List<ParameterNameValue> parameterNameValues) {
-        this.cacheParameterGroupName = cacheParameterGroupName;
-        this.parameterNameValues = parameterNameValues;
+        setCacheParameterGroupName(cacheParameterGroupName);
+        setParameterNameValues(parameterNameValues);
     }
 
-    
-    
     /**
-     * The name of the Cache Parameter Group.
+     * The name of the cache parameter group to reset.
      *
-     * @return The name of the Cache Parameter Group.
+     * @return The name of the cache parameter group to reset.
      */
     public String getCacheParameterGroupName() {
         return cacheParameterGroupName;
     }
     
     /**
-     * The name of the Cache Parameter Group.
+     * The name of the cache parameter group to reset.
      *
-     * @param cacheParameterGroupName The name of the Cache Parameter Group.
+     * @param cacheParameterGroupName The name of the cache parameter group to reset.
      */
     public void setCacheParameterGroupName(String cacheParameterGroupName) {
         this.cacheParameterGroupName = cacheParameterGroupName;
     }
     
     /**
-     * The name of the Cache Parameter Group.
+     * The name of the cache parameter group to reset.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroupName The name of the Cache Parameter Group.
+     * @param cacheParameterGroupName The name of the cache parameter group to reset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetCacheParameterGroupRequest withCacheParameterGroupName(String cacheParameterGroupName) {
         this.cacheParameterGroupName = cacheParameterGroupName;
         return this;
     }
-    
-    
+
     /**
-     * Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     * parameters in the Cache Parameter Group to default values.
+     * If <i>true</i>, all parameters in the cache parameter group will be
+     * reset to default values. If <i>false</i>, no such action occurs.
+     * <p>Valid values: <code>true</code> | <code>false</code>
      *
-     * @return Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     *         parameters in the Cache Parameter Group to default values.
+     * @return If <i>true</i>, all parameters in the cache parameter group will be
+     *         reset to default values. If <i>false</i>, no such action occurs.
+     *         <p>Valid values: <code>true</code> | <code>false</code>
      */
     public Boolean isResetAllParameters() {
         return resetAllParameters;
     }
     
     /**
-     * Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     * parameters in the Cache Parameter Group to default values.
+     * If <i>true</i>, all parameters in the cache parameter group will be
+     * reset to default values. If <i>false</i>, no such action occurs.
+     * <p>Valid values: <code>true</code> | <code>false</code>
      *
-     * @param resetAllParameters Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     *         parameters in the Cache Parameter Group to default values.
+     * @param resetAllParameters If <i>true</i>, all parameters in the cache parameter group will be
+     *         reset to default values. If <i>false</i>, no such action occurs.
+     *         <p>Valid values: <code>true</code> | <code>false</code>
      */
     public void setResetAllParameters(Boolean resetAllParameters) {
         this.resetAllParameters = resetAllParameters;
     }
     
     /**
-     * Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     * parameters in the Cache Parameter Group to default values.
+     * If <i>true</i>, all parameters in the cache parameter group will be
+     * reset to default values. If <i>false</i>, no such action occurs.
+     * <p>Valid values: <code>true</code> | <code>false</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param resetAllParameters Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     *         parameters in the Cache Parameter Group to default values.
+     * @param resetAllParameters If <i>true</i>, all parameters in the cache parameter group will be
+     *         reset to default values. If <i>false</i>, no such action occurs.
+     *         <p>Valid values: <code>true</code> | <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetCacheParameterGroupRequest withResetAllParameters(Boolean resetAllParameters) {
         this.resetAllParameters = resetAllParameters;
         return this;
     }
-    
-    
+
     /**
-     * Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     * parameters in the Cache Parameter Group to default values.
+     * If <i>true</i>, all parameters in the cache parameter group will be
+     * reset to default values. If <i>false</i>, no such action occurs.
+     * <p>Valid values: <code>true</code> | <code>false</code>
      *
-     * @return Specifies whether (<i>true</i>) or not (<i>false</i>) to reset all
-     *         parameters in the Cache Parameter Group to default values.
+     * @return If <i>true</i>, all parameters in the cache parameter group will be
+     *         reset to default values. If <i>false</i>, no such action occurs.
+     *         <p>Valid values: <code>true</code> | <code>false</code>
      */
     public Boolean getResetAllParameters() {
         return resetAllParameters;
     }
-    
+
     /**
-     * An array of parameter names which should be reset. If not resetting
-     * the entire CacheParameterGroup, at least one parameter name must be
-     * supplied.
+     * An array of parameter names to be reset. If you are not resetting the
+     * entire cache parameter group, you must specify at least one parameter
+     * name.
      *
-     * @return An array of parameter names which should be reset. If not resetting
-     *         the entire CacheParameterGroup, at least one parameter name must be
-     *         supplied.
+     * @return An array of parameter names to be reset. If you are not resetting the
+     *         entire cache parameter group, you must specify at least one parameter
+     *         name.
      */
     public java.util.List<ParameterNameValue> getParameterNameValues() {
-        
         if (parameterNameValues == null) {
-            parameterNameValues = new java.util.ArrayList<ParameterNameValue>();
+              parameterNameValues = new com.amazonaws.internal.ListWithAutoConstructFlag<ParameterNameValue>();
+              parameterNameValues.setAutoConstruct(true);
         }
         return parameterNameValues;
     }
     
     /**
-     * An array of parameter names which should be reset. If not resetting
-     * the entire CacheParameterGroup, at least one parameter name must be
-     * supplied.
+     * An array of parameter names to be reset. If you are not resetting the
+     * entire cache parameter group, you must specify at least one parameter
+     * name.
      *
-     * @param parameterNameValues An array of parameter names which should be reset. If not resetting
-     *         the entire CacheParameterGroup, at least one parameter name must be
-     *         supplied.
+     * @param parameterNameValues An array of parameter names to be reset. If you are not resetting the
+     *         entire cache parameter group, you must specify at least one parameter
+     *         name.
      */
     public void setParameterNameValues(java.util.Collection<ParameterNameValue> parameterNameValues) {
         if (parameterNameValues == null) {
             this.parameterNameValues = null;
             return;
         }
-
-        java.util.List<ParameterNameValue> parameterNameValuesCopy = new java.util.ArrayList<ParameterNameValue>(parameterNameValues.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ParameterNameValue> parameterNameValuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ParameterNameValue>(parameterNameValues.size());
         parameterNameValuesCopy.addAll(parameterNameValues);
         this.parameterNameValues = parameterNameValuesCopy;
     }
     
     /**
-     * An array of parameter names which should be reset. If not resetting
-     * the entire CacheParameterGroup, at least one parameter name must be
-     * supplied.
+     * An array of parameter names to be reset. If you are not resetting the
+     * entire cache parameter group, you must specify at least one parameter
+     * name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param parameterNameValues An array of parameter names which should be reset. If not resetting
-     *         the entire CacheParameterGroup, at least one parameter name must be
-     *         supplied.
+     * @param parameterNameValues An array of parameter names to be reset. If you are not resetting the
+     *         entire cache parameter group, you must specify at least one parameter
+     *         name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetCacheParameterGroupRequest withParameterNameValues(ParameterNameValue... parameterNameValues) {
         if (getParameterNameValues() == null) setParameterNameValues(new java.util.ArrayList<ParameterNameValue>(parameterNameValues.length));
@@ -213,31 +224,31 @@ public class ResetCacheParameterGroupRequest extends AmazonWebServiceRequest  im
     }
     
     /**
-     * An array of parameter names which should be reset. If not resetting
-     * the entire CacheParameterGroup, at least one parameter name must be
-     * supplied.
+     * An array of parameter names to be reset. If you are not resetting the
+     * entire cache parameter group, you must specify at least one parameter
+     * name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param parameterNameValues An array of parameter names which should be reset. If not resetting
-     *         the entire CacheParameterGroup, at least one parameter name must be
-     *         supplied.
+     * @param parameterNameValues An array of parameter names to be reset. If you are not resetting the
+     *         entire cache parameter group, you must specify at least one parameter
+     *         name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ResetCacheParameterGroupRequest withParameterNameValues(java.util.Collection<ParameterNameValue> parameterNameValues) {
         if (parameterNameValues == null) {
             this.parameterNameValues = null;
         } else {
-            java.util.List<ParameterNameValue> parameterNameValuesCopy = new java.util.ArrayList<ParameterNameValue>(parameterNameValues.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ParameterNameValue> parameterNameValuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ParameterNameValue>(parameterNameValues.size());
             parameterNameValuesCopy.addAll(parameterNameValues);
             this.parameterNameValues = parameterNameValuesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -249,9 +260,9 @@ public class ResetCacheParameterGroupRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheParameterGroupName() != null) sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() + ",");    	
-        if (isResetAllParameters() != null) sb.append("ResetAllParameters: " + isResetAllParameters() + ",");    	
+        sb.append("{");
+        if (getCacheParameterGroupName() != null) sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() + ",");
+        if (isResetAllParameters() != null) sb.append("ResetAllParameters: " + isResetAllParameters() + ",");
         if (getParameterNameValues() != null) sb.append("ParameterNameValues: " + getParameterNameValues() );
         sb.append("}");
         return sb.toString();

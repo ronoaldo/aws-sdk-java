@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ import java.io.Serializable;
  * Specifies the attribute to update and how to perform the update. Possible values: <code>PUT</code> (default), <code>ADD</code> or <code>DELETE</code>
  * .
  * </p>
+ * 
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate} instead.
  */
 @Deprecated
 public class AttributeValueUpdate  implements Serializable  {

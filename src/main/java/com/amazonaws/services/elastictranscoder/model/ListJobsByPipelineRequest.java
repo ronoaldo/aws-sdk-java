@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#listJobsByPipeline(ListJobsByPipelineRequest) ListJobsByPipeline operation}.
  * <p>
- * To get a list of the jobs currently in a pipeline, send a GET request to the <code>/2012-09-25/jobsByPipeline/[pipelineId] </code> resource.
+ * The ListJobsByPipeline operation gets a list of the jobs currently in
+ * a pipeline.
  * </p>
  * <p>
- * Elastic Transcoder returns all of the jobs currently in the specified pipeline. The response body contains one element for each job that satisfies the
- * search criteria.
+ * Elastic Transcoder returns all of the jobs currently in the specified
+ * pipeline. The response body contains one element for each job that
+ * satisfies the search criteria.
  * </p>
  *
  * @see com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#listJobsByPipeline(ListJobsByPipelineRequest)
  */
-public class ListJobsByPipelineRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListJobsByPipelineRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the pipeline for which you want to get job information.
@@ -93,14 +97,13 @@ public class ListJobsByPipelineRequest extends AmazonWebServiceRequest  implemen
      * @param pipelineId The ID of the pipeline for which you want to get job information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByPipelineRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * To list jobs in chronological order by the date and time that they
      * were submitted, enter <code>true</code>. To list jobs in reverse
@@ -148,14 +151,13 @@ public class ListJobsByPipelineRequest extends AmazonWebServiceRequest  implemen
      *         chronological order, enter <code>false</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByPipelineRequest withAscending(String ascending) {
         this.ascending = ascending;
         return this;
     }
-    
-    
+
     /**
      * When Elastic Transcoder returns more than one page of results, use
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get
@@ -203,14 +205,13 @@ public class ListJobsByPipelineRequest extends AmazonWebServiceRequest  implemen
      *         each successive page of results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsByPipelineRequest withPageToken(String pageToken) {
         this.pageToken = pageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -222,9 +223,9 @@ public class ListJobsByPipelineRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getAscending() != null) sb.append("Ascending: " + getAscending() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getAscending() != null) sb.append("Ascending: " + getAscending() + ",");
         if (getPageToken() != null) sb.append("PageToken: " + getPageToken() );
         sb.append("}");
         return sb.toString();

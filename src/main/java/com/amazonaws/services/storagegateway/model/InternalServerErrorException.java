@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,13 +18,12 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * An internal server error has occured during the request. See the error and message fields for more information.
+ * An internal server error has occurred during the request. See the
+ * error and message fields for more information.
  * </p>
  */        
 public class InternalServerErrorException extends AmazonServiceException {
     private static final long serialVersionUID = 1L;
-    
-    private StorageGatewayError error;
     
     /**
      * Constructs a new InternalServerErrorException with the specified error
@@ -36,22 +35,5 @@ public class InternalServerErrorException extends AmazonServiceException {
         super(message);
     }
     
-    /**
-     * Returns the value of the Error property for this object.
-     *
-     * @return The value of the Error property for this object.         
-     */
-    public StorageGatewayError getError() {
-        return error;
-    }
-        
-    /**
-     * Sets the value of the Error property for this object.
-     *
-     * @param error The new value for this object's Error property. 
-     */
-    public void setError(StorageGatewayError error) {
-        this.error = error;
-    }
 }
     

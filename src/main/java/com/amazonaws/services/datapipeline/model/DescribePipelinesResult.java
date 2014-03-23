@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the output from the DescribePipelines action.
  * </p>
  */
-public class DescribePipelinesResult  implements Serializable  {
+public class DescribePipelinesResult implements Serializable {
 
     /**
      * An array of descriptions returned for the specified pipelines.
      */
-    private java.util.List<PipelineDescription> pipelineDescriptionList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PipelineDescription> pipelineDescriptionList;
 
     /**
      * An array of descriptions returned for the specified pipelines.
@@ -33,9 +34,9 @@ public class DescribePipelinesResult  implements Serializable  {
      * @return An array of descriptions returned for the specified pipelines.
      */
     public java.util.List<PipelineDescription> getPipelineDescriptionList() {
-        
         if (pipelineDescriptionList == null) {
-            pipelineDescriptionList = new java.util.ArrayList<PipelineDescription>();
+              pipelineDescriptionList = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineDescription>();
+              pipelineDescriptionList.setAutoConstruct(true);
         }
         return pipelineDescriptionList;
     }
@@ -50,8 +51,7 @@ public class DescribePipelinesResult  implements Serializable  {
             this.pipelineDescriptionList = null;
             return;
         }
-
-        java.util.List<PipelineDescription> pipelineDescriptionListCopy = new java.util.ArrayList<PipelineDescription>(pipelineDescriptionList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PipelineDescription> pipelineDescriptionListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineDescription>(pipelineDescriptionList.size());
         pipelineDescriptionListCopy.addAll(pipelineDescriptionList);
         this.pipelineDescriptionList = pipelineDescriptionListCopy;
     }
@@ -64,7 +64,7 @@ public class DescribePipelinesResult  implements Serializable  {
      * @param pipelineDescriptionList An array of descriptions returned for the specified pipelines.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePipelinesResult withPipelineDescriptionList(PipelineDescription... pipelineDescriptionList) {
         if (getPipelineDescriptionList() == null) setPipelineDescriptionList(new java.util.ArrayList<PipelineDescription>(pipelineDescriptionList.length));
@@ -82,20 +82,20 @@ public class DescribePipelinesResult  implements Serializable  {
      * @param pipelineDescriptionList An array of descriptions returned for the specified pipelines.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePipelinesResult withPipelineDescriptionList(java.util.Collection<PipelineDescription> pipelineDescriptionList) {
         if (pipelineDescriptionList == null) {
             this.pipelineDescriptionList = null;
         } else {
-            java.util.List<PipelineDescription> pipelineDescriptionListCopy = new java.util.ArrayList<PipelineDescription>(pipelineDescriptionList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PipelineDescription> pipelineDescriptionListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineDescription>(pipelineDescriptionList.size());
             pipelineDescriptionListCopy.addAll(pipelineDescriptionList);
             this.pipelineDescriptionList = pipelineDescriptionListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribePipelinesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPipelineDescriptionList() != null) sb.append("PipelineDescriptionList: " + getPipelineDescriptionList() );
         sb.append("}");
         return sb.toString();

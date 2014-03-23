@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.opsworks.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLayerRequest>, UpdateLayerRequest> {
 
-    
-
     public Request<UpdateLayerRequest> marshall(UpdateLayerRequest updateLayerRequest) {
     if (updateLayerRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.1");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,14 +71,10 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (updateLayerRequest.getLayerId() != null) {
@@ -110,8 +102,8 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                 jsonWriter.key("CustomInstanceProfileArn").value(updateLayerRequest.getCustomInstanceProfileArn());
             }
 
-            java.util.List<String> customSecurityGroupIdsList = updateLayerRequest.getCustomSecurityGroupIds();
-            if (customSecurityGroupIdsList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> customSecurityGroupIdsList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(updateLayerRequest.getCustomSecurityGroupIds());
+            if (customSecurityGroupIdsList != null && !(customSecurityGroupIdsList.isAutoConstruct() && customSecurityGroupIdsList.isEmpty())) {
 
                 jsonWriter.key("CustomSecurityGroupIds");
                 jsonWriter.array();
@@ -124,8 +116,8 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                 jsonWriter.endArray();
             }
 
-            java.util.List<String> packagesList = updateLayerRequest.getPackages();
-            if (packagesList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> packagesList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(updateLayerRequest.getPackages());
+            if (packagesList != null && !(packagesList.isAutoConstruct() && packagesList.isEmpty())) {
 
                 jsonWriter.key("Packages");
                 jsonWriter.array();
@@ -138,8 +130,8 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                 jsonWriter.endArray();
             }
 
-            java.util.List<VolumeConfiguration> volumeConfigurationsList = updateLayerRequest.getVolumeConfigurations();
-            if (volumeConfigurationsList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeConfiguration> volumeConfigurationsList = (com.amazonaws.internal.ListWithAutoConstructFlag<VolumeConfiguration>)(updateLayerRequest.getVolumeConfigurations());
+            if (volumeConfigurationsList != null && !(volumeConfigurationsList.isAutoConstruct() && volumeConfigurationsList.isEmpty())) {
 
                 jsonWriter.key("VolumeConfigurations");
                 jsonWriter.array();
@@ -170,15 +162,17 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
             if (updateLayerRequest.isAutoAssignElasticIps() != null) {
                 jsonWriter.key("AutoAssignElasticIps").value(updateLayerRequest.isAutoAssignElasticIps());
             }
+            if (updateLayerRequest.isAutoAssignPublicIps() != null) {
+                jsonWriter.key("AutoAssignPublicIps").value(updateLayerRequest.isAutoAssignPublicIps());
+            }
             Recipes customRecipes = updateLayerRequest.getCustomRecipes();
             if (customRecipes != null) {
 
                 jsonWriter.key("CustomRecipes");
                 jsonWriter.object();
 
-
-                java.util.List<String> setupList = customRecipes.getSetup();
-                if (setupList != null) {
+                com.amazonaws.internal.ListWithAutoConstructFlag<String> setupList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(customRecipes.getSetup());
+                if (setupList != null && !(setupList.isAutoConstruct() && setupList.isEmpty())) {
 
                     jsonWriter.key("Setup");
                     jsonWriter.array();
@@ -191,8 +185,8 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                     jsonWriter.endArray();
                 }
 
-                java.util.List<String> configureList = customRecipes.getConfigure();
-                if (configureList != null) {
+                com.amazonaws.internal.ListWithAutoConstructFlag<String> configureList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(customRecipes.getConfigure());
+                if (configureList != null && !(configureList.isAutoConstruct() && configureList.isEmpty())) {
 
                     jsonWriter.key("Configure");
                     jsonWriter.array();
@@ -205,8 +199,8 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                     jsonWriter.endArray();
                 }
 
-                java.util.List<String> deployList = customRecipes.getDeploy();
-                if (deployList != null) {
+                com.amazonaws.internal.ListWithAutoConstructFlag<String> deployList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(customRecipes.getDeploy());
+                if (deployList != null && !(deployList.isAutoConstruct() && deployList.isEmpty())) {
 
                     jsonWriter.key("Deploy");
                     jsonWriter.array();
@@ -219,8 +213,8 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                     jsonWriter.endArray();
                 }
 
-                java.util.List<String> undeployList = customRecipes.getUndeploy();
-                if (undeployList != null) {
+                com.amazonaws.internal.ListWithAutoConstructFlag<String> undeployList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(customRecipes.getUndeploy());
+                if (undeployList != null && !(undeployList.isAutoConstruct() && undeployList.isEmpty())) {
 
                     jsonWriter.key("Undeploy");
                     jsonWriter.array();
@@ -233,8 +227,8 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                     jsonWriter.endArray();
                 }
 
-                java.util.List<String> shutdownList = customRecipes.getShutdown();
-                if (shutdownList != null) {
+                com.amazonaws.internal.ListWithAutoConstructFlag<String> shutdownList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(customRecipes.getShutdown());
+                if (shutdownList != null && !(shutdownList.isAutoConstruct() && shutdownList.isEmpty())) {
 
                     jsonWriter.key("Shutdown");
                     jsonWriter.array();
@@ -248,24 +242,20 @@ public class UpdateLayerRequestMarshaller implements Marshaller<Request<UpdateLa
                 }
                 jsonWriter.endObject();
             }
+            if (updateLayerRequest.isInstallUpdatesOnBoot() != null) {
+                jsonWriter.key("InstallUpdatesOnBoot").value(updateLayerRequest.isInstallUpdatesOnBoot());
+            }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

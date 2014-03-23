@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeClusterParameterGroups action.
  * </p>
  */
-public class DescribeClusterParameterGroupsResult  implements Serializable  {
+public class DescribeClusterParameterGroupsResult implements Serializable {
 
     /**
      * A marker at which to continue listing cluster parameter groups in a
@@ -33,7 +34,7 @@ public class DescribeClusterParameterGroupsResult  implements Serializable  {
      * A list of <a>ClusterParameterGroup</a> instances. Each instance
      * describes one cluster parameter group.
      */
-    private java.util.List<ClusterParameterGroup> parameterGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroup> parameterGroups;
 
     /**
      * A marker at which to continue listing cluster parameter groups in a
@@ -73,14 +74,13 @@ public class DescribeClusterParameterGroupsResult  implements Serializable  {
      *         groups to list than returned in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParameterGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>ClusterParameterGroup</a> instances. Each instance
      * describes one cluster parameter group.
@@ -89,9 +89,9 @@ public class DescribeClusterParameterGroupsResult  implements Serializable  {
      *         describes one cluster parameter group.
      */
     public java.util.List<ClusterParameterGroup> getParameterGroups() {
-        
         if (parameterGroups == null) {
-            parameterGroups = new java.util.ArrayList<ClusterParameterGroup>();
+              parameterGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroup>();
+              parameterGroups.setAutoConstruct(true);
         }
         return parameterGroups;
     }
@@ -108,8 +108,7 @@ public class DescribeClusterParameterGroupsResult  implements Serializable  {
             this.parameterGroups = null;
             return;
         }
-
-        java.util.List<ClusterParameterGroup> parameterGroupsCopy = new java.util.ArrayList<ClusterParameterGroup>(parameterGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroup> parameterGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroup>(parameterGroups.size());
         parameterGroupsCopy.addAll(parameterGroups);
         this.parameterGroups = parameterGroupsCopy;
     }
@@ -124,7 +123,7 @@ public class DescribeClusterParameterGroupsResult  implements Serializable  {
      *         describes one cluster parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParameterGroupsResult withParameterGroups(ClusterParameterGroup... parameterGroups) {
         if (getParameterGroups() == null) setParameterGroups(new java.util.ArrayList<ClusterParameterGroup>(parameterGroups.length));
@@ -144,20 +143,20 @@ public class DescribeClusterParameterGroupsResult  implements Serializable  {
      *         describes one cluster parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterParameterGroupsResult withParameterGroups(java.util.Collection<ClusterParameterGroup> parameterGroups) {
         if (parameterGroups == null) {
             this.parameterGroups = null;
         } else {
-            java.util.List<ClusterParameterGroup> parameterGroupsCopy = new java.util.ArrayList<ClusterParameterGroup>(parameterGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroup> parameterGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroup>(parameterGroups.size());
             parameterGroupsCopy.addAll(parameterGroups);
             this.parameterGroups = parameterGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -169,8 +168,8 @@ public class DescribeClusterParameterGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getParameterGroups() != null) sb.append("ParameterGroups: " + getParameterGroups() );
         sb.append("}");
         return sb.toString();

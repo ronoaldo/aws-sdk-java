@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,13 +13,14 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * </p>
  */
-public class Item  implements Serializable  {
+public class Item implements Serializable {
 
     /**
      * The name of the item.
@@ -27,14 +28,14 @@ public class Item  implements Serializable  {
     private String name;
 
     /**
-     * 
+     * <p/>
      */
     private String alternateNameEncoding;
 
     /**
      * A list of attributes.
      */
-    private java.util.List<Attribute> attributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributes;
 
     /**
      * Default constructor for a new Item object.  Callers should use the
@@ -51,12 +52,10 @@ public class Item  implements Serializable  {
      * @param attributes A list of attributes.
      */
     public Item(String name, java.util.List<Attribute> attributes) {
-        this.name = name;
-        this.attributes = attributes;
+        setName(name);
+        setAttributes(attributes);
     }
 
-    
-    
     /**
      * The name of the item.
      *
@@ -83,57 +82,55 @@ public class Item  implements Serializable  {
      * @param name The name of the item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Item withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
-     * 
+     * <p/>
      *
-     * @return 
+     * @return <p/>
      */
     public String getAlternateNameEncoding() {
         return alternateNameEncoding;
     }
     
     /**
-     * 
+     * <p/>
      *
-     * @param alternateNameEncoding 
+     * @param alternateNameEncoding <p/>
      */
     public void setAlternateNameEncoding(String alternateNameEncoding) {
         this.alternateNameEncoding = alternateNameEncoding;
     }
     
     /**
-     * 
+     * <p/>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param alternateNameEncoding 
+     * @param alternateNameEncoding <p/>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Item withAlternateNameEncoding(String alternateNameEncoding) {
         this.alternateNameEncoding = alternateNameEncoding;
         return this;
     }
-    
-    
+
     /**
      * A list of attributes.
      *
      * @return A list of attributes.
      */
     public java.util.List<Attribute> getAttributes() {
-        
         if (attributes == null) {
-            attributes = new java.util.ArrayList<Attribute>();
+              attributes = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>();
+              attributes.setAutoConstruct(true);
         }
         return attributes;
     }
@@ -148,8 +145,7 @@ public class Item  implements Serializable  {
             this.attributes = null;
             return;
         }
-
-        java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
         attributesCopy.addAll(attributes);
         this.attributes = attributesCopy;
     }
@@ -162,7 +158,7 @@ public class Item  implements Serializable  {
      * @param attributes A list of attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Item withAttributes(Attribute... attributes) {
         if (getAttributes() == null) setAttributes(new java.util.ArrayList<Attribute>(attributes.length));
@@ -180,20 +176,20 @@ public class Item  implements Serializable  {
      * @param attributes A list of attributes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Item withAttributes(java.util.Collection<Attribute> attributes) {
         if (attributes == null) {
             this.attributes = null;
         } else {
-            java.util.List<Attribute> attributesCopy = new java.util.ArrayList<Attribute>(attributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Attribute> attributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Attribute>(attributes.size());
             attributesCopy.addAll(attributes);
             this.attributes = attributesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -205,9 +201,9 @@ public class Item  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getAlternateNameEncoding() != null) sb.append("AlternateNameEncoding: " + getAlternateNameEncoding() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getAlternateNameEncoding() != null) sb.append("AlternateNameEncoding: " + getAlternateNameEncoding() + ",");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

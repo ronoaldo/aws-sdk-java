@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#indexDocuments(IndexDocumentsRequest) IndexDocuments operation}.
  * <p>
- * Tells the search domain to start indexing its documents using the latest text processing options and <code>IndexFields</code> . This operation must
- * be invoked to make options whose OptionStatus has <code>OptionState</code> of <code>RequiresIndexDocuments</code> visible in search results.
+ * Tells the search domain to start indexing its documents using the
+ * latest text processing options and <code>IndexFields</code> . This
+ * operation must be invoked to make options whose OptionStatus has
+ * <code>OptionState</code> of <code>RequiresIndexDocuments</code>
+ * visible in search results.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#indexDocuments(IndexDocumentsRequest)
  */
-public class IndexDocumentsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class IndexDocumentsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -102,14 +107,13 @@ public class IndexDocumentsRequest extends AmazonWebServiceRequest  implements S
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexDocumentsRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -121,7 +125,7 @@ public class IndexDocumentsRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomainName() != null) sb.append("DomainName: " + getDomainName() );
         sb.append("}");
         return sb.toString();

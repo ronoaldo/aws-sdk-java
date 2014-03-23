@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents the body of the message. You can specify text, HTML, or both. If you use both, then the message should display correctly in the widest
- * variety of email clients.
+ * Represents the body of the message. You can specify text, HTML, or
+ * both. If you use both, then the message should display correctly in
+ * the widest variety of email clients.
  * </p>
  */
-public class Body  implements Serializable  {
+public class Body implements Serializable {
 
     /**
      * The content of the message, in text format. Use this for text-based
@@ -53,11 +55,9 @@ public class Body  implements Serializable  {
      * mobile devices).
      */
     public Body(Content text) {
-        this.text = text;
+        setText(text);
     }
 
-    
-    
     /**
      * The content of the message, in text format. Use this for text-based
      * email clients, or clients on high-latency networks (such as mobile
@@ -96,14 +96,13 @@ public class Body  implements Serializable  {
      *         devices).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Body withText(Content text) {
         this.text = text;
         return this;
     }
-    
-    
+
     /**
      * The content of the message, in HTML format. Use this for email clients
      * that can process HTML. You can include clickable links, formatted
@@ -142,14 +141,13 @@ public class Body  implements Serializable  {
      *         text, and much more in an HTML message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Body withHtml(Content html) {
         this.html = html;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -161,8 +159,8 @@ public class Body  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getText() != null) sb.append("Text: " + getText() + ",");    	
+        sb.append("{");
+        if (getText() != null) sb.append("Text: " + getText() + ",");
         if (getHtml() != null) sb.append("Html: " + getHtml() );
         sb.append("}");
         return sb.toString();

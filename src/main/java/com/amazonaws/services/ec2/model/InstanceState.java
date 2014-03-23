@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents the state of an Amazon EC2 instance.
+ * Describes the current state of the instance.
  * </p>
  */
-public class InstanceState  implements Serializable  {
+public class InstanceState implements Serializable {
 
     /**
-     * A 16-bit unsigned integer. The high byte is an opaque internal value
-     * and should be ignored. The low byte is set based on the state
-     * represented.
+     * The low byte represents the state. The high byte is an opaque internal
+     * value and should be ignored. <ul> <li><p><code>0</code> :
+     * <code>pending</code></li> <li><p><code>16</code> :
+     * <code>running</code></li> <li><p><code>32</code> :
+     * <code>shutting-down</code></li> <li><p><code>48</code> :
+     * <code>terminated</code></li> <li><p><code>64</code> :
+     * <code>stopping</code></li> <li><p><code>80</code> :
+     * <code>stopped</code></li> </ul>
      */
     private Integer code;
 
@@ -38,51 +44,80 @@ public class InstanceState  implements Serializable  {
     private String name;
 
     /**
-     * A 16-bit unsigned integer. The high byte is an opaque internal value
-     * and should be ignored. The low byte is set based on the state
-     * represented.
+     * The low byte represents the state. The high byte is an opaque internal
+     * value and should be ignored. <ul> <li><p><code>0</code> :
+     * <code>pending</code></li> <li><p><code>16</code> :
+     * <code>running</code></li> <li><p><code>32</code> :
+     * <code>shutting-down</code></li> <li><p><code>48</code> :
+     * <code>terminated</code></li> <li><p><code>64</code> :
+     * <code>stopping</code></li> <li><p><code>80</code> :
+     * <code>stopped</code></li> </ul>
      *
-     * @return A 16-bit unsigned integer. The high byte is an opaque internal value
-     *         and should be ignored. The low byte is set based on the state
-     *         represented.
+     * @return The low byte represents the state. The high byte is an opaque internal
+     *         value and should be ignored. <ul> <li><p><code>0</code> :
+     *         <code>pending</code></li> <li><p><code>16</code> :
+     *         <code>running</code></li> <li><p><code>32</code> :
+     *         <code>shutting-down</code></li> <li><p><code>48</code> :
+     *         <code>terminated</code></li> <li><p><code>64</code> :
+     *         <code>stopping</code></li> <li><p><code>80</code> :
+     *         <code>stopped</code></li> </ul>
      */
     public Integer getCode() {
         return code;
     }
     
     /**
-     * A 16-bit unsigned integer. The high byte is an opaque internal value
-     * and should be ignored. The low byte is set based on the state
-     * represented.
+     * The low byte represents the state. The high byte is an opaque internal
+     * value and should be ignored. <ul> <li><p><code>0</code> :
+     * <code>pending</code></li> <li><p><code>16</code> :
+     * <code>running</code></li> <li><p><code>32</code> :
+     * <code>shutting-down</code></li> <li><p><code>48</code> :
+     * <code>terminated</code></li> <li><p><code>64</code> :
+     * <code>stopping</code></li> <li><p><code>80</code> :
+     * <code>stopped</code></li> </ul>
      *
-     * @param code A 16-bit unsigned integer. The high byte is an opaque internal value
-     *         and should be ignored. The low byte is set based on the state
-     *         represented.
+     * @param code The low byte represents the state. The high byte is an opaque internal
+     *         value and should be ignored. <ul> <li><p><code>0</code> :
+     *         <code>pending</code></li> <li><p><code>16</code> :
+     *         <code>running</code></li> <li><p><code>32</code> :
+     *         <code>shutting-down</code></li> <li><p><code>48</code> :
+     *         <code>terminated</code></li> <li><p><code>64</code> :
+     *         <code>stopping</code></li> <li><p><code>80</code> :
+     *         <code>stopped</code></li> </ul>
      */
     public void setCode(Integer code) {
         this.code = code;
     }
     
     /**
-     * A 16-bit unsigned integer. The high byte is an opaque internal value
-     * and should be ignored. The low byte is set based on the state
-     * represented.
+     * The low byte represents the state. The high byte is an opaque internal
+     * value and should be ignored. <ul> <li><p><code>0</code> :
+     * <code>pending</code></li> <li><p><code>16</code> :
+     * <code>running</code></li> <li><p><code>32</code> :
+     * <code>shutting-down</code></li> <li><p><code>48</code> :
+     * <code>terminated</code></li> <li><p><code>64</code> :
+     * <code>stopping</code></li> <li><p><code>80</code> :
+     * <code>stopped</code></li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param code A 16-bit unsigned integer. The high byte is an opaque internal value
-     *         and should be ignored. The low byte is set based on the state
-     *         represented.
+     * @param code The low byte represents the state. The high byte is an opaque internal
+     *         value and should be ignored. <ul> <li><p><code>0</code> :
+     *         <code>pending</code></li> <li><p><code>16</code> :
+     *         <code>running</code></li> <li><p><code>32</code> :
+     *         <code>shutting-down</code></li> <li><p><code>48</code> :
+     *         <code>terminated</code></li> <li><p><code>64</code> :
+     *         <code>stopping</code></li> <li><p><code>80</code> :
+     *         <code>stopped</code></li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceState withCode(Integer code) {
         this.code = code;
         return this;
     }
-    
-    
+
     /**
      * The current state of the instance.
      * <p>
@@ -122,7 +157,7 @@ public class InstanceState  implements Serializable  {
      * @param name The current state of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceStateName
      */
@@ -130,8 +165,7 @@ public class InstanceState  implements Serializable  {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The current state of the instance.
      * <p>
@@ -157,7 +191,7 @@ public class InstanceState  implements Serializable  {
      * @param name The current state of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceStateName
      */
@@ -165,7 +199,7 @@ public class InstanceState  implements Serializable  {
         this.name = name.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -177,8 +211,8 @@ public class InstanceState  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

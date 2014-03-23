@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ import com.amazonaws.services.dynamodb.model.*;
  * <p>
  * Amazon DynamoDB removes traditional scalability limitations on data storage while maintaining low latency and predictable performance.
  * </p>
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClient} instead.
  */
 @Deprecated
 public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
@@ -66,7 +67,7 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonDynamoDBAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -90,7 +91,7 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient
      *                       client connects to AmazonDynamoDB
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonDynamoDBAsyncClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());

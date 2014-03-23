@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeStacks</code> request.
  * </p>
  */
-public class DescribeStacksResult  implements Serializable  {
+public class DescribeStacksResult implements Serializable {
 
     /**
      * An array of <code>Stack</code> objects that describe the stacks.
      */
-    private java.util.List<Stack> stacks;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Stack> stacks;
 
     /**
      * An array of <code>Stack</code> objects that describe the stacks.
@@ -33,9 +34,9 @@ public class DescribeStacksResult  implements Serializable  {
      * @return An array of <code>Stack</code> objects that describe the stacks.
      */
     public java.util.List<Stack> getStacks() {
-        
         if (stacks == null) {
-            stacks = new java.util.ArrayList<Stack>();
+              stacks = new com.amazonaws.internal.ListWithAutoConstructFlag<Stack>();
+              stacks.setAutoConstruct(true);
         }
         return stacks;
     }
@@ -50,8 +51,7 @@ public class DescribeStacksResult  implements Serializable  {
             this.stacks = null;
             return;
         }
-
-        java.util.List<Stack> stacksCopy = new java.util.ArrayList<Stack>(stacks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Stack> stacksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Stack>(stacks.size());
         stacksCopy.addAll(stacks);
         this.stacks = stacksCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeStacksResult  implements Serializable  {
      * @param stacks An array of <code>Stack</code> objects that describe the stacks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksResult withStacks(Stack... stacks) {
         if (getStacks() == null) setStacks(new java.util.ArrayList<Stack>(stacks.length));
@@ -82,20 +82,20 @@ public class DescribeStacksResult  implements Serializable  {
      * @param stacks An array of <code>Stack</code> objects that describe the stacks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksResult withStacks(java.util.Collection<Stack> stacks) {
         if (stacks == null) {
             this.stacks = null;
         } else {
-            java.util.List<Stack> stacksCopy = new java.util.ArrayList<Stack>(stacks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Stack> stacksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Stack>(stacks.size());
             stacksCopy.addAll(stacks);
             this.stacks = stacksCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeStacksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStacks() != null) sb.append("Stacks: " + getStacks() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -41,13 +41,13 @@ public class StringCondition extends Condition {
          */
         StringLike,
 
-        /** Negated form of {@link StringConditionType#StringEquals} */
+        /** Negated form of {@link #StringEquals} */
         StringNotEquals,
 
-        /** Negated form of {@link StringConditionType#StringEqualsIgnoreCase} */
+        /** Negated form of {@link #StringEqualsIgnoreCase} */
         StringNotEqualsIgnoreCase,
 
-        /** Negated form of {@link StringConditionType#StringLike} */
+        /** Negated form of {@link #StringLike} */
         StringNotLike;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ReplaceRouteTableAssociationRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#replaceRouteTableAssociation(ReplaceRouteTableAssociationRequest) ReplaceRouteTableAssociation operation}.
  * <p>
- * Changes the route table associated with a given subnet in a VPC. After you execute this action, the subnet uses the routes in the new route table
- * it's associated with. For more information about route tables, go to <a
- * href="http://docs.amazonwebservices.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route Tables </a> in the Amazon Virtual Private Cloud User
- * Guide.
+ * Changes the route table associated with a given subnet in a VPC. After
+ * the operation completes, the subnet uses the routes in the new route
+ * table it's associated with. For more information about route tables,
+ * see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route Tables </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  * <p>
- * You can also use this to change which table is the main route table in the VPC. You just specify the main route table's association ID and the route
- * table that you want to be the new main route table.
+ * You can also use ReplaceRouteTableAssociation to change which table is
+ * the main route table in the VPC. You just specify the main route
+ * table's association ID and the route table to be the new main route
+ * table.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#replaceRouteTableAssociation(ReplaceRouteTableAssociationRequest)
  */
-public class ReplaceRouteTableAssociationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ReplaceRouteTableAssociationRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ReplaceRouteTableAssociationRequest> {
 
     /**
-     * The ID representing the current association between the original route
-     * table and the subnet.
+     * The association ID.
      */
     private String associationId;
 
@@ -45,45 +52,38 @@ public class ReplaceRouteTableAssociationRequest extends AmazonWebServiceRequest
     private String routeTableId;
 
     /**
-     * The ID representing the current association between the original route
-     * table and the subnet.
+     * The association ID.
      *
-     * @return The ID representing the current association between the original route
-     *         table and the subnet.
+     * @return The association ID.
      */
     public String getAssociationId() {
         return associationId;
     }
     
     /**
-     * The ID representing the current association between the original route
-     * table and the subnet.
+     * The association ID.
      *
-     * @param associationId The ID representing the current association between the original route
-     *         table and the subnet.
+     * @param associationId The association ID.
      */
     public void setAssociationId(String associationId) {
         this.associationId = associationId;
     }
     
     /**
-     * The ID representing the current association between the original route
-     * table and the subnet.
+     * The association ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param associationId The ID representing the current association between the original route
-     *         table and the subnet.
+     * @param associationId The association ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceRouteTableAssociationRequest withAssociationId(String associationId) {
         this.associationId = associationId;
         return this;
     }
-    
-    
+
     /**
      * The ID of the new route table to associate with the subnet.
      *
@@ -110,13 +110,24 @@ public class ReplaceRouteTableAssociationRequest extends AmazonWebServiceRequest
      * @param routeTableId The ID of the new route table to associate with the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReplaceRouteTableAssociationRequest withRouteTableId(String routeTableId) {
         this.routeTableId = routeTableId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ReplaceRouteTableAssociationRequest> getDryRunRequest() {
+        Request<ReplaceRouteTableAssociationRequest> request = new ReplaceRouteTableAssociationRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -129,8 +140,8 @@ public class ReplaceRouteTableAssociationRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() + ",");    	
+        sb.append("{");
+        if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() + ",");
         if (getRouteTableId() != null) sb.append("RouteTableId: " + getRouteTableId() );
         sb.append("}");
         return sb.toString();

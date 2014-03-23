@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,28 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#deleteDBSecurityGroup(DeleteDBSecurityGroupRequest) DeleteDBSecurityGroup operation}.
  * <p>
- * Deletes a DB Security Group.
+ * Deletes a DB security group.
  * </p>
  * <p>
- * <b>NOTE:</b>The specified DB Security Group must not be associated with any DB Instances.
+ * <b>NOTE:</b>The specified DB security group must not be associated
+ * with any DB instances.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#deleteDBSecurityGroup(DeleteDBSecurityGroupRequest)
  */
-public class DeleteDBSecurityGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteDBSecurityGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the DB Security Group to delete. <note>You cannot delete
-     * the default DB Security Group.</note> <p> Constraints: <ul> <li>Must
+     * The name of the DB security group to delete. <note>You cannot delete
+     * the default DB security group.</note> <p> Constraints: <ul> <li>Must
      * be 1 to 255 alphanumeric characters</li> <li>First character must be a
      * letter</li> <li>Cannot end with a hyphen or contain two consecutive
-     * hyphens</li> </ul>
+     * hyphens</li> <li>Must not be "Default"</li> <li>May not contain
+     * spaces</li> </ul>
      */
     private String dBSecurityGroupName;
 
@@ -49,76 +53,80 @@ public class DeleteDBSecurityGroupRequest extends AmazonWebServiceRequest  imple
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param dBSecurityGroupName The name of the DB Security Group to
-     * delete. <note>You cannot delete the default DB Security Group.</note>
+     * @param dBSecurityGroupName The name of the DB security group to
+     * delete. <note>You cannot delete the default DB security group.</note>
      * <p> Constraints: <ul> <li>Must be 1 to 255 alphanumeric
      * characters</li> <li>First character must be a letter</li> <li>Cannot
-     * end with a hyphen or contain two consecutive hyphens</li> </ul>
+     * end with a hyphen or contain two consecutive hyphens</li> <li>Must not
+     * be "Default"</li> <li>May not contain spaces</li> </ul>
      */
     public DeleteDBSecurityGroupRequest(String dBSecurityGroupName) {
-        this.dBSecurityGroupName = dBSecurityGroupName;
+        setDBSecurityGroupName(dBSecurityGroupName);
     }
 
-    
-    
     /**
-     * The name of the DB Security Group to delete. <note>You cannot delete
-     * the default DB Security Group.</note> <p> Constraints: <ul> <li>Must
+     * The name of the DB security group to delete. <note>You cannot delete
+     * the default DB security group.</note> <p> Constraints: <ul> <li>Must
      * be 1 to 255 alphanumeric characters</li> <li>First character must be a
      * letter</li> <li>Cannot end with a hyphen or contain two consecutive
-     * hyphens</li> </ul>
+     * hyphens</li> <li>Must not be "Default"</li> <li>May not contain
+     * spaces</li> </ul>
      *
-     * @return The name of the DB Security Group to delete. <note>You cannot delete
-     *         the default DB Security Group.</note> <p> Constraints: <ul> <li>Must
+     * @return The name of the DB security group to delete. <note>You cannot delete
+     *         the default DB security group.</note> <p> Constraints: <ul> <li>Must
      *         be 1 to 255 alphanumeric characters</li> <li>First character must be a
      *         letter</li> <li>Cannot end with a hyphen or contain two consecutive
-     *         hyphens</li> </ul>
+     *         hyphens</li> <li>Must not be "Default"</li> <li>May not contain
+     *         spaces</li> </ul>
      */
     public String getDBSecurityGroupName() {
         return dBSecurityGroupName;
     }
     
     /**
-     * The name of the DB Security Group to delete. <note>You cannot delete
-     * the default DB Security Group.</note> <p> Constraints: <ul> <li>Must
+     * The name of the DB security group to delete. <note>You cannot delete
+     * the default DB security group.</note> <p> Constraints: <ul> <li>Must
      * be 1 to 255 alphanumeric characters</li> <li>First character must be a
      * letter</li> <li>Cannot end with a hyphen or contain two consecutive
-     * hyphens</li> </ul>
+     * hyphens</li> <li>Must not be "Default"</li> <li>May not contain
+     * spaces</li> </ul>
      *
-     * @param dBSecurityGroupName The name of the DB Security Group to delete. <note>You cannot delete
-     *         the default DB Security Group.</note> <p> Constraints: <ul> <li>Must
+     * @param dBSecurityGroupName The name of the DB security group to delete. <note>You cannot delete
+     *         the default DB security group.</note> <p> Constraints: <ul> <li>Must
      *         be 1 to 255 alphanumeric characters</li> <li>First character must be a
      *         letter</li> <li>Cannot end with a hyphen or contain two consecutive
-     *         hyphens</li> </ul>
+     *         hyphens</li> <li>Must not be "Default"</li> <li>May not contain
+     *         spaces</li> </ul>
      */
     public void setDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
     }
     
     /**
-     * The name of the DB Security Group to delete. <note>You cannot delete
-     * the default DB Security Group.</note> <p> Constraints: <ul> <li>Must
+     * The name of the DB security group to delete. <note>You cannot delete
+     * the default DB security group.</note> <p> Constraints: <ul> <li>Must
      * be 1 to 255 alphanumeric characters</li> <li>First character must be a
      * letter</li> <li>Cannot end with a hyphen or contain two consecutive
-     * hyphens</li> </ul>
+     * hyphens</li> <li>Must not be "Default"</li> <li>May not contain
+     * spaces</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSecurityGroupName The name of the DB Security Group to delete. <note>You cannot delete
-     *         the default DB Security Group.</note> <p> Constraints: <ul> <li>Must
+     * @param dBSecurityGroupName The name of the DB security group to delete. <note>You cannot delete
+     *         the default DB security group.</note> <p> Constraints: <ul> <li>Must
      *         be 1 to 255 alphanumeric characters</li> <li>First character must be a
      *         letter</li> <li>Cannot end with a hyphen or contain two consecutive
-     *         hyphens</li> </ul>
+     *         hyphens</li> <li>Must not be "Default"</li> <li>May not contain
+     *         spaces</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteDBSecurityGroupRequest withDBSecurityGroupName(String dBSecurityGroupName) {
         this.dBSecurityGroupName = dBSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -130,7 +138,7 @@ public class DeleteDBSecurityGroupRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDBSecurityGroupName() != null) sb.append("DBSecurityGroupName: " + getDBSecurityGroupName() );
         sb.append("}");
         return sb.toString();

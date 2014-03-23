@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of registering a new Amazon Machine Image (AMI). Contains the ID of the new image.
- * </p>
+ * 
  */
-public class RegisterImageResult  implements Serializable  {
+public class RegisterImageResult implements Serializable {
 
     /**
-     * The ID of the new Amazon Machine Image (AMI).
+     * The ID of the newly registered AMI.
      */
     private String imageId;
 
     /**
-     * The ID of the new Amazon Machine Image (AMI).
+     * The ID of the newly registered AMI.
      *
-     * @return The ID of the new Amazon Machine Image (AMI).
+     * @return The ID of the newly registered AMI.
      */
     public String getImageId() {
         return imageId;
     }
     
     /**
-     * The ID of the new Amazon Machine Image (AMI).
+     * The ID of the newly registered AMI.
      *
-     * @param imageId The ID of the new Amazon Machine Image (AMI).
+     * @param imageId The ID of the newly registered AMI.
      */
     public void setImageId(String imageId) {
         this.imageId = imageId;
     }
     
     /**
-     * The ID of the new Amazon Machine Image (AMI).
+     * The ID of the newly registered AMI.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param imageId The ID of the new Amazon Machine Image (AMI).
+     * @param imageId The ID of the newly registered AMI.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterImageResult withImageId(String imageId) {
         this.imageId = imageId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class RegisterImageResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImageId() != null) sb.append("ImageId: " + getImageId() );
         sb.append("}");
         return sb.toString();

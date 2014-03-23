@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#updateDefaultSearchField(UpdateDefaultSearchFieldRequest) UpdateDefaultSearchField operation}.
  * <p>
- * Configures the default search field for the search domain. The default search field is used when a search request does not specify which fields to
- * search. By default, it is configured to include the contents of all of the domain's text fields.
+ * Configures the default search field for the search domain. The default
+ * search field is the text field that is searched when a search request
+ * does not specify which fields to search. By default, it is configured
+ * to include the contents of all of the domain's text fields.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#updateDefaultSearchField(UpdateDefaultSearchFieldRequest)
  */
-public class UpdateDefaultSearchFieldRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateDefaultSearchFieldRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -41,9 +45,12 @@ public class UpdateDefaultSearchFieldRequest extends AmazonWebServiceRequest  im
     private String domainName;
 
     /**
-     * The <code>IndexField</code> to use for search requests issued with the
-     * <code>q</code> parameter. The default is an empty string, which
-     * automatically searches all text fields.
+     * The text field to search if the search request does not specify which
+     * field to search. The default search field is used when search terms
+     * are specified with the <code>q</code> parameter, or if a match
+     * expression specified with the <code>bq</code> parameter does not
+     * constrain the search to a particular field. The default is an empty
+     * string, which automatically searches all text fields.
      */
     private String defaultSearchField;
 
@@ -109,60 +116,76 @@ public class UpdateDefaultSearchFieldRequest extends AmazonWebServiceRequest  im
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateDefaultSearchFieldRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
-     * The <code>IndexField</code> to use for search requests issued with the
-     * <code>q</code> parameter. The default is an empty string, which
-     * automatically searches all text fields.
+     * The text field to search if the search request does not specify which
+     * field to search. The default search field is used when search terms
+     * are specified with the <code>q</code> parameter, or if a match
+     * expression specified with the <code>bq</code> parameter does not
+     * constrain the search to a particular field. The default is an empty
+     * string, which automatically searches all text fields.
      *
-     * @return The <code>IndexField</code> to use for search requests issued with the
-     *         <code>q</code> parameter. The default is an empty string, which
-     *         automatically searches all text fields.
+     * @return The text field to search if the search request does not specify which
+     *         field to search. The default search field is used when search terms
+     *         are specified with the <code>q</code> parameter, or if a match
+     *         expression specified with the <code>bq</code> parameter does not
+     *         constrain the search to a particular field. The default is an empty
+     *         string, which automatically searches all text fields.
      */
     public String getDefaultSearchField() {
         return defaultSearchField;
     }
     
     /**
-     * The <code>IndexField</code> to use for search requests issued with the
-     * <code>q</code> parameter. The default is an empty string, which
-     * automatically searches all text fields.
+     * The text field to search if the search request does not specify which
+     * field to search. The default search field is used when search terms
+     * are specified with the <code>q</code> parameter, or if a match
+     * expression specified with the <code>bq</code> parameter does not
+     * constrain the search to a particular field. The default is an empty
+     * string, which automatically searches all text fields.
      *
-     * @param defaultSearchField The <code>IndexField</code> to use for search requests issued with the
-     *         <code>q</code> parameter. The default is an empty string, which
-     *         automatically searches all text fields.
+     * @param defaultSearchField The text field to search if the search request does not specify which
+     *         field to search. The default search field is used when search terms
+     *         are specified with the <code>q</code> parameter, or if a match
+     *         expression specified with the <code>bq</code> parameter does not
+     *         constrain the search to a particular field. The default is an empty
+     *         string, which automatically searches all text fields.
      */
     public void setDefaultSearchField(String defaultSearchField) {
         this.defaultSearchField = defaultSearchField;
     }
     
     /**
-     * The <code>IndexField</code> to use for search requests issued with the
-     * <code>q</code> parameter. The default is an empty string, which
-     * automatically searches all text fields.
+     * The text field to search if the search request does not specify which
+     * field to search. The default search field is used when search terms
+     * are specified with the <code>q</code> parameter, or if a match
+     * expression specified with the <code>bq</code> parameter does not
+     * constrain the search to a particular field. The default is an empty
+     * string, which automatically searches all text fields.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param defaultSearchField The <code>IndexField</code> to use for search requests issued with the
-     *         <code>q</code> parameter. The default is an empty string, which
-     *         automatically searches all text fields.
+     * @param defaultSearchField The text field to search if the search request does not specify which
+     *         field to search. The default search field is used when search terms
+     *         are specified with the <code>q</code> parameter, or if a match
+     *         expression specified with the <code>bq</code> parameter does not
+     *         constrain the search to a particular field. The default is an empty
+     *         string, which automatically searches all text fields.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateDefaultSearchFieldRequest withDefaultSearchField(String defaultSearchField) {
         this.defaultSearchField = defaultSearchField;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -174,8 +197,8 @@ public class UpdateDefaultSearchFieldRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getDefaultSearchField() != null) sb.append("DefaultSearchField: " + getDefaultSearchField() );
         sb.append("}");
         return sb.toString();

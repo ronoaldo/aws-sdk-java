@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityNotificationTopic(SetIdentityNotificationTopicRequest) SetIdentityNotificationTopic operation}.
  * <p>
- * Given an identity (email address or domain), sets the Amazon SNS topic to which Amazon SES will publish bounce and complaint notifications for emails
- * sent with that identity as the <code>Source</code> .
- * Publishing to topics may only be disabled when feedback forwarding is enabled. For more information about feedback notification, see the <a
- * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide"> Amazon SES Developer Guide </a> .
+ * Given an identity (email address or domain), sets the Amazon SNS topic
+ * to which Amazon SES will publish bounce and complaint notifications
+ * for emails sent with that identity as the <code>Source</code> .
+ * Publishing to topics may only be disabled when feedback
+ * forwarding is enabled.
+ * </p>
+ * <p>
+ * This action is throttled at one request per second.
+ * </p>
+ * <p>
+ * For more information about feedback notification, see the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityNotificationTopic(SetIdentityNotificationTopicRequest)
  */
-public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity for which the topic will be set. Examples:
@@ -46,7 +57,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
 
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
-     * Service (Amazon SNS) topic. If the parameter is ommited from the
+     * Service (Amazon SNS) topic. If the parameter is omitted from the
      * request or a null value is passed, the topic is cleared and publishing
      * is disabled.
      */
@@ -84,14 +95,13 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
      *         <code>user@example.com</code>, <code>example.com</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityNotificationTopicRequest withIdentity(String identity) {
         this.identity = identity;
         return this;
     }
-    
-    
+
     /**
      * The type of feedback notifications that will be published to the
      * specified topic.
@@ -137,7 +147,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
      *         specified topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see NotificationType
      */
@@ -145,8 +155,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
         this.notificationType = notificationType;
         return this;
     }
-    
-    
+
     /**
      * The type of feedback notifications that will be published to the
      * specified topic.
@@ -176,7 +185,7 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
      *         specified topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see NotificationType
      */
@@ -184,15 +193,15 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
         this.notificationType = notificationType.toString();
         return this;
     }
-    
+
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
-     * Service (Amazon SNS) topic. If the parameter is ommited from the
+     * Service (Amazon SNS) topic. If the parameter is omitted from the
      * request or a null value is passed, the topic is cleared and publishing
      * is disabled.
      *
      * @return The Amazon Resource Name (ARN) of the Amazon Simple Notification
-     *         Service (Amazon SNS) topic. If the parameter is ommited from the
+     *         Service (Amazon SNS) topic. If the parameter is omitted from the
      *         request or a null value is passed, the topic is cleared and publishing
      *         is disabled.
      */
@@ -202,12 +211,12 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
     
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
-     * Service (Amazon SNS) topic. If the parameter is ommited from the
+     * Service (Amazon SNS) topic. If the parameter is omitted from the
      * request or a null value is passed, the topic is cleared and publishing
      * is disabled.
      *
      * @param snsTopic The Amazon Resource Name (ARN) of the Amazon Simple Notification
-     *         Service (Amazon SNS) topic. If the parameter is ommited from the
+     *         Service (Amazon SNS) topic. If the parameter is omitted from the
      *         request or a null value is passed, the topic is cleared and publishing
      *         is disabled.
      */
@@ -217,26 +226,25 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
     
     /**
      * The Amazon Resource Name (ARN) of the Amazon Simple Notification
-     * Service (Amazon SNS) topic. If the parameter is ommited from the
+     * Service (Amazon SNS) topic. If the parameter is omitted from the
      * request or a null value is passed, the topic is cleared and publishing
      * is disabled.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param snsTopic The Amazon Resource Name (ARN) of the Amazon Simple Notification
-     *         Service (Amazon SNS) topic. If the parameter is ommited from the
+     *         Service (Amazon SNS) topic. If the parameter is omitted from the
      *         request or a null value is passed, the topic is cleared and publishing
      *         is disabled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityNotificationTopicRequest withSnsTopic(String snsTopic) {
         this.snsTopic = snsTopic;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -248,9 +256,9 @@ public class SetIdentityNotificationTopicRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");    	
-        if (getNotificationType() != null) sb.append("NotificationType: " + getNotificationType() + ",");    	
+        sb.append("{");
+        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");
+        if (getNotificationType() != null) sb.append("NotificationType: " + getNotificationType() + ",");
         if (getSnsTopic() != null) sb.append("SnsTopic: " + getSnsTopic() );
         sb.append("}");
         return sb.toString();

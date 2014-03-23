@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ResetCacheParameterGroupRequestMarshaller implements Marshaller<Req
     public Request<ResetCacheParameterGroupRequest> marshall(ResetCacheParameterGroupRequest resetCacheParameterGroupRequest) {
 
         if (resetCacheParameterGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ResetCacheParameterGroupRequest> request = new DefaultRequest<ResetCacheParameterGroupRequest>(resetCacheParameterGroupRequest, "AmazonElastiCache");
         request.addParameter("Action", "ResetCacheParameterGroup");
-        request.addParameter("Version", "2012-11-15");
+        request.addParameter("Version", "2013-06-15");
 
         if (resetCacheParameterGroupRequest.getCacheParameterGroupName() != null) {
             request.addParameter("CacheParameterGroupName", StringUtils.fromString(resetCacheParameterGroupRequest.getCacheParameterGroupName()));
@@ -63,7 +63,6 @@ public class ResetCacheParameterGroupRequestMarshaller implements Marshaller<Req
 
             parameterNameValuesListIndex++;
         }
-
 
         return request;
     }

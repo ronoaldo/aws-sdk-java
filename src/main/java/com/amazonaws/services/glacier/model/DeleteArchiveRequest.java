@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,43 +13,51 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.glacier.AmazonGlacier#deleteArchive(DeleteArchiveRequest) DeleteArchive operation}.
  * <p>
- * This operation deletes an archive from a vault. Subsequent requests to initiate a retrieval of this archive will fail. Archive retrievals that are in
- * progress for this archive ID may or may not succeed according to the following scenarios:
+ * This operation deletes an archive from a vault. Subsequent requests to
+ * initiate a retrieval of this archive will fail. Archive retrievals
+ * that are in progress for this archive ID may or may not succeed
+ * according to the following scenarios:
  * </p>
  * 
  * <ul>
- * <li>If the archive retrieval job is actively preparing the data for download when Amazon Glacier receives the delete archive request, the archival
- * retrieval operation might fail. </li>
- * <li>If the archive retrieval job has successfully prepared the archive for download when Amazon Glacier receives the delete archive request, you will
- * be able to download the output. </li>
+ * <li>If the archive retrieval job is actively preparing the data for
+ * download when Amazon Glacier receives the delete archive request, the
+ * archival retrieval operation might fail. </li>
+ * <li>If the archive retrieval job has successfully prepared the
+ * archive for download when Amazon Glacier receives the delete archive
+ * request, you will be able to download the output. </li>
  * 
  * </ul>
  * <p>
- * This operation is idempotent. Attempting to delete an already-deleted archive does not result in an error.
+ * This operation is idempotent. Attempting to delete an already-deleted
+ * archive does not result in an error.
  * </p>
  * <p>
- * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any
- * permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access
- * Management (IAM) </a> .
+ * An AWS account has full permission to perform all operations
+ * (actions). However, AWS Identity and Access Management (IAM) users
+ * don't have any permissions by default. You must grant them explicit
+ * permission to perform specific actions. For more information, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+ * .
  * </p>
  * <p>
- * For conceptual information and underlying REST API, go to <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/deleting-an-archive.html"> Deleting an Archive in Amazon Glacier </a> and <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/api-archive-delete.html"> Delete Archive </a> in the <i>Amazon Glacier Developer
- * Guide</i> .
+ * For conceptual information and underlying REST API, go to
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive.html"> Deleting an Archive in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html"> Delete Archive </a>
+ * in the <i>Amazon Glacier Developer Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.glacier.AmazonGlacier#deleteArchive(DeleteArchiveRequest)
  */
-public class DeleteArchiveRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteArchiveRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
@@ -85,12 +93,10 @@ public class DeleteArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param archiveId The ID of the archive to delete.
      */
     public DeleteArchiveRequest(String vaultName, String archiveId) {
-        this.vaultName = vaultName;
-        this.archiveId = archiveId;
+        setVaultName(vaultName);
+        setArchiveId(archiveId);
     }
 
-    
-    
     /**
      * Constructs a new DeleteArchiveRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -105,13 +111,11 @@ public class DeleteArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param archiveId The ID of the archive to delete.
      */
     public DeleteArchiveRequest(String accountId, String vaultName, String archiveId) {
-        this.accountId = accountId;
-        this.vaultName = vaultName;
-        this.archiveId = archiveId;
+        setAccountId(accountId);
+        setVaultName(vaultName);
+        setArchiveId(archiveId);
     }
 
-    
-    
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
      * either the AWS Account ID or optionally a '-', in which case Amazon
@@ -162,14 +166,13 @@ public class DeleteArchiveRequest extends AmazonWebServiceRequest  implements Se
      *         hyphens in it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteArchiveRequest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
     }
-    
-    
+
     /**
      * The name of the vault.
      *
@@ -196,14 +199,13 @@ public class DeleteArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param vaultName The name of the vault.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteArchiveRequest withVaultName(String vaultName) {
         this.vaultName = vaultName;
         return this;
     }
-    
-    
+
     /**
      * The ID of the archive to delete.
      *
@@ -230,14 +232,13 @@ public class DeleteArchiveRequest extends AmazonWebServiceRequest  implements Se
      * @param archiveId The ID of the archive to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteArchiveRequest withArchiveId(String archiveId) {
         this.archiveId = archiveId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -249,9 +250,9 @@ public class DeleteArchiveRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");    	
-        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");    	
+        sb.append("{");
+        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");
+        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");
         if (getArchiveId() != null) sb.append("ArchiveId: " + getArchiveId() );
         sb.append("}");
         return sb.toString();

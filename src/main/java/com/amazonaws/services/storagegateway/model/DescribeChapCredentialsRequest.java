@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#describeChapCredentials(DescribeChapCredentialsRequest) DescribeChapCredentials operation}.
  * <p>
- * This operation returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for
- * each target-initiator pair.
+ * This operation returns an array of Challenge-Handshake Authentication
+ * Protocol (CHAP) credentials information for a specified iSCSI target,
+ * one for each target-initiator pair.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#describeChapCredentials(DescribeChapCredentialsRequest)
  */
-public class DescribeChapCredentialsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeChapCredentialsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
@@ -84,14 +87,13 @@ public class DescribeChapCredentialsRequest extends AmazonWebServiceRequest  imp
      *         TargetARN for specified VolumeARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeChapCredentialsRequest withTargetARN(String targetARN) {
         this.targetARN = targetARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,7 +105,7 @@ public class DescribeChapCredentialsRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() );
         sb.append("}");
         return sb.toString();

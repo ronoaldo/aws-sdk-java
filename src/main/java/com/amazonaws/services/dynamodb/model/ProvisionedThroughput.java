@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import java.io.Serializable;
  * the expected number of read and write operations, assuming an item size of 1k and strictly consistent reads. For 2k item size, double the value. For
  * 3k, triple the value, etc. Eventually-consistent reads consume half the resources of strictly consistent reads.
  * </p>
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput} instead.
  */
 @Deprecated
 public class ProvisionedThroughput  implements Serializable  {

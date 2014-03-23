@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The TemplateParameter data type.
  * </p>
  */
-public class TemplateParameter  implements Serializable  {
+public class TemplateParameter implements Serializable {
 
     /**
      * The name associated with the parameter.
@@ -69,14 +70,13 @@ public class TemplateParameter  implements Serializable  {
      * @param parameterKey The name associated with the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TemplateParameter withParameterKey(String parameterKey) {
         this.parameterKey = parameterKey;
         return this;
     }
-    
-    
+
     /**
      * The default value associated with the parameter.
      *
@@ -103,14 +103,13 @@ public class TemplateParameter  implements Serializable  {
      * @param defaultValue The default value associated with the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TemplateParameter withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * Flag indicating whether the parameter should be displayed as plain
      * text in logs and UIs.
@@ -143,14 +142,13 @@ public class TemplateParameter  implements Serializable  {
      *         text in logs and UIs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TemplateParameter withNoEcho(Boolean noEcho) {
         this.noEcho = noEcho;
         return this;
     }
-    
-    
+
     /**
      * Flag indicating whether the parameter should be displayed as plain
      * text in logs and UIs.
@@ -161,7 +159,7 @@ public class TemplateParameter  implements Serializable  {
     public Boolean getNoEcho() {
         return noEcho;
     }
-    
+
     /**
      * User defined description associated with the parameter.
      *
@@ -188,14 +186,13 @@ public class TemplateParameter  implements Serializable  {
      * @param description User defined description associated with the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TemplateParameter withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -207,10 +204,10 @@ public class TemplateParameter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterKey() != null) sb.append("ParameterKey: " + getParameterKey() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
-        if (isNoEcho() != null) sb.append("NoEcho: " + isNoEcho() + ",");    	
+        sb.append("{");
+        if (getParameterKey() != null) sb.append("ParameterKey: " + getParameterKey() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
+        if (isNoEcho() != null) sb.append("NoEcho: " + isNoEcho() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

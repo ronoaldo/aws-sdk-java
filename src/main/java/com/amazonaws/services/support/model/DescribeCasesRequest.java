@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,66 +13,71 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.support.AWSSupport#describeCases(DescribeCasesRequest) DescribeCases operation}.
  * <p>
- * This action returns a list of cases that you specify by passing one or more CaseIds. In addition, you can filter the cases by date by setting values
- * for the AfterTime and BeforeTime request parameters.
+ * Returns a list of cases that you specify by passing one or more case
+ * IDs. In addition, you can filter the cases by date by setting values
+ * for the <code>AfterTime</code> and <code>BeforeTime</code> request
+ * parameters.
  * </p>
  * <p>
  * The response returns the following in JSON format:
  * </p>
  * <ol> <li>One or more CaseDetails data types. </li>
- * <li>One or more <i>NextToken</i> objects, strings that specifies where to paginate the returned records represented by <i>CaseDetails</i> .</li>
+ * <li>One or more <code>NextToken</code> values, which specify where to
+ * paginate the returned records represented by the
+ * <code>CaseDetails</code> objects.</li>
  * </ol>
  *
  * @see com.amazonaws.services.support.AWSSupport#describeCases(DescribeCasesRequest)
  */
-public class DescribeCasesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeCasesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * A list of Strings comprising ID numbers for support cases you want
-     * returned. The maximum number of cases is 100.
+     * A list of ID numbers of the support cases you want returned. The
+     * maximum number of cases is 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      */
-    private java.util.List<String> caseIdList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> caseIdList;
 
     /**
-     * String that corresponds to the ID value displayed for a case in the
-     * AWS Support Center user interface.
+     * The ID displayed for a case in the AWS Support Center user interface.
      */
     private String displayId;
 
     /**
-     * Start date for a filtered date search on support case communications.
+     * The start date for a filtered date search on support case
+     * communications.
      */
     private String afterTime;
 
     /**
-     * End date for a filtered date search on support case communications.
+     * The end date for a filtered date search on support case
+     * communications.
      */
     private String beforeTime;
 
     /**
-     * Boolean that indicates whether or not resolved support cases should be
-     * listed in the <a href="API_DescribeCases.html"
-     * title="DescribeCases">DescribeCases</a> search.
+     * Specifies whether resolved support cases should be included in the
+     * <a>DescribeCases</a> results.
      */
     private Boolean includeResolvedCases;
 
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      */
     private String nextToken;
 
     /**
-     * Integer that sets the maximum number of results to return before
-     * paginating.
+     * The maximum number of results to return before paginating.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>10 - 100<br/>
@@ -80,66 +85,65 @@ public class DescribeCasesRequest extends AmazonWebServiceRequest  implements Se
     private Integer maxResults;
 
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      */
     private String language;
 
     /**
-     * A list of Strings comprising ID numbers for support cases you want
-     * returned. The maximum number of cases is 100.
+     * A list of ID numbers of the support cases you want returned. The
+     * maximum number of cases is 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @return A list of Strings comprising ID numbers for support cases you want
-     *         returned. The maximum number of cases is 100.
+     * @return A list of ID numbers of the support cases you want returned. The
+     *         maximum number of cases is 100.
      */
     public java.util.List<String> getCaseIdList() {
-        
         if (caseIdList == null) {
-            caseIdList = new java.util.ArrayList<String>();
+              caseIdList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              caseIdList.setAutoConstruct(true);
         }
         return caseIdList;
     }
     
     /**
-     * A list of Strings comprising ID numbers for support cases you want
-     * returned. The maximum number of cases is 100.
+     * A list of ID numbers of the support cases you want returned. The
+     * maximum number of cases is 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @param caseIdList A list of Strings comprising ID numbers for support cases you want
-     *         returned. The maximum number of cases is 100.
+     * @param caseIdList A list of ID numbers of the support cases you want returned. The
+     *         maximum number of cases is 100.
      */
     public void setCaseIdList(java.util.Collection<String> caseIdList) {
         if (caseIdList == null) {
             this.caseIdList = null;
             return;
         }
-
-        java.util.List<String> caseIdListCopy = new java.util.ArrayList<String>(caseIdList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> caseIdListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(caseIdList.size());
         caseIdListCopy.addAll(caseIdList);
         this.caseIdList = caseIdListCopy;
     }
     
     /**
-     * A list of Strings comprising ID numbers for support cases you want
-     * returned. The maximum number of cases is 100.
+     * A list of ID numbers of the support cases you want returned. The
+     * maximum number of cases is 100.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @param caseIdList A list of Strings comprising ID numbers for support cases you want
-     *         returned. The maximum number of cases is 100.
+     * @param caseIdList A list of ID numbers of the support cases you want returned. The
+     *         maximum number of cases is 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withCaseIdList(String... caseIdList) {
         if (getCaseIdList() == null) setCaseIdList(new java.util.ArrayList<String>(caseIdList.length));
@@ -150,334 +154,319 @@ public class DescribeCasesRequest extends AmazonWebServiceRequest  implements Se
     }
     
     /**
-     * A list of Strings comprising ID numbers for support cases you want
-     * returned. The maximum number of cases is 100.
+     * A list of ID numbers of the support cases you want returned. The
+     * maximum number of cases is 100.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @param caseIdList A list of Strings comprising ID numbers for support cases you want
-     *         returned. The maximum number of cases is 100.
+     * @param caseIdList A list of ID numbers of the support cases you want returned. The
+     *         maximum number of cases is 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withCaseIdList(java.util.Collection<String> caseIdList) {
         if (caseIdList == null) {
             this.caseIdList = null;
         } else {
-            java.util.List<String> caseIdListCopy = new java.util.ArrayList<String>(caseIdList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> caseIdListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(caseIdList.size());
             caseIdListCopy.addAll(caseIdList);
             this.caseIdList = caseIdListCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * String that corresponds to the ID value displayed for a case in the
-     * AWS Support Center user interface.
+     * The ID displayed for a case in the AWS Support Center user interface.
      *
-     * @return String that corresponds to the ID value displayed for a case in the
-     *         AWS Support Center user interface.
+     * @return The ID displayed for a case in the AWS Support Center user interface.
      */
     public String getDisplayId() {
         return displayId;
     }
     
     /**
-     * String that corresponds to the ID value displayed for a case in the
-     * AWS Support Center user interface.
+     * The ID displayed for a case in the AWS Support Center user interface.
      *
-     * @param displayId String that corresponds to the ID value displayed for a case in the
-     *         AWS Support Center user interface.
+     * @param displayId The ID displayed for a case in the AWS Support Center user interface.
      */
     public void setDisplayId(String displayId) {
         this.displayId = displayId;
     }
     
     /**
-     * String that corresponds to the ID value displayed for a case in the
-     * AWS Support Center user interface.
+     * The ID displayed for a case in the AWS Support Center user interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param displayId String that corresponds to the ID value displayed for a case in the
-     *         AWS Support Center user interface.
+     * @param displayId The ID displayed for a case in the AWS Support Center user interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withDisplayId(String displayId) {
         this.displayId = displayId;
         return this;
     }
-    
-    
+
     /**
-     * Start date for a filtered date search on support case communications.
+     * The start date for a filtered date search on support case
+     * communications.
      *
-     * @return Start date for a filtered date search on support case communications.
+     * @return The start date for a filtered date search on support case
+     *         communications.
      */
     public String getAfterTime() {
         return afterTime;
     }
     
     /**
-     * Start date for a filtered date search on support case communications.
+     * The start date for a filtered date search on support case
+     * communications.
      *
-     * @param afterTime Start date for a filtered date search on support case communications.
+     * @param afterTime The start date for a filtered date search on support case
+     *         communications.
      */
     public void setAfterTime(String afterTime) {
         this.afterTime = afterTime;
     }
     
     /**
-     * Start date for a filtered date search on support case communications.
+     * The start date for a filtered date search on support case
+     * communications.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param afterTime Start date for a filtered date search on support case communications.
+     * @param afterTime The start date for a filtered date search on support case
+     *         communications.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withAfterTime(String afterTime) {
         this.afterTime = afterTime;
         return this;
     }
-    
-    
+
     /**
-     * End date for a filtered date search on support case communications.
+     * The end date for a filtered date search on support case
+     * communications.
      *
-     * @return End date for a filtered date search on support case communications.
+     * @return The end date for a filtered date search on support case
+     *         communications.
      */
     public String getBeforeTime() {
         return beforeTime;
     }
     
     /**
-     * End date for a filtered date search on support case communications.
+     * The end date for a filtered date search on support case
+     * communications.
      *
-     * @param beforeTime End date for a filtered date search on support case communications.
+     * @param beforeTime The end date for a filtered date search on support case
+     *         communications.
      */
     public void setBeforeTime(String beforeTime) {
         this.beforeTime = beforeTime;
     }
     
     /**
-     * End date for a filtered date search on support case communications.
+     * The end date for a filtered date search on support case
+     * communications.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param beforeTime End date for a filtered date search on support case communications.
+     * @param beforeTime The end date for a filtered date search on support case
+     *         communications.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withBeforeTime(String beforeTime) {
         this.beforeTime = beforeTime;
         return this;
     }
-    
-    
+
     /**
-     * Boolean that indicates whether or not resolved support cases should be
-     * listed in the <a href="API_DescribeCases.html"
-     * title="DescribeCases">DescribeCases</a> search.
+     * Specifies whether resolved support cases should be included in the
+     * <a>DescribeCases</a> results.
      *
-     * @return Boolean that indicates whether or not resolved support cases should be
-     *         listed in the <a href="API_DescribeCases.html"
-     *         title="DescribeCases">DescribeCases</a> search.
+     * @return Specifies whether resolved support cases should be included in the
+     *         <a>DescribeCases</a> results.
      */
     public Boolean isIncludeResolvedCases() {
         return includeResolvedCases;
     }
     
     /**
-     * Boolean that indicates whether or not resolved support cases should be
-     * listed in the <a href="API_DescribeCases.html"
-     * title="DescribeCases">DescribeCases</a> search.
+     * Specifies whether resolved support cases should be included in the
+     * <a>DescribeCases</a> results.
      *
-     * @param includeResolvedCases Boolean that indicates whether or not resolved support cases should be
-     *         listed in the <a href="API_DescribeCases.html"
-     *         title="DescribeCases">DescribeCases</a> search.
+     * @param includeResolvedCases Specifies whether resolved support cases should be included in the
+     *         <a>DescribeCases</a> results.
      */
     public void setIncludeResolvedCases(Boolean includeResolvedCases) {
         this.includeResolvedCases = includeResolvedCases;
     }
     
     /**
-     * Boolean that indicates whether or not resolved support cases should be
-     * listed in the <a href="API_DescribeCases.html"
-     * title="DescribeCases">DescribeCases</a> search.
+     * Specifies whether resolved support cases should be included in the
+     * <a>DescribeCases</a> results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param includeResolvedCases Boolean that indicates whether or not resolved support cases should be
-     *         listed in the <a href="API_DescribeCases.html"
-     *         title="DescribeCases">DescribeCases</a> search.
+     * @param includeResolvedCases Specifies whether resolved support cases should be included in the
+     *         <a>DescribeCases</a> results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withIncludeResolvedCases(Boolean includeResolvedCases) {
         this.includeResolvedCases = includeResolvedCases;
         return this;
     }
-    
-    
+
     /**
-     * Boolean that indicates whether or not resolved support cases should be
-     * listed in the <a href="API_DescribeCases.html"
-     * title="DescribeCases">DescribeCases</a> search.
+     * Specifies whether resolved support cases should be included in the
+     * <a>DescribeCases</a> results.
      *
-     * @return Boolean that indicates whether or not resolved support cases should be
-     *         listed in the <a href="API_DescribeCases.html"
-     *         title="DescribeCases">DescribeCases</a> search.
+     * @return Specifies whether resolved support cases should be included in the
+     *         <a>DescribeCases</a> results.
      */
     public Boolean getIncludeResolvedCases() {
         return includeResolvedCases;
     }
-    
+
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @return Defines a resumption point for pagination.
+     * @return A resumption point for pagination.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Defines a resumption point for pagination.
+     * A resumption point for pagination.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Defines a resumption point for pagination.
+     * @param nextToken A resumption point for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
-     * Integer that sets the maximum number of results to return before
-     * paginating.
+     * The maximum number of results to return before paginating.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>10 - 100<br/>
      *
-     * @return Integer that sets the maximum number of results to return before
-     *         paginating.
+     * @return The maximum number of results to return before paginating.
      */
     public Integer getMaxResults() {
         return maxResults;
     }
     
     /**
-     * Integer that sets the maximum number of results to return before
-     * paginating.
+     * The maximum number of results to return before paginating.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>10 - 100<br/>
      *
-     * @param maxResults Integer that sets the maximum number of results to return before
-     *         paginating.
+     * @param maxResults The maximum number of results to return before paginating.
      */
     public void setMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
     }
     
     /**
-     * Integer that sets the maximum number of results to return before
-     * paginating.
+     * The maximum number of results to return before paginating.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>10 - 100<br/>
      *
-     * @param maxResults Integer that sets the maximum number of results to return before
-     *         paginating.
+     * @param maxResults The maximum number of results to return before paginating.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withMaxResults(Integer maxResults) {
         this.maxResults = maxResults;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @return Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @return The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public String getLanguage() {
         return language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public void setLanguage(String language) {
         this.language = language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCasesRequest withLanguage(String language) {
         this.language = language;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -489,14 +478,14 @@ public class DescribeCasesRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCaseIdList() != null) sb.append("CaseIdList: " + getCaseIdList() + ",");    	
-        if (getDisplayId() != null) sb.append("DisplayId: " + getDisplayId() + ",");    	
-        if (getAfterTime() != null) sb.append("AfterTime: " + getAfterTime() + ",");    	
-        if (getBeforeTime() != null) sb.append("BeforeTime: " + getBeforeTime() + ",");    	
-        if (isIncludeResolvedCases() != null) sb.append("IncludeResolvedCases: " + isIncludeResolvedCases() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
-        if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() + ",");    	
+        sb.append("{");
+        if (getCaseIdList() != null) sb.append("CaseIdList: " + getCaseIdList() + ",");
+        if (getDisplayId() != null) sb.append("DisplayId: " + getDisplayId() + ",");
+        if (getAfterTime() != null) sb.append("AfterTime: " + getAfterTime() + ",");
+        if (getBeforeTime() != null) sb.append("BeforeTime: " + getBeforeTime() + ",");
+        if (isIncludeResolvedCases() != null) sb.append("IncludeResolvedCases: " + isIncludeResolvedCases() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
+        if (getMaxResults() != null) sb.append("MaxResults: " + getMaxResults() + ",");
         if (getLanguage() != null) sb.append("Language: " + getLanguage() );
         sb.append("}");
         return sb.toString();

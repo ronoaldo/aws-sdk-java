@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeReservedInstancesListingsRequestMarshaller implements Marsh
     public Request<DescribeReservedInstancesListingsRequest> marshall(DescribeReservedInstancesListingsRequest describeReservedInstancesListingsRequest) {
 
         if (describeReservedInstancesListingsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeReservedInstancesListingsRequest> request = new DefaultRequest<DescribeReservedInstancesListingsRequest>(describeReservedInstancesListingsRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeReservedInstancesListings");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (describeReservedInstancesListingsRequest.getReservedInstancesId() != null) {
             request.addParameter("ReservedInstancesId", StringUtils.fromString(describeReservedInstancesListingsRequest.getReservedInstancesId()));
@@ -71,7 +71,6 @@ public class DescribeReservedInstancesListingsRequestMarshaller implements Marsh
 
             filtersListIndex++;
         }
-
 
         return request;
     }

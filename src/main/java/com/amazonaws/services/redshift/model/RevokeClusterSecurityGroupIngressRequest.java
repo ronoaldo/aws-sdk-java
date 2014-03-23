@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#revokeClusterSecurityGroupIngress(RevokeClusterSecurityGroupIngressRequest) RevokeClusterSecurityGroupIngress operation}.
  * <p>
- * Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group. To add an ingress
- * rule, see AuthorizeClusterSecurityGroupIngress. For information about managing security groups, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html"> Amazon Redshift Cluster Security Groups </a> in the
- * <i>Amazon Redshift Management Guide</i> .
+ * Revokes an ingress rule in an Amazon Redshift security group for a
+ * previously authorized IP range or Amazon EC2 security group. To add an
+ * ingress rule, see AuthorizeClusterSecurityGroupIngress. For
+ * information about managing security groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html"> Amazon Redshift Cluster Security Groups </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#revokeClusterSecurityGroupIngress(RevokeClusterSecurityGroupIngressRequest)
  */
-public class RevokeClusterSecurityGroupIngressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RevokeClusterSecurityGroupIngressRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the security Group from which to revoke the ingress rule.
@@ -87,14 +91,13 @@ public class RevokeClusterSecurityGroupIngressRequest extends AmazonWebServiceRe
      * @param clusterSecurityGroupName The name of the security Group from which to revoke the ingress rule.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RevokeClusterSecurityGroupIngressRequest withClusterSecurityGroupName(String clusterSecurityGroupName) {
         this.clusterSecurityGroupName = clusterSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * The IP range for which to revoke access. This range must be a valid
      * Classless Inter-Domain Routing (CIDR) block of IP addresses. If
@@ -139,14 +142,13 @@ public class RevokeClusterSecurityGroupIngressRequest extends AmazonWebServiceRe
      *         and <code>EC2SecurityGroupOwnerId</code> cannot be provided.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RevokeClusterSecurityGroupIngressRequest withCIDRIP(String cIDRIP) {
         this.cIDRIP = cIDRIP;
         return this;
     }
-    
-    
+
     /**
      * The name of the EC2 Security Group whose access is to be revoked. If
      * <code>EC2SecurityGroupName</code> is specified,
@@ -191,14 +193,13 @@ public class RevokeClusterSecurityGroupIngressRequest extends AmazonWebServiceRe
      *         <code>CIDRIP</code> cannot be provided.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RevokeClusterSecurityGroupIngressRequest withEC2SecurityGroupName(String eC2SecurityGroupName) {
         this.eC2SecurityGroupName = eC2SecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * The AWS account number of the owner of the security group specified in
      * the <code>EC2SecurityGroupName</code> parameter. The AWS access key ID
@@ -255,14 +256,13 @@ public class RevokeClusterSecurityGroupIngressRequest extends AmazonWebServiceRe
      *         <code>111122223333</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RevokeClusterSecurityGroupIngressRequest withEC2SecurityGroupOwnerId(String eC2SecurityGroupOwnerId) {
         this.eC2SecurityGroupOwnerId = eC2SecurityGroupOwnerId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -274,10 +274,10 @@ public class RevokeClusterSecurityGroupIngressRequest extends AmazonWebServiceRe
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterSecurityGroupName() != null) sb.append("ClusterSecurityGroupName: " + getClusterSecurityGroupName() + ",");    	
-        if (getCIDRIP() != null) sb.append("CIDRIP: " + getCIDRIP() + ",");    	
-        if (getEC2SecurityGroupName() != null) sb.append("EC2SecurityGroupName: " + getEC2SecurityGroupName() + ",");    	
+        sb.append("{");
+        if (getClusterSecurityGroupName() != null) sb.append("ClusterSecurityGroupName: " + getClusterSecurityGroupName() + ",");
+        if (getCIDRIP() != null) sb.append("CIDRIP: " + getCIDRIP() + ",");
+        if (getEC2SecurityGroupName() != null) sb.append("EC2SecurityGroupName: " + getEC2SecurityGroupName() + ",");
         if (getEC2SecurityGroupOwnerId() != null) sb.append("EC2SecurityGroupOwnerId: " + getEC2SecurityGroupOwnerId() );
         sb.append("}");
         return sb.toString();

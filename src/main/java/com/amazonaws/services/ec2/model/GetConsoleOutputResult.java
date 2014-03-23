@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
+import com.amazonaws.util.BinaryUtils;
+import com.amazonaws.AmazonClientException;
+import java.io.UnsupportedEncodingException;
+
 /**
- * <p>
- * The result of the GetConsoleOutput operation.
- * </p>
+ * 
  */
-public class GetConsoleOutputResult  implements Serializable  {
+public class GetConsoleOutputResult implements Serializable {
 
     /**
-     * The ID of the instance whose console output was requested.
+     * The ID of the instance.
      */
     private String instanceId;
 
@@ -38,39 +41,38 @@ public class GetConsoleOutputResult  implements Serializable  {
     private String output;
 
     /**
-     * The ID of the instance whose console output was requested.
+     * The ID of the instance.
      *
-     * @return The ID of the instance whose console output was requested.
+     * @return The ID of the instance.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * The ID of the instance whose console output was requested.
+     * The ID of the instance.
      *
-     * @param instanceId The ID of the instance whose console output was requested.
+     * @param instanceId The ID of the instance.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * The ID of the instance whose console output was requested.
+     * The ID of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The ID of the instance whose console output was requested.
+     * @param instanceId The ID of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetConsoleOutputResult withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The time the output was last updated.
      *
@@ -97,14 +99,13 @@ public class GetConsoleOutputResult  implements Serializable  {
      * @param timestamp The time the output was last updated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetConsoleOutputResult withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
      * The console output, Base64 encoded.
      *
@@ -131,14 +132,29 @@ public class GetConsoleOutputResult  implements Serializable  {
      * @param output The console output, Base64 encoded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetConsoleOutputResult withOutput(String output) {
         this.output = output;
         return this;
     }
-    
-    
+
+    /**
+     * The decoded console output.
+     * 
+     * @return The decoded console output.
+     */
+    public String getDecodedOutput() {
+        byte[] bytes = BinaryUtils.fromBase64(output);
+        String decoded;
+        try {
+            decoded = new String(bytes, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new AmazonClientException("Cannot decode the output, since UTF-8 is not supported.", e);
+        }
+        return decoded;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,9 +166,9 @@ public class GetConsoleOutputResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
         if (getOutput() != null) sb.append("Output: " + getOutput() );
         sb.append("}");
         return sb.toString();

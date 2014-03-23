@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that lists the AWS accounts that were included in the TrustedSigners complex type, as well as their active CloudFront key pair IDs, if
- * any.
+ * A complex type that lists the AWS accounts that were included in the
+ * TrustedSigners complex type, as well as their active CloudFront key
+ * pair IDs, if any.
  * </p>
  */
-public class Signer  implements Serializable  {
+public class Signer implements Serializable {
 
     /**
      * Specifies an AWS account that can create signed URLs. Values: self,
@@ -87,14 +89,13 @@ public class Signer  implements Serializable  {
      *         the dashes in the account number.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Signer withAwsAccountNumber(String awsAccountNumber) {
         this.awsAccountNumber = awsAccountNumber;
         return this;
     }
-    
-    
+
     /**
      * A complex type that lists the active CloudFront key pairs, if any,
      * that are associated with AwsAccountNumber.
@@ -127,14 +128,13 @@ public class Signer  implements Serializable  {
      *         that are associated with AwsAccountNumber.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Signer withKeyPairIds(KeyPairIds keyPairIds) {
         this.keyPairIds = keyPairIds;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +146,8 @@ public class Signer  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAwsAccountNumber() != null) sb.append("AwsAccountNumber: " + getAwsAccountNumber() + ",");    	
+        sb.append("{");
+        if (getAwsAccountNumber() != null) sb.append("AwsAccountNumber: " + getAwsAccountNumber() + ",");
         if (getKeyPairIds() != null) sb.append("KeyPairIds: " + getKeyPairIds() );
         sb.append("}");
         return sb.toString();

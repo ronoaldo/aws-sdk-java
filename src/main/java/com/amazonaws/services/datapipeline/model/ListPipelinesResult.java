@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the ListPipelines action.
  * </p>
  */
-public class ListPipelinesResult  implements Serializable  {
+public class ListPipelinesResult implements Serializable {
 
     /**
      * A list of all the pipeline identifiers that your account has
@@ -28,7 +29,7 @@ public class ListPipelinesResult  implements Serializable  {
      * pipelines, you can use these identifiers to call
      * <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.
      */
-    private java.util.List<PipelineIdName> pipelineIdList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PipelineIdName> pipelineIdList;
 
     /**
      * If not null, indicates the starting point for the set of pipeline
@@ -59,9 +60,9 @@ public class ListPipelinesResult  implements Serializable  {
      *         <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.
      */
     public java.util.List<PipelineIdName> getPipelineIdList() {
-        
         if (pipelineIdList == null) {
-            pipelineIdList = new java.util.ArrayList<PipelineIdName>();
+              pipelineIdList = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineIdName>();
+              pipelineIdList.setAutoConstruct(true);
         }
         return pipelineIdList;
     }
@@ -82,8 +83,7 @@ public class ListPipelinesResult  implements Serializable  {
             this.pipelineIdList = null;
             return;
         }
-
-        java.util.List<PipelineIdName> pipelineIdListCopy = new java.util.ArrayList<PipelineIdName>(pipelineIdList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PipelineIdName> pipelineIdListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineIdName>(pipelineIdList.size());
         pipelineIdListCopy.addAll(pipelineIdList);
         this.pipelineIdList = pipelineIdListCopy;
     }
@@ -102,7 +102,7 @@ public class ListPipelinesResult  implements Serializable  {
      *         <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPipelinesResult withPipelineIdList(PipelineIdName... pipelineIdList) {
         if (getPipelineIdList() == null) setPipelineIdList(new java.util.ArrayList<PipelineIdName>(pipelineIdList.length));
@@ -126,20 +126,20 @@ public class ListPipelinesResult  implements Serializable  {
      *         <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPipelinesResult withPipelineIdList(java.util.Collection<PipelineIdName> pipelineIdList) {
         if (pipelineIdList == null) {
             this.pipelineIdList = null;
         } else {
-            java.util.List<PipelineIdName> pipelineIdListCopy = new java.util.ArrayList<PipelineIdName>(pipelineIdList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PipelineIdName> pipelineIdListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineIdName>(pipelineIdList.size());
             pipelineIdListCopy.addAll(pipelineIdList);
             this.pipelineIdList = pipelineIdListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * If not null, indicates the starting point for the set of pipeline
      * identifiers that the next call to <a>ListPipelines</a> will retrieve.
@@ -190,14 +190,13 @@ public class ListPipelinesResult  implements Serializable  {
      *         If null, there are no more pipeline identifiers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPipelinesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, there are more results that can be obtained by a
      * subsequent call to <a>ListPipelines</a>.
@@ -230,14 +229,13 @@ public class ListPipelinesResult  implements Serializable  {
      *         subsequent call to <a>ListPipelines</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPipelinesResult withHasMoreResults(Boolean hasMoreResults) {
         this.hasMoreResults = hasMoreResults;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, there are more results that can be obtained by a
      * subsequent call to <a>ListPipelines</a>.
@@ -248,7 +246,7 @@ public class ListPipelinesResult  implements Serializable  {
     public Boolean getHasMoreResults() {
         return hasMoreResults;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -260,9 +258,9 @@ public class ListPipelinesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineIdList() != null) sb.append("PipelineIdList: " + getPipelineIdList() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getPipelineIdList() != null) sb.append("PipelineIdList: " + getPipelineIdList() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (isHasMoreResults() != null) sb.append("HasMoreResults: " + isHasMoreResults() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  */
 package com.amazonaws.services.cloudfront.model.transform;
 
+import static com.amazonaws.util.StringUtils.UTF8;
+
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.Request;
@@ -44,7 +45,7 @@ public class CreateStreamingDistributionRequestMarshaller implements Marshaller<
         Request<CreateStreamingDistributionRequest> request = new DefaultRequest<CreateStreamingDistributionRequest>(createStreamingDistributionRequest, "AmazonCloudFront");
         request.setHttpMethod(HttpMethodName.POST);
 
-        String uriResourcePath = "2012-07-01/streaming-distribution"; 
+        String uriResourcePath = "2014-01-31/streaming-distribution"; 
 
         if (uriResourcePath.contains("?")) {
             String queryString = uriResourcePath.substring(uriResourcePath.indexOf("?") + 1);
@@ -62,11 +63,9 @@ public class CreateStreamingDistributionRequestMarshaller implements Marshaller<
 
         request.setResourcePath(uriResourcePath);
 
-        
             StringWriter stringWriter = new StringWriter();
-            XMLWriter xmlWriter = new XMLWriter(stringWriter, "http://cloudfront.amazonaws.com/doc/2012-07-01/");
+            XMLWriter xmlWriter = new XMLWriter(stringWriter, "http://cloudfront.amazonaws.com/doc/2014-01-31/");
 
-            
                     if (createStreamingDistributionRequest != null) {
             StreamingDistributionConfig streamingDistributionConfigStreamingDistributionConfig = createStreamingDistributionRequest.getStreamingDistributionConfig();
             if (streamingDistributionConfigStreamingDistributionConfig != null) {
@@ -105,7 +104,6 @@ public class CreateStreamingDistributionRequestMarshaller implements Marshaller<
                                 xmlWriter.startElement("CNAME");
                                     xmlWriter.value(aliasesAliasesitemsListValue);
                                 xmlWriter.endElement();
-
 
                                     aliasesAliasesitemsListIndex++;
                                 }
@@ -156,7 +154,6 @@ public class CreateStreamingDistributionRequestMarshaller implements Marshaller<
                                     xmlWriter.value(trustedSignersTrustedSignersitemsListValue);
                                 xmlWriter.endElement();
 
-
                                     trustedSignersTrustedSignersitemsListIndex++;
                                 }
                                 xmlWriter.endElement();
@@ -175,15 +172,13 @@ public class CreateStreamingDistributionRequestMarshaller implements Marshaller<
             }
         }
 
-
             try {
                 request.setContent(new StringInputStream(stringWriter.getBuffer().toString()));
-                request.addHeader("Content-Length", Integer.toString(stringWriter.getBuffer().toString().getBytes("UTF-8").length));
+                request.addHeader("Content-Length", Integer.toString(stringWriter.getBuffer().toString().getBytes(UTF8).length));
                 request.addHeader("Content-Type", "application/xml");
             } catch (UnsupportedEncodingException e) {
                 throw new AmazonClientException("Unable to marshall request to XML", e);
             }
-        
 
         return request;
     }

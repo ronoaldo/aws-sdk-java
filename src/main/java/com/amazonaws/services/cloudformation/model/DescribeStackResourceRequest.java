@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudformation.AmazonCloudFormation#describeStackResource(DescribeStackResourceRequest) DescribeStackResource operation}.
  * <p>
- * Returns a description of the specified resource in the specified stack.
+ * Returns a description of the specified resource in the specified
+ * stack.
  * </p>
  * <p>
- * For deleted stacks, DescribeStackResource returns resource information for up to 90 days after the stack has been deleted.
+ * For deleted stacks, DescribeStackResource returns resource information
+ * for up to 90 days after the stack has been deleted.
  * </p>
  *
  * @see com.amazonaws.services.cloudformation.AmazonCloudFormation#describeStackResource(DescribeStackResourceRequest)
  */
-public class DescribeStackResourceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeStackResourceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or the unique identifier associated with the stack.
@@ -73,14 +77,13 @@ public class DescribeStackResourceRequest extends AmazonWebServiceRequest  imple
      *         <p>Default: There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourceRequest withStackName(String stackName) {
         this.stackName = stackName;
         return this;
     }
-    
-    
+
     /**
      * The logical name of the resource as specified in the template.
      * <p>Default: There is no default value.
@@ -113,14 +116,13 @@ public class DescribeStackResourceRequest extends AmazonWebServiceRequest  imple
      *         <p>Default: There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackResourceRequest withLogicalResourceId(String logicalResourceId) {
         this.logicalResourceId = logicalResourceId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -132,8 +134,8 @@ public class DescribeStackResourceRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");    	
+        sb.append("{");
+        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");
         if (getLogicalResourceId() != null) sb.append("LogicalResourceId: " + getLogicalResourceId() );
         sb.append("}");
         return sb.toString();

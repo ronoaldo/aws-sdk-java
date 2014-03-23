@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,65 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of calling the TerminateInstances operation. Contains details on how the specified instances are changing state.
- * </p>
+ * 
  */
-public class TerminateInstancesResult  implements Serializable  {
+public class TerminateInstancesResult implements Serializable {
 
     /**
-     * The list of the terminating instances and details on how their state
-     * has changed.
+     * Information about one or more terminated instances.
      */
-    private java.util.List<InstanceStateChange> terminatingInstances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange> terminatingInstances;
 
     /**
-     * The list of the terminating instances and details on how their state
-     * has changed.
+     * Information about one or more terminated instances.
      *
-     * @return The list of the terminating instances and details on how their state
-     *         has changed.
+     * @return Information about one or more terminated instances.
      */
     public java.util.List<InstanceStateChange> getTerminatingInstances() {
-        
         if (terminatingInstances == null) {
-            terminatingInstances = new java.util.ArrayList<InstanceStateChange>();
+              terminatingInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange>();
+              terminatingInstances.setAutoConstruct(true);
         }
         return terminatingInstances;
     }
     
     /**
-     * The list of the terminating instances and details on how their state
-     * has changed.
+     * Information about one or more terminated instances.
      *
-     * @param terminatingInstances The list of the terminating instances and details on how their state
-     *         has changed.
+     * @param terminatingInstances Information about one or more terminated instances.
      */
     public void setTerminatingInstances(java.util.Collection<InstanceStateChange> terminatingInstances) {
         if (terminatingInstances == null) {
             this.terminatingInstances = null;
             return;
         }
-
-        java.util.List<InstanceStateChange> terminatingInstancesCopy = new java.util.ArrayList<InstanceStateChange>(terminatingInstances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange> terminatingInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange>(terminatingInstances.size());
         terminatingInstancesCopy.addAll(terminatingInstances);
         this.terminatingInstances = terminatingInstancesCopy;
     }
     
     /**
-     * The list of the terminating instances and details on how their state
-     * has changed.
+     * Information about one or more terminated instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param terminatingInstances The list of the terminating instances and details on how their state
-     *         has changed.
+     * @param terminatingInstances Information about one or more terminated instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateInstancesResult withTerminatingInstances(InstanceStateChange... terminatingInstances) {
         if (getTerminatingInstances() == null) setTerminatingInstances(new java.util.ArrayList<InstanceStateChange>(terminatingInstances.length));
@@ -82,29 +73,27 @@ public class TerminateInstancesResult  implements Serializable  {
     }
     
     /**
-     * The list of the terminating instances and details on how their state
-     * has changed.
+     * Information about one or more terminated instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param terminatingInstances The list of the terminating instances and details on how their state
-     *         has changed.
+     * @param terminatingInstances Information about one or more terminated instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateInstancesResult withTerminatingInstances(java.util.Collection<InstanceStateChange> terminatingInstances) {
         if (terminatingInstances == null) {
             this.terminatingInstances = null;
         } else {
-            java.util.List<InstanceStateChange> terminatingInstancesCopy = new java.util.ArrayList<InstanceStateChange>(terminatingInstances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange> terminatingInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange>(terminatingInstances.size());
             terminatingInstancesCopy.addAll(terminatingInstances);
             this.terminatingInstances = terminatingInstancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +105,7 @@ public class TerminateInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTerminatingInstances() != null) sb.append("TerminatingInstances: " + getTerminatingInstances() );
         sb.append("}");
         return sb.toString();

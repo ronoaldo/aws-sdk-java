@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.storagegateway.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,21 +39,17 @@ import com.amazonaws.util.json.*;
  */
 public class DescribeStorediSCSIVolumesRequestMarshaller implements Marshaller<Request<DescribeStorediSCSIVolumesRequest>, DescribeStorediSCSIVolumesRequest> {
 
-    
-
     public Request<DescribeStorediSCSIVolumesRequest> marshall(DescribeStorediSCSIVolumesRequest describeStorediSCSIVolumesRequest) {
     if (describeStorediSCSIVolumesRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
     }
 
         Request<DescribeStorediSCSIVolumesRequest> request = new DefaultRequest<DescribeStorediSCSIVolumesRequest>(describeStorediSCSIVolumesRequest, "AWSStorageGateway");
-        String target = "StorageGateway_20120630.DescribeStorediSCSIVolumes";
+        String target = "StorageGateway_20130630.DescribeStorediSCSIVolumes";
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.1");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,19 +71,14 @@ public class DescribeStorediSCSIVolumesRequestMarshaller implements Marshaller<R
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
-          
 
-            java.util.List<String> volumeARNsList = describeStorediSCSIVolumesRequest.getVolumeARNs();
-            if (volumeARNsList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> volumeARNsList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(describeStorediSCSIVolumesRequest.getVolumeARNs());
+            if (volumeARNsList != null && !(volumeARNsList.isAutoConstruct() && volumeARNsList.isEmpty())) {
 
                 jsonWriter.key("VolumeARNs");
                 jsonWriter.array();
@@ -101,22 +92,15 @@ public class DescribeStorediSCSIVolumesRequestMarshaller implements Marshaller<R
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

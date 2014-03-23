@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The Output data type.
  * </p>
  */
-public class Output  implements Serializable  {
+public class Output implements Serializable {
 
     /**
      * The key associated with the output.
@@ -63,14 +64,13 @@ public class Output  implements Serializable  {
      * @param outputKey The key associated with the output.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Output withOutputKey(String outputKey) {
         this.outputKey = outputKey;
         return this;
     }
-    
-    
+
     /**
      * The value associated with the output.
      *
@@ -97,14 +97,13 @@ public class Output  implements Serializable  {
      * @param outputValue The value associated with the output.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Output withOutputValue(String outputValue) {
         this.outputValue = outputValue;
         return this;
     }
-    
-    
+
     /**
      * User defined description associated with the output.
      *
@@ -131,14 +130,13 @@ public class Output  implements Serializable  {
      * @param description User defined description associated with the output.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Output withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,9 +148,9 @@ public class Output  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOutputKey() != null) sb.append("OutputKey: " + getOutputKey() + ",");    	
-        if (getOutputValue() != null) sb.append("OutputValue: " + getOutputValue() + ",");    	
+        sb.append("{");
+        if (getOutputKey() != null) sb.append("OutputKey: " + getOutputKey() + ",");
+        if (getOutputValue() != null) sb.append("OutputValue: " + getOutputValue() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

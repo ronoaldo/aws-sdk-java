@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>DecisionTaskScheduled</code> event.
  * </p>
  */
-public class DecisionTaskScheduledEventAttributes  implements Serializable  {
+public class DecisionTaskScheduledEventAttributes implements Serializable {
 
     /**
      * The name of the task list in which the decision task was scheduled.
@@ -65,14 +66,13 @@ public class DecisionTaskScheduledEventAttributes  implements Serializable  {
      * @param taskList The name of the task list in which the decision task was scheduled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTaskScheduledEventAttributes withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * The maximum duration for this decision task. The task is considered
      * timed out if it does not completed within this duration. <p>The valid
@@ -132,14 +132,13 @@ public class DecisionTaskScheduledEventAttributes  implements Serializable  {
      *         <code>NONE</code> can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DecisionTaskScheduledEventAttributes withStartToCloseTimeout(String startToCloseTimeout) {
         this.startToCloseTimeout = startToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -151,8 +150,8 @@ public class DecisionTaskScheduledEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
+        sb.append("{");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
         if (getStartToCloseTimeout() != null) sb.append("StartToCloseTimeout: " + getStartToCloseTimeout() );
         sb.append("}");
         return sb.toString();

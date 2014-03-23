@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.directconnect.AmazonDirectConnect#deleteConnection(DeleteConnectionRequest) DeleteConnection operation}.
@@ -22,13 +24,15 @@ import java.io.Serializable;
  * Deletes the connection.
  * </p>
  * <p>
- * Deleting a connection only stops the AWS Direct Connect port and data transfer charges. You separately need to cancel any services or charges for
- * cross-connects or network circuits that connect you to the AWS Direct Connect location with the providers of those services.
+ * Deleting a connection only stops the AWS Direct Connect port hour and
+ * data transfer charges. You need to cancel separately with the
+ * providers any services or charges for cross-connects or network
+ * circuits that connect you to the AWS Direct Connect location.
  * </p>
  *
  * @see com.amazonaws.services.directconnect.AmazonDirectConnect#deleteConnection(DeleteConnectionRequest)
  */
-public class DeleteConnectionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteConnectionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
@@ -61,14 +65,13 @@ public class DeleteConnectionRequest extends AmazonWebServiceRequest  implements
      * @param connectionId ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteConnectionRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -80,7 +83,7 @@ public class DeleteConnectionRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() );
         sb.append("}");
         return sb.toString();

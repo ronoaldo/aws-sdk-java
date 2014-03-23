@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>WorkflowExecutionSignaled</code> event.
  * </p>
  */
-public class WorkflowExecutionSignaledEventAttributes  implements Serializable  {
+public class WorkflowExecutionSignaledEventAttributes implements Serializable {
 
     /**
      * The name of the signal received. The decider can use the signal name
@@ -98,14 +99,13 @@ public class WorkflowExecutionSignaledEventAttributes  implements Serializable  
      *         and inputs to determine how to the process the signal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionSignaledEventAttributes withSignalName(String signalName) {
         this.signalName = signalName;
         return this;
     }
-    
-    
+
     /**
      * Inputs provided with the signal (if any). The decider can use the
      * signal name and inputs to determine how to process the signal.
@@ -147,14 +147,13 @@ public class WorkflowExecutionSignaledEventAttributes  implements Serializable  
      *         signal name and inputs to determine how to process the signal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionSignaledEventAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * The workflow execution that sent the signal. This is set only of the
      * signal was sent by another workflow execution.
@@ -187,14 +186,13 @@ public class WorkflowExecutionSignaledEventAttributes  implements Serializable  
      *         signal was sent by another workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionSignaledEventAttributes withExternalWorkflowExecution(WorkflowExecution externalWorkflowExecution) {
         this.externalWorkflowExecution = externalWorkflowExecution;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>SignalExternalWorkflowExecutionInitiated</code>
      * event corresponding to the <code>SignalExternalWorkflow</code>
@@ -257,14 +255,13 @@ public class WorkflowExecutionSignaledEventAttributes  implements Serializable  
      *         the signal was initiated by another workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionSignaledEventAttributes withExternalInitiatedEventId(Long externalInitiatedEventId) {
         this.externalInitiatedEventId = externalInitiatedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -276,10 +273,10 @@ public class WorkflowExecutionSignaledEventAttributes  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSignalName() != null) sb.append("SignalName: " + getSignalName() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getExternalWorkflowExecution() != null) sb.append("ExternalWorkflowExecution: " + getExternalWorkflowExecution() + ",");    	
+        sb.append("{");
+        if (getSignalName() != null) sb.append("SignalName: " + getSignalName() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getExternalWorkflowExecution() != null) sb.append("ExternalWorkflowExecution: " + getExternalWorkflowExecution() + ",");
         if (getExternalInitiatedEventId() != null) sb.append("ExternalInitiatedEventId: " + getExternalInitiatedEventId() );
         sb.append("}");
         return sb.toString();

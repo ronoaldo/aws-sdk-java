@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * A list of your queues.
+ * </p>
  */
-public class ListQueuesResult  implements Serializable  {
+public class ListQueuesResult implements Serializable {
 
     /**
      * A list of queue URLs, up to 1000 entries.
      */
-    private java.util.List<String> queueUrls;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> queueUrls;
 
     /**
      * A list of queue URLs, up to 1000 entries.
@@ -31,9 +34,9 @@ public class ListQueuesResult  implements Serializable  {
      * @return A list of queue URLs, up to 1000 entries.
      */
     public java.util.List<String> getQueueUrls() {
-        
         if (queueUrls == null) {
-            queueUrls = new java.util.ArrayList<String>();
+              queueUrls = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              queueUrls.setAutoConstruct(true);
         }
         return queueUrls;
     }
@@ -48,8 +51,7 @@ public class ListQueuesResult  implements Serializable  {
             this.queueUrls = null;
             return;
         }
-
-        java.util.List<String> queueUrlsCopy = new java.util.ArrayList<String>(queueUrls.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> queueUrlsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(queueUrls.size());
         queueUrlsCopy.addAll(queueUrls);
         this.queueUrls = queueUrlsCopy;
     }
@@ -62,7 +64,7 @@ public class ListQueuesResult  implements Serializable  {
      * @param queueUrls A list of queue URLs, up to 1000 entries.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListQueuesResult withQueueUrls(String... queueUrls) {
         if (getQueueUrls() == null) setQueueUrls(new java.util.ArrayList<String>(queueUrls.length));
@@ -80,20 +82,20 @@ public class ListQueuesResult  implements Serializable  {
      * @param queueUrls A list of queue URLs, up to 1000 entries.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListQueuesResult withQueueUrls(java.util.Collection<String> queueUrls) {
         if (queueUrls == null) {
             this.queueUrls = null;
         } else {
-            java.util.List<String> queueUrlsCopy = new java.util.ArrayList<String>(queueUrls.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> queueUrlsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(queueUrls.size());
             queueUrlsCopy.addAll(queueUrls);
             this.queueUrls = queueUrlsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -105,7 +107,7 @@ public class ListQueuesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getQueueUrls() != null) sb.append("QueueUrls: " + getQueueUrls() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,6 +33,8 @@ import java.io.Serializable;
  * </p>
  *
  * @see com.amazonaws.services.dynamodb.AmazonDynamoDB#batchGetItem(BatchGetItemRequest)
+ *
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.BatchGetItemRequest} instead.
  */
 @Deprecated
 public class BatchGetItemRequest extends AmazonWebServiceRequest  implements Serializable  {

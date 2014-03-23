@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#updateGroup(UpdateGroupRequest) UpdateGroup operation}.
@@ -22,18 +24,22 @@ import java.io.Serializable;
  * Updates the name and/or the path of the specified group.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> You should understand the implications of changing a group's path or name. For more information, see Renaming Users and Groups in
- * Using AWS Identity and Access Management.
+ * <b>IMPORTANT:</b> You should understand the implications of changing a
+ * group's path or name. For more information, see Renaming Users and
+ * Groups in Using AWS Identity and Access Management.
  * </p>
  * <p>
- * <b>NOTE:</b>To change a group name the requester must have appropriate permissions on both the source object and the target object. For example, to
- * change Managers to MGRs, the entity making the request must have permission on Managers and MGRs, or must have permission on all (*). For more
- * information about permissions, see Permissions and Policies.
+ * <b>NOTE:</b>To change a group name the requester must have appropriate
+ * permissions on both the source object and the target object. For
+ * example, to change Managers to MGRs, the entity making the request
+ * must have permission on Managers and MGRs, or must have permission on
+ * all (*). For more information about permissions, see Permissions and
+ * Policies.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#updateGroup(UpdateGroupRequest)
  */
-public class UpdateGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the group to update. If you're changing the name of the group,
@@ -80,11 +86,9 @@ public class UpdateGroupRequest extends AmazonWebServiceRequest  implements Seri
      * name of the group, this is the original name.
      */
     public UpdateGroupRequest(String groupName) {
-        this.groupName = groupName;
+        setGroupName(groupName);
     }
 
-    
-    
     /**
      * Name of the group to update. If you're changing the name of the group,
      * this is the original name.
@@ -129,14 +133,13 @@ public class UpdateGroupRequest extends AmazonWebServiceRequest  implements Seri
      *         this is the original name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateGroupRequest withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * New path for the group. Only include this if changing the group's
      * path.
@@ -181,14 +184,13 @@ public class UpdateGroupRequest extends AmazonWebServiceRequest  implements Seri
      *         path.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateGroupRequest withNewPath(String newPath) {
         this.newPath = newPath;
         return this;
     }
-    
-    
+
     /**
      * New name for the group. Only include this if changing the group's
      * name.
@@ -233,14 +235,13 @@ public class UpdateGroupRequest extends AmazonWebServiceRequest  implements Seri
      *         name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateGroupRequest withNewGroupName(String newGroupName) {
         this.newGroupName = newGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -252,9 +253,9 @@ public class UpdateGroupRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getNewPath() != null) sb.append("NewPath: " + getNewPath() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getNewPath() != null) sb.append("NewPath: " + getNewPath() + ",");
         if (getNewGroupName() != null) sb.append("NewGroupName: " + getNewGroupName() );
         sb.append("}");
         return sb.toString();

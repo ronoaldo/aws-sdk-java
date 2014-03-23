@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,18 +14,21 @@
  */
 package com.amazonaws.services.s3.internal;
 
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.amazonaws.internal.SdkFilterInputStream;
 import com.amazonaws.services.s3.model.ProgressEvent;
 import com.amazonaws.services.s3.model.ProgressListener;
 
 /**
  * Simple InputStream wrapper that occasionally notifies a progress listener
- * about the number of bytes transfered.
+ * about the number of bytes transferred.
+ * 
+ * @deprecated Replaced by {@link com.amazonaws.event.ProgressReportingInputStream}
  */
-public class ProgressReportingInputStream extends FilterInputStream {
+@Deprecated
+public class ProgressReportingInputStream extends SdkFilterInputStream {
 
     /** The threshold of bytes between notifications. */
     private static final int NOTIFICATION_THRESHOLD = 8 * Constants.KB;
@@ -43,7 +46,7 @@ public class ProgressReportingInputStream extends FilterInputStream {
     /**
      * Creates a new progress reporting input stream that simply wraps the
      * specified input stream and notifies the specified listener occasionally
-     * about the number of bytes transfered.
+     * about the number of bytes transferred.
      *
      * @param in
      *            The input stream to wrap.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The endpoint to which service requests can be submitted, including the actual URL prefix for sending requests and the Amazon Resource Name (ARN) so
- * the endpoint can be referenced in other API calls such as UpdateServiceAccessPolicies.
+ * The endpoint to which service requests can be submitted, including the
+ * actual URL prefix for sending requests and the Amazon Resource Name
+ * (ARN) so the endpoint can be referenced in other API calls such as
+ * UpdateServiceAccessPolicies.
  * </p>
  */
-public class ServiceEndpoint  implements Serializable  {
+public class ServiceEndpoint implements Serializable {
 
     /**
      * An Amazon Resource Name (ARN). See <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i> for more information.
      */
@@ -39,12 +42,12 @@ public class ServiceEndpoint  implements Serializable  {
 
     /**
      * An Amazon Resource Name (ARN). See <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i> for more information.
      *
      * @return An Amazon Resource Name (ARN). See <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i> for more information.
      */
@@ -54,12 +57,12 @@ public class ServiceEndpoint  implements Serializable  {
     
     /**
      * An Amazon Resource Name (ARN). See <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i> for more information.
      *
      * @param arn An Amazon Resource Name (ARN). See <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i> for more information.
      */
@@ -69,26 +72,25 @@ public class ServiceEndpoint  implements Serializable  {
     
     /**
      * An Amazon Resource Name (ARN). See <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i> for more information.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param arn An Amazon Resource Name (ARN). See <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i> for more information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceEndpoint withArn(String arn) {
         this.arn = arn;
         return this;
     }
-    
-    
+
     /**
      * The URL (including /version/pathPrefix) to which service requests can
      * be submitted.
@@ -121,14 +123,13 @@ public class ServiceEndpoint  implements Serializable  {
      *         be submitted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ServiceEndpoint withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -140,8 +141,8 @@ public class ServiceEndpoint  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getArn() != null) sb.append("Arn: " + getArn() + ",");    	
+        sb.append("{");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
         if (getEndpoint() != null) sb.append("Endpoint: " + getEndpoint() );
         sb.append("}");
         return sb.toString();

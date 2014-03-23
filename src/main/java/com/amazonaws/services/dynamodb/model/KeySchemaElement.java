@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import java.io.Serializable;
  * <p>
  * <code>KeySchemaElement</code> is the primary key (hash or hash-and-range) structure for the table.
  * </p>
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.KeySchemaElement} instead.
  */
 @Deprecated
 public class KeySchemaElement  implements Serializable  {

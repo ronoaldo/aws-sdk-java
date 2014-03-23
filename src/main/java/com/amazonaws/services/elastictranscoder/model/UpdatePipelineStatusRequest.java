@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#updatePipelineStatus(UpdatePipelineStatusRequest) UpdatePipelineStatus operation}.
  * <p>
- * To pause or reactivate a pipeline, so the pipeline stops or restarts processing jobs, update the status for the pipeline. Send a POST request to the
- * <code>/2012-09-25/pipelines/[pipelineId]/status</code> resource.
+ * The UpdatePipelineStatus operation pauses or reactivates a pipeline,
+ * so that the pipeline stops or restarts the processing of jobs.
  * </p>
  * <p>
- * Changing the pipeline status is useful if you want to cancel one or more jobs. You can't cancel jobs after Elastic Transcoder has started processing
- * them; if you pause the pipeline to which you submitted the jobs, you have more time to get the job IDs for the jobs that you want to cancel, and to
- * send a CancelJob request.
+ * Changing the pipeline status is useful if you want to cancel one or
+ * more jobs. You can't cancel jobs after Elastic Transcoder has started
+ * processing them; if you pause the pipeline to which you submitted the
+ * jobs, you have more time to get the job IDs for the jobs that you want
+ * to cancel, and to send a CancelJob request.
  * </p>
  *
  * @see com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#updatePipelineStatus(UpdatePipelineStatusRequest)
  */
-public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the pipeline to update.
@@ -85,14 +89,13 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest  implem
      * @param id The identifier of the pipeline to update.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdatePipelineStatusRequest withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The desired status of the pipeline: <ul> <li> <code>Active</code>: The
      * pipeline is processing jobs.</li> <li> <code>Paused</code>: The
@@ -140,14 +143,13 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest  implem
      *         pipeline is not currently processing jobs.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdatePipelineStatusRequest withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -159,8 +161,8 @@ public class UpdatePipelineStatusRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

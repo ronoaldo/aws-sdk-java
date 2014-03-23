@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AssociateRouteTableRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#associateRouteTable(AssociateRouteTableRequest) AssociateRouteTable operation}.
  * <p>
- * Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association causes traffic originating from the
- * subnet to be routed according to the routes in the route table. The action returns an association ID, which you need if you want to disassociate the
- * route table from the subnet later. A route table can be associated with multiple subnets.
+ * Associates a subnet with a route table. The subnet and route table
+ * must be in the same VPC. This association causes traffic originating
+ * from the subnet to be routed according to the routes in the route
+ * table. The action returns an association ID, which you need in order
+ * to disassociate the route table from the subnet later. A route table
+ * can be associated with multiple subnets.
  * </p>
  * <p>
- * For more information about route tables, go to <a href="http://docs.amazonwebservices.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route
- * Tables </a> in the Amazon Virtual Private Cloud User Guide.
+ * For more information about route tables, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html"> Route Tables </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#associateRouteTable(AssociateRouteTableRequest)
  */
-public class AssociateRouteTableRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AssociateRouteTableRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AssociateRouteTableRequest> {
 
     /**
      * The ID of the subnet.
@@ -68,14 +76,13 @@ public class AssociateRouteTableRequest extends AmazonWebServiceRequest  impleme
      * @param subnetId The ID of the subnet.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateRouteTableRequest withSubnetId(String subnetId) {
         this.subnetId = subnetId;
         return this;
     }
-    
-    
+
     /**
      * The ID of the route table.
      *
@@ -102,13 +109,24 @@ public class AssociateRouteTableRequest extends AmazonWebServiceRequest  impleme
      * @param routeTableId The ID of the route table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssociateRouteTableRequest withRouteTableId(String routeTableId) {
         this.routeTableId = routeTableId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AssociateRouteTableRequest> getDryRunRequest() {
+        Request<AssociateRouteTableRequest> request = new AssociateRouteTableRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -121,8 +139,8 @@ public class AssociateRouteTableRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");    	
+        sb.append("{");
+        if (getSubnetId() != null) sb.append("SubnetId: " + getSubnetId() + ",");
         if (getRouteTableId() != null) sb.append("RouteTableId: " + getRouteTableId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,65 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of calling the StartInstances operation. Contains details on how the specified instances are changing state.
- * </p>
+ * 
  */
-public class StartInstancesResult  implements Serializable  {
+public class StartInstancesResult implements Serializable {
 
     /**
-     * The list of the starting instances and details on how their state has
-     * changed.
+     * Information about one or more started instances.
      */
-    private java.util.List<InstanceStateChange> startingInstances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange> startingInstances;
 
     /**
-     * The list of the starting instances and details on how their state has
-     * changed.
+     * Information about one or more started instances.
      *
-     * @return The list of the starting instances and details on how their state has
-     *         changed.
+     * @return Information about one or more started instances.
      */
     public java.util.List<InstanceStateChange> getStartingInstances() {
-        
         if (startingInstances == null) {
-            startingInstances = new java.util.ArrayList<InstanceStateChange>();
+              startingInstances = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange>();
+              startingInstances.setAutoConstruct(true);
         }
         return startingInstances;
     }
     
     /**
-     * The list of the starting instances and details on how their state has
-     * changed.
+     * Information about one or more started instances.
      *
-     * @param startingInstances The list of the starting instances and details on how their state has
-     *         changed.
+     * @param startingInstances Information about one or more started instances.
      */
     public void setStartingInstances(java.util.Collection<InstanceStateChange> startingInstances) {
         if (startingInstances == null) {
             this.startingInstances = null;
             return;
         }
-
-        java.util.List<InstanceStateChange> startingInstancesCopy = new java.util.ArrayList<InstanceStateChange>(startingInstances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange> startingInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange>(startingInstances.size());
         startingInstancesCopy.addAll(startingInstances);
         this.startingInstances = startingInstancesCopy;
     }
     
     /**
-     * The list of the starting instances and details on how their state has
-     * changed.
+     * Information about one or more started instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param startingInstances The list of the starting instances and details on how their state has
-     *         changed.
+     * @param startingInstances Information about one or more started instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartInstancesResult withStartingInstances(InstanceStateChange... startingInstances) {
         if (getStartingInstances() == null) setStartingInstances(new java.util.ArrayList<InstanceStateChange>(startingInstances.length));
@@ -82,29 +73,27 @@ public class StartInstancesResult  implements Serializable  {
     }
     
     /**
-     * The list of the starting instances and details on how their state has
-     * changed.
+     * Information about one or more started instances.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param startingInstances The list of the starting instances and details on how their state has
-     *         changed.
+     * @param startingInstances Information about one or more started instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartInstancesResult withStartingInstances(java.util.Collection<InstanceStateChange> startingInstances) {
         if (startingInstances == null) {
             this.startingInstances = null;
         } else {
-            java.util.List<InstanceStateChange> startingInstancesCopy = new java.util.ArrayList<InstanceStateChange>(startingInstances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange> startingInstancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStateChange>(startingInstances.size());
             startingInstancesCopy.addAll(startingInstances);
             this.startingInstances = startingInstancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -116,7 +105,7 @@ public class StartInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStartingInstances() != null) sb.append("StartingInstances: " + getStartingInstances() );
         sb.append("}");
         return sb.toString();

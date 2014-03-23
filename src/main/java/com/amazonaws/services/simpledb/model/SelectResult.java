@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
+
 import java.io.Serializable;
 
 /**
  * Select Result
  */
-public class SelectResult  implements Serializable  {
+public class SelectResult implements Serializable {
 
     /**
      * A list of items that match the select expression.
      */
-    private java.util.List<Item> items;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Item> items;
 
     /**
      * An opaque token indicating that more items than
@@ -38,9 +39,9 @@ public class SelectResult  implements Serializable  {
      * @return A list of items that match the select expression.
      */
     public java.util.List<Item> getItems() {
-        
         if (items == null) {
-            items = new java.util.ArrayList<Item>();
+              items = new com.amazonaws.internal.ListWithAutoConstructFlag<Item>();
+              items.setAutoConstruct(true);
         }
         return items;
     }
@@ -55,8 +56,7 @@ public class SelectResult  implements Serializable  {
             this.items = null;
             return;
         }
-
-        java.util.List<Item> itemsCopy = new java.util.ArrayList<Item>(items.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Item> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Item>(items.size());
         itemsCopy.addAll(items);
         this.items = itemsCopy;
     }
@@ -69,7 +69,7 @@ public class SelectResult  implements Serializable  {
      * @param items A list of items that match the select expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectResult withItems(Item... items) {
         if (getItems() == null) setItems(new java.util.ArrayList<Item>(items.length));
@@ -87,20 +87,20 @@ public class SelectResult  implements Serializable  {
      * @param items A list of items that match the select expression.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectResult withItems(java.util.Collection<Item> items) {
         if (items == null) {
             this.items = null;
         } else {
-            java.util.List<Item> itemsCopy = new java.util.ArrayList<Item>(items.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Item> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Item>(items.size());
             itemsCopy.addAll(items);
             this.items = itemsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An opaque token indicating that more items than
      * <code>MaxNumberOfItems</code> were matched, the response size exceeded
@@ -139,14 +139,13 @@ public class SelectResult  implements Serializable  {
      *         1 megabyte, or the execution time exceeded 5 seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SelectResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +157,8 @@ public class SelectResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getItems() != null) sb.append("Items: " + getItems() + ",");    	
+        sb.append("{");
+        if (getItems() != null) sb.append("Items: " + getItems() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

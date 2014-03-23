@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,38 +13,50 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.glacier.AmazonGlacier#listParts(ListPartsRequest) ListParts operation}.
  * <p>
- * This operation lists the parts of an archive that have been uploaded in a specific multipart upload. You can make this request at any time during an
- * in-progress multipart upload before you complete the upload (see CompleteMultipartUpload. List Parts returns an error for completed uploads. The list
- * returned in the List Parts response is sorted by part range.
+ * This operation lists the parts of an archive that have been uploaded
+ * in a specific multipart upload. You can make this request at any time
+ * during an in-progress multipart upload before you complete the upload
+ * (see CompleteMultipartUpload. List Parts returns an error for
+ * completed uploads. The list returned in the List Parts response is
+ * sorted by part range.
  * </p>
  * <p>
- * The List Parts operation supports pagination. By default, this operation returns up to 1,000 uploaded parts in the response. You should always check
- * the response for a <code>marker</code> at which to continue the list; if there are no more items the <code>marker</code> is <code>null</code> .
- * To return a list of parts that begins at a specific part, set the <code>marker</code> request parameter to the value you obtained from a previous
- * List Parts request. You can also limit the number of parts returned in the response by specifying the <code>limit</code> parameter in the request.
+ * The List Parts operation supports pagination. By default, this
+ * operation returns up to 1,000 uploaded parts in the response. You
+ * should always check the response for a <code>marker</code> at which to
+ * continue the list; if there are no more items the <code>marker</code>
+ * is <code>null</code> .
+ * To return a list of parts that begins at a specific part, set the
+ * <code>marker</code> request parameter to the value you obtained from a
+ * previous List Parts request. You can also limit the number of parts
+ * returned in the response by specifying the <code>limit</code>
+ * parameter in the request.
  * </p>
  * <p>
- * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any
- * permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access
- * Management (IAM) </a> .
+ * An AWS account has full permission to perform all operations
+ * (actions). However, AWS Identity and Access Management (IAM) users
+ * don't have any permissions by default. You must grant them explicit
+ * permission to perform specific actions. For more information, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+ * .
  * </p>
  * <p>
- * For conceptual information and the underlying REST API, go to <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/working-with-archives.html"> Working with Archives in Amazon Glacier </a> and <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/api-multipart-list-parts.html"> List Parts </a> in the <i>Amazon Glacier Developer
- * Guide</i> .
+ * For conceptual information and the underlying REST API, go to
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html"> Working with Archives in Amazon Glacier </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html"> List Parts </a>
+ * in the <i>Amazon Glacier Developer Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.glacier.AmazonGlacier#listParts(ListPartsRequest)
  */
-public class ListPartsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListPartsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
@@ -96,12 +108,10 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
      * @param uploadId The upload ID of the multipart upload.
      */
     public ListPartsRequest(String vaultName, String uploadId) {
-        this.vaultName = vaultName;
-        this.uploadId = uploadId;
+        setVaultName(vaultName);
+        setUploadId(uploadId);
     }
 
-    
-    
     /**
      * Constructs a new ListPartsRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -116,13 +126,11 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
      * @param uploadId The upload ID of the multipart upload.
      */
     public ListPartsRequest(String accountId, String vaultName, String uploadId) {
-        this.accountId = accountId;
-        this.vaultName = vaultName;
-        this.uploadId = uploadId;
+        setAccountId(accountId);
+        setVaultName(vaultName);
+        setUploadId(uploadId);
     }
 
-    
-    
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
      * either the AWS Account ID or optionally a '-', in which case Amazon
@@ -173,14 +181,13 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
      *         hyphens in it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsRequest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
     }
-    
-    
+
     /**
      * The name of the vault.
      *
@@ -207,14 +214,13 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
      * @param vaultName The name of the vault.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsRequest withVaultName(String vaultName) {
         this.vaultName = vaultName;
         return this;
     }
-    
-    
+
     /**
      * The upload ID of the multipart upload.
      *
@@ -241,14 +247,13 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
      * @param uploadId The upload ID of the multipart upload.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsRequest withUploadId(String uploadId) {
         this.uploadId = uploadId;
         return this;
     }
-    
-    
+
     /**
      * An opaque string used for pagination. This value specifies the part at
      * which the listing of parts should begin. Get the marker value from the
@@ -299,14 +304,13 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
      *         previous List Parts request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Specifies the maximum number of parts returned in the response body.
      * If this value is not specified, the List Parts operation returns up to
@@ -345,14 +349,13 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
      *         1,000 uploads.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsRequest withLimit(String limit) {
         this.limit = limit;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -364,11 +367,11 @@ public class ListPartsRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");    	
-        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");    	
-        if (getUploadId() != null) sb.append("UploadId: " + getUploadId() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");
+        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");
+        if (getUploadId() != null) sb.append("UploadId: " + getUploadId() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getLimit() != null) sb.append("Limit: " + getLimit() );
         sb.append("}");
         return sb.toString();

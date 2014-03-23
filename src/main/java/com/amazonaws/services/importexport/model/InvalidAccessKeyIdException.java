@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,9 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use
- * the same AWS Access Key ID.
+ * The AWS Access Key ID specified in the request did not match the
+ * manifest's accessKeyId value. The manifest and the request
+ * authentication must use the same AWS Access Key ID.
  * </p>
  */        
 public class InvalidAccessKeyIdException extends AmazonServiceException {

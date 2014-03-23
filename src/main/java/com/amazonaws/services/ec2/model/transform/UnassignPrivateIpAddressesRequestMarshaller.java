@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class UnassignPrivateIpAddressesRequestMarshaller implements Marshaller<R
     public Request<UnassignPrivateIpAddressesRequest> marshall(UnassignPrivateIpAddressesRequest unassignPrivateIpAddressesRequest) {
 
         if (unassignPrivateIpAddressesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<UnassignPrivateIpAddressesRequest> request = new DefaultRequest<UnassignPrivateIpAddressesRequest>(unassignPrivateIpAddressesRequest, "AmazonEC2");
         request.addParameter("Action", "UnassignPrivateIpAddresses");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (unassignPrivateIpAddressesRequest.getNetworkInterfaceId() != null) {
             request.addParameter("NetworkInterfaceId", StringUtils.fromString(unassignPrivateIpAddressesRequest.getNetworkInterfaceId()));
@@ -54,7 +54,6 @@ public class UnassignPrivateIpAddressesRequestMarshaller implements Marshaller<R
 
             privateIpAddressesListIndex++;
         }
-
 
         return request;
     }

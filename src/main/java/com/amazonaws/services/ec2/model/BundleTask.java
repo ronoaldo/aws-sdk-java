@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a task to bundle an EC2 Windows instance into a new image.
+ * Describes a bundle task.
  * </p>
  */
-public class BundleTask  implements Serializable  {
+public class BundleTask implements Serializable {
 
     /**
-     * Instance associated with this bundle task.
+     * The ID of the instance associated with this bundle task.
      */
     private String instanceId;
 
     /**
-     * Unique identifier for this task.
+     * The ID for this bundle task.
      */
     private String bundleId;
 
     /**
-     * The state of this task.
+     * The state of the task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      */
     private String state;
 
@@ -48,12 +52,12 @@ public class BundleTask  implements Serializable  {
     private java.util.Date updateTime;
 
     /**
-     * Amazon S3 storage locations.
+     * The Amazon S3 storage locations.
      */
     private Storage storage;
 
     /**
-     * The level of task completion, in percent (e.g., 20%).
+     * The level of task completion, as a percent (for example, 20%).
      */
     private String progress;
 
@@ -63,107 +67,153 @@ public class BundleTask  implements Serializable  {
     private BundleTaskError bundleTaskError;
 
     /**
-     * Instance associated with this bundle task.
+     * The ID of the instance associated with this bundle task.
      *
-     * @return Instance associated with this bundle task.
+     * @return The ID of the instance associated with this bundle task.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * Instance associated with this bundle task.
+     * The ID of the instance associated with this bundle task.
      *
-     * @param instanceId Instance associated with this bundle task.
+     * @param instanceId The ID of the instance associated with this bundle task.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * Instance associated with this bundle task.
+     * The ID of the instance associated with this bundle task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId Instance associated with this bundle task.
+     * @param instanceId The ID of the instance associated with this bundle task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * Unique identifier for this task.
+     * The ID for this bundle task.
      *
-     * @return Unique identifier for this task.
+     * @return The ID for this bundle task.
      */
     public String getBundleId() {
         return bundleId;
     }
     
     /**
-     * Unique identifier for this task.
+     * The ID for this bundle task.
      *
-     * @param bundleId Unique identifier for this task.
+     * @param bundleId The ID for this bundle task.
      */
     public void setBundleId(String bundleId) {
         this.bundleId = bundleId;
     }
     
     /**
-     * Unique identifier for this task.
+     * The ID for this bundle task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bundleId Unique identifier for this task.
+     * @param bundleId The ID for this bundle task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withBundleId(String bundleId) {
         this.bundleId = bundleId;
         return this;
     }
-    
-    
+
     /**
-     * The state of this task.
+     * The state of the task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      *
-     * @return The state of this task.
+     * @return The state of the task.
+     *
+     * @see BundleTaskState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * The state of this task.
+     * The state of the task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      *
-     * @param state The state of this task.
+     * @param state The state of the task.
+     *
+     * @see BundleTaskState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * The state of this task.
+     * The state of the task.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
      *
-     * @param state The state of this task.
+     * @param state The state of the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see BundleTaskState
      */
     public BundleTask withState(String state) {
         this.state = state;
         return this;
     }
+
+    /**
+     * The state of the task.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
+     *
+     * @param state The state of the task.
+     *
+     * @see BundleTaskState
+     */
+    public void setState(BundleTaskState state) {
+        this.state = state.toString();
+    }
     
-    
+    /**
+     * The state of the task.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, waiting-for-shutdown, bundling, storing, cancelling, complete, failed
+     *
+     * @param state The state of the task.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see BundleTaskState
+     */
+    public BundleTask withState(BundleTaskState state) {
+        this.state = state.toString();
+        return this;
+    }
+
     /**
      * The time this task started.
      *
@@ -190,14 +240,13 @@ public class BundleTask  implements Serializable  {
      * @param startTime The time this task started.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The time of the most recent update for the task.
      *
@@ -224,82 +273,79 @@ public class BundleTask  implements Serializable  {
      * @param updateTime The time of the most recent update for the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withUpdateTime(java.util.Date updateTime) {
         this.updateTime = updateTime;
         return this;
     }
-    
-    
+
     /**
-     * Amazon S3 storage locations.
+     * The Amazon S3 storage locations.
      *
-     * @return Amazon S3 storage locations.
+     * @return The Amazon S3 storage locations.
      */
     public Storage getStorage() {
         return storage;
     }
     
     /**
-     * Amazon S3 storage locations.
+     * The Amazon S3 storage locations.
      *
-     * @param storage Amazon S3 storage locations.
+     * @param storage The Amazon S3 storage locations.
      */
     public void setStorage(Storage storage) {
         this.storage = storage;
     }
     
     /**
-     * Amazon S3 storage locations.
+     * The Amazon S3 storage locations.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param storage Amazon S3 storage locations.
+     * @param storage The Amazon S3 storage locations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withStorage(Storage storage) {
         this.storage = storage;
         return this;
     }
-    
-    
+
     /**
-     * The level of task completion, in percent (e.g., 20%).
+     * The level of task completion, as a percent (for example, 20%).
      *
-     * @return The level of task completion, in percent (e.g., 20%).
+     * @return The level of task completion, as a percent (for example, 20%).
      */
     public String getProgress() {
         return progress;
     }
     
     /**
-     * The level of task completion, in percent (e.g., 20%).
+     * The level of task completion, as a percent (for example, 20%).
      *
-     * @param progress The level of task completion, in percent (e.g., 20%).
+     * @param progress The level of task completion, as a percent (for example, 20%).
      */
     public void setProgress(String progress) {
         this.progress = progress;
     }
     
     /**
-     * The level of task completion, in percent (e.g., 20%).
+     * The level of task completion, as a percent (for example, 20%).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param progress The level of task completion, in percent (e.g., 20%).
+     * @param progress The level of task completion, as a percent (for example, 20%).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withProgress(String progress) {
         this.progress = progress;
         return this;
     }
-    
-    
+
     /**
      * If the task fails, a description of the error.
      *
@@ -326,14 +372,13 @@ public class BundleTask  implements Serializable  {
      * @param bundleTaskError If the task fails, a description of the error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleTask withBundleTaskError(BundleTaskError bundleTaskError) {
         this.bundleTaskError = bundleTaskError;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -345,14 +390,14 @@ public class BundleTask  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getBundleId() != null) sb.append("BundleId: " + getBundleId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getUpdateTime() != null) sb.append("UpdateTime: " + getUpdateTime() + ",");    	
-        if (getStorage() != null) sb.append("Storage: " + getStorage() + ",");    	
-        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getBundleId() != null) sb.append("BundleId: " + getBundleId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getUpdateTime() != null) sb.append("UpdateTime: " + getUpdateTime() + ",");
+        if (getStorage() != null) sb.append("Storage: " + getStorage() + ",");
+        if (getProgress() != null) sb.append("Progress: " + getProgress() + ",");
         if (getBundleTaskError() != null) sb.append("BundleTaskError: " + getBundleTaskError() );
         sb.append("}");
         return sb.toString();

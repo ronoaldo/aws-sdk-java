@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Route Tables Result
+ * 
  */
-public class DescribeRouteTablesResult  implements Serializable  {
-
-    private java.util.List<RouteTable> routeTables;
+public class DescribeRouteTablesResult implements Serializable {
 
     /**
-     * Returns the value of the RouteTables property for this object.
+     * Information about one or more route tables.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RouteTable> routeTables;
+
+    /**
+     * Information about one or more route tables.
      *
-     * @return The value of the RouteTables property for this object.
+     * @return Information about one or more route tables.
      */
     public java.util.List<RouteTable> getRouteTables() {
-        
         if (routeTables == null) {
-            routeTables = new java.util.ArrayList<RouteTable>();
+              routeTables = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteTable>();
+              routeTables.setAutoConstruct(true);
         }
         return routeTables;
     }
     
     /**
-     * Sets the value of the RouteTables property for this object.
+     * Information about one or more route tables.
      *
-     * @param routeTables The new value for the RouteTables property for this object.
+     * @param routeTables Information about one or more route tables.
      */
     public void setRouteTables(java.util.Collection<RouteTable> routeTables) {
         if (routeTables == null) {
             this.routeTables = null;
             return;
         }
-
-        java.util.List<RouteTable> routeTablesCopy = new java.util.ArrayList<RouteTable>(routeTables.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RouteTable> routeTablesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteTable>(routeTables.size());
         routeTablesCopy.addAll(routeTables);
         this.routeTables = routeTablesCopy;
     }
     
     /**
-     * Sets the value of the RouteTables property for this object.
+     * Information about one or more route tables.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routeTables The new value for the RouteTables property for this object.
+     * @param routeTables Information about one or more route tables.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRouteTablesResult withRouteTables(RouteTable... routeTables) {
         if (getRouteTables() == null) setRouteTables(new java.util.ArrayList<RouteTable>(routeTables.length));
@@ -70,27 +73,27 @@ public class DescribeRouteTablesResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the RouteTables property for this object.
+     * Information about one or more route tables.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routeTables The new value for the RouteTables property for this object.
+     * @param routeTables Information about one or more route tables.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRouteTablesResult withRouteTables(java.util.Collection<RouteTable> routeTables) {
         if (routeTables == null) {
             this.routeTables = null;
         } else {
-            java.util.List<RouteTable> routeTablesCopy = new java.util.ArrayList<RouteTable>(routeTables.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RouteTable> routeTablesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteTable>(routeTables.size());
             routeTablesCopy.addAll(routeTables);
             this.routeTables = routeTablesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeRouteTablesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRouteTables() != null) sb.append("RouteTables: " + getRouteTables() );
         sb.append("}");
         return sb.toString();

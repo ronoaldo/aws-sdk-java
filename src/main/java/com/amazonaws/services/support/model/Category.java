@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,93 +13,94 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * JSON-formatted name/value pair that represents the name and category of problem selected from the DescribeServices response for each AWS service.
+ * A JSON-formatted name/value pair that represents the category name and
+ * category code of the problem, selected from the DescribeServices
+ * response for each AWS service.
  * </p>
  */
-public class Category  implements Serializable  {
+public class Category implements Serializable {
 
     /**
-     * Category code for the support case.
+     * The category code for the support case.
      */
     private String code;
 
     /**
-     * Category name for the support case.
+     * The category name for the support case.
      */
     private String name;
 
     /**
-     * Category code for the support case.
+     * The category code for the support case.
      *
-     * @return Category code for the support case.
+     * @return The category code for the support case.
      */
     public String getCode() {
         return code;
     }
     
     /**
-     * Category code for the support case.
+     * The category code for the support case.
      *
-     * @param code Category code for the support case.
+     * @param code The category code for the support case.
      */
     public void setCode(String code) {
         this.code = code;
     }
     
     /**
-     * Category code for the support case.
+     * The category code for the support case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param code Category code for the support case.
+     * @param code The category code for the support case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Category withCode(String code) {
         this.code = code;
         return this;
     }
-    
-    
+
     /**
-     * Category name for the support case.
+     * The category name for the support case.
      *
-     * @return Category name for the support case.
+     * @return The category name for the support case.
      */
     public String getName() {
         return name;
     }
     
     /**
-     * Category name for the support case.
+     * The category name for the support case.
      *
-     * @param name Category name for the support case.
+     * @param name The category name for the support case.
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * Category name for the support case.
+     * The category name for the support case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param name Category name for the support case.
+     * @param name The category name for the support case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Category withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +112,8 @@ public class Category  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCode() != null) sb.append("Code: " + getCode() + ",");    	
+        sb.append("{");
+        if (getCode() != null) sb.append("Code: " + getCode() + ",");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

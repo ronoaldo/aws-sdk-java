@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeApplicationVersionsRequestMarshaller implements Marshaller<
     public Request<DescribeApplicationVersionsRequest> marshall(DescribeApplicationVersionsRequest describeApplicationVersionsRequest) {
 
         if (describeApplicationVersionsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeApplicationVersionsRequest> request = new DefaultRequest<DescribeApplicationVersionsRequest>(describeApplicationVersionsRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "DescribeApplicationVersions");
@@ -54,7 +54,6 @@ public class DescribeApplicationVersionsRequestMarshaller implements Marshaller<
 
             versionLabelsListIndex++;
         }
-
 
         return request;
     }

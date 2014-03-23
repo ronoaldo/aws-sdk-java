@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents a workflow type.
  * </p>
  */
-public class WorkflowType  implements Serializable  {
+public class WorkflowType implements Serializable {
 
     /**
      * The name of the workflow type. This field is required. <note>The
@@ -89,14 +90,13 @@ public class WorkflowType  implements Serializable  {
      *         domain.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowType withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The version of the workflow type. This field is required. <note>The
      * combination of workflow type name and version must be unique with in a
@@ -144,14 +144,13 @@ public class WorkflowType  implements Serializable  {
      *         domain.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowType withVersion(String version) {
         this.version = version;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -163,8 +162,8 @@ public class WorkflowType  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
         if (getVersion() != null) sb.append("Version: " + getVersion() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class PutNotificationConfigurationRequestMarshaller implements Marshaller
     public Request<PutNotificationConfigurationRequest> marshall(PutNotificationConfigurationRequest putNotificationConfigurationRequest) {
 
         if (putNotificationConfigurationRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PutNotificationConfigurationRequest> request = new DefaultRequest<PutNotificationConfigurationRequest>(putNotificationConfigurationRequest, "AmazonAutoScaling");
         request.addParameter("Action", "PutNotificationConfiguration");
@@ -57,7 +57,6 @@ public class PutNotificationConfigurationRequestMarshaller implements Marshaller
 
             notificationTypesListIndex++;
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,13 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#startWorkflowExecution(StartWorkflowExecutionRequest) StartWorkflowExecution operation}.
  * <p>
- * Starts an execution of the workflow type in the specified domain using the provided <code>workflowId</code> and input data.
+ * Starts an execution of the workflow type in the specified domain
+ * using the provided <code>workflowId</code> and input data.
  * </p>
  * <p>
  * This action returns the newly started workflow execution.
@@ -28,36 +31,52 @@ import java.io.Serializable;
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys.
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>Constrain the following parameters by using a
+ * <code>Condition</code> element with the appropriate keys.
  * <ul>
- * <li> <code>tagList.member.0</code> : The key is <code>swf:tagList.member.0</code> .</li>
- * <li> <code>tagList.member.1</code> : The key is <code>swf:tagList.member.1</code> .</li>
- * <li> <code>tagList.member.2</code> : The key is <code>swf:tagList.member.2</code> .</li>
- * <li> <code>tagList.member.3</code> : The key is <code>swf:tagList.member.3</code> .</li>
- * <li> <code>tagList.member.4</code> : The key is <code>swf:tagList.member.4</code> .</li>
- * <li> <code>taskList</code> : String constraint. The key is <code>swf:taskList.name</code> .</li>
- * <li> <code>name</code> : String constraint. The key is <code>swf:workflowType.name</code> .</li>
- * <li> <code>version</code> : String constraint. The key is <code>swf:workflowType.version</code> .</li>
+ * <li> <code>tagList.member.0</code> : The key is
+ * <code>swf:tagList.member.0</code> .</li>
+ * <li> <code>tagList.member.1</code> : The key is
+ * <code>swf:tagList.member.1</code> .</li>
+ * <li> <code>tagList.member.2</code> : The key is
+ * <code>swf:tagList.member.2</code> .</li>
+ * <li> <code>tagList.member.3</code> : The key is
+ * <code>swf:tagList.member.3</code> .</li>
+ * <li> <code>tagList.member.4</code> : The key is
+ * <code>swf:tagList.member.4</code> .</li>
+ * <li> <code>taskList</code> : String constraint. The key is
+ * <code>swf:taskList.name</code> .</li>
+ * <li> <code>name</code> : String constraint. The key is
+ * <code>swf:workflowType.name</code> .</li>
+ * <li> <code>version</code> : String constraint. The key is
+ * <code>swf:workflowType.version</code> .</li>
  * 
  * </ul>
  * </li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#startWorkflowExecution(StartWorkflowExecutionRequest)
  */
-public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which the workflow execution is created.
@@ -143,7 +162,7 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> tagList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tagList;
 
     /**
      * Specifies the maximum duration of decision tasks for this workflow
@@ -223,14 +242,13 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      * @param domain The name of the domain in which the workflow execution is created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * The user defined identifier associated with the workflow execution.
      * You can use this to associate a custom identifier with the workflow
@@ -320,14 +338,13 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The type of the workflow to start.
      *
@@ -354,14 +371,13 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      * @param workflowType The type of the workflow to start.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * The task list to use for the decision tasks generated for this
      * workflow execution. This overrides the <code>defaultTaskList</code>
@@ -448,14 +464,13 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * The input for the workflow execution. This is a free form string which
      * should be meaningful to the workflow you are starting. This
@@ -509,14 +524,13 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         the <code>WorkflowExecutionStarted</code> history event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * The total duration for this workflow execution. This overrides the
      * defaultExecutionStartToCloseTimeout specified when registering the
@@ -618,14 +632,13 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         a fault is returned. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withExecutionStartToCloseTimeout(String executionStartToCloseTimeout) {
         this.executionStartToCloseTimeout = executionStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The list of tags to associate with the workflow execution. You can
      * specify a maximum of 5 tags. You can list workflow executions with a
@@ -641,9 +654,9 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      */
     public java.util.List<String> getTagList() {
-        
         if (tagList == null) {
-            tagList = new java.util.ArrayList<String>();
+              tagList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              tagList.setAutoConstruct(true);
         }
         return tagList;
     }
@@ -667,8 +680,7 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
             this.tagList = null;
             return;
         }
-
-        java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
         tagListCopy.addAll(tagList);
         this.tagList = tagListCopy;
     }
@@ -690,7 +702,7 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withTagList(String... tagList) {
         if (getTagList() == null) setTagList(new java.util.ArrayList<String>(tagList.length));
@@ -717,20 +729,20 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withTagList(java.util.Collection<String> tagList) {
         if (tagList == null) {
             this.tagList = null;
         } else {
-            java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
             tagListCopy.addAll(tagList);
             this.tagList = tagListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Specifies the maximum duration of decision tasks for this workflow
      * execution. This parameter overrides the
@@ -832,14 +844,13 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartWorkflowExecutionRequest withTaskStartToCloseTimeout(String taskStartToCloseTimeout) {
         this.taskStartToCloseTimeout = taskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * of this workflow execution if it is terminated, by calling the
@@ -975,7 +986,7 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         specified at registration time then a fault will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -983,8 +994,7 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * of this workflow execution if it is terminated, by calling the
@@ -1074,7 +1084,7 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
      *         specified at registration time then a fault will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -1082,7 +1092,7 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1094,15 +1104,15 @@ public class StartWorkflowExecutionRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");    	
-        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");    	
-        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");
+        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");
+        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");
         if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() );
         sb.append("}");
         return sb.toString();

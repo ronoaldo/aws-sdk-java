@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package com.amazonaws.services.dynamodb.datamodeling;
  * Marshaller interface for storing complex types in DynamoDB as Strings.
  * Implementors provide methods to transform instances of a class to and from
  * Strings.
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMarshaller} instead.
  */
 @Deprecated
 public interface DynamoDBMarshaller<T extends Object> {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,131 +13,149 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Route Table
+ * <p>
+ * Describes a route table.
+ * </p>
  */
-public class RouteTable  implements Serializable  {
-
-    private String routeTableId;
-
-    private String vpcId;
-
-    private java.util.List<Route> routes;
-
-    private java.util.List<RouteTableAssociation> associations;
-
-    private java.util.List<Tag> tags;
-
-    private java.util.List<PropagatingVgw> propagatingVgws;
+public class RouteTable implements Serializable {
 
     /**
-     * Returns the value of the RouteTableId property for this object.
+     * The ID of the route table.
+     */
+    private String routeTableId;
+
+    /**
+     * The ID of the VPC.
+     */
+    private String vpcId;
+
+    /**
+     * The routes in the route table.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Route> routes;
+
+    /**
+     * The associations between the route table and one or more subnets.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<RouteTableAssociation> associations;
+
+    /**
+     * Any tags assigned to the route table.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
+
+    /**
+     * Any virtual private gateway (VGW) propagating routes.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PropagatingVgw> propagatingVgws;
+
+    /**
+     * The ID of the route table.
      *
-     * @return The value of the RouteTableId property for this object.
+     * @return The ID of the route table.
      */
     public String getRouteTableId() {
         return routeTableId;
     }
     
     /**
-     * Sets the value of the RouteTableId property for this object.
+     * The ID of the route table.
      *
-     * @param routeTableId The new value for the RouteTableId property for this object.
+     * @param routeTableId The ID of the route table.
      */
     public void setRouteTableId(String routeTableId) {
         this.routeTableId = routeTableId;
     }
     
     /**
-     * Sets the value of the RouteTableId property for this object.
+     * The ID of the route table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routeTableId The new value for the RouteTableId property for this object.
+     * @param routeTableId The ID of the route table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withRouteTableId(String routeTableId) {
         this.routeTableId = routeTableId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the VpcId property for this object.
+     * The ID of the VPC.
      *
-     * @return The value of the VpcId property for this object.
+     * @return The ID of the VPC.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * The ID of the VPC.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId The ID of the VPC.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Sets the value of the VpcId property for this object.
+     * The ID of the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId The new value for the VpcId property for this object.
+     * @param vpcId The ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Routes property for this object.
+     * The routes in the route table.
      *
-     * @return The value of the Routes property for this object.
+     * @return The routes in the route table.
      */
     public java.util.List<Route> getRoutes() {
-        
         if (routes == null) {
-            routes = new java.util.ArrayList<Route>();
+              routes = new com.amazonaws.internal.ListWithAutoConstructFlag<Route>();
+              routes.setAutoConstruct(true);
         }
         return routes;
     }
     
     /**
-     * Sets the value of the Routes property for this object.
+     * The routes in the route table.
      *
-     * @param routes The new value for the Routes property for this object.
+     * @param routes The routes in the route table.
      */
     public void setRoutes(java.util.Collection<Route> routes) {
         if (routes == null) {
             this.routes = null;
             return;
         }
-
-        java.util.List<Route> routesCopy = new java.util.ArrayList<Route>(routes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Route> routesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Route>(routes.size());
         routesCopy.addAll(routes);
         this.routes = routesCopy;
     }
     
     /**
-     * Sets the value of the Routes property for this object.
+     * The routes in the route table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routes The new value for the Routes property for this object.
+     * @param routes The routes in the route table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withRoutes(Route... routes) {
         if (getRoutes() == null) setRoutes(new java.util.ArrayList<Route>(routes.length));
@@ -148,65 +166,64 @@ public class RouteTable  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Routes property for this object.
+     * The routes in the route table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routes The new value for the Routes property for this object.
+     * @param routes The routes in the route table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withRoutes(java.util.Collection<Route> routes) {
         if (routes == null) {
             this.routes = null;
         } else {
-            java.util.List<Route> routesCopy = new java.util.ArrayList<Route>(routes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Route> routesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Route>(routes.size());
             routesCopy.addAll(routes);
             this.routes = routesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Associations property for this object.
+     * The associations between the route table and one or more subnets.
      *
-     * @return The value of the Associations property for this object.
+     * @return The associations between the route table and one or more subnets.
      */
     public java.util.List<RouteTableAssociation> getAssociations() {
-        
         if (associations == null) {
-            associations = new java.util.ArrayList<RouteTableAssociation>();
+              associations = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteTableAssociation>();
+              associations.setAutoConstruct(true);
         }
         return associations;
     }
     
     /**
-     * Sets the value of the Associations property for this object.
+     * The associations between the route table and one or more subnets.
      *
-     * @param associations The new value for the Associations property for this object.
+     * @param associations The associations between the route table and one or more subnets.
      */
     public void setAssociations(java.util.Collection<RouteTableAssociation> associations) {
         if (associations == null) {
             this.associations = null;
             return;
         }
-
-        java.util.List<RouteTableAssociation> associationsCopy = new java.util.ArrayList<RouteTableAssociation>(associations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<RouteTableAssociation> associationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteTableAssociation>(associations.size());
         associationsCopy.addAll(associations);
         this.associations = associationsCopy;
     }
     
     /**
-     * Sets the value of the Associations property for this object.
+     * The associations between the route table and one or more subnets.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param associations The new value for the Associations property for this object.
+     * @param associations The associations between the route table and one or more subnets.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withAssociations(RouteTableAssociation... associations) {
         if (getAssociations() == null) setAssociations(new java.util.ArrayList<RouteTableAssociation>(associations.length));
@@ -217,65 +234,64 @@ public class RouteTable  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Associations property for this object.
+     * The associations between the route table and one or more subnets.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param associations The new value for the Associations property for this object.
+     * @param associations The associations between the route table and one or more subnets.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withAssociations(java.util.Collection<RouteTableAssociation> associations) {
         if (associations == null) {
             this.associations = null;
         } else {
-            java.util.List<RouteTableAssociation> associationsCopy = new java.util.ArrayList<RouteTableAssociation>(associations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<RouteTableAssociation> associationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<RouteTableAssociation>(associations.size());
             associationsCopy.addAll(associations);
             this.associations = associationsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Tags property for this object.
+     * Any tags assigned to the route table.
      *
-     * @return The value of the Tags property for this object.
+     * @return Any tags assigned to the route table.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the route table.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the route table.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the route table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the route table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -286,65 +302,64 @@ public class RouteTable  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Tags property for this object.
+     * Any tags assigned to the route table.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags The new value for the Tags property for this object.
+     * @param tags Any tags assigned to the route table.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the PropagatingVgws property for this object.
+     * Any virtual private gateway (VGW) propagating routes.
      *
-     * @return The value of the PropagatingVgws property for this object.
+     * @return Any virtual private gateway (VGW) propagating routes.
      */
     public java.util.List<PropagatingVgw> getPropagatingVgws() {
-        
         if (propagatingVgws == null) {
-            propagatingVgws = new java.util.ArrayList<PropagatingVgw>();
+              propagatingVgws = new com.amazonaws.internal.ListWithAutoConstructFlag<PropagatingVgw>();
+              propagatingVgws.setAutoConstruct(true);
         }
         return propagatingVgws;
     }
     
     /**
-     * Sets the value of the PropagatingVgws property for this object.
+     * Any virtual private gateway (VGW) propagating routes.
      *
-     * @param propagatingVgws The new value for the PropagatingVgws property for this object.
+     * @param propagatingVgws Any virtual private gateway (VGW) propagating routes.
      */
     public void setPropagatingVgws(java.util.Collection<PropagatingVgw> propagatingVgws) {
         if (propagatingVgws == null) {
             this.propagatingVgws = null;
             return;
         }
-
-        java.util.List<PropagatingVgw> propagatingVgwsCopy = new java.util.ArrayList<PropagatingVgw>(propagatingVgws.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PropagatingVgw> propagatingVgwsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PropagatingVgw>(propagatingVgws.size());
         propagatingVgwsCopy.addAll(propagatingVgws);
         this.propagatingVgws = propagatingVgwsCopy;
     }
     
     /**
-     * Sets the value of the PropagatingVgws property for this object.
+     * Any virtual private gateway (VGW) propagating routes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param propagatingVgws The new value for the PropagatingVgws property for this object.
+     * @param propagatingVgws Any virtual private gateway (VGW) propagating routes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withPropagatingVgws(PropagatingVgw... propagatingVgws) {
         if (getPropagatingVgws() == null) setPropagatingVgws(new java.util.ArrayList<PropagatingVgw>(propagatingVgws.length));
@@ -355,27 +370,27 @@ public class RouteTable  implements Serializable  {
     }
     
     /**
-     * Sets the value of the PropagatingVgws property for this object.
+     * Any virtual private gateway (VGW) propagating routes.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param propagatingVgws The new value for the PropagatingVgws property for this object.
+     * @param propagatingVgws Any virtual private gateway (VGW) propagating routes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RouteTable withPropagatingVgws(java.util.Collection<PropagatingVgw> propagatingVgws) {
         if (propagatingVgws == null) {
             this.propagatingVgws = null;
         } else {
-            java.util.List<PropagatingVgw> propagatingVgwsCopy = new java.util.ArrayList<PropagatingVgw>(propagatingVgws.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PropagatingVgw> propagatingVgwsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PropagatingVgw>(propagatingVgws.size());
             propagatingVgwsCopy.addAll(propagatingVgws);
             this.propagatingVgws = propagatingVgwsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -387,12 +402,12 @@ public class RouteTable  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRouteTableId() != null) sb.append("RouteTableId: " + getRouteTableId() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getRoutes() != null) sb.append("Routes: " + getRoutes() + ",");    	
-        if (getAssociations() != null) sb.append("Associations: " + getAssociations() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
+        sb.append("{");
+        if (getRouteTableId() != null) sb.append("RouteTableId: " + getRouteTableId() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getRoutes() != null) sb.append("Routes: " + getRoutes() + ",");
+        if (getAssociations() != null) sb.append("Associations: " + getAssociations() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
         if (getPropagatingVgws() != null) sb.append("PropagatingVgws: " + getPropagatingVgws() );
         sb.append("}");
         return sb.toString();

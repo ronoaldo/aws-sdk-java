@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.route53.AmazonRoute53#getHealthCheck(GetHealthCheckRequest) GetHealthCheck operation}.
  * <p>
- * To retrieve the health check, send a <code>GET</code> request to the <code>2012-12-12/healthcheck/health check ID </code> resource.
+ * To retrieve the health check, send a <code>GET</code> request to the
+ * <code>2013-04-01/healthcheck/health check ID </code> resource.
  * </p>
  *
  * @see com.amazonaws.services.route53.AmazonRoute53#getHealthCheck(GetHealthCheckRequest)
  */
-public class GetHealthCheckRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetHealthCheckRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the health check to retrieve.
@@ -69,14 +72,13 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest  implements S
      * @param healthCheckId The ID of the health check to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetHealthCheckRequest withHealthCheckId(String healthCheckId) {
         this.healthCheckId = healthCheckId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -88,7 +90,7 @@ public class GetHealthCheckRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getHealthCheckId() != null) sb.append("HealthCheckId: " + getHealthCheckId() );
         sb.append("}");
         return sb.toString();

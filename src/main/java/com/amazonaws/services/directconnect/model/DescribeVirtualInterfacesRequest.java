@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,34 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.directconnect.AmazonDirectConnect#describeVirtualInterfaces(DescribeVirtualInterfacesRequest) DescribeVirtualInterfaces operation}.
  * <p>
- * Displays all virtual interfaces for an AWS account. Virtual interfaces deleted fewer than 15 minutes before DescribeVirtualInterfaces is called are
- * also returned. If a virtual interface ID is included then only a single virtual interface will be returned.
+ * Displays all virtual interfaces for an AWS account. Virtual interfaces
+ * deleted fewer than 15 minutes before DescribeVirtualInterfaces is
+ * called are also returned. If a connection ID is included then only
+ * virtual interfaces associated with this connection will be returned.
+ * If a virtual interface ID is included then only a single virtual
+ * interface will be returned.
  * </p>
  * <p>
- * A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer.
+ * A virtual interface (VLAN) transmits the traffic between the AWS
+ * Direct Connect location and the customer.
+ * </p>
+ * <p>
+ * If a connection ID is provided, only virtual interfaces provisioned on
+ * the specified connection will be returned. If a virtual interface ID
+ * is provided, only this particular virtual interface will be returned.
  * </p>
  *
  * @see com.amazonaws.services.directconnect.AmazonDirectConnect#describeVirtualInterfaces(DescribeVirtualInterfacesRequest)
  */
-public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
@@ -67,14 +79,13 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest  i
      * @param connectionId ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVirtualInterfacesRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
     }
-    
-    
+
     /**
      * ID of the virtual interface. <p>Example: dxvif-123dfg56 <p>Default:
      * None
@@ -107,14 +118,13 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest  i
      *         None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVirtualInterfacesRequest withVirtualInterfaceId(String virtualInterfaceId) {
         this.virtualInterfaceId = virtualInterfaceId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -126,8 +136,8 @@ public class DescribeVirtualInterfacesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");    	
+        sb.append("{");
+        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");
         if (getVirtualInterfaceId() != null) sb.append("VirtualInterfaceId: " + getVirtualInterfaceId() );
         sb.append("}");
         return sb.toString();

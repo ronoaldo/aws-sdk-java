@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains information about a pipeline task that is assigned to a task runner.
+ * Contains information about a pipeline task that is assigned to a task
+ * runner.
  * </p>
  */
-public class TaskObject  implements Serializable  {
+public class TaskObject implements Serializable {
 
     /**
      * An internal identifier for the task. This ID is passed to the
@@ -101,14 +103,13 @@ public class TaskObject  implements Serializable  {
      *         <a>SetTaskStatus</a> and <a>ReportTaskProgress</a> actions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TaskObject withTaskId(String taskId) {
         this.taskId = taskId;
         return this;
     }
-    
-    
+
     /**
      * Identifier of the pipeline that provided the task.
      * <p>
@@ -147,14 +148,13 @@ public class TaskObject  implements Serializable  {
      * @param pipelineId Identifier of the pipeline that provided the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TaskObject withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * Identifier of the pipeline task attempt object. AWS Data Pipeline uses
      * this value to track how many times a task is attempted.
@@ -199,14 +199,13 @@ public class TaskObject  implements Serializable  {
      *         this value to track how many times a task is attempted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TaskObject withAttemptId(String attemptId) {
         this.attemptId = attemptId;
         return this;
     }
-    
-    
+
     /**
      * Connection information for the location where the task runner will
      * publish the output of the task.
@@ -220,7 +219,6 @@ public class TaskObject  implements Serializable  {
             objects = new java.util.HashMap<String,PipelineObject>();
         }
         return objects;
-
     }
     
     /**
@@ -244,10 +242,41 @@ public class TaskObject  implements Serializable  {
      *         publish the output of the task.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TaskObject withObjects(java.util.Map<String,PipelineObject> objects) {
         setObjects(objects);
+        return this;
+    }
+
+    /**
+     * Connection information for the location where the task runner will
+     * publish the output of the task.
+     * <p>
+     * The method adds a new key-value pair into Objects parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Objects.
+     * @param value The corresponding value of the entry to be added into Objects.
+     */
+    public TaskObject addObjectsEntry(String key, PipelineObject value) {
+        if (null == this.objects) {
+            this.objects = new java.util.HashMap<String,PipelineObject>();
+        }
+        if (this.objects.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.objects.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Objects.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public TaskObject clearObjectsEntries() {
+        this.objects = null;
         return this;
     }
     
@@ -262,10 +291,10 @@ public class TaskObject  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTaskId() != null) sb.append("TaskId: " + getTaskId() + ",");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getAttemptId() != null) sb.append("AttemptId: " + getAttemptId() + ",");    	
+        sb.append("{");
+        if (getTaskId() != null) sb.append("TaskId: " + getTaskId() + ",");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getAttemptId() != null) sb.append("AttemptId: " + getAttemptId() + ",");
         if (getObjects() != null) sb.append("Objects: " + getObjects() );
         sb.append("}");
         return sb.toString();

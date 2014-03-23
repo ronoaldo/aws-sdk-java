@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DefineRankExpressionRequestMarshaller implements Marshaller<Request
     public Request<DefineRankExpressionRequest> marshall(DefineRankExpressionRequest defineRankExpressionRequest) {
 
         if (defineRankExpressionRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DefineRankExpressionRequest> request = new DefaultRequest<DefineRankExpressionRequest>(defineRankExpressionRequest, "AmazonCloudSearch");
         request.addParameter("Action", "DefineRankExpression");
@@ -52,7 +52,6 @@ public class DefineRankExpressionRequestMarshaller implements Marshaller<Request
                 request.addParameter("RankExpression.RankExpression", StringUtils.fromString(namedRankExpressionRankExpression.getRankExpression()));
             }
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Summary of an invalidation request.
  * </p>
  */
-public class InvalidationSummary  implements Serializable  {
+public class InvalidationSummary implements Serializable {
 
     /**
      * The unique ID for an invalidation request.
@@ -66,14 +67,13 @@ public class InvalidationSummary  implements Serializable  {
      * @param id The unique ID for an invalidation request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationSummary withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Returns the value of the CreateTime property for this object.
      *
@@ -100,14 +100,13 @@ public class InvalidationSummary  implements Serializable  {
      * @param createTime The new value for the CreateTime property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationSummary withCreateTime(java.util.Date createTime) {
         this.createTime = createTime;
         return this;
     }
-    
-    
+
     /**
      * The status of an invalidation request.
      *
@@ -134,14 +133,13 @@ public class InvalidationSummary  implements Serializable  {
      * @param status The status of an invalidation request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationSummary withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -153,9 +151,9 @@ public class InvalidationSummary  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getCreateTime() != null) sb.append("CreateTime: " + getCreateTime() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getCreateTime() != null) sb.append("CreateTime: " + getCreateTime() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

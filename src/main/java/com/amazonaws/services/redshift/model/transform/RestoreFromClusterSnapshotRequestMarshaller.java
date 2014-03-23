@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class RestoreFromClusterSnapshotRequestMarshaller implements Marshaller<R
     public Request<RestoreFromClusterSnapshotRequest> marshall(RestoreFromClusterSnapshotRequest restoreFromClusterSnapshotRequest) {
 
         if (restoreFromClusterSnapshotRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RestoreFromClusterSnapshotRequest> request = new DefaultRequest<RestoreFromClusterSnapshotRequest>(restoreFromClusterSnapshotRequest, "AmazonRedshift");
         request.addParameter("Action", "RestoreFromClusterSnapshot");
@@ -45,6 +45,9 @@ public class RestoreFromClusterSnapshotRequestMarshaller implements Marshaller<R
         }
         if (restoreFromClusterSnapshotRequest.getSnapshotIdentifier() != null) {
             request.addParameter("SnapshotIdentifier", StringUtils.fromString(restoreFromClusterSnapshotRequest.getSnapshotIdentifier()));
+        }
+        if (restoreFromClusterSnapshotRequest.getSnapshotClusterIdentifier() != null) {
+            request.addParameter("SnapshotClusterIdentifier", StringUtils.fromString(restoreFromClusterSnapshotRequest.getSnapshotClusterIdentifier()));
         }
         if (restoreFromClusterSnapshotRequest.getPort() != null) {
             request.addParameter("Port", StringUtils.fromInteger(restoreFromClusterSnapshotRequest.getPort()));
@@ -61,7 +64,18 @@ public class RestoreFromClusterSnapshotRequestMarshaller implements Marshaller<R
         if (restoreFromClusterSnapshotRequest.isPubliclyAccessible() != null) {
             request.addParameter("PubliclyAccessible", StringUtils.fromBoolean(restoreFromClusterSnapshotRequest.isPubliclyAccessible()));
         }
-
+        if (restoreFromClusterSnapshotRequest.getOwnerAccount() != null) {
+            request.addParameter("OwnerAccount", StringUtils.fromString(restoreFromClusterSnapshotRequest.getOwnerAccount()));
+        }
+        if (restoreFromClusterSnapshotRequest.getHsmClientCertificateIdentifier() != null) {
+            request.addParameter("HsmClientCertificateIdentifier", StringUtils.fromString(restoreFromClusterSnapshotRequest.getHsmClientCertificateIdentifier()));
+        }
+        if (restoreFromClusterSnapshotRequest.getHsmConfigurationIdentifier() != null) {
+            request.addParameter("HsmConfigurationIdentifier", StringUtils.fromString(restoreFromClusterSnapshotRequest.getHsmConfigurationIdentifier()));
+        }
+        if (restoreFromClusterSnapshotRequest.getElasticIp() != null) {
+            request.addParameter("ElasticIp", StringUtils.fromString(restoreFromClusterSnapshotRequest.getElasticIp()));
+        }
 
         return request;
     }

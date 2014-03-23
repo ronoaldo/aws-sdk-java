@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#defineRankExpression(DefineRankExpressionRequest) DefineRankExpression operation}.
  * <p>
- * Configures a <code>RankExpression</code> for the search domain. Used to create new rank expressions and modify existing ones. If the expression
- * exists, the new configuration replaces the old one. You can configure a maximum of 50 rank expressions.
+ * Configures a <code>RankExpression</code> for the search domain. Used
+ * to create new rank expressions and modify existing ones. If the
+ * expression exists, the new configuration replaces the old one. You can
+ * configure a maximum of 50 rank expressions.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#defineRankExpression(DefineRankExpressionRequest)
  */
-public class DefineRankExpressionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DefineRankExpressionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -108,14 +112,13 @@ public class DefineRankExpressionRequest extends AmazonWebServiceRequest  implem
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefineRankExpressionRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * A named expression that can be evaluated at search time and used for
      * ranking or thresholding in a search query.
@@ -148,14 +151,13 @@ public class DefineRankExpressionRequest extends AmazonWebServiceRequest  implem
      *         ranking or thresholding in a search query.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefineRankExpressionRequest withRankExpression(NamedRankExpression rankExpression) {
         this.rankExpression = rankExpression;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -167,8 +169,8 @@ public class DefineRankExpressionRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getRankExpression() != null) sb.append("RankExpression: " + getRankExpression() );
         sb.append("}");
         return sb.toString();

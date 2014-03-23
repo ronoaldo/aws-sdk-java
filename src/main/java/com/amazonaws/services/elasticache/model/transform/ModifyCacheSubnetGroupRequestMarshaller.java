@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ModifyCacheSubnetGroupRequestMarshaller implements Marshaller<Reque
     public Request<ModifyCacheSubnetGroupRequest> marshall(ModifyCacheSubnetGroupRequest modifyCacheSubnetGroupRequest) {
 
         if (modifyCacheSubnetGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ModifyCacheSubnetGroupRequest> request = new DefaultRequest<ModifyCacheSubnetGroupRequest>(modifyCacheSubnetGroupRequest, "AmazonElastiCache");
         request.addParameter("Action", "ModifyCacheSubnetGroup");
-        request.addParameter("Version", "2012-11-15");
+        request.addParameter("Version", "2013-06-15");
 
         if (modifyCacheSubnetGroupRequest.getCacheSubnetGroupName() != null) {
             request.addParameter("CacheSubnetGroupName", StringUtils.fromString(modifyCacheSubnetGroupRequest.getCacheSubnetGroupName()));
@@ -57,7 +57,6 @@ public class ModifyCacheSubnetGroupRequestMarshaller implements Marshaller<Reque
 
             subnetIdsListIndex++;
         }
-
 
         return request;
     }

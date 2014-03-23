@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeClusterSubnetGroups(DescribeClusterSubnetGroupsRequest) DescribeClusterSubnetGroups operation}.
  * <p>
- * Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups. By default, this operation returns
- * information about all cluster subnet groups that are defined in you AWS account.
+ * Returns one or more cluster subnet group objects, which contain
+ * metadata about your cluster subnet groups. By default, this operation
+ * returns information about all cluster subnet groups that are defined
+ * in you AWS account.
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeClusterSubnetGroups(DescribeClusterSubnetGroupsRequest)
  */
-public class DescribeClusterSubnetGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeClusterSubnetGroupsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the cluster subnet group for which information is
@@ -83,14 +87,13 @@ public class DescribeClusterSubnetGroupsRequest extends AmazonWebServiceRequest 
      *         requested.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSubnetGroupsRequest withClusterSubnetGroupName(String clusterSubnetGroupName) {
         this.clusterSubnetGroupName = clusterSubnetGroupName;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of cluster subnet group records to include in the
      * response. If more records exist than the specified
@@ -153,14 +156,13 @@ public class DescribeClusterSubnetGroupsRequest extends AmazonWebServiceRequest 
      *         100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSubnetGroupsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional marker returned by a previous
      * <a>DescribeClusterSubnetGroups</a> request to indicate the first
@@ -199,14 +201,13 @@ public class DescribeClusterSubnetGroupsRequest extends AmazonWebServiceRequest 
      *         cluster subnet group that the current request will return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSubnetGroupsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -218,9 +219,9 @@ public class DescribeClusterSubnetGroupsRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterSubnetGroupName() != null) sb.append("ClusterSubnetGroupName: " + getClusterSubnetGroupName() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getClusterSubnetGroupName() != null) sb.append("ClusterSubnetGroupName: " + getClusterSubnetGroupName() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#modifyClusterParameterGroup(ModifyClusterParameterGroupRequest) ModifyClusterParameterGroup operation}.
@@ -22,14 +24,14 @@ import java.io.Serializable;
  * Modifies the parameters of a parameter group.
  * </p>
  * <p>
- * For more information about managing parameter groups, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift Parameter Groups </a> in the <i>Amazon
- * Redshift Management Guide</i> .
+ * For more information about managing parameter groups, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html"> Amazon Redshift Parameter Groups </a>
+ * in the <i>Amazon Redshift Management Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#modifyClusterParameterGroup(ModifyClusterParameterGroupRequest)
  */
-public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the parameter group to be modified.
@@ -42,7 +44,7 @@ public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest 
      * modified, you must supply at least the parameter name and parameter
      * value; other name-value pairs of the parameter are optional.
      */
-    private java.util.List<Parameter> parameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parameters;
 
     /**
      * The name of the parameter group to be modified.
@@ -70,14 +72,13 @@ public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest 
      * @param parameterGroupName The name of the parameter group to be modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterParameterGroupRequest withParameterGroupName(String parameterGroupName) {
         this.parameterGroupName = parameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * An array of parameters to be modified. A maximum of 20 parameters can
      * be modified in a single request. <p> For each parameter to be
@@ -90,9 +91,9 @@ public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest 
      *         value; other name-value pairs of the parameter are optional.
      */
     public java.util.List<Parameter> getParameters() {
-        
         if (parameters == null) {
-            parameters = new java.util.ArrayList<Parameter>();
+              parameters = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>();
+              parameters.setAutoConstruct(true);
         }
         return parameters;
     }
@@ -113,8 +114,7 @@ public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest 
             this.parameters = null;
             return;
         }
-
-        java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
         parametersCopy.addAll(parameters);
         this.parameters = parametersCopy;
     }
@@ -133,7 +133,7 @@ public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest 
      *         value; other name-value pairs of the parameter are optional.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterParameterGroupRequest withParameters(Parameter... parameters) {
         if (getParameters() == null) setParameters(new java.util.ArrayList<Parameter>(parameters.length));
@@ -157,20 +157,20 @@ public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest 
      *         value; other name-value pairs of the parameter are optional.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterParameterGroupRequest withParameters(java.util.Collection<Parameter> parameters) {
         if (parameters == null) {
             this.parameters = null;
         } else {
-            java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
             parametersCopy.addAll(parameters);
             this.parameters = parametersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -182,8 +182,8 @@ public class ModifyClusterParameterGroupRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");    	
+        sb.append("{");
+        if (getParameterGroupName() != null) sb.append("ParameterGroupName: " + getParameterGroupName() + ",");
         if (getParameters() != null) sb.append("Parameters: " + getParameters() );
         sb.append("}");
         return sb.toString();

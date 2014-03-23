@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents the verification attributes for a list of identities.
  * </p>
  */
-public class GetIdentityVerificationAttributesResult  implements Serializable  {
+public class GetIdentityVerificationAttributesResult implements Serializable {
 
     /**
      * A map of Identities to IdentityVerificationAttributes objects.
@@ -38,7 +39,6 @@ public class GetIdentityVerificationAttributesResult  implements Serializable  {
             verificationAttributes = new java.util.HashMap<String,IdentityVerificationAttributes>();
         }
         return verificationAttributes;
-
     }
     
     /**
@@ -58,10 +58,40 @@ public class GetIdentityVerificationAttributesResult  implements Serializable  {
      * @param verificationAttributes A map of Identities to IdentityVerificationAttributes objects.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetIdentityVerificationAttributesResult withVerificationAttributes(java.util.Map<String,IdentityVerificationAttributes> verificationAttributes) {
         setVerificationAttributes(verificationAttributes);
+        return this;
+    }
+
+    /**
+     * A map of Identities to IdentityVerificationAttributes objects.
+     * <p>
+     * The method adds a new key-value pair into VerificationAttributes
+     * parameter, and returns a reference to this object so that method calls
+     * can be chained together.
+     *
+     * @param key The key of the entry to be added into VerificationAttributes.
+     * @param value The corresponding value of the entry to be added into VerificationAttributes.
+     */
+    public GetIdentityVerificationAttributesResult addVerificationAttributesEntry(String key, IdentityVerificationAttributes value) {
+        if (null == this.verificationAttributes) {
+            this.verificationAttributes = new java.util.HashMap<String,IdentityVerificationAttributes>();
+        }
+        if (this.verificationAttributes.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.verificationAttributes.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into VerificationAttributes.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public GetIdentityVerificationAttributesResult clearVerificationAttributesEntries() {
+        this.verificationAttributes = null;
         return this;
     }
     
@@ -76,7 +106,7 @@ public class GetIdentityVerificationAttributesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVerificationAttributes() != null) sb.append("VerificationAttributes: " + getVerificationAttributes() );
         sb.append("}");
         return sb.toString();

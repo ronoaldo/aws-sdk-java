@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateInstanceExportTaskRequestMarshaller implements Marshaller<Req
     public Request<CreateInstanceExportTaskRequest> marshall(CreateInstanceExportTaskRequest createInstanceExportTaskRequest) {
 
         if (createInstanceExportTaskRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateInstanceExportTaskRequest> request = new DefaultRequest<CreateInstanceExportTaskRequest>(createInstanceExportTaskRequest, "AmazonEC2");
         request.addParameter("Action", "CreateInstanceExportTask");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createInstanceExportTaskRequest.getDescription() != null) {
             request.addParameter("Description", StringUtils.fromString(createInstanceExportTaskRequest.getDescription()));
@@ -64,7 +64,6 @@ public class CreateInstanceExportTaskRequestMarshaller implements Marshaller<Req
                 request.addParameter("ExportToS3.S3Prefix", StringUtils.fromString(exportToS3TaskSpecificationExportToS3Task.getS3Prefix()));
             }
         }
-
 
         return request;
     }

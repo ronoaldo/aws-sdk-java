@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ModifyEventSubscriptionRequestMarshaller implements Marshaller<Requ
     public Request<ModifyEventSubscriptionRequest> marshall(ModifyEventSubscriptionRequest modifyEventSubscriptionRequest) {
 
         if (modifyEventSubscriptionRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ModifyEventSubscriptionRequest> request = new DefaultRequest<ModifyEventSubscriptionRequest>(modifyEventSubscriptionRequest, "AmazonRDS");
         request.addParameter("Action", "ModifyEventSubscription");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (modifyEventSubscriptionRequest.getSubscriptionName() != null) {
             request.addParameter("SubscriptionName", StringUtils.fromString(modifyEventSubscriptionRequest.getSubscriptionName()));
@@ -63,7 +63,6 @@ public class ModifyEventSubscriptionRequestMarshaller implements Marshaller<Requ
         if (modifyEventSubscriptionRequest.isEnabled() != null) {
             request.addParameter("Enabled", StringUtils.fromBoolean(modifyEventSubscriptionRequest.isEnabled()));
         }
-
 
         return request;
     }

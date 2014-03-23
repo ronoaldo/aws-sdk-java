@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,89 +13,96 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Account Attribute
+ * <p>
+ * Describes an account attribute.
+ * </p>
  */
-public class AccountAttribute  implements Serializable  {
-
-    private String attributeName;
-
-    private java.util.List<AccountAttributeValue> attributeValues;
+public class AccountAttribute implements Serializable {
 
     /**
-     * Returns the value of the AttributeName property for this object.
+     * The name of the account attribute.
+     */
+    private String attributeName;
+
+    /**
+     * One or more values for the account attribute.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttributeValue> attributeValues;
+
+    /**
+     * The name of the account attribute.
      *
-     * @return The value of the AttributeName property for this object.
+     * @return The name of the account attribute.
      */
     public String getAttributeName() {
         return attributeName;
     }
     
     /**
-     * Sets the value of the AttributeName property for this object.
+     * The name of the account attribute.
      *
-     * @param attributeName The new value for the AttributeName property for this object.
+     * @param attributeName The name of the account attribute.
      */
     public void setAttributeName(String attributeName) {
         this.attributeName = attributeName;
     }
     
     /**
-     * Sets the value of the AttributeName property for this object.
+     * The name of the account attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeName The new value for the AttributeName property for this object.
+     * @param attributeName The name of the account attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AccountAttribute withAttributeName(String attributeName) {
         this.attributeName = attributeName;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the AttributeValues property for this object.
+     * One or more values for the account attribute.
      *
-     * @return The value of the AttributeValues property for this object.
+     * @return One or more values for the account attribute.
      */
     public java.util.List<AccountAttributeValue> getAttributeValues() {
-        
         if (attributeValues == null) {
-            attributeValues = new java.util.ArrayList<AccountAttributeValue>();
+              attributeValues = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttributeValue>();
+              attributeValues.setAutoConstruct(true);
         }
         return attributeValues;
     }
     
     /**
-     * Sets the value of the AttributeValues property for this object.
+     * One or more values for the account attribute.
      *
-     * @param attributeValues The new value for the AttributeValues property for this object.
+     * @param attributeValues One or more values for the account attribute.
      */
     public void setAttributeValues(java.util.Collection<AccountAttributeValue> attributeValues) {
         if (attributeValues == null) {
             this.attributeValues = null;
             return;
         }
-
-        java.util.List<AccountAttributeValue> attributeValuesCopy = new java.util.ArrayList<AccountAttributeValue>(attributeValues.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttributeValue> attributeValuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttributeValue>(attributeValues.size());
         attributeValuesCopy.addAll(attributeValues);
         this.attributeValues = attributeValuesCopy;
     }
     
     /**
-     * Sets the value of the AttributeValues property for this object.
+     * One or more values for the account attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeValues The new value for the AttributeValues property for this object.
+     * @param attributeValues One or more values for the account attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AccountAttribute withAttributeValues(AccountAttributeValue... attributeValues) {
         if (getAttributeValues() == null) setAttributeValues(new java.util.ArrayList<AccountAttributeValue>(attributeValues.length));
@@ -106,27 +113,27 @@ public class AccountAttribute  implements Serializable  {
     }
     
     /**
-     * Sets the value of the AttributeValues property for this object.
+     * One or more values for the account attribute.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attributeValues The new value for the AttributeValues property for this object.
+     * @param attributeValues One or more values for the account attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AccountAttribute withAttributeValues(java.util.Collection<AccountAttributeValue> attributeValues) {
         if (attributeValues == null) {
             this.attributeValues = null;
         } else {
-            java.util.List<AccountAttributeValue> attributeValuesCopy = new java.util.ArrayList<AccountAttributeValue>(attributeValues.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttributeValue> attributeValuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AccountAttributeValue>(attributeValues.size());
             attributeValuesCopy.addAll(attributeValues);
             this.attributeValues = attributeValuesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +145,8 @@ public class AccountAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeValues() != null) sb.append("AttributeValues: " + getAttributeValues() );
         sb.append("}");
         return sb.toString();

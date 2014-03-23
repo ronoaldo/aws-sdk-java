@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,31 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DeleteSecurityGroupRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#deleteSecurityGroup(DeleteSecurityGroupRequest) DeleteSecurityGroup operation}.
  * <p>
- * The DeleteSecurityGroup operation deletes a security group.
+ * Deletes a security group.
  * </p>
  * <p>
- * <b>NOTE:</b> If you attempt to delete a security group that contains instances, a fault is returned. If you attempt to delete a security group that is
- * referenced by another security group, a fault is returned. For example, if security group B has a rule that allows access from security group A,
- * security group A cannot be deleted until the allow rule is removed.
+ * If you attempt to delete a security group that is associated with an
+ * instance, or is referenced by another security group, the operation
+ * fails with <code>InvalidGroup.InUse</code> in EC2-Classic or
+ * <code>DependencyViolation</code> in EC2-VPC.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#deleteSecurityGroup(DeleteSecurityGroupRequest)
  */
-public class DeleteSecurityGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteSecurityGroupRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DeleteSecurityGroupRequest> {
 
     /**
-     * The name of the Amazon EC2 security group to delete.
+     * [EC2-Classic, default VPC] The name of the security group.
      */
     private String groupName;
 
     /**
-     * The ID of the Amazon EC2 security group to delete.
+     * The ID of the security group.
      */
     private String groupId;
 
@@ -52,81 +57,90 @@ public class DeleteSecurityGroupRequest extends AmazonWebServiceRequest  impleme
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param groupName The name of the Amazon EC2 security group to delete.
+     * @param groupName [EC2-Classic, default VPC] The name of the security
+     * group.
      */
     public DeleteSecurityGroupRequest(String groupName) {
-        this.groupName = groupName;
+        setGroupName(groupName);
     }
 
-    
-    
     /**
-     * The name of the Amazon EC2 security group to delete.
+     * [EC2-Classic, default VPC] The name of the security group.
      *
-     * @return The name of the Amazon EC2 security group to delete.
+     * @return [EC2-Classic, default VPC] The name of the security group.
      */
     public String getGroupName() {
         return groupName;
     }
     
     /**
-     * The name of the Amazon EC2 security group to delete.
+     * [EC2-Classic, default VPC] The name of the security group.
      *
-     * @param groupName The name of the Amazon EC2 security group to delete.
+     * @param groupName [EC2-Classic, default VPC] The name of the security group.
      */
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
     
     /**
-     * The name of the Amazon EC2 security group to delete.
+     * [EC2-Classic, default VPC] The name of the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupName The name of the Amazon EC2 security group to delete.
+     * @param groupName [EC2-Classic, default VPC] The name of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteSecurityGroupRequest withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
-     * The ID of the Amazon EC2 security group to delete.
+     * The ID of the security group.
      *
-     * @return The ID of the Amazon EC2 security group to delete.
+     * @return The ID of the security group.
      */
     public String getGroupId() {
         return groupId;
     }
     
     /**
-     * The ID of the Amazon EC2 security group to delete.
+     * The ID of the security group.
      *
-     * @param groupId The ID of the Amazon EC2 security group to delete.
+     * @param groupId The ID of the security group.
      */
     public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
     
     /**
-     * The ID of the Amazon EC2 security group to delete.
+     * The ID of the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupId The ID of the Amazon EC2 security group to delete.
+     * @param groupId The ID of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteSecurityGroupRequest withGroupId(String groupId) {
         this.groupId = groupId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DeleteSecurityGroupRequest> getDryRunRequest() {
+        Request<DeleteSecurityGroupRequest> request = new DeleteSecurityGroupRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -139,8 +153,8 @@ public class DeleteSecurityGroupRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
         if (getGroupId() != null) sb.append("GroupId: " + getGroupId() );
         sb.append("}");
         return sb.toString();

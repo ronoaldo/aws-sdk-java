@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,233 +13,319 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The VpnGateway data type.
+ * Describes a virtual private gateway.
  * </p>
  */
-public class VpnGateway  implements Serializable  {
+public class VpnGateway implements Serializable {
 
     /**
-     * Specifies the ID of the VPN gateway.
+     * The ID of the virtual private gateway.
      */
     private String vpnGatewayId;
 
     /**
-     * Describes the current state of the VPN gateway. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the virtual private gateway.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      */
     private String state;
 
     /**
-     * Specifies the type of VPN connection the VPN gateway supports.
+     * The type of VPN connection the virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      */
     private String type;
 
     /**
-     * Specifies the Availability Zone where the VPN gateway was created.
+     * The Availability Zone where the virtual private gateway was created.
      */
     private String availabilityZone;
 
     /**
-     * Contains information about the VPCs attached to the VPN gateway.
+     * Any VPCs attached to the virtual private gateway.
      */
-    private java.util.List<VpcAttachment> vpcAttachments;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VpcAttachment> vpcAttachments;
 
     /**
-     * A list of tags for the VpnGateway.
+     * Any tags assigned to the virtual private gateway.
      */
-    private java.util.List<Tag> tags;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
-     * Specifies the ID of the VPN gateway.
+     * The ID of the virtual private gateway.
      *
-     * @return Specifies the ID of the VPN gateway.
+     * @return The ID of the virtual private gateway.
      */
     public String getVpnGatewayId() {
         return vpnGatewayId;
     }
     
     /**
-     * Specifies the ID of the VPN gateway.
+     * The ID of the virtual private gateway.
      *
-     * @param vpnGatewayId Specifies the ID of the VPN gateway.
+     * @param vpnGatewayId The ID of the virtual private gateway.
      */
     public void setVpnGatewayId(String vpnGatewayId) {
         this.vpnGatewayId = vpnGatewayId;
     }
     
     /**
-     * Specifies the ID of the VPN gateway.
+     * The ID of the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpnGatewayId Specifies the ID of the VPN gateway.
+     * @param vpnGatewayId The ID of the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnGateway withVpnGatewayId(String vpnGatewayId) {
         this.vpnGatewayId = vpnGatewayId;
         return this;
     }
-    
-    
+
     /**
-     * Describes the current state of the VPN gateway. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the virtual private gateway.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @return Describes the current state of the VPN gateway. Valid values are
-     *         <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     *         and <code>deleted</code>.
+     * @return The current state of the virtual private gateway.
+     *
+     * @see VpnState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Describes the current state of the VPN gateway. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the virtual private gateway.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state Describes the current state of the VPN gateway. Valid values are
-     *         <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     *         and <code>deleted</code>.
+     * @param state The current state of the virtual private gateway.
+     *
+     * @see VpnState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Describes the current state of the VPN gateway. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state Describes the current state of the VPN gateway. Valid values are
-     *         <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     *         and <code>deleted</code>.
+     * @param state The current state of the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see VpnState
      */
     public VpnGateway withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The current state of the virtual private gateway.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
+     *
+     * @param state The current state of the virtual private gateway.
+     *
+     * @see VpnState
+     */
+    public void setState(VpnState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Specifies the type of VPN connection the VPN gateway supports.
+     * The current state of the virtual private gateway.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @return Specifies the type of VPN connection the VPN gateway supports.
+     * @param state The current state of the virtual private gateway.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see VpnState
+     */
+    public VpnGateway withState(VpnState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * The type of VPN connection the virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
+     *
+     * @return The type of VPN connection the virtual private gateway supports.
+     *
+     * @see GatewayType
      */
     public String getType() {
         return type;
     }
     
     /**
-     * Specifies the type of VPN connection the VPN gateway supports.
+     * The type of VPN connection the virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type Specifies the type of VPN connection the VPN gateway supports.
+     * @param type The type of VPN connection the virtual private gateway supports.
+     *
+     * @see GatewayType
      */
     public void setType(String type) {
         this.type = type;
     }
     
     /**
-     * Specifies the type of VPN connection the VPN gateway supports.
+     * The type of VPN connection the virtual private gateway supports.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type Specifies the type of VPN connection the VPN gateway supports.
+     * @param type The type of VPN connection the virtual private gateway supports.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see GatewayType
      */
     public VpnGateway withType(String type) {
         this.type = type;
         return this;
     }
-    
+
+    /**
+     * The type of VPN connection the virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
+     *
+     * @param type The type of VPN connection the virtual private gateway supports.
+     *
+     * @see GatewayType
+     */
+    public void setType(GatewayType type) {
+        this.type = type.toString();
+    }
     
     /**
-     * Specifies the Availability Zone where the VPN gateway was created.
+     * The type of VPN connection the virtual private gateway supports.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @return Specifies the Availability Zone where the VPN gateway was created.
+     * @param type The type of VPN connection the virtual private gateway supports.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see GatewayType
+     */
+    public VpnGateway withType(GatewayType type) {
+        this.type = type.toString();
+        return this;
+    }
+
+    /**
+     * The Availability Zone where the virtual private gateway was created.
+     *
+     * @return The Availability Zone where the virtual private gateway was created.
      */
     public String getAvailabilityZone() {
         return availabilityZone;
     }
     
     /**
-     * Specifies the Availability Zone where the VPN gateway was created.
+     * The Availability Zone where the virtual private gateway was created.
      *
-     * @param availabilityZone Specifies the Availability Zone where the VPN gateway was created.
+     * @param availabilityZone The Availability Zone where the virtual private gateway was created.
      */
     public void setAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
     }
     
     /**
-     * Specifies the Availability Zone where the VPN gateway was created.
+     * The Availability Zone where the virtual private gateway was created.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZone Specifies the Availability Zone where the VPN gateway was created.
+     * @param availabilityZone The Availability Zone where the virtual private gateway was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnGateway withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
-     * Contains information about the VPCs attached to the VPN gateway.
+     * Any VPCs attached to the virtual private gateway.
      *
-     * @return Contains information about the VPCs attached to the VPN gateway.
+     * @return Any VPCs attached to the virtual private gateway.
      */
     public java.util.List<VpcAttachment> getVpcAttachments() {
-        
         if (vpcAttachments == null) {
-            vpcAttachments = new java.util.ArrayList<VpcAttachment>();
+              vpcAttachments = new com.amazonaws.internal.ListWithAutoConstructFlag<VpcAttachment>();
+              vpcAttachments.setAutoConstruct(true);
         }
         return vpcAttachments;
     }
     
     /**
-     * Contains information about the VPCs attached to the VPN gateway.
+     * Any VPCs attached to the virtual private gateway.
      *
-     * @param vpcAttachments Contains information about the VPCs attached to the VPN gateway.
+     * @param vpcAttachments Any VPCs attached to the virtual private gateway.
      */
     public void setVpcAttachments(java.util.Collection<VpcAttachment> vpcAttachments) {
         if (vpcAttachments == null) {
             this.vpcAttachments = null;
             return;
         }
-
-        java.util.List<VpcAttachment> vpcAttachmentsCopy = new java.util.ArrayList<VpcAttachment>(vpcAttachments.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VpcAttachment> vpcAttachmentsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpcAttachment>(vpcAttachments.size());
         vpcAttachmentsCopy.addAll(vpcAttachments);
         this.vpcAttachments = vpcAttachmentsCopy;
     }
     
     /**
-     * Contains information about the VPCs attached to the VPN gateway.
+     * Any VPCs attached to the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcAttachments Contains information about the VPCs attached to the VPN gateway.
+     * @param vpcAttachments Any VPCs attached to the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnGateway withVpcAttachments(VpcAttachment... vpcAttachments) {
         if (getVpcAttachments() == null) setVpcAttachments(new java.util.ArrayList<VpcAttachment>(vpcAttachments.length));
@@ -250,65 +336,64 @@ public class VpnGateway  implements Serializable  {
     }
     
     /**
-     * Contains information about the VPCs attached to the VPN gateway.
+     * Any VPCs attached to the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcAttachments Contains information about the VPCs attached to the VPN gateway.
+     * @param vpcAttachments Any VPCs attached to the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnGateway withVpcAttachments(java.util.Collection<VpcAttachment> vpcAttachments) {
         if (vpcAttachments == null) {
             this.vpcAttachments = null;
         } else {
-            java.util.List<VpcAttachment> vpcAttachmentsCopy = new java.util.ArrayList<VpcAttachment>(vpcAttachments.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VpcAttachment> vpcAttachmentsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpcAttachment>(vpcAttachments.size());
             vpcAttachmentsCopy.addAll(vpcAttachments);
             this.vpcAttachments = vpcAttachmentsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of tags for the VpnGateway.
+     * Any tags assigned to the virtual private gateway.
      *
-     * @return A list of tags for the VpnGateway.
+     * @return Any tags assigned to the virtual private gateway.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * A list of tags for the VpnGateway.
+     * Any tags assigned to the virtual private gateway.
      *
-     * @param tags A list of tags for the VpnGateway.
+     * @param tags Any tags assigned to the virtual private gateway.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * A list of tags for the VpnGateway.
+     * Any tags assigned to the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the VpnGateway.
+     * @param tags Any tags assigned to the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnGateway withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -319,27 +404,27 @@ public class VpnGateway  implements Serializable  {
     }
     
     /**
-     * A list of tags for the VpnGateway.
+     * Any tags assigned to the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the VpnGateway.
+     * @param tags Any tags assigned to the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnGateway withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -351,12 +436,12 @@ public class VpnGateway  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpnGatewayId() != null) sb.append("VpnGatewayId: " + getVpnGatewayId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getVpcAttachments() != null) sb.append("VpcAttachments: " + getVpcAttachments() + ",");    	
+        sb.append("{");
+        if (getVpnGatewayId() != null) sb.append("VpnGatewayId: " + getVpnGatewayId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getVpcAttachments() != null) sb.append("VpcAttachments: " + getVpcAttachments() + ",");
         if (getTags() != null) sb.append("Tags: " + getTags() );
         sb.append("}");
         return sb.toString();

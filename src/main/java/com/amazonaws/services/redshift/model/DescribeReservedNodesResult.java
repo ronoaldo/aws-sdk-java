@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeReservedNodes action.
  * </p>
  */
-public class DescribeReservedNodesResult  implements Serializable  {
+public class DescribeReservedNodesResult implements Serializable {
 
     /**
      * A marker that can be used to retrieve paginated results.
@@ -30,7 +31,7 @@ public class DescribeReservedNodesResult  implements Serializable  {
     /**
      * The list of reserved nodes.
      */
-    private java.util.List<ReservedNode> reservedNodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNode> reservedNodes;
 
     /**
      * A marker that can be used to retrieve paginated results.
@@ -58,23 +59,22 @@ public class DescribeReservedNodesResult  implements Serializable  {
      * @param marker A marker that can be used to retrieve paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedNodesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * The list of reserved nodes.
      *
      * @return The list of reserved nodes.
      */
     public java.util.List<ReservedNode> getReservedNodes() {
-        
         if (reservedNodes == null) {
-            reservedNodes = new java.util.ArrayList<ReservedNode>();
+              reservedNodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNode>();
+              reservedNodes.setAutoConstruct(true);
         }
         return reservedNodes;
     }
@@ -89,8 +89,7 @@ public class DescribeReservedNodesResult  implements Serializable  {
             this.reservedNodes = null;
             return;
         }
-
-        java.util.List<ReservedNode> reservedNodesCopy = new java.util.ArrayList<ReservedNode>(reservedNodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNode> reservedNodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNode>(reservedNodes.size());
         reservedNodesCopy.addAll(reservedNodes);
         this.reservedNodes = reservedNodesCopy;
     }
@@ -103,7 +102,7 @@ public class DescribeReservedNodesResult  implements Serializable  {
      * @param reservedNodes The list of reserved nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedNodesResult withReservedNodes(ReservedNode... reservedNodes) {
         if (getReservedNodes() == null) setReservedNodes(new java.util.ArrayList<ReservedNode>(reservedNodes.length));
@@ -121,20 +120,20 @@ public class DescribeReservedNodesResult  implements Serializable  {
      * @param reservedNodes The list of reserved nodes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedNodesResult withReservedNodes(java.util.Collection<ReservedNode> reservedNodes) {
         if (reservedNodes == null) {
             this.reservedNodes = null;
         } else {
-            java.util.List<ReservedNode> reservedNodesCopy = new java.util.ArrayList<ReservedNode>(reservedNodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNode> reservedNodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedNode>(reservedNodes.size());
             reservedNodesCopy.addAll(reservedNodes);
             this.reservedNodes = reservedNodesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +145,8 @@ public class DescribeReservedNodesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getReservedNodes() != null) sb.append("ReservedNodes: " + getReservedNodes() );
         sb.append("}");
         return sb.toString();

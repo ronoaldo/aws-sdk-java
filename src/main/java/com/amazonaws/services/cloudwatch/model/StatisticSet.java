@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The <code>StatisticSet</code> data type describes the <code>StatisticValues</code> component of MetricDatum, and represents a set of statistics that
- * describes a specific metric.
+ * The <code>StatisticSet</code> data type describes the
+ * <code>StatisticValues</code> component of MetricDatum, and represents
+ * a set of statistics that describes a specific metric.
  * </p>
  */
-public class StatisticSet  implements Serializable  {
+public class StatisticSet implements Serializable {
 
     /**
      * The number of samples used for the statistic set.
@@ -69,14 +71,13 @@ public class StatisticSet  implements Serializable  {
      * @param sampleCount The number of samples used for the statistic set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StatisticSet withSampleCount(Double sampleCount) {
         this.sampleCount = sampleCount;
         return this;
     }
-    
-    
+
     /**
      * The sum of values for the sample set.
      *
@@ -103,14 +104,13 @@ public class StatisticSet  implements Serializable  {
      * @param sum The sum of values for the sample set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StatisticSet withSum(Double sum) {
         this.sum = sum;
         return this;
     }
-    
-    
+
     /**
      * The minimum value of the sample set.
      *
@@ -137,14 +137,13 @@ public class StatisticSet  implements Serializable  {
      * @param minimum The minimum value of the sample set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StatisticSet withMinimum(Double minimum) {
         this.minimum = minimum;
         return this;
     }
-    
-    
+
     /**
      * The maximum value of the sample set.
      *
@@ -171,14 +170,13 @@ public class StatisticSet  implements Serializable  {
      * @param maximum The maximum value of the sample set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StatisticSet withMaximum(Double maximum) {
         this.maximum = maximum;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -190,10 +188,10 @@ public class StatisticSet  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSampleCount() != null) sb.append("SampleCount: " + getSampleCount() + ",");    	
-        if (getSum() != null) sb.append("Sum: " + getSum() + ",");    	
-        if (getMinimum() != null) sb.append("Minimum: " + getMinimum() + ",");    	
+        sb.append("{");
+        if (getSampleCount() != null) sb.append("SampleCount: " + getSampleCount() + ",");
+        if (getSum() != null) sb.append("Sum: " + getSum() + ",");
+        if (getMinimum() != null) sb.append("Minimum: " + getMinimum() + ",");
         if (getMaximum() != null) sb.append("Maximum: " + getMaximum() );
         sb.append("}");
         return sb.toString();

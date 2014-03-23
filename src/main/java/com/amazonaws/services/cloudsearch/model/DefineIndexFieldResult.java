@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A response message that contains the status of an updated index field.
  * </p>
  */
-public class DefineIndexFieldResult  implements Serializable  {
+public class DefineIndexFieldResult implements Serializable {
 
     /**
      * The value of an <code>IndexField</code> and its current status.
@@ -53,14 +54,13 @@ public class DefineIndexFieldResult  implements Serializable  {
      * @param indexField The value of an <code>IndexField</code> and its current status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefineIndexFieldResult withIndexField(IndexFieldStatus indexField) {
         this.indexField = indexField;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class DefineIndexFieldResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getIndexField() != null) sb.append("IndexField: " + getIndexField() );
         sb.append("}");
         return sb.toString();

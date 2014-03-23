@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies whether the PutScalingPolicy <code>ScalingAdjustment</code> parameter is an absolute number or a percentage of the current capacity.
+ * Specifies whether the PutScalingPolicy <code>ScalingAdjustment</code>
+ * parameter is an absolute number or a percentage of the current
+ * capacity.
  * </p>
  */
-public class AdjustmentType  implements Serializable  {
+public class AdjustmentType implements Serializable {
 
     /**
      * A policy adjustment type. Valid values are
@@ -83,14 +86,13 @@ public class AdjustmentType  implements Serializable  {
      *         <code>PercentChangeInCapacity</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AdjustmentType withAdjustmentType(String adjustmentType) {
         this.adjustmentType = adjustmentType;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +104,7 @@ public class AdjustmentType  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAdjustmentType() != null) sb.append("AdjustmentType: " + getAdjustmentType() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,26 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#createJob(CreateJobRequest) CreateJob operation}.
  * <p>
- * To create a job, send a POST request to the <code>/2012-09-25/jobs</code> resource.
+ * When you create a job, Elastic Transcoder returns JSON data that
+ * includes the values that you specified plus information about the job
+ * that is created.
  * </p>
  * <p>
- * When you create a job, Elastic Transcoder returns JSON data that includes the values that you specified plus information about the job that is
- * created.
- * </p>
- * <p>
- * If you have specified more than one output for your jobs (for example, one output for the Kindle Fire and another output for the Apple iPhone 4s), you
- * currently must use the Elastic Transcoder API to list the jobs (as opposed to the AWS Console).
+ * If you have specified more than one output for your jobs (for example,
+ * one output for the Kindle Fire and another output for the Apple iPhone
+ * 4s), you currently must use the Elastic Transcoder API to list the
+ * jobs (as opposed to the AWS Console).
  * </p>
  *
  * @see com.amazonaws.services.elastictranscoder.AmazonElasticTranscoder#createJob(CreateJobRequest)
  */
-public class CreateJobRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateJobRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The <code>Id</code> of the pipeline that you want Elastic Transcoder
@@ -53,7 +55,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
     private JobInput input;
 
     /**
-     * 
+     * The <code>CreateJobOutput</code> structure.
      */
     private CreateJobOutput output;
 
@@ -65,7 +67,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 30<br/>
      */
-    private java.util.List<CreateJobOutput> outputs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobOutput> outputs;
 
     /**
      * The value, if any, that you want Elastic Transcoder to prepend to the
@@ -87,7 +89,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 30<br/>
      */
-    private java.util.List<CreateJobPlaylist> playlists;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobPlaylist> playlists;
 
     /**
      * The <code>Id</code> of the pipeline that you want Elastic Transcoder
@@ -148,14 +150,13 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         the transcoded files.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * A section of the request body that provides information about the file
      * that is being transcoded.
@@ -188,48 +189,46 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         that is being transcoded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withInput(JobInput input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
-     * 
+     * The <code>CreateJobOutput</code> structure.
      *
-     * @return 
+     * @return The <code>CreateJobOutput</code> structure.
      */
     public CreateJobOutput getOutput() {
         return output;
     }
     
     /**
-     * 
+     * The <code>CreateJobOutput</code> structure.
      *
-     * @param output 
+     * @param output The <code>CreateJobOutput</code> structure.
      */
     public void setOutput(CreateJobOutput output) {
         this.output = output;
     }
     
     /**
-     * 
+     * The <code>CreateJobOutput</code> structure.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param output 
+     * @param output The <code>CreateJobOutput</code> structure.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withOutput(CreateJobOutput output) {
         this.output = output;
         return this;
     }
-    
-    
+
     /**
      * A section of the request body that provides information about the
      * transcoded (target) files. We recommend that you use the
@@ -243,7 +242,10 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         <code>Outputs</code> syntax instead of the <code>Output</code> syntax.
      */
     public java.util.List<CreateJobOutput> getOutputs() {
-        
+        if (outputs == null) {
+              outputs = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobOutput>();
+              outputs.setAutoConstruct(true);
+        }
         return outputs;
     }
     
@@ -264,8 +266,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
             this.outputs = null;
             return;
         }
-
-        java.util.List<CreateJobOutput> outputsCopy = new java.util.ArrayList<CreateJobOutput>(outputs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobOutput> outputsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobOutput>(outputs.size());
         outputsCopy.addAll(outputs);
         this.outputs = outputsCopy;
     }
@@ -285,7 +286,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         <code>Outputs</code> syntax instead of the <code>Output</code> syntax.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withOutputs(CreateJobOutput... outputs) {
         if (getOutputs() == null) setOutputs(new java.util.ArrayList<CreateJobOutput>(outputs.length));
@@ -310,20 +311,20 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         <code>Outputs</code> syntax instead of the <code>Output</code> syntax.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withOutputs(java.util.Collection<CreateJobOutput> outputs) {
         if (outputs == null) {
             this.outputs = null;
         } else {
-            java.util.List<CreateJobOutput> outputsCopy = new java.util.ArrayList<CreateJobOutput>(outputs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobOutput> outputsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobOutput>(outputs.size());
             outputsCopy.addAll(outputs);
             this.outputs = outputsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The value, if any, that you want Elastic Transcoder to prepend to the
      * names of all files that this job creates, including output files,
@@ -371,14 +372,13 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         thumbnails, and playlists.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withOutputKeyPrefix(String outputKeyPrefix) {
         this.outputKeyPrefix = outputKeyPrefix;
         return this;
     }
-    
-    
+
     /**
      * If you specify a preset in <code>PresetId</code> for which the value
      * of <code>Container</code> is ts (MPEG-TS), Playlists contains
@@ -396,7 +396,10 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         playlist. The maximum number of master playlists in a job is 30.
      */
     public java.util.List<CreateJobPlaylist> getPlaylists() {
-        
+        if (playlists == null) {
+              playlists = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobPlaylist>();
+              playlists.setAutoConstruct(true);
+        }
         return playlists;
     }
     
@@ -421,8 +424,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
             this.playlists = null;
             return;
         }
-
-        java.util.List<CreateJobPlaylist> playlistsCopy = new java.util.ArrayList<CreateJobPlaylist>(playlists.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobPlaylist> playlistsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobPlaylist>(playlists.size());
         playlistsCopy.addAll(playlists);
         this.playlists = playlistsCopy;
     }
@@ -446,7 +448,7 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         playlist. The maximum number of master playlists in a job is 30.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withPlaylists(CreateJobPlaylist... playlists) {
         if (getPlaylists() == null) setPlaylists(new java.util.ArrayList<CreateJobPlaylist>(playlists.length));
@@ -475,20 +477,20 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
      *         playlist. The maximum number of master playlists in a job is 30.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateJobRequest withPlaylists(java.util.Collection<CreateJobPlaylist> playlists) {
         if (playlists == null) {
             this.playlists = null;
         } else {
-            java.util.List<CreateJobPlaylist> playlistsCopy = new java.util.ArrayList<CreateJobPlaylist>(playlists.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobPlaylist> playlistsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CreateJobPlaylist>(playlists.size());
             playlistsCopy.addAll(playlists);
             this.playlists = playlistsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -500,12 +502,12 @@ public class CreateJobRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getOutput() != null) sb.append("Output: " + getOutput() + ",");    	
-        if (getOutputs() != null) sb.append("Outputs: " + getOutputs() + ",");    	
-        if (getOutputKeyPrefix() != null) sb.append("OutputKeyPrefix: " + getOutputKeyPrefix() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getOutput() != null) sb.append("Output: " + getOutput() + ",");
+        if (getOutputs() != null) sb.append("Outputs: " + getOutputs() + ",");
+        if (getOutputKeyPrefix() != null) sb.append("OutputKeyPrefix: " + getOutputKeyPrefix() + ",");
         if (getPlaylists() != null) sb.append("Playlists: " + getPlaylists() );
         sb.append("}");
         return sb.toString();

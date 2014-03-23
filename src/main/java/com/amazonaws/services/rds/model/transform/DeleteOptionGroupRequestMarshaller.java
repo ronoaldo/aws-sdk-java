@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,17 +33,16 @@ public class DeleteOptionGroupRequestMarshaller implements Marshaller<Request<De
     public Request<DeleteOptionGroupRequest> marshall(DeleteOptionGroupRequest deleteOptionGroupRequest) {
 
         if (deleteOptionGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteOptionGroupRequest> request = new DefaultRequest<DeleteOptionGroupRequest>(deleteOptionGroupRequest, "AmazonRDS");
         request.addParameter("Action", "DeleteOptionGroup");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (deleteOptionGroupRequest.getOptionGroupName() != null) {
             request.addParameter("OptionGroupName", StringUtils.fromString(deleteOptionGroupRequest.getOptionGroupName()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A value that applies only to a certain Cache Node Type.
+ * A value that applies only to a certain cache node type.
  * </p>
  */
-public class CacheNodeTypeSpecificValue  implements Serializable  {
+public class CacheNodeTypeSpecificValue implements Serializable {
 
     /**
-     * Specifies the Cache Node type for which this value applies.
+     * The cache node type for which this value applies.
      */
     private String cacheNodeType;
 
     /**
-     * Specifies the value for the Cache Node type.
+     * The value for the cache node type.
      */
     private String value;
 
@@ -39,73 +40,71 @@ public class CacheNodeTypeSpecificValue  implements Serializable  {
     public CacheNodeTypeSpecificValue() {}
     
     /**
-     * Specifies the Cache Node type for which this value applies.
+     * The cache node type for which this value applies.
      *
-     * @return Specifies the Cache Node type for which this value applies.
+     * @return The cache node type for which this value applies.
      */
     public String getCacheNodeType() {
         return cacheNodeType;
     }
     
     /**
-     * Specifies the Cache Node type for which this value applies.
+     * The cache node type for which this value applies.
      *
-     * @param cacheNodeType Specifies the Cache Node type for which this value applies.
+     * @param cacheNodeType The cache node type for which this value applies.
      */
     public void setCacheNodeType(String cacheNodeType) {
         this.cacheNodeType = cacheNodeType;
     }
     
     /**
-     * Specifies the Cache Node type for which this value applies.
+     * The cache node type for which this value applies.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeType Specifies the Cache Node type for which this value applies.
+     * @param cacheNodeType The cache node type for which this value applies.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheNodeTypeSpecificValue withCacheNodeType(String cacheNodeType) {
         this.cacheNodeType = cacheNodeType;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the value for the Cache Node type.
+     * The value for the cache node type.
      *
-     * @return Specifies the value for the Cache Node type.
+     * @return The value for the cache node type.
      */
     public String getValue() {
         return value;
     }
     
     /**
-     * Specifies the value for the Cache Node type.
+     * The value for the cache node type.
      *
-     * @param value Specifies the value for the Cache Node type.
+     * @param value The value for the cache node type.
      */
     public void setValue(String value) {
         this.value = value;
     }
     
     /**
-     * Specifies the value for the Cache Node type.
+     * The value for the cache node type.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param value Specifies the value for the Cache Node type.
+     * @param value The value for the cache node type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheNodeTypeSpecificValue withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -117,8 +116,8 @@ public class CacheNodeTypeSpecificValue  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheNodeType() != null) sb.append("CacheNodeType: " + getCacheNodeType() + ",");    	
+        sb.append("{");
+        if (getCacheNodeType() != null) sb.append("CacheNodeType: " + getCacheNodeType() + ",");
         if (getValue() != null) sb.append("Value: " + getValue() );
         sb.append("}");
         return sb.toString();

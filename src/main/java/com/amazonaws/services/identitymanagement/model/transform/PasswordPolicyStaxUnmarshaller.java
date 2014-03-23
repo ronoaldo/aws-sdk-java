@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * Password Policy StAX Unmarshaller
  */
@@ -37,9 +36,7 @@ public class PasswordPolicyStaxUnmarshaller implements Unmarshaller<PasswordPoli
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
 
-        
         if (context.isStartOfDocument()) targetDepth += 2;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -68,6 +65,14 @@ public class PasswordPolicyStaxUnmarshaller implements Unmarshaller<PasswordPoli
                 }
                 if (context.testExpression("AllowUsersToChangePassword", targetDepth)) {
                     passwordPolicy.setAllowUsersToChangePassword(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("ExpirePasswords", targetDepth)) {
+                    passwordPolicy.setExpirePasswords(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("MaxPasswordAge", targetDepth)) {
+                    passwordPolicy.setMaxPasswordAge(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

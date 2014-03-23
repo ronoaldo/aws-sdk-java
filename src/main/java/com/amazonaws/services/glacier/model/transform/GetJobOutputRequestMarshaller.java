@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class GetJobOutputRequestMarshaller implements Marshaller<Request<GetJobOutputRequest>, GetJobOutputRequest> {
 
-    
-
     public Request<GetJobOutputRequest> marshall(GetJobOutputRequest getJobOutputRequest) {
     if (getJobOutputRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,17 +49,14 @@ public class GetJobOutputRequestMarshaller implements Marshaller<Request<GetJobO
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.GET);
         if (getJobOutputRequest.getRange() != null)
           request.addHeader("Range", StringUtils.fromString(getJobOutputRequest.getRange()));
-        
-
 
         String uriResourcePath = "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(getJobOutputRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(getJobOutputRequest.getVaultName())); 
-        uriResourcePath = uriResourcePath.replace("{jobId}", getString(getJobOutputRequest.getJobId())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (getJobOutputRequest.getAccountId() == null) ? "" : StringUtils.fromString(getJobOutputRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (getJobOutputRequest.getVaultName() == null) ? "" : StringUtils.fromString(getJobOutputRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{jobId}", (getJobOutputRequest.getJobId() == null) ? "" : StringUtils.fromString(getJobOutputRequest.getJobId())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -81,16 +76,8 @@ public class GetJobOutputRequestMarshaller implements Marshaller<Request<GetJobO
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#putScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest) PutScheduledUpdateGroupAction operation}.
  * <p>
- * Creates a scheduled scaling action for an Auto Scaling group. If you leave a parameter unspecified, the corresponding value remains unchanged in the
- * affected Auto Scaling group.
+ * Creates or updates a scheduled scaling action for an Auto Scaling
+ * group. When updating a scheduled scaling action, if you leave a
+ * parameter unspecified, the corresponding value remains unchanged in
+ * the affected Auto Scaling group.
+ * </p>
+ * <p>
+ * For information on creating or updating a scheduled action for your
+ * Auto Scaling group, see
+ * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html"> Scale Based on a Schedule </a>
+ * .
+ * </p>
+ * <p>
+ * <b>NOTE:</b> Auto Scaling supports the date and time expressed in
+ * "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#putScheduledUpdateGroupAction(PutScheduledUpdateGroupActionRequest)
  */
-public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling group.
@@ -57,9 +71,11 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
 
     /**
      * The time for this action to start, as in <code>--start-time
-     * 2010-06-01T00:00:00Z</code>. <p>When <code>StartTime</code> and
-     * <code>EndTime</code> are specified with <code>Recurrence</code>, they
-     * form the boundaries of when the recurring action will start and stop.
+     * 2010-06-01T00:00:00Z</code>. <p>If you try to schedule your action in
+     * the past, Auto Scaling returns an error message. <p>When
+     * <code>StartTime</code> and <code>EndTime</code> are specified with
+     * <code>Recurrence</code>, they form the boundaries of when the
+     * recurring action will start and stop.
      */
     private java.util.Date startTime;
 
@@ -137,14 +153,13 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param autoScalingGroupName The name or ARN of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The name of this scaling action.
      * <p>
@@ -183,14 +198,13 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param scheduledActionName The name of this scaling action.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withScheduledActionName(String scheduledActionName) {
         this.scheduledActionName = scheduledActionName;
         return this;
     }
-    
-    
+
     /**
      * <code>Time</code> is deprecated. <p>The time for this action to start.
      * <code>Time</code> is an alias for <code>StartTime</code> and can be
@@ -247,24 +261,27 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      *         <code>PutScheduledUpdateGroupAction</code> will return an error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withTime(java.util.Date time) {
         this.time = time;
         return this;
     }
-    
-    
+
     /**
      * The time for this action to start, as in <code>--start-time
-     * 2010-06-01T00:00:00Z</code>. <p>When <code>StartTime</code> and
-     * <code>EndTime</code> are specified with <code>Recurrence</code>, they
-     * form the boundaries of when the recurring action will start and stop.
+     * 2010-06-01T00:00:00Z</code>. <p>If you try to schedule your action in
+     * the past, Auto Scaling returns an error message. <p>When
+     * <code>StartTime</code> and <code>EndTime</code> are specified with
+     * <code>Recurrence</code>, they form the boundaries of when the
+     * recurring action will start and stop.
      *
      * @return The time for this action to start, as in <code>--start-time
-     *         2010-06-01T00:00:00Z</code>. <p>When <code>StartTime</code> and
-     *         <code>EndTime</code> are specified with <code>Recurrence</code>, they
-     *         form the boundaries of when the recurring action will start and stop.
+     *         2010-06-01T00:00:00Z</code>. <p>If you try to schedule your action in
+     *         the past, Auto Scaling returns an error message. <p>When
+     *         <code>StartTime</code> and <code>EndTime</code> are specified with
+     *         <code>Recurrence</code>, they form the boundaries of when the
+     *         recurring action will start and stop.
      */
     public java.util.Date getStartTime() {
         return startTime;
@@ -272,14 +289,18 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
     
     /**
      * The time for this action to start, as in <code>--start-time
-     * 2010-06-01T00:00:00Z</code>. <p>When <code>StartTime</code> and
-     * <code>EndTime</code> are specified with <code>Recurrence</code>, they
-     * form the boundaries of when the recurring action will start and stop.
+     * 2010-06-01T00:00:00Z</code>. <p>If you try to schedule your action in
+     * the past, Auto Scaling returns an error message. <p>When
+     * <code>StartTime</code> and <code>EndTime</code> are specified with
+     * <code>Recurrence</code>, they form the boundaries of when the
+     * recurring action will start and stop.
      *
      * @param startTime The time for this action to start, as in <code>--start-time
-     *         2010-06-01T00:00:00Z</code>. <p>When <code>StartTime</code> and
-     *         <code>EndTime</code> are specified with <code>Recurrence</code>, they
-     *         form the boundaries of when the recurring action will start and stop.
+     *         2010-06-01T00:00:00Z</code>. <p>If you try to schedule your action in
+     *         the past, Auto Scaling returns an error message. <p>When
+     *         <code>StartTime</code> and <code>EndTime</code> are specified with
+     *         <code>Recurrence</code>, they form the boundaries of when the
+     *         recurring action will start and stop.
      */
     public void setStartTime(java.util.Date startTime) {
         this.startTime = startTime;
@@ -287,26 +308,29 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
     
     /**
      * The time for this action to start, as in <code>--start-time
-     * 2010-06-01T00:00:00Z</code>. <p>When <code>StartTime</code> and
-     * <code>EndTime</code> are specified with <code>Recurrence</code>, they
-     * form the boundaries of when the recurring action will start and stop.
+     * 2010-06-01T00:00:00Z</code>. <p>If you try to schedule your action in
+     * the past, Auto Scaling returns an error message. <p>When
+     * <code>StartTime</code> and <code>EndTime</code> are specified with
+     * <code>Recurrence</code>, they form the boundaries of when the
+     * recurring action will start and stop.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param startTime The time for this action to start, as in <code>--start-time
-     *         2010-06-01T00:00:00Z</code>. <p>When <code>StartTime</code> and
-     *         <code>EndTime</code> are specified with <code>Recurrence</code>, they
-     *         form the boundaries of when the recurring action will start and stop.
+     *         2010-06-01T00:00:00Z</code>. <p>If you try to schedule your action in
+     *         the past, Auto Scaling returns an error message. <p>When
+     *         <code>StartTime</code> and <code>EndTime</code> are specified with
+     *         <code>Recurrence</code>, they form the boundaries of when the
+     *         recurring action will start and stop.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The time for this action to end.
      *
@@ -333,14 +357,13 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param endTime The time for this action to end.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * The time when recurring future actions will start. Start time is
      * specified by the user following the Unix cron syntax format. For
@@ -415,14 +438,13 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      *         form the boundaries of when the recurring action will start and stop.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withRecurrence(String recurrence) {
         this.recurrence = recurrence;
         return this;
     }
-    
-    
+
     /**
      * The minimum size for the new Auto Scaling group.
      *
@@ -449,14 +471,13 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param minSize The minimum size for the new Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withMinSize(Integer minSize) {
         this.minSize = minSize;
         return this;
     }
-    
-    
+
     /**
      * The maximum size for the Auto Scaling group.
      *
@@ -483,14 +504,13 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      * @param maxSize The maximum size for the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withMaxSize(Integer maxSize) {
         this.maxSize = maxSize;
         return this;
     }
-    
-    
+
     /**
      * The number of Amazon EC2 instances that should be running in the
      * group.
@@ -523,14 +543,13 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
      *         group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutScheduledUpdateGroupActionRequest withDesiredCapacity(Integer desiredCapacity) {
         this.desiredCapacity = desiredCapacity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -542,15 +561,15 @@ public class PutScheduledUpdateGroupActionRequest extends AmazonWebServiceReques
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() + ",");    	
-        if (getTime() != null) sb.append("Time: " + getTime() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getRecurrence() != null) sb.append("Recurrence: " + getRecurrence() + ",");    	
-        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");    	
-        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getScheduledActionName() != null) sb.append("ScheduledActionName: " + getScheduledActionName() + ",");
+        if (getTime() != null) sb.append("Time: " + getTime() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getRecurrence() != null) sb.append("Recurrence: " + getRecurrence() + ",");
+        if (getMinSize() != null) sb.append("MinSize: " + getMinSize() + ",");
+        if (getMaxSize() != null) sb.append("MaxSize: " + getMaxSize() + ",");
         if (getDesiredCapacity() != null) sb.append("DesiredCapacity: " + getDesiredCapacity() );
         sb.append("}");
         return sb.toString();

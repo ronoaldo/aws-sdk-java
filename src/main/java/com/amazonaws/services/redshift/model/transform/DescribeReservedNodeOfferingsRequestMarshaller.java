@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeReservedNodeOfferingsRequestMarshaller implements Marshalle
     public Request<DescribeReservedNodeOfferingsRequest> marshall(DescribeReservedNodeOfferingsRequest describeReservedNodeOfferingsRequest) {
 
         if (describeReservedNodeOfferingsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeReservedNodeOfferingsRequest> request = new DefaultRequest<DescribeReservedNodeOfferingsRequest>(describeReservedNodeOfferingsRequest, "AmazonRedshift");
         request.addParameter("Action", "DescribeReservedNodeOfferings");
@@ -49,7 +49,6 @@ public class DescribeReservedNodeOfferingsRequestMarshaller implements Marshalle
         if (describeReservedNodeOfferingsRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeReservedNodeOfferingsRequest.getMarker()));
         }
-
 
         return request;
     }

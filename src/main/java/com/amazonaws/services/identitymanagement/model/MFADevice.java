@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The <code>MFADevice</code> data type contains information about an MFA device.
+ * The <code>MFADevice</code> data type contains information about an MFA
+ * device.
  * </p>
  * <p>
- * This data type is used as a response element in the action ListMFADevices.
+ * This data type is used as a response element in the action
+ * ListMFADevices.
  * </p>
  */
-public class MFADevice  implements Serializable  {
+public class MFADevice implements Serializable {
 
     /**
      * The user with whom the MFA device is associated.
@@ -67,13 +70,11 @@ public class MFADevice  implements Serializable  {
      * user.
      */
     public MFADevice(String userName, String serialNumber, java.util.Date enableDate) {
-        this.userName = userName;
-        this.serialNumber = serialNumber;
-        this.enableDate = enableDate;
+        setUserName(userName);
+        setSerialNumber(serialNumber);
+        setEnableDate(enableDate);
     }
 
-    
-    
     /**
      * The user with whom the MFA device is associated.
      * <p>
@@ -112,14 +113,13 @@ public class MFADevice  implements Serializable  {
      * @param userName The user with whom the MFA device is associated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MFADevice withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * The serial number that uniquely identifies the MFA device. For virtual
      * MFA devices, the serial number is the device ARN.
@@ -164,14 +164,13 @@ public class MFADevice  implements Serializable  {
      *         MFA devices, the serial number is the device ARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MFADevice withSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
         return this;
     }
-    
-    
+
     /**
      * The date when the MFA device was enabled for the user.
      *
@@ -198,14 +197,13 @@ public class MFADevice  implements Serializable  {
      * @param enableDate The date when the MFA device was enabled for the user.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MFADevice withEnableDate(java.util.Date enableDate) {
         this.enableDate = enableDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -217,9 +215,9 @@ public class MFADevice  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");    	
-        if (getSerialNumber() != null) sb.append("SerialNumber: " + getSerialNumber() + ",");    	
+        sb.append("{");
+        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");
+        if (getSerialNumber() != null) sb.append("SerialNumber: " + getSerialNumber() + ",");
         if (getEnableDate() != null) sb.append("EnableDate: " + getEnableDate() );
         sb.append("}");
         return sb.toString();

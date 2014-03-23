@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteAccountAliasRequestMarshaller implements Marshaller<Request<D
     public Request<DeleteAccountAliasRequest> marshall(DeleteAccountAliasRequest deleteAccountAliasRequest) {
 
         if (deleteAccountAliasRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteAccountAliasRequest> request = new DefaultRequest<DeleteAccountAliasRequest>(deleteAccountAliasRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "DeleteAccountAlias");
@@ -43,7 +43,6 @@ public class DeleteAccountAliasRequestMarshaller implements Marshaller<Request<D
         if (deleteAccountAliasRequest.getAccountAlias() != null) {
             request.addParameter("AccountAlias", StringUtils.fromString(deleteAccountAliasRequest.getAccountAlias()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * A structure containing a list of connections.
  * </p>
  */
-public class DescribeConnectionsResult  implements Serializable  {
+public class DescribeConnectionsResult implements Serializable {
 
     /**
      * A list of connections.
      */
-    private java.util.List<Connection> connections;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Connection> connections;
 
     /**
      * A list of connections.
@@ -33,9 +34,9 @@ public class DescribeConnectionsResult  implements Serializable  {
      * @return A list of connections.
      */
     public java.util.List<Connection> getConnections() {
-        
         if (connections == null) {
-            connections = new java.util.ArrayList<Connection>();
+              connections = new com.amazonaws.internal.ListWithAutoConstructFlag<Connection>();
+              connections.setAutoConstruct(true);
         }
         return connections;
     }
@@ -50,8 +51,7 @@ public class DescribeConnectionsResult  implements Serializable  {
             this.connections = null;
             return;
         }
-
-        java.util.List<Connection> connectionsCopy = new java.util.ArrayList<Connection>(connections.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Connection> connectionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Connection>(connections.size());
         connectionsCopy.addAll(connections);
         this.connections = connectionsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeConnectionsResult  implements Serializable  {
      * @param connections A list of connections.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConnectionsResult withConnections(Connection... connections) {
         if (getConnections() == null) setConnections(new java.util.ArrayList<Connection>(connections.length));
@@ -82,20 +82,20 @@ public class DescribeConnectionsResult  implements Serializable  {
      * @param connections A list of connections.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConnectionsResult withConnections(java.util.Collection<Connection> connections) {
         if (connections == null) {
             this.connections = null;
         } else {
-            java.util.List<Connection> connectionsCopy = new java.util.ArrayList<Connection>(connections.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Connection> connectionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Connection>(connections.size());
             connectionsCopy.addAll(connections);
             this.connections = connectionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeConnectionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getConnections() != null) sb.append("Connections: " + getConnections() );
         sb.append("}");
         return sb.toString();

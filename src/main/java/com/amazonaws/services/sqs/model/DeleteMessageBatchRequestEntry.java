@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Encloses a receipt handle and an identifier for it.
  * </p>
  */
-public class DeleteMessageBatchRequestEntry  implements Serializable  {
+public class DeleteMessageBatchRequestEntry implements Serializable {
 
     /**
      * An identifier for this particular receipt handle. This is used to
@@ -51,12 +52,10 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
      * @param receiptHandle A receipt handle.
      */
     public DeleteMessageBatchRequestEntry(String id, String receiptHandle) {
-        this.id = id;
-        this.receiptHandle = receiptHandle;
+        setId(id);
+        setReceiptHandle(receiptHandle);
     }
 
-    
-    
     /**
      * An identifier for this particular receipt handle. This is used to
      * communicate the result. Note that the <code>Id</code>s of a batch
@@ -95,14 +94,13 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
      *         request need to be unique within the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchRequestEntry withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * A receipt handle.
      *
@@ -129,14 +127,13 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
      * @param receiptHandle A receipt handle.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteMessageBatchRequestEntry withReceiptHandle(String receiptHandle) {
         this.receiptHandle = receiptHandle;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -148,8 +145,8 @@ public class DeleteMessageBatchRequestEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getReceiptHandle() != null) sb.append("ReceiptHandle: " + getReceiptHandle() );
         sb.append("}");
         return sb.toString();

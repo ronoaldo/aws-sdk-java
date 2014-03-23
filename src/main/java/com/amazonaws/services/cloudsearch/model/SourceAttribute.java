@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Identifies the source data for an index field. An optional data transformation can be applied to the source data when populating the index field. By
- * default, the value of the source attribute is copied to the index field.
+ * Identifies the source data for an index field. An optional data
+ * transformation can be applied to the source data when populating the
+ * index field. By default, the value of the source attribute is copied
+ * to the index field.
  * </p>
  */
-public class SourceAttribute  implements Serializable  {
+public class SourceAttribute implements Serializable {
 
     /**
      * Identifies the transformation to apply when copying data from a source
@@ -96,7 +99,7 @@ public class SourceAttribute  implements Serializable  {
      *         attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceDataFunction
      */
@@ -104,8 +107,7 @@ public class SourceAttribute  implements Serializable  {
         this.sourceDataFunction = sourceDataFunction;
         return this;
     }
-    
-    
+
     /**
      * Identifies the transformation to apply when copying data from a source
      * attribute.
@@ -135,7 +137,7 @@ public class SourceAttribute  implements Serializable  {
      *         attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see SourceDataFunction
      */
@@ -143,7 +145,7 @@ public class SourceAttribute  implements Serializable  {
         this.sourceDataFunction = sourceDataFunction.toString();
         return this;
     }
-    
+
     /**
      * Copies data from a source document attribute to an
      * <code>IndexField</code>.
@@ -176,14 +178,13 @@ public class SourceAttribute  implements Serializable  {
      *         <code>IndexField</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceAttribute withSourceDataCopy(SourceData sourceDataCopy) {
         this.sourceDataCopy = sourceDataCopy;
         return this;
     }
-    
-    
+
     /**
      * Trims common title words from a source document attribute when
      * populating an <code>IndexField</code>. This can be used to create an
@@ -222,14 +223,13 @@ public class SourceAttribute  implements Serializable  {
      *         <code>IndexField</code> you can use for sorting.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceAttribute withSourceDataTrimTitle(SourceDataTrimTitle sourceDataTrimTitle) {
         this.sourceDataTrimTitle = sourceDataTrimTitle;
         return this;
     }
-    
-    
+
     /**
      * Maps source document attribute values to new values when populating
      * the <code>IndexField</code>.
@@ -262,14 +262,13 @@ public class SourceAttribute  implements Serializable  {
      *         the <code>IndexField</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceAttribute withSourceDataMap(SourceDataMap sourceDataMap) {
         this.sourceDataMap = sourceDataMap;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -281,10 +280,10 @@ public class SourceAttribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceDataFunction() != null) sb.append("SourceDataFunction: " + getSourceDataFunction() + ",");    	
-        if (getSourceDataCopy() != null) sb.append("SourceDataCopy: " + getSourceDataCopy() + ",");    	
-        if (getSourceDataTrimTitle() != null) sb.append("SourceDataTrimTitle: " + getSourceDataTrimTitle() + ",");    	
+        sb.append("{");
+        if (getSourceDataFunction() != null) sb.append("SourceDataFunction: " + getSourceDataFunction() + ",");
+        if (getSourceDataCopy() != null) sb.append("SourceDataCopy: " + getSourceDataCopy() + ",");
+        if (getSourceDataTrimTitle() != null) sb.append("SourceDataTrimTitle: " + getSourceDataTrimTitle() + ",");
         if (getSourceDataMap() != null) sb.append("SourceDataMap: " + getSourceDataMap() );
         sb.append("}");
         return sb.toString();

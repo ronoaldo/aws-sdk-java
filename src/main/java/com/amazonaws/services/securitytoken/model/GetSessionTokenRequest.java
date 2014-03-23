@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,36 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.securitytoken.AWSSecurityTokenService#getSessionToken(GetSessionTokenRequest) GetSessionToken operation}.
  * <p>
- * Returns a set of temporary credentials for an AWS account or IAM user. The credentials consist of an access key ID, a secret access key, and a
- * security token. Typically, you use <code>GetSessionToken</code> if you want use MFA to protect programmatic calls to specific AWS APIs like Amazon EC2
- * <code>StopInstances</code> . MFA-enabled IAM users would need to call <code>GetSessionToken</code> and submit an MFA code that is associated with
- * their MFA device. Using the temporary security credentials that are returned from the call, IAM users can then make programmatic calls to APIs that
- * require MFA authentication.
+ * Returns a set of temporary credentials for an AWS account or IAM
+ * user. The credentials consist of an access key ID, a secret access
+ * key, and a security token. Typically, you use
+ * <code>GetSessionToken</code> if you want use MFA to protect
+ * programmatic calls to specific AWS APIs like Amazon EC2
+ * <code>StopInstances</code> . MFA-enabled IAM users would need to call
+ * <code>GetSessionToken</code> and submit an MFA code that is associated
+ * with their MFA device. Using the temporary security credentials that
+ * are returned from the call, IAM users can then make programmatic calls
+ * to APIs that require MFA authentication.
  * </p>
  * <p>
- * The <code>GetSessionToken</code> action must be called by using the long-term AWS security credentials of the AWS account or an IAM user. Credentials
- * that are created by IAM users are valid for the duration that you specify, between 900 seconds (15 minutes) and 129600 seconds (36 hours); credentials
- * that are created by using account credentials have a maximum duration of 3600 seconds (1 hour).
+ * The <code>GetSessionToken</code> action must be called by using the
+ * long-term AWS security credentials of the AWS account or an IAM user.
+ * Credentials that are created by IAM users are valid for the duration
+ * that you specify, between 900 seconds (15 minutes) and 129600 seconds
+ * (36 hours); credentials that are created by using account credentials
+ * have a maximum duration of 3600 seconds (1 hour).
  * </p>
  * <p>
- * The permissions that are granted to the federated user are the intersection of the policy that is passed with the <code>GetSessionToken</code>
- * request and policies that are associated with of the entity making the <code>GetSessionToken</code> call.
+ * The permissions associated with the temporary security credentials
+ * returned by <code>GetSessionToken</code> are based on the permissions
+ * associated with account or IAM user whose credentials are used to call
+ * the action. If <code>GetSessionToken</code> is called using root
+ * account credentials, the temporary credentials have root account
+ * permissions. Similarly, if <code>GetSessionToken</code> is called
+ * using the credentials of an IAM user, the temporary credentials have
+ * the same permissions as the IAM user.
  * </p>
  * <p>
- * For more information about using <code>GetSessionToken</code> to create temporary credentials, go to <a
- * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/CreatingSessionTokens.html"> Creating Temporary Credentials to Enable Access for IAM Users </a>
+ * For more information about using <code>GetSessionToken</code> to
+ * create temporary credentials, go to
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/CreatingSessionTokens.html"> Creating Temporary Credentials to Enable Access for IAM Users </a>
  * in <i>Using IAM</i> .
+ * 
  * </p>
  *
  * @see com.amazonaws.services.securitytoken.AWSSecurityTokenService#getSessionToken(GetSessionTokenRequest)
  */
-public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetSessionTokenRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The duration, in seconds, that the credentials should remain valid.
@@ -159,14 +177,13 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
      *         hour, the session for AWS account owners defaults to one hour.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenRequest withDurationSeconds(Integer durationSeconds) {
         this.durationSeconds = durationSeconds;
         return this;
     }
-    
-    
+
     /**
      * The identification number of the MFA device that is associated with
      * the IAM user who is making the <code>GetSessionToken</code> call.
@@ -253,14 +270,13 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
      *         viewing the user's security credentials.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenRequest withSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
         return this;
     }
-    
-    
+
     /**
      * The value provided by the MFA device, if MFA is required. If any
      * policy requires the IAM user to submit an MFA code, specify this
@@ -329,14 +345,13 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
      *         requesting resources that require MFA authentication.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSessionTokenRequest withTokenCode(String tokenCode) {
         this.tokenCode = tokenCode;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -348,9 +363,9 @@ public class GetSessionTokenRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() + ",");    	
-        if (getSerialNumber() != null) sb.append("SerialNumber: " + getSerialNumber() + ",");    	
+        sb.append("{");
+        if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() + ",");
+        if (getSerialNumber() != null) sb.append("SerialNumber: " + getSerialNumber() + ",");
         if (getTokenCode() != null) sb.append("TokenCode: " + getTokenCode() );
         sb.append("}");
         return sb.toString();

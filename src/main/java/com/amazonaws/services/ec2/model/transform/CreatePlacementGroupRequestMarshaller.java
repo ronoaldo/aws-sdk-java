@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreatePlacementGroupRequestMarshaller implements Marshaller<Request
     public Request<CreatePlacementGroupRequest> marshall(CreatePlacementGroupRequest createPlacementGroupRequest) {
 
         if (createPlacementGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreatePlacementGroupRequest> request = new DefaultRequest<CreatePlacementGroupRequest>(createPlacementGroupRequest, "AmazonEC2");
         request.addParameter("Action", "CreatePlacementGroup");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createPlacementGroupRequest.getGroupName() != null) {
             request.addParameter("GroupName", StringUtils.fromString(createPlacementGroupRequest.getGroupName()));
@@ -46,7 +46,6 @@ public class CreatePlacementGroupRequestMarshaller implements Marshaller<Request
         if (createPlacementGroupRequest.getStrategy() != null) {
             request.addParameter("Strategy", StringUtils.fromString(createPlacementGroupRequest.getStrategy()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,89 +13,148 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Volume Status Info
+ * <p>
+ * Describes the status of a volume.
+ * </p>
  */
-public class VolumeStatusInfo  implements Serializable  {
-
-    private String status;
-
-    private java.util.List<VolumeStatusDetails> details;
+public class VolumeStatusInfo implements Serializable {
 
     /**
-     * Returns the value of the Status property for this object.
+     * The status of the volume.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data
+     */
+    private String status;
+
+    /**
+     * The details of the volume status.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusDetails> details;
+
+    /**
+     * The status of the volume.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data
      *
-     * @return The value of the Status property for this object.
+     * @return The status of the volume.
+     *
+     * @see VolumeStatusInfoStatus
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status of the volume.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status of the volume.
+     *
+     * @see VolumeStatusInfoStatus
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status of the volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status of the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see VolumeStatusInfoStatus
      */
     public VolumeStatusInfo withStatus(String status) {
         this.status = status;
         return this;
     }
-    
+
+    /**
+     * The status of the volume.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data
+     *
+     * @param status The status of the volume.
+     *
+     * @see VolumeStatusInfoStatus
+     */
+    public void setStatus(VolumeStatusInfoStatus status) {
+        this.status = status.toString();
+    }
     
     /**
-     * Returns the value of the Details property for this object.
+     * The status of the volume.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ok, impaired, insufficient-data
      *
-     * @return The value of the Details property for this object.
+     * @param status The status of the volume.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see VolumeStatusInfoStatus
+     */
+    public VolumeStatusInfo withStatus(VolumeStatusInfoStatus status) {
+        this.status = status.toString();
+        return this;
+    }
+
+    /**
+     * The details of the volume status.
+     *
+     * @return The details of the volume status.
      */
     public java.util.List<VolumeStatusDetails> getDetails() {
-        
         if (details == null) {
-            details = new java.util.ArrayList<VolumeStatusDetails>();
+              details = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusDetails>();
+              details.setAutoConstruct(true);
         }
         return details;
     }
     
     /**
-     * Sets the value of the Details property for this object.
+     * The details of the volume status.
      *
-     * @param details The new value for the Details property for this object.
+     * @param details The details of the volume status.
      */
     public void setDetails(java.util.Collection<VolumeStatusDetails> details) {
         if (details == null) {
             this.details = null;
             return;
         }
-
-        java.util.List<VolumeStatusDetails> detailsCopy = new java.util.ArrayList<VolumeStatusDetails>(details.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusDetails> detailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusDetails>(details.size());
         detailsCopy.addAll(details);
         this.details = detailsCopy;
     }
     
     /**
-     * Sets the value of the Details property for this object.
+     * The details of the volume status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param details The new value for the Details property for this object.
+     * @param details The details of the volume status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusInfo withDetails(VolumeStatusDetails... details) {
         if (getDetails() == null) setDetails(new java.util.ArrayList<VolumeStatusDetails>(details.length));
@@ -106,27 +165,27 @@ public class VolumeStatusInfo  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Details property for this object.
+     * The details of the volume status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param details The new value for the Details property for this object.
+     * @param details The details of the volume status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeStatusInfo withDetails(java.util.Collection<VolumeStatusDetails> details) {
         if (details == null) {
             this.details = null;
         } else {
-            java.util.List<VolumeStatusDetails> detailsCopy = new java.util.ArrayList<VolumeStatusDetails>(details.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusDetails> detailsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VolumeStatusDetails>(details.size());
             detailsCopy.addAll(details);
             this.details = detailsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -138,8 +197,8 @@ public class VolumeStatusInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getDetails() != null) sb.append("Details: " + getDetails() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
  */
 package com.amazonaws.services.cloudfront_2012_03_15;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -26,10 +27,12 @@ import com.amazonaws.AmazonWebServiceClient;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Request;
+import com.amazonaws.Response;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.CloudFrontSigner;
+import com.amazonaws.auth.Signer;
 import com.amazonaws.handlers.HandlerChainFactory;
 import com.amazonaws.http.DefaultErrorResponseHandler;
 import com.amazonaws.http.ExecutionContext;
@@ -201,7 +204,7 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
 
 
     /** AWS signer for authenticating requests. */
-    private CloudFrontSigner signer;
+    private final CloudFrontSigner signer = new CloudFrontSigner();
 
 
     /**
@@ -313,11 +316,9 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
         exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
         setEndpoint("cloudfront.amazonaws.com/");
 
-        signer = new CloudFrontSigner();
-
 
         HandlerChainFactory chainFactory = new HandlerChainFactory();
-		requestHandlers.addAll(chainFactory.newRequestHandlerChain(
+		requestHandler2s.addAll(chainFactory.newRequestHandlerChain(
                 "/com/amazonaws/services.cloudfront_2012_03_15request.handlers"));
     }
     
@@ -1030,6 +1031,13 @@ public class AmazonCloudFrontClient extends AmazonWebServiceClient implements Am
         StaxResponseHandler<X> responseHandler = new StaxResponseHandler<X>(unmarshaller);
         DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);
 
-        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        Response<X> res = client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        return res.getAwsResponse();
     }
+
+    /**
+     * Always return the same AWS CloudFrontSigner for this old AWS CloudFront
+     * client.
+     */
+    @Override public Signer getSignerByURI(URI uri) { return signer; }
 }

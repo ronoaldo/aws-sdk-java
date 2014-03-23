@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,86 +13,144 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Cancelled Spot Instance Request
+ * <p>
+ * Describes a request to cancel a Spot Instance.
+ * </p>
  */
-public class CancelledSpotInstanceRequest  implements Serializable  {
+public class CancelledSpotInstanceRequest implements Serializable {
 
+    /**
+     * The ID of the Spot Instance request.
+     */
     private String spotInstanceRequestId;
 
+    /**
+     * The state of the Spot Instance request.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, open, closed, cancelled, completed
+     */
     private String state;
 
     /**
-     * Returns the value of the SpotInstanceRequestId property for this
-     * object.
+     * The ID of the Spot Instance request.
      *
-     * @return The value of the SpotInstanceRequestId property for this object.
+     * @return The ID of the Spot Instance request.
      */
     public String getSpotInstanceRequestId() {
         return spotInstanceRequestId;
     }
     
     /**
-     * Sets the value of the SpotInstanceRequestId property for this object.
+     * The ID of the Spot Instance request.
      *
-     * @param spotInstanceRequestId The new value for the SpotInstanceRequestId property for this object.
+     * @param spotInstanceRequestId The ID of the Spot Instance request.
      */
     public void setSpotInstanceRequestId(String spotInstanceRequestId) {
         this.spotInstanceRequestId = spotInstanceRequestId;
     }
     
     /**
-     * Sets the value of the SpotInstanceRequestId property for this object.
+     * The ID of the Spot Instance request.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param spotInstanceRequestId The new value for the SpotInstanceRequestId property for this object.
+     * @param spotInstanceRequestId The ID of the Spot Instance request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelledSpotInstanceRequest withSpotInstanceRequestId(String spotInstanceRequestId) {
         this.spotInstanceRequestId = spotInstanceRequestId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the State property for this object.
+     * The state of the Spot Instance request.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, open, closed, cancelled, completed
      *
-     * @return The value of the State property for this object.
+     * @return The state of the Spot Instance request.
+     *
+     * @see CancelSpotInstanceRequestState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The state of the Spot Instance request.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, open, closed, cancelled, completed
      *
-     * @param state The new value for the State property for this object.
+     * @param state The state of the Spot Instance request.
+     *
+     * @see CancelSpotInstanceRequestState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Sets the value of the State property for this object.
+     * The state of the Spot Instance request.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, open, closed, cancelled, completed
      *
-     * @param state The new value for the State property for this object.
+     * @param state The state of the Spot Instance request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see CancelSpotInstanceRequestState
      */
     public CancelledSpotInstanceRequest withState(String state) {
         this.state = state;
         return this;
     }
+
+    /**
+     * The state of the Spot Instance request.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, open, closed, cancelled, completed
+     *
+     * @param state The state of the Spot Instance request.
+     *
+     * @see CancelSpotInstanceRequestState
+     */
+    public void setState(CancelSpotInstanceRequestState state) {
+        this.state = state.toString();
+    }
     
-    
+    /**
+     * The state of the Spot Instance request.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>active, open, closed, cancelled, completed
+     *
+     * @param state The state of the Spot Instance request.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see CancelSpotInstanceRequestState
+     */
+    public CancelledSpotInstanceRequest withState(CancelSpotInstanceRequestState state) {
+        this.state = state.toString();
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -104,8 +162,8 @@ public class CancelledSpotInstanceRequest  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");    	
+        sb.append("{");
+        if (getSpotInstanceRequestId() != null) sb.append("SpotInstanceRequestId: " + getSpotInstanceRequestId() + ",");
         if (getState() != null) sb.append("State: " + getState() );
         sb.append("}");
         return sb.toString();

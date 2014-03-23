@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DisassociateAddressRequestMarshaller implements Marshaller<Request<
     public Request<DisassociateAddressRequest> marshall(DisassociateAddressRequest disassociateAddressRequest) {
 
         if (disassociateAddressRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DisassociateAddressRequest> request = new DefaultRequest<DisassociateAddressRequest>(disassociateAddressRequest, "AmazonEC2");
         request.addParameter("Action", "DisassociateAddress");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (disassociateAddressRequest.getPublicIp() != null) {
             request.addParameter("PublicIp", StringUtils.fromString(disassociateAddressRequest.getPublicIp()));
@@ -46,7 +46,6 @@ public class DisassociateAddressRequestMarshaller implements Marshaller<Request<
         if (disassociateAddressRequest.getAssociationId() != null) {
             request.addParameter("AssociationId", StringUtils.fromString(disassociateAddressRequest.getAssociationId()));
         }
-
 
         return request;
     }

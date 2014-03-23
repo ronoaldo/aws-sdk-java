@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the name and identifier of a pipeline.
  * </p>
  */
-public class PipelineIdName  implements Serializable  {
+public class PipelineIdName implements Serializable {
 
     /**
      * Identifier of the pipeline that was assigned by AWS Data Pipeline.
@@ -85,14 +86,13 @@ public class PipelineIdName  implements Serializable  {
      *         This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineIdName withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Name of the pipeline.
      * <p>
@@ -131,14 +131,13 @@ public class PipelineIdName  implements Serializable  {
      * @param name Name of the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PipelineIdName withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,8 +149,8 @@ public class PipelineIdName  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getName() != null) sb.append("Name: " + getName() );
         sb.append("}");
         return sb.toString();

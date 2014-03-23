@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateCustomerGatewayRequestMarshaller implements Marshaller<Reques
     public Request<CreateCustomerGatewayRequest> marshall(CreateCustomerGatewayRequest createCustomerGatewayRequest) {
 
         if (createCustomerGatewayRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateCustomerGatewayRequest> request = new DefaultRequest<CreateCustomerGatewayRequest>(createCustomerGatewayRequest, "AmazonEC2");
         request.addParameter("Action", "CreateCustomerGateway");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createCustomerGatewayRequest.getType() != null) {
             request.addParameter("Type", StringUtils.fromString(createCustomerGatewayRequest.getType()));
@@ -49,7 +49,6 @@ public class CreateCustomerGatewayRequestMarshaller implements Marshaller<Reques
         if (createCustomerGatewayRequest.getBgpAsn() != null) {
             request.addParameter("BgpAsn", StringUtils.fromInteger(createCustomerGatewayRequest.getBgpAsn()));
         }
-
 
         return request;
     }

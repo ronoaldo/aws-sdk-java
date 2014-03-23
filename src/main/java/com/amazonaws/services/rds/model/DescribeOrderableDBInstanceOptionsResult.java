@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeOrderableDBInstanceOptions action.
+ * Contains the result of a successful invocation of the
+ * DescribeOrderableDBInstanceOptions action.
  * </p>
  */
-public class DescribeOrderableDBInstanceOptionsResult  implements Serializable  {
+public class DescribeOrderableDBInstanceOptionsResult implements Serializable {
 
     /**
      * An <a>OrderableDBInstanceOption</a> structure containing information
-     * about orderable options for the DB Instance.
+     * about orderable options for the DB instance.
      */
-    private java.util.List<OrderableDBInstanceOption> orderableDBInstanceOptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<OrderableDBInstanceOption> orderableDBInstanceOptions;
 
     /**
      * An optional pagination token provided by a previous
@@ -38,48 +40,47 @@ public class DescribeOrderableDBInstanceOptionsResult  implements Serializable  
 
     /**
      * An <a>OrderableDBInstanceOption</a> structure containing information
-     * about orderable options for the DB Instance.
+     * about orderable options for the DB instance.
      *
      * @return An <a>OrderableDBInstanceOption</a> structure containing information
-     *         about orderable options for the DB Instance.
+     *         about orderable options for the DB instance.
      */
     public java.util.List<OrderableDBInstanceOption> getOrderableDBInstanceOptions() {
-        
         if (orderableDBInstanceOptions == null) {
-            orderableDBInstanceOptions = new java.util.ArrayList<OrderableDBInstanceOption>();
+              orderableDBInstanceOptions = new com.amazonaws.internal.ListWithAutoConstructFlag<OrderableDBInstanceOption>();
+              orderableDBInstanceOptions.setAutoConstruct(true);
         }
         return orderableDBInstanceOptions;
     }
     
     /**
      * An <a>OrderableDBInstanceOption</a> structure containing information
-     * about orderable options for the DB Instance.
+     * about orderable options for the DB instance.
      *
      * @param orderableDBInstanceOptions An <a>OrderableDBInstanceOption</a> structure containing information
-     *         about orderable options for the DB Instance.
+     *         about orderable options for the DB instance.
      */
     public void setOrderableDBInstanceOptions(java.util.Collection<OrderableDBInstanceOption> orderableDBInstanceOptions) {
         if (orderableDBInstanceOptions == null) {
             this.orderableDBInstanceOptions = null;
             return;
         }
-
-        java.util.List<OrderableDBInstanceOption> orderableDBInstanceOptionsCopy = new java.util.ArrayList<OrderableDBInstanceOption>(orderableDBInstanceOptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<OrderableDBInstanceOption> orderableDBInstanceOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OrderableDBInstanceOption>(orderableDBInstanceOptions.size());
         orderableDBInstanceOptionsCopy.addAll(orderableDBInstanceOptions);
         this.orderableDBInstanceOptions = orderableDBInstanceOptionsCopy;
     }
     
     /**
      * An <a>OrderableDBInstanceOption</a> structure containing information
-     * about orderable options for the DB Instance.
+     * about orderable options for the DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param orderableDBInstanceOptions An <a>OrderableDBInstanceOption</a> structure containing information
-     *         about orderable options for the DB Instance.
+     *         about orderable options for the DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsResult withOrderableDBInstanceOptions(OrderableDBInstanceOption... orderableDBInstanceOptions) {
         if (getOrderableDBInstanceOptions() == null) setOrderableDBInstanceOptions(new java.util.ArrayList<OrderableDBInstanceOption>(orderableDBInstanceOptions.length));
@@ -91,28 +92,28 @@ public class DescribeOrderableDBInstanceOptionsResult  implements Serializable  
     
     /**
      * An <a>OrderableDBInstanceOption</a> structure containing information
-     * about orderable options for the DB Instance.
+     * about orderable options for the DB instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param orderableDBInstanceOptions An <a>OrderableDBInstanceOption</a> structure containing information
-     *         about orderable options for the DB Instance.
+     *         about orderable options for the DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsResult withOrderableDBInstanceOptions(java.util.Collection<OrderableDBInstanceOption> orderableDBInstanceOptions) {
         if (orderableDBInstanceOptions == null) {
             this.orderableDBInstanceOptions = null;
         } else {
-            java.util.List<OrderableDBInstanceOption> orderableDBInstanceOptionsCopy = new java.util.ArrayList<OrderableDBInstanceOption>(orderableDBInstanceOptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<OrderableDBInstanceOption> orderableDBInstanceOptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<OrderableDBInstanceOption>(orderableDBInstanceOptions.size());
             orderableDBInstanceOptionsCopy.addAll(orderableDBInstanceOptions);
             this.orderableDBInstanceOptions = orderableDBInstanceOptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An optional pagination token provided by a previous
      * OrderableDBInstanceOptions request. If this parameter is specified,
@@ -157,14 +158,13 @@ public class DescribeOrderableDBInstanceOptionsResult  implements Serializable  
      *         specified by <code>MaxRecords</code> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOrderableDBInstanceOptionsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -176,8 +176,8 @@ public class DescribeOrderableDBInstanceOptionsResult  implements Serializable  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOrderableDBInstanceOptions() != null) sb.append("OrderableDBInstanceOptions: " + getOrderableDBInstanceOptions() + ",");    	
+        sb.append("{");
+        if (getOrderableDBInstanceOptions() != null) sb.append("OrderableDBInstanceOptions: " + getOrderableDBInstanceOptions() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

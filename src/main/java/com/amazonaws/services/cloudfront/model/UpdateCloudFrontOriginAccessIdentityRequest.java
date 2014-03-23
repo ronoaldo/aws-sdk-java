@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#updateCloudFrontOriginAccessIdentity(UpdateCloudFrontOriginAccessIdentityRequest) UpdateCloudFrontOriginAccessIdentity operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#updateCloudFrontOriginAccessIdentity(UpdateCloudFrontOriginAccessIdentityRequest)
  */
-public class UpdateCloudFrontOriginAccessIdentityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateCloudFrontOriginAccessIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity's configuration information.
@@ -60,13 +62,11 @@ public class UpdateCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
      * retrieving the identity's configuration. For example: E2QWRUHAPOMQZL.
      */
     public UpdateCloudFrontOriginAccessIdentityRequest(CloudFrontOriginAccessIdentityConfig cloudFrontOriginAccessIdentityConfig, String id, String ifMatch) {
-        this.cloudFrontOriginAccessIdentityConfig = cloudFrontOriginAccessIdentityConfig;
-        this.id = id;
-        this.ifMatch = ifMatch;
+        setCloudFrontOriginAccessIdentityConfig(cloudFrontOriginAccessIdentityConfig);
+        setId(id);
+        setIfMatch(ifMatch);
     }
 
-    
-    
     /**
      * The identity's configuration information.
      *
@@ -93,14 +93,13 @@ public class UpdateCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
      * @param cloudFrontOriginAccessIdentityConfig The identity's configuration information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateCloudFrontOriginAccessIdentityRequest withCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig cloudFrontOriginAccessIdentityConfig) {
         this.cloudFrontOriginAccessIdentityConfig = cloudFrontOriginAccessIdentityConfig;
         return this;
     }
-    
-    
+
     /**
      * The identity's id.
      *
@@ -127,14 +126,13 @@ public class UpdateCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
      * @param id The identity's id.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateCloudFrontOriginAccessIdentityRequest withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The value of the ETag header you received when retrieving the
      * identity's configuration. For example: E2QWRUHAPOMQZL.
@@ -167,14 +165,13 @@ public class UpdateCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
      *         identity's configuration. For example: E2QWRUHAPOMQZL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateCloudFrontOriginAccessIdentityRequest withIfMatch(String ifMatch) {
         this.ifMatch = ifMatch;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -186,9 +183,9 @@ public class UpdateCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCloudFrontOriginAccessIdentityConfig() != null) sb.append("CloudFrontOriginAccessIdentityConfig: " + getCloudFrontOriginAccessIdentityConfig() + ",");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getCloudFrontOriginAccessIdentityConfig() != null) sb.append("CloudFrontOriginAccessIdentityConfig: " + getCloudFrontOriginAccessIdentityConfig() + ",");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getIfMatch() != null) sb.append("IfMatch: " + getIfMatch() );
         sb.append("}");
         return sb.toString();

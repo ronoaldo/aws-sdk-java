@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ResetNetworkInterfaceAttributeRequestMarshaller implements Marshall
     public Request<ResetNetworkInterfaceAttributeRequest> marshall(ResetNetworkInterfaceAttributeRequest resetNetworkInterfaceAttributeRequest) {
 
         if (resetNetworkInterfaceAttributeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ResetNetworkInterfaceAttributeRequest> request = new DefaultRequest<ResetNetworkInterfaceAttributeRequest>(resetNetworkInterfaceAttributeRequest, "AmazonEC2");
         request.addParameter("Action", "ResetNetworkInterfaceAttribute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (resetNetworkInterfaceAttributeRequest.getNetworkInterfaceId() != null) {
             request.addParameter("NetworkInterfaceId", StringUtils.fromString(resetNetworkInterfaceAttributeRequest.getNetworkInterfaceId()));
@@ -46,7 +46,6 @@ public class ResetNetworkInterfaceAttributeRequestMarshaller implements Marshall
         if (resetNetworkInterfaceAttributeRequest.getSourceDestCheck() != null) {
             request.addParameter("SourceDestCheck", StringUtils.fromString(resetNetworkInterfaceAttributeRequest.getSourceDestCheck()));
         }
-
 
         return request;
     }

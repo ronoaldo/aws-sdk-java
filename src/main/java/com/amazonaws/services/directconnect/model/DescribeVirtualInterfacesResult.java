@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * A structure containing a list of virtual interfaces.
  * </p>
  */
-public class DescribeVirtualInterfacesResult  implements Serializable  {
+public class DescribeVirtualInterfacesResult implements Serializable {
 
     /**
      * A list of virtual interfaces.
      */
-    private java.util.List<VirtualInterface> virtualInterfaces;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VirtualInterface> virtualInterfaces;
 
     /**
      * A list of virtual interfaces.
@@ -33,9 +34,9 @@ public class DescribeVirtualInterfacesResult  implements Serializable  {
      * @return A list of virtual interfaces.
      */
     public java.util.List<VirtualInterface> getVirtualInterfaces() {
-        
         if (virtualInterfaces == null) {
-            virtualInterfaces = new java.util.ArrayList<VirtualInterface>();
+              virtualInterfaces = new com.amazonaws.internal.ListWithAutoConstructFlag<VirtualInterface>();
+              virtualInterfaces.setAutoConstruct(true);
         }
         return virtualInterfaces;
     }
@@ -50,8 +51,7 @@ public class DescribeVirtualInterfacesResult  implements Serializable  {
             this.virtualInterfaces = null;
             return;
         }
-
-        java.util.List<VirtualInterface> virtualInterfacesCopy = new java.util.ArrayList<VirtualInterface>(virtualInterfaces.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VirtualInterface> virtualInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VirtualInterface>(virtualInterfaces.size());
         virtualInterfacesCopy.addAll(virtualInterfaces);
         this.virtualInterfaces = virtualInterfacesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeVirtualInterfacesResult  implements Serializable  {
      * @param virtualInterfaces A list of virtual interfaces.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVirtualInterfacesResult withVirtualInterfaces(VirtualInterface... virtualInterfaces) {
         if (getVirtualInterfaces() == null) setVirtualInterfaces(new java.util.ArrayList<VirtualInterface>(virtualInterfaces.length));
@@ -82,20 +82,20 @@ public class DescribeVirtualInterfacesResult  implements Serializable  {
      * @param virtualInterfaces A list of virtual interfaces.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVirtualInterfacesResult withVirtualInterfaces(java.util.Collection<VirtualInterface> virtualInterfaces) {
         if (virtualInterfaces == null) {
             this.virtualInterfaces = null;
         } else {
-            java.util.List<VirtualInterface> virtualInterfacesCopy = new java.util.ArrayList<VirtualInterface>(virtualInterfaces.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VirtualInterface> virtualInterfacesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VirtualInterface>(virtualInterfaces.size());
             virtualInterfacesCopy.addAll(virtualInterfaces);
             this.virtualInterfaces = virtualInterfacesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeVirtualInterfacesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVirtualInterfaces() != null) sb.append("VirtualInterfaces: " + getVirtualInterfaces() );
         sb.append("}");
         return sb.toString();

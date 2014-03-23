@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Portions copyright 2006-2009 James Murty. Please see LICENSE.txt
  * for applicable license terms and NOTICE.txt for applicable notices.
@@ -16,7 +16,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.s3.internal;
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +26,6 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Date;
@@ -44,7 +43,9 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.util.BinaryUtils;
 import com.amazonaws.util.DateUtils;
+import com.amazonaws.util.HttpUtils;
 import com.amazonaws.util.Md5Utils;
+import com.amazonaws.util.StringUtils;
 
 /**
  * General utility methods used throughout the AWS S3 Java client.
@@ -96,12 +97,7 @@ public class ServiceUtils {
      * @return The byte array contents of the specified string.
      */
     public static byte[] toByteArray(String s) {
-        try {
-            return s.getBytes(Constants.DEFAULT_ENCODING);
-        } catch (UnsupportedEncodingException e) {
-            log.warn("Encoding " + Constants.DEFAULT_ENCODING + " is not supported", e);
-            return s.getBytes();
-        }
+        return s.getBytes(UTF8);
     }
 
 
@@ -127,33 +123,6 @@ public class ServiceUtils {
     }
 
     /**
-     * URL encodes the specified string and returns it.  All keys specified by
-     * users need to URL encoded.  The URL encoded key needs to be used in the
-     * string to sign (canonical resource path).
-     *
-     * @param s
-     *            The string to URL encode.
-     *
-     * @return The new, URL encoded, string.
-     */
-    public static String urlEncode(String s) {
-        if (s == null) return null;
-
-        try {
-            String encodedString = URLEncoder.encode(s, Constants.DEFAULT_ENCODING);
-            // Web browsers do not always handle '+' characters well, use the
-            // well-supported '%20' instead.
-            encodedString =  encodedString.replaceAll("\\+", "%20");
-            // Change all "%2F" back to "/", so that when users download a file in a virtual folder by the presigned URL,
-            // the web browsers won't mess up the filename. (e.g. 'folder1_folder2_filename' instead of 'filename')
-            encodedString = encodedString.replace("%2F", "/");
-            return encodedString;
-        } catch (UnsupportedEncodingException e) {
-            throw new AmazonClientException("Unable to encode path: " + s, e);
-        }
-    }
-
-    /**
      * Converts the specified request object into a URL, containing all the
      * specified parameters, the specified request endpoint, etc.
      *
@@ -165,8 +134,41 @@ public class ServiceUtils {
      *             If the request cannot be converted to a well formed URL.
      */
     public static URL convertRequestToUrl(Request<?> request) {
-        String urlString =  request.getEndpoint()
-            + "/" + ServiceUtils.urlEncode(request.getResourcePath());
+        // To be backward compatible, this method by default does not
+        // remove the leading slash in the request resource-path.
+        return convertRequestToUrl(request, false);
+    }
+
+    /**
+     * Converts the specified request object into a URL, containing all the
+     * specified parameters, the specified request endpoint, etc.
+     *
+     * @param request
+     *            The request to convert into a URL.
+     * @param removeLeadingSlashInResourcePath
+     *            Whether the leading slash in resource-path should be removed
+     *            before appending to the endpoint.
+     * @return A new URL representing the specified request.
+     *
+     * @throws AmazonClientException
+     *             If the request cannot be converted to a well formed URL.
+     */
+    public static URL convertRequestToUrl(Request<?> request, boolean removeLeadingSlashInResourcePath) {
+        String resourcePath = HttpUtils.urlEncode(request.getResourcePath(), true);
+
+        // Removed the padding "/" that was already added into the request's resource path.
+        if (removeLeadingSlashInResourcePath
+                && resourcePath.startsWith("/")) {
+            resourcePath = resourcePath.substring(1);
+        }
+
+        // Some http client libraries (e.g. Apache HttpClient) cannot handle
+        // consecutive "/"s between URL authority and path components.
+        // So we escape "////..." into "/%2F%2F%2F...", in the same way as how
+        // we treat consecutive "/"s in AmazonS3Client#presignRequest(...)
+        String urlPath = "/" + resourcePath;
+        urlPath = urlPath.replaceAll("(?<=/)/", "%2F");
+        String urlString =  request.getEndpoint() + urlPath;
 
         boolean firstParam = true;
         for (String param : request.getParameters().keySet()) {
@@ -178,7 +180,7 @@ public class ServiceUtils {
             }
 
             String value = request.getParameters().get(param);
-            urlString += param + "=" + ServiceUtils.urlEncode(value);
+            urlString += param + "=" + HttpUtils.urlEncode(value, false);
         }
 
         try {
@@ -313,9 +315,10 @@ public class ServiceUtils {
      */
     public static S3Object retryableDownloadS3ObjectToFile (File file, RetryableS3DownloadTask retryableS3DownloadTask) {
         boolean hasRetried = false;
-        boolean needRetry = false;
+        boolean needRetry;
         S3Object s3Object;
         do {
+            needRetry = false;
             s3Object = retryableS3DownloadTask.getS3ObjectStream();
             if ( s3Object == null )
                 return null;

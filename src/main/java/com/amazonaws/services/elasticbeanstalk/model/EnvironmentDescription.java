@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the properties of an environment.
  * </p>
  */
-public class EnvironmentDescription  implements Serializable  {
+public class EnvironmentDescription implements Serializable {
 
     /**
      * The name of this environment.
@@ -78,7 +79,9 @@ public class EnvironmentDescription  implements Serializable  {
     private String description;
 
     /**
-     * The URL to the LoadBalancer for this environment.
+     * For load-balanced, autoscaling environments, the URL to the
+     * LoadBalancer. For single-instance environments, the IP address of the
+     * instance.
      */
     private String endpointURL;
 
@@ -147,6 +150,11 @@ public class EnvironmentDescription  implements Serializable  {
     private EnvironmentResourcesDescription resources;
 
     /**
+     * Describes the current tier of this environment.
+     */
+    private EnvironmentTier tier;
+
+    /**
      * The name of this environment.
      * <p>
      * <b>Constraints:</b><br/>
@@ -181,14 +189,13 @@ public class EnvironmentDescription  implements Serializable  {
      * @param environmentName The name of this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * The ID of this environment.
      *
@@ -215,14 +222,13 @@ public class EnvironmentDescription  implements Serializable  {
      * @param environmentId The ID of this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the application associated with this environment.
      * <p>
@@ -258,14 +264,13 @@ public class EnvironmentDescription  implements Serializable  {
      * @param applicationName The name of the application associated with this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The application version deployed in this environment.
      * <p>
@@ -301,14 +306,13 @@ public class EnvironmentDescription  implements Serializable  {
      * @param versionLabel The application version deployed in this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withVersionLabel(String versionLabel) {
         this.versionLabel = versionLabel;
         return this;
     }
-    
-    
+
     /**
      * The name of the <code>SolutionStack</code> deployed with this
      * environment.
@@ -350,14 +354,13 @@ public class EnvironmentDescription  implements Serializable  {
      *         environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration template used to originally launch this
      * environment.
@@ -399,14 +402,13 @@ public class EnvironmentDescription  implements Serializable  {
      *         environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * Describes this environment.
      * <p>
@@ -442,48 +444,58 @@ public class EnvironmentDescription  implements Serializable  {
      * @param description Describes this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * The URL to the LoadBalancer for this environment.
+     * For load-balanced, autoscaling environments, the URL to the
+     * LoadBalancer. For single-instance environments, the IP address of the
+     * instance.
      *
-     * @return The URL to the LoadBalancer for this environment.
+     * @return For load-balanced, autoscaling environments, the URL to the
+     *         LoadBalancer. For single-instance environments, the IP address of the
+     *         instance.
      */
     public String getEndpointURL() {
         return endpointURL;
     }
     
     /**
-     * The URL to the LoadBalancer for this environment.
+     * For load-balanced, autoscaling environments, the URL to the
+     * LoadBalancer. For single-instance environments, the IP address of the
+     * instance.
      *
-     * @param endpointURL The URL to the LoadBalancer for this environment.
+     * @param endpointURL For load-balanced, autoscaling environments, the URL to the
+     *         LoadBalancer. For single-instance environments, the IP address of the
+     *         instance.
      */
     public void setEndpointURL(String endpointURL) {
         this.endpointURL = endpointURL;
     }
     
     /**
-     * The URL to the LoadBalancer for this environment.
+     * For load-balanced, autoscaling environments, the URL to the
+     * LoadBalancer. For single-instance environments, the IP address of the
+     * instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param endpointURL The URL to the LoadBalancer for this environment.
+     * @param endpointURL For load-balanced, autoscaling environments, the URL to the
+     *         LoadBalancer. For single-instance environments, the IP address of the
+     *         instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withEndpointURL(String endpointURL) {
         this.endpointURL = endpointURL;
         return this;
     }
-    
-    
+
     /**
      * The URL to the CNAME for this environment.
      * <p>
@@ -519,14 +531,13 @@ public class EnvironmentDescription  implements Serializable  {
      * @param cNAME The URL to the CNAME for this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withCNAME(String cNAME) {
         this.cNAME = cNAME;
         return this;
     }
-    
-    
+
     /**
      * The creation date for this environment.
      *
@@ -553,14 +564,13 @@ public class EnvironmentDescription  implements Serializable  {
      * @param dateCreated The creation date for this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withDateCreated(java.util.Date dateCreated) {
         this.dateCreated = dateCreated;
         return this;
     }
-    
-    
+
     /**
      * The last modified date for this environment.
      *
@@ -587,14 +597,13 @@ public class EnvironmentDescription  implements Serializable  {
      * @param dateUpdated The last modified date for this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withDateUpdated(java.util.Date dateUpdated) {
         this.dateUpdated = dateUpdated;
         return this;
     }
-    
-    
+
     /**
      * The current operational status of the environment: <ul> <li>
      * <code>Launching</code>: Environment is in the process of initial
@@ -682,7 +691,7 @@ public class EnvironmentDescription  implements Serializable  {
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentStatus
      */
@@ -690,8 +699,7 @@ public class EnvironmentDescription  implements Serializable  {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The current operational status of the environment: <ul> <li>
      * <code>Launching</code>: Environment is in the process of initial
@@ -749,7 +757,7 @@ public class EnvironmentDescription  implements Serializable  {
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentStatus
      */
@@ -757,7 +765,7 @@ public class EnvironmentDescription  implements Serializable  {
         this.status = status.toString();
         return this;
     }
-    
+
     /**
      * Describes the health status of the environment. AWS Elastic Beanstalk
      * indicates the failure levels for a running environment: <enumValues>
@@ -899,7 +907,7 @@ public class EnvironmentDescription  implements Serializable  {
      *         request. </li> </ul> <p> Default: <code>Grey</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentHealth
      */
@@ -907,8 +915,7 @@ public class EnvironmentDescription  implements Serializable  {
         this.health = health;
         return this;
     }
-    
-    
+
     /**
      * Describes the health status of the environment. AWS Elastic Beanstalk
      * indicates the failure levels for a running environment: <enumValues>
@@ -1002,7 +1009,7 @@ public class EnvironmentDescription  implements Serializable  {
      *         request. </li> </ul> <p> Default: <code>Grey</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentHealth
      */
@@ -1010,7 +1017,7 @@ public class EnvironmentDescription  implements Serializable  {
         this.health = health.toString();
         return this;
     }
-    
+
     /**
      * The description of the AWS resources used by this environment.
      *
@@ -1037,14 +1044,46 @@ public class EnvironmentDescription  implements Serializable  {
      * @param resources The description of the AWS resources used by this environment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentDescription withResources(EnvironmentResourcesDescription resources) {
         this.resources = resources;
         return this;
     }
+
+    /**
+     * Describes the current tier of this environment.
+     *
+     * @return Describes the current tier of this environment.
+     */
+    public EnvironmentTier getTier() {
+        return tier;
+    }
     
+    /**
+     * Describes the current tier of this environment.
+     *
+     * @param tier Describes the current tier of this environment.
+     */
+    public void setTier(EnvironmentTier tier) {
+        this.tier = tier;
+    }
     
+    /**
+     * Describes the current tier of this environment.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param tier Describes the current tier of this environment.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public EnvironmentDescription withTier(EnvironmentTier tier) {
+        this.tier = tier;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1056,21 +1095,22 @@ public class EnvironmentDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");    	
-        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getEndpointURL() != null) sb.append("EndpointURL: " + getEndpointURL() + ",");    	
-        if (getCNAME() != null) sb.append("CNAME: " + getCNAME() + ",");    	
-        if (getDateCreated() != null) sb.append("DateCreated: " + getDateCreated() + ",");    	
-        if (getDateUpdated() != null) sb.append("DateUpdated: " + getDateUpdated() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getHealth() != null) sb.append("Health: " + getHealth() + ",");    	
-        if (getResources() != null) sb.append("Resources: " + getResources() );
+        sb.append("{");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");
+        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getEndpointURL() != null) sb.append("EndpointURL: " + getEndpointURL() + ",");
+        if (getCNAME() != null) sb.append("CNAME: " + getCNAME() + ",");
+        if (getDateCreated() != null) sb.append("DateCreated: " + getDateCreated() + ",");
+        if (getDateUpdated() != null) sb.append("DateUpdated: " + getDateUpdated() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getHealth() != null) sb.append("Health: " + getHealth() + ",");
+        if (getResources() != null) sb.append("Resources: " + getResources() + ",");
+        if (getTier() != null) sb.append("Tier: " + getTier() );
         sb.append("}");
         return sb.toString();
     }
@@ -1094,6 +1134,7 @@ public class EnvironmentDescription  implements Serializable  {
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode()); 
         hashCode = prime * hashCode + ((getHealth() == null) ? 0 : getHealth().hashCode()); 
         hashCode = prime * hashCode + ((getResources() == null) ? 0 : getResources().hashCode()); 
+        hashCode = prime * hashCode + ((getTier() == null) ? 0 : getTier().hashCode()); 
         return hashCode;
     }
     
@@ -1133,6 +1174,8 @@ public class EnvironmentDescription  implements Serializable  {
         if (other.getHealth() != null && other.getHealth().equals(this.getHealth()) == false) return false; 
         if (other.getResources() == null ^ this.getResources() == null) return false;
         if (other.getResources() != null && other.getResources().equals(this.getResources()) == false) return false; 
+        if (other.getTier() == null ^ this.getTier() == null) return false;
+        if (other.getTier() != null && other.getTier().equals(this.getTier()) == false) return false; 
         return true;
     }
     

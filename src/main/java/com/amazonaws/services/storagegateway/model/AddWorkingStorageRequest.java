@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#addWorkingStorage(AddWorkingStorageRequest) AddWorkingStorage operation}.
  * <p>
- * This operation configures one or more gateway local disks as working storage for a gateway. This operation is supported only for the gateway-stored
- * volume architecture.
+ * This operation configures one or more gateway local disks as working
+ * storage for a gateway. This operation is supported only for the
+ * gateway-stored volume architecture.
  * </p>
  * <p>
- * <b>NOTE:</b> Working storage is also referred to as upload buffer. You can also use the AddUploadBuffer operation to add upload buffer to a
+ * <b>NOTE:</b> Working storage is also referred to as upload buffer. You
+ * can also use the AddUploadBuffer operation to add upload buffer to a
  * stored-volume gateway.
  * </p>
  * <p>
- * In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add working storage, and one or more disk IDs that you want to
- * configure as working storage.
+ * In the request, you specify the gateway Amazon Resource Name (ARN) to
+ * which you want to add working storage, and one or more disk IDs that
+ * you want to configure as working storage.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#addWorkingStorage(AddWorkingStorageRequest)
  */
-public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AddWorkingStorageRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -51,7 +56,7 @@ public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implement
      * length of 300. You can get the disk IDs from the <a>ListLocalDisks</a>
      * API.
      */
-    private java.util.List<String> diskIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIds;
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -100,14 +105,13 @@ public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implement
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddWorkingStorageRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * An array of strings that identify disks that are to be configured as
      * working storage. Each string have a minimum length of 1 and maximum
@@ -120,9 +124,9 @@ public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implement
      *         API.
      */
     public java.util.List<String> getDiskIds() {
-        
         if (diskIds == null) {
-            diskIds = new java.util.ArrayList<String>();
+              diskIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              diskIds.setAutoConstruct(true);
         }
         return diskIds;
     }
@@ -143,8 +147,7 @@ public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implement
             this.diskIds = null;
             return;
         }
-
-        java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
         diskIdsCopy.addAll(diskIds);
         this.diskIds = diskIdsCopy;
     }
@@ -163,7 +166,7 @@ public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implement
      *         API.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddWorkingStorageRequest withDiskIds(String... diskIds) {
         if (getDiskIds() == null) setDiskIds(new java.util.ArrayList<String>(diskIds.length));
@@ -187,20 +190,20 @@ public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implement
      *         API.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddWorkingStorageRequest withDiskIds(java.util.Collection<String> diskIds) {
         if (diskIds == null) {
             this.diskIds = null;
         } else {
-            java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
             diskIdsCopy.addAll(diskIds);
             this.diskIds = diskIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -212,8 +215,8 @@ public class AddWorkingStorageRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
         if (getDiskIds() != null) sb.append("DiskIds: " + getDiskIds() );
         sb.append("}");
         return sb.toString();

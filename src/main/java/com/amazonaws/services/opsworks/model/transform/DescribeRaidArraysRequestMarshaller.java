@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.opsworks.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class DescribeRaidArraysRequestMarshaller implements Marshaller<Request<DescribeRaidArraysRequest>, DescribeRaidArraysRequest> {
 
-    
-
     public Request<DescribeRaidArraysRequest> marshall(DescribeRaidArraysRequest describeRaidArraysRequest) {
     if (describeRaidArraysRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class DescribeRaidArraysRequestMarshaller implements Marshaller<Request<D
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.1");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,22 +71,18 @@ public class DescribeRaidArraysRequestMarshaller implements Marshaller<Request<D
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (describeRaidArraysRequest.getInstanceId() != null) {
                 jsonWriter.key("InstanceId").value(describeRaidArraysRequest.getInstanceId());
             }
 
-            java.util.List<String> raidArrayIdsList = describeRaidArraysRequest.getRaidArrayIds();
-            if (raidArrayIdsList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> raidArrayIdsList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(describeRaidArraysRequest.getRaidArrayIds());
+            if (raidArrayIdsList != null && !(raidArrayIdsList.isAutoConstruct() && raidArrayIdsList.isEmpty())) {
 
                 jsonWriter.key("RaidArrayIds");
                 jsonWriter.array();
@@ -104,22 +96,15 @@ public class DescribeRaidArraysRequestMarshaller implements Marshaller<Request<D
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

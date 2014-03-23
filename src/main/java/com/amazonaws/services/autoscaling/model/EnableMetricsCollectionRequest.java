@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#enableMetricsCollection(EnableMetricsCollectionRequest) EnableMetricsCollection operation}.
  * <p>
- * Enables monitoring of group metrics for the Auto Scaling group specified in <code>AutoScalingGroupName</code> .
- * You can specify the list of enabled metrics with the <code>Metrics</code> parameter.
+ * Enables monitoring of group metrics for the Auto Scaling group
+ * specified in <code>AutoScalingGroupName</code> .
+ * You can specify the list of enabled metrics with the
+ * <code>Metrics</code> parameter.
  * </p>
  * <p>
- * Auto scaling metrics collection can be turned on only if the <code>InstanceMonitoring</code> flag, in the Auto Scaling group's launch configuration,
- * is set to <code>True</code> .
+ * Auto Scaling metrics collection can be turned on only if the
+ * <code>InstanceMonitoring</code> flag, in the Auto Scaling group's
+ * launch configuration, is set to <code>True</code> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#enableMetricsCollection(EnableMetricsCollectionRequest)
  */
-public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling group.
@@ -50,7 +55,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      * <li><p>GroupTerminatingInstances</li> <li><p>GroupTotalInstances</li>
      * </ul>
      */
-    private java.util.List<String> metrics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> metrics;
 
     /**
      * The granularity to associate with the metrics to collect. Currently,
@@ -100,14 +105,13 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      * @param autoScalingGroupName The name or ARN of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The list of metrics to collect. If no metrics are specified, all
      * metrics are enabled. The following metrics are supported: <ul>
@@ -126,9 +130,9 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      *         </ul>
      */
     public java.util.List<String> getMetrics() {
-        
         if (metrics == null) {
-            metrics = new java.util.ArrayList<String>();
+              metrics = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              metrics.setAutoConstruct(true);
         }
         return metrics;
     }
@@ -155,8 +159,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
             this.metrics = null;
             return;
         }
-
-        java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
         metricsCopy.addAll(metrics);
         this.metrics = metricsCopy;
     }
@@ -181,7 +184,7 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withMetrics(String... metrics) {
         if (getMetrics() == null) setMetrics(new java.util.ArrayList<String>(metrics.length));
@@ -211,20 +214,20 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withMetrics(java.util.Collection<String> metrics) {
         if (metrics == null) {
             this.metrics = null;
         } else {
-            java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
             metricsCopy.addAll(metrics);
             this.metrics = metricsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The granularity to associate with the metrics to collect. Currently,
      * the only legal granularity is "1Minute".
@@ -269,14 +272,13 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
      *         the only legal granularity is "1Minute".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableMetricsCollectionRequest withGranularity(String granularity) {
         this.granularity = granularity;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -288,9 +290,9 @@ public class EnableMetricsCollectionRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");
         if (getGranularity() != null) sb.append("Granularity: " + getGranularity() );
         sb.append("}");
         return sb.toString();

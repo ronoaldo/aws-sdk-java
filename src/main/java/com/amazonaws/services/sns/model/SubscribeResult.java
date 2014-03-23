@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
+
 import java.io.Serializable;
 
 /**
- * Subscribe Result
+ * <p>
+ * Response for Subscribe action.
+ * </p>
  */
-public class SubscribeResult  implements Serializable  {
+public class SubscribeResult implements Serializable {
 
     /**
      * The ARN of the subscription, if the service was able to create a
@@ -65,14 +68,13 @@ public class SubscribeResult  implements Serializable  {
      *         confirmation).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SubscribeResult withSubscriptionArn(String subscriptionArn) {
         this.subscriptionArn = subscriptionArn;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -84,7 +86,7 @@ public class SubscribeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSubscriptionArn() != null) sb.append("SubscriptionArn: " + getSubscriptionArn() );
         sb.append("}");
         return sb.toString();

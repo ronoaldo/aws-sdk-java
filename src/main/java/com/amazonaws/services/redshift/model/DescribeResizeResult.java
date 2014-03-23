@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the result of a cluster resize operation.
  * </p>
  */
-public class DescribeResizeResult  implements Serializable  {
+public class DescribeResizeResult implements Serializable {
 
     /**
      * The node type that the cluster will have after the resize is complete.
@@ -50,19 +51,19 @@ public class DescribeResizeResult  implements Serializable  {
      * The names of tables that have been completely imported . <p>Valid
      * Values: List of table names.
      */
-    private java.util.List<String> importTablesCompleted;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesCompleted;
 
     /**
      * The names of tables that are being currently imported. <p>Valid
      * Values: List of table names.
      */
-    private java.util.List<String> importTablesInProgress;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesInProgress;
 
     /**
      * The names of tables that have not been yet imported. <p>Valid Values:
      * List of table names
      */
-    private java.util.List<String> importTablesNotStarted;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesNotStarted;
 
     /**
      * The node type that the cluster will have after the resize is complete.
@@ -90,14 +91,13 @@ public class DescribeResizeResult  implements Serializable  {
      * @param targetNodeType The node type that the cluster will have after the resize is complete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withTargetNodeType(String targetNodeType) {
         this.targetNodeType = targetNodeType;
         return this;
     }
-    
-    
+
     /**
      * The number of nodes that the cluster will have after the resize is
      * complete.
@@ -130,14 +130,13 @@ public class DescribeResizeResult  implements Serializable  {
      *         complete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withTargetNumberOfNodes(Integer targetNumberOfNodes) {
         this.targetNumberOfNodes = targetNumberOfNodes;
         return this;
     }
-    
-    
+
     /**
      * The cluster type after the resize is complete. <p>Valid Values:
      * <code>multi-node</code> | <code>single-node</code>
@@ -170,14 +169,13 @@ public class DescribeResizeResult  implements Serializable  {
      *         <code>multi-node</code> | <code>single-node</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withTargetClusterType(String targetClusterType) {
         this.targetClusterType = targetClusterType;
         return this;
     }
-    
-    
+
     /**
      * The status of the resize operation. <p>Valid Values: <code>NONE</code>
      * | <code>IN_PROGRESS</code> | <code>FAILED</code> |
@@ -216,14 +214,13 @@ public class DescribeResizeResult  implements Serializable  {
      *         <code>SUCCEEDED</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The names of tables that have been completely imported . <p>Valid
      * Values: List of table names.
@@ -232,9 +229,9 @@ public class DescribeResizeResult  implements Serializable  {
      *         Values: List of table names.
      */
     public java.util.List<String> getImportTablesCompleted() {
-        
         if (importTablesCompleted == null) {
-            importTablesCompleted = new java.util.ArrayList<String>();
+              importTablesCompleted = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              importTablesCompleted.setAutoConstruct(true);
         }
         return importTablesCompleted;
     }
@@ -251,8 +248,7 @@ public class DescribeResizeResult  implements Serializable  {
             this.importTablesCompleted = null;
             return;
         }
-
-        java.util.List<String> importTablesCompletedCopy = new java.util.ArrayList<String>(importTablesCompleted.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesCompletedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(importTablesCompleted.size());
         importTablesCompletedCopy.addAll(importTablesCompleted);
         this.importTablesCompleted = importTablesCompletedCopy;
     }
@@ -267,7 +263,7 @@ public class DescribeResizeResult  implements Serializable  {
      *         Values: List of table names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withImportTablesCompleted(String... importTablesCompleted) {
         if (getImportTablesCompleted() == null) setImportTablesCompleted(new java.util.ArrayList<String>(importTablesCompleted.length));
@@ -287,20 +283,20 @@ public class DescribeResizeResult  implements Serializable  {
      *         Values: List of table names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withImportTablesCompleted(java.util.Collection<String> importTablesCompleted) {
         if (importTablesCompleted == null) {
             this.importTablesCompleted = null;
         } else {
-            java.util.List<String> importTablesCompletedCopy = new java.util.ArrayList<String>(importTablesCompleted.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesCompletedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(importTablesCompleted.size());
             importTablesCompletedCopy.addAll(importTablesCompleted);
             this.importTablesCompleted = importTablesCompletedCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The names of tables that are being currently imported. <p>Valid
      * Values: List of table names.
@@ -309,9 +305,9 @@ public class DescribeResizeResult  implements Serializable  {
      *         Values: List of table names.
      */
     public java.util.List<String> getImportTablesInProgress() {
-        
         if (importTablesInProgress == null) {
-            importTablesInProgress = new java.util.ArrayList<String>();
+              importTablesInProgress = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              importTablesInProgress.setAutoConstruct(true);
         }
         return importTablesInProgress;
     }
@@ -328,8 +324,7 @@ public class DescribeResizeResult  implements Serializable  {
             this.importTablesInProgress = null;
             return;
         }
-
-        java.util.List<String> importTablesInProgressCopy = new java.util.ArrayList<String>(importTablesInProgress.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesInProgressCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(importTablesInProgress.size());
         importTablesInProgressCopy.addAll(importTablesInProgress);
         this.importTablesInProgress = importTablesInProgressCopy;
     }
@@ -344,7 +339,7 @@ public class DescribeResizeResult  implements Serializable  {
      *         Values: List of table names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withImportTablesInProgress(String... importTablesInProgress) {
         if (getImportTablesInProgress() == null) setImportTablesInProgress(new java.util.ArrayList<String>(importTablesInProgress.length));
@@ -364,20 +359,20 @@ public class DescribeResizeResult  implements Serializable  {
      *         Values: List of table names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withImportTablesInProgress(java.util.Collection<String> importTablesInProgress) {
         if (importTablesInProgress == null) {
             this.importTablesInProgress = null;
         } else {
-            java.util.List<String> importTablesInProgressCopy = new java.util.ArrayList<String>(importTablesInProgress.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesInProgressCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(importTablesInProgress.size());
             importTablesInProgressCopy.addAll(importTablesInProgress);
             this.importTablesInProgress = importTablesInProgressCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The names of tables that have not been yet imported. <p>Valid Values:
      * List of table names
@@ -386,9 +381,9 @@ public class DescribeResizeResult  implements Serializable  {
      *         List of table names
      */
     public java.util.List<String> getImportTablesNotStarted() {
-        
         if (importTablesNotStarted == null) {
-            importTablesNotStarted = new java.util.ArrayList<String>();
+              importTablesNotStarted = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              importTablesNotStarted.setAutoConstruct(true);
         }
         return importTablesNotStarted;
     }
@@ -405,8 +400,7 @@ public class DescribeResizeResult  implements Serializable  {
             this.importTablesNotStarted = null;
             return;
         }
-
-        java.util.List<String> importTablesNotStartedCopy = new java.util.ArrayList<String>(importTablesNotStarted.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesNotStartedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(importTablesNotStarted.size());
         importTablesNotStartedCopy.addAll(importTablesNotStarted);
         this.importTablesNotStarted = importTablesNotStartedCopy;
     }
@@ -421,7 +415,7 @@ public class DescribeResizeResult  implements Serializable  {
      *         List of table names
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withImportTablesNotStarted(String... importTablesNotStarted) {
         if (getImportTablesNotStarted() == null) setImportTablesNotStarted(new java.util.ArrayList<String>(importTablesNotStarted.length));
@@ -441,20 +435,20 @@ public class DescribeResizeResult  implements Serializable  {
      *         List of table names
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeResizeResult withImportTablesNotStarted(java.util.Collection<String> importTablesNotStarted) {
         if (importTablesNotStarted == null) {
             this.importTablesNotStarted = null;
         } else {
-            java.util.List<String> importTablesNotStartedCopy = new java.util.ArrayList<String>(importTablesNotStarted.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> importTablesNotStartedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(importTablesNotStarted.size());
             importTablesNotStartedCopy.addAll(importTablesNotStarted);
             this.importTablesNotStarted = importTablesNotStartedCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -466,13 +460,13 @@ public class DescribeResizeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTargetNodeType() != null) sb.append("TargetNodeType: " + getTargetNodeType() + ",");    	
-        if (getTargetNumberOfNodes() != null) sb.append("TargetNumberOfNodes: " + getTargetNumberOfNodes() + ",");    	
-        if (getTargetClusterType() != null) sb.append("TargetClusterType: " + getTargetClusterType() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getImportTablesCompleted() != null) sb.append("ImportTablesCompleted: " + getImportTablesCompleted() + ",");    	
-        if (getImportTablesInProgress() != null) sb.append("ImportTablesInProgress: " + getImportTablesInProgress() + ",");    	
+        sb.append("{");
+        if (getTargetNodeType() != null) sb.append("TargetNodeType: " + getTargetNodeType() + ",");
+        if (getTargetNumberOfNodes() != null) sb.append("TargetNumberOfNodes: " + getTargetNumberOfNodes() + ",");
+        if (getTargetClusterType() != null) sb.append("TargetClusterType: " + getTargetClusterType() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getImportTablesCompleted() != null) sb.append("ImportTablesCompleted: " + getImportTablesCompleted() + ",");
+        if (getImportTablesInProgress() != null) sb.append("ImportTablesInProgress: " + getImportTablesInProgress() + ",");
         if (getImportTablesNotStarted() != null) sb.append("ImportTablesNotStarted: " + getImportTablesNotStarted() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeactivateMFADeviceRequestMarshaller implements Marshaller<Request<
     public Request<DeactivateMFADeviceRequest> marshall(DeactivateMFADeviceRequest deactivateMFADeviceRequest) {
 
         if (deactivateMFADeviceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeactivateMFADeviceRequest> request = new DefaultRequest<DeactivateMFADeviceRequest>(deactivateMFADeviceRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "DeactivateMFADevice");
@@ -46,7 +46,6 @@ public class DeactivateMFADeviceRequestMarshaller implements Marshaller<Request<
         if (deactivateMFADeviceRequest.getSerialNumber() != null) {
             request.addParameter("SerialNumber", StringUtils.fromString(deactivateMFADeviceRequest.getSerialNumber()));
         }
-
 
         return request;
     }

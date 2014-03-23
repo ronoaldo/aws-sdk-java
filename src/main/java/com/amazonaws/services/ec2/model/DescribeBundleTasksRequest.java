@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,72 +13,98 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DescribeBundleTasksRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#describeBundleTasks(DescribeBundleTasksRequest) DescribeBundleTasks operation}.
  * <p>
- * The DescribeBundleTasks operation describes in-progress and recent bundle tasks. Complete and failed tasks are removed from the list a short time
- * after completion. If no bundle ids are given, all bundle tasks are returned.
+ * Describes one or more of your bundling tasks.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> Completed bundle tasks are listed for only a limited
+ * time. If your bundle task is no longer in the list, you can still
+ * register an AMI from it. Just use RegisterImage with the Amazon S3
+ * bucket name and image manifest name you provided to the bundle task.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#describeBundleTasks(DescribeBundleTasksRequest)
  */
-public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeBundleTasksRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DescribeBundleTasksRequest> {
 
     /**
-     * The list of bundle task IDs to describe.
+     * One or more bundle task IDs. <p>Default: Describes all your bundle
+     * tasks.
      */
-    private java.util.List<String> bundleIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> bundleIds;
 
     /**
-     * A list of filters used to match properties for BundleTasks. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     * the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     * failed, the error code returned. </li> <li>
+     * <p><code>error-message</code> - If the task failed, the error message
+     * returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     * instance. </li> <li> <p><code>progress</code> - The level of task
+     * completion, as a percentage (for example, 20%). </li> <li>
+     * <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     * </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     * </li> <li> <p><code>start-time</code> - The time the task started (for
+     * example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     * The state of the task (<code>pending</code> |
+     * <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     * <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     * | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     * time of the most recent update for the task. </li> </ul>
      */
-    private java.util.List<Filter> filters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
-     * The list of bundle task IDs to describe.
+     * One or more bundle task IDs. <p>Default: Describes all your bundle
+     * tasks.
      *
-     * @return The list of bundle task IDs to describe.
+     * @return One or more bundle task IDs. <p>Default: Describes all your bundle
+     *         tasks.
      */
     public java.util.List<String> getBundleIds() {
-        
         if (bundleIds == null) {
-            bundleIds = new java.util.ArrayList<String>();
+              bundleIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              bundleIds.setAutoConstruct(true);
         }
         return bundleIds;
     }
     
     /**
-     * The list of bundle task IDs to describe.
+     * One or more bundle task IDs. <p>Default: Describes all your bundle
+     * tasks.
      *
-     * @param bundleIds The list of bundle task IDs to describe.
+     * @param bundleIds One or more bundle task IDs. <p>Default: Describes all your bundle
+     *         tasks.
      */
     public void setBundleIds(java.util.Collection<String> bundleIds) {
         if (bundleIds == null) {
             this.bundleIds = null;
             return;
         }
-
-        java.util.List<String> bundleIdsCopy = new java.util.ArrayList<String>(bundleIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> bundleIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(bundleIds.size());
         bundleIdsCopy.addAll(bundleIds);
         this.bundleIds = bundleIdsCopy;
     }
     
     /**
-     * The list of bundle task IDs to describe.
+     * One or more bundle task IDs. <p>Default: Describes all your bundle
+     * tasks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bundleIds The list of bundle task IDs to describe.
+     * @param bundleIds One or more bundle task IDs. <p>Default: Describes all your bundle
+     *         tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withBundleIds(String... bundleIds) {
         if (getBundleIds() == null) setBundleIds(new java.util.ArrayList<String>(bundleIds.length));
@@ -89,89 +115,156 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * The list of bundle task IDs to describe.
+     * One or more bundle task IDs. <p>Default: Describes all your bundle
+     * tasks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bundleIds The list of bundle task IDs to describe.
+     * @param bundleIds One or more bundle task IDs. <p>Default: Describes all your bundle
+     *         tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withBundleIds(java.util.Collection<String> bundleIds) {
         if (bundleIds == null) {
             this.bundleIds = null;
         } else {
-            java.util.List<String> bundleIdsCopy = new java.util.ArrayList<String>(bundleIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> bundleIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(bundleIds.size());
             bundleIdsCopy.addAll(bundleIds);
             this.bundleIds = bundleIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of filters used to match properties for BundleTasks. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     * the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     * failed, the error code returned. </li> <li>
+     * <p><code>error-message</code> - If the task failed, the error message
+     * returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     * instance. </li> <li> <p><code>progress</code> - The level of task
+     * completion, as a percentage (for example, 20%). </li> <li>
+     * <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     * </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     * </li> <li> <p><code>start-time</code> - The time the task started (for
+     * example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     * The state of the task (<code>pending</code> |
+     * <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     * <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     * | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     * time of the most recent update for the task. </li> </ul>
      *
-     * @return A list of filters used to match properties for BundleTasks. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @return One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     *         the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     *         failed, the error code returned. </li> <li>
+     *         <p><code>error-message</code> - If the task failed, the error message
+     *         returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     *         instance. </li> <li> <p><code>progress</code> - The level of task
+     *         completion, as a percentage (for example, 20%). </li> <li>
+     *         <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     *         </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     *         </li> <li> <p><code>start-time</code> - The time the task started (for
+     *         example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     *         The state of the task (<code>pending</code> |
+     *         <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     *         <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     *         | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     *         time of the most recent update for the task. </li> </ul>
      */
     public java.util.List<Filter> getFilters() {
-        
         if (filters == null) {
-            filters = new java.util.ArrayList<Filter>();
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
         }
         return filters;
     }
     
     /**
-     * A list of filters used to match properties for BundleTasks. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     * the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     * failed, the error code returned. </li> <li>
+     * <p><code>error-message</code> - If the task failed, the error message
+     * returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     * instance. </li> <li> <p><code>progress</code> - The level of task
+     * completion, as a percentage (for example, 20%). </li> <li>
+     * <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     * </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     * </li> <li> <p><code>start-time</code> - The time the task started (for
+     * example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     * The state of the task (<code>pending</code> |
+     * <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     * <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     * | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     * time of the most recent update for the task. </li> </ul>
      *
-     * @param filters A list of filters used to match properties for BundleTasks. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     *         the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     *         failed, the error code returned. </li> <li>
+     *         <p><code>error-message</code> - If the task failed, the error message
+     *         returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     *         instance. </li> <li> <p><code>progress</code> - The level of task
+     *         completion, as a percentage (for example, 20%). </li> <li>
+     *         <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     *         </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     *         </li> <li> <p><code>start-time</code> - The time the task started (for
+     *         example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     *         The state of the task (<code>pending</code> |
+     *         <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     *         <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     *         | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     *         time of the most recent update for the task. </li> </ul>
      */
     public void setFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
             return;
         }
-
-        java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
         filtersCopy.addAll(filters);
         this.filters = filtersCopy;
     }
     
     /**
-     * A list of filters used to match properties for BundleTasks. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     * the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     * failed, the error code returned. </li> <li>
+     * <p><code>error-message</code> - If the task failed, the error message
+     * returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     * instance. </li> <li> <p><code>progress</code> - The level of task
+     * completion, as a percentage (for example, 20%). </li> <li>
+     * <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     * </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     * </li> <li> <p><code>start-time</code> - The time the task started (for
+     * example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     * The state of the task (<code>pending</code> |
+     * <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     * <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     * | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     * time of the most recent update for the task. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for BundleTasks. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     *         the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     *         failed, the error code returned. </li> <li>
+     *         <p><code>error-message</code> - If the task failed, the error message
+     *         returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     *         instance. </li> <li> <p><code>progress</code> - The level of task
+     *         completion, as a percentage (for example, 20%). </li> <li>
+     *         <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     *         </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     *         </li> <li> <p><code>start-time</code> - The time the task started (for
+     *         example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     *         The state of the task (<code>pending</code> |
+     *         <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     *         <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     *         | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     *         time of the most recent update for the task. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withFilters(Filter... filters) {
         if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
@@ -182,33 +275,67 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
     }
     
     /**
-     * A list of filters used to match properties for BundleTasks. For a
-     * complete reference to the available filter keys for this operation,
-     * see the <a
-     * href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     * EC2 API reference</a>.
+     * One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     * the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     * failed, the error code returned. </li> <li>
+     * <p><code>error-message</code> - If the task failed, the error message
+     * returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     * instance. </li> <li> <p><code>progress</code> - The level of task
+     * completion, as a percentage (for example, 20%). </li> <li>
+     * <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     * </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     * </li> <li> <p><code>start-time</code> - The time the task started (for
+     * example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     * The state of the task (<code>pending</code> |
+     * <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     * <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     * | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     * time of the most recent update for the task. </li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param filters A list of filters used to match properties for BundleTasks. For a
-     *         complete reference to the available filter keys for this operation,
-     *         see the <a
-     *         href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/">Amazon
-     *         EC2 API reference</a>.
+     * @param filters One or more filters. <ul> <li> <p><code>bundle-id</code> - The ID of
+     *         the bundle task. </li> <li> <p><code>error-code</code> - If the task
+     *         failed, the error code returned. </li> <li>
+     *         <p><code>error-message</code> - If the task failed, the error message
+     *         returned. </li> <li> <p><code>instance-id</code> - The ID of the
+     *         instance. </li> <li> <p><code>progress</code> - The level of task
+     *         completion, as a percentage (for example, 20%). </li> <li>
+     *         <p><code>s3-bucket</code> - The Amazon S3 bucket to store the AMI.
+     *         </li> <li> <p><code>s3-prefix</code> - The beginning of the AMI name.
+     *         </li> <li> <p><code>start-time</code> - The time the task started (for
+     *         example, 2013-09-15T17:15:20.000Z). </li> <li> <p><code>state</code> -
+     *         The state of the task (<code>pending</code> |
+     *         <code>waiting-for-shutdown</code> | <code>bundling</code> |
+     *         <code>storing</code> | <code>cancelling</code> | <code>complete</code>
+     *         | <code>failed</code>). </li> <li> <p><code>update-time</code> - The
+     *         time of the most recent update for the task. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBundleTasksRequest withFilters(java.util.Collection<Filter> filters) {
         if (filters == null) {
             this.filters = null;
         } else {
-            java.util.List<Filter> filtersCopy = new java.util.ArrayList<Filter>(filters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
             filtersCopy.addAll(filters);
             this.filters = filtersCopy;
         }
 
         return this;
+    }
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DescribeBundleTasksRequest> getDryRunRequest() {
+        Request<DescribeBundleTasksRequest> request = new DescribeBundleTasksRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
     }
     
     /**
@@ -222,8 +349,8 @@ public class DescribeBundleTasksRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getBundleIds() != null) sb.append("BundleIds: " + getBundleIds() + ",");    	
+        sb.append("{");
+        if (getBundleIds() != null) sb.append("BundleIds: " + getBundleIds() + ",");
         if (getFilters() != null) sb.append("Filters: " + getFilters() );
         sb.append("}");
         return sb.toString();

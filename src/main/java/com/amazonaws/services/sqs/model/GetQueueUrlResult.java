@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UnderstandingResponses.html"> Responses </a>
+ * in the <i>Amazon SQS Developer Guide</i> .
+ * </p>
  */
-public class GetQueueUrlResult  implements Serializable  {
+public class GetQueueUrlResult implements Serializable {
 
     /**
      * The URL for the queue.
@@ -51,14 +56,13 @@ public class GetQueueUrlResult  implements Serializable  {
      * @param queueUrl The URL for the queue.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetQueueUrlResult withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -70,7 +74,7 @@ public class GetQueueUrlResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() );
         sb.append("}");
         return sb.toString();

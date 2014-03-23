@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,81 +13,73 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class AddCommunicationToCaseResult  implements Serializable  {
+public class AddCommunicationToCaseResult implements Serializable {
 
     /**
-     * Returns true if the <a href="API_AddCommunicationToCase.html"
-     * title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     * Returns an error otherwise.
+     * True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     * error.
      */
     private Boolean result;
 
     /**
-     * Returns true if the <a href="API_AddCommunicationToCase.html"
-     * title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     * Returns an error otherwise.
+     * True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     * error.
      *
-     * @return Returns true if the <a href="API_AddCommunicationToCase.html"
-     *         title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     *         Returns an error otherwise.
+     * @return True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     *         error.
      */
     public Boolean isResult() {
         return result;
     }
     
     /**
-     * Returns true if the <a href="API_AddCommunicationToCase.html"
-     * title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     * Returns an error otherwise.
+     * True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     * error.
      *
-     * @param result Returns true if the <a href="API_AddCommunicationToCase.html"
-     *         title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     *         Returns an error otherwise.
+     * @param result True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     *         error.
      */
     public void setResult(Boolean result) {
         this.result = result;
     }
     
     /**
-     * Returns true if the <a href="API_AddCommunicationToCase.html"
-     * title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     * Returns an error otherwise.
+     * True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     * error.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param result Returns true if the <a href="API_AddCommunicationToCase.html"
-     *         title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     *         Returns an error otherwise.
+     * @param result True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     *         error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCommunicationToCaseResult withResult(Boolean result) {
         this.result = result;
         return this;
     }
-    
-    
+
     /**
-     * Returns true if the <a href="API_AddCommunicationToCase.html"
-     * title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     * Returns an error otherwise.
+     * True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     * error.
      *
-     * @return Returns true if the <a href="API_AddCommunicationToCase.html"
-     *         title="AddCommunicationToCase">AddCommunicationToCase</a> succeeds.
-     *         Returns an error otherwise.
+     * @return True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an
+     *         error.
      */
     public Boolean getResult() {
         return result;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -99,7 +91,7 @@ public class AddCommunicationToCaseResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (isResult() != null) sb.append("Result: " + isResult() );
         sb.append("}");
         return sb.toString();

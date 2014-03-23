@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,39 +13,82 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.securitytoken.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.securitytoken.AWSSecurityTokenService#assumeRoleWithWebIdentity(AssumeRoleWithWebIdentityRequest) AssumeRoleWithWebIdentity operation}.
  * <p>
- * Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider,
- * such as Login with Amazon, Facebook, or Google. <code>AssumeRoleWithWebIdentity</code> is an API call that does not require the use of AWS security
- * credentials. Therefore, you can distribute an application (for example, on mobile devices) that requests temporary security credentials without
- * including long-term AWS credentials in the application or by deploying server-based proxy services that use long-term AWS credentials. For more
- * information, see <a href="http://aws-docs-alpha.integ.amazon.com/STS/latest/UsingSTS/STSUseCases.html#MobileApplication-KnownProvider"> Creating a
- * Mobile Application with Third-Party Sign-In </a> in <i>AWS Security Token Service</i> .
+ * Returns a set of temporary security credentials for users who have
+ * been authenticated in a mobile or web application with a web identity
+ * provider, such as Login with Amazon, Facebook, or Google.
+ * </p>
+ * <p>
+ * Calling <code>AssumeRoleWithWebIdentity</code> does not require the
+ * use of AWS security credentials. Therefore, you can distribute an
+ * application (for example, on mobile devices) that requests temporary
+ * security credentials without including long-term AWS credentials in
+ * the application, and without deploying server-based proxy services
+ * that use long-term AWS credentials. Instead, the identity of the
+ * caller is validated by using a token from the web identity provider.
+ * </p>
+ * <p>
+ * The temporary security credentials returned by this API consist of an
+ * access key ID, a secret access key, and a security token. Applications
+ * can use these temporary security credentials to sign calls to AWS
+ * service APIs. The credentials are valid for the duration that you
+ * specified when calling <code>AssumeRoleWithWebIdentity</code> , which
+ * can be from 900 seconds (15 minutes) to 3600 seconds (1 hour). By
+ * default, the temporary security credentials are valid for 1 hour.
+ * </p>
+ * <p>
+ * Optionally, you can pass an AWS IAM access policy to this operation.
+ * The temporary security credentials that are returned by the operation
+ * have the permissions that are associated with the access policy of the
+ * role being assumed, except for any permissions explicitly denied by
+ * the policy you pass. This gives you a way to further restrict the
+ * permissions for the resulting temporary security credentials. These
+ * policies and any applicable resource-based policies are evaluated when
+ * calls to AWS are made using the temporary security credentials.
+ * </p>
+ * <p>
+ * Before your application can call
+ * <code>AssumeRoleWithWebIdentity</code> , you must have an identity
+ * token from a supported identity provider and create a role that the
+ * application can assume. The role that your application assumes must
+ * trust the identity provider that is associated with the identity
+ * token. In other words, the identity provider must be specified in the
+ * role's trust policy.
+ * </p>
+ * <p>
+ * For more information about how to use web identity federation and the
+ * <code>AssumeRoleWithWebIdentity</code> , see the following resources:
+ * </p>
  * 
- * </p>
- * <p>
- * The temporary security credentials consist of an access key ID, a secret access key, and a security token. Applications can use these temporary
- * security credentials to sign calls to AWS service APIs. The credentials are valid for the duration that you specified when calling
- * <code>AssumeRoleWithWebIdentity</code> , which can be from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the temporary security
- * credentials are valid for 1 hour.
- * </p>
- * <p>
- * The temporary security credentials that are returned from the <code>AssumeRoleWithWebIdentity</code> response have the permissions that are
- * associated with the access policy of the role being assumed. You can further restrict the permissions of the temporary security credentials by passing
- * a policy in the request. The resulting permissions are an intersection of the role's access policy and the policy that you passed. These policies and
- * any applicable resource-based policies are evaluated when calls to AWS service APIs are made using the temporary security credentials.
- * </p>
- * <p>
- * Before your application can call <code>AssumeRoleWithWebIdentity</code> , you must have an identity token from a supported identity provider and
- * create a role that the application can assume. The role that your application assumes must trust the identity provider that is associated with the
- * identity token. In other words, the identity provider must be specified in the role's trust policy. For more information, see <a
- * href="http://docs.aws.amazon.com/STS/latest/UsingSTS/CreatingWIF.html"> Creating Temporary Security Credentials for Mobile Apps Using Third-Party
- * Identity Providers </a> .
- * </p>
+ * <ul>
+ * <li>
+ * <a href="http://docs.aws.amazon.com/STS/latest/UsingSTS/STSUseCases.html#MobileApplication-KnownProvider"> Creating a Mobile Application with Third-Party Sign-In </a> and <a href="http://docs.aws.amazon.com/STS/latest/UsingSTS/CreatingWIF.html"> Creating Temporary Security Credentials for Mobile Apps Using Third-Party Identity Providers </a>
+ * in <i>Using Temporary Security Credentials</i> . </li>
+ * <li>
+ * <a href="https://web-identity-federation-playground.s3.amazonaws.com/index.html"> Web Identity Federation Playground </a>
+ * . This interactive website lets you walk through the process of
+ * authenticating via Login with Amazon, Facebook, or Google, getting
+ * temporary security credentials, and then using those credentials to
+ * make a request to AWS. </li>
+ * <li>
+ * <a href="http://aws.amazon.com/sdkforios/"> AWS SDK for iOS </a> and <a href="http://aws.amazon.com/sdkforandroid/"> AWS SDK for Android </a>
+ * . These toolkits contain sample apps that show how to invoke the
+ * identity providers, and then how to use the information from these
+ * providers to get and use temporary security credentials. </li>
+ * <li>
+ * <a href="http://aws.amazon.com/articles/4617974389850313"> Web Identity Federation with Mobile Applications </a>
+ * . This article discusses web identity federation and shows an example
+ * of how to use web identity federation to get access to content in
+ * Amazon S3. </li>
+ * 
+ * </ul>
  * <p>
  * </p>
  * <p>
@@ -61,7 +104,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.securitytoken.AWSSecurityTokenService#assumeRoleWithWebIdentity(AssumeRoleWithWebIdentityRequest)
  */
-public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the role that the caller is
@@ -99,12 +142,12 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
     private String webIdentityToken;
 
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
@@ -112,12 +155,14 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
     private String providerId;
 
     /**
-     * A supplemental policy that is associated with the temporary security
-     * credentials from the <code>AssumeRoleWithWebIdentity</code> call. The
-     * resulting permissions of the temporary security credentials are an
-     * intersection of this policy and the access policy that is associated
-     * with the role. Use this policy to further restrict the permissions of
-     * the temporary security credentials.
+     * An AWS IAM policy in JSON format. <p>The temporary security
+     * credentials that are returned by the operation have the permissions
+     * that are associated with the access policy of the role being assumed,
+     * except for any permissions explicitly denied by the policy you pass.
+     * This gives you a way to further restrict the permissions for the
+     * resulting temporary security credentials. These policies and any
+     * applicable resource-based policies are evaluated when calls to AWS are
+     * made using the temporary security credentials.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2048<br/>
@@ -176,14 +221,13 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         assuming.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withRoleArn(String roleArn) {
         this.roleArn = roleArn;
         return this;
     }
-    
-    
+
     /**
      * An identifier for the assumed role session. Typically, you pass the
      * name or identifier that is associated with the user who is using your
@@ -252,14 +296,13 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         <code>AssumedRoleUser</code> response element.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withRoleSessionName(String roleSessionName) {
         this.roleSessionName = roleSessionName;
         return this;
     }
-    
-    
+
     /**
      * The OAuth 2.0 access token or OpenID Connect ID token that is provided
      * by the identity provider. Your application must get this token by
@@ -319,140 +362,148 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         <code>AssumeRoleWithWebIdentity</code> call.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withWebIdentityToken(String webIdentityToken) {
         this.webIdentityToken = webIdentityToken;
         return this;
     }
-    
-    
+
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
      *
-     * @return Specify this value only for OAuth access tokens. Do not specify this
-     *         value for OpenID Connect ID tokens, such as
-     *         <code>accounts.google.com</code>. This is the fully-qualified host
-     *         component of the domain name of the identity provider. Do not include
-     *         URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     *         and <code>graph.facebook.com</code> are supported.
+     * @return The fully-qualified host component of the domain name of the identity
+     *         provider. Specify this value only for OAuth access tokens. Do not
+     *         specify this value for OpenID Connect ID tokens, such as
+     *         <code>accounts.google.com</code>. Do not include URL schemes and port
+     *         numbers. Currently, <code>www.amazon.com</code> and
+     *         <code>graph.facebook.com</code> are supported.
      */
     public String getProviderId() {
         return providerId;
     }
     
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
      *
-     * @param providerId Specify this value only for OAuth access tokens. Do not specify this
-     *         value for OpenID Connect ID tokens, such as
-     *         <code>accounts.google.com</code>. This is the fully-qualified host
-     *         component of the domain name of the identity provider. Do not include
-     *         URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     *         and <code>graph.facebook.com</code> are supported.
+     * @param providerId The fully-qualified host component of the domain name of the identity
+     *         provider. Specify this value only for OAuth access tokens. Do not
+     *         specify this value for OpenID Connect ID tokens, such as
+     *         <code>accounts.google.com</code>. Do not include URL schemes and port
+     *         numbers. Currently, <code>www.amazon.com</code> and
+     *         <code>graph.facebook.com</code> are supported.
      */
     public void setProviderId(String providerId) {
         this.providerId = providerId;
     }
     
     /**
-     * Specify this value only for OAuth access tokens. Do not specify this
-     * value for OpenID Connect ID tokens, such as
-     * <code>accounts.google.com</code>. This is the fully-qualified host
-     * component of the domain name of the identity provider. Do not include
-     * URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     * and <code>graph.facebook.com</code> are supported.
+     * The fully-qualified host component of the domain name of the identity
+     * provider. Specify this value only for OAuth access tokens. Do not
+     * specify this value for OpenID Connect ID tokens, such as
+     * <code>accounts.google.com</code>. Do not include URL schemes and port
+     * numbers. Currently, <code>www.amazon.com</code> and
+     * <code>graph.facebook.com</code> are supported.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>4 - 2048<br/>
      *
-     * @param providerId Specify this value only for OAuth access tokens. Do not specify this
-     *         value for OpenID Connect ID tokens, such as
-     *         <code>accounts.google.com</code>. This is the fully-qualified host
-     *         component of the domain name of the identity provider. Do not include
-     *         URL schemes and port numbers. Currently, <code>www.amazon.com</code>
-     *         and <code>graph.facebook.com</code> are supported.
+     * @param providerId The fully-qualified host component of the domain name of the identity
+     *         provider. Specify this value only for OAuth access tokens. Do not
+     *         specify this value for OpenID Connect ID tokens, such as
+     *         <code>accounts.google.com</code>. Do not include URL schemes and port
+     *         numbers. Currently, <code>www.amazon.com</code> and
+     *         <code>graph.facebook.com</code> are supported.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withProviderId(String providerId) {
         this.providerId = providerId;
         return this;
     }
-    
-    
+
     /**
-     * A supplemental policy that is associated with the temporary security
-     * credentials from the <code>AssumeRoleWithWebIdentity</code> call. The
-     * resulting permissions of the temporary security credentials are an
-     * intersection of this policy and the access policy that is associated
-     * with the role. Use this policy to further restrict the permissions of
-     * the temporary security credentials.
+     * An AWS IAM policy in JSON format. <p>The temporary security
+     * credentials that are returned by the operation have the permissions
+     * that are associated with the access policy of the role being assumed,
+     * except for any permissions explicitly denied by the policy you pass.
+     * This gives you a way to further restrict the permissions for the
+     * resulting temporary security credentials. These policies and any
+     * applicable resource-based policies are evaluated when calls to AWS are
+     * made using the temporary security credentials.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2048<br/>
      * <b>Pattern: </b>[\u0009\u000A\u000D\u0020-\u00FF]+<br/>
      *
-     * @return A supplemental policy that is associated with the temporary security
-     *         credentials from the <code>AssumeRoleWithWebIdentity</code> call. The
-     *         resulting permissions of the temporary security credentials are an
-     *         intersection of this policy and the access policy that is associated
-     *         with the role. Use this policy to further restrict the permissions of
-     *         the temporary security credentials.
+     * @return An AWS IAM policy in JSON format. <p>The temporary security
+     *         credentials that are returned by the operation have the permissions
+     *         that are associated with the access policy of the role being assumed,
+     *         except for any permissions explicitly denied by the policy you pass.
+     *         This gives you a way to further restrict the permissions for the
+     *         resulting temporary security credentials. These policies and any
+     *         applicable resource-based policies are evaluated when calls to AWS are
+     *         made using the temporary security credentials.
      */
     public String getPolicy() {
         return policy;
     }
     
     /**
-     * A supplemental policy that is associated with the temporary security
-     * credentials from the <code>AssumeRoleWithWebIdentity</code> call. The
-     * resulting permissions of the temporary security credentials are an
-     * intersection of this policy and the access policy that is associated
-     * with the role. Use this policy to further restrict the permissions of
-     * the temporary security credentials.
+     * An AWS IAM policy in JSON format. <p>The temporary security
+     * credentials that are returned by the operation have the permissions
+     * that are associated with the access policy of the role being assumed,
+     * except for any permissions explicitly denied by the policy you pass.
+     * This gives you a way to further restrict the permissions for the
+     * resulting temporary security credentials. These policies and any
+     * applicable resource-based policies are evaluated when calls to AWS are
+     * made using the temporary security credentials.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 2048<br/>
      * <b>Pattern: </b>[\u0009\u000A\u000D\u0020-\u00FF]+<br/>
      *
-     * @param policy A supplemental policy that is associated with the temporary security
-     *         credentials from the <code>AssumeRoleWithWebIdentity</code> call. The
-     *         resulting permissions of the temporary security credentials are an
-     *         intersection of this policy and the access policy that is associated
-     *         with the role. Use this policy to further restrict the permissions of
-     *         the temporary security credentials.
+     * @param policy An AWS IAM policy in JSON format. <p>The temporary security
+     *         credentials that are returned by the operation have the permissions
+     *         that are associated with the access policy of the role being assumed,
+     *         except for any permissions explicitly denied by the policy you pass.
+     *         This gives you a way to further restrict the permissions for the
+     *         resulting temporary security credentials. These policies and any
+     *         applicable resource-based policies are evaluated when calls to AWS are
+     *         made using the temporary security credentials.
      */
     public void setPolicy(String policy) {
         this.policy = policy;
     }
     
     /**
-     * A supplemental policy that is associated with the temporary security
-     * credentials from the <code>AssumeRoleWithWebIdentity</code> call. The
-     * resulting permissions of the temporary security credentials are an
-     * intersection of this policy and the access policy that is associated
-     * with the role. Use this policy to further restrict the permissions of
-     * the temporary security credentials.
+     * An AWS IAM policy in JSON format. <p>The temporary security
+     * credentials that are returned by the operation have the permissions
+     * that are associated with the access policy of the role being assumed,
+     * except for any permissions explicitly denied by the policy you pass.
+     * This gives you a way to further restrict the permissions for the
+     * resulting temporary security credentials. These policies and any
+     * applicable resource-based policies are evaluated when calls to AWS are
+     * made using the temporary security credentials.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -460,22 +511,23 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      * <b>Length: </b>1 - 2048<br/>
      * <b>Pattern: </b>[\u0009\u000A\u000D\u0020-\u00FF]+<br/>
      *
-     * @param policy A supplemental policy that is associated with the temporary security
-     *         credentials from the <code>AssumeRoleWithWebIdentity</code> call. The
-     *         resulting permissions of the temporary security credentials are an
-     *         intersection of this policy and the access policy that is associated
-     *         with the role. Use this policy to further restrict the permissions of
-     *         the temporary security credentials.
+     * @param policy An AWS IAM policy in JSON format. <p>The temporary security
+     *         credentials that are returned by the operation have the permissions
+     *         that are associated with the access policy of the role being assumed,
+     *         except for any permissions explicitly denied by the policy you pass.
+     *         This gives you a way to further restrict the permissions for the
+     *         resulting temporary security credentials. These policies and any
+     *         applicable resource-based policies are evaluated when calls to AWS are
+     *         made using the temporary security credentials.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withPolicy(String policy) {
         this.policy = policy;
         return this;
     }
-    
-    
+
     /**
      * The duration, in seconds, of the role session. The value can range
      * from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default,
@@ -523,14 +575,13 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
      *         the value is set to 3600 seconds.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AssumeRoleWithWebIdentityRequest withDurationSeconds(Integer durationSeconds) {
         this.durationSeconds = durationSeconds;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -542,12 +593,12 @@ public class AssumeRoleWithWebIdentityRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRoleArn() != null) sb.append("RoleArn: " + getRoleArn() + ",");    	
-        if (getRoleSessionName() != null) sb.append("RoleSessionName: " + getRoleSessionName() + ",");    	
-        if (getWebIdentityToken() != null) sb.append("WebIdentityToken: " + getWebIdentityToken() + ",");    	
-        if (getProviderId() != null) sb.append("ProviderId: " + getProviderId() + ",");    	
-        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");    	
+        sb.append("{");
+        if (getRoleArn() != null) sb.append("RoleArn: " + getRoleArn() + ",");
+        if (getRoleSessionName() != null) sb.append("RoleSessionName: " + getRoleSessionName() + ",");
+        if (getWebIdentityToken() != null) sb.append("WebIdentityToken: " + getWebIdentityToken() + ",");
+        if (getProviderId() != null) sb.append("ProviderId: " + getProviderId() + ",");
+        if (getPolicy() != null) sb.append("Policy: " + getPolicy() + ",");
         if (getDurationSeconds() != null) sb.append("DurationSeconds: " + getDurationSeconds() );
         sb.append("}");
         return sb.toString();

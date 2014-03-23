@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#rebootCluster(RebootClusterRequest) RebootCluster operation}.
  * <p>
- * Reboots a cluster. This action is taken as soon as possible. It results in a momentary outage to the cluster, during which the cluster status is set
- * to <code>rebooting</code> . A cluster event is created when the reboot is completed. Any pending cluster modifications (see ModifyCluster) are applied
- * at this reboot. For more information about managing clusters, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a> in the <i>Amazon Redshift Management
- * Guide</i>
+ * Reboots a cluster. This action is taken as soon as possible. It
+ * results in a momentary outage to the cluster, during which the cluster
+ * status is set to <code>rebooting</code> . A cluster event is created
+ * when the reboot is completed. Any pending cluster modifications (see
+ * ModifyCluster) are applied at this reboot. For more information about
+ * managing clusters, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a>
+ * in the <i>Amazon Redshift Management Guide</i>
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#rebootCluster(RebootClusterRequest)
  */
-public class RebootClusterRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RebootClusterRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The cluster identifier.
@@ -61,14 +66,13 @@ public class RebootClusterRequest extends AmazonWebServiceRequest  implements Se
      * @param clusterIdentifier The cluster identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RebootClusterRequest withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -80,7 +84,7 @@ public class RebootClusterRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() );
         sb.append("}");
         return sb.toString();

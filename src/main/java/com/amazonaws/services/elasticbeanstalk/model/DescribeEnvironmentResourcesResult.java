@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Result message containing a list of environment resource descriptions.
  * </p>
  */
-public class DescribeEnvironmentResourcesResult  implements Serializable  {
+public class DescribeEnvironmentResourcesResult implements Serializable {
 
     /**
      * A list of <a>EnvironmentResourceDescription</a>.
@@ -53,14 +54,13 @@ public class DescribeEnvironmentResourcesResult  implements Serializable  {
      * @param environmentResources A list of <a>EnvironmentResourceDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEnvironmentResourcesResult withEnvironmentResources(EnvironmentResourceDescription environmentResources) {
         this.environmentResources = environmentResources;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class DescribeEnvironmentResourcesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getEnvironmentResources() != null) sb.append("EnvironmentResources: " + getEnvironmentResources() );
         sb.append("}");
         return sb.toString();

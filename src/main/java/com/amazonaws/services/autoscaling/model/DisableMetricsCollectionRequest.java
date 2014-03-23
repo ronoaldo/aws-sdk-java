@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#disableMetricsCollection(DisableMetricsCollectionRequest) DisableMetricsCollection operation}.
  * <p>
- * Disables monitoring of group metrics for the Auto Scaling group specified in <code>AutoScalingGroupName</code> .
- * You can specify the list of affected metrics with the <code>Metrics</code> parameter.
+ * Disables monitoring of group metrics for the Auto Scaling group
+ * specified in <code>AutoScalingGroupName</code> .
+ * You can specify the list of affected metrics with the
+ * <code>Metrics</code> parameter.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#disableMetricsCollection(DisableMetricsCollectionRequest)
  */
-public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or ARN of the Auto Scaling Group.
@@ -45,7 +49,7 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      * <li><p>GroupTerminatingInstances</li> <li><p>GroupTotalInstances</li>
      * </ul>
      */
-    private java.util.List<String> metrics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> metrics;
 
     /**
      * The name or ARN of the Auto Scaling Group.
@@ -85,14 +89,13 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      * @param autoScalingGroupName The name or ARN of the Auto Scaling Group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableMetricsCollectionRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The list of metrics to disable. If no metrics are specified, all
      * metrics are disabled. The following metrics are supported: <ul>
@@ -111,9 +114,9 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      *         </ul>
      */
     public java.util.List<String> getMetrics() {
-        
         if (metrics == null) {
-            metrics = new java.util.ArrayList<String>();
+              metrics = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              metrics.setAutoConstruct(true);
         }
         return metrics;
     }
@@ -140,8 +143,7 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
             this.metrics = null;
             return;
         }
-
-        java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
         metricsCopy.addAll(metrics);
         this.metrics = metricsCopy;
     }
@@ -166,7 +168,7 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableMetricsCollectionRequest withMetrics(String... metrics) {
         if (getMetrics() == null) setMetrics(new java.util.ArrayList<String>(metrics.length));
@@ -196,20 +198,20 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisableMetricsCollectionRequest withMetrics(java.util.Collection<String> metrics) {
         if (metrics == null) {
             this.metrics = null;
         } else {
-            java.util.List<String> metricsCopy = new java.util.ArrayList<String>(metrics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(metrics.size());
             metricsCopy.addAll(metrics);
             this.metrics = metricsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -221,8 +223,8 @@ public class DisableMetricsCollectionRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getMetrics() != null) sb.append("Metrics: " + getMetrics() );
         sb.append("}");
         return sb.toString();

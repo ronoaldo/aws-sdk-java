@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DisableVgwRoutePropagationRequestMarshaller implements Marshaller<R
     public Request<DisableVgwRoutePropagationRequest> marshall(DisableVgwRoutePropagationRequest disableVgwRoutePropagationRequest) {
 
         if (disableVgwRoutePropagationRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DisableVgwRoutePropagationRequest> request = new DefaultRequest<DisableVgwRoutePropagationRequest>(disableVgwRoutePropagationRequest, "AmazonEC2");
         request.addParameter("Action", "DisableVgwRoutePropagation");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (disableVgwRoutePropagationRequest.getRouteTableId() != null) {
             request.addParameter("RouteTableId", StringUtils.fromString(disableVgwRoutePropagationRequest.getRouteTableId()));
@@ -46,7 +46,6 @@ public class DisableVgwRoutePropagationRequestMarshaller implements Marshaller<R
         if (disableVgwRoutePropagationRequest.getGatewayId() != null) {
             request.addParameter("GatewayId", StringUtils.fromString(disableVgwRoutePropagationRequest.getGatewayId()));
         }
-
 
         return request;
     }

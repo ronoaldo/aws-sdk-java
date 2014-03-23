@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#createStreamingDistribution(CreateStreamingDistributionRequest) CreateStreamingDistribution operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#createStreamingDistribution(CreateStreamingDistributionRequest)
  */
-public class CreateStreamingDistributionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateStreamingDistributionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The streaming distribution's configuration information.
@@ -46,11 +48,9 @@ public class CreateStreamingDistributionRequest extends AmazonWebServiceRequest 
      * configuration information.
      */
     public CreateStreamingDistributionRequest(StreamingDistributionConfig streamingDistributionConfig) {
-        this.streamingDistributionConfig = streamingDistributionConfig;
+        setStreamingDistributionConfig(streamingDistributionConfig);
     }
 
-    
-    
     /**
      * The streaming distribution's configuration information.
      *
@@ -77,14 +77,13 @@ public class CreateStreamingDistributionRequest extends AmazonWebServiceRequest 
      * @param streamingDistributionConfig The streaming distribution's configuration information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStreamingDistributionRequest withStreamingDistributionConfig(StreamingDistributionConfig streamingDistributionConfig) {
         this.streamingDistributionConfig = streamingDistributionConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -96,7 +95,7 @@ public class CreateStreamingDistributionRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStreamingDistributionConfig() != null) sb.append("StreamingDistributionConfig: " + getStreamingDistributionConfig() );
         sb.append("}");
         return sb.toString();

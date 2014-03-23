@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeDBSecurityGroups action.
+ * Contains the result of a successful invocation of the
+ * DescribeDBSecurityGroups action.
  * </p>
  */
-public class DescribeDBSecurityGroupsResult  implements Serializable  {
+public class DescribeDBSecurityGroupsResult implements Serializable {
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -32,7 +34,7 @@ public class DescribeDBSecurityGroupsResult  implements Serializable  {
     /**
      * A list of <a>DBSecurityGroup</a> instances.
      */
-    private java.util.List<DBSecurityGroup> dBSecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DBSecurityGroup> dBSecurityGroups;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -72,23 +74,22 @@ public class DescribeDBSecurityGroupsResult  implements Serializable  {
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSecurityGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>DBSecurityGroup</a> instances.
      *
      * @return A list of <a>DBSecurityGroup</a> instances.
      */
     public java.util.List<DBSecurityGroup> getDBSecurityGroups() {
-        
         if (dBSecurityGroups == null) {
-            dBSecurityGroups = new java.util.ArrayList<DBSecurityGroup>();
+              dBSecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSecurityGroup>();
+              dBSecurityGroups.setAutoConstruct(true);
         }
         return dBSecurityGroups;
     }
@@ -103,8 +104,7 @@ public class DescribeDBSecurityGroupsResult  implements Serializable  {
             this.dBSecurityGroups = null;
             return;
         }
-
-        java.util.List<DBSecurityGroup> dBSecurityGroupsCopy = new java.util.ArrayList<DBSecurityGroup>(dBSecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DBSecurityGroup> dBSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSecurityGroup>(dBSecurityGroups.size());
         dBSecurityGroupsCopy.addAll(dBSecurityGroups);
         this.dBSecurityGroups = dBSecurityGroupsCopy;
     }
@@ -117,7 +117,7 @@ public class DescribeDBSecurityGroupsResult  implements Serializable  {
      * @param dBSecurityGroups A list of <a>DBSecurityGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSecurityGroupsResult withDBSecurityGroups(DBSecurityGroup... dBSecurityGroups) {
         if (getDBSecurityGroups() == null) setDBSecurityGroups(new java.util.ArrayList<DBSecurityGroup>(dBSecurityGroups.length));
@@ -135,20 +135,20 @@ public class DescribeDBSecurityGroupsResult  implements Serializable  {
      * @param dBSecurityGroups A list of <a>DBSecurityGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSecurityGroupsResult withDBSecurityGroups(java.util.Collection<DBSecurityGroup> dBSecurityGroups) {
         if (dBSecurityGroups == null) {
             this.dBSecurityGroups = null;
         } else {
-            java.util.List<DBSecurityGroup> dBSecurityGroupsCopy = new java.util.ArrayList<DBSecurityGroup>(dBSecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DBSecurityGroup> dBSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSecurityGroup>(dBSecurityGroups.size());
             dBSecurityGroupsCopy.addAll(dBSecurityGroups);
             this.dBSecurityGroups = dBSecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class DescribeDBSecurityGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getDBSecurityGroups() != null) sb.append("DBSecurityGroups: " + getDBSecurityGroups() );
         sb.append("}");
         return sb.toString();

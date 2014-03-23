@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,37 +13,43 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.support.AWSSupport#addCommunicationToCase(AddCommunicationToCaseRequest) AddCommunicationToCase operation}.
  * <p>
- * This action adds additional customer communication to an AWS Support case. You use the <i>CaseId</i> value to identify the case to which you want to
- * add communication. You can list a set of email addresses to copy on the communication using the <i>CcEmailAddresses</i> value. The
- * <i>CommunicationBody</i> value contains the text of the communication.
+ * Adds additional customer communication to an AWS Support case. You use
+ * the <code>CaseId</code> value to identify the case to add
+ * communication to. You can list a set of email addresses to copy on the
+ * communication using the <code>CcEmailAddresses</code> value. The
+ * <code>CommunicationBody</code> value contains the text of the
+ * communication.
  * </p>
  * <p>
- * This action's response indicates the success or failure of the request.
+ * The response indicates the success or failure of the request.
  * </p>
  * <p>
- * This action implements a subset of the behavior on the AWS Support <a href="https://aws.amazon.com/support"> Your Support Cases </a> web form.
+ * This operation implements a subset of the behavior on the AWS Support
+ * <a href="https://aws.amazon.com/support"> Your Support Cases </a>
+ * web form.
  * </p>
  *
  * @see com.amazonaws.services.support.AWSSupport#addCommunicationToCase(AddCommunicationToCaseRequest)
  */
-public class AddCommunicationToCaseRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AddCommunicationToCaseRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * String that indicates the AWS Support caseID requested or returned in
-     * the call. The caseID is an alphanumeric string formatted as shown in
-     * this example CaseId: <i>case-12345678910-2013-c4c1d2bf33c5cf47</i>
+     * The AWS Support case ID requested or returned in the call. The case ID
+     * is an alphanumeric string formatted as shown in this example:
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>
      */
     private String caseId;
 
     /**
-     * Represents the body of an email communication added to the support
-     * case.
+     * The body of an email communication to add to the support case.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
@@ -51,162 +57,153 @@ public class AddCommunicationToCaseRequest extends AmazonWebServiceRequest  impl
     private String communicationBody;
 
     /**
-     * Represents any email addresses contained in the CC line of an email
-     * added to the support case.
+     * The email addresses in the CC line of an email to be added to the
+     * support case.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<String> ccEmailAddresses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> ccEmailAddresses;
 
     /**
-     * String that indicates the AWS Support caseID requested or returned in
-     * the call. The caseID is an alphanumeric string formatted as shown in
-     * this example CaseId: <i>case-12345678910-2013-c4c1d2bf33c5cf47</i>
+     * The AWS Support case ID requested or returned in the call. The case ID
+     * is an alphanumeric string formatted as shown in this example:
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>
      *
-     * @return String that indicates the AWS Support caseID requested or returned in
-     *         the call. The caseID is an alphanumeric string formatted as shown in
-     *         this example CaseId: <i>case-12345678910-2013-c4c1d2bf33c5cf47</i>
+     * @return The AWS Support case ID requested or returned in the call. The case ID
+     *         is an alphanumeric string formatted as shown in this example:
+     *         case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>
      */
     public String getCaseId() {
         return caseId;
     }
     
     /**
-     * String that indicates the AWS Support caseID requested or returned in
-     * the call. The caseID is an alphanumeric string formatted as shown in
-     * this example CaseId: <i>case-12345678910-2013-c4c1d2bf33c5cf47</i>
+     * The AWS Support case ID requested or returned in the call. The case ID
+     * is an alphanumeric string formatted as shown in this example:
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>
      *
-     * @param caseId String that indicates the AWS Support caseID requested or returned in
-     *         the call. The caseID is an alphanumeric string formatted as shown in
-     *         this example CaseId: <i>case-12345678910-2013-c4c1d2bf33c5cf47</i>
+     * @param caseId The AWS Support case ID requested or returned in the call. The case ID
+     *         is an alphanumeric string formatted as shown in this example:
+     *         case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>
      */
     public void setCaseId(String caseId) {
         this.caseId = caseId;
     }
     
     /**
-     * String that indicates the AWS Support caseID requested or returned in
-     * the call. The caseID is an alphanumeric string formatted as shown in
-     * this example CaseId: <i>case-12345678910-2013-c4c1d2bf33c5cf47</i>
+     * The AWS Support case ID requested or returned in the call. The case ID
+     * is an alphanumeric string formatted as shown in this example:
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param caseId String that indicates the AWS Support caseID requested or returned in
-     *         the call. The caseID is an alphanumeric string formatted as shown in
-     *         this example CaseId: <i>case-12345678910-2013-c4c1d2bf33c5cf47</i>
+     * @param caseId The AWS Support case ID requested or returned in the call. The case ID
+     *         is an alphanumeric string formatted as shown in this example:
+     *         case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCommunicationToCaseRequest withCaseId(String caseId) {
         this.caseId = caseId;
         return this;
     }
-    
-    
+
     /**
-     * Represents the body of an email communication added to the support
-     * case.
+     * The body of an email communication to add to the support case.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
      *
-     * @return Represents the body of an email communication added to the support
-     *         case.
+     * @return The body of an email communication to add to the support case.
      */
     public String getCommunicationBody() {
         return communicationBody;
     }
     
     /**
-     * Represents the body of an email communication added to the support
-     * case.
+     * The body of an email communication to add to the support case.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
      *
-     * @param communicationBody Represents the body of an email communication added to the support
-     *         case.
+     * @param communicationBody The body of an email communication to add to the support case.
      */
     public void setCommunicationBody(String communicationBody) {
         this.communicationBody = communicationBody;
     }
     
     /**
-     * Represents the body of an email communication added to the support
-     * case.
+     * The body of an email communication to add to the support case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 8000<br/>
      *
-     * @param communicationBody Represents the body of an email communication added to the support
-     *         case.
+     * @param communicationBody The body of an email communication to add to the support case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCommunicationToCaseRequest withCommunicationBody(String communicationBody) {
         this.communicationBody = communicationBody;
         return this;
     }
-    
-    
+
     /**
-     * Represents any email addresses contained in the CC line of an email
-     * added to the support case.
+     * The email addresses in the CC line of an email to be added to the
+     * support case.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @return Represents any email addresses contained in the CC line of an email
-     *         added to the support case.
+     * @return The email addresses in the CC line of an email to be added to the
+     *         support case.
      */
     public java.util.List<String> getCcEmailAddresses() {
-        
         if (ccEmailAddresses == null) {
-            ccEmailAddresses = new java.util.ArrayList<String>();
+              ccEmailAddresses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              ccEmailAddresses.setAutoConstruct(true);
         }
         return ccEmailAddresses;
     }
     
     /**
-     * Represents any email addresses contained in the CC line of an email
-     * added to the support case.
+     * The email addresses in the CC line of an email to be added to the
+     * support case.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param ccEmailAddresses Represents any email addresses contained in the CC line of an email
-     *         added to the support case.
+     * @param ccEmailAddresses The email addresses in the CC line of an email to be added to the
+     *         support case.
      */
     public void setCcEmailAddresses(java.util.Collection<String> ccEmailAddresses) {
         if (ccEmailAddresses == null) {
             this.ccEmailAddresses = null;
             return;
         }
-
-        java.util.List<String> ccEmailAddressesCopy = new java.util.ArrayList<String>(ccEmailAddresses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> ccEmailAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ccEmailAddresses.size());
         ccEmailAddressesCopy.addAll(ccEmailAddresses);
         this.ccEmailAddresses = ccEmailAddressesCopy;
     }
     
     /**
-     * Represents any email addresses contained in the CC line of an email
-     * added to the support case.
+     * The email addresses in the CC line of an email to be added to the
+     * support case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param ccEmailAddresses Represents any email addresses contained in the CC line of an email
-     *         added to the support case.
+     * @param ccEmailAddresses The email addresses in the CC line of an email to be added to the
+     *         support case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCommunicationToCaseRequest withCcEmailAddresses(String... ccEmailAddresses) {
         if (getCcEmailAddresses() == null) setCcEmailAddresses(new java.util.ArrayList<String>(ccEmailAddresses.length));
@@ -217,32 +214,32 @@ public class AddCommunicationToCaseRequest extends AmazonWebServiceRequest  impl
     }
     
     /**
-     * Represents any email addresses contained in the CC line of an email
-     * added to the support case.
+     * The email addresses in the CC line of an email to be added to the
+     * support case.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      *
-     * @param ccEmailAddresses Represents any email addresses contained in the CC line of an email
-     *         added to the support case.
+     * @param ccEmailAddresses The email addresses in the CC line of an email to be added to the
+     *         support case.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddCommunicationToCaseRequest withCcEmailAddresses(java.util.Collection<String> ccEmailAddresses) {
         if (ccEmailAddresses == null) {
             this.ccEmailAddresses = null;
         } else {
-            java.util.List<String> ccEmailAddressesCopy = new java.util.ArrayList<String>(ccEmailAddresses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> ccEmailAddressesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(ccEmailAddresses.size());
             ccEmailAddressesCopy.addAll(ccEmailAddresses);
             this.ccEmailAddresses = ccEmailAddressesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -254,9 +251,9 @@ public class AddCommunicationToCaseRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCaseId() != null) sb.append("CaseId: " + getCaseId() + ",");    	
-        if (getCommunicationBody() != null) sb.append("CommunicationBody: " + getCommunicationBody() + ",");    	
+        sb.append("{");
+        if (getCaseId() != null) sb.append("CaseId: " + getCaseId() + ",");
+        if (getCommunicationBody() != null) sb.append("CommunicationBody: " + getCommunicationBody() + ",");
         if (getCcEmailAddresses() != null) sb.append("CcEmailAddresses: " + getCcEmailAddresses() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteApplicationVersionRequestMarshaller implements Marshaller<Req
     public Request<DeleteApplicationVersionRequest> marshall(DeleteApplicationVersionRequest deleteApplicationVersionRequest) {
 
         if (deleteApplicationVersionRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteApplicationVersionRequest> request = new DefaultRequest<DeleteApplicationVersionRequest>(deleteApplicationVersionRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "DeleteApplicationVersion");
@@ -49,7 +49,6 @@ public class DeleteApplicationVersionRequestMarshaller implements Marshaller<Req
         if (deleteApplicationVersionRequest.isDeleteSourceBundle() != null) {
             request.addParameter("DeleteSourceBundle", StringUtils.fromBoolean(deleteApplicationVersionRequest.isDeleteSourceBundle()));
         }
-
 
         return request;
     }

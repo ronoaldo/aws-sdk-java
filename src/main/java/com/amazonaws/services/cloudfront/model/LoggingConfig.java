@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that controls whether access logs are written for the distribution.
+ * A complex type that controls whether access logs are written for the
+ * distribution.
  * </p>
  */
-public class LoggingConfig  implements Serializable  {
+public class LoggingConfig implements Serializable {
 
     /**
      * Specifies whether you want CloudFront to save access logs to an Amazon
@@ -78,12 +80,10 @@ public class LoggingConfig  implements Serializable  {
      * the Logging element.
      */
     public LoggingConfig(String bucket, String prefix) {
-        this.bucket = bucket;
-        this.prefix = prefix;
+        setBucket(bucket);
+        setPrefix(prefix);
     }
 
-    
-    
     /**
      * Specifies whether you want CloudFront to save access logs to an Amazon
      * S3 bucket. If you do not want to enable logging when you create a
@@ -146,14 +146,13 @@ public class LoggingConfig  implements Serializable  {
      *         automatically deleted.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoggingConfig withEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether you want CloudFront to save access logs to an Amazon
      * S3 bucket. If you do not want to enable logging when you create a
@@ -174,7 +173,7 @@ public class LoggingConfig  implements Serializable  {
     public Boolean getEnabled() {
         return enabled;
     }
-    
+
     /**
      * Specifies whether you want CloudFront to include cookies in access
      * logs, specify true for IncludeCookies. If you choose to include
@@ -237,14 +236,13 @@ public class LoggingConfig  implements Serializable  {
      *         for IncludeCookies.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoggingConfig withIncludeCookies(Boolean includeCookies) {
         this.includeCookies = includeCookies;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether you want CloudFront to include cookies in access
      * logs, specify true for IncludeCookies. If you choose to include
@@ -265,7 +263,7 @@ public class LoggingConfig  implements Serializable  {
     public Boolean getIncludeCookies() {
         return includeCookies;
     }
-    
+
     /**
      * The Amazon S3 bucket to store the access logs in, for example,
      * myawslogbucket.s3.amazonaws.com.
@@ -298,14 +296,13 @@ public class LoggingConfig  implements Serializable  {
      *         myawslogbucket.s3.amazonaws.com.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoggingConfig withBucket(String bucket) {
         this.bucket = bucket;
         return this;
     }
-    
-    
+
     /**
      * An optional string that you want CloudFront to prefix to the access
      * log filenames for this distribution, for example, myprefix/. If you
@@ -350,14 +347,13 @@ public class LoggingConfig  implements Serializable  {
      *         still must include an empty Prefix element in the Logging element.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public LoggingConfig withPrefix(String prefix) {
         this.prefix = prefix;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -369,10 +365,10 @@ public class LoggingConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (isEnabled() != null) sb.append("Enabled: " + isEnabled() + ",");    	
-        if (isIncludeCookies() != null) sb.append("IncludeCookies: " + isIncludeCookies() + ",");    	
-        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");    	
+        sb.append("{");
+        if (isEnabled() != null) sb.append("Enabled: " + isEnabled() + ",");
+        if (isIncludeCookies() != null) sb.append("IncludeCookies: " + isIncludeCookies() + ",");
+        if (getBucket() != null) sb.append("Bucket: " + getBucket() + ",");
         if (getPrefix() != null) sb.append("Prefix: " + getPrefix() );
         sb.append("}");
         return sb.toString();

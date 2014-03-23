@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.sns.AmazonSNS#getSubscriptionAttributes(GetSubscriptionAttributesRequest) GetSubscriptionAttributes operation}.
  * <p>
- * The GetSubscriptionAttribtues action returns all of the properties of a subscription.
+ * The <code>GetSubscriptionAttribtues</code> action returns all of the
+ * properties of a subscription.
  * </p>
  *
  * @see com.amazonaws.services.sns.AmazonSNS#getSubscriptionAttributes(GetSubscriptionAttributesRequest)
  */
-public class GetSubscriptionAttributesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetSubscriptionAttributesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ARN of the subscription whose properties you want to get.
@@ -46,11 +49,9 @@ public class GetSubscriptionAttributesRequest extends AmazonWebServiceRequest  i
      * you want to get.
      */
     public GetSubscriptionAttributesRequest(String subscriptionArn) {
-        this.subscriptionArn = subscriptionArn;
+        setSubscriptionArn(subscriptionArn);
     }
 
-    
-    
     /**
      * The ARN of the subscription whose properties you want to get.
      *
@@ -77,14 +78,13 @@ public class GetSubscriptionAttributesRequest extends AmazonWebServiceRequest  i
      * @param subscriptionArn The ARN of the subscription whose properties you want to get.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetSubscriptionAttributesRequest withSubscriptionArn(String subscriptionArn) {
         this.subscriptionArn = subscriptionArn;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -96,7 +96,7 @@ public class GetSubscriptionAttributesRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSubscriptionArn() != null) sb.append("SubscriptionArn: " + getSubscriptionArn() );
         sb.append("}");
         return sb.toString();

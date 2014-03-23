@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the ListAccountAliases action.
+ * Contains the result of a successful invocation of the
+ * ListAccountAliases action.
  * </p>
  */
-public class ListAccountAliasesResult  implements Serializable  {
+public class ListAccountAliasesResult implements Serializable {
 
     /**
      * A list of aliases associated with the account.
      */
-    private java.util.List<String> accountAliases;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> accountAliases;
 
     /**
      * A flag that indicates whether there are more account aliases to list.
@@ -53,9 +55,9 @@ public class ListAccountAliasesResult  implements Serializable  {
      * @return A list of aliases associated with the account.
      */
     public java.util.List<String> getAccountAliases() {
-        
         if (accountAliases == null) {
-            accountAliases = new java.util.ArrayList<String>();
+              accountAliases = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              accountAliases.setAutoConstruct(true);
         }
         return accountAliases;
     }
@@ -70,8 +72,7 @@ public class ListAccountAliasesResult  implements Serializable  {
             this.accountAliases = null;
             return;
         }
-
-        java.util.List<String> accountAliasesCopy = new java.util.ArrayList<String>(accountAliases.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> accountAliasesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(accountAliases.size());
         accountAliasesCopy.addAll(accountAliases);
         this.accountAliases = accountAliasesCopy;
     }
@@ -84,7 +85,7 @@ public class ListAccountAliasesResult  implements Serializable  {
      * @param accountAliases A list of aliases associated with the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccountAliasesResult withAccountAliases(String... accountAliases) {
         if (getAccountAliases() == null) setAccountAliases(new java.util.ArrayList<String>(accountAliases.length));
@@ -102,20 +103,20 @@ public class ListAccountAliasesResult  implements Serializable  {
      * @param accountAliases A list of aliases associated with the account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccountAliasesResult withAccountAliases(java.util.Collection<String> accountAliases) {
         if (accountAliases == null) {
             this.accountAliases = null;
         } else {
-            java.util.List<String> accountAliasesCopy = new java.util.ArrayList<String>(accountAliases.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> accountAliasesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(accountAliases.size());
             accountAliasesCopy.addAll(accountAliases);
             this.accountAliases = accountAliasesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A flag that indicates whether there are more account aliases to list.
      * If your results were truncated, you can make a subsequent pagination
@@ -160,14 +161,13 @@ public class ListAccountAliasesResult  implements Serializable  {
      *         more account aliases in the list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccountAliasesResult withIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
-    
-    
+
     /**
      * A flag that indicates whether there are more account aliases to list.
      * If your results were truncated, you can make a subsequent pagination
@@ -182,7 +182,7 @@ public class ListAccountAliasesResult  implements Serializable  {
     public Boolean getIsTruncated() {
         return isTruncated;
     }
-    
+
     /**
      * Use this only when paginating results, and only in a subsequent
      * request after you've received a response where the results are
@@ -239,14 +239,13 @@ public class ListAccountAliasesResult  implements Serializable  {
      *         the response you just received.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListAccountAliasesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -258,9 +257,9 @@ public class ListAccountAliasesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAccountAliases() != null) sb.append("AccountAliases: " + getAccountAliases() + ",");    	
-        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");    	
+        sb.append("{");
+        if (getAccountAliases() != null) sb.append("AccountAliases: " + getAccountAliases() + ",");
+        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

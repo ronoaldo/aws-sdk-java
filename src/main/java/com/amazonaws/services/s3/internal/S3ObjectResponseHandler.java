@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -43,21 +43,14 @@ public class S3ObjectResponseHandler extends AbstractS3ResponseHandler<S3Object>
         if (response.getHeaders().get(Headers.REDIRECT_LOCATION) != null) {
             object.setRedirectLocation(response.getHeaders().get(Headers.REDIRECT_LOCATION));
         }
-        ObjectMetadata metadata = object.getObjectMetadata();
-        populateObjectMetadata(response, metadata);
-        boolean hasServerSideCalculatedChecksum = !ServiceUtils.isMultipartUploadETag(metadata.getETag());
-        boolean responseContainsEntireObject = response.getHeaders().get("Content-Range") == null;
+		ObjectMetadata metadata = object.getObjectMetadata();
+		populateObjectMetadata(response, metadata);
 
-        if (hasServerSideCalculatedChecksum && responseContainsEntireObject) {
-            byte[] expectedChecksum = BinaryUtils.fromHex(metadata.getETag());
-            object.setObjectContent(new S3ObjectInputStream(new ChecksumValidatingInputStream(response.getContent(), expectedChecksum, object.getBucketName() + "/" + object.getKey()), response
-                    .getHttpRequest()));
-        } else {
-            object.setObjectContent(new S3ObjectInputStream(response.getContent(), response.getHttpRequest()));
-        }
+		object.setObjectContent(new S3ObjectInputStream(response.getContent(),
+				response.getHttpRequest()));
 
-        awsResponse.setResult(object);
-        return awsResponse;
+		awsResponse.setResult(object);
+		return awsResponse;
     }
 
     /**

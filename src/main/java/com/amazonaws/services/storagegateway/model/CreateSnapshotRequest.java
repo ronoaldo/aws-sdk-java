@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#createSnapshot(CreateSnapshotRequest) CreateSnapshot operation}.
@@ -22,25 +24,33 @@ import java.io.Serializable;
  * This operation initiates a snapshot of a volume.
  * </p>
  * <p>
- * AWS Storage Gateway provides the ability to back up point-in-time snapshots of your data to Amazon Simple Storage (S3) for durable off-site recovery,
- * as well as import the data to an Amazon Elastic Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take snapshots of your gateway
- * volume on a scheduled or ad-hoc basis. This API enables you to take ad-hoc snapshot. For more information, see Working With Snapshots in the AWS
- * Storage Gateway Console.
+ * AWS Storage Gateway provides the ability to back up point-in-time
+ * snapshots of your data to Amazon Simple Storage (S3) for durable
+ * off-site recovery, as well as import the data to an Amazon Elastic
+ * Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You
+ * can take snapshots of your gateway volume on a scheduled or ad-hoc
+ * basis. This API enables you to take ad-hoc snapshot. For more
+ * information, see Working With Snapshots in the AWS Storage Gateway
+ * Console.
  * </p>
  * <p>
- * In the CreateSnapshot request you identify the volume by providing its Amazon Resource Name (ARN). You must also provide description for the snapshot.
- * When AWS Storage Gateway takes the snapshot of specified volume, the snapshot and description appears in the AWS Storage Gateway Console. In response,
- * AWS Storage Gateway returns you a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to create a
- * volume from a snapshot.
+ * In the CreateSnapshot request you identify the volume by providing its
+ * Amazon Resource Name (ARN). You must also provide description for the
+ * snapshot. When AWS Storage Gateway takes the snapshot of specified
+ * volume, the snapshot and description appears in the AWS Storage
+ * Gateway Console. In response, AWS Storage Gateway returns you a
+ * snapshot ID. You can use this snapshot ID to check the snapshot
+ * progress or later use it when you want to create a volume from a
+ * snapshot.
  * </p>
  * <p>
- * <b>NOTE:</b>To list or delete a snapshot, you must use the Amazon EC2 API. For more information, go to DeleteSnapshot and DescribeSnapshots in the
- * Amazon Elastic Compute Cloud API Reference.
+ * <b>NOTE:</b>To list or delete a snapshot, you must use the Amazon EC2
+ * API. For more information, .
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#createSnapshot(CreateSnapshotRequest)
  */
-public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateSnapshotRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the volume. Use the
@@ -103,14 +113,13 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
      *         <a>ListVolumes</a> operation to return a list of gateway volumes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotRequest withVolumeARN(String volumeARN) {
         this.volumeARN = volumeARN;
         return this;
     }
-    
-    
+
     /**
      * Textual description of the snapshot that appears in the Amazon EC2
      * console, Elastic Block Store snapshots panel in the <b>Description</b>
@@ -164,14 +173,13 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
      *         <b>Description</b> field
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSnapshotRequest withSnapshotDescription(String snapshotDescription) {
         this.snapshotDescription = snapshotDescription;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -183,8 +191,8 @@ public class CreateSnapshotRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");    	
+        sb.append("{");
+        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");
         if (getSnapshotDescription() != null) sb.append("SnapshotDescription: " + getSnapshotDescription() );
         sb.append("}");
         return sb.toString();

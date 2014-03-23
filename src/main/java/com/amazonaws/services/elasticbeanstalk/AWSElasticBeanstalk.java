@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,29 +21,29 @@ import com.amazonaws.services.elasticbeanstalk.model.*;
 /**
  * Interface for accessing AWSElasticBeanstalk.
  * AWS Elastic Beanstalk <p>
- * This is the AWS Elastic Beanstalk API Reference. This guide provides detailed information about AWS Elastic Beanstalk actions, data types,
+ * This is the AWS Elastic Beanstalk API Reference. This guide provides
+ * detailed information about AWS Elastic Beanstalk actions, data types,
  * parameters, and errors.
  * </p>
  * <p>
- * AWS Elastic Beanstalk is a tool that makes it easy for you to create, deploy, and manage scalable, fault-tolerant applications running on Amazon Web
- * Services cloud resources.
+ * AWS Elastic Beanstalk is a tool that makes it easy for you to create,
+ * deploy, and manage scalable, fault-tolerant applications running on
+ * Amazon Web Services cloud resources.
  * </p>
  * <p>
- * For more information about this product, go to the <a href="http://aws.amazon.com/elasticbeanstalk/"> AWS Elastic Beanstalk </a> details page. The
- * location of the lastest AWS Elastic Beanstalk WSDL is <a href="http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl">
- * http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl </a> .
+ * For more information about this product, go to the
+ * <a href="http://aws.amazon.com/elasticbeanstalk/"> AWS Elastic Beanstalk </a> details page. The location of the latest AWS Elastic Beanstalk WSDL is <a href="http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl"> http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl </a>
+ * .
  * </p>
  * <p>
  * <b>Endpoints</b>
  * </p>
  * <p>
- * AWS Elastic Beanstalk supports the following region-specific endpoint:
+ * For a list of region-specific endpoints that AWS Elastic Beanstalk
+ * supports, go to
+ * <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region"> Regions and Endpoints </a>
+ * in the <i>Amazon Web Services Glossary</i> .
  * </p>
- * 
- * <ul>
- * <li> https://elasticbeanstalk.us-east-1.amazonaws.com </li>
- * 
- * </ul>
  */
 public interface AWSElasticBeanstalk {
 
@@ -103,7 +103,7 @@ public interface AWSElasticBeanstalk {
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      */
     public void setRegion(Region region) throws java.lang.IllegalArgumentException;
-	
+    
     /**
      * <p>
      * Checks if the specified CNAME is available.
@@ -171,6 +171,8 @@ public interface AWSElasticBeanstalk {
      *           parameters to execute the DeleteConfigurationTemplate service method
      *           on AWSElasticBeanstalk.
      * 
+     * 
+     * @throws OperationInProgressException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -197,6 +199,7 @@ public interface AWSElasticBeanstalk {
      *         returned by AWSElasticBeanstalk.
      * 
      * @throws TooManyEnvironmentsException
+     * @throws InsufficientPrivilegesException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -224,6 +227,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the CreateStorageLocation service method, as
      *         returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      * @throws S3SubscriptionRequiredException
      * @throws TooManyBucketsException
      *
@@ -262,6 +266,7 @@ public interface AWSElasticBeanstalk {
      *           parameters to execute the RequestEnvironmentInfo service method on
      *           AWSElasticBeanstalk.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -294,7 +299,9 @@ public interface AWSElasticBeanstalk {
      *         as returned by AWSElasticBeanstalk.
      * 
      * @throws TooManyApplicationsException
+     * @throws InsufficientPrivilegesException
      * @throws TooManyApplicationVersionsException
+     * @throws S3LocationNotInServiceRegionException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -320,7 +327,11 @@ public interface AWSElasticBeanstalk {
      *           parameters to execute the DeleteApplicationVersion service method on
      *           AWSElasticBeanstalk.
      * 
+     * 
+     * @throws OperationInProgressException
+     * @throws InsufficientPrivilegesException
      * @throws SourceBundleDeletionException
+     * @throws S3LocationNotInServiceRegionException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -360,7 +371,8 @@ public interface AWSElasticBeanstalk {
     /**
      * <p>
      * Deletes the specified application along with all associated versions
-     * and configurations.
+     * and configurations. The application versions will not be deleted from
+     * your Amazon S3 bucket.
      * </p>
      * <p>
      * <b>NOTE:</b>You cannot delete an application that has a running
@@ -371,6 +383,8 @@ public interface AWSElasticBeanstalk {
      *           to execute the DeleteApplication service method on
      *           AWSElasticBeanstalk.
      * 
+     * 
+     * @throws OperationInProgressException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -418,11 +432,6 @@ public interface AWSElasticBeanstalk {
      * Creates an application that has one configuration template named
      * <code>default</code> and no application versions.
      * </p>
-     * <p>
-     * <b>NOTE:</b> The default configuration template is for a 32-bit
-     * version of the Amazon Linux operating system running the Tomcat 6
-     * application container.
-     * </p>
      *
      * @param createApplicationRequest Container for the necessary parameters
      *           to execute the CreateApplication service method on
@@ -452,6 +461,7 @@ public interface AWSElasticBeanstalk {
      * @param swapEnvironmentCNAMEsRequest Container for the necessary
      *           parameters to execute the SwapEnvironmentCNAMEs service method on
      *           AWSElasticBeanstalk.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -491,6 +501,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the UpdateConfigurationTemplate service
      *         method, as returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -625,6 +636,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the DescribeEnvironmentResources service
      *         method, as returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -649,6 +661,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the TerminateEnvironment service method, as
      *         returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -679,6 +692,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the ValidateConfigurationSettings service
      *         method, as returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -699,6 +713,7 @@ public interface AWSElasticBeanstalk {
      *
      * @param restartAppServerRequest Container for the necessary parameters
      *           to execute the RestartAppServer service method on AWSElasticBeanstalk.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -730,6 +745,7 @@ public interface AWSElasticBeanstalk {
      * @param deleteEnvironmentConfigurationRequest Container for the
      *           necessary parameters to execute the DeleteEnvironmentConfiguration
      *           service method on AWSElasticBeanstalk.
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -769,6 +785,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the UpdateEnvironment service method, as
      *         returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -805,6 +822,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the CreateConfigurationTemplate service
      *         method, as returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      * @throws TooManyConfigurationTemplatesException
      *
      * @throws AmazonClientException
@@ -894,6 +912,8 @@ public interface AWSElasticBeanstalk {
      *           parameters to execute the RebuildEnvironment service method on
      *           AWSElasticBeanstalk.
      * 
+     * 
+     * @throws InsufficientPrivilegesException
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -945,6 +965,7 @@ public interface AWSElasticBeanstalk {
      * @return The response from the CreateStorageLocation service method, as
      *         returned by AWSElasticBeanstalk.
      * 
+     * @throws InsufficientPrivilegesException
      * @throws S3SubscriptionRequiredException
      * @throws TooManyBucketsException
      *
@@ -981,6 +1002,7 @@ public interface AWSElasticBeanstalk {
      * <p>
      * Swaps the CNAMEs of two environments.
      * </p>
+     * 
      * 
      *
      * @throws AmazonClientException
@@ -1100,6 +1122,5 @@ public interface AWSElasticBeanstalk {
      *         is available.
      */
     public ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
-
 }
         

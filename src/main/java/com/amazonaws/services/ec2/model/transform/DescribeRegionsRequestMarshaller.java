@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeRegionsRequestMarshaller implements Marshaller<Request<Desc
     public Request<DescribeRegionsRequest> marshall(DescribeRegionsRequest describeRegionsRequest) {
 
         if (describeRegionsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeRegionsRequest> request = new DefaultRequest<DescribeRegionsRequest>(describeRegionsRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeRegions");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> regionNamesList = describeRegionsRequest.getRegionNames();
         int regionNamesListIndex = 1;
@@ -76,7 +75,6 @@ public class DescribeRegionsRequestMarshaller implements Marshaller<Request<Desc
 
             filtersListIndex++;
         }
-
 
         return request;
     }

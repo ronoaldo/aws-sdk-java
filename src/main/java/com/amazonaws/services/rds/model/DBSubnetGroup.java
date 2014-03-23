@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the following actions:
+ * Contains the result of a successful invocation of the following
+ * actions:
  * </p>
  * 
  * <ul>
@@ -28,181 +30,178 @@ import java.io.Serializable;
  * 
  * </ul>
  * <p>
- * This data type is used as a response element in the DescribeDBSubnetGroups action.
+ * This data type is used as a response element in the
+ * DescribeDBSubnetGroups action.
  * </p>
  */
-public class DBSubnetGroup  implements Serializable  {
+public class DBSubnetGroup implements Serializable {
 
     /**
-     * Specifies the name of the DB Subnet Group.
+     * Specifies the name of the DB subnet group.
      */
     private String dBSubnetGroupName;
 
     /**
-     * Provides the description of the DB Subnet Group.
+     * Provides the description of the DB subnet group.
      */
     private String dBSubnetGroupDescription;
 
     /**
-     * Provides the VpcId of the DB Subnet Group.
+     * Provides the VpcId of the DB subnet group.
      */
     private String vpcId;
 
     /**
-     * Provides the status of the DB Subnet Group.
+     * Provides the status of the DB subnet group.
      */
     private String subnetGroupStatus;
 
     /**
      * Contains a list of <a>Subnet</a> elements.
      */
-    private java.util.List<Subnet> subnets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Subnet> subnets;
 
     /**
-     * Specifies the name of the DB Subnet Group.
+     * Specifies the name of the DB subnet group.
      *
-     * @return Specifies the name of the DB Subnet Group.
+     * @return Specifies the name of the DB subnet group.
      */
     public String getDBSubnetGroupName() {
         return dBSubnetGroupName;
     }
     
     /**
-     * Specifies the name of the DB Subnet Group.
+     * Specifies the name of the DB subnet group.
      *
-     * @param dBSubnetGroupName Specifies the name of the DB Subnet Group.
+     * @param dBSubnetGroupName Specifies the name of the DB subnet group.
      */
     public void setDBSubnetGroupName(String dBSubnetGroupName) {
         this.dBSubnetGroupName = dBSubnetGroupName;
     }
     
     /**
-     * Specifies the name of the DB Subnet Group.
+     * Specifies the name of the DB subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSubnetGroupName Specifies the name of the DB Subnet Group.
+     * @param dBSubnetGroupName Specifies the name of the DB subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSubnetGroup withDBSubnetGroupName(String dBSubnetGroupName) {
         this.dBSubnetGroupName = dBSubnetGroupName;
         return this;
     }
-    
-    
+
     /**
-     * Provides the description of the DB Subnet Group.
+     * Provides the description of the DB subnet group.
      *
-     * @return Provides the description of the DB Subnet Group.
+     * @return Provides the description of the DB subnet group.
      */
     public String getDBSubnetGroupDescription() {
         return dBSubnetGroupDescription;
     }
     
     /**
-     * Provides the description of the DB Subnet Group.
+     * Provides the description of the DB subnet group.
      *
-     * @param dBSubnetGroupDescription Provides the description of the DB Subnet Group.
+     * @param dBSubnetGroupDescription Provides the description of the DB subnet group.
      */
     public void setDBSubnetGroupDescription(String dBSubnetGroupDescription) {
         this.dBSubnetGroupDescription = dBSubnetGroupDescription;
     }
     
     /**
-     * Provides the description of the DB Subnet Group.
+     * Provides the description of the DB subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dBSubnetGroupDescription Provides the description of the DB Subnet Group.
+     * @param dBSubnetGroupDescription Provides the description of the DB subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSubnetGroup withDBSubnetGroupDescription(String dBSubnetGroupDescription) {
         this.dBSubnetGroupDescription = dBSubnetGroupDescription;
         return this;
     }
-    
-    
+
     /**
-     * Provides the VpcId of the DB Subnet Group.
+     * Provides the VpcId of the DB subnet group.
      *
-     * @return Provides the VpcId of the DB Subnet Group.
+     * @return Provides the VpcId of the DB subnet group.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * Provides the VpcId of the DB Subnet Group.
+     * Provides the VpcId of the DB subnet group.
      *
-     * @param vpcId Provides the VpcId of the DB Subnet Group.
+     * @param vpcId Provides the VpcId of the DB subnet group.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * Provides the VpcId of the DB Subnet Group.
+     * Provides the VpcId of the DB subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId Provides the VpcId of the DB Subnet Group.
+     * @param vpcId Provides the VpcId of the DB subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSubnetGroup withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
-     * Provides the status of the DB Subnet Group.
+     * Provides the status of the DB subnet group.
      *
-     * @return Provides the status of the DB Subnet Group.
+     * @return Provides the status of the DB subnet group.
      */
     public String getSubnetGroupStatus() {
         return subnetGroupStatus;
     }
     
     /**
-     * Provides the status of the DB Subnet Group.
+     * Provides the status of the DB subnet group.
      *
-     * @param subnetGroupStatus Provides the status of the DB Subnet Group.
+     * @param subnetGroupStatus Provides the status of the DB subnet group.
      */
     public void setSubnetGroupStatus(String subnetGroupStatus) {
         this.subnetGroupStatus = subnetGroupStatus;
     }
     
     /**
-     * Provides the status of the DB Subnet Group.
+     * Provides the status of the DB subnet group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param subnetGroupStatus Provides the status of the DB Subnet Group.
+     * @param subnetGroupStatus Provides the status of the DB subnet group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSubnetGroup withSubnetGroupStatus(String subnetGroupStatus) {
         this.subnetGroupStatus = subnetGroupStatus;
         return this;
     }
-    
-    
+
     /**
      * Contains a list of <a>Subnet</a> elements.
      *
      * @return Contains a list of <a>Subnet</a> elements.
      */
     public java.util.List<Subnet> getSubnets() {
-        
         if (subnets == null) {
-            subnets = new java.util.ArrayList<Subnet>();
+              subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<Subnet>();
+              subnets.setAutoConstruct(true);
         }
         return subnets;
     }
@@ -217,8 +216,7 @@ public class DBSubnetGroup  implements Serializable  {
             this.subnets = null;
             return;
         }
-
-        java.util.List<Subnet> subnetsCopy = new java.util.ArrayList<Subnet>(subnets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Subnet> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Subnet>(subnets.size());
         subnetsCopy.addAll(subnets);
         this.subnets = subnetsCopy;
     }
@@ -231,7 +229,7 @@ public class DBSubnetGroup  implements Serializable  {
      * @param subnets Contains a list of <a>Subnet</a> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSubnetGroup withSubnets(Subnet... subnets) {
         if (getSubnets() == null) setSubnets(new java.util.ArrayList<Subnet>(subnets.length));
@@ -249,20 +247,20 @@ public class DBSubnetGroup  implements Serializable  {
      * @param subnets Contains a list of <a>Subnet</a> elements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DBSubnetGroup withSubnets(java.util.Collection<Subnet> subnets) {
         if (subnets == null) {
             this.subnets = null;
         } else {
-            java.util.List<Subnet> subnetsCopy = new java.util.ArrayList<Subnet>(subnets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Subnet> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Subnet>(subnets.size());
             subnetsCopy.addAll(subnets);
             this.subnets = subnetsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -274,11 +272,11 @@ public class DBSubnetGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBSubnetGroupName() != null) sb.append("DBSubnetGroupName: " + getDBSubnetGroupName() + ",");    	
-        if (getDBSubnetGroupDescription() != null) sb.append("DBSubnetGroupDescription: " + getDBSubnetGroupDescription() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getSubnetGroupStatus() != null) sb.append("SubnetGroupStatus: " + getSubnetGroupStatus() + ",");    	
+        sb.append("{");
+        if (getDBSubnetGroupName() != null) sb.append("DBSubnetGroupName: " + getDBSubnetGroupName() + ",");
+        if (getDBSubnetGroupDescription() != null) sb.append("DBSubnetGroupDescription: " + getDBSubnetGroupDescription() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getSubnetGroupStatus() != null) sb.append("SubnetGroupStatus: " + getSubnetGroupStatus() + ",");
         if (getSubnets() != null) sb.append("Subnets: " + getSubnets() );
         sb.append("}");
         return sb.toString();

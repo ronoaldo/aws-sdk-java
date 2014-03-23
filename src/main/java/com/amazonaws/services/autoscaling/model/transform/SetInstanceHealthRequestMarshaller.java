@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class SetInstanceHealthRequestMarshaller implements Marshaller<Request<Se
     public Request<SetInstanceHealthRequest> marshall(SetInstanceHealthRequest setInstanceHealthRequest) {
 
         if (setInstanceHealthRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<SetInstanceHealthRequest> request = new DefaultRequest<SetInstanceHealthRequest>(setInstanceHealthRequest, "AmazonAutoScaling");
         request.addParameter("Action", "SetInstanceHealth");
@@ -49,7 +49,6 @@ public class SetInstanceHealthRequestMarshaller implements Marshaller<Request<Se
         if (setInstanceHealthRequest.isShouldRespectGracePeriod() != null) {
             request.addParameter("ShouldRespectGracePeriod", StringUtils.fromBoolean(setInstanceHealthRequest.isShouldRespectGracePeriod()));
         }
-
 
         return request;
     }

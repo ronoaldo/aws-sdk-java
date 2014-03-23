@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,9 +21,13 @@ import com.amazonaws.services.importexport.model.*;
 /**
  * Interface for accessing AmazonImportExport.
  * AWS Import/Export Service <p>
- * AWS Import/Export accelerates transferring large amounts of data between the AWS cloud and portable storage devices that you mail to us. AWS
- * Import/Export transfers data directly onto and off of your storage devices using Amazon's high-speed internal network and bypassing the Internet. For
- * large data sets, AWS Import/Export is often faster than Internet transfer and more cost effective than upgrading your connectivity.
+ * AWS Import/Export accelerates transferring large amounts of data
+ * between the AWS cloud and portable storage devices that you mail to
+ * us. AWS Import/Export transfers data directly onto and off of your
+ * storage devices using Amazon's high-speed internal network and
+ * bypassing the Internet. For large data sets, AWS Import/Export is
+ * often faster than Internet transfer and more cost effective than
+ * upgrading your connectivity.
  * </p>
  */
 public interface AmazonImportExport {
@@ -84,7 +88,7 @@ public interface AmazonImportExport {
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      */
     public void setRegion(Region region) throws java.lang.IllegalArgumentException;
-	
+    
     /**
      * <p>
      * This operation initiates the process of scheduling an upload or
@@ -308,6 +312,5 @@ public interface AmazonImportExport {
      *         is available.
      */
     public ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request);
-
 }
         

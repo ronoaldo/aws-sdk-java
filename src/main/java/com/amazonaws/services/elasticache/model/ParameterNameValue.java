@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A name and value pair used to update the value of a Parameter.
+ * Describes a name-value pair that is used to update the value of a
+ * parameter.
  * </p>
  */
-public class ParameterNameValue  implements Serializable  {
+public class ParameterNameValue implements Serializable {
 
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      */
     private String parameterName;
 
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      */
     private String parameterValue;
 
@@ -43,97 +45,91 @@ public class ParameterNameValue  implements Serializable  {
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param parameterName Specifies the name of the parameter.
+     * @param parameterName The name of the parameter.
      */
     public ParameterNameValue(String parameterName) {
-        this.parameterName = parameterName;
+        setParameterName(parameterName);
     }
 
-    
-    
     /**
      * Constructs a new ParameterNameValue object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param parameterName Specifies the name of the parameter.
-     * @param parameterValue Specifies the value of the parameter.
+     * @param parameterName The name of the parameter.
+     * @param parameterValue The value of the parameter.
      */
     public ParameterNameValue(String parameterName, String parameterValue) {
-        this.parameterName = parameterName;
-        this.parameterValue = parameterValue;
+        setParameterName(parameterName);
+        setParameterValue(parameterValue);
     }
 
-    
-    
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      *
-     * @return Specifies the name of the parameter.
+     * @return The name of the parameter.
      */
     public String getParameterName() {
         return parameterName;
     }
     
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      *
-     * @param parameterName Specifies the name of the parameter.
+     * @param parameterName The name of the parameter.
      */
     public void setParameterName(String parameterName) {
         this.parameterName = parameterName;
     }
     
     /**
-     * Specifies the name of the parameter.
+     * The name of the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param parameterName Specifies the name of the parameter.
+     * @param parameterName The name of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ParameterNameValue withParameterName(String parameterName) {
         this.parameterName = parameterName;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      *
-     * @return Specifies the value of the parameter.
+     * @return The value of the parameter.
      */
     public String getParameterValue() {
         return parameterValue;
     }
     
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      *
-     * @param parameterValue Specifies the value of the parameter.
+     * @param parameterValue The value of the parameter.
      */
     public void setParameterValue(String parameterValue) {
         this.parameterValue = parameterValue;
     }
     
     /**
-     * Specifies the value of the parameter.
+     * The value of the parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param parameterValue Specifies the value of the parameter.
+     * @param parameterValue The value of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ParameterNameValue withParameterValue(String parameterValue) {
         this.parameterValue = parameterValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -145,8 +141,8 @@ public class ParameterNameValue  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterName() != null) sb.append("ParameterName: " + getParameterName() + ",");    	
+        sb.append("{");
+        if (getParameterName() != null) sb.append("ParameterName: " + getParameterName() + ",");
         if (getParameterValue() != null) sb.append("ParameterValue: " + getParameterValue() );
         sb.append("}");
         return sb.toString();

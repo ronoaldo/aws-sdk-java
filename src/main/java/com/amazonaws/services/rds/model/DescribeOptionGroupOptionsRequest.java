@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeOptionGroupOptions(DescribeOptionGroupOptionsRequest) DescribeOptionGroupOptions operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeOptionGroupOptions(DescribeOptionGroupOptionsRequest)
  */
-public class DescribeOptionGroupOptionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeOptionGroupOptionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A required parameter. Options available for the given Engine name will
@@ -86,14 +88,13 @@ public class DescribeOptionGroupOptionsRequest extends AmazonWebServiceRequest  
      *         be described.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOptionGroupOptionsRequest withEngineName(String engineName) {
         this.engineName = engineName;
         return this;
     }
-    
-    
+
     /**
      * If specified, filters the results to include only options for the
      * specified major engine version.
@@ -126,14 +127,13 @@ public class DescribeOptionGroupOptionsRequest extends AmazonWebServiceRequest  
      *         specified major engine version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOptionGroupOptionsRequest withMajorEngineVersion(String majorEngineVersion) {
         this.majorEngineVersion = majorEngineVersion;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -184,14 +184,13 @@ public class DescribeOptionGroupOptionsRequest extends AmazonWebServiceRequest  
      *         <p>Constraints: minimum 20, maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOptionGroupOptionsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the
@@ -230,14 +229,13 @@ public class DescribeOptionGroupOptionsRequest extends AmazonWebServiceRequest  
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeOptionGroupOptionsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -249,10 +247,10 @@ public class DescribeOptionGroupOptionsRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEngineName() != null) sb.append("EngineName: " + getEngineName() + ",");    	
-        if (getMajorEngineVersion() != null) sb.append("MajorEngineVersion: " + getMajorEngineVersion() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getEngineName() != null) sb.append("EngineName: " + getEngineName() + ",");
+        if (getMajorEngineVersion() != null) sb.append("MajorEngineVersion: " + getMajorEngineVersion() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

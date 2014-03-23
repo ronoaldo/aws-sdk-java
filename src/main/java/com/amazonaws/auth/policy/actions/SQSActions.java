@@ -1,12 +1,12 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
- *
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
  * A copy of the License is located at
- *
+ * 
  *  http://aws.amazon.com/apache2.0
- *
+ * 
  * or in the "license" file accompanying this file. This file is distributed
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
@@ -15,124 +15,49 @@
 package com.amazonaws.auth.policy.actions;
 
 import com.amazonaws.auth.policy.Action;
-import com.amazonaws.auth.policy.Statement;
-import com.amazonaws.services.sqs.AmazonSQS;
 
 /**
- * The available AWS access control policy actions for Amazon Simple Queue
- * Service.
- *
- * @see Statement#setActions(java.util.Collection)
+ * The available AWS access control policy actions for Amazon SQS.
  */
 public enum SQSActions implements Action {
+    /** Represents any action executed on Amazon SQS. */
+    AllSQSActions("sqs:*"),
 
-    /** Represents any action being taken on Amazon SQS. */
-    AllSqsActions("sqs:*"),
-
-    /**
-     * Action for the AddPermission operation on Amazon SQS.
-     *
-     * @see AmazonSQS#addPermission(com.amazonaws.services.sqs.model.AddPermissionRequest)
-     */
+    /** Action for the AddPermission operation. */
     AddPermission("sqs:AddPermission"),
 
-    /**
-     * Action for the ChangeMessageVisibility operation on Amazon SQS.
-     *
-     * @see AmazonSQS#changeMessageVisibility(com.amazonaws.services.sqs.model.ChangeMessageVisibilityRequest)
-     */
+    /** Action for the ChangeMessageVisibility operation. */
     ChangeMessageVisibility("sqs:ChangeMessageVisibility"),
 
-    /**
-     * Action for the CreateQueue operation on Amazon SQS.
-     *
-     * @see AmazonSQS#createQueue(com.amazonaws.services.sqs.model.CreateQueueRequest)
-     */
+    /** Action for the CreateQueue operation. */
     CreateQueue("sqs:CreateQueue"),
 
-    /**
-     * Action for the GetQueueUrl operation on Amazon SQS.
-     *
-     * @see AmazonSQS#getQueueUrl(com.amazonaws.services.sqs.model.GetQueueUrlRequest)
-     */
-    GetQueueUrl("sqs:GetQueueUrl"),
-
-    /**
-     * Action for the DeleteMessage operation on Amazon SQS.
-     *
-     * @see AmazonSQS#deleteMessage(com.amazonaws.services.sqs.model.DeleteMessageRequest)
-     */
+    /** Action for the DeleteMessage operation. */
     DeleteMessage("sqs:DeleteMessage"),
 
-    /**
-     * Action for the DeleteQueue operation on Amazon SQS.
-     *
-     * @see AmazonSQS#deleteQueue(com.amazonaws.services.sqs.model.DeleteQueueRequest)
-     */
+    /** Action for the DeleteQueue operation. */
     DeleteQueue("sqs:DeleteQueue"),
 
-    /**
-     * Action for the GetQueueAttributes operation on Amazon SQS.
-     *
-     * @see AmazonSQS#getQueueAttributes(com.amazonaws.services.sqs.model.GetQueueAttributesRequest)
-     */
+    /** Action for the GetQueueAttributes operation. */
     GetQueueAttributes("sqs:GetQueueAttributes"),
 
-    /**
-     * Action for the ListQueues operation on Amazon SQS.
-     *
-     * @see AmazonSQS#listQueues(com.amazonaws.services.sqs.model.ListQueuesRequest)
-     */
+    /** Action for the GetQueueUrl operation. */
+    GetQueueUrl("sqs:GetQueueUrl"),
+
+    /** Action for the ListQueues operation. */
     ListQueues("sqs:ListQueues"),
 
-    /**
-     * Action for the ReveiveMessage operation on Amazon SQS.
-     *
-     * @see AmazonSQS#receiveMessage(com.amazonaws.services.sqs.model.ReceiveMessageRequest)
-     */
+    /** Action for the ReceiveMessage operation. */
     ReceiveMessage("sqs:ReceiveMessage"),
 
-    /**
-     * Action for the RemovePermission operation on Amazon SQS.
-     *
-     * @see AmazonSQS#removePermission(com.amazonaws.services.sqs.model.RemovePermissionRequest)
-     */
+    /** Action for the RemovePermission operation. */
     RemovePermission("sqs:RemovePermission"),
 
-    /**
-     * Action for the SendMessage operation on Amazon SQS.
-     *
-     * @see AmazonSQS#sendMessage(com.amazonaws.services.sqs.model.SendMessageRequest)
-     */
+    /** Action for the SendMessage operation. */
     SendMessage("sqs:SendMessage"),
 
-    /**
-     * Action for the SetQueueAttributes operation on Amazon SQS.
-     *
-     * @see AmazonSQS#setQueueAttributes(com.amazonaws.services.sqs.model.SetQueueAttributesRequest)
-     */
-    SetQueueAttributes("sqs:SetQueueAttributes"),
-
-    /**
-     * Action for the SendMessageBatch operation on Amazon SQS.
-     *
-     * @see AmazonSQS#sendMessageBatch(com.amazonaws.services.sqs.model.SendMessageBatchRequest)
-     */
-    SendMessageBatch("sqs:SendMessageBatch"),
-
-    /**
-     * Action for the ChangeMessageVisibilityBatch operation on Amazon SQS.
-     *
-     * @see AmazonSQS#changeMessageVisibilityBatch(com.amazonaws.services.sqs.model.ChangeMessageVisibilityBatchRequest)
-     */
-    ChangeMessageVisibilityBatch("sqs:ChangeMessageVisibilityBatch"),
-
-    /**
-     * Action for the DeleteMessageBatch operation on Amazon SQS.
-     *
-     * @see AmazonSQS#deleteMessageBatch(com.amazonaws.services.sqs.model.DeleteMessageBatchRequest)
-     */
-    DeleteMessageBatch("sqs:DeleteMessageBatch");
+    /** Action for the SetQueueAttributes operation. */
+    SetQueueAttributes("sqs:SetQueueAttributes");
 
     private final String action;
 
@@ -143,5 +68,4 @@ public enum SQSActions implements Action {
     public String getActionName() {
         return this.action;
     }
-
 }

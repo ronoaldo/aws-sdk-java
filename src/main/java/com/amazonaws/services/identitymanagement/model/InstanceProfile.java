@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The InstanceProfile data type contains information about an instance profile.
+ * The InstanceProfile data type contains information about an instance
+ * profile.
  * </p>
  * <p>
- * This data type is used as a response element in the following actions:
+ * This data type is used as a response element in the following
+ * actions:
  * </p>
  * 
  * <ul>
@@ -43,11 +46,11 @@ import java.io.Serializable;
  * 
  * </ul>
  */
-public class InstanceProfile  implements Serializable  {
+public class InstanceProfile implements Serializable {
 
     /**
      * Path to the instance profile. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -69,7 +72,7 @@ public class InstanceProfile  implements Serializable  {
     /**
      * The stable and unique string identifying the instance profile. For
      * more information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -82,7 +85,7 @@ public class InstanceProfile  implements Serializable  {
     /**
      * The Amazon Resource Name (ARN) specifying the instance profile. For
      * more information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -99,11 +102,11 @@ public class InstanceProfile  implements Serializable  {
     /**
      * The role associated with the instance profile.
      */
-    private java.util.List<Role> roles;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Role> roles;
 
     /**
      * Path to the instance profile. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -112,7 +115,7 @@ public class InstanceProfile  implements Serializable  {
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @return Path to the instance profile. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -122,7 +125,7 @@ public class InstanceProfile  implements Serializable  {
     
     /**
      * Path to the instance profile. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -131,7 +134,7 @@ public class InstanceProfile  implements Serializable  {
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @param path Path to the instance profile. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -141,7 +144,7 @@ public class InstanceProfile  implements Serializable  {
     
     /**
      * Path to the instance profile. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -152,19 +155,18 @@ public class InstanceProfile  implements Serializable  {
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @param path Path to the instance profile. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceProfile withPath(String path) {
         this.path = path;
         return this;
     }
-    
-    
+
     /**
      * The name identifying the instance profile.
      * <p>
@@ -203,18 +205,17 @@ public class InstanceProfile  implements Serializable  {
      * @param instanceProfileName The name identifying the instance profile.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceProfile withInstanceProfileName(String instanceProfileName) {
         this.instanceProfileName = instanceProfileName;
         return this;
     }
-    
-    
+
     /**
      * The stable and unique string identifying the instance profile. For
      * more information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -224,7 +225,7 @@ public class InstanceProfile  implements Serializable  {
      *
      * @return The stable and unique string identifying the instance profile. For
      *         more information about IDs, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -235,7 +236,7 @@ public class InstanceProfile  implements Serializable  {
     /**
      * The stable and unique string identifying the instance profile. For
      * more information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -245,7 +246,7 @@ public class InstanceProfile  implements Serializable  {
      *
      * @param instanceProfileId The stable and unique string identifying the instance profile. For
      *         more information about IDs, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -256,7 +257,7 @@ public class InstanceProfile  implements Serializable  {
     /**
      * The stable and unique string identifying the instance profile. For
      * more information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -268,23 +269,22 @@ public class InstanceProfile  implements Serializable  {
      *
      * @param instanceProfileId The stable and unique string identifying the instance profile. For
      *         more information about IDs, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceProfile withInstanceProfileId(String instanceProfileId) {
         this.instanceProfileId = instanceProfileId;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) specifying the instance profile. For
      * more information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -293,7 +293,7 @@ public class InstanceProfile  implements Serializable  {
      *
      * @return The Amazon Resource Name (ARN) specifying the instance profile. For
      *         more information about ARNs and how to use them in policies, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -304,7 +304,7 @@ public class InstanceProfile  implements Serializable  {
     /**
      * The Amazon Resource Name (ARN) specifying the instance profile. For
      * more information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -313,7 +313,7 @@ public class InstanceProfile  implements Serializable  {
      *
      * @param arn The Amazon Resource Name (ARN) specifying the instance profile. For
      *         more information about ARNs and how to use them in policies, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -324,7 +324,7 @@ public class InstanceProfile  implements Serializable  {
     /**
      * The Amazon Resource Name (ARN) specifying the instance profile. For
      * more information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -335,19 +335,18 @@ public class InstanceProfile  implements Serializable  {
      *
      * @param arn The Amazon Resource Name (ARN) specifying the instance profile. For
      *         more information about ARNs and how to use them in policies, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceProfile withArn(String arn) {
         this.arn = arn;
         return this;
     }
-    
-    
+
     /**
      * The date when the instance profile was created.
      *
@@ -374,23 +373,22 @@ public class InstanceProfile  implements Serializable  {
      * @param createDate The date when the instance profile was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceProfile withCreateDate(java.util.Date createDate) {
         this.createDate = createDate;
         return this;
     }
-    
-    
+
     /**
      * The role associated with the instance profile.
      *
      * @return The role associated with the instance profile.
      */
     public java.util.List<Role> getRoles() {
-        
         if (roles == null) {
-            roles = new java.util.ArrayList<Role>();
+              roles = new com.amazonaws.internal.ListWithAutoConstructFlag<Role>();
+              roles.setAutoConstruct(true);
         }
         return roles;
     }
@@ -405,8 +403,7 @@ public class InstanceProfile  implements Serializable  {
             this.roles = null;
             return;
         }
-
-        java.util.List<Role> rolesCopy = new java.util.ArrayList<Role>(roles.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Role> rolesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Role>(roles.size());
         rolesCopy.addAll(roles);
         this.roles = rolesCopy;
     }
@@ -419,7 +416,7 @@ public class InstanceProfile  implements Serializable  {
      * @param roles The role associated with the instance profile.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceProfile withRoles(Role... roles) {
         if (getRoles() == null) setRoles(new java.util.ArrayList<Role>(roles.length));
@@ -437,20 +434,20 @@ public class InstanceProfile  implements Serializable  {
      * @param roles The role associated with the instance profile.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceProfile withRoles(java.util.Collection<Role> roles) {
         if (roles == null) {
             this.roles = null;
         } else {
-            java.util.List<Role> rolesCopy = new java.util.ArrayList<Role>(roles.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Role> rolesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Role>(roles.size());
             rolesCopy.addAll(roles);
             this.roles = rolesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -462,12 +459,12 @@ public class InstanceProfile  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPath() != null) sb.append("Path: " + getPath() + ",");    	
-        if (getInstanceProfileName() != null) sb.append("InstanceProfileName: " + getInstanceProfileName() + ",");    	
-        if (getInstanceProfileId() != null) sb.append("InstanceProfileId: " + getInstanceProfileId() + ",");    	
-        if (getArn() != null) sb.append("Arn: " + getArn() + ",");    	
-        if (getCreateDate() != null) sb.append("CreateDate: " + getCreateDate() + ",");    	
+        sb.append("{");
+        if (getPath() != null) sb.append("Path: " + getPath() + ",");
+        if (getInstanceProfileName() != null) sb.append("InstanceProfileName: " + getInstanceProfileName() + ",");
+        if (getInstanceProfileId() != null) sb.append("InstanceProfileId: " + getInstanceProfileId() + ",");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
+        if (getCreateDate() != null) sb.append("CreateDate: " + getCreateDate() + ",");
         if (getRoles() != null) sb.append("Roles: " + getRoles() );
         sb.append("}");
         return sb.toString();

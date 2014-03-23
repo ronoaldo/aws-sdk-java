@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,17 +33,16 @@ public class CancelReservedInstancesListingRequestMarshaller implements Marshall
     public Request<CancelReservedInstancesListingRequest> marshall(CancelReservedInstancesListingRequest cancelReservedInstancesListingRequest) {
 
         if (cancelReservedInstancesListingRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CancelReservedInstancesListingRequest> request = new DefaultRequest<CancelReservedInstancesListingRequest>(cancelReservedInstancesListingRequest, "AmazonEC2");
         request.addParameter("Action", "CancelReservedInstancesListing");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (cancelReservedInstancesListingRequest.getReservedInstancesListingId() != null) {
             request.addParameter("ReservedInstancesListingId", StringUtils.fromString(cancelReservedInstancesListingRequest.getReservedInstancesListingId()));
         }
-
 
         return request;
     }

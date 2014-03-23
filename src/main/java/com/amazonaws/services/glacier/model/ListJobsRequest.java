@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,51 +13,75 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.glacier.AmazonGlacier#listJobs(ListJobsRequest) ListJobs operation}.
  * <p>
- * This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished.
+ * This operation lists jobs for a vault, including jobs that are
+ * in-progress and jobs that have recently finished.
  * </p>
  * <p>
- * <b>NOTE:</b> Amazon Glacier retains recently completed jobs for a period before deleting them; however, it eventually removes completed jobs. The
- * output of completed jobs can be retrieved. Retaining completed jobs for a period of time after they have completed enables you to get a job output in
- * the event you miss the job completion notification or your first attempt to download it fails. For example, suppose you start an archive retrieval job
- * to download an archive. After the job completes, you start to download the archive but encounter a network error. In this scenario, you can retry and
+ * <b>NOTE:</b> Amazon Glacier retains recently completed jobs for a
+ * period before deleting them; however, it eventually removes completed
+ * jobs. The output of completed jobs can be retrieved. Retaining
+ * completed jobs for a period of time after they have completed enables
+ * you to get a job output in the event you miss the job completion
+ * notification or your first attempt to download it fails. For example,
+ * suppose you start an archive retrieval job to download an archive.
+ * After the job completes, you start to download the archive but
+ * encounter a network error. In this scenario, you can retry and
  * download the archive while the job exists.
  * </p>
  * <p>
- * To retrieve an archive or retrieve a vault inventory from Amazon Glacier, you first initiate a job, and after the job completes, you download the
- * data. For an archive retrieval, the output is the archive data, and for an inventory retrieval, it is the inventory list. The List Job operation
- * returns a list of these jobs sorted by job initiation time.
+ * To retrieve an archive or retrieve a vault inventory from Amazon
+ * Glacier, you first initiate a job, and after the job completes, you
+ * download the data. For an archive retrieval, the output is the archive
+ * data, and for an inventory retrieval, it is the inventory list. The
+ * List Job operation returns a list of these jobs sorted by job
+ * initiation time.
  * </p>
  * <p>
- * This List Jobs operation supports pagination. By default, this operation returns up to 1,000 jobs in the response. You should always check the
- * response for a <code>marker</code> at which to continue the list; if there are no more items the <code>marker</code> is <code>null</code> .
- * To return a list of jobs that begins at a specific job, set the <code>marker</code> request parameter to the value you obtained from a
- * previous List Jobs request. You can also limit the number of jobs returned in the response by specifying the <code>limit</code> parameter in the
- * request.
+ * This List Jobs operation supports pagination. By default, this
+ * operation returns up to 1,000 jobs in the response. You should always
+ * check the response for a <code>marker</code> at which to continue the
+ * list; if there are no more items the <code>marker</code> is
+ * <code>null</code> .
+ * To return a list of jobs that begins at a specific job, set
+ * the <code>marker</code> request parameter to the value you obtained
+ * from a previous List Jobs request. You can also limit the number of
+ * jobs returned in the response by specifying the <code>limit</code>
+ * parameter in the request.
  * </p>
  * <p>
- * Additionally, you can filter the jobs list returned by specifying an optional <code>statuscode</code> (InProgress, Succeeded, or Failed) and
- * <code>completed</code> (true, false) parameter. The <code>statuscode</code> allows you to specify that only jobs that match a specified status are
- * returned. The <code>completed</code> parameter allows you to specify that only jobs in a specific completion state are returned.
+ * Additionally, you can filter the jobs list returned by specifying an
+ * optional <code>statuscode</code> (InProgress, Succeeded, or Failed)
+ * and <code>completed</code> (true, false) parameter. The
+ * <code>statuscode</code> allows you to specify that only jobs that
+ * match a specified status are returned. The <code>completed</code>
+ * parameter allows you to specify that only jobs in a specific
+ * completion state are returned.
  * </p>
  * <p>
- * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any
- * permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access
- * Management (IAM) </a> .
+ * An AWS account has full permission to perform all operations
+ * (actions). However, AWS Identity and Access Management (IAM) users
+ * don't have any permissions by default. You must grant them explicit
+ * permission to perform specific actions. For more information, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+ * .
  * </p>
  * <p>
- * For the underlying REST API, go to <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/api-jobs-get.html"> List Jobs </a>
+ * For the underlying REST API, go to
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html"> List Jobs </a>
+ * 
  * </p>
  *
  * @see com.amazonaws.services.glacier.AmazonGlacier#listJobs(ListJobsRequest)
  */
-public class ListJobsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListJobsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
@@ -115,11 +139,9 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      * @param vaultName The name of the vault.
      */
     public ListJobsRequest(String vaultName) {
-        this.vaultName = vaultName;
+        setVaultName(vaultName);
     }
 
-    
-    
     /**
      * Constructs a new ListJobsRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -133,12 +155,10 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      * @param vaultName The name of the vault.
      */
     public ListJobsRequest(String accountId, String vaultName) {
-        this.accountId = accountId;
-        this.vaultName = vaultName;
+        setAccountId(accountId);
+        setVaultName(vaultName);
     }
 
-    
-    
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
      * either the AWS Account ID or optionally a '-', in which case Amazon
@@ -189,14 +209,13 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      *         hyphens in it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsRequest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
     }
-    
-    
+
     /**
      * The name of the vault.
      *
@@ -223,14 +242,13 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      * @param vaultName The name of the vault.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsRequest withVaultName(String vaultName) {
         this.vaultName = vaultName;
         return this;
     }
-    
-    
+
     /**
      * Specifies that the response be limited to the specified number of
      * items or fewer. If not specified, the List Jobs operation returns up
@@ -269,14 +287,13 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      *         to 1,000 jobs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsRequest withLimit(String limit) {
         this.limit = limit;
         return this;
     }
-    
-    
+
     /**
      * An opaque string used for pagination. This value specifies the job at
      * which the listing of jobs should begin. Get the marker value from a
@@ -327,14 +344,13 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      *         Jobs request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Specifies the type of job status to return. You can specify the
      * following values: "InProgress", "Succeeded", or "Failed".
@@ -367,14 +383,13 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      *         following values: "InProgress", "Succeeded", or "Failed".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsRequest withStatuscode(String statuscode) {
         this.statuscode = statuscode;
         return this;
     }
-    
-    
+
     /**
      * Specifies the state of the jobs to return. You can specify
      * <code>true</code> or <code>false</code>.
@@ -407,14 +422,13 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
      *         <code>true</code> or <code>false</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsRequest withCompleted(String completed) {
         this.completed = completed;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -426,12 +440,12 @@ public class ListJobsRequest extends AmazonWebServiceRequest  implements Seriali
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");    	
-        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");    	
-        if (getLimit() != null) sb.append("Limit: " + getLimit() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
-        if (getStatuscode() != null) sb.append("Statuscode: " + getStatuscode() + ",");    	
+        sb.append("{");
+        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");
+        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");
+        if (getLimit() != null) sb.append("Limit: " + getLimit() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
+        if (getStatuscode() != null) sb.append("Statuscode: " + getStatuscode() + ",");
         if (getCompleted() != null) sb.append("Completed: " + getCompleted() );
         sb.append("}");
         return sb.toString();

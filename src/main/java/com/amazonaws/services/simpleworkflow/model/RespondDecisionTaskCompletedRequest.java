@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,33 +13,42 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#respondDecisionTaskCompleted(RespondDecisionTaskCompletedRequest) RespondDecisionTaskCompleted operation}.
  * <p>
- * Used by deciders to tell the service that the DecisionTask identified by the <code>taskToken</code> has successfully completed. The
- * <code>decisions</code> argument specifies the list of decisions made while processing the task.
+ * Used by deciders to tell the service that the DecisionTask identified
+ * by the <code>taskToken</code> has successfully completed. The
+ * <code>decisions</code> argument specifies the list of decisions made
+ * while processing the task.
  * </p>
  * <p>
  * A
- * <code>DecisionTaskCompleted</code> event is added to the workflow history. The <code>executionContext</code> specified is attached
- * to the event in the workflow execution history.
+ * <code>DecisionTaskCompleted</code> event is added
+ * to the workflow history. The <code>executionContext</code> specified
+ * is attached to the event in the workflow execution history.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * If an IAM policy grants permission to use <code>RespondDecisionTaskCompleted</code> , it can express permissions for the list of decisions in the
- * <code>decisions</code> parameter in the same way as for the regular API. This approach maintains a uniform conceptual model and helps keep policies
- * readable. For more information, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access
- * to Amazon SWF Workflows </a> .
+ * If an IAM policy grants permission to use
+ * <code>RespondDecisionTaskCompleted</code> , it can express permissions
+ * for the list of decisions in the <code>decisions</code> parameter in
+ * the same way as for the regular API. This approach maintains a uniform
+ * conceptual model and helps keep policies readable. For more
+ * information, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#respondDecisionTaskCompleted(RespondDecisionTaskCompletedRequest)
  */
-public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The <code>taskToken</code> from the <a>DecisionTask</a>. <important>
@@ -58,7 +67,7 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
      * processing this decision task. See the docs for the <a>Decision</a>
      * structure for details.
      */
-    private java.util.List<Decision> decisions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Decision> decisions;
 
     /**
      * User defined context to add to workflow execution.
@@ -127,14 +136,13 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
      *         provide its progress and respond with results. </important>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RespondDecisionTaskCompletedRequest withTaskToken(String taskToken) {
         this.taskToken = taskToken;
         return this;
     }
-    
-    
+
     /**
      * The list of decisions (possibly empty) made by the decider while
      * processing this decision task. See the docs for the <a>Decision</a>
@@ -145,9 +153,9 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
      *         structure for details.
      */
     public java.util.List<Decision> getDecisions() {
-        
         if (decisions == null) {
-            decisions = new java.util.ArrayList<Decision>();
+              decisions = new com.amazonaws.internal.ListWithAutoConstructFlag<Decision>();
+              decisions.setAutoConstruct(true);
         }
         return decisions;
     }
@@ -166,8 +174,7 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
             this.decisions = null;
             return;
         }
-
-        java.util.List<Decision> decisionsCopy = new java.util.ArrayList<Decision>(decisions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Decision> decisionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Decision>(decisions.size());
         decisionsCopy.addAll(decisions);
         this.decisions = decisionsCopy;
     }
@@ -184,7 +191,7 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
      *         structure for details.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RespondDecisionTaskCompletedRequest withDecisions(Decision... decisions) {
         if (getDecisions() == null) setDecisions(new java.util.ArrayList<Decision>(decisions.length));
@@ -206,20 +213,20 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
      *         structure for details.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RespondDecisionTaskCompletedRequest withDecisions(java.util.Collection<Decision> decisions) {
         if (decisions == null) {
             this.decisions = null;
         } else {
-            java.util.List<Decision> decisionsCopy = new java.util.ArrayList<Decision>(decisions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Decision> decisionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Decision>(decisions.size());
             decisionsCopy.addAll(decisions);
             this.decisions = decisionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * User defined context to add to workflow execution.
      * <p>
@@ -255,14 +262,13 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
      * @param executionContext User defined context to add to workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RespondDecisionTaskCompletedRequest withExecutionContext(String executionContext) {
         this.executionContext = executionContext;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -274,9 +280,9 @@ public class RespondDecisionTaskCompletedRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTaskToken() != null) sb.append("TaskToken: " + getTaskToken() + ",");    	
-        if (getDecisions() != null) sb.append("Decisions: " + getDecisions() + ",");    	
+        sb.append("{");
+        if (getTaskToken() != null) sb.append("TaskToken: " + getTaskToken() + ",");
+        if (getDecisions() != null) sb.append("Decisions: " + getDecisions() + ",");
         if (getExecutionContext() != null) sb.append("ExecutionContext: " + getExecutionContext() );
         sb.append("}");
         return sb.toString();

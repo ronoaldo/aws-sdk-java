@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Data returned from the <b>DescribeEventCategories</b> action.
  * </p>
  */
-public class DescribeEventCategoriesResult  implements Serializable  {
+public class DescribeEventCategoriesResult implements Serializable {
 
     /**
      * A list of EventCategoriesMap data types.
      */
-    private java.util.List<EventCategoriesMap> eventCategoriesMapList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<EventCategoriesMap> eventCategoriesMapList;
 
     /**
      * A list of EventCategoriesMap data types.
@@ -33,9 +34,9 @@ public class DescribeEventCategoriesResult  implements Serializable  {
      * @return A list of EventCategoriesMap data types.
      */
     public java.util.List<EventCategoriesMap> getEventCategoriesMapList() {
-        
         if (eventCategoriesMapList == null) {
-            eventCategoriesMapList = new java.util.ArrayList<EventCategoriesMap>();
+              eventCategoriesMapList = new com.amazonaws.internal.ListWithAutoConstructFlag<EventCategoriesMap>();
+              eventCategoriesMapList.setAutoConstruct(true);
         }
         return eventCategoriesMapList;
     }
@@ -50,8 +51,7 @@ public class DescribeEventCategoriesResult  implements Serializable  {
             this.eventCategoriesMapList = null;
             return;
         }
-
-        java.util.List<EventCategoriesMap> eventCategoriesMapListCopy = new java.util.ArrayList<EventCategoriesMap>(eventCategoriesMapList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<EventCategoriesMap> eventCategoriesMapListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EventCategoriesMap>(eventCategoriesMapList.size());
         eventCategoriesMapListCopy.addAll(eventCategoriesMapList);
         this.eventCategoriesMapList = eventCategoriesMapListCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeEventCategoriesResult  implements Serializable  {
      * @param eventCategoriesMapList A list of EventCategoriesMap data types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventCategoriesResult withEventCategoriesMapList(EventCategoriesMap... eventCategoriesMapList) {
         if (getEventCategoriesMapList() == null) setEventCategoriesMapList(new java.util.ArrayList<EventCategoriesMap>(eventCategoriesMapList.length));
@@ -82,20 +82,20 @@ public class DescribeEventCategoriesResult  implements Serializable  {
      * @param eventCategoriesMapList A list of EventCategoriesMap data types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventCategoriesResult withEventCategoriesMapList(java.util.Collection<EventCategoriesMap> eventCategoriesMapList) {
         if (eventCategoriesMapList == null) {
             this.eventCategoriesMapList = null;
         } else {
-            java.util.List<EventCategoriesMap> eventCategoriesMapListCopy = new java.util.ArrayList<EventCategoriesMap>(eventCategoriesMapList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<EventCategoriesMap> eventCategoriesMapListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EventCategoriesMap>(eventCategoriesMapList.size());
             eventCategoriesMapListCopy.addAll(eventCategoriesMapList);
             this.eventCategoriesMapList = eventCategoriesMapListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeEventCategoriesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getEventCategoriesMapList() != null) sb.append("EventCategoriesMapList: " + getEventCategoriesMapList() );
         sb.append("}");
         return sb.toString();

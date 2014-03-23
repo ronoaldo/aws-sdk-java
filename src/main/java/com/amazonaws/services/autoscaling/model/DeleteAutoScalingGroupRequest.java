@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,25 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteAutoScalingGroup(DeleteAutoScalingGroupRequest) DeleteAutoScalingGroup operation}.
  * <p>
- * Deletes the specified Auto Scaling group if the group has no instances and no scaling activities in progress.
+ * Deletes the specified Auto Scaling group if the group has no
+ * instances and no scaling activities in progress.
  * </p>
  * <p>
- * <b>NOTE:</b> To remove all instances before calling DeleteAutoScalingGroup, you can call UpdateAutoScalingGroup to set the minimum and maximum size of
- * the AutoScalingGroup to zero.
+ * <b>NOTE:</b> To remove all instances before calling
+ * DeleteAutoScalingGroup, you can call UpdateAutoScalingGroup to set the
+ * minimum and maximum size of the AutoScalingGroup to zero.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#deleteAutoScalingGroup(DeleteAutoScalingGroupRequest)
  */
-public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the Auto Scaling group.
+     * The name of the Auto Scaling group to delete.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1600<br/>
@@ -47,33 +51,33 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
     private Boolean forceDelete;
 
     /**
-     * The name of the Auto Scaling group.
+     * The name of the Auto Scaling group to delete.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1600<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @return The name of the Auto Scaling group.
+     * @return The name of the Auto Scaling group to delete.
      */
     public String getAutoScalingGroupName() {
         return autoScalingGroupName;
     }
     
     /**
-     * The name of the Auto Scaling group.
+     * The name of the Auto Scaling group to delete.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1600<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param autoScalingGroupName The name of the Auto Scaling group.
+     * @param autoScalingGroupName The name of the Auto Scaling group to delete.
      */
     public void setAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
     }
     
     /**
-     * The name of the Auto Scaling group.
+     * The name of the Auto Scaling group to delete.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -81,17 +85,16 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      * <b>Length: </b>1 - 1600<br/>
      * <b>Pattern: </b>[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*<br/>
      *
-     * @param autoScalingGroupName The name of the Auto Scaling group.
+     * @param autoScalingGroupName The name of the Auto Scaling group to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAutoScalingGroupRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * Starting with API version 2011-01-01, specifies that the Auto Scaling
      * group will be deleted along with all instances associated with the
@@ -130,14 +133,13 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
      *         group, without waiting for all instances to be terminated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteAutoScalingGroupRequest withForceDelete(Boolean forceDelete) {
         this.forceDelete = forceDelete;
         return this;
     }
-    
-    
+
     /**
      * Starting with API version 2011-01-01, specifies that the Auto Scaling
      * group will be deleted along with all instances associated with the
@@ -150,7 +152,7 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
     public Boolean getForceDelete() {
         return forceDelete;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -162,8 +164,8 @@ public class DeleteAutoScalingGroupRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (isForceDelete() != null) sb.append("ForceDelete: " + isForceDelete() );
         sb.append("}");
         return sb.toString();

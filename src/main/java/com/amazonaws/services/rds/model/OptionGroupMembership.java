@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides information on the option groups the DB instance is a member of.
+ * Provides information on the option groups the DB instance is a member
+ * of.
  * </p>
  */
-public class OptionGroupMembership  implements Serializable  {
+public class OptionGroupMembership implements Serializable {
 
     /**
      * The name of the option group that the instance belongs to.
@@ -28,7 +30,7 @@ public class OptionGroupMembership  implements Serializable  {
     private String optionGroupName;
 
     /**
-     * The status of the DB Instance's option group membership (e.g. in-sync,
+     * The status of the DB instance's option group membership (e.g. in-sync,
      * pending, pending-maintenance, applying).
      */
     private String status;
@@ -59,19 +61,18 @@ public class OptionGroupMembership  implements Serializable  {
      * @param optionGroupName The name of the option group that the instance belongs to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupMembership withOptionGroupName(String optionGroupName) {
         this.optionGroupName = optionGroupName;
         return this;
     }
-    
-    
+
     /**
-     * The status of the DB Instance's option group membership (e.g. in-sync,
+     * The status of the DB instance's option group membership (e.g. in-sync,
      * pending, pending-maintenance, applying).
      *
-     * @return The status of the DB Instance's option group membership (e.g. in-sync,
+     * @return The status of the DB instance's option group membership (e.g. in-sync,
      *         pending, pending-maintenance, applying).
      */
     public String getStatus() {
@@ -79,10 +80,10 @@ public class OptionGroupMembership  implements Serializable  {
     }
     
     /**
-     * The status of the DB Instance's option group membership (e.g. in-sync,
+     * The status of the DB instance's option group membership (e.g. in-sync,
      * pending, pending-maintenance, applying).
      *
-     * @param status The status of the DB Instance's option group membership (e.g. in-sync,
+     * @param status The status of the DB instance's option group membership (e.g. in-sync,
      *         pending, pending-maintenance, applying).
      */
     public void setStatus(String status) {
@@ -90,23 +91,22 @@ public class OptionGroupMembership  implements Serializable  {
     }
     
     /**
-     * The status of the DB Instance's option group membership (e.g. in-sync,
+     * The status of the DB instance's option group membership (e.g. in-sync,
      * pending, pending-maintenance, applying).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param status The status of the DB Instance's option group membership (e.g. in-sync,
+     * @param status The status of the DB instance's option group membership (e.g. in-sync,
      *         pending, pending-maintenance, applying).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OptionGroupMembership withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -118,8 +118,8 @@ public class OptionGroupMembership  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOptionGroupName() != null) sb.append("OptionGroupName: " + getOptionGroupName() + ",");    	
+        sb.append("{");
+        if (getOptionGroupName() != null) sb.append("OptionGroupName: " + getOptionGroupName() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

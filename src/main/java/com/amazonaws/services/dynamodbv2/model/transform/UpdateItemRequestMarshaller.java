@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.dynamodbv2.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateItemRequest>, UpdateItemRequest> {
 
-    
-
     public Request<UpdateItemRequest> marshall(UpdateItemRequest updateItemRequest) {
     if (updateItemRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,14 +71,10 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (updateItemRequest.getTableName() != null) {
@@ -106,8 +98,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                             jsonWriter.key("B").value(keyListValue.getValue().getB());
                         }
 
-                        java.util.List<String> sSList = keyListValue.getValue().getSS();
-                        if (sSList != null) {
+                        com.amazonaws.internal.ListWithAutoConstructFlag<String> sSList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(keyListValue.getValue().getSS());
+                        if (sSList != null && !(sSList.isAutoConstruct() && sSList.isEmpty())) {
 
                             jsonWriter.key("SS");
                             jsonWriter.array();
@@ -120,8 +112,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                             jsonWriter.endArray();
                         }
 
-                        java.util.List<String> nSList = keyListValue.getValue().getNS();
-                        if (nSList != null) {
+                        com.amazonaws.internal.ListWithAutoConstructFlag<String> nSList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(keyListValue.getValue().getNS());
+                        if (nSList != null && !(nSList.isAutoConstruct() && nSList.isEmpty())) {
 
                             jsonWriter.key("NS");
                             jsonWriter.array();
@@ -134,8 +126,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                             jsonWriter.endArray();
                         }
 
-                        java.util.List<java.nio.ByteBuffer> bSList = keyListValue.getValue().getBS();
-                        if (bSList != null) {
+                        com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer> bSList = (com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer>)(keyListValue.getValue().getBS());
+                        if (bSList != null && !(bSList.isAutoConstruct() && bSList.isEmpty())) {
 
                             jsonWriter.key("BS");
                             jsonWriter.array();
@@ -176,8 +168,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                                 jsonWriter.key("B").value(value.getB());
                             }
 
-                            java.util.List<String> sSList = value.getSS();
-                            if (sSList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<String> sSList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(value.getSS());
+                            if (sSList != null && !(sSList.isAutoConstruct() && sSList.isEmpty())) {
 
                                 jsonWriter.key("SS");
                                 jsonWriter.array();
@@ -190,8 +182,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                                 jsonWriter.endArray();
                             }
 
-                            java.util.List<String> nSList = value.getNS();
-                            if (nSList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<String> nSList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(value.getNS());
+                            if (nSList != null && !(nSList.isAutoConstruct() && nSList.isEmpty())) {
 
                                 jsonWriter.key("NS");
                                 jsonWriter.array();
@@ -204,8 +196,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                                 jsonWriter.endArray();
                             }
 
-                            java.util.List<java.nio.ByteBuffer> bSList = value.getBS();
-                            if (bSList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer> bSList = (com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer>)(value.getBS());
+                            if (bSList != null && !(bSList.isAutoConstruct() && bSList.isEmpty())) {
 
                                 jsonWriter.key("BS");
                                 jsonWriter.array();
@@ -251,8 +243,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                                 jsonWriter.key("B").value(value.getB());
                             }
 
-                            java.util.List<String> sSList = value.getSS();
-                            if (sSList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<String> sSList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(value.getSS());
+                            if (sSList != null && !(sSList.isAutoConstruct() && sSList.isEmpty())) {
 
                                 jsonWriter.key("SS");
                                 jsonWriter.array();
@@ -265,8 +257,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                                 jsonWriter.endArray();
                             }
 
-                            java.util.List<String> nSList = value.getNS();
-                            if (nSList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<String> nSList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(value.getNS());
+                            if (nSList != null && !(nSList.isAutoConstruct() && nSList.isEmpty())) {
 
                                 jsonWriter.key("NS");
                                 jsonWriter.array();
@@ -279,8 +271,8 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
                                 jsonWriter.endArray();
                             }
 
-                            java.util.List<java.nio.ByteBuffer> bSList = value.getBS();
-                            if (bSList != null) {
+                            com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer> bSList = (com.amazonaws.internal.ListWithAutoConstructFlag<java.nio.ByteBuffer>)(value.getBS());
+                            if (bSList != null && !(bSList.isAutoConstruct() && bSList.isEmpty())) {
 
                                 jsonWriter.key("BS");
                                 jsonWriter.array();
@@ -313,22 +305,15 @@ public class UpdateItemRequestMarshaller implements Marshaller<Request<UpdateIte
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

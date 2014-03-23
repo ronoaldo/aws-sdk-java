@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#createInvalidation(CreateInvalidationRequest) CreateInvalidation operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#createInvalidation(CreateInvalidationRequest)
  */
-public class CreateInvalidationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateInvalidationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The distribution's id.
@@ -51,12 +53,10 @@ public class CreateInvalidationRequest extends AmazonWebServiceRequest  implemen
      * @param invalidationBatch The batch information for the invalidation.
      */
     public CreateInvalidationRequest(String distributionId, InvalidationBatch invalidationBatch) {
-        this.distributionId = distributionId;
-        this.invalidationBatch = invalidationBatch;
+        setDistributionId(distributionId);
+        setInvalidationBatch(invalidationBatch);
     }
 
-    
-    
     /**
      * The distribution's id.
      *
@@ -83,14 +83,13 @@ public class CreateInvalidationRequest extends AmazonWebServiceRequest  implemen
      * @param distributionId The distribution's id.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInvalidationRequest withDistributionId(String distributionId) {
         this.distributionId = distributionId;
         return this;
     }
-    
-    
+
     /**
      * The batch information for the invalidation.
      *
@@ -117,14 +116,13 @@ public class CreateInvalidationRequest extends AmazonWebServiceRequest  implemen
      * @param invalidationBatch The batch information for the invalidation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateInvalidationRequest withInvalidationBatch(InvalidationBatch invalidationBatch) {
         this.invalidationBatch = invalidationBatch;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -136,8 +134,8 @@ public class CreateInvalidationRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDistributionId() != null) sb.append("DistributionId: " + getDistributionId() + ",");    	
+        sb.append("{");
+        if (getDistributionId() != null) sb.append("DistributionId: " + getDistributionId() + ",");
         if (getInvalidationBatch() != null) sb.append("InvalidationBatch: " + getInvalidationBatch() );
         sb.append("}");
         return sb.toString();

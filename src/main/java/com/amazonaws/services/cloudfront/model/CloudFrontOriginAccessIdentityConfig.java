@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Origin access identity configuration.
  * </p>
  */
-public class CloudFrontOriginAccessIdentityConfig  implements Serializable  {
+public class CloudFrontOriginAccessIdentityConfig implements Serializable {
 
     /**
      * A unique number that ensures the request can't be replayed. If the
@@ -68,11 +69,9 @@ public class CloudFrontOriginAccessIdentityConfig  implements Serializable  {
      * CloudFrontOriginAccessIdentityAlreadyExists error.
      */
     public CloudFrontOriginAccessIdentityConfig(String callerReference) {
-        this.callerReference = callerReference;
+        setCallerReference(callerReference);
     }
 
-    
-    
     /**
      * A unique number that ensures the request can't be replayed. If the
      * CallerReference is new (no matter the content of the
@@ -165,14 +164,13 @@ public class CloudFrontOriginAccessIdentityConfig  implements Serializable  {
      *         CloudFrontOriginAccessIdentityAlreadyExists error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CloudFrontOriginAccessIdentityConfig withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * Any comments you want to include about the origin access identity.
      *
@@ -199,14 +197,13 @@ public class CloudFrontOriginAccessIdentityConfig  implements Serializable  {
      * @param comment Any comments you want to include about the origin access identity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CloudFrontOriginAccessIdentityConfig withComment(String comment) {
         this.comment = comment;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -218,8 +215,8 @@ public class CloudFrontOriginAccessIdentityConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");    	
+        sb.append("{");
+        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");
         if (getComment() != null) sb.append("Comment: " + getComment() );
         sb.append("}");
         return sb.toString();

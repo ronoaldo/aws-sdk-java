@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * This data type is used as a response element to DescribeDBLogFiles.
  * </p>
  */
-public class DescribeDBLogFilesDetails  implements Serializable  {
+public class DescribeDBLogFilesDetails implements Serializable {
 
     /**
      * The name of the log file for the specified DB instance.
@@ -28,7 +29,7 @@ public class DescribeDBLogFilesDetails  implements Serializable  {
     private String logFileName;
 
     /**
-     * The date and time that the last log entry was written.
+     * A POSIX timestamp when the last log entry was written.
      */
     private Long lastWritten;
 
@@ -63,48 +64,46 @@ public class DescribeDBLogFilesDetails  implements Serializable  {
      * @param logFileName The name of the log file for the specified DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesDetails withLogFileName(String logFileName) {
         this.logFileName = logFileName;
         return this;
     }
-    
-    
+
     /**
-     * The date and time that the last log entry was written.
+     * A POSIX timestamp when the last log entry was written.
      *
-     * @return The date and time that the last log entry was written.
+     * @return A POSIX timestamp when the last log entry was written.
      */
     public Long getLastWritten() {
         return lastWritten;
     }
     
     /**
-     * The date and time that the last log entry was written.
+     * A POSIX timestamp when the last log entry was written.
      *
-     * @param lastWritten The date and time that the last log entry was written.
+     * @param lastWritten A POSIX timestamp when the last log entry was written.
      */
     public void setLastWritten(Long lastWritten) {
         this.lastWritten = lastWritten;
     }
     
     /**
-     * The date and time that the last log entry was written.
+     * A POSIX timestamp when the last log entry was written.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param lastWritten The date and time that the last log entry was written.
+     * @param lastWritten A POSIX timestamp when the last log entry was written.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesDetails withLastWritten(Long lastWritten) {
         this.lastWritten = lastWritten;
         return this;
     }
-    
-    
+
     /**
      * The size, in bytes, of the log file for the specified DB instance.
      *
@@ -131,14 +130,13 @@ public class DescribeDBLogFilesDetails  implements Serializable  {
      * @param size The size, in bytes, of the log file for the specified DB instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBLogFilesDetails withSize(Long size) {
         this.size = size;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -150,9 +148,9 @@ public class DescribeDBLogFilesDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLogFileName() != null) sb.append("LogFileName: " + getLogFileName() + ",");    	
-        if (getLastWritten() != null) sb.append("LastWritten: " + getLastWritten() + ",");    	
+        sb.append("{");
+        if (getLogFileName() != null) sb.append("LogFileName: " + getLogFileName() + ",");
+        if (getLastWritten() != null) sb.append("LastWritten: " + getLastWritten() + ",");
         if (getSize() != null) sb.append("Size: " + getSize() );
         sb.append("}");
         return sb.toString();

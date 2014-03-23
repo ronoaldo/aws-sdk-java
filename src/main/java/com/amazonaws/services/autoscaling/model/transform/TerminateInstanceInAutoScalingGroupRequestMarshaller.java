@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class TerminateInstanceInAutoScalingGroupRequestMarshaller implements Mar
     public Request<TerminateInstanceInAutoScalingGroupRequest> marshall(TerminateInstanceInAutoScalingGroupRequest terminateInstanceInAutoScalingGroupRequest) {
 
         if (terminateInstanceInAutoScalingGroupRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<TerminateInstanceInAutoScalingGroupRequest> request = new DefaultRequest<TerminateInstanceInAutoScalingGroupRequest>(terminateInstanceInAutoScalingGroupRequest, "AmazonAutoScaling");
         request.addParameter("Action", "TerminateInstanceInAutoScalingGroup");
@@ -46,7 +46,6 @@ public class TerminateInstanceInAutoScalingGroupRequestMarshaller implements Mar
         if (terminateInstanceInAutoScalingGroupRequest.isShouldDecrementDesiredCapacity() != null) {
             request.addParameter("ShouldDecrementDesiredCapacity", StringUtils.fromBoolean(terminateInstanceInAutoScalingGroupRequest.isShouldDecrementDesiredCapacity()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Portions copyright 2006-2009 James Murty. Please see LICENSE.txt
  * for applicable license terms and NOTICE.txt for applicable notices.
@@ -17,10 +17,9 @@
  */
 package com.amazonaws.services.s3.internal;
 
-import java.io.IOException;
+import java.io.FilterInputStream;
 import java.io.InputStream;
 
-import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 
 import com.amazonaws.services.s3.internal.crypto.CipherFactory;
@@ -30,16 +29,25 @@ import com.amazonaws.services.s3.internal.crypto.CipherFactory;
  * resets by attempting to reset on the original, unencrypted data InputStream,
  * and recreate an identical Cipher and identical CipherInputStream on the
  * original data.
+ * <p>
+ * It's repeatable if and only if the underlying unencryptedDataStream is
+ * repeatable - if the underlying input stream is not repeatable and you're
+ * going to buffer to make it repeatable anyways, it makes more sense to do
+ * so after wrapping in this object, so we buffer the encrypted data and don't
+ * have to bother re-encrypting on retry.
+ * <p>
+ * This stream <em>only</em> supports being marked before the first call to
+ * {@code read} or {@code skip}, since it's not possible to rewind the
+ * encryption state of a {@code CipherInputStream} to an arbitrary point. If
+ * you call {@code mark} after calling {@code read} or {@code skip}, it will
+ * throw an {@code UnsupportedOperationException}.
  */
-public class RepeatableCipherInputStream extends AbstractRepeatableInputStream {
-    private CipherFactory cipherFactory;
-    private InputStream unencryptedDataStream;
-
-    
+public class RepeatableCipherInputStream extends
+        AbstractRepeatableCipherInputStream<CipherFactory> {
     /**
      * Constructs a new repeatable cipher input stream using the specified
-     * InputStream as the source data, and the CipherFactory for building Cipher
-     * objects.
+     * InputStream as the source data, and the CipherFactory for building
+     * Cipher objects.
      * 
      * @param input
      *            The original, unencrypted data stream. This stream should be
@@ -48,25 +56,23 @@ public class RepeatableCipherInputStream extends AbstractRepeatableInputStream {
      *            The factory used for creating identical cipher objects when
      *            this stream is reset and a new CipherInputStream is needed.
      */
-    public RepeatableCipherInputStream(InputStream input, CipherFactory cipherFactory) {
-        super(createCipherInputStream(input, cipherFactory));
-        this.unencryptedDataStream = input;
-        this.cipherFactory = cipherFactory;
+    public RepeatableCipherInputStream(final InputStream input,
+                                       final CipherFactory cipherFactory) {
 
-        // Mark the beginning of the data stream so we can reset back to it
-        unencryptedDataStream.mark(-1);
-    }
-
-    private static CipherInputStream createCipherInputStream(InputStream input, CipherFactory cipherFactory) {
-        Cipher cipher = cipherFactory.createCipher();
-        return new CipherInputStream(input, cipher);
+        super(input,
+            newCipherInputStream(input, cipherFactory),
+            cipherFactory);
     }
 
     @Override
-    protected void reopenWrappedStream() throws IOException {
-        in.close();
-        unencryptedDataStream.reset();
-        in = createCipherInputStream(unencryptedDataStream, cipherFactory);
+    protected FilterInputStream createCipherInputStream(
+            InputStream unencryptedDataStream, CipherFactory cipherFactory) {
+        return newCipherInputStream(unencryptedDataStream, cipherFactory);
     }
-
+    
+    private static FilterInputStream newCipherInputStream(
+            InputStream unencryptedDataStream, CipherFactory cipherFactory) {
+        return new CipherInputStream(unencryptedDataStream,
+                cipherFactory.createCipher());
+    }
 }

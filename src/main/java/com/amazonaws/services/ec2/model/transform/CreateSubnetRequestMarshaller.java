@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CreateSubnetRequestMarshaller implements Marshaller<Request<CreateS
     public Request<CreateSubnetRequest> marshall(CreateSubnetRequest createSubnetRequest) {
 
         if (createSubnetRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateSubnetRequest> request = new DefaultRequest<CreateSubnetRequest>(createSubnetRequest, "AmazonEC2");
         request.addParameter("Action", "CreateSubnet");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createSubnetRequest.getVpcId() != null) {
             request.addParameter("VpcId", StringUtils.fromString(createSubnetRequest.getVpcId()));
@@ -49,7 +49,6 @@ public class CreateSubnetRequestMarshaller implements Marshaller<Request<CreateS
         if (createSubnetRequest.getAvailabilityZone() != null) {
             request.addParameter("AvailabilityZone", StringUtils.fromString(createSubnetRequest.getAvailabilityZone()));
         }
-
 
         return request;
     }

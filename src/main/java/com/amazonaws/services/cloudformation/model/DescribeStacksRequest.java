@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudformation.AmazonCloudFormation#describeStacks(DescribeStacksRequest) DescribeStacks operation}.
  * <p>
- * Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created.
+ * Returns the description for the specified stack; if no stack name was
+ * specified, then it returns the description for all the stacks created.
  * </p>
  *
  * @see com.amazonaws.services.cloudformation.AmazonCloudFormation#describeStacks(DescribeStacksRequest)
  */
-public class DescribeStacksRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeStacksRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or the unique identifier associated with the stack.
@@ -32,6 +35,13 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
      */
     private String stackName;
 
+    /**
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 1024<br/>
+     */
     private String nextToken;
 
     /**
@@ -66,57 +76,61 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
      *         <p>Default: There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksRequest withStackName(String stackName) {
         this.stackName = stackName;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the NextToken property for this object.
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1024<br/>
      *
-     * @return The value of the NextToken property for this object.
+     * @return String that identifies the start of the next list of stacks, if there
+     *         is one.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1024<br/>
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken String that identifies the start of the next list of stacks, if there
+     *         is one.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Sets the value of the NextToken property for this object.
+     * String that identifies the start of the next list of stacks, if there
+     * is one.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 1024<br/>
      *
-     * @param nextToken The new value for the NextToken property for this object.
+     * @param nextToken String that identifies the start of the next list of stacks, if there
+     *         is one.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStacksRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -128,8 +142,8 @@ public class DescribeStacksRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");    	
+        sb.append("{");
+        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

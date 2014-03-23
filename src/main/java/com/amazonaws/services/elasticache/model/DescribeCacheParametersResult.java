@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,73 +13,74 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains a list of Parametes and CacheNodeTypeSpecificParameters.
+ * Represents the output of a <i>DescribeCacheParameters</i> operation.
  * </p>
  */
-public class DescribeCacheParametersResult  implements Serializable  {
+public class DescribeCacheParametersResult implements Serializable {
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
      * A list of <a>Parameter</a> instances.
      */
-    private java.util.List<Parameter> parameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parameters;
 
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      */
-    private java.util.List<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters;
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return The marker obtained from a previous operation response.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParametersResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>Parameter</a> instances.
      *
      * @return A list of <a>Parameter</a> instances.
      */
     public java.util.List<Parameter> getParameters() {
-        
         if (parameters == null) {
-            parameters = new java.util.ArrayList<Parameter>();
+              parameters = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>();
+              parameters.setAutoConstruct(true);
         }
         return parameters;
     }
@@ -94,8 +95,7 @@ public class DescribeCacheParametersResult  implements Serializable  {
             this.parameters = null;
             return;
         }
-
-        java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
         parametersCopy.addAll(parameters);
         this.parameters = parametersCopy;
     }
@@ -108,7 +108,7 @@ public class DescribeCacheParametersResult  implements Serializable  {
      * @param parameters A list of <a>Parameter</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParametersResult withParameters(Parameter... parameters) {
         if (getParameters() == null) setParameters(new java.util.ArrayList<Parameter>(parameters.length));
@@ -126,58 +126,63 @@ public class DescribeCacheParametersResult  implements Serializable  {
      * @param parameters A list of <a>Parameter</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParametersResult withParameters(java.util.Collection<Parameter> parameters) {
         if (parameters == null) {
             this.parameters = null;
         } else {
-            java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
             parametersCopy.addAll(parameters);
             this.parameters = parametersCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      *
-     * @return A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @return A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      */
     public java.util.List<CacheNodeTypeSpecificParameter> getCacheNodeTypeSpecificParameters() {
-        
         if (cacheNodeTypeSpecificParameters == null) {
-            cacheNodeTypeSpecificParameters = new java.util.ArrayList<CacheNodeTypeSpecificParameter>();
+              cacheNodeTypeSpecificParameters = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter>();
+              cacheNodeTypeSpecificParameters.setAutoConstruct(true);
         }
         return cacheNodeTypeSpecificParameters;
     }
     
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      *
-     * @param cacheNodeTypeSpecificParameters A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @param cacheNodeTypeSpecificParameters A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      */
     public void setCacheNodeTypeSpecificParameters(java.util.Collection<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters) {
         if (cacheNodeTypeSpecificParameters == null) {
             this.cacheNodeTypeSpecificParameters = null;
             return;
         }
-
-        java.util.List<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new java.util.ArrayList<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
         cacheNodeTypeSpecificParametersCopy.addAll(cacheNodeTypeSpecificParameters);
         this.cacheNodeTypeSpecificParameters = cacheNodeTypeSpecificParametersCopy;
     }
     
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeTypeSpecificParameters A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @param cacheNodeTypeSpecificParameters A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParametersResult withCacheNodeTypeSpecificParameters(CacheNodeTypeSpecificParameter... cacheNodeTypeSpecificParameters) {
         if (getCacheNodeTypeSpecificParameters() == null) setCacheNodeTypeSpecificParameters(new java.util.ArrayList<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.length));
@@ -188,27 +193,29 @@ public class DescribeCacheParametersResult  implements Serializable  {
     }
     
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeTypeSpecificParameters A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @param cacheNodeTypeSpecificParameters A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCacheParametersResult withCacheNodeTypeSpecificParameters(java.util.Collection<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters) {
         if (cacheNodeTypeSpecificParameters == null) {
             this.cacheNodeTypeSpecificParameters = null;
         } else {
-            java.util.List<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new java.util.ArrayList<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
             cacheNodeTypeSpecificParametersCopy.addAll(cacheNodeTypeSpecificParameters);
             this.cacheNodeTypeSpecificParameters = cacheNodeTypeSpecificParametersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -220,9 +227,9 @@ public class DescribeCacheParametersResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
-        if (getParameters() != null) sb.append("Parameters: " + getParameters() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
+        if (getParameters() != null) sb.append("Parameters: " + getParameters() + ",");
         if (getCacheNodeTypeSpecificParameters() != null) sb.append("CacheNodeTypeSpecificParameters: " + getCacheNodeTypeSpecificParameters() );
         sb.append("}");
         return sb.toString();

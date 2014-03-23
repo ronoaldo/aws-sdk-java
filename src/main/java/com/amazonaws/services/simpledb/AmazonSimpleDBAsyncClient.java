@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,25 +29,33 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.simpledb.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonSimpleDB.
  * All asynchronous calls made using this client are non-blocking. Callers could either
  * process the result and handle the exceptions in the worker thread by providing a callback handler
  * when making the call, or use the returned Future object to check the result of the call in the calling thread.
  * Amazon SimpleDB <p>
- * Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By offloading the time and effort
- * associated with building and operating a web-scale database, SimpleDB provides developers the freedom to focus on application development.
+ * Amazon SimpleDB is a web service providing the core database
+ * functions of data indexing and querying in the cloud. By offloading
+ * the time and effort associated with building and operating a web-scale
+ * database, SimpleDB provides developers the freedom to focus on
+ * application development.
  * </p>
  * <p>
- * A traditional, clustered relational database requires a sizable upfront capital outlay, is complex to design, and often requires extensive and
- * repetitive database administration. Amazon SimpleDB is dramatically simpler, requiring no schema, automatically indexing your data and providing a
- * simple API for storage and access. This approach eliminates the administrative burden of data modeling, index maintenance, and performance tuning.
- * Developers gain access to this functionality within Amazon's proven computing environment, are able to scale instantly, and pay only for what they
- * use.
+ * A traditional, clustered relational database requires a sizable
+ * upfront capital outlay, is complex to design, and often requires
+ * extensive and repetitive database administration. Amazon SimpleDB is
+ * dramatically simpler, requiring no schema, automatically indexing your
+ * data and providing a simple API for storage and access. This approach
+ * eliminates the administrative burden of data modeling, index
+ * maintenance, and performance tuning. Developers gain access to this
+ * functionality within Amazon's proven computing environment, are able
+ * to scale instantly, and pay only for what they use.
  * </p>
  * <p>
- * Visit <a href="http://aws.amazon.com/simpledb/"> http://aws.amazon.com/simpledb/ </a> for more information.
+ * Visit
+ * <a href="http://aws.amazon.com/simpledb/"> http://aws.amazon.com/simpledb/ </a>
+ * for more information.
  * </p>
  */
 public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
@@ -58,6 +66,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -73,7 +82,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleDBAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -97,16 +106,16 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      *                       client connects to AmazonSimpleDB
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonSimpleDBAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonSimpleDB using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -118,7 +127,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      *                       when authenticating with AWS services.
      */
     public AmazonSimpleDBAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -172,7 +181,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonSimpleDB using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -185,7 +194,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      *            to authenticate requests with AWS services.
      */
     public AmazonSimpleDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -228,7 +237,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      */
     public AmazonSimpleDBAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -257,7 +266,6 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -273,7 +281,8 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -305,6 +314,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the Select
      *         service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -319,11 +329,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
         return executorService.submit(new Callable<SelectResult>() {
             public SelectResult call() throws Exception {
                 return select(selectRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * The <code>Select</code> operation returns a set of attributes for
@@ -352,6 +361,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the Select
      *         service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -367,17 +377,17 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<SelectResult>() {
             public SelectResult call() throws Exception {
-            	SelectResult result;
+              SelectResult result;
                 try {
-            		result = select(selectRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(selectRequest, result);
-               	return result;
-		    }
-		});
+                result = select(selectRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(selectRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -441,6 +451,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         PutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -456,11 +467,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
             public Void call() throws Exception {
                 putAttributes(putAttributesRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * The PutAttributes operation creates or replaces attributes in an
@@ -526,6 +536,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         PutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -541,16 +552,16 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		putAttributes(putAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(putAttributesRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                putAttributes(putAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(putAttributesRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -590,6 +601,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         BatchDeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -605,11 +617,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
             public Void call() throws Exception {
                 batchDeleteAttributes(batchDeleteAttributesRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Performs multiple DeleteAttributes operations in a single call, which
@@ -651,6 +662,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         BatchDeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -666,16 +678,16 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		batchDeleteAttributes(batchDeleteAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(batchDeleteAttributesRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                batchDeleteAttributes(batchDeleteAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(batchDeleteAttributesRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -696,6 +708,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -711,11 +724,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
             public Void call() throws Exception {
                 deleteDomain(deleteDomainRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * The <code>DeleteDomain</code> operation deletes a domain. Any items
@@ -738,6 +750,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -753,16 +766,16 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteDomain(deleteDomainRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteDomainRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteDomain(deleteDomainRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteDomainRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -781,9 +794,9 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * The client can create up to 100 domains per account.
      * </p>
      * <p>
-     * If the client requires additional domains, go to <a
-     * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-     * http://aws.amazon.com/contact-us/simpledb-limit-request/ </a> .
+     * If the client requires additional domains, go to
+     * <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/"> http://aws.amazon.com/contact-us/simpledb-limit-request/ </a>
+     * .
      * </p>
      *
      * @param createDomainRequest Container for the necessary parameters to
@@ -791,6 +804,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -806,11 +820,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
             public Void call() throws Exception {
                 createDomain(createDomainRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * The <code>CreateDomain</code> operation creates a new domain. The
@@ -827,9 +840,9 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * The client can create up to 100 domains per account.
      * </p>
      * <p>
-     * If the client requires additional domains, go to <a
-     * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-     * http://aws.amazon.com/contact-us/simpledb-limit-request/ </a> .
+     * If the client requires additional domains, go to
+     * <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/"> http://aws.amazon.com/contact-us/simpledb-limit-request/ </a>
+     * .
      * </p>
      *
      * @param createDomainRequest Container for the necessary parameters to
@@ -841,6 +854,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateDomain service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -856,16 +870,16 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		createDomain(createDomainRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createDomainRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                createDomain(createDomainRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createDomainRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -896,6 +910,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -911,11 +926,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
             public Void call() throws Exception {
                 deleteAttributes(deleteAttributesRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Deletes one or more attributes associated with an item. If all
@@ -948,6 +962,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -963,16 +978,16 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		deleteAttributes(deleteAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteAttributesRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                deleteAttributes(deleteAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteAttributesRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -992,6 +1007,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         ListDomains service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1006,11 +1022,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
         return executorService.submit(new Callable<ListDomainsResult>() {
             public ListDomainsResult call() throws Exception {
                 return listDomains(listDomainsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * The <code>ListDomains</code> operation lists all domains associated
@@ -1032,6 +1047,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         ListDomains service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1047,17 +1063,17 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<ListDomainsResult>() {
             public ListDomainsResult call() throws Exception {
-            	ListDomainsResult result;
+              ListDomainsResult result;
                 try {
-            		result = listDomains(listDomainsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(listDomainsRequest, result);
-               	return result;
-		    }
-		});
+                result = listDomains(listDomainsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(listDomainsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1082,6 +1098,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         GetAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1096,11 +1113,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
         return executorService.submit(new Callable<GetAttributesResult>() {
             public GetAttributesResult call() throws Exception {
                 return getAttributes(getAttributesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns all of the attributes associated with the specified item.
@@ -1127,6 +1143,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         GetAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1142,17 +1159,17 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<GetAttributesResult>() {
             public GetAttributesResult call() throws Exception {
-            	GetAttributesResult result;
+              GetAttributesResult result;
                 try {
-            		result = getAttributes(getAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(getAttributesRequest, result);
-               	return result;
-		    }
-		});
+                result = getAttributes(getAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(getAttributesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1236,6 +1253,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         BatchPutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1251,11 +1269,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
             public Void call() throws Exception {
                 batchPutAttributes(batchPutAttributesRequest);
                 return null;
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * The <code>BatchPutAttributes</code> operation creates or replaces
@@ -1341,6 +1358,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         BatchPutAttributes service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1356,16 +1374,16 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<Void>() {
             public Void call() throws Exception {
-            	try {
-            		batchPutAttributes(batchPutAttributesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(batchPutAttributesRequest, null);
-               	return null;
-		    }
-		});
+              try {
+                batchPutAttributes(batchPutAttributesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(batchPutAttributesRequest, null);
+                 return null;
+        }
+    });
     }
     
     /**
@@ -1380,6 +1398,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         DomainMetadata service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1394,11 +1413,10 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
         return executorService.submit(new Callable<DomainMetadataResult>() {
             public DomainMetadataResult call() throws Exception {
                 return domainMetadata(domainMetadataRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Returns information about the domain, including when the domain was
@@ -1415,6 +1433,7 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
      * 
      * @return A Java Future object containing the response from the
      *         DomainMetadata service method, as returned by AmazonSimpleDB.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1430,17 +1449,17 @@ public class AmazonSimpleDBAsyncClient extends AmazonSimpleDBClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DomainMetadataResult>() {
             public DomainMetadataResult call() throws Exception {
-            	DomainMetadataResult result;
+              DomainMetadataResult result;
                 try {
-            		result = domainMetadata(domainMetadataRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(domainMetadataRequest, result);
-               	return result;
-		    }
-		});
+                result = domainMetadata(domainMetadataRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(domainMetadataRequest, result);
+                 return result;
+        }
+    });
     }
     
 }

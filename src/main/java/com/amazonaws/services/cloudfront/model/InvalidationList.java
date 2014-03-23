@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * An invalidation list.
  * </p>
  */
-public class InvalidationList  implements Serializable  {
+public class InvalidationList implements Serializable {
 
     /**
      * The value you provided for the Marker request parameter.
@@ -57,7 +58,7 @@ public class InvalidationList  implements Serializable  {
      * A complex type that contains one InvalidationSummary element for each
      * invalidation batch that was created by the current AWS account.
      */
-    private java.util.List<InvalidationSummary> items;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InvalidationSummary> items;
 
     /**
      * Default constructor for a new InvalidationList object.  Callers should use the
@@ -91,14 +92,13 @@ public class InvalidationList  implements Serializable  {
      * @param marker The value you provided for the Marker request parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationList withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * If IsTruncated is true, this element is present and contains the value
      * you can use for the Marker request parameter to continue listing your
@@ -137,14 +137,13 @@ public class InvalidationList  implements Serializable  {
      *         invalidation batches where they left off.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationList withNextMarker(String nextMarker) {
         this.nextMarker = nextMarker;
         return this;
     }
-    
-    
+
     /**
      * The value you provided for the MaxItems request parameter.
      *
@@ -171,14 +170,13 @@ public class InvalidationList  implements Serializable  {
      * @param maxItems The value you provided for the MaxItems request parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationList withMaxItems(Integer maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * A flag that indicates whether more invalidation batch requests remain
      * to be listed. If your results were truncated, you can make a follow-up
@@ -223,14 +221,13 @@ public class InvalidationList  implements Serializable  {
      *         invalidation batches in the list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationList withIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
-    
-    
+
     /**
      * A flag that indicates whether more invalidation batch requests remain
      * to be listed. If your results were truncated, you can make a follow-up
@@ -245,7 +242,7 @@ public class InvalidationList  implements Serializable  {
     public Boolean getIsTruncated() {
         return isTruncated;
     }
-    
+
     /**
      * The number of invalidation batches that were created by the current
      * AWS account.
@@ -278,14 +275,13 @@ public class InvalidationList  implements Serializable  {
      *         AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationList withQuantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains one InvalidationSummary element for each
      * invalidation batch that was created by the current AWS account.
@@ -294,9 +290,9 @@ public class InvalidationList  implements Serializable  {
      *         invalidation batch that was created by the current AWS account.
      */
     public java.util.List<InvalidationSummary> getItems() {
-        
         if (items == null) {
-            items = new java.util.ArrayList<InvalidationSummary>();
+              items = new com.amazonaws.internal.ListWithAutoConstructFlag<InvalidationSummary>();
+              items.setAutoConstruct(true);
         }
         return items;
     }
@@ -313,8 +309,7 @@ public class InvalidationList  implements Serializable  {
             this.items = null;
             return;
         }
-
-        java.util.List<InvalidationSummary> itemsCopy = new java.util.ArrayList<InvalidationSummary>(items.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InvalidationSummary> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InvalidationSummary>(items.size());
         itemsCopy.addAll(items);
         this.items = itemsCopy;
     }
@@ -329,7 +324,7 @@ public class InvalidationList  implements Serializable  {
      *         invalidation batch that was created by the current AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationList withItems(InvalidationSummary... items) {
         if (getItems() == null) setItems(new java.util.ArrayList<InvalidationSummary>(items.length));
@@ -349,20 +344,20 @@ public class InvalidationList  implements Serializable  {
      *         invalidation batch that was created by the current AWS account.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InvalidationList withItems(java.util.Collection<InvalidationSummary> items) {
         if (items == null) {
             this.items = null;
         } else {
-            java.util.List<InvalidationSummary> itemsCopy = new java.util.ArrayList<InvalidationSummary>(items.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InvalidationSummary> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InvalidationSummary>(items.size());
             itemsCopy.addAll(items);
             this.items = itemsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -374,12 +369,12 @@ public class InvalidationList  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
-        if (getNextMarker() != null) sb.append("NextMarker: " + getNextMarker() + ",");    	
-        if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() + ",");    	
-        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");    	
-        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
+        if (getNextMarker() != null) sb.append("NextMarker: " + getNextMarker() + ",");
+        if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() + ",");
+        if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() + ",");
+        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");
         if (getItems() != null) sb.append("Items: " + getItems() );
         sb.append("}");
         return sb.toString();

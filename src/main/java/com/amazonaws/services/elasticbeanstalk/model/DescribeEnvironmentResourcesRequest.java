@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeEnvironmentResources(DescribeEnvironmentResourcesRequest) DescribeEnvironmentResources operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeEnvironmentResources(DescribeEnvironmentResourcesRequest)
  */
-public class DescribeEnvironmentResourcesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeEnvironmentResourcesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the environment to retrieve AWS resource usage data. <p>
@@ -95,14 +97,13 @@ public class DescribeEnvironmentResourcesRequest extends AmazonWebServiceRequest
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEnvironmentResourcesRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment to retrieve AWS resource usage data. <p>
      * Condition: You must specify either this or an EnvironmentId, or both.
@@ -156,14 +157,13 @@ public class DescribeEnvironmentResourcesRequest extends AmazonWebServiceRequest
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEnvironmentResourcesRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -175,8 +175,8 @@ public class DescribeEnvironmentResourcesRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
+        sb.append("{");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
         if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() );
         sb.append("}");
         return sb.toString();

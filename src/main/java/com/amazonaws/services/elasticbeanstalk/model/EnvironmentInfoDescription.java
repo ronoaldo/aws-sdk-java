@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The information retrieved from the Amazon EC2 instances.
  * </p>
  */
-public class EnvironmentInfoDescription  implements Serializable  {
+public class EnvironmentInfoDescription implements Serializable {
 
     /**
      * The type of information retrieved.
@@ -90,7 +91,7 @@ public class EnvironmentInfoDescription  implements Serializable  {
      * @param infoType The type of information retrieved.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentInfoType
      */
@@ -98,8 +99,7 @@ public class EnvironmentInfoDescription  implements Serializable  {
         this.infoType = infoType;
         return this;
     }
-    
-    
+
     /**
      * The type of information retrieved.
      * <p>
@@ -125,7 +125,7 @@ public class EnvironmentInfoDescription  implements Serializable  {
      * @param infoType The type of information retrieved.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentInfoType
      */
@@ -133,7 +133,7 @@ public class EnvironmentInfoDescription  implements Serializable  {
         this.infoType = infoType.toString();
         return this;
     }
-    
+
     /**
      * The Amazon EC2 Instance ID for this information.
      *
@@ -160,14 +160,13 @@ public class EnvironmentInfoDescription  implements Serializable  {
      * @param ec2InstanceId The Amazon EC2 Instance ID for this information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentInfoDescription withEc2InstanceId(String ec2InstanceId) {
         this.ec2InstanceId = ec2InstanceId;
         return this;
     }
-    
-    
+
     /**
      * The time stamp when this information was retrieved.
      *
@@ -194,14 +193,13 @@ public class EnvironmentInfoDescription  implements Serializable  {
      * @param sampleTimestamp The time stamp when this information was retrieved.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentInfoDescription withSampleTimestamp(java.util.Date sampleTimestamp) {
         this.sampleTimestamp = sampleTimestamp;
         return this;
     }
-    
-    
+
     /**
      * The retrieved information.
      *
@@ -228,14 +226,13 @@ public class EnvironmentInfoDescription  implements Serializable  {
      * @param message The retrieved information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentInfoDescription withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -247,10 +244,10 @@ public class EnvironmentInfoDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInfoType() != null) sb.append("InfoType: " + getInfoType() + ",");    	
-        if (getEc2InstanceId() != null) sb.append("Ec2InstanceId: " + getEc2InstanceId() + ",");    	
-        if (getSampleTimestamp() != null) sb.append("SampleTimestamp: " + getSampleTimestamp() + ",");    	
+        sb.append("{");
+        if (getInfoType() != null) sb.append("InfoType: " + getInfoType() + ",");
+        if (getEc2InstanceId() != null) sb.append("Ec2InstanceId: " + getEc2InstanceId() + ",");
+        if (getSampleTimestamp() != null) sb.append("SampleTimestamp: " + getSampleTimestamp() + ",");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

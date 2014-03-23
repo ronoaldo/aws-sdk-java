@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#removeSourceIdentifierFromSubscription(RemoveSourceIdentifierFromSubscriptionRequest) RemoveSourceIdentifierFromSubscription operation}.
  * <p>
- * Removes a source identifier from an existing RDS event notification subscription.
+ * Removes a source identifier from an existing RDS event notification
+ * subscription.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#removeSourceIdentifierFromSubscription(RemoveSourceIdentifierFromSubscriptionRequest)
  */
-public class RemoveSourceIdentifierFromSubscriptionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RemoveSourceIdentifierFromSubscriptionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the RDS event notification subscription you want to remove
@@ -71,14 +74,13 @@ public class RemoveSourceIdentifierFromSubscriptionRequest extends AmazonWebServ
      *         a source identifier from.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RemoveSourceIdentifierFromSubscriptionRequest withSubscriptionName(String subscriptionName) {
         this.subscriptionName = subscriptionName;
         return this;
     }
-    
-    
+
     /**
      * The source identifier to be removed from the subscription, such as the
      * <b>DB instance identifier</b> for a DB instance or the name of a
@@ -117,14 +119,13 @@ public class RemoveSourceIdentifierFromSubscriptionRequest extends AmazonWebServ
      *         security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RemoveSourceIdentifierFromSubscriptionRequest withSourceIdentifier(String sourceIdentifier) {
         this.sourceIdentifier = sourceIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -136,8 +137,8 @@ public class RemoveSourceIdentifierFromSubscriptionRequest extends AmazonWebServ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubscriptionName() != null) sb.append("SubscriptionName: " + getSubscriptionName() + ",");    	
+        sb.append("{");
+        if (getSubscriptionName() != null) sb.append("SubscriptionName: " + getSubscriptionName() + ",");
         if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() );
         sb.append("}");
         return sb.toString();

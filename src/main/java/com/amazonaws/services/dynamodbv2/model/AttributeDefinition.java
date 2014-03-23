@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies an attribute for describing the key schema for the table and indexes.
+ * Represents an attribute for describing the key schema for the table
+ * and indexes.
  * </p>
  */
-public class AttributeDefinition  implements Serializable  {
+public class AttributeDefinition implements Serializable {
 
     /**
      * A name for the attribute.
@@ -37,6 +39,38 @@ public class AttributeDefinition  implements Serializable  {
      * <b>Allowed Values: </b>S, N, B
      */
     private String attributeType;
+
+    /**
+     * Default constructor for a new AttributeDefinition object.  Callers should use the
+     * setter or fluent setter (with...) methods to initialize this object after creating it.
+     */
+    public AttributeDefinition() {}
+    
+    /**
+     * Constructs a new AttributeDefinition object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param attributeName A name for the attribute.
+     * @param attributeType The data type for the attribute.
+     */
+    public AttributeDefinition(String attributeName, String attributeType) {
+        setAttributeName(attributeName);
+        setAttributeType(attributeType);
+    }
+
+    /**
+     * Constructs a new AttributeDefinition object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param attributeName A name for the attribute.
+     * @param attributeType The data type for the attribute.
+     */
+    public AttributeDefinition(String attributeName, ScalarAttributeType attributeType) {
+        this.attributeName = attributeName;
+        this.attributeType = attributeType.toString();
+    }
 
     /**
      * A name for the attribute.
@@ -73,14 +107,13 @@ public class AttributeDefinition  implements Serializable  {
      * @param attributeName A name for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttributeDefinition withAttributeName(String attributeName) {
         this.attributeName = attributeName;
         return this;
     }
-    
-    
+
     /**
      * The data type for the attribute.
      * <p>
@@ -120,7 +153,7 @@ public class AttributeDefinition  implements Serializable  {
      * @param attributeType The data type for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalarAttributeType
      */
@@ -128,8 +161,7 @@ public class AttributeDefinition  implements Serializable  {
         this.attributeType = attributeType;
         return this;
     }
-    
-    
+
     /**
      * The data type for the attribute.
      * <p>
@@ -155,7 +187,7 @@ public class AttributeDefinition  implements Serializable  {
      * @param attributeType The data type for the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ScalarAttributeType
      */
@@ -163,7 +195,7 @@ public class AttributeDefinition  implements Serializable  {
         this.attributeType = attributeType.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -175,8 +207,8 @@ public class AttributeDefinition  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");    	
+        sb.append("{");
+        if (getAttributeName() != null) sb.append("AttributeName: " + getAttributeName() + ",");
         if (getAttributeType() != null) sb.append("AttributeType: " + getAttributeType() );
         sb.append("}");
         return sb.toString();

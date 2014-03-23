@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * A JSON object containing the following fields:
- * </p>
- * 
- * <ul>
- * <li> DescribeUploadBufferOutput$DiskIds </li>
- * <li> DescribeUploadBufferOutput$GatewayARN </li>
- * <li> DescribeUploadBufferOutput$UploadBufferUsedInBytes </li>
- * <li> DescribeUploadBufferOutput$UploadBufferAllocatedInBytes </li>
- * 
- * </ul>
+ * Describe Upload Buffer Result
  */
-public class DescribeUploadBufferResult  implements Serializable  {
+public class DescribeUploadBufferResult implements Serializable {
 
     /**
-     * In response, AWS Storage Gateway returns the ARN of the activated
-     * gateway. If you don't remember the ARN of a gateway, you can use the
-     * <a>ListGateways</a> operations to return a list of gateways for your
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
      * account and region.
      * <p>
      * <b>Constraints:</b><br/>
@@ -41,39 +31,22 @@ public class DescribeUploadBufferResult  implements Serializable  {
      */
     private String gatewayARN;
 
-    /**
-     * An array of the gateway's local disk IDs that are configured as
-     * working storage. Each local disk ID is specified as a string (minimum
-     * length of 1 and maximum length of 300). If no local disks are
-     * configured as working storage, then the <code>DiskIds</code> array is
-     * empty.
-     */
-    private java.util.List<String> diskIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIds;
 
-    /**
-     * The total upload buffer in bytes in use by the gateway. If no upload
-     * buffer is configured for the gateway, this field returns 0.
-     */
     private Long uploadBufferUsedInBytes;
 
-    /**
-     * The total upload buffer in bytes allocated for the gateway. If no
-     * upload buffer is configured for the gateway, this field returns 0.
-     */
     private Long uploadBufferAllocatedInBytes;
 
     /**
-     * In response, AWS Storage Gateway returns the ARN of the activated
-     * gateway. If you don't remember the ARN of a gateway, you can use the
-     * <a>ListGateways</a> operations to return a list of gateways for your
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
      * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @return In response, AWS Storage Gateway returns the ARN of the activated
-     *         gateway. If you don't remember the ARN of a gateway, you can use the
-     *         <a>ListGateways</a> operations to return a list of gateways for your
+     * @return The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
      *         account and region.
      */
     public String getGatewayARN() {
@@ -81,17 +54,15 @@ public class DescribeUploadBufferResult  implements Serializable  {
     }
     
     /**
-     * In response, AWS Storage Gateway returns the ARN of the activated
-     * gateway. If you don't remember the ARN of a gateway, you can use the
-     * <a>ListGateways</a> operations to return a list of gateways for your
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
      * account and region.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param gatewayARN In response, AWS Storage Gateway returns the ARN of the activated
-     *         gateway. If you don't remember the ARN of a gateway, you can use the
-     *         <a>ListGateways</a> operations to return a list of gateways for your
+     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
      *         account and region.
      */
     public void setGatewayARN(String gatewayARN) {
@@ -99,9 +70,8 @@ public class DescribeUploadBufferResult  implements Serializable  {
     }
     
     /**
-     * In response, AWS Storage Gateway returns the ARN of the activated
-     * gateway. If you don't remember the ARN of a gateway, you can use the
-     * <a>ListGateways</a> operations to return a list of gateways for your
+     * The Amazon Resource Name (ARN) of the gateway. Use the
+     * <a>ListGateways</a> operation to return a list of gateways for your
      * account and region.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -109,82 +79,55 @@ public class DescribeUploadBufferResult  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>50 - 500<br/>
      *
-     * @param gatewayARN In response, AWS Storage Gateway returns the ARN of the activated
-     *         gateway. If you don't remember the ARN of a gateway, you can use the
-     *         <a>ListGateways</a> operations to return a list of gateways for your
+     * @param gatewayARN The Amazon Resource Name (ARN) of the gateway. Use the
+     *         <a>ListGateways</a> operation to return a list of gateways for your
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUploadBufferResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
-     * An array of the gateway's local disk IDs that are configured as
-     * working storage. Each local disk ID is specified as a string (minimum
-     * length of 1 and maximum length of 300). If no local disks are
-     * configured as working storage, then the <code>DiskIds</code> array is
-     * empty.
+     * Returns the value of the DiskIds property for this object.
      *
-     * @return An array of the gateway's local disk IDs that are configured as
-     *         working storage. Each local disk ID is specified as a string (minimum
-     *         length of 1 and maximum length of 300). If no local disks are
-     *         configured as working storage, then the <code>DiskIds</code> array is
-     *         empty.
+     * @return The value of the DiskIds property for this object.
      */
     public java.util.List<String> getDiskIds() {
-        
         if (diskIds == null) {
-            diskIds = new java.util.ArrayList<String>();
+              diskIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              diskIds.setAutoConstruct(true);
         }
         return diskIds;
     }
     
     /**
-     * An array of the gateway's local disk IDs that are configured as
-     * working storage. Each local disk ID is specified as a string (minimum
-     * length of 1 and maximum length of 300). If no local disks are
-     * configured as working storage, then the <code>DiskIds</code> array is
-     * empty.
+     * Sets the value of the DiskIds property for this object.
      *
-     * @param diskIds An array of the gateway's local disk IDs that are configured as
-     *         working storage. Each local disk ID is specified as a string (minimum
-     *         length of 1 and maximum length of 300). If no local disks are
-     *         configured as working storage, then the <code>DiskIds</code> array is
-     *         empty.
+     * @param diskIds The new value for the DiskIds property for this object.
      */
     public void setDiskIds(java.util.Collection<String> diskIds) {
         if (diskIds == null) {
             this.diskIds = null;
             return;
         }
-
-        java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
         diskIdsCopy.addAll(diskIds);
         this.diskIds = diskIdsCopy;
     }
     
     /**
-     * An array of the gateway's local disk IDs that are configured as
-     * working storage. Each local disk ID is specified as a string (minimum
-     * length of 1 and maximum length of 300). If no local disks are
-     * configured as working storage, then the <code>DiskIds</code> array is
-     * empty.
+     * Sets the value of the DiskIds property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param diskIds An array of the gateway's local disk IDs that are configured as
-     *         working storage. Each local disk ID is specified as a string (minimum
-     *         length of 1 and maximum length of 300). If no local disks are
-     *         configured as working storage, then the <code>DiskIds</code> array is
-     *         empty.
+     * @param diskIds The new value for the DiskIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUploadBufferResult withDiskIds(String... diskIds) {
         if (getDiskIds() == null) setDiskIds(new java.util.ArrayList<String>(diskIds.length));
@@ -195,115 +138,104 @@ public class DescribeUploadBufferResult  implements Serializable  {
     }
     
     /**
-     * An array of the gateway's local disk IDs that are configured as
-     * working storage. Each local disk ID is specified as a string (minimum
-     * length of 1 and maximum length of 300). If no local disks are
-     * configured as working storage, then the <code>DiskIds</code> array is
-     * empty.
+     * Sets the value of the DiskIds property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param diskIds An array of the gateway's local disk IDs that are configured as
-     *         working storage. Each local disk ID is specified as a string (minimum
-     *         length of 1 and maximum length of 300). If no local disks are
-     *         configured as working storage, then the <code>DiskIds</code> array is
-     *         empty.
+     * @param diskIds The new value for the DiskIds property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUploadBufferResult withDiskIds(java.util.Collection<String> diskIds) {
         if (diskIds == null) {
             this.diskIds = null;
         } else {
-            java.util.List<String> diskIdsCopy = new java.util.ArrayList<String>(diskIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> diskIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(diskIds.size());
             diskIdsCopy.addAll(diskIds);
             this.diskIds = diskIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * The total upload buffer in bytes in use by the gateway. If no upload
-     * buffer is configured for the gateway, this field returns 0.
+     * Returns the value of the UploadBufferUsedInBytes property for this
+     * object.
      *
-     * @return The total upload buffer in bytes in use by the gateway. If no upload
-     *         buffer is configured for the gateway, this field returns 0.
+     * @return The value of the UploadBufferUsedInBytes property for this object.
      */
     public Long getUploadBufferUsedInBytes() {
         return uploadBufferUsedInBytes;
     }
     
     /**
-     * The total upload buffer in bytes in use by the gateway. If no upload
-     * buffer is configured for the gateway, this field returns 0.
+     * Sets the value of the UploadBufferUsedInBytes property for this
+     * object.
      *
-     * @param uploadBufferUsedInBytes The total upload buffer in bytes in use by the gateway. If no upload
-     *         buffer is configured for the gateway, this field returns 0.
+     * @param uploadBufferUsedInBytes The new value for the UploadBufferUsedInBytes property for this
+     *         object.
      */
     public void setUploadBufferUsedInBytes(Long uploadBufferUsedInBytes) {
         this.uploadBufferUsedInBytes = uploadBufferUsedInBytes;
     }
     
     /**
-     * The total upload buffer in bytes in use by the gateway. If no upload
-     * buffer is configured for the gateway, this field returns 0.
+     * Sets the value of the UploadBufferUsedInBytes property for this
+     * object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param uploadBufferUsedInBytes The total upload buffer in bytes in use by the gateway. If no upload
-     *         buffer is configured for the gateway, this field returns 0.
+     * @param uploadBufferUsedInBytes The new value for the UploadBufferUsedInBytes property for this
+     *         object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUploadBufferResult withUploadBufferUsedInBytes(Long uploadBufferUsedInBytes) {
         this.uploadBufferUsedInBytes = uploadBufferUsedInBytes;
         return this;
     }
-    
-    
+
     /**
-     * The total upload buffer in bytes allocated for the gateway. If no
-     * upload buffer is configured for the gateway, this field returns 0.
+     * Returns the value of the UploadBufferAllocatedInBytes property for
+     * this object.
      *
-     * @return The total upload buffer in bytes allocated for the gateway. If no
-     *         upload buffer is configured for the gateway, this field returns 0.
+     * @return The value of the UploadBufferAllocatedInBytes property for this
+     *         object.
      */
     public Long getUploadBufferAllocatedInBytes() {
         return uploadBufferAllocatedInBytes;
     }
     
     /**
-     * The total upload buffer in bytes allocated for the gateway. If no
-     * upload buffer is configured for the gateway, this field returns 0.
+     * Sets the value of the UploadBufferAllocatedInBytes property for this
+     * object.
      *
-     * @param uploadBufferAllocatedInBytes The total upload buffer in bytes allocated for the gateway. If no
-     *         upload buffer is configured for the gateway, this field returns 0.
+     * @param uploadBufferAllocatedInBytes The new value for the UploadBufferAllocatedInBytes property for this
+     *         object.
      */
     public void setUploadBufferAllocatedInBytes(Long uploadBufferAllocatedInBytes) {
         this.uploadBufferAllocatedInBytes = uploadBufferAllocatedInBytes;
     }
     
     /**
-     * The total upload buffer in bytes allocated for the gateway. If no
-     * upload buffer is configured for the gateway, this field returns 0.
+     * Sets the value of the UploadBufferAllocatedInBytes property for this
+     * object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param uploadBufferAllocatedInBytes The total upload buffer in bytes allocated for the gateway. If no
-     *         upload buffer is configured for the gateway, this field returns 0.
+     * @param uploadBufferAllocatedInBytes The new value for the UploadBufferAllocatedInBytes property for this
+     *         object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUploadBufferResult withUploadBufferAllocatedInBytes(Long uploadBufferAllocatedInBytes) {
         this.uploadBufferAllocatedInBytes = uploadBufferAllocatedInBytes;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -315,10 +247,10 @@ public class DescribeUploadBufferResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getDiskIds() != null) sb.append("DiskIds: " + getDiskIds() + ",");    	
-        if (getUploadBufferUsedInBytes() != null) sb.append("UploadBufferUsedInBytes: " + getUploadBufferUsedInBytes() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getDiskIds() != null) sb.append("DiskIds: " + getDiskIds() + ",");
+        if (getUploadBufferUsedInBytes() != null) sb.append("UploadBufferUsedInBytes: " + getUploadBufferUsedInBytes() + ",");
         if (getUploadBufferAllocatedInBytes() != null) sb.append("UploadBufferAllocatedInBytes: " + getUploadBufferAllocatedInBytes() );
         sb.append("}");
         return sb.toString();

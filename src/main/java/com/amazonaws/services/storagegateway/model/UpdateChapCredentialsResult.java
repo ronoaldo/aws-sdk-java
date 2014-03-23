@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * A JSON object containing the following fields:
  * </p>
- * 
- * <ul>
- * <li> UpdateChapCredentialsOutput$InitiatorName </li>
- * UpdateChapCredentialsOutput$TargetARN
- * </ul>
  */
-public class UpdateChapCredentialsResult  implements Serializable  {
+public class UpdateChapCredentialsResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the target. This is the same target
@@ -87,14 +83,13 @@ public class UpdateChapCredentialsResult  implements Serializable  {
      *         specified in the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateChapCredentialsResult withTargetARN(String targetARN) {
         this.targetARN = targetARN;
         return this;
     }
-    
-    
+
     /**
      * The iSCSI initiator that connects to the target. This is the same
      * initiator name specified in the request.
@@ -139,14 +134,13 @@ public class UpdateChapCredentialsResult  implements Serializable  {
      *         initiator name specified in the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateChapCredentialsResult withInitiatorName(String initiatorName) {
         this.initiatorName = initiatorName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +152,8 @@ public class UpdateChapCredentialsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");    	
+        sb.append("{");
+        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");
         if (getInitiatorName() != null) sb.append("InitiatorName: " + getInitiatorName() );
         sb.append("}");
         return sb.toString();

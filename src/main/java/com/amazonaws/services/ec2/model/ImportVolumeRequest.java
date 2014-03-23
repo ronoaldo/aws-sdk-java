@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,160 +13,191 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ImportVolumeRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#importVolume(ImportVolumeRequest) ImportVolume operation}.
- * 
+ * <p>
+ * Creates an import volume task using metadata from the specified disk
+ * image. After importing the image, you then upload it using the
+ * ec2-upload-disk-image command in the Amazon EC2 command-line interface
+ * (CLI) tools. For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UploadingYourInstancesandVolumes.html"> Using the Command Line Tools to Import Your Virtual Machine to Amazon EC2 </a>
+ * in the <i>Amazon Elastic Compute Cloud User Guide</i> .
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#importVolume(ImportVolumeRequest)
  */
-public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ImportVolumeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ImportVolumeRequest> {
 
+    /**
+     * The Availability Zone for the resulting Amazon EBS volume.
+     */
     private String availabilityZone;
 
+    /**
+     * 
+     */
     private DiskImageDetail image;
 
+    /**
+     * An optional description for the volume being imported.
+     */
     private String description;
 
+    /**
+     * 
+     */
     private VolumeDetail volume;
 
     /**
-     * Returns the value of the AvailabilityZone property for this object.
+     * The Availability Zone for the resulting Amazon EBS volume.
      *
-     * @return The value of the AvailabilityZone property for this object.
+     * @return The Availability Zone for the resulting Amazon EBS volume.
      */
     public String getAvailabilityZone() {
         return availabilityZone;
     }
     
     /**
-     * Sets the value of the AvailabilityZone property for this object.
+     * The Availability Zone for the resulting Amazon EBS volume.
      *
-     * @param availabilityZone The new value for the AvailabilityZone property for this object.
+     * @param availabilityZone The Availability Zone for the resulting Amazon EBS volume.
      */
     public void setAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
     }
     
     /**
-     * Sets the value of the AvailabilityZone property for this object.
+     * The Availability Zone for the resulting Amazon EBS volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZone The new value for the AvailabilityZone property for this object.
+     * @param availabilityZone The Availability Zone for the resulting Amazon EBS volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Image property for this object.
+     * 
      *
-     * @return The value of the Image property for this object.
+     * @return 
      */
     public DiskImageDetail getImage() {
         return image;
     }
     
     /**
-     * Sets the value of the Image property for this object.
+     * 
      *
-     * @param image The new value for the Image property for this object.
+     * @param image 
      */
     public void setImage(DiskImageDetail image) {
         this.image = image;
     }
     
     /**
-     * Sets the value of the Image property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param image The new value for the Image property for this object.
+     * @param image 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withImage(DiskImageDetail image) {
         this.image = image;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Description property for this object.
+     * An optional description for the volume being imported.
      *
-     * @return The value of the Description property for this object.
+     * @return An optional description for the volume being imported.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * An optional description for the volume being imported.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description An optional description for the volume being imported.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * Sets the value of the Description property for this object.
+     * An optional description for the volume being imported.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The new value for the Description property for this object.
+     * @param description An optional description for the volume being imported.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Volume property for this object.
+     * 
      *
-     * @return The value of the Volume property for this object.
+     * @return 
      */
     public VolumeDetail getVolume() {
         return volume;
     }
     
     /**
-     * Sets the value of the Volume property for this object.
+     * 
      *
-     * @param volume The new value for the Volume property for this object.
+     * @param volume 
      */
     public void setVolume(VolumeDetail volume) {
         this.volume = volume;
     }
     
     /**
-     * Sets the value of the Volume property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volume The new value for the Volume property for this object.
+     * @param volume 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ImportVolumeRequest withVolume(VolumeDetail volume) {
         this.volume = volume;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ImportVolumeRequest> getDryRunRequest() {
+        Request<ImportVolumeRequest> request = new ImportVolumeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -179,10 +210,10 @@ public class ImportVolumeRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getImage() != null) sb.append("Image: " + getImage() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getImage() != null) sb.append("Image: " + getImage() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getVolume() != null) sb.append("Volume: " + getVolume() );
         sb.append("}");
         return sb.toString();

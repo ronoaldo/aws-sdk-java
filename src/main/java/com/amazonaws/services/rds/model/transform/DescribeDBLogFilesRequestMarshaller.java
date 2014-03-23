@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DescribeDBLogFilesRequestMarshaller implements Marshaller<Request<D
     public Request<DescribeDBLogFilesRequest> marshall(DescribeDBLogFilesRequest describeDBLogFilesRequest) {
 
         if (describeDBLogFilesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeDBLogFilesRequest> request = new DefaultRequest<DescribeDBLogFilesRequest>(describeDBLogFilesRequest, "AmazonRDS");
         request.addParameter("Action", "DescribeDBLogFiles");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (describeDBLogFilesRequest.getDBInstanceIdentifier() != null) {
             request.addParameter("DBInstanceIdentifier", StringUtils.fromString(describeDBLogFilesRequest.getDBInstanceIdentifier()));
@@ -58,7 +58,6 @@ public class DescribeDBLogFilesRequestMarshaller implements Marshaller<Request<D
         if (describeDBLogFilesRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeDBLogFilesRequest.getMarker()));
         }
-
 
         return request;
     }

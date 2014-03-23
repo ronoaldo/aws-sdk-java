@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Links a CacheCluster to one or more CacheSecurityGroups.
+ * Represents a cache cluster's status within a particular cache security
+ * group.
  * </p>
  */
-public class CacheSecurityGroupMembership  implements Serializable  {
+public class CacheSecurityGroupMembership implements Serializable {
 
     /**
-     * The name of the Cache Security Group.
+     * The name of the cache security group.
      */
     private String cacheSecurityGroupName;
 
     /**
-     * The status of the CacheSecurityGroupMembership, the status changes
-     * either when a CacheSecurityGroup is modified, or when the
-     * CacheSecurityGroups assigned to a Cache Cluster are modified.
+     * The membership status in the cache security group. The status changes
+     * when a cache security group is modified, or when the cache security
+     * groups assigned to a cache cluster are modified.
      */
     private String status;
 
@@ -41,85 +43,83 @@ public class CacheSecurityGroupMembership  implements Serializable  {
     public CacheSecurityGroupMembership() {}
     
     /**
-     * The name of the Cache Security Group.
+     * The name of the cache security group.
      *
-     * @return The name of the Cache Security Group.
+     * @return The name of the cache security group.
      */
     public String getCacheSecurityGroupName() {
         return cacheSecurityGroupName;
     }
     
     /**
-     * The name of the Cache Security Group.
+     * The name of the cache security group.
      *
-     * @param cacheSecurityGroupName The name of the Cache Security Group.
+     * @param cacheSecurityGroupName The name of the cache security group.
      */
     public void setCacheSecurityGroupName(String cacheSecurityGroupName) {
         this.cacheSecurityGroupName = cacheSecurityGroupName;
     }
     
     /**
-     * The name of the Cache Security Group.
+     * The name of the cache security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheSecurityGroupName The name of the Cache Security Group.
+     * @param cacheSecurityGroupName The name of the cache security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheSecurityGroupMembership withCacheSecurityGroupName(String cacheSecurityGroupName) {
         this.cacheSecurityGroupName = cacheSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
-     * The status of the CacheSecurityGroupMembership, the status changes
-     * either when a CacheSecurityGroup is modified, or when the
-     * CacheSecurityGroups assigned to a Cache Cluster are modified.
+     * The membership status in the cache security group. The status changes
+     * when a cache security group is modified, or when the cache security
+     * groups assigned to a cache cluster are modified.
      *
-     * @return The status of the CacheSecurityGroupMembership, the status changes
-     *         either when a CacheSecurityGroup is modified, or when the
-     *         CacheSecurityGroups assigned to a Cache Cluster are modified.
+     * @return The membership status in the cache security group. The status changes
+     *         when a cache security group is modified, or when the cache security
+     *         groups assigned to a cache cluster are modified.
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * The status of the CacheSecurityGroupMembership, the status changes
-     * either when a CacheSecurityGroup is modified, or when the
-     * CacheSecurityGroups assigned to a Cache Cluster are modified.
+     * The membership status in the cache security group. The status changes
+     * when a cache security group is modified, or when the cache security
+     * groups assigned to a cache cluster are modified.
      *
-     * @param status The status of the CacheSecurityGroupMembership, the status changes
-     *         either when a CacheSecurityGroup is modified, or when the
-     *         CacheSecurityGroups assigned to a Cache Cluster are modified.
+     * @param status The membership status in the cache security group. The status changes
+     *         when a cache security group is modified, or when the cache security
+     *         groups assigned to a cache cluster are modified.
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * The status of the CacheSecurityGroupMembership, the status changes
-     * either when a CacheSecurityGroup is modified, or when the
-     * CacheSecurityGroups assigned to a Cache Cluster are modified.
+     * The membership status in the cache security group. The status changes
+     * when a cache security group is modified, or when the cache security
+     * groups assigned to a cache cluster are modified.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param status The status of the CacheSecurityGroupMembership, the status changes
-     *         either when a CacheSecurityGroup is modified, or when the
-     *         CacheSecurityGroups assigned to a Cache Cluster are modified.
+     * @param status The membership status in the cache security group. The status changes
+     *         when a cache security group is modified, or when the cache security
+     *         groups assigned to a cache cluster are modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CacheSecurityGroupMembership withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -131,8 +131,8 @@ public class CacheSecurityGroupMembership  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheSecurityGroupName() != null) sb.append("CacheSecurityGroupName: " + getCacheSecurityGroupName() + ",");    	
+        sb.append("{");
+        if (getCacheSecurityGroupName() != null) sb.append("CacheSecurityGroupName: " + getCacheSecurityGroupName() + ",");
         if (getStatus() != null) sb.append("Status: " + getStatus() );
         sb.append("}");
         return sb.toString();

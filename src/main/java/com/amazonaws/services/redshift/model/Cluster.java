@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a cluster.
  * </p>
  */
-public class Cluster  implements Serializable  {
+public class Cluster implements Serializable {
 
     /**
      * The unique identifier of the cluster.
@@ -82,20 +83,20 @@ public class Cluster  implements Serializable  {
      * Clusters that are created in a VPC use VPC security groups, which are
      * listed by the <b>VpcSecurityGroups</b> parameter.
      */
-    private java.util.List<ClusterSecurityGroupMembership> clusterSecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroupMembership> clusterSecurityGroups;
 
     /**
      * A list of Virtual Private Cloud (VPC) security groups that are
      * associated with the cluster. This parameter is returned only if the
      * cluster is in a VPC.
      */
-    private java.util.List<VpcSecurityGroupMembership> vpcSecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VpcSecurityGroupMembership> vpcSecurityGroups;
 
     /**
      * The list of cluster parameter groups that are associated with this
      * cluster.
      */
-    private java.util.List<ClusterParameterGroupStatus> clusterParameterGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroupStatus> clusterParameterGroups;
 
     /**
      * The name of the subnet group that is associated with the cluster. This
@@ -155,6 +156,40 @@ public class Cluster  implements Serializable  {
     private Boolean encrypted;
 
     /**
+     * Describes the status of a cluster restore action. Returns null if the
+     * cluster was not created by restoring a snapshot.
+     */
+    private RestoreStatus restoreStatus;
+
+    /**
+     * Reports whether the Amazon Redshift cluster has finished applying any
+     * HSM settings changes specified in a modify cluster command. <p>Values:
+     * active, applying
+     */
+    private HsmStatus hsmStatus;
+
+    /**
+     * Returns the destination region and retention period that are
+     * configured for cross-region snapshot copy.
+     */
+    private ClusterSnapshotCopyStatus clusterSnapshotCopyStatus;
+
+    /**
+     * The public key for the cluster.
+     */
+    private String clusterPublicKey;
+
+    /**
+     * The nodes in a cluster.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ClusterNode> clusterNodes;
+
+    /**
+     * Describes the status of the elastic IP (EIP) address.
+     */
+    private ElasticIpStatus elasticIpStatus;
+
+    /**
      * The unique identifier of the cluster.
      *
      * @return The unique identifier of the cluster.
@@ -180,14 +215,13 @@ public class Cluster  implements Serializable  {
      * @param clusterIdentifier The unique identifier of the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The node type for the nodes in the cluster.
      *
@@ -214,14 +248,13 @@ public class Cluster  implements Serializable  {
      * @param nodeType The node type for the nodes in the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * The current state of this cluster. Possible values include
      * <code>available</code>, <code>creating</code>, <code>deleting</code>,
@@ -260,14 +293,13 @@ public class Cluster  implements Serializable  {
      *         <code>rebooting</code>, and <code>resizing</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterStatus(String clusterStatus) {
         this.clusterStatus = clusterStatus;
         return this;
     }
-    
-    
+
     /**
      * The status of a modify operation, if any, initiated for the cluster.
      *
@@ -294,14 +326,13 @@ public class Cluster  implements Serializable  {
      * @param modifyStatus The status of a modify operation, if any, initiated for the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withModifyStatus(String modifyStatus) {
         this.modifyStatus = modifyStatus;
         return this;
     }
-    
-    
+
     /**
      * The master user name for the cluster. This name is used to connect to
      * the database that is specified in <b>DBName</b>.
@@ -334,14 +365,13 @@ public class Cluster  implements Serializable  {
      *         the database that is specified in <b>DBName</b>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withMasterUsername(String masterUsername) {
         this.masterUsername = masterUsername;
         return this;
     }
-    
-    
+
     /**
      * The name of the initial database that was created when the cluster was
      * created. This same name is returned for the life of the cluster. If an
@@ -386,14 +416,13 @@ public class Cluster  implements Serializable  {
      *         by default.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withDBName(String dBName) {
         this.dBName = dBName;
         return this;
     }
-    
-    
+
     /**
      * The connection endpoint.
      *
@@ -420,14 +449,13 @@ public class Cluster  implements Serializable  {
      * @param endpoint The connection endpoint.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withEndpoint(Endpoint endpoint) {
         this.endpoint = endpoint;
         return this;
     }
-    
-    
+
     /**
      * The date and time that the cluster was created.
      *
@@ -454,14 +482,13 @@ public class Cluster  implements Serializable  {
      * @param clusterCreateTime The date and time that the cluster was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterCreateTime(java.util.Date clusterCreateTime) {
         this.clusterCreateTime = clusterCreateTime;
         return this;
     }
-    
-    
+
     /**
      * The number of days that automatic cluster snapshots are retained.
      *
@@ -488,14 +515,13 @@ public class Cluster  implements Serializable  {
      * @param automatedSnapshotRetentionPeriod The number of days that automatic cluster snapshots are retained.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withAutomatedSnapshotRetentionPeriod(Integer automatedSnapshotRetentionPeriod) {
         this.automatedSnapshotRetentionPeriod = automatedSnapshotRetentionPeriod;
         return this;
     }
-    
-    
+
     /**
      * A list of cluster security group that are associated with the cluster.
      * Each security group is represented by an element that contains
@@ -514,9 +540,9 @@ public class Cluster  implements Serializable  {
      *         listed by the <b>VpcSecurityGroups</b> parameter.
      */
     public java.util.List<ClusterSecurityGroupMembership> getClusterSecurityGroups() {
-        
         if (clusterSecurityGroups == null) {
-            clusterSecurityGroups = new java.util.ArrayList<ClusterSecurityGroupMembership>();
+              clusterSecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroupMembership>();
+              clusterSecurityGroups.setAutoConstruct(true);
         }
         return clusterSecurityGroups;
     }
@@ -543,8 +569,7 @@ public class Cluster  implements Serializable  {
             this.clusterSecurityGroups = null;
             return;
         }
-
-        java.util.List<ClusterSecurityGroupMembership> clusterSecurityGroupsCopy = new java.util.ArrayList<ClusterSecurityGroupMembership>(clusterSecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroupMembership> clusterSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroupMembership>(clusterSecurityGroups.size());
         clusterSecurityGroupsCopy.addAll(clusterSecurityGroups);
         this.clusterSecurityGroups = clusterSecurityGroupsCopy;
     }
@@ -569,7 +594,7 @@ public class Cluster  implements Serializable  {
      *         listed by the <b>VpcSecurityGroups</b> parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterSecurityGroups(ClusterSecurityGroupMembership... clusterSecurityGroups) {
         if (getClusterSecurityGroups() == null) setClusterSecurityGroups(new java.util.ArrayList<ClusterSecurityGroupMembership>(clusterSecurityGroups.length));
@@ -599,20 +624,20 @@ public class Cluster  implements Serializable  {
      *         listed by the <b>VpcSecurityGroups</b> parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterSecurityGroups(java.util.Collection<ClusterSecurityGroupMembership> clusterSecurityGroups) {
         if (clusterSecurityGroups == null) {
             this.clusterSecurityGroups = null;
         } else {
-            java.util.List<ClusterSecurityGroupMembership> clusterSecurityGroupsCopy = new java.util.ArrayList<ClusterSecurityGroupMembership>(clusterSecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroupMembership> clusterSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroupMembership>(clusterSecurityGroups.size());
             clusterSecurityGroupsCopy.addAll(clusterSecurityGroups);
             this.clusterSecurityGroups = clusterSecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of Virtual Private Cloud (VPC) security groups that are
      * associated with the cluster. This parameter is returned only if the
@@ -623,9 +648,9 @@ public class Cluster  implements Serializable  {
      *         cluster is in a VPC.
      */
     public java.util.List<VpcSecurityGroupMembership> getVpcSecurityGroups() {
-        
         if (vpcSecurityGroups == null) {
-            vpcSecurityGroups = new java.util.ArrayList<VpcSecurityGroupMembership>();
+              vpcSecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<VpcSecurityGroupMembership>();
+              vpcSecurityGroups.setAutoConstruct(true);
         }
         return vpcSecurityGroups;
     }
@@ -644,8 +669,7 @@ public class Cluster  implements Serializable  {
             this.vpcSecurityGroups = null;
             return;
         }
-
-        java.util.List<VpcSecurityGroupMembership> vpcSecurityGroupsCopy = new java.util.ArrayList<VpcSecurityGroupMembership>(vpcSecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VpcSecurityGroupMembership> vpcSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpcSecurityGroupMembership>(vpcSecurityGroups.size());
         vpcSecurityGroupsCopy.addAll(vpcSecurityGroups);
         this.vpcSecurityGroups = vpcSecurityGroupsCopy;
     }
@@ -662,7 +686,7 @@ public class Cluster  implements Serializable  {
      *         cluster is in a VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withVpcSecurityGroups(VpcSecurityGroupMembership... vpcSecurityGroups) {
         if (getVpcSecurityGroups() == null) setVpcSecurityGroups(new java.util.ArrayList<VpcSecurityGroupMembership>(vpcSecurityGroups.length));
@@ -684,20 +708,20 @@ public class Cluster  implements Serializable  {
      *         cluster is in a VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withVpcSecurityGroups(java.util.Collection<VpcSecurityGroupMembership> vpcSecurityGroups) {
         if (vpcSecurityGroups == null) {
             this.vpcSecurityGroups = null;
         } else {
-            java.util.List<VpcSecurityGroupMembership> vpcSecurityGroupsCopy = new java.util.ArrayList<VpcSecurityGroupMembership>(vpcSecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VpcSecurityGroupMembership> vpcSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpcSecurityGroupMembership>(vpcSecurityGroups.size());
             vpcSecurityGroupsCopy.addAll(vpcSecurityGroups);
             this.vpcSecurityGroups = vpcSecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The list of cluster parameter groups that are associated with this
      * cluster.
@@ -706,9 +730,9 @@ public class Cluster  implements Serializable  {
      *         cluster.
      */
     public java.util.List<ClusterParameterGroupStatus> getClusterParameterGroups() {
-        
         if (clusterParameterGroups == null) {
-            clusterParameterGroups = new java.util.ArrayList<ClusterParameterGroupStatus>();
+              clusterParameterGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroupStatus>();
+              clusterParameterGroups.setAutoConstruct(true);
         }
         return clusterParameterGroups;
     }
@@ -725,8 +749,7 @@ public class Cluster  implements Serializable  {
             this.clusterParameterGroups = null;
             return;
         }
-
-        java.util.List<ClusterParameterGroupStatus> clusterParameterGroupsCopy = new java.util.ArrayList<ClusterParameterGroupStatus>(clusterParameterGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroupStatus> clusterParameterGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroupStatus>(clusterParameterGroups.size());
         clusterParameterGroupsCopy.addAll(clusterParameterGroups);
         this.clusterParameterGroups = clusterParameterGroupsCopy;
     }
@@ -741,7 +764,7 @@ public class Cluster  implements Serializable  {
      *         cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterParameterGroups(ClusterParameterGroupStatus... clusterParameterGroups) {
         if (getClusterParameterGroups() == null) setClusterParameterGroups(new java.util.ArrayList<ClusterParameterGroupStatus>(clusterParameterGroups.length));
@@ -761,20 +784,20 @@ public class Cluster  implements Serializable  {
      *         cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterParameterGroups(java.util.Collection<ClusterParameterGroupStatus> clusterParameterGroups) {
         if (clusterParameterGroups == null) {
             this.clusterParameterGroups = null;
         } else {
-            java.util.List<ClusterParameterGroupStatus> clusterParameterGroupsCopy = new java.util.ArrayList<ClusterParameterGroupStatus>(clusterParameterGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroupStatus> clusterParameterGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterParameterGroupStatus>(clusterParameterGroups.size());
             clusterParameterGroupsCopy.addAll(clusterParameterGroups);
             this.clusterParameterGroups = clusterParameterGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The name of the subnet group that is associated with the cluster. This
      * parameter is valid only when the cluster is in a VPC.
@@ -807,14 +830,13 @@ public class Cluster  implements Serializable  {
      *         parameter is valid only when the cluster is in a VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterSubnetGroupName(String clusterSubnetGroupName) {
         this.clusterSubnetGroupName = clusterSubnetGroupName;
         return this;
     }
-    
-    
+
     /**
      * The identifier of the VPC the cluster is in, if the cluster is in a
      * VPC.
@@ -847,14 +869,13 @@ public class Cluster  implements Serializable  {
      *         VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
-    
+
     /**
      * The name of the Availability Zone in which the cluster is located.
      *
@@ -881,14 +902,13 @@ public class Cluster  implements Serializable  {
      * @param availabilityZone The name of the Availability Zone in which the cluster is located.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * The weekly time range (in UTC) during which system maintenance can
      * occur.
@@ -921,14 +941,13 @@ public class Cluster  implements Serializable  {
      *         occur.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
         this.preferredMaintenanceWindow = preferredMaintenanceWindow;
         return this;
     }
-    
-    
+
     /**
      * If present, changes to the cluster are pending. Specific pending
      * changes are identified by subelements.
@@ -961,14 +980,13 @@ public class Cluster  implements Serializable  {
      *         changes are identified by subelements.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withPendingModifiedValues(PendingModifiedValues pendingModifiedValues) {
         this.pendingModifiedValues = pendingModifiedValues;
         return this;
     }
-    
-    
+
     /**
      * The version ID of the Amazon Redshift engine that is running on the
      * cluster.
@@ -1001,14 +1019,13 @@ public class Cluster  implements Serializable  {
      *         cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, version upgrades will be applied automatically
      * to the cluster during the maintenance window.
@@ -1041,14 +1058,13 @@ public class Cluster  implements Serializable  {
      *         to the cluster during the maintenance window.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withAllowVersionUpgrade(Boolean allowVersionUpgrade) {
         this.allowVersionUpgrade = allowVersionUpgrade;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, version upgrades will be applied automatically
      * to the cluster during the maintenance window.
@@ -1059,7 +1075,7 @@ public class Cluster  implements Serializable  {
     public Boolean getAllowVersionUpgrade() {
         return allowVersionUpgrade;
     }
-    
+
     /**
      * The number of compute nodes in the cluster.
      *
@@ -1086,14 +1102,13 @@ public class Cluster  implements Serializable  {
      * @param numberOfNodes The number of compute nodes in the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withNumberOfNodes(Integer numberOfNodes) {
         this.numberOfNodes = numberOfNodes;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, the cluster can be accessed from a public
      * network.
@@ -1126,14 +1141,13 @@ public class Cluster  implements Serializable  {
      *         network.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withPubliclyAccessible(Boolean publiclyAccessible) {
         this.publiclyAccessible = publiclyAccessible;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, the cluster can be accessed from a public
      * network.
@@ -1144,7 +1158,7 @@ public class Cluster  implements Serializable  {
     public Boolean getPubliclyAccessible() {
         return publiclyAccessible;
     }
-    
+
     /**
      * If <code>true</code>, data in cluster is encrypted at rest.
      *
@@ -1171,14 +1185,13 @@ public class Cluster  implements Serializable  {
      * @param encrypted If <code>true</code>, data in cluster is encrypted at rest.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Cluster withEncrypted(Boolean encrypted) {
         this.encrypted = encrypted;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, data in cluster is encrypted at rest.
      *
@@ -1187,7 +1200,264 @@ public class Cluster  implements Serializable  {
     public Boolean getEncrypted() {
         return encrypted;
     }
+
+    /**
+     * Describes the status of a cluster restore action. Returns null if the
+     * cluster was not created by restoring a snapshot.
+     *
+     * @return Describes the status of a cluster restore action. Returns null if the
+     *         cluster was not created by restoring a snapshot.
+     */
+    public RestoreStatus getRestoreStatus() {
+        return restoreStatus;
+    }
     
+    /**
+     * Describes the status of a cluster restore action. Returns null if the
+     * cluster was not created by restoring a snapshot.
+     *
+     * @param restoreStatus Describes the status of a cluster restore action. Returns null if the
+     *         cluster was not created by restoring a snapshot.
+     */
+    public void setRestoreStatus(RestoreStatus restoreStatus) {
+        this.restoreStatus = restoreStatus;
+    }
+    
+    /**
+     * Describes the status of a cluster restore action. Returns null if the
+     * cluster was not created by restoring a snapshot.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param restoreStatus Describes the status of a cluster restore action. Returns null if the
+     *         cluster was not created by restoring a snapshot.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Cluster withRestoreStatus(RestoreStatus restoreStatus) {
+        this.restoreStatus = restoreStatus;
+        return this;
+    }
+
+    /**
+     * Reports whether the Amazon Redshift cluster has finished applying any
+     * HSM settings changes specified in a modify cluster command. <p>Values:
+     * active, applying
+     *
+     * @return Reports whether the Amazon Redshift cluster has finished applying any
+     *         HSM settings changes specified in a modify cluster command. <p>Values:
+     *         active, applying
+     */
+    public HsmStatus getHsmStatus() {
+        return hsmStatus;
+    }
+    
+    /**
+     * Reports whether the Amazon Redshift cluster has finished applying any
+     * HSM settings changes specified in a modify cluster command. <p>Values:
+     * active, applying
+     *
+     * @param hsmStatus Reports whether the Amazon Redshift cluster has finished applying any
+     *         HSM settings changes specified in a modify cluster command. <p>Values:
+     *         active, applying
+     */
+    public void setHsmStatus(HsmStatus hsmStatus) {
+        this.hsmStatus = hsmStatus;
+    }
+    
+    /**
+     * Reports whether the Amazon Redshift cluster has finished applying any
+     * HSM settings changes specified in a modify cluster command. <p>Values:
+     * active, applying
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param hsmStatus Reports whether the Amazon Redshift cluster has finished applying any
+     *         HSM settings changes specified in a modify cluster command. <p>Values:
+     *         active, applying
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Cluster withHsmStatus(HsmStatus hsmStatus) {
+        this.hsmStatus = hsmStatus;
+        return this;
+    }
+
+    /**
+     * Returns the destination region and retention period that are
+     * configured for cross-region snapshot copy.
+     *
+     * @return Returns the destination region and retention period that are
+     *         configured for cross-region snapshot copy.
+     */
+    public ClusterSnapshotCopyStatus getClusterSnapshotCopyStatus() {
+        return clusterSnapshotCopyStatus;
+    }
+    
+    /**
+     * Returns the destination region and retention period that are
+     * configured for cross-region snapshot copy.
+     *
+     * @param clusterSnapshotCopyStatus Returns the destination region and retention period that are
+     *         configured for cross-region snapshot copy.
+     */
+    public void setClusterSnapshotCopyStatus(ClusterSnapshotCopyStatus clusterSnapshotCopyStatus) {
+        this.clusterSnapshotCopyStatus = clusterSnapshotCopyStatus;
+    }
+    
+    /**
+     * Returns the destination region and retention period that are
+     * configured for cross-region snapshot copy.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param clusterSnapshotCopyStatus Returns the destination region and retention period that are
+     *         configured for cross-region snapshot copy.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Cluster withClusterSnapshotCopyStatus(ClusterSnapshotCopyStatus clusterSnapshotCopyStatus) {
+        this.clusterSnapshotCopyStatus = clusterSnapshotCopyStatus;
+        return this;
+    }
+
+    /**
+     * The public key for the cluster.
+     *
+     * @return The public key for the cluster.
+     */
+    public String getClusterPublicKey() {
+        return clusterPublicKey;
+    }
+    
+    /**
+     * The public key for the cluster.
+     *
+     * @param clusterPublicKey The public key for the cluster.
+     */
+    public void setClusterPublicKey(String clusterPublicKey) {
+        this.clusterPublicKey = clusterPublicKey;
+    }
+    
+    /**
+     * The public key for the cluster.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param clusterPublicKey The public key for the cluster.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Cluster withClusterPublicKey(String clusterPublicKey) {
+        this.clusterPublicKey = clusterPublicKey;
+        return this;
+    }
+
+    /**
+     * The nodes in a cluster.
+     *
+     * @return The nodes in a cluster.
+     */
+    public java.util.List<ClusterNode> getClusterNodes() {
+        if (clusterNodes == null) {
+              clusterNodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterNode>();
+              clusterNodes.setAutoConstruct(true);
+        }
+        return clusterNodes;
+    }
+    
+    /**
+     * The nodes in a cluster.
+     *
+     * @param clusterNodes The nodes in a cluster.
+     */
+    public void setClusterNodes(java.util.Collection<ClusterNode> clusterNodes) {
+        if (clusterNodes == null) {
+            this.clusterNodes = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<ClusterNode> clusterNodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterNode>(clusterNodes.size());
+        clusterNodesCopy.addAll(clusterNodes);
+        this.clusterNodes = clusterNodesCopy;
+    }
+    
+    /**
+     * The nodes in a cluster.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param clusterNodes The nodes in a cluster.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Cluster withClusterNodes(ClusterNode... clusterNodes) {
+        if (getClusterNodes() == null) setClusterNodes(new java.util.ArrayList<ClusterNode>(clusterNodes.length));
+        for (ClusterNode value : clusterNodes) {
+            getClusterNodes().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * The nodes in a cluster.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param clusterNodes The nodes in a cluster.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Cluster withClusterNodes(java.util.Collection<ClusterNode> clusterNodes) {
+        if (clusterNodes == null) {
+            this.clusterNodes = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<ClusterNode> clusterNodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterNode>(clusterNodes.size());
+            clusterNodesCopy.addAll(clusterNodes);
+            this.clusterNodes = clusterNodesCopy;
+        }
+
+        return this;
+    }
+
+    /**
+     * Describes the status of the elastic IP (EIP) address.
+     *
+     * @return Describes the status of the elastic IP (EIP) address.
+     */
+    public ElasticIpStatus getElasticIpStatus() {
+        return elasticIpStatus;
+    }
+    
+    /**
+     * Describes the status of the elastic IP (EIP) address.
+     *
+     * @param elasticIpStatus Describes the status of the elastic IP (EIP) address.
+     */
+    public void setElasticIpStatus(ElasticIpStatus elasticIpStatus) {
+        this.elasticIpStatus = elasticIpStatus;
+    }
+    
+    /**
+     * Describes the status of the elastic IP (EIP) address.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param elasticIpStatus Describes the status of the elastic IP (EIP) address.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public Cluster withElasticIpStatus(ElasticIpStatus elasticIpStatus) {
+        this.elasticIpStatus = elasticIpStatus;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1199,29 +1469,35 @@ public class Cluster  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
-        if (getClusterStatus() != null) sb.append("ClusterStatus: " + getClusterStatus() + ",");    	
-        if (getModifyStatus() != null) sb.append("ModifyStatus: " + getModifyStatus() + ",");    	
-        if (getMasterUsername() != null) sb.append("MasterUsername: " + getMasterUsername() + ",");    	
-        if (getDBName() != null) sb.append("DBName: " + getDBName() + ",");    	
-        if (getEndpoint() != null) sb.append("Endpoint: " + getEndpoint() + ",");    	
-        if (getClusterCreateTime() != null) sb.append("ClusterCreateTime: " + getClusterCreateTime() + ",");    	
-        if (getAutomatedSnapshotRetentionPeriod() != null) sb.append("AutomatedSnapshotRetentionPeriod: " + getAutomatedSnapshotRetentionPeriod() + ",");    	
-        if (getClusterSecurityGroups() != null) sb.append("ClusterSecurityGroups: " + getClusterSecurityGroups() + ",");    	
-        if (getVpcSecurityGroups() != null) sb.append("VpcSecurityGroups: " + getVpcSecurityGroups() + ",");    	
-        if (getClusterParameterGroups() != null) sb.append("ClusterParameterGroups: " + getClusterParameterGroups() + ",");    	
-        if (getClusterSubnetGroupName() != null) sb.append("ClusterSubnetGroupName: " + getClusterSubnetGroupName() + ",");    	
-        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
-        if (getPreferredMaintenanceWindow() != null) sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");    	
-        if (getPendingModifiedValues() != null) sb.append("PendingModifiedValues: " + getPendingModifiedValues() + ",");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
-        if (isAllowVersionUpgrade() != null) sb.append("AllowVersionUpgrade: " + isAllowVersionUpgrade() + ",");    	
-        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");    	
-        if (isPubliclyAccessible() != null) sb.append("PubliclyAccessible: " + isPubliclyAccessible() + ",");    	
-        if (isEncrypted() != null) sb.append("Encrypted: " + isEncrypted() );
+        sb.append("{");
+        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
+        if (getClusterStatus() != null) sb.append("ClusterStatus: " + getClusterStatus() + ",");
+        if (getModifyStatus() != null) sb.append("ModifyStatus: " + getModifyStatus() + ",");
+        if (getMasterUsername() != null) sb.append("MasterUsername: " + getMasterUsername() + ",");
+        if (getDBName() != null) sb.append("DBName: " + getDBName() + ",");
+        if (getEndpoint() != null) sb.append("Endpoint: " + getEndpoint() + ",");
+        if (getClusterCreateTime() != null) sb.append("ClusterCreateTime: " + getClusterCreateTime() + ",");
+        if (getAutomatedSnapshotRetentionPeriod() != null) sb.append("AutomatedSnapshotRetentionPeriod: " + getAutomatedSnapshotRetentionPeriod() + ",");
+        if (getClusterSecurityGroups() != null) sb.append("ClusterSecurityGroups: " + getClusterSecurityGroups() + ",");
+        if (getVpcSecurityGroups() != null) sb.append("VpcSecurityGroups: " + getVpcSecurityGroups() + ",");
+        if (getClusterParameterGroups() != null) sb.append("ClusterParameterGroups: " + getClusterParameterGroups() + ",");
+        if (getClusterSubnetGroupName() != null) sb.append("ClusterSubnetGroupName: " + getClusterSubnetGroupName() + ",");
+        if (getVpcId() != null) sb.append("VpcId: " + getVpcId() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
+        if (getPreferredMaintenanceWindow() != null) sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+        if (getPendingModifiedValues() != null) sb.append("PendingModifiedValues: " + getPendingModifiedValues() + ",");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
+        if (isAllowVersionUpgrade() != null) sb.append("AllowVersionUpgrade: " + isAllowVersionUpgrade() + ",");
+        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");
+        if (isPubliclyAccessible() != null) sb.append("PubliclyAccessible: " + isPubliclyAccessible() + ",");
+        if (isEncrypted() != null) sb.append("Encrypted: " + isEncrypted() + ",");
+        if (getRestoreStatus() != null) sb.append("RestoreStatus: " + getRestoreStatus() + ",");
+        if (getHsmStatus() != null) sb.append("HsmStatus: " + getHsmStatus() + ",");
+        if (getClusterSnapshotCopyStatus() != null) sb.append("ClusterSnapshotCopyStatus: " + getClusterSnapshotCopyStatus() + ",");
+        if (getClusterPublicKey() != null) sb.append("ClusterPublicKey: " + getClusterPublicKey() + ",");
+        if (getClusterNodes() != null) sb.append("ClusterNodes: " + getClusterNodes() + ",");
+        if (getElasticIpStatus() != null) sb.append("ElasticIpStatus: " + getElasticIpStatus() );
         sb.append("}");
         return sb.toString();
     }
@@ -1253,6 +1529,12 @@ public class Cluster  implements Serializable  {
         hashCode = prime * hashCode + ((getNumberOfNodes() == null) ? 0 : getNumberOfNodes().hashCode()); 
         hashCode = prime * hashCode + ((isPubliclyAccessible() == null) ? 0 : isPubliclyAccessible().hashCode()); 
         hashCode = prime * hashCode + ((isEncrypted() == null) ? 0 : isEncrypted().hashCode()); 
+        hashCode = prime * hashCode + ((getRestoreStatus() == null) ? 0 : getRestoreStatus().hashCode()); 
+        hashCode = prime * hashCode + ((getHsmStatus() == null) ? 0 : getHsmStatus().hashCode()); 
+        hashCode = prime * hashCode + ((getClusterSnapshotCopyStatus() == null) ? 0 : getClusterSnapshotCopyStatus().hashCode()); 
+        hashCode = prime * hashCode + ((getClusterPublicKey() == null) ? 0 : getClusterPublicKey().hashCode()); 
+        hashCode = prime * hashCode + ((getClusterNodes() == null) ? 0 : getClusterNodes().hashCode()); 
+        hashCode = prime * hashCode + ((getElasticIpStatus() == null) ? 0 : getElasticIpStatus().hashCode()); 
         return hashCode;
     }
     
@@ -1308,6 +1590,18 @@ public class Cluster  implements Serializable  {
         if (other.isPubliclyAccessible() != null && other.isPubliclyAccessible().equals(this.isPubliclyAccessible()) == false) return false; 
         if (other.isEncrypted() == null ^ this.isEncrypted() == null) return false;
         if (other.isEncrypted() != null && other.isEncrypted().equals(this.isEncrypted()) == false) return false; 
+        if (other.getRestoreStatus() == null ^ this.getRestoreStatus() == null) return false;
+        if (other.getRestoreStatus() != null && other.getRestoreStatus().equals(this.getRestoreStatus()) == false) return false; 
+        if (other.getHsmStatus() == null ^ this.getHsmStatus() == null) return false;
+        if (other.getHsmStatus() != null && other.getHsmStatus().equals(this.getHsmStatus()) == false) return false; 
+        if (other.getClusterSnapshotCopyStatus() == null ^ this.getClusterSnapshotCopyStatus() == null) return false;
+        if (other.getClusterSnapshotCopyStatus() != null && other.getClusterSnapshotCopyStatus().equals(this.getClusterSnapshotCopyStatus()) == false) return false; 
+        if (other.getClusterPublicKey() == null ^ this.getClusterPublicKey() == null) return false;
+        if (other.getClusterPublicKey() != null && other.getClusterPublicKey().equals(this.getClusterPublicKey()) == false) return false; 
+        if (other.getClusterNodes() == null ^ this.getClusterNodes() == null) return false;
+        if (other.getClusterNodes() != null && other.getClusterNodes().equals(this.getClusterNodes()) == false) return false; 
+        if (other.getElasticIpStatus() == null ^ this.getElasticIpStatus() == null) return false;
+        if (other.getElasticIpStatus() != null && other.getElasticIpStatus().equals(this.getElasticIpStatus()) == false) return false; 
         return true;
     }
     

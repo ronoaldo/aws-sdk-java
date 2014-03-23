@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Configuration settings registered with the activity type.
  * </p>
  */
-public class ActivityTypeConfiguration  implements Serializable  {
+public class ActivityTypeConfiguration implements Serializable {
 
     /**
      * The optional default maximum duration for tasks of an activity type
@@ -166,14 +167,13 @@ public class ActivityTypeConfiguration  implements Serializable  {
      *         can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeConfiguration withDefaultTaskStartToCloseTimeout(String defaultTaskStartToCloseTimeout) {
         this.defaultTaskStartToCloseTimeout = defaultTaskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The optional default maximum time, specified when registering the
      * activity type, before which a worker processing a task must report
@@ -281,14 +281,13 @@ public class ActivityTypeConfiguration  implements Serializable  {
      *         duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeConfiguration withDefaultTaskHeartbeatTimeout(String defaultTaskHeartbeatTimeout) {
         this.defaultTaskHeartbeatTimeout = defaultTaskHeartbeatTimeout;
         return this;
     }
-    
-    
+
     /**
      * The optional default task list specified for this activity type at
      * registration. This default task list is used if a task list is not
@@ -345,14 +344,13 @@ public class ActivityTypeConfiguration  implements Serializable  {
      *         <code>ScheduleActivityTask</code> <a>Decision</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeConfiguration withDefaultTaskList(TaskList defaultTaskList) {
         this.defaultTaskList = defaultTaskList;
         return this;
     }
-    
-    
+
     /**
      * The optional default maximum duration, specified when registering the
      * activity type, that a task of an activity type can wait before being
@@ -430,14 +428,13 @@ public class ActivityTypeConfiguration  implements Serializable  {
      *         duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeConfiguration withDefaultTaskScheduleToStartTimeout(String defaultTaskScheduleToStartTimeout) {
         this.defaultTaskScheduleToStartTimeout = defaultTaskScheduleToStartTimeout;
         return this;
     }
-    
-    
+
     /**
      * The optional default maximum duration, specified when registering the
      * activity type, for tasks of this activity type. You can override this
@@ -509,14 +506,13 @@ public class ActivityTypeConfiguration  implements Serializable  {
      *         can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeConfiguration withDefaultTaskScheduleToCloseTimeout(String defaultTaskScheduleToCloseTimeout) {
         this.defaultTaskScheduleToCloseTimeout = defaultTaskScheduleToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -528,11 +524,11 @@ public class ActivityTypeConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDefaultTaskStartToCloseTimeout() != null) sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");    	
-        if (getDefaultTaskHeartbeatTimeout() != null) sb.append("DefaultTaskHeartbeatTimeout: " + getDefaultTaskHeartbeatTimeout() + ",");    	
-        if (getDefaultTaskList() != null) sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");    	
-        if (getDefaultTaskScheduleToStartTimeout() != null) sb.append("DefaultTaskScheduleToStartTimeout: " + getDefaultTaskScheduleToStartTimeout() + ",");    	
+        sb.append("{");
+        if (getDefaultTaskStartToCloseTimeout() != null) sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");
+        if (getDefaultTaskHeartbeatTimeout() != null) sb.append("DefaultTaskHeartbeatTimeout: " + getDefaultTaskHeartbeatTimeout() + ",");
+        if (getDefaultTaskList() != null) sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");
+        if (getDefaultTaskScheduleToStartTimeout() != null) sb.append("DefaultTaskScheduleToStartTimeout: " + getDefaultTaskScheduleToStartTimeout() + ",");
         if (getDefaultTaskScheduleToCloseTimeout() != null) sb.append("DefaultTaskScheduleToCloseTimeout: " + getDefaultTaskScheduleToCloseTimeout() );
         sb.append("}");
         return sb.toString();

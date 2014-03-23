@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,62 +13,66 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * For each message in the batch, the response contains a
+ * SendMessageBatchResultEntry tag if the message succeeds or a
+ * BatchResultErrorEntry tag if the message fails.
+ * </p>
  */
-public class SendMessageBatchResult  implements Serializable  {
+public class SendMessageBatchResult implements Serializable {
 
     /**
-     * A list of <a>SendMessageBatchResultEntry</a>s.
+     * A list of <a>SendMessageBatchResultEntry</a> items.
      */
-    private java.util.List<SendMessageBatchResultEntry> successful;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SendMessageBatchResultEntry> successful;
 
     /**
-     * A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     * each message that could not be enqueued.
+     * A list of <a>BatchResultErrorEntry</a> items with the error detail
+     * about each message that could not be enqueued.
      */
-    private java.util.List<BatchResultErrorEntry> failed;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry> failed;
 
     /**
-     * A list of <a>SendMessageBatchResultEntry</a>s.
+     * A list of <a>SendMessageBatchResultEntry</a> items.
      *
-     * @return A list of <a>SendMessageBatchResultEntry</a>s.
+     * @return A list of <a>SendMessageBatchResultEntry</a> items.
      */
     public java.util.List<SendMessageBatchResultEntry> getSuccessful() {
-        
         if (successful == null) {
-            successful = new java.util.ArrayList<SendMessageBatchResultEntry>();
+              successful = new com.amazonaws.internal.ListWithAutoConstructFlag<SendMessageBatchResultEntry>();
+              successful.setAutoConstruct(true);
         }
         return successful;
     }
     
     /**
-     * A list of <a>SendMessageBatchResultEntry</a>s.
+     * A list of <a>SendMessageBatchResultEntry</a> items.
      *
-     * @param successful A list of <a>SendMessageBatchResultEntry</a>s.
+     * @param successful A list of <a>SendMessageBatchResultEntry</a> items.
      */
     public void setSuccessful(java.util.Collection<SendMessageBatchResultEntry> successful) {
         if (successful == null) {
             this.successful = null;
             return;
         }
-
-        java.util.List<SendMessageBatchResultEntry> successfulCopy = new java.util.ArrayList<SendMessageBatchResultEntry>(successful.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SendMessageBatchResultEntry> successfulCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SendMessageBatchResultEntry>(successful.size());
         successfulCopy.addAll(successful);
         this.successful = successfulCopy;
     }
     
     /**
-     * A list of <a>SendMessageBatchResultEntry</a>s.
+     * A list of <a>SendMessageBatchResultEntry</a> items.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param successful A list of <a>SendMessageBatchResultEntry</a>s.
+     * @param successful A list of <a>SendMessageBatchResultEntry</a> items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchResult withSuccessful(SendMessageBatchResultEntry... successful) {
         if (getSuccessful() == null) setSuccessful(new java.util.ArrayList<SendMessageBatchResultEntry>(successful.length));
@@ -79,71 +83,70 @@ public class SendMessageBatchResult  implements Serializable  {
     }
     
     /**
-     * A list of <a>SendMessageBatchResultEntry</a>s.
+     * A list of <a>SendMessageBatchResultEntry</a> items.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param successful A list of <a>SendMessageBatchResultEntry</a>s.
+     * @param successful A list of <a>SendMessageBatchResultEntry</a> items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchResult withSuccessful(java.util.Collection<SendMessageBatchResultEntry> successful) {
         if (successful == null) {
             this.successful = null;
         } else {
-            java.util.List<SendMessageBatchResultEntry> successfulCopy = new java.util.ArrayList<SendMessageBatchResultEntry>(successful.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SendMessageBatchResultEntry> successfulCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SendMessageBatchResultEntry>(successful.size());
             successfulCopy.addAll(successful);
             this.successful = successfulCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     * each message that could not be enqueued.
+     * A list of <a>BatchResultErrorEntry</a> items with the error detail
+     * about each message that could not be enqueued.
      *
-     * @return A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     *         each message that could not be enqueued.
+     * @return A list of <a>BatchResultErrorEntry</a> items with the error detail
+     *         about each message that could not be enqueued.
      */
     public java.util.List<BatchResultErrorEntry> getFailed() {
-        
         if (failed == null) {
-            failed = new java.util.ArrayList<BatchResultErrorEntry>();
+              failed = new com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry>();
+              failed.setAutoConstruct(true);
         }
         return failed;
     }
     
     /**
-     * A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     * each message that could not be enqueued.
+     * A list of <a>BatchResultErrorEntry</a> items with the error detail
+     * about each message that could not be enqueued.
      *
-     * @param failed A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     *         each message that could not be enqueued.
+     * @param failed A list of <a>BatchResultErrorEntry</a> items with the error detail
+     *         about each message that could not be enqueued.
      */
     public void setFailed(java.util.Collection<BatchResultErrorEntry> failed) {
         if (failed == null) {
             this.failed = null;
             return;
         }
-
-        java.util.List<BatchResultErrorEntry> failedCopy = new java.util.ArrayList<BatchResultErrorEntry>(failed.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry> failedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry>(failed.size());
         failedCopy.addAll(failed);
         this.failed = failedCopy;
     }
     
     /**
-     * A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     * each message that could not be enqueued.
+     * A list of <a>BatchResultErrorEntry</a> items with the error detail
+     * about each message that could not be enqueued.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param failed A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     *         each message that could not be enqueued.
+     * @param failed A list of <a>BatchResultErrorEntry</a> items with the error detail
+     *         about each message that could not be enqueued.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchResult withFailed(BatchResultErrorEntry... failed) {
         if (getFailed() == null) setFailed(new java.util.ArrayList<BatchResultErrorEntry>(failed.length));
@@ -154,29 +157,29 @@ public class SendMessageBatchResult  implements Serializable  {
     }
     
     /**
-     * A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     * each message that could not be enqueued.
+     * A list of <a>BatchResultErrorEntry</a> items with the error detail
+     * about each message that could not be enqueued.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param failed A list of <a>BatchResultErrorEntry</a>s with the error detail about
-     *         each message that could not be enqueued.
+     * @param failed A list of <a>BatchResultErrorEntry</a> items with the error detail
+     *         about each message that could not be enqueued.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchResult withFailed(java.util.Collection<BatchResultErrorEntry> failed) {
         if (failed == null) {
             this.failed = null;
         } else {
-            java.util.List<BatchResultErrorEntry> failedCopy = new java.util.ArrayList<BatchResultErrorEntry>(failed.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry> failedCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<BatchResultErrorEntry>(failed.size());
             failedCopy.addAll(failed);
             this.failed = failedCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -188,8 +191,8 @@ public class SendMessageBatchResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSuccessful() != null) sb.append("Successful: " + getSuccessful() + ",");    	
+        sb.append("{");
+        if (getSuccessful() != null) sb.append("Successful: " + getSuccessful() + ",");
         if (getFailed() != null) sb.append("Failed: " + getFailed() );
         sb.append("}");
         return sb.toString();

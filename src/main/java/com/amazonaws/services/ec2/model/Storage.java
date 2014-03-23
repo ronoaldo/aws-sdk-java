@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes the storage destination for a BundleTask when bundling a Windows instance.
+ * Describes the storage location for an instance store-backed AMI.
  * </p>
  */
-public class Storage  implements Serializable  {
+public class Storage implements Serializable {
 
     /**
-     * The details of S3 storage for bundling a Windows instance.
+     * An Amazon S3 storage location.
      */
     private S3Storage s3;
 
     /**
-     * The details of S3 storage for bundling a Windows instance.
+     * An Amazon S3 storage location.
      *
-     * @return The details of S3 storage for bundling a Windows instance.
+     * @return An Amazon S3 storage location.
      */
     public S3Storage getS3() {
         return s3;
     }
     
     /**
-     * The details of S3 storage for bundling a Windows instance.
+     * An Amazon S3 storage location.
      *
-     * @param s3 The details of S3 storage for bundling a Windows instance.
+     * @param s3 An Amazon S3 storage location.
      */
     public void setS3(S3Storage s3) {
         this.s3 = s3;
     }
     
     /**
-     * The details of S3 storage for bundling a Windows instance.
+     * An Amazon S3 storage location.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param s3 The details of S3 storage for bundling a Windows instance.
+     * @param s3 An Amazon S3 storage location.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Storage withS3(S3Storage s3) {
         this.s3 = s3;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class Storage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getS3() != null) sb.append("S3: " + getS3() );
         sb.append("}");
         return sb.toString();

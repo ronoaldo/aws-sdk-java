@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#attachElasticLoadBalancer(AttachElasticLoadBalancerRequest) AttachElasticLoadBalancer operation}.
  * <p>
- * Attaches an Elastic Load Balancing instance to a specified layer.
+ * Attaches an Elastic Load Balancing load balancer to a specified layer.
  * </p>
  * <p>
- * <b>NOTE:</b>You must create the Elastic Load Balancing instance separately, by using the Elastic Load Balancing console, API, or CLI. For more
- * information, see Elastic Load Balancing Developer Guide.
+ * <b>NOTE:</b>You must create the Elastic Load Balancing instance
+ * separately, by using the Elastic Load Balancing console, API, or CLI.
+ * For more information, see Elastic Load Balancing Developer Guide.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Manage permissions level for the stack, or an attached policy
+ * that explicitly grants permissions. For more information on user
+ * permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#attachElasticLoadBalancer(AttachElasticLoadBalancerRequest)
  */
-public class AttachElasticLoadBalancerRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AttachElasticLoadBalancerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Elastic Load Balancing instance's name.
@@ -67,14 +78,13 @@ public class AttachElasticLoadBalancerRequest extends AmazonWebServiceRequest  i
      * @param elasticLoadBalancerName The Elastic Load Balancing instance's name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachElasticLoadBalancerRequest withElasticLoadBalancerName(String elasticLoadBalancerName) {
         this.elasticLoadBalancerName = elasticLoadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The ID of the layer that the Elastic Load Balancing instance is to be
      * attached to.
@@ -107,14 +117,13 @@ public class AttachElasticLoadBalancerRequest extends AmazonWebServiceRequest  i
      *         attached to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachElasticLoadBalancerRequest withLayerId(String layerId) {
         this.layerId = layerId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -126,8 +135,8 @@ public class AttachElasticLoadBalancerRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getElasticLoadBalancerName() != null) sb.append("ElasticLoadBalancerName: " + getElasticLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getElasticLoadBalancerName() != null) sb.append("ElasticLoadBalancerName: " + getElasticLoadBalancerName() + ",");
         if (getLayerId() != null) sb.append("LayerId: " + getLayerId() );
         sb.append("}");
         return sb.toString();

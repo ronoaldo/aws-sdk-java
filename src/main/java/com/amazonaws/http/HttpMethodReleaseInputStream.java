@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Portions copyright 2006-2009 James Murty. Please see LICENSE.txt
  * for applicable license terms and NOTICE.txt for applicable notices.
@@ -54,11 +54,10 @@ public class HttpMethodReleaseInputStream extends InputStream {
     /**
      * Constructs an input stream based on an {@link HttpMethod} object
      * representing an HTTP connection. If a connection input stream is
-     * available, this constructor wraps the underlying input stream in an
-     * {@link InterruptableInputStream} and makes that stream available. If no
-     * underlying connection is available, an empty {@link ByteArrayInputStream}
-     * is made available.
-     *
+     * available, this constructor wraps the underlying input stream and makes
+     * that stream available. If no underlying connection is available, an empty
+     * {@link ByteArrayInputStream} is made available.
+     * 
      * @param httpMethod
      *            The HTTP method being executed, whose response content is to
      *            be wrapped.

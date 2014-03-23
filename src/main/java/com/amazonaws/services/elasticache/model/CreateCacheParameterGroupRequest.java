@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,33 +13,37 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#createCacheParameterGroup(CreateCacheParameterGroupRequest) CreateCacheParameterGroup operation}.
  * <p>
- * Creates a new Cache Parameter Group. Cache Parameter groups control the parameters for a Cache Cluster.
+ * The <i>CreateCacheParameterGroup</i> operation creates a new cache
+ * parameter group. A cache parameter group is a collection of parameters
+ * that you apply to all of the nodes in a cache cluster.
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#createCacheParameterGroup(CreateCacheParameterGroupRequest)
  */
-public class CreateCacheParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateCacheParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the Cache Parameter Group.
+     * A user-specified name for the cache parameter group.
      */
     private String cacheParameterGroupName;
 
     /**
-     * The name of the Cache Parameter Group Family the Cache Parameter Group
-     * can be used with. <note>Currently, <i>memcached1.4</i> is the only
-     * cache parameter group family supported by the service.</note>
+     * The name of the cache parameter group family the cache parameter group
+     * can be used with. <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code>
      */
     private String cacheParameterGroupFamily;
 
     /**
-     * The description for the Cache Parameter Group.
+     * A user-specified description for the cache parameter group.
      */
     private String description;
 
@@ -54,135 +58,131 @@ public class CreateCacheParameterGroupRequest extends AmazonWebServiceRequest  i
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param cacheParameterGroupName The name of the Cache Parameter Group.
-     * @param cacheParameterGroupFamily The name of the Cache Parameter Group
-     * Family the Cache Parameter Group can be used with. <note>Currently,
-     * <i>memcached1.4</i> is the only cache parameter group family supported
-     * by the service.</note>
-     * @param description The description for the Cache Parameter Group.
+     * @param cacheParameterGroupName A user-specified name for the cache
+     * parameter group.
+     * @param cacheParameterGroupFamily The name of the cache parameter group
+     * family the cache parameter group can be used with. <p>Valid values
+     * are: <code>memcached1.4</code> | <code>redis2.6</code>
+     * @param description A user-specified description for the cache
+     * parameter group.
      */
     public CreateCacheParameterGroupRequest(String cacheParameterGroupName, String cacheParameterGroupFamily, String description) {
-        this.cacheParameterGroupName = cacheParameterGroupName;
-        this.cacheParameterGroupFamily = cacheParameterGroupFamily;
-        this.description = description;
+        setCacheParameterGroupName(cacheParameterGroupName);
+        setCacheParameterGroupFamily(cacheParameterGroupFamily);
+        setDescription(description);
     }
 
-    
-    
     /**
-     * The name of the Cache Parameter Group.
+     * A user-specified name for the cache parameter group.
      *
-     * @return The name of the Cache Parameter Group.
+     * @return A user-specified name for the cache parameter group.
      */
     public String getCacheParameterGroupName() {
         return cacheParameterGroupName;
     }
     
     /**
-     * The name of the Cache Parameter Group.
+     * A user-specified name for the cache parameter group.
      *
-     * @param cacheParameterGroupName The name of the Cache Parameter Group.
+     * @param cacheParameterGroupName A user-specified name for the cache parameter group.
      */
     public void setCacheParameterGroupName(String cacheParameterGroupName) {
         this.cacheParameterGroupName = cacheParameterGroupName;
     }
     
     /**
-     * The name of the Cache Parameter Group.
+     * A user-specified name for the cache parameter group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroupName The name of the Cache Parameter Group.
+     * @param cacheParameterGroupName A user-specified name for the cache parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheParameterGroupRequest withCacheParameterGroupName(String cacheParameterGroupName) {
         this.cacheParameterGroupName = cacheParameterGroupName;
         return this;
     }
-    
-    
+
     /**
-     * The name of the Cache Parameter Group Family the Cache Parameter Group
-     * can be used with. <note>Currently, <i>memcached1.4</i> is the only
-     * cache parameter group family supported by the service.</note>
+     * The name of the cache parameter group family the cache parameter group
+     * can be used with. <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code>
      *
-     * @return The name of the Cache Parameter Group Family the Cache Parameter Group
-     *         can be used with. <note>Currently, <i>memcached1.4</i> is the only
-     *         cache parameter group family supported by the service.</note>
+     * @return The name of the cache parameter group family the cache parameter group
+     *         can be used with. <p>Valid values are: <code>memcached1.4</code> |
+     *         <code>redis2.6</code>
      */
     public String getCacheParameterGroupFamily() {
         return cacheParameterGroupFamily;
     }
     
     /**
-     * The name of the Cache Parameter Group Family the Cache Parameter Group
-     * can be used with. <note>Currently, <i>memcached1.4</i> is the only
-     * cache parameter group family supported by the service.</note>
+     * The name of the cache parameter group family the cache parameter group
+     * can be used with. <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code>
      *
-     * @param cacheParameterGroupFamily The name of the Cache Parameter Group Family the Cache Parameter Group
-     *         can be used with. <note>Currently, <i>memcached1.4</i> is the only
-     *         cache parameter group family supported by the service.</note>
+     * @param cacheParameterGroupFamily The name of the cache parameter group family the cache parameter group
+     *         can be used with. <p>Valid values are: <code>memcached1.4</code> |
+     *         <code>redis2.6</code>
      */
     public void setCacheParameterGroupFamily(String cacheParameterGroupFamily) {
         this.cacheParameterGroupFamily = cacheParameterGroupFamily;
     }
     
     /**
-     * The name of the Cache Parameter Group Family the Cache Parameter Group
-     * can be used with. <note>Currently, <i>memcached1.4</i> is the only
-     * cache parameter group family supported by the service.</note>
+     * The name of the cache parameter group family the cache parameter group
+     * can be used with. <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroupFamily The name of the Cache Parameter Group Family the Cache Parameter Group
-     *         can be used with. <note>Currently, <i>memcached1.4</i> is the only
-     *         cache parameter group family supported by the service.</note>
+     * @param cacheParameterGroupFamily The name of the cache parameter group family the cache parameter group
+     *         can be used with. <p>Valid values are: <code>memcached1.4</code> |
+     *         <code>redis2.6</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheParameterGroupRequest withCacheParameterGroupFamily(String cacheParameterGroupFamily) {
         this.cacheParameterGroupFamily = cacheParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
-     * The description for the Cache Parameter Group.
+     * A user-specified description for the cache parameter group.
      *
-     * @return The description for the Cache Parameter Group.
+     * @return A user-specified description for the cache parameter group.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * The description for the Cache Parameter Group.
+     * A user-specified description for the cache parameter group.
      *
-     * @param description The description for the Cache Parameter Group.
+     * @param description A user-specified description for the cache parameter group.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * The description for the Cache Parameter Group.
+     * A user-specified description for the cache parameter group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description The description for the Cache Parameter Group.
+     * @param description A user-specified description for the cache parameter group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCacheParameterGroupRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -194,9 +194,9 @@ public class CreateCacheParameterGroupRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheParameterGroupName() != null) sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() + ",");    	
-        if (getCacheParameterGroupFamily() != null) sb.append("CacheParameterGroupFamily: " + getCacheParameterGroupFamily() + ",");    	
+        sb.append("{");
+        if (getCacheParameterGroupName() != null) sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() + ",");
+        if (getCacheParameterGroupFamily() != null) sb.append("CacheParameterGroupFamily: " + getCacheParameterGroupFamily() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

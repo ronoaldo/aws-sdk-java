@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@
  * if (myUpload.isDone() == false) {
  *     System.out.println("Transfer: " + myUpload.getDescription());
  *     System.out.println("  - State: " + myUpload.getState());
- *     System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransfered());
+ *     System.out.println("  - Progress: " + myUpload.getProgress().getBytesTransferred());
  * }
  *
  * // Transfers also allow you to set a <code>ProgressListener</code> to receive

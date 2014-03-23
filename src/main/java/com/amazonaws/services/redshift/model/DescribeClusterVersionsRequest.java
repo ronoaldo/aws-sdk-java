@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#describeClusterVersions(DescribeClusterVersionsRequest) DescribeClusterVersions operation}.
  * <p>
- * Returns descriptions of the available Amazon Redshift cluster versions. You can call this operation even before creating any clusters to learn more
- * about the Amazon Redshift versions. For more information about managing clusters, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a> in the <i>Amazon Redshift Management
- * Guide</i>
+ * Returns descriptions of the available Amazon Redshift cluster
+ * versions. You can call this operation even before creating any
+ * clusters to learn more about the Amazon Redshift versions. For more
+ * information about managing clusters, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a>
+ * in the <i>Amazon Redshift Management Guide</i>
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#describeClusterVersions(DescribeClusterVersionsRequest)
  */
-public class DescribeClusterVersionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeClusterVersionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The specific cluster version to return. <p>Example: <code>1.0</code>
@@ -84,14 +88,13 @@ public class DescribeClusterVersionsRequest extends AmazonWebServiceRequest  imp
      * @param clusterVersion The specific cluster version to return. <p>Example: <code>1.0</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterVersionsRequest withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * The name of a specific cluster parameter group family to return
      * details for. <p>Constraints: <ul> <li>Must be 1 to 255 alphanumeric
@@ -136,14 +139,13 @@ public class DescribeClusterVersionsRequest extends AmazonWebServiceRequest  imp
      *         end with a hyphen or contain two consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterVersionsRequest withClusterParameterGroupFamily(String clusterParameterGroupFamily) {
         this.clusterParameterGroupFamily = clusterParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to include in the response. If more than
      * the <code>MaxRecords</code> value is available, a marker is included
@@ -194,14 +196,13 @@ public class DescribeClusterVersionsRequest extends AmazonWebServiceRequest  imp
      *         and no more than 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterVersionsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * The marker returned from a previous request. If this parameter is
      * specified, the response includes records beyond the marker only, up to
@@ -240,14 +241,13 @@ public class DescribeClusterVersionsRequest extends AmazonWebServiceRequest  imp
      *         <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterVersionsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -259,10 +259,10 @@ public class DescribeClusterVersionsRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
-        if (getClusterParameterGroupFamily() != null) sb.append("ClusterParameterGroupFamily: " + getClusterParameterGroupFamily() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
+        if (getClusterParameterGroupFamily() != null) sb.append("ClusterParameterGroupFamily: " + getClusterParameterGroupFamily() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

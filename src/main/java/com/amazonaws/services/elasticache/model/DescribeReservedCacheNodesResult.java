@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,97 +13,104 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeReservedCacheNodes action.
+ * Represents the output of a <i>DescribeReservedCacheNodes</i>
+ * operation.
  * </p>
  */
-public class DescribeReservedCacheNodesResult  implements Serializable  {
+public class DescribeReservedCacheNodesResult implements Serializable {
 
     /**
-     * The marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
-     * A list of of reserved Cache Nodes.
+     * A list of reserved cache nodes. Each element in the list contains
+     * detailed information about one node.
      */
-    private java.util.List<ReservedCacheNode> reservedCacheNodes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNode> reservedCacheNodes;
 
     /**
-     * The marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return The marker provided for paginated results.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker The marker provided for paginated results.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The marker provided for paginated results.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The marker provided for paginated results.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of of reserved Cache Nodes.
+     * A list of reserved cache nodes. Each element in the list contains
+     * detailed information about one node.
      *
-     * @return A list of of reserved Cache Nodes.
+     * @return A list of reserved cache nodes. Each element in the list contains
+     *         detailed information about one node.
      */
     public java.util.List<ReservedCacheNode> getReservedCacheNodes() {
-        
         if (reservedCacheNodes == null) {
-            reservedCacheNodes = new java.util.ArrayList<ReservedCacheNode>();
+              reservedCacheNodes = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNode>();
+              reservedCacheNodes.setAutoConstruct(true);
         }
         return reservedCacheNodes;
     }
     
     /**
-     * A list of of reserved Cache Nodes.
+     * A list of reserved cache nodes. Each element in the list contains
+     * detailed information about one node.
      *
-     * @param reservedCacheNodes A list of of reserved Cache Nodes.
+     * @param reservedCacheNodes A list of reserved cache nodes. Each element in the list contains
+     *         detailed information about one node.
      */
     public void setReservedCacheNodes(java.util.Collection<ReservedCacheNode> reservedCacheNodes) {
         if (reservedCacheNodes == null) {
             this.reservedCacheNodes = null;
             return;
         }
-
-        java.util.List<ReservedCacheNode> reservedCacheNodesCopy = new java.util.ArrayList<ReservedCacheNode>(reservedCacheNodes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNode> reservedCacheNodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNode>(reservedCacheNodes.size());
         reservedCacheNodesCopy.addAll(reservedCacheNodes);
         this.reservedCacheNodes = reservedCacheNodesCopy;
     }
     
     /**
-     * A list of of reserved Cache Nodes.
+     * A list of reserved cache nodes. Each element in the list contains
+     * detailed information about one node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedCacheNodes A list of of reserved Cache Nodes.
+     * @param reservedCacheNodes A list of reserved cache nodes. Each element in the list contains
+     *         detailed information about one node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesResult withReservedCacheNodes(ReservedCacheNode... reservedCacheNodes) {
         if (getReservedCacheNodes() == null) setReservedCacheNodes(new java.util.ArrayList<ReservedCacheNode>(reservedCacheNodes.length));
@@ -114,27 +121,29 @@ public class DescribeReservedCacheNodesResult  implements Serializable  {
     }
     
     /**
-     * A list of of reserved Cache Nodes.
+     * A list of reserved cache nodes. Each element in the list contains
+     * detailed information about one node.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedCacheNodes A list of of reserved Cache Nodes.
+     * @param reservedCacheNodes A list of reserved cache nodes. Each element in the list contains
+     *         detailed information about one node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeReservedCacheNodesResult withReservedCacheNodes(java.util.Collection<ReservedCacheNode> reservedCacheNodes) {
         if (reservedCacheNodes == null) {
             this.reservedCacheNodes = null;
         } else {
-            java.util.List<ReservedCacheNode> reservedCacheNodesCopy = new java.util.ArrayList<ReservedCacheNode>(reservedCacheNodes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNode> reservedCacheNodesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedCacheNode>(reservedCacheNodes.size());
             reservedCacheNodesCopy.addAll(reservedCacheNodes);
             this.reservedCacheNodes = reservedCacheNodesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +155,8 @@ public class DescribeReservedCacheNodesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getReservedCacheNodes() != null) sb.append("ReservedCacheNodes: " + getReservedCacheNodes() );
         sb.append("}");
         return sb.toString();

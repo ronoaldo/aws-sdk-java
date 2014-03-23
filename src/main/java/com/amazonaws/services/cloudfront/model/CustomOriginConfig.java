@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A customer origin.
  * </p>
  */
-public class CustomOriginConfig  implements Serializable  {
+public class CustomOriginConfig implements Serializable {
 
     /**
      * The HTTP port the custom origin listens on.
@@ -66,14 +67,13 @@ public class CustomOriginConfig  implements Serializable  {
      * @param hTTPPort The HTTP port the custom origin listens on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CustomOriginConfig withHTTPPort(Integer hTTPPort) {
         this.hTTPPort = hTTPPort;
         return this;
     }
-    
-    
+
     /**
      * The HTTPS port the custom origin listens on.
      *
@@ -100,14 +100,13 @@ public class CustomOriginConfig  implements Serializable  {
      * @param hTTPSPort The HTTPS port the custom origin listens on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CustomOriginConfig withHTTPSPort(Integer hTTPSPort) {
         this.hTTPSPort = hTTPSPort;
         return this;
     }
-    
-    
+
     /**
      * The origin protocol policy to apply to your origin.
      * <p>
@@ -147,7 +146,7 @@ public class CustomOriginConfig  implements Serializable  {
      * @param originProtocolPolicy The origin protocol policy to apply to your origin.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see OriginProtocolPolicy
      */
@@ -155,8 +154,7 @@ public class CustomOriginConfig  implements Serializable  {
         this.originProtocolPolicy = originProtocolPolicy;
         return this;
     }
-    
-    
+
     /**
      * The origin protocol policy to apply to your origin.
      * <p>
@@ -182,7 +180,7 @@ public class CustomOriginConfig  implements Serializable  {
      * @param originProtocolPolicy The origin protocol policy to apply to your origin.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see OriginProtocolPolicy
      */
@@ -190,7 +188,7 @@ public class CustomOriginConfig  implements Serializable  {
         this.originProtocolPolicy = originProtocolPolicy.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -202,9 +200,9 @@ public class CustomOriginConfig  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getHTTPPort() != null) sb.append("HTTPPort: " + getHTTPPort() + ",");    	
-        if (getHTTPSPort() != null) sb.append("HTTPSPort: " + getHTTPSPort() + ",");    	
+        sb.append("{");
+        if (getHTTPPort() != null) sb.append("HTTPPort: " + getHTTPPort() + ",");
+        if (getHTTPSPort() != null) sb.append("HTTPSPort: " + getHTTPSPort() + ",");
         if (getOriginProtocolPolicy() != null) sb.append("OriginProtocolPolicy: " + getOriginProtocolPolicy() );
         sb.append("}");
         return sb.toString();

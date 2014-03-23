@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * An error or warning for a desired configuration option value.
  * </p>
  */
-public class ValidationMessage  implements Serializable  {
+public class ValidationMessage implements Serializable {
 
     /**
      * A message describing the error or warning.
@@ -43,12 +44,12 @@ public class ValidationMessage  implements Serializable  {
     private String severity;
 
     /**
-     * 
+     * <p/>
      */
     private String namespace;
 
     /**
-     * 
+     * <p/>
      */
     private String optionName;
 
@@ -84,14 +85,13 @@ public class ValidationMessage  implements Serializable  {
      * @param message A message describing the error or warning.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationMessage withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * An indication of the severity of this message: <enumValues> <value
      * name="error"> <p> error: This message indicates that this is not a
@@ -173,7 +173,7 @@ public class ValidationMessage  implements Serializable  {
      *         account. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ValidationSeverity
      */
@@ -181,8 +181,7 @@ public class ValidationMessage  implements Serializable  {
         this.severity = severity;
         return this;
     }
-    
-    
+
     /**
      * An indication of the severity of this message: <enumValues> <value
      * name="error"> <p> error: This message indicates that this is not a
@@ -236,7 +235,7 @@ public class ValidationMessage  implements Serializable  {
      *         account. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ValidationSeverity
      */
@@ -244,75 +243,73 @@ public class ValidationMessage  implements Serializable  {
         this.severity = severity.toString();
         return this;
     }
-    
+
     /**
-     * 
+     * <p/>
      *
-     * @return 
+     * @return <p/>
      */
     public String getNamespace() {
         return namespace;
     }
     
     /**
-     * 
+     * <p/>
      *
-     * @param namespace 
+     * @param namespace <p/>
      */
     public void setNamespace(String namespace) {
         this.namespace = namespace;
     }
     
     /**
-     * 
+     * <p/>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param namespace 
+     * @param namespace <p/>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationMessage withNamespace(String namespace) {
         this.namespace = namespace;
         return this;
     }
-    
-    
+
     /**
-     * 
+     * <p/>
      *
-     * @return 
+     * @return <p/>
      */
     public String getOptionName() {
         return optionName;
     }
     
     /**
-     * 
+     * <p/>
      *
-     * @param optionName 
+     * @param optionName <p/>
      */
     public void setOptionName(String optionName) {
         this.optionName = optionName;
     }
     
     /**
-     * 
+     * <p/>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param optionName 
+     * @param optionName <p/>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationMessage withOptionName(String optionName) {
         this.optionName = optionName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -324,10 +321,10 @@ public class ValidationMessage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
-        if (getSeverity() != null) sb.append("Severity: " + getSeverity() + ",");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
+        sb.append("{");
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");
+        if (getSeverity() != null) sb.append("Severity: " + getSeverity() + ",");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
         if (getOptionName() != null) sb.append("OptionName: " + getOptionName() );
         sb.append("}");
         return sb.toString();

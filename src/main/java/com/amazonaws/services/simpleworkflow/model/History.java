@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Paginated representation of a workflow history for a workflow execution. This is the up to date, complete and authoritative record of the events
- * related to all tasks and events in the life of the workflow execution.
+ * Paginated representation of a workflow history for a workflow
+ * execution. This is the up to date, complete and authoritative record
+ * of the events related to all tasks and events in the life of the
+ * workflow execution.
  * </p>
  */
-public class History  implements Serializable  {
+public class History implements Serializable {
 
     /**
      * The list of history events.
      */
-    private java.util.List<HistoryEvent> events;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent> events;
 
     /**
      * The token for the next page. If set, the history consists of more than
@@ -44,9 +47,9 @@ public class History  implements Serializable  {
      * @return The list of history events.
      */
     public java.util.List<HistoryEvent> getEvents() {
-        
         if (events == null) {
-            events = new java.util.ArrayList<HistoryEvent>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
@@ -61,8 +64,7 @@ public class History  implements Serializable  {
             this.events = null;
             return;
         }
-
-        java.util.List<HistoryEvent> eventsCopy = new java.util.ArrayList<HistoryEvent>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
@@ -75,7 +77,7 @@ public class History  implements Serializable  {
      * @param events The list of history events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public History withEvents(HistoryEvent... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<HistoryEvent>(events.length));
@@ -93,20 +95,20 @@ public class History  implements Serializable  {
      * @param events The list of history events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public History withEvents(java.util.Collection<HistoryEvent> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<HistoryEvent> eventsCopy = new java.util.ArrayList<HistoryEvent>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<HistoryEvent>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The token for the next page. If set, the history consists of more than
      * one page and the next page can be retrieved by repeating the request
@@ -154,14 +156,13 @@ public class History  implements Serializable  {
      *         with this token and all other arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public History withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -173,8 +174,8 @@ public class History  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");    	
+        sb.append("{");
+        if (getEvents() != null) sb.append("Events: " + getEvents() + ",");
         if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() );
         sb.append("}");
         return sb.toString();

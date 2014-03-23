@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.elastictranscoder.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class ListPresetsRequestMarshaller implements Marshaller<Request<ListPresetsRequest>, ListPresetsRequest> {
 
-    
-
     public Request<ListPresetsRequest> marshall(ListPresetsRequest listPresetsRequest) {
     if (listPresetsRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,11 +49,11 @@ public class ListPresetsRequestMarshaller implements Marshaller<Request<ListPres
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.GET);
 
-
-        String uriResourcePath = "2012-09-25/presets"; 
+        String uriResourcePath = "2012-09-25/presets?Ascending={Ascending};PageToken={PageToken}"; 
+        uriResourcePath = uriResourcePath.replace("{Ascending}", (listPresetsRequest.getAscending() == null) ? "" : StringUtils.fromString(listPresetsRequest.getAscending())); 
+        uriResourcePath = uriResourcePath.replace("{PageToken}", (listPresetsRequest.getPageToken() == null) ? "" : StringUtils.fromString(listPresetsRequest.getPageToken())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -75,16 +73,8 @@ public class ListPresetsRequestMarshaller implements Marshaller<Request<ListPres
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

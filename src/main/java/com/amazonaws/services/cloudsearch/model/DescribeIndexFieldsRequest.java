@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#describeIndexFields(DescribeIndexFieldsRequest) DescribeIndexFields operation}.
  * <p>
- * Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. Shows all fields by default.
+ * Gets information about the index fields configured for the search
+ * domain. Can be limited to specific fields by name. Shows all fields by
+ * default.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#describeIndexFields(DescribeIndexFieldsRequest)
  */
-public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -43,7 +47,7 @@ public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  impleme
      * Limits the <code>DescribeIndexFields</code> response to the specified
      * fields.
      */
-    private java.util.List<String> fieldNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> fieldNames;
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -107,14 +111,13 @@ public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  impleme
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeIndexFieldsRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Limits the <code>DescribeIndexFields</code> response to the specified
      * fields.
@@ -123,9 +126,9 @@ public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  impleme
      *         fields.
      */
     public java.util.List<String> getFieldNames() {
-        
         if (fieldNames == null) {
-            fieldNames = new java.util.ArrayList<String>();
+              fieldNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              fieldNames.setAutoConstruct(true);
         }
         return fieldNames;
     }
@@ -142,8 +145,7 @@ public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  impleme
             this.fieldNames = null;
             return;
         }
-
-        java.util.List<String> fieldNamesCopy = new java.util.ArrayList<String>(fieldNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> fieldNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(fieldNames.size());
         fieldNamesCopy.addAll(fieldNames);
         this.fieldNames = fieldNamesCopy;
     }
@@ -158,7 +160,7 @@ public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  impleme
      *         fields.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeIndexFieldsRequest withFieldNames(String... fieldNames) {
         if (getFieldNames() == null) setFieldNames(new java.util.ArrayList<String>(fieldNames.length));
@@ -178,20 +180,20 @@ public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  impleme
      *         fields.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeIndexFieldsRequest withFieldNames(java.util.Collection<String> fieldNames) {
         if (fieldNames == null) {
             this.fieldNames = null;
         } else {
-            java.util.List<String> fieldNamesCopy = new java.util.ArrayList<String>(fieldNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> fieldNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(fieldNames.size());
             fieldNamesCopy.addAll(fieldNames);
             this.fieldNames = fieldNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -203,8 +205,8 @@ public class DescribeIndexFieldsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getFieldNames() != null) sb.append("FieldNames: " + getFieldNames() );
         sb.append("}");
         return sb.toString();

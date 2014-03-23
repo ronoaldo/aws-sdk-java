@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes the AWS resources in use by this environment. This data is not live data.
+ * Describes the AWS resources in use by this environment. This data is
+ * not live data.
  * </p>
  */
-public class EnvironmentResourcesDescription  implements Serializable  {
+public class EnvironmentResourcesDescription implements Serializable {
 
     /**
      * Describes the LoadBalancer.
@@ -53,14 +55,13 @@ public class EnvironmentResourcesDescription  implements Serializable  {
      * @param loadBalancer Describes the LoadBalancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnvironmentResourcesDescription withLoadBalancer(LoadBalancerDescription loadBalancer) {
         this.loadBalancer = loadBalancer;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +73,7 @@ public class EnvironmentResourcesDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getLoadBalancer() != null) sb.append("LoadBalancer: " + getLoadBalancer() );
         sb.append("}");
         return sb.toString();

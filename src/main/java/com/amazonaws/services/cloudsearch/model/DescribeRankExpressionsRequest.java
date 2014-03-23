@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#describeRankExpressions(DescribeRankExpressionsRequest) DescribeRankExpressions operation}.
  * <p>
- * Gets the rank expressions configured for the search domain. Can be limited to specific rank expressions by name. Shows all rank expressions by
- * default.
+ * Gets the rank expressions configured for the search domain. Can be
+ * limited to specific rank expressions by name. Shows all rank
+ * expressions by default.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#describeRankExpressions(DescribeRankExpressionsRequest)
  */
-public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -44,7 +47,7 @@ public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  imp
      * Limits the <code>DescribeRankExpressions</code> response to the
      * specified fields.
      */
-    private java.util.List<String> rankNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> rankNames;
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -108,14 +111,13 @@ public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  imp
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRankExpressionsRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Limits the <code>DescribeRankExpressions</code> response to the
      * specified fields.
@@ -124,9 +126,9 @@ public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  imp
      *         specified fields.
      */
     public java.util.List<String> getRankNames() {
-        
         if (rankNames == null) {
-            rankNames = new java.util.ArrayList<String>();
+              rankNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              rankNames.setAutoConstruct(true);
         }
         return rankNames;
     }
@@ -143,8 +145,7 @@ public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  imp
             this.rankNames = null;
             return;
         }
-
-        java.util.List<String> rankNamesCopy = new java.util.ArrayList<String>(rankNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> rankNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(rankNames.size());
         rankNamesCopy.addAll(rankNames);
         this.rankNames = rankNamesCopy;
     }
@@ -159,7 +160,7 @@ public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  imp
      *         specified fields.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRankExpressionsRequest withRankNames(String... rankNames) {
         if (getRankNames() == null) setRankNames(new java.util.ArrayList<String>(rankNames.length));
@@ -179,20 +180,20 @@ public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  imp
      *         specified fields.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeRankExpressionsRequest withRankNames(java.util.Collection<String> rankNames) {
         if (rankNames == null) {
             this.rankNames = null;
         } else {
-            java.util.List<String> rankNamesCopy = new java.util.ArrayList<String>(rankNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> rankNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(rankNames.size());
             rankNamesCopy.addAll(rankNames);
             this.rankNames = rankNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -204,8 +205,8 @@ public class DescribeRankExpressionsRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getRankNames() != null) sb.append("RankNames: " + getRankNames() );
         sb.append("}");
         return sb.toString();

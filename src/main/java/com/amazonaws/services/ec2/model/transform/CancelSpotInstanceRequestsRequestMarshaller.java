@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class CancelSpotInstanceRequestsRequestMarshaller implements Marshaller<R
     public Request<CancelSpotInstanceRequestsRequest> marshall(CancelSpotInstanceRequestsRequest cancelSpotInstanceRequestsRequest) {
 
         if (cancelSpotInstanceRequestsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CancelSpotInstanceRequestsRequest> request = new DefaultRequest<CancelSpotInstanceRequestsRequest>(cancelSpotInstanceRequestsRequest, "AmazonEC2");
         request.addParameter("Action", "CancelSpotInstanceRequests");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> spotInstanceRequestIdsList = cancelSpotInstanceRequestsRequest.getSpotInstanceRequestIds();
         int spotInstanceRequestIdsListIndex = 1;
@@ -51,7 +50,6 @@ public class CancelSpotInstanceRequestsRequestMarshaller implements Marshaller<R
 
             spotInstanceRequestIdsListIndex++;
         }
-
 
         return request;
     }

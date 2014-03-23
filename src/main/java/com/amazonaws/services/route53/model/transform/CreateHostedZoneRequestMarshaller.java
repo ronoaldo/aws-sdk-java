@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,12 +14,13 @@
  */
 package com.amazonaws.services.route53.model.transform;
 
+import static com.amazonaws.util.StringUtils.UTF8;
+
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.Request;
@@ -44,7 +45,7 @@ public class CreateHostedZoneRequestMarshaller implements Marshaller<Request<Cre
         Request<CreateHostedZoneRequest> request = new DefaultRequest<CreateHostedZoneRequest>(createHostedZoneRequest, "AmazonRoute53");
         request.setHttpMethod(HttpMethodName.POST);
 
-        String uriResourcePath = "/2012-12-12/hostedzone"; 
+        String uriResourcePath = "/2013-04-01/hostedzone"; 
 
         if (uriResourcePath.contains("?")) {
             String queryString = uriResourcePath.substring(uriResourcePath.indexOf("?") + 1);
@@ -62,12 +63,9 @@ public class CreateHostedZoneRequestMarshaller implements Marshaller<Request<Cre
 
         request.setResourcePath(uriResourcePath);
 
-        
             StringWriter stringWriter = new StringWriter();
-            XMLWriter xmlWriter = new XMLWriter(stringWriter, "https://route53.amazonaws.com/doc/2012-12-12/");
+            XMLWriter xmlWriter = new XMLWriter(stringWriter, "https://route53.amazonaws.com/doc/2013-04-01/");
 
-            
-            
             xmlWriter.startElement("CreateHostedZoneRequest");
                     if (createHostedZoneRequest.getName() != null) {
             xmlWriter.startElement("Name").value(createHostedZoneRequest.getName()).endElement();
@@ -87,16 +85,14 @@ public class CreateHostedZoneRequestMarshaller implements Marshaller<Request<Cre
         }
 
             xmlWriter.endElement();
-            
 
             try {
                 request.setContent(new StringInputStream(stringWriter.getBuffer().toString()));
-                request.addHeader("Content-Length", Integer.toString(stringWriter.getBuffer().toString().getBytes("UTF-8").length));
+                request.addHeader("Content-Length", Integer.toString(stringWriter.getBuffer().toString().getBytes(UTF8).length));
                 request.addHeader("Content-Type", "application/xml");
             } catch (UnsupportedEncodingException e) {
                 throw new AmazonClientException("Unable to marshall request to XML", e);
             }
-        
 
         return request;
     }

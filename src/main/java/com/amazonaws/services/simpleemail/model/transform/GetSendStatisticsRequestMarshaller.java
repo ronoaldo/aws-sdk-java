@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,14 +33,12 @@ public class GetSendStatisticsRequestMarshaller implements Marshaller<Request<Ge
     public Request<GetSendStatisticsRequest> marshall(GetSendStatisticsRequest getSendStatisticsRequest) {
 
         if (getSendStatisticsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetSendStatisticsRequest> request = new DefaultRequest<GetSendStatisticsRequest>(getSendStatisticsRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "GetSendStatistics");
         request.addParameter("Version", "2010-12-01");
-
-
 
         return request;
     }

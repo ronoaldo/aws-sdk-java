@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,29 +14,34 @@
  */
 package com.amazonaws.services.elasticmapreduce.model.transform;
 
-import org.w3c.dom.Node;
-
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.util.XpathUtils;
-import com.amazonaws.transform.StandardErrorUnmarshaller;
+import com.amazonaws.transform.JsonErrorUnmarshaller;
+import com.amazonaws.util.json.JSONObject;
 
 import com.amazonaws.services.elasticmapreduce.model.InternalServerErrorException;
 
-public class InternalServerErrorExceptionUnmarshaller extends StandardErrorUnmarshaller {
+public class InternalServerErrorExceptionUnmarshaller extends JsonErrorUnmarshaller {
 
     public InternalServerErrorExceptionUnmarshaller() {
         super(InternalServerErrorException.class);
     }
 
-    public AmazonServiceException unmarshall(Node node) throws Exception {
-        // Bail out if this isn't the right error code that this
-        // marshaller understands.
-        String errorCode = parseErrorCode(node);
-        if (errorCode == null || !errorCode.equals("InternalFailure"))
-            return null;
+    @Override
+    public boolean match(String errorTypeFromHeader, JSONObject json) throws Exception {
+        if (errorTypeFromHeader == null) {
+            // Parse error type from the JSON content if it's not available in the response headers
+            String errorCodeFromContent = parseErrorCode(json);
+            return (errorCodeFromContent != null && errorCodeFromContent.equals("InternalServerError"));
+        } else {
+            return errorTypeFromHeader.equals("InternalServerError");
+        }
+    }
 
-        InternalServerErrorException e = (InternalServerErrorException)super.unmarshall(node);
-        
+    @Override
+    public AmazonServiceException unmarshall(JSONObject json) throws Exception {
+        InternalServerErrorException e = (InternalServerErrorException)super.unmarshall(json);
+        e.setErrorCode("InternalServerError");
+
         return e;
     }
 }

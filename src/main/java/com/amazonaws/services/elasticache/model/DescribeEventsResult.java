@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,97 +13,103 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains a list of Events.
+ * Represents the output of a <i>DescribeEvents</i> operation.
  * </p>
  */
-public class DescribeEventsResult  implements Serializable  {
+public class DescribeEventsResult implements Serializable {
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      */
     private String marker;
 
     /**
-     * A list of <a>Event</a> instances.
+     * A list of events. Each element in the list contains detailed
+     * information about one event.
      */
-    private java.util.List<Event> events;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Event> events;
 
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @return The marker obtained from a previous operation response.
+     * @return Provides an identifier to allow retrieval of paginated results.
      */
     public String getMarker() {
         return marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      */
     public void setMarker(String marker) {
         this.marker = marker;
     }
     
     /**
-     * The marker obtained from a previous operation response.
+     * Provides an identifier to allow retrieval of paginated results.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param marker The marker obtained from a previous operation response.
+     * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
-     * A list of <a>Event</a> instances.
+     * A list of events. Each element in the list contains detailed
+     * information about one event.
      *
-     * @return A list of <a>Event</a> instances.
+     * @return A list of events. Each element in the list contains detailed
+     *         information about one event.
      */
     public java.util.List<Event> getEvents() {
-        
         if (events == null) {
-            events = new java.util.ArrayList<Event>();
+              events = new com.amazonaws.internal.ListWithAutoConstructFlag<Event>();
+              events.setAutoConstruct(true);
         }
         return events;
     }
     
     /**
-     * A list of <a>Event</a> instances.
+     * A list of events. Each element in the list contains detailed
+     * information about one event.
      *
-     * @param events A list of <a>Event</a> instances.
+     * @param events A list of events. Each element in the list contains detailed
+     *         information about one event.
      */
     public void setEvents(java.util.Collection<Event> events) {
         if (events == null) {
             this.events = null;
             return;
         }
-
-        java.util.List<Event> eventsCopy = new java.util.ArrayList<Event>(events.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Event> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Event>(events.size());
         eventsCopy.addAll(events);
         this.events = eventsCopy;
     }
     
     /**
-     * A list of <a>Event</a> instances.
+     * A list of events. Each element in the list contains detailed
+     * information about one event.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param events A list of <a>Event</a> instances.
+     * @param events A list of events. Each element in the list contains detailed
+     *         information about one event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withEvents(Event... events) {
         if (getEvents() == null) setEvents(new java.util.ArrayList<Event>(events.length));
@@ -114,27 +120,29 @@ public class DescribeEventsResult  implements Serializable  {
     }
     
     /**
-     * A list of <a>Event</a> instances.
+     * A list of events. Each element in the list contains detailed
+     * information about one event.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param events A list of <a>Event</a> instances.
+     * @param events A list of events. Each element in the list contains detailed
+     *         information about one event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventsResult withEvents(java.util.Collection<Event> events) {
         if (events == null) {
             this.events = null;
         } else {
-            java.util.List<Event> eventsCopy = new java.util.ArrayList<Event>(events.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Event> eventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Event>(events.size());
             eventsCopy.addAll(events);
             this.events = eventsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +154,8 @@ public class DescribeEventsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getEvents() != null) sb.append("Events: " + getEvents() );
         sb.append("}");
         return sb.toString();

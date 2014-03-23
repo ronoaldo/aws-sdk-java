@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#deleteInstance(DeleteInstanceRequest) DeleteInstance operation}.
  * <p>
- * Deletes a specified instance. You must stop an instance before you can delete it. For more information, see <a
- * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html"> Deleting Instances </a> .
+ * Deletes a specified instance. You must stop an instance before you can
+ * delete it. For more information, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html"> Deleting Instances </a>
+ * .
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Manage permissions level for the stack, or an attached policy
+ * that explicitly grants permissions. For more information on user
+ * permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#deleteInstance(DeleteInstanceRequest)
  */
-public class DeleteInstanceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteInstanceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The instance ID.
@@ -68,14 +80,13 @@ public class DeleteInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteInstanceRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Whether to delete the instance Elastic IP address.
      *
@@ -102,14 +113,13 @@ public class DeleteInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param deleteElasticIp Whether to delete the instance Elastic IP address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteInstanceRequest withDeleteElasticIp(Boolean deleteElasticIp) {
         this.deleteElasticIp = deleteElasticIp;
         return this;
     }
-    
-    
+
     /**
      * Whether to delete the instance Elastic IP address.
      *
@@ -118,7 +128,7 @@ public class DeleteInstanceRequest extends AmazonWebServiceRequest  implements S
     public Boolean getDeleteElasticIp() {
         return deleteElasticIp;
     }
-    
+
     /**
      * Whether to delete the instance Amazon EBS volumes.
      *
@@ -145,14 +155,13 @@ public class DeleteInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param deleteVolumes Whether to delete the instance Amazon EBS volumes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteInstanceRequest withDeleteVolumes(Boolean deleteVolumes) {
         this.deleteVolumes = deleteVolumes;
         return this;
     }
-    
-    
+
     /**
      * Whether to delete the instance Amazon EBS volumes.
      *
@@ -161,7 +170,7 @@ public class DeleteInstanceRequest extends AmazonWebServiceRequest  implements S
     public Boolean getDeleteVolumes() {
         return deleteVolumes;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -173,9 +182,9 @@ public class DeleteInstanceRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (isDeleteElasticIp() != null) sb.append("DeleteElasticIp: " + isDeleteElasticIp() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (isDeleteElasticIp() != null) sb.append("DeleteElasticIp: " + isDeleteElasticIp() + ",");
         if (isDeleteVolumes() != null) sb.append("DeleteVolumes: " + isDeleteVolumes() );
         sb.append("}");
         return sb.toString();

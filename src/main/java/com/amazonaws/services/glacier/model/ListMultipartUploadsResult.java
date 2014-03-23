@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
-public class ListMultipartUploadsResult  implements Serializable  {
+public class ListMultipartUploadsResult implements Serializable {
 
     /**
      * A list of in-progress multipart uploads.
      */
-    private java.util.List<UploadListElement> uploadsList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<UploadListElement> uploadsList;
 
     /**
      * An opaque string that represents where to continue pagination of the
@@ -41,9 +42,9 @@ public class ListMultipartUploadsResult  implements Serializable  {
      * @return A list of in-progress multipart uploads.
      */
     public java.util.List<UploadListElement> getUploadsList() {
-        
         if (uploadsList == null) {
-            uploadsList = new java.util.ArrayList<UploadListElement>();
+              uploadsList = new com.amazonaws.internal.ListWithAutoConstructFlag<UploadListElement>();
+              uploadsList.setAutoConstruct(true);
         }
         return uploadsList;
     }
@@ -58,8 +59,7 @@ public class ListMultipartUploadsResult  implements Serializable  {
             this.uploadsList = null;
             return;
         }
-
-        java.util.List<UploadListElement> uploadsListCopy = new java.util.ArrayList<UploadListElement>(uploadsList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<UploadListElement> uploadsListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UploadListElement>(uploadsList.size());
         uploadsListCopy.addAll(uploadsList);
         this.uploadsList = uploadsListCopy;
     }
@@ -72,7 +72,7 @@ public class ListMultipartUploadsResult  implements Serializable  {
      * @param uploadsList A list of in-progress multipart uploads.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMultipartUploadsResult withUploadsList(UploadListElement... uploadsList) {
         if (getUploadsList() == null) setUploadsList(new java.util.ArrayList<UploadListElement>(uploadsList.length));
@@ -90,20 +90,20 @@ public class ListMultipartUploadsResult  implements Serializable  {
      * @param uploadsList A list of in-progress multipart uploads.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMultipartUploadsResult withUploadsList(java.util.Collection<UploadListElement> uploadsList) {
         if (uploadsList == null) {
             this.uploadsList = null;
         } else {
-            java.util.List<UploadListElement> uploadsListCopy = new java.util.ArrayList<UploadListElement>(uploadsList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<UploadListElement> uploadsListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<UploadListElement>(uploadsList.size());
             uploadsListCopy.addAll(uploadsList);
             this.uploadsList = uploadsListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An opaque string that represents where to continue pagination of the
      * results. You use the marker in a new List Multipart Uploads request to
@@ -148,14 +148,13 @@ public class ListMultipartUploadsResult  implements Serializable  {
      *         value is <code>null</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMultipartUploadsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -167,8 +166,8 @@ public class ListMultipartUploadsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUploadsList() != null) sb.append("UploadsList: " + getUploadsList() + ",");    	
+        sb.append("{");
+        if (getUploadsList() != null) sb.append("UploadsList: " + getUploadsList() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

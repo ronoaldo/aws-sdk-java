@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class GetIdentityVerificationAttributesRequestMarshaller implements Marsh
     public Request<GetIdentityVerificationAttributesRequest> marshall(GetIdentityVerificationAttributesRequest getIdentityVerificationAttributesRequest) {
 
         if (getIdentityVerificationAttributesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetIdentityVerificationAttributesRequest> request = new DefaultRequest<GetIdentityVerificationAttributesRequest>(getIdentityVerificationAttributesRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "GetIdentityVerificationAttributes");
         request.addParameter("Version", "2010-12-01");
-
 
         java.util.List<String> identitiesList = getIdentityVerificationAttributesRequest.getIdentities();
         int identitiesListIndex = 1;
@@ -51,7 +50,6 @@ public class GetIdentityVerificationAttributesRequestMarshaller implements Marsh
 
             identitiesListIndex++;
         }
-
 
         return request;
     }

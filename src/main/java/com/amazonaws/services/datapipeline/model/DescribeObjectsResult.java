@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * If <code>True</code> , there are more results that can be returned in another call to DescribeObjects.
+ * If <code>True</code> , there are more results that can be returned in
+ * another call to DescribeObjects.
  * </p>
  */
-public class DescribeObjectsResult  implements Serializable  {
+public class DescribeObjectsResult implements Serializable {
 
     /**
      * An array of object definitions that are returned by the call to
      * <a>DescribeObjects</a>.
      */
-    private java.util.List<PipelineObject> pipelineObjects;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjects;
 
     /**
      * The starting point for the next page of results. To view the next page
@@ -51,9 +53,9 @@ public class DescribeObjectsResult  implements Serializable  {
      *         <a>DescribeObjects</a>.
      */
     public java.util.List<PipelineObject> getPipelineObjects() {
-        
         if (pipelineObjects == null) {
-            pipelineObjects = new java.util.ArrayList<PipelineObject>();
+              pipelineObjects = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>();
+              pipelineObjects.setAutoConstruct(true);
         }
         return pipelineObjects;
     }
@@ -70,8 +72,7 @@ public class DescribeObjectsResult  implements Serializable  {
             this.pipelineObjects = null;
             return;
         }
-
-        java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
         pipelineObjectsCopy.addAll(pipelineObjects);
         this.pipelineObjects = pipelineObjectsCopy;
     }
@@ -86,7 +87,7 @@ public class DescribeObjectsResult  implements Serializable  {
      *         <a>DescribeObjects</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsResult withPipelineObjects(PipelineObject... pipelineObjects) {
         if (getPipelineObjects() == null) setPipelineObjects(new java.util.ArrayList<PipelineObject>(pipelineObjects.length));
@@ -106,20 +107,20 @@ public class DescribeObjectsResult  implements Serializable  {
      *         <a>DescribeObjects</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsResult withPipelineObjects(java.util.Collection<PipelineObject> pipelineObjects) {
         if (pipelineObjects == null) {
             this.pipelineObjects = null;
         } else {
-            java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
             pipelineObjectsCopy.addAll(pipelineObjects);
             this.pipelineObjects = pipelineObjectsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The starting point for the next page of results. To view the next page
      * of results, call <a>DescribeObjects</a> again with this marker value.
@@ -164,14 +165,13 @@ public class DescribeObjectsResult  implements Serializable  {
      *         of results, call <a>DescribeObjects</a> again with this marker value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, there are more pages of results to return.
      *
@@ -198,14 +198,13 @@ public class DescribeObjectsResult  implements Serializable  {
      * @param hasMoreResults If <code>True</code>, there are more pages of results to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeObjectsResult withHasMoreResults(Boolean hasMoreResults) {
         this.hasMoreResults = hasMoreResults;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, there are more pages of results to return.
      *
@@ -214,7 +213,7 @@ public class DescribeObjectsResult  implements Serializable  {
     public Boolean getHasMoreResults() {
         return hasMoreResults;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -226,9 +225,9 @@ public class DescribeObjectsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineObjects() != null) sb.append("PipelineObjects: " + getPipelineObjects() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getPipelineObjects() != null) sb.append("PipelineObjects: " + getPipelineObjects() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (isHasMoreResults() != null) sb.append("HasMoreResults: " + isHasMoreResults() );
         sb.append("}");
         return sb.toString();

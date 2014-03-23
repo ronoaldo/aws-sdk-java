@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes an Amazon EC2 key pair, including the private key material.
- * </p>
- * <p>
- * The public key portion is stored by Amazon EC2 and the private key is returned only once, in this type, when the key is initially created.
+ * Describes a key pair.
  * </p>
  */
-public class KeyPair  implements Serializable  {
+public class KeyPair implements Serializable {
 
     /**
      * The name of the key pair.
@@ -36,7 +34,7 @@ public class KeyPair  implements Serializable  {
     private String keyFingerprint;
 
     /**
-     * The unencrypted PEM encoded RSA private key.
+     * An unencrypted PEM encoded RSA private key.
      */
     private String keyMaterial;
 
@@ -66,14 +64,13 @@ public class KeyPair  implements Serializable  {
      * @param keyName The name of the key pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeyPair withKeyName(String keyName) {
         this.keyName = keyName;
         return this;
     }
-    
-    
+
     /**
      * The SHA-1 digest of the DER encoded private key.
      *
@@ -100,48 +97,46 @@ public class KeyPair  implements Serializable  {
      * @param keyFingerprint The SHA-1 digest of the DER encoded private key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeyPair withKeyFingerprint(String keyFingerprint) {
         this.keyFingerprint = keyFingerprint;
         return this;
     }
-    
-    
+
     /**
-     * The unencrypted PEM encoded RSA private key.
+     * An unencrypted PEM encoded RSA private key.
      *
-     * @return The unencrypted PEM encoded RSA private key.
+     * @return An unencrypted PEM encoded RSA private key.
      */
     public String getKeyMaterial() {
         return keyMaterial;
     }
     
     /**
-     * The unencrypted PEM encoded RSA private key.
+     * An unencrypted PEM encoded RSA private key.
      *
-     * @param keyMaterial The unencrypted PEM encoded RSA private key.
+     * @param keyMaterial An unencrypted PEM encoded RSA private key.
      */
     public void setKeyMaterial(String keyMaterial) {
         this.keyMaterial = keyMaterial;
     }
     
     /**
-     * The unencrypted PEM encoded RSA private key.
+     * An unencrypted PEM encoded RSA private key.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param keyMaterial The unencrypted PEM encoded RSA private key.
+     * @param keyMaterial An unencrypted PEM encoded RSA private key.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public KeyPair withKeyMaterial(String keyMaterial) {
         this.keyMaterial = keyMaterial;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -153,9 +148,9 @@ public class KeyPair  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");    	
-        if (getKeyFingerprint() != null) sb.append("KeyFingerprint: " + getKeyFingerprint() + ",");    	
+        sb.append("{");
+        if (getKeyName() != null) sb.append("KeyName: " + getKeyName() + ",");
+        if (getKeyFingerprint() != null) sb.append("KeyFingerprint: " + getKeyFingerprint() + ",");
         if (getKeyMaterial() != null) sb.append("KeyMaterial: " + getKeyMaterial() );
         sb.append("}");
         return sb.toString();

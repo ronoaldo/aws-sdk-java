@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,11 +21,13 @@ import java.io.Serializable;
  * Represents textual data, plus an optional character set specification.
  * </p>
  * <p>
- * By default, the text must be 7-bit ASCII, due to the constraints of the SMTP protocol. If the text must contain any other characters, then you must
- * also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.
+ * By default, the text must be 7-bit ASCII, due to the constraints of
+ * the SMTP protocol. If the text must contain any other characters, then
+ * you must also specify a character set. Examples include UTF-8,
+ * ISO-8859-1, and Shift_JIS.
  * </p>
  */
-public class Content  implements Serializable  {
+public class Content implements Serializable {
 
     /**
      * The textual data of the content.
@@ -50,11 +53,9 @@ public class Content  implements Serializable  {
      * @param data The textual data of the content.
      */
     public Content(String data) {
-        this.data = data;
+        setData(data);
     }
 
-    
-    
     /**
      * The textual data of the content.
      *
@@ -81,14 +82,13 @@ public class Content  implements Serializable  {
      * @param data The textual data of the content.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Content withData(String data) {
         this.data = data;
         return this;
     }
-    
-    
+
     /**
      * The character set of the content.
      *
@@ -115,14 +115,13 @@ public class Content  implements Serializable  {
      * @param charset The character set of the content.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Content withCharset(String charset) {
         this.charset = charset;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -134,8 +133,8 @@ public class Content  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getData() != null) sb.append("Data: " + getData() + ",");    	
+        sb.append("{");
+        if (getData() != null) sb.append("Data: " + getData() + ",");
         if (getCharset() != null) sb.append("Charset: " + getCharset() );
         sb.append("}");
         return sb.toString();

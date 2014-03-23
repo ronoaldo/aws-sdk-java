@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the following actions:
+ * This data type is used as a response element in the following
+ * actions:
  * </p>
  * 
  * <ul>
@@ -27,7 +29,7 @@ import java.io.Serializable;
  * 
  * </ul>
  */
-public class EC2SecurityGroup  implements Serializable  {
+public class EC2SecurityGroup implements Serializable {
 
     /**
      * Provides the status of the EC2 security group. Status can be
@@ -36,12 +38,12 @@ public class EC2SecurityGroup  implements Serializable  {
     private String status;
 
     /**
-     * Specifies the name of the EC2 Security Group.
+     * Specifies the name of the EC2 security group.
      */
     private String eC2SecurityGroupName;
 
     /**
-     * Specifies the id of the EC2 Security Group.
+     * Specifies the id of the EC2 security group.
      */
     private String eC2SecurityGroupId;
 
@@ -89,82 +91,79 @@ public class EC2SecurityGroup  implements Serializable  {
      *         "authorizing", "authorized", "revoking", and "revoked".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EC2SecurityGroup withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the name of the EC2 Security Group.
+     * Specifies the name of the EC2 security group.
      *
-     * @return Specifies the name of the EC2 Security Group.
+     * @return Specifies the name of the EC2 security group.
      */
     public String getEC2SecurityGroupName() {
         return eC2SecurityGroupName;
     }
     
     /**
-     * Specifies the name of the EC2 Security Group.
+     * Specifies the name of the EC2 security group.
      *
-     * @param eC2SecurityGroupName Specifies the name of the EC2 Security Group.
+     * @param eC2SecurityGroupName Specifies the name of the EC2 security group.
      */
     public void setEC2SecurityGroupName(String eC2SecurityGroupName) {
         this.eC2SecurityGroupName = eC2SecurityGroupName;
     }
     
     /**
-     * Specifies the name of the EC2 Security Group.
+     * Specifies the name of the EC2 security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param eC2SecurityGroupName Specifies the name of the EC2 Security Group.
+     * @param eC2SecurityGroupName Specifies the name of the EC2 security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EC2SecurityGroup withEC2SecurityGroupName(String eC2SecurityGroupName) {
         this.eC2SecurityGroupName = eC2SecurityGroupName;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the id of the EC2 Security Group.
+     * Specifies the id of the EC2 security group.
      *
-     * @return Specifies the id of the EC2 Security Group.
+     * @return Specifies the id of the EC2 security group.
      */
     public String getEC2SecurityGroupId() {
         return eC2SecurityGroupId;
     }
     
     /**
-     * Specifies the id of the EC2 Security Group.
+     * Specifies the id of the EC2 security group.
      *
-     * @param eC2SecurityGroupId Specifies the id of the EC2 Security Group.
+     * @param eC2SecurityGroupId Specifies the id of the EC2 security group.
      */
     public void setEC2SecurityGroupId(String eC2SecurityGroupId) {
         this.eC2SecurityGroupId = eC2SecurityGroupId;
     }
     
     /**
-     * Specifies the id of the EC2 Security Group.
+     * Specifies the id of the EC2 security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param eC2SecurityGroupId Specifies the id of the EC2 Security Group.
+     * @param eC2SecurityGroupId Specifies the id of the EC2 security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EC2SecurityGroup withEC2SecurityGroupId(String eC2SecurityGroupId) {
         this.eC2SecurityGroupId = eC2SecurityGroupId;
         return this;
     }
-    
-    
+
     /**
      * Specifies the AWS ID of the owner of the EC2 security group specified
      * in the <code>EC2SecurityGroupName</code> field.
@@ -197,14 +196,13 @@ public class EC2SecurityGroup  implements Serializable  {
      *         in the <code>EC2SecurityGroupName</code> field.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EC2SecurityGroup withEC2SecurityGroupOwnerId(String eC2SecurityGroupOwnerId) {
         this.eC2SecurityGroupOwnerId = eC2SecurityGroupOwnerId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -216,10 +214,10 @@ public class EC2SecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getEC2SecurityGroupName() != null) sb.append("EC2SecurityGroupName: " + getEC2SecurityGroupName() + ",");    	
-        if (getEC2SecurityGroupId() != null) sb.append("EC2SecurityGroupId: " + getEC2SecurityGroupId() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getEC2SecurityGroupName() != null) sb.append("EC2SecurityGroupName: " + getEC2SecurityGroupName() + ",");
+        if (getEC2SecurityGroupId() != null) sb.append("EC2SecurityGroupId: " + getEC2SecurityGroupId() + ",");
         if (getEC2SecurityGroupOwnerId() != null) sb.append("EC2SecurityGroupOwnerId: " + getEC2SecurityGroupOwnerId() );
         sb.append("}");
         return sb.toString();

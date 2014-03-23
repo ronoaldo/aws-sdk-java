@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of creating a new EC2 key pair.
- * </p>
+ * 
  */
-public class CreateKeyPairResult  implements Serializable  {
+public class CreateKeyPairResult implements Serializable {
 
     /**
-     * The newly created EC2 key pair.
+     * Information about the key pair.
      */
     private KeyPair keyPair;
 
     /**
-     * The newly created EC2 key pair.
+     * Information about the key pair.
      *
-     * @return The newly created EC2 key pair.
+     * @return Information about the key pair.
      */
     public KeyPair getKeyPair() {
         return keyPair;
     }
     
     /**
-     * The newly created EC2 key pair.
+     * Information about the key pair.
      *
-     * @param keyPair The newly created EC2 key pair.
+     * @param keyPair Information about the key pair.
      */
     public void setKeyPair(KeyPair keyPair) {
         this.keyPair = keyPair;
     }
     
     /**
-     * The newly created EC2 key pair.
+     * Information about the key pair.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param keyPair The newly created EC2 key pair.
+     * @param keyPair Information about the key pair.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateKeyPairResult withKeyPair(KeyPair keyPair) {
         this.keyPair = keyPair;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +70,7 @@ public class CreateKeyPairResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getKeyPair() != null) sb.append("KeyPair: " + getKeyPair() );
         sb.append("}");
         return sb.toString();

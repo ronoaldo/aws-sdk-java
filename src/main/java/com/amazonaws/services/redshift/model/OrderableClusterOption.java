@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an orderable cluster option.
  * </p>
  */
-public class OrderableClusterOption  implements Serializable  {
+public class OrderableClusterOption implements Serializable {
 
     /**
      * The version of the orderable cluster.
@@ -40,7 +41,7 @@ public class OrderableClusterOption  implements Serializable  {
     /**
      * A list of availability zones for the orderable cluster.
      */
-    private java.util.List<AvailabilityZone> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZones;
 
     /**
      * The version of the orderable cluster.
@@ -68,14 +69,13 @@ public class OrderableClusterOption  implements Serializable  {
      * @param clusterVersion The version of the orderable cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableClusterOption withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * The cluster type, for example <code>multi-node</code>.
      *
@@ -102,14 +102,13 @@ public class OrderableClusterOption  implements Serializable  {
      * @param clusterType The cluster type, for example <code>multi-node</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableClusterOption withClusterType(String clusterType) {
         this.clusterType = clusterType;
         return this;
     }
-    
-    
+
     /**
      * The node type for the orderable cluster.
      *
@@ -136,23 +135,22 @@ public class OrderableClusterOption  implements Serializable  {
      * @param nodeType The node type for the orderable cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableClusterOption withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * A list of availability zones for the orderable cluster.
      *
      * @return A list of availability zones for the orderable cluster.
      */
     public java.util.List<AvailabilityZone> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<AvailabilityZone>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
@@ -167,8 +165,7 @@ public class OrderableClusterOption  implements Serializable  {
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<AvailabilityZone> availabilityZonesCopy = new java.util.ArrayList<AvailabilityZone>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
@@ -181,7 +178,7 @@ public class OrderableClusterOption  implements Serializable  {
      * @param availabilityZones A list of availability zones for the orderable cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableClusterOption withAvailabilityZones(AvailabilityZone... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<AvailabilityZone>(availabilityZones.length));
@@ -199,20 +196,20 @@ public class OrderableClusterOption  implements Serializable  {
      * @param availabilityZones A list of availability zones for the orderable cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public OrderableClusterOption withAvailabilityZones(java.util.Collection<AvailabilityZone> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<AvailabilityZone> availabilityZonesCopy = new java.util.ArrayList<AvailabilityZone>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -224,10 +221,10 @@ public class OrderableClusterOption  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
-        if (getClusterType() != null) sb.append("ClusterType: " + getClusterType() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
+        sb.append("{");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
+        if (getClusterType() != null) sb.append("ClusterType: " + getClusterType() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
         if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() );
         sb.append("}");
         return sb.toString();

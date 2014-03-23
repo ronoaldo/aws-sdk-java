@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
  * 
- * </p>
  */
-public class DescribeCustomerGatewaysResult  implements Serializable  {
+public class DescribeCustomerGatewaysResult implements Serializable {
 
     /**
-     * 
+     * Information about one or more customer gateways.
      */
-    private java.util.List<CustomerGateway> customerGateways;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CustomerGateway> customerGateways;
 
     /**
-     * 
+     * Information about one or more customer gateways.
      *
-     * @return 
+     * @return Information about one or more customer gateways.
      */
     public java.util.List<CustomerGateway> getCustomerGateways() {
-        
         if (customerGateways == null) {
-            customerGateways = new java.util.ArrayList<CustomerGateway>();
+              customerGateways = new com.amazonaws.internal.ListWithAutoConstructFlag<CustomerGateway>();
+              customerGateways.setAutoConstruct(true);
         }
         return customerGateways;
     }
     
     /**
-     * 
+     * Information about one or more customer gateways.
      *
-     * @param customerGateways 
+     * @param customerGateways Information about one or more customer gateways.
      */
     public void setCustomerGateways(java.util.Collection<CustomerGateway> customerGateways) {
         if (customerGateways == null) {
             this.customerGateways = null;
             return;
         }
-
-        java.util.List<CustomerGateway> customerGatewaysCopy = new java.util.ArrayList<CustomerGateway>(customerGateways.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CustomerGateway> customerGatewaysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CustomerGateway>(customerGateways.size());
         customerGatewaysCopy.addAll(customerGateways);
         this.customerGateways = customerGatewaysCopy;
     }
     
     /**
-     * 
+     * Information about one or more customer gateways.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param customerGateways 
+     * @param customerGateways Information about one or more customer gateways.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCustomerGatewaysResult withCustomerGateways(CustomerGateway... customerGateways) {
         if (getCustomerGateways() == null) setCustomerGateways(new java.util.ArrayList<CustomerGateway>(customerGateways.length));
@@ -75,27 +73,27 @@ public class DescribeCustomerGatewaysResult  implements Serializable  {
     }
     
     /**
-     * 
+     * Information about one or more customer gateways.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param customerGateways 
+     * @param customerGateways Information about one or more customer gateways.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCustomerGatewaysResult withCustomerGateways(java.util.Collection<CustomerGateway> customerGateways) {
         if (customerGateways == null) {
             this.customerGateways = null;
         } else {
-            java.util.List<CustomerGateway> customerGatewaysCopy = new java.util.ArrayList<CustomerGateway>(customerGateways.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CustomerGateway> customerGatewaysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CustomerGateway>(customerGateways.size());
             customerGatewaysCopy.addAll(customerGateways);
             this.customerGateways = customerGatewaysCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeCustomerGatewaysResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCustomerGateways() != null) sb.append("CustomerGateways: " + getCustomerGateways() );
         sb.append("}");
         return sb.toString();

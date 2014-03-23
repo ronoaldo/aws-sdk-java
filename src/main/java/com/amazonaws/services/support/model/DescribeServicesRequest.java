@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,89 +13,97 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.support.AWSSupport#describeServices(DescribeServicesRequest) DescribeServices operation}.
  * <p>
- * Returns the current list of AWS services and a list of service categories that applies to each one. You then use service names and categories in your
- * CreateCase requests. Each AWS service has its own set of categories.
+ * Returns the current list of AWS services and a list of service
+ * categories that applies to each one. You then use service names and
+ * categories in your CreateCase requests. Each AWS service has its own
+ * set of categories.
  * </p>
  * <p>
- * The service codes and category codes correspond to the values that are displayed in the <b>Service</b> and <b>Category</b> drop-down lists on the AWS
- * Support Center <a href="https://aws.amazon.com/support/createCase"> Open a new case </a> page. The values in those fields, however, do not
- * necessarily match the service codes and categories returned by the <code>DescribeServices</code> request. Always use the service codes and categories
- * obtained programmatically. This practice ensures that you always have the most recent set of service and category codes.
+ * The service codes and category codes correspond to the values that are
+ * displayed in the <b>Service</b> and <b>Category</b> drop-down lists on
+ * the AWS Support Center
+ * <a href="https://aws.amazon.com/support/createCase"> Open a new case </a>
+ * page. The values in those fields, however, do not necessarily match
+ * the service codes and categories returned by the
+ * <code>DescribeServices</code> request. Always use the service codes
+ * and categories obtained programmatically. This practice ensures that
+ * you always have the most recent set of service and category codes.
  * </p>
  *
  * @see com.amazonaws.services.support.AWSSupport#describeServices(DescribeServicesRequest)
  */
-public class DescribeServicesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeServicesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * List in JSON format of service codes available for AWS services.
+     * A JSON-formatted list of service codes available for AWS services.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      */
-    private java.util.List<String> serviceCodeList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> serviceCodeList;
 
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      */
     private String language;
 
     /**
-     * List in JSON format of service codes available for AWS services.
+     * A JSON-formatted list of service codes available for AWS services.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @return List in JSON format of service codes available for AWS services.
+     * @return A JSON-formatted list of service codes available for AWS services.
      */
     public java.util.List<String> getServiceCodeList() {
-        
         if (serviceCodeList == null) {
-            serviceCodeList = new java.util.ArrayList<String>();
+              serviceCodeList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              serviceCodeList.setAutoConstruct(true);
         }
         return serviceCodeList;
     }
     
     /**
-     * List in JSON format of service codes available for AWS services.
+     * A JSON-formatted list of service codes available for AWS services.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @param serviceCodeList List in JSON format of service codes available for AWS services.
+     * @param serviceCodeList A JSON-formatted list of service codes available for AWS services.
      */
     public void setServiceCodeList(java.util.Collection<String> serviceCodeList) {
         if (serviceCodeList == null) {
             this.serviceCodeList = null;
             return;
         }
-
-        java.util.List<String> serviceCodeListCopy = new java.util.ArrayList<String>(serviceCodeList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> serviceCodeListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(serviceCodeList.size());
         serviceCodeListCopy.addAll(serviceCodeList);
         this.serviceCodeList = serviceCodeListCopy;
     }
     
     /**
-     * List in JSON format of service codes available for AWS services.
+     * A JSON-formatted list of service codes available for AWS services.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @param serviceCodeList List in JSON format of service codes available for AWS services.
+     * @param serviceCodeList A JSON-formatted list of service codes available for AWS services.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeServicesRequest withServiceCodeList(String... serviceCodeList) {
         if (getServiceCodeList() == null) setServiceCodeList(new java.util.ArrayList<String>(serviceCodeList.length));
@@ -106,82 +114,81 @@ public class DescribeServicesRequest extends AmazonWebServiceRequest  implements
     }
     
     /**
-     * List in JSON format of service codes available for AWS services.
+     * A JSON-formatted list of service codes available for AWS services.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
      *
-     * @param serviceCodeList List in JSON format of service codes available for AWS services.
+     * @param serviceCodeList A JSON-formatted list of service codes available for AWS services.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeServicesRequest withServiceCodeList(java.util.Collection<String> serviceCodeList) {
         if (serviceCodeList == null) {
             this.serviceCodeList = null;
         } else {
-            java.util.List<String> serviceCodeListCopy = new java.util.ArrayList<String>(serviceCodeList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> serviceCodeListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(serviceCodeList.size());
             serviceCodeListCopy.addAll(serviceCodeList);
             this.serviceCodeList = serviceCodeListCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @return Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @return The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public String getLanguage() {
         return language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public void setLanguage(String language) {
         this.language = language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeServicesRequest withLanguage(String language) {
         this.language = language;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -193,8 +200,8 @@ public class DescribeServicesRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getServiceCodeList() != null) sb.append("ServiceCodeList: " + getServiceCodeList() + ",");    	
+        sb.append("{");
+        if (getServiceCodeList() != null) sb.append("ServiceCodeList: " + getServiceCodeList() + ",");
         if (getLanguage() != null) sb.append("Language: " + getLanguage() );
         sb.append("}");
         return sb.toString();

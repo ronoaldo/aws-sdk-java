@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains details about a workflow type.
  * </p>
  */
-public class WorkflowTypeDetail  implements Serializable  {
+public class WorkflowTypeDetail implements Serializable {
 
     /**
      * General information about the workflow type. <p> The status of the
@@ -108,14 +109,13 @@ public class WorkflowTypeDetail  implements Serializable  {
      *         executions of this type. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeDetail withTypeInfo(WorkflowTypeInfo typeInfo) {
         this.typeInfo = typeInfo;
         return this;
     }
-    
-    
+
     /**
      * Configuration settings of the workflow type registered through
      * <a>RegisterWorkflowType</a>
@@ -148,14 +148,13 @@ public class WorkflowTypeDetail  implements Serializable  {
      *         <a>RegisterWorkflowType</a>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowTypeDetail withConfiguration(WorkflowTypeConfiguration configuration) {
         this.configuration = configuration;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -167,8 +166,8 @@ public class WorkflowTypeDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTypeInfo() != null) sb.append("TypeInfo: " + getTypeInfo() + ",");    	
+        sb.append("{");
+        if (getTypeInfo() != null) sb.append("TypeInfo: " + getTypeInfo() + ",");
         if (getConfiguration() != null) sb.append("Configuration: " + getConfiguration() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * An item collection is too large. This exception is only returned for tables that have one or more local secondary indexes.
+ * An item collection is too large. This exception is only returned for
+ * tables that have one or more local secondary indexes.
  * </p>
  */        
 public class ItemCollectionSizeLimitExceededException extends AmazonServiceException {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,281 +13,369 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The VpnConnection data type.
+ * Describes a VPN connection.
  * </p>
  */
-public class VpnConnection  implements Serializable  {
+public class VpnConnection implements Serializable {
 
     /**
-     * Specifies the ID of the VPN gateway at the VPC end of the VPN
-     * connection.
+     * The ID of the VPN connection.
      */
     private String vpnConnectionId;
 
     /**
-     * Describes the current state of the VPN connection. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      */
     private String state;
 
     /**
-     * Contains configuration information in the native XML format for the
-     * VPN connection's customer gateway. <p> This element is always present
-     * in the CreateVpnConnection response; however, it's present in the
-     * DescribeVpnConnections response only if the VPN connection is in the
-     * <code>pending</code> or <code>available</code> state.
+     * The configuration information for the VPN connection's customer
+     * gateway (in the native XML format). This element is always present in
+     * the <a>CreateVpnConnection</a> response; however, it's present in the
+     * <a>DescribeVpnConnections</a> response only if the VPN connection is
+     * in the <code>pending</code> or <code>available</code> state.
      */
     private String customerGatewayConfiguration;
 
     /**
-     * Specifies the type of VPN connection.
+     * The type of VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      */
     private String type;
 
     /**
-     * Specifies ID of the customer gateway at the end of the VPN connection.
+     * The ID of the customer gateway at your end of the VPN connection.
      */
     private String customerGatewayId;
 
     /**
-     * Specfies the ID of the VPN gateway at the VPC end of the VPN
+     * The ID of the virtual private gateway at the AWS side of the VPN
      * connection.
      */
     private String vpnGatewayId;
 
     /**
-     * A list of tags for the VpnConnection.
+     * Any tags assigned to the VPN connection.
      */
-    private java.util.List<Tag> tags;
-
-    private java.util.List<VgwTelemetry> vgwTelemetry;
-
-    private VpnConnectionOptions options;
-
-    private java.util.List<VpnStaticRoute> routes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tags;
 
     /**
-     * Specifies the ID of the VPN gateway at the VPC end of the VPN
-     * connection.
+     * Information about the VPN tunnel.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VgwTelemetry> vgwTelemetry;
+
+    /**
+     * The VPN connection options.
+     */
+    private VpnConnectionOptions options;
+
+    /**
+     * The static routes assoicated with the VPN connection.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VpnStaticRoute> routes;
+
+    /**
+     * The ID of the VPN connection.
      *
-     * @return Specifies the ID of the VPN gateway at the VPC end of the VPN
-     *         connection.
+     * @return The ID of the VPN connection.
      */
     public String getVpnConnectionId() {
         return vpnConnectionId;
     }
     
     /**
-     * Specifies the ID of the VPN gateway at the VPC end of the VPN
-     * connection.
+     * The ID of the VPN connection.
      *
-     * @param vpnConnectionId Specifies the ID of the VPN gateway at the VPC end of the VPN
-     *         connection.
+     * @param vpnConnectionId The ID of the VPN connection.
      */
     public void setVpnConnectionId(String vpnConnectionId) {
         this.vpnConnectionId = vpnConnectionId;
     }
     
     /**
-     * Specifies the ID of the VPN gateway at the VPC end of the VPN
-     * connection.
+     * The ID of the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpnConnectionId Specifies the ID of the VPN gateway at the VPC end of the VPN
-     *         connection.
+     * @param vpnConnectionId The ID of the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withVpnConnectionId(String vpnConnectionId) {
         this.vpnConnectionId = vpnConnectionId;
         return this;
     }
-    
-    
+
     /**
-     * Describes the current state of the VPN connection. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @return Describes the current state of the VPN connection. Valid values are
-     *         <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     *         and <code>deleted</code>.
+     * @return The current state of the VPN connection.
+     *
+     * @see VpnState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * Describes the current state of the VPN connection. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state Describes the current state of the VPN connection. Valid values are
-     *         <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     *         and <code>deleted</code>.
+     * @param state The current state of the VPN connection.
+     *
+     * @see VpnState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * Describes the current state of the VPN connection. Valid values are
-     * <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     * and <code>deleted</code>.
+     * The current state of the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @param state Describes the current state of the VPN connection. Valid values are
-     *         <code>pending</code>, <code>available</code>, <code>deleting</code>,
-     *         and <code>deleted</code>.
+     * @param state The current state of the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see VpnState
      */
     public VpnConnection withState(String state) {
         this.state = state;
         return this;
     }
-    
+
+    /**
+     * The current state of the VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
+     *
+     * @param state The current state of the VPN connection.
+     *
+     * @see VpnState
+     */
+    public void setState(VpnState state) {
+        this.state = state.toString();
+    }
     
     /**
-     * Contains configuration information in the native XML format for the
-     * VPN connection's customer gateway. <p> This element is always present
-     * in the CreateVpnConnection response; however, it's present in the
-     * DescribeVpnConnections response only if the VPN connection is in the
-     * <code>pending</code> or <code>available</code> state.
+     * The current state of the VPN connection.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>pending, available, deleting, deleted
      *
-     * @return Contains configuration information in the native XML format for the
-     *         VPN connection's customer gateway. <p> This element is always present
-     *         in the CreateVpnConnection response; however, it's present in the
-     *         DescribeVpnConnections response only if the VPN connection is in the
-     *         <code>pending</code> or <code>available</code> state.
+     * @param state The current state of the VPN connection.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see VpnState
+     */
+    public VpnConnection withState(VpnState state) {
+        this.state = state.toString();
+        return this;
+    }
+
+    /**
+     * The configuration information for the VPN connection's customer
+     * gateway (in the native XML format). This element is always present in
+     * the <a>CreateVpnConnection</a> response; however, it's present in the
+     * <a>DescribeVpnConnections</a> response only if the VPN connection is
+     * in the <code>pending</code> or <code>available</code> state.
+     *
+     * @return The configuration information for the VPN connection's customer
+     *         gateway (in the native XML format). This element is always present in
+     *         the <a>CreateVpnConnection</a> response; however, it's present in the
+     *         <a>DescribeVpnConnections</a> response only if the VPN connection is
+     *         in the <code>pending</code> or <code>available</code> state.
      */
     public String getCustomerGatewayConfiguration() {
         return customerGatewayConfiguration;
     }
     
     /**
-     * Contains configuration information in the native XML format for the
-     * VPN connection's customer gateway. <p> This element is always present
-     * in the CreateVpnConnection response; however, it's present in the
-     * DescribeVpnConnections response only if the VPN connection is in the
-     * <code>pending</code> or <code>available</code> state.
+     * The configuration information for the VPN connection's customer
+     * gateway (in the native XML format). This element is always present in
+     * the <a>CreateVpnConnection</a> response; however, it's present in the
+     * <a>DescribeVpnConnections</a> response only if the VPN connection is
+     * in the <code>pending</code> or <code>available</code> state.
      *
-     * @param customerGatewayConfiguration Contains configuration information in the native XML format for the
-     *         VPN connection's customer gateway. <p> This element is always present
-     *         in the CreateVpnConnection response; however, it's present in the
-     *         DescribeVpnConnections response only if the VPN connection is in the
-     *         <code>pending</code> or <code>available</code> state.
+     * @param customerGatewayConfiguration The configuration information for the VPN connection's customer
+     *         gateway (in the native XML format). This element is always present in
+     *         the <a>CreateVpnConnection</a> response; however, it's present in the
+     *         <a>DescribeVpnConnections</a> response only if the VPN connection is
+     *         in the <code>pending</code> or <code>available</code> state.
      */
     public void setCustomerGatewayConfiguration(String customerGatewayConfiguration) {
         this.customerGatewayConfiguration = customerGatewayConfiguration;
     }
     
     /**
-     * Contains configuration information in the native XML format for the
-     * VPN connection's customer gateway. <p> This element is always present
-     * in the CreateVpnConnection response; however, it's present in the
-     * DescribeVpnConnections response only if the VPN connection is in the
-     * <code>pending</code> or <code>available</code> state.
+     * The configuration information for the VPN connection's customer
+     * gateway (in the native XML format). This element is always present in
+     * the <a>CreateVpnConnection</a> response; however, it's present in the
+     * <a>DescribeVpnConnections</a> response only if the VPN connection is
+     * in the <code>pending</code> or <code>available</code> state.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param customerGatewayConfiguration Contains configuration information in the native XML format for the
-     *         VPN connection's customer gateway. <p> This element is always present
-     *         in the CreateVpnConnection response; however, it's present in the
-     *         DescribeVpnConnections response only if the VPN connection is in the
-     *         <code>pending</code> or <code>available</code> state.
+     * @param customerGatewayConfiguration The configuration information for the VPN connection's customer
+     *         gateway (in the native XML format). This element is always present in
+     *         the <a>CreateVpnConnection</a> response; however, it's present in the
+     *         <a>DescribeVpnConnections</a> response only if the VPN connection is
+     *         in the <code>pending</code> or <code>available</code> state.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withCustomerGatewayConfiguration(String customerGatewayConfiguration) {
         this.customerGatewayConfiguration = customerGatewayConfiguration;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the type of VPN connection.
+     * The type of VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @return Specifies the type of VPN connection.
+     * @return The type of VPN connection.
+     *
+     * @see GatewayType
      */
     public String getType() {
         return type;
     }
     
     /**
-     * Specifies the type of VPN connection.
+     * The type of VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type Specifies the type of VPN connection.
+     * @param type The type of VPN connection.
+     *
+     * @see GatewayType
      */
     public void setType(String type) {
         this.type = type;
     }
     
     /**
-     * Specifies the type of VPN connection.
+     * The type of VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type Specifies the type of VPN connection.
+     * @param type The type of VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see GatewayType
      */
     public VpnConnection withType(String type) {
         this.type = type;
         return this;
     }
-    
+
+    /**
+     * The type of VPN connection.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
+     *
+     * @param type The type of VPN connection.
+     *
+     * @see GatewayType
+     */
+    public void setType(GatewayType type) {
+        this.type = type.toString();
+    }
     
     /**
-     * Specifies ID of the customer gateway at the end of the VPN connection.
+     * The type of VPN connection.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @return Specifies ID of the customer gateway at the end of the VPN connection.
+     * @param type The type of VPN connection.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see GatewayType
+     */
+    public VpnConnection withType(GatewayType type) {
+        this.type = type.toString();
+        return this;
+    }
+
+    /**
+     * The ID of the customer gateway at your end of the VPN connection.
+     *
+     * @return The ID of the customer gateway at your end of the VPN connection.
      */
     public String getCustomerGatewayId() {
         return customerGatewayId;
     }
     
     /**
-     * Specifies ID of the customer gateway at the end of the VPN connection.
+     * The ID of the customer gateway at your end of the VPN connection.
      *
-     * @param customerGatewayId Specifies ID of the customer gateway at the end of the VPN connection.
+     * @param customerGatewayId The ID of the customer gateway at your end of the VPN connection.
      */
     public void setCustomerGatewayId(String customerGatewayId) {
         this.customerGatewayId = customerGatewayId;
     }
     
     /**
-     * Specifies ID of the customer gateway at the end of the VPN connection.
+     * The ID of the customer gateway at your end of the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param customerGatewayId Specifies ID of the customer gateway at the end of the VPN connection.
+     * @param customerGatewayId The ID of the customer gateway at your end of the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withCustomerGatewayId(String customerGatewayId) {
         this.customerGatewayId = customerGatewayId;
         return this;
     }
-    
-    
+
     /**
-     * Specfies the ID of the VPN gateway at the VPC end of the VPN
+     * The ID of the virtual private gateway at the AWS side of the VPN
      * connection.
      *
-     * @return Specfies the ID of the VPN gateway at the VPC end of the VPN
+     * @return The ID of the virtual private gateway at the AWS side of the VPN
      *         connection.
      */
     public String getVpnGatewayId() {
@@ -295,10 +383,10 @@ public class VpnConnection  implements Serializable  {
     }
     
     /**
-     * Specfies the ID of the VPN gateway at the VPC end of the VPN
+     * The ID of the virtual private gateway at the AWS side of the VPN
      * connection.
      *
-     * @param vpnGatewayId Specfies the ID of the VPN gateway at the VPC end of the VPN
+     * @param vpnGatewayId The ID of the virtual private gateway at the AWS side of the VPN
      *         connection.
      */
     public void setVpnGatewayId(String vpnGatewayId) {
@@ -306,61 +394,59 @@ public class VpnConnection  implements Serializable  {
     }
     
     /**
-     * Specfies the ID of the VPN gateway at the VPC end of the VPN
+     * The ID of the virtual private gateway at the AWS side of the VPN
      * connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpnGatewayId Specfies the ID of the VPN gateway at the VPC end of the VPN
+     * @param vpnGatewayId The ID of the virtual private gateway at the AWS side of the VPN
      *         connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withVpnGatewayId(String vpnGatewayId) {
         this.vpnGatewayId = vpnGatewayId;
         return this;
     }
-    
-    
+
     /**
-     * A list of tags for the VpnConnection.
+     * Any tags assigned to the VPN connection.
      *
-     * @return A list of tags for the VpnConnection.
+     * @return Any tags assigned to the VPN connection.
      */
     public java.util.List<Tag> getTags() {
-        
         if (tags == null) {
-            tags = new java.util.ArrayList<Tag>();
+              tags = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>();
+              tags.setAutoConstruct(true);
         }
         return tags;
     }
     
     /**
-     * A list of tags for the VpnConnection.
+     * Any tags assigned to the VPN connection.
      *
-     * @param tags A list of tags for the VpnConnection.
+     * @param tags Any tags assigned to the VPN connection.
      */
     public void setTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
             return;
         }
-
-        java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
         tagsCopy.addAll(tags);
         this.tags = tagsCopy;
     }
     
     /**
-     * A list of tags for the VpnConnection.
+     * Any tags assigned to the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the VpnConnection.
+     * @param tags Any tags assigned to the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withTags(Tag... tags) {
         if (getTags() == null) setTags(new java.util.ArrayList<Tag>(tags.length));
@@ -371,65 +457,64 @@ public class VpnConnection  implements Serializable  {
     }
     
     /**
-     * A list of tags for the VpnConnection.
+     * Any tags assigned to the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param tags A list of tags for the VpnConnection.
+     * @param tags Any tags assigned to the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withTags(java.util.Collection<Tag> tags) {
         if (tags == null) {
             this.tags = null;
         } else {
-            java.util.List<Tag> tagsCopy = new java.util.ArrayList<Tag>(tags.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Tag> tagsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Tag>(tags.size());
             tagsCopy.addAll(tags);
             this.tags = tagsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the VgwTelemetry property for this object.
+     * Information about the VPN tunnel.
      *
-     * @return The value of the VgwTelemetry property for this object.
+     * @return Information about the VPN tunnel.
      */
     public java.util.List<VgwTelemetry> getVgwTelemetry() {
-        
         if (vgwTelemetry == null) {
-            vgwTelemetry = new java.util.ArrayList<VgwTelemetry>();
+              vgwTelemetry = new com.amazonaws.internal.ListWithAutoConstructFlag<VgwTelemetry>();
+              vgwTelemetry.setAutoConstruct(true);
         }
         return vgwTelemetry;
     }
     
     /**
-     * Sets the value of the VgwTelemetry property for this object.
+     * Information about the VPN tunnel.
      *
-     * @param vgwTelemetry The new value for the VgwTelemetry property for this object.
+     * @param vgwTelemetry Information about the VPN tunnel.
      */
     public void setVgwTelemetry(java.util.Collection<VgwTelemetry> vgwTelemetry) {
         if (vgwTelemetry == null) {
             this.vgwTelemetry = null;
             return;
         }
-
-        java.util.List<VgwTelemetry> vgwTelemetryCopy = new java.util.ArrayList<VgwTelemetry>(vgwTelemetry.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VgwTelemetry> vgwTelemetryCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VgwTelemetry>(vgwTelemetry.size());
         vgwTelemetryCopy.addAll(vgwTelemetry);
         this.vgwTelemetry = vgwTelemetryCopy;
     }
     
     /**
-     * Sets the value of the VgwTelemetry property for this object.
+     * Information about the VPN tunnel.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vgwTelemetry The new value for the VgwTelemetry property for this object.
+     * @param vgwTelemetry Information about the VPN tunnel.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withVgwTelemetry(VgwTelemetry... vgwTelemetry) {
         if (getVgwTelemetry() == null) setVgwTelemetry(new java.util.ArrayList<VgwTelemetry>(vgwTelemetry.length));
@@ -440,99 +525,97 @@ public class VpnConnection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the VgwTelemetry property for this object.
+     * Information about the VPN tunnel.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vgwTelemetry The new value for the VgwTelemetry property for this object.
+     * @param vgwTelemetry Information about the VPN tunnel.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withVgwTelemetry(java.util.Collection<VgwTelemetry> vgwTelemetry) {
         if (vgwTelemetry == null) {
             this.vgwTelemetry = null;
         } else {
-            java.util.List<VgwTelemetry> vgwTelemetryCopy = new java.util.ArrayList<VgwTelemetry>(vgwTelemetry.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VgwTelemetry> vgwTelemetryCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VgwTelemetry>(vgwTelemetry.size());
             vgwTelemetryCopy.addAll(vgwTelemetry);
             this.vgwTelemetry = vgwTelemetryCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Options property for this object.
+     * The VPN connection options.
      *
-     * @return The value of the Options property for this object.
+     * @return The VPN connection options.
      */
     public VpnConnectionOptions getOptions() {
         return options;
     }
     
     /**
-     * Sets the value of the Options property for this object.
+     * The VPN connection options.
      *
-     * @param options The new value for the Options property for this object.
+     * @param options The VPN connection options.
      */
     public void setOptions(VpnConnectionOptions options) {
         this.options = options;
     }
     
     /**
-     * Sets the value of the Options property for this object.
+     * The VPN connection options.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param options The new value for the Options property for this object.
+     * @param options The VPN connection options.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withOptions(VpnConnectionOptions options) {
         this.options = options;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Routes property for this object.
+     * The static routes assoicated with the VPN connection.
      *
-     * @return The value of the Routes property for this object.
+     * @return The static routes assoicated with the VPN connection.
      */
     public java.util.List<VpnStaticRoute> getRoutes() {
-        
         if (routes == null) {
-            routes = new java.util.ArrayList<VpnStaticRoute>();
+              routes = new com.amazonaws.internal.ListWithAutoConstructFlag<VpnStaticRoute>();
+              routes.setAutoConstruct(true);
         }
         return routes;
     }
     
     /**
-     * Sets the value of the Routes property for this object.
+     * The static routes assoicated with the VPN connection.
      *
-     * @param routes The new value for the Routes property for this object.
+     * @param routes The static routes assoicated with the VPN connection.
      */
     public void setRoutes(java.util.Collection<VpnStaticRoute> routes) {
         if (routes == null) {
             this.routes = null;
             return;
         }
-
-        java.util.List<VpnStaticRoute> routesCopy = new java.util.ArrayList<VpnStaticRoute>(routes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VpnStaticRoute> routesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpnStaticRoute>(routes.size());
         routesCopy.addAll(routes);
         this.routes = routesCopy;
     }
     
     /**
-     * Sets the value of the Routes property for this object.
+     * The static routes assoicated with the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routes The new value for the Routes property for this object.
+     * @param routes The static routes assoicated with the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withRoutes(VpnStaticRoute... routes) {
         if (getRoutes() == null) setRoutes(new java.util.ArrayList<VpnStaticRoute>(routes.length));
@@ -543,27 +626,27 @@ public class VpnConnection  implements Serializable  {
     }
     
     /**
-     * Sets the value of the Routes property for this object.
+     * The static routes assoicated with the VPN connection.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param routes The new value for the Routes property for this object.
+     * @param routes The static routes assoicated with the VPN connection.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VpnConnection withRoutes(java.util.Collection<VpnStaticRoute> routes) {
         if (routes == null) {
             this.routes = null;
         } else {
-            java.util.List<VpnStaticRoute> routesCopy = new java.util.ArrayList<VpnStaticRoute>(routes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VpnStaticRoute> routesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VpnStaticRoute>(routes.size());
             routesCopy.addAll(routes);
             this.routes = routesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -575,16 +658,16 @@ public class VpnConnection  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVpnConnectionId() != null) sb.append("VpnConnectionId: " + getVpnConnectionId() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getCustomerGatewayConfiguration() != null) sb.append("CustomerGatewayConfiguration: " + getCustomerGatewayConfiguration() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getCustomerGatewayId() != null) sb.append("CustomerGatewayId: " + getCustomerGatewayId() + ",");    	
-        if (getVpnGatewayId() != null) sb.append("VpnGatewayId: " + getVpnGatewayId() + ",");    	
-        if (getTags() != null) sb.append("Tags: " + getTags() + ",");    	
-        if (getVgwTelemetry() != null) sb.append("VgwTelemetry: " + getVgwTelemetry() + ",");    	
-        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");    	
+        sb.append("{");
+        if (getVpnConnectionId() != null) sb.append("VpnConnectionId: " + getVpnConnectionId() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getCustomerGatewayConfiguration() != null) sb.append("CustomerGatewayConfiguration: " + getCustomerGatewayConfiguration() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getCustomerGatewayId() != null) sb.append("CustomerGatewayId: " + getCustomerGatewayId() + ",");
+        if (getVpnGatewayId() != null) sb.append("VpnGatewayId: " + getVpnGatewayId() + ",");
+        if (getTags() != null) sb.append("Tags: " + getTags() + ",");
+        if (getVgwTelemetry() != null) sb.append("VgwTelemetry: " + getVgwTelemetry() + ",");
+        if (getOptions() != null) sb.append("Options: " + getOptions() + ",");
         if (getRoutes() != null) sb.append("Routes: " + getRoutes() );
         sb.append("}");
         return sb.toString();

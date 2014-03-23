@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendStatistics(GetSendStatisticsRequest) GetSendStatistics operation}.
  * <p>
- * Returns the user's sending statistics. The result is a list of data points, representing the last two weeks of sending activity.
+ * Returns the user's sending statistics. The result is a list of data
+ * points, representing the last two weeks of sending activity.
  * </p>
  * <p>
- * Each data point in the list contains statistics for a 15-minute interval.
+ * Each data point in the list contains statistics for a 15-minute
+ * interval.
+ * </p>
+ * <p>
+ * This action is throttled at one request per second.
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#getSendStatistics(GetSendStatisticsRequest)
  */
-public class GetSendStatisticsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetSendStatisticsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Returns a string representation of this object; useful for testing and

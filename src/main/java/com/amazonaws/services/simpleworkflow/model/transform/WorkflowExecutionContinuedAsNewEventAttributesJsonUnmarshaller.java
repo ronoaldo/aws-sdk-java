@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,32 +22,28 @@ import com.amazonaws.services.simpleworkflow.model.*;
 import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
-import org.codehaus.jackson.JsonToken;
-import static org.codehaus.jackson.JsonToken.*;
+import com.fasterxml.jackson.core.JsonToken;
+import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
  * Workflow Execution Continued As New Event Attributes JSON Unmarshaller
  */
 public class WorkflowExecutionContinuedAsNewEventAttributesJsonUnmarshaller implements Unmarshaller<WorkflowExecutionContinuedAsNewEventAttributes, JsonUnmarshallerContext> {
 
-    
-
     public WorkflowExecutionContinuedAsNewEventAttributes unmarshall(JsonUnmarshallerContext context) throws Exception {
         WorkflowExecutionContinuedAsNewEventAttributes workflowExecutionContinuedAsNewEventAttributes = new WorkflowExecutionContinuedAsNewEventAttributes();
 
-        
-        
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.currentToken;
         if (token == null) token = context.nextToken();
+        if (token == VALUE_NULL) return null;
 
         while (true) {
             if (token == null) break;
 
-            
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("input", targetDepth)) {
                     context.nextToken();
@@ -78,6 +74,7 @@ public class WorkflowExecutionContinuedAsNewEventAttributesJsonUnmarshaller impl
                     workflowExecutionContinuedAsNewEventAttributes.setChildPolicy(StringJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("tagList", targetDepth)) {
+                    context.nextToken();
                     workflowExecutionContinuedAsNewEventAttributes.setTagList(new ListUnmarshaller<String>(StringJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("workflowType", targetDepth)) {
@@ -89,7 +86,6 @@ public class WorkflowExecutionContinuedAsNewEventAttributesJsonUnmarshaller impl
                     if (context.getCurrentDepth() <= originalDepth) break;
                 }
             }
-            
 
             token = context.nextToken();
         }

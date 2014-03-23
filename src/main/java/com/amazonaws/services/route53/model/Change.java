@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contains the information for each change in a change batch request.
+ * A complex type that contains the information for each change in a
+ * change batch request.
  * </p>
  */
-public class Change  implements Serializable  {
+public class Change implements Serializable {
 
     /**
      * The action to perform. <p>Valid values: <code>CREATE</code> |
-     * <code>DELETE</code>
+     * <code>DELETE</code> | <code>UPSERT</code>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATE, DELETE
+     * <b>Allowed Values: </b>CREATE, DELETE, UPSERT
      */
     private String action;
 
@@ -48,24 +50,22 @@ public class Change  implements Serializable  {
      * initialize any additional object members.
      * 
      * @param action The action to perform. <p>Valid values:
-     * <code>CREATE</code> | <code>DELETE</code>
+     * <code>CREATE</code> | <code>DELETE</code> | <code>UPSERT</code>
      * @param resourceRecordSet Information about the resource record set to
      * create or delete.
      */
     public Change(String action, ResourceRecordSet resourceRecordSet) {
-        this.action = action;
-        this.resourceRecordSet = resourceRecordSet;
+        setAction(action);
+        setResourceRecordSet(resourceRecordSet);
     }
 
-    
-    
     /**
      * Constructs a new Change object.
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
      * @param action The action to perform. <p>Valid values:
-     * <code>CREATE</code> | <code>DELETE</code>
+     * <code>CREATE</code> | <code>DELETE</code> | <code>UPSERT</code>
      * @param resourceRecordSet Information about the resource record set to
      * create or delete.
      */
@@ -73,16 +73,16 @@ public class Change  implements Serializable  {
         this.action = action.toString();
         this.resourceRecordSet = resourceRecordSet;
     }
-    
+
     /**
      * The action to perform. <p>Valid values: <code>CREATE</code> |
-     * <code>DELETE</code>
+     * <code>DELETE</code> | <code>UPSERT</code>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATE, DELETE
+     * <b>Allowed Values: </b>CREATE, DELETE, UPSERT
      *
      * @return The action to perform. <p>Valid values: <code>CREATE</code> |
-     *         <code>DELETE</code>
+     *         <code>DELETE</code> | <code>UPSERT</code>
      *
      * @see ChangeAction
      */
@@ -92,13 +92,13 @@ public class Change  implements Serializable  {
     
     /**
      * The action to perform. <p>Valid values: <code>CREATE</code> |
-     * <code>DELETE</code>
+     * <code>DELETE</code> | <code>UPSERT</code>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATE, DELETE
+     * <b>Allowed Values: </b>CREATE, DELETE, UPSERT
      *
      * @param action The action to perform. <p>Valid values: <code>CREATE</code> |
-     *         <code>DELETE</code>
+     *         <code>DELETE</code> | <code>UPSERT</code>
      *
      * @see ChangeAction
      */
@@ -108,18 +108,18 @@ public class Change  implements Serializable  {
     
     /**
      * The action to perform. <p>Valid values: <code>CREATE</code> |
-     * <code>DELETE</code>
+     * <code>DELETE</code> | <code>UPSERT</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATE, DELETE
+     * <b>Allowed Values: </b>CREATE, DELETE, UPSERT
      *
      * @param action The action to perform. <p>Valid values: <code>CREATE</code> |
-     *         <code>DELETE</code>
+     *         <code>DELETE</code> | <code>UPSERT</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChangeAction
      */
@@ -127,17 +127,16 @@ public class Change  implements Serializable  {
         this.action = action;
         return this;
     }
-    
-    
+
     /**
      * The action to perform. <p>Valid values: <code>CREATE</code> |
-     * <code>DELETE</code>
+     * <code>DELETE</code> | <code>UPSERT</code>
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATE, DELETE
+     * <b>Allowed Values: </b>CREATE, DELETE, UPSERT
      *
      * @param action The action to perform. <p>Valid values: <code>CREATE</code> |
-     *         <code>DELETE</code>
+     *         <code>DELETE</code> | <code>UPSERT</code>
      *
      * @see ChangeAction
      */
@@ -147,18 +146,18 @@ public class Change  implements Serializable  {
     
     /**
      * The action to perform. <p>Valid values: <code>CREATE</code> |
-     * <code>DELETE</code>
+     * <code>DELETE</code> | <code>UPSERT</code>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>CREATE, DELETE
+     * <b>Allowed Values: </b>CREATE, DELETE, UPSERT
      *
      * @param action The action to perform. <p>Valid values: <code>CREATE</code> |
-     *         <code>DELETE</code>
+     *         <code>DELETE</code> | <code>UPSERT</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChangeAction
      */
@@ -166,7 +165,7 @@ public class Change  implements Serializable  {
         this.action = action.toString();
         return this;
     }
-    
+
     /**
      * Information about the resource record set to create or delete.
      *
@@ -193,14 +192,13 @@ public class Change  implements Serializable  {
      * @param resourceRecordSet Information about the resource record set to create or delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Change withResourceRecordSet(ResourceRecordSet resourceRecordSet) {
         this.resourceRecordSet = resourceRecordSet;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -212,8 +210,8 @@ public class Change  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAction() != null) sb.append("Action: " + getAction() + ",");    	
+        sb.append("{");
+        if (getAction() != null) sb.append("Action: " + getAction() + ",");
         if (getResourceRecordSet() != null) sb.append("ResourceRecordSet: " + getResourceRecordSet() );
         sb.append("}");
         return sb.toString();

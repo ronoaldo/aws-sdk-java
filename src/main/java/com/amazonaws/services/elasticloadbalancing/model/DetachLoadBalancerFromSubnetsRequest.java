@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,119 +13,116 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#detachLoadBalancerFromSubnets(DetachLoadBalancerFromSubnetsRequest) DetachLoadBalancerFromSubnets operation}.
  * <p>
- * Removes subnets from the set of configured subnets in the VPC for the LoadBalancer.
+ * Removes subnets from the set of configured subnets in the Amazon
+ * Virtual Private Cloud (Amazon VPC) for the load balancer.
  * </p>
  * <p>
- * After a subnet is removed all of the EndPoints registered with the LoadBalancer that are in the removed subnet will go into the <i>OutOfService</i>
- * state. When a subnet is removed, the LoadBalancer will balance the traffic among the remaining routable subnets for the LoadBalancer.
+ * After a subnet is removed all of the EC2 instances registered with
+ * the load balancer that are in the removed subnet will go into the
+ * <i>OutOfService</i> state. When a subnet is removed, the load balancer
+ * will balance the traffic among the remaining routable subnets for the
+ * load balancer.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#detachLoadBalancerFromSubnets(DetachLoadBalancerFromSubnetsRequest)
  */
-public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name associated with the LoadBalancer to be detached. The name
-     * must be unique within the client AWS account.
+     * The name associated with the load balancer to be detached.
      */
     private String loadBalancerName;
 
     /**
      * A list of subnet IDs to remove from the set of configured subnets for
-     * the LoadBalancer.
+     * the load balancer.
      */
-    private java.util.List<String> subnets;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> subnets;
 
     /**
-     * The name associated with the LoadBalancer to be detached. The name
-     * must be unique within the client AWS account.
+     * The name associated with the load balancer to be detached.
      *
-     * @return The name associated with the LoadBalancer to be detached. The name
-     *         must be unique within the client AWS account.
+     * @return The name associated with the load balancer to be detached.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer to be detached. The name
-     * must be unique within the client AWS account.
+     * The name associated with the load balancer to be detached.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer to be detached. The name
-     *         must be unique within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer to be detached.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The name associated with the LoadBalancer to be detached. The name
-     * must be unique within the client AWS account.
+     * The name associated with the load balancer to be detached.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The name associated with the LoadBalancer to be detached. The name
-     *         must be unique within the client AWS account.
+     * @param loadBalancerName The name associated with the load balancer to be detached.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachLoadBalancerFromSubnetsRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * A list of subnet IDs to remove from the set of configured subnets for
-     * the LoadBalancer.
+     * the load balancer.
      *
      * @return A list of subnet IDs to remove from the set of configured subnets for
-     *         the LoadBalancer.
+     *         the load balancer.
      */
     public java.util.List<String> getSubnets() {
-        
         if (subnets == null) {
-            subnets = new java.util.ArrayList<String>();
+              subnets = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              subnets.setAutoConstruct(true);
         }
         return subnets;
     }
     
     /**
      * A list of subnet IDs to remove from the set of configured subnets for
-     * the LoadBalancer.
+     * the load balancer.
      *
      * @param subnets A list of subnet IDs to remove from the set of configured subnets for
-     *         the LoadBalancer.
+     *         the load balancer.
      */
     public void setSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
             this.subnets = null;
             return;
         }
-
-        java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
         subnetsCopy.addAll(subnets);
         this.subnets = subnetsCopy;
     }
     
     /**
      * A list of subnet IDs to remove from the set of configured subnets for
-     * the LoadBalancer.
+     * the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param subnets A list of subnet IDs to remove from the set of configured subnets for
-     *         the LoadBalancer.
+     *         the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachLoadBalancerFromSubnetsRequest withSubnets(String... subnets) {
         if (getSubnets() == null) setSubnets(new java.util.ArrayList<String>(subnets.length));
@@ -137,28 +134,28 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
     
     /**
      * A list of subnet IDs to remove from the set of configured subnets for
-     * the LoadBalancer.
+     * the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param subnets A list of subnet IDs to remove from the set of configured subnets for
-     *         the LoadBalancer.
+     *         the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DetachLoadBalancerFromSubnetsRequest withSubnets(java.util.Collection<String> subnets) {
         if (subnets == null) {
             this.subnets = null;
         } else {
-            java.util.List<String> subnetsCopy = new java.util.ArrayList<String>(subnets.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> subnetsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(subnets.size());
             subnetsCopy.addAll(subnets);
             this.subnets = subnetsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -170,8 +167,8 @@ public class DetachLoadBalancerFromSubnetsRequest extends AmazonWebServiceReques
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getSubnets() != null) sb.append("Subnets: " + getSubnets() );
         sb.append("}");
         return sb.toString();

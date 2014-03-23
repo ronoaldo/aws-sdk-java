@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * A JSON object containing the following fields:
  * </p>
- * 
- * <ul>
- * <li> CreateStorediSCSIVolumeOutput$TargetARN </li>
- * <li> CreateStorediSCSIVolumeOutput$VolumeARN </li>
- * <li> CreateStorediSCSIVolumeOutput$VolumeSizeInBytes </li>
- * 
- * </ul>
  */
-public class CreateStorediSCSIVolumeResult  implements Serializable  {
+public class CreateStorediSCSIVolumeResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the configured volume.
@@ -86,14 +80,13 @@ public class CreateStorediSCSIVolumeResult  implements Serializable  {
      * @param volumeARN The Amazon Resource Name (ARN) of the configured volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeResult withVolumeARN(String volumeARN) {
         this.volumeARN = volumeARN;
         return this;
     }
-    
-    
+
     /**
      * The size of the volume in bytes.
      *
@@ -120,14 +113,13 @@ public class CreateStorediSCSIVolumeResult  implements Serializable  {
      * @param volumeSizeInBytes The size of the volume in bytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeResult withVolumeSizeInBytes(Long volumeSizeInBytes) {
         this.volumeSizeInBytes = volumeSizeInBytes;
         return this;
     }
-    
-    
+
     /**
      * he Amazon Resource Name (ARN) of the volume target that includes the
      * iSCSI name that initiators can use to connect to the target.
@@ -169,14 +161,13 @@ public class CreateStorediSCSIVolumeResult  implements Serializable  {
      *         iSCSI name that initiators can use to connect to the target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateStorediSCSIVolumeResult withTargetARN(String targetARN) {
         this.targetARN = targetARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -188,9 +179,9 @@ public class CreateStorediSCSIVolumeResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");    	
-        if (getVolumeSizeInBytes() != null) sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes() + ",");    	
+        sb.append("{");
+        if (getVolumeARN() != null) sb.append("VolumeARN: " + getVolumeARN() + ",");
+        if (getVolumeSizeInBytes() != null) sb.append("VolumeSizeInBytes: " + getVolumeSizeInBytes() + ",");
         if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() );
         sb.append("}");
         return sb.toString();

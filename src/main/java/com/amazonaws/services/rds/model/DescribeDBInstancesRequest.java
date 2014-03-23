@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,28 +13,36 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeDBInstances(DescribeDBInstancesRequest) DescribeDBInstances operation}.
  * <p>
- * Returns information about provisioned RDS instances. This API supports pagination.
+ * Returns information about provisioned RDS instances. This API
+ * supports pagination.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeDBInstances(DescribeDBInstancesRequest)
  */
-public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDBInstancesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The user-supplied instance identifier. If this parameter is specified,
-     * information from only the specific DB Instance is returned. This
+     * information from only the specific DB instance is returned. This
      * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
      * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
      * contain two consecutive hyphens</li> </ul>
      */
     private String dBInstanceIdentifier;
+
+    /**
+     * This parameter is not currently supported.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filters;
 
     /**
      * The maximum number of records to include in the response. If more
@@ -61,14 +69,14 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
     
     /**
      * The user-supplied instance identifier. If this parameter is specified,
-     * information from only the specific DB Instance is returned. This
+     * information from only the specific DB instance is returned. This
      * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
      * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
      * contain two consecutive hyphens</li> </ul>
      *
      * @return The user-supplied instance identifier. If this parameter is specified,
-     *         information from only the specific DB Instance is returned. This
+     *         information from only the specific DB instance is returned. This
      *         parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
      *         from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      *         character must be a letter</li> <li>Cannot end with a hyphen or
@@ -80,14 +88,14 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
     
     /**
      * The user-supplied instance identifier. If this parameter is specified,
-     * information from only the specific DB Instance is returned. This
+     * information from only the specific DB instance is returned. This
      * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
      * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
      * contain two consecutive hyphens</li> </ul>
      *
      * @param dBInstanceIdentifier The user-supplied instance identifier. If this parameter is specified,
-     *         information from only the specific DB Instance is returned. This
+     *         information from only the specific DB instance is returned. This
      *         parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
      *         from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      *         character must be a letter</li> <li>Cannot end with a hyphen or
@@ -99,7 +107,7 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
     
     /**
      * The user-supplied instance identifier. If this parameter is specified,
-     * information from only the specific DB Instance is returned. This
+     * information from only the specific DB instance is returned. This
      * parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
      * from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      * character must be a letter</li> <li>Cannot end with a hyphen or
@@ -108,21 +116,88 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param dBInstanceIdentifier The user-supplied instance identifier. If this parameter is specified,
-     *         information from only the specific DB Instance is returned. This
+     *         information from only the specific DB instance is returned. This
      *         parameter isn't case sensitive. <p>Constraints: <ul> <li>Must contain
      *         from 1 to 63 alphanumeric characters or hyphens</li> <li>First
      *         character must be a letter</li> <li>Cannot end with a hyphen or
      *         contain two consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBInstancesRequest withDBInstanceIdentifier(String dBInstanceIdentifier) {
         this.dBInstanceIdentifier = dBInstanceIdentifier;
         return this;
     }
+
+    /**
+     * This parameter is not currently supported.
+     *
+     * @return This parameter is not currently supported.
+     */
+    public java.util.List<Filter> getFilters() {
+        if (filters == null) {
+              filters = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>();
+              filters.setAutoConstruct(true);
+        }
+        return filters;
+    }
     
+    /**
+     * This parameter is not currently supported.
+     *
+     * @param filters This parameter is not currently supported.
+     */
+    public void setFilters(java.util.Collection<Filter> filters) {
+        if (filters == null) {
+            this.filters = null;
+            return;
+        }
+        com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
+        filtersCopy.addAll(filters);
+        this.filters = filtersCopy;
+    }
     
+    /**
+     * This parameter is not currently supported.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param filters This parameter is not currently supported.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeDBInstancesRequest withFilters(Filter... filters) {
+        if (getFilters() == null) setFilters(new java.util.ArrayList<Filter>(filters.length));
+        for (Filter value : filters) {
+            getFilters().add(value);
+        }
+        return this;
+    }
+    
+    /**
+     * This parameter is not currently supported.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param filters This parameter is not currently supported.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeDBInstancesRequest withFilters(java.util.Collection<Filter> filters) {
+        if (filters == null) {
+            this.filters = null;
+        } else {
+            com.amazonaws.internal.ListWithAutoConstructFlag<Filter> filtersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Filter>(filters.size());
+            filtersCopy.addAll(filters);
+            this.filters = filtersCopy;
+        }
+
+        return this;
+    }
+
     /**
      * The maximum number of records to include in the response. If more
      * records exist than the specified <code>MaxRecords</code> value, a
@@ -173,14 +248,13 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
      *         <p>Constraints: minimum 20, maximum 100
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBInstancesRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * An optional pagination token provided by a previous
      * DescribeDBInstances request. If this parameter is specified, the
@@ -225,14 +299,13 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
      *         specified by <code>MaxRecords</code> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBInstancesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -244,9 +317,10 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");    	
-        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");    	
+        sb.append("{");
+        if (getDBInstanceIdentifier() != null) sb.append("DBInstanceIdentifier: " + getDBInstanceIdentifier() + ",");
+        if (getFilters() != null) sb.append("Filters: " + getFilters() + ",");
+        if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();
@@ -258,6 +332,7 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
         int hashCode = 1;
         
         hashCode = prime * hashCode + ((getDBInstanceIdentifier() == null) ? 0 : getDBInstanceIdentifier().hashCode()); 
+        hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode()); 
         hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode()); 
         hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode()); 
         return hashCode;
@@ -273,6 +348,8 @@ public class DescribeDBInstancesRequest extends AmazonWebServiceRequest  impleme
         
         if (other.getDBInstanceIdentifier() == null ^ this.getDBInstanceIdentifier() == null) return false;
         if (other.getDBInstanceIdentifier() != null && other.getDBInstanceIdentifier().equals(this.getDBInstanceIdentifier()) == false) return false; 
+        if (other.getFilters() == null ^ this.getFilters() == null) return false;
+        if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false) return false; 
         if (other.getMaxRecords() == null ^ this.getMaxRecords() == null) return false;
         if (other.getMaxRecords() != null && other.getMaxRecords().equals(this.getMaxRecords()) == false) return false; 
         if (other.getMarker() == null ^ this.getMarker() == null) return false;

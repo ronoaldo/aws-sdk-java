@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>WorkflowExecutionFailed</code> event.
  * </p>
  */
-public class WorkflowExecutionFailedEventAttributes  implements Serializable  {
+public class WorkflowExecutionFailedEventAttributes implements Serializable {
 
     /**
      * The descriptive reason provided for the failure (if any).
@@ -82,14 +83,13 @@ public class WorkflowExecutionFailedEventAttributes  implements Serializable  {
      * @param reason The descriptive reason provided for the failure (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionFailedEventAttributes withReason(String reason) {
         this.reason = reason;
         return this;
     }
-    
-    
+
     /**
      * The details of the failure (if any).
      * <p>
@@ -125,14 +125,13 @@ public class WorkflowExecutionFailedEventAttributes  implements Serializable  {
      * @param details The details of the failure (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionFailedEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the
@@ -183,14 +182,13 @@ public class WorkflowExecutionFailedEventAttributes  implements Serializable  {
      *         the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionFailedEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -202,9 +200,9 @@ public class WorkflowExecutionFailedEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReason() != null) sb.append("Reason: " + getReason() + ",");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
+        sb.append("{");
+        if (getReason() != null) sb.append("Reason: " + getReason() + ",");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
         if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() );
         sb.append("}");
         return sb.toString();

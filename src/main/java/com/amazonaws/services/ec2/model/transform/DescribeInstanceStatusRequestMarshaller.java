@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeInstanceStatusRequestMarshaller implements Marshaller<Reque
     public Request<DescribeInstanceStatusRequest> marshall(DescribeInstanceStatusRequest describeInstanceStatusRequest) {
 
         if (describeInstanceStatusRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeInstanceStatusRequest> request = new DefaultRequest<DescribeInstanceStatusRequest>(describeInstanceStatusRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeInstanceStatus");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> instanceIdsList = describeInstanceStatusRequest.getInstanceIds();
         int instanceIdsListIndex = 1;
@@ -85,7 +84,6 @@ public class DescribeInstanceStatusRequestMarshaller implements Marshaller<Reque
         if (describeInstanceStatusRequest.isIncludeAllInstances() != null) {
             request.addParameter("IncludeAllInstances", StringUtils.fromBoolean(describeInstanceStatusRequest.isIncludeAllInstances()));
         }
-
 
         return request;
     }

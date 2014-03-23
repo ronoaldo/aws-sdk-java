@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elastictranscoder.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The pipeline (queue) that is used to manage jobs.
  * </p>
  */
-public class Pipeline  implements Serializable  {
+public class Pipeline implements Serializable {
 
     /**
      * The identifier for the pipeline. You use this value to identify the
@@ -32,6 +33,9 @@ public class Pipeline  implements Serializable  {
      */
     private String id;
 
+    /**
+     * The Amazon Resource Name (ARN) for the pipeline.
+     */
     private String arn;
 
     /**
@@ -56,7 +60,8 @@ public class Pipeline  implements Serializable  {
 
     /**
      * The Amazon S3 bucket from which Elastic Transcoder gets media files
-     * for transcoding.
+     * for transcoding and the graphics files, if any, that you want to use
+     * for watermarks.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>^(\w|\.|-){1,255}$<br/>
@@ -222,48 +227,46 @@ public class Pipeline  implements Serializable  {
      *         creating a job or a preset.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) for the pipeline.
      *
-     * @return The value of the Arn property for this object.
+     * @return The Amazon Resource Name (ARN) for the pipeline.
      */
     public String getArn() {
         return arn;
     }
     
     /**
-     * Sets the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) for the pipeline.
      *
-     * @param arn The new value for the Arn property for this object.
+     * @param arn The Amazon Resource Name (ARN) for the pipeline.
      */
     public void setArn(String arn) {
         this.arn = arn;
     }
     
     /**
-     * Sets the value of the Arn property for this object.
+     * The Amazon Resource Name (ARN) for the pipeline.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param arn The new value for the Arn property for this object.
+     * @param arn The Amazon Resource Name (ARN) for the pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withArn(String arn) {
         this.arn = arn;
         return this;
     }
-    
-    
+
     /**
      * The name of the pipeline. We recommend that the name be unique within
      * the AWS account, but uniqueness is not enforced. <p>Constraints:
@@ -311,14 +314,13 @@ public class Pipeline  implements Serializable  {
      *         Maximum 40 characters
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The current status of the pipeline: <ul> <li><code>Active</code>: The
      * pipeline is processing jobs.</li> <li><code>Paused</code>: The
@@ -366,23 +368,24 @@ public class Pipeline  implements Serializable  {
      *         pipeline is not currently processing jobs.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The Amazon S3 bucket from which Elastic Transcoder gets media files
-     * for transcoding.
+     * for transcoding and the graphics files, if any, that you want to use
+     * for watermarks.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>^(\w|\.|-){1,255}$<br/>
      *
      * @return The Amazon S3 bucket from which Elastic Transcoder gets media files
-     *         for transcoding.
+     *         for transcoding and the graphics files, if any, that you want to use
+     *         for watermarks.
      */
     public String getInputBucket() {
         return inputBucket;
@@ -390,13 +393,15 @@ public class Pipeline  implements Serializable  {
     
     /**
      * The Amazon S3 bucket from which Elastic Transcoder gets media files
-     * for transcoding.
+     * for transcoding and the graphics files, if any, that you want to use
+     * for watermarks.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Pattern: </b>^(\w|\.|-){1,255}$<br/>
      *
      * @param inputBucket The Amazon S3 bucket from which Elastic Transcoder gets media files
-     *         for transcoding.
+     *         for transcoding and the graphics files, if any, that you want to use
+     *         for watermarks.
      */
     public void setInputBucket(String inputBucket) {
         this.inputBucket = inputBucket;
@@ -404,7 +409,8 @@ public class Pipeline  implements Serializable  {
     
     /**
      * The Amazon S3 bucket from which Elastic Transcoder gets media files
-     * for transcoding.
+     * for transcoding and the graphics files, if any, that you want to use
+     * for watermarks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -412,17 +418,17 @@ public class Pipeline  implements Serializable  {
      * <b>Pattern: </b>^(\w|\.|-){1,255}$<br/>
      *
      * @param inputBucket The Amazon S3 bucket from which Elastic Transcoder gets media files
-     *         for transcoding.
+     *         for transcoding and the graphics files, if any, that you want to use
+     *         for watermarks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withInputBucket(String inputBucket) {
         this.inputBucket = inputBucket;
         return this;
     }
-    
-    
+
     /**
      * The Amazon S3 bucket in which you want Elastic Transcoder to save
      * transcoded files, thumbnails, and playlists. Either you specify this
@@ -476,14 +482,13 @@ public class Pipeline  implements Serializable  {
      *         <code>ThumbnailConfig</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withOutputBucket(String outputBucket) {
         this.outputBucket = outputBucket;
         return this;
     }
-    
-    
+
     /**
      * The IAM Amazon Resource Name (ARN) for the role that Elastic
      * Transcoder uses to transcode jobs for this pipeline.
@@ -525,14 +530,13 @@ public class Pipeline  implements Serializable  {
      *         Transcoder uses to transcode jobs for this pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withRole(String role) {
         this.role = role;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Simple Notification Service (Amazon SNS) topic that you
      * want to notify to report job status. <important>To receive
@@ -631,14 +635,13 @@ public class Pipeline  implements Serializable  {
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withNotifications(Notifications notifications) {
         this.notifications = notifications;
         return this;
     }
-    
-    
+
     /**
      * Information about the Amazon S3 bucket in which you want Elastic
      * Transcoder to save transcoded files and playlists. Either you specify
@@ -857,14 +860,13 @@ public class Pipeline  implements Serializable  {
      *         stores in your Amazon S3 bucket. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withContentConfig(PipelineOutputConfig contentConfig) {
         this.contentConfig = contentConfig;
         return this;
     }
-    
-    
+
     /**
      * Information about the Amazon S3 bucket in which you want Elastic
      * Transcoder to save thumbnail files. Either you specify both
@@ -1089,14 +1091,13 @@ public class Pipeline  implements Serializable  {
      *         Amazon S3 bucket.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Pipeline withThumbnailConfig(PipelineOutputConfig thumbnailConfig) {
         this.thumbnailConfig = thumbnailConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1108,16 +1109,16 @@ public class Pipeline  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getArn() != null) sb.append("Arn: " + getArn() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getInputBucket() != null) sb.append("InputBucket: " + getInputBucket() + ",");    	
-        if (getOutputBucket() != null) sb.append("OutputBucket: " + getOutputBucket() + ",");    	
-        if (getRole() != null) sb.append("Role: " + getRole() + ",");    	
-        if (getNotifications() != null) sb.append("Notifications: " + getNotifications() + ",");    	
-        if (getContentConfig() != null) sb.append("ContentConfig: " + getContentConfig() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getInputBucket() != null) sb.append("InputBucket: " + getInputBucket() + ",");
+        if (getOutputBucket() != null) sb.append("OutputBucket: " + getOutputBucket() + ",");
+        if (getRole() != null) sb.append("Role: " + getRole() + ",");
+        if (getNotifications() != null) sb.append("Notifications: " + getNotifications() + ",");
+        if (getContentConfig() != null) sb.append("ContentConfig: " + getContentConfig() + ",");
         if (getThumbnailConfig() != null) sb.append("ThumbnailConfig: " + getThumbnailConfig() );
         sb.append("}");
         return sb.toString();

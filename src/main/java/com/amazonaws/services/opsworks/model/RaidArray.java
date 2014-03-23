@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an instance's RAID array.
  * </p>
  */
-public class RaidArray  implements Serializable  {
+public class RaidArray implements Serializable {
 
     /**
      * The array ID.
@@ -101,14 +102,13 @@ public class RaidArray  implements Serializable  {
      * @param raidArrayId The array ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withRaidArrayId(String raidArrayId) {
         this.raidArrayId = raidArrayId;
         return this;
     }
-    
-    
+
     /**
      * The instance ID.
      *
@@ -135,14 +135,13 @@ public class RaidArray  implements Serializable  {
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The array name.
      *
@@ -169,14 +168,13 @@ public class RaidArray  implements Serializable  {
      * @param name The array name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID
      * level</a>.
@@ -209,14 +207,13 @@ public class RaidArray  implements Serializable  {
      *         level</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withRaidLevel(Integer raidLevel) {
         this.raidLevel = raidLevel;
         return this;
     }
-    
-    
+
     /**
      * The number of disks in the array.
      *
@@ -243,14 +240,13 @@ public class RaidArray  implements Serializable  {
      * @param numberOfDisks The number of disks in the array.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withNumberOfDisks(Integer numberOfDisks) {
         this.numberOfDisks = numberOfDisks;
         return this;
     }
-    
-    
+
     /**
      * The array's size.
      *
@@ -277,14 +273,13 @@ public class RaidArray  implements Serializable  {
      * @param size The array's size.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withSize(Integer size) {
         this.size = size;
         return this;
     }
-    
-    
+
     /**
      * The array's Linux device. For example /dev/mdadm0.
      *
@@ -311,14 +306,13 @@ public class RaidArray  implements Serializable  {
      * @param device The array's Linux device. For example /dev/mdadm0.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withDevice(String device) {
         this.device = device;
         return this;
     }
-    
-    
+
     /**
      * The array's mount point.
      *
@@ -345,14 +339,13 @@ public class RaidArray  implements Serializable  {
      * @param mountPoint The array's mount point.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withMountPoint(String mountPoint) {
         this.mountPoint = mountPoint;
         return this;
     }
-    
-    
+
     /**
      * The array's Availability Zone. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions
@@ -391,14 +384,13 @@ public class RaidArray  implements Serializable  {
      *         and Endpoints</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
-    
+
     /**
      * When the RAID array was created.
      *
@@ -425,14 +417,13 @@ public class RaidArray  implements Serializable  {
      * @param createdAt When the RAID array was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RaidArray withCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -444,16 +435,16 @@ public class RaidArray  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getRaidArrayId() != null) sb.append("RaidArrayId: " + getRaidArrayId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getRaidLevel() != null) sb.append("RaidLevel: " + getRaidLevel() + ",");    	
-        if (getNumberOfDisks() != null) sb.append("NumberOfDisks: " + getNumberOfDisks() + ",");    	
-        if (getSize() != null) sb.append("Size: " + getSize() + ",");    	
-        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");    	
-        if (getMountPoint() != null) sb.append("MountPoint: " + getMountPoint() + ",");    	
-        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");    	
+        sb.append("{");
+        if (getRaidArrayId() != null) sb.append("RaidArrayId: " + getRaidArrayId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getRaidLevel() != null) sb.append("RaidLevel: " + getRaidLevel() + ",");
+        if (getNumberOfDisks() != null) sb.append("NumberOfDisks: " + getNumberOfDisks() + ",");
+        if (getSize() != null) sb.append("Size: " + getSize() + ",");
+        if (getDevice() != null) sb.append("Device: " + getDevice() + ",");
+        if (getMountPoint() != null) sb.append("MountPoint: " + getMountPoint() + ",");
+        if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() + ",");
         if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() );
         sb.append("}");
         return sb.toString();

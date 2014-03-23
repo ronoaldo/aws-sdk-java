@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.internal.EC2MetadataClient;
 import com.amazonaws.util.DateUtils;
@@ -30,32 +33,75 @@ import com.amazonaws.util.json.JSONObject;
  */
 public class InstanceProfileCredentialsProvider implements AWSCredentialsProvider {
 
-    protected AWSCredentials credentials;
-    protected Date credentialsExpiration;
+    private static final Log LOG = LogFactory.getLog(InstanceProfileCredentialsProvider.class);
+
+    /**
+     * The threshold after the last attempt to load credentials (in
+     * milliseconds) at which credentials are attempted to be refreshed.
+     */
+    private static final int REFRESH_THRESHOLD = 1000 * 60 * 60;
+
+    /**
+     * The threshold before credentials expire (in milliseconds) at which
+     * this class will attempt to load new credentials.
+     */
+    private static final int EXPIRATION_THRESHOLD = 1000 * 60 * 15;
+
+
+    /** The current instance profile credentials */
+    protected volatile AWSCredentials credentials;
+
+    /** The expiration for the current instance profile credentials */
+    protected volatile Date credentialsExpiration;
+
+    /** The time of the last attempt to check for new credentials */
+    protected volatile Date lastInstanceProfileCheck;
+
 
     public AWSCredentials getCredentials() {
-        if (needsToLoadCredentials()) loadCredentials();
+        if (needsToLoadCredentials())
+            loadCredentials();
         if (expired()) {
-            throw new AmazonClientException("The credentials received from the Amazon EC2 metadata service have expired");
+            throw new AmazonClientException(
+                    "The credentials received from the Amazon EC2 metadata service have expired");
         }
 
         return credentials;
     }
 
     public void refresh() {
-        loadCredentials();
+        credentials = null;
     }
 
     protected boolean needsToLoadCredentials() {
         if (credentials == null) return true;
 
         if (credentialsExpiration != null) {
-            int thresholdInMilliseconds = 1000 * 60 * 5;
-            boolean withinExpirationThreshold = credentialsExpiration.getTime() - System.currentTimeMillis() < thresholdInMilliseconds;
-            if (withinExpirationThreshold) return true;
+            if (isWithinExpirationThreshold()) return true;
+        }
+
+        if (lastInstanceProfileCheck != null) {
+            if (isPastRefreshThreshold()) return true;
         }
 
         return false;
+    }
+
+    /**
+     * Returns true if the current credentials are within the expiration
+     * threshold, and therefore, should be refreshed.
+     */
+    private boolean isWithinExpirationThreshold() {
+        return (credentialsExpiration.getTime() - System.currentTimeMillis()) < EXPIRATION_THRESHOLD;
+    }
+
+    /**
+     * Returns true if the last attempt to refresh credentials is beyond the
+     * refresh threshold, and therefore the credentials should attempt to be
+     * refreshed.
+     */
+    private boolean isPastRefreshThreshold() {
+        return (System.currentTimeMillis() - lastInstanceProfileCheck.getTime()) > REFRESH_THRESHOLD;
     }
 
     private boolean expired() {
@@ -69,8 +115,12 @@ public class InstanceProfileCredentialsProvider implements AWSCredentialsProvide
     }
 
     private synchronized void loadCredentials() {
+        if (!needsToLoadCredentials()) return;
+
         try {
-            String credentialsResponse = new EC2MetadataClient().getDefaultCredentials();
+            lastInstanceProfileCheck = new Date();
+            String credentialsResponse = new EC2MetadataClient()
+                    .getDefaultCredentials();
             JSONObject jsonObject = new JSONObject(credentialsResponse);
 
             if (jsonObject.has("Token")) {
@@ -86,9 +136,9 @@ public class InstanceProfileCredentialsProvider implements AWSCredentialsProvide
 
             if (jsonObject.has("Expiration")) {
                 /*
-                 * TODO: The expiration string comes in a different format than
-                 *       what we deal with in other parts of the SDK, so we have
-                 *       to convert it to the ISO8601 syntax we expect.
+                 * TODO: The expiration string comes in a different format
+                 * than what we deal with in other parts of the SDK, so we
+                 * have to convert it to the ISO8601 syntax we expect.
                  */
                 String expiration = jsonObject.getString("Expiration");
                 expiration = expiration.replaceAll("\\+0000$", "Z");
@@ -96,12 +146,33 @@ public class InstanceProfileCredentialsProvider implements AWSCredentialsProvide
                 credentialsExpiration = new DateUtils().parseIso8601Date(expiration);
             }
         } catch (IOException e) {
-            throw new AmazonClientException("Unable to load credentials from Amazon EC2 metadata service", e);
+            handleError("Unable to load credentials from Amazon EC2 metadata service", e);
         } catch (JSONException e) {
-            throw new AmazonClientException("Unable to parse credentials from Amazon EC2 metadata service", e);
+            handleError("Unable to parse credentials from Amazon EC2 metadata service", e);
         } catch (ParseException e) {
-            throw new AmazonClientException("Unable to parse credentials expiration date from Amazon EC2 metadata service", e);
+            handleError("Unable to parse credentials expiration date from Amazon EC2 metadata service", e);
         }
+    }
+
+    /**
+     * Handles reporting or throwing an error encountered while requesting
+     * credentials from the Amazon EC2 Instance Metadata Service. The Instance
+     * Metadata Service could be briefly unavailable for a number of reasons, so
+     * we need to gracefully handle falling back to valid credentials if they're
+     * available, and only throw exceptions if we really can't recover.
+     *
+     * @param errorMessage
+     *            A human readable description of the error.
+     * @param e
+     *            The error that occurred.
+     */
+    private void handleError(String errorMessage, Exception e) {
+        // If we don't have any valid credentials to fall back on, then throw an exception
+        if (credentials == null || expired())
+            throw new AmazonClientException(errorMessage, e);
+
+        // Otherwise, just log the error and continuing using the current credentials
+        LOG.debug(errorMessage, e);
     }
 
     @Override

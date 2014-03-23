@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,28 +13,48 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Export To S3 Task Specification
+ * 
  */
-public class ExportToS3TaskSpecification  implements Serializable  {
+public class ExportToS3TaskSpecification implements Serializable {
 
+    /**
+     * 
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>VMDK, RAW, VHD
+     */
     private String diskImageFormat;
 
+    /**
+     * 
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ova
+     */
     private String containerFormat;
 
+    /**
+     * 
+     */
     private String s3Bucket;
 
+    /**
+     * The image is written to a single object in the Amazon S3 bucket at the
+     * S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
+     */
     private String s3Prefix;
 
     /**
-     * Returns the value of the DiskImageFormat property for this object.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>vmdk, vhd
+     * <b>Allowed Values: </b>VMDK, RAW, VHD
      *
-     * @return The value of the DiskImageFormat property for this object.
+     * @return 
      *
      * @see DiskImageFormat
      */
@@ -43,12 +63,12 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     }
     
     /**
-     * Sets the value of the DiskImageFormat property for this object.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>vmdk, vhd
+     * <b>Allowed Values: </b>VMDK, RAW, VHD
      *
-     * @param diskImageFormat The new value for the DiskImageFormat property for this object.
+     * @param diskImageFormat 
      *
      * @see DiskImageFormat
      */
@@ -57,17 +77,17 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     }
     
     /**
-     * Sets the value of the DiskImageFormat property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>vmdk, vhd
+     * <b>Allowed Values: </b>VMDK, RAW, VHD
      *
-     * @param diskImageFormat The new value for the DiskImageFormat property for this object.
+     * @param diskImageFormat 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DiskImageFormat
      */
@@ -75,15 +95,14 @@ public class ExportToS3TaskSpecification  implements Serializable  {
         this.diskImageFormat = diskImageFormat;
         return this;
     }
-    
-    
+
     /**
-     * Sets the value of the DiskImageFormat property for this object.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>vmdk, vhd
+     * <b>Allowed Values: </b>VMDK, RAW, VHD
      *
-     * @param diskImageFormat The new value for the DiskImageFormat property for this object.
+     * @param diskImageFormat 
      *
      * @see DiskImageFormat
      */
@@ -92,17 +111,17 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     }
     
     /**
-     * Sets the value of the DiskImageFormat property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>vmdk, vhd
+     * <b>Allowed Values: </b>VMDK, RAW, VHD
      *
-     * @param diskImageFormat The new value for the DiskImageFormat property for this object.
+     * @param diskImageFormat 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DiskImageFormat
      */
@@ -110,14 +129,14 @@ public class ExportToS3TaskSpecification  implements Serializable  {
         this.diskImageFormat = diskImageFormat.toString();
         return this;
     }
-    
+
     /**
-     * Returns the value of the ContainerFormat property for this object.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ova
      *
-     * @return The value of the ContainerFormat property for this object.
+     * @return 
      *
      * @see ContainerFormat
      */
@@ -126,12 +145,12 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ContainerFormat property for this object.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ova
      *
-     * @param containerFormat The new value for the ContainerFormat property for this object.
+     * @param containerFormat 
      *
      * @see ContainerFormat
      */
@@ -140,17 +159,17 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ContainerFormat property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ova
      *
-     * @param containerFormat The new value for the ContainerFormat property for this object.
+     * @param containerFormat 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ContainerFormat
      */
@@ -158,15 +177,14 @@ public class ExportToS3TaskSpecification  implements Serializable  {
         this.containerFormat = containerFormat;
         return this;
     }
-    
-    
+
     /**
-     * Sets the value of the ContainerFormat property for this object.
+     * 
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ova
      *
-     * @param containerFormat The new value for the ContainerFormat property for this object.
+     * @param containerFormat 
      *
      * @see ContainerFormat
      */
@@ -175,17 +193,17 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ContainerFormat property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ova
      *
-     * @param containerFormat The new value for the ContainerFormat property for this object.
+     * @param containerFormat 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ContainerFormat
      */
@@ -193,75 +211,79 @@ public class ExportToS3TaskSpecification  implements Serializable  {
         this.containerFormat = containerFormat.toString();
         return this;
     }
-    
+
     /**
-     * Returns the value of the S3Bucket property for this object.
+     * 
      *
-     * @return The value of the S3Bucket property for this object.
+     * @return 
      */
     public String getS3Bucket() {
         return s3Bucket;
     }
     
     /**
-     * Sets the value of the S3Bucket property for this object.
+     * 
      *
-     * @param s3Bucket The new value for the S3Bucket property for this object.
+     * @param s3Bucket 
      */
     public void setS3Bucket(String s3Bucket) {
         this.s3Bucket = s3Bucket;
     }
     
     /**
-     * Sets the value of the S3Bucket property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param s3Bucket The new value for the S3Bucket property for this object.
+     * @param s3Bucket 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportToS3TaskSpecification withS3Bucket(String s3Bucket) {
         this.s3Bucket = s3Bucket;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the S3Prefix property for this object.
+     * The image is written to a single object in the Amazon S3 bucket at the
+     * S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
      *
-     * @return The value of the S3Prefix property for this object.
+     * @return The image is written to a single object in the Amazon S3 bucket at the
+     *         S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
      */
     public String getS3Prefix() {
         return s3Prefix;
     }
     
     /**
-     * Sets the value of the S3Prefix property for this object.
+     * The image is written to a single object in the Amazon S3 bucket at the
+     * S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
      *
-     * @param s3Prefix The new value for the S3Prefix property for this object.
+     * @param s3Prefix The image is written to a single object in the Amazon S3 bucket at the
+     *         S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
      */
     public void setS3Prefix(String s3Prefix) {
         this.s3Prefix = s3Prefix;
     }
     
     /**
-     * Sets the value of the S3Prefix property for this object.
+     * The image is written to a single object in the Amazon S3 bucket at the
+     * S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param s3Prefix The new value for the S3Prefix property for this object.
+     * @param s3Prefix The image is written to a single object in the Amazon S3 bucket at the
+     *         S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExportToS3TaskSpecification withS3Prefix(String s3Prefix) {
         this.s3Prefix = s3Prefix;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -273,10 +295,10 @@ public class ExportToS3TaskSpecification  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDiskImageFormat() != null) sb.append("DiskImageFormat: " + getDiskImageFormat() + ",");    	
-        if (getContainerFormat() != null) sb.append("ContainerFormat: " + getContainerFormat() + ",");    	
-        if (getS3Bucket() != null) sb.append("S3Bucket: " + getS3Bucket() + ",");    	
+        sb.append("{");
+        if (getDiskImageFormat() != null) sb.append("DiskImageFormat: " + getDiskImageFormat() + ",");
+        if (getContainerFormat() != null) sb.append("ContainerFormat: " + getContainerFormat() + ",");
+        if (getS3Bucket() != null) sb.append("S3Bucket: " + getS3Bucket() + ",");
         if (getS3Prefix() != null) sb.append("S3Prefix: " + getS3Prefix() );
         sb.append("}");
         return sb.toString();

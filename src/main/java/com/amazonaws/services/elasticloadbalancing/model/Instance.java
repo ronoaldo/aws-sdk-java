@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The Instance data type.
  * </p>
  */
-public class Instance  implements Serializable  {
+public class Instance implements Serializable {
 
     /**
      * Provides an EC2 instance ID.
@@ -41,11 +42,9 @@ public class Instance  implements Serializable  {
      * @param instanceId Provides an EC2 instance ID.
      */
     public Instance(String instanceId) {
-        this.instanceId = instanceId;
+        setInstanceId(instanceId);
     }
 
-    
-    
     /**
      * Provides an EC2 instance ID.
      *
@@ -72,14 +71,13 @@ public class Instance  implements Serializable  {
      * @param instanceId Provides an EC2 instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Instance withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -91,7 +89,7 @@ public class Instance  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() );
         sb.append("}");
         return sb.toString();

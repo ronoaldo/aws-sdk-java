@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A JSON object containing a DescribeChapCredentialsOutput$ChapCredentials.
+ * A JSON object containing a .
  * </p>
  */
-public class DescribeChapCredentialsResult  implements Serializable  {
+public class DescribeChapCredentialsResult implements Serializable {
 
     /**
      * An array of <a>ChapInfo</a> objects that represent CHAP credentials.
@@ -37,7 +38,7 @@ public class DescribeChapCredentialsResult  implements Serializable  {
      * <p><b>TargetARN</b>: The Amazon Resource Name (ARN) of the storage
      * volume. </li> </ul>
      */
-    private java.util.List<ChapInfo> chapCredentials;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ChapInfo> chapCredentials;
 
     /**
      * An array of <a>ChapInfo</a> objects that represent CHAP credentials.
@@ -69,9 +70,9 @@ public class DescribeChapCredentialsResult  implements Serializable  {
      *         volume. </li> </ul>
      */
     public java.util.List<ChapInfo> getChapCredentials() {
-        
         if (chapCredentials == null) {
-            chapCredentials = new java.util.ArrayList<ChapInfo>();
+              chapCredentials = new com.amazonaws.internal.ListWithAutoConstructFlag<ChapInfo>();
+              chapCredentials.setAutoConstruct(true);
         }
         return chapCredentials;
     }
@@ -110,8 +111,7 @@ public class DescribeChapCredentialsResult  implements Serializable  {
             this.chapCredentials = null;
             return;
         }
-
-        java.util.List<ChapInfo> chapCredentialsCopy = new java.util.ArrayList<ChapInfo>(chapCredentials.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ChapInfo> chapCredentialsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ChapInfo>(chapCredentials.size());
         chapCredentialsCopy.addAll(chapCredentials);
         this.chapCredentials = chapCredentialsCopy;
     }
@@ -148,7 +148,7 @@ public class DescribeChapCredentialsResult  implements Serializable  {
      *         volume. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeChapCredentialsResult withChapCredentials(ChapInfo... chapCredentials) {
         if (getChapCredentials() == null) setChapCredentials(new java.util.ArrayList<ChapInfo>(chapCredentials.length));
@@ -190,20 +190,20 @@ public class DescribeChapCredentialsResult  implements Serializable  {
      *         volume. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeChapCredentialsResult withChapCredentials(java.util.Collection<ChapInfo> chapCredentials) {
         if (chapCredentials == null) {
             this.chapCredentials = null;
         } else {
-            java.util.List<ChapInfo> chapCredentialsCopy = new java.util.ArrayList<ChapInfo>(chapCredentials.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ChapInfo> chapCredentialsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ChapInfo>(chapCredentials.size());
             chapCredentialsCopy.addAll(chapCredentials);
             this.chapCredentials = chapCredentialsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -215,7 +215,7 @@ public class DescribeChapCredentialsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getChapCredentials() != null) sb.append("ChapCredentials: " + getChapCredentials() );
         sb.append("}");
         return sb.toString();

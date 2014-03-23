@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class UpdateEnvironmentRequestMarshaller implements Marshaller<Request<Up
     public Request<UpdateEnvironmentRequest> marshall(UpdateEnvironmentRequest updateEnvironmentRequest) {
 
         if (updateEnvironmentRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<UpdateEnvironmentRequest> request = new DefaultRequest<UpdateEnvironmentRequest>(updateEnvironmentRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "UpdateEnvironment");
@@ -46,14 +46,26 @@ public class UpdateEnvironmentRequestMarshaller implements Marshaller<Request<Up
         if (updateEnvironmentRequest.getEnvironmentName() != null) {
             request.addParameter("EnvironmentName", StringUtils.fromString(updateEnvironmentRequest.getEnvironmentName()));
         }
+        if (updateEnvironmentRequest.getDescription() != null) {
+            request.addParameter("Description", StringUtils.fromString(updateEnvironmentRequest.getDescription()));
+        }
+        EnvironmentTier environmentTierTier = updateEnvironmentRequest.getTier();
+        if (environmentTierTier != null) {
+            if (environmentTierTier.getName() != null) {
+                request.addParameter("Tier.Name", StringUtils.fromString(environmentTierTier.getName()));
+            }
+            if (environmentTierTier.getType() != null) {
+                request.addParameter("Tier.Type", StringUtils.fromString(environmentTierTier.getType()));
+            }
+            if (environmentTierTier.getVersion() != null) {
+                request.addParameter("Tier.Version", StringUtils.fromString(environmentTierTier.getVersion()));
+            }
+        }
         if (updateEnvironmentRequest.getVersionLabel() != null) {
             request.addParameter("VersionLabel", StringUtils.fromString(updateEnvironmentRequest.getVersionLabel()));
         }
         if (updateEnvironmentRequest.getTemplateName() != null) {
             request.addParameter("TemplateName", StringUtils.fromString(updateEnvironmentRequest.getTemplateName()));
-        }
-        if (updateEnvironmentRequest.getDescription() != null) {
-            request.addParameter("Description", StringUtils.fromString(updateEnvironmentRequest.getDescription()));
         }
 
         java.util.List<ConfigurationOptionSetting> optionSettingsList = updateEnvironmentRequest.getOptionSettings();
@@ -92,7 +104,6 @@ public class UpdateEnvironmentRequestMarshaller implements Marshaller<Request<Up
 
             optionsToRemoveListIndex++;
         }
-
 
         return request;
     }

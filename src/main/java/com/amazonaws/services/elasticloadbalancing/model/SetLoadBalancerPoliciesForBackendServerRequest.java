@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,40 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#setLoadBalancerPoliciesForBackendServer(SetLoadBalancerPoliciesForBackendServerRequest) SetLoadBalancerPoliciesForBackendServer operation}.
  * <p>
- * Replaces the current set of policies associated with a port on which the back-end server is listening with a new set of policies. After the policies
- * have been created using CreateLoadBalancerPolicy, they can be applied here as a list. At this time, only the back-end server authentication policy
- * type can be applied to the back-end ports; this policy type is composed of multiple public key policies.
+ * Replaces the current set of policies associated with a port on which
+ * the back-end server is listening with a new set of policies. After the
+ * policies have been created using CreateLoadBalancerPolicy, they can be
+ * applied here as a list. At this time, only the back-end server
+ * authentication policy type can be applied to the back-end ports; this
+ * policy type is composed of multiple public key policies.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> The SetLoadBalancerPoliciesForBackendServer replaces the
+ * current set of policies associated with the specified instance port.
+ * Every time you use this action to enable the policies, use the
+ * PolicyNames parameter to list all the policies you want to enable.
+ * </p>
+ * <p>
+ * You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies
+ * action to verify that the policy has been associated with the back-end
+ * server.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#setLoadBalancerPoliciesForBackendServer(SetLoadBalancerPoliciesForBackendServerRequest)
  */
-public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The mnemonic name associated with the LoadBalancer. This name must be
-     * unique within the client AWS account.
+     * The mnemonic name associated with the load balancer. This name must be
+     * unique within the set of your load balancers.
      */
     private String loadBalancerName;
 
@@ -43,48 +59,47 @@ public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebSer
      * List of policy names to be set. If the list is empty, then all current
      * polices are removed from the back-end server.
      */
-    private java.util.List<String> policyNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNames;
 
     /**
-     * The mnemonic name associated with the LoadBalancer. This name must be
-     * unique within the client AWS account.
+     * The mnemonic name associated with the load balancer. This name must be
+     * unique within the set of your load balancers.
      *
-     * @return The mnemonic name associated with the LoadBalancer. This name must be
-     *         unique within the client AWS account.
+     * @return The mnemonic name associated with the load balancer. This name must be
+     *         unique within the set of your load balancers.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. This name must be
-     * unique within the client AWS account.
+     * The mnemonic name associated with the load balancer. This name must be
+     * unique within the set of your load balancers.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. This name must be
-     *         unique within the client AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load balancer. This name must be
+     *         unique within the set of your load balancers.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. This name must be
-     * unique within the client AWS account.
+     * The mnemonic name associated with the load balancer. This name must be
+     * unique within the set of your load balancers.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. This name must be
-     *         unique within the client AWS account.
+     * @param loadBalancerName The mnemonic name associated with the load balancer. This name must be
+     *         unique within the set of your load balancers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerPoliciesForBackendServerRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The port number associated with the back-end server.
      *
@@ -111,14 +126,13 @@ public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebSer
      * @param instancePort The port number associated with the back-end server.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerPoliciesForBackendServerRequest withInstancePort(Integer instancePort) {
         this.instancePort = instancePort;
         return this;
     }
-    
-    
+
     /**
      * List of policy names to be set. If the list is empty, then all current
      * polices are removed from the back-end server.
@@ -127,9 +141,9 @@ public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebSer
      *         polices are removed from the back-end server.
      */
     public java.util.List<String> getPolicyNames() {
-        
         if (policyNames == null) {
-            policyNames = new java.util.ArrayList<String>();
+              policyNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              policyNames.setAutoConstruct(true);
         }
         return policyNames;
     }
@@ -146,8 +160,7 @@ public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebSer
             this.policyNames = null;
             return;
         }
-
-        java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
         policyNamesCopy.addAll(policyNames);
         this.policyNames = policyNamesCopy;
     }
@@ -162,7 +175,7 @@ public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebSer
      *         polices are removed from the back-end server.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerPoliciesForBackendServerRequest withPolicyNames(String... policyNames) {
         if (getPolicyNames() == null) setPolicyNames(new java.util.ArrayList<String>(policyNames.length));
@@ -182,20 +195,20 @@ public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebSer
      *         polices are removed from the back-end server.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerPoliciesForBackendServerRequest withPolicyNames(java.util.Collection<String> policyNames) {
         if (policyNames == null) {
             this.policyNames = null;
         } else {
-            java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
             policyNamesCopy.addAll(policyNames);
             this.policyNames = policyNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -207,9 +220,9 @@ public class SetLoadBalancerPoliciesForBackendServerRequest extends AmazonWebSer
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
-        if (getInstancePort() != null) sb.append("InstancePort: " + getInstancePort() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+        if (getInstancePort() != null) sb.append("InstancePort: " + getInstancePort() + ",");
         if (getPolicyNames() != null) sb.append("PolicyNames: " + getPolicyNames() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,100 +13,59 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class DescribeTrustedAdvisorCheckRefreshStatusesResult  implements Serializable  {
+public class DescribeTrustedAdvisorCheckRefreshStatusesResult implements Serializable {
 
     /**
-     * List of the statuses of the Trusted Advisor checks you've specified
-     * for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     * refresh of the check is currently executing. </li>
-     * <li><b>successful</b>. The refresh of the check has completed
-     * successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     * for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     * check from refreshing. </li> </ul>
+     * The refresh status of the specified Trusted Advisor checks.
      */
-    private java.util.List<TrustedAdvisorCheckRefreshStatus> statuses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckRefreshStatus> statuses;
 
     /**
-     * List of the statuses of the Trusted Advisor checks you've specified
-     * for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     * refresh of the check is currently executing. </li>
-     * <li><b>successful</b>. The refresh of the check has completed
-     * successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     * for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     * check from refreshing. </li> </ul>
+     * The refresh status of the specified Trusted Advisor checks.
      *
-     * @return List of the statuses of the Trusted Advisor checks you've specified
-     *         for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     *         refresh of the check is currently executing. </li>
-     *         <li><b>successful</b>. The refresh of the check has completed
-     *         successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     *         for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     *         check from refreshing. </li> </ul>
+     * @return The refresh status of the specified Trusted Advisor checks.
      */
     public java.util.List<TrustedAdvisorCheckRefreshStatus> getStatuses() {
-        
         if (statuses == null) {
-            statuses = new java.util.ArrayList<TrustedAdvisorCheckRefreshStatus>();
+              statuses = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckRefreshStatus>();
+              statuses.setAutoConstruct(true);
         }
         return statuses;
     }
     
     /**
-     * List of the statuses of the Trusted Advisor checks you've specified
-     * for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     * refresh of the check is currently executing. </li>
-     * <li><b>successful</b>. The refresh of the check has completed
-     * successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     * for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     * check from refreshing. </li> </ul>
+     * The refresh status of the specified Trusted Advisor checks.
      *
-     * @param statuses List of the statuses of the Trusted Advisor checks you've specified
-     *         for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     *         refresh of the check is currently executing. </li>
-     *         <li><b>successful</b>. The refresh of the check has completed
-     *         successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     *         for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     *         check from refreshing. </li> </ul>
+     * @param statuses The refresh status of the specified Trusted Advisor checks.
      */
     public void setStatuses(java.util.Collection<TrustedAdvisorCheckRefreshStatus> statuses) {
         if (statuses == null) {
             this.statuses = null;
             return;
         }
-
-        java.util.List<TrustedAdvisorCheckRefreshStatus> statusesCopy = new java.util.ArrayList<TrustedAdvisorCheckRefreshStatus>(statuses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckRefreshStatus> statusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckRefreshStatus>(statuses.size());
         statusesCopy.addAll(statuses);
         this.statuses = statusesCopy;
     }
     
     /**
-     * List of the statuses of the Trusted Advisor checks you've specified
-     * for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     * refresh of the check is currently executing. </li>
-     * <li><b>successful</b>. The refresh of the check has completed
-     * successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     * for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     * check from refreshing. </li> </ul>
+     * The refresh status of the specified Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param statuses List of the statuses of the Trusted Advisor checks you've specified
-     *         for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     *         refresh of the check is currently executing. </li>
-     *         <li><b>successful</b>. The refresh of the check has completed
-     *         successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     *         for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     *         check from refreshing. </li> </ul>
+     * @param statuses The refresh status of the specified Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckRefreshStatusesResult withStatuses(TrustedAdvisorCheckRefreshStatus... statuses) {
         if (getStatuses() == null) setStatuses(new java.util.ArrayList<TrustedAdvisorCheckRefreshStatus>(statuses.length));
@@ -117,39 +76,27 @@ public class DescribeTrustedAdvisorCheckRefreshStatusesResult  implements Serial
     }
     
     /**
-     * List of the statuses of the Trusted Advisor checks you've specified
-     * for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     * refresh of the check is currently executing. </li>
-     * <li><b>successful</b>. The refresh of the check has completed
-     * successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     * for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     * check from refreshing. </li> </ul>
+     * The refresh status of the specified Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param statuses List of the statuses of the Trusted Advisor checks you've specified
-     *         for refresh. Status values are: <ul> <li><b>in_progress</b>. The
-     *         refresh of the check is currently executing. </li>
-     *         <li><b>successful</b>. The refresh of the check has completed
-     *         successfully.</li> <li><b>enqueued</b>. The refresh check is queued
-     *         for execution. </li> <li><b>abandoned</b>. An error has prevented the
-     *         check from refreshing. </li> </ul>
+     * @param statuses The refresh status of the specified Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckRefreshStatusesResult withStatuses(java.util.Collection<TrustedAdvisorCheckRefreshStatus> statuses) {
         if (statuses == null) {
             this.statuses = null;
         } else {
-            java.util.List<TrustedAdvisorCheckRefreshStatus> statusesCopy = new java.util.ArrayList<TrustedAdvisorCheckRefreshStatus>(statuses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckRefreshStatus> statusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckRefreshStatus>(statuses.size());
             statusesCopy.addAll(statuses);
             this.statuses = statusesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -161,7 +108,7 @@ public class DescribeTrustedAdvisorCheckRefreshStatusesResult  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStatuses() != null) sb.append("Statuses: " + getStatuses() );
         sb.append("}");
         return sb.toString();

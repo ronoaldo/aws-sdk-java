@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#deleteCloudFrontOriginAccessIdentity(DeleteCloudFrontOriginAccessIdentityRequest) DeleteCloudFrontOriginAccessIdentity operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#deleteCloudFrontOriginAccessIdentity(DeleteCloudFrontOriginAccessIdentityRequest)
  */
-public class DeleteCloudFrontOriginAccessIdentityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteCloudFrontOriginAccessIdentityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The origin access identity's id.
@@ -53,12 +55,10 @@ public class DeleteCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
      * previous GET or PUT request. For example: E2QWRUHAPOMQZL.
      */
     public DeleteCloudFrontOriginAccessIdentityRequest(String id, String ifMatch) {
-        this.id = id;
-        this.ifMatch = ifMatch;
+        setId(id);
+        setIfMatch(ifMatch);
     }
 
-    
-    
     /**
      * The origin access identity's id.
      *
@@ -85,14 +85,13 @@ public class DeleteCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
      * @param id The origin access identity's id.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteCloudFrontOriginAccessIdentityRequest withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The value of the ETag header you received from a previous GET or PUT
      * request. For example: E2QWRUHAPOMQZL.
@@ -125,14 +124,13 @@ public class DeleteCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
      *         request. For example: E2QWRUHAPOMQZL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteCloudFrontOriginAccessIdentityRequest withIfMatch(String ifMatch) {
         this.ifMatch = ifMatch;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -144,8 +142,8 @@ public class DeleteCloudFrontOriginAccessIdentityRequest extends AmazonWebServic
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getIfMatch() != null) sb.append("IfMatch: " + getIfMatch() );
         sb.append("}");
         return sb.toString();

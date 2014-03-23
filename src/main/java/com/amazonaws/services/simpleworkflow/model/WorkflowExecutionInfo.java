@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains information about a workflow execution.
  * </p>
  */
-public class WorkflowExecutionInfo  implements Serializable  {
+public class WorkflowExecutionInfo implements Serializable {
 
     /**
      * The workflow execution this information is about.
@@ -83,7 +84,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> tagList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tagList;
 
     /**
      * Set to true if a cancellation is requested for this workflow
@@ -117,14 +118,13 @@ public class WorkflowExecutionInfo  implements Serializable  {
      * @param execution The workflow execution this information is about.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withExecution(WorkflowExecution execution) {
         this.execution = execution;
         return this;
     }
-    
-    
+
     /**
      * The type of the workflow execution.
      *
@@ -151,14 +151,13 @@ public class WorkflowExecutionInfo  implements Serializable  {
      * @param workflowType The type of the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * The time when the execution was started.
      *
@@ -185,14 +184,13 @@ public class WorkflowExecutionInfo  implements Serializable  {
      * @param startTimestamp The time when the execution was started.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withStartTimestamp(java.util.Date startTimestamp) {
         this.startTimestamp = startTimestamp;
         return this;
     }
-    
-    
+
     /**
      * The time when the workflow execution was closed. Set only if the
      * execution status is CLOSED.
@@ -225,14 +223,13 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         execution status is CLOSED.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withCloseTimestamp(java.util.Date closeTimestamp) {
         this.closeTimestamp = closeTimestamp;
         return this;
     }
-    
-    
+
     /**
      * The current status of the execution.
      * <p>
@@ -272,7 +269,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
      * @param executionStatus The current status of the execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExecutionStatus
      */
@@ -280,8 +277,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
         this.executionStatus = executionStatus;
         return this;
     }
-    
-    
+
     /**
      * The current status of the execution.
      * <p>
@@ -307,7 +303,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
      * @param executionStatus The current status of the execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ExecutionStatus
      */
@@ -315,7 +311,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
         this.executionStatus = executionStatus.toString();
         return this;
     }
-    
+
     /**
      * If the execution status is closed then this specifies how the
      * execution was closed: <ul> <li>COMPLETED: the execution was
@@ -415,7 +411,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         carry on the workflow.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see CloseStatus
      */
@@ -423,8 +419,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
         this.closeStatus = closeStatus;
         return this;
     }
-    
-    
+
     /**
      * If the execution status is closed then this specifies how the
      * execution was closed: <ul> <li>COMPLETED: the execution was
@@ -490,7 +485,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         carry on the workflow.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see CloseStatus
      */
@@ -498,7 +493,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
         this.closeStatus = closeStatus.toString();
         return this;
     }
-    
+
     /**
      * If this workflow execution is a child of another execution then
      * contains the workflow execution that started this execution.
@@ -531,14 +526,13 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         contains the workflow execution that started this execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withParent(WorkflowExecution parent) {
         this.parent = parent;
         return this;
     }
-    
-    
+
     /**
      * The list of tags associated with the workflow execution. Tags can be
      * used to identify and list workflow executions of interest through the
@@ -552,9 +546,9 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         visibility APIs. A workflow execution can have a maximum of 5 tags.
      */
     public java.util.List<String> getTagList() {
-        
         if (tagList == null) {
-            tagList = new java.util.ArrayList<String>();
+              tagList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              tagList.setAutoConstruct(true);
         }
         return tagList;
     }
@@ -576,8 +570,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
             this.tagList = null;
             return;
         }
-
-        java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
         tagListCopy.addAll(tagList);
         this.tagList = tagListCopy;
     }
@@ -597,7 +590,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         visibility APIs. A workflow execution can have a maximum of 5 tags.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withTagList(String... tagList) {
         if (getTagList() == null) setTagList(new java.util.ArrayList<String>(tagList.length));
@@ -622,20 +615,20 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         visibility APIs. A workflow execution can have a maximum of 5 tags.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withTagList(java.util.Collection<String> tagList) {
         if (tagList == null) {
             this.tagList = null;
         } else {
-            java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
             tagListCopy.addAll(tagList);
             this.tagList = tagListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Set to true if a cancellation is requested for this workflow
      * execution.
@@ -668,14 +661,13 @@ public class WorkflowExecutionInfo  implements Serializable  {
      *         execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionInfo withCancelRequested(Boolean cancelRequested) {
         this.cancelRequested = cancelRequested;
         return this;
     }
-    
-    
+
     /**
      * Set to true if a cancellation is requested for this workflow
      * execution.
@@ -686,7 +678,7 @@ public class WorkflowExecutionInfo  implements Serializable  {
     public Boolean getCancelRequested() {
         return cancelRequested;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -698,15 +690,15 @@ public class WorkflowExecutionInfo  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getExecution() != null) sb.append("Execution: " + getExecution() + ",");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getStartTimestamp() != null) sb.append("StartTimestamp: " + getStartTimestamp() + ",");    	
-        if (getCloseTimestamp() != null) sb.append("CloseTimestamp: " + getCloseTimestamp() + ",");    	
-        if (getExecutionStatus() != null) sb.append("ExecutionStatus: " + getExecutionStatus() + ",");    	
-        if (getCloseStatus() != null) sb.append("CloseStatus: " + getCloseStatus() + ",");    	
-        if (getParent() != null) sb.append("Parent: " + getParent() + ",");    	
-        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");    	
+        sb.append("{");
+        if (getExecution() != null) sb.append("Execution: " + getExecution() + ",");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getStartTimestamp() != null) sb.append("StartTimestamp: " + getStartTimestamp() + ",");
+        if (getCloseTimestamp() != null) sb.append("CloseTimestamp: " + getCloseTimestamp() + ",");
+        if (getExecutionStatus() != null) sb.append("ExecutionStatus: " + getExecutionStatus() + ",");
+        if (getCloseStatus() != null) sb.append("CloseStatus: " + getCloseStatus() + ",");
+        if (getParent() != null) sb.append("Parent: " + getParent() + ",");
+        if (getTagList() != null) sb.append("TagList: " + getTagList() + ",");
         if (isCancelRequested() != null) sb.append("CancelRequested: " + isCancelRequested() );
         sb.append("}");
         return sb.toString();

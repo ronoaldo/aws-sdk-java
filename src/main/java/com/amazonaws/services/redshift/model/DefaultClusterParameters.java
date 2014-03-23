@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the default cluster parameters for a parameter group family.
  * </p>
  */
-public class DefaultClusterParameters  implements Serializable  {
+public class DefaultClusterParameters implements Serializable {
 
     /**
      * The name of the cluster parameter group family to which the engine
@@ -36,7 +37,7 @@ public class DefaultClusterParameters  implements Serializable  {
     /**
      * The list of cluster default parameters.
      */
-    private java.util.List<Parameter> parameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parameters;
 
     /**
      * The name of the cluster parameter group family to which the engine
@@ -70,14 +71,13 @@ public class DefaultClusterParameters  implements Serializable  {
      *         default parameters apply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefaultClusterParameters withParameterGroupFamily(String parameterGroupFamily) {
         this.parameterGroupFamily = parameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * An identifier to allow retrieval of paginated results.
      *
@@ -104,23 +104,22 @@ public class DefaultClusterParameters  implements Serializable  {
      * @param marker An identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefaultClusterParameters withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * The list of cluster default parameters.
      *
      * @return The list of cluster default parameters.
      */
     public java.util.List<Parameter> getParameters() {
-        
         if (parameters == null) {
-            parameters = new java.util.ArrayList<Parameter>();
+              parameters = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>();
+              parameters.setAutoConstruct(true);
         }
         return parameters;
     }
@@ -135,8 +134,7 @@ public class DefaultClusterParameters  implements Serializable  {
             this.parameters = null;
             return;
         }
-
-        java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
         parametersCopy.addAll(parameters);
         this.parameters = parametersCopy;
     }
@@ -149,7 +147,7 @@ public class DefaultClusterParameters  implements Serializable  {
      * @param parameters The list of cluster default parameters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefaultClusterParameters withParameters(Parameter... parameters) {
         if (getParameters() == null) setParameters(new java.util.ArrayList<Parameter>(parameters.length));
@@ -167,20 +165,20 @@ public class DefaultClusterParameters  implements Serializable  {
      * @param parameters The list of cluster default parameters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefaultClusterParameters withParameters(java.util.Collection<Parameter> parameters) {
         if (parameters == null) {
             this.parameters = null;
         } else {
-            java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
             parametersCopy.addAll(parameters);
             this.parameters = parametersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -192,9 +190,9 @@ public class DefaultClusterParameters  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterGroupFamily() != null) sb.append("ParameterGroupFamily: " + getParameterGroupFamily() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getParameterGroupFamily() != null) sb.append("ParameterGroupFamily: " + getParameterGroupFamily() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getParameters() != null) sb.append("Parameters: " + getParameters() );
         sb.append("}");
         return sb.toString();

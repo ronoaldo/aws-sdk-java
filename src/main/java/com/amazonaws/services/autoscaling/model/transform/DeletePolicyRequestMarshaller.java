@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeletePolicyRequestMarshaller implements Marshaller<Request<DeleteP
     public Request<DeletePolicyRequest> marshall(DeletePolicyRequest deletePolicyRequest) {
 
         if (deletePolicyRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeletePolicyRequest> request = new DefaultRequest<DeletePolicyRequest>(deletePolicyRequest, "AmazonAutoScaling");
         request.addParameter("Action", "DeletePolicy");
@@ -46,7 +46,6 @@ public class DeletePolicyRequestMarshaller implements Marshaller<Request<DeleteP
         if (deletePolicyRequest.getPolicyName() != null) {
             request.addParameter("PolicyName", StringUtils.fromString(deletePolicyRequest.getPolicyName()));
         }
-
 
         return request;
     }

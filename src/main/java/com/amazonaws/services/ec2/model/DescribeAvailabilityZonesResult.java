@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing the Amazon EC2 availability zones in the current region.
- * </p>
+ * 
  */
-public class DescribeAvailabilityZonesResult  implements Serializable  {
+public class DescribeAvailabilityZonesResult implements Serializable {
 
     /**
-     * The list of described Amazon EC2 availability zones.
+     * Information about one or more Availability Zones.
      */
-    private java.util.List<AvailabilityZone> availabilityZones;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZones;
 
     /**
-     * The list of described Amazon EC2 availability zones.
+     * Information about one or more Availability Zones.
      *
-     * @return The list of described Amazon EC2 availability zones.
+     * @return Information about one or more Availability Zones.
      */
     public java.util.List<AvailabilityZone> getAvailabilityZones() {
-        
         if (availabilityZones == null) {
-            availabilityZones = new java.util.ArrayList<AvailabilityZone>();
+              availabilityZones = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>();
+              availabilityZones.setAutoConstruct(true);
         }
         return availabilityZones;
     }
     
     /**
-     * The list of described Amazon EC2 availability zones.
+     * Information about one or more Availability Zones.
      *
-     * @param availabilityZones The list of described Amazon EC2 availability zones.
+     * @param availabilityZones Information about one or more Availability Zones.
      */
     public void setAvailabilityZones(java.util.Collection<AvailabilityZone> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
             return;
         }
-
-        java.util.List<AvailabilityZone> availabilityZonesCopy = new java.util.ArrayList<AvailabilityZone>(availabilityZones.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>(availabilityZones.size());
         availabilityZonesCopy.addAll(availabilityZones);
         this.availabilityZones = availabilityZonesCopy;
     }
     
     /**
-     * The list of described Amazon EC2 availability zones.
+     * Information about one or more Availability Zones.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones The list of described Amazon EC2 availability zones.
+     * @param availabilityZones Information about one or more Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAvailabilityZonesResult withAvailabilityZones(AvailabilityZone... availabilityZones) {
         if (getAvailabilityZones() == null) setAvailabilityZones(new java.util.ArrayList<AvailabilityZone>(availabilityZones.length));
@@ -75,27 +73,27 @@ public class DescribeAvailabilityZonesResult  implements Serializable  {
     }
     
     /**
-     * The list of described Amazon EC2 availability zones.
+     * Information about one or more Availability Zones.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZones The list of described Amazon EC2 availability zones.
+     * @param availabilityZones Information about one or more Availability Zones.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAvailabilityZonesResult withAvailabilityZones(java.util.Collection<AvailabilityZone> availabilityZones) {
         if (availabilityZones == null) {
             this.availabilityZones = null;
         } else {
-            java.util.List<AvailabilityZone> availabilityZonesCopy = new java.util.ArrayList<AvailabilityZone>(availabilityZones.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone> availabilityZonesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<AvailabilityZone>(availabilityZones.size());
             availabilityZonesCopy.addAll(availabilityZones);
             this.availabilityZones = availabilityZonesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeAvailabilityZonesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getAvailabilityZones() != null) sb.append("AvailabilityZones: " + getAvailabilityZones() );
         sb.append("}");
         return sb.toString();

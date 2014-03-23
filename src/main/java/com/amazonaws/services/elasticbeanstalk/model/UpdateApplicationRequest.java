@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#updateApplication(UpdateApplicationRequest) UpdateApplication operation}.
@@ -22,13 +24,14 @@ import java.io.Serializable;
  * Updates the specified application to have the specified properties.
  * </p>
  * <p>
- * <b>NOTE:</b> If a property (for example, description) is not provided, the value remains unchanged. To clear these properties, specify an empty
- * string.
+ * <b>NOTE:</b> If a property (for example, description) is not provided,
+ * the value remains unchanged. To clear these properties, specify an
+ * empty string.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#updateApplication(UpdateApplicationRequest)
  */
-public class UpdateApplicationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateApplicationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application to update. If no such application is
@@ -65,11 +68,9 @@ public class UpdateApplicationRequest extends AmazonWebServiceRequest  implement
      * <code>InvalidParameterValue</code> error.
      */
     public UpdateApplicationRequest(String applicationName) {
-        this.applicationName = applicationName;
+        setApplicationName(applicationName);
     }
 
-    
-    
     /**
      * The name of the application to update. If no such application is
      * found, <code>UpdateApplication</code> returns an
@@ -117,14 +118,13 @@ public class UpdateApplicationRequest extends AmazonWebServiceRequest  implement
      *         <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateApplicationRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * A new description for the application. <p>Default: If not specified,
      * AWS Elastic Beanstalk does not update the description.
@@ -166,14 +166,13 @@ public class UpdateApplicationRequest extends AmazonWebServiceRequest  implement
      *         AWS Elastic Beanstalk does not update the description.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateApplicationRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -185,8 +184,8 @@ public class UpdateApplicationRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
         if (getDescription() != null) sb.append("Description: " + getDescription() );
         sb.append("}");
         return sb.toString();

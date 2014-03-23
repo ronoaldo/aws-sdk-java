@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the properties of an application version.
  * </p>
  */
-public class ApplicationVersionDescription  implements Serializable  {
+public class ApplicationVersionDescription implements Serializable {
 
     /**
      * The name of the application associated with this release.
@@ -103,14 +104,13 @@ public class ApplicationVersionDescription  implements Serializable  {
      * @param applicationName The name of the application associated with this release.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplicationVersionDescription withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The description of this application version.
      * <p>
@@ -146,14 +146,13 @@ public class ApplicationVersionDescription  implements Serializable  {
      * @param description The description of this application version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplicationVersionDescription withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * A label uniquely identifying the version for the associated
      * application.
@@ -195,14 +194,13 @@ public class ApplicationVersionDescription  implements Serializable  {
      *         application.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplicationVersionDescription withVersionLabel(String versionLabel) {
         this.versionLabel = versionLabel;
         return this;
     }
-    
-    
+
     /**
      * The location where the source bundle is located for this version.
      *
@@ -229,14 +227,13 @@ public class ApplicationVersionDescription  implements Serializable  {
      * @param sourceBundle The location where the source bundle is located for this version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplicationVersionDescription withSourceBundle(S3Location sourceBundle) {
         this.sourceBundle = sourceBundle;
         return this;
     }
-    
-    
+
     /**
      * The creation date of the application version.
      *
@@ -263,14 +260,13 @@ public class ApplicationVersionDescription  implements Serializable  {
      * @param dateCreated The creation date of the application version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplicationVersionDescription withDateCreated(java.util.Date dateCreated) {
         this.dateCreated = dateCreated;
         return this;
     }
-    
-    
+
     /**
      * The last modified date of the application version.
      *
@@ -297,14 +293,13 @@ public class ApplicationVersionDescription  implements Serializable  {
      * @param dateUpdated The last modified date of the application version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplicationVersionDescription withDateUpdated(java.util.Date dateUpdated) {
         this.dateUpdated = dateUpdated;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -316,12 +311,12 @@ public class ApplicationVersionDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");    	
-        if (getSourceBundle() != null) sb.append("SourceBundle: " + getSourceBundle() + ",");    	
-        if (getDateCreated() != null) sb.append("DateCreated: " + getDateCreated() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");
+        if (getSourceBundle() != null) sb.append("SourceBundle: " + getSourceBundle() + ",");
+        if (getDateCreated() != null) sb.append("DateCreated: " + getDateCreated() + ",");
         if (getDateUpdated() != null) sb.append("DateUpdated: " + getDateUpdated() );
         sb.append("}");
         return sb.toString();

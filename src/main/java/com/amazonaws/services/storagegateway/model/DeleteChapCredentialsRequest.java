@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#deleteChapCredentials(DeleteChapCredentialsRequest) DeleteChapCredentials operation}.
  * <p>
- * This operation deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair.
+ * This operation deletes Challenge-Handshake Authentication Protocol
+ * (CHAP) credentials for a specified iSCSI target and initiator pair.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#deleteChapCredentials(DeleteChapCredentialsRequest)
  */
-public class DeleteChapCredentialsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteChapCredentialsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
@@ -92,14 +95,13 @@ public class DeleteChapCredentialsRequest extends AmazonWebServiceRequest  imple
      *         TargetARN for specified VolumeARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteChapCredentialsRequest withTargetARN(String targetARN) {
         this.targetARN = targetARN;
         return this;
     }
-    
-    
+
     /**
      * The iSCSI initiator that connects to the target.
      * <p>
@@ -138,14 +140,13 @@ public class DeleteChapCredentialsRequest extends AmazonWebServiceRequest  imple
      * @param initiatorName The iSCSI initiator that connects to the target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteChapCredentialsRequest withInitiatorName(String initiatorName) {
         this.initiatorName = initiatorName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -157,8 +158,8 @@ public class DeleteChapCredentialsRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");    	
+        sb.append("{");
+        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");
         if (getInitiatorName() != null) sb.append("InitiatorName: " + getInitiatorName() );
         sb.append("}");
         return sb.toString();

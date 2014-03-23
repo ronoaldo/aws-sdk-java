@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteVirtualMFADevice(DeleteVirtualMFADeviceRequest) DeleteVirtualMFADevice operation}.
@@ -22,13 +24,14 @@ import java.io.Serializable;
  * Deletes a virtual MFA device.
  * </p>
  * <p>
- * <b>NOTE:</b>You must deactivate a user's virtual MFA device before you can delete it. For information about deactivating MFA devices, see
+ * <b>NOTE:</b>You must deactivate a user's virtual MFA device before you
+ * can delete it. For information about deactivating MFA devices, see
  * DeactivateMFADevice.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteVirtualMFADevice(DeleteVirtualMFADeviceRequest)
  */
-public class DeleteVirtualMFADeviceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteVirtualMFADeviceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The serial number that uniquely identifies the MFA device. For virtual
@@ -84,14 +87,13 @@ public class DeleteVirtualMFADeviceRequest extends AmazonWebServiceRequest  impl
      *         MFA devices, the serial number is the same as the ARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteVirtualMFADeviceRequest withSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,7 +105,7 @@ public class DeleteVirtualMFADeviceRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSerialNumber() != null) sb.append("SerialNumber: " + getSerialNumber() );
         sb.append("}");
         return sb.toString();

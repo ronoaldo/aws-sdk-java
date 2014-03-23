@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#listMFADevices(ListMFADevicesRequest) ListMFADevices operation}.
  * <p>
- * Lists the MFA devices. If the request includes the user name, then this action lists all the MFA devices associated with the specified user name. If
- * you do not specify a user name, IAM determines the user name implicitly based on the AWS Access Key ID signing the request.
+ * Lists the MFA devices. If the request includes the user name, then
+ * this action lists all the MFA devices associated with the specified
+ * user name. If you do not specify a user name, IAM determines the user
+ * name implicitly based on the AWS access key ID signing the request.
  * </p>
  * <p>
- * You can paginate the results using the <code>MaxItems</code> and <code>Marker</code> parameters.
+ * You can paginate the results using the <code>MaxItems</code> and
+ * <code>Marker</code> parameters.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#listMFADevices(ListMFADevicesRequest)
  */
-public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListMFADevicesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the user whose MFA devices you want to list.
@@ -55,7 +60,8 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * Use this only when paginating results to indicate the maximum number
      * of MFA devices you want in the response. If there are additional MFA
      * devices beyond the maximum you specify, the <code>IsTruncated</code>
-     * response element is <code>true</code>.
+     * response element is <code>true</code>. This parameter is optional. If
+     * you do not include it, it defaults to 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 1000<br/>
@@ -76,11 +82,9 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * @param userName Name of the user whose MFA devices you want to list.
      */
     public ListMFADevicesRequest(String userName) {
-        this.userName = userName;
+        setUserName(userName);
     }
 
-    
-    
     /**
      * Name of the user whose MFA devices you want to list.
      * <p>
@@ -119,14 +123,13 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * @param userName Name of the user whose MFA devices you want to list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMFADevicesRequest withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * Use this only when paginating results, and only in a subsequent
      * request after you've received a response where the results are
@@ -183,19 +186,19 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      *         the response you just received.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMFADevicesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Use this only when paginating results to indicate the maximum number
      * of MFA devices you want in the response. If there are additional MFA
      * devices beyond the maximum you specify, the <code>IsTruncated</code>
-     * response element is <code>true</code>.
+     * response element is <code>true</code>. This parameter is optional. If
+     * you do not include it, it defaults to 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 1000<br/>
@@ -203,7 +206,8 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * @return Use this only when paginating results to indicate the maximum number
      *         of MFA devices you want in the response. If there are additional MFA
      *         devices beyond the maximum you specify, the <code>IsTruncated</code>
-     *         response element is <code>true</code>.
+     *         response element is <code>true</code>. This parameter is optional. If
+     *         you do not include it, it defaults to 100.
      */
     public Integer getMaxItems() {
         return maxItems;
@@ -213,7 +217,8 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * Use this only when paginating results to indicate the maximum number
      * of MFA devices you want in the response. If there are additional MFA
      * devices beyond the maximum you specify, the <code>IsTruncated</code>
-     * response element is <code>true</code>.
+     * response element is <code>true</code>. This parameter is optional. If
+     * you do not include it, it defaults to 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 1000<br/>
@@ -221,7 +226,8 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * @param maxItems Use this only when paginating results to indicate the maximum number
      *         of MFA devices you want in the response. If there are additional MFA
      *         devices beyond the maximum you specify, the <code>IsTruncated</code>
-     *         response element is <code>true</code>.
+     *         response element is <code>true</code>. This parameter is optional. If
+     *         you do not include it, it defaults to 100.
      */
     public void setMaxItems(Integer maxItems) {
         this.maxItems = maxItems;
@@ -231,7 +237,8 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * Use this only when paginating results to indicate the maximum number
      * of MFA devices you want in the response. If there are additional MFA
      * devices beyond the maximum you specify, the <code>IsTruncated</code>
-     * response element is <code>true</code>.
+     * response element is <code>true</code>. This parameter is optional. If
+     * you do not include it, it defaults to 100.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -241,17 +248,17 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
      * @param maxItems Use this only when paginating results to indicate the maximum number
      *         of MFA devices you want in the response. If there are additional MFA
      *         devices beyond the maximum you specify, the <code>IsTruncated</code>
-     *         response element is <code>true</code>.
+     *         response element is <code>true</code>. This parameter is optional. If
+     *         you do not include it, it defaults to 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListMFADevicesRequest withMaxItems(Integer maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -263,9 +270,9 @@ public class ListMFADevicesRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

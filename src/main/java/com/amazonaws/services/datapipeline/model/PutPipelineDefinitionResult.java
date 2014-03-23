@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,19 +21,19 @@ import java.io.Serializable;
  * Contains the output of the PutPipelineDefinition action.
  * </p>
  */
-public class PutPipelineDefinitionResult  implements Serializable  {
+public class PutPipelineDefinitionResult implements Serializable {
 
     /**
      * A list of the validation errors that are associated with the objects
      * defined in <code>pipelineObjects</code>.
      */
-    private java.util.List<ValidationError> validationErrors;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError> validationErrors;
 
     /**
      * A list of the validation warnings that are associated with the objects
      * defined in <code>pipelineObjects</code>.
      */
-    private java.util.List<ValidationWarning> validationWarnings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning> validationWarnings;
 
     /**
      * If <code>True</code>, there were validation errors. If errored is
@@ -50,9 +51,9 @@ public class PutPipelineDefinitionResult  implements Serializable  {
      *         defined in <code>pipelineObjects</code>.
      */
     public java.util.List<ValidationError> getValidationErrors() {
-        
         if (validationErrors == null) {
-            validationErrors = new java.util.ArrayList<ValidationError>();
+              validationErrors = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError>();
+              validationErrors.setAutoConstruct(true);
         }
         return validationErrors;
     }
@@ -69,8 +70,7 @@ public class PutPipelineDefinitionResult  implements Serializable  {
             this.validationErrors = null;
             return;
         }
-
-        java.util.List<ValidationError> validationErrorsCopy = new java.util.ArrayList<ValidationError>(validationErrors.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError> validationErrorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError>(validationErrors.size());
         validationErrorsCopy.addAll(validationErrors);
         this.validationErrors = validationErrorsCopy;
     }
@@ -85,7 +85,7 @@ public class PutPipelineDefinitionResult  implements Serializable  {
      *         defined in <code>pipelineObjects</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionResult withValidationErrors(ValidationError... validationErrors) {
         if (getValidationErrors() == null) setValidationErrors(new java.util.ArrayList<ValidationError>(validationErrors.length));
@@ -105,20 +105,20 @@ public class PutPipelineDefinitionResult  implements Serializable  {
      *         defined in <code>pipelineObjects</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionResult withValidationErrors(java.util.Collection<ValidationError> validationErrors) {
         if (validationErrors == null) {
             this.validationErrors = null;
         } else {
-            java.util.List<ValidationError> validationErrorsCopy = new java.util.ArrayList<ValidationError>(validationErrors.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError> validationErrorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationError>(validationErrors.size());
             validationErrorsCopy.addAll(validationErrors);
             this.validationErrors = validationErrorsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of the validation warnings that are associated with the objects
      * defined in <code>pipelineObjects</code>.
@@ -127,9 +127,9 @@ public class PutPipelineDefinitionResult  implements Serializable  {
      *         defined in <code>pipelineObjects</code>.
      */
     public java.util.List<ValidationWarning> getValidationWarnings() {
-        
         if (validationWarnings == null) {
-            validationWarnings = new java.util.ArrayList<ValidationWarning>();
+              validationWarnings = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning>();
+              validationWarnings.setAutoConstruct(true);
         }
         return validationWarnings;
     }
@@ -146,8 +146,7 @@ public class PutPipelineDefinitionResult  implements Serializable  {
             this.validationWarnings = null;
             return;
         }
-
-        java.util.List<ValidationWarning> validationWarningsCopy = new java.util.ArrayList<ValidationWarning>(validationWarnings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning> validationWarningsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning>(validationWarnings.size());
         validationWarningsCopy.addAll(validationWarnings);
         this.validationWarnings = validationWarningsCopy;
     }
@@ -162,7 +161,7 @@ public class PutPipelineDefinitionResult  implements Serializable  {
      *         defined in <code>pipelineObjects</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionResult withValidationWarnings(ValidationWarning... validationWarnings) {
         if (getValidationWarnings() == null) setValidationWarnings(new java.util.ArrayList<ValidationWarning>(validationWarnings.length));
@@ -182,20 +181,20 @@ public class PutPipelineDefinitionResult  implements Serializable  {
      *         defined in <code>pipelineObjects</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionResult withValidationWarnings(java.util.Collection<ValidationWarning> validationWarnings) {
         if (validationWarnings == null) {
             this.validationWarnings = null;
         } else {
-            java.util.List<ValidationWarning> validationWarningsCopy = new java.util.ArrayList<ValidationWarning>(validationWarnings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning> validationWarningsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationWarning>(validationWarnings.size());
             validationWarningsCopy.addAll(validationWarnings);
             this.validationWarnings = validationWarningsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * If <code>True</code>, there were validation errors. If errored is
      * <code>True</code>, the pipeline definition is stored but cannot be
@@ -240,14 +239,13 @@ public class PutPipelineDefinitionResult  implements Serializable  {
      *         <a>PutPipelineDefinition</a> to commit the corrected pipeline.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionResult withErrored(Boolean errored) {
         this.errored = errored;
         return this;
     }
-    
-    
+
     /**
      * If <code>True</code>, there were validation errors. If errored is
      * <code>True</code>, the pipeline definition is stored but cannot be
@@ -262,7 +260,7 @@ public class PutPipelineDefinitionResult  implements Serializable  {
     public Boolean getErrored() {
         return errored;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -274,9 +272,9 @@ public class PutPipelineDefinitionResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getValidationErrors() != null) sb.append("ValidationErrors: " + getValidationErrors() + ",");    	
-        if (getValidationWarnings() != null) sb.append("ValidationWarnings: " + getValidationWarnings() + ",");    	
+        sb.append("{");
+        if (getValidationErrors() != null) sb.append("ValidationErrors: " + getValidationErrors() + ",");
+        if (getValidationWarnings() != null) sb.append("ValidationWarnings: " + getValidationWarnings() + ",");
         if (isErrored() != null) sb.append("Errored: " + isErrored() );
         sb.append("}");
         return sb.toString();

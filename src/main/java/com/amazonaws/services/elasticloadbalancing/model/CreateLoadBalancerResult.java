@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,47 +21,46 @@ import java.io.Serializable;
  * The output for the CreateLoadBalancer action.
  * </p>
  */
-public class CreateLoadBalancerResult  implements Serializable  {
+public class CreateLoadBalancerResult implements Serializable {
 
     /**
-     * The DNS name for the LoadBalancer.
+     * The DNS name for the load balancer.
      */
     private String dNSName;
 
     /**
-     * The DNS name for the LoadBalancer.
+     * The DNS name for the load balancer.
      *
-     * @return The DNS name for the LoadBalancer.
+     * @return The DNS name for the load balancer.
      */
     public String getDNSName() {
         return dNSName;
     }
     
     /**
-     * The DNS name for the LoadBalancer.
+     * The DNS name for the load balancer.
      *
-     * @param dNSName The DNS name for the LoadBalancer.
+     * @param dNSName The DNS name for the load balancer.
      */
     public void setDNSName(String dNSName) {
         this.dNSName = dNSName;
     }
     
     /**
-     * The DNS name for the LoadBalancer.
+     * The DNS name for the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param dNSName The DNS name for the LoadBalancer.
+     * @param dNSName The DNS name for the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoadBalancerResult withDNSName(String dNSName) {
         this.dNSName = dNSName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -72,7 +72,7 @@ public class CreateLoadBalancerResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDNSName() != null) sb.append("DNSName: " + getDNSName() );
         sb.append("}");
         return sb.toString();

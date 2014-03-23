@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class SendEmailRequestMarshaller implements Marshaller<Request<SendEmailR
     public Request<SendEmailRequest> marshall(SendEmailRequest sendEmailRequest) {
 
         if (sendEmailRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<SendEmailRequest> request = new DefaultRequest<SendEmailRequest>(sendEmailRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "SendEmail");
@@ -126,7 +126,6 @@ public class SendEmailRequestMarshaller implements Marshaller<Request<SendEmailR
         if (sendEmailRequest.getReturnPath() != null) {
             request.addParameter("ReturnPath", StringUtils.fromString(sendEmailRequest.getReturnPath()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,28 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#describeAutoScalingGroups(DescribeAutoScalingGroupsRequest) DescribeAutoScalingGroups operation}.
  * <p>
- * Returns a full description of each Auto Scaling group in the given list. This includes all Amazon EC2 instances that are members of the group. If a
- * list of names is not provided, the service returns the full details of all Auto Scaling groups.
+ * Returns a full description of each Auto Scaling group in the given
+ * list. This includes all Amazon EC2 instances that are members of the
+ * group. If a list of names is not provided, the service returns the
+ * full details of all Auto Scaling groups.
  * </p>
  * <p>
- * This action supports pagination by returning a token if there are more pages to retrieve. To get the next page, call this action again with the
- * returned token as the <code>NextToken</code> parameter.
+ * This action supports pagination by returning a token if there are
+ * more pages to retrieve. To get the next page, call this action again
+ * with the returned token as the <code>NextToken</code> parameter.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeAutoScalingGroups(DescribeAutoScalingGroupsRequest)
  */
-public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list of Auto Scaling group names.
      */
-    private java.util.List<String> autoScalingGroupNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNames;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -58,9 +63,9 @@ public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  i
      * @return A list of Auto Scaling group names.
      */
     public java.util.List<String> getAutoScalingGroupNames() {
-        
         if (autoScalingGroupNames == null) {
-            autoScalingGroupNames = new java.util.ArrayList<String>();
+              autoScalingGroupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              autoScalingGroupNames.setAutoConstruct(true);
         }
         return autoScalingGroupNames;
     }
@@ -75,8 +80,7 @@ public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  i
             this.autoScalingGroupNames = null;
             return;
         }
-
-        java.util.List<String> autoScalingGroupNamesCopy = new java.util.ArrayList<String>(autoScalingGroupNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingGroupNames.size());
         autoScalingGroupNamesCopy.addAll(autoScalingGroupNames);
         this.autoScalingGroupNames = autoScalingGroupNamesCopy;
     }
@@ -89,7 +93,7 @@ public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  i
      * @param autoScalingGroupNames A list of Auto Scaling group names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingGroupsRequest withAutoScalingGroupNames(String... autoScalingGroupNames) {
         if (getAutoScalingGroupNames() == null) setAutoScalingGroupNames(new java.util.ArrayList<String>(autoScalingGroupNames.length));
@@ -107,20 +111,20 @@ public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  i
      * @param autoScalingGroupNames A list of Auto Scaling group names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingGroupsRequest withAutoScalingGroupNames(java.util.Collection<String> autoScalingGroupNames) {
         if (autoScalingGroupNames == null) {
             this.autoScalingGroupNames = null;
         } else {
-            java.util.List<String> autoScalingGroupNamesCopy = new java.util.ArrayList<String>(autoScalingGroupNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingGroupNames.size());
             autoScalingGroupNamesCopy.addAll(autoScalingGroupNames);
             this.autoScalingGroupNames = autoScalingGroupNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -156,14 +160,13 @@ public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  i
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingGroupsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records to return.
      * <p>
@@ -199,14 +202,13 @@ public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  i
      * @param maxRecords The maximum number of records to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAutoScalingGroupsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -218,9 +220,9 @@ public class DescribeAutoScalingGroupsRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupNames() != null) sb.append("AutoScalingGroupNames: " + getAutoScalingGroupNames() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupNames() != null) sb.append("AutoScalingGroupNames: " + getAutoScalingGroupNames() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() );
         sb.append("}");
         return sb.toString();

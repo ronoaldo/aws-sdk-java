@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an app's SSL configuration.
  * </p>
  */
-public class SslConfiguration  implements Serializable  {
+public class SslConfiguration implements Serializable {
 
     /**
      * The contents of the certificate's domain.crt file.
@@ -64,14 +65,13 @@ public class SslConfiguration  implements Serializable  {
      * @param certificate The contents of the certificate's domain.crt file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SslConfiguration withCertificate(String certificate) {
         this.certificate = certificate;
         return this;
     }
-    
-    
+
     /**
      * The private key; the contents of the certificate's domain.kex file.
      *
@@ -98,14 +98,13 @@ public class SslConfiguration  implements Serializable  {
      * @param privateKey The private key; the contents of the certificate's domain.kex file.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SslConfiguration withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
     }
-    
-    
+
     /**
      * Optional. Can be used to specify an intermediate certificate authority
      * key or client authentication.
@@ -138,14 +137,13 @@ public class SslConfiguration  implements Serializable  {
      *         key or client authentication.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SslConfiguration withChain(String chain) {
         this.chain = chain;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -157,9 +155,9 @@ public class SslConfiguration  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCertificate() != null) sb.append("Certificate: " + getCertificate() + ",");    	
-        if (getPrivateKey() != null) sb.append("PrivateKey: " + getPrivateKey() + ",");    	
+        sb.append("{");
+        if (getCertificate() != null) sb.append("Certificate: " + getCertificate() + ",");
+        if (getPrivateKey() != null) sb.append("PrivateKey: " + getPrivateKey() + ",");
         if (getChain() != null) sb.append("Chain: " + getChain() );
         sb.append("}");
         return sb.toString();

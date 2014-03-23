@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Propagating Vgw
+ * <p>
+ * Describes a virtual private gateway propagating route.
+ * </p>
  */
-public class PropagatingVgw  implements Serializable  {
+public class PropagatingVgw implements Serializable {
 
+    /**
+     * The ID of the virtual private gateway (VGW).
+     */
     private String gatewayId;
 
     /**
-     * Returns the value of the GatewayId property for this object.
+     * The ID of the virtual private gateway (VGW).
      *
-     * @return The value of the GatewayId property for this object.
+     * @return The ID of the virtual private gateway (VGW).
      */
     public String getGatewayId() {
         return gatewayId;
     }
     
     /**
-     * Sets the value of the GatewayId property for this object.
+     * The ID of the virtual private gateway (VGW).
      *
-     * @param gatewayId The new value for the GatewayId property for this object.
+     * @param gatewayId The ID of the virtual private gateway (VGW).
      */
     public void setGatewayId(String gatewayId) {
         this.gatewayId = gatewayId;
     }
     
     /**
-     * Sets the value of the GatewayId property for this object.
+     * The ID of the virtual private gateway (VGW).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param gatewayId The new value for the GatewayId property for this object.
+     * @param gatewayId The ID of the virtual private gateway (VGW).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PropagatingVgw withGatewayId(String gatewayId) {
         this.gatewayId = gatewayId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +72,7 @@ public class PropagatingVgw  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayId() != null) sb.append("GatewayId: " + getGatewayId() );
         sb.append("}");
         return sb.toString();

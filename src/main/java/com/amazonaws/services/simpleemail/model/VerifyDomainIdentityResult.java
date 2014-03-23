@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents a token used for domain ownership verification.
  * </p>
  */
-public class VerifyDomainIdentityResult  implements Serializable  {
+public class VerifyDomainIdentityResult implements Serializable {
 
     /**
      * A TXT record that must be placed in the DNS settings for the domain,
@@ -60,14 +61,13 @@ public class VerifyDomainIdentityResult  implements Serializable  {
      *         in order to complete domain verification.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VerifyDomainIdentityResult withVerificationToken(String verificationToken) {
         this.verificationToken = verificationToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +79,7 @@ public class VerifyDomainIdentityResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVerificationToken() != null) sb.append("VerificationToken: " + getVerificationToken() );
         sb.append("}");
         return sb.toString();

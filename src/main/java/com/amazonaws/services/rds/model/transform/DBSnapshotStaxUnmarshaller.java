@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * D B Snapshot StAX Unmarshaller
  */
@@ -37,12 +36,9 @@ public class DBSnapshotStaxUnmarshaller implements Unmarshaller<DBSnapshot, Stax
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
 
-        
         if (context.isStartOfDocument()) targetDepth += 2;
-        
 
         if (context.isStartOfDocument()) targetDepth++;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -111,6 +107,14 @@ public class DBSnapshotStaxUnmarshaller implements Unmarshaller<DBSnapshot, Stax
                 }
                 if (context.testExpression("OptionGroupName", targetDepth)) {
                     dBSnapshot.setOptionGroupName(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("PercentProgress", targetDepth)) {
+                    dBSnapshot.setPercentProgress(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("SourceRegion", targetDepth)) {
+                    dBSnapshot.setSourceRegion(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class PutAttributesRequestMarshaller implements Marshaller<Request<PutAtt
     public Request<PutAttributesRequest> marshall(PutAttributesRequest putAttributesRequest) {
 
         if (putAttributesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PutAttributesRequest> request = new DefaultRequest<PutAttributesRequest>(putAttributesRequest, "AmazonSimpleDB");
         request.addParameter("Action", "PutAttributes");
@@ -78,7 +78,6 @@ public class PutAttributesRequestMarshaller implements Marshaller<Request<PutAtt
                 request.addParameter("Expected.Exists", StringUtils.fromBoolean(updateConditionExpected.isExists()));
             }
         }
-
 
         return request;
     }

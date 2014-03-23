@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes cluster attributes that are in a pending state. A change to one or more the attributes was requested and is in progress or will be applied.
+ * Describes cluster attributes that are in a pending state. A change to
+ * one or more the attributes was requested and is in progress or will be
+ * applied.
  * </p>
  */
-public class PendingModifiedValues  implements Serializable  {
+public class PendingModifiedValues implements Serializable {
 
     /**
-     * The pending or in-progress change of the master credentials for the
+     * The pending or in-progress change of the master password for the
      * cluster.
      */
     private String masterUserPassword;
@@ -55,10 +58,10 @@ public class PendingModifiedValues  implements Serializable  {
     private Integer automatedSnapshotRetentionPeriod;
 
     /**
-     * The pending or in-progress change of the master credentials for the
+     * The pending or in-progress change of the master password for the
      * cluster.
      *
-     * @return The pending or in-progress change of the master credentials for the
+     * @return The pending or in-progress change of the master password for the
      *         cluster.
      */
     public String getMasterUserPassword() {
@@ -66,10 +69,10 @@ public class PendingModifiedValues  implements Serializable  {
     }
     
     /**
-     * The pending or in-progress change of the master credentials for the
+     * The pending or in-progress change of the master password for the
      * cluster.
      *
-     * @param masterUserPassword The pending or in-progress change of the master credentials for the
+     * @param masterUserPassword The pending or in-progress change of the master password for the
      *         cluster.
      */
     public void setMasterUserPassword(String masterUserPassword) {
@@ -77,23 +80,22 @@ public class PendingModifiedValues  implements Serializable  {
     }
     
     /**
-     * The pending or in-progress change of the master credentials for the
+     * The pending or in-progress change of the master password for the
      * cluster.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param masterUserPassword The pending or in-progress change of the master credentials for the
+     * @param masterUserPassword The pending or in-progress change of the master password for the
      *         cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingModifiedValues withMasterUserPassword(String masterUserPassword) {
         this.masterUserPassword = masterUserPassword;
         return this;
     }
-    
-    
+
     /**
      * The pending or in-progress change of the cluster's node type.
      *
@@ -120,14 +122,13 @@ public class PendingModifiedValues  implements Serializable  {
      * @param nodeType The pending or in-progress change of the cluster's node type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingModifiedValues withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * The pending or in-progress change of the number nodes in the cluster.
      *
@@ -154,14 +155,13 @@ public class PendingModifiedValues  implements Serializable  {
      * @param numberOfNodes The pending or in-progress change of the number nodes in the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingModifiedValues withNumberOfNodes(Integer numberOfNodes) {
         this.numberOfNodes = numberOfNodes;
         return this;
     }
-    
-    
+
     /**
      * The pending or in-progress change of the cluster type.
      *
@@ -188,14 +188,13 @@ public class PendingModifiedValues  implements Serializable  {
      * @param clusterType The pending or in-progress change of the cluster type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingModifiedValues withClusterType(String clusterType) {
         this.clusterType = clusterType;
         return this;
     }
-    
-    
+
     /**
      * The pending or in-progress change of the service version.
      *
@@ -222,14 +221,13 @@ public class PendingModifiedValues  implements Serializable  {
      * @param clusterVersion The pending or in-progress change of the service version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingModifiedValues withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * The pending or in-progress change of the automated snapshot retention
      * period.
@@ -262,14 +260,13 @@ public class PendingModifiedValues  implements Serializable  {
      *         period.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PendingModifiedValues withAutomatedSnapshotRetentionPeriod(Integer automatedSnapshotRetentionPeriod) {
         this.automatedSnapshotRetentionPeriod = automatedSnapshotRetentionPeriod;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -281,12 +278,12 @@ public class PendingModifiedValues  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMasterUserPassword() != null) sb.append("MasterUserPassword: " + getMasterUserPassword() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
-        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");    	
-        if (getClusterType() != null) sb.append("ClusterType: " + getClusterType() + ",");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
+        sb.append("{");
+        if (getMasterUserPassword() != null) sb.append("MasterUserPassword: " + getMasterUserPassword() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
+        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");
+        if (getClusterType() != null) sb.append("ClusterType: " + getClusterType() + ",");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
         if (getAutomatedSnapshotRetentionPeriod() != null) sb.append("AutomatedSnapshotRetentionPeriod: " + getAutomatedSnapshotRetentionPeriod() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,14 +33,12 @@ public class GetSendQuotaRequestMarshaller implements Marshaller<Request<GetSend
     public Request<GetSendQuotaRequest> marshall(GetSendQuotaRequest getSendQuotaRequest) {
 
         if (getSendQuotaRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<GetSendQuotaRequest> request = new DefaultRequest<GetSendQuotaRequest>(getSendQuotaRequest, "AmazonSimpleEmailService");
         request.addParameter("Action", "GetSendQuota");
         request.addParameter("Version", "2010-12-01");
-
-
 
         return request;
     }

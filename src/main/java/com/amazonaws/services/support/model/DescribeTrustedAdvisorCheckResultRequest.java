@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,137 +13,143 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.support.AWSSupport#describeTrustedAdvisorCheckResult(DescribeTrustedAdvisorCheckResultRequest) DescribeTrustedAdvisorCheckResult operation}.
  * <p>
- * This action responds with the results of a Trusted Advisor check. Once you have obtained the list of available Trusted Advisor checks by calling
- * DescribeTrustedAdvisorChecks, you specify the <i>CheckId</i> for the check you want to retrieve from AWS Support.
+ * Returns the results of the Trusted Advisor check that has the
+ * specified check ID. Check IDs can be obtained by calling
+ * DescribeTrustedAdvisorChecks.
  * </p>
  * <p>
- * The response for this action contains a JSON-formatted TrustedAdvisorCheckResult object
+ * The response contains a TrustedAdvisorCheckResult object, which
+ * contains these three objects:
  * </p>
- * <p>
- * , which is a container for the following three objects:
- * </p>
- * <p>
- * </p>
- * <ol> <li> TrustedAdvisorCategorySpecificSummary </li>
+ * 
+ * <ul>
+ * <li> TrustedAdvisorCategorySpecificSummary </li>
  * <li> TrustedAdvisorResourceDetail </li>
  * <li> TrustedAdvisorResourcesSummary </li>
- * </ol> <p>
- * In addition, the response contains the following fields:
+ * 
+ * </ul>
+ * <p>
+ * In addition, the response contains these fields:
  * </p>
- * <ol> <li> <b>Status</b> . Overall status of the check.</li>
- * <li> <b>Timestamp</b> . Time at which Trusted Advisor last ran the check. </li>
- * <li> <b>CheckId</b> . Unique identifier for the specific check returned by the request.</li>
- * </ol>
+ * 
+ * <ul>
+ * <li> <b>Status.</b> The alert status of the check: "ok" (green),
+ * "warning" (yellow), "error" (red), or "not_available".</li>
+ * <li> <b>Timestamp.</b> The time of the last refresh of the
+ * check.</li>
+ * <li> <b>CheckId.</b> The unique identifier for the check.</li>
+ * 
+ * </ul>
  *
  * @see com.amazonaws.services.support.AWSSupport#describeTrustedAdvisorCheckResult(DescribeTrustedAdvisorCheckResultRequest)
  */
-public class DescribeTrustedAdvisorCheckResultRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeTrustedAdvisorCheckResultRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      */
     private String checkId;
 
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      */
     private String language;
 
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @return 
+     * @return The unique identifier for the Trusted Advisor check.
      */
     public String getCheckId() {
         return checkId;
     }
     
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      *
-     * @param checkId 
+     * @param checkId The unique identifier for the Trusted Advisor check.
      */
     public void setCheckId(String checkId) {
         this.checkId = checkId;
     }
     
     /**
-     * 
+     * The unique identifier for the Trusted Advisor check.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param checkId 
+     * @param checkId The unique identifier for the Trusted Advisor check.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckResultRequest withCheckId(String checkId) {
         this.checkId = checkId;
         return this;
     }
-    
-    
+
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @return Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @return The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public String getLanguage() {
         return language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      */
     public void setLanguage(String language) {
         this.language = language;
     }
     
     /**
-     * Specifies the ISO 639-1 code for the language in which AWS provides
-     * support. AWS Support currently supports English and Japanese, for
-     * which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     * parameters must be passed explicitly for operations that take them.
+     * The ISO 639-1 code for the language in which AWS provides support. AWS
+     * Support currently supports English ("en") and Japanese ("ja").
+     * Language parameters must be passed explicitly for operations that take
+     * them.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param language Specifies the ISO 639-1 code for the language in which AWS provides
-     *         support. AWS Support currently supports English and Japanese, for
-     *         which the codes are <i>en</i> and <i>ja</i>, respectively. Language
-     *         parameters must be passed explicitly for operations that take them.
+     * @param language The ISO 639-1 code for the language in which AWS provides support. AWS
+     *         Support currently supports English ("en") and Japanese ("ja").
+     *         Language parameters must be passed explicitly for operations that take
+     *         them.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckResultRequest withLanguage(String language) {
         this.language = language;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -155,8 +161,8 @@ public class DescribeTrustedAdvisorCheckResultRequest extends AmazonWebServiceRe
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCheckId() != null) sb.append("CheckId: " + getCheckId() + ",");    	
+        sb.append("{");
+        if (getCheckId() != null) sb.append("CheckId: " + getCheckId() + ",");
         if (getLanguage() != null) sb.append("Language: " + getLanguage() );
         sb.append("}");
         return sb.toString();

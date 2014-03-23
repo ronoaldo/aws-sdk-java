@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class AddTagsToResourceRequestMarshaller implements Marshaller<Request<Ad
     public Request<AddTagsToResourceRequest> marshall(AddTagsToResourceRequest addTagsToResourceRequest) {
 
         if (addTagsToResourceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AddTagsToResourceRequest> request = new DefaultRequest<AddTagsToResourceRequest>(addTagsToResourceRequest, "AmazonRDS");
         request.addParameter("Action", "AddTagsToResource");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (addTagsToResourceRequest.getResourceName() != null) {
             request.addParameter("ResourceName", StringUtils.fromString(addTagsToResourceRequest.getResourceName()));
@@ -60,7 +60,6 @@ public class AddTagsToResourceRequestMarshaller implements Marshaller<Request<Ad
 
             tagsListIndex++;
         }
-
 
         return request;
     }

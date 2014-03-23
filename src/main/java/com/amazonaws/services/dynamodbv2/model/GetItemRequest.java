@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#getItem(GetItemRequest) GetItem operation}.
  * <p>
- * The <i>GetItem</i> operation returns a set of attributes for the item with the given primary key. If there is no matching item, <i>GetItem</i> does
- * not return any data.
+ * The <i>GetItem</i> operation returns a set of attributes for the item
+ * with the given primary key. If there is no matching item,
+ * <i>GetItem</i> does not return any data.
  * </p>
  * <p>
- * <i>GetItem</i> provides an eventually consistent read by default. If your application requires a strongly consistent read, set <i>ConsistentRead</i>
- * to <code>true</code> . Although a strongly consistent read might take more time than an eventually consistent read, it always returns the last updated
- * value.
+ * <i>GetItem</i> provides an eventually consistent read by default. If
+ * your application requires a strongly consistent read, set
+ * <i>ConsistentRead</i> to <code>true</code> . Although a strongly
+ * consistent read might take more time than an eventually consistent
+ * read, it always returns the last updated value.
  * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#getItem(GetItemRequest)
  */
-public class GetItemRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetItemRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the table containing the requested item.
@@ -56,7 +61,7 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<String> attributesToGet;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGet;
 
     /**
      * If set to <code>true</code>, then the operation uses strongly
@@ -65,12 +70,14 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
     private Boolean consistentRead;
 
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      */
     private String returnConsumedCapacity;
 
@@ -90,12 +97,28 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      * representing the primary key of the item to retrieve.
      */
     public GetItemRequest(String tableName, java.util.Map<String,AttributeValue> key) {
-        this.tableName = tableName;
-        this.key = key;
+        setTableName(tableName);
+        setKey(key);
     }
 
-    
-    
+    /**
+     * Constructs a new GetItemRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param tableName The name of the table containing the requested item.
+     * @param key A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to retrieve.
+     * @param consistentRead If set to <code>true</code>, then the operation
+     * uses strongly consistent reads; otherwise, eventually consistent reads
+     * are used.
+     */
+    public GetItemRequest(String tableName, java.util.Map<String,AttributeValue> key, Boolean consistentRead) {
+        setTableName(tableName);
+        setKey(key);
+        setConsistentRead(consistentRead);
+    }
+
     /**
      * The name of the table containing the requested item.
      * <p>
@@ -134,14 +157,13 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      * @param tableName The name of the table containing the requested item.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetItemRequest withTableName(String tableName) {
         this.tableName = tableName;
         return this;
     }
-    
-    
+
     /**
      * A map of attribute names to <i>AttributeValue</i> objects,
      * representing the primary key of the item to retrieve.
@@ -152,7 +174,6 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
     public java.util.Map<String,AttributeValue> getKey() {
         
         return key;
-
     }
     
     /**
@@ -176,10 +197,80 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      *         representing the primary key of the item to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetItemRequest withKey(java.util.Map<String,AttributeValue> key) {
         setKey(key);
+        return this;
+    }
+
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to retrieve.
+     * <p>
+     * This method accepts the hashKey, rangeKey of Key as
+     * java.util.Map.Entry<String, AttributeValue> objects.
+     *
+     * @param hashKey Primary hash key.
+     * @param rangeKey Primary range key. (null if it a hash-only table)
+     */
+    public void setKey(java.util.Map.Entry<String, AttributeValue> hashKey, java.util.Map.Entry<String, AttributeValue> rangeKey) throws IllegalArgumentException {
+        java.util.HashMap<String,AttributeValue> key = new java.util.HashMap<String,AttributeValue>();
+        
+        if (hashKey != null) {
+            key.put(hashKey.getKey(), hashKey.getValue());
+        } else
+            throw new IllegalArgumentException("hashKey must be non-null object.");
+        if (rangeKey != null) {
+            key.put(rangeKey.getKey(), rangeKey.getValue());
+        } 
+        setKey(key);
+    }
+    
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to retrieve.
+     * <p>
+     * This method accepts the hashKey, rangeKey of Key as
+     * java.util.Map.Entry<String, AttributeValue> objects.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param hashKey Primary hash key.
+     * @param rangeKey Primary range key. (null if it a hash-only table)
+     */
+    public GetItemRequest withKey(java.util.Map.Entry<String, AttributeValue> hashKey, java.util.Map.Entry<String, AttributeValue> rangeKey) throws IllegalArgumentException {
+        setKey(hashKey, rangeKey);
+        return this;
+    }
+
+    /**
+     * A map of attribute names to <i>AttributeValue</i> objects,
+     * representing the primary key of the item to retrieve.
+     * <p>
+     * The method adds a new key-value pair into Key parameter, and returns a
+     * reference to this object so that method calls can be chained together.
+     *
+     * @param key The key of the entry to be added into Key.
+     * @param value The corresponding value of the entry to be added into Key.
+     */
+    public GetItemRequest addKeyEntry(String key, AttributeValue value) {
+        if (null == this.key) {
+            this.key = new java.util.HashMap<String,AttributeValue>();
+        }
+        if (this.key.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.key.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Key.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public GetItemRequest clearKeyEntries() {
+        this.key = null;
         return this;
     }
     
@@ -198,7 +289,6 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      *         result.
      */
     public java.util.List<String> getAttributesToGet() {
-        
         return attributesToGet;
     }
     
@@ -221,8 +311,7 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
             this.attributesToGet = null;
             return;
         }
-
-        java.util.List<String> attributesToGetCopy = new java.util.ArrayList<String>(attributesToGet.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributesToGet.size());
         attributesToGetCopy.addAll(attributesToGet);
         this.attributesToGet = attributesToGetCopy;
     }
@@ -244,7 +333,7 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      *         result.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetItemRequest withAttributesToGet(String... attributesToGet) {
         if (getAttributesToGet() == null) setAttributesToGet(new java.util.ArrayList<String>(attributesToGet.length));
@@ -271,20 +360,20 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      *         result.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetItemRequest withAttributesToGet(java.util.Collection<String> attributesToGet) {
         if (attributesToGet == null) {
             this.attributesToGet = null;
         } else {
-            java.util.List<String> attributesToGetCopy = new java.util.ArrayList<String>(attributesToGet.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributesToGet.size());
             attributesToGetCopy.addAll(attributesToGet);
             this.attributesToGet = attributesToGetCopy;
         }
 
         return this;
     }
-    
+
     /**
      * If set to <code>true</code>, then the operation uses strongly
      * consistent reads; otherwise, eventually consistent reads are used.
@@ -317,14 +406,13 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
      *         consistent reads; otherwise, eventually consistent reads are used.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetItemRequest withConsistentRead(Boolean consistentRead) {
         this.consistentRead = consistentRead;
         return this;
     }
-    
-    
+
     /**
      * If set to <code>true</code>, then the operation uses strongly
      * consistent reads; otherwise, eventually consistent reads are used.
@@ -335,18 +423,22 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
     public Boolean getConsistentRead() {
         return consistentRead;
     }
-    
+
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @return If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @return If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @see ReturnConsumedCapacity
      */
@@ -355,16 +447,20 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @see ReturnConsumedCapacity
      */
@@ -373,21 +469,25 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnConsumedCapacity
      */
@@ -395,19 +495,22 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
         this.returnConsumedCapacity = returnConsumedCapacity;
         return this;
     }
-    
-    
+
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @see ReturnConsumedCapacity
      */
@@ -416,21 +519,25 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
     }
     
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnConsumedCapacity
      */
@@ -438,7 +545,7 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
         this.returnConsumedCapacity = returnConsumedCapacity.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -450,11 +557,11 @@ public class GetItemRequest extends AmazonWebServiceRequest  implements Serializ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
-        if (getAttributesToGet() != null) sb.append("AttributesToGet: " + getAttributesToGet() + ",");    	
-        if (isConsistentRead() != null) sb.append("ConsistentRead: " + isConsistentRead() + ",");    	
+        sb.append("{");
+        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
+        if (getAttributesToGet() != null) sb.append("AttributesToGet: " + getAttributesToGet() + ",");
+        if (isConsistentRead() != null) sb.append("ConsistentRead: " + isConsistentRead() + ",");
         if (getReturnConsumedCapacity() != null) sb.append("ReturnConsumedCapacity: " + getReturnConsumedCapacity() );
         sb.append("}");
         return sb.toString();

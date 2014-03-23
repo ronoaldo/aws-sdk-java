@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#describeScheduledActions(DescribeScheduledActionsRequest) DescribeScheduledActions operation}.
  * <p>
- * Lists all the actions scheduled for your Auto Scaling group that haven't been executed. To see a list of actions already executed, see the activity
- * record returned in DescribeScalingActivities.
+ * Lists all the actions scheduled for your Auto Scaling group that
+ * haven't been executed. To see a list of actions already executed, see
+ * the activity record returned in DescribeScalingActivities.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeScheduledActions(DescribeScheduledActionsRequest)
  */
-public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
@@ -43,7 +46,7 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      * name is provided, the results are limited to that group. If unknown
      * scheduled actions are requested, they are ignored with no error.
      */
-    private java.util.List<String> scheduledActionNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> scheduledActionNames;
 
     /**
      * The earliest scheduled start time to return. If scheduled action names
@@ -111,14 +114,13 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      * @param autoScalingGroupName The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * A list of scheduled actions to be described. If this list is omitted,
      * all scheduled actions are described. The list of requested scheduled
@@ -133,9 +135,9 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      *         scheduled actions are requested, they are ignored with no error.
      */
     public java.util.List<String> getScheduledActionNames() {
-        
         if (scheduledActionNames == null) {
-            scheduledActionNames = new java.util.ArrayList<String>();
+              scheduledActionNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              scheduledActionNames.setAutoConstruct(true);
         }
         return scheduledActionNames;
     }
@@ -158,8 +160,7 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
             this.scheduledActionNames = null;
             return;
         }
-
-        java.util.List<String> scheduledActionNamesCopy = new java.util.ArrayList<String>(scheduledActionNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> scheduledActionNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(scheduledActionNames.size());
         scheduledActionNamesCopy.addAll(scheduledActionNames);
         this.scheduledActionNames = scheduledActionNamesCopy;
     }
@@ -180,7 +181,7 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      *         scheduled actions are requested, they are ignored with no error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsRequest withScheduledActionNames(String... scheduledActionNames) {
         if (getScheduledActionNames() == null) setScheduledActionNames(new java.util.ArrayList<String>(scheduledActionNames.length));
@@ -206,20 +207,20 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      *         scheduled actions are requested, they are ignored with no error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsRequest withScheduledActionNames(java.util.Collection<String> scheduledActionNames) {
         if (scheduledActionNames == null) {
             this.scheduledActionNames = null;
         } else {
-            java.util.List<String> scheduledActionNamesCopy = new java.util.ArrayList<String>(scheduledActionNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> scheduledActionNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(scheduledActionNames.size());
             scheduledActionNamesCopy.addAll(scheduledActionNames);
             this.scheduledActionNames = scheduledActionNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The earliest scheduled start time to return. If scheduled action names
      * are provided, this field will be ignored.
@@ -252,14 +253,13 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      *         are provided, this field will be ignored.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The latest scheduled start time to return. If scheduled action names
      * are provided, this field is ignored.
@@ -292,14 +292,13 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      *         are provided, this field is ignored.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -335,14 +334,13 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of scheduled actions to return.
      * <p>
@@ -378,14 +376,13 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
      * @param maxRecords The maximum number of scheduled actions to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeScheduledActionsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -397,12 +394,12 @@ public class DescribeScheduledActionsRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
-        if (getScheduledActionNames() != null) sb.append("ScheduledActionNames: " + getScheduledActionNames() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
+        if (getScheduledActionNames() != null) sb.append("ScheduledActionNames: " + getScheduledActionNames() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() );
         sb.append("}");
         return sb.toString();

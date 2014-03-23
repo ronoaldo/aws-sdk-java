@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteRole(DeleteRoleRequest) DeleteRole operation}.
  * <p>
- * Deletes the specified role. The role must not have any policies attached. For more information about roles, go to <a
- * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/WorkingWithRoles.html"> Working with Roles </a> .
+ * Deletes the specified role. The role must not have any policies
+ * attached. For more information about roles, go to
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html"> Working with Roles </a>
+ * .
  * </p>
  * <p>
- * <b>IMPORTANT:</b>Make sure you do not have any Amazon EC2 instances running with the role you are about to delete. Deleting a role or instance profile
- * that is associated with a running instance will break any applications running on the instance.
+ * <b>IMPORTANT:</b>Make sure you do not have any Amazon EC2 instances
+ * running with the role you are about to delete. Deleting a role or
+ * instance profile that is associated with a running instance will break
+ * any applications running on the instance.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#deleteRole(DeleteRoleRequest)
  */
-public class DeleteRoleRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteRoleRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the role to delete.
@@ -78,14 +84,13 @@ public class DeleteRoleRequest extends AmazonWebServiceRequest  implements Seria
      * @param roleName Name of the role to delete.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteRoleRequest withRoleName(String roleName) {
         this.roleName = roleName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -97,7 +102,7 @@ public class DeleteRoleRequest extends AmazonWebServiceRequest  implements Seria
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getRoleName() != null) sb.append("RoleName: " + getRoleName() );
         sb.append("}");
         return sb.toString();

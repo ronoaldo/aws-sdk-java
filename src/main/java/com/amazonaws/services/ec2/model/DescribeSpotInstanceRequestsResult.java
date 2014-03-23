@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Spot Instance Requests Result
+ * 
  */
-public class DescribeSpotInstanceRequestsResult  implements Serializable  {
-
-    private java.util.List<SpotInstanceRequest> spotInstanceRequests;
+public class DescribeSpotInstanceRequestsResult implements Serializable {
 
     /**
-     * Returns the value of the SpotInstanceRequests property for this
-     * object.
+     * One or more Spot Instance requests.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SpotInstanceRequest> spotInstanceRequests;
+
+    /**
+     * One or more Spot Instance requests.
      *
-     * @return The value of the SpotInstanceRequests property for this object.
+     * @return One or more Spot Instance requests.
      */
     public java.util.List<SpotInstanceRequest> getSpotInstanceRequests() {
-        
         if (spotInstanceRequests == null) {
-            spotInstanceRequests = new java.util.ArrayList<SpotInstanceRequest>();
+              spotInstanceRequests = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotInstanceRequest>();
+              spotInstanceRequests.setAutoConstruct(true);
         }
         return spotInstanceRequests;
     }
     
     /**
-     * Sets the value of the SpotInstanceRequests property for this object.
+     * One or more Spot Instance requests.
      *
-     * @param spotInstanceRequests The new value for the SpotInstanceRequests property for this object.
+     * @param spotInstanceRequests One or more Spot Instance requests.
      */
     public void setSpotInstanceRequests(java.util.Collection<SpotInstanceRequest> spotInstanceRequests) {
         if (spotInstanceRequests == null) {
             this.spotInstanceRequests = null;
             return;
         }
-
-        java.util.List<SpotInstanceRequest> spotInstanceRequestsCopy = new java.util.ArrayList<SpotInstanceRequest>(spotInstanceRequests.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SpotInstanceRequest> spotInstanceRequestsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotInstanceRequest>(spotInstanceRequests.size());
         spotInstanceRequestsCopy.addAll(spotInstanceRequests);
         this.spotInstanceRequests = spotInstanceRequestsCopy;
     }
     
     /**
-     * Sets the value of the SpotInstanceRequests property for this object.
+     * One or more Spot Instance requests.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param spotInstanceRequests The new value for the SpotInstanceRequests property for this object.
+     * @param spotInstanceRequests One or more Spot Instance requests.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotInstanceRequestsResult withSpotInstanceRequests(SpotInstanceRequest... spotInstanceRequests) {
         if (getSpotInstanceRequests() == null) setSpotInstanceRequests(new java.util.ArrayList<SpotInstanceRequest>(spotInstanceRequests.length));
@@ -71,27 +73,27 @@ public class DescribeSpotInstanceRequestsResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the SpotInstanceRequests property for this object.
+     * One or more Spot Instance requests.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param spotInstanceRequests The new value for the SpotInstanceRequests property for this object.
+     * @param spotInstanceRequests One or more Spot Instance requests.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeSpotInstanceRequestsResult withSpotInstanceRequests(java.util.Collection<SpotInstanceRequest> spotInstanceRequests) {
         if (spotInstanceRequests == null) {
             this.spotInstanceRequests = null;
         } else {
-            java.util.List<SpotInstanceRequest> spotInstanceRequestsCopy = new java.util.ArrayList<SpotInstanceRequest>(spotInstanceRequests.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SpotInstanceRequest> spotInstanceRequestsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SpotInstanceRequest>(spotInstanceRequests.size());
             spotInstanceRequestsCopy.addAll(spotInstanceRequests);
             this.spotInstanceRequests = spotInstanceRequestsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,7 +105,7 @@ public class DescribeSpotInstanceRequestsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSpotInstanceRequests() != null) sb.append("SpotInstanceRequests: " + getSpotInstanceRequests() );
         sb.append("}");
         return sb.toString();

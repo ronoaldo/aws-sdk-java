@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CheckDNSAvailabilityRequestMarshaller implements Marshaller<Request
     public Request<CheckDNSAvailabilityRequest> marshall(CheckDNSAvailabilityRequest checkDNSAvailabilityRequest) {
 
         if (checkDNSAvailabilityRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CheckDNSAvailabilityRequest> request = new DefaultRequest<CheckDNSAvailabilityRequest>(checkDNSAvailabilityRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "CheckDNSAvailability");
@@ -43,7 +43,6 @@ public class CheckDNSAvailabilityRequestMarshaller implements Marshaller<Request
         if (checkDNSAvailabilityRequest.getCNAMEPrefix() != null) {
             request.addParameter("CNAMEPrefix", StringUtils.fromString(checkDNSAvailabilityRequest.getCNAMEPrefix()));
         }
-
 
         return request;
     }

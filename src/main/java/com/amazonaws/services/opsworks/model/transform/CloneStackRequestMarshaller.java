@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.opsworks.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class CloneStackRequestMarshaller implements Marshaller<Request<CloneStackRequest>, CloneStackRequest> {
 
-    
-
     public Request<CloneStackRequest> marshall(CloneStackRequest cloneStackRequest) {
     if (cloneStackRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class CloneStackRequestMarshaller implements Marshaller<Request<CloneStac
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.1");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,14 +71,10 @@ public class CloneStackRequestMarshaller implements Marshaller<Request<CloneStac
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (cloneStackRequest.getSourceStackId() != null) {
@@ -93,6 +85,9 @@ public class CloneStackRequestMarshaller implements Marshaller<Request<CloneStac
             }
             if (cloneStackRequest.getRegion() != null) {
                 jsonWriter.key("Region").value(cloneStackRequest.getRegion());
+            }
+            if (cloneStackRequest.getVpcId() != null) {
+                jsonWriter.key("VpcId").value(cloneStackRequest.getVpcId());
             }
             if (cloneStackRequest.getAttributes() != null) {
                 jsonWriter.key("Attributes");
@@ -121,8 +116,25 @@ public class CloneStackRequestMarshaller implements Marshaller<Request<CloneStac
             if (cloneStackRequest.getDefaultAvailabilityZone() != null) {
                 jsonWriter.key("DefaultAvailabilityZone").value(cloneStackRequest.getDefaultAvailabilityZone());
             }
+            if (cloneStackRequest.getDefaultSubnetId() != null) {
+                jsonWriter.key("DefaultSubnetId").value(cloneStackRequest.getDefaultSubnetId());
+            }
             if (cloneStackRequest.getCustomJson() != null) {
                 jsonWriter.key("CustomJson").value(cloneStackRequest.getCustomJson());
+            }
+            StackConfigurationManager configurationManager = cloneStackRequest.getConfigurationManager();
+            if (configurationManager != null) {
+
+                jsonWriter.key("ConfigurationManager");
+                jsonWriter.object();
+
+                if (configurationManager.getName() != null) {
+                    jsonWriter.key("Name").value(configurationManager.getName());
+                }
+                if (configurationManager.getVersion() != null) {
+                    jsonWriter.key("Version").value(configurationManager.getVersion());
+                }
+                jsonWriter.endObject();
             }
             if (cloneStackRequest.isUseCustomCookbooks() != null) {
                 jsonWriter.key("UseCustomCookbooks").value(cloneStackRequest.isUseCustomCookbooks());
@@ -160,8 +172,8 @@ public class CloneStackRequestMarshaller implements Marshaller<Request<CloneStac
                 jsonWriter.key("ClonePermissions").value(cloneStackRequest.isClonePermissions());
             }
 
-            java.util.List<String> cloneAppIdsList = cloneStackRequest.getCloneAppIds();
-            if (cloneAppIdsList != null) {
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> cloneAppIdsList = (com.amazonaws.internal.ListWithAutoConstructFlag<String>)(cloneStackRequest.getCloneAppIds());
+            if (cloneAppIdsList != null && !(cloneAppIdsList.isAutoConstruct() && cloneAppIdsList.isEmpty())) {
 
                 jsonWriter.key("CloneAppIds");
                 jsonWriter.array();
@@ -178,22 +190,15 @@ public class CloneStackRequestMarshaller implements Marshaller<Request<CloneStac
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

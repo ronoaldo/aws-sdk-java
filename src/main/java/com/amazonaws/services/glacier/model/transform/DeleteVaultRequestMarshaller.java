@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.glacier.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class DeleteVaultRequestMarshaller implements Marshaller<Request<DeleteVaultRequest>, DeleteVaultRequest> {
 
-    
-
     public Request<DeleteVaultRequest> marshall(DeleteVaultRequest deleteVaultRequest) {
     if (deleteVaultRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,13 +49,11 @@ public class DeleteVaultRequestMarshaller implements Marshaller<Request<DeleteVa
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.0");
 
-        
         request.setHttpMethod(HttpMethodName.DELETE);
 
-
         String uriResourcePath = "/{accountId}/vaults/{vaultName}"; 
-        uriResourcePath = uriResourcePath.replace("{accountId}", getString(deleteVaultRequest.getAccountId())); 
-        uriResourcePath = uriResourcePath.replace("{vaultName}", getString(deleteVaultRequest.getVaultName())); 
+        uriResourcePath = uriResourcePath.replace("{accountId}", (deleteVaultRequest.getAccountId() == null) ? "" : StringUtils.fromString(deleteVaultRequest.getAccountId())); 
+        uriResourcePath = uriResourcePath.replace("{vaultName}", (deleteVaultRequest.getVaultName() == null) ? "" : StringUtils.fromString(deleteVaultRequest.getVaultName())); 
 
         uriResourcePath = uriResourcePath.replaceAll("//", "/");
 
@@ -77,16 +73,8 @@ public class DeleteVaultRequestMarshaller implements Marshaller<Request<DeleteVa
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         request.setContent(new ByteArrayInputStream(new byte[0]));
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

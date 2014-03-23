@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateAccessKeyRequestMarshaller implements Marshaller<Request<Crea
     public Request<CreateAccessKeyRequest> marshall(CreateAccessKeyRequest createAccessKeyRequest) {
 
         if (createAccessKeyRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateAccessKeyRequest> request = new DefaultRequest<CreateAccessKeyRequest>(createAccessKeyRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "CreateAccessKey");
@@ -43,7 +43,6 @@ public class CreateAccessKeyRequestMarshaller implements Marshaller<Request<Crea
         if (createAccessKeyRequest.getUserName() != null) {
             request.addParameter("UserName", StringUtils.fromString(createAccessKeyRequest.getUserName()));
         }
-
 
         return request;
     }

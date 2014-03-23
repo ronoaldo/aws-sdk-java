@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A key-value pair that describes a property of a pipeline object. The value is specified as either a string value ( <code>StringValue</code> ) or a
- * reference to another object ( <code>RefValue</code> ) but not as both.
+ * A key-value pair that describes a property of a pipeline object. The
+ * value is specified as either a string value ( <code>StringValue</code>
+ * ) or a reference to another object ( <code>RefValue</code> ) but not
+ * as both.
  * </p>
  */
-public class Field  implements Serializable  {
+public class Field implements Serializable {
 
     /**
      * The field identifier.
@@ -88,14 +91,13 @@ public class Field  implements Serializable  {
      * @param key The field identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Field withKey(String key) {
         this.key = key;
         return this;
     }
-    
-    
+
     /**
      * The field value, expressed as a String.
      * <p>
@@ -134,14 +136,13 @@ public class Field  implements Serializable  {
      * @param stringValue The field value, expressed as a String.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Field withStringValue(String stringValue) {
         this.stringValue = stringValue;
         return this;
     }
-    
-    
+
     /**
      * The field value, expressed as the identifier of another object.
      * <p>
@@ -180,14 +181,13 @@ public class Field  implements Serializable  {
      * @param refValue The field value, expressed as the identifier of another object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Field withRefValue(String refValue) {
         this.refValue = refValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -199,9 +199,9 @@ public class Field  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getKey() != null) sb.append("Key: " + getKey() + ",");    	
-        if (getStringValue() != null) sb.append("StringValue: " + getStringValue() + ",");    	
+        sb.append("{");
+        if (getKey() != null) sb.append("Key: " + getKey() + ",");
+        if (getStringValue() != null) sb.append("StringValue: " + getStringValue() + ",");
         if (getRefValue() != null) sb.append("RefValue: " + getRefValue() );
         sb.append("}");
         return sb.toString();

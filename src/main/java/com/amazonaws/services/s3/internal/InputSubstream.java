@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,15 +14,16 @@
  */
 package com.amazonaws.services.s3.internal;
 
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.amazonaws.internal.SdkFilterInputStream;
 
 /**
  * Filtered input stream implementation that exposes a range of an input stream
  * as a new input stream.
  */
-public final class InputSubstream extends FilterInputStream {
+public final class InputSubstream extends SdkFilterInputStream {
 	private long currentPosition;
 	private final long requestedOffset;
 	private final long requestedLength;

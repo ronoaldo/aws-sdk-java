@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeVolumes</code> request.
  * </p>
  */
-public class DescribeVolumesResult  implements Serializable  {
+public class DescribeVolumesResult implements Serializable {
 
     /**
      * An array of volume IDs.
      */
-    private java.util.List<Volume> volumes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Volume> volumes;
 
     /**
      * An array of volume IDs.
@@ -33,9 +34,9 @@ public class DescribeVolumesResult  implements Serializable  {
      * @return An array of volume IDs.
      */
     public java.util.List<Volume> getVolumes() {
-        
         if (volumes == null) {
-            volumes = new java.util.ArrayList<Volume>();
+              volumes = new com.amazonaws.internal.ListWithAutoConstructFlag<Volume>();
+              volumes.setAutoConstruct(true);
         }
         return volumes;
     }
@@ -50,8 +51,7 @@ public class DescribeVolumesResult  implements Serializable  {
             this.volumes = null;
             return;
         }
-
-        java.util.List<Volume> volumesCopy = new java.util.ArrayList<Volume>(volumes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Volume> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Volume>(volumes.size());
         volumesCopy.addAll(volumes);
         this.volumes = volumesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeVolumesResult  implements Serializable  {
      * @param volumes An array of volume IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumesResult withVolumes(Volume... volumes) {
         if (getVolumes() == null) setVolumes(new java.util.ArrayList<Volume>(volumes.length));
@@ -82,20 +82,20 @@ public class DescribeVolumesResult  implements Serializable  {
      * @param volumes An array of volume IDs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVolumesResult withVolumes(java.util.Collection<Volume> volumes) {
         if (volumes == null) {
             this.volumes = null;
         } else {
-            java.util.List<Volume> volumesCopy = new java.util.ArrayList<Volume>(volumes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Volume> volumesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Volume>(volumes.size());
             volumesCopy.addAll(volumes);
             this.volumes = volumesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeVolumesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolumes() != null) sb.append("Volumes: " + getVolumes() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The results from a request to change the configuration settings of an environment.
+ * The results from a request to change the configuration settings of an
+ * environment.
  * </p>
  */
-public class DescribeConfigurationSettingsResult  implements Serializable  {
+public class DescribeConfigurationSettingsResult implements Serializable {
 
     /**
      * A list of <a>ConfigurationSettingsDescription</a>.
      */
-    private java.util.List<ConfigurationSettingsDescription> configurationSettings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationSettingsDescription> configurationSettings;
 
     /**
      * A list of <a>ConfigurationSettingsDescription</a>.
@@ -33,9 +35,9 @@ public class DescribeConfigurationSettingsResult  implements Serializable  {
      * @return A list of <a>ConfigurationSettingsDescription</a>.
      */
     public java.util.List<ConfigurationSettingsDescription> getConfigurationSettings() {
-        
         if (configurationSettings == null) {
-            configurationSettings = new java.util.ArrayList<ConfigurationSettingsDescription>();
+              configurationSettings = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationSettingsDescription>();
+              configurationSettings.setAutoConstruct(true);
         }
         return configurationSettings;
     }
@@ -50,8 +52,7 @@ public class DescribeConfigurationSettingsResult  implements Serializable  {
             this.configurationSettings = null;
             return;
         }
-
-        java.util.List<ConfigurationSettingsDescription> configurationSettingsCopy = new java.util.ArrayList<ConfigurationSettingsDescription>(configurationSettings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationSettingsDescription> configurationSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationSettingsDescription>(configurationSettings.size());
         configurationSettingsCopy.addAll(configurationSettings);
         this.configurationSettings = configurationSettingsCopy;
     }
@@ -64,7 +65,7 @@ public class DescribeConfigurationSettingsResult  implements Serializable  {
      * @param configurationSettings A list of <a>ConfigurationSettingsDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationSettingsResult withConfigurationSettings(ConfigurationSettingsDescription... configurationSettings) {
         if (getConfigurationSettings() == null) setConfigurationSettings(new java.util.ArrayList<ConfigurationSettingsDescription>(configurationSettings.length));
@@ -82,20 +83,20 @@ public class DescribeConfigurationSettingsResult  implements Serializable  {
      * @param configurationSettings A list of <a>ConfigurationSettingsDescription</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConfigurationSettingsResult withConfigurationSettings(java.util.Collection<ConfigurationSettingsDescription> configurationSettings) {
         if (configurationSettings == null) {
             this.configurationSettings = null;
         } else {
-            java.util.List<ConfigurationSettingsDescription> configurationSettingsCopy = new java.util.ArrayList<ConfigurationSettingsDescription>(configurationSettings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationSettingsDescription> configurationSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationSettingsDescription>(configurationSettings.size());
             configurationSettingsCopy.addAll(configurationSettings);
             this.configurationSettings = configurationSettingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +108,7 @@ public class DescribeConfigurationSettingsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getConfigurationSettings() != null) sb.append("ConfigurationSettings: " + getConfigurationSettings() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class CopySnapshotRequestMarshaller implements Marshaller<Request<CopySna
     public Request<CopySnapshotRequest> marshall(CopySnapshotRequest copySnapshotRequest) {
 
         if (copySnapshotRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CopySnapshotRequest> request = new DefaultRequest<CopySnapshotRequest>(copySnapshotRequest, "AmazonEC2");
         request.addParameter("Action", "CopySnapshot");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (copySnapshotRequest.getSourceRegion() != null) {
             request.addParameter("SourceRegion", StringUtils.fromString(copySnapshotRequest.getSourceRegion()));
@@ -49,7 +49,6 @@ public class CopySnapshotRequestMarshaller implements Marshaller<Request<CopySna
         if (copySnapshotRequest.getDescription() != null) {
             request.addParameter("Description", StringUtils.fromString(copySnapshotRequest.getDescription()));
         }
-
 
         return request;
     }

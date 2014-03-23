@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the action DescribeDBEngineVersions.
+ * This data type is used as a response element in the action
+ * DescribeDBEngineVersions.
  * </p>
  */
-public class CharacterSet  implements Serializable  {
+public class CharacterSet implements Serializable {
 
     /**
      * The name of the character set.
@@ -58,14 +60,13 @@ public class CharacterSet  implements Serializable  {
      * @param characterSetName The name of the character set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CharacterSet withCharacterSetName(String characterSetName) {
         this.characterSetName = characterSetName;
         return this;
     }
-    
-    
+
     /**
      * The description of the character set.
      *
@@ -92,14 +93,13 @@ public class CharacterSet  implements Serializable  {
      * @param characterSetDescription The description of the character set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CharacterSet withCharacterSetDescription(String characterSetDescription) {
         this.characterSetDescription = characterSetDescription;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +111,8 @@ public class CharacterSet  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCharacterSetName() != null) sb.append("CharacterSetName: " + getCharacterSetName() + ",");    	
+        sb.append("{");
+        if (getCharacterSetName() != null) sb.append("CharacterSetName: " + getCharacterSetName() + ",");
         if (getCharacterSetDescription() != null) sb.append("CharacterSetDescription: " + getCharacterSetDescription() );
         sb.append("}");
         return sb.toString();

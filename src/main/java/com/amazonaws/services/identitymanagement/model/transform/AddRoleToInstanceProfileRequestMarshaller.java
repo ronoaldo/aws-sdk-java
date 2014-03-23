@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class AddRoleToInstanceProfileRequestMarshaller implements Marshaller<Req
     public Request<AddRoleToInstanceProfileRequest> marshall(AddRoleToInstanceProfileRequest addRoleToInstanceProfileRequest) {
 
         if (addRoleToInstanceProfileRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AddRoleToInstanceProfileRequest> request = new DefaultRequest<AddRoleToInstanceProfileRequest>(addRoleToInstanceProfileRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "AddRoleToInstanceProfile");
@@ -46,7 +46,6 @@ public class AddRoleToInstanceProfileRequestMarshaller implements Marshaller<Req
         if (addRoleToInstanceProfileRequest.getRoleName() != null) {
             request.addParameter("RoleName", StringUtils.fromString(addRoleToInstanceProfileRequest.getRoleName()));
         }
-
 
         return request;
     }

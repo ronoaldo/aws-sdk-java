@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeTagsRequestMarshaller implements Marshaller<Request<Describ
     public Request<DescribeTagsRequest> marshall(DescribeTagsRequest describeTagsRequest) {
 
         if (describeTagsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeTagsRequest> request = new DefaultRequest<DescribeTagsRequest>(describeTagsRequest, "AmazonAutoScaling");
         request.addParameter("Action", "DescribeTags");
         request.addParameter("Version", "2011-01-01");
-
 
         java.util.List<Filter> filtersList = describeTagsRequest.getFilters();
         int filtersListIndex = 1;
@@ -71,7 +70,6 @@ public class DescribeTagsRequestMarshaller implements Marshaller<Request<Describ
         if (describeTagsRequest.getMaxRecords() != null) {
             request.addParameter("MaxRecords", StringUtils.fromInteger(describeTagsRequest.getMaxRecords()));
         }
-
 
         return request;
     }

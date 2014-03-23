@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#setTimeBasedAutoScaling(SetTimeBasedAutoScalingRequest) SetTimeBasedAutoScaling operation}.
  * <p>
- * Specify the time-based auto scaling configuration for a specified instance. For more information, see <a
- * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html"> Managing Load with Time-based and Load-based Instances
- * </a> .
+ * Specify the time-based auto scaling configuration for a specified
+ * instance. For more information, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html"> Managing Load with Time-based and Load-based Instances </a>
+ * .
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Manage permissions level for the stack, or an attached policy
+ * that explicitly grants permissions. For more information on user
+ * permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#setTimeBasedAutoScaling(SetTimeBasedAutoScalingRequest)
  */
-public class SetTimeBasedAutoScalingRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetTimeBasedAutoScalingRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The instance ID.
@@ -64,14 +75,13 @@ public class SetTimeBasedAutoScalingRequest extends AmazonWebServiceRequest  imp
      * @param instanceId The instance ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetTimeBasedAutoScalingRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * An <code>AutoScalingSchedule</code> with the instance schedule.
      *
@@ -98,14 +108,13 @@ public class SetTimeBasedAutoScalingRequest extends AmazonWebServiceRequest  imp
      * @param autoScalingSchedule An <code>AutoScalingSchedule</code> with the instance schedule.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetTimeBasedAutoScalingRequest withAutoScalingSchedule(WeeklyAutoScalingSchedule autoScalingSchedule) {
         this.autoScalingSchedule = autoScalingSchedule;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -117,8 +126,8 @@ public class SetTimeBasedAutoScalingRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getAutoScalingSchedule() != null) sb.append("AutoScalingSchedule: " + getAutoScalingSchedule() );
         sb.append("}");
         return sb.toString();

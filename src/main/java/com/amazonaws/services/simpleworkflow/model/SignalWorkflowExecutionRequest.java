@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,44 +13,59 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#signalWorkflowExecution(SignalWorkflowExecutionRequest) SignalWorkflowExecution operation}.
  * <p>
- * Records a <code>WorkflowExecutionSignaled</code> event in the workflow execution history and creates a decision task for the workflow execution
- * identified by the given domain, workflowId and runId. The event is recorded with the specified user defined signalName and input (if provided).
+ * Records a <code>WorkflowExecutionSignaled</code> event in the
+ * workflow execution history and creates a decision task for the
+ * workflow execution identified by the given domain, workflowId and
+ * runId. The event is recorded with the specified user defined
+ * signalName and input (if provided).
  * </p>
  * <p>
- * <b>NOTE:</b> If a runId is not specified, then the WorkflowExecutionSignaled event is recorded in the history of the current open workflow with the
- * matching workflowId in the domain.
+ * <b>NOTE:</b> If a runId is not specified, then the
+ * WorkflowExecutionSignaled event is recorded in the history of the
+ * current open workflow with the matching workflowId in the domain.
  * </p>
  * <p>
- * <b>NOTE:</b> If the specified workflow execution is not open, this method fails with UnknownResource.
+ * <b>NOTE:</b> If the specified workflow execution is not open, this
+ * method fails with UnknownResource.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#signalWorkflowExecution(SignalWorkflowExecutionRequest)
  */
-public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain containing the workflow execution to signal.
@@ -129,14 +144,13 @@ public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest  imp
      * @param domain The name of the domain containing the workflow execution to signal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalWorkflowExecutionRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * The workflowId of the workflow execution to signal.
      * <p>
@@ -172,14 +186,13 @@ public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest  imp
      * @param workflowId The workflowId of the workflow execution to signal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalWorkflowExecutionRequest withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The runId of the workflow execution to signal.
      * <p>
@@ -215,14 +228,13 @@ public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest  imp
      * @param runId The runId of the workflow execution to signal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalWorkflowExecutionRequest withRunId(String runId) {
         this.runId = runId;
         return this;
     }
-    
-    
+
     /**
      * The name of the signal. This name must be meaningful to the target
      * workflow.
@@ -264,14 +276,13 @@ public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest  imp
      *         workflow.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalWorkflowExecutionRequest withSignalName(String signalName) {
         this.signalName = signalName;
         return this;
     }
-    
-    
+
     /**
      * Data to attach to the <code>WorkflowExecutionSignaled</code> event in
      * the target workflow execution's history.
@@ -313,14 +324,13 @@ public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest  imp
      *         the target workflow execution's history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SignalWorkflowExecutionRequest withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -332,11 +342,11 @@ public class SignalWorkflowExecutionRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");    	
-        if (getSignalName() != null) sb.append("SignalName: " + getSignalName() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");
+        if (getSignalName() != null) sb.append("SignalName: " + getSignalName() + ",");
         if (getInput() != null) sb.append("Input: " + getInput() );
         sb.append("}");
         return sb.toString();

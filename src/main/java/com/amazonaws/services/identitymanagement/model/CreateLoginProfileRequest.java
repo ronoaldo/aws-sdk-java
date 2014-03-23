@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#createLoginProfile(CreateLoginProfileRequest) CreateLoginProfile operation}.
  * <p>
- * Creates a password for the specified user, giving the user the ability to access AWS services through the AWS Management Console. For more
- * information about managing passwords, see <a href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_ManagingLogins.html">
- * Managing Passwords </a> in <i>Using IAM</i> .
+ * Creates a password for the specified user, giving the user the ability
+ * to access AWS services through the AWS Management Console. For more
+ * information about managing passwords, see
+ * <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_ManagingLogins.html"> Managing Passwords </a>
+ * in <i>Using IAM</i> .
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#createLoginProfile(CreateLoginProfileRequest)
  */
-public class CreateLoginProfileRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateLoginProfileRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Name of the user to create a password for.
@@ -61,12 +65,10 @@ public class CreateLoginProfileRequest extends AmazonWebServiceRequest  implemen
      * @param password The new password for the user name.
      */
     public CreateLoginProfileRequest(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
+        setUserName(userName);
+        setPassword(password);
     }
 
-    
-    
     /**
      * Name of the user to create a password for.
      * <p>
@@ -105,14 +107,13 @@ public class CreateLoginProfileRequest extends AmazonWebServiceRequest  implemen
      * @param userName Name of the user to create a password for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoginProfileRequest withUserName(String userName) {
         this.userName = userName;
         return this;
     }
-    
-    
+
     /**
      * The new password for the user name.
      * <p>
@@ -151,14 +152,13 @@ public class CreateLoginProfileRequest extends AmazonWebServiceRequest  implemen
      * @param password The new password for the user name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateLoginProfileRequest withPassword(String password) {
         this.password = password;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -170,8 +170,8 @@ public class CreateLoginProfileRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");    	
+        sb.append("{");
+        if (getUserName() != null) sb.append("UserName: " + getUserName() + ",");
         if (getPassword() != null) sb.append("Password: " + getPassword() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#addSourceIdentifierToSubscription(AddSourceIdentifierToSubscriptionRequest) AddSourceIdentifierToSubscription operation}.
  * <p>
- * Adds a source identifier to an existing RDS event notification subscription.
+ * Adds a source identifier to an existing RDS event notification
+ * subscription.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#addSourceIdentifierToSubscription(AddSourceIdentifierToSubscriptionRequest)
  */
-public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the RDS event notification subscription you want to add a
@@ -37,11 +40,13 @@ public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRe
      * begin with a letter and must contain only ASCII letters, digits, and
      * hyphens; it cannot end with a hyphen or contain two consecutive
      * hyphens. <p>Constraints: <ul> <li>If the source type is a DB instance,
-     * then a DBInstanceIdentifier must be supplied.</li> <li>If the source
-     * type is a DB security group, a DBSecurityGroupName must be
-     * supplied.</li> <li>If the source type is a DB parameter group, a
-     * DBParameterGroupName must be supplied.</li> <li>If the source type is
-     * a DB Snapshot, a DBSnapshotIdentifier must be supplied.</li> </ul>
+     * then a <code>DBInstanceIdentifier</code> must be supplied.</li> <li>If
+     * the source type is a DB security group, a
+     * <code>DBSecurityGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB parameter group, a
+     * <code>DBParameterGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must
+     * be supplied.</li> </ul>
      */
     private String sourceIdentifier;
 
@@ -77,34 +82,37 @@ public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRe
      *         source identifier to.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddSourceIdentifierToSubscriptionRequest withSubscriptionName(String subscriptionName) {
         this.subscriptionName = subscriptionName;
         return this;
     }
-    
-    
+
     /**
      * The identifier of the event source to be added. An identifier must
      * begin with a letter and must contain only ASCII letters, digits, and
      * hyphens; it cannot end with a hyphen or contain two consecutive
      * hyphens. <p>Constraints: <ul> <li>If the source type is a DB instance,
-     * then a DBInstanceIdentifier must be supplied.</li> <li>If the source
-     * type is a DB security group, a DBSecurityGroupName must be
-     * supplied.</li> <li>If the source type is a DB parameter group, a
-     * DBParameterGroupName must be supplied.</li> <li>If the source type is
-     * a DB Snapshot, a DBSnapshotIdentifier must be supplied.</li> </ul>
+     * then a <code>DBInstanceIdentifier</code> must be supplied.</li> <li>If
+     * the source type is a DB security group, a
+     * <code>DBSecurityGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB parameter group, a
+     * <code>DBParameterGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must
+     * be supplied.</li> </ul>
      *
      * @return The identifier of the event source to be added. An identifier must
      *         begin with a letter and must contain only ASCII letters, digits, and
      *         hyphens; it cannot end with a hyphen or contain two consecutive
      *         hyphens. <p>Constraints: <ul> <li>If the source type is a DB instance,
-     *         then a DBInstanceIdentifier must be supplied.</li> <li>If the source
-     *         type is a DB security group, a DBSecurityGroupName must be
-     *         supplied.</li> <li>If the source type is a DB parameter group, a
-     *         DBParameterGroupName must be supplied.</li> <li>If the source type is
-     *         a DB Snapshot, a DBSnapshotIdentifier must be supplied.</li> </ul>
+     *         then a <code>DBInstanceIdentifier</code> must be supplied.</li> <li>If
+     *         the source type is a DB security group, a
+     *         <code>DBSecurityGroupName</code> must be supplied.</li> <li>If the
+     *         source type is a DB parameter group, a
+     *         <code>DBParameterGroupName</code> must be supplied.</li> <li>If the
+     *         source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must
+     *         be supplied.</li> </ul>
      */
     public String getSourceIdentifier() {
         return sourceIdentifier;
@@ -115,21 +123,25 @@ public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRe
      * begin with a letter and must contain only ASCII letters, digits, and
      * hyphens; it cannot end with a hyphen or contain two consecutive
      * hyphens. <p>Constraints: <ul> <li>If the source type is a DB instance,
-     * then a DBInstanceIdentifier must be supplied.</li> <li>If the source
-     * type is a DB security group, a DBSecurityGroupName must be
-     * supplied.</li> <li>If the source type is a DB parameter group, a
-     * DBParameterGroupName must be supplied.</li> <li>If the source type is
-     * a DB Snapshot, a DBSnapshotIdentifier must be supplied.</li> </ul>
+     * then a <code>DBInstanceIdentifier</code> must be supplied.</li> <li>If
+     * the source type is a DB security group, a
+     * <code>DBSecurityGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB parameter group, a
+     * <code>DBParameterGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must
+     * be supplied.</li> </ul>
      *
      * @param sourceIdentifier The identifier of the event source to be added. An identifier must
      *         begin with a letter and must contain only ASCII letters, digits, and
      *         hyphens; it cannot end with a hyphen or contain two consecutive
      *         hyphens. <p>Constraints: <ul> <li>If the source type is a DB instance,
-     *         then a DBInstanceIdentifier must be supplied.</li> <li>If the source
-     *         type is a DB security group, a DBSecurityGroupName must be
-     *         supplied.</li> <li>If the source type is a DB parameter group, a
-     *         DBParameterGroupName must be supplied.</li> <li>If the source type is
-     *         a DB Snapshot, a DBSnapshotIdentifier must be supplied.</li> </ul>
+     *         then a <code>DBInstanceIdentifier</code> must be supplied.</li> <li>If
+     *         the source type is a DB security group, a
+     *         <code>DBSecurityGroupName</code> must be supplied.</li> <li>If the
+     *         source type is a DB parameter group, a
+     *         <code>DBParameterGroupName</code> must be supplied.</li> <li>If the
+     *         source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must
+     *         be supplied.</li> </ul>
      */
     public void setSourceIdentifier(String sourceIdentifier) {
         this.sourceIdentifier = sourceIdentifier;
@@ -140,11 +152,13 @@ public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRe
      * begin with a letter and must contain only ASCII letters, digits, and
      * hyphens; it cannot end with a hyphen or contain two consecutive
      * hyphens. <p>Constraints: <ul> <li>If the source type is a DB instance,
-     * then a DBInstanceIdentifier must be supplied.</li> <li>If the source
-     * type is a DB security group, a DBSecurityGroupName must be
-     * supplied.</li> <li>If the source type is a DB parameter group, a
-     * DBParameterGroupName must be supplied.</li> <li>If the source type is
-     * a DB Snapshot, a DBSnapshotIdentifier must be supplied.</li> </ul>
+     * then a <code>DBInstanceIdentifier</code> must be supplied.</li> <li>If
+     * the source type is a DB security group, a
+     * <code>DBSecurityGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB parameter group, a
+     * <code>DBParameterGroupName</code> must be supplied.</li> <li>If the
+     * source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must
+     * be supplied.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -152,21 +166,22 @@ public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRe
      *         begin with a letter and must contain only ASCII letters, digits, and
      *         hyphens; it cannot end with a hyphen or contain two consecutive
      *         hyphens. <p>Constraints: <ul> <li>If the source type is a DB instance,
-     *         then a DBInstanceIdentifier must be supplied.</li> <li>If the source
-     *         type is a DB security group, a DBSecurityGroupName must be
-     *         supplied.</li> <li>If the source type is a DB parameter group, a
-     *         DBParameterGroupName must be supplied.</li> <li>If the source type is
-     *         a DB Snapshot, a DBSnapshotIdentifier must be supplied.</li> </ul>
+     *         then a <code>DBInstanceIdentifier</code> must be supplied.</li> <li>If
+     *         the source type is a DB security group, a
+     *         <code>DBSecurityGroupName</code> must be supplied.</li> <li>If the
+     *         source type is a DB parameter group, a
+     *         <code>DBParameterGroupName</code> must be supplied.</li> <li>If the
+     *         source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must
+     *         be supplied.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AddSourceIdentifierToSubscriptionRequest withSourceIdentifier(String sourceIdentifier) {
         this.sourceIdentifier = sourceIdentifier;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -178,8 +193,8 @@ public class AddSourceIdentifierToSubscriptionRequest extends AmazonWebServiceRe
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSubscriptionName() != null) sb.append("SubscriptionName: " + getSubscriptionName() + ",");    	
+        sb.append("{");
+        if (getSubscriptionName() != null) sb.append("SubscriptionName: " + getSubscriptionName() + ",");
         if (getSourceIdentifier() != null) sb.append("SourceIdentifier: " + getSourceIdentifier() );
         sb.append("}");
         return sb.toString();

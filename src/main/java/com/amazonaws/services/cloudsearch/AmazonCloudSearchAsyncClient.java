@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,15 +29,24 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 
 import com.amazonaws.services.cloudsearch.model.*;
 
-
 /**
  * Asynchronous client for accessing AmazonCloudSearch.
  * All asynchronous calls made using this client are non-blocking. Callers could either
  * process the result and handle the exceptions in the worker thread by providing a callback handler
  * when making the call, or use the returned Future object to check the result of the call in the calling thread.
  * Amazon CloudSearch Configuration Service <p>
- * You use the Configuration Service to create, configure, and manage search domains. Amazon CloudSearch configuration requests are submitted to
- * <code>cloudsearch.us-east-1.amazonaws.com</code> using the AWS Query protocol.
+ * You use the configuration service to create, configure, and manage
+ * search domains. Configuration service requests are submitted using
+ * the AWS Query protocol. AWS Query requests are HTTP or HTTPS requests
+ * submitted via HTTP GET or POST with a query parameter named Action.
+ * </p>
+ * <p>
+ * The endpoint for configuration service requests is region-specific:
+ * cloudsearch. <i>region</i> .amazonaws.com. For example,
+ * cloudsearch.us-east-1.amazonaws.com. For a current list of supported
+ * regions and endpoints, see
+ * <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region"> Regions and Endpoints </a>
+ * .
  * </p>
  */
 public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
@@ -48,6 +57,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      */
     private ExecutorService executorService;
 
+    private static final int DEFAULT_THREAD_POOL_SIZE = 50;
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
@@ -63,7 +73,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * All service calls made using this new client object are blocking, and will not
      * return until the service call completes.
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudSearchAsyncClient() {
         this(new DefaultAWSCredentialsProviderChain());
@@ -87,16 +97,16 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      *                       client connects to AmazonCloudSearch
      *                       (ex: proxy settings, retry counts, etc.).
      *
-     * @see DefaultAWSCredentialsProvider
+     * @see DefaultAWSCredentialsProviderChain
      */
     public AmazonCloudSearchAsyncClient(ClientConfiguration clientConfiguration) {
-        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newCachedThreadPool());
+        this(new DefaultAWSCredentialsProviderChain(), clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonCloudSearch using the specified AWS account credentials.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -108,7 +118,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      *                       when authenticating with AWS services.
      */
     public AmazonCloudSearchAsyncClient(AWSCredentials awsCredentials) {
-        this(awsCredentials, Executors.newCachedThreadPool());
+        this(awsCredentials, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -162,7 +172,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
     /**
      * Constructs a new asynchronous client to invoke service methods on
      * AmazonCloudSearch using the specified AWS account credentials provider.
-     * Default client settings will be used, and a default cached thread pool will be
+     * Default client settings will be used, and a fixed size thread pool will be
      * created for executing the asynchronous tasks.
      *
      * <p>
@@ -175,7 +185,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      *            to authenticate requests with AWS services.
      */
     public AmazonCloudSearchAsyncClient(AWSCredentialsProvider awsCredentialsProvider) {
-        this(awsCredentialsProvider, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, Executors.newFixedThreadPool(DEFAULT_THREAD_POOL_SIZE));
     }
 
     /**
@@ -218,7 +228,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      */
     public AmazonCloudSearchAsyncClient(AWSCredentialsProvider awsCredentialsProvider,
                 ClientConfiguration clientConfiguration) {
-        this(awsCredentialsProvider, clientConfiguration, Executors.newCachedThreadPool());
+        this(awsCredentialsProvider, clientConfiguration, Executors.newFixedThreadPool(clientConfiguration.getMaxConnections()));
     }
 
     /**
@@ -247,7 +257,6 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         this.executorService = executorService;
     }
 
-
     /**
      * Returns the executor service used by this async client to execute
      * requests.
@@ -263,7 +272,8 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * Shuts down the client, releasing all managed resources. This includes
      * forcibly terminating all pending asynchronous service calls. Clients who
      * wish to give pending asynchronous service calls time to complete should
-     * call getExecutorService().shutdown() prior to calling this method.
+     * call getExecutorService().shutdown() followed by
+     * getExecutorService().awaitTermination() prior to calling this method.
      */
     @Override
     public void shutdown() {
@@ -274,9 +284,9 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
     /**
      * <p>
      * Configures the default search field for the search domain. The default
-     * search field is used when a search request does not specify which
-     * fields to search. By default, it is configured to include the contents
-     * of all of the domain's text fields.
+     * search field is the text field that is searched when a search request
+     * does not specify which fields to search. By default, it is configured
+     * to include the contents of all of the domain's text fields.
      * </p>
      *
      * @param updateDefaultSearchFieldRequest Container for the necessary
@@ -286,6 +296,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateDefaultSearchField service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -300,17 +311,16 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<UpdateDefaultSearchFieldResult>() {
             public UpdateDefaultSearchFieldResult call() throws Exception {
                 return updateDefaultSearchField(updateDefaultSearchFieldRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Configures the default search field for the search domain. The default
-     * search field is used when a search request does not specify which
-     * fields to search. By default, it is configured to include the contents
-     * of all of the domain's text fields.
+     * search field is the text field that is searched when a search request
+     * does not specify which fields to search. By default, it is configured
+     * to include the contents of all of the domain's text fields.
      * </p>
      *
      * @param updateDefaultSearchFieldRequest Container for the necessary
@@ -324,6 +334,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateDefaultSearchField service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -339,17 +350,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateDefaultSearchFieldResult>() {
             public UpdateDefaultSearchFieldResult call() throws Exception {
-            	UpdateDefaultSearchFieldResult result;
+              UpdateDefaultSearchFieldResult result;
                 try {
-            		result = updateDefaultSearchField(updateDefaultSearchFieldRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateDefaultSearchFieldRequest, result);
-               	return result;
-		    }
-		});
+                result = updateDefaultSearchField(updateDefaultSearchFieldRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateDefaultSearchFieldRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -363,6 +374,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteRankExpression service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -377,11 +389,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DeleteRankExpressionResult>() {
             public DeleteRankExpressionResult call() throws Exception {
                 return deleteRankExpression(deleteRankExpressionRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Removes a <code>RankExpression</code> from the search domain.
@@ -397,6 +408,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteRankExpression service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -412,17 +424,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeleteRankExpressionResult>() {
             public DeleteRankExpressionResult call() throws Exception {
-            	DeleteRankExpressionResult result;
+              DeleteRankExpressionResult result;
                 try {
-            		result = deleteRankExpression(deleteRankExpressionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteRankExpressionRequest, result);
-               	return result;
-		    }
-		});
+                result = deleteRankExpression(deleteRankExpressionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteRankExpressionRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -439,6 +451,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeRankExpressions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -453,11 +466,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeRankExpressionsResult>() {
             public DescribeRankExpressionsResult call() throws Exception {
                 return describeRankExpressions(describeRankExpressionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets the rank expressions configured for the search domain. Can be
@@ -476,6 +488,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeRankExpressions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -491,17 +504,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeRankExpressionsResult>() {
             public DescribeRankExpressionsResult call() throws Exception {
-            	DescribeRankExpressionsResult result;
+              DescribeRankExpressionsResult result;
                 try {
-            		result = describeRankExpressions(describeRankExpressionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeRankExpressionsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeRankExpressions(describeRankExpressionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeRankExpressionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -514,6 +527,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateDomain service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -528,11 +542,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<CreateDomainResult>() {
             public CreateDomainResult call() throws Exception {
                 return createDomain(createDomainRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Creates a new search domain.
@@ -547,6 +560,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         CreateDomain service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -562,24 +576,24 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<CreateDomainResult>() {
             public CreateDomainResult call() throws Exception {
-            	CreateDomainResult result;
+              CreateDomainResult result;
                 try {
-            		result = createDomain(createDomainRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(createDomainRequest, result);
-               	return result;
-		    }
-		});
+                result = createDomain(createDomainRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(createDomainRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Configures the policies that control access to the domain's document
      * and search services. The maximum size of an access policy document is
-     * 100KB.
+     * 100 KB.
      * </p>
      *
      * @param updateServiceAccessPoliciesRequest Container for the necessary
@@ -589,6 +603,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateServiceAccessPolicies service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -603,16 +618,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<UpdateServiceAccessPoliciesResult>() {
             public UpdateServiceAccessPoliciesResult call() throws Exception {
                 return updateServiceAccessPolicies(updateServiceAccessPoliciesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Configures the policies that control access to the domain's document
      * and search services. The maximum size of an access policy document is
-     * 100KB.
+     * 100 KB.
      * </p>
      *
      * @param updateServiceAccessPoliciesRequest Container for the necessary
@@ -626,6 +640,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateServiceAccessPolicies service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -641,17 +656,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateServiceAccessPoliciesResult>() {
             public UpdateServiceAccessPoliciesResult call() throws Exception {
-            	UpdateServiceAccessPoliciesResult result;
+              UpdateServiceAccessPoliciesResult result;
                 try {
-            		result = updateServiceAccessPolicies(updateServiceAccessPoliciesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateServiceAccessPoliciesRequest, result);
-               	return result;
-		    }
-		});
+                result = updateServiceAccessPolicies(updateServiceAccessPoliciesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateServiceAccessPoliciesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -667,6 +682,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DefineIndexField service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -681,11 +697,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DefineIndexFieldResult>() {
             public DefineIndexFieldResult call() throws Exception {
                 return defineIndexField(defineIndexFieldRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Configures an <code>IndexField</code> for the search domain. Used to
@@ -703,6 +718,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DefineIndexField service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -718,17 +734,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DefineIndexFieldResult>() {
             public DefineIndexFieldResult call() throws Exception {
-            	DefineIndexFieldResult result;
+              DefineIndexFieldResult result;
                 try {
-            		result = defineIndexField(defineIndexFieldRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(defineIndexFieldRequest, result);
-               	return result;
-		    }
-		});
+                result = defineIndexField(defineIndexFieldRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(defineIndexFieldRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -745,6 +761,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DefineRankExpression service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -759,11 +776,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DefineRankExpressionResult>() {
             public DefineRankExpressionResult call() throws Exception {
                 return defineRankExpression(defineRankExpressionRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Configures a <code>RankExpression</code> for the search domain. Used
@@ -782,6 +798,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DefineRankExpression service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -797,17 +814,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DefineRankExpressionResult>() {
             public DefineRankExpressionResult call() throws Exception {
-            	DefineRankExpressionResult result;
+              DefineRankExpressionResult result;
                 try {
-            		result = defineRankExpression(defineRankExpressionRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(defineRankExpressionRequest, result);
-               	return result;
-		    }
-		});
+                result = defineRankExpression(defineRankExpressionRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(defineRankExpressionRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -822,6 +839,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeSynonymOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -836,11 +854,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeSynonymOptionsResult>() {
             public DescribeSynonymOptionsResult call() throws Exception {
                 return describeSynonymOptions(describeSynonymOptionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets the synonym dictionary configured for the search domain.
@@ -857,6 +874,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeSynonymOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -872,17 +890,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeSynonymOptionsResult>() {
             public DescribeSynonymOptionsResult call() throws Exception {
-            	DescribeSynonymOptionsResult result;
+              DescribeSynonymOptionsResult result;
                 try {
-            		result = describeSynonymOptions(describeSynonymOptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeSynonymOptionsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeSynonymOptions(describeSynonymOptionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeSynonymOptionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -897,6 +915,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeStopwordOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -911,11 +930,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeStopwordOptionsResult>() {
             public DescribeStopwordOptionsResult call() throws Exception {
                 return describeStopwordOptions(describeStopwordOptionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets the stopwords configured for the search domain.
@@ -932,6 +950,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeStopwordOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -947,17 +966,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeStopwordOptionsResult>() {
             public DescribeStopwordOptionsResult call() throws Exception {
-            	DescribeStopwordOptionsResult result;
+              DescribeStopwordOptionsResult result;
                 try {
-            		result = describeStopwordOptions(describeStopwordOptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeStopwordOptionsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeStopwordOptions(describeStopwordOptionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeStopwordOptionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -970,6 +989,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteDomain service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -984,11 +1004,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DeleteDomainResult>() {
             public DeleteDomainResult call() throws Exception {
                 return deleteDomain(deleteDomainRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Permanently deletes a search domain and all of its data.
@@ -1003,6 +1022,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteDomain service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1018,17 +1038,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeleteDomainResult>() {
             public DeleteDomainResult call() throws Exception {
-            	DeleteDomainResult result;
+              DeleteDomainResult result;
                 try {
-            		result = deleteDomain(deleteDomainRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteDomainRequest, result);
-               	return result;
-		    }
-		});
+                result = deleteDomain(deleteDomainRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteDomainRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1044,6 +1064,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeServiceAccessPolicies service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1058,11 +1079,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeServiceAccessPoliciesResult>() {
             public DescribeServiceAccessPoliciesResult call() throws Exception {
                 return describeServiceAccessPolicies(describeServiceAccessPoliciesRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets information about the resource-based policies that control access
@@ -1080,6 +1100,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeServiceAccessPolicies service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1095,17 +1116,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeServiceAccessPoliciesResult>() {
             public DescribeServiceAccessPoliciesResult call() throws Exception {
-            	DescribeServiceAccessPoliciesResult result;
+              DescribeServiceAccessPoliciesResult result;
                 try {
-            		result = describeServiceAccessPolicies(describeServiceAccessPoliciesRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeServiceAccessPoliciesRequest, result);
-               	return result;
-		    }
-		});
+                result = describeServiceAccessPolicies(describeServiceAccessPoliciesRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeServiceAccessPoliciesRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1120,6 +1141,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeDefaultSearchField service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1134,11 +1156,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeDefaultSearchFieldResult>() {
             public DescribeDefaultSearchFieldResult call() throws Exception {
                 return describeDefaultSearchField(describeDefaultSearchFieldRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets the default search field configured for the search domain.
@@ -1155,6 +1176,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeDefaultSearchField service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1170,24 +1192,24 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeDefaultSearchFieldResult>() {
             public DescribeDefaultSearchFieldResult call() throws Exception {
-            	DescribeDefaultSearchFieldResult result;
+              DescribeDefaultSearchFieldResult result;
                 try {
-            		result = describeDefaultSearchField(describeDefaultSearchFieldRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeDefaultSearchFieldRequest, result);
-               	return result;
-		    }
-		});
+                result = describeDefaultSearchField(describeDefaultSearchFieldRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeDefaultSearchFieldRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Configures stopwords for the search domain. Stopwords are used during
      * indexing and when processing search requests. The maximum size of the
-     * stopwords dictionary is 10KB.
+     * stopwords dictionary is 10 KB.
      * </p>
      *
      * @param updateStopwordOptionsRequest Container for the necessary
@@ -1197,6 +1219,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateStopwordOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1211,16 +1234,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<UpdateStopwordOptionsResult>() {
             public UpdateStopwordOptionsResult call() throws Exception {
                 return updateStopwordOptions(updateStopwordOptionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Configures stopwords for the search domain. Stopwords are used during
      * indexing and when processing search requests. The maximum size of the
-     * stopwords dictionary is 10KB.
+     * stopwords dictionary is 10 KB.
      * </p>
      *
      * @param updateStopwordOptionsRequest Container for the necessary
@@ -1234,6 +1256,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateStopwordOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1249,17 +1272,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateStopwordOptionsResult>() {
             public UpdateStopwordOptionsResult call() throws Exception {
-            	UpdateStopwordOptionsResult result;
+              UpdateStopwordOptionsResult result;
                 try {
-            		result = updateStopwordOptions(updateStopwordOptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateStopwordOptionsRequest, result);
-               	return result;
-		    }
-		});
+                result = updateStopwordOptions(updateStopwordOptionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateStopwordOptionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1267,7 +1290,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * Configures a synonym dictionary for the search domain. The synonym
      * dictionary is used during indexing to configure mappings for terms
      * that occur in text fields. The maximum size of the synonym dictionary
-     * is 100KB.
+     * is 100 KB.
      * </p>
      *
      * @param updateSynonymOptionsRequest Container for the necessary
@@ -1276,6 +1299,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         UpdateSynonymOptions service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1290,17 +1314,16 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<UpdateSynonymOptionsResult>() {
             public UpdateSynonymOptionsResult call() throws Exception {
                 return updateSynonymOptions(updateSynonymOptionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Configures a synonym dictionary for the search domain. The synonym
      * dictionary is used during indexing to configure mappings for terms
      * that occur in text fields. The maximum size of the synonym dictionary
-     * is 100KB.
+     * is 100 KB.
      * </p>
      *
      * @param updateSynonymOptionsRequest Container for the necessary
@@ -1313,6 +1336,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         UpdateSynonymOptions service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1328,24 +1352,24 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateSynonymOptionsResult>() {
             public UpdateSynonymOptionsResult call() throws Exception {
-            	UpdateSynonymOptionsResult result;
+              UpdateSynonymOptionsResult result;
                 try {
-            		result = updateSynonymOptions(updateSynonymOptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateSynonymOptionsRequest, result);
-               	return result;
-		    }
-		});
+                result = updateSynonymOptions(updateSynonymOptionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateSynonymOptionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
      * <p>
      * Configures a stemming dictionary for the search domain. The stemming
      * dictionary is used during indexing and when processing search
-     * requests. The maximum size of the stemming dictionary is 500KB.
+     * requests. The maximum size of the stemming dictionary is 500 KB.
      * </p>
      *
      * @param updateStemmingOptionsRequest Container for the necessary
@@ -1355,6 +1379,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateStemmingOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1369,16 +1394,15 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<UpdateStemmingOptionsResult>() {
             public UpdateStemmingOptionsResult call() throws Exception {
                 return updateStemmingOptions(updateStemmingOptionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Configures a stemming dictionary for the search domain. The stemming
      * dictionary is used during indexing and when processing search
-     * requests. The maximum size of the stemming dictionary is 500KB.
+     * requests. The maximum size of the stemming dictionary is 500 KB.
      * </p>
      *
      * @param updateStemmingOptionsRequest Container for the necessary
@@ -1392,6 +1416,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         UpdateStemmingOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1407,17 +1432,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<UpdateStemmingOptionsResult>() {
             public UpdateStemmingOptionsResult call() throws Exception {
-            	UpdateStemmingOptionsResult result;
+              UpdateStemmingOptionsResult result;
                 try {
-            		result = updateStemmingOptions(updateStemmingOptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(updateStemmingOptionsRequest, result);
-               	return result;
-		    }
-		});
+                result = updateStemmingOptions(updateStemmingOptionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(updateStemmingOptionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1432,6 +1457,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeStemmingOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1446,11 +1472,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeStemmingOptionsResult>() {
             public DescribeStemmingOptionsResult call() throws Exception {
                 return describeStemmingOptions(describeStemmingOptionsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets the stemming dictionary configured for the search domain.
@@ -1467,6 +1492,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * @return A Java Future object containing the response from the
      *         DescribeStemmingOptions service method, as returned by
      *         AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1482,17 +1508,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeStemmingOptionsResult>() {
             public DescribeStemmingOptionsResult call() throws Exception {
-            	DescribeStemmingOptionsResult result;
+              DescribeStemmingOptionsResult result;
                 try {
-            		result = describeStemmingOptions(describeStemmingOptionsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeStemmingOptionsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeStemmingOptions(describeStemmingOptionsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeStemmingOptionsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1506,6 +1532,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeDomains service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1520,11 +1547,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeDomainsResult>() {
             public DescribeDomainsResult call() throws Exception {
                 return describeDomains(describeDomainsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets information about the search domains owned by this account. Can
@@ -1540,6 +1566,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeDomains service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1555,17 +1582,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeDomainsResult>() {
             public DescribeDomainsResult call() throws Exception {
-            	DescribeDomainsResult result;
+              DescribeDomainsResult result;
                 try {
-            		result = describeDomains(describeDomainsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeDomainsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeDomains(describeDomainsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeDomainsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1582,6 +1609,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         IndexDocuments service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1596,11 +1624,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<IndexDocumentsResult>() {
             public IndexDocumentsResult call() throws Exception {
                 return indexDocuments(indexDocumentsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Tells the search domain to start indexing its documents using the
@@ -1619,6 +1646,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         IndexDocuments service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1634,17 +1662,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<IndexDocumentsResult>() {
             public IndexDocumentsResult call() throws Exception {
-            	IndexDocumentsResult result;
+              IndexDocumentsResult result;
                 try {
-            		result = indexDocuments(indexDocumentsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(indexDocumentsRequest, result);
-               	return result;
-		    }
-		});
+                result = indexDocuments(indexDocumentsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(indexDocumentsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1660,6 +1688,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeIndexFields service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1674,11 +1703,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DescribeIndexFieldsResult>() {
             public DescribeIndexFieldsResult call() throws Exception {
                 return describeIndexFields(describeIndexFieldsRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Gets information about the index fields configured for the search
@@ -1696,6 +1724,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DescribeIndexFields service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1711,17 +1740,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DescribeIndexFieldsResult>() {
             public DescribeIndexFieldsResult call() throws Exception {
-            	DescribeIndexFieldsResult result;
+              DescribeIndexFieldsResult result;
                 try {
-            		result = describeIndexFields(describeIndexFieldsRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(describeIndexFieldsRequest, result);
-               	return result;
-		    }
-		});
+                result = describeIndexFields(describeIndexFieldsRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(describeIndexFieldsRequest, result);
+                 return result;
+        }
+    });
     }
     
     /**
@@ -1734,6 +1763,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteIndexField service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1748,11 +1778,10 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
         return executorService.submit(new Callable<DeleteIndexFieldResult>() {
             public DeleteIndexFieldResult call() throws Exception {
                 return deleteIndexField(deleteIndexFieldRequest);
-		    }
-		});
+        }
+    });
     }
 
-    
     /**
      * <p>
      * Removes an <code>IndexField</code> from the search domain.
@@ -1767,6 +1796,7 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
      * 
      * @return A Java Future object containing the response from the
      *         DeleteIndexField service method, as returned by AmazonCloudSearch.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1782,17 +1812,17 @@ public class AmazonCloudSearchAsyncClient extends AmazonCloudSearchClient
                     throws AmazonServiceException, AmazonClientException {
         return executorService.submit(new Callable<DeleteIndexFieldResult>() {
             public DeleteIndexFieldResult call() throws Exception {
-            	DeleteIndexFieldResult result;
+              DeleteIndexFieldResult result;
                 try {
-            		result = deleteIndexField(deleteIndexFieldRequest);
-            	} catch (Exception ex) {
-            	    asyncHandler.onError(ex);
-    				throw ex;
-            	}
-            	asyncHandler.onSuccess(deleteIndexFieldRequest, result);
-               	return result;
-		    }
-		});
+                result = deleteIndexField(deleteIndexFieldRequest);
+              } catch (Exception ex) {
+                  asyncHandler.onError(ex);
+            throw ex;
+              }
+              asyncHandler.onSuccess(deleteIndexFieldRequest, result);
+                 return result;
+        }
+    });
     }
     
 }

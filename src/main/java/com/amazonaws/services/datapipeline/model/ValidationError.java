@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Defines a validation error returned by PutPipelineDefinition or ValidatePipelineDefinition. Validation errors prevent pipeline activation. The set of
- * validation errors that can be returned are defined by AWS Data Pipeline.
+ * Defines a validation error returned by PutPipelineDefinition or
+ * ValidatePipelineDefinition. Validation errors prevent pipeline
+ * activation. The set of validation errors that can be returned are
+ * defined by AWS Data Pipeline.
  * </p>
  */
-public class ValidationError  implements Serializable  {
+public class ValidationError implements Serializable {
 
     /**
      * The identifier of the object that contains the validation error.
@@ -35,7 +38,7 @@ public class ValidationError  implements Serializable  {
     /**
      * A description of the validation error.
      */
-    private java.util.List<String> errors;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> errors;
 
     /**
      * The identifier of the object that contains the validation error.
@@ -75,23 +78,22 @@ public class ValidationError  implements Serializable  {
      * @param id The identifier of the object that contains the validation error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationError withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * A description of the validation error.
      *
      * @return A description of the validation error.
      */
     public java.util.List<String> getErrors() {
-        
         if (errors == null) {
-            errors = new java.util.ArrayList<String>();
+              errors = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              errors.setAutoConstruct(true);
         }
         return errors;
     }
@@ -106,8 +108,7 @@ public class ValidationError  implements Serializable  {
             this.errors = null;
             return;
         }
-
-        java.util.List<String> errorsCopy = new java.util.ArrayList<String>(errors.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> errorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(errors.size());
         errorsCopy.addAll(errors);
         this.errors = errorsCopy;
     }
@@ -120,7 +121,7 @@ public class ValidationError  implements Serializable  {
      * @param errors A description of the validation error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationError withErrors(String... errors) {
         if (getErrors() == null) setErrors(new java.util.ArrayList<String>(errors.length));
@@ -138,20 +139,20 @@ public class ValidationError  implements Serializable  {
      * @param errors A description of the validation error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationError withErrors(java.util.Collection<String> errors) {
         if (errors == null) {
             this.errors = null;
         } else {
-            java.util.List<String> errorsCopy = new java.util.ArrayList<String>(errors.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> errorsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(errors.size());
             errorsCopy.addAll(errors);
             this.errors = errorsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -163,8 +164,8 @@ public class ValidationError  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getErrors() != null) sb.append("Errors: " + getErrors() );
         sb.append("}");
         return sb.toString();

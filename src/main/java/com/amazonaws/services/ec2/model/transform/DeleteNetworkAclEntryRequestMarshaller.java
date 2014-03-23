@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class DeleteNetworkAclEntryRequestMarshaller implements Marshaller<Reques
     public Request<DeleteNetworkAclEntryRequest> marshall(DeleteNetworkAclEntryRequest deleteNetworkAclEntryRequest) {
 
         if (deleteNetworkAclEntryRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteNetworkAclEntryRequest> request = new DefaultRequest<DeleteNetworkAclEntryRequest>(deleteNetworkAclEntryRequest, "AmazonEC2");
         request.addParameter("Action", "DeleteNetworkAclEntry");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (deleteNetworkAclEntryRequest.getNetworkAclId() != null) {
             request.addParameter("NetworkAclId", StringUtils.fromString(deleteNetworkAclEntryRequest.getNetworkAclId()));
@@ -49,7 +49,6 @@ public class DeleteNetworkAclEntryRequestMarshaller implements Marshaller<Reques
         if (deleteNetworkAclEntryRequest.isEgress() != null) {
             request.addParameter("Egress", StringUtils.fromBoolean(deleteNetworkAclEntryRequest.isEgress()));
         }
-
 
         return request;
     }

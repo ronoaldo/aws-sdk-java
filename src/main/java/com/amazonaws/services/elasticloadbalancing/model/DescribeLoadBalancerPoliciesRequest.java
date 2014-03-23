@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,30 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancerPolicies(DescribeLoadBalancerPoliciesRequest) DescribeLoadBalancerPolicies operation}.
  * <p>
- * Returns detailed descriptions of the policies. If you specify a LoadBalancer name, the operation returns either the descriptions of the specified
- * policies, or descriptions of all the policies created for the LoadBalancer. If you don't specify a LoadBalancer name, the operation returns
- * descriptions of the specified sample policies, or descriptions of all the sample policies. The names of the sample policies have the
+ * Returns detailed descriptions of the policies. If you specify a load
+ * balancer name, the action returns the descriptions of all the policies
+ * created for the load balancer. If you specify a policy name associated
+ * with your load balancer, the action returns the description of that
+ * policy. If you don't specify a load balancer name, the action returns
+ * descriptions of the specified sample policies, or descriptions of all
+ * the sample policies. The names of the sample policies have the
  * <code>ELBSample-</code> prefix.
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#describeLoadBalancerPolicies(DescribeLoadBalancerPoliciesRequest)
  */
-public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The mnemonic name associated with the LoadBalancer. If no name is
+     * The mnemonic name associated with the load balancer. If no name is
      * specified, the operation returns the attributes of either all the
      * sample policies pre-defined by Elastic Load Balancing or the specified
      * sample polices.
@@ -38,18 +44,18 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
     private String loadBalancerName;
 
     /**
-     * The names of LoadBalancer policies you've created or Elastic Load
+     * The names of load balancer policies you've created or Elastic Load
      * Balancing sample policy names.
      */
-    private java.util.List<String> policyNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNames;
 
     /**
-     * The mnemonic name associated with the LoadBalancer. If no name is
+     * The mnemonic name associated with the load balancer. If no name is
      * specified, the operation returns the attributes of either all the
      * sample policies pre-defined by Elastic Load Balancing or the specified
      * sample polices.
      *
-     * @return The mnemonic name associated with the LoadBalancer. If no name is
+     * @return The mnemonic name associated with the load balancer. If no name is
      *         specified, the operation returns the attributes of either all the
      *         sample policies pre-defined by Elastic Load Balancing or the specified
      *         sample polices.
@@ -59,12 +65,12 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. If no name is
+     * The mnemonic name associated with the load balancer. If no name is
      * specified, the operation returns the attributes of either all the
      * sample policies pre-defined by Elastic Load Balancing or the specified
      * sample polices.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. If no name is
+     * @param loadBalancerName The mnemonic name associated with the load balancer. If no name is
      *         specified, the operation returns the attributes of either all the
      *         sample policies pre-defined by Elastic Load Balancing or the specified
      *         sample polices.
@@ -74,47 +80,46 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
     }
     
     /**
-     * The mnemonic name associated with the LoadBalancer. If no name is
+     * The mnemonic name associated with the load balancer. If no name is
      * specified, the operation returns the attributes of either all the
      * sample policies pre-defined by Elastic Load Balancing or the specified
      * sample polices.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The mnemonic name associated with the LoadBalancer. If no name is
+     * @param loadBalancerName The mnemonic name associated with the load balancer. If no name is
      *         specified, the operation returns the attributes of either all the
      *         sample policies pre-defined by Elastic Load Balancing or the specified
      *         sample polices.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
-     * The names of LoadBalancer policies you've created or Elastic Load
+     * The names of load balancer policies you've created or Elastic Load
      * Balancing sample policy names.
      *
-     * @return The names of LoadBalancer policies you've created or Elastic Load
+     * @return The names of load balancer policies you've created or Elastic Load
      *         Balancing sample policy names.
      */
     public java.util.List<String> getPolicyNames() {
-        
         if (policyNames == null) {
-            policyNames = new java.util.ArrayList<String>();
+              policyNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              policyNames.setAutoConstruct(true);
         }
         return policyNames;
     }
     
     /**
-     * The names of LoadBalancer policies you've created or Elastic Load
+     * The names of load balancer policies you've created or Elastic Load
      * Balancing sample policy names.
      *
-     * @param policyNames The names of LoadBalancer policies you've created or Elastic Load
+     * @param policyNames The names of load balancer policies you've created or Elastic Load
      *         Balancing sample policy names.
      */
     public void setPolicyNames(java.util.Collection<String> policyNames) {
@@ -122,23 +127,22 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
             this.policyNames = null;
             return;
         }
-
-        java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
         policyNamesCopy.addAll(policyNames);
         this.policyNames = policyNamesCopy;
     }
     
     /**
-     * The names of LoadBalancer policies you've created or Elastic Load
+     * The names of load balancer policies you've created or Elastic Load
      * Balancing sample policy names.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyNames The names of LoadBalancer policies you've created or Elastic Load
+     * @param policyNames The names of load balancer policies you've created or Elastic Load
      *         Balancing sample policy names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesRequest withPolicyNames(String... policyNames) {
         if (getPolicyNames() == null) setPolicyNames(new java.util.ArrayList<String>(policyNames.length));
@@ -149,29 +153,29 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
     }
     
     /**
-     * The names of LoadBalancer policies you've created or Elastic Load
+     * The names of load balancer policies you've created or Elastic Load
      * Balancing sample policy names.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyNames The names of LoadBalancer policies you've created or Elastic Load
+     * @param policyNames The names of load balancer policies you've created or Elastic Load
      *         Balancing sample policy names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesRequest withPolicyNames(java.util.Collection<String> policyNames) {
         if (policyNames == null) {
             this.policyNames = null;
         } else {
-            java.util.List<String> policyNamesCopy = new java.util.ArrayList<String>(policyNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> policyNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(policyNames.size());
             policyNamesCopy.addAll(policyNames);
             this.policyNames = policyNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -183,8 +187,8 @@ public class DescribeLoadBalancerPoliciesRequest extends AmazonWebServiceRequest
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
         if (getPolicyNames() != null) sb.append("PolicyNames: " + getPolicyNames() );
         sb.append("}");
         return sb.toString();

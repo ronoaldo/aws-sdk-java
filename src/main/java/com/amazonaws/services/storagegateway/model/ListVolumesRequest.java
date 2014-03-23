@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,24 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#listVolumes(ListVolumesRequest) ListVolumes operation}.
  * <p>
- * This operation lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the volume ARNs. If you want
- * additional volume information, use the DescribeStorediSCSIVolumes API.
+ * This operation lists the iSCSI stored volumes of a gateway. Results
+ * are sorted by volume ARN. The response includes only the volume ARNs.
+ * If you want additional volume information, use the
+ * DescribeStorediSCSIVolumes API.
  * </p>
  * <p>
- * The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can optionally specify the <code>Limit</code>
- * field in the body to limit the number of volumes in the response. If the number of volumes returned in the response is truncated, the response
- * includes a Marker field. You can use this Marker value in your subsequent request to retrieve the next set of volumes.
+ * The operation supports pagination. By default, the operation returns a
+ * maximum of up to 100 volumes. You can optionally specify the
+ * <code>Limit</code> field in the body to limit the number of volumes in
+ * the response. If the number of volumes returned in the response is
+ * truncated, the response includes a Marker field. You can use this
+ * Marker value in your subsequent request to retrieve the next set of
+ * volumes.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#listVolumes(ListVolumesRequest)
  */
-public class ListVolumesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListVolumesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -108,14 +116,13 @@ public class ListVolumesRequest extends AmazonWebServiceRequest  implements Seri
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumesRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * A string that indicates the position at which to begin the returned
      * list of volumes. Obtain the marker from the response of a previous
@@ -163,14 +170,13 @@ public class ListVolumesRequest extends AmazonWebServiceRequest  implements Seri
      *         List iSCSI Volumes request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Specifies that the list of volumes returned be limited to the
      * specified number of items.
@@ -212,14 +218,13 @@ public class ListVolumesRequest extends AmazonWebServiceRequest  implements Seri
      *         specified number of items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListVolumesRequest withLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -231,9 +236,9 @@ public class ListVolumesRequest extends AmazonWebServiceRequest  implements Seri
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getLimit() != null) sb.append("Limit: " + getLimit() );
         sb.append("}");
         return sb.toString();

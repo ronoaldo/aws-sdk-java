@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for the DescribeJobFlows operation.
  * </p>
  */
-public class DescribeJobFlowsResult  implements Serializable  {
+public class DescribeJobFlowsResult implements Serializable {
 
     /**
      * A list of job flows matching the parameters supplied.
      */
-    private java.util.List<JobFlowDetail> jobFlows;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<JobFlowDetail> jobFlows;
 
     /**
      * A list of job flows matching the parameters supplied.
@@ -33,9 +34,9 @@ public class DescribeJobFlowsResult  implements Serializable  {
      * @return A list of job flows matching the parameters supplied.
      */
     public java.util.List<JobFlowDetail> getJobFlows() {
-        
         if (jobFlows == null) {
-            jobFlows = new java.util.ArrayList<JobFlowDetail>();
+              jobFlows = new com.amazonaws.internal.ListWithAutoConstructFlag<JobFlowDetail>();
+              jobFlows.setAutoConstruct(true);
         }
         return jobFlows;
     }
@@ -50,8 +51,7 @@ public class DescribeJobFlowsResult  implements Serializable  {
             this.jobFlows = null;
             return;
         }
-
-        java.util.List<JobFlowDetail> jobFlowsCopy = new java.util.ArrayList<JobFlowDetail>(jobFlows.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<JobFlowDetail> jobFlowsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<JobFlowDetail>(jobFlows.size());
         jobFlowsCopy.addAll(jobFlows);
         this.jobFlows = jobFlowsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeJobFlowsResult  implements Serializable  {
      * @param jobFlows A list of job flows matching the parameters supplied.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsResult withJobFlows(JobFlowDetail... jobFlows) {
         if (getJobFlows() == null) setJobFlows(new java.util.ArrayList<JobFlowDetail>(jobFlows.length));
@@ -82,20 +82,20 @@ public class DescribeJobFlowsResult  implements Serializable  {
      * @param jobFlows A list of job flows matching the parameters supplied.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeJobFlowsResult withJobFlows(java.util.Collection<JobFlowDetail> jobFlows) {
         if (jobFlows == null) {
             this.jobFlows = null;
         } else {
-            java.util.List<JobFlowDetail> jobFlowsCopy = new java.util.ArrayList<JobFlowDetail>(jobFlows.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<JobFlowDetail> jobFlowsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<JobFlowDetail>(jobFlows.size());
             jobFlowsCopy.addAll(jobFlows);
             this.jobFlows = jobFlowsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeJobFlowsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getJobFlows() != null) sb.append("JobFlows: " + getJobFlows() );
         sb.append("}");
         return sb.toString();

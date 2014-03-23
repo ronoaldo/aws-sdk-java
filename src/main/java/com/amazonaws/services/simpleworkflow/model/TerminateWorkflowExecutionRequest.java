@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,64 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#terminateWorkflowExecution(TerminateWorkflowExecutionRequest) TerminateWorkflowExecution operation}.
  * <p>
- * Records a <code>WorkflowExecutionTerminated</code> event and forces closure of the workflow execution identified by the given domain, runId, and
- * workflowId. The child policy, registered with the workflow type or specified when starting this execution, is applied to any open child workflow
- * executions of this workflow execution.
+ * Records a <code>WorkflowExecutionTerminated</code> event and forces
+ * closure of the workflow execution identified by the given domain,
+ * runId, and workflowId. The child policy, registered with the workflow
+ * type or specified when starting this execution, is applied to any open
+ * child workflow executions of this workflow execution.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> If the identified workflow execution was in progress, it is terminated immediately.
+ * <b>IMPORTANT:</b> If the identified workflow execution was in
+ * progress, it is terminated immediately.
  * </p>
  * <p>
- * <b>NOTE:</b> If a runId is not specified, then the WorkflowExecutionTerminated event is recorded in the history of the current open workflow with the
- * matching workflowId in the domain.
+ * <b>NOTE:</b> If a runId is not specified, then the
+ * WorkflowExecutionTerminated event is recorded in the history of the
+ * current open workflow with the matching workflowId in the domain.
  * </p>
  * <p>
- * <b>NOTE:</b> You should consider using RequestCancelWorkflowExecution action instead because it allows the workflow to gracefully close while
- * TerminateWorkflowExecution does not.
+ * <b>NOTE:</b> You should consider using RequestCancelWorkflowExecution
+ * action instead because it allows the workflow to gracefully close
+ * while TerminateWorkflowExecution does not.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#terminateWorkflowExecution(TerminateWorkflowExecutionRequest)
  */
-public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The domain of the workflow execution to terminate.
@@ -154,14 +169,13 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
      * @param domain The domain of the workflow execution to terminate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateWorkflowExecutionRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * The workflowId of the workflow execution to terminate.
      * <p>
@@ -197,14 +211,13 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
      * @param workflowId The workflowId of the workflow execution to terminate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateWorkflowExecutionRequest withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The runId of the workflow execution to terminate.
      * <p>
@@ -240,14 +253,13 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
      * @param runId The runId of the workflow execution to terminate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateWorkflowExecutionRequest withRunId(String runId) {
         this.runId = runId;
         return this;
     }
-    
-    
+
     /**
      * An optional descriptive reason for terminating the workflow execution.
      * <p>
@@ -283,14 +295,13 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
      * @param reason An optional descriptive reason for terminating the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateWorkflowExecutionRequest withReason(String reason) {
         this.reason = reason;
         return this;
     }
-    
-    
+
     /**
      * Optional details for terminating the workflow execution.
      * <p>
@@ -326,14 +337,13 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
      * @param details Optional details for terminating the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TerminateWorkflowExecutionRequest withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * of the workflow execution being terminated. This policy overrides the
@@ -457,7 +467,7 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
      *         specified at registration time, a fault will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -465,8 +475,7 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the policy to use for the child workflow executions
      * of the workflow execution being terminated. This policy overrides the
@@ -548,7 +557,7 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
      *         specified at registration time, a fault will be returned.</note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -556,7 +565,7 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -568,12 +577,12 @@ public class TerminateWorkflowExecutionRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");    	
-        if (getReason() != null) sb.append("Reason: " + getReason() + ",");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");
+        if (getReason() != null) sb.append("Reason: " + getReason() + ",");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
         if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() );
         sb.append("}");
         return sb.toString();

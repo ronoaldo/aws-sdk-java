@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a connection endpoint.
  * </p>
  */
-public class Endpoint  implements Serializable  {
+public class Endpoint implements Serializable {
 
     /**
      * The DNS address of the Cluster.
@@ -58,14 +59,13 @@ public class Endpoint  implements Serializable  {
      * @param address The DNS address of the Cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Endpoint withAddress(String address) {
         this.address = address;
         return this;
     }
-    
-    
+
     /**
      * The port that the database engine is listening on.
      *
@@ -92,14 +92,13 @@ public class Endpoint  implements Serializable  {
      * @param port The port that the database engine is listening on.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Endpoint withPort(Integer port) {
         this.port = port;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class Endpoint  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAddress() != null) sb.append("Address: " + getAddress() + ",");    	
+        sb.append("{");
+        if (getAddress() != null) sb.append("Address: " + getAddress() + ",");
         if (getPort() != null) sb.append("Port: " + getPort() );
         sb.append("}");
         return sb.toString();

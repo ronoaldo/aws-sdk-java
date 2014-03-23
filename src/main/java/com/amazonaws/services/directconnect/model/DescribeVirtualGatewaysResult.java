@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,58 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A structure containing a list of virtual gateways.
+ * A structure containing a list of virtual private gateways.
  * </p>
  */
-public class DescribeVirtualGatewaysResult  implements Serializable  {
+public class DescribeVirtualGatewaysResult implements Serializable {
 
     /**
-     * A list of virtual gateways.
+     * A list of virtual private gateways.
      */
-    private java.util.List<VirtualGateway> virtualGateways;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<VirtualGateway> virtualGateways;
 
     /**
-     * A list of virtual gateways.
+     * A list of virtual private gateways.
      *
-     * @return A list of virtual gateways.
+     * @return A list of virtual private gateways.
      */
     public java.util.List<VirtualGateway> getVirtualGateways() {
-        
         if (virtualGateways == null) {
-            virtualGateways = new java.util.ArrayList<VirtualGateway>();
+              virtualGateways = new com.amazonaws.internal.ListWithAutoConstructFlag<VirtualGateway>();
+              virtualGateways.setAutoConstruct(true);
         }
         return virtualGateways;
     }
     
     /**
-     * A list of virtual gateways.
+     * A list of virtual private gateways.
      *
-     * @param virtualGateways A list of virtual gateways.
+     * @param virtualGateways A list of virtual private gateways.
      */
     public void setVirtualGateways(java.util.Collection<VirtualGateway> virtualGateways) {
         if (virtualGateways == null) {
             this.virtualGateways = null;
             return;
         }
-
-        java.util.List<VirtualGateway> virtualGatewaysCopy = new java.util.ArrayList<VirtualGateway>(virtualGateways.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<VirtualGateway> virtualGatewaysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VirtualGateway>(virtualGateways.size());
         virtualGatewaysCopy.addAll(virtualGateways);
         this.virtualGateways = virtualGatewaysCopy;
     }
     
     /**
-     * A list of virtual gateways.
+     * A list of virtual private gateways.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param virtualGateways A list of virtual gateways.
+     * @param virtualGateways A list of virtual private gateways.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVirtualGatewaysResult withVirtualGateways(VirtualGateway... virtualGateways) {
         if (getVirtualGateways() == null) setVirtualGateways(new java.util.ArrayList<VirtualGateway>(virtualGateways.length));
@@ -75,27 +75,27 @@ public class DescribeVirtualGatewaysResult  implements Serializable  {
     }
     
     /**
-     * A list of virtual gateways.
+     * A list of virtual private gateways.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param virtualGateways A list of virtual gateways.
+     * @param virtualGateways A list of virtual private gateways.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeVirtualGatewaysResult withVirtualGateways(java.util.Collection<VirtualGateway> virtualGateways) {
         if (virtualGateways == null) {
             this.virtualGateways = null;
         } else {
-            java.util.List<VirtualGateway> virtualGatewaysCopy = new java.util.ArrayList<VirtualGateway>(virtualGateways.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<VirtualGateway> virtualGatewaysCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<VirtualGateway>(virtualGateways.size());
             virtualGatewaysCopy.addAll(virtualGateways);
             this.virtualGateways = virtualGatewaysCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeVirtualGatewaysResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVirtualGateways() != null) sb.append("VirtualGateways: " + getVirtualGateways() );
         sb.append("}");
         return sb.toString();

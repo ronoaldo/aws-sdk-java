@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ import com.amazonaws.AmazonServiceException;
  * <p>
  * This exception is thrown when the subscriber exceeded the limits on the number of objects or operations.
  * </p>
- */        
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.model.LimitExceededException} instead.
+ */
 @Deprecated
 public class LimitExceededException extends AmazonServiceException {
     private static final long serialVersionUID = 1L;

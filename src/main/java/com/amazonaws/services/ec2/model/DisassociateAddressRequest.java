@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,28 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.DisassociateAddressRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#disassociateAddress(DisassociateAddressRequest) DisassociateAddress operation}.
  * <p>
- * The DisassociateAddress operation disassociates the specified elastic IP address from the instance to which it is assigned. This is an idempotent
- * operation. If you enter it more than once, Amazon EC2 does not return an error.
+ * Disassociates an Elastic IP address from the instance or network
+ * interface it's associated with.
+ * </p>
+ * <p>
+ * This is an idempotent operation. If you perform the operation more
+ * than once, Amazon EC2 doesn't return an error.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#disassociateAddress(DisassociateAddressRequest)
  */
-public class DisassociateAddressRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DisassociateAddressRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<DisassociateAddressRequest> {
 
     /**
-     * The elastic IP address that you are disassociating from the instance.
+     * [EC2-Classic] The Elastic IP address.
      */
     private String publicIp;
 
     /**
-     * Association ID corresponding to the VPC elastic IP address you want to
-     * disassociate.
+     * [EC2-VPC] The association ID.
      */
     private String associationId;
 
@@ -49,88 +56,89 @@ public class DisassociateAddressRequest extends AmazonWebServiceRequest  impleme
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param publicIp The elastic IP address that you are disassociating
-     * from the instance.
+     * @param publicIp [EC2-Classic] The Elastic IP address.
      */
     public DisassociateAddressRequest(String publicIp) {
-        this.publicIp = publicIp;
+        setPublicIp(publicIp);
     }
 
-    
-    
     /**
-     * The elastic IP address that you are disassociating from the instance.
+     * [EC2-Classic] The Elastic IP address.
      *
-     * @return The elastic IP address that you are disassociating from the instance.
+     * @return [EC2-Classic] The Elastic IP address.
      */
     public String getPublicIp() {
         return publicIp;
     }
     
     /**
-     * The elastic IP address that you are disassociating from the instance.
+     * [EC2-Classic] The Elastic IP address.
      *
-     * @param publicIp The elastic IP address that you are disassociating from the instance.
+     * @param publicIp [EC2-Classic] The Elastic IP address.
      */
     public void setPublicIp(String publicIp) {
         this.publicIp = publicIp;
     }
     
     /**
-     * The elastic IP address that you are disassociating from the instance.
+     * [EC2-Classic] The Elastic IP address.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param publicIp The elastic IP address that you are disassociating from the instance.
+     * @param publicIp [EC2-Classic] The Elastic IP address.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisassociateAddressRequest withPublicIp(String publicIp) {
         this.publicIp = publicIp;
         return this;
     }
-    
-    
+
     /**
-     * Association ID corresponding to the VPC elastic IP address you want to
-     * disassociate.
+     * [EC2-VPC] The association ID.
      *
-     * @return Association ID corresponding to the VPC elastic IP address you want to
-     *         disassociate.
+     * @return [EC2-VPC] The association ID.
      */
     public String getAssociationId() {
         return associationId;
     }
     
     /**
-     * Association ID corresponding to the VPC elastic IP address you want to
-     * disassociate.
+     * [EC2-VPC] The association ID.
      *
-     * @param associationId Association ID corresponding to the VPC elastic IP address you want to
-     *         disassociate.
+     * @param associationId [EC2-VPC] The association ID.
      */
     public void setAssociationId(String associationId) {
         this.associationId = associationId;
     }
     
     /**
-     * Association ID corresponding to the VPC elastic IP address you want to
-     * disassociate.
+     * [EC2-VPC] The association ID.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param associationId Association ID corresponding to the VPC elastic IP address you want to
-     *         disassociate.
+     * @param associationId [EC2-VPC] The association ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DisassociateAddressRequest withAssociationId(String associationId) {
         this.associationId = associationId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<DisassociateAddressRequest> getDryRunRequest() {
+        Request<DisassociateAddressRequest> request = new DisassociateAddressRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -143,8 +151,8 @@ public class DisassociateAddressRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
+        sb.append("{");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
         if (getAssociationId() != null) sb.append("AssociationId: " + getAssociationId() );
         sb.append("}");
         return sb.toString();

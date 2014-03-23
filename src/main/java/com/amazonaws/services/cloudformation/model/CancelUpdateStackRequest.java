@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudformation.AmazonCloudFormation#cancelUpdateStack(CancelUpdateStackRequest) CancelUpdateStack operation}.
  * <p>
- * Cancels an update on the specified stack. If the call completes successfully, the stack will roll back the update and revert to the previous stack
- * configuration.
+ * Cancels an update on the specified stack. If the call completes
+ * successfully, the stack will roll back the update and revert to the
+ * previous stack configuration.
  * </p>
  * <p>
- * <b>NOTE:</b>Only stacks that are in the UPDATE_IN_PROGRESS state can be canceled.
+ * <b>NOTE:</b>Only stacks that are in the UPDATE_IN_PROGRESS state can
+ * be canceled.
  * </p>
  *
  * @see com.amazonaws.services.cloudformation.AmazonCloudFormation#cancelUpdateStack(CancelUpdateStackRequest)
  */
-public class CancelUpdateStackRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CancelUpdateStackRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or the unique identifier associated with the stack.
@@ -61,14 +65,13 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest  implement
      * @param stackName The name or the unique identifier associated with the stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelUpdateStackRequest withStackName(String stackName) {
         this.stackName = stackName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -80,7 +83,7 @@ public class CancelUpdateStackRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getStackName() != null) sb.append("StackName: " + getStackName() );
         sb.append("}");
         return sb.toString();

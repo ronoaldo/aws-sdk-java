@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains a logical operation for comparing the value of a field with a specified value.
+ * Contains a logical operation for comparing the value of a field with a
+ * specified value.
  * </p>
  */
-public class Operator  implements Serializable  {
+public class Operator implements Serializable {
 
     /**
      * The logical operation to be performed: equal (<code>EQ</code>), equal
@@ -53,7 +55,7 @@ public class Operator  implements Serializable  {
     /**
      * The value that the actual field value will be compared with.
      */
-    private java.util.List<String> values;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> values;
 
     /**
      * The logical operation to be performed: equal (<code>EQ</code>), equal
@@ -214,7 +216,7 @@ public class Operator  implements Serializable  {
      *         name with the string "my".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see OperatorType
      */
@@ -222,8 +224,7 @@ public class Operator  implements Serializable  {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * The logical operation to be performed: equal (<code>EQ</code>), equal
      * reference (<code>REF_EQ</code>), less than or equal (<code>LE</code>),
@@ -329,7 +330,7 @@ public class Operator  implements Serializable  {
      *         name with the string "my".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see OperatorType
      */
@@ -337,16 +338,16 @@ public class Operator  implements Serializable  {
         this.type = type.toString();
         return this;
     }
-    
+
     /**
      * The value that the actual field value will be compared with.
      *
      * @return The value that the actual field value will be compared with.
      */
     public java.util.List<String> getValues() {
-        
         if (values == null) {
-            values = new java.util.ArrayList<String>();
+              values = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              values.setAutoConstruct(true);
         }
         return values;
     }
@@ -361,8 +362,7 @@ public class Operator  implements Serializable  {
             this.values = null;
             return;
         }
-
-        java.util.List<String> valuesCopy = new java.util.ArrayList<String>(values.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> valuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(values.size());
         valuesCopy.addAll(values);
         this.values = valuesCopy;
     }
@@ -375,7 +375,7 @@ public class Operator  implements Serializable  {
      * @param values The value that the actual field value will be compared with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Operator withValues(String... values) {
         if (getValues() == null) setValues(new java.util.ArrayList<String>(values.length));
@@ -393,20 +393,20 @@ public class Operator  implements Serializable  {
      * @param values The value that the actual field value will be compared with.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Operator withValues(java.util.Collection<String> values) {
         if (values == null) {
             this.values = null;
         } else {
-            java.util.List<String> valuesCopy = new java.util.ArrayList<String>(values.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> valuesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(values.size());
             valuesCopy.addAll(values);
             this.values = valuesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -418,8 +418,8 @@ public class Operator  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
+        sb.append("{");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
         if (getValues() != null) sb.append("Values: " + getValues() );
         sb.append("}");
         return sb.toString();

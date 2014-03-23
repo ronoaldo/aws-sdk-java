@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#updateServerCertificate(UpdateServerCertificateRequest) UpdateServerCertificate operation}.
@@ -22,18 +24,22 @@ import java.io.Serializable;
  * Updates the name and/or the path of the specified server certificate.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> You should understand the implications of changing a server certificate's path or name. For more information, see Managing Server
- * Certificates in Using AWS Identity and Access Management.
+ * <b>IMPORTANT:</b> You should understand the implications of changing a
+ * server certificate's path or name. For more information, see Managing
+ * Server Certificates in Using AWS Identity and Access Management.
  * </p>
  * <p>
- * <b>NOTE:</b>To change a server certificate name the requester must have appropriate permissions on both the source object and the target object. For
- * example, to change the name from ProductionCert to ProdCert, the entity making the request must have permission on ProductionCert and ProdCert, or
- * must have permission on all (*). For more information about permissions, see Permissions and Policies.
+ * <b>NOTE:</b>To change a server certificate name the requester must
+ * have appropriate permissions on both the source object and the target
+ * object. For example, to change the name from ProductionCert to
+ * ProdCert, the entity making the request must have permission on
+ * ProductionCert and ProdCert, or must have permission on all (*). For
+ * more information about permissions, see Permissions and Policies.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#updateServerCertificate(UpdateServerCertificateRequest)
  */
-public class UpdateServerCertificateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateServerCertificateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the server certificate that you want to update.
@@ -79,11 +85,9 @@ public class UpdateServerCertificateRequest extends AmazonWebServiceRequest  imp
      * you want to update.
      */
     public UpdateServerCertificateRequest(String serverCertificateName) {
-        this.serverCertificateName = serverCertificateName;
+        setServerCertificateName(serverCertificateName);
     }
 
-    
-    
     /**
      * The name of the server certificate that you want to update.
      * <p>
@@ -122,14 +126,13 @@ public class UpdateServerCertificateRequest extends AmazonWebServiceRequest  imp
      * @param serverCertificateName The name of the server certificate that you want to update.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateServerCertificateRequest withServerCertificateName(String serverCertificateName) {
         this.serverCertificateName = serverCertificateName;
         return this;
     }
-    
-    
+
     /**
      * The new path for the server certificate. Include this only if you are
      * updating the server certificate's path.
@@ -174,14 +177,13 @@ public class UpdateServerCertificateRequest extends AmazonWebServiceRequest  imp
      *         updating the server certificate's path.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateServerCertificateRequest withNewPath(String newPath) {
         this.newPath = newPath;
         return this;
     }
-    
-    
+
     /**
      * The new name for the server certificate. Include this only if you are
      * updating the server certificate's name.
@@ -226,14 +228,13 @@ public class UpdateServerCertificateRequest extends AmazonWebServiceRequest  imp
      *         updating the server certificate's name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateServerCertificateRequest withNewServerCertificateName(String newServerCertificateName) {
         this.newServerCertificateName = newServerCertificateName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -245,9 +246,9 @@ public class UpdateServerCertificateRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getServerCertificateName() != null) sb.append("ServerCertificateName: " + getServerCertificateName() + ",");    	
-        if (getNewPath() != null) sb.append("NewPath: " + getNewPath() + ",");    	
+        sb.append("{");
+        if (getServerCertificateName() != null) sb.append("ServerCertificateName: " + getServerCertificateName() + ",");
+        if (getNewPath() != null) sb.append("NewPath: " + getNewPath() + ",");
         if (getNewServerCertificateName() != null) sb.append("NewServerCertificateName: " + getNewServerCertificateName() );
         sb.append("}");
         return sb.toString();

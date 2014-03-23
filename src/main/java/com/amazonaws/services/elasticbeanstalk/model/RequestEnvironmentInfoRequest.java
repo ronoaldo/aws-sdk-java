@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#requestEnvironmentInfo(RequestEnvironmentInfoRequest) RequestEnvironmentInfo operation}.
  * <p>
- * Initiates a request to compile the specified type of information of the deployed environment.
+ * Initiates a request to compile the specified type of information of
+ * the deployed environment.
  * </p>
  * <p>
- * Setting the <code>InfoType</code> to <code>tail</code> compiles the last lines from the application server log files of every Amazon EC2 instance in
- * your environment. Use RetrieveEnvironmentInfo to access the compiled information.
+ * Setting the <code>InfoType</code> to <code>tail</code> compiles the
+ * last lines from the application server log files of every Amazon EC2
+ * instance in your environment. Use RetrieveEnvironmentInfo to access
+ * the compiled information.
  * </p>
  * <p>
  * Related Topics
@@ -36,7 +41,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#requestEnvironmentInfo(RequestEnvironmentInfoRequest)
  */
-public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the environment of the requested data. <p> If no such
@@ -83,11 +88,9 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
      * @param infoType The type of information to request.
      */
     public RequestEnvironmentInfoRequest(String infoType) {
-        this.infoType = infoType;
+        setInfoType(infoType);
     }
 
-    
-    
     /**
      * Constructs a new RequestEnvironmentInfoRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -98,7 +101,7 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
     public RequestEnvironmentInfoRequest(EnvironmentInfoType infoType) {
         this.infoType = infoType.toString();
     }
-    
+
     /**
      * The ID of the environment of the requested data. <p> If no such
      * environment is found, <code>RequestEnvironmentInfo</code> returns an
@@ -155,14 +158,13 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestEnvironmentInfoRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment of the requested data. <p> If no such
      * environment is found, <code>RequestEnvironmentInfo</code> returns an
@@ -228,14 +230,13 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestEnvironmentInfoRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * The type of information to request.
      * <p>
@@ -275,7 +276,7 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
      * @param infoType The type of information to request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentInfoType
      */
@@ -283,8 +284,7 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
         this.infoType = infoType;
         return this;
     }
-    
-    
+
     /**
      * The type of information to request.
      * <p>
@@ -310,7 +310,7 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
      * @param infoType The type of information to request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EnvironmentInfoType
      */
@@ -318,7 +318,7 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
         this.infoType = infoType.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -330,9 +330,9 @@ public class RequestEnvironmentInfoRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
+        sb.append("{");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
         if (getInfoType() != null) sb.append("InfoType: " + getInfoType() );
         sb.append("}");
         return sb.toString();

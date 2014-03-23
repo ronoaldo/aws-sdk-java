@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,50 +13,67 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#registerWorkflowType(RegisterWorkflowTypeRequest) RegisterWorkflowType operation}.
  * <p>
- * Registers a new <i>workflow type</i> and its configuration settings in the specified domain.
+ * Registers a new <i>workflow type</i> and its configuration settings
+ * in the specified domain.
  * </p>
  * <p>
- * The retention period for the workflow history is set by the RegisterDomain action.
+ * The retention period for the workflow history is set by the
+ * RegisterDomain action.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> If the type already exists, then a TypeAlreadyExists fault is returned. You cannot change the configuration settings of a workflow
- * type once it is registered and it must be registered as a new version.
+ * <b>IMPORTANT:</b> If the type already exists, then a TypeAlreadyExists
+ * fault is returned. You cannot change the configuration settings of a
+ * workflow type once it is registered and it must be registered as a new
+ * version.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys.
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>Constrain the following parameters by using a
+ * <code>Condition</code> element with the appropriate keys.
  * <ul>
- * <li> <code>defaultTaskList</code> : String constraint. The key is <code>swf:defaultTaskList.name</code> .</li>
- * <li> <code>name</code> : String constraint. The key is <code>swf:name</code> .</li>
- * <li> <code>version</code> : String constraint. The key is <code>swf:version</code> .</li>
+ * <li> <code>defaultTaskList</code> : String constraint. The key is
+ * <code>swf:defaultTaskList.name</code> .</li>
+ * <li> <code>name</code> : String constraint. The key is
+ * <code>swf:name</code> .</li>
+ * <li> <code>version</code> : String constraint. The key is
+ * <code>swf:version</code> .</li>
  * 
  * </ul>
  * </li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#registerWorkflowType(RegisterWorkflowTypeRequest)
  */
-public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain in which to register the workflow type.
@@ -197,14 +214,13 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      * @param domain The name of the domain in which to register the workflow type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterWorkflowTypeRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * The name of the workflow type. <p>The specified string must not start
      * or end with whitespace. It must not contain a <code>:</code> (colon),
@@ -264,14 +280,13 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      *         contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterWorkflowTypeRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * The version of the workflow type. <note> The workflow type consists of
      * the name and version, the combination of which must be unique within
@@ -349,14 +364,13 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      *         \u009f). Also, it must not contain the literal string "arn".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterWorkflowTypeRequest withVersion(String version) {
         this.version = version;
         return this;
     }
-    
-    
+
     /**
      * Textual description of the workflow type.
      * <p>
@@ -392,14 +406,13 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      * @param description Textual description of the workflow type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterWorkflowTypeRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default maximum duration of decision tasks for
      * this workflow type. This default can be overridden when starting a
@@ -471,14 +484,13 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      *         <code>NONE</code> can be used to specify unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterWorkflowTypeRequest withDefaultTaskStartToCloseTimeout(String defaultTaskStartToCloseTimeout) {
         this.defaultTaskStartToCloseTimeout = defaultTaskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default maximum duration for executions of this
      * workflow type. You can override this default when starting an
@@ -568,14 +580,13 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      *         this limit will always cause the workflow execution to time out.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterWorkflowTypeRequest withDefaultExecutionStartToCloseTimeout(String defaultExecutionStartToCloseTimeout) {
         this.defaultExecutionStartToCloseTimeout = defaultExecutionStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default task list to use for scheduling decision
      * tasks for executions of this workflow type. This default is used only
@@ -626,14 +637,13 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      *         <code>StartChildWorkflowExecution</code> <a>Decision</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RegisterWorkflowTypeRequest withDefaultTaskList(TaskList defaultTaskList) {
         this.defaultTaskList = defaultTaskList;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default policy to use for the child workflow
      * executions when a workflow execution of this type is terminated, by
@@ -751,7 +761,7 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      *         continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -759,8 +769,7 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
         this.defaultChildPolicy = defaultChildPolicy;
         return this;
     }
-    
-    
+
     /**
      * If set, specifies the default policy to use for the child workflow
      * executions when a workflow execution of this type is terminated, by
@@ -838,7 +847,7 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
      *         continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -846,7 +855,7 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
         this.defaultChildPolicy = defaultChildPolicy.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -858,14 +867,14 @@ public class RegisterWorkflowTypeRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getVersion() != null) sb.append("Version: " + getVersion() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getDefaultTaskStartToCloseTimeout() != null) sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");    	
-        if (getDefaultExecutionStartToCloseTimeout() != null) sb.append("DefaultExecutionStartToCloseTimeout: " + getDefaultExecutionStartToCloseTimeout() + ",");    	
-        if (getDefaultTaskList() != null) sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getVersion() != null) sb.append("Version: " + getVersion() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getDefaultTaskStartToCloseTimeout() != null) sb.append("DefaultTaskStartToCloseTimeout: " + getDefaultTaskStartToCloseTimeout() + ",");
+        if (getDefaultExecutionStartToCloseTimeout() != null) sb.append("DefaultExecutionStartToCloseTimeout: " + getDefaultExecutionStartToCloseTimeout() + ",");
+        if (getDefaultTaskList() != null) sb.append("DefaultTaskList: " + getDefaultTaskList() + ",");
         if (getDefaultChildPolicy() != null) sb.append("DefaultChildPolicy: " + getDefaultChildPolicy() );
         sb.append("}");
         return sb.toString();

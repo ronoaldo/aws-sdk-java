@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class AssociateAddressRequestMarshaller implements Marshaller<Request<Ass
     public Request<AssociateAddressRequest> marshall(AssociateAddressRequest associateAddressRequest) {
 
         if (associateAddressRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AssociateAddressRequest> request = new DefaultRequest<AssociateAddressRequest>(associateAddressRequest, "AmazonEC2");
         request.addParameter("Action", "AssociateAddress");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (associateAddressRequest.getInstanceId() != null) {
             request.addParameter("InstanceId", StringUtils.fromString(associateAddressRequest.getInstanceId()));
@@ -58,7 +58,6 @@ public class AssociateAddressRequestMarshaller implements Marshaller<Request<Ass
         if (associateAddressRequest.isAllowReassociation() != null) {
             request.addParameter("AllowReassociation", StringUtils.fromBoolean(associateAddressRequest.isAllowReassociation()));
         }
-
 
         return request;
     }

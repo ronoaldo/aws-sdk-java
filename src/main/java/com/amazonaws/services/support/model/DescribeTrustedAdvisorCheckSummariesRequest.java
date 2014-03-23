@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,66 +13,68 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.support.AWSSupport#describeTrustedAdvisorCheckSummaries(DescribeTrustedAdvisorCheckSummariesRequest) DescribeTrustedAdvisorCheckSummaries operation}.
  * <p>
- * This action enables you to get the latest summaries for Trusted Advisor checks that you specify in your request. You submit the list of Trusted
- * Advisor checks for which you want summaries. You obtain these <i>CheckIds</i> by submitting a DescribeTrustedAdvisorChecks request.
+ * Returns the summaries of the results of the Trusted Advisor checks
+ * that have the specified check IDs. Check IDs can be obtained by
+ * calling DescribeTrustedAdvisorChecks.
  * </p>
  * <p>
- * The response body contains an array of TrustedAdvisorCheckSummary objects.
+ * The response contains an array of TrustedAdvisorCheckSummary objects.
  * </p>
  *
  * @see com.amazonaws.services.support.AWSSupport#describeTrustedAdvisorCheckSummaries(DescribeTrustedAdvisorCheckSummariesRequest)
  */
-public class DescribeTrustedAdvisorCheckSummariesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeTrustedAdvisorCheckSummariesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * Unique identifier for a Trusted Advisor check.
+     * The IDs of the Trusted Advisor checks.
      */
-    private java.util.List<String> checkIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> checkIds;
 
     /**
-     * Unique identifier for a Trusted Advisor check.
+     * The IDs of the Trusted Advisor checks.
      *
-     * @return Unique identifier for a Trusted Advisor check.
+     * @return The IDs of the Trusted Advisor checks.
      */
     public java.util.List<String> getCheckIds() {
-        
         if (checkIds == null) {
-            checkIds = new java.util.ArrayList<String>();
+              checkIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              checkIds.setAutoConstruct(true);
         }
         return checkIds;
     }
     
     /**
-     * Unique identifier for a Trusted Advisor check.
+     * The IDs of the Trusted Advisor checks.
      *
-     * @param checkIds Unique identifier for a Trusted Advisor check.
+     * @param checkIds The IDs of the Trusted Advisor checks.
      */
     public void setCheckIds(java.util.Collection<String> checkIds) {
         if (checkIds == null) {
             this.checkIds = null;
             return;
         }
-
-        java.util.List<String> checkIdsCopy = new java.util.ArrayList<String>(checkIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> checkIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(checkIds.size());
         checkIdsCopy.addAll(checkIds);
         this.checkIds = checkIdsCopy;
     }
     
     /**
-     * Unique identifier for a Trusted Advisor check.
+     * The IDs of the Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param checkIds Unique identifier for a Trusted Advisor check.
+     * @param checkIds The IDs of the Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckSummariesRequest withCheckIds(String... checkIds) {
         if (getCheckIds() == null) setCheckIds(new java.util.ArrayList<String>(checkIds.length));
@@ -83,27 +85,27 @@ public class DescribeTrustedAdvisorCheckSummariesRequest extends AmazonWebServic
     }
     
     /**
-     * Unique identifier for a Trusted Advisor check.
+     * The IDs of the Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param checkIds Unique identifier for a Trusted Advisor check.
+     * @param checkIds The IDs of the Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorCheckSummariesRequest withCheckIds(java.util.Collection<String> checkIds) {
         if (checkIds == null) {
             this.checkIds = null;
         } else {
-            java.util.List<String> checkIdsCopy = new java.util.ArrayList<String>(checkIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> checkIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(checkIds.size());
             checkIdsCopy.addAll(checkIds);
             this.checkIds = checkIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -115,7 +117,7 @@ public class DescribeTrustedAdvisorCheckSummariesRequest extends AmazonWebServic
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCheckIds() != null) sb.append("CheckIds: " + getCheckIds() );
         sb.append("}");
         return sb.toString();

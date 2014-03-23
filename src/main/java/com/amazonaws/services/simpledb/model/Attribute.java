@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,13 +13,14 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpledb.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * </p>
  */
-public class Attribute  implements Serializable  {
+public class Attribute implements Serializable {
 
     /**
      * The name of the attribute.
@@ -27,7 +28,7 @@ public class Attribute  implements Serializable  {
     private String name;
 
     /**
-     * 
+     * <p/>
      */
     private String alternateNameEncoding;
 
@@ -37,7 +38,7 @@ public class Attribute  implements Serializable  {
     private String value;
 
     /**
-     * 
+     * <p/>
      */
     private String alternateValueEncoding;
 
@@ -56,12 +57,10 @@ public class Attribute  implements Serializable  {
      * @param value The value of the attribute.
      */
     public Attribute(String name, String value) {
-        this.name = name;
-        this.value = value;
+        setName(name);
+        setValue(value);
     }
 
-    
-    
     /**
      * The name of the attribute.
      *
@@ -88,48 +87,46 @@ public class Attribute  implements Serializable  {
      * @param name The name of the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
-     * 
+     * <p/>
      *
-     * @return 
+     * @return <p/>
      */
     public String getAlternateNameEncoding() {
         return alternateNameEncoding;
     }
     
     /**
-     * 
+     * <p/>
      *
-     * @param alternateNameEncoding 
+     * @param alternateNameEncoding <p/>
      */
     public void setAlternateNameEncoding(String alternateNameEncoding) {
         this.alternateNameEncoding = alternateNameEncoding;
     }
     
     /**
-     * 
+     * <p/>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param alternateNameEncoding 
+     * @param alternateNameEncoding <p/>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withAlternateNameEncoding(String alternateNameEncoding) {
         this.alternateNameEncoding = alternateNameEncoding;
         return this;
     }
-    
-    
+
     /**
      * The value of the attribute.
      *
@@ -156,48 +153,46 @@ public class Attribute  implements Serializable  {
      * @param value The value of the attribute.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withValue(String value) {
         this.value = value;
         return this;
     }
-    
-    
+
     /**
-     * 
+     * <p/>
      *
-     * @return 
+     * @return <p/>
      */
     public String getAlternateValueEncoding() {
         return alternateValueEncoding;
     }
     
     /**
-     * 
+     * <p/>
      *
-     * @param alternateValueEncoding 
+     * @param alternateValueEncoding <p/>
      */
     public void setAlternateValueEncoding(String alternateValueEncoding) {
         this.alternateValueEncoding = alternateValueEncoding;
     }
     
     /**
-     * 
+     * <p/>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param alternateValueEncoding 
+     * @param alternateValueEncoding <p/>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Attribute withAlternateValueEncoding(String alternateValueEncoding) {
         this.alternateValueEncoding = alternateValueEncoding;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -209,10 +204,10 @@ public class Attribute  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getAlternateNameEncoding() != null) sb.append("AlternateNameEncoding: " + getAlternateNameEncoding() + ",");    	
-        if (getValue() != null) sb.append("Value: " + getValue() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getAlternateNameEncoding() != null) sb.append("AlternateNameEncoding: " + getAlternateNameEncoding() + ",");
+        if (getValue() != null) sb.append("Value: " + getValue() + ",");
         if (getAlternateValueEncoding() != null) sb.append("AlternateValueEncoding: " + getAlternateValueEncoding() );
         sb.append("}");
         return sb.toString();

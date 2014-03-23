@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#describeGatewayInformation(DescribeGatewayInformationRequest) DescribeGatewayInformation operation}.
  * <p>
- * This operation returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is
- * running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
+ * This operation returns metadata about a gateway such as its name,
+ * network interfaces, configured time zone, and the state (whether the
+ * gateway is running or not). To specify which gateway to describe, use
+ * the Amazon Resource Name (ARN) of the gateway in your request.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#describeGatewayInformation(DescribeGatewayInformationRequest)
  */
-public class DescribeGatewayInformationRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeGatewayInformationRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -84,14 +88,13 @@ public class DescribeGatewayInformationRequest extends AmazonWebServiceRequest  
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeGatewayInformationRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,7 +106,7 @@ public class DescribeGatewayInformationRequest extends AmazonWebServiceRequest  
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeAutoScalingInstancesRequestMarshaller implements Marshaller
     public Request<DescribeAutoScalingInstancesRequest> marshall(DescribeAutoScalingInstancesRequest describeAutoScalingInstancesRequest) {
 
         if (describeAutoScalingInstancesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeAutoScalingInstancesRequest> request = new DefaultRequest<DescribeAutoScalingInstancesRequest>(describeAutoScalingInstancesRequest, "AmazonAutoScaling");
         request.addParameter("Action", "DescribeAutoScalingInstances");
         request.addParameter("Version", "2011-01-01");
-
 
         java.util.List<String> instanceIdsList = describeAutoScalingInstancesRequest.getInstanceIds();
         int instanceIdsListIndex = 1;
@@ -57,7 +56,6 @@ public class DescribeAutoScalingInstancesRequestMarshaller implements Marshaller
         if (describeAutoScalingInstancesRequest.getNextToken() != null) {
             request.addParameter("NextToken", StringUtils.fromString(describeAutoScalingInstancesRequest.getNextToken()));
         }
-
 
         return request;
     }

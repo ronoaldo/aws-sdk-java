@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the PollForTask action.
  * </p>
  */
-public class PollForTaskResult  implements Serializable  {
+public class PollForTaskResult implements Serializable {
 
     /**
      * An instance of <a>PollForTaskResult</a>, which contains an instance of
@@ -95,14 +96,13 @@ public class PollForTaskResult  implements Serializable  {
      *         <a>SetTaskStatus</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PollForTaskResult withTaskObject(TaskObject taskObject) {
         this.taskObject = taskObject;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -114,7 +114,7 @@ public class PollForTaskResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTaskObject() != null) sb.append("TaskObject: " + getTaskObject() );
         sb.append("}");
         return sb.toString();

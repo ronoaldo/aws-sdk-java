@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an IP range used in a security group.
  * </p>
  */
-public class IPRange  implements Serializable  {
+public class IPRange implements Serializable {
 
     /**
      * The status of the IP range, for example, "authorized".
@@ -58,14 +59,13 @@ public class IPRange  implements Serializable  {
      * @param status The status of the IP range, for example, "authorized".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IPRange withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The IP range in Classless Inter-Domain Routing (CIDR) notation.
      *
@@ -92,14 +92,13 @@ public class IPRange  implements Serializable  {
      * @param cIDRIP The IP range in Classless Inter-Domain Routing (CIDR) notation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IPRange withCIDRIP(String cIDRIP) {
         this.cIDRIP = cIDRIP;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class IPRange  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getCIDRIP() != null) sb.append("CIDRIP: " + getCIDRIP() );
         sb.append("}");
         return sb.toString();

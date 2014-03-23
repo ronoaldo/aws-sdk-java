@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * A distribution.
  * </p>
  */
-public class Distribution  implements Serializable  {
+public class Distribution implements Serializable {
 
     /**
      * The identifier for the distribution. For example: EDFDVBD632BHDS5.
@@ -90,13 +91,11 @@ public class Distribution  implements Serializable  {
      * For example: d604721fxaaqy9.cloudfront.net.
      */
     public Distribution(String id, String status, String domainName) {
-        this.id = id;
-        this.status = status;
-        this.domainName = domainName;
+        setId(id);
+        setStatus(status);
+        setDomainName(domainName);
     }
 
-    
-    
     /**
      * The identifier for the distribution. For example: EDFDVBD632BHDS5.
      *
@@ -123,14 +122,13 @@ public class Distribution  implements Serializable  {
      * @param id The identifier for the distribution. For example: EDFDVBD632BHDS5.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Distribution withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * This response element indicates the current status of the
      * distribution. When the status is Deployed, the distribution's
@@ -175,14 +173,13 @@ public class Distribution  implements Serializable  {
      *         system.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Distribution withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The date and time the distribution was last modified.
      *
@@ -209,14 +206,13 @@ public class Distribution  implements Serializable  {
      * @param lastModifiedTime The date and time the distribution was last modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Distribution withLastModifiedTime(java.util.Date lastModifiedTime) {
         this.lastModifiedTime = lastModifiedTime;
         return this;
     }
-    
-    
+
     /**
      * The number of invalidation batches currently in progress.
      *
@@ -243,14 +239,13 @@ public class Distribution  implements Serializable  {
      * @param inProgressInvalidationBatches The number of invalidation batches currently in progress.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Distribution withInProgressInvalidationBatches(Integer inProgressInvalidationBatches) {
         this.inProgressInvalidationBatches = inProgressInvalidationBatches;
         return this;
     }
-    
-    
+
     /**
      * The domain name corresponding to the distribution. For example:
      * d604721fxaaqy9.cloudfront.net.
@@ -283,14 +278,13 @@ public class Distribution  implements Serializable  {
      *         d604721fxaaqy9.cloudfront.net.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Distribution withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * CloudFront automatically adds this element to the response only if
      * you've set up the distribution to serve private content with signed
@@ -365,14 +359,13 @@ public class Distribution  implements Serializable  {
      *         working signed URLs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Distribution withActiveTrustedSigners(ActiveTrustedSigners activeTrustedSigners) {
         this.activeTrustedSigners = activeTrustedSigners;
         return this;
     }
-    
-    
+
     /**
      * The current configuration information for the distribution.
      *
@@ -399,14 +392,13 @@ public class Distribution  implements Serializable  {
      * @param distributionConfig The current configuration information for the distribution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Distribution withDistributionConfig(DistributionConfig distributionConfig) {
         this.distributionConfig = distributionConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -418,13 +410,13 @@ public class Distribution  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getLastModifiedTime() != null) sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");    	
-        if (getInProgressInvalidationBatches() != null) sb.append("InProgressInvalidationBatches: " + getInProgressInvalidationBatches() + ",");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
-        if (getActiveTrustedSigners() != null) sb.append("ActiveTrustedSigners: " + getActiveTrustedSigners() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getLastModifiedTime() != null) sb.append("LastModifiedTime: " + getLastModifiedTime() + ",");
+        if (getInProgressInvalidationBatches() != null) sb.append("InProgressInvalidationBatches: " + getInProgressInvalidationBatches() + ",");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
+        if (getActiveTrustedSigners() != null) sb.append("ActiveTrustedSigners: " + getActiveTrustedSigners() + ",");
         if (getDistributionConfig() != null) sb.append("DistributionConfig: " + getDistributionConfig() );
         sb.append("}");
         return sb.toString();

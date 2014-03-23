@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents sending statistics data. Each <code>SendDataPoint</code> contains statistics for a 15-minute period of sending activity.
+ * Represents sending statistics data. Each <code>SendDataPoint</code>
+ * contains statistics for a 15-minute period of sending activity.
  * </p>
  */
-public class SendDataPoint  implements Serializable  {
+public class SendDataPoint implements Serializable {
 
     /**
      * Time of the data point.
@@ -73,14 +75,13 @@ public class SendDataPoint  implements Serializable  {
      * @param timestamp Time of the data point.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendDataPoint withTimestamp(java.util.Date timestamp) {
         this.timestamp = timestamp;
         return this;
     }
-    
-    
+
     /**
      * Number of emails that have been enqueued for sending.
      *
@@ -107,14 +108,13 @@ public class SendDataPoint  implements Serializable  {
      * @param deliveryAttempts Number of emails that have been enqueued for sending.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendDataPoint withDeliveryAttempts(Long deliveryAttempts) {
         this.deliveryAttempts = deliveryAttempts;
         return this;
     }
-    
-    
+
     /**
      * Number of emails that have bounced.
      *
@@ -141,14 +141,13 @@ public class SendDataPoint  implements Serializable  {
      * @param bounces Number of emails that have bounced.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendDataPoint withBounces(Long bounces) {
         this.bounces = bounces;
         return this;
     }
-    
-    
+
     /**
      * Number of unwanted emails that were rejected by recipients.
      *
@@ -175,14 +174,13 @@ public class SendDataPoint  implements Serializable  {
      * @param complaints Number of unwanted emails that were rejected by recipients.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendDataPoint withComplaints(Long complaints) {
         this.complaints = complaints;
         return this;
     }
-    
-    
+
     /**
      * Number of emails rejected by Amazon SES.
      *
@@ -209,14 +207,13 @@ public class SendDataPoint  implements Serializable  {
      * @param rejects Number of emails rejected by Amazon SES.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendDataPoint withRejects(Long rejects) {
         this.rejects = rejects;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -228,11 +225,11 @@ public class SendDataPoint  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");    	
-        if (getDeliveryAttempts() != null) sb.append("DeliveryAttempts: " + getDeliveryAttempts() + ",");    	
-        if (getBounces() != null) sb.append("Bounces: " + getBounces() + ",");    	
-        if (getComplaints() != null) sb.append("Complaints: " + getComplaints() + ",");    	
+        sb.append("{");
+        if (getTimestamp() != null) sb.append("Timestamp: " + getTimestamp() + ",");
+        if (getDeliveryAttempts() != null) sb.append("DeliveryAttempts: " + getDeliveryAttempts() + ",");
+        if (getBounces() != null) sb.append("Bounces: " + getBounces() + ",");
+        if (getComplaints() != null) sb.append("Complaints: " + getComplaints() + ",");
         if (getRejects() != null) sb.append("Rejects: " + getRejects() );
         sb.append("}");
         return sb.toString();

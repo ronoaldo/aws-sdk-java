@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudwatch.AmazonCloudWatch#getMetricStatistics(GetMetricStatisticsRequest) GetMetricStatistics operation}.
@@ -22,21 +24,30 @@ import java.io.Serializable;
  * Gets statistics for the specified metric.
  * </p>
  * <p>
- * <b>NOTE:</b> The maximum number of data points returned from a single GetMetricStatistics request is 1,440. If a request is made that generates more
- * than 1,440 data points, Amazon CloudWatch returns an error. In such a case, alter the request by narrowing the specified time range or increasing the
- * specified period. Alternatively, make multiple requests across adjacent time ranges.
+ * <b>NOTE:</b> The maximum number of data points returned from a single
+ * GetMetricStatistics request is 1,440. If a request is made that
+ * generates more than 1,440 data points, Amazon CloudWatch returns an
+ * error. In such a case, alter the request by narrowing the specified
+ * time range or increasing the specified period. Alternatively, make
+ * multiple requests across adjacent time ranges.
  * </p>
  * <p>
- * Amazon CloudWatch aggregates data points based on the length of the <code>period</code> that you specify. For example, if you request statistics with
- * a one-minute granularity, Amazon CloudWatch aggregates data points with time stamps that fall within the same one-minute period. In such a case, the
- * data points queried can greatly outnumber the data points returned.
+ * Amazon CloudWatch aggregates data points based on the length of the
+ * <code>period</code> that you specify. For example, if you request
+ * statistics with a one-minute granularity, Amazon CloudWatch aggregates
+ * data points with time stamps that fall within the same one-minute
+ * period. In such a case, the data points queried can greatly outnumber
+ * the data points returned.
  * </p>
  * <p>
- * <b>NOTE:</b> The maximum number of data points that can be queried is 50,850; whereas the maximum number of data points returned is 1,440.
+ * <b>NOTE:</b> The maximum number of data points that can be queried is
+ * 50,850; whereas the maximum number of data points returned is 1,440.
  * </p>
  * <p>
- * The following examples show various statistics allowed by the data point query maximum of 50,850 when you call <code>GetMetricStatistics</code> on
- * Amazon EC2 instances with detailed (one-minute) monitoring enabled:
+ * The following examples show various statistics allowed by the data
+ * point query maximum of 50,850 when you call
+ * <code>GetMetricStatistics</code> on Amazon EC2 instances with detailed
+ * (one-minute) monitoring enabled:
  * </p>
  * 
  * <ul>
@@ -48,7 +59,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudwatch.AmazonCloudWatch#getMetricStatistics(GetMetricStatisticsRequest)
  */
-public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetMetricStatisticsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The namespace of the metric.
@@ -73,7 +84,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 10<br/>
      */
-    private java.util.List<Dimension> dimensions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensions;
 
     /**
      * The time stamp to use for determining the first datapoint to return.
@@ -109,7 +120,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - 5<br/>
      */
-    private java.util.List<String> statistics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> statistics;
 
     /**
      * The unit for the metric.
@@ -157,14 +168,13 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param namespace The namespace of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withNamespace(String namespace) {
         this.namespace = namespace;
         return this;
     }
-    
-    
+
     /**
      * The name of the metric.
      * <p>
@@ -200,14 +210,13 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param metricName The name of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withMetricName(String metricName) {
         this.metricName = metricName;
         return this;
     }
-    
-    
+
     /**
      * A list of dimensions describing qualities of the metric.
      * <p>
@@ -217,9 +226,9 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @return A list of dimensions describing qualities of the metric.
      */
     public java.util.List<Dimension> getDimensions() {
-        
         if (dimensions == null) {
-            dimensions = new java.util.ArrayList<Dimension>();
+              dimensions = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>();
+              dimensions.setAutoConstruct(true);
         }
         return dimensions;
     }
@@ -237,8 +246,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
             this.dimensions = null;
             return;
         }
-
-        java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
         dimensionsCopy.addAll(dimensions);
         this.dimensions = dimensionsCopy;
     }
@@ -254,7 +262,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param dimensions A list of dimensions describing qualities of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withDimensions(Dimension... dimensions) {
         if (getDimensions() == null) setDimensions(new java.util.ArrayList<Dimension>(dimensions.length));
@@ -275,20 +283,20 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param dimensions A list of dimensions describing qualities of the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withDimensions(java.util.Collection<Dimension> dimensions) {
         if (dimensions == null) {
             this.dimensions = null;
         } else {
-            java.util.List<Dimension> dimensionsCopy = new java.util.ArrayList<Dimension>(dimensions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Dimension> dimensionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Dimension>(dimensions.size());
             dimensionsCopy.addAll(dimensions);
             this.dimensions = dimensionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The time stamp to use for determining the first datapoint to return.
      * The value specified is inclusive; results include datapoints with the
@@ -351,14 +359,13 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         older than two weeks. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withStartTime(java.util.Date startTime) {
         this.startTime = startTime;
         return this;
     }
-    
-    
+
     /**
      * The time stamp to use for determining the last datapoint to return.
      * The value specified is exclusive; results will include datapoints up
@@ -397,14 +404,13 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         to the time stamp specified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withEndTime(java.util.Date endTime) {
         this.endTime = endTime;
         return this;
     }
-    
-    
+
     /**
      * The granularity, in seconds, of the returned datapoints.
      * <code>Period</code> must be at least 60 seconds and must be a multiple
@@ -452,14 +458,13 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      *         of 60. The default value is 60.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withPeriod(Integer period) {
         this.period = period;
         return this;
     }
-    
-    
+
     /**
      * The metric statistics to return.
      * <p>
@@ -469,9 +474,9 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @return The metric statistics to return.
      */
     public java.util.List<String> getStatistics() {
-        
         if (statistics == null) {
-            statistics = new java.util.ArrayList<String>();
+              statistics = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              statistics.setAutoConstruct(true);
         }
         return statistics;
     }
@@ -489,8 +494,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
             this.statistics = null;
             return;
         }
-
-        java.util.List<String> statisticsCopy = new java.util.ArrayList<String>(statistics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> statisticsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(statistics.size());
         statisticsCopy.addAll(statistics);
         this.statistics = statisticsCopy;
     }
@@ -506,7 +510,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param statistics The metric statistics to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withStatistics(String... statistics) {
         if (getStatistics() == null) setStatistics(new java.util.ArrayList<String>(statistics.length));
@@ -527,20 +531,46 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param statistics The metric statistics to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetMetricStatisticsRequest withStatistics(java.util.Collection<String> statistics) {
         if (statistics == null) {
             this.statistics = null;
         } else {
-            java.util.List<String> statisticsCopy = new java.util.ArrayList<String>(statistics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> statisticsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(statistics.size());
             statisticsCopy.addAll(statistics);
             this.statistics = statisticsCopy;
         }
 
         return this;
     }
-    
+
+    /**
+     * The metric statistics to return.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Length: </b>1 - 5<br/>
+     *
+     * @param statistics The metric statistics to return.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public GetMetricStatisticsRequest withStatistics(Statistic... statistics) {
+        java.util.ArrayList<String> statisticsCopy = new java.util.ArrayList<String>(statistics.length);
+        for (Statistic member : statistics) {
+            statisticsCopy.add(member.toString());
+        }
+        if (getStatistics() == null) {
+            setStatistics(statisticsCopy);
+        } else {
+            getStatistics().addAll(statisticsCopy);
+        }
+        return this;
+    }
+
     /**
      * The unit for the metric.
      * <p>
@@ -580,7 +610,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param unit The unit for the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -588,8 +618,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
         this.unit = unit;
         return this;
     }
-    
-    
+
     /**
      * The unit for the metric.
      * <p>
@@ -615,7 +644,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
      * @param unit The unit for the metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see StandardUnit
      */
@@ -623,7 +652,7 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
         this.unit = unit.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -635,14 +664,14 @@ public class GetMetricStatisticsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");    	
-        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");    	
-        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");    	
-        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");    	
-        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");    	
-        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ",");    	
-        if (getStatistics() != null) sb.append("Statistics: " + getStatistics() + ",");    	
+        sb.append("{");
+        if (getNamespace() != null) sb.append("Namespace: " + getNamespace() + ",");
+        if (getMetricName() != null) sb.append("MetricName: " + getMetricName() + ",");
+        if (getDimensions() != null) sb.append("Dimensions: " + getDimensions() + ",");
+        if (getStartTime() != null) sb.append("StartTime: " + getStartTime() + ",");
+        if (getEndTime() != null) sb.append("EndTime: " + getEndTime() + ",");
+        if (getPeriod() != null) sb.append("Period: " + getPeriod() + ",");
+        if (getStatistics() != null) sb.append("Statistics: " + getStatistics() + ",");
         if (getUnit() != null) sb.append("Unit: " + getUnit() );
         sb.append("}");
         return sb.toString();

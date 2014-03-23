@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the output from the DescribeClusterSecurityGroups action.
  * </p>
  */
-public class DescribeClusterSecurityGroupsResult  implements Serializable  {
+public class DescribeClusterSecurityGroupsResult implements Serializable {
 
     /**
      * A marker at which to continue listing cluster security groups in a new
@@ -32,7 +33,7 @@ public class DescribeClusterSecurityGroupsResult  implements Serializable  {
     /**
      * A list of <a>ClusterSecurityGroup</a> instances.
      */
-    private java.util.List<ClusterSecurityGroup> clusterSecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroup> clusterSecurityGroups;
 
     /**
      * A marker at which to continue listing cluster security groups in a new
@@ -72,23 +73,22 @@ public class DescribeClusterSecurityGroupsResult  implements Serializable  {
      *         groups to list than could be returned in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSecurityGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>ClusterSecurityGroup</a> instances.
      *
      * @return A list of <a>ClusterSecurityGroup</a> instances.
      */
     public java.util.List<ClusterSecurityGroup> getClusterSecurityGroups() {
-        
         if (clusterSecurityGroups == null) {
-            clusterSecurityGroups = new java.util.ArrayList<ClusterSecurityGroup>();
+              clusterSecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroup>();
+              clusterSecurityGroups.setAutoConstruct(true);
         }
         return clusterSecurityGroups;
     }
@@ -103,8 +103,7 @@ public class DescribeClusterSecurityGroupsResult  implements Serializable  {
             this.clusterSecurityGroups = null;
             return;
         }
-
-        java.util.List<ClusterSecurityGroup> clusterSecurityGroupsCopy = new java.util.ArrayList<ClusterSecurityGroup>(clusterSecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroup> clusterSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroup>(clusterSecurityGroups.size());
         clusterSecurityGroupsCopy.addAll(clusterSecurityGroups);
         this.clusterSecurityGroups = clusterSecurityGroupsCopy;
     }
@@ -117,7 +116,7 @@ public class DescribeClusterSecurityGroupsResult  implements Serializable  {
      * @param clusterSecurityGroups A list of <a>ClusterSecurityGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSecurityGroupsResult withClusterSecurityGroups(ClusterSecurityGroup... clusterSecurityGroups) {
         if (getClusterSecurityGroups() == null) setClusterSecurityGroups(new java.util.ArrayList<ClusterSecurityGroup>(clusterSecurityGroups.length));
@@ -135,20 +134,20 @@ public class DescribeClusterSecurityGroupsResult  implements Serializable  {
      * @param clusterSecurityGroups A list of <a>ClusterSecurityGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeClusterSecurityGroupsResult withClusterSecurityGroups(java.util.Collection<ClusterSecurityGroup> clusterSecurityGroups) {
         if (clusterSecurityGroups == null) {
             this.clusterSecurityGroups = null;
         } else {
-            java.util.List<ClusterSecurityGroup> clusterSecurityGroupsCopy = new java.util.ArrayList<ClusterSecurityGroup>(clusterSecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroup> clusterSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ClusterSecurityGroup>(clusterSecurityGroups.size());
             clusterSecurityGroupsCopy.addAll(clusterSecurityGroups);
             this.clusterSecurityGroups = clusterSecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +159,8 @@ public class DescribeClusterSecurityGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getClusterSecurityGroups() != null) sb.append("ClusterSecurityGroups: " + getClusterSecurityGroups() );
         sb.append("}");
         return sb.toString();

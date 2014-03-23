@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes an event.
  * </p>
  */
-public class EventDescription  implements Serializable  {
+public class EventDescription implements Serializable {
 
     /**
      * The date when the event occurred.
@@ -110,14 +111,13 @@ public class EventDescription  implements Serializable  {
      * @param eventDate The date when the event occurred.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventDescription withEventDate(java.util.Date eventDate) {
         this.eventDate = eventDate;
         return this;
     }
-    
-    
+
     /**
      * The event message.
      *
@@ -144,14 +144,13 @@ public class EventDescription  implements Serializable  {
      * @param message The event message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventDescription withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * The application associated with the event.
      * <p>
@@ -187,14 +186,13 @@ public class EventDescription  implements Serializable  {
      * @param applicationName The application associated with the event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventDescription withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The release label for the application version associated with this
      * event.
@@ -236,14 +234,13 @@ public class EventDescription  implements Serializable  {
      *         event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventDescription withVersionLabel(String versionLabel) {
         this.versionLabel = versionLabel;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration associated with this event.
      * <p>
@@ -279,14 +276,13 @@ public class EventDescription  implements Serializable  {
      * @param templateName The name of the configuration associated with this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventDescription withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment associated with this event.
      * <p>
@@ -322,14 +318,13 @@ public class EventDescription  implements Serializable  {
      * @param environmentName The name of the environment associated with this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventDescription withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * The web service request ID for the activity of this event.
      *
@@ -356,14 +351,13 @@ public class EventDescription  implements Serializable  {
      * @param requestId The web service request ID for the activity of this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EventDescription withRequestId(String requestId) {
         this.requestId = requestId;
         return this;
     }
-    
-    
+
     /**
      * The severity level of this event.
      * <p>
@@ -403,7 +397,7 @@ public class EventDescription  implements Serializable  {
      * @param severity The severity level of this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EventSeverity
      */
@@ -411,8 +405,7 @@ public class EventDescription  implements Serializable  {
         this.severity = severity;
         return this;
     }
-    
-    
+
     /**
      * The severity level of this event.
      * <p>
@@ -438,7 +431,7 @@ public class EventDescription  implements Serializable  {
      * @param severity The severity level of this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see EventSeverity
      */
@@ -446,7 +439,7 @@ public class EventDescription  implements Serializable  {
         this.severity = severity.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -458,14 +451,14 @@ public class EventDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEventDate() != null) sb.append("EventDate: " + getEventDate() + ",");    	
-        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
-        if (getRequestId() != null) sb.append("RequestId: " + getRequestId() + ",");    	
+        sb.append("{");
+        if (getEventDate() != null) sb.append("EventDate: " + getEventDate() + ",");
+        if (getMessage() != null) sb.append("Message: " + getMessage() + ",");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+        if (getRequestId() != null) sb.append("RequestId: " + getRequestId() + ",");
         if (getSeverity() != null) sb.append("Severity: " + getSeverity() );
         sb.append("}");
         return sb.toString();

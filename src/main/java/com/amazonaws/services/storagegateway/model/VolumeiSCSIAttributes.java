@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Lists iSCSI information about a volume.
  * </p>
  */
-public class VolumeiSCSIAttributes  implements Serializable  {
+public class VolumeiSCSIAttributes implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the volume target.
@@ -91,14 +92,13 @@ public class VolumeiSCSIAttributes  implements Serializable  {
      * @param targetARN The Amazon Resource Name (ARN) of the volume target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeiSCSIAttributes withTargetARN(String targetARN) {
         this.targetARN = targetARN;
         return this;
     }
-    
-    
+
     /**
      * The network interface identifier.
      * <p>
@@ -134,14 +134,13 @@ public class VolumeiSCSIAttributes  implements Serializable  {
      * @param networkInterfaceId The network interface identifier.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeiSCSIAttributes withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
         return this;
     }
-    
-    
+
     /**
      * The port used to communicate with iSCSI targets.
      *
@@ -168,14 +167,13 @@ public class VolumeiSCSIAttributes  implements Serializable  {
      * @param networkInterfacePort The port used to communicate with iSCSI targets.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeiSCSIAttributes withNetworkInterfacePort(Integer networkInterfacePort) {
         this.networkInterfacePort = networkInterfacePort;
         return this;
     }
-    
-    
+
     /**
      * The logical disk number.
      * <p>
@@ -211,14 +209,13 @@ public class VolumeiSCSIAttributes  implements Serializable  {
      * @param lunNumber The logical disk number.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeiSCSIAttributes withLunNumber(Integer lunNumber) {
         this.lunNumber = lunNumber;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether mutual CHAP is enabled for the iSCSI target.
      *
@@ -245,14 +242,13 @@ public class VolumeiSCSIAttributes  implements Serializable  {
      * @param chapEnabled Indicates whether mutual CHAP is enabled for the iSCSI target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public VolumeiSCSIAttributes withChapEnabled(Boolean chapEnabled) {
         this.chapEnabled = chapEnabled;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether mutual CHAP is enabled for the iSCSI target.
      *
@@ -261,7 +257,7 @@ public class VolumeiSCSIAttributes  implements Serializable  {
     public Boolean getChapEnabled() {
         return chapEnabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -273,11 +269,11 @@ public class VolumeiSCSIAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
-        if (getNetworkInterfacePort() != null) sb.append("NetworkInterfacePort: " + getNetworkInterfacePort() + ",");    	
-        if (getLunNumber() != null) sb.append("LunNumber: " + getLunNumber() + ",");    	
+        sb.append("{");
+        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+        if (getNetworkInterfacePort() != null) sb.append("NetworkInterfacePort: " + getNetworkInterfacePort() + ",");
+        if (getLunNumber() != null) sb.append("LunNumber: " + getLunNumber() + ",");
         if (isChapEnabled() != null) sb.append("ChapEnabled: " + isChapEnabled() );
         sb.append("}");
         return sb.toString();

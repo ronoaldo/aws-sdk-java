@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import com.amazonaws.services.ec2.model.DescribeSpotInstanceRequestsResult;
 import com.amazonaws.services.ec2.model.GroupIdentifier;
 import com.amazonaws.services.ec2.model.ImportKeyPairRequest;
 import com.amazonaws.services.ec2.model.LaunchSpecification;
+import com.amazonaws.services.ec2.model.ModifyReservedInstancesRequest;
 import com.amazonaws.services.ec2.model.RequestSpotInstancesRequest;
 import com.amazonaws.services.ec2.model.RequestSpotInstancesResult;
 import com.amazonaws.services.ec2.model.Reservation;
@@ -51,10 +52,23 @@ public class EC2RequestHandler extends AbstractRequestHandler {
         // the query string params follow a different form than the XML responses, so we manually set the parameters here.
         else if (originalRequest instanceof RequestSpotInstancesRequest) {
             RequestSpotInstancesRequest requestSpotInstancesRequest = (RequestSpotInstancesRequest)originalRequest;
-            int count = 1;
+
+            // Marshall the security groups specified only by name
+            int groupNameCount = 1;
+            for (String groupName : requestSpotInstancesRequest.getLaunchSpecification().getSecurityGroups()) {
+                request.addParameter("LaunchSpecification.SecurityGroup." + groupNameCount++, groupName);
+            }
+
+            // Then loop through the GroupIdentifier objects and marshall any specified IDs
+            // and any additional group names
+            int groupIdCount = 1;
             for (GroupIdentifier group : requestSpotInstancesRequest.getLaunchSpecification().getAllSecurityGroups()) {
                 if (group.getGroupId() != null) {
-                    request.addParameter("LaunchSpecification.SecurityGroupId." + count++, group.getGroupId());
+                    request.addParameter("LaunchSpecification.SecurityGroupId." + groupIdCount++, group.getGroupId());
+                }
+
+                if (group.getGroupName() != null) {
+                    request.addParameter("LaunchSpecification.SecurityGroup." + groupNameCount++, group.getGroupName());
                 }
             }
 
@@ -73,6 +87,15 @@ public class EC2RequestHandler extends AbstractRequestHandler {
         else if (originalRequest instanceof RunInstancesRequest) {
             RunInstancesRequest runInstancesRequest = (RunInstancesRequest)originalRequest;
             if (runInstancesRequest.getClientToken() == null) {
+                request.getParameters().put("ClientToken", UUID.randomUUID().toString());
+            }
+        }
+
+        // If a ModifyReservedInstancesRequest doesn't specify a ClientToken, fill one in, otherwise
+        // retries could result in duplicate requests.
+        else if (originalRequest instanceof ModifyReservedInstancesRequest) {
+            ModifyReservedInstancesRequest modifyReservedInstancesRequest = (ModifyReservedInstancesRequest) originalRequest;
+            if (modifyReservedInstancesRequest.getClientToken() == null) {
                 request.getParameters().put("ClientToken", UUID.randomUUID().toString());
             }
         }

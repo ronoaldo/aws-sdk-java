@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#describeMetricCollectionTypes(DescribeMetricCollectionTypesRequest) DescribeMetricCollectionTypes operation}.
  * <p>
- * Returns a list of metrics and a corresponding list of granularities for each metric.
+ * Returns a list of metrics and a corresponding list of granularities
+ * for each metric.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeMetricCollectionTypes(DescribeMetricCollectionTypesRequest)
  */
-public class DescribeMetricCollectionTypesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeMetricCollectionTypesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Returns a string representation of this object; useful for testing and

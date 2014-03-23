@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,11 +18,14 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code> ,
- * <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.
+ * The number of concurrent table requests (cumulative number of tables
+ * in the <code>CREATING</code> ,
+ * <code>DELETING</code> or <code>UPDATING</code>
+ * state) exceeds the maximum allowed of 10.
  * </p>
  * <p>
- * Also, for tables with a local secondary indexes, only one of those tables can be in the <code>CREATING</code> state at any point in time. Do not
+ * Also, for tables with secondary indexes, only one of those tables can
+ * be in the <code>CREATING</code> state at any point in time. Do not
  * attempt to create more than one such table simultaneously.
  * </p>
  * <p>

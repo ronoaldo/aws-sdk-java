@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class PurchaseReservedCacheNodesOfferingRequestMarshaller implements Mars
     public Request<PurchaseReservedCacheNodesOfferingRequest> marshall(PurchaseReservedCacheNodesOfferingRequest purchaseReservedCacheNodesOfferingRequest) {
 
         if (purchaseReservedCacheNodesOfferingRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<PurchaseReservedCacheNodesOfferingRequest> request = new DefaultRequest<PurchaseReservedCacheNodesOfferingRequest>(purchaseReservedCacheNodesOfferingRequest, "AmazonElastiCache");
         request.addParameter("Action", "PurchaseReservedCacheNodesOffering");
-        request.addParameter("Version", "2012-11-15");
+        request.addParameter("Version", "2013-06-15");
 
         if (purchaseReservedCacheNodesOfferingRequest.getReservedCacheNodesOfferingId() != null) {
             request.addParameter("ReservedCacheNodesOfferingId", StringUtils.fromString(purchaseReservedCacheNodesOfferingRequest.getReservedCacheNodesOfferingId()));
@@ -49,7 +49,6 @@ public class PurchaseReservedCacheNodesOfferingRequestMarshaller implements Mars
         if (purchaseReservedCacheNodesOfferingRequest.getCacheNodeCount() != null) {
             request.addParameter("CacheNodeCount", StringUtils.fromInteger(purchaseReservedCacheNodesOfferingRequest.getCacheNodeCount()));
         }
-
 
         return request;
     }

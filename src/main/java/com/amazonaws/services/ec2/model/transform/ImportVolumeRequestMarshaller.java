@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ImportVolumeRequestMarshaller implements Marshaller<Request<ImportV
     public Request<ImportVolumeRequest> marshall(ImportVolumeRequest importVolumeRequest) {
 
         if (importVolumeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ImportVolumeRequest> request = new DefaultRequest<ImportVolumeRequest>(importVolumeRequest, "AmazonEC2");
         request.addParameter("Action", "ImportVolume");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (importVolumeRequest.getAvailabilityZone() != null) {
             request.addParameter("AvailabilityZone", StringUtils.fromString(importVolumeRequest.getAvailabilityZone()));
@@ -64,7 +64,6 @@ public class ImportVolumeRequestMarshaller implements Marshaller<Request<ImportV
                 request.addParameter("Volume.Size", StringUtils.fromLong(volumeDetailVolume.getSize()));
             }
         }
-
 
         return request;
     }

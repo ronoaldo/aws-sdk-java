@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.PaginationLoadingStrategy;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 
@@ -41,13 +42,27 @@ public class PaginatedParallelScanList<T> extends PaginatedList<T> {
     /** The current parallel scan task which contains all the information about the scan request */
     private final ParallelScanTask parallelScanTask;
 
-    public PaginatedParallelScanList(DynamoDBMapper mapper, Class<T> clazz, AmazonDynamoDB dynamo, ParallelScanTask parallelScanTask) {
-        super(mapper, clazz, dynamo);
+    private final DynamoDBMapperConfig config;
+    
+    public PaginatedParallelScanList(
+            DynamoDBMapper mapper,
+            Class<T> clazz,
+            AmazonDynamoDB dynamo,
+            ParallelScanTask parallelScanTask,
+            PaginationLoadingStrategy paginationLoadingStrategy,
+            DynamoDBMapperConfig config) {
+        super(mapper, clazz, dynamo, paginationLoadingStrategy);
 
         this.parallelScanTask = parallelScanTask;
+        this.config = config;
 
         // Marshal the first batch of results in allResults
         allResults.addAll(marshalParallelScanResultsIntoObjects(parallelScanTask.getNextBatchOfScanResults()));
+        
+        // If the results should be eagerly loaded at once
+        if (paginationLoadingStrategy == PaginationLoadingStrategy.EAGER_LOADING) {
+            loadAllResults();
+        }
     }
 
     @Override
@@ -61,13 +76,14 @@ public class PaginatedParallelScanList<T> extends PaginatedList<T> {
     }
     
     private List<T> marshalParallelScanResultsIntoObjects(List<ScanResult> scanResults) {
-    	List<T> allItems = new LinkedList<T>();
-    	for (ScanResult scanResult : scanResults) {
-    		if (null != scanResult) {
-    			allItems.addAll(mapper.marshallIntoObjects(clazz, scanResult.getItems()));
-    		}
-    	}
-    	return allItems;
+        List<T> allItems = new LinkedList<T>();
+        for (ScanResult scanResult : scanResults) {
+            if (null != scanResult) {
+                allItems.addAll(mapper.marshalIntoObjects(
+                    mapper.toParameters(
+                        scanResult.getItems(), clazz, config)));
+            }
+        }
+        return allItems;
     }
-
 }

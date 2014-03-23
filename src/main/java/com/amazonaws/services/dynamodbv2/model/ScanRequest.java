@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,33 +13,40 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.dynamodbv2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.dynamodbv2.AmazonDynamoDB#scan(ScanRequest) Scan operation}.
  * <p>
- * The <i>Scan</i> operation returns one or more items and item attributes by accessing every item in the table. To have Amazon DynamoDB return fewer
- * items, you can provide a <i>ScanFilter</i> .
+ * The <i>Scan</i> operation returns one or more items and item
+ * attributes by accessing every item in the table. To have DynamoDB
+ * return fewer items, you can provide a <i>ScanFilter</i> .
  * </p>
  * <p>
- * If the total number of scanned items exceeds the maximum data set size limit of 1 MB, the scan stops and results are returned to the user with a
- * <i>LastEvaluatedKey</i> to continue the scan in a subsequent operation. The results also include the number of items exceeding the limit. A scan can
- * result in no table data meeting the filter criteria.
+ * If the total number of scanned items exceeds the maximum data set size
+ * limit of 1 MB, the scan stops and results are returned to the user
+ * with a <i>LastEvaluatedKey</i> to continue the scan in a subsequent
+ * operation. The results also include the number of items exceeding the
+ * limit. A scan can result in no table data meeting the filter criteria.
  * </p>
  * <p>
  * The result set is eventually consistent.
  * </p>
  * <p>
- * By default, <i>Scan</i> operations proceed sequentially; however, for faster performance on large tables, applications can request a parallel
- * <i>Scan</i> by specifying the <i>Segment</i> and <i>TotalSegments</i> parameters. For more information, see <a
- * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#QueryAndScanParallelScan"> Parallel Scan </a> in the
- * <i>Amazon DynamoDB Developer Guide</i> .
+ * By default, <i>Scan</i> operations proceed sequentially; however, for
+ * faster performance on large tables, applications can request a
+ * parallel <i>Scan</i> by specifying the <i>Segment</i> and
+ * <i>TotalSegments</i> parameters. For more information, see
+ * <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#QueryAndScanParallelScan"> Parallel Scan </a>
+ * in the Amazon DynamoDB Developer Guide.
  * </p>
  *
  * @see com.amazonaws.services.dynamodbv2.AmazonDynamoDB#scan(ScanRequest)
  */
-public class ScanRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ScanRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the table containing the requested items.
@@ -59,21 +66,21 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <b>Constraints:</b><br/>
      * <b>Length: </b>1 - <br/>
      */
-    private java.util.List<String> attributesToGet;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGet;
 
     /**
      * The maximum number of items to evaluate (not necessarily the number of
-     * matching items). If Amazon DynamoDB processes the number of items up
-     * to the limit while processing the results, it stops the operation and
-     * returns the matching values up to that point, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation, so that
-     * you can pick up where you left off. Also, if the processed data set
-     * size exceeds 1 MB before Amazon DynamoDB reaches this limit, it stops
-     * the operation and returns the matching values up to the limit, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation to continue
-     * the operation. For more information see <a
+     * matching items). If DynamoDB processes the number of items up to the
+     * limit while processing the results, it stops the operation and returns
+     * the matching values up to that point, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation, so that you can pick up where you
+     * left off. Also, if the processed data set size exceeds 1 MB before
+     * DynamoDB reaches this limit, it stops the operation and returns the
+     * matching values up to the limit, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation to continue the operation. For more
+     * information see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query
-     * and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * and Scan</a> in the Amazon DynamoDB Developer Guide.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
@@ -82,36 +89,19 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
 
     /**
      * The attributes to be returned in the result. You can retrieve all item
-     * attributes, specific item attributes, the count of matching items, or
-     * in the case of an index, some or all of the attributes projected into
-     * the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     * the item attributes. For a table, this is the default. For an index,
-     * this mode causes Amazon DynamoDB to fetch the full item from the table
-     * for each matching item in the index. If the index is configured to
-     * project all item attributes, the matching items will not be fetched
-     * from the table. Fetching items from the table incurs additional
-     * throughput cost and latency. </li> <li>
-     * <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     * which have been projected into the index. If the index is configured
-     * to project all attributes, this is equivalent to specifying
-     * <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     * number of matching items, rather than the matching items themselves.
-     * </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     * attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     * specifying <i>AttributesToGet</i> without specifying any value for
-     * <i>Select</i>. <p>If you are querying an index and request only
-     * attributes that are projected into that index, the operation will read
-     * only the index and not the table. If any of the requested attributes
-     * are not projected into the index, Amazon DynamoDB will need to fetch
-     * each matching item from the table. This extra fetching incurs
-     * additional throughput cost and latency. </li> </ul> <p>When neither
-     * <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     * DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     * table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     * index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     * together in a single request, <i>unless</i> the value for
-     * <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     * equivalent to specifying <i>AttributesToGet</i> without any value for
+     * attributes, specific item attributes, or the count of matching items.
+     * <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     * attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     * matching items, rather than the matching items themselves. </li> <li>
+     * <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     * listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     * <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     * </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     * specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     * cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     * single request, <i>unless</i> the value for <i>Select</i> is
+     * <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     * specifying <i>AttributesToGet</i> without any value for
      * <i>Select</i>.)
      * <p>
      * <b>Constraints:</b><br/>
@@ -135,7 +125,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <code>aa</code> is greater than <code>B</code>. For a list of code
      * values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
      * comparator for evaluating attributes. For example, equals, greater
@@ -144,7 +134,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
      * specifying data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -152,42 +142,43 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -212,7 +203,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -244,12 +235,14 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     private java.util.Map<String,AttributeValue> exclusiveStartKey;
 
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      */
     private String returnConsumedCapacity;
 
@@ -303,11 +296,9 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * @param tableName The name of the table containing the requested items.
      */
     public ScanRequest(String tableName) {
-        this.tableName = tableName;
+        setTableName(tableName);
     }
 
-    
-    
     /**
      * The name of the table containing the requested items.
      * <p>
@@ -346,14 +337,13 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * @param tableName The name of the table containing the requested items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withTableName(String tableName) {
         this.tableName = tableName;
         return this;
     }
-    
-    
+
     /**
      * The names of one or more attributes to retrieve. If no attribute names
      * are specified, then all attributes will be returned. If any of the
@@ -369,7 +359,6 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         result.
      */
     public java.util.List<String> getAttributesToGet() {
-        
         return attributesToGet;
     }
     
@@ -392,8 +381,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
             this.attributesToGet = null;
             return;
         }
-
-        java.util.List<String> attributesToGetCopy = new java.util.ArrayList<String>(attributesToGet.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributesToGet.size());
         attributesToGetCopy.addAll(attributesToGet);
         this.attributesToGet = attributesToGetCopy;
     }
@@ -415,7 +403,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         result.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withAttributesToGet(String... attributesToGet) {
         if (getAttributesToGet() == null) setAttributesToGet(new java.util.ArrayList<String>(attributesToGet.length));
@@ -442,49 +430,49 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         result.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withAttributesToGet(java.util.Collection<String> attributesToGet) {
         if (attributesToGet == null) {
             this.attributesToGet = null;
         } else {
-            java.util.List<String> attributesToGetCopy = new java.util.ArrayList<String>(attributesToGet.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> attributesToGetCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(attributesToGet.size());
             attributesToGetCopy.addAll(attributesToGet);
             this.attributesToGet = attributesToGetCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The maximum number of items to evaluate (not necessarily the number of
-     * matching items). If Amazon DynamoDB processes the number of items up
-     * to the limit while processing the results, it stops the operation and
-     * returns the matching values up to that point, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation, so that
-     * you can pick up where you left off. Also, if the processed data set
-     * size exceeds 1 MB before Amazon DynamoDB reaches this limit, it stops
-     * the operation and returns the matching values up to the limit, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation to continue
-     * the operation. For more information see <a
+     * matching items). If DynamoDB processes the number of items up to the
+     * limit while processing the results, it stops the operation and returns
+     * the matching values up to that point, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation, so that you can pick up where you
+     * left off. Also, if the processed data set size exceeds 1 MB before
+     * DynamoDB reaches this limit, it stops the operation and returns the
+     * matching values up to the limit, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation to continue the operation. For more
+     * information see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query
-     * and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * and Scan</a> in the Amazon DynamoDB Developer Guide.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
      * @return The maximum number of items to evaluate (not necessarily the number of
-     *         matching items). If Amazon DynamoDB processes the number of items up
-     *         to the limit while processing the results, it stops the operation and
-     *         returns the matching values up to that point, and a
-     *         <i>LastEvaluatedKey</i> to apply in a subsequent operation, so that
-     *         you can pick up where you left off. Also, if the processed data set
-     *         size exceeds 1 MB before Amazon DynamoDB reaches this limit, it stops
-     *         the operation and returns the matching values up to the limit, and a
-     *         <i>LastEvaluatedKey</i> to apply in a subsequent operation to continue
-     *         the operation. For more information see <a
+     *         matching items). If DynamoDB processes the number of items up to the
+     *         limit while processing the results, it stops the operation and returns
+     *         the matching values up to that point, and a <i>LastEvaluatedKey</i> to
+     *         apply in a subsequent operation, so that you can pick up where you
+     *         left off. Also, if the processed data set size exceeds 1 MB before
+     *         DynamoDB reaches this limit, it stops the operation and returns the
+     *         matching values up to the limit, and a <i>LastEvaluatedKey</i> to
+     *         apply in a subsequent operation to continue the operation. For more
+     *         information see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query
-     *         and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         and Scan</a> in the Amazon DynamoDB Developer Guide.
      */
     public Integer getLimit() {
         return limit;
@@ -492,33 +480,33 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     
     /**
      * The maximum number of items to evaluate (not necessarily the number of
-     * matching items). If Amazon DynamoDB processes the number of items up
-     * to the limit while processing the results, it stops the operation and
-     * returns the matching values up to that point, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation, so that
-     * you can pick up where you left off. Also, if the processed data set
-     * size exceeds 1 MB before Amazon DynamoDB reaches this limit, it stops
-     * the operation and returns the matching values up to the limit, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation to continue
-     * the operation. For more information see <a
+     * matching items). If DynamoDB processes the number of items up to the
+     * limit while processing the results, it stops the operation and returns
+     * the matching values up to that point, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation, so that you can pick up where you
+     * left off. Also, if the processed data set size exceeds 1 MB before
+     * DynamoDB reaches this limit, it stops the operation and returns the
+     * matching values up to the limit, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation to continue the operation. For more
+     * information see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query
-     * and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * and Scan</a> in the Amazon DynamoDB Developer Guide.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - <br/>
      *
      * @param limit The maximum number of items to evaluate (not necessarily the number of
-     *         matching items). If Amazon DynamoDB processes the number of items up
-     *         to the limit while processing the results, it stops the operation and
-     *         returns the matching values up to that point, and a
-     *         <i>LastEvaluatedKey</i> to apply in a subsequent operation, so that
-     *         you can pick up where you left off. Also, if the processed data set
-     *         size exceeds 1 MB before Amazon DynamoDB reaches this limit, it stops
-     *         the operation and returns the matching values up to the limit, and a
-     *         <i>LastEvaluatedKey</i> to apply in a subsequent operation to continue
-     *         the operation. For more information see <a
+     *         matching items). If DynamoDB processes the number of items up to the
+     *         limit while processing the results, it stops the operation and returns
+     *         the matching values up to that point, and a <i>LastEvaluatedKey</i> to
+     *         apply in a subsequent operation, so that you can pick up where you
+     *         left off. Also, if the processed data set size exceeds 1 MB before
+     *         DynamoDB reaches this limit, it stops the operation and returns the
+     *         matching values up to the limit, and a <i>LastEvaluatedKey</i> to
+     *         apply in a subsequent operation to continue the operation. For more
+     *         information see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query
-     *         and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         and Scan</a> in the Amazon DynamoDB Developer Guide.
      */
     public void setLimit(Integer limit) {
         this.limit = limit;
@@ -526,17 +514,17 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     
     /**
      * The maximum number of items to evaluate (not necessarily the number of
-     * matching items). If Amazon DynamoDB processes the number of items up
-     * to the limit while processing the results, it stops the operation and
-     * returns the matching values up to that point, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation, so that
-     * you can pick up where you left off. Also, if the processed data set
-     * size exceeds 1 MB before Amazon DynamoDB reaches this limit, it stops
-     * the operation and returns the matching values up to the limit, and a
-     * <i>LastEvaluatedKey</i> to apply in a subsequent operation to continue
-     * the operation. For more information see <a
+     * matching items). If DynamoDB processes the number of items up to the
+     * limit while processing the results, it stops the operation and returns
+     * the matching values up to that point, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation, so that you can pick up where you
+     * left off. Also, if the processed data set size exceeds 1 MB before
+     * DynamoDB reaches this limit, it stops the operation and returns the
+     * matching values up to the limit, and a <i>LastEvaluatedKey</i> to
+     * apply in a subsequent operation to continue the operation. For more
+     * information see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query
-     * and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * and Scan</a> in the Amazon DynamoDB Developer Guide.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -544,95 +532,60 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <b>Range: </b>1 - <br/>
      *
      * @param limit The maximum number of items to evaluate (not necessarily the number of
-     *         matching items). If Amazon DynamoDB processes the number of items up
-     *         to the limit while processing the results, it stops the operation and
-     *         returns the matching values up to that point, and a
-     *         <i>LastEvaluatedKey</i> to apply in a subsequent operation, so that
-     *         you can pick up where you left off. Also, if the processed data set
-     *         size exceeds 1 MB before Amazon DynamoDB reaches this limit, it stops
-     *         the operation and returns the matching values up to the limit, and a
-     *         <i>LastEvaluatedKey</i> to apply in a subsequent operation to continue
-     *         the operation. For more information see <a
+     *         matching items). If DynamoDB processes the number of items up to the
+     *         limit while processing the results, it stops the operation and returns
+     *         the matching values up to that point, and a <i>LastEvaluatedKey</i> to
+     *         apply in a subsequent operation, so that you can pick up where you
+     *         left off. Also, if the processed data set size exceeds 1 MB before
+     *         DynamoDB reaches this limit, it stops the operation and returns the
+     *         matching values up to the limit, and a <i>LastEvaluatedKey</i> to
+     *         apply in a subsequent operation to continue the operation. For more
+     *         information see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query
-     *         and Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     *         and Scan</a> in the Amazon DynamoDB Developer Guide.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
-    
-    
+
     /**
      * The attributes to be returned in the result. You can retrieve all item
-     * attributes, specific item attributes, the count of matching items, or
-     * in the case of an index, some or all of the attributes projected into
-     * the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     * the item attributes. For a table, this is the default. For an index,
-     * this mode causes Amazon DynamoDB to fetch the full item from the table
-     * for each matching item in the index. If the index is configured to
-     * project all item attributes, the matching items will not be fetched
-     * from the table. Fetching items from the table incurs additional
-     * throughput cost and latency. </li> <li>
-     * <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     * which have been projected into the index. If the index is configured
-     * to project all attributes, this is equivalent to specifying
-     * <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     * number of matching items, rather than the matching items themselves.
-     * </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     * attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     * specifying <i>AttributesToGet</i> without specifying any value for
-     * <i>Select</i>. <p>If you are querying an index and request only
-     * attributes that are projected into that index, the operation will read
-     * only the index and not the table. If any of the requested attributes
-     * are not projected into the index, Amazon DynamoDB will need to fetch
-     * each matching item from the table. This extra fetching incurs
-     * additional throughput cost and latency. </li> </ul> <p>When neither
-     * <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     * DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     * table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     * index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     * together in a single request, <i>unless</i> the value for
-     * <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     * equivalent to specifying <i>AttributesToGet</i> without any value for
+     * attributes, specific item attributes, or the count of matching items.
+     * <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     * attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     * matching items, rather than the matching items themselves. </li> <li>
+     * <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     * listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     * <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     * </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     * specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     * cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     * single request, <i>unless</i> the value for <i>Select</i> is
+     * <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     * specifying <i>AttributesToGet</i> without any value for
      * <i>Select</i>.)
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL_ATTRIBUTES, ALL_PROJECTED_ATTRIBUTES, SPECIFIC_ATTRIBUTES, COUNT
      *
      * @return The attributes to be returned in the result. You can retrieve all item
-     *         attributes, specific item attributes, the count of matching items, or
-     *         in the case of an index, some or all of the attributes projected into
-     *         the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     *         the item attributes. For a table, this is the default. For an index,
-     *         this mode causes Amazon DynamoDB to fetch the full item from the table
-     *         for each matching item in the index. If the index is configured to
-     *         project all item attributes, the matching items will not be fetched
-     *         from the table. Fetching items from the table incurs additional
-     *         throughput cost and latency. </li> <li>
-     *         <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     *         which have been projected into the index. If the index is configured
-     *         to project all attributes, this is equivalent to specifying
-     *         <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     *         number of matching items, rather than the matching items themselves.
-     *         </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     *         attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     *         specifying <i>AttributesToGet</i> without specifying any value for
-     *         <i>Select</i>. <p>If you are querying an index and request only
-     *         attributes that are projected into that index, the operation will read
-     *         only the index and not the table. If any of the requested attributes
-     *         are not projected into the index, Amazon DynamoDB will need to fetch
-     *         each matching item from the table. This extra fetching incurs
-     *         additional throughput cost and latency. </li> </ul> <p>When neither
-     *         <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     *         DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     *         table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     *         index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     *         together in a single request, <i>unless</i> the value for
-     *         <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     *         equivalent to specifying <i>AttributesToGet</i> without any value for
+     *         attributes, specific item attributes, or the count of matching items.
+     *         <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     *         attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     *         matching items, rather than the matching items themselves. </li> <li>
+     *         <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     *         listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     *         <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     *         </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     *         specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     *         cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     *         single request, <i>unless</i> the value for <i>Select</i> is
+     *         <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     *         specifying <i>AttributesToGet</i> without any value for
      *         <i>Select</i>.)
      *
      * @see Select
@@ -643,72 +596,38 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     
     /**
      * The attributes to be returned in the result. You can retrieve all item
-     * attributes, specific item attributes, the count of matching items, or
-     * in the case of an index, some or all of the attributes projected into
-     * the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     * the item attributes. For a table, this is the default. For an index,
-     * this mode causes Amazon DynamoDB to fetch the full item from the table
-     * for each matching item in the index. If the index is configured to
-     * project all item attributes, the matching items will not be fetched
-     * from the table. Fetching items from the table incurs additional
-     * throughput cost and latency. </li> <li>
-     * <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     * which have been projected into the index. If the index is configured
-     * to project all attributes, this is equivalent to specifying
-     * <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     * number of matching items, rather than the matching items themselves.
-     * </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     * attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     * specifying <i>AttributesToGet</i> without specifying any value for
-     * <i>Select</i>. <p>If you are querying an index and request only
-     * attributes that are projected into that index, the operation will read
-     * only the index and not the table. If any of the requested attributes
-     * are not projected into the index, Amazon DynamoDB will need to fetch
-     * each matching item from the table. This extra fetching incurs
-     * additional throughput cost and latency. </li> </ul> <p>When neither
-     * <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     * DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     * table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     * index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     * together in a single request, <i>unless</i> the value for
-     * <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     * equivalent to specifying <i>AttributesToGet</i> without any value for
+     * attributes, specific item attributes, or the count of matching items.
+     * <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     * attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     * matching items, rather than the matching items themselves. </li> <li>
+     * <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     * listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     * <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     * </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     * specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     * cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     * single request, <i>unless</i> the value for <i>Select</i> is
+     * <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     * specifying <i>AttributesToGet</i> without any value for
      * <i>Select</i>.)
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL_ATTRIBUTES, ALL_PROJECTED_ATTRIBUTES, SPECIFIC_ATTRIBUTES, COUNT
      *
      * @param select The attributes to be returned in the result. You can retrieve all item
-     *         attributes, specific item attributes, the count of matching items, or
-     *         in the case of an index, some or all of the attributes projected into
-     *         the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     *         the item attributes. For a table, this is the default. For an index,
-     *         this mode causes Amazon DynamoDB to fetch the full item from the table
-     *         for each matching item in the index. If the index is configured to
-     *         project all item attributes, the matching items will not be fetched
-     *         from the table. Fetching items from the table incurs additional
-     *         throughput cost and latency. </li> <li>
-     *         <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     *         which have been projected into the index. If the index is configured
-     *         to project all attributes, this is equivalent to specifying
-     *         <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     *         number of matching items, rather than the matching items themselves.
-     *         </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     *         attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     *         specifying <i>AttributesToGet</i> without specifying any value for
-     *         <i>Select</i>. <p>If you are querying an index and request only
-     *         attributes that are projected into that index, the operation will read
-     *         only the index and not the table. If any of the requested attributes
-     *         are not projected into the index, Amazon DynamoDB will need to fetch
-     *         each matching item from the table. This extra fetching incurs
-     *         additional throughput cost and latency. </li> </ul> <p>When neither
-     *         <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     *         DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     *         table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     *         index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     *         together in a single request, <i>unless</i> the value for
-     *         <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     *         equivalent to specifying <i>AttributesToGet</i> without any value for
+     *         attributes, specific item attributes, or the count of matching items.
+     *         <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     *         attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     *         matching items, rather than the matching items themselves. </li> <li>
+     *         <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     *         listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     *         <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     *         </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     *         specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     *         cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     *         single request, <i>unless</i> the value for <i>Select</i> is
+     *         <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     *         specifying <i>AttributesToGet</i> without any value for
      *         <i>Select</i>.)
      *
      * @see Select
@@ -719,36 +638,19 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     
     /**
      * The attributes to be returned in the result. You can retrieve all item
-     * attributes, specific item attributes, the count of matching items, or
-     * in the case of an index, some or all of the attributes projected into
-     * the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     * the item attributes. For a table, this is the default. For an index,
-     * this mode causes Amazon DynamoDB to fetch the full item from the table
-     * for each matching item in the index. If the index is configured to
-     * project all item attributes, the matching items will not be fetched
-     * from the table. Fetching items from the table incurs additional
-     * throughput cost and latency. </li> <li>
-     * <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     * which have been projected into the index. If the index is configured
-     * to project all attributes, this is equivalent to specifying
-     * <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     * number of matching items, rather than the matching items themselves.
-     * </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     * attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     * specifying <i>AttributesToGet</i> without specifying any value for
-     * <i>Select</i>. <p>If you are querying an index and request only
-     * attributes that are projected into that index, the operation will read
-     * only the index and not the table. If any of the requested attributes
-     * are not projected into the index, Amazon DynamoDB will need to fetch
-     * each matching item from the table. This extra fetching incurs
-     * additional throughput cost and latency. </li> </ul> <p>When neither
-     * <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     * DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     * table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     * index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     * together in a single request, <i>unless</i> the value for
-     * <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     * equivalent to specifying <i>AttributesToGet</i> without any value for
+     * attributes, specific item attributes, or the count of matching items.
+     * <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     * attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     * matching items, rather than the matching items themselves. </li> <li>
+     * <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     * listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     * <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     * </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     * specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     * cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     * single request, <i>unless</i> the value for <i>Select</i> is
+     * <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     * specifying <i>AttributesToGet</i> without any value for
      * <i>Select</i>.)
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -757,40 +659,23 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <b>Allowed Values: </b>ALL_ATTRIBUTES, ALL_PROJECTED_ATTRIBUTES, SPECIFIC_ATTRIBUTES, COUNT
      *
      * @param select The attributes to be returned in the result. You can retrieve all item
-     *         attributes, specific item attributes, the count of matching items, or
-     *         in the case of an index, some or all of the attributes projected into
-     *         the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     *         the item attributes. For a table, this is the default. For an index,
-     *         this mode causes Amazon DynamoDB to fetch the full item from the table
-     *         for each matching item in the index. If the index is configured to
-     *         project all item attributes, the matching items will not be fetched
-     *         from the table. Fetching items from the table incurs additional
-     *         throughput cost and latency. </li> <li>
-     *         <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     *         which have been projected into the index. If the index is configured
-     *         to project all attributes, this is equivalent to specifying
-     *         <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     *         number of matching items, rather than the matching items themselves.
-     *         </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     *         attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     *         specifying <i>AttributesToGet</i> without specifying any value for
-     *         <i>Select</i>. <p>If you are querying an index and request only
-     *         attributes that are projected into that index, the operation will read
-     *         only the index and not the table. If any of the requested attributes
-     *         are not projected into the index, Amazon DynamoDB will need to fetch
-     *         each matching item from the table. This extra fetching incurs
-     *         additional throughput cost and latency. </li> </ul> <p>When neither
-     *         <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     *         DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     *         table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     *         index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     *         together in a single request, <i>unless</i> the value for
-     *         <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     *         equivalent to specifying <i>AttributesToGet</i> without any value for
+     *         attributes, specific item attributes, or the count of matching items.
+     *         <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     *         attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     *         matching items, rather than the matching items themselves. </li> <li>
+     *         <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     *         listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     *         <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     *         </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     *         specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     *         cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     *         single request, <i>unless</i> the value for <i>Select</i> is
+     *         <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     *         specifying <i>AttributesToGet</i> without any value for
      *         <i>Select</i>.)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see Select
      */
@@ -798,76 +683,41 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
         this.select = select;
         return this;
     }
-    
-    
+
     /**
      * The attributes to be returned in the result. You can retrieve all item
-     * attributes, specific item attributes, the count of matching items, or
-     * in the case of an index, some or all of the attributes projected into
-     * the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     * the item attributes. For a table, this is the default. For an index,
-     * this mode causes Amazon DynamoDB to fetch the full item from the table
-     * for each matching item in the index. If the index is configured to
-     * project all item attributes, the matching items will not be fetched
-     * from the table. Fetching items from the table incurs additional
-     * throughput cost and latency. </li> <li>
-     * <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     * which have been projected into the index. If the index is configured
-     * to project all attributes, this is equivalent to specifying
-     * <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     * number of matching items, rather than the matching items themselves.
-     * </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     * attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     * specifying <i>AttributesToGet</i> without specifying any value for
-     * <i>Select</i>. <p>If you are querying an index and request only
-     * attributes that are projected into that index, the operation will read
-     * only the index and not the table. If any of the requested attributes
-     * are not projected into the index, Amazon DynamoDB will need to fetch
-     * each matching item from the table. This extra fetching incurs
-     * additional throughput cost and latency. </li> </ul> <p>When neither
-     * <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     * DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     * table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     * index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     * together in a single request, <i>unless</i> the value for
-     * <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     * equivalent to specifying <i>AttributesToGet</i> without any value for
+     * attributes, specific item attributes, or the count of matching items.
+     * <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     * attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     * matching items, rather than the matching items themselves. </li> <li>
+     * <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     * listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     * <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     * </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     * specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     * cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     * single request, <i>unless</i> the value for <i>Select</i> is
+     * <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     * specifying <i>AttributesToGet</i> without any value for
      * <i>Select</i>.)
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Allowed Values: </b>ALL_ATTRIBUTES, ALL_PROJECTED_ATTRIBUTES, SPECIFIC_ATTRIBUTES, COUNT
      *
      * @param select The attributes to be returned in the result. You can retrieve all item
-     *         attributes, specific item attributes, the count of matching items, or
-     *         in the case of an index, some or all of the attributes projected into
-     *         the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     *         the item attributes. For a table, this is the default. For an index,
-     *         this mode causes Amazon DynamoDB to fetch the full item from the table
-     *         for each matching item in the index. If the index is configured to
-     *         project all item attributes, the matching items will not be fetched
-     *         from the table. Fetching items from the table incurs additional
-     *         throughput cost and latency. </li> <li>
-     *         <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     *         which have been projected into the index. If the index is configured
-     *         to project all attributes, this is equivalent to specifying
-     *         <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     *         number of matching items, rather than the matching items themselves.
-     *         </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     *         attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     *         specifying <i>AttributesToGet</i> without specifying any value for
-     *         <i>Select</i>. <p>If you are querying an index and request only
-     *         attributes that are projected into that index, the operation will read
-     *         only the index and not the table. If any of the requested attributes
-     *         are not projected into the index, Amazon DynamoDB will need to fetch
-     *         each matching item from the table. This extra fetching incurs
-     *         additional throughput cost and latency. </li> </ul> <p>When neither
-     *         <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     *         DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     *         table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     *         index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     *         together in a single request, <i>unless</i> the value for
-     *         <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     *         equivalent to specifying <i>AttributesToGet</i> without any value for
+     *         attributes, specific item attributes, or the count of matching items.
+     *         <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     *         attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     *         matching items, rather than the matching items themselves. </li> <li>
+     *         <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     *         listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     *         <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     *         </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     *         specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     *         cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     *         single request, <i>unless</i> the value for <i>Select</i> is
+     *         <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     *         specifying <i>AttributesToGet</i> without any value for
      *         <i>Select</i>.)
      *
      * @see Select
@@ -878,36 +728,19 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     
     /**
      * The attributes to be returned in the result. You can retrieve all item
-     * attributes, specific item attributes, the count of matching items, or
-     * in the case of an index, some or all of the attributes projected into
-     * the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     * the item attributes. For a table, this is the default. For an index,
-     * this mode causes Amazon DynamoDB to fetch the full item from the table
-     * for each matching item in the index. If the index is configured to
-     * project all item attributes, the matching items will not be fetched
-     * from the table. Fetching items from the table incurs additional
-     * throughput cost and latency. </li> <li>
-     * <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     * which have been projected into the index. If the index is configured
-     * to project all attributes, this is equivalent to specifying
-     * <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     * number of matching items, rather than the matching items themselves.
-     * </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     * attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     * specifying <i>AttributesToGet</i> without specifying any value for
-     * <i>Select</i>. <p>If you are querying an index and request only
-     * attributes that are projected into that index, the operation will read
-     * only the index and not the table. If any of the requested attributes
-     * are not projected into the index, Amazon DynamoDB will need to fetch
-     * each matching item from the table. This extra fetching incurs
-     * additional throughput cost and latency. </li> </ul> <p>When neither
-     * <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     * DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     * table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     * index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     * together in a single request, <i>unless</i> the value for
-     * <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     * equivalent to specifying <i>AttributesToGet</i> without any value for
+     * attributes, specific item attributes, or the count of matching items.
+     * <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     * attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     * matching items, rather than the matching items themselves. </li> <li>
+     * <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     * listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     * <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     * </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     * specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     * cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     * single request, <i>unless</i> the value for <i>Select</i> is
+     * <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     * specifying <i>AttributesToGet</i> without any value for
      * <i>Select</i>.)
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -916,40 +749,23 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <b>Allowed Values: </b>ALL_ATTRIBUTES, ALL_PROJECTED_ATTRIBUTES, SPECIFIC_ATTRIBUTES, COUNT
      *
      * @param select The attributes to be returned in the result. You can retrieve all item
-     *         attributes, specific item attributes, the count of matching items, or
-     *         in the case of an index, some or all of the attributes projected into
-     *         the index. <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of
-     *         the item attributes. For a table, this is the default. For an index,
-     *         this mode causes Amazon DynamoDB to fetch the full item from the table
-     *         for each matching item in the index. If the index is configured to
-     *         project all item attributes, the matching items will not be fetched
-     *         from the table. Fetching items from the table incurs additional
-     *         throughput cost and latency. </li> <li>
-     *         <p><code>ALL_PROJECTED_ATTRIBUTES</code>: Retrieves all attributes
-     *         which have been projected into the index. If the index is configured
-     *         to project all attributes, this is equivalent to specifying
-     *         <i>ALL_ATTRIBUTES</i>. </li> <li> <p><code>COUNT</code>: Returns the
-     *         number of matching items, rather than the matching items themselves.
-     *         </li> <li> <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the
-     *         attributes listed in <i>AttributesToGet</i>. This is equivalent to
-     *         specifying <i>AttributesToGet</i> without specifying any value for
-     *         <i>Select</i>. <p>If you are querying an index and request only
-     *         attributes that are projected into that index, the operation will read
-     *         only the index and not the table. If any of the requested attributes
-     *         are not projected into the index, Amazon DynamoDB will need to fetch
-     *         each matching item from the table. This extra fetching incurs
-     *         additional throughput cost and latency. </li> </ul> <p>When neither
-     *         <i>Select</i> nor <i>AttributesToGet</i> are specified, Amazon
-     *         DynamoDB defaults to <code>ALL_ATTRIBUTES</code> when accessing a
-     *         table, and <code>ALL_PROJECTED_ATTRIBUTES</code> when accessing an
-     *         index. You cannot use both <i>Select</i> and <i>AttributesToGet</i>
-     *         together in a single request, <i>unless</i> the value for
-     *         <i>Select</i> is <code>SPECIFIC_ATTRIBUTES</code>. (This usage is
-     *         equivalent to specifying <i>AttributesToGet</i> without any value for
+     *         attributes, specific item attributes, or the count of matching items.
+     *         <ul> <li> <p><code>ALL_ATTRIBUTES</code>: Returns all of the item
+     *         attributes. </li> <li> <p><code>COUNT</code>: Returns the number of
+     *         matching items, rather than the matching items themselves. </li> <li>
+     *         <p> <code>SPECIFIC_ATTRIBUTES</code> : Returns only the attributes
+     *         listed in <i>AttributesToGet</i>. This is equivalent to specifying
+     *         <i>AttributesToGet</i> without specifying any value for <i>Select</i>.
+     *         </li> </ul> <p>If neither <i>Select</i> nor <i>AttributesToGet</i> are
+     *         specified, DynamoDB defaults to <code>ALL_ATTRIBUTES</code>. You
+     *         cannot use both <i>Select</i> and <i>AttributesToGet</i> together in a
+     *         single request, <i>unless</i> the value for <i>Select</i> is
+     *         <code>SPECIFIC_ATTRIBUTES</code>. (This usage is equivalent to
+     *         specifying <i>AttributesToGet</i> without any value for
      *         <i>Select</i>.)
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see Select
      */
@@ -957,7 +773,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
         this.select = select.toString();
         return this;
     }
-    
+
     /**
      * Evaluates the scan results and returns only the desired values.
      * Multiple conditions are treated as "AND" operations: all conditions
@@ -974,7 +790,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <code>aa</code> is greater than <code>B</code>. For a list of code
      * values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
      * comparator for evaluating attributes. For example, equals, greater
@@ -983,7 +799,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
      * specifying data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -991,42 +807,43 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1051,7 +868,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -1083,7 +900,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         <code>aa</code> is greater than <code>B</code>. For a list of code
      *         values, see <a
      *         href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     *         <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     *         <p>For Binary, DynamoDB treats each byte of the binary data as
      *         unsigned when it compares binary values, for example when evaluating
      *         query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
      *         comparator for evaluating attributes. For example, equals, greater
@@ -1092,7 +909,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
      *         specifying data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1100,42 +917,43 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1160,7 +978,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -1180,7 +998,6 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     public java.util.Map<String,Condition> getScanFilter() {
         
         return scanFilter;
-
     }
     
     /**
@@ -1199,7 +1016,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <code>aa</code> is greater than <code>B</code>. For a list of code
      * values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
      * comparator for evaluating attributes. For example, equals, greater
@@ -1208,7 +1025,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
      * specifying data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1216,42 +1033,43 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1276,7 +1094,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -1308,7 +1126,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         <code>aa</code> is greater than <code>B</code>. For a list of code
      *         values, see <a
      *         href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     *         <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     *         <p>For Binary, DynamoDB treats each byte of the binary data as
      *         unsigned when it compares binary values, for example when evaluating
      *         query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
      *         comparator for evaluating attributes. For example, equals, greater
@@ -1317,7 +1135,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
      *         specifying data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1325,42 +1143,43 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1385,7 +1204,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -1422,7 +1241,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * <code>aa</code> is greater than <code>B</code>. For a list of code
      * values, see <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     * <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
      * unsigned when it compares binary values, for example when evaluating
      * query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
      * comparator for evaluating attributes. For example, equals, greater
@@ -1431,7 +1250,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
      * specifying data types in JSON, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     * Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      * following are descriptions of each comparison operator. <ul> <li>
      * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      * only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1439,42 +1258,43 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * type than the one specified in the request, the value does not match.
      * For example, <code>{"S":"6"}</code> does not equal
      * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     * <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     * : Not equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     * "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      * <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      * If an item contains an <i>AttributeValue</i> of a different type than
      * the one specified in the request, the value does not match. For
      * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     * equal. <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     * <p><i>AttributeValueList</i> can contain only one
-     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     * If an item contains an <i>AttributeValue</i> of a different type than
-     * the one specified in the request, the value does not match. For
-     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     * "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      * subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1499,7 +1319,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      * prefix. <p><i>AttributeValueList</i> can contain only one
      * <i>AttributeValue</i> of type String or Binary (not a Number or a
      * set). The target attribute of the comparison must be a String or
-     * Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      * checks for exact matches. <p><i>AttributeValueList</i> can contain
      * more than one <i>AttributeValue</i> of type String, Number, or Binary
      * (not a set). The target attribute of the comparison must be of the
@@ -1533,7 +1353,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         <code>aa</code> is greater than <code>B</code>. For a list of code
      *         values, see <a
      *         href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
-     *         <p>For Binary, Amazon DynamoDB treats each byte of the binary data as
+     *         <p>For Binary, DynamoDB treats each byte of the binary data as
      *         unsigned when it compares binary values, for example when evaluating
      *         query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
      *         comparator for evaluating attributes. For example, equals, greater
@@ -1542,7 +1362,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
      *         specifying data types in JSON, see <a
      *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
-     *         Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>. <p>The
+     *         Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
      *         following are descriptions of each comparison operator. <ul> <li>
      *         <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
      *         only one <i>AttributeValue</i> of type String, Number, or Binary (not
@@ -1550,42 +1370,43 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         type than the one specified in the request, the value does not match.
      *         For example, <code>{"S":"6"}</code> does not equal
      *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
-     *         <code>{"NS":["6", "2", "1"]}</code>. <p> </li> <li> <p><code>NE</code>
-     *         : Not equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not equal <code>{"NS":["6", "2",
-     *         "1"]}</code>. <p> </li> <li> <p><code>LE</code> : Less than or equal.
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     *         <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     *         can contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     *         contain only one <i>AttributeValue</i> of type String, Number, or
+     *         Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     *         different type than the one specified in the request, the value does
+     *         not match. For example, <code>{"S":"6"}</code> does not equal
+     *         <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     *         to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     *         <p><code>GE</code> : Greater than or equal.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>LT</code> : Less than.
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
      *         <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
      *         If an item contains an <i>AttributeValue</i> of a different type than
      *         the one specified in the request, the value does not match. For
      *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
      *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GE</code> : Greater than or
-     *         equal. <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>GT</code> : Greater than.
-     *         <p><i>AttributeValueList</i> can contain only one
-     *         <i>AttributeValue</i> of type String, Number, or Binary (not a set).
-     *         If an item contains an <i>AttributeValue</i> of a different type than
-     *         the one specified in the request, the value does not match. For
-     *         example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
-     *         Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
-     *         "2", "1"]}</code>. <p> </li> <li> <p><code>NOT_NULL</code> : The
+     *         "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
      *         attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
      *         not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
      *         subsequence, or value in a set. <p><i>AttributeValueList</i> can
@@ -1610,7 +1431,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         prefix. <p><i>AttributeValueList</i> can contain only one
      *         <i>AttributeValue</i> of type String or Binary (not a Number or a
      *         set). The target attribute of the comparison must be a String or
-     *         Binary (not a Number or a set). <p> </li> <li> <p><code>IN</code> :
+     *         Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
      *         checks for exact matches. <p><i>AttributeValueList</i> can contain
      *         more than one <i>AttributeValue</i> of type String, Number, or Binary
      *         (not a set). The target attribute of the comparison must be of the
@@ -1628,10 +1449,148 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         to <code>{"NS":["6", "2", "1"]}</code> </li> </ul> </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withScanFilter(java.util.Map<String,Condition> scanFilter) {
         setScanFilter(scanFilter);
+        return this;
+    }
+
+    /**
+     * Evaluates the scan results and returns only the desired values.
+     * Multiple conditions are treated as "AND" operations: all conditions
+     * must be met to be included in the results. <p>Each
+     * <i>ScanConditions</i> element consists of an attribute name to
+     * compare, along with the following: <ul>
+     * <li><p><i>AttributeValueList</i> - One or more values to evaluate
+     * against the supplied attribute. This list contains exactly one value,
+     * except for a <code>BETWEEN</code> or <code>IN</code> comparison, in
+     * which case the list contains two values. <note> <p>For type Number,
+     * value comparisons are numeric. <p>String value comparisons for greater
+     * than, equals, or less than are based on ASCII character code values.
+     * For example, <code>a</code> is greater than <code>A</code>, and
+     * <code>aa</code> is greater than <code>B</code>. For a list of code
+     * values, see <a
+     * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.
+     * <p>For Binary, DynamoDB treats each byte of the binary data as
+     * unsigned when it compares binary values, for example when evaluating
+     * query expressions. </note> </li> <li><p><i>ComparisonOperator</i> - A
+     * comparator for evaluating attributes. For example, equals, greater
+     * than, less than, etc. <p>Valid comparison operators for Scan:
+     * <p><code>EQ | NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS |
+     * NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN</code> <p>For information on
+     * specifying data types in JSON, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON
+     * Data Format</a> in the Amazon DynamoDB Developer Guide. <p>The
+     * following are descriptions of each comparison operator. <ul> <li>
+     * <p><code>EQ</code> : Equal. <p><i>AttributeValueList</i> can contain
+     * only one <i>AttributeValue</i> of type String, Number, or Binary (not
+     * a set). If an item contains an <i>AttributeValue</i> of a different
+     * type than the one specified in the request, the value does not match.
+     * For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>NE</code> : Not equal. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not equal
+     * <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LE</code> : Less than or equal. <p><i>AttributeValueList</i>
+     * can contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>LT</code> : Less than. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If an item contains an <i>AttributeValue</i> of a
+     * different type than the one specified in the request, the value does
+     * not match. For example, <code>{"S":"6"}</code> does not equal
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code>. <p/> </li> <li>
+     * <p><code>GE</code> : Greater than or equal.
+     * <p><i>AttributeValueList</i> can contain only one
+     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
+     * If an item contains an <i>AttributeValue</i> of a different type than
+     * the one specified in the request, the value does not match. For
+     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
+     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>GT</code> : Greater than.
+     * <p><i>AttributeValueList</i> can contain only one
+     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
+     * If an item contains an <i>AttributeValue</i> of a different type than
+     * the one specified in the request, the value does not match. For
+     * example, <code>{"S":"6"}</code> does not equal <code>{"N":"6"}</code>.
+     * Also, <code>{"N":"6"}</code> does not compare to <code>{"NS":["6",
+     * "2", "1"]}</code>. <p/> </li> <li> <p><code>NOT_NULL</code> : The
+     * attribute exists. </li> <li> <p><code>NULL</code> : The attribute does
+     * not exist. </li> <li> <p><code>CONTAINS</code> : checks for a
+     * subsequence, or value in a set. <p><i>AttributeValueList</i> can
+     * contain only one <i>AttributeValue</i> of type String, Number, or
+     * Binary (not a set). If the target attribute of the comparison is a
+     * String, then the operation checks for a substring match. If the target
+     * attribute of the comparison is Binary, then the operation looks for a
+     * subsequence of the target that matches the input. If the target
+     * attribute of the comparison is a set ("SS", "NS", or "BS"), then the
+     * operation checks for a member of the set (not as a substring). </li>
+     * <li> <p><code>NOT_CONTAINS</code> : checks for absence of a
+     * subsequence, or absence of a value in a set.
+     * <p><i>AttributeValueList</i> can contain only one
+     * <i>AttributeValue</i> of type String, Number, or Binary (not a set).
+     * If the target attribute of the comparison is a String, then the
+     * operation checks for the absence of a substring match. If the target
+     * attribute of the comparison is Binary, then the operation checks for
+     * the absence of a subsequence of the target that matches the input. If
+     * the target attribute of the comparison is a set ("SS", "NS", or "BS"),
+     * then the operation checks for the absence of a member of the set (not
+     * as a substring). </li> <li> <p><code>BEGINS_WITH</code> : checks for a
+     * prefix. <p><i>AttributeValueList</i> can contain only one
+     * <i>AttributeValue</i> of type String or Binary (not a Number or a
+     * set). The target attribute of the comparison must be a String or
+     * Binary (not a Number or a set). <p/> </li> <li> <p><code>IN</code> :
+     * checks for exact matches. <p><i>AttributeValueList</i> can contain
+     * more than one <i>AttributeValue</i> of type String, Number, or Binary
+     * (not a set). The target attribute of the comparison must be of the
+     * same type and exact value to match. A String never matches a String
+     * set. </li> <li> <p><code>BETWEEN</code> : Greater than or equal to the
+     * first value, and less than or equal to the second value.
+     * <p><i>AttributeValueList</i> must contain two <i>AttributeValue</i>
+     * elements of the same type, either String, Number, or Binary (not a
+     * set). A target attribute matches if the target value is greater than,
+     * or equal to, the first element and less than, or equal to, the second
+     * element. If an item contains an <i>AttributeValue</i> of a different
+     * type than the one specified in the request, the value does not match.
+     * For example, <code>{"S":"6"}</code> does not compare to
+     * <code>{"N":"6"}</code>. Also, <code>{"N":"6"}</code> does not compare
+     * to <code>{"NS":["6", "2", "1"]}</code> </li> </ul> </li> </ul>
+     * <p>
+     * The method adds a new key-value pair into ScanFilter parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into ScanFilter.
+     * @param value The corresponding value of the entry to be added into ScanFilter.
+     */
+    public ScanRequest addScanFilterEntry(String key, Condition value) {
+        if (null == this.scanFilter) {
+            this.scanFilter = new java.util.HashMap<String,Condition>();
+        }
+        if (this.scanFilter.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.scanFilter.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into ScanFilter.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public ScanRequest clearScanFilterEntries() {
+        this.scanFilter = null;
         return this;
     }
     
@@ -1657,7 +1616,6 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     public java.util.Map<String,AttributeValue> getExclusiveStartKey() {
         
         return exclusiveStartKey;
-
     }
     
     /**
@@ -1705,24 +1663,117 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         <i>LastEvaluatedKey</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withExclusiveStartKey(java.util.Map<String,AttributeValue> exclusiveStartKey) {
         setExclusiveStartKey(exclusiveStartKey);
         return this;
     }
+
+    /**
+     * The primary key of the first item that this operation will evaluate.
+     * Use the value that was returned for <i>LastEvaluatedKey</i> in the
+     * previous operation. <p>The data type for <i>ExclusiveStartKey</i> must
+     * be String, Number or Binary. No set data types are allowed. <p>In a
+     * parallel scan, a <i>Scan</i> request that includes
+     * <i>ExclusiveStartKey</i> must specify the same segment whose previous
+     * <i>Scan</i> returned the corresponding value of
+     * <i>LastEvaluatedKey</i>.
+     * <p>
+     * This method accepts the hashKey, rangeKey of ExclusiveStartKey as
+     * java.util.Map.Entry<String, AttributeValue> objects.
+     *
+     * @param hashKey Primary hash key.
+     * @param rangeKey Primary range key. (null if it a hash-only table)
+     */
+    public void setExclusiveStartKey(java.util.Map.Entry<String, AttributeValue> hashKey, java.util.Map.Entry<String, AttributeValue> rangeKey) throws IllegalArgumentException {
+        java.util.HashMap<String,AttributeValue> exclusiveStartKey = new java.util.HashMap<String,AttributeValue>();
+        
+        if (hashKey != null) {
+            exclusiveStartKey.put(hashKey.getKey(), hashKey.getValue());
+        } else
+            throw new IllegalArgumentException("hashKey must be non-null object.");
+        if (rangeKey != null) {
+            exclusiveStartKey.put(rangeKey.getKey(), rangeKey.getValue());
+        } 
+        setExclusiveStartKey(exclusiveStartKey);
+    }
     
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * The primary key of the first item that this operation will evaluate.
+     * Use the value that was returned for <i>LastEvaluatedKey</i> in the
+     * previous operation. <p>The data type for <i>ExclusiveStartKey</i> must
+     * be String, Number or Binary. No set data types are allowed. <p>In a
+     * parallel scan, a <i>Scan</i> request that includes
+     * <i>ExclusiveStartKey</i> must specify the same segment whose previous
+     * <i>Scan</i> returned the corresponding value of
+     * <i>LastEvaluatedKey</i>.
+     * <p>
+     * This method accepts the hashKey, rangeKey of ExclusiveStartKey as
+     * java.util.Map.Entry<String, AttributeValue> objects.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param hashKey Primary hash key.
+     * @param rangeKey Primary range key. (null if it a hash-only table)
+     */
+    public ScanRequest withExclusiveStartKey(java.util.Map.Entry<String, AttributeValue> hashKey, java.util.Map.Entry<String, AttributeValue> rangeKey) throws IllegalArgumentException {
+        setExclusiveStartKey(hashKey, rangeKey);
+        return this;
+    }
+
+    /**
+     * The primary key of the first item that this operation will evaluate.
+     * Use the value that was returned for <i>LastEvaluatedKey</i> in the
+     * previous operation. <p>The data type for <i>ExclusiveStartKey</i> must
+     * be String, Number or Binary. No set data types are allowed. <p>In a
+     * parallel scan, a <i>Scan</i> request that includes
+     * <i>ExclusiveStartKey</i> must specify the same segment whose previous
+     * <i>Scan</i> returned the corresponding value of
+     * <i>LastEvaluatedKey</i>.
+     * <p>
+     * The method adds a new key-value pair into ExclusiveStartKey parameter,
+     * and returns a reference to this object so that method calls can be
+     * chained together.
+     *
+     * @param key The key of the entry to be added into ExclusiveStartKey.
+     * @param value The corresponding value of the entry to be added into ExclusiveStartKey.
+     */
+    public ScanRequest addExclusiveStartKeyEntry(String key, AttributeValue value) {
+        if (null == this.exclusiveStartKey) {
+            this.exclusiveStartKey = new java.util.HashMap<String,AttributeValue>();
+        }
+        if (this.exclusiveStartKey.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.exclusiveStartKey.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into ExclusiveStartKey.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public ScanRequest clearExclusiveStartKeyEntries() {
+        this.exclusiveStartKey = null;
+        return this;
+    }
+    
+    /**
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @return If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @return If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @see ReturnConsumedCapacity
      */
@@ -1731,16 +1782,20 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     }
     
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @see ReturnConsumedCapacity
      */
@@ -1749,21 +1804,25 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     }
     
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnConsumedCapacity
      */
@@ -1771,19 +1830,22 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
         this.returnConsumedCapacity = returnConsumedCapacity;
         return this;
     }
-    
-    
+
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @see ReturnConsumedCapacity
      */
@@ -1792,21 +1854,25 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     }
     
     /**
-     * If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     * the response; if set to <code>NONE</code> (the default),
-     * <i>ConsumedCapacity</i> is not included.
+     * If set to <code>TOTAL</code>, the response includes
+     * <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     * <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     * for indexes. If set to <code>NONE</code> (the default),
+     * <i>ConsumedCapacity</i> is not included in the response.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>TOTAL, NONE
+     * <b>Allowed Values: </b>INDEXES, TOTAL, NONE
      *
-     * @param returnConsumedCapacity If set to <code>TOTAL</code>, <i>ConsumedCapacity</i> is included in
-     *         the response; if set to <code>NONE</code> (the default),
-     *         <i>ConsumedCapacity</i> is not included.
+     * @param returnConsumedCapacity If set to <code>TOTAL</code>, the response includes
+     *         <i>ConsumedCapacity</i> data for tables and indexes. If set to
+     *         <code>INDEXES</code>, the response includes <i>ConsumedCapacity</i>
+     *         for indexes. If set to <code>NONE</code> (the default),
+     *         <i>ConsumedCapacity</i> is not included in the response.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ReturnConsumedCapacity
      */
@@ -1814,7 +1880,7 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
         this.returnConsumedCapacity = returnConsumedCapacity.toString();
         return this;
     }
-    
+
     /**
      * For a parallel <i>Scan</i> request, <i>TotalSegments</i> represents
      * the total number of segments into which the <i>Scan</i> operation will
@@ -1904,14 +1970,13 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         specify <i>TotalSegments</i>, you must also specify <i>Segment</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withTotalSegments(Integer totalSegments) {
         this.totalSegments = totalSegments;
         return this;
     }
-    
-    
+
     /**
      * For a parallel <i>Scan</i> request, <i>Segment</i> identifies an
      * individual segment to be scanned by an application worker. <p>Segment
@@ -2013,14 +2078,13 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
      *         specify <i>TotalSegments</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ScanRequest withSegment(Integer segment) {
         this.segment = segment;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -2032,15 +2096,15 @@ public class ScanRequest extends AmazonWebServiceRequest  implements Serializabl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");    	
-        if (getAttributesToGet() != null) sb.append("AttributesToGet: " + getAttributesToGet() + ",");    	
-        if (getLimit() != null) sb.append("Limit: " + getLimit() + ",");    	
-        if (getSelect() != null) sb.append("Select: " + getSelect() + ",");    	
-        if (getScanFilter() != null) sb.append("ScanFilter: " + getScanFilter() + ",");    	
-        if (getExclusiveStartKey() != null) sb.append("ExclusiveStartKey: " + getExclusiveStartKey() + ",");    	
-        if (getReturnConsumedCapacity() != null) sb.append("ReturnConsumedCapacity: " + getReturnConsumedCapacity() + ",");    	
-        if (getTotalSegments() != null) sb.append("TotalSegments: " + getTotalSegments() + ",");    	
+        sb.append("{");
+        if (getTableName() != null) sb.append("TableName: " + getTableName() + ",");
+        if (getAttributesToGet() != null) sb.append("AttributesToGet: " + getAttributesToGet() + ",");
+        if (getLimit() != null) sb.append("Limit: " + getLimit() + ",");
+        if (getSelect() != null) sb.append("Select: " + getSelect() + ",");
+        if (getScanFilter() != null) sb.append("ScanFilter: " + getScanFilter() + ",");
+        if (getExclusiveStartKey() != null) sb.append("ExclusiveStartKey: " + getExclusiveStartKey() + ",");
+        if (getReturnConsumedCapacity() != null) sb.append("ReturnConsumedCapacity: " + getReturnConsumedCapacity() + ",");
+        if (getTotalSegments() != null) sb.append("TotalSegments: " + getTotalSegments() + ",");
         if (getSegment() != null) sb.append("Segment: " + getSegment() );
         sb.append("}");
         return sb.toString();

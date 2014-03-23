@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
+
 import java.io.Serializable;
 
 /**
- * Create Topic Result
+ * <p>
+ * Response from CreateTopic action.
+ * </p>
  */
-public class CreateTopicResult  implements Serializable  {
+public class CreateTopicResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) assigned to the created topic.
@@ -51,14 +54,13 @@ public class CreateTopicResult  implements Serializable  {
      * @param topicArn The Amazon Resource Name (ARN) assigned to the created topic.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateTopicResult withTopicArn(String topicArn) {
         this.topicArn = topicArn;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -70,7 +72,7 @@ public class CreateTopicResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getTopicArn() != null) sb.append("TopicArn: " + getTopicArn() );
         sb.append("}");
         return sb.toString();

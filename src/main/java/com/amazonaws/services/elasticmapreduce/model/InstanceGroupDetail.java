@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Detailed information about an instance group.
  * </p>
  */
-public class InstanceGroupDetail  implements Serializable  {
+public class InstanceGroupDetail implements Serializable {
 
     /**
      * Unique identifier for the instance group.
@@ -90,7 +91,7 @@ public class InstanceGroupDetail  implements Serializable  {
      * STARTING, TERMINATED, and FAILED.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>PROVISIONING, STARTING, BOOTSTRAPPING, RUNNING, RESIZING, ARRESTED, SHUTTING_DOWN, TERMINATED, FAILED, ENDED
+     * <b>Allowed Values: </b>PROVISIONING, BOOTSTRAPPING, RUNNING, RESIZING, SUSPENDED, TERMINATING, TERMINATED, ARRESTED, SHUTTING_DOWN, ENDED
      */
     private String state;
 
@@ -144,16 +145,14 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param creationDateTime The date/time the instance group was created.
      */
     public InstanceGroupDetail(String instanceRole, String instanceType, Integer instanceRequestCount, Integer instanceRunningCount, String state, java.util.Date creationDateTime) {
-        this.instanceRole = instanceRole;
-        this.instanceType = instanceType;
-        this.instanceRequestCount = instanceRequestCount;
-        this.instanceRunningCount = instanceRunningCount;
-        this.state = state;
-        this.creationDateTime = creationDateTime;
+        setInstanceRole(instanceRole);
+        setInstanceType(instanceType);
+        setInstanceRequestCount(instanceRequestCount);
+        setInstanceRunningCount(instanceRunningCount);
+        setState(state);
+        setCreationDateTime(creationDateTime);
     }
 
-    
-    
     /**
      * Constructs a new InstanceGroupDetail object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -176,7 +175,7 @@ public class InstanceGroupDetail  implements Serializable  {
         this.state = state.toString();
         this.creationDateTime = creationDateTime;
     }
-    
+
     /**
      * Unique identifier for the instance group.
      * <p>
@@ -215,14 +214,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param instanceGroupId Unique identifier for the instance group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withInstanceGroupId(String instanceGroupId) {
         this.instanceGroupId = instanceGroupId;
         return this;
     }
-    
-    
+
     /**
      * Friendly name for the instance group.
      * <p>
@@ -261,14 +259,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param name Friendly name for the instance group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * Market type of the Amazon EC2 instances used to create a cluster node.
      * <p>
@@ -308,7 +305,7 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param market Market type of the Amazon EC2 instances used to create a cluster node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see MarketType
      */
@@ -316,8 +313,7 @@ public class InstanceGroupDetail  implements Serializable  {
         this.market = market;
         return this;
     }
-    
-    
+
     /**
      * Market type of the Amazon EC2 instances used to create a cluster node.
      * <p>
@@ -343,7 +339,7 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param market Market type of the Amazon EC2 instances used to create a cluster node.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see MarketType
      */
@@ -351,7 +347,7 @@ public class InstanceGroupDetail  implements Serializable  {
         this.market = market.toString();
         return this;
     }
-    
+
     /**
      * Instance group role in the cluster
      * <p>
@@ -391,7 +387,7 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param instanceRole Instance group role in the cluster
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceRoleType
      */
@@ -399,8 +395,7 @@ public class InstanceGroupDetail  implements Serializable  {
         this.instanceRole = instanceRole;
         return this;
     }
-    
-    
+
     /**
      * Instance group role in the cluster
      * <p>
@@ -426,7 +421,7 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param instanceRole Instance group role in the cluster
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceRoleType
      */
@@ -434,7 +429,7 @@ public class InstanceGroupDetail  implements Serializable  {
         this.instanceRole = instanceRole.toString();
         return this;
     }
-    
+
     /**
      * Bid price for EC2 Instances when launching nodes as Spot Instances,
      * expressed in USD.
@@ -479,14 +474,13 @@ public class InstanceGroupDetail  implements Serializable  {
      *         expressed in USD.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withBidPrice(String bidPrice) {
         this.bidPrice = bidPrice;
         return this;
     }
-    
-    
+
     /**
      * Amazon EC2 Instance type.
      * <p>
@@ -525,14 +519,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param instanceType Amazon EC2 Instance type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withInstanceType(String instanceType) {
         this.instanceType = instanceType;
         return this;
     }
-    
-    
+
     /**
      * Target number of instances to run in the instance group.
      *
@@ -559,14 +552,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param instanceRequestCount Target number of instances to run in the instance group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withInstanceRequestCount(Integer instanceRequestCount) {
         this.instanceRequestCount = instanceRequestCount;
         return this;
     }
-    
-    
+
     /**
      * Actual count of running instances.
      *
@@ -593,20 +585,19 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param instanceRunningCount Actual count of running instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withInstanceRunningCount(Integer instanceRunningCount) {
         this.instanceRunningCount = instanceRunningCount;
         return this;
     }
-    
-    
+
     /**
      * State of instance group. The following values are deprecated:
      * STARTING, TERMINATED, and FAILED.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>PROVISIONING, STARTING, BOOTSTRAPPING, RUNNING, RESIZING, ARRESTED, SHUTTING_DOWN, TERMINATED, FAILED, ENDED
+     * <b>Allowed Values: </b>PROVISIONING, BOOTSTRAPPING, RUNNING, RESIZING, SUSPENDED, TERMINATING, TERMINATED, ARRESTED, SHUTTING_DOWN, ENDED
      *
      * @return State of instance group. The following values are deprecated:
      *         STARTING, TERMINATED, and FAILED.
@@ -622,7 +613,7 @@ public class InstanceGroupDetail  implements Serializable  {
      * STARTING, TERMINATED, and FAILED.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>PROVISIONING, STARTING, BOOTSTRAPPING, RUNNING, RESIZING, ARRESTED, SHUTTING_DOWN, TERMINATED, FAILED, ENDED
+     * <b>Allowed Values: </b>PROVISIONING, BOOTSTRAPPING, RUNNING, RESIZING, SUSPENDED, TERMINATING, TERMINATED, ARRESTED, SHUTTING_DOWN, ENDED
      *
      * @param state State of instance group. The following values are deprecated:
      *         STARTING, TERMINATED, and FAILED.
@@ -640,13 +631,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>PROVISIONING, STARTING, BOOTSTRAPPING, RUNNING, RESIZING, ARRESTED, SHUTTING_DOWN, TERMINATED, FAILED, ENDED
+     * <b>Allowed Values: </b>PROVISIONING, BOOTSTRAPPING, RUNNING, RESIZING, SUSPENDED, TERMINATING, TERMINATED, ARRESTED, SHUTTING_DOWN, ENDED
      *
      * @param state State of instance group. The following values are deprecated:
      *         STARTING, TERMINATED, and FAILED.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceGroupState
      */
@@ -654,14 +645,13 @@ public class InstanceGroupDetail  implements Serializable  {
         this.state = state;
         return this;
     }
-    
-    
+
     /**
      * State of instance group. The following values are deprecated:
      * STARTING, TERMINATED, and FAILED.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>PROVISIONING, STARTING, BOOTSTRAPPING, RUNNING, RESIZING, ARRESTED, SHUTTING_DOWN, TERMINATED, FAILED, ENDED
+     * <b>Allowed Values: </b>PROVISIONING, BOOTSTRAPPING, RUNNING, RESIZING, SUSPENDED, TERMINATING, TERMINATED, ARRESTED, SHUTTING_DOWN, ENDED
      *
      * @param state State of instance group. The following values are deprecated:
      *         STARTING, TERMINATED, and FAILED.
@@ -679,13 +669,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
-     * <b>Allowed Values: </b>PROVISIONING, STARTING, BOOTSTRAPPING, RUNNING, RESIZING, ARRESTED, SHUTTING_DOWN, TERMINATED, FAILED, ENDED
+     * <b>Allowed Values: </b>PROVISIONING, BOOTSTRAPPING, RUNNING, RESIZING, SUSPENDED, TERMINATING, TERMINATED, ARRESTED, SHUTTING_DOWN, ENDED
      *
      * @param state State of instance group. The following values are deprecated:
      *         STARTING, TERMINATED, and FAILED.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see InstanceGroupState
      */
@@ -693,7 +683,7 @@ public class InstanceGroupDetail  implements Serializable  {
         this.state = state.toString();
         return this;
     }
-    
+
     /**
      * Details regarding the state of the instance group.
      * <p>
@@ -732,14 +722,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param lastStateChangeReason Details regarding the state of the instance group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withLastStateChangeReason(String lastStateChangeReason) {
         this.lastStateChangeReason = lastStateChangeReason;
         return this;
     }
-    
-    
+
     /**
      * The date/time the instance group was created.
      *
@@ -766,14 +755,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param creationDateTime The date/time the instance group was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withCreationDateTime(java.util.Date creationDateTime) {
         this.creationDateTime = creationDateTime;
         return this;
     }
-    
-    
+
     /**
      * The date/time the instance group was started.
      *
@@ -800,14 +788,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param startDateTime The date/time the instance group was started.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withStartDateTime(java.util.Date startDateTime) {
         this.startDateTime = startDateTime;
         return this;
     }
-    
-    
+
     /**
      * The date/time the instance group was available to the cluster.
      *
@@ -834,14 +821,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param readyDateTime The date/time the instance group was available to the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withReadyDateTime(java.util.Date readyDateTime) {
         this.readyDateTime = readyDateTime;
         return this;
     }
-    
-    
+
     /**
      * The date/time the instance group was terminated.
      *
@@ -868,14 +854,13 @@ public class InstanceGroupDetail  implements Serializable  {
      * @param endDateTime The date/time the instance group was terminated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceGroupDetail withEndDateTime(java.util.Date endDateTime) {
         this.endDateTime = endDateTime;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -887,20 +872,20 @@ public class InstanceGroupDetail  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceGroupId() != null) sb.append("InstanceGroupId: " + getInstanceGroupId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getMarket() != null) sb.append("Market: " + getMarket() + ",");    	
-        if (getInstanceRole() != null) sb.append("InstanceRole: " + getInstanceRole() + ",");    	
-        if (getBidPrice() != null) sb.append("BidPrice: " + getBidPrice() + ",");    	
-        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");    	
-        if (getInstanceRequestCount() != null) sb.append("InstanceRequestCount: " + getInstanceRequestCount() + ",");    	
-        if (getInstanceRunningCount() != null) sb.append("InstanceRunningCount: " + getInstanceRunningCount() + ",");    	
-        if (getState() != null) sb.append("State: " + getState() + ",");    	
-        if (getLastStateChangeReason() != null) sb.append("LastStateChangeReason: " + getLastStateChangeReason() + ",");    	
-        if (getCreationDateTime() != null) sb.append("CreationDateTime: " + getCreationDateTime() + ",");    	
-        if (getStartDateTime() != null) sb.append("StartDateTime: " + getStartDateTime() + ",");    	
-        if (getReadyDateTime() != null) sb.append("ReadyDateTime: " + getReadyDateTime() + ",");    	
+        sb.append("{");
+        if (getInstanceGroupId() != null) sb.append("InstanceGroupId: " + getInstanceGroupId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getMarket() != null) sb.append("Market: " + getMarket() + ",");
+        if (getInstanceRole() != null) sb.append("InstanceRole: " + getInstanceRole() + ",");
+        if (getBidPrice() != null) sb.append("BidPrice: " + getBidPrice() + ",");
+        if (getInstanceType() != null) sb.append("InstanceType: " + getInstanceType() + ",");
+        if (getInstanceRequestCount() != null) sb.append("InstanceRequestCount: " + getInstanceRequestCount() + ",");
+        if (getInstanceRunningCount() != null) sb.append("InstanceRunningCount: " + getInstanceRunningCount() + ",");
+        if (getState() != null) sb.append("State: " + getState() + ",");
+        if (getLastStateChangeReason() != null) sb.append("LastStateChangeReason: " + getLastStateChangeReason() + ",");
+        if (getCreationDateTime() != null) sb.append("CreationDateTime: " + getCreationDateTime() + ",");
+        if (getStartDateTime() != null) sb.append("StartDateTime: " + getStartDateTime() + ",");
+        if (getReadyDateTime() != null) sb.append("ReadyDateTime: " + getReadyDateTime() + ",");
         if (getEndDateTime() != null) sb.append("EndDateTime: " + getEndDateTime() );
         sb.append("}");
         return sb.toString();

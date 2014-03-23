@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Provides a list of validation messages.
  * </p>
  */
-public class ValidateConfigurationSettingsResult  implements Serializable  {
+public class ValidateConfigurationSettingsResult implements Serializable {
 
     /**
      * A list of <a>ValidationMessage</a>.
      */
-    private java.util.List<ValidationMessage> messages;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ValidationMessage> messages;
 
     /**
      * A list of <a>ValidationMessage</a>.
@@ -33,9 +34,9 @@ public class ValidateConfigurationSettingsResult  implements Serializable  {
      * @return A list of <a>ValidationMessage</a>.
      */
     public java.util.List<ValidationMessage> getMessages() {
-        
         if (messages == null) {
-            messages = new java.util.ArrayList<ValidationMessage>();
+              messages = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationMessage>();
+              messages.setAutoConstruct(true);
         }
         return messages;
     }
@@ -50,8 +51,7 @@ public class ValidateConfigurationSettingsResult  implements Serializable  {
             this.messages = null;
             return;
         }
-
-        java.util.List<ValidationMessage> messagesCopy = new java.util.ArrayList<ValidationMessage>(messages.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ValidationMessage> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationMessage>(messages.size());
         messagesCopy.addAll(messages);
         this.messages = messagesCopy;
     }
@@ -64,7 +64,7 @@ public class ValidateConfigurationSettingsResult  implements Serializable  {
      * @param messages A list of <a>ValidationMessage</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateConfigurationSettingsResult withMessages(ValidationMessage... messages) {
         if (getMessages() == null) setMessages(new java.util.ArrayList<ValidationMessage>(messages.length));
@@ -82,20 +82,20 @@ public class ValidateConfigurationSettingsResult  implements Serializable  {
      * @param messages A list of <a>ValidationMessage</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidateConfigurationSettingsResult withMessages(java.util.Collection<ValidationMessage> messages) {
         if (messages == null) {
             this.messages = null;
         } else {
-            java.util.List<ValidationMessage> messagesCopy = new java.util.ArrayList<ValidationMessage>(messages.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ValidationMessage> messagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ValidationMessage>(messages.size());
             messagesCopy.addAll(messages);
             this.messages = messagesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class ValidateConfigurationSettingsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMessages() != null) sb.append("Messages: " + getMessages() );
         sb.append("}");
         return sb.toString();

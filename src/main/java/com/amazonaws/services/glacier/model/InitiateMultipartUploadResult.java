@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
-public class InitiateMultipartUploadResult  implements Serializable  {
+public class InitiateMultipartUploadResult implements Serializable {
 
     /**
      * The relative URI path of the multipart upload ID Amazon Glacier
@@ -66,14 +67,13 @@ public class InitiateMultipartUploadResult  implements Serializable  {
      *         created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InitiateMultipartUploadResult withLocation(String location) {
         this.location = location;
         return this;
     }
-    
-    
+
     /**
      * The ID of the multipart upload. This value is also included as part of
      * the location.
@@ -106,14 +106,13 @@ public class InitiateMultipartUploadResult  implements Serializable  {
      *         the location.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InitiateMultipartUploadResult withUploadId(String uploadId) {
         this.uploadId = uploadId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -125,8 +124,8 @@ public class InitiateMultipartUploadResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");    	
+        sb.append("{");
+        if (getLocation() != null) sb.append("Location: " + getLocation() + ",");
         if (getUploadId() != null) sb.append("UploadId: " + getUploadId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,37 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.route53.AmazonRoute53#deleteHostedZone(DeleteHostedZoneRequest) DeleteHostedZone operation}.
  * <p>
- * This action deletes a hosted zone. To delete a hosted zone, send a <code>DELETE</code> request to the <code>2012-12-12/hostedzone/hosted zone ID
- * </code> resource.
+ * This action deletes a hosted zone. To delete a hosted zone, send a
+ * <code>DELETE</code> request to the <code>2013-04-01/hostedzone/hosted
+ * zone ID </code> resource.
  * </p>
  * <p>
- * For more information about deleting a hosted zone, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html">
- * Deleting a Hosted Zone </a> in the <i>Amazon Route 53 Developer Guide</i> .
+ * For more information about deleting a hosted zone, see
+ * <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html"> Deleting a Hosted Zone </a>
+ * in the <i>Amazon Route 53 Developer Guide</i> .
  * </p>
  * <p>
- * <b>IMPORTANT:</b> You can delete a hosted zone only if there are no resource record sets other than the default SOA record and NS resource record
- * sets. If your hosted zone contains other resource record sets, you must delete them before you can delete your hosted zone. If you try to delete a
- * hosted zone that contains other resource record sets, Route 53 will deny your request with a HostedZoneNotEmpty error. For information about deleting
- * records from your hosted zone, see ChangeResourceRecordSets.
+ * <b>IMPORTANT:</b> You can delete a hosted zone only if there are no
+ * resource record sets other than the default SOA record and NS resource
+ * record sets. If your hosted zone contains other resource record sets,
+ * you must delete them before you can delete your hosted zone. If you
+ * try to delete a hosted zone that contains other resource record sets,
+ * Route 53 will deny your request with a HostedZoneNotEmpty error. For
+ * information about deleting records from your hosted zone, see
+ * ChangeResourceRecordSets.
  * </p>
  *
  * @see com.amazonaws.services.route53.AmazonRoute53#deleteHostedZone(DeleteHostedZoneRequest)
  */
-public class DeleteHostedZoneRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteHostedZoneRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the request. Include this ID in a call to <a>GetChange</a>
@@ -62,11 +70,9 @@ public class DeleteHostedZoneRequest extends AmazonWebServiceRequest  implements
      * 53 DNS servers.
      */
     public DeleteHostedZoneRequest(String id) {
-        this.id = id;
+        setId(id);
     }
 
-    
-    
     /**
      * The ID of the request. Include this ID in a call to <a>GetChange</a>
      * to track when the change has propagated to all Route 53 DNS servers.
@@ -108,14 +114,13 @@ public class DeleteHostedZoneRequest extends AmazonWebServiceRequest  implements
      *         to track when the change has propagated to all Route 53 DNS servers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteHostedZoneRequest withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -127,7 +132,7 @@ public class DeleteHostedZoneRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getId() != null) sb.append("Id: " + getId() );
         sb.append("}");
         return sb.toString();

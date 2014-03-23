@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -37,7 +37,12 @@ public enum LayerAttributesKeys {
     ManageBundler("ManageBundler"),
     BundlerVersion("BundlerVersion"),
     RailsStack("RailsStack"),
-    PassengerVersion("PassengerVersion");
+    PassengerVersion("PassengerVersion"),
+    Jvm("Jvm"),
+    JvmVersion("JvmVersion"),
+    JvmOptions("JvmOptions"),
+    JavaAppServer("JavaAppServer"),
+    JavaAppServerVersion("JavaAppServerVersion");
 
     private String value;
 
@@ -99,6 +104,16 @@ public enum LayerAttributesKeys {
             return LayerAttributesKeys.RailsStack;
         } else if ("PassengerVersion".equals(value)) {
             return LayerAttributesKeys.PassengerVersion;
+        } else if ("Jvm".equals(value)) {
+            return LayerAttributesKeys.Jvm;
+        } else if ("JvmVersion".equals(value)) {
+            return LayerAttributesKeys.JvmVersion;
+        } else if ("JvmOptions".equals(value)) {
+            return LayerAttributesKeys.JvmOptions;
+        } else if ("JavaAppServer".equals(value)) {
+            return LayerAttributesKeys.JavaAppServer;
+        } else if ("JavaAppServerVersion".equals(value)) {
+            return LayerAttributesKeys.JavaAppServerVersion;
         } else {
             throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,52 +13,73 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.glacier.AmazonGlacier#completeMultipartUpload(CompleteMultipartUploadRequest) CompleteMultipartUpload operation}.
  * <p>
- * You call this operation to inform Amazon Glacier that all the archive parts have been uploaded and that Amazon Glacier can now assemble the archive
- * from the uploaded parts. After assembling and saving the archive to the vault, Amazon Glacier returns the URI path of the newly created archive
- * resource. Using the URI path, you can then access the archive. After you upload an archive, you should save the archive ID returned to retrieve the
- * archive at a later point. You can also get the vault inventory to obtain a list of archive IDs in a vault. For more information, see InitiateJob.
+ * You call this operation to inform Amazon Glacier that all the archive
+ * parts have been uploaded and that Amazon Glacier can now assemble the
+ * archive from the uploaded parts. After assembling and saving the
+ * archive to the vault, Amazon Glacier returns the URI path of the newly
+ * created archive resource. Using the URI path, you can then access the
+ * archive. After you upload an archive, you should save the archive ID
+ * returned to retrieve the archive at a later point. You can also get
+ * the vault inventory to obtain a list of archive IDs in a vault. For
+ * more information, see InitiateJob.
  * </p>
  * <p>
- * In the request, you must include the computed SHA256 tree hash of the entire archive you have uploaded. For information about computing a SHA256 tree
- * hash, see <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/checksum-calculations.html"> Computing Checksums </a> . On the server
- * side, Amazon Glacier also constructs the SHA256 tree hash of the assembled archive. If the values match, Amazon Glacier saves the archive to the
- * vault; otherwise, it returns an error, and the operation fails. The ListParts operation returns a list of parts uploaded for a specific multipart
- * upload. It includes checksum information for each uploaded part that can be used to debug a bad checksum issue.
+ * In the request, you must include the computed SHA256 tree hash of the
+ * entire archive you have uploaded. For information about computing a
+ * SHA256 tree hash, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html"> Computing Checksums </a>
+ * . On the server side, Amazon Glacier also constructs the SHA256 tree
+ * hash of the assembled archive. If the values match, Amazon Glacier
+ * saves the archive to the vault; otherwise, it returns an error, and
+ * the operation fails. The ListParts operation returns a list of parts
+ * uploaded for a specific multipart upload. It includes checksum
+ * information for each uploaded part that can be used to debug a bad
+ * checksum issue.
  * </p>
  * <p>
- * Additionally, Amazon Glacier also checks for any missing content ranges when assembling the archive, if missing content ranges are found, Amazon
- * Glacier returns an error and the operation fails.
+ * Additionally, Amazon Glacier also checks for any missing content
+ * ranges when assembling the archive, if missing content ranges are
+ * found, Amazon Glacier returns an error and the operation fails.
  * </p>
  * <p>
- * Complete Multipart Upload is an idempotent operation. After your first successful complete multipart upload, if you call the operation again within a
- * short period, the operation will succeed and return the same archive ID. This is useful in the event you experience a network issue that causes an
- * aborted connection or receive a 500 server error, in which case you can repeat your Complete Multipart Upload request and get the same archive ID
- * without creating duplicate archives. Note, however, that after the multipart upload completes, you cannot call the List Parts operation and the
- * multipart upload will not appear in List Multipart Uploads response, even if idempotent complete is possible.
+ * Complete Multipart Upload is an idempotent operation. After your first
+ * successful complete multipart upload, if you call the operation again
+ * within a short period, the operation will succeed and return the same
+ * archive ID. This is useful in the event you experience a network issue
+ * that causes an aborted connection or receive a 500 server error, in
+ * which case you can repeat your Complete Multipart Upload request and
+ * get the same archive ID without creating duplicate archives. Note,
+ * however, that after the multipart upload completes, you cannot call
+ * the List Parts operation and the multipart upload will not appear in
+ * List Multipart Uploads response, even if idempotent complete is
+ * possible.
  * </p>
  * <p>
- * An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any
- * permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access
- * Management (IAM) </a> .
+ * An AWS account has full permission to perform all operations
+ * (actions). However, AWS Identity and Access Management (IAM) users
+ * don't have any permissions by default. You must grant them explicit
+ * permission to perform specific actions. For more information, see
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html"> Access Control Using AWS Identity and Access Management (IAM) </a>
+ * .
  * </p>
  * <p>
- * For conceptual information and underlying REST API, go to <a
- * href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/uploading-archive-mpu.html"> Uploading Large Archives in Parts (Multipart Upload)
- * </a> and <a href="http://docs.amazonwebservices.com/amazonglacier/latest/dev/api-multipart-complete-upload.html"> Complete Multipart Upload </a> in
- * the <i>Amazon Glacier Developer Guide</i> .
+ * For conceptual information and underlying REST API, go to
+ * <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html"> Uploading Large Archives in Parts (Multipart Upload) </a> and <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html"> Complete Multipart Upload </a>
+ * in the <i>Amazon Glacier Developer Guide</i> .
  * 
  * </p>
  *
  * @see com.amazonaws.services.glacier.AmazonGlacier#completeMultipartUpload(CompleteMultipartUploadRequest)
  */
-public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
@@ -117,14 +138,12 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
      * returns an error and the request fails.
      */
     public CompleteMultipartUploadRequest(String vaultName, String uploadId, String archiveSize, String checksum) {
-        this.vaultName = vaultName;
-        this.uploadId = uploadId;
-        this.archiveSize = archiveSize;
-        this.checksum = checksum;
+        setVaultName(vaultName);
+        setUploadId(uploadId);
+        setArchiveSize(archiveSize);
+        setChecksum(checksum);
     }
 
-    
-    
     /**
      * Constructs a new CompleteMultipartUploadRequest object.
      * Callers should use the setter or fluent setter (with...) methods to
@@ -147,15 +166,13 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
      * returns an error and the request fails.
      */
     public CompleteMultipartUploadRequest(String accountId, String vaultName, String uploadId, String archiveSize, String checksum) {
-        this.accountId = accountId;
-        this.vaultName = vaultName;
-        this.uploadId = uploadId;
-        this.archiveSize = archiveSize;
-        this.checksum = checksum;
+        setAccountId(accountId);
+        setVaultName(vaultName);
+        setUploadId(uploadId);
+        setArchiveSize(archiveSize);
+        setChecksum(checksum);
     }
 
-    
-    
     /**
      * The <code>AccountId</code> is the AWS Account ID. You can specify
      * either the AWS Account ID or optionally a '-', in which case Amazon
@@ -206,14 +223,13 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
      *         hyphens in it.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadRequest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
     }
-    
-    
+
     /**
      * The name of the vault.
      *
@@ -240,14 +256,13 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
      * @param vaultName The name of the vault.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadRequest withVaultName(String vaultName) {
         this.vaultName = vaultName;
         return this;
     }
-    
-    
+
     /**
      * The upload ID of the multipart upload.
      *
@@ -274,14 +289,13 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
      * @param uploadId The upload ID of the multipart upload.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadRequest withUploadId(String uploadId) {
         this.uploadId = uploadId;
         return this;
     }
-    
-    
+
     /**
      * The total size, in bytes, of the entire archive. This value should be
      * the sum of all the sizes of the individual parts that you uploaded.
@@ -314,14 +328,13 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
      *         the sum of all the sizes of the individual parts that you uploaded.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadRequest withArchiveSize(String archiveSize) {
         this.archiveSize = archiveSize;
         return this;
     }
-    
-    
+
     /**
      * The SHA256 tree hash of the entire archive. It is the tree hash of
      * SHA256 tree hash of the individual parts. If the value you specify in
@@ -372,14 +385,13 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
      *         and the request fails.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CompleteMultipartUploadRequest withChecksum(String checksum) {
         this.checksum = checksum;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -391,11 +403,11 @@ public class CompleteMultipartUploadRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");    	
-        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");    	
-        if (getUploadId() != null) sb.append("UploadId: " + getUploadId() + ",");    	
-        if (getArchiveSize() != null) sb.append("ArchiveSize: " + getArchiveSize() + ",");    	
+        sb.append("{");
+        if (getAccountId() != null) sb.append("AccountId: " + getAccountId() + ",");
+        if (getVaultName() != null) sb.append("VaultName: " + getVaultName() + ",");
+        if (getUploadId() != null) sb.append("UploadId: " + getUploadId() + ",");
+        if (getArchiveSize() != null) sb.append("ArchiveSize: " + getArchiveSize() + ",");
         if (getChecksum() != null) sb.append("Checksum: " + getChecksum() );
         sb.append("}");
         return sb.toString();

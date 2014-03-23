@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,12 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.s3.internal;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import com.amazonaws.SDKGlobalConfiguration;
+import com.amazonaws.services.s3.AmazonS3Client;
 
 /**
  * Constants used by the AWS S3 Java client.
@@ -63,4 +69,33 @@ public class Constants {
      * intervention.
      */
     public static final int DEFAULT_STREAM_BUFFER_SIZE = 128 * KB;
+
+    /**
+     * Returns the buffer size override if it is specified in the system property,
+     * otherwise returns the default value.
+     */
+    public static int getStreamBufferSize() {
+    	int streamBufferSize = DEFAULT_STREAM_BUFFER_SIZE;
+        String bufferSizeOverride =
+            System.getProperty(SDKGlobalConfiguration
+                                   .DEFAULT_S3_STREAM_BUFFER_SIZE);
+
+        if (bufferSizeOverride != null) {
+            try {
+                streamBufferSize = Integer.parseInt(bufferSizeOverride);
+            } catch (Exception e) {
+                log.warn("Unable to parse buffer size override from value: " + bufferSizeOverride);
+            }
+        }
+        return streamBufferSize;
+    }
+
+    /** Shared logger for client events */
+    private static Log log = LogFactory.getLog(AmazonS3Client.class);
+
+    public static final int NO_SUCH_BUCKET_STATUS_CODE = 404;
+
+    public static final int BUCKET_ACCESS_FORBIDDEN_STATUS_CODE = 403;
+
+    public static final int BUCKET_REDIRECT_STATUS_CODE = 301;
 }

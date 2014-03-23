@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeApplications(DescribeApplicationsRequest) DescribeApplications operation}.
@@ -24,13 +26,13 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#describeApplications(DescribeApplicationsRequest)
  */
-public class DescribeApplicationsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeApplicationsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * If specified, AWS Elastic Beanstalk restricts the returned
      * descriptions to only include those with the specified names.
      */
-    private java.util.List<String> applicationNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> applicationNames;
 
     /**
      * Default constructor for a new DescribeApplicationsRequest object.  Callers should use the
@@ -46,9 +48,9 @@ public class DescribeApplicationsRequest extends AmazonWebServiceRequest  implem
      *         descriptions to only include those with the specified names.
      */
     public java.util.List<String> getApplicationNames() {
-        
         if (applicationNames == null) {
-            applicationNames = new java.util.ArrayList<String>();
+              applicationNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              applicationNames.setAutoConstruct(true);
         }
         return applicationNames;
     }
@@ -65,8 +67,7 @@ public class DescribeApplicationsRequest extends AmazonWebServiceRequest  implem
             this.applicationNames = null;
             return;
         }
-
-        java.util.List<String> applicationNamesCopy = new java.util.ArrayList<String>(applicationNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> applicationNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(applicationNames.size());
         applicationNamesCopy.addAll(applicationNames);
         this.applicationNames = applicationNamesCopy;
     }
@@ -81,7 +82,7 @@ public class DescribeApplicationsRequest extends AmazonWebServiceRequest  implem
      *         descriptions to only include those with the specified names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeApplicationsRequest withApplicationNames(String... applicationNames) {
         if (getApplicationNames() == null) setApplicationNames(new java.util.ArrayList<String>(applicationNames.length));
@@ -101,20 +102,20 @@ public class DescribeApplicationsRequest extends AmazonWebServiceRequest  implem
      *         descriptions to only include those with the specified names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeApplicationsRequest withApplicationNames(java.util.Collection<String> applicationNames) {
         if (applicationNames == null) {
             this.applicationNames = null;
         } else {
-            java.util.List<String> applicationNamesCopy = new java.util.ArrayList<String>(applicationNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> applicationNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(applicationNames.size());
             applicationNamesCopy.addAll(applicationNames);
             this.applicationNames = applicationNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -126,7 +127,7 @@ public class DescribeApplicationsRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getApplicationNames() != null) sb.append("ApplicationNames: " + getApplicationNames() );
         sb.append("}");
         return sb.toString();

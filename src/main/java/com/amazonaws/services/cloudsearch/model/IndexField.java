@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Defines a field in the index, including its name, type, and the source of its data. The <code>IndexFieldType</code> indicates which of the options
- * will be present. It is invalid to specify options for a type other than the <code>IndexFieldType</code> .
+ * Defines a field in the index, including its name, type, and the source
+ * of its data. The <code>IndexFieldType</code> indicates which of the
+ * options will be present. It is invalid to specify options for a type
+ * other than the <code>IndexFieldType</code> .
  * </p>
  */
-public class IndexField  implements Serializable  {
+public class IndexField implements Serializable {
 
     /**
      * The name of a field in the search index. Field names must begin with a
@@ -73,7 +76,7 @@ public class IndexField  implements Serializable  {
      * be applied to the source data when populating the index field. You can
      * configure a maximum of 20 sources for an <code>IndexField</code>.
      */
-    private java.util.List<SourceAttribute> sourceAttributes;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<SourceAttribute> sourceAttributes;
 
     /**
      * The name of a field in the search index. Field names must begin with a
@@ -137,14 +140,13 @@ public class IndexField  implements Serializable  {
      *         specified as field or rank expression names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexField withIndexFieldName(String indexFieldName) {
         this.indexFieldName = indexFieldName;
         return this;
     }
-    
-    
+
     /**
      * The type of field. Based on this type, exactly one of the
      * <a>UIntOptions</a>, <a>LiteralOptions</a> or <a>TextOptions</a> must
@@ -196,7 +198,7 @@ public class IndexField  implements Serializable  {
      *         be present.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see IndexFieldType
      */
@@ -204,8 +206,7 @@ public class IndexField  implements Serializable  {
         this.indexFieldType = indexFieldType;
         return this;
     }
-    
-    
+
     /**
      * The type of field. Based on this type, exactly one of the
      * <a>UIntOptions</a>, <a>LiteralOptions</a> or <a>TextOptions</a> must
@@ -239,7 +240,7 @@ public class IndexField  implements Serializable  {
      *         be present.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see IndexFieldType
      */
@@ -247,7 +248,7 @@ public class IndexField  implements Serializable  {
         this.indexFieldType = indexFieldType.toString();
         return this;
     }
-    
+
     /**
      * Options for an unsigned integer field. Present if
      * <code>IndexFieldType</code> specifies the field is of type unsigned
@@ -286,14 +287,13 @@ public class IndexField  implements Serializable  {
      *         integer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexField withUIntOptions(UIntOptions uIntOptions) {
         this.uIntOptions = uIntOptions;
         return this;
     }
-    
-    
+
     /**
      * Options for literal field. Present if <code>IndexFieldType</code>
      * specifies the field is of type literal.
@@ -326,14 +326,13 @@ public class IndexField  implements Serializable  {
      *         specifies the field is of type literal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexField withLiteralOptions(LiteralOptions literalOptions) {
         this.literalOptions = literalOptions;
         return this;
     }
-    
-    
+
     /**
      * Options for text field. Present if <code>IndexFieldType</code>
      * specifies the field is of type text.
@@ -366,14 +365,13 @@ public class IndexField  implements Serializable  {
      *         specifies the field is of type text.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexField withTextOptions(TextOptions textOptions) {
         this.textOptions = textOptions;
         return this;
     }
-    
-    
+
     /**
      * An optional list of source attributes that provide data for this index
      * field. If not specified, the data is pulled from a source attribute
@@ -390,9 +388,9 @@ public class IndexField  implements Serializable  {
      *         configure a maximum of 20 sources for an <code>IndexField</code>.
      */
     public java.util.List<SourceAttribute> getSourceAttributes() {
-        
         if (sourceAttributes == null) {
-            sourceAttributes = new java.util.ArrayList<SourceAttribute>();
+              sourceAttributes = new com.amazonaws.internal.ListWithAutoConstructFlag<SourceAttribute>();
+              sourceAttributes.setAutoConstruct(true);
         }
         return sourceAttributes;
     }
@@ -417,8 +415,7 @@ public class IndexField  implements Serializable  {
             this.sourceAttributes = null;
             return;
         }
-
-        java.util.List<SourceAttribute> sourceAttributesCopy = new java.util.ArrayList<SourceAttribute>(sourceAttributes.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<SourceAttribute> sourceAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SourceAttribute>(sourceAttributes.size());
         sourceAttributesCopy.addAll(sourceAttributes);
         this.sourceAttributes = sourceAttributesCopy;
     }
@@ -441,7 +438,7 @@ public class IndexField  implements Serializable  {
      *         configure a maximum of 20 sources for an <code>IndexField</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexField withSourceAttributes(SourceAttribute... sourceAttributes) {
         if (getSourceAttributes() == null) setSourceAttributes(new java.util.ArrayList<SourceAttribute>(sourceAttributes.length));
@@ -469,20 +466,20 @@ public class IndexField  implements Serializable  {
      *         configure a maximum of 20 sources for an <code>IndexField</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public IndexField withSourceAttributes(java.util.Collection<SourceAttribute> sourceAttributes) {
         if (sourceAttributes == null) {
             this.sourceAttributes = null;
         } else {
-            java.util.List<SourceAttribute> sourceAttributesCopy = new java.util.ArrayList<SourceAttribute>(sourceAttributes.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<SourceAttribute> sourceAttributesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<SourceAttribute>(sourceAttributes.size());
             sourceAttributesCopy.addAll(sourceAttributes);
             this.sourceAttributes = sourceAttributesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -494,12 +491,12 @@ public class IndexField  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIndexFieldName() != null) sb.append("IndexFieldName: " + getIndexFieldName() + ",");    	
-        if (getIndexFieldType() != null) sb.append("IndexFieldType: " + getIndexFieldType() + ",");    	
-        if (getUIntOptions() != null) sb.append("UIntOptions: " + getUIntOptions() + ",");    	
-        if (getLiteralOptions() != null) sb.append("LiteralOptions: " + getLiteralOptions() + ",");    	
-        if (getTextOptions() != null) sb.append("TextOptions: " + getTextOptions() + ",");    	
+        sb.append("{");
+        if (getIndexFieldName() != null) sb.append("IndexFieldName: " + getIndexFieldName() + ",");
+        if (getIndexFieldType() != null) sb.append("IndexFieldType: " + getIndexFieldType() + ",");
+        if (getUIntOptions() != null) sb.append("UIntOptions: " + getUIntOptions() + ",");
+        if (getLiteralOptions() != null) sb.append("LiteralOptions: " + getLiteralOptions() + ",");
+        if (getTextOptions() != null) sb.append("TextOptions: " + getTextOptions() + ",");
         if (getSourceAttributes() != null) sb.append("SourceAttributes: " + getSourceAttributes() );
         sb.append("}");
         return sb.toString();

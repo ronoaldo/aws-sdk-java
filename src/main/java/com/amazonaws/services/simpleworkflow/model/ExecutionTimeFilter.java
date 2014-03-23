@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,16 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Used to filter the workflow executions in visibility APIs by various time-based rules. Each parameter, if specified, defines a rule that must be
- * satisfied by each returned query result. The parameter values are in the <a href="https://en.wikipedia.org/wiki/Unix_time"> Unix Time format </a> .
- * For example: "oldestDate": 1325376070.
+ * Used to filter the workflow executions in visibility APIs by various
+ * time-based rules. Each parameter, if specified, defines a rule that
+ * must be satisfied by each returned query result. The parameter values
+ * are in the
+ * <a href="https://en.wikipedia.org/wiki/Unix_time"> Unix Time format </a>
+ * . For example: "oldestDate": 1325376070.
  * </p>
  */
-public class ExecutionTimeFilter  implements Serializable  {
+public class ExecutionTimeFilter implements Serializable {
 
     /**
      * Specifies the oldest start or close date and time to return.
@@ -60,14 +64,13 @@ public class ExecutionTimeFilter  implements Serializable  {
      * @param oldestDate Specifies the oldest start or close date and time to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExecutionTimeFilter withOldestDate(java.util.Date oldestDate) {
         this.oldestDate = oldestDate;
         return this;
     }
-    
-    
+
     /**
      * Specifies the latest start or close date and time to return.
      *
@@ -94,14 +97,13 @@ public class ExecutionTimeFilter  implements Serializable  {
      * @param latestDate Specifies the latest start or close date and time to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ExecutionTimeFilter withLatestDate(java.util.Date latestDate) {
         this.latestDate = latestDate;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -113,8 +115,8 @@ public class ExecutionTimeFilter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOldestDate() != null) sb.append("OldestDate: " + getOldestDate() + ",");    	
+        sb.append("{");
+        if (getOldestDate() != null) sb.append("OldestDate: " + getOldestDate() + ",");
         if (getLatestDate() != null) sb.append("LatestDate: " + getLatestDate() );
         sb.append("}");
         return sb.toString();

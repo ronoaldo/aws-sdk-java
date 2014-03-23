@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,54 +13,73 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.EnableVolumeIORequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#enableVolumeIO(EnableVolumeIORequest) EnableVolumeIO operation}.
  * <p>
- * Enable IO on the volume after an event has occured.
+ * Enables I/O operations for a volume that had I/O operations disabled
+ * because the data on the volume was potentially inconsistent.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#enableVolumeIO(EnableVolumeIORequest)
  */
-public class EnableVolumeIORequest extends AmazonWebServiceRequest  implements Serializable  {
+public class EnableVolumeIORequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<EnableVolumeIORequest> {
 
+    /**
+     * The ID of the volume.
+     */
     private String volumeId;
 
     /**
-     * Returns the value of the VolumeId property for this object.
+     * The ID of the volume.
      *
-     * @return The value of the VolumeId property for this object.
+     * @return The ID of the volume.
      */
     public String getVolumeId() {
         return volumeId;
     }
     
     /**
-     * Sets the value of the VolumeId property for this object.
+     * The ID of the volume.
      *
-     * @param volumeId The new value for the VolumeId property for this object.
+     * @param volumeId The ID of the volume.
      */
     public void setVolumeId(String volumeId) {
         this.volumeId = volumeId;
     }
     
     /**
-     * Sets the value of the VolumeId property for this object.
+     * The ID of the volume.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param volumeId The new value for the VolumeId property for this object.
+     * @param volumeId The ID of the volume.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EnableVolumeIORequest withVolumeId(String volumeId) {
         this.volumeId = volumeId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<EnableVolumeIORequest> getDryRunRequest() {
+        Request<EnableVolumeIORequest> request = new EnableVolumeIORequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -73,7 +92,7 @@ public class EnableVolumeIORequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVolumeId() != null) sb.append("VolumeId: " + getVolumeId() );
         sb.append("}");
         return sb.toString();

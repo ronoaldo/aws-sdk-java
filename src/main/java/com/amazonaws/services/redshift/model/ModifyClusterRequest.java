@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.redshift.AmazonRedshift#modifyCluster(ModifyClusterRequest) ModifyCluster operation}.
  * <p>
- * Modifies the settings for a cluster. For example, you can add another security or parameter group, update the preferred maintenance window, or change
- * the master user password. Resetting a cluster password or modifying the security groups associated with a cluster do not need a reboot. However,
- * modifying parameter group requires a reboot for parameters to take effect. For more information about managing clusters, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a> in the <i>Amazon Redshift Management
- * Guide</i>
+ * Modifies the settings for a cluster. For example, you can add another
+ * security or parameter group, update the preferred maintenance window,
+ * or change the master user password. Resetting a cluster password or
+ * modifying the security groups associated with a cluster do not need a
+ * reboot. However, modifying parameter group requires a reboot for
+ * parameters to take effect. For more information about managing
+ * clusters, go to
+ * <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html"> Amazon Redshift Clusters </a>
+ * in the <i>Amazon Redshift Management Guide</i>
  * </p>
  * <p>
- * You can also change node type and the number of nodes to scale up or down the cluster. When resizing a cluster, you must specify both the number of
- * nodes and the node type even if one of the parameters does not change. If you specify the same number of nodes and node type that are already
- * configured for the cluster, an error is returned.
+ * You can also change node type and the number of nodes to scale up or
+ * down the cluster. When resizing a cluster, you must specify both the
+ * number of nodes and the node type even if one of the parameters does
+ * not change. If you specify the same number of nodes and node type that
+ * are already configured for the cluster, an error is returned.
  * </p>
  *
  * @see com.amazonaws.services.redshift.AmazonRedshift#modifyCluster(ModifyClusterRequest)
  */
-public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyClusterRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The unique identifier of the cluster to be modified. <p>Example:
@@ -91,13 +99,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      * <li>First character must be a letter</li> <li>Cannot end with a hyphen
      * or contain two consecutive hyphens</li> </ul>
      */
-    private java.util.List<String> clusterSecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> clusterSecurityGroups;
 
     /**
      * A list of Virtual Private Cloud (VPC) security groups to be associated
      * with the cluster.
      */
-    private java.util.List<String> vpcSecurityGroupIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> vpcSecurityGroupIds;
 
     /**
      * The new password for the cluster master user. This change is
@@ -111,7 +119,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      * setting. <p> Constraints: <ul> <li>Must be between 8 and 64 characters
      * in length.</li> <li>Must contain at least one uppercase letter.</li>
      * <li>Must contain at least one lowercase letter.</li> <li>Must contain
-     * one number.</li> </ul>
+     * one number.</li> <li>Can be any printable ASCII character (ASCII code
+     * 33 to 126) except ' (single quote), " (double quote), \, /, @, or
+     * space.</li> </ul>
      */
     private String masterUserPassword;
 
@@ -171,6 +181,19 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
     private Boolean allowVersionUpgrade;
 
     /**
+     * Specifies the name of the HSM client certificate the Amazon Redshift
+     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     */
+    private String hsmClientCertificateIdentifier;
+
+    /**
+     * Specifies the name of the HSM configuration that contains the
+     * information the Amazon Redshift cluster can use to retrieve and store
+     * keys in an HSM.
+     */
+    private String hsmConfigurationIdentifier;
+
+    /**
      * The unique identifier of the cluster to be modified. <p>Example:
      * <code>examplecluster</code>
      *
@@ -202,14 +225,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         <code>examplecluster</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withClusterIdentifier(String clusterIdentifier) {
         this.clusterIdentifier = clusterIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The new cluster type. <p> When you submit your cluster resize request,
      * your existing cluster goes into a read-only mode. After Amazon
@@ -272,14 +294,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         <p>Valid Values: <code> multi-node | single-node </code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withClusterType(String clusterType) {
         this.clusterType = clusterType;
         return this;
     }
-    
-    
+
     /**
      * The new node type of the cluster. If you specify a new node type, you
      * must also specify the number of nodes parameter also. <p> When you
@@ -366,14 +387,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         <code>dw.hs1.8xlarge</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withNodeType(String nodeType) {
         this.nodeType = nodeType;
         return this;
     }
-    
-    
+
     /**
      * The new number of nodes of the cluster. If you specify a new number of
      * nodes, you must also specify the node type parameter also. <p> When
@@ -460,14 +480,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         <code>0</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withNumberOfNodes(Integer numberOfNodes) {
         this.numberOfNodes = numberOfNodes;
         return this;
     }
-    
-    
+
     /**
      * A list of cluster security groups to be authorized on this cluster.
      * This change is asynchronously applied as soon as possible. <p>Security
@@ -486,9 +505,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         or contain two consecutive hyphens</li> </ul>
      */
     public java.util.List<String> getClusterSecurityGroups() {
-        
         if (clusterSecurityGroups == null) {
-            clusterSecurityGroups = new java.util.ArrayList<String>();
+              clusterSecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              clusterSecurityGroups.setAutoConstruct(true);
         }
         return clusterSecurityGroups;
     }
@@ -515,8 +534,7 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
             this.clusterSecurityGroups = null;
             return;
         }
-
-        java.util.List<String> clusterSecurityGroupsCopy = new java.util.ArrayList<String>(clusterSecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> clusterSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(clusterSecurityGroups.size());
         clusterSecurityGroupsCopy.addAll(clusterSecurityGroups);
         this.clusterSecurityGroups = clusterSecurityGroupsCopy;
     }
@@ -541,7 +559,7 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         or contain two consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withClusterSecurityGroups(String... clusterSecurityGroups) {
         if (getClusterSecurityGroups() == null) setClusterSecurityGroups(new java.util.ArrayList<String>(clusterSecurityGroups.length));
@@ -571,20 +589,20 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         or contain two consecutive hyphens</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withClusterSecurityGroups(java.util.Collection<String> clusterSecurityGroups) {
         if (clusterSecurityGroups == null) {
             this.clusterSecurityGroups = null;
         } else {
-            java.util.List<String> clusterSecurityGroupsCopy = new java.util.ArrayList<String>(clusterSecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> clusterSecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(clusterSecurityGroups.size());
             clusterSecurityGroupsCopy.addAll(clusterSecurityGroups);
             this.clusterSecurityGroups = clusterSecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of Virtual Private Cloud (VPC) security groups to be associated
      * with the cluster.
@@ -593,9 +611,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         with the cluster.
      */
     public java.util.List<String> getVpcSecurityGroupIds() {
-        
         if (vpcSecurityGroupIds == null) {
-            vpcSecurityGroupIds = new java.util.ArrayList<String>();
+              vpcSecurityGroupIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              vpcSecurityGroupIds.setAutoConstruct(true);
         }
         return vpcSecurityGroupIds;
     }
@@ -612,8 +630,7 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
             this.vpcSecurityGroupIds = null;
             return;
         }
-
-        java.util.List<String> vpcSecurityGroupIdsCopy = new java.util.ArrayList<String>(vpcSecurityGroupIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> vpcSecurityGroupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(vpcSecurityGroupIds.size());
         vpcSecurityGroupIdsCopy.addAll(vpcSecurityGroupIds);
         this.vpcSecurityGroupIds = vpcSecurityGroupIdsCopy;
     }
@@ -628,7 +645,7 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         with the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withVpcSecurityGroupIds(String... vpcSecurityGroupIds) {
         if (getVpcSecurityGroupIds() == null) setVpcSecurityGroupIds(new java.util.ArrayList<String>(vpcSecurityGroupIds.length));
@@ -648,20 +665,20 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         with the cluster.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withVpcSecurityGroupIds(java.util.Collection<String> vpcSecurityGroupIds) {
         if (vpcSecurityGroupIds == null) {
             this.vpcSecurityGroupIds = null;
         } else {
-            java.util.List<String> vpcSecurityGroupIdsCopy = new java.util.ArrayList<String>(vpcSecurityGroupIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> vpcSecurityGroupIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(vpcSecurityGroupIds.size());
             vpcSecurityGroupIdsCopy.addAll(vpcSecurityGroupIds);
             this.vpcSecurityGroupIds = vpcSecurityGroupIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The new password for the cluster master user. This change is
      * asynchronously applied as soon as possible. Between the time of the
@@ -674,7 +691,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      * setting. <p> Constraints: <ul> <li>Must be between 8 and 64 characters
      * in length.</li> <li>Must contain at least one uppercase letter.</li>
      * <li>Must contain at least one lowercase letter.</li> <li>Must contain
-     * one number.</li> </ul>
+     * one number.</li> <li>Can be any printable ASCII character (ASCII code
+     * 33 to 126) except ' (single quote), " (double quote), \, /, @, or
+     * space.</li> </ul>
      *
      * @return The new password for the cluster master user. This change is
      *         asynchronously applied as soon as possible. Between the time of the
@@ -687,7 +706,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         setting. <p> Constraints: <ul> <li>Must be between 8 and 64 characters
      *         in length.</li> <li>Must contain at least one uppercase letter.</li>
      *         <li>Must contain at least one lowercase letter.</li> <li>Must contain
-     *         one number.</li> </ul>
+     *         one number.</li> <li>Can be any printable ASCII character (ASCII code
+     *         33 to 126) except ' (single quote), " (double quote), \, /, @, or
+     *         space.</li> </ul>
      */
     public String getMasterUserPassword() {
         return masterUserPassword;
@@ -705,7 +726,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      * setting. <p> Constraints: <ul> <li>Must be between 8 and 64 characters
      * in length.</li> <li>Must contain at least one uppercase letter.</li>
      * <li>Must contain at least one lowercase letter.</li> <li>Must contain
-     * one number.</li> </ul>
+     * one number.</li> <li>Can be any printable ASCII character (ASCII code
+     * 33 to 126) except ' (single quote), " (double quote), \, /, @, or
+     * space.</li> </ul>
      *
      * @param masterUserPassword The new password for the cluster master user. This change is
      *         asynchronously applied as soon as possible. Between the time of the
@@ -718,7 +741,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         setting. <p> Constraints: <ul> <li>Must be between 8 and 64 characters
      *         in length.</li> <li>Must contain at least one uppercase letter.</li>
      *         <li>Must contain at least one lowercase letter.</li> <li>Must contain
-     *         one number.</li> </ul>
+     *         one number.</li> <li>Can be any printable ASCII character (ASCII code
+     *         33 to 126) except ' (single quote), " (double quote), \, /, @, or
+     *         space.</li> </ul>
      */
     public void setMasterUserPassword(String masterUserPassword) {
         this.masterUserPassword = masterUserPassword;
@@ -736,7 +761,9 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      * setting. <p> Constraints: <ul> <li>Must be between 8 and 64 characters
      * in length.</li> <li>Must contain at least one uppercase letter.</li>
      * <li>Must contain at least one lowercase letter.</li> <li>Must contain
-     * one number.</li> </ul>
+     * one number.</li> <li>Can be any printable ASCII character (ASCII code
+     * 33 to 126) except ' (single quote), " (double quote), \, /, @, or
+     * space.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -751,17 +778,18 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         setting. <p> Constraints: <ul> <li>Must be between 8 and 64 characters
      *         in length.</li> <li>Must contain at least one uppercase letter.</li>
      *         <li>Must contain at least one lowercase letter.</li> <li>Must contain
-     *         one number.</li> </ul>
+     *         one number.</li> <li>Can be any printable ASCII character (ASCII code
+     *         33 to 126) except ' (single quote), " (double quote), \, /, @, or
+     *         space.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withMasterUserPassword(String masterUserPassword) {
         this.masterUserPassword = masterUserPassword;
         return this;
     }
-    
-    
+
     /**
      * The name of the cluster parameter group to apply to this cluster. This
      * change is applied only after the cluster is rebooted. To reboot a
@@ -812,14 +840,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         parameter group family that matches the cluster version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withClusterParameterGroupName(String clusterParameterGroupName) {
         this.clusterParameterGroupName = clusterParameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * The number of days that automated snapshots are retained. If the value
      * is 0, automated snapshots are disabled. Even if automated snapshots
@@ -888,14 +915,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         <p>Constraints: Must be a value from 0 to 35.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withAutomatedSnapshotRetentionPeriod(Integer automatedSnapshotRetentionPeriod) {
         this.automatedSnapshotRetentionPeriod = automatedSnapshotRetentionPeriod;
         return this;
     }
-    
-    
+
     /**
      * The weekly time range (in UTC) during which system maintenance can
      * occur, if necessary. If system maintenance is necessary during the
@@ -976,14 +1002,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         Must be at least 30 minutes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withPreferredMaintenanceWindow(String preferredMaintenanceWindow) {
         this.preferredMaintenanceWindow = preferredMaintenanceWindow;
         return this;
     }
-    
-    
+
     /**
      * The new version number of the Amazon Redshift engine to upgrade to.
      * <p> For major version upgrades, if a non-default cluster parameter
@@ -1064,14 +1089,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         Guide</i>. <p>Example: <code>1.0</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, upgrades will be applied automatically to the
      * cluster during the maintenance window. <p>Default: <code>false</code>
@@ -1104,14 +1128,13 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
      *         cluster during the maintenance window. <p>Default: <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyClusterRequest withAllowVersionUpgrade(Boolean allowVersionUpgrade) {
         this.allowVersionUpgrade = allowVersionUpgrade;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, upgrades will be applied automatically to the
      * cluster during the maintenance window. <p>Default: <code>false</code>
@@ -1122,7 +1145,91 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
     public Boolean getAllowVersionUpgrade() {
         return allowVersionUpgrade;
     }
+
+    /**
+     * Specifies the name of the HSM client certificate the Amazon Redshift
+     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     *
+     * @return Specifies the name of the HSM client certificate the Amazon Redshift
+     *         cluster uses to retrieve the data encryption keys stored in an HSM.
+     */
+    public String getHsmClientCertificateIdentifier() {
+        return hsmClientCertificateIdentifier;
+    }
     
+    /**
+     * Specifies the name of the HSM client certificate the Amazon Redshift
+     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     *
+     * @param hsmClientCertificateIdentifier Specifies the name of the HSM client certificate the Amazon Redshift
+     *         cluster uses to retrieve the data encryption keys stored in an HSM.
+     */
+    public void setHsmClientCertificateIdentifier(String hsmClientCertificateIdentifier) {
+        this.hsmClientCertificateIdentifier = hsmClientCertificateIdentifier;
+    }
+    
+    /**
+     * Specifies the name of the HSM client certificate the Amazon Redshift
+     * cluster uses to retrieve the data encryption keys stored in an HSM.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param hsmClientCertificateIdentifier Specifies the name of the HSM client certificate the Amazon Redshift
+     *         cluster uses to retrieve the data encryption keys stored in an HSM.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ModifyClusterRequest withHsmClientCertificateIdentifier(String hsmClientCertificateIdentifier) {
+        this.hsmClientCertificateIdentifier = hsmClientCertificateIdentifier;
+        return this;
+    }
+
+    /**
+     * Specifies the name of the HSM configuration that contains the
+     * information the Amazon Redshift cluster can use to retrieve and store
+     * keys in an HSM.
+     *
+     * @return Specifies the name of the HSM configuration that contains the
+     *         information the Amazon Redshift cluster can use to retrieve and store
+     *         keys in an HSM.
+     */
+    public String getHsmConfigurationIdentifier() {
+        return hsmConfigurationIdentifier;
+    }
+    
+    /**
+     * Specifies the name of the HSM configuration that contains the
+     * information the Amazon Redshift cluster can use to retrieve and store
+     * keys in an HSM.
+     *
+     * @param hsmConfigurationIdentifier Specifies the name of the HSM configuration that contains the
+     *         information the Amazon Redshift cluster can use to retrieve and store
+     *         keys in an HSM.
+     */
+    public void setHsmConfigurationIdentifier(String hsmConfigurationIdentifier) {
+        this.hsmConfigurationIdentifier = hsmConfigurationIdentifier;
+    }
+    
+    /**
+     * Specifies the name of the HSM configuration that contains the
+     * information the Amazon Redshift cluster can use to retrieve and store
+     * keys in an HSM.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param hsmConfigurationIdentifier Specifies the name of the HSM configuration that contains the
+     *         information the Amazon Redshift cluster can use to retrieve and store
+     *         keys in an HSM.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public ModifyClusterRequest withHsmConfigurationIdentifier(String hsmConfigurationIdentifier) {
+        this.hsmConfigurationIdentifier = hsmConfigurationIdentifier;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -1134,19 +1241,21 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");    	
-        if (getClusterType() != null) sb.append("ClusterType: " + getClusterType() + ",");    	
-        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");    	
-        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");    	
-        if (getClusterSecurityGroups() != null) sb.append("ClusterSecurityGroups: " + getClusterSecurityGroups() + ",");    	
-        if (getVpcSecurityGroupIds() != null) sb.append("VpcSecurityGroupIds: " + getVpcSecurityGroupIds() + ",");    	
-        if (getMasterUserPassword() != null) sb.append("MasterUserPassword: " + getMasterUserPassword() + ",");    	
-        if (getClusterParameterGroupName() != null) sb.append("ClusterParameterGroupName: " + getClusterParameterGroupName() + ",");    	
-        if (getAutomatedSnapshotRetentionPeriod() != null) sb.append("AutomatedSnapshotRetentionPeriod: " + getAutomatedSnapshotRetentionPeriod() + ",");    	
-        if (getPreferredMaintenanceWindow() != null) sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");    	
-        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");    	
-        if (isAllowVersionUpgrade() != null) sb.append("AllowVersionUpgrade: " + isAllowVersionUpgrade() );
+        sb.append("{");
+        if (getClusterIdentifier() != null) sb.append("ClusterIdentifier: " + getClusterIdentifier() + ",");
+        if (getClusterType() != null) sb.append("ClusterType: " + getClusterType() + ",");
+        if (getNodeType() != null) sb.append("NodeType: " + getNodeType() + ",");
+        if (getNumberOfNodes() != null) sb.append("NumberOfNodes: " + getNumberOfNodes() + ",");
+        if (getClusterSecurityGroups() != null) sb.append("ClusterSecurityGroups: " + getClusterSecurityGroups() + ",");
+        if (getVpcSecurityGroupIds() != null) sb.append("VpcSecurityGroupIds: " + getVpcSecurityGroupIds() + ",");
+        if (getMasterUserPassword() != null) sb.append("MasterUserPassword: " + getMasterUserPassword() + ",");
+        if (getClusterParameterGroupName() != null) sb.append("ClusterParameterGroupName: " + getClusterParameterGroupName() + ",");
+        if (getAutomatedSnapshotRetentionPeriod() != null) sb.append("AutomatedSnapshotRetentionPeriod: " + getAutomatedSnapshotRetentionPeriod() + ",");
+        if (getPreferredMaintenanceWindow() != null) sb.append("PreferredMaintenanceWindow: " + getPreferredMaintenanceWindow() + ",");
+        if (getClusterVersion() != null) sb.append("ClusterVersion: " + getClusterVersion() + ",");
+        if (isAllowVersionUpgrade() != null) sb.append("AllowVersionUpgrade: " + isAllowVersionUpgrade() + ",");
+        if (getHsmClientCertificateIdentifier() != null) sb.append("HsmClientCertificateIdentifier: " + getHsmClientCertificateIdentifier() + ",");
+        if (getHsmConfigurationIdentifier() != null) sb.append("HsmConfigurationIdentifier: " + getHsmConfigurationIdentifier() );
         sb.append("}");
         return sb.toString();
     }
@@ -1168,6 +1277,8 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
         hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode()); 
         hashCode = prime * hashCode + ((getClusterVersion() == null) ? 0 : getClusterVersion().hashCode()); 
         hashCode = prime * hashCode + ((isAllowVersionUpgrade() == null) ? 0 : isAllowVersionUpgrade().hashCode()); 
+        hashCode = prime * hashCode + ((getHsmClientCertificateIdentifier() == null) ? 0 : getHsmClientCertificateIdentifier().hashCode()); 
+        hashCode = prime * hashCode + ((getHsmConfigurationIdentifier() == null) ? 0 : getHsmConfigurationIdentifier().hashCode()); 
         return hashCode;
     }
     
@@ -1203,6 +1314,10 @@ public class ModifyClusterRequest extends AmazonWebServiceRequest  implements Se
         if (other.getClusterVersion() != null && other.getClusterVersion().equals(this.getClusterVersion()) == false) return false; 
         if (other.isAllowVersionUpgrade() == null ^ this.isAllowVersionUpgrade() == null) return false;
         if (other.isAllowVersionUpgrade() != null && other.isAllowVersionUpgrade().equals(this.isAllowVersionUpgrade()) == false) return false; 
+        if (other.getHsmClientCertificateIdentifier() == null ^ this.getHsmClientCertificateIdentifier() == null) return false;
+        if (other.getHsmClientCertificateIdentifier() != null && other.getHsmClientCertificateIdentifier().equals(this.getHsmClientCertificateIdentifier()) == false) return false; 
+        if (other.getHsmConfigurationIdentifier() == null ^ this.getHsmConfigurationIdentifier() == null) return false;
+        if (other.getHsmConfigurationIdentifier() != null && other.getHsmConfigurationIdentifier().equals(this.getHsmConfigurationIdentifier()) == false) return false; 
         return true;
     }
     

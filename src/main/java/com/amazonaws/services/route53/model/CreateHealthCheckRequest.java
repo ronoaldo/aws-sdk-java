@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.route53.AmazonRoute53#createHealthCheck(CreateHealthCheckRequest) CreateHealthCheck operation}.
@@ -22,14 +24,17 @@ import java.io.Serializable;
  * This action creates a new health check.
  * </p>
  * <p>
- * To create a new health check, send a <code>POST</code> request to the <code>2012-12-12/healthcheck</code> resource. The request body must include an
- * XML document with a <code>CreateHealthCheckRequest</code> element. The response returns the <code>CreateHealthCheckResponse</code> element that
- * contains metadata about the health check.
+ * To create a new health check, send a <code>POST</code> request to the
+ * <code>2013-04-01/healthcheck</code> resource. The request body must
+ * include an XML document with a <code>CreateHealthCheckRequest</code>
+ * element. The response returns the
+ * <code>CreateHealthCheckResponse</code> element that contains metadata
+ * about the health check.
  * </p>
  *
  * @see com.amazonaws.services.route53.AmazonRoute53#createHealthCheck(CreateHealthCheckRequest)
  */
-public class CreateHealthCheckRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateHealthCheckRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A unique string that identifies the request and that allows failed
@@ -128,14 +133,13 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest  implement
      *         document. The UTF-8 encoding of the value must be less than 128 bytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHealthCheckRequest withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains health check configuration.
      *
@@ -162,14 +166,13 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest  implement
      * @param healthCheckConfig A complex type that contains health check configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHealthCheckRequest withHealthCheckConfig(HealthCheckConfig healthCheckConfig) {
         this.healthCheckConfig = healthCheckConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -181,8 +184,8 @@ public class CreateHealthCheckRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");    	
+        sb.append("{");
+        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");
         if (getHealthCheckConfig() != null) sb.append("HealthCheckConfig: " + getHealthCheckConfig() );
         sb.append("}");
         return sb.toString();

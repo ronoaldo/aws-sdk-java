@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class AddSourceIdentifierToSubscriptionRequestMarshaller implements Marsh
     public Request<AddSourceIdentifierToSubscriptionRequest> marshall(AddSourceIdentifierToSubscriptionRequest addSourceIdentifierToSubscriptionRequest) {
 
         if (addSourceIdentifierToSubscriptionRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AddSourceIdentifierToSubscriptionRequest> request = new DefaultRequest<AddSourceIdentifierToSubscriptionRequest>(addSourceIdentifierToSubscriptionRequest, "AmazonRDS");
         request.addParameter("Action", "AddSourceIdentifierToSubscription");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (addSourceIdentifierToSubscriptionRequest.getSubscriptionName() != null) {
             request.addParameter("SubscriptionName", StringUtils.fromString(addSourceIdentifierToSubscriptionRequest.getSubscriptionName()));
@@ -46,7 +46,6 @@ public class AddSourceIdentifierToSubscriptionRequestMarshaller implements Marsh
         if (addSourceIdentifierToSubscriptionRequest.getSourceIdentifier() != null) {
             request.addParameter("SourceIdentifier", StringUtils.fromString(addSourceIdentifierToSubscriptionRequest.getSourceIdentifier()));
         }
-
 
         return request;
     }

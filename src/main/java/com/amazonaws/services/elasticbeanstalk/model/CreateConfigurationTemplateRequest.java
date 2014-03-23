@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#createConfigurationTemplate(CreateConfigurationTemplateRequest) CreateConfigurationTemplate operation}.
  * <p>
- * Creates a configuration template. Templates are associated with a specific application and are used to deploy different versions of the application
- * with the same configuration settings.
+ * Creates a configuration template. Templates are associated with a
+ * specific application and are used to deploy different versions of the
+ * application with the same configuration settings.
  * </p>
  * <p>
  * Related Topics
@@ -35,7 +38,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#createConfigurationTemplate(CreateConfigurationTemplateRequest)
  */
-public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application to associate with this configuration
@@ -64,12 +67,12 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * application server for a configuration template. It determines the set
      * of configuration options as well as the possible and default values.
      * <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of
-     * available solution stacks. <p> Default: If the
-     * <code>SolutionStackName</code> is not specified and the source
-     * configuration parameter is blank, AWS Elastic Beanstalk uses the
-     * default solution stack. <p>If not specified and the source
-     * configuration parameter is specified, AWS Elastic Beanstalk uses the
-     * same solution stack as the source configuration template.
+     * available solution stacks. <p> A solution stack name or a source
+     * configuration parameter must be specified, otherwise AWS Elastic
+     * Beanstalk returns an <code>InvalidParameterValue</code> error. <p> If
+     * a solution stack name is not specified and the source configuration
+     * parameter is specified, AWS Elastic Beanstalk uses the same solution
+     * stack as the source configuration template.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
@@ -109,7 +112,7 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * option to the requested value. The new value overrides the value
      * obtained from the solution stack or the source configuration template.
      */
-    private java.util.List<ConfigurationOptionSetting> optionSettings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettings;
 
     /**
      * Default constructor for a new CreateConfigurationTemplateRequest object.  Callers should use the
@@ -132,12 +135,10 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * Beanstalk returns an <code>InvalidParameterValue</code> error.
      */
     public CreateConfigurationTemplateRequest(String applicationName, String templateName) {
-        this.applicationName = applicationName;
-        this.templateName = templateName;
+        setApplicationName(applicationName);
+        setTemplateName(templateName);
     }
 
-    
-    
     /**
      * The name of the application to associate with this configuration
      * template. If no application is found with this name, AWS Elastic
@@ -185,14 +186,13 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         Beanstalk returns an <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * The name of the configuration template. <p>Constraint: This name must
      * be unique per application. <p>Default: If a configuration template
@@ -246,26 +246,25 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * The name of the solution stack used by this configuration. The
      * solution stack specifies the operating system, architecture, and
      * application server for a configuration template. It determines the set
      * of configuration options as well as the possible and default values.
      * <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of
-     * available solution stacks. <p> Default: If the
-     * <code>SolutionStackName</code> is not specified and the source
-     * configuration parameter is blank, AWS Elastic Beanstalk uses the
-     * default solution stack. <p>If not specified and the source
-     * configuration parameter is specified, AWS Elastic Beanstalk uses the
-     * same solution stack as the source configuration template.
+     * available solution stacks. <p> A solution stack name or a source
+     * configuration parameter must be specified, otherwise AWS Elastic
+     * Beanstalk returns an <code>InvalidParameterValue</code> error. <p> If
+     * a solution stack name is not specified and the source configuration
+     * parameter is specified, AWS Elastic Beanstalk uses the same solution
+     * stack as the source configuration template.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
@@ -275,12 +274,12 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         application server for a configuration template. It determines the set
      *         of configuration options as well as the possible and default values.
      *         <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of
-     *         available solution stacks. <p> Default: If the
-     *         <code>SolutionStackName</code> is not specified and the source
-     *         configuration parameter is blank, AWS Elastic Beanstalk uses the
-     *         default solution stack. <p>If not specified and the source
-     *         configuration parameter is specified, AWS Elastic Beanstalk uses the
-     *         same solution stack as the source configuration template.
+     *         available solution stacks. <p> A solution stack name or a source
+     *         configuration parameter must be specified, otherwise AWS Elastic
+     *         Beanstalk returns an <code>InvalidParameterValue</code> error. <p> If
+     *         a solution stack name is not specified and the source configuration
+     *         parameter is specified, AWS Elastic Beanstalk uses the same solution
+     *         stack as the source configuration template.
      */
     public String getSolutionStackName() {
         return solutionStackName;
@@ -292,12 +291,12 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * application server for a configuration template. It determines the set
      * of configuration options as well as the possible and default values.
      * <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of
-     * available solution stacks. <p> Default: If the
-     * <code>SolutionStackName</code> is not specified and the source
-     * configuration parameter is blank, AWS Elastic Beanstalk uses the
-     * default solution stack. <p>If not specified and the source
-     * configuration parameter is specified, AWS Elastic Beanstalk uses the
-     * same solution stack as the source configuration template.
+     * available solution stacks. <p> A solution stack name or a source
+     * configuration parameter must be specified, otherwise AWS Elastic
+     * Beanstalk returns an <code>InvalidParameterValue</code> error. <p> If
+     * a solution stack name is not specified and the source configuration
+     * parameter is specified, AWS Elastic Beanstalk uses the same solution
+     * stack as the source configuration template.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 100<br/>
@@ -307,12 +306,12 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         application server for a configuration template. It determines the set
      *         of configuration options as well as the possible and default values.
      *         <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of
-     *         available solution stacks. <p> Default: If the
-     *         <code>SolutionStackName</code> is not specified and the source
-     *         configuration parameter is blank, AWS Elastic Beanstalk uses the
-     *         default solution stack. <p>If not specified and the source
-     *         configuration parameter is specified, AWS Elastic Beanstalk uses the
-     *         same solution stack as the source configuration template.
+     *         available solution stacks. <p> A solution stack name or a source
+     *         configuration parameter must be specified, otherwise AWS Elastic
+     *         Beanstalk returns an <code>InvalidParameterValue</code> error. <p> If
+     *         a solution stack name is not specified and the source configuration
+     *         parameter is specified, AWS Elastic Beanstalk uses the same solution
+     *         stack as the source configuration template.
      */
     public void setSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
@@ -324,12 +323,12 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * application server for a configuration template. It determines the set
      * of configuration options as well as the possible and default values.
      * <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of
-     * available solution stacks. <p> Default: If the
-     * <code>SolutionStackName</code> is not specified and the source
-     * configuration parameter is blank, AWS Elastic Beanstalk uses the
-     * default solution stack. <p>If not specified and the source
-     * configuration parameter is specified, AWS Elastic Beanstalk uses the
-     * same solution stack as the source configuration template.
+     * available solution stacks. <p> A solution stack name or a source
+     * configuration parameter must be specified, otherwise AWS Elastic
+     * Beanstalk returns an <code>InvalidParameterValue</code> error. <p> If
+     * a solution stack name is not specified and the source configuration
+     * parameter is specified, AWS Elastic Beanstalk uses the same solution
+     * stack as the source configuration template.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -341,22 +340,21 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         application server for a configuration template. It determines the set
      *         of configuration options as well as the possible and default values.
      *         <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of
-     *         available solution stacks. <p> Default: If the
-     *         <code>SolutionStackName</code> is not specified and the source
-     *         configuration parameter is blank, AWS Elastic Beanstalk uses the
-     *         default solution stack. <p>If not specified and the source
-     *         configuration parameter is specified, AWS Elastic Beanstalk uses the
-     *         same solution stack as the source configuration template.
+     *         available solution stacks. <p> A solution stack name or a source
+     *         configuration parameter must be specified, otherwise AWS Elastic
+     *         Beanstalk returns an <code>InvalidParameterValue</code> error. <p> If
+     *         a solution stack name is not specified and the source configuration
+     *         parameter is specified, AWS Elastic Beanstalk uses the same solution
+     *         stack as the source configuration template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk uses the configuration values from
      * the specified configuration template to create a new configuration.
@@ -443,14 +441,13 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         <code>InvalidParameterCombination</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withSourceConfiguration(SourceConfiguration sourceConfiguration) {
         this.sourceConfiguration = sourceConfiguration;
         return this;
     }
-    
-    
+
     /**
      * The ID of the environment used with this configuration template.
      *
@@ -477,14 +474,13 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * @param environmentId The ID of the environment used with this configuration template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * Describes this configuration.
      * <p>
@@ -520,14 +516,13 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      * @param description Describes this configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * If specified, AWS Elastic Beanstalk sets the specified configuration
      * option to the requested value. The new value overrides the value
@@ -538,9 +533,9 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         obtained from the solution stack or the source configuration template.
      */
     public java.util.List<ConfigurationOptionSetting> getOptionSettings() {
-        
         if (optionSettings == null) {
-            optionSettings = new java.util.ArrayList<ConfigurationOptionSetting>();
+              optionSettings = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>();
+              optionSettings.setAutoConstruct(true);
         }
         return optionSettings;
     }
@@ -559,8 +554,7 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
             this.optionSettings = null;
             return;
         }
-
-        java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
         optionSettingsCopy.addAll(optionSettings);
         this.optionSettings = optionSettingsCopy;
     }
@@ -577,7 +571,7 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         obtained from the solution stack or the source configuration template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withOptionSettings(ConfigurationOptionSetting... optionSettings) {
         if (getOptionSettings() == null) setOptionSettings(new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.length));
@@ -599,20 +593,20 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
      *         obtained from the solution stack or the source configuration template.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateConfigurationTemplateRequest withOptionSettings(java.util.Collection<ConfigurationOptionSetting> optionSettings) {
         if (optionSettings == null) {
             this.optionSettings = null;
         } else {
-            java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
             optionSettingsCopy.addAll(optionSettings);
             this.optionSettings = optionSettingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -624,13 +618,13 @@ public class CreateConfigurationTemplateRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");    	
-        if (getSourceConfiguration() != null) sb.append("SourceConfiguration: " + getSourceConfiguration() + ",");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");
+        if (getSourceConfiguration() != null) sb.append("SourceConfiguration: " + getSourceConfiguration() + ",");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getOptionSettings() != null) sb.append("OptionSettings: " + getOptionSettings() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DeleteLoginProfileRequestMarshaller implements Marshaller<Request<D
     public Request<DeleteLoginProfileRequest> marshall(DeleteLoginProfileRequest deleteLoginProfileRequest) {
 
         if (deleteLoginProfileRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DeleteLoginProfileRequest> request = new DefaultRequest<DeleteLoginProfileRequest>(deleteLoginProfileRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "DeleteLoginProfile");
@@ -43,7 +43,6 @@ public class DeleteLoginProfileRequestMarshaller implements Marshaller<Request<D
         if (deleteLoginProfileRequest.getUserName() != null) {
             request.addParameter("UserName", StringUtils.fromString(deleteLoginProfileRequest.getUserName()));
         }
-
 
         return request;
     }

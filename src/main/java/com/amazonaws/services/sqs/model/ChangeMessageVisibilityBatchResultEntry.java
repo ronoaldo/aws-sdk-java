@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Encloses the id of an entry in ChangeMessageVisibilityBatchRequest.
+ * Encloses the id of an entry in ChangeMessageVisibilityBatch.
  * </p>
  */
-public class ChangeMessageVisibilityBatchResultEntry  implements Serializable  {
+public class ChangeMessageVisibilityBatchResultEntry implements Serializable {
 
     /**
      * Represents a message whose visibility timeout has been changed
@@ -60,14 +61,13 @@ public class ChangeMessageVisibilityBatchResultEntry  implements Serializable  {
      *         successfully.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ChangeMessageVisibilityBatchResultEntry withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +79,7 @@ public class ChangeMessageVisibilityBatchResultEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getId() != null) sb.append("Id: " + getId() );
         sb.append("}");
         return sb.toString();

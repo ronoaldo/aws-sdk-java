@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getServerCertificate(GetServerCertificateRequest) GetServerCertificate operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#getServerCertificate(GetServerCertificateRequest)
  */
-public class GetServerCertificateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetServerCertificateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the server certificate you want to retrieve information
@@ -51,11 +53,9 @@ public class GetServerCertificateRequest extends AmazonWebServiceRequest  implem
      * want to retrieve information about.
      */
     public GetServerCertificateRequest(String serverCertificateName) {
-        this.serverCertificateName = serverCertificateName;
+        setServerCertificateName(serverCertificateName);
     }
 
-    
-    
     /**
      * The name of the server certificate you want to retrieve information
      * about.
@@ -100,14 +100,13 @@ public class GetServerCertificateRequest extends AmazonWebServiceRequest  implem
      *         about.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetServerCertificateRequest withServerCertificateName(String serverCertificateName) {
         this.serverCertificateName = serverCertificateName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -119,7 +118,7 @@ public class GetServerCertificateRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getServerCertificateName() != null) sb.append("ServerCertificateName: " + getServerCertificateName() );
         sb.append("}");
         return sb.toString();

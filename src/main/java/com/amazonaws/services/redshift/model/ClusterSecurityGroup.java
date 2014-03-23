@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a security group.
  * </p>
  */
-public class ClusterSecurityGroup  implements Serializable  {
+public class ClusterSecurityGroup implements Serializable {
 
     /**
      * The name of the cluster security group to which the operation was
@@ -37,13 +38,13 @@ public class ClusterSecurityGroup  implements Serializable  {
      * A list of EC2 security groups that are permitted to access clusters
      * associated with this cluster security group.
      */
-    private java.util.List<EC2SecurityGroup> eC2SecurityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup> eC2SecurityGroups;
 
     /**
      * A list of IP ranges (CIDR blocks) that are permitted to access
      * clusters associated with this cluster security group.
      */
-    private java.util.List<IPRange> iPRanges;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<IPRange> iPRanges;
 
     /**
      * The name of the cluster security group to which the operation was
@@ -77,14 +78,13 @@ public class ClusterSecurityGroup  implements Serializable  {
      *         applied.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterSecurityGroup withClusterSecurityGroupName(String clusterSecurityGroupName) {
         this.clusterSecurityGroupName = clusterSecurityGroupName;
         return this;
     }
-    
-    
+
     /**
      * A description of the security group.
      *
@@ -111,14 +111,13 @@ public class ClusterSecurityGroup  implements Serializable  {
      * @param description A description of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterSecurityGroup withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * A list of EC2 security groups that are permitted to access clusters
      * associated with this cluster security group.
@@ -127,9 +126,9 @@ public class ClusterSecurityGroup  implements Serializable  {
      *         associated with this cluster security group.
      */
     public java.util.List<EC2SecurityGroup> getEC2SecurityGroups() {
-        
         if (eC2SecurityGroups == null) {
-            eC2SecurityGroups = new java.util.ArrayList<EC2SecurityGroup>();
+              eC2SecurityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup>();
+              eC2SecurityGroups.setAutoConstruct(true);
         }
         return eC2SecurityGroups;
     }
@@ -146,8 +145,7 @@ public class ClusterSecurityGroup  implements Serializable  {
             this.eC2SecurityGroups = null;
             return;
         }
-
-        java.util.List<EC2SecurityGroup> eC2SecurityGroupsCopy = new java.util.ArrayList<EC2SecurityGroup>(eC2SecurityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup> eC2SecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup>(eC2SecurityGroups.size());
         eC2SecurityGroupsCopy.addAll(eC2SecurityGroups);
         this.eC2SecurityGroups = eC2SecurityGroupsCopy;
     }
@@ -162,7 +160,7 @@ public class ClusterSecurityGroup  implements Serializable  {
      *         associated with this cluster security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterSecurityGroup withEC2SecurityGroups(EC2SecurityGroup... eC2SecurityGroups) {
         if (getEC2SecurityGroups() == null) setEC2SecurityGroups(new java.util.ArrayList<EC2SecurityGroup>(eC2SecurityGroups.length));
@@ -182,20 +180,20 @@ public class ClusterSecurityGroup  implements Serializable  {
      *         associated with this cluster security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterSecurityGroup withEC2SecurityGroups(java.util.Collection<EC2SecurityGroup> eC2SecurityGroups) {
         if (eC2SecurityGroups == null) {
             this.eC2SecurityGroups = null;
         } else {
-            java.util.List<EC2SecurityGroup> eC2SecurityGroupsCopy = new java.util.ArrayList<EC2SecurityGroup>(eC2SecurityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup> eC2SecurityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<EC2SecurityGroup>(eC2SecurityGroups.size());
             eC2SecurityGroupsCopy.addAll(eC2SecurityGroups);
             this.eC2SecurityGroups = eC2SecurityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of IP ranges (CIDR blocks) that are permitted to access
      * clusters associated with this cluster security group.
@@ -204,9 +202,9 @@ public class ClusterSecurityGroup  implements Serializable  {
      *         clusters associated with this cluster security group.
      */
     public java.util.List<IPRange> getIPRanges() {
-        
         if (iPRanges == null) {
-            iPRanges = new java.util.ArrayList<IPRange>();
+              iPRanges = new com.amazonaws.internal.ListWithAutoConstructFlag<IPRange>();
+              iPRanges.setAutoConstruct(true);
         }
         return iPRanges;
     }
@@ -223,8 +221,7 @@ public class ClusterSecurityGroup  implements Serializable  {
             this.iPRanges = null;
             return;
         }
-
-        java.util.List<IPRange> iPRangesCopy = new java.util.ArrayList<IPRange>(iPRanges.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<IPRange> iPRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IPRange>(iPRanges.size());
         iPRangesCopy.addAll(iPRanges);
         this.iPRanges = iPRangesCopy;
     }
@@ -239,7 +236,7 @@ public class ClusterSecurityGroup  implements Serializable  {
      *         clusters associated with this cluster security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterSecurityGroup withIPRanges(IPRange... iPRanges) {
         if (getIPRanges() == null) setIPRanges(new java.util.ArrayList<IPRange>(iPRanges.length));
@@ -259,20 +256,20 @@ public class ClusterSecurityGroup  implements Serializable  {
      *         clusters associated with this cluster security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ClusterSecurityGroup withIPRanges(java.util.Collection<IPRange> iPRanges) {
         if (iPRanges == null) {
             this.iPRanges = null;
         } else {
-            java.util.List<IPRange> iPRangesCopy = new java.util.ArrayList<IPRange>(iPRanges.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<IPRange> iPRangesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<IPRange>(iPRanges.size());
             iPRangesCopy.addAll(iPRanges);
             this.iPRanges = iPRangesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -284,10 +281,10 @@ public class ClusterSecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getClusterSecurityGroupName() != null) sb.append("ClusterSecurityGroupName: " + getClusterSecurityGroupName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getEC2SecurityGroups() != null) sb.append("EC2SecurityGroups: " + getEC2SecurityGroups() + ",");    	
+        sb.append("{");
+        if (getClusterSecurityGroupName() != null) sb.append("ClusterSecurityGroupName: " + getClusterSecurityGroupName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getEC2SecurityGroups() != null) sb.append("EC2SecurityGroups: " + getEC2SecurityGroups() + ",");
         if (getIPRanges() != null) sb.append("IPRanges: " + getIPRanges() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,15 +19,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
 /**
  * Annotation for marking a property in a class as the range key for a DynamoDB
- * table. Applied to the getter for the range key property.
+ * table. Applied to the getter method or the class field for the range key
+ * property. If the annotation is applied directly to the class field, the
+ * corresponding getter and setter must be declared in the same class.
  * <p>
  * This annotation is required for tables that use a range key.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target({ElementType.FIELD, ElementType.METHOD})
 public @interface DynamoDBRangeKey {
 
     /**

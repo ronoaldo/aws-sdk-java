@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class RemoveSourceIdentifierFromSubscriptionRequestMarshaller implements 
     public Request<RemoveSourceIdentifierFromSubscriptionRequest> marshall(RemoveSourceIdentifierFromSubscriptionRequest removeSourceIdentifierFromSubscriptionRequest) {
 
         if (removeSourceIdentifierFromSubscriptionRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<RemoveSourceIdentifierFromSubscriptionRequest> request = new DefaultRequest<RemoveSourceIdentifierFromSubscriptionRequest>(removeSourceIdentifierFromSubscriptionRequest, "AmazonRDS");
         request.addParameter("Action", "RemoveSourceIdentifierFromSubscription");
-        request.addParameter("Version", "2013-02-12");
+        request.addParameter("Version", "2013-09-09");
 
         if (removeSourceIdentifierFromSubscriptionRequest.getSubscriptionName() != null) {
             request.addParameter("SubscriptionName", StringUtils.fromString(removeSourceIdentifierFromSubscriptionRequest.getSubscriptionName()));
@@ -46,7 +46,6 @@ public class RemoveSourceIdentifierFromSubscriptionRequestMarshaller implements 
         if (removeSourceIdentifierFromSubscriptionRequest.getSourceIdentifier() != null) {
             request.addParameter("SourceIdentifier", StringUtils.fromString(removeSourceIdentifierFromSubscriptionRequest.getSourceIdentifier()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,124 +13,148 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.AttachNetworkInterfaceRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#attachNetworkInterface(AttachNetworkInterfaceRequest) AttachNetworkInterface operation}.
- * 
+ * <p>
+ * Attaches a network interface to an instance.
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#attachNetworkInterface(AttachNetworkInterfaceRequest)
  */
-public class AttachNetworkInterfaceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class AttachNetworkInterfaceRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<AttachNetworkInterfaceRequest> {
 
+    /**
+     * The ID of the network interface.
+     */
     private String networkInterfaceId;
 
+    /**
+     * The ID of the instance.
+     */
     private String instanceId;
 
+    /**
+     * The index of the device for the network interface attachment.
+     */
     private Integer deviceIndex;
 
     /**
-     * Returns the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      *
-     * @return The value of the NetworkInterfaceId property for this object.
+     * @return The ID of the network interface.
      */
     public String getNetworkInterfaceId() {
         return networkInterfaceId;
     }
     
     /**
-     * Sets the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      *
-     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
+     * @param networkInterfaceId The ID of the network interface.
      */
     public void setNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
     }
     
     /**
-     * Sets the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
+     * @param networkInterfaceId The ID of the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachNetworkInterfaceRequest withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the InstanceId property for this object.
+     * The ID of the instance.
      *
-     * @return The value of the InstanceId property for this object.
+     * @return The ID of the instance.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * Sets the value of the InstanceId property for this object.
+     * The ID of the instance.
      *
-     * @param instanceId The new value for the InstanceId property for this object.
+     * @param instanceId The ID of the instance.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * Sets the value of the InstanceId property for this object.
+     * The ID of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The new value for the InstanceId property for this object.
+     * @param instanceId The ID of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachNetworkInterfaceRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the DeviceIndex property for this object.
+     * The index of the device for the network interface attachment.
      *
-     * @return The value of the DeviceIndex property for this object.
+     * @return The index of the device for the network interface attachment.
      */
     public Integer getDeviceIndex() {
         return deviceIndex;
     }
     
     /**
-     * Sets the value of the DeviceIndex property for this object.
+     * The index of the device for the network interface attachment.
      *
-     * @param deviceIndex The new value for the DeviceIndex property for this object.
+     * @param deviceIndex The index of the device for the network interface attachment.
      */
     public void setDeviceIndex(Integer deviceIndex) {
         this.deviceIndex = deviceIndex;
     }
     
     /**
-     * Sets the value of the DeviceIndex property for this object.
+     * The index of the device for the network interface attachment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param deviceIndex The new value for the DeviceIndex property for this object.
+     * @param deviceIndex The index of the device for the network interface attachment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AttachNetworkInterfaceRequest withDeviceIndex(Integer deviceIndex) {
         this.deviceIndex = deviceIndex;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<AttachNetworkInterfaceRequest> getDryRunRequest() {
+        Request<AttachNetworkInterfaceRequest> request = new AttachNetworkInterfaceRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -143,9 +167,9 @@ public class AttachNetworkInterfaceRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getDeviceIndex() != null) sb.append("DeviceIndex: " + getDeviceIndex() );
         sb.append("}");
         return sb.toString();

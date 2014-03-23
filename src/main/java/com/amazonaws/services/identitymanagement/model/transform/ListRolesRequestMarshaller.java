@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class ListRolesRequestMarshaller implements Marshaller<Request<ListRolesR
     public Request<ListRolesRequest> marshall(ListRolesRequest listRolesRequest) {
 
         if (listRolesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ListRolesRequest> request = new DefaultRequest<ListRolesRequest>(listRolesRequest, "AmazonIdentityManagement");
         request.addParameter("Action", "ListRoles");
@@ -49,7 +49,6 @@ public class ListRolesRequestMarshaller implements Marshaller<Request<ListRolesR
         if (listRolesRequest.getMaxItems() != null) {
             request.addParameter("MaxItems", StringUtils.fromInteger(listRolesRequest.getMaxItems()));
         }
-
 
         return request;
     }

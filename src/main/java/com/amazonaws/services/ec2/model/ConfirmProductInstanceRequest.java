@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,31 +13,34 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ConfirmProductInstanceRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#confirmProductInstance(ConfirmProductInstanceRequest) ConfirmProductInstance operation}.
  * <p>
- * The ConfirmProductInstance operation returns true if the specified product code is attached to the specified instance. The operation returns false if
- * the product code is not attached to the instance.
- * </p>
- * <p>
- * The ConfirmProductInstance operation can only be executed by the owner of the AMI. This feature is useful when an AMI owner is providing support and
- * wants to verify whether a user's instance is eligible.
+ * Determines whether a product code is associated with an instance. This
+ * action can only be used by the owner of the product code. It is useful
+ * when a product code owner needs to verify whether another user's
+ * instance is eligible for support.
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#confirmProductInstance(ConfirmProductInstanceRequest)
  */
-public class ConfirmProductInstanceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ConfirmProductInstanceRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ConfirmProductInstanceRequest> {
 
     /**
-     * The product code to confirm.
+     * The product code. This must be an Amazon DevPay product code that you
+     * own.
      */
     private String productCode;
 
     /**
-     * The ID of the instance to confirm.
+     * The ID of the instance.
      */
     private String instanceId;
 
@@ -52,83 +55,98 @@ public class ConfirmProductInstanceRequest extends AmazonWebServiceRequest  impl
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param productCode The product code to confirm.
-     * @param instanceId The ID of the instance to confirm.
+     * @param productCode The product code. This must be an Amazon DevPay
+     * product code that you own.
+     * @param instanceId The ID of the instance.
      */
     public ConfirmProductInstanceRequest(String productCode, String instanceId) {
-        this.productCode = productCode;
-        this.instanceId = instanceId;
+        setProductCode(productCode);
+        setInstanceId(instanceId);
     }
 
-    
-    
     /**
-     * The product code to confirm.
+     * The product code. This must be an Amazon DevPay product code that you
+     * own.
      *
-     * @return The product code to confirm.
+     * @return The product code. This must be an Amazon DevPay product code that you
+     *         own.
      */
     public String getProductCode() {
         return productCode;
     }
     
     /**
-     * The product code to confirm.
+     * The product code. This must be an Amazon DevPay product code that you
+     * own.
      *
-     * @param productCode The product code to confirm.
+     * @param productCode The product code. This must be an Amazon DevPay product code that you
+     *         own.
      */
     public void setProductCode(String productCode) {
         this.productCode = productCode;
     }
     
     /**
-     * The product code to confirm.
+     * The product code. This must be an Amazon DevPay product code that you
+     * own.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param productCode The product code to confirm.
+     * @param productCode The product code. This must be an Amazon DevPay product code that you
+     *         own.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfirmProductInstanceRequest withProductCode(String productCode) {
         this.productCode = productCode;
         return this;
     }
-    
-    
+
     /**
-     * The ID of the instance to confirm.
+     * The ID of the instance.
      *
-     * @return The ID of the instance to confirm.
+     * @return The ID of the instance.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * The ID of the instance to confirm.
+     * The ID of the instance.
      *
-     * @param instanceId The ID of the instance to confirm.
+     * @param instanceId The ID of the instance.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * The ID of the instance to confirm.
+     * The ID of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId The ID of the instance to confirm.
+     * @param instanceId The ID of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfirmProductInstanceRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ConfirmProductInstanceRequest> getDryRunRequest() {
+        Request<ConfirmProductInstanceRequest> request = new ConfirmProductInstanceRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -141,8 +159,8 @@ public class ConfirmProductInstanceRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProductCode() != null) sb.append("ProductCode: " + getProductCode() + ",");    	
+        sb.append("{");
+        if (getProductCode() != null) sb.append("ProductCode: " + getProductCode() + ",");
         if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() );
         sb.append("}");
         return sb.toString();

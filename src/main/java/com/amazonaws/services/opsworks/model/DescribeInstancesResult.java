@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeInstances</code> request.
  * </p>
  */
-public class DescribeInstancesResult  implements Serializable  {
+public class DescribeInstancesResult implements Serializable {
 
     /**
      * An array of <code>Instance</code> objects that describe the instances.
      */
-    private java.util.List<Instance> instances;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instances;
 
     /**
      * An array of <code>Instance</code> objects that describe the instances.
@@ -33,9 +34,9 @@ public class DescribeInstancesResult  implements Serializable  {
      * @return An array of <code>Instance</code> objects that describe the instances.
      */
     public java.util.List<Instance> getInstances() {
-        
         if (instances == null) {
-            instances = new java.util.ArrayList<Instance>();
+              instances = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>();
+              instances.setAutoConstruct(true);
         }
         return instances;
     }
@@ -50,8 +51,7 @@ public class DescribeInstancesResult  implements Serializable  {
             this.instances = null;
             return;
         }
-
-        java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
         instancesCopy.addAll(instances);
         this.instances = instancesCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeInstancesResult  implements Serializable  {
      * @param instances An array of <code>Instance</code> objects that describe the instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesResult withInstances(Instance... instances) {
         if (getInstances() == null) setInstances(new java.util.ArrayList<Instance>(instances.length));
@@ -82,20 +82,20 @@ public class DescribeInstancesResult  implements Serializable  {
      * @param instances An array of <code>Instance</code> objects that describe the instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesResult withInstances(java.util.Collection<Instance> instances) {
         if (instances == null) {
             this.instances = null;
         } else {
-            java.util.List<Instance> instancesCopy = new java.util.ArrayList<Instance>(instances.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Instance> instancesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Instance>(instances.size());
             instancesCopy.addAll(instances);
             this.instances = instancesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getInstances() != null) sb.append("Instances: " + getInstances() );
         sb.append("}");
         return sb.toString();

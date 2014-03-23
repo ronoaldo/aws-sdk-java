@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Result message wrapping a list of application version descriptions.
  * </p>
  */
-public class DescribeApplicationVersionsResult  implements Serializable  {
+public class DescribeApplicationVersionsResult implements Serializable {
 
     /**
      * A list of <a>ApplicationVersionDescription</a> .
      */
-    private java.util.List<ApplicationVersionDescription> applicationVersions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationVersionDescription> applicationVersions;
 
     /**
      * A list of <a>ApplicationVersionDescription</a> .
@@ -33,9 +34,9 @@ public class DescribeApplicationVersionsResult  implements Serializable  {
      * @return A list of <a>ApplicationVersionDescription</a> .
      */
     public java.util.List<ApplicationVersionDescription> getApplicationVersions() {
-        
         if (applicationVersions == null) {
-            applicationVersions = new java.util.ArrayList<ApplicationVersionDescription>();
+              applicationVersions = new com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationVersionDescription>();
+              applicationVersions.setAutoConstruct(true);
         }
         return applicationVersions;
     }
@@ -50,8 +51,7 @@ public class DescribeApplicationVersionsResult  implements Serializable  {
             this.applicationVersions = null;
             return;
         }
-
-        java.util.List<ApplicationVersionDescription> applicationVersionsCopy = new java.util.ArrayList<ApplicationVersionDescription>(applicationVersions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationVersionDescription> applicationVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationVersionDescription>(applicationVersions.size());
         applicationVersionsCopy.addAll(applicationVersions);
         this.applicationVersions = applicationVersionsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeApplicationVersionsResult  implements Serializable  {
      * @param applicationVersions A list of <a>ApplicationVersionDescription</a> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeApplicationVersionsResult withApplicationVersions(ApplicationVersionDescription... applicationVersions) {
         if (getApplicationVersions() == null) setApplicationVersions(new java.util.ArrayList<ApplicationVersionDescription>(applicationVersions.length));
@@ -82,20 +82,20 @@ public class DescribeApplicationVersionsResult  implements Serializable  {
      * @param applicationVersions A list of <a>ApplicationVersionDescription</a> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeApplicationVersionsResult withApplicationVersions(java.util.Collection<ApplicationVersionDescription> applicationVersions) {
         if (applicationVersions == null) {
             this.applicationVersions = null;
         } else {
-            java.util.List<ApplicationVersionDescription> applicationVersionsCopy = new java.util.ArrayList<ApplicationVersionDescription>(applicationVersions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationVersionDescription> applicationVersionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ApplicationVersionDescription>(applicationVersions.size());
             applicationVersionsCopy.addAll(applicationVersions);
             this.applicationVersions = applicationVersionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeApplicationVersionsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getApplicationVersions() != null) sb.append("ApplicationVersions: " + getApplicationVersions() );
         sb.append("}");
         return sb.toString();

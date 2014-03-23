@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * Cluster StAX Unmarshaller
  */
@@ -37,12 +36,9 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
 
-        
         if (context.isStartOfDocument()) targetDepth += 2;
-        
 
         if (context.isStartOfDocument()) targetDepth++;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -135,6 +131,30 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
                 }
                 if (context.testExpression("Encrypted", targetDepth)) {
                     cluster.setEncrypted(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("RestoreStatus", targetDepth)) {
+                    cluster.setRestoreStatus(RestoreStatusStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("HsmStatus", targetDepth)) {
+                    cluster.setHsmStatus(HsmStatusStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("ClusterSnapshotCopyStatus", targetDepth)) {
+                    cluster.setClusterSnapshotCopyStatus(ClusterSnapshotCopyStatusStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("ClusterPublicKey", targetDepth)) {
+                    cluster.setClusterPublicKey(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("ClusterNodes/member", targetDepth)) {
+                    cluster.getClusterNodes().add(ClusterNodeStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("ElasticIpStatus", targetDepth)) {
+                    cluster.setElasticIpStatus(ElasticIpStatusStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

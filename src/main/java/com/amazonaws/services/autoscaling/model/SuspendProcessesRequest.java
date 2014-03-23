@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,26 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#suspendProcesses(SuspendProcessesRequest) SuspendProcesses operation}.
  * <p>
- * Suspends Auto Scaling processes for an Auto Scaling group. To suspend specific process types, specify them by name with the
- * <code>ScalingProcesses.member.N</code> parameter. To suspend all process types, omit the <code>ScalingProcesses.member.N</code> parameter.
+ * Suspends Auto Scaling processes for an Auto Scaling group. To suspend
+ * specific process types, specify them by name with the
+ * <code>ScalingProcesses.member.N</code> parameter. To suspend all
+ * process types, omit the <code>ScalingProcesses.member.N</code>
+ * parameter.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> Suspending either of the two primary process types, Launch or Terminate, can prevent other process types from functioning properly.
- * For more information about processes and their dependencies, see ProcessType.
+ * <b>IMPORTANT:</b> Suspending either of the two primary process types,
+ * Launch or Terminate, can prevent other process types from functioning
+ * properly.
  * </p>
  * <p>
- * To resume processes that have been suspended, use ResumeProcesses.
+ * To resume processes that have been suspended, use ResumeProcesses For
+ * more information on suspending and resuming Auto Scaling process, see
+ * <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html"> Suspend and Resume Auto Scaling Process </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#suspendProcesses(SuspendProcessesRequest)
  */
-public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SuspendProcessesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name or Amazon Resource Name (ARN) of the Auto Scaling group.
@@ -51,7 +60,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements
      * <li>AddToLoadBalancer</li> </ul> <p> To suspend all process types,
      * omit this parameter.
      */
-    private java.util.List<String> scalingProcesses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> scalingProcesses;
 
     /**
      * The name or Amazon Resource Name (ARN) of the Auto Scaling group.
@@ -91,14 +100,13 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements
      * @param autoScalingGroupName The name or Amazon Resource Name (ARN) of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SuspendProcessesRequest withAutoScalingGroupName(String autoScalingGroupName) {
         this.autoScalingGroupName = autoScalingGroupName;
         return this;
     }
-    
-    
+
     /**
      * The processes that you want to suspend or resume, which can include
      * one or more of the following: <ul> <li>Launch</li> <li>Terminate</li>
@@ -115,9 +123,9 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements
      *         omit this parameter.
      */
     public java.util.List<String> getScalingProcesses() {
-        
         if (scalingProcesses == null) {
-            scalingProcesses = new java.util.ArrayList<String>();
+              scalingProcesses = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              scalingProcesses.setAutoConstruct(true);
         }
         return scalingProcesses;
     }
@@ -142,8 +150,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements
             this.scalingProcesses = null;
             return;
         }
-
-        java.util.List<String> scalingProcessesCopy = new java.util.ArrayList<String>(scalingProcesses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> scalingProcessesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(scalingProcesses.size());
         scalingProcessesCopy.addAll(scalingProcesses);
         this.scalingProcesses = scalingProcessesCopy;
     }
@@ -166,7 +173,7 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements
      *         omit this parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SuspendProcessesRequest withScalingProcesses(String... scalingProcesses) {
         if (getScalingProcesses() == null) setScalingProcesses(new java.util.ArrayList<String>(scalingProcesses.length));
@@ -194,20 +201,20 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements
      *         omit this parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SuspendProcessesRequest withScalingProcesses(java.util.Collection<String> scalingProcesses) {
         if (scalingProcesses == null) {
             this.scalingProcesses = null;
         } else {
-            java.util.List<String> scalingProcessesCopy = new java.util.ArrayList<String>(scalingProcesses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> scalingProcessesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(scalingProcesses.size());
             scalingProcessesCopy.addAll(scalingProcesses);
             this.scalingProcesses = scalingProcessesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -219,8 +226,8 @@ public class SuspendProcessesRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupName() != null) sb.append("AutoScalingGroupName: " + getAutoScalingGroupName() + ",");
         if (getScalingProcesses() != null) sb.append("ScalingProcesses: " + getScalingProcesses() );
         sb.append("}");
         return sb.toString();

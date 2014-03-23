@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk;
-            
+
 import java.util.concurrent.Future;
 
 import com.amazonaws.AmazonClientException;
@@ -26,30 +26,30 @@ import com.amazonaws.services.elasticbeanstalk.model.*;
  * Each asynchronous method will return a Java Future object, and users are also allowed
  * to provide a callback handler.
  * AWS Elastic Beanstalk <p>
- * This is the AWS Elastic Beanstalk API Reference. This guide provides detailed information about AWS Elastic Beanstalk actions, data types,
+ * This is the AWS Elastic Beanstalk API Reference. This guide provides
+ * detailed information about AWS Elastic Beanstalk actions, data types,
  * parameters, and errors.
  * </p>
  * <p>
- * AWS Elastic Beanstalk is a tool that makes it easy for you to create, deploy, and manage scalable, fault-tolerant applications running on Amazon Web
- * Services cloud resources.
+ * AWS Elastic Beanstalk is a tool that makes it easy for you to create,
+ * deploy, and manage scalable, fault-tolerant applications running on
+ * Amazon Web Services cloud resources.
  * </p>
  * <p>
- * For more information about this product, go to the <a href="http://aws.amazon.com/elasticbeanstalk/"> AWS Elastic Beanstalk </a> details page. The
- * location of the lastest AWS Elastic Beanstalk WSDL is <a href="http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl">
- * http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl </a> .
+ * For more information about this product, go to the
+ * <a href="http://aws.amazon.com/elasticbeanstalk/"> AWS Elastic Beanstalk </a> details page. The location of the latest AWS Elastic Beanstalk WSDL is <a href="http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl"> http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl </a>
+ * .
  * </p>
  * <p>
  * <b>Endpoints</b>
  * </p>
  * <p>
- * AWS Elastic Beanstalk supports the following region-specific endpoint:
+ * For a list of region-specific endpoints that AWS Elastic Beanstalk
+ * supports, go to
+ * <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region"> Regions and Endpoints </a>
+ * in the <i>Amazon Web Services Glossary</i> .
  * </p>
- * 
- * <ul>
- * <li> https://elasticbeanstalk.us-east-1.amazonaws.com </li>
- * 
- * </ul> 
- */       
+ */
 public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
     /**
      * <p>
@@ -63,6 +63,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CheckDNSAvailability service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -91,6 +92,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CheckDNSAvailability service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -120,6 +122,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationOptions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -152,6 +155,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationOptions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -183,6 +187,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DeleteConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -217,6 +222,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DeleteConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -241,6 +247,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         CreateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -268,6 +275,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         CreateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -296,6 +304,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CreateStorageLocation service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -327,6 +336,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CreateStorageLocation service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -367,6 +377,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         RequestEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -410,6 +421,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         RequestEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -442,6 +454,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CreateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -477,6 +490,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CreateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -506,6 +520,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DeleteApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -538,6 +553,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DeleteApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -563,6 +579,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeApplicationVersions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -591,6 +608,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeApplicationVersions service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -607,7 +625,8 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
     /**
      * <p>
      * Deletes the specified application along with all associated versions
-     * and configurations.
+     * and configurations. The application versions will not be deleted from
+     * your Amazon S3 bucket.
      * </p>
      * <p>
      * <b>NOTE:</b>You cannot delete an application that has a running
@@ -619,6 +638,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -634,7 +654,8 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
     /**
      * <p>
      * Deletes the specified application along with all associated versions
-     * and configurations.
+     * and configurations. The application versions will not be deleted from
+     * your Amazon S3 bucket.
      * </p>
      * <p>
      * <b>NOTE:</b>You cannot delete an application that has a running
@@ -650,6 +671,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         DeleteApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -681,6 +703,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         UpdateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -715,6 +738,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         UpdateApplicationVersion service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -733,17 +757,13 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * Creates an application that has one configuration template named
      * <code>default</code> and no application versions.
      * </p>
-     * <p>
-     * <b>NOTE:</b> The default configuration template is for a 32-bit
-     * version of the Amazon Linux operating system running the Tomcat 6
-     * application container.
-     * </p>
      *
      * @param createApplicationRequest Container for the necessary parameters
      *           to execute the CreateApplication operation on AWSElasticBeanstalk.
      * 
      * @return A Java Future object containing the response from the
      *         CreateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -761,11 +781,6 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * Creates an application that has one configuration template named
      * <code>default</code> and no application versions.
      * </p>
-     * <p>
-     * <b>NOTE:</b> The default configuration template is for a 32-bit
-     * version of the Amazon Linux operating system running the Tomcat 6
-     * application container.
-     * </p>
      *
      * @param createApplicationRequest Container for the necessary parameters
      *           to execute the CreateApplication operation on AWSElasticBeanstalk.
@@ -776,6 +791,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         CreateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -801,6 +817,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         SwapEnvironmentCNAMEs service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -829,6 +846,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         SwapEnvironmentCNAMEs service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -868,6 +886,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         UpdateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -910,6 +929,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         UpdateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -944,6 +964,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         RetrieveEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -981,6 +1002,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         RetrieveEnvironmentInfo service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1006,6 +1028,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         ListAvailableSolutionStacks service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1034,6 +1057,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         ListAvailableSolutionStacks service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1062,6 +1086,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         UpdateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1093,6 +1118,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         UpdateApplication service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1118,6 +1144,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeEnvironments service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1146,6 +1173,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeEnvironments service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1171,6 +1199,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeEnvironmentResources service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1199,6 +1228,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeEnvironmentResources service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1224,6 +1254,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         TerminateEnvironment service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1252,6 +1283,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         TerminateEnvironment service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1283,6 +1315,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         ValidateConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1317,6 +1350,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         ValidateConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1341,6 +1375,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         RestartAppServer service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1368,6 +1403,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         RestartAppServer service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1403,6 +1439,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DeleteEnvironmentConfiguration service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1441,6 +1478,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DeleteEnvironmentConfiguration service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1478,6 +1516,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         UpdateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1518,6 +1557,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         UpdateEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1555,6 +1595,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CreateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1595,6 +1636,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         CreateConfigurationTemplate service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1637,6 +1679,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1682,6 +1725,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeConfigurationSettings service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1707,6 +1751,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeApplications service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1735,6 +1780,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * @return A Java Future object containing the response from the
      *         DescribeApplications service method, as returned by
      *         AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1761,6 +1807,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         RebuildEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1790,6 +1837,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         RebuildEnvironment service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1818,6 +1866,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeEvents service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1849,6 +1898,7 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
      * 
      * @return A Java Future object containing the response from the
      *         DescribeEvents service method, as returned by AWSElasticBeanstalk.
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -1861,6 +1911,5 @@ public interface AWSElasticBeanstalkAsync extends AWSElasticBeanstalk {
     public Future<DescribeEventsResult> describeEventsAsync(DescribeEventsRequest describeEventsRequest,
             AsyncHandler<DescribeEventsRequest, DescribeEventsResult> asyncHandler)
                     throws AmazonServiceException, AmazonClientException;
-
 }
         

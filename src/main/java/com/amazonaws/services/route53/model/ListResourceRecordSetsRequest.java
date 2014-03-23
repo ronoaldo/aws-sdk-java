@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,52 +13,70 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.route53.AmazonRoute53#listResourceRecordSets(ListResourceRecordSetsRequest) ListResourceRecordSets operation}.
  * <p>
- * Imagine all the resource record sets in a zone listed out in front of you. Imagine them sorted lexicographically first by DNS name (with the labels
- * reversed, like "com.amazon.www" for example), and secondarily, lexicographically by record type. This operation retrieves at most MaxItems resource
- * record sets from this list, in order, starting at a position specified by the Name and Type arguments:
+ * Imagine all the resource record sets in a zone listed out in front of
+ * you. Imagine them sorted lexicographically first by DNS name (with the
+ * labels reversed, like "com.amazon.www" for example), and secondarily,
+ * lexicographically by record type. This operation retrieves at most
+ * MaxItems resource record sets from this list, in order, starting at a
+ * position specified by the Name and Type arguments:
  * </p>
  * 
  * <ul>
- * <li>If both Name and Type are omitted, this means start the results at the first RRSET in the HostedZone.</li>
- * <li>If Name is specified but Type is omitted, this means start the results at the first RRSET in the list whose name is greater than or equal to
- * Name. </li>
- * <li>If both Name and Type are specified, this means start the results at the first RRSET in the list whose name is greater than or equal to Name and
- * whose type is greater than or equal to Type.</li>
+ * <li>If both Name and Type are omitted, this means start the results
+ * at the first RRSET in the HostedZone.</li>
+ * <li>If Name is specified but Type is omitted, this means start the
+ * results at the first RRSET in the list whose name is greater than or
+ * equal to Name. </li>
+ * <li>If both Name and Type are specified, this means start the results
+ * at the first RRSET in the list whose name is greater than or equal to
+ * Name and whose type is greater than or equal to Type.</li>
  * <li>It is an error to specify the Type but not the Name.</li>
  * 
  * </ul>
  * <p>
- * Use ListResourceRecordSets to retrieve a single known record set by specifying the record set's name and type, and setting MaxItems = 1
+ * Use ListResourceRecordSets to retrieve a single known record set by
+ * specifying the record set's name and type, and setting MaxItems = 1
  * </p>
  * <p>
- * To retrieve all the records in a HostedZone, first pause any processes making calls to ChangeResourceRecordSets. Initially call ListResourceRecordSets
- * without a Name and Type to get the first page of record sets. For subsequent calls, set Name and Type to the NextName and NextType values returned by
- * the previous response.
+ * To retrieve all the records in a HostedZone, first pause any processes
+ * making calls to ChangeResourceRecordSets. Initially call
+ * ListResourceRecordSets without a Name and Type to get the first page
+ * of record sets. For subsequent calls, set Name and Type to the
+ * NextName and NextType values returned by the previous response.
  * </p>
  * <p>
- * In the presence of concurrent ChangeResourceRecordSets calls, there is no consistency of results across calls to ListResourceRecordSets. The only way
- * to get a consistent multi-page snapshot of all RRSETs in a zone is to stop making changes while pagination is in progress.
+ * In the presence of concurrent ChangeResourceRecordSets calls, there is
+ * no consistency of results across calls to ListResourceRecordSets. The
+ * only way to get a consistent multi-page snapshot of all RRSETs in a
+ * zone is to stop making changes while pagination is in progress.
  * </p>
  * <p>
- * However, the results from ListResourceRecordSets are consistent within a page. If MakeChange calls are taking place concurrently, the result of each
- * one will either be completely visible in your results or not at all. You will not see partial changes, or changes that do not ultimately succeed.
- * (This follows from the fact that MakeChange is atomic)
+ * However, the results from ListResourceRecordSets are consistent within
+ * a page. If MakeChange calls are taking place concurrently, the result
+ * of each one will either be completely visible in your results or not
+ * at all. You will not see partial changes, or changes that do not
+ * ultimately succeed. (This follows from the fact that MakeChange is
+ * atomic)
  * </p>
  * <p>
- * The results from ListResourceRecordSets are strongly consistent with ChangeResourceRecordSets. To be precise, if a single process makes a call to
- * ChangeResourceRecordSets and receives a successful response, the effects of that change will be visible in a subsequent call to ListResourceRecordSets
- * by that process.
+ * The results from ListResourceRecordSets are strongly consistent with
+ * ChangeResourceRecordSets. To be precise, if a single process makes a
+ * call to ChangeResourceRecordSets and receives a successful response,
+ * the effects of that change will be visible in a subsequent call to
+ * ListResourceRecordSets by that process.
  * </p>
  *
  * @see com.amazonaws.services.route53.AmazonRoute53#listResourceRecordSets(ListResourceRecordSetsRequest)
  */
-public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the hosted zone that contains the resource record sets that
@@ -129,11 +147,9 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
      * resource record sets that you want to get.
      */
     public ListResourceRecordSetsRequest(String hostedZoneId) {
-        this.hostedZoneId = hostedZoneId;
+        setHostedZoneId(hostedZoneId);
     }
 
-    
-    
     /**
      * The ID of the hosted zone that contains the resource record sets that
      * you want to get.
@@ -175,14 +191,13 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
      *         you want to get.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsRequest withHostedZoneId(String hostedZoneId) {
         this.hostedZoneId = hostedZoneId;
         return this;
     }
-    
-    
+
     /**
      * The first name in the lexicographic ordering of domain names that you
      * want the <code>ListResourceRecordSets</code> request to list.
@@ -224,14 +239,13 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
      *         want the <code>ListResourceRecordSets</code> request to list.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsRequest withStartRecordName(String startRecordName) {
         this.startRecordName = startRecordName;
         return this;
     }
-    
-    
+
     /**
      * The DNS type at which to begin the listing of resource record sets.
      * <p>Valid values: <code>A</code> | <code>AAAA</code> |
@@ -337,7 +351,7 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
      *         <a>InvalidInput</a> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RRType
      */
@@ -345,8 +359,7 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
         this.startRecordType = startRecordType;
         return this;
     }
-    
-    
+
     /**
      * The DNS type at which to begin the listing of resource record sets.
      * <p>Valid values: <code>A</code> | <code>AAAA</code> |
@@ -416,7 +429,7 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
      *         <a>InvalidInput</a> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see RRType
      */
@@ -424,7 +437,7 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
         this.startRecordType = startRecordType.toString();
         return this;
     }
-    
+
     /**
      * <i>Weighted resource record sets only:</i> If results were truncated
      * for a given DNS name and type, specify the value of
@@ -484,14 +497,13 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
      *         current DNS name and type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsRequest withStartRecordIdentifier(String startRecordIdentifier) {
         this.startRecordIdentifier = startRecordIdentifier;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of records you want in the response body.
      *
@@ -518,14 +530,13 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
      * @param maxItems The maximum number of records you want in the response body.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListResourceRecordSetsRequest withMaxItems(String maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -537,11 +548,11 @@ public class ListResourceRecordSetsRequest extends AmazonWebServiceRequest  impl
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getHostedZoneId() != null) sb.append("HostedZoneId: " + getHostedZoneId() + ",");    	
-        if (getStartRecordName() != null) sb.append("StartRecordName: " + getStartRecordName() + ",");    	
-        if (getStartRecordType() != null) sb.append("StartRecordType: " + getStartRecordType() + ",");    	
-        if (getStartRecordIdentifier() != null) sb.append("StartRecordIdentifier: " + getStartRecordIdentifier() + ",");    	
+        sb.append("{");
+        if (getHostedZoneId() != null) sb.append("HostedZoneId: " + getHostedZoneId() + ",");
+        if (getStartRecordName() != null) sb.append("StartRecordName: " + getStartRecordName() + ",");
+        if (getStartRecordType() != null) sb.append("StartRecordType: " + getStartRecordType() + ",");
+        if (getStartRecordIdentifier() != null) sb.append("StartRecordIdentifier: " + getStartRecordIdentifier() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

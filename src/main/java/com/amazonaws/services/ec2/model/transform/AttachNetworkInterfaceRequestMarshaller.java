@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class AttachNetworkInterfaceRequestMarshaller implements Marshaller<Reque
     public Request<AttachNetworkInterfaceRequest> marshall(AttachNetworkInterfaceRequest attachNetworkInterfaceRequest) {
 
         if (attachNetworkInterfaceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AttachNetworkInterfaceRequest> request = new DefaultRequest<AttachNetworkInterfaceRequest>(attachNetworkInterfaceRequest, "AmazonEC2");
         request.addParameter("Action", "AttachNetworkInterface");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (attachNetworkInterfaceRequest.getNetworkInterfaceId() != null) {
             request.addParameter("NetworkInterfaceId", StringUtils.fromString(attachNetworkInterfaceRequest.getNetworkInterfaceId()));
@@ -49,7 +49,6 @@ public class AttachNetworkInterfaceRequestMarshaller implements Marshaller<Reque
         if (attachNetworkInterfaceRequest.getDeviceIndex() != null) {
             request.addParameter("DeviceIndex", StringUtils.fromInteger(attachNetworkInterfaceRequest.getDeviceIndex()));
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event.
+ * Provides details of the
+ * <code>RequestCancelExternalWorkflowExecutionInitiated</code> event.
  * </p>
  */
-public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes  implements Serializable  {
+public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes implements Serializable {
 
     /**
      * The <code>workflowId</code> of the external workflow execution to be
@@ -99,14 +101,13 @@ public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes  imp
      *         canceled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelExternalWorkflowExecutionInitiatedEventAttributes withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The <code>runId</code> of the external workflow execution to be
      * canceled.
@@ -148,14 +149,13 @@ public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes  imp
      *         canceled.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelExternalWorkflowExecutionInitiatedEventAttributes withRunId(String runId) {
         this.runId = runId;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the
@@ -206,14 +206,13 @@ public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes  imp
      *         problems by tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelExternalWorkflowExecutionInitiatedEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent workflow tasks.
@@ -255,14 +254,13 @@ public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes  imp
      *         subsequent workflow tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RequestCancelExternalWorkflowExecutionInitiatedEventAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -274,10 +272,10 @@ public class RequestCancelExternalWorkflowExecutionInitiatedEventAttributes  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");    	
-        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");    	
+        sb.append("{");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getRunId() != null) sb.append("RunId: " + getRunId() + ",");
+        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");
         if (getControl() != null) sb.append("Control: " + getControl() );
         sb.append("}");
         return sb.toString();

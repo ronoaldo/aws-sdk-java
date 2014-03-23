@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The default Parameters and CacheNodeTypeSpecificParameters for a CacheParameterGroupFamily.
+ * Represents the output of a <i>DescribeEngineDefaultParameters</i>
+ * operation.
  * </p>
  */
-public class EngineDefaults  implements Serializable  {
+public class EngineDefaults implements Serializable {
 
     /**
-     * Specifies the name of the Cache Parameter Group Family which the
-     * engine default parameters apply to.
+     * Specifies the name of the cache parameter group family to which the
+     * engine default parameters apply.
      */
     private String cacheParameterGroupFamily;
 
@@ -36,53 +38,53 @@ public class EngineDefaults  implements Serializable  {
     /**
      * Contains a list of engine default parameters.
      */
-    private java.util.List<Parameter> parameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parameters;
 
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      */
-    private java.util.List<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters;
 
     /**
-     * Specifies the name of the Cache Parameter Group Family which the
-     * engine default parameters apply to.
+     * Specifies the name of the cache parameter group family to which the
+     * engine default parameters apply.
      *
-     * @return Specifies the name of the Cache Parameter Group Family which the
-     *         engine default parameters apply to.
+     * @return Specifies the name of the cache parameter group family to which the
+     *         engine default parameters apply.
      */
     public String getCacheParameterGroupFamily() {
         return cacheParameterGroupFamily;
     }
     
     /**
-     * Specifies the name of the Cache Parameter Group Family which the
-     * engine default parameters apply to.
+     * Specifies the name of the cache parameter group family to which the
+     * engine default parameters apply.
      *
-     * @param cacheParameterGroupFamily Specifies the name of the Cache Parameter Group Family which the
-     *         engine default parameters apply to.
+     * @param cacheParameterGroupFamily Specifies the name of the cache parameter group family to which the
+     *         engine default parameters apply.
      */
     public void setCacheParameterGroupFamily(String cacheParameterGroupFamily) {
         this.cacheParameterGroupFamily = cacheParameterGroupFamily;
     }
     
     /**
-     * Specifies the name of the Cache Parameter Group Family which the
-     * engine default parameters apply to.
+     * Specifies the name of the cache parameter group family to which the
+     * engine default parameters apply.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroupFamily Specifies the name of the Cache Parameter Group Family which the
-     *         engine default parameters apply to.
+     * @param cacheParameterGroupFamily Specifies the name of the cache parameter group family to which the
+     *         engine default parameters apply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withCacheParameterGroupFamily(String cacheParameterGroupFamily) {
         this.cacheParameterGroupFamily = cacheParameterGroupFamily;
         return this;
     }
-    
-    
+
     /**
      * Provides an identifier to allow retrieval of paginated results.
      *
@@ -109,23 +111,22 @@ public class EngineDefaults  implements Serializable  {
      * @param marker Provides an identifier to allow retrieval of paginated results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Contains a list of engine default parameters.
      *
      * @return Contains a list of engine default parameters.
      */
     public java.util.List<Parameter> getParameters() {
-        
         if (parameters == null) {
-            parameters = new java.util.ArrayList<Parameter>();
+              parameters = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>();
+              parameters.setAutoConstruct(true);
         }
         return parameters;
     }
@@ -140,8 +141,7 @@ public class EngineDefaults  implements Serializable  {
             this.parameters = null;
             return;
         }
-
-        java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
         parametersCopy.addAll(parameters);
         this.parameters = parametersCopy;
     }
@@ -154,7 +154,7 @@ public class EngineDefaults  implements Serializable  {
      * @param parameters Contains a list of engine default parameters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withParameters(Parameter... parameters) {
         if (getParameters() == null) setParameters(new java.util.ArrayList<Parameter>(parameters.length));
@@ -172,58 +172,63 @@ public class EngineDefaults  implements Serializable  {
      * @param parameters Contains a list of engine default parameters.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withParameters(java.util.Collection<Parameter> parameters) {
         if (parameters == null) {
             this.parameters = null;
         } else {
-            java.util.List<Parameter> parametersCopy = new java.util.ArrayList<Parameter>(parameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Parameter> parametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Parameter>(parameters.size());
             parametersCopy.addAll(parameters);
             this.parameters = parametersCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      *
-     * @return A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @return A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      */
     public java.util.List<CacheNodeTypeSpecificParameter> getCacheNodeTypeSpecificParameters() {
-        
         if (cacheNodeTypeSpecificParameters == null) {
-            cacheNodeTypeSpecificParameters = new java.util.ArrayList<CacheNodeTypeSpecificParameter>();
+              cacheNodeTypeSpecificParameters = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter>();
+              cacheNodeTypeSpecificParameters.setAutoConstruct(true);
         }
         return cacheNodeTypeSpecificParameters;
     }
     
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      *
-     * @param cacheNodeTypeSpecificParameters A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @param cacheNodeTypeSpecificParameters A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      */
     public void setCacheNodeTypeSpecificParameters(java.util.Collection<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters) {
         if (cacheNodeTypeSpecificParameters == null) {
             this.cacheNodeTypeSpecificParameters = null;
             return;
         }
-
-        java.util.List<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new java.util.ArrayList<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
         cacheNodeTypeSpecificParametersCopy.addAll(cacheNodeTypeSpecificParameters);
         this.cacheNodeTypeSpecificParameters = cacheNodeTypeSpecificParametersCopy;
     }
     
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeTypeSpecificParameters A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @param cacheNodeTypeSpecificParameters A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withCacheNodeTypeSpecificParameters(CacheNodeTypeSpecificParameter... cacheNodeTypeSpecificParameters) {
         if (getCacheNodeTypeSpecificParameters() == null) setCacheNodeTypeSpecificParameters(new java.util.ArrayList<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.length));
@@ -234,27 +239,29 @@ public class EngineDefaults  implements Serializable  {
     }
     
     /**
-     * A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * A list of parameters specific to a particular cache node type. Each
+     * element in the list contains detailed information about one parameter.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheNodeTypeSpecificParameters A list of <a>CacheNodeTypeSpecificParameter</a> instances.
+     * @param cacheNodeTypeSpecificParameters A list of parameters specific to a particular cache node type. Each
+     *         element in the list contains detailed information about one parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public EngineDefaults withCacheNodeTypeSpecificParameters(java.util.Collection<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParameters) {
         if (cacheNodeTypeSpecificParameters == null) {
             this.cacheNodeTypeSpecificParameters = null;
         } else {
-            java.util.List<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new java.util.ArrayList<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter> cacheNodeTypeSpecificParametersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<CacheNodeTypeSpecificParameter>(cacheNodeTypeSpecificParameters.size());
             cacheNodeTypeSpecificParametersCopy.addAll(cacheNodeTypeSpecificParameters);
             this.cacheNodeTypeSpecificParameters = cacheNodeTypeSpecificParametersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -266,10 +273,10 @@ public class EngineDefaults  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCacheParameterGroupFamily() != null) sb.append("CacheParameterGroupFamily: " + getCacheParameterGroupFamily() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
-        if (getParameters() != null) sb.append("Parameters: " + getParameters() + ",");    	
+        sb.append("{");
+        if (getCacheParameterGroupFamily() != null) sb.append("CacheParameterGroupFamily: " + getCacheParameterGroupFamily() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
+        if (getParameters() != null) sb.append("Parameters: " + getParameters() + ",");
         if (getCacheNodeTypeSpecificParameters() != null) sb.append("CacheNodeTypeSpecificParameters: " + getCacheNodeTypeSpecificParameters() );
         sb.append("}");
         return sb.toString();

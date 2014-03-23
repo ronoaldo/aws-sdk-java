@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,44 +13,62 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateCustomerGatewayRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#createCustomerGateway(CreateCustomerGatewayRequest) CreateCustomerGateway operation}.
  * <p>
- * Provides information to AWS about your customer gateway device. The customer gateway is the appliance at your end of the VPN connection (compared to
- * the VPN gateway, which is the device at the AWS side of the VPN connection). You can have a single active customer gateway per AWS account (active
- * means that you've created a VPN connection to use with the customer gateway). AWS might delete any customer gateway that you create with this
- * operation if you leave it inactive for an extended period of time.
+ * Provides information to AWS about your VPN customer gateway device.
+ * The customer gateway is the appliance at your end of the VPN
+ * connection. (The device on the AWS side of the VPN connection is the
+ * virtual private gateway.) You must provide the Internet-routable IP
+ * address of the customer gateway's external interface. The IP address
+ * must be static and can't be behind a device performing network address
+ * translation (NAT).
  * </p>
  * <p>
- * You must provide the Internet-routable IP address of the customer gateway's external interface. The IP address must be static.
+ * For devices that use Border Gateway Protocol (BGP), you can also
+ * provide the device's BGP Autonomous System Number (ASN). You can use
+ * an existing ASN assigned to your network. If you don't have an ASN
+ * already, you can use a private ASN (in the 64512 - 65534 range).
  * </p>
  * <p>
- * You must also provide the device's Border Gateway Protocol (BGP) Autonomous System Number (ASN). You can use an existing ASN assigned to your
- * network. If you don't have an ASN already, you can use a private ASN (in the 64512 - 65534 range). For more information about ASNs, go to <a
- * href="http://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29"> http://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29 </a> .
+ * <b>NOTE:</b> Amazon EC2 supports all 2-byte ASN numbers in the range
+ * of 1 - 65534, with the exception of 7224, which is reserved in the
+ * us-east-1 region, and 9059, which is reserved in the eu-west-1 region.
+ * </p>
+ * <p>
+ * For more information about VPN customer gateways, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html"> Adding a Hardware Virtual Private Gateway to Your VPC </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createCustomerGateway(CreateCustomerGatewayRequest)
  */
-public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateCustomerGatewayRequest> {
 
     /**
-     * The type of VPN connection this customer gateway supports.
+     * The type of VPN connection that this customer gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      */
     private String type;
 
     /**
      * The Internet-routable IP address for the customer gateway's outside
-     * interface. The address must be static
+     * interface. The address must be static.
      */
     private String publicIp;
 
     /**
-     * The customer gateway's Border Gateway Protocol (BGP) Autonomous System
-     * Number (ASN).
+     * For devices that support BGP, the customer gateway's BGP ASN.
+     * <p>Default: 65000
      */
     private Integer bgpAsn;
 
@@ -65,60 +83,125 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest  imple
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param type The type of VPN connection this customer gateway supports.
+     * @param type The type of VPN connection that this customer gateway
+     * supports.
      * @param publicIp The Internet-routable IP address for the customer
-     * gateway's outside interface. The address must be static
-     * @param bgpAsn The customer gateway's Border Gateway Protocol (BGP)
-     * Autonomous System Number (ASN).
+     * gateway's outside interface. The address must be static.
+     * @param bgpAsn For devices that support BGP, the customer gateway's BGP
+     * ASN. <p>Default: 65000
      */
     public CreateCustomerGatewayRequest(String type, String publicIp, Integer bgpAsn) {
-        this.type = type;
+        setType(type);
+        setPublicIp(publicIp);
+        setBgpAsn(bgpAsn);
+    }
+
+    /**
+     * Constructs a new CreateCustomerGatewayRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param type The type of VPN connection that this customer gateway
+     * supports.
+     * @param publicIp The Internet-routable IP address for the customer
+     * gateway's outside interface. The address must be static.
+     * @param bgpAsn For devices that support BGP, the customer gateway's BGP
+     * ASN. <p>Default: 65000
+     */
+    public CreateCustomerGatewayRequest(GatewayType type, String publicIp, Integer bgpAsn) {
+        this.type = type.toString();
         this.publicIp = publicIp;
         this.bgpAsn = bgpAsn;
     }
 
-    
-    
     /**
-     * The type of VPN connection this customer gateway supports.
+     * The type of VPN connection that this customer gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @return The type of VPN connection this customer gateway supports.
+     * @return The type of VPN connection that this customer gateway supports.
+     *
+     * @see GatewayType
      */
     public String getType() {
         return type;
     }
     
     /**
-     * The type of VPN connection this customer gateway supports.
+     * The type of VPN connection that this customer gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type The type of VPN connection this customer gateway supports.
+     * @param type The type of VPN connection that this customer gateway supports.
+     *
+     * @see GatewayType
      */
     public void setType(String type) {
         this.type = type;
     }
     
     /**
-     * The type of VPN connection this customer gateway supports.
+     * The type of VPN connection that this customer gateway supports.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type The type of VPN connection this customer gateway supports.
+     * @param type The type of VPN connection that this customer gateway supports.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see GatewayType
      */
     public CreateCustomerGatewayRequest withType(String type) {
         this.type = type;
         return this;
     }
-    
+
+    /**
+     * The type of VPN connection that this customer gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
+     *
+     * @param type The type of VPN connection that this customer gateway supports.
+     *
+     * @see GatewayType
+     */
+    public void setType(GatewayType type) {
+        this.type = type.toString();
+    }
     
     /**
+     * The type of VPN connection that this customer gateway supports.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
+     *
+     * @param type The type of VPN connection that this customer gateway supports.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see GatewayType
+     */
+    public CreateCustomerGatewayRequest withType(GatewayType type) {
+        this.type = type.toString();
+        return this;
+    }
+
+    /**
      * The Internet-routable IP address for the customer gateway's outside
-     * interface. The address must be static
+     * interface. The address must be static.
      *
      * @return The Internet-routable IP address for the customer gateway's outside
-     *         interface. The address must be static
+     *         interface. The address must be static.
      */
     public String getPublicIp() {
         return publicIp;
@@ -126,10 +209,10 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest  imple
     
     /**
      * The Internet-routable IP address for the customer gateway's outside
-     * interface. The address must be static
+     * interface. The address must be static.
      *
      * @param publicIp The Internet-routable IP address for the customer gateway's outside
-     *         interface. The address must be static
+     *         interface. The address must be static.
      */
     public void setPublicIp(String publicIp) {
         this.publicIp = publicIp;
@@ -137,61 +220,71 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest  imple
     
     /**
      * The Internet-routable IP address for the customer gateway's outside
-     * interface. The address must be static
+     * interface. The address must be static.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param publicIp The Internet-routable IP address for the customer gateway's outside
-     *         interface. The address must be static
+     *         interface. The address must be static.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCustomerGatewayRequest withPublicIp(String publicIp) {
         this.publicIp = publicIp;
         return this;
     }
-    
-    
+
     /**
-     * The customer gateway's Border Gateway Protocol (BGP) Autonomous System
-     * Number (ASN).
+     * For devices that support BGP, the customer gateway's BGP ASN.
+     * <p>Default: 65000
      *
-     * @return The customer gateway's Border Gateway Protocol (BGP) Autonomous System
-     *         Number (ASN).
+     * @return For devices that support BGP, the customer gateway's BGP ASN.
+     *         <p>Default: 65000
      */
     public Integer getBgpAsn() {
         return bgpAsn;
     }
     
     /**
-     * The customer gateway's Border Gateway Protocol (BGP) Autonomous System
-     * Number (ASN).
+     * For devices that support BGP, the customer gateway's BGP ASN.
+     * <p>Default: 65000
      *
-     * @param bgpAsn The customer gateway's Border Gateway Protocol (BGP) Autonomous System
-     *         Number (ASN).
+     * @param bgpAsn For devices that support BGP, the customer gateway's BGP ASN.
+     *         <p>Default: 65000
      */
     public void setBgpAsn(Integer bgpAsn) {
         this.bgpAsn = bgpAsn;
     }
     
     /**
-     * The customer gateway's Border Gateway Protocol (BGP) Autonomous System
-     * Number (ASN).
+     * For devices that support BGP, the customer gateway's BGP ASN.
+     * <p>Default: 65000
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param bgpAsn The customer gateway's Border Gateway Protocol (BGP) Autonomous System
-     *         Number (ASN).
+     * @param bgpAsn For devices that support BGP, the customer gateway's BGP ASN.
+     *         <p>Default: 65000
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateCustomerGatewayRequest withBgpAsn(Integer bgpAsn) {
         this.bgpAsn = bgpAsn;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateCustomerGatewayRequest> getDryRunRequest() {
+        Request<CreateCustomerGatewayRequest> request = new CreateCustomerGatewayRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -204,9 +297,9 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");    	
+        sb.append("{");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getPublicIp() != null) sb.append("PublicIp: " + getPublicIp() + ",");
         if (getBgpAsn() != null) sb.append("BgpAsn: " + getBgpAsn() );
         sb.append("}");
         return sb.toString();

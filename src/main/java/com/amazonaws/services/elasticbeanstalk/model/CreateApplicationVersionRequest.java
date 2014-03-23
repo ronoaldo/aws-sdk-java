@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#createApplicationVersion(CreateApplicationVersionRequest) CreateApplicationVersion operation}.
@@ -22,13 +24,16 @@ import java.io.Serializable;
  * Creates an application version for the specified application.
  * </p>
  * <p>
- * <b>NOTE:</b>Once you create an application version with a specified Amazon S3 bucket and key location, you cannot change that Amazon S3 location. If
- * you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version.
+ * <b>NOTE:</b>Once you create an application version with a specified
+ * Amazon S3 bucket and key location, you cannot change that Amazon S3
+ * location. If you change the Amazon S3 location, you receive an
+ * exception when you attempt to launch an environment from the
+ * application version.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#createApplicationVersion(CreateApplicationVersionRequest)
  */
-public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateApplicationVersionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the application. If no application is found with this
@@ -63,11 +68,12 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      * The Amazon S3 bucket and key that identify the location of the source
      * bundle for this version. <p> If data found at the Amazon S3 location
      * exceeds the maximum allowed source bundle size, AWS Elastic Beanstalk
-     * returns an <code>InvalidParameterValue</code> error. <p>Default: If
-     * not specified, AWS Elastic Beanstalk uses a sample application. If
-     * only partially specified (for example, a bucket is provided but not
-     * the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error.
+     * returns an <code>InvalidParameterValue</code> error. The maximum size
+     * allowed is 512 MB. <p>Default: If not specified, AWS Elastic Beanstalk
+     * uses a sample application. If only partially specified (for example, a
+     * bucket is provided but not the key) or if no data is found at the
+     * Amazon S3 location, AWS Elastic Beanstalk returns an
+     * <code>InvalidParameterCombination</code> error.
      */
     private S3Location sourceBundle;
 
@@ -109,12 +115,10 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      * Beanstalk returns an <code>InvalidParameterValue</code> error.
      */
     public CreateApplicationVersionRequest(String applicationName, String versionLabel) {
-        this.applicationName = applicationName;
-        this.versionLabel = versionLabel;
+        setApplicationName(applicationName);
+        setVersionLabel(versionLabel);
     }
 
-    
-    
     /**
      * The name of the application. If no application is found with this
      * name, and <code>AutoCreateApplication</code> is <code>false</code>,
@@ -162,14 +166,13 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      *         returns an <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateApplicationVersionRequest withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * A label identifying this version. <p>Constraint: Must be unique per
      * application. If an application version already exists with this label
@@ -223,14 +226,13 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      *         <code>InvalidParameterValue</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateApplicationVersionRequest withVersionLabel(String versionLabel) {
         this.versionLabel = versionLabel;
         return this;
     }
-    
-    
+
     /**
      * Describes this version.
      * <p>
@@ -266,32 +268,33 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      * @param description Describes this version.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateApplicationVersionRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The Amazon S3 bucket and key that identify the location of the source
      * bundle for this version. <p> If data found at the Amazon S3 location
      * exceeds the maximum allowed source bundle size, AWS Elastic Beanstalk
-     * returns an <code>InvalidParameterValue</code> error. <p>Default: If
-     * not specified, AWS Elastic Beanstalk uses a sample application. If
-     * only partially specified (for example, a bucket is provided but not
-     * the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error.
+     * returns an <code>InvalidParameterValue</code> error. The maximum size
+     * allowed is 512 MB. <p>Default: If not specified, AWS Elastic Beanstalk
+     * uses a sample application. If only partially specified (for example, a
+     * bucket is provided but not the key) or if no data is found at the
+     * Amazon S3 location, AWS Elastic Beanstalk returns an
+     * <code>InvalidParameterCombination</code> error.
      *
      * @return The Amazon S3 bucket and key that identify the location of the source
      *         bundle for this version. <p> If data found at the Amazon S3 location
      *         exceeds the maximum allowed source bundle size, AWS Elastic Beanstalk
-     *         returns an <code>InvalidParameterValue</code> error. <p>Default: If
-     *         not specified, AWS Elastic Beanstalk uses a sample application. If
-     *         only partially specified (for example, a bucket is provided but not
-     *         the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     *         Beanstalk returns an <code>InvalidParameterCombination</code> error.
+     *         returns an <code>InvalidParameterValue</code> error. The maximum size
+     *         allowed is 512 MB. <p>Default: If not specified, AWS Elastic Beanstalk
+     *         uses a sample application. If only partially specified (for example, a
+     *         bucket is provided but not the key) or if no data is found at the
+     *         Amazon S3 location, AWS Elastic Beanstalk returns an
+     *         <code>InvalidParameterCombination</code> error.
      */
     public S3Location getSourceBundle() {
         return sourceBundle;
@@ -301,20 +304,22 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      * The Amazon S3 bucket and key that identify the location of the source
      * bundle for this version. <p> If data found at the Amazon S3 location
      * exceeds the maximum allowed source bundle size, AWS Elastic Beanstalk
-     * returns an <code>InvalidParameterValue</code> error. <p>Default: If
-     * not specified, AWS Elastic Beanstalk uses a sample application. If
-     * only partially specified (for example, a bucket is provided but not
-     * the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error.
+     * returns an <code>InvalidParameterValue</code> error. The maximum size
+     * allowed is 512 MB. <p>Default: If not specified, AWS Elastic Beanstalk
+     * uses a sample application. If only partially specified (for example, a
+     * bucket is provided but not the key) or if no data is found at the
+     * Amazon S3 location, AWS Elastic Beanstalk returns an
+     * <code>InvalidParameterCombination</code> error.
      *
      * @param sourceBundle The Amazon S3 bucket and key that identify the location of the source
      *         bundle for this version. <p> If data found at the Amazon S3 location
      *         exceeds the maximum allowed source bundle size, AWS Elastic Beanstalk
-     *         returns an <code>InvalidParameterValue</code> error. <p>Default: If
-     *         not specified, AWS Elastic Beanstalk uses a sample application. If
-     *         only partially specified (for example, a bucket is provided but not
-     *         the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     *         Beanstalk returns an <code>InvalidParameterCombination</code> error.
+     *         returns an <code>InvalidParameterValue</code> error. The maximum size
+     *         allowed is 512 MB. <p>Default: If not specified, AWS Elastic Beanstalk
+     *         uses a sample application. If only partially specified (for example, a
+     *         bucket is provided but not the key) or if no data is found at the
+     *         Amazon S3 location, AWS Elastic Beanstalk returns an
+     *         <code>InvalidParameterCombination</code> error.
      */
     public void setSourceBundle(S3Location sourceBundle) {
         this.sourceBundle = sourceBundle;
@@ -324,32 +329,33 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      * The Amazon S3 bucket and key that identify the location of the source
      * bundle for this version. <p> If data found at the Amazon S3 location
      * exceeds the maximum allowed source bundle size, AWS Elastic Beanstalk
-     * returns an <code>InvalidParameterValue</code> error. <p>Default: If
-     * not specified, AWS Elastic Beanstalk uses a sample application. If
-     * only partially specified (for example, a bucket is provided but not
-     * the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error.
+     * returns an <code>InvalidParameterValue</code> error. The maximum size
+     * allowed is 512 MB. <p>Default: If not specified, AWS Elastic Beanstalk
+     * uses a sample application. If only partially specified (for example, a
+     * bucket is provided but not the key) or if no data is found at the
+     * Amazon S3 location, AWS Elastic Beanstalk returns an
+     * <code>InvalidParameterCombination</code> error.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param sourceBundle The Amazon S3 bucket and key that identify the location of the source
      *         bundle for this version. <p> If data found at the Amazon S3 location
      *         exceeds the maximum allowed source bundle size, AWS Elastic Beanstalk
-     *         returns an <code>InvalidParameterValue</code> error. <p>Default: If
-     *         not specified, AWS Elastic Beanstalk uses a sample application. If
-     *         only partially specified (for example, a bucket is provided but not
-     *         the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     *         Beanstalk returns an <code>InvalidParameterCombination</code> error.
+     *         returns an <code>InvalidParameterValue</code> error. The maximum size
+     *         allowed is 512 MB. <p>Default: If not specified, AWS Elastic Beanstalk
+     *         uses a sample application. If only partially specified (for example, a
+     *         bucket is provided but not the key) or if no data is found at the
+     *         Amazon S3 location, AWS Elastic Beanstalk returns an
+     *         <code>InvalidParameterCombination</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateApplicationVersionRequest withSourceBundle(S3Location sourceBundle) {
         this.sourceBundle = sourceBundle;
         return this;
     }
-    
-    
+
     /**
      * Determines how the system behaves if the specified application for
      * this version does not already exist: <enumValues> <value name="true">
@@ -448,14 +454,13 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
      *         <code>true</code> | <code>false</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateApplicationVersionRequest withAutoCreateApplication(Boolean autoCreateApplication) {
         this.autoCreateApplication = autoCreateApplication;
         return this;
     }
-    
-    
+
     /**
      * Determines how the system behaves if the specified application for
      * this version does not already exist: <enumValues> <value name="true">
@@ -488,7 +493,7 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
     public Boolean getAutoCreateApplication() {
         return autoCreateApplication;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -500,11 +505,11 @@ public class CreateApplicationVersionRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getSourceBundle() != null) sb.append("SourceBundle: " + getSourceBundle() + ",");    	
+        sb.append("{");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getVersionLabel() != null) sb.append("VersionLabel: " + getVersionLabel() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getSourceBundle() != null) sb.append("SourceBundle: " + getSourceBundle() + ",");
         if (isAutoCreateApplication() != null) sb.append("AutoCreateApplication: " + isAutoCreateApplication() );
         sb.append("}");
         return sb.toString();

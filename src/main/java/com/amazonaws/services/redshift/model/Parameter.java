@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.redshift.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a parameter in a cluster parameter group.
  * </p>
  */
-public class Parameter  implements Serializable  {
+public class Parameter implements Serializable {
 
     /**
      * The name of the parameter.
@@ -90,14 +91,13 @@ public class Parameter  implements Serializable  {
      * @param parameterName The name of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withParameterName(String parameterName) {
         this.parameterName = parameterName;
         return this;
     }
-    
-    
+
     /**
      * The value of the parameter.
      *
@@ -124,14 +124,13 @@ public class Parameter  implements Serializable  {
      * @param parameterValue The value of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withParameterValue(String parameterValue) {
         this.parameterValue = parameterValue;
         return this;
     }
-    
-    
+
     /**
      * A description of the parameter.
      *
@@ -158,14 +157,13 @@ public class Parameter  implements Serializable  {
      * @param description A description of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The source of the parameter value, such as "engine-default" or "user".
      *
@@ -192,14 +190,13 @@ public class Parameter  implements Serializable  {
      * @param source The source of the parameter value, such as "engine-default" or "user".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withSource(String source) {
         this.source = source;
         return this;
     }
-    
-    
+
     /**
      * The data type of the parameter.
      *
@@ -226,14 +223,13 @@ public class Parameter  implements Serializable  {
      * @param dataType The data type of the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withDataType(String dataType) {
         this.dataType = dataType;
         return this;
     }
-    
-    
+
     /**
      * The valid range of values for the parameter.
      *
@@ -260,14 +256,13 @@ public class Parameter  implements Serializable  {
      * @param allowedValues The valid range of values for the parameter.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withAllowedValues(String allowedValues) {
         this.allowedValues = allowedValues;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, the parameter can be modified. Some parameters
      * have security or operational implications that prevent them from being
@@ -306,14 +301,13 @@ public class Parameter  implements Serializable  {
      *         changed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withIsModifiable(Boolean isModifiable) {
         this.isModifiable = isModifiable;
         return this;
     }
-    
-    
+
     /**
      * If <code>true</code>, the parameter can be modified. Some parameters
      * have security or operational implications that prevent them from being
@@ -326,7 +320,7 @@ public class Parameter  implements Serializable  {
     public Boolean getIsModifiable() {
         return isModifiable;
     }
-    
+
     /**
      * The earliest engine version to which the parameter can apply.
      *
@@ -353,14 +347,13 @@ public class Parameter  implements Serializable  {
      * @param minimumEngineVersion The earliest engine version to which the parameter can apply.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Parameter withMinimumEngineVersion(String minimumEngineVersion) {
         this.minimumEngineVersion = minimumEngineVersion;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -372,14 +365,14 @@ public class Parameter  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getParameterName() != null) sb.append("ParameterName: " + getParameterName() + ",");    	
-        if (getParameterValue() != null) sb.append("ParameterValue: " + getParameterValue() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getDataType() != null) sb.append("DataType: " + getDataType() + ",");    	
-        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");    	
-        if (isModifiable() != null) sb.append("IsModifiable: " + isModifiable() + ",");    	
+        sb.append("{");
+        if (getParameterName() != null) sb.append("ParameterName: " + getParameterName() + ",");
+        if (getParameterValue() != null) sb.append("ParameterValue: " + getParameterValue() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getDataType() != null) sb.append("DataType: " + getDataType() + ",");
+        if (getAllowedValues() != null) sb.append("AllowedValues: " + getAllowedValues() + ",");
+        if (isModifiable() != null) sb.append("IsModifiable: " + isModifiable() + ",");
         if (getMinimumEngineVersion() != null) sb.append("MinimumEngineVersion: " + getMinimumEngineVersion() );
         sb.append("}");
         return sb.toString();

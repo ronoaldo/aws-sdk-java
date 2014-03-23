@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#listCloudFrontOriginAccessIdentities(ListCloudFrontOriginAccessIdentitiesRequest) ListCloudFrontOriginAccessIdentities operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#listCloudFrontOriginAccessIdentities(ListCloudFrontOriginAccessIdentitiesRequest)
  */
-public class ListCloudFrontOriginAccessIdentitiesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListCloudFrontOriginAccessIdentitiesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Use this when paginating results to indicate where to begin in your
@@ -97,14 +99,13 @@ public class ListCloudFrontOriginAccessIdentitiesRequest extends AmazonWebServic
      *         response (which is also the ID of the last identity on that page).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListCloudFrontOriginAccessIdentitiesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * The maximum number of origin access identities you want in the
      * response body.
@@ -137,14 +138,13 @@ public class ListCloudFrontOriginAccessIdentitiesRequest extends AmazonWebServic
      *         response body.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListCloudFrontOriginAccessIdentitiesRequest withMaxItems(String maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -156,8 +156,8 @@ public class ListCloudFrontOriginAccessIdentitiesRequest extends AmazonWebServic
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

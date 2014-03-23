@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>MarkerRecorded</code> event.
  * </p>
  */
-public class MarkerRecordedEventAttributes  implements Serializable  {
+public class MarkerRecordedEventAttributes implements Serializable {
 
     /**
      * The name of the marker.
@@ -81,14 +82,13 @@ public class MarkerRecordedEventAttributes  implements Serializable  {
      * @param markerName The name of the marker.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MarkerRecordedEventAttributes withMarkerName(String markerName) {
         this.markerName = markerName;
         return this;
     }
-    
-    
+
     /**
      * Details of the marker (if any).
      * <p>
@@ -124,14 +124,13 @@ public class MarkerRecordedEventAttributes  implements Serializable  {
      * @param details Details of the marker (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MarkerRecordedEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the <code>RecordMarker</code>
@@ -176,14 +175,13 @@ public class MarkerRecordedEventAttributes  implements Serializable  {
      *         for diagnosing problems by tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public MarkerRecordedEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -195,9 +193,9 @@ public class MarkerRecordedEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarkerName() != null) sb.append("MarkerName: " + getMarkerName() + ",");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
+        sb.append("{");
+        if (getMarkerName() != null) sb.append("MarkerName: " + getMarkerName() + ",");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
         if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() );
         sb.append("}");
         return sb.toString();

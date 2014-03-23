@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Create Security Group Result
+ * 
  */
-public class CreateSecurityGroupResult  implements Serializable  {
+public class CreateSecurityGroupResult implements Serializable {
 
+    /**
+     * The ID of the security group.
+     */
     private String groupId;
 
     /**
-     * Returns the value of the GroupId property for this object.
+     * The ID of the security group.
      *
-     * @return The value of the GroupId property for this object.
+     * @return The ID of the security group.
      */
     public String getGroupId() {
         return groupId;
     }
     
     /**
-     * Sets the value of the GroupId property for this object.
+     * The ID of the security group.
      *
-     * @param groupId The new value for the GroupId property for this object.
+     * @param groupId The ID of the security group.
      */
     public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
     
     /**
-     * Sets the value of the GroupId property for this object.
+     * The ID of the security group.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groupId The new value for the GroupId property for this object.
+     * @param groupId The ID of the security group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateSecurityGroupResult withGroupId(String groupId) {
         this.groupId = groupId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +70,7 @@ public class CreateSecurityGroupResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getGroupId() != null) sb.append("GroupId: " + getGroupId() );
         sb.append("}");
         return sb.toString();

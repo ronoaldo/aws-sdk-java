@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeVolumesRequestMarshaller implements Marshaller<Request<Desc
     public Request<DescribeVolumesRequest> marshall(DescribeVolumesRequest describeVolumesRequest) {
 
         if (describeVolumesRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeVolumesRequest> request = new DefaultRequest<DescribeVolumesRequest>(describeVolumesRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeVolumes");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> volumeIdsList = describeVolumesRequest.getVolumeIds();
         int volumeIdsListIndex = 1;
@@ -76,7 +75,6 @@ public class DescribeVolumesRequestMarshaller implements Marshaller<Request<Desc
 
             filtersListIndex++;
         }
-
 
         return request;
     }

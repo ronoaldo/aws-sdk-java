@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package com.amazonaws.services.dynamodbv2.datamodeling;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.PaginationLoadingStrategy;
 import com.amazonaws.services.dynamodbv2.model.QueryRequest;
 import com.amazonaws.services.dynamodbv2.model.QueryResult;
 
@@ -40,17 +41,34 @@ public class PaginatedQueryList<T> extends PaginatedList<T> {
     /** The current query request */
     private final QueryRequest queryRequest;
 
+    private final DynamoDBMapperConfig config;
+    
     /** The current results for the last executed query operation */
     private QueryResult queryResult;
 
-
-    public PaginatedQueryList(DynamoDBMapper mapper, Class<T> clazz, AmazonDynamoDB dynamo, QueryRequest queryRequest, QueryResult queryResult) {
-        super(mapper, clazz, dynamo);
+    public PaginatedQueryList(
+            DynamoDBMapper mapper,
+            Class<T> clazz,
+            AmazonDynamoDB dynamo,
+            QueryRequest queryRequest,
+            QueryResult queryResult,
+            PaginationLoadingStrategy paginationLoadingStrategy,
+            DynamoDBMapperConfig config
+    ) {
+        super(mapper, clazz, dynamo, paginationLoadingStrategy);
 
         this.queryRequest = queryRequest;
         this.queryResult  = queryResult;
+        this.config = config;
 
-        allResults.addAll(mapper.marshallIntoObjects(clazz, queryResult.getItems()));
+
+        allResults.addAll(mapper.marshalIntoObjects(
+            mapper.toParameters(queryResult.getItems(), clazz, config)));
+        
+        // If the results should be eagerly loaded at once
+        if (paginationLoadingStrategy == PaginationLoadingStrategy.EAGER_LOADING) {
+            loadAllResults();
+        }
     }
 
     @Override    
@@ -62,6 +80,7 @@ public class PaginatedQueryList<T> extends PaginatedList<T> {
     protected synchronized List<T> fetchNextPage() {
         queryRequest.setExclusiveStartKey(queryResult.getLastEvaluatedKey());
         queryResult = dynamo.query(DynamoDBMapper.applyUserAgent(queryRequest));
-        return mapper.marshallIntoObjects(clazz, queryResult.getItems());
+        return mapper.marshalIntoObjects(
+            mapper.toParameters(queryResult.getItems(), clazz, config));
     }
 }

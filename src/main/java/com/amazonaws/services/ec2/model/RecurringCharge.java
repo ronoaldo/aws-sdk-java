@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents a usage charge for Amazon EC2 resources that repeats on a schedule.
+ * Describes a recurring charge.
  * </p>
  */
-public class RecurringCharge  implements Serializable  {
+public class RecurringCharge implements Serializable {
 
     /**
      * The frequency of the recurring charge.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Hourly
      */
     private String frequency;
 
@@ -34,8 +38,13 @@ public class RecurringCharge  implements Serializable  {
 
     /**
      * The frequency of the recurring charge.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Hourly
      *
      * @return The frequency of the recurring charge.
+     *
+     * @see RecurringChargeFrequency
      */
     public String getFrequency() {
         return frequency;
@@ -43,8 +52,13 @@ public class RecurringCharge  implements Serializable  {
     
     /**
      * The frequency of the recurring charge.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Hourly
      *
      * @param frequency The frequency of the recurring charge.
+     *
+     * @see RecurringChargeFrequency
      */
     public void setFrequency(String frequency) {
         this.frequency = frequency;
@@ -54,18 +68,56 @@ public class RecurringCharge  implements Serializable  {
      * The frequency of the recurring charge.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Hourly
      *
      * @param frequency The frequency of the recurring charge.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see RecurringChargeFrequency
      */
     public RecurringCharge withFrequency(String frequency) {
         this.frequency = frequency;
         return this;
     }
+
+    /**
+     * The frequency of the recurring charge.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Hourly
+     *
+     * @param frequency The frequency of the recurring charge.
+     *
+     * @see RecurringChargeFrequency
+     */
+    public void setFrequency(RecurringChargeFrequency frequency) {
+        this.frequency = frequency.toString();
+    }
     
-    
+    /**
+     * The frequency of the recurring charge.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>Hourly
+     *
+     * @param frequency The frequency of the recurring charge.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see RecurringChargeFrequency
+     */
+    public RecurringCharge withFrequency(RecurringChargeFrequency frequency) {
+        this.frequency = frequency.toString();
+        return this;
+    }
+
     /**
      * The amount of the recurring charge.
      *
@@ -92,14 +144,13 @@ public class RecurringCharge  implements Serializable  {
      * @param amount The amount of the recurring charge.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RecurringCharge withAmount(Double amount) {
         this.amount = amount;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +162,8 @@ public class RecurringCharge  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFrequency() != null) sb.append("Frequency: " + getFrequency() + ",");    	
+        sb.append("{");
+        if (getFrequency() != null) sb.append("Frequency: " + getFrequency() + ",");
         if (getAmount() != null) sb.append("Amount: " + getAmount() );
         sb.append("}");
         return sb.toString();

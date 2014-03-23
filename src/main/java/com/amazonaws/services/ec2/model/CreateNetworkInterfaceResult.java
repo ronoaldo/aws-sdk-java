@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,52 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Create Network Interface Result
+ * 
  */
-public class CreateNetworkInterfaceResult  implements Serializable  {
+public class CreateNetworkInterfaceResult implements Serializable {
 
+    /**
+     * Information about the network interface.
+     */
     private NetworkInterface networkInterface;
 
     /**
-     * Returns the value of the NetworkInterface property for this object.
+     * Information about the network interface.
      *
-     * @return The value of the NetworkInterface property for this object.
+     * @return Information about the network interface.
      */
     public NetworkInterface getNetworkInterface() {
         return networkInterface;
     }
     
     /**
-     * Sets the value of the NetworkInterface property for this object.
+     * Information about the network interface.
      *
-     * @param networkInterface The new value for the NetworkInterface property for this object.
+     * @param networkInterface Information about the network interface.
      */
     public void setNetworkInterface(NetworkInterface networkInterface) {
         this.networkInterface = networkInterface;
     }
     
     /**
-     * Sets the value of the NetworkInterface property for this object.
+     * Information about the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterface The new value for the NetworkInterface property for this object.
+     * @param networkInterface Information about the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkInterfaceResult withNetworkInterface(NetworkInterface networkInterface) {
         this.networkInterface = networkInterface;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +70,7 @@ public class CreateNetworkInterfaceResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getNetworkInterface() != null) sb.append("NetworkInterface: " + getNetworkInterface() );
         sb.append("}");
         return sb.toString();

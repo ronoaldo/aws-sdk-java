@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * <i>SourceDBInstanceIdentifier</i> refers to a DB Instance with <i>BackupRetentionPeriod</i> equal to 0.
+ * <i>SourceDBInstanceIdentifier</i> refers to a DB instance with
+ * <i>BackupRetentionPeriod</i> equal to 0.
  * </p>
  */        
 public class PointInTimeRestoreNotEnabledException extends AmazonServiceException {

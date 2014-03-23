@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,93 +13,92 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Represents the monitoring state of an EC2 instance.
+ * Describes the monitoring information of the instance.
  * </p>
  */
-public class InstanceMonitoring  implements Serializable  {
+public class InstanceMonitoring implements Serializable {
 
     /**
-     * Instance ID.
+     * The ID of the instance.
      */
     private String instanceId;
 
     /**
-     * Monitoring state for the associated instance.
+     * The monitoring information.
      */
     private Monitoring monitoring;
 
     /**
-     * Instance ID.
+     * The ID of the instance.
      *
-     * @return Instance ID.
+     * @return The ID of the instance.
      */
     public String getInstanceId() {
         return instanceId;
     }
     
     /**
-     * Instance ID.
+     * The ID of the instance.
      *
-     * @param instanceId Instance ID.
+     * @param instanceId The ID of the instance.
      */
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
     }
     
     /**
-     * Instance ID.
+     * The ID of the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceId Instance ID.
+     * @param instanceId The ID of the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceMonitoring withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * Monitoring state for the associated instance.
+     * The monitoring information.
      *
-     * @return Monitoring state for the associated instance.
+     * @return The monitoring information.
      */
     public Monitoring getMonitoring() {
         return monitoring;
     }
     
     /**
-     * Monitoring state for the associated instance.
+     * The monitoring information.
      *
-     * @param monitoring Monitoring state for the associated instance.
+     * @param monitoring The monitoring information.
      */
     public void setMonitoring(Monitoring monitoring) {
         this.monitoring = monitoring;
     }
     
     /**
-     * Monitoring state for the associated instance.
+     * The monitoring information.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param monitoring Monitoring state for the associated instance.
+     * @param monitoring The monitoring information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceMonitoring withMonitoring(Monitoring monitoring) {
         this.monitoring = monitoring;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,8 +110,8 @@ public class InstanceMonitoring  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getMonitoring() != null) sb.append("Monitoring: " + getMonitoring() );
         sb.append("}");
         return sb.toString();

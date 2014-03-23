@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,25 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.identitymanagement.AmazonIdentityManagement#listGroupPolicies(ListGroupPoliciesRequest) ListGroupPolicies operation}.
  * <p>
- * Lists the names of the policies associated with the specified group. If there are none, the action returns an empty list.
+ * Lists the names of the policies associated with the specified group.
+ * If there are none, the action returns an empty list.
  * </p>
  * <p>
- * You can paginate the results using the <code>MaxItems</code> and <code>Marker</code> parameters.
+ * You can paginate the results using the <code>MaxItems</code> and
+ * <code>Marker</code> parameters.
  * </p>
  *
  * @see com.amazonaws.services.identitymanagement.AmazonIdentityManagement#listGroupPolicies(ListGroupPoliciesRequest)
  */
-public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListGroupPoliciesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the group to list policies for.
@@ -54,7 +58,8 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * Use this only when paginating results to indicate the maximum number
      * of policy names you want in the response. If there are additional
      * policy names beyond the maximum you specify, the
-     * <code>IsTruncated</code> response element is <code>true</code>.
+     * <code>IsTruncated</code> response element is <code>true</code>. This
+     * parameter is optional. If you do not include it, it defaults to 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 1000<br/>
@@ -75,11 +80,9 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * @param groupName The name of the group to list policies for.
      */
     public ListGroupPoliciesRequest(String groupName) {
-        this.groupName = groupName;
+        setGroupName(groupName);
     }
 
-    
-    
     /**
      * The name of the group to list policies for.
      * <p>
@@ -118,14 +121,13 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * @param groupName The name of the group to list policies for.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListGroupPoliciesRequest withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * Use this only when paginating results, and only in a subsequent
      * request after you've received a response where the results are
@@ -182,19 +184,19 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      *         the response you just received.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListGroupPoliciesRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Use this only when paginating results to indicate the maximum number
      * of policy names you want in the response. If there are additional
      * policy names beyond the maximum you specify, the
-     * <code>IsTruncated</code> response element is <code>true</code>.
+     * <code>IsTruncated</code> response element is <code>true</code>. This
+     * parameter is optional. If you do not include it, it defaults to 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 1000<br/>
@@ -202,7 +204,8 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * @return Use this only when paginating results to indicate the maximum number
      *         of policy names you want in the response. If there are additional
      *         policy names beyond the maximum you specify, the
-     *         <code>IsTruncated</code> response element is <code>true</code>.
+     *         <code>IsTruncated</code> response element is <code>true</code>. This
+     *         parameter is optional. If you do not include it, it defaults to 100.
      */
     public Integer getMaxItems() {
         return maxItems;
@@ -212,7 +215,8 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * Use this only when paginating results to indicate the maximum number
      * of policy names you want in the response. If there are additional
      * policy names beyond the maximum you specify, the
-     * <code>IsTruncated</code> response element is <code>true</code>.
+     * <code>IsTruncated</code> response element is <code>true</code>. This
+     * parameter is optional. If you do not include it, it defaults to 100.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>1 - 1000<br/>
@@ -220,7 +224,8 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * @param maxItems Use this only when paginating results to indicate the maximum number
      *         of policy names you want in the response. If there are additional
      *         policy names beyond the maximum you specify, the
-     *         <code>IsTruncated</code> response element is <code>true</code>.
+     *         <code>IsTruncated</code> response element is <code>true</code>. This
+     *         parameter is optional. If you do not include it, it defaults to 100.
      */
     public void setMaxItems(Integer maxItems) {
         this.maxItems = maxItems;
@@ -230,7 +235,8 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * Use this only when paginating results to indicate the maximum number
      * of policy names you want in the response. If there are additional
      * policy names beyond the maximum you specify, the
-     * <code>IsTruncated</code> response element is <code>true</code>.
+     * <code>IsTruncated</code> response element is <code>true</code>. This
+     * parameter is optional. If you do not include it, it defaults to 100.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
@@ -240,17 +246,17 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
      * @param maxItems Use this only when paginating results to indicate the maximum number
      *         of policy names you want in the response. If there are additional
      *         policy names beyond the maximum you specify, the
-     *         <code>IsTruncated</code> response element is <code>true</code>.
+     *         <code>IsTruncated</code> response element is <code>true</code>. This
+     *         parameter is optional. If you do not include it, it defaults to 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListGroupPoliciesRequest withMaxItems(Integer maxItems) {
         this.maxItems = maxItems;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -262,9 +268,9 @@ public class ListGroupPoliciesRequest extends AmazonWebServiceRequest  implement
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getGroupName() != null) sb.append("GroupName: " + getGroupName() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getMaxItems() != null) sb.append("MaxItems: " + getMaxItems() );
         sb.append("}");
         return sb.toString();

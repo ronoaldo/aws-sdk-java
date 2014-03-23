@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon Technologies, Inc.
+ * Copyright 2011-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ import java.lang.annotation.Target;
  * table. Applied to the getter for the range key property.
  * <p>
  * This annotation is required for tables that use a range key.
+ * 
+ * @deprecated Use {@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey} instead.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

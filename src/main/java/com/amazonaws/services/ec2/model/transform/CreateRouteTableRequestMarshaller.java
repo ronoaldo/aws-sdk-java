@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,17 +33,16 @@ public class CreateRouteTableRequestMarshaller implements Marshaller<Request<Cre
     public Request<CreateRouteTableRequest> marshall(CreateRouteTableRequest createRouteTableRequest) {
 
         if (createRouteTableRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateRouteTableRequest> request = new DefaultRequest<CreateRouteTableRequest>(createRouteTableRequest, "AmazonEC2");
         request.addParameter("Action", "CreateRouteTable");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (createRouteTableRequest.getVpcId() != null) {
             request.addParameter("VpcId", StringUtils.fromString(createRouteTableRequest.getVpcId()));
         }
-
 
         return request;
     }

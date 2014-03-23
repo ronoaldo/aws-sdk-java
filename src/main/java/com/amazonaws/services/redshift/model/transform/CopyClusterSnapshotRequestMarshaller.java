@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CopyClusterSnapshotRequestMarshaller implements Marshaller<Request<
     public Request<CopyClusterSnapshotRequest> marshall(CopyClusterSnapshotRequest copyClusterSnapshotRequest) {
 
         if (copyClusterSnapshotRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CopyClusterSnapshotRequest> request = new DefaultRequest<CopyClusterSnapshotRequest>(copyClusterSnapshotRequest, "AmazonRedshift");
         request.addParameter("Action", "CopyClusterSnapshot");
@@ -43,10 +43,12 @@ public class CopyClusterSnapshotRequestMarshaller implements Marshaller<Request<
         if (copyClusterSnapshotRequest.getSourceSnapshotIdentifier() != null) {
             request.addParameter("SourceSnapshotIdentifier", StringUtils.fromString(copyClusterSnapshotRequest.getSourceSnapshotIdentifier()));
         }
+        if (copyClusterSnapshotRequest.getSourceSnapshotClusterIdentifier() != null) {
+            request.addParameter("SourceSnapshotClusterIdentifier", StringUtils.fromString(copyClusterSnapshotRequest.getSourceSnapshotClusterIdentifier()));
+        }
         if (copyClusterSnapshotRequest.getTargetSnapshotIdentifier() != null) {
             request.addParameter("TargetSnapshotIdentifier", StringUtils.fromString(copyClusterSnapshotRequest.getTargetSnapshotIdentifier()));
         }
-
 
         return request;
     }

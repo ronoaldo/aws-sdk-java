@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DomainMetadataRequestMarshaller implements Marshaller<Request<Domai
     public Request<DomainMetadataRequest> marshall(DomainMetadataRequest domainMetadataRequest) {
 
         if (domainMetadataRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DomainMetadataRequest> request = new DefaultRequest<DomainMetadataRequest>(domainMetadataRequest, "AmazonSimpleDB");
         request.addParameter("Action", "DomainMetadata");
@@ -43,7 +43,6 @@ public class DomainMetadataRequestMarshaller implements Marshaller<Request<Domai
         if (domainMetadataRequest.getDomainName() != null) {
             request.addParameter("DomainName", StringUtils.fromString(domainMetadataRequest.getDomainName()));
         }
-
 
         return request;
     }

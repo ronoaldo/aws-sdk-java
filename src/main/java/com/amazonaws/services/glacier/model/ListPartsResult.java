@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Contains the Amazon Glacier response to your request.
  * </p>
  */
-public class ListPartsResult  implements Serializable  {
+public class ListPartsResult implements Serializable {
 
     /**
      * The ID of the upload to which the parts are associated.
@@ -52,7 +53,7 @@ public class ListPartsResult  implements Serializable  {
     /**
      * A list of the part sizes of the multipart upload.
      */
-    private java.util.List<PartListElement> parts;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PartListElement> parts;
 
     /**
      * An opaque string that represents where to continue pagination of the
@@ -88,14 +89,13 @@ public class ListPartsResult  implements Serializable  {
      * @param multipartUploadId The ID of the upload to which the parts are associated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withMultipartUploadId(String multipartUploadId) {
         this.multipartUploadId = multipartUploadId;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) of the vault to which the multipart
      * upload was initiated.
@@ -128,14 +128,13 @@ public class ListPartsResult  implements Serializable  {
      *         upload was initiated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withVaultARN(String vaultARN) {
         this.vaultARN = vaultARN;
         return this;
     }
-    
-    
+
     /**
      * The description of the archive that was specified in the Initiate
      * Multipart Upload request.
@@ -168,14 +167,13 @@ public class ListPartsResult  implements Serializable  {
      *         Multipart Upload request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withArchiveDescription(String archiveDescription) {
         this.archiveDescription = archiveDescription;
         return this;
     }
-    
-    
+
     /**
      * The part size in bytes.
      *
@@ -202,14 +200,13 @@ public class ListPartsResult  implements Serializable  {
      * @param partSizeInBytes The part size in bytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withPartSizeInBytes(Long partSizeInBytes) {
         this.partSizeInBytes = partSizeInBytes;
         return this;
     }
-    
-    
+
     /**
      * The UTC time at which the multipart upload was initiated.
      *
@@ -236,23 +233,22 @@ public class ListPartsResult  implements Serializable  {
      * @param creationDate The UTC time at which the multipart upload was initiated.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withCreationDate(String creationDate) {
         this.creationDate = creationDate;
         return this;
     }
-    
-    
+
     /**
      * A list of the part sizes of the multipart upload.
      *
      * @return A list of the part sizes of the multipart upload.
      */
     public java.util.List<PartListElement> getParts() {
-        
         if (parts == null) {
-            parts = new java.util.ArrayList<PartListElement>();
+              parts = new com.amazonaws.internal.ListWithAutoConstructFlag<PartListElement>();
+              parts.setAutoConstruct(true);
         }
         return parts;
     }
@@ -267,8 +263,7 @@ public class ListPartsResult  implements Serializable  {
             this.parts = null;
             return;
         }
-
-        java.util.List<PartListElement> partsCopy = new java.util.ArrayList<PartListElement>(parts.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PartListElement> partsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PartListElement>(parts.size());
         partsCopy.addAll(parts);
         this.parts = partsCopy;
     }
@@ -281,7 +276,7 @@ public class ListPartsResult  implements Serializable  {
      * @param parts A list of the part sizes of the multipart upload.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withParts(PartListElement... parts) {
         if (getParts() == null) setParts(new java.util.ArrayList<PartListElement>(parts.length));
@@ -299,20 +294,20 @@ public class ListPartsResult  implements Serializable  {
      * @param parts A list of the part sizes of the multipart upload.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withParts(java.util.Collection<PartListElement> parts) {
         if (parts == null) {
             this.parts = null;
         } else {
-            java.util.List<PartListElement> partsCopy = new java.util.ArrayList<PartListElement>(parts.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PartListElement> partsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PartListElement>(parts.size());
             partsCopy.addAll(parts);
             this.parts = partsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * An opaque string that represents where to continue pagination of the
      * results. You use the marker in a new List Parts request to obtain more
@@ -357,14 +352,13 @@ public class ListPartsResult  implements Serializable  {
      *         <code>null</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListPartsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -376,13 +370,13 @@ public class ListPartsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMultipartUploadId() != null) sb.append("MultipartUploadId: " + getMultipartUploadId() + ",");    	
-        if (getVaultARN() != null) sb.append("VaultARN: " + getVaultARN() + ",");    	
-        if (getArchiveDescription() != null) sb.append("ArchiveDescription: " + getArchiveDescription() + ",");    	
-        if (getPartSizeInBytes() != null) sb.append("PartSizeInBytes: " + getPartSizeInBytes() + ",");    	
-        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");    	
-        if (getParts() != null) sb.append("Parts: " + getParts() + ",");    	
+        sb.append("{");
+        if (getMultipartUploadId() != null) sb.append("MultipartUploadId: " + getMultipartUploadId() + ",");
+        if (getVaultARN() != null) sb.append("VaultARN: " + getVaultARN() + ",");
+        if (getArchiveDescription() != null) sb.append("ArchiveDescription: " + getArchiveDescription() + ",");
+        if (getPartSizeInBytes() != null) sb.append("PartSizeInBytes: " + getPartSizeInBytes() + ",");
+        if (getCreationDate() != null) sb.append("CreationDate: " + getCreationDate() + ",");
+        if (getParts() != null) sb.append("Parts: " + getParts() + ",");
         if (getMarker() != null) sb.append("Marker: " + getMarker() );
         sb.append("}");
         return sb.toString();

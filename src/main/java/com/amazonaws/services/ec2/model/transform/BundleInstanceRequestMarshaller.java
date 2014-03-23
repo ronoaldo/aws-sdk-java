@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class BundleInstanceRequestMarshaller implements Marshaller<Request<Bundl
     public Request<BundleInstanceRequest> marshall(BundleInstanceRequest bundleInstanceRequest) {
 
         if (bundleInstanceRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<BundleInstanceRequest> request = new DefaultRequest<BundleInstanceRequest>(bundleInstanceRequest, "AmazonEC2");
         request.addParameter("Action", "BundleInstance");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (bundleInstanceRequest.getInstanceId() != null) {
             request.addParameter("InstanceId", StringUtils.fromString(bundleInstanceRequest.getInstanceId()));
@@ -64,7 +64,6 @@ public class BundleInstanceRequestMarshaller implements Marshaller<Request<Bundl
                 }
             }
         }
-
 
         return request;
     }

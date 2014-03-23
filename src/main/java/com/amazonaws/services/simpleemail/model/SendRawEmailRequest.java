@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,50 +13,68 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#sendRawEmail(SendRawEmailRequest) SendRawEmail operation}.
  * <p>
- * Sends an email message, with header and content specified by the client. The <code>SendRawEmail</code> action is useful for sending multipart MIME
- * emails. The raw text of the message must comply with Internet email standards; otherwise, the message cannot be sent.
+ * Sends an email message, with header and content specified by the
+ * client. The <code>SendRawEmail</code> action is useful for sending
+ * multipart MIME emails. The raw text of the message must comply with
+ * Internet email standards; otherwise, the message cannot be sent.
  * </p>
  * <p>
- * <b>IMPORTANT:</b>If you have not yet requested production access to Amazon SES, then you will only be able to send email to and from verified email
- * addresses and domains. For more information, go to the Amazon SES Developer Guide.
+ * <b>IMPORTANT:</b> You can only send email from verified email
+ * addresses and domains. If you have not requested production access to
+ * Amazon SES, you must also verify every recipient email address except
+ * for the recipients provided by the Amazon SES mailbox simulator. For
+ * more information, go to the Amazon SES Developer Guide.
  * </p>
  * <p>
- * The total size of the message cannot exceed 10 MB. This includes any attachments that are part of the message.
+ * The total size of the message cannot exceed 10 MB. This includes any
+ * attachments that are part of the message.
  * </p>
  * <p>
- * Amazon SES has a limit on the total number of recipients per message: The combined number of To:, CC: and BCC: email addresses cannot exceed 50. If
- * you need to send an email message to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call Amazon SES
- * repeatedly to send the message to each group.
+ * Amazon SES has a limit on the total number of recipients per message:
+ * The combined number of To:, CC: and BCC: email addresses cannot exceed
+ * 50. If you need to send an email message to a larger audience, you can
+ * divide your recipient list into groups of 50 or fewer, and then call
+ * Amazon SES repeatedly to send the message to each group.
  * </p>
  * <p>
- * For every message that you send, the total number of recipients (To:, CC: and BCC:) is counted against your <i>sending quota</i> - the maximum number
- * of emails you can send in a 24-hour period. For information about your sending quota, go to the "Managing Your Sending Activity" section of the<a
- * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide"> Amazon SES Developer Guide </a> .
+ * For every message that you send, the total number of recipients (To:,
+ * CC: and BCC:) is counted against your <i>sending quota</i> - the
+ * maximum number of emails you can send in a 24-hour period. For
+ * information about your sending quota, go to the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#sendRawEmail(SendRawEmailRequest)
  */
-public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SendRawEmailRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The identity's email address. <note>If you specify the
-     * <code>Source</code> parameter, then bounce notifications and
-     * complaints will be sent to this email address. This takes precedence
-     * over any <i>Return-Path</i> header that you might include in the raw
-     * text of the message. </note>
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * <note>If you specify the <code>Source</code> parameter, then bounce
+     * notifications and complaints will be sent to this email address. This
+     * takes precedence over any <i>Return-Path</i> header that you might
+     * include in the raw text of the message. </note>
      */
     private String source;
 
     /**
      * A list of destinations for the message.
      */
-    private java.util.List<String> destinations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> destinations;
 
     /**
      * The raw text of the message. The client is responsible for ensuring
@@ -64,10 +82,10 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * separated by a blank line.</li> <li>All required header fields must be
      * present.</li> <li>Each part of a multipart MIME message must be
      * formatted properly.</li> <li>MIME content types must be among those
-     * supported by Amazon SES. Refer to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     * SES Developer Guide</a> for more details. </li> <li>Content must be
-     * base64-encoded, if MIME requires it.</li> </ul>
+     * supported by Amazon SES. For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     * SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     * MIME requires it.</li> </ul>
      */
     private RawMessage rawMessage;
 
@@ -87,85 +105,112 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * contain a header and a body, separated by a blank line.</li> <li>All
      * required header fields must be present.</li> <li>Each part of a
      * multipart MIME message must be formatted properly.</li> <li>MIME
-     * content types must be among those supported by Amazon SES. Refer to
-     * the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     * SES Developer Guide</a> for more details. </li> <li>Content must be
-     * base64-encoded, if MIME requires it.</li> </ul>
+     * content types must be among those supported by Amazon SES. For more
+     * information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     * SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     * MIME requires it.</li> </ul>
      */
     public SendRawEmailRequest(RawMessage rawMessage) {
-        this.rawMessage = rawMessage;
+        setRawMessage(rawMessage);
     }
 
-    
-    
     /**
-     * The identity's email address. <note>If you specify the
-     * <code>Source</code> parameter, then bounce notifications and
-     * complaints will be sent to this email address. This takes precedence
-     * over any <i>Return-Path</i> header that you might include in the raw
-     * text of the message. </note>
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * <note>If you specify the <code>Source</code> parameter, then bounce
+     * notifications and complaints will be sent to this email address. This
+     * takes precedence over any <i>Return-Path</i> header that you might
+     * include in the raw text of the message. </note>
      *
-     * @return The identity's email address. <note>If you specify the
-     *         <code>Source</code> parameter, then bounce notifications and
-     *         complaints will be sent to this email address. This takes precedence
-     *         over any <i>Return-Path</i> header that you might include in the raw
-     *         text of the message. </note>
+     * @return The identity's email address. <p> By default, the string must be 7-bit
+     *         ASCII. If the text must contain any other characters, then you must
+     *         use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     *         MIME encoded-word syntax uses the following form:
+     *         <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     *         see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     *         <note>If you specify the <code>Source</code> parameter, then bounce
+     *         notifications and complaints will be sent to this email address. This
+     *         takes precedence over any <i>Return-Path</i> header that you might
+     *         include in the raw text of the message. </note>
      */
     public String getSource() {
         return source;
     }
     
     /**
-     * The identity's email address. <note>If you specify the
-     * <code>Source</code> parameter, then bounce notifications and
-     * complaints will be sent to this email address. This takes precedence
-     * over any <i>Return-Path</i> header that you might include in the raw
-     * text of the message. </note>
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * <note>If you specify the <code>Source</code> parameter, then bounce
+     * notifications and complaints will be sent to this email address. This
+     * takes precedence over any <i>Return-Path</i> header that you might
+     * include in the raw text of the message. </note>
      *
-     * @param source The identity's email address. <note>If you specify the
-     *         <code>Source</code> parameter, then bounce notifications and
-     *         complaints will be sent to this email address. This takes precedence
-     *         over any <i>Return-Path</i> header that you might include in the raw
-     *         text of the message. </note>
+     * @param source The identity's email address. <p> By default, the string must be 7-bit
+     *         ASCII. If the text must contain any other characters, then you must
+     *         use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     *         MIME encoded-word syntax uses the following form:
+     *         <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     *         see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     *         <note>If you specify the <code>Source</code> parameter, then bounce
+     *         notifications and complaints will be sent to this email address. This
+     *         takes precedence over any <i>Return-Path</i> header that you might
+     *         include in the raw text of the message. </note>
      */
     public void setSource(String source) {
         this.source = source;
     }
     
     /**
-     * The identity's email address. <note>If you specify the
-     * <code>Source</code> parameter, then bounce notifications and
-     * complaints will be sent to this email address. This takes precedence
-     * over any <i>Return-Path</i> header that you might include in the raw
-     * text of the message. </note>
+     * The identity's email address. <p> By default, the string must be 7-bit
+     * ASCII. If the text must contain any other characters, then you must
+     * use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     * MIME encoded-word syntax uses the following form:
+     * <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     * see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     * <note>If you specify the <code>Source</code> parameter, then bounce
+     * notifications and complaints will be sent to this email address. This
+     * takes precedence over any <i>Return-Path</i> header that you might
+     * include in the raw text of the message. </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param source The identity's email address. <note>If you specify the
-     *         <code>Source</code> parameter, then bounce notifications and
-     *         complaints will be sent to this email address. This takes precedence
-     *         over any <i>Return-Path</i> header that you might include in the raw
-     *         text of the message. </note>
+     * @param source The identity's email address. <p> By default, the string must be 7-bit
+     *         ASCII. If the text must contain any other characters, then you must
+     *         use MIME encoded-word syntax (RFC 2047) instead of a literal string.
+     *         MIME encoded-word syntax uses the following form:
+     *         <code>=?charset?encoding?encoded-text?=</code>. For more information,
+     *         see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>.
+     *         <note>If you specify the <code>Source</code> parameter, then bounce
+     *         notifications and complaints will be sent to this email address. This
+     *         takes precedence over any <i>Return-Path</i> header that you might
+     *         include in the raw text of the message. </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withSource(String source) {
         this.source = source;
         return this;
     }
-    
-    
+
     /**
      * A list of destinations for the message.
      *
      * @return A list of destinations for the message.
      */
     public java.util.List<String> getDestinations() {
-        
         if (destinations == null) {
-            destinations = new java.util.ArrayList<String>();
+              destinations = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              destinations.setAutoConstruct(true);
         }
         return destinations;
     }
@@ -180,8 +225,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
             this.destinations = null;
             return;
         }
-
-        java.util.List<String> destinationsCopy = new java.util.ArrayList<String>(destinations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> destinationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(destinations.size());
         destinationsCopy.addAll(destinations);
         this.destinations = destinationsCopy;
     }
@@ -194,7 +238,7 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * @param destinations A list of destinations for the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withDestinations(String... destinations) {
         if (getDestinations() == null) setDestinations(new java.util.ArrayList<String>(destinations.length));
@@ -212,40 +256,40 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * @param destinations A list of destinations for the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withDestinations(java.util.Collection<String> destinations) {
         if (destinations == null) {
             this.destinations = null;
         } else {
-            java.util.List<String> destinationsCopy = new java.util.ArrayList<String>(destinations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> destinationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(destinations.size());
             destinationsCopy.addAll(destinations);
             this.destinations = destinationsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * The raw text of the message. The client is responsible for ensuring
      * the following: <p> <ul> <li>Message must contain a header and a body,
      * separated by a blank line.</li> <li>All required header fields must be
      * present.</li> <li>Each part of a multipart MIME message must be
      * formatted properly.</li> <li>MIME content types must be among those
-     * supported by Amazon SES. Refer to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     * SES Developer Guide</a> for more details. </li> <li>Content must be
-     * base64-encoded, if MIME requires it.</li> </ul>
+     * supported by Amazon SES. For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     * SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     * MIME requires it.</li> </ul>
      *
      * @return The raw text of the message. The client is responsible for ensuring
      *         the following: <p> <ul> <li>Message must contain a header and a body,
      *         separated by a blank line.</li> <li>All required header fields must be
      *         present.</li> <li>Each part of a multipart MIME message must be
      *         formatted properly.</li> <li>MIME content types must be among those
-     *         supported by Amazon SES. Refer to the <a
-     *         href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     *         SES Developer Guide</a> for more details. </li> <li>Content must be
-     *         base64-encoded, if MIME requires it.</li> </ul>
+     *         supported by Amazon SES. For more information, go to the <a
+     *         href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     *         SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     *         MIME requires it.</li> </ul>
      */
     public RawMessage getRawMessage() {
         return rawMessage;
@@ -257,20 +301,20 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * separated by a blank line.</li> <li>All required header fields must be
      * present.</li> <li>Each part of a multipart MIME message must be
      * formatted properly.</li> <li>MIME content types must be among those
-     * supported by Amazon SES. Refer to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     * SES Developer Guide</a> for more details. </li> <li>Content must be
-     * base64-encoded, if MIME requires it.</li> </ul>
+     * supported by Amazon SES. For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     * SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     * MIME requires it.</li> </ul>
      *
      * @param rawMessage The raw text of the message. The client is responsible for ensuring
      *         the following: <p> <ul> <li>Message must contain a header and a body,
      *         separated by a blank line.</li> <li>All required header fields must be
      *         present.</li> <li>Each part of a multipart MIME message must be
      *         formatted properly.</li> <li>MIME content types must be among those
-     *         supported by Amazon SES. Refer to the <a
-     *         href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     *         SES Developer Guide</a> for more details. </li> <li>Content must be
-     *         base64-encoded, if MIME requires it.</li> </ul>
+     *         supported by Amazon SES. For more information, go to the <a
+     *         href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     *         SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     *         MIME requires it.</li> </ul>
      */
     public void setRawMessage(RawMessage rawMessage) {
         this.rawMessage = rawMessage;
@@ -282,10 +326,10 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      * separated by a blank line.</li> <li>All required header fields must be
      * present.</li> <li>Each part of a multipart MIME message must be
      * formatted properly.</li> <li>MIME content types must be among those
-     * supported by Amazon SES. Refer to the <a
-     * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     * SES Developer Guide</a> for more details. </li> <li>Content must be
-     * base64-encoded, if MIME requires it.</li> </ul>
+     * supported by Amazon SES. For more information, go to the <a
+     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     * SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     * MIME requires it.</li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
@@ -294,20 +338,19 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
      *         separated by a blank line.</li> <li>All required header fields must be
      *         present.</li> <li>Each part of a multipart MIME message must be
      *         formatted properly.</li> <li>MIME content types must be among those
-     *         supported by Amazon SES. Refer to the <a
-     *         href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide">Amazon
-     *         SES Developer Guide</a> for more details. </li> <li>Content must be
-     *         base64-encoded, if MIME requires it.</li> </ul>
+     *         supported by Amazon SES. For more information, go to the <a
+     *         href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon
+     *         SES Developer Guide</a>. </li> <li>Content must be base64-encoded, if
+     *         MIME requires it.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendRawEmailRequest withRawMessage(RawMessage rawMessage) {
         this.rawMessage = rawMessage;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -319,9 +362,9 @@ public class SendRawEmailRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSource() != null) sb.append("Source: " + getSource() + ",");    	
-        if (getDestinations() != null) sb.append("Destinations: " + getDestinations() + ",");    	
+        sb.append("{");
+        if (getSource() != null) sb.append("Source: " + getSource() + ",");
+        if (getDestinations() != null) sb.append("Destinations: " + getDestinations() + ",");
         if (getRawMessage() != null) sb.append("RawMessage: " + getRawMessage() );
         sb.append("}");
         return sb.toString();

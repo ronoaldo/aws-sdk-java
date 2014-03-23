@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeCommands(DescribeCommandsRequest) DescribeCommands operation}.
  * <p>
  * Describes the results of specified commands.
  * </p>
+ * <p>
+ * <b>NOTE:</b>You must specify at least one of the parameters.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Show, Deploy, or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeCommands(DescribeCommandsRequest)
  */
-public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeCommandsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The deployment ID. If you include this parameter,
@@ -45,7 +58,7 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
      * <code>DescribeCommands</code> returns a description of the specified
      * commands. Otherwise, it returns a description of every command.
      */
-    private java.util.List<String> commandIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> commandIds;
 
     /**
      * The deployment ID. If you include this parameter,
@@ -85,14 +98,13 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
      *         associated with the specified deployment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommandsRequest withDeploymentId(String deploymentId) {
         this.deploymentId = deploymentId;
         return this;
     }
-    
-    
+
     /**
      * The instance ID. If you include this parameter,
      * <code>DescribeCommands</code> returns a description of the commands
@@ -131,14 +143,13 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
      *         associated with the specified instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommandsRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * An array of command IDs. If you include this parameter,
      * <code>DescribeCommands</code> returns a description of the specified
@@ -149,9 +160,9 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
      *         commands. Otherwise, it returns a description of every command.
      */
     public java.util.List<String> getCommandIds() {
-        
         if (commandIds == null) {
-            commandIds = new java.util.ArrayList<String>();
+              commandIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              commandIds.setAutoConstruct(true);
         }
         return commandIds;
     }
@@ -170,8 +181,7 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
             this.commandIds = null;
             return;
         }
-
-        java.util.List<String> commandIdsCopy = new java.util.ArrayList<String>(commandIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> commandIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(commandIds.size());
         commandIdsCopy.addAll(commandIds);
         this.commandIds = commandIdsCopy;
     }
@@ -188,7 +198,7 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
      *         commands. Otherwise, it returns a description of every command.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommandsRequest withCommandIds(String... commandIds) {
         if (getCommandIds() == null) setCommandIds(new java.util.ArrayList<String>(commandIds.length));
@@ -210,20 +220,20 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
      *         commands. Otherwise, it returns a description of every command.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeCommandsRequest withCommandIds(java.util.Collection<String> commandIds) {
         if (commandIds == null) {
             this.commandIds = null;
         } else {
-            java.util.List<String> commandIdsCopy = new java.util.ArrayList<String>(commandIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> commandIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(commandIds.size());
             commandIdsCopy.addAll(commandIds);
             this.commandIds = commandIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -235,9 +245,9 @@ public class DescribeCommandsRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDeploymentId() != null) sb.append("DeploymentId: " + getDeploymentId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getDeploymentId() != null) sb.append("DeploymentId: " + getDeploymentId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getCommandIds() != null) sb.append("CommandIds: " + getCommandIds() );
         sb.append("}");
         return sb.toString();

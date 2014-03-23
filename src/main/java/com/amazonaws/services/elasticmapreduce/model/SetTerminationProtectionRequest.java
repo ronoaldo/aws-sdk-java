@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,39 +13,51 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticmapreduce.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce#setTerminationProtection(SetTerminationProtectionRequest) SetTerminationProtection operation}.
  * <p>
- * SetTerminationProtection locks a job flow so the Amazon EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in
- * the event of a job-flow error. The cluster still terminates upon successful completion of the job flow. Calling SetTerminationProtection on a job flow
- * is analogous to calling the Amazon EC2 DisableAPITermination API on all of the EC2 instances in a cluster.
+ * SetTerminationProtection locks a job flow so the Amazon EC2 instances
+ * in the cluster cannot be terminated by user intervention, an API call,
+ * or in the event of a job-flow error. The cluster still terminates upon
+ * successful completion of the job flow. Calling
+ * SetTerminationProtection on a job flow is analogous to calling the
+ * Amazon EC2 DisableAPITermination API on all of the EC2 instances in a
+ * cluster.
  * </p>
  * <p>
- * SetTerminationProtection is used to prevent accidental termination of a job flow and to ensure that in the event of an error, the instances will
- * persist so you can recover any data stored in their ephemeral instance storage.
+ * SetTerminationProtection is used to prevent accidental termination of
+ * a job flow and to ensure that in the event of an error, the instances
+ * will persist so you can recover any data stored in their ephemeral
+ * instance storage.
  * </p>
  * <p>
- * To terminate a job flow that has been locked by setting SetTerminationProtection to <code>true</code> ,
- * you must first unlock the job flow by a subsequent call to SetTerminationProtection in which you set the value to <code>false</code> .
+ * To terminate a job flow that has been locked by setting
+ * SetTerminationProtection to <code>true</code> ,
+ * you must first unlock the job flow by a subsequent call to
+ * SetTerminationProtection in which you set the value to
+ * <code>false</code> .
  * </p>
  * <p>
- * For more information, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/UsingEMR_TerminationProtection.html">
- * Protecting a Job Flow from Termination </a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
+ * For more information, go to
+ * <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/UsingEMR_TerminationProtection.html"> Protecting a Job Flow from Termination </a>
+ * in the <i>Amazon Elastic MapReduce Developer's Guide.</i>
  * </p>
  *
  * @see com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce#setTerminationProtection(SetTerminationProtectionRequest)
  */
-public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetTerminationProtectionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A list of strings that uniquely identify the job flows to protect.
      * This identifier is returned by <a>RunJobFlow</a> and can also be
      * obtained from <a>DescribeJobFlows</a> .
      */
-    private java.util.List<String> jobFlowIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowIds;
 
     /**
      * A Boolean that indicates whether to protect the job flow and prevent
@@ -64,9 +76,9 @@ public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  im
      *         obtained from <a>DescribeJobFlows</a> .
      */
     public java.util.List<String> getJobFlowIds() {
-        
         if (jobFlowIds == null) {
-            jobFlowIds = new java.util.ArrayList<String>();
+              jobFlowIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              jobFlowIds.setAutoConstruct(true);
         }
         return jobFlowIds;
     }
@@ -85,8 +97,7 @@ public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  im
             this.jobFlowIds = null;
             return;
         }
-
-        java.util.List<String> jobFlowIdsCopy = new java.util.ArrayList<String>(jobFlowIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(jobFlowIds.size());
         jobFlowIdsCopy.addAll(jobFlowIds);
         this.jobFlowIds = jobFlowIdsCopy;
     }
@@ -103,7 +114,7 @@ public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  im
      *         obtained from <a>DescribeJobFlows</a> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetTerminationProtectionRequest withJobFlowIds(String... jobFlowIds) {
         if (getJobFlowIds() == null) setJobFlowIds(new java.util.ArrayList<String>(jobFlowIds.length));
@@ -125,20 +136,20 @@ public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  im
      *         obtained from <a>DescribeJobFlows</a> .
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetTerminationProtectionRequest withJobFlowIds(java.util.Collection<String> jobFlowIds) {
         if (jobFlowIds == null) {
             this.jobFlowIds = null;
         } else {
-            java.util.List<String> jobFlowIdsCopy = new java.util.ArrayList<String>(jobFlowIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> jobFlowIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(jobFlowIds.size());
             jobFlowIdsCopy.addAll(jobFlowIds);
             this.jobFlowIds = jobFlowIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A Boolean that indicates whether to protect the job flow and prevent
      * the Amazon EC2 instances in the cluster from shutting down due to API
@@ -177,14 +188,13 @@ public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  im
      *         calls, user intervention, or job-flow error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetTerminationProtectionRequest withTerminationProtected(Boolean terminationProtected) {
         this.terminationProtected = terminationProtected;
         return this;
     }
-    
-    
+
     /**
      * A Boolean that indicates whether to protect the job flow and prevent
      * the Amazon EC2 instances in the cluster from shutting down due to API
@@ -197,7 +207,7 @@ public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  im
     public Boolean getTerminationProtected() {
         return terminationProtected;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -209,8 +219,8 @@ public class SetTerminationProtectionRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobFlowIds() != null) sb.append("JobFlowIds: " + getJobFlowIds() + ",");    	
+        sb.append("{");
+        if (getJobFlowIds() != null) sb.append("JobFlowIds: " + getJobFlowIds() + ",");
         if (isTerminationProtected() != null) sb.append("TerminationProtected: " + isTerminationProtected() );
         sb.append("}");
         return sb.toString();

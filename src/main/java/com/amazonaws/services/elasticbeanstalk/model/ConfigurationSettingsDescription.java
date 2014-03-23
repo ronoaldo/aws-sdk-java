@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes the settings for a configuration set.
  * </p>
  */
-public class ConfigurationSettingsDescription  implements Serializable  {
+public class ConfigurationSettingsDescription implements Serializable {
 
     /**
      * The name of the solution stack this configuration set uses.
@@ -104,7 +105,7 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      * A list of the configuration options and their values in this
      * configuration set.
      */
-    private java.util.List<ConfigurationOptionSetting> optionSettings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettings;
 
     /**
      * The name of the solution stack this configuration set uses.
@@ -141,14 +142,13 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      * @param solutionStackName The name of the solution stack this configuration set uses.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withSolutionStackName(String solutionStackName) {
         this.solutionStackName = solutionStackName;
         return this;
     }
-    
-    
+
     /**
      * The name of the application associated with this configuration set.
      * <p>
@@ -184,14 +184,13 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      * @param applicationName The name of the application associated with this configuration set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withApplicationName(String applicationName) {
         this.applicationName = applicationName;
         return this;
     }
-    
-    
+
     /**
      * If not <code>null</code>, the name of the configuration template for
      * this configuration set.
@@ -233,14 +232,13 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      *         this configuration set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withTemplateName(String templateName) {
         this.templateName = templateName;
         return this;
     }
-    
-    
+
     /**
      * Describes this configuration set.
      * <p>
@@ -276,14 +274,13 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      * @param description Describes this configuration set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * If not <code>null</code>, the name of the environment for this
      * configuration set.
@@ -325,14 +322,13 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      *         configuration set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * If this configuration set is associated with an environment, the
      * <code>DeploymentStatus</code> parameter indicates the deployment
@@ -480,7 +476,7 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      *         failed to successfully deploy. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ConfigurationDeploymentStatus
      */
@@ -488,8 +484,7 @@ public class ConfigurationSettingsDescription  implements Serializable  {
         this.deploymentStatus = deploymentStatus;
         return this;
     }
-    
-    
+
     /**
      * If this configuration set is associated with an environment, the
      * <code>DeploymentStatus</code> parameter indicates the deployment
@@ -587,7 +582,7 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      *         failed to successfully deploy. </li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ConfigurationDeploymentStatus
      */
@@ -595,7 +590,7 @@ public class ConfigurationSettingsDescription  implements Serializable  {
         this.deploymentStatus = deploymentStatus.toString();
         return this;
     }
-    
+
     /**
      * The date (in UTC time) when this configuration set was created.
      *
@@ -622,14 +617,13 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      * @param dateCreated The date (in UTC time) when this configuration set was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withDateCreated(java.util.Date dateCreated) {
         this.dateCreated = dateCreated;
         return this;
     }
-    
-    
+
     /**
      * The date (in UTC time) when this configuration set was last modified.
      *
@@ -656,14 +650,13 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      * @param dateUpdated The date (in UTC time) when this configuration set was last modified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withDateUpdated(java.util.Date dateUpdated) {
         this.dateUpdated = dateUpdated;
         return this;
     }
-    
-    
+
     /**
      * A list of the configuration options and their values in this
      * configuration set.
@@ -672,9 +665,9 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      *         configuration set.
      */
     public java.util.List<ConfigurationOptionSetting> getOptionSettings() {
-        
         if (optionSettings == null) {
-            optionSettings = new java.util.ArrayList<ConfigurationOptionSetting>();
+              optionSettings = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>();
+              optionSettings.setAutoConstruct(true);
         }
         return optionSettings;
     }
@@ -691,8 +684,7 @@ public class ConfigurationSettingsDescription  implements Serializable  {
             this.optionSettings = null;
             return;
         }
-
-        java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
         optionSettingsCopy.addAll(optionSettings);
         this.optionSettings = optionSettingsCopy;
     }
@@ -707,7 +699,7 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      *         configuration set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withOptionSettings(ConfigurationOptionSetting... optionSettings) {
         if (getOptionSettings() == null) setOptionSettings(new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.length));
@@ -727,20 +719,20 @@ public class ConfigurationSettingsDescription  implements Serializable  {
      *         configuration set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ConfigurationSettingsDescription withOptionSettings(java.util.Collection<ConfigurationOptionSetting> optionSettings) {
         if (optionSettings == null) {
             this.optionSettings = null;
         } else {
-            java.util.List<ConfigurationOptionSetting> optionSettingsCopy = new java.util.ArrayList<ConfigurationOptionSetting>(optionSettings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting> optionSettingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConfigurationOptionSetting>(optionSettings.size());
             optionSettingsCopy.addAll(optionSettings);
             this.optionSettings = optionSettingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -752,15 +744,15 @@ public class ConfigurationSettingsDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");    	
-        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");    	
-        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");    	
-        if (getDeploymentStatus() != null) sb.append("DeploymentStatus: " + getDeploymentStatus() + ",");    	
-        if (getDateCreated() != null) sb.append("DateCreated: " + getDateCreated() + ",");    	
-        if (getDateUpdated() != null) sb.append("DateUpdated: " + getDateUpdated() + ",");    	
+        sb.append("{");
+        if (getSolutionStackName() != null) sb.append("SolutionStackName: " + getSolutionStackName() + ",");
+        if (getApplicationName() != null) sb.append("ApplicationName: " + getApplicationName() + ",");
+        if (getTemplateName() != null) sb.append("TemplateName: " + getTemplateName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() + ",");
+        if (getDeploymentStatus() != null) sb.append("DeploymentStatus: " + getDeploymentStatus() + ",");
+        if (getDateCreated() != null) sb.append("DateCreated: " + getDateCreated() + ",");
+        if (getDateUpdated() != null) sb.append("DateUpdated: " + getDateUpdated() + ",");
         if (getOptionSettings() != null) sb.append("OptionSettings: " + getOptionSettings() );
         sb.append("}");
         return sb.toString();

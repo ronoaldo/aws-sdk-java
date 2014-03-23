@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,38 +14,46 @@
  */
 package com.amazonaws.transform;
 
-import static org.codehaus.jackson.JsonToken.END_ARRAY;
-import static org.codehaus.jackson.JsonToken.END_OBJECT;
+import static com.fasterxml.jackson.core.JsonToken.END_ARRAY;
+import static com.fasterxml.jackson.core.JsonToken.END_OBJECT;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.JsonToken;
+import com.fasterxml.jackson.core.JsonToken;
 
-public class ListUnmarshaller<T> implements Unmarshaller<List<T>, JsonUnmarshallerContext> {
+public class ListUnmarshaller<T>
+        implements Unmarshaller<List<T>, JsonUnmarshallerContext> {
 
-	private final Unmarshaller<T, JsonUnmarshallerContext> itemUnmarshaller;
+    private final Unmarshaller<T, JsonUnmarshallerContext> itemUnmarshaller;
 
-	public ListUnmarshaller(Unmarshaller<T, JsonUnmarshallerContext> itemUnmarshaller) {
-		this.itemUnmarshaller = itemUnmarshaller;
-	}
+    public ListUnmarshaller(
+        Unmarshaller<T, JsonUnmarshallerContext> itemUnmarshaller
+    ) {
+        this.itemUnmarshaller = itemUnmarshaller;
+    }
 
-	public List<T> unmarshall(JsonUnmarshallerContext context) throws Exception {
-		List<T> list = new ArrayList<T>();
+    public List<T> unmarshall(JsonUnmarshallerContext context)
+            throws Exception {
+
+        List<T> list = new ArrayList<T>();
         int originalDepth = context.getCurrentDepth();
-        int targetDepth = originalDepth + 1;
-
+        
+        if (context.currentToken == JsonToken.VALUE_NULL) {
+            return null;
+        }
+        
         while (true) {
             JsonToken token = context.nextToken();
             if (token == null) return list;
-
+            
             if (token == JsonToken.START_ARRAY) {
                 continue;
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getCurrentDepth() < originalDepth) return list;
             } else {
-            	list.add(itemUnmarshaller.unmarshall(context));
+                list.add(itemUnmarshaller.unmarshall(context));
             }
         }
-	}
+    }
 }

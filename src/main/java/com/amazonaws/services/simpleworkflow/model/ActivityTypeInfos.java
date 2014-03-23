@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains a paginated list of activity type information structures.
  * </p>
  */
-public class ActivityTypeInfos  implements Serializable  {
+public class ActivityTypeInfos implements Serializable {
 
     /**
      * List of activity type information.
      */
-    private java.util.List<ActivityTypeInfo> typeInfos;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ActivityTypeInfo> typeInfos;
 
     /**
      * Returns a value if the results are paginated. To get the next page of
@@ -43,9 +44,9 @@ public class ActivityTypeInfos  implements Serializable  {
      * @return List of activity type information.
      */
     public java.util.List<ActivityTypeInfo> getTypeInfos() {
-        
         if (typeInfos == null) {
-            typeInfos = new java.util.ArrayList<ActivityTypeInfo>();
+              typeInfos = new com.amazonaws.internal.ListWithAutoConstructFlag<ActivityTypeInfo>();
+              typeInfos.setAutoConstruct(true);
         }
         return typeInfos;
     }
@@ -60,8 +61,7 @@ public class ActivityTypeInfos  implements Serializable  {
             this.typeInfos = null;
             return;
         }
-
-        java.util.List<ActivityTypeInfo> typeInfosCopy = new java.util.ArrayList<ActivityTypeInfo>(typeInfos.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ActivityTypeInfo> typeInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ActivityTypeInfo>(typeInfos.size());
         typeInfosCopy.addAll(typeInfos);
         this.typeInfos = typeInfosCopy;
     }
@@ -74,7 +74,7 @@ public class ActivityTypeInfos  implements Serializable  {
      * @param typeInfos List of activity type information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeInfos withTypeInfos(ActivityTypeInfo... typeInfos) {
         if (getTypeInfos() == null) setTypeInfos(new java.util.ArrayList<ActivityTypeInfo>(typeInfos.length));
@@ -92,20 +92,20 @@ public class ActivityTypeInfos  implements Serializable  {
      * @param typeInfos List of activity type information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeInfos withTypeInfos(java.util.Collection<ActivityTypeInfo> typeInfos) {
         if (typeInfos == null) {
             this.typeInfos = null;
         } else {
-            java.util.List<ActivityTypeInfo> typeInfosCopy = new java.util.ArrayList<ActivityTypeInfo>(typeInfos.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ActivityTypeInfo> typeInfosCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ActivityTypeInfo>(typeInfos.size());
             typeInfosCopy.addAll(typeInfos);
             this.typeInfos = typeInfosCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a value if the results are paginated. To get the next page of
      * results, repeat the request specifying this token and all other
@@ -153,14 +153,13 @@ public class ActivityTypeInfos  implements Serializable  {
      *         arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ActivityTypeInfos withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -172,8 +171,8 @@ public class ActivityTypeInfos  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTypeInfos() != null) sb.append("TypeInfos: " + getTypeInfos() + ",");    	
+        sb.append("{");
+        if (getTypeInfos() != null) sb.append("TypeInfos: " + getTypeInfos() + ",");
         if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() );
         sb.append("}");
         return sb.toString();

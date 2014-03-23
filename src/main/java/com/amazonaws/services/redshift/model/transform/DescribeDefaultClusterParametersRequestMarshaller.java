@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class DescribeDefaultClusterParametersRequestMarshaller implements Marsha
     public Request<DescribeDefaultClusterParametersRequest> marshall(DescribeDefaultClusterParametersRequest describeDefaultClusterParametersRequest) {
 
         if (describeDefaultClusterParametersRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeDefaultClusterParametersRequest> request = new DefaultRequest<DescribeDefaultClusterParametersRequest>(describeDefaultClusterParametersRequest, "AmazonRedshift");
         request.addParameter("Action", "DescribeDefaultClusterParameters");
@@ -49,7 +49,6 @@ public class DescribeDefaultClusterParametersRequestMarshaller implements Marsha
         if (describeDefaultClusterParametersRequest.getMarker() != null) {
             request.addParameter("Marker", StringUtils.fromString(describeDefaultClusterParametersRequest.getMarker()));
         }
-
 
         return request;
     }

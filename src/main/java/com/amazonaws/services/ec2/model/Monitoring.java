@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,61 +13,106 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Describes the monitoring status of an Amazon EC2 instance.
+ * Describes the monitoring for the instance.
  * </p>
  */
-public class Monitoring  implements Serializable  {
+public class Monitoring implements Serializable {
 
     /**
-     * The state of monitoring on an Amazon EC2 instance (ex: enabled,
-     * disabled).
+     * Indicates whether monitoring is enabled for the instance.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>disabled, enabled, pending
      */
     private String state;
 
     /**
-     * The state of monitoring on an Amazon EC2 instance (ex: enabled,
-     * disabled).
+     * Indicates whether monitoring is enabled for the instance.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>disabled, enabled, pending
      *
-     * @return The state of monitoring on an Amazon EC2 instance (ex: enabled,
-     *         disabled).
+     * @return Indicates whether monitoring is enabled for the instance.
+     *
+     * @see MonitoringState
      */
     public String getState() {
         return state;
     }
     
     /**
-     * The state of monitoring on an Amazon EC2 instance (ex: enabled,
-     * disabled).
+     * Indicates whether monitoring is enabled for the instance.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>disabled, enabled, pending
      *
-     * @param state The state of monitoring on an Amazon EC2 instance (ex: enabled,
-     *         disabled).
+     * @param state Indicates whether monitoring is enabled for the instance.
+     *
+     * @see MonitoringState
      */
     public void setState(String state) {
         this.state = state;
     }
     
     /**
-     * The state of monitoring on an Amazon EC2 instance (ex: enabled,
-     * disabled).
+     * Indicates whether monitoring is enabled for the instance.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>disabled, enabled, pending
      *
-     * @param state The state of monitoring on an Amazon EC2 instance (ex: enabled,
-     *         disabled).
+     * @param state Indicates whether monitoring is enabled for the instance.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see MonitoringState
      */
     public Monitoring withState(String state) {
         this.state = state;
         return this;
     }
+
+    /**
+     * Indicates whether monitoring is enabled for the instance.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>disabled, enabled, pending
+     *
+     * @param state Indicates whether monitoring is enabled for the instance.
+     *
+     * @see MonitoringState
+     */
+    public void setState(MonitoringState state) {
+        this.state = state.toString();
+    }
     
-    
+    /**
+     * Indicates whether monitoring is enabled for the instance.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>disabled, enabled, pending
+     *
+     * @param state Indicates whether monitoring is enabled for the instance.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see MonitoringState
+     */
+    public Monitoring withState(MonitoringState state) {
+        this.state = state.toString();
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -79,7 +124,7 @@ public class Monitoring  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getState() != null) sb.append("State: " + getState() );
         sb.append("}");
         return sb.toString();

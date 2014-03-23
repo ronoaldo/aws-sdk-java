@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,18 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Defines a validation warning returned by PutPipelineDefinition or ValidatePipelineDefinition. Validation warnings do not prevent pipeline activation.
- * The set of validation warnings that can be returned are defined by AWS Data Pipeline.
+ * Defines a validation warning returned by PutPipelineDefinition or
+ * ValidatePipelineDefinition. Validation warnings do not prevent
+ * pipeline activation. The set of validation warnings that can be
+ * returned are defined by AWS Data Pipeline.
  * </p>
  */
-public class ValidationWarning  implements Serializable  {
+public class ValidationWarning implements Serializable {
 
     /**
      * The identifier of the object that contains the validation warning.
@@ -35,7 +38,7 @@ public class ValidationWarning  implements Serializable  {
     /**
      * A description of the validation warning.
      */
-    private java.util.List<String> warnings;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> warnings;
 
     /**
      * The identifier of the object that contains the validation warning.
@@ -75,23 +78,22 @@ public class ValidationWarning  implements Serializable  {
      * @param id The identifier of the object that contains the validation warning.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationWarning withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * A description of the validation warning.
      *
      * @return A description of the validation warning.
      */
     public java.util.List<String> getWarnings() {
-        
         if (warnings == null) {
-            warnings = new java.util.ArrayList<String>();
+              warnings = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              warnings.setAutoConstruct(true);
         }
         return warnings;
     }
@@ -106,8 +108,7 @@ public class ValidationWarning  implements Serializable  {
             this.warnings = null;
             return;
         }
-
-        java.util.List<String> warningsCopy = new java.util.ArrayList<String>(warnings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> warningsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(warnings.size());
         warningsCopy.addAll(warnings);
         this.warnings = warningsCopy;
     }
@@ -120,7 +121,7 @@ public class ValidationWarning  implements Serializable  {
      * @param warnings A description of the validation warning.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationWarning withWarnings(String... warnings) {
         if (getWarnings() == null) setWarnings(new java.util.ArrayList<String>(warnings.length));
@@ -138,20 +139,20 @@ public class ValidationWarning  implements Serializable  {
      * @param warnings A description of the validation warning.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ValidationWarning withWarnings(java.util.Collection<String> warnings) {
         if (warnings == null) {
             this.warnings = null;
         } else {
-            java.util.List<String> warningsCopy = new java.util.ArrayList<String>(warnings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> warningsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(warnings.size());
             warningsCopy.addAll(warnings);
             this.warnings = warningsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -163,8 +164,8 @@ public class ValidationWarning  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getWarnings() != null) sb.append("Warnings: " + getWarnings() );
         sb.append("}");
         return sb.toString();

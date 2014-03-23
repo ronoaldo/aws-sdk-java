@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticache.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticache.AmazonElastiCache#deleteCacheParameterGroup(DeleteCacheParameterGroupRequest) DeleteCacheParameterGroup operation}.
  * <p>
- * Deletes the specified CacheParameterGroup. The CacheParameterGroup cannot be deleted if it is associated with any cache clusters.
+ * The <i>DeleteCacheParameterGroup</i> operation deletes the specified
+ * cache parameter group. You cannot delete a cache parameter group if it
+ * is associated with any cache clusters.
  * </p>
  *
  * @see com.amazonaws.services.elasticache.AmazonElastiCache#deleteCacheParameterGroup(DeleteCacheParameterGroupRequest)
  */
-public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the Cache Parameter Group to delete. <note> The specified
-     * cache security group must not be associated with any Cache clusters.
+     * The name of the cache parameter group to delete. <note> The specified
+     * cache security group must not be associated with any cache clusters.
      * </note>
      */
     private String cacheParameterGroupName;
@@ -44,23 +48,21 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest  i
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param cacheParameterGroupName The name of the Cache Parameter Group
+     * @param cacheParameterGroupName The name of the cache parameter group
      * to delete. <note> The specified cache security group must not be
-     * associated with any Cache clusters. </note>
+     * associated with any cache clusters. </note>
      */
     public DeleteCacheParameterGroupRequest(String cacheParameterGroupName) {
-        this.cacheParameterGroupName = cacheParameterGroupName;
+        setCacheParameterGroupName(cacheParameterGroupName);
     }
 
-    
-    
     /**
-     * The name of the Cache Parameter Group to delete. <note> The specified
-     * cache security group must not be associated with any Cache clusters.
+     * The name of the cache parameter group to delete. <note> The specified
+     * cache security group must not be associated with any cache clusters.
      * </note>
      *
-     * @return The name of the Cache Parameter Group to delete. <note> The specified
-     *         cache security group must not be associated with any Cache clusters.
+     * @return The name of the cache parameter group to delete. <note> The specified
+     *         cache security group must not be associated with any cache clusters.
      *         </note>
      */
     public String getCacheParameterGroupName() {
@@ -68,12 +70,12 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest  i
     }
     
     /**
-     * The name of the Cache Parameter Group to delete. <note> The specified
-     * cache security group must not be associated with any Cache clusters.
+     * The name of the cache parameter group to delete. <note> The specified
+     * cache security group must not be associated with any cache clusters.
      * </note>
      *
-     * @param cacheParameterGroupName The name of the Cache Parameter Group to delete. <note> The specified
-     *         cache security group must not be associated with any Cache clusters.
+     * @param cacheParameterGroupName The name of the cache parameter group to delete. <note> The specified
+     *         cache security group must not be associated with any cache clusters.
      *         </note>
      */
     public void setCacheParameterGroupName(String cacheParameterGroupName) {
@@ -81,25 +83,24 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest  i
     }
     
     /**
-     * The name of the Cache Parameter Group to delete. <note> The specified
-     * cache security group must not be associated with any Cache clusters.
+     * The name of the cache parameter group to delete. <note> The specified
+     * cache security group must not be associated with any cache clusters.
      * </note>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param cacheParameterGroupName The name of the Cache Parameter Group to delete. <note> The specified
-     *         cache security group must not be associated with any Cache clusters.
+     * @param cacheParameterGroupName The name of the cache parameter group to delete. <note> The specified
+     *         cache security group must not be associated with any cache clusters.
      *         </note>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DeleteCacheParameterGroupRequest withCacheParameterGroupName(String cacheParameterGroupName) {
         this.cacheParameterGroupName = cacheParameterGroupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +112,7 @@ public class DeleteCacheParameterGroupRequest extends AmazonWebServiceRequest  i
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCacheParameterGroupName() != null) sb.append("CacheParameterGroupName: " + getCacheParameterGroupName() );
         sb.append("}");
         return sb.toString();

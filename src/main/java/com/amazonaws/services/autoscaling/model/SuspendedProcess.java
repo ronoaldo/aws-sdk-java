@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * An Auto Scaling process that has been suspended. For more information, see ProcessType.
+ * An Auto Scaling process that has been suspended. For more
+ * information, see ProcessType.
  * </p>
  */
-public class SuspendedProcess  implements Serializable  {
+public class SuspendedProcess implements Serializable {
 
     /**
      * The name of the suspended process.
@@ -78,14 +80,13 @@ public class SuspendedProcess  implements Serializable  {
      * @param processName The name of the suspended process.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SuspendedProcess withProcessName(String processName) {
         this.processName = processName;
         return this;
     }
-    
-    
+
     /**
      * The reason that the process was suspended.
      * <p>
@@ -124,14 +125,13 @@ public class SuspendedProcess  implements Serializable  {
      * @param suspensionReason The reason that the process was suspended.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SuspendedProcess withSuspensionReason(String suspensionReason) {
         this.suspensionReason = suspensionReason;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -143,8 +143,8 @@ public class SuspendedProcess  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getProcessName() != null) sb.append("ProcessName: " + getProcessName() + ",");    	
+        sb.append("{");
+        if (getProcessName() != null) sb.append("ProcessName: " + getProcessName() + ",");
         if (getSuspensionReason() != null) sb.append("SuspensionReason: " + getSuspensionReason() );
         sb.append("}");
         return sb.toString();

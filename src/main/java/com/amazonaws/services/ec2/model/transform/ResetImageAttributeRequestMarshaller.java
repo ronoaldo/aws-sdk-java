@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class ResetImageAttributeRequestMarshaller implements Marshaller<Request<
     public Request<ResetImageAttributeRequest> marshall(ResetImageAttributeRequest resetImageAttributeRequest) {
 
         if (resetImageAttributeRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<ResetImageAttributeRequest> request = new DefaultRequest<ResetImageAttributeRequest>(resetImageAttributeRequest, "AmazonEC2");
         request.addParameter("Action", "ResetImageAttribute");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (resetImageAttributeRequest.getImageId() != null) {
             request.addParameter("ImageId", StringUtils.fromString(resetImageAttributeRequest.getImageId()));
@@ -46,7 +46,6 @@ public class ResetImageAttributeRequestMarshaller implements Marshaller<Request<
         if (resetImageAttributeRequest.getAttribute() != null) {
             request.addParameter("Attribute", StringUtils.fromString(resetImageAttributeRequest.getAttribute()));
         }
-
 
         return request;
     }

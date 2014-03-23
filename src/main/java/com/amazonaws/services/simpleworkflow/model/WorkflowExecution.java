@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Represents a workflow execution.
  * </p>
  */
-public class WorkflowExecution  implements Serializable  {
+public class WorkflowExecution implements Serializable {
 
     /**
      * The user defined identifier associated with the workflow execution.
@@ -73,14 +74,13 @@ public class WorkflowExecution  implements Serializable  {
      * @param workflowId The user defined identifier associated with the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecution withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * A system generated unique identifier for the workflow execution.
      * <p>
@@ -116,14 +116,13 @@ public class WorkflowExecution  implements Serializable  {
      * @param runId A system generated unique identifier for the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecution withRunId(String runId) {
         this.runId = runId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -135,8 +134,8 @@ public class WorkflowExecution  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
+        sb.append("{");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
         if (getRunId() != null) sb.append("RunId: " + getRunId() );
         sb.append("}");
         return sb.toString();

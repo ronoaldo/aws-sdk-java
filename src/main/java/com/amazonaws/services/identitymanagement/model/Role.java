@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.identitymanagement.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,8 @@ import java.io.Serializable;
  * The Role data type contains information about a role.
  * </p>
  * <p>
- * This data type is used as a response element in the following actions:
+ * This data type is used as a response element in the following
+ * actions:
  * </p>
  * 
  * <ul>
@@ -39,11 +41,11 @@ import java.io.Serializable;
  * 
  * </ul>
  */
-public class Role  implements Serializable  {
+public class Role implements Serializable {
 
     /**
      * Path to the role. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -65,7 +67,7 @@ public class Role  implements Serializable  {
     /**
      * The stable and unique string identifying the role. For more
      * information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -78,7 +80,7 @@ public class Role  implements Serializable  {
     /**
      * The Amazon Resource Name (ARN) specifying the role. For more
      * information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -106,7 +108,7 @@ public class Role  implements Serializable  {
 
     /**
      * Path to the role. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -115,7 +117,7 @@ public class Role  implements Serializable  {
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @return Path to the role. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -125,7 +127,7 @@ public class Role  implements Serializable  {
     
     /**
      * Path to the role. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -134,7 +136,7 @@ public class Role  implements Serializable  {
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @param path Path to the role. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -144,7 +146,7 @@ public class Role  implements Serializable  {
     
     /**
      * Path to the role. For more information about paths, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -155,19 +157,18 @@ public class Role  implements Serializable  {
      * <b>Pattern: </b>(\u002F)|(\u002F[\u0021-\u007F]+\u002F)<br/>
      *
      * @param path Path to the role. For more information about paths, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Role withPath(String path) {
         this.path = path;
         return this;
     }
-    
-    
+
     /**
      * The name identifying the role.
      * <p>
@@ -206,18 +207,17 @@ public class Role  implements Serializable  {
      * @param roleName The name identifying the role.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Role withRoleName(String roleName) {
         this.roleName = roleName;
         return this;
     }
-    
-    
+
     /**
      * The stable and unique string identifying the role. For more
      * information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -227,7 +227,7 @@ public class Role  implements Serializable  {
      *
      * @return The stable and unique string identifying the role. For more
      *         information about IDs, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -238,7 +238,7 @@ public class Role  implements Serializable  {
     /**
      * The stable and unique string identifying the role. For more
      * information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -248,7 +248,7 @@ public class Role  implements Serializable  {
      *
      * @param roleId The stable and unique string identifying the role. For more
      *         information about IDs, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -259,7 +259,7 @@ public class Role  implements Serializable  {
     /**
      * The stable and unique string identifying the role. For more
      * information about IDs, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -271,23 +271,22 @@ public class Role  implements Serializable  {
      *
      * @param roleId The stable and unique string identifying the role. For more
      *         information about IDs, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Role withRoleId(String roleId) {
         this.roleId = roleId;
         return this;
     }
-    
-    
+
     /**
      * The Amazon Resource Name (ARN) specifying the role. For more
      * information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -296,7 +295,7 @@ public class Role  implements Serializable  {
      *
      * @return The Amazon Resource Name (ARN) specifying the role. For more
      *         information about ARNs and how to use them in policies, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -307,7 +306,7 @@ public class Role  implements Serializable  {
     /**
      * The Amazon Resource Name (ARN) specifying the role. For more
      * information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -316,7 +315,7 @@ public class Role  implements Serializable  {
      *
      * @param arn The Amazon Resource Name (ARN) specifying the role. For more
      *         information about ARNs and how to use them in policies, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      */
@@ -327,7 +326,7 @@ public class Role  implements Serializable  {
     /**
      * The Amazon Resource Name (ARN) specifying the role. For more
      * information about ARNs and how to use them in policies, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      * Identity and Access Management</i>.
      * <p>
@@ -338,19 +337,18 @@ public class Role  implements Serializable  {
      *
      * @param arn The Amazon Resource Name (ARN) specifying the role. For more
      *         information about ARNs and how to use them in policies, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html"
      *         target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS
      *         Identity and Access Management</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Role withArn(String arn) {
         this.arn = arn;
         return this;
     }
-    
-    
+
     /**
      * The date when the role was created.
      *
@@ -377,14 +375,13 @@ public class Role  implements Serializable  {
      * @param createDate The date when the role was created.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Role withCreateDate(java.util.Date createDate) {
         this.createDate = createDate;
         return this;
     }
-    
-    
+
     /**
      * The policy that grants an entity permission to assume the role. <p>The
      * returned policy is URL-encoded according to RFC 3986. For more
@@ -441,14 +438,13 @@ public class Role  implements Serializable  {
      *         href="http://www.faqs.org/rfcs/rfc3986.html">http://www.faqs.org/rfcs/rfc3986.html</a>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Role withAssumeRolePolicyDocument(String assumeRolePolicyDocument) {
         this.assumeRolePolicyDocument = assumeRolePolicyDocument;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -460,12 +456,12 @@ public class Role  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPath() != null) sb.append("Path: " + getPath() + ",");    	
-        if (getRoleName() != null) sb.append("RoleName: " + getRoleName() + ",");    	
-        if (getRoleId() != null) sb.append("RoleId: " + getRoleId() + ",");    	
-        if (getArn() != null) sb.append("Arn: " + getArn() + ",");    	
-        if (getCreateDate() != null) sb.append("CreateDate: " + getCreateDate() + ",");    	
+        sb.append("{");
+        if (getPath() != null) sb.append("Path: " + getPath() + ",");
+        if (getRoleName() != null) sb.append("RoleName: " + getRoleName() + ",");
+        if (getRoleId() != null) sb.append("RoleId: " + getRoleId() + ",");
+        if (getArn() != null) sb.append("Arn: " + getArn() + ",");
+        if (getCreateDate() != null) sb.append("CreateDate: " + getCreateDate() + ",");
         if (getAssumeRolePolicyDocument() != null) sb.append("AssumeRolePolicyDocument: " + getAssumeRolePolicyDocument() );
         sb.append("}");
         return sb.toString();

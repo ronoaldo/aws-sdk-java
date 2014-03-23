@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ import com.amazonaws.AmazonServiceException;
 
 /**
  * <p>
- * The number of nodes specified exceeds the allotted capacity of the cluster.
+ * The number of nodes specified exceeds the allotted capacity of the
+ * cluster.
  * </p>
  */        
 public class InsufficientClusterCapacityException extends AmazonServiceException {

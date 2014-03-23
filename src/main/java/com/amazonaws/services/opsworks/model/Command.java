@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Describes a command.
  * </p>
  */
-public class Command  implements Serializable  {
+public class Command implements Serializable {
 
     /**
      * The command ID.
@@ -69,10 +70,14 @@ public class Command  implements Serializable  {
     private String logUrl;
 
     /**
-     * The command type: <ul> <li>deploy</li> <li>rollback</li>
-     * <li>start</li> <li>stop</li> <li>restart</li> <li>undeploy</li>
-     * <li>update_dependencies</li> <li>install_dependencies</li>
-     * <li>update_custom_cookbooks</li> <li>execute_recipes</li> </ul>
+     * The command type: <ul> <li><code>deploy</code></li>
+     * <li><code>rollback</code></li> <li><code>start</code></li>
+     * <li><code>stop</code></li> <li><code>restart</code></li>
+     * <li><code>undeploy</code></li>
+     * <li><code>update_dependencies</code></li>
+     * <li><code>install_dependencies</code></li>
+     * <li><code>update_custom_cookbooks</code></li>
+     * <li><code>execute_recipes</code></li> </ul>
      */
     private String type;
 
@@ -102,14 +107,13 @@ public class Command  implements Serializable  {
      * @param commandId The command ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withCommandId(String commandId) {
         this.commandId = commandId;
         return this;
     }
-    
-    
+
     /**
      * The ID of the instance where the command was executed.
      *
@@ -136,14 +140,13 @@ public class Command  implements Serializable  {
      * @param instanceId The ID of the instance where the command was executed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
      * The command deployment ID.
      *
@@ -170,14 +173,13 @@ public class Command  implements Serializable  {
      * @param deploymentId The command deployment ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withDeploymentId(String deploymentId) {
         this.deploymentId = deploymentId;
         return this;
     }
-    
-    
+
     /**
      * Date and time when the command was run.
      *
@@ -204,14 +206,13 @@ public class Command  implements Serializable  {
      * @param createdAt Date and time when the command was run.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
     }
-    
-    
+
     /**
      * Date and time when the command was acknowledged.
      *
@@ -238,14 +239,13 @@ public class Command  implements Serializable  {
      * @param acknowledgedAt Date and time when the command was acknowledged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withAcknowledgedAt(String acknowledgedAt) {
         this.acknowledgedAt = acknowledgedAt;
         return this;
     }
-    
-    
+
     /**
      * Date when the command completed.
      *
@@ -272,14 +272,13 @@ public class Command  implements Serializable  {
      * @param completedAt Date when the command completed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withCompletedAt(String completedAt) {
         this.completedAt = completedAt;
         return this;
     }
-    
-    
+
     /**
      * The command status: <ul> <li>failed</li> <li>successful</li>
      * <li>skipped</li> <li>pending</li> </ul>
@@ -312,14 +311,13 @@ public class Command  implements Serializable  {
      *         <li>skipped</li> <li>pending</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withStatus(String status) {
         this.status = status;
         return this;
     }
-    
-    
+
     /**
      * The command exit code.
      *
@@ -346,14 +344,13 @@ public class Command  implements Serializable  {
      * @param exitCode The command exit code.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withExitCode(Integer exitCode) {
         this.exitCode = exitCode;
         return this;
     }
-    
-    
+
     /**
      * The URL of the command log.
      *
@@ -380,66 +377,88 @@ public class Command  implements Serializable  {
      * @param logUrl The URL of the command log.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withLogUrl(String logUrl) {
         this.logUrl = logUrl;
         return this;
     }
-    
-    
+
     /**
-     * The command type: <ul> <li>deploy</li> <li>rollback</li>
-     * <li>start</li> <li>stop</li> <li>restart</li> <li>undeploy</li>
-     * <li>update_dependencies</li> <li>install_dependencies</li>
-     * <li>update_custom_cookbooks</li> <li>execute_recipes</li> </ul>
+     * The command type: <ul> <li><code>deploy</code></li>
+     * <li><code>rollback</code></li> <li><code>start</code></li>
+     * <li><code>stop</code></li> <li><code>restart</code></li>
+     * <li><code>undeploy</code></li>
+     * <li><code>update_dependencies</code></li>
+     * <li><code>install_dependencies</code></li>
+     * <li><code>update_custom_cookbooks</code></li>
+     * <li><code>execute_recipes</code></li> </ul>
      *
-     * @return The command type: <ul> <li>deploy</li> <li>rollback</li>
-     *         <li>start</li> <li>stop</li> <li>restart</li> <li>undeploy</li>
-     *         <li>update_dependencies</li> <li>install_dependencies</li>
-     *         <li>update_custom_cookbooks</li> <li>execute_recipes</li> </ul>
+     * @return The command type: <ul> <li><code>deploy</code></li>
+     *         <li><code>rollback</code></li> <li><code>start</code></li>
+     *         <li><code>stop</code></li> <li><code>restart</code></li>
+     *         <li><code>undeploy</code></li>
+     *         <li><code>update_dependencies</code></li>
+     *         <li><code>install_dependencies</code></li>
+     *         <li><code>update_custom_cookbooks</code></li>
+     *         <li><code>execute_recipes</code></li> </ul>
      */
     public String getType() {
         return type;
     }
     
     /**
-     * The command type: <ul> <li>deploy</li> <li>rollback</li>
-     * <li>start</li> <li>stop</li> <li>restart</li> <li>undeploy</li>
-     * <li>update_dependencies</li> <li>install_dependencies</li>
-     * <li>update_custom_cookbooks</li> <li>execute_recipes</li> </ul>
+     * The command type: <ul> <li><code>deploy</code></li>
+     * <li><code>rollback</code></li> <li><code>start</code></li>
+     * <li><code>stop</code></li> <li><code>restart</code></li>
+     * <li><code>undeploy</code></li>
+     * <li><code>update_dependencies</code></li>
+     * <li><code>install_dependencies</code></li>
+     * <li><code>update_custom_cookbooks</code></li>
+     * <li><code>execute_recipes</code></li> </ul>
      *
-     * @param type The command type: <ul> <li>deploy</li> <li>rollback</li>
-     *         <li>start</li> <li>stop</li> <li>restart</li> <li>undeploy</li>
-     *         <li>update_dependencies</li> <li>install_dependencies</li>
-     *         <li>update_custom_cookbooks</li> <li>execute_recipes</li> </ul>
+     * @param type The command type: <ul> <li><code>deploy</code></li>
+     *         <li><code>rollback</code></li> <li><code>start</code></li>
+     *         <li><code>stop</code></li> <li><code>restart</code></li>
+     *         <li><code>undeploy</code></li>
+     *         <li><code>update_dependencies</code></li>
+     *         <li><code>install_dependencies</code></li>
+     *         <li><code>update_custom_cookbooks</code></li>
+     *         <li><code>execute_recipes</code></li> </ul>
      */
     public void setType(String type) {
         this.type = type;
     }
     
     /**
-     * The command type: <ul> <li>deploy</li> <li>rollback</li>
-     * <li>start</li> <li>stop</li> <li>restart</li> <li>undeploy</li>
-     * <li>update_dependencies</li> <li>install_dependencies</li>
-     * <li>update_custom_cookbooks</li> <li>execute_recipes</li> </ul>
+     * The command type: <ul> <li><code>deploy</code></li>
+     * <li><code>rollback</code></li> <li><code>start</code></li>
+     * <li><code>stop</code></li> <li><code>restart</code></li>
+     * <li><code>undeploy</code></li>
+     * <li><code>update_dependencies</code></li>
+     * <li><code>install_dependencies</code></li>
+     * <li><code>update_custom_cookbooks</code></li>
+     * <li><code>execute_recipes</code></li> </ul>
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param type The command type: <ul> <li>deploy</li> <li>rollback</li>
-     *         <li>start</li> <li>stop</li> <li>restart</li> <li>undeploy</li>
-     *         <li>update_dependencies</li> <li>install_dependencies</li>
-     *         <li>update_custom_cookbooks</li> <li>execute_recipes</li> </ul>
+     * @param type The command type: <ul> <li><code>deploy</code></li>
+     *         <li><code>rollback</code></li> <li><code>start</code></li>
+     *         <li><code>stop</code></li> <li><code>restart</code></li>
+     *         <li><code>undeploy</code></li>
+     *         <li><code>update_dependencies</code></li>
+     *         <li><code>install_dependencies</code></li>
+     *         <li><code>update_custom_cookbooks</code></li>
+     *         <li><code>execute_recipes</code></li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Command withType(String type) {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -451,16 +470,16 @@ public class Command  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getCommandId() != null) sb.append("CommandId: " + getCommandId() + ",");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
-        if (getDeploymentId() != null) sb.append("DeploymentId: " + getDeploymentId() + ",");    	
-        if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() + ",");    	
-        if (getAcknowledgedAt() != null) sb.append("AcknowledgedAt: " + getAcknowledgedAt() + ",");    	
-        if (getCompletedAt() != null) sb.append("CompletedAt: " + getCompletedAt() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
-        if (getExitCode() != null) sb.append("ExitCode: " + getExitCode() + ",");    	
-        if (getLogUrl() != null) sb.append("LogUrl: " + getLogUrl() + ",");    	
+        sb.append("{");
+        if (getCommandId() != null) sb.append("CommandId: " + getCommandId() + ",");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
+        if (getDeploymentId() != null) sb.append("DeploymentId: " + getDeploymentId() + ",");
+        if (getCreatedAt() != null) sb.append("CreatedAt: " + getCreatedAt() + ",");
+        if (getAcknowledgedAt() != null) sb.append("AcknowledgedAt: " + getAcknowledgedAt() + ",");
+        if (getCompletedAt() != null) sb.append("CompletedAt: " + getCompletedAt() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
+        if (getExitCode() != null) sb.append("ExitCode: " + getExitCode() + ",");
+        if (getLogUrl() != null) sb.append("LogUrl: " + getLogUrl() + ",");
         if (getType() != null) sb.append("Type: " + getType() );
         sb.append("}");
         return sb.toString();

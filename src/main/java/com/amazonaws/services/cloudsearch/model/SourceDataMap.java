@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies how to map source attribute values to custom values when populating an <code>IndexField</code> .
+ * Specifies how to map source attribute values to custom values when
+ * populating an <code>IndexField</code> .
  * </p>
  */
-public class SourceDataMap  implements Serializable  {
+public class SourceDataMap implements Serializable {
 
     /**
      * The name of the document source field to add to this
@@ -33,7 +35,8 @@ public class SourceDataMap  implements Serializable  {
     private String sourceName;
 
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
@@ -89,57 +92,61 @@ public class SourceDataMap  implements Serializable  {
      *         <code>IndexField</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceDataMap withSourceName(String sourceName) {
         this.sourceName = sourceName;
         return this;
     }
-    
-    
+
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @return The value of a field or source document attribute.
+     * @return The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      */
     public String getDefaultValue() {
         return defaultValue;
     }
     
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @param defaultValue The value of a field or source document attribute.
+     * @param defaultValue The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      */
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
     }
     
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @param defaultValue The value of a field or source document attribute.
+     * @param defaultValue The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceDataMap withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * A map that translates source field values to custom values.
      *
@@ -151,7 +158,6 @@ public class SourceDataMap  implements Serializable  {
             cases = new java.util.HashMap<String,String>();
         }
         return cases;
-
     }
     
     /**
@@ -171,10 +177,40 @@ public class SourceDataMap  implements Serializable  {
      * @param cases A map that translates source field values to custom values.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceDataMap withCases(java.util.Map<String,String> cases) {
         setCases(cases);
+        return this;
+    }
+
+    /**
+     * A map that translates source field values to custom values.
+     * <p>
+     * The method adds a new key-value pair into Cases parameter, and returns
+     * a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Cases.
+     * @param value The corresponding value of the entry to be added into Cases.
+     */
+    public SourceDataMap addCasesEntry(String key, String value) {
+        if (null == this.cases) {
+            this.cases = new java.util.HashMap<String,String>();
+        }
+        if (this.cases.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.cases.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Cases.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public SourceDataMap clearCasesEntries() {
+        this.cases = null;
         return this;
     }
     
@@ -189,9 +225,9 @@ public class SourceDataMap  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceName() != null) sb.append("SourceName: " + getSourceName() + ",");    	
-        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");    	
+        sb.append("{");
+        if (getSourceName() != null) sb.append("SourceName: " + getSourceName() + ",");
+        if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() + ",");
         if (getCases() != null) sb.append("Cases: " + getCases() );
         sb.append("}");
         return sb.toString();

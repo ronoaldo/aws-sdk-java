@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sns.model;
+
 import java.io.Serializable;
 
 /**
- * List Topics Result
+ * <p>
+ * Response for ListTopics action.
+ * </p>
  */
-public class ListTopicsResult  implements Serializable  {
+public class ListTopicsResult implements Serializable {
 
     /**
      * A list of topic ARNs.
      */
-    private java.util.List<Topic> topics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Topic> topics;
 
     /**
-     * Token to pass along to the next ListTopics request. This element is
-     * returned if there are additional topics to retrieve.
+     * Token to pass along to the next <code>ListTopics</code> request. This
+     * element is returned if there are additional topics to retrieve.
      */
     private String nextToken;
 
@@ -37,9 +40,9 @@ public class ListTopicsResult  implements Serializable  {
      * @return A list of topic ARNs.
      */
     public java.util.List<Topic> getTopics() {
-        
         if (topics == null) {
-            topics = new java.util.ArrayList<Topic>();
+              topics = new com.amazonaws.internal.ListWithAutoConstructFlag<Topic>();
+              topics.setAutoConstruct(true);
         }
         return topics;
     }
@@ -54,8 +57,7 @@ public class ListTopicsResult  implements Serializable  {
             this.topics = null;
             return;
         }
-
-        java.util.List<Topic> topicsCopy = new java.util.ArrayList<Topic>(topics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Topic> topicsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Topic>(topics.size());
         topicsCopy.addAll(topics);
         this.topics = topicsCopy;
     }
@@ -68,7 +70,7 @@ public class ListTopicsResult  implements Serializable  {
      * @param topics A list of topic ARNs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTopicsResult withTopics(Topic... topics) {
         if (getTopics() == null) setTopics(new java.util.ArrayList<Topic>(topics.length));
@@ -86,60 +88,59 @@ public class ListTopicsResult  implements Serializable  {
      * @param topics A list of topic ARNs.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTopicsResult withTopics(java.util.Collection<Topic> topics) {
         if (topics == null) {
             this.topics = null;
         } else {
-            java.util.List<Topic> topicsCopy = new java.util.ArrayList<Topic>(topics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Topic> topicsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Topic>(topics.size());
             topicsCopy.addAll(topics);
             this.topics = topicsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Token to pass along to the next ListTopics request. This element is
-     * returned if there are additional topics to retrieve.
+     * Token to pass along to the next <code>ListTopics</code> request. This
+     * element is returned if there are additional topics to retrieve.
      *
-     * @return Token to pass along to the next ListTopics request. This element is
-     *         returned if there are additional topics to retrieve.
+     * @return Token to pass along to the next <code>ListTopics</code> request. This
+     *         element is returned if there are additional topics to retrieve.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * Token to pass along to the next ListTopics request. This element is
-     * returned if there are additional topics to retrieve.
+     * Token to pass along to the next <code>ListTopics</code> request. This
+     * element is returned if there are additional topics to retrieve.
      *
-     * @param nextToken Token to pass along to the next ListTopics request. This element is
-     *         returned if there are additional topics to retrieve.
+     * @param nextToken Token to pass along to the next <code>ListTopics</code> request. This
+     *         element is returned if there are additional topics to retrieve.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * Token to pass along to the next ListTopics request. This element is
-     * returned if there are additional topics to retrieve.
+     * Token to pass along to the next <code>ListTopics</code> request. This
+     * element is returned if there are additional topics to retrieve.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken Token to pass along to the next ListTopics request. This element is
-     *         returned if there are additional topics to retrieve.
+     * @param nextToken Token to pass along to the next <code>ListTopics</code> request. This
+     *         element is returned if there are additional topics to retrieve.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListTopicsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -151,8 +152,8 @@ public class ListTopicsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTopics() != null) sb.append("Topics: " + getTopics() + ",");    	
+        sb.append("{");
+        if (getTopics() != null) sb.append("Topics: " + getTopics() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

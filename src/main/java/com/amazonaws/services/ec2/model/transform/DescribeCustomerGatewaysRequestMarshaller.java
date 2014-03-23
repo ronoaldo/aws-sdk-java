@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeCustomerGatewaysRequestMarshaller implements Marshaller<Req
     public Request<DescribeCustomerGatewaysRequest> marshall(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest) {
 
         if (describeCustomerGatewaysRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeCustomerGatewaysRequest> request = new DefaultRequest<DescribeCustomerGatewaysRequest>(describeCustomerGatewaysRequest, "AmazonEC2");
         request.addParameter("Action", "DescribeCustomerGateways");
-        request.addParameter("Version", "2013-02-01");
-
+        request.addParameter("Version", "2013-10-15");
 
         java.util.List<String> customerGatewayIdsList = describeCustomerGatewaysRequest.getCustomerGatewayIds();
         int customerGatewayIdsListIndex = 1;
@@ -76,7 +75,6 @@ public class DescribeCustomerGatewaysRequestMarshaller implements Marshaller<Req
 
             filtersListIndex++;
         }
-
 
         return request;
     }

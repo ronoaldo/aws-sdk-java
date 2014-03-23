@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateEnvironmentRequestMarshaller implements Marshaller<Request<Cr
     public Request<CreateEnvironmentRequest> marshall(CreateEnvironmentRequest createEnvironmentRequest) {
 
         if (createEnvironmentRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateEnvironmentRequest> request = new DefaultRequest<CreateEnvironmentRequest>(createEnvironmentRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "CreateEnvironment");
@@ -43,23 +43,35 @@ public class CreateEnvironmentRequestMarshaller implements Marshaller<Request<Cr
         if (createEnvironmentRequest.getApplicationName() != null) {
             request.addParameter("ApplicationName", StringUtils.fromString(createEnvironmentRequest.getApplicationName()));
         }
-        if (createEnvironmentRequest.getVersionLabel() != null) {
-            request.addParameter("VersionLabel", StringUtils.fromString(createEnvironmentRequest.getVersionLabel()));
-        }
         if (createEnvironmentRequest.getEnvironmentName() != null) {
             request.addParameter("EnvironmentName", StringUtils.fromString(createEnvironmentRequest.getEnvironmentName()));
+        }
+        if (createEnvironmentRequest.getDescription() != null) {
+            request.addParameter("Description", StringUtils.fromString(createEnvironmentRequest.getDescription()));
+        }
+        if (createEnvironmentRequest.getCNAMEPrefix() != null) {
+            request.addParameter("CNAMEPrefix", StringUtils.fromString(createEnvironmentRequest.getCNAMEPrefix()));
+        }
+        EnvironmentTier environmentTierTier = createEnvironmentRequest.getTier();
+        if (environmentTierTier != null) {
+            if (environmentTierTier.getName() != null) {
+                request.addParameter("Tier.Name", StringUtils.fromString(environmentTierTier.getName()));
+            }
+            if (environmentTierTier.getType() != null) {
+                request.addParameter("Tier.Type", StringUtils.fromString(environmentTierTier.getType()));
+            }
+            if (environmentTierTier.getVersion() != null) {
+                request.addParameter("Tier.Version", StringUtils.fromString(environmentTierTier.getVersion()));
+            }
+        }
+        if (createEnvironmentRequest.getVersionLabel() != null) {
+            request.addParameter("VersionLabel", StringUtils.fromString(createEnvironmentRequest.getVersionLabel()));
         }
         if (createEnvironmentRequest.getTemplateName() != null) {
             request.addParameter("TemplateName", StringUtils.fromString(createEnvironmentRequest.getTemplateName()));
         }
         if (createEnvironmentRequest.getSolutionStackName() != null) {
             request.addParameter("SolutionStackName", StringUtils.fromString(createEnvironmentRequest.getSolutionStackName()));
-        }
-        if (createEnvironmentRequest.getCNAMEPrefix() != null) {
-            request.addParameter("CNAMEPrefix", StringUtils.fromString(createEnvironmentRequest.getCNAMEPrefix()));
-        }
-        if (createEnvironmentRequest.getDescription() != null) {
-            request.addParameter("Description", StringUtils.fromString(createEnvironmentRequest.getDescription()));
         }
 
         java.util.List<ConfigurationOptionSetting> optionSettingsList = createEnvironmentRequest.getOptionSettings();
@@ -98,7 +110,6 @@ public class CreateEnvironmentRequestMarshaller implements Marshaller<Request<Cr
 
             optionsToRemoveListIndex++;
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,62 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing Amazon EC2 instances.
- * </p>
+ * 
  */
-public class DescribeInstancesResult  implements Serializable  {
+public class DescribeInstancesResult implements Serializable {
 
     /**
-     * The list of reservations containing the describes instances.
+     * One or more reservations.
      */
-    private java.util.List<Reservation> reservations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Reservation> reservations;
 
     /**
-     * The list of reservations containing the describes instances.
+     * The token to use when requesting the next set of items. If there are
+     * no additional items to return, the string is empty.
+     */
+    private String nextToken;
+
+    /**
+     * One or more reservations.
      *
-     * @return The list of reservations containing the describes instances.
+     * @return One or more reservations.
      */
     public java.util.List<Reservation> getReservations() {
-        
         if (reservations == null) {
-            reservations = new java.util.ArrayList<Reservation>();
+              reservations = new com.amazonaws.internal.ListWithAutoConstructFlag<Reservation>();
+              reservations.setAutoConstruct(true);
         }
         return reservations;
     }
     
     /**
-     * The list of reservations containing the describes instances.
+     * One or more reservations.
      *
-     * @param reservations The list of reservations containing the describes instances.
+     * @param reservations One or more reservations.
      */
     public void setReservations(java.util.Collection<Reservation> reservations) {
         if (reservations == null) {
             this.reservations = null;
             return;
         }
-
-        java.util.List<Reservation> reservationsCopy = new java.util.ArrayList<Reservation>(reservations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Reservation> reservationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Reservation>(reservations.size());
         reservationsCopy.addAll(reservations);
         this.reservations = reservationsCopy;
     }
     
     /**
-     * The list of reservations containing the describes instances.
+     * One or more reservations.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservations The list of reservations containing the describes instances.
+     * @param reservations One or more reservations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesResult withReservations(Reservation... reservations) {
         if (getReservations() == null) setReservations(new java.util.ArrayList<Reservation>(reservations.length));
@@ -75,27 +79,66 @@ public class DescribeInstancesResult  implements Serializable  {
     }
     
     /**
-     * The list of reservations containing the describes instances.
+     * One or more reservations.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservations The list of reservations containing the describes instances.
+     * @param reservations One or more reservations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstancesResult withReservations(java.util.Collection<Reservation> reservations) {
         if (reservations == null) {
             this.reservations = null;
         } else {
-            java.util.List<Reservation> reservationsCopy = new java.util.ArrayList<Reservation>(reservations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Reservation> reservationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Reservation>(reservations.size());
             reservationsCopy.addAll(reservations);
             this.reservations = reservationsCopy;
         }
 
         return this;
     }
+
+    /**
+     * The token to use when requesting the next set of items. If there are
+     * no additional items to return, the string is empty.
+     *
+     * @return The token to use when requesting the next set of items. If there are
+     *         no additional items to return, the string is empty.
+     */
+    public String getNextToken() {
+        return nextToken;
+    }
     
+    /**
+     * The token to use when requesting the next set of items. If there are
+     * no additional items to return, the string is empty.
+     *
+     * @param nextToken The token to use when requesting the next set of items. If there are
+     *         no additional items to return, the string is empty.
+     */
+    public void setNextToken(String nextToken) {
+        this.nextToken = nextToken;
+    }
+    
+    /**
+     * The token to use when requesting the next set of items. If there are
+     * no additional items to return, the string is empty.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param nextToken The token to use when requesting the next set of items. If there are
+     *         no additional items to return, the string is empty.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public DescribeInstancesResult withNextToken(String nextToken) {
+        this.nextToken = nextToken;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,8 +150,9 @@ public class DescribeInstancesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReservations() != null) sb.append("Reservations: " + getReservations() );
+        sb.append("{");
+        if (getReservations() != null) sb.append("Reservations: " + getReservations() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();
     }
@@ -119,6 +163,7 @@ public class DescribeInstancesResult  implements Serializable  {
         int hashCode = 1;
         
         hashCode = prime * hashCode + ((getReservations() == null) ? 0 : getReservations().hashCode()); 
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode()); 
         return hashCode;
     }
     
@@ -132,6 +177,8 @@ public class DescribeInstancesResult  implements Serializable  {
         
         if (other.getReservations() == null ^ this.getReservations() == null) return false;
         if (other.getReservations() != null && other.getReservations().equals(this.getReservations()) == false) return false; 
+        if (other.getNextToken() == null ^ this.getNextToken() == null) return false;
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false) return false; 
         return true;
     }
     

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for a DescribeStackEvents action.
  * </p>
  */
-public class DescribeStackEventsResult  implements Serializable  {
+public class DescribeStackEventsResult implements Serializable {
 
     /**
      * A list of <code>StackEvents</code> structures.
      */
-    private java.util.List<StackEvent> stackEvents;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<StackEvent> stackEvents;
 
     /**
      * String that identifies the start of the next list of events, if there
@@ -42,9 +43,9 @@ public class DescribeStackEventsResult  implements Serializable  {
      * @return A list of <code>StackEvents</code> structures.
      */
     public java.util.List<StackEvent> getStackEvents() {
-        
         if (stackEvents == null) {
-            stackEvents = new java.util.ArrayList<StackEvent>();
+              stackEvents = new com.amazonaws.internal.ListWithAutoConstructFlag<StackEvent>();
+              stackEvents.setAutoConstruct(true);
         }
         return stackEvents;
     }
@@ -59,8 +60,7 @@ public class DescribeStackEventsResult  implements Serializable  {
             this.stackEvents = null;
             return;
         }
-
-        java.util.List<StackEvent> stackEventsCopy = new java.util.ArrayList<StackEvent>(stackEvents.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<StackEvent> stackEventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackEvent>(stackEvents.size());
         stackEventsCopy.addAll(stackEvents);
         this.stackEvents = stackEventsCopy;
     }
@@ -73,7 +73,7 @@ public class DescribeStackEventsResult  implements Serializable  {
      * @param stackEvents A list of <code>StackEvents</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackEventsResult withStackEvents(StackEvent... stackEvents) {
         if (getStackEvents() == null) setStackEvents(new java.util.ArrayList<StackEvent>(stackEvents.length));
@@ -91,20 +91,20 @@ public class DescribeStackEventsResult  implements Serializable  {
      * @param stackEvents A list of <code>StackEvents</code> structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackEventsResult withStackEvents(java.util.Collection<StackEvent> stackEvents) {
         if (stackEvents == null) {
             this.stackEvents = null;
         } else {
-            java.util.List<StackEvent> stackEventsCopy = new java.util.ArrayList<StackEvent>(stackEvents.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<StackEvent> stackEventsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<StackEvent>(stackEvents.size());
             stackEventsCopy.addAll(stackEvents);
             this.stackEvents = stackEventsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * String that identifies the start of the next list of events, if there
      * is one.
@@ -146,14 +146,13 @@ public class DescribeStackEventsResult  implements Serializable  {
      *         is one.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeStackEventsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -165,8 +164,8 @@ public class DescribeStackEventsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackEvents() != null) sb.append("StackEvents: " + getStackEvents() + ",");    	
+        sb.append("{");
+        if (getStackEvents() != null) sb.append("StackEvents: " + getStackEvents() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

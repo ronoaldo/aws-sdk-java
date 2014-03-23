@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#defineIndexField(DefineIndexFieldRequest) DefineIndexField operation}.
  * <p>
- * Configures an <code>IndexField</code> for the search domain. Used to create new fields and modify existing ones. If the field exists, the new
- * configuration replaces the old one. You can configure a maximum of 200 index fields.
+ * Configures an <code>IndexField</code> for the search domain. Used to
+ * create new fields and modify existing ones. If the field exists, the
+ * new configuration replaces the old one. You can configure a maximum of
+ * 200 index fields.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#defineIndexField(DefineIndexFieldRequest)
  */
-public class DefineIndexFieldRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DefineIndexFieldRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A string that represents the name of a domain. Domain names must be
@@ -110,14 +114,13 @@ public class DefineIndexFieldRequest extends AmazonWebServiceRequest  implements
      *         letters and underscores are not allowed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefineIndexFieldRequest withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
     }
-    
-    
+
     /**
      * Defines a field in the index, including its name, type, and the source
      * of its data. The <code>IndexFieldType</code> indicates which of the
@@ -162,14 +165,13 @@ public class DefineIndexFieldRequest extends AmazonWebServiceRequest  implements
      *         other than the <code>IndexFieldType</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DefineIndexFieldRequest withIndexField(IndexField indexField) {
         this.indexField = indexField;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -181,8 +183,8 @@ public class DefineIndexFieldRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");    	
+        sb.append("{");
+        if (getDomainName() != null) sb.append("DomainName: " + getDomainName() + ",");
         if (getIndexField() != null) sb.append("IndexField: " + getIndexField() );
         sb.append("}");
         return sb.toString();

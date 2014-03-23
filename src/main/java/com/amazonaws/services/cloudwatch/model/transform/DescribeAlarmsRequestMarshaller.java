@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,13 +33,12 @@ public class DescribeAlarmsRequestMarshaller implements Marshaller<Request<Descr
     public Request<DescribeAlarmsRequest> marshall(DescribeAlarmsRequest describeAlarmsRequest) {
 
         if (describeAlarmsRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<DescribeAlarmsRequest> request = new DefaultRequest<DescribeAlarmsRequest>(describeAlarmsRequest, "AmazonCloudWatch");
         request.addParameter("Action", "DescribeAlarms");
         request.addParameter("Version", "2010-08-01");
-
 
         java.util.List<String> alarmNamesList = describeAlarmsRequest.getAlarmNames();
         int alarmNamesListIndex = 1;
@@ -66,7 +65,6 @@ public class DescribeAlarmsRequestMarshaller implements Marshaller<Request<Descr
         if (describeAlarmsRequest.getNextToken() != null) {
             request.addParameter("NextToken", StringUtils.fromString(describeAlarmsRequest.getNextToken()));
         }
-
 
         return request;
     }

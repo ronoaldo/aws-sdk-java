@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,21 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.importexport.AmazonImportExport#cancelJob(CancelJobRequest) CancelJob operation}.
  * <p>
- * This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
+ * This operation cancels a specified job. Only the job owner can cancel
+ * it. The operation fails if the job has already started or is complete.
  * </p>
  *
  * @see com.amazonaws.services.importexport.AmazonImportExport#cancelJob(CancelJobRequest)
  */
-public class CancelJobRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CancelJobRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * A unique identifier which refers to a particular job.
@@ -57,14 +60,13 @@ public class CancelJobRequest extends AmazonWebServiceRequest  implements Serial
      * @param jobId A unique identifier which refers to a particular job.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelJobRequest withJobId(String jobId) {
         this.jobId = jobId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -76,7 +78,7 @@ public class CancelJobRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getJobId() != null) sb.append("JobId: " + getJobId() );
         sb.append("}");
         return sb.toString();

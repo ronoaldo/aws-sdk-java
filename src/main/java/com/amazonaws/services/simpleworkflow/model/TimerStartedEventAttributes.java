@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>TimerStarted</code> event.
  * </p>
  */
-public class TimerStartedEventAttributes  implements Serializable  {
+public class TimerStartedEventAttributes implements Serializable {
 
     /**
      * The unique Id of the timer that was started.
@@ -92,14 +93,13 @@ public class TimerStartedEventAttributes  implements Serializable  {
      * @param timerId The unique Id of the timer that was started.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerStartedEventAttributes withTimerId(String timerId) {
         this.timerId = timerId;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent workflow tasks.
@@ -141,14 +141,13 @@ public class TimerStartedEventAttributes  implements Serializable  {
      *         subsequent workflow tasks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerStartedEventAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * The duration of time after which the timer will fire. <p>The duration
      * is specified in seconds. The valid values are integers greater than or
@@ -196,14 +195,13 @@ public class TimerStartedEventAttributes  implements Serializable  {
      *         equal to 0.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerStartedEventAttributes withStartToFireTimeout(String startToFireTimeout) {
         this.startToFireTimeout = startToFireTimeout;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the <code>StartTimer</code>
@@ -248,14 +246,13 @@ public class TimerStartedEventAttributes  implements Serializable  {
      *         diagnosing problems by tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerStartedEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -267,10 +264,10 @@ public class TimerStartedEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimerId() != null) sb.append("TimerId: " + getTimerId() + ",");    	
-        if (getControl() != null) sb.append("Control: " + getControl() + ",");    	
-        if (getStartToFireTimeout() != null) sb.append("StartToFireTimeout: " + getStartToFireTimeout() + ",");    	
+        sb.append("{");
+        if (getTimerId() != null) sb.append("TimerId: " + getTimerId() + ",");
+        if (getControl() != null) sb.append("Control: " + getControl() + ",");
+        if (getStartToFireTimeout() != null) sb.append("StartToFireTimeout: " + getStartToFireTimeout() + ",");
         if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() );
         sb.append("}");
         return sb.toString();

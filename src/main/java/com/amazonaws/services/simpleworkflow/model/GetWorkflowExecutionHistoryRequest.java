@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,40 +13,53 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#getWorkflowExecutionHistory(GetWorkflowExecutionHistoryRequest) GetWorkflowExecutionHistory operation}.
  * <p>
- * Returns the history of the specified workflow execution. The results may be split into multiple pages. To retrieve subsequent pages, make the call
- * again using the <code>nextPageToken</code> returned by the initial call.
+ * Returns the history of the specified workflow execution. The results
+ * may be split into multiple pages. To retrieve subsequent pages, make
+ * the call again using the <code>nextPageToken</code> returned by the
+ * initial call.
  * </p>
  * <p>
- * <b>NOTE:</b> This operation is eventually consistent. The results are best effort and may not exactly reflect recent updates and changes.
+ * <b>NOTE:</b> This operation is eventually consistent. The results are
+ * best effort and may not exactly reflect recent updates and changes.
  * </p>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * You can use IAM policies to control this action's access to Amazon SWF resources as follows:
+ * You can use IAM policies to control this action's access to Amazon SWF
+ * resources as follows:
  * </p>
  * 
  * <ul>
- * <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li>
- * <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li>
- * <li>You cannot use an IAM policy to constrain this action's parameters.</li>
+ * <li>Use a <code>Resource</code> element with the domain name to limit
+ * the action to only specified domains.</li>
+ * <li>Use an <code>Action</code> element to allow or deny permission to
+ * call this action.</li>
+ * <li>You cannot use an IAM policy to constrain this action's
+ * parameters.</li>
  * 
  * </ul>
  * <p>
- * If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action
- * fails by throwing <code>OperationNotPermitted</code> . For details and example IAM policies, see <a
- * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If the caller does not have sufficient permissions to invoke the
+ * action, or the parameter values fall outside the specified
+ * constraints, the action fails by throwing
+ * <code>OperationNotPermitted</code> . For details and example IAM
+ * policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow#getWorkflowExecutionHistory(GetWorkflowExecutionHistoryRequest)
  */
-public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain containing the workflow execution.
@@ -128,14 +141,13 @@ public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest 
      * @param domain The name of the domain containing the workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetWorkflowExecutionHistoryRequest withDomain(String domain) {
         this.domain = domain;
         return this;
     }
-    
-    
+
     /**
      * Specifies the workflow execution for which to return the history.
      *
@@ -162,14 +174,13 @@ public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest 
      * @param execution Specifies the workflow execution for which to return the history.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetWorkflowExecutionHistoryRequest withExecution(WorkflowExecution execution) {
         this.execution = execution;
         return this;
     }
-    
-    
+
     /**
      * If a <code>NextPageToken</code> is returned, the result has more than
      * one pages. To get the next page, repeat the call and specify the
@@ -217,14 +228,13 @@ public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest 
      *         nextPageToken with all other arguments unchanged.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetWorkflowExecutionHistoryRequest withNextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;
         return this;
     }
-    
-    
+
     /**
      * Specifies the maximum number of history events returned in one page.
      * The next page in the result is identified by the
@@ -302,14 +312,13 @@ public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest 
      *         results than the maximumPageSize specified.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetWorkflowExecutionHistoryRequest withMaximumPageSize(Integer maximumPageSize) {
         this.maximumPageSize = maximumPageSize;
         return this;
     }
-    
-    
+
     /**
      * When set to <code>true</code>, returns the events in reverse order. By
      * default the results are returned in ascending order of the
@@ -348,14 +357,13 @@ public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest 
      *         <code>eventTimeStamp</code> of the events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public GetWorkflowExecutionHistoryRequest withReverseOrder(Boolean reverseOrder) {
         this.reverseOrder = reverseOrder;
         return this;
     }
-    
-    
+
     /**
      * When set to <code>true</code>, returns the events in reverse order. By
      * default the results are returned in ascending order of the
@@ -368,7 +376,7 @@ public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest 
     public Boolean getReverseOrder() {
         return reverseOrder;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -380,11 +388,11 @@ public class GetWorkflowExecutionHistoryRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");    	
-        if (getExecution() != null) sb.append("Execution: " + getExecution() + ",");    	
-        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");    	
-        if (getMaximumPageSize() != null) sb.append("MaximumPageSize: " + getMaximumPageSize() + ",");    	
+        sb.append("{");
+        if (getDomain() != null) sb.append("Domain: " + getDomain() + ",");
+        if (getExecution() != null) sb.append("Execution: " + getExecution() + ",");
+        if (getNextPageToken() != null) sb.append("NextPageToken: " + getNextPageToken() + ",");
+        if (getMaximumPageSize() != null) sb.append("MaximumPageSize: " + getMaximumPageSize() + ",");
         if (isReverseOrder() != null) sb.append("ReverseOrder: " + isReverseOrder() );
         sb.append("}");
         return sb.toString();

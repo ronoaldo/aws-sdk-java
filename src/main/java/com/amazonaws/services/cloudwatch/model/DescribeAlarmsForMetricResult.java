@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudwatch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for the DescribeAlarmsForMetric action.
  * </p>
  */
-public class DescribeAlarmsForMetricResult  implements Serializable  {
+public class DescribeAlarmsForMetricResult implements Serializable {
 
     /**
      * A list of information for each alarm with the specified metric.
      */
-    private java.util.List<MetricAlarm> metricAlarms;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm> metricAlarms;
 
     /**
      * A list of information for each alarm with the specified metric.
@@ -33,9 +34,9 @@ public class DescribeAlarmsForMetricResult  implements Serializable  {
      * @return A list of information for each alarm with the specified metric.
      */
     public java.util.List<MetricAlarm> getMetricAlarms() {
-        
         if (metricAlarms == null) {
-            metricAlarms = new java.util.ArrayList<MetricAlarm>();
+              metricAlarms = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm>();
+              metricAlarms.setAutoConstruct(true);
         }
         return metricAlarms;
     }
@@ -50,8 +51,7 @@ public class DescribeAlarmsForMetricResult  implements Serializable  {
             this.metricAlarms = null;
             return;
         }
-
-        java.util.List<MetricAlarm> metricAlarmsCopy = new java.util.ArrayList<MetricAlarm>(metricAlarms.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm> metricAlarmsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm>(metricAlarms.size());
         metricAlarmsCopy.addAll(metricAlarms);
         this.metricAlarms = metricAlarmsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeAlarmsForMetricResult  implements Serializable  {
      * @param metricAlarms A list of information for each alarm with the specified metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsForMetricResult withMetricAlarms(MetricAlarm... metricAlarms) {
         if (getMetricAlarms() == null) setMetricAlarms(new java.util.ArrayList<MetricAlarm>(metricAlarms.length));
@@ -82,20 +82,20 @@ public class DescribeAlarmsForMetricResult  implements Serializable  {
      * @param metricAlarms A list of information for each alarm with the specified metric.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeAlarmsForMetricResult withMetricAlarms(java.util.Collection<MetricAlarm> metricAlarms) {
         if (metricAlarms == null) {
             this.metricAlarms = null;
         } else {
-            java.util.List<MetricAlarm> metricAlarmsCopy = new java.util.ArrayList<MetricAlarm>(metricAlarms.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm> metricAlarmsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricAlarm>(metricAlarms.size());
             metricAlarmsCopy.addAll(metricAlarms);
             this.metricAlarms = metricAlarmsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeAlarmsForMetricResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMetricAlarms() != null) sb.append("MetricAlarms: " + getMetricAlarms() );
         sb.append("}");
         return sb.toString();

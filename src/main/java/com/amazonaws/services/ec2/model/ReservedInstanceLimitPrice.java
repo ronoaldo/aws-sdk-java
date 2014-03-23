@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,85 +13,162 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Reserved Instance Limit Price
+ * <p>
+ * Describes the limit price of a Reserved Instance offering.
+ * </p>
  */
-public class ReservedInstanceLimitPrice  implements Serializable  {
+public class ReservedInstanceLimitPrice implements Serializable {
 
+    /**
+     * Used for Reserved Instance Marketplace offerings. Specifies the limit
+     * price on the total order (instanceCount * price).
+     */
     private Double amount;
 
+    /**
+     * The currency in which the <code>limitPrice</code> amount is specified.
+     * At this time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
+     */
     private String currencyCode;
 
     /**
-     * Returns the value of the Amount property for this object.
+     * Used for Reserved Instance Marketplace offerings. Specifies the limit
+     * price on the total order (instanceCount * price).
      *
-     * @return The value of the Amount property for this object.
+     * @return Used for Reserved Instance Marketplace offerings. Specifies the limit
+     *         price on the total order (instanceCount * price).
      */
     public Double getAmount() {
         return amount;
     }
     
     /**
-     * Sets the value of the Amount property for this object.
+     * Used for Reserved Instance Marketplace offerings. Specifies the limit
+     * price on the total order (instanceCount * price).
      *
-     * @param amount The new value for the Amount property for this object.
+     * @param amount Used for Reserved Instance Marketplace offerings. Specifies the limit
+     *         price on the total order (instanceCount * price).
      */
     public void setAmount(Double amount) {
         this.amount = amount;
     }
     
     /**
-     * Sets the value of the Amount property for this object.
+     * Used for Reserved Instance Marketplace offerings. Specifies the limit
+     * price on the total order (instanceCount * price).
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param amount The new value for the Amount property for this object.
+     * @param amount Used for Reserved Instance Marketplace offerings. Specifies the limit
+     *         price on the total order (instanceCount * price).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ReservedInstanceLimitPrice withAmount(Double amount) {
         this.amount = amount;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the CurrencyCode property for this object.
+     * The currency in which the <code>limitPrice</code> amount is specified.
+     * At this time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
      *
-     * @return The value of the CurrencyCode property for this object.
+     * @return The currency in which the <code>limitPrice</code> amount is specified.
+     *         At this time, the only supported currency is <code>USD</code>.
+     *
+     * @see CurrencyCodeValues
      */
     public String getCurrencyCode() {
         return currencyCode;
     }
     
     /**
-     * Sets the value of the CurrencyCode property for this object.
+     * The currency in which the <code>limitPrice</code> amount is specified.
+     * At this time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
      *
-     * @param currencyCode The new value for the CurrencyCode property for this object.
+     * @param currencyCode The currency in which the <code>limitPrice</code> amount is specified.
+     *         At this time, the only supported currency is <code>USD</code>.
+     *
+     * @see CurrencyCodeValues
      */
     public void setCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
     }
     
     /**
-     * Sets the value of the CurrencyCode property for this object.
+     * The currency in which the <code>limitPrice</code> amount is specified.
+     * At this time, the only supported currency is <code>USD</code>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
      *
-     * @param currencyCode The new value for the CurrencyCode property for this object.
+     * @param currencyCode The currency in which the <code>limitPrice</code> amount is specified.
+     *         At this time, the only supported currency is <code>USD</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see CurrencyCodeValues
      */
     public ReservedInstanceLimitPrice withCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
         return this;
     }
+
+    /**
+     * The currency in which the <code>limitPrice</code> amount is specified.
+     * At this time, the only supported currency is <code>USD</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
+     *
+     * @param currencyCode The currency in which the <code>limitPrice</code> amount is specified.
+     *         At this time, the only supported currency is <code>USD</code>.
+     *
+     * @see CurrencyCodeValues
+     */
+    public void setCurrencyCode(CurrencyCodeValues currencyCode) {
+        this.currencyCode = currencyCode.toString();
+    }
     
-    
+    /**
+     * The currency in which the <code>limitPrice</code> amount is specified.
+     * At this time, the only supported currency is <code>USD</code>.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>USD
+     *
+     * @param currencyCode The currency in which the <code>limitPrice</code> amount is specified.
+     *         At this time, the only supported currency is <code>USD</code>.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see CurrencyCodeValues
+     */
+    public ReservedInstanceLimitPrice withCurrencyCode(CurrencyCodeValues currencyCode) {
+        this.currencyCode = currencyCode.toString();
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -103,8 +180,8 @@ public class ReservedInstanceLimitPrice  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAmount() != null) sb.append("Amount: " + getAmount() + ",");    	
+        sb.append("{");
+        if (getAmount() != null) sb.append("Amount: " + getAmount() + ",");
         if (getCurrencyCode() != null) sb.append("CurrencyCode: " + getCurrencyCode() );
         sb.append("}");
         return sb.toString();

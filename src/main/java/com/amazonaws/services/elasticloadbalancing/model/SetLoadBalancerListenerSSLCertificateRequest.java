@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,22 +13,30 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#setLoadBalancerListenerSSLCertificate(SetLoadBalancerListenerSSLCertificateRequest) SetLoadBalancerListenerSSLCertificate operation}.
  * <p>
- * Sets the certificate that terminates the specified listener's SSL connections. The specified certificate replaces any prior certificate that was used
- * on the same LoadBalancer and port.
+ * Sets the certificate that terminates the specified listener's SSL
+ * connections. The specified certificate replaces any prior certificate
+ * that was used on the same load balancer and port.
+ * </p>
+ * <p>
+ * For more information on updating your SSL certificate, see
+ * <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/US_UpdatingLoadBalancerSSL.html"> Updating an SSL Certificate for a Load Balancer </a>
+ * in the <i>Elastic Load Balancing Developer Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing#setLoadBalancerListenerSSLCertificate(SetLoadBalancerListenerSSLCertificateRequest)
  */
-public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name of the the LoadBalancer.
+     * The name of the load balancer.
      */
     private String loadBalancerName;
 
@@ -38,11 +46,11 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
     private Integer loadBalancerPort;
 
     /**
-     * The ID of the SSL certificate chain to use. For more information on
-     * SSL certificates, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     * Managing Server Certificates </a> in the AWS Identity and Access
-     * Management documentation.
+     * The Amazon Resource Number (ARN) of the SSL certificate chain to use.
+     * For more information on SSL certificates, see <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     * Managing Server Certificates</a> in the <i>AWS Identity and Access
+     * Management User Guide</i>.
      */
     private String sSLCertificateId;
 
@@ -57,57 +65,55 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param loadBalancerName The name of the the LoadBalancer.
+     * @param loadBalancerName The name of the load balancer.
      * @param loadBalancerPort The port that uses the specified SSL
      * certificate.
-     * @param sSLCertificateId The ID of the SSL certificate chain to use.
-     * For more information on SSL certificates, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     * Managing Server Certificates </a> in the AWS Identity and Access
-     * Management documentation.
+     * @param sSLCertificateId The Amazon Resource Number (ARN) of the SSL
+     * certificate chain to use. For more information on SSL certificates,
+     * see <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     * Managing Server Certificates</a> in the <i>AWS Identity and Access
+     * Management User Guide</i>.
      */
     public SetLoadBalancerListenerSSLCertificateRequest(String loadBalancerName, Integer loadBalancerPort, String sSLCertificateId) {
-        this.loadBalancerName = loadBalancerName;
-        this.loadBalancerPort = loadBalancerPort;
-        this.sSLCertificateId = sSLCertificateId;
+        setLoadBalancerName(loadBalancerName);
+        setLoadBalancerPort(loadBalancerPort);
+        setSSLCertificateId(sSLCertificateId);
     }
 
-    
-    
     /**
-     * The name of the the LoadBalancer.
+     * The name of the load balancer.
      *
-     * @return The name of the the LoadBalancer.
+     * @return The name of the load balancer.
      */
     public String getLoadBalancerName() {
         return loadBalancerName;
     }
     
     /**
-     * The name of the the LoadBalancer.
+     * The name of the load balancer.
      *
-     * @param loadBalancerName The name of the the LoadBalancer.
+     * @param loadBalancerName The name of the load balancer.
      */
     public void setLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
     }
     
     /**
-     * The name of the the LoadBalancer.
+     * The name of the load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param loadBalancerName The name of the the LoadBalancer.
+     * @param loadBalancerName The name of the load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerListenerSSLCertificateRequest withLoadBalancerName(String loadBalancerName) {
         this.loadBalancerName = loadBalancerName;
         return this;
     }
-    
-    
+
     /**
      * The port that uses the specified SSL certificate.
      *
@@ -134,72 +140,70 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
      * @param loadBalancerPort The port that uses the specified SSL certificate.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerListenerSSLCertificateRequest withLoadBalancerPort(Integer loadBalancerPort) {
         this.loadBalancerPort = loadBalancerPort;
         return this;
     }
-    
-    
+
     /**
-     * The ID of the SSL certificate chain to use. For more information on
-     * SSL certificates, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     * Managing Server Certificates </a> in the AWS Identity and Access
-     * Management documentation.
+     * The Amazon Resource Number (ARN) of the SSL certificate chain to use.
+     * For more information on SSL certificates, see <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     * Managing Server Certificates</a> in the <i>AWS Identity and Access
+     * Management User Guide</i>.
      *
-     * @return The ID of the SSL certificate chain to use. For more information on
-     *         SSL certificates, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     *         Managing Server Certificates </a> in the AWS Identity and Access
-     *         Management documentation.
+     * @return The Amazon Resource Number (ARN) of the SSL certificate chain to use.
+     *         For more information on SSL certificates, see <a
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     *         Managing Server Certificates</a> in the <i>AWS Identity and Access
+     *         Management User Guide</i>.
      */
     public String getSSLCertificateId() {
         return sSLCertificateId;
     }
     
     /**
-     * The ID of the SSL certificate chain to use. For more information on
-     * SSL certificates, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     * Managing Server Certificates </a> in the AWS Identity and Access
-     * Management documentation.
+     * The Amazon Resource Number (ARN) of the SSL certificate chain to use.
+     * For more information on SSL certificates, see <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     * Managing Server Certificates</a> in the <i>AWS Identity and Access
+     * Management User Guide</i>.
      *
-     * @param sSLCertificateId The ID of the SSL certificate chain to use. For more information on
-     *         SSL certificates, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     *         Managing Server Certificates </a> in the AWS Identity and Access
-     *         Management documentation.
+     * @param sSLCertificateId The Amazon Resource Number (ARN) of the SSL certificate chain to use.
+     *         For more information on SSL certificates, see <a
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     *         Managing Server Certificates</a> in the <i>AWS Identity and Access
+     *         Management User Guide</i>.
      */
     public void setSSLCertificateId(String sSLCertificateId) {
         this.sSLCertificateId = sSLCertificateId;
     }
     
     /**
-     * The ID of the SSL certificate chain to use. For more information on
-     * SSL certificates, see <a
-     * href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     * Managing Server Certificates </a> in the AWS Identity and Access
-     * Management documentation.
+     * The Amazon Resource Number (ARN) of the SSL certificate chain to use.
+     * For more information on SSL certificates, see <a
+     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     * Managing Server Certificates</a> in the <i>AWS Identity and Access
+     * Management User Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sSLCertificateId The ID of the SSL certificate chain to use. For more information on
-     *         SSL certificates, see <a
-     *         href="http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html">
-     *         Managing Server Certificates </a> in the AWS Identity and Access
-     *         Management documentation.
+     * @param sSLCertificateId The Amazon Resource Number (ARN) of the SSL certificate chain to use.
+     *         For more information on SSL certificates, see <a
+     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html">
+     *         Managing Server Certificates</a> in the <i>AWS Identity and Access
+     *         Management User Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetLoadBalancerListenerSSLCertificateRequest withSSLCertificateId(String sSLCertificateId) {
         this.sSLCertificateId = sSLCertificateId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -211,9 +215,9 @@ public class SetLoadBalancerListenerSSLCertificateRequest extends AmazonWebServi
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");    	
-        if (getLoadBalancerPort() != null) sb.append("LoadBalancerPort: " + getLoadBalancerPort() + ",");    	
+        sb.append("{");
+        if (getLoadBalancerName() != null) sb.append("LoadBalancerName: " + getLoadBalancerName() + ",");
+        if (getLoadBalancerPort() != null) sb.append("LoadBalancerPort: " + getLoadBalancerPort() + ",");
         if (getSSLCertificateId() != null) sb.append("SSLCertificateId: " + getSSLCertificateId() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@ package com.amazonaws.services.s3.transfer.internal;
 
 import java.io.IOException;
 
+import com.amazonaws.event.ProgressEvent;
+import com.amazonaws.event.ProgressListenerChain;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.transfer.Download;
@@ -29,6 +31,16 @@ public class DownloadImpl extends AbstractTransfer implements Download {
             ProgressListenerChain progressListenerChain, S3Object s3Object, TransferStateChangeListener listener) {
         super(description, transferProgress, progressListenerChain, listener);
         this.s3Object = s3Object;
+    }
+    
+    /**
+     * @deprecated Replaced by {@link #DownloadImpl(String, TransferProgress, ProgressListenerChain, S3Object, TransferStateChangeListener)}
+     */
+    @Deprecated
+    public DownloadImpl(String description, TransferProgress transferProgress,
+            com.amazonaws.services.s3.transfer.internal.ProgressListenerChain progressListenerChain, S3Object s3Object, TransferStateChangeListener listener) {
+        this(description, transferProgress, progressListenerChain.transformToGeneralProgressListenerChain(), 
+                s3Object, listener);
     }
     
     /**
@@ -64,22 +76,50 @@ public class DownloadImpl extends AbstractTransfer implements Download {
      * @throws IOException
      */
     public synchronized void abort() throws IOException {
-    	
-    	this.monitor.getFuture().cancel(true);
-    	
-    	  if ( s3Object != null ) {
+        
+        this.monitor.getFuture().cancel(true);
+        
+        if ( s3Object != null ) {
               s3Object.getObjectContent().abort();
-    	      }
+        }
         setState(TransferState.Canceled);
+    }
+    
+    /**
+     * Cancels this download, but skip notifying the state change listeners.
+     * 
+     * @throws IOException
+     */
+    public synchronized void abortWithoutNotifyingStateChangeListener() throws IOException {
+        
+        this.monitor.getFuture().cancel(true);
+        
+        if ( s3Object != null ) {
+              s3Object.getObjectContent().abort();
+        }
+        
+        synchronized (this) {
+            this.state = TransferState.Canceled;
+        }
     }
     
     /**
      *  Set the S3 object to download.
      */
     public synchronized void setS3Object(S3Object s3Object) {
-    	this.s3Object = s3Object;
+        this.s3Object = s3Object;
     }
-
-
     
+    /**
+     * This method is also responsible for firing COMPLETED signal to the
+     * listeners.
+     */
+    @Override
+    public void setState(TransferState state) {
+        super.setState(state);
+        
+        if (state == TransferState.Completed) {
+            fireProgressEvent(ProgressEvent.COMPLETED_EVENT_CODE);
+        }
+    }
 }

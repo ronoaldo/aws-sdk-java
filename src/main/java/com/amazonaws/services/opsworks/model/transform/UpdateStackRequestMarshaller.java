@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.opsworks.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateStackRequest>, UpdateStackRequest> {
 
-    
-
     public Request<UpdateStackRequest> marshall(UpdateStackRequest updateStackRequest) {
     if (updateStackRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateSt
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.1");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,14 +71,10 @@ public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateSt
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (updateStackRequest.getStackId() != null) {
@@ -118,8 +110,25 @@ public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateSt
             if (updateStackRequest.getDefaultAvailabilityZone() != null) {
                 jsonWriter.key("DefaultAvailabilityZone").value(updateStackRequest.getDefaultAvailabilityZone());
             }
+            if (updateStackRequest.getDefaultSubnetId() != null) {
+                jsonWriter.key("DefaultSubnetId").value(updateStackRequest.getDefaultSubnetId());
+            }
             if (updateStackRequest.getCustomJson() != null) {
                 jsonWriter.key("CustomJson").value(updateStackRequest.getCustomJson());
+            }
+            StackConfigurationManager configurationManager = updateStackRequest.getConfigurationManager();
+            if (configurationManager != null) {
+
+                jsonWriter.key("ConfigurationManager");
+                jsonWriter.object();
+
+                if (configurationManager.getName() != null) {
+                    jsonWriter.key("Name").value(configurationManager.getName());
+                }
+                if (configurationManager.getVersion() != null) {
+                    jsonWriter.key("Version").value(configurationManager.getVersion());
+                }
+                jsonWriter.endObject();
             }
             if (updateStackRequest.isUseCustomCookbooks() != null) {
                 jsonWriter.key("UseCustomCookbooks").value(updateStackRequest.isUseCustomCookbooks());
@@ -158,22 +167,15 @@ public class UpdateStackRequestMarshaller implements Marshaller<Request<UpdateSt
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

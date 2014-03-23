@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,29 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#queryObjects(QueryObjectsRequest) QueryObjects operation}.
  * <p>
- * Queries a pipeline for the names of objects that match a specified set of conditions.
+ * Queries a pipeline for the names of objects that match a specified set
+ * of conditions.
  * </p>
  * <p>
- * The objects returned by QueryObjects are paginated and then filtered by the value you set for query. This means the action may return an empty result
- * set with a value set for marker. If <code>HasMoreResults</code> is set to <code>True</code> , you should continue to call QueryObjects, passing in the
- * returned value for marker, until <code>HasMoreResults</code> returns <code>False</code> .
+ * The objects returned by QueryObjects are paginated and then filtered
+ * by the value you set for query. This means the action may return an
+ * empty result set with a value set for marker. If
+ * <code>HasMoreResults</code> is set to <code>True</code> , you should
+ * continue to call QueryObjects, passing in the returned value for
+ * marker, until <code>HasMoreResults</code> returns <code>False</code> .
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#queryObjects(QueryObjectsRequest)
  */
-public class QueryObjectsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class QueryObjectsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Identifier of the pipeline to be queried for object names.
@@ -116,14 +122,13 @@ public class QueryObjectsRequest extends AmazonWebServiceRequest  implements Ser
      * @param pipelineId Identifier of the pipeline to be queried for object names.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public QueryObjectsRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * Query that defines the objects to be returned. The <a>Query</a> object
      * can contain a maximum of ten selectors. The conditions in the query
@@ -168,14 +173,13 @@ public class QueryObjectsRequest extends AmazonWebServiceRequest  implements Ser
      *         can be applied to components, instances, and attempts.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public QueryObjectsRequest withQuery(Query query) {
         this.query = query;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether the query applies to components or instances.
      * Allowable values: <code>COMPONENT</code>, <code>INSTANCE</code>,
@@ -226,14 +230,13 @@ public class QueryObjectsRequest extends AmazonWebServiceRequest  implements Ser
      *         <code>ATTEMPT</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public QueryObjectsRequest withSphere(String sphere) {
         this.sphere = sphere;
         return this;
     }
-    
-    
+
     /**
      * The starting point for the results to be returned. The first time you
      * call <a>QueryObjects</a>, this value should be empty. As long as the
@@ -296,14 +299,13 @@ public class QueryObjectsRequest extends AmazonWebServiceRequest  implements Ser
      *         response to retrieve the next set of results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public QueryObjectsRequest withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * Specifies the maximum number of object names that <a>QueryObjects</a>
      * will return in a single call. The default value is 100.
@@ -336,14 +338,13 @@ public class QueryObjectsRequest extends AmazonWebServiceRequest  implements Ser
      *         will return in a single call. The default value is 100.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public QueryObjectsRequest withLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -355,11 +356,11 @@ public class QueryObjectsRequest extends AmazonWebServiceRequest  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
-        if (getQuery() != null) sb.append("Query: " + getQuery() + ",");    	
-        if (getSphere() != null) sb.append("Sphere: " + getSphere() + ",");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
+        if (getQuery() != null) sb.append("Query: " + getQuery() + ",");
+        if (getSphere() != null) sb.append("Sphere: " + getSphere() + ",");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getLimit() != null) sb.append("Limit: " + getLimit() );
         sb.append("}");
         return sb.toString();

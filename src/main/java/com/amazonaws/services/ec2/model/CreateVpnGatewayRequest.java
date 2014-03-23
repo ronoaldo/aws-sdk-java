@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,27 +13,40 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateVpnGatewayRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#createVpnGateway(CreateVpnGatewayRequest) CreateVpnGateway operation}.
  * <p>
- * Creates a new VPN gateway. A VPN gateway is the VPC-side endpoint for your VPN connection. You can create a VPN gateway before creating the VPC
- * itself.
+ * Creates a virtual private gateway. A virtual private gateway is the
+ * endpoint on the VPC side of your VPN connection. You can create a
+ * virtual private gateway before creating the VPC itself.
+ * </p>
+ * <p>
+ * For more information about virtual private gateways, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html"> Adding a Hardware Virtual Private Gateway to Your VPC </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createVpnGateway(CreateVpnGatewayRequest)
  */
-public class CreateVpnGatewayRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateVpnGatewayRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateVpnGatewayRequest> {
 
     /**
-     * The type of VPN connection this VPN gateway supports.
+     * The type of VPN connection this virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      */
     private String type;
 
     /**
-     * The Availability Zone in which to create the VPN gateway.
+     * The Availability Zone for the virtual private gateway.
      */
     private String availabilityZone;
 
@@ -48,81 +61,151 @@ public class CreateVpnGatewayRequest extends AmazonWebServiceRequest  implements
      * Callers should use the setter or fluent setter (with...) methods to
      * initialize any additional object members.
      * 
-     * @param type The type of VPN connection this VPN gateway supports.
+     * @param type The type of VPN connection this virtual private gateway
+     * supports.
      */
     public CreateVpnGatewayRequest(String type) {
-        this.type = type;
+        setType(type);
     }
 
-    
-    
     /**
-     * The type of VPN connection this VPN gateway supports.
+     * Constructs a new CreateVpnGatewayRequest object.
+     * Callers should use the setter or fluent setter (with...) methods to
+     * initialize any additional object members.
+     * 
+     * @param type The type of VPN connection this virtual private gateway
+     * supports.
+     */
+    public CreateVpnGatewayRequest(GatewayType type) {
+        this.type = type.toString();
+    }
+
+    /**
+     * The type of VPN connection this virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @return The type of VPN connection this VPN gateway supports.
+     * @return The type of VPN connection this virtual private gateway supports.
+     *
+     * @see GatewayType
      */
     public String getType() {
         return type;
     }
     
     /**
-     * The type of VPN connection this VPN gateway supports.
+     * The type of VPN connection this virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type The type of VPN connection this VPN gateway supports.
+     * @param type The type of VPN connection this virtual private gateway supports.
+     *
+     * @see GatewayType
      */
     public void setType(String type) {
         this.type = type;
     }
     
     /**
-     * The type of VPN connection this VPN gateway supports.
+     * The type of VPN connection this virtual private gateway supports.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @param type The type of VPN connection this VPN gateway supports.
+     * @param type The type of VPN connection this virtual private gateway supports.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see GatewayType
      */
     public CreateVpnGatewayRequest withType(String type) {
         this.type = type;
         return this;
     }
-    
+
+    /**
+     * The type of VPN connection this virtual private gateway supports.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
+     *
+     * @param type The type of VPN connection this virtual private gateway supports.
+     *
+     * @see GatewayType
+     */
+    public void setType(GatewayType type) {
+        this.type = type.toString();
+    }
     
     /**
-     * The Availability Zone in which to create the VPN gateway.
+     * The type of VPN connection this virtual private gateway supports.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>ipsec.1
      *
-     * @return The Availability Zone in which to create the VPN gateway.
+     * @param type The type of VPN connection this virtual private gateway supports.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see GatewayType
+     */
+    public CreateVpnGatewayRequest withType(GatewayType type) {
+        this.type = type.toString();
+        return this;
+    }
+
+    /**
+     * The Availability Zone for the virtual private gateway.
+     *
+     * @return The Availability Zone for the virtual private gateway.
      */
     public String getAvailabilityZone() {
         return availabilityZone;
     }
     
     /**
-     * The Availability Zone in which to create the VPN gateway.
+     * The Availability Zone for the virtual private gateway.
      *
-     * @param availabilityZone The Availability Zone in which to create the VPN gateway.
+     * @param availabilityZone The Availability Zone for the virtual private gateway.
      */
     public void setAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
     }
     
     /**
-     * The Availability Zone in which to create the VPN gateway.
+     * The Availability Zone for the virtual private gateway.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param availabilityZone The Availability Zone in which to create the VPN gateway.
+     * @param availabilityZone The Availability Zone for the virtual private gateway.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateVpnGatewayRequest withAvailabilityZone(String availabilityZone) {
         this.availabilityZone = availabilityZone;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateVpnGatewayRequest> getDryRunRequest() {
+        Request<CreateVpnGatewayRequest> request = new CreateVpnGatewayRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -135,8 +218,8 @@ public class CreateVpnGatewayRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
+        sb.append("{");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
         if (getAvailabilityZone() != null) sb.append("AvailabilityZone: " + getAvailabilityZone() );
         sb.append("}");
         return sb.toString();

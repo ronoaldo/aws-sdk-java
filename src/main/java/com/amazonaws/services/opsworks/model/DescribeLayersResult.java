@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Contains the response to a <code>DescribeLayers</code> request.
  * </p>
  */
-public class DescribeLayersResult  implements Serializable  {
+public class DescribeLayersResult implements Serializable {
 
     /**
      * An array of <code>Layer</code> objects that describe the layers.
      */
-    private java.util.List<Layer> layers;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Layer> layers;
 
     /**
      * An array of <code>Layer</code> objects that describe the layers.
@@ -33,9 +34,9 @@ public class DescribeLayersResult  implements Serializable  {
      * @return An array of <code>Layer</code> objects that describe the layers.
      */
     public java.util.List<Layer> getLayers() {
-        
         if (layers == null) {
-            layers = new java.util.ArrayList<Layer>();
+              layers = new com.amazonaws.internal.ListWithAutoConstructFlag<Layer>();
+              layers.setAutoConstruct(true);
         }
         return layers;
     }
@@ -50,8 +51,7 @@ public class DescribeLayersResult  implements Serializable  {
             this.layers = null;
             return;
         }
-
-        java.util.List<Layer> layersCopy = new java.util.ArrayList<Layer>(layers.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Layer> layersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Layer>(layers.size());
         layersCopy.addAll(layers);
         this.layers = layersCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeLayersResult  implements Serializable  {
      * @param layers An array of <code>Layer</code> objects that describe the layers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLayersResult withLayers(Layer... layers) {
         if (getLayers() == null) setLayers(new java.util.ArrayList<Layer>(layers.length));
@@ -82,20 +82,20 @@ public class DescribeLayersResult  implements Serializable  {
      * @param layers An array of <code>Layer</code> objects that describe the layers.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLayersResult withLayers(java.util.Collection<Layer> layers) {
         if (layers == null) {
             this.layers = null;
         } else {
-            java.util.List<Layer> layersCopy = new java.util.ArrayList<Layer>(layers.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Layer> layersCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Layer>(layers.size());
             layersCopy.addAll(layers);
             this.layers = layersCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeLayersResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getLayers() != null) sb.append("Layers: " + getLayers() );
         sb.append("}");
         return sb.toString();

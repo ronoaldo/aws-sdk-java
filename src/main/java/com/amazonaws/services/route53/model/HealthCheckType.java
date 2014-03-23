@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,6 +20,9 @@ package com.amazonaws.services.route53.model;
 public enum HealthCheckType {
     
     HTTP("HTTP"),
+    HTTPS("HTTPS"),
+    HTTP_STR_MATCH("HTTP_STR_MATCH"),
+    HTTPS_STR_MATCH("HTTPS_STR_MATCH"),
     TCP("TCP");
 
     private String value;
@@ -46,6 +49,12 @@ public enum HealthCheckType {
         
         } else if ("HTTP".equals(value)) {
             return HealthCheckType.HTTP;
+        } else if ("HTTPS".equals(value)) {
+            return HealthCheckType.HTTPS;
+        } else if ("HTTP_STR_MATCH".equals(value)) {
+            return HealthCheckType.HTTP_STR_MATCH;
+        } else if ("HTTPS_STR_MATCH".equals(value)) {
+            return HealthCheckType.HTTPS_STR_MATCH;
         } else if ("TCP".equals(value)) {
             return HealthCheckType.TCP;
         } else {

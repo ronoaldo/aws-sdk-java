@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,72 +13,59 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Returns the objects or data listed below if successful. Otherwise, returns an error.
+ * Contains the following objects or data if successful. Otherwise,
+ * returns an error.
  * </p>
  */
-public class DescribeTrustedAdvisorChecksResult  implements Serializable  {
+public class DescribeTrustedAdvisorChecksResult implements Serializable {
 
     /**
-     * List of the checks returned by calling <a
-     * href="API_DescribeTrustedAdvisorChecks.html"
-     * title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * Information about all available Trusted Advisor checks.
      */
-    private java.util.List<TrustedAdvisorCheckDescription> checks;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckDescription> checks;
 
     /**
-     * List of the checks returned by calling <a
-     * href="API_DescribeTrustedAdvisorChecks.html"
-     * title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * Information about all available Trusted Advisor checks.
      *
-     * @return List of the checks returned by calling <a
-     *         href="API_DescribeTrustedAdvisorChecks.html"
-     *         title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * @return Information about all available Trusted Advisor checks.
      */
     public java.util.List<TrustedAdvisorCheckDescription> getChecks() {
-        
         if (checks == null) {
-            checks = new java.util.ArrayList<TrustedAdvisorCheckDescription>();
+              checks = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckDescription>();
+              checks.setAutoConstruct(true);
         }
         return checks;
     }
     
     /**
-     * List of the checks returned by calling <a
-     * href="API_DescribeTrustedAdvisorChecks.html"
-     * title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * Information about all available Trusted Advisor checks.
      *
-     * @param checks List of the checks returned by calling <a
-     *         href="API_DescribeTrustedAdvisorChecks.html"
-     *         title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * @param checks Information about all available Trusted Advisor checks.
      */
     public void setChecks(java.util.Collection<TrustedAdvisorCheckDescription> checks) {
         if (checks == null) {
             this.checks = null;
             return;
         }
-
-        java.util.List<TrustedAdvisorCheckDescription> checksCopy = new java.util.ArrayList<TrustedAdvisorCheckDescription>(checks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckDescription> checksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckDescription>(checks.size());
         checksCopy.addAll(checks);
         this.checks = checksCopy;
     }
     
     /**
-     * List of the checks returned by calling <a
-     * href="API_DescribeTrustedAdvisorChecks.html"
-     * title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * Information about all available Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param checks List of the checks returned by calling <a
-     *         href="API_DescribeTrustedAdvisorChecks.html"
-     *         title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * @param checks Information about all available Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorChecksResult withChecks(TrustedAdvisorCheckDescription... checks) {
         if (getChecks() == null) setChecks(new java.util.ArrayList<TrustedAdvisorCheckDescription>(checks.length));
@@ -89,31 +76,27 @@ public class DescribeTrustedAdvisorChecksResult  implements Serializable  {
     }
     
     /**
-     * List of the checks returned by calling <a
-     * href="API_DescribeTrustedAdvisorChecks.html"
-     * title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * Information about all available Trusted Advisor checks.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param checks List of the checks returned by calling <a
-     *         href="API_DescribeTrustedAdvisorChecks.html"
-     *         title="DescribeTrustedAdvisorChecks">DescribeTrustedAdvisorChecks</a>
+     * @param checks Information about all available Trusted Advisor checks.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeTrustedAdvisorChecksResult withChecks(java.util.Collection<TrustedAdvisorCheckDescription> checks) {
         if (checks == null) {
             this.checks = null;
         } else {
-            java.util.List<TrustedAdvisorCheckDescription> checksCopy = new java.util.ArrayList<TrustedAdvisorCheckDescription>(checks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckDescription> checksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<TrustedAdvisorCheckDescription>(checks.size());
             checksCopy.addAll(checks);
             this.checks = checksCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -125,7 +108,7 @@ public class DescribeTrustedAdvisorChecksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getChecks() != null) sb.append("Checks: " + getChecks() );
         sb.append("}");
         return sb.toString();

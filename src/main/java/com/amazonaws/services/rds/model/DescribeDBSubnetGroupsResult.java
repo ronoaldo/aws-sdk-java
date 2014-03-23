@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the result of a successful invocation of the DescribeDBSubnetGroups action.
+ * Contains the result of a successful invocation of the
+ * DescribeDBSubnetGroups action.
  * </p>
  */
-public class DescribeDBSubnetGroupsResult  implements Serializable  {
+public class DescribeDBSubnetGroupsResult implements Serializable {
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -32,7 +34,7 @@ public class DescribeDBSubnetGroupsResult  implements Serializable  {
     /**
      * A list of <a>DBSubnetGroup</a> instances.
      */
-    private java.util.List<DBSubnetGroup> dBSubnetGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<DBSubnetGroup> dBSubnetGroups;
 
     /**
      * An optional pagination token provided by a previous request. If this
@@ -72,23 +74,22 @@ public class DescribeDBSubnetGroupsResult  implements Serializable  {
      *         marker, up to the value specified by <code>MaxRecords</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSubnetGroupsResult withMarker(String marker) {
         this.marker = marker;
         return this;
     }
-    
-    
+
     /**
      * A list of <a>DBSubnetGroup</a> instances.
      *
      * @return A list of <a>DBSubnetGroup</a> instances.
      */
     public java.util.List<DBSubnetGroup> getDBSubnetGroups() {
-        
         if (dBSubnetGroups == null) {
-            dBSubnetGroups = new java.util.ArrayList<DBSubnetGroup>();
+              dBSubnetGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSubnetGroup>();
+              dBSubnetGroups.setAutoConstruct(true);
         }
         return dBSubnetGroups;
     }
@@ -103,8 +104,7 @@ public class DescribeDBSubnetGroupsResult  implements Serializable  {
             this.dBSubnetGroups = null;
             return;
         }
-
-        java.util.List<DBSubnetGroup> dBSubnetGroupsCopy = new java.util.ArrayList<DBSubnetGroup>(dBSubnetGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<DBSubnetGroup> dBSubnetGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSubnetGroup>(dBSubnetGroups.size());
         dBSubnetGroupsCopy.addAll(dBSubnetGroups);
         this.dBSubnetGroups = dBSubnetGroupsCopy;
     }
@@ -117,7 +117,7 @@ public class DescribeDBSubnetGroupsResult  implements Serializable  {
      * @param dBSubnetGroups A list of <a>DBSubnetGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSubnetGroupsResult withDBSubnetGroups(DBSubnetGroup... dBSubnetGroups) {
         if (getDBSubnetGroups() == null) setDBSubnetGroups(new java.util.ArrayList<DBSubnetGroup>(dBSubnetGroups.length));
@@ -135,20 +135,20 @@ public class DescribeDBSubnetGroupsResult  implements Serializable  {
      * @param dBSubnetGroups A list of <a>DBSubnetGroup</a> instances.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDBSubnetGroupsResult withDBSubnetGroups(java.util.Collection<DBSubnetGroup> dBSubnetGroups) {
         if (dBSubnetGroups == null) {
             this.dBSubnetGroups = null;
         } else {
-            java.util.List<DBSubnetGroup> dBSubnetGroupsCopy = new java.util.ArrayList<DBSubnetGroup>(dBSubnetGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<DBSubnetGroup> dBSubnetGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<DBSubnetGroup>(dBSubnetGroups.size());
             dBSubnetGroupsCopy.addAll(dBSubnetGroups);
             this.dBSubnetGroups = dBSubnetGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -160,8 +160,8 @@ public class DescribeDBSubnetGroupsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");    	
+        sb.append("{");
+        if (getMarker() != null) sb.append("Marker: " + getMarker() + ",");
         if (getDBSubnetGroups() != null) sb.append("DBSubnetGroups: " + getDBSubnetGroups() );
         sb.append("}");
         return sb.toString();

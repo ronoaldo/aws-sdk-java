@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.amazonaws.transform.MapEntry;
 import com.amazonaws.transform.StaxUnmarshallerContext;
 import com.amazonaws.transform.SimpleTypeStaxUnmarshallers.*;
 
-
 /**
  * Cache Node StAX Unmarshaller
  */
@@ -37,9 +36,7 @@ public class CacheNodeStaxUnmarshaller implements Unmarshaller<CacheNode, StaxUn
         int originalDepth = context.getCurrentDepth();
         int targetDepth = originalDepth + 1;
 
-        
         if (context.isStartOfDocument()) targetDepth += 2;
-        
 
         while (true) {
             XMLEvent xmlEvent = context.nextEvent();
@@ -64,6 +61,10 @@ public class CacheNodeStaxUnmarshaller implements Unmarshaller<CacheNode, StaxUn
                 }
                 if (context.testExpression("ParameterGroupStatus", targetDepth)) {
                     cacheNode.setParameterGroupStatus(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("SourceCacheNodeId", targetDepth)) {
+                    cacheNode.setSourceCacheNodeId(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

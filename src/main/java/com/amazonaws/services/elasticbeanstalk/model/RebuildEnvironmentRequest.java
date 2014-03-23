@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#rebuildEnvironment(RebuildEnvironmentRequest) RebuildEnvironment operation}.
  * <p>
- * Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc.) for a specified environment and forces a
- * restart.
+ * Deletes and recreates all of the AWS resources (for example: the Auto
+ * Scaling group, load balancer, etc.) for a specified environment and
+ * forces a restart.
  * </p>
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#rebuildEnvironment(RebuildEnvironmentRequest)
  */
-public class RebuildEnvironmentRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class RebuildEnvironmentRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The ID of the environment to rebuild. <p> Condition: You must specify
@@ -96,14 +99,13 @@ public class RebuildEnvironmentRequest extends AmazonWebServiceRequest  implemen
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RebuildEnvironmentRequest withEnvironmentId(String environmentId) {
         this.environmentId = environmentId;
         return this;
     }
-    
-    
+
     /**
      * The name of the environment to rebuild. <p> Condition: You must
      * specify either this or an EnvironmentId, or both. If you do not
@@ -157,14 +159,13 @@ public class RebuildEnvironmentRequest extends AmazonWebServiceRequest  implemen
      *         <code>MissingRequiredParameter</code> error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public RebuildEnvironmentRequest withEnvironmentName(String environmentName) {
         this.environmentName = environmentName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -176,8 +177,8 @@ public class RebuildEnvironmentRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");    	
+        sb.append("{");
+        if (getEnvironmentId() != null) sb.append("EnvironmentId: " + getEnvironmentId() + ",");
         if (getEnvironmentName() != null) sb.append("EnvironmentName: " + getEnvironmentName() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,35 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.BundleInstanceRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#bundleInstance(BundleInstanceRequest) BundleInstance operation}.
  * <p>
- * The BundleInstance operation request that an instance is bundled the next time it boots. The bundling process creates a new image from a running
- * instance and stores the AMI data in S3. Once bundled, the image must be registered in the normal way using the RegisterImage API.
+ * Bundles an Amazon instance store-backed Windows instance.
+ * </p>
+ * <p>
+ * During bundling, only the root device volume (C:\) is bundled. Data on
+ * other instance store volumes is not preserved.
+ * </p>
+ * <p>
+ * <b>NOTE:</b> This procedure is not applicable for Linux/Unix instances
+ * or Windows instances that are backed by Amazon EBS.
+ * </p>
+ * <p>
+ * For more information, see
+ * <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_InstanceStoreBacked_WinAMI.html"> Creating an Instance Store-Backed Windows AMI </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#bundleInstance(BundleInstanceRequest)
  */
-public class BundleInstanceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class BundleInstanceRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<BundleInstanceRequest> {
 
     /**
      * The ID of the instance to bundle.
@@ -33,7 +49,10 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest  implements S
     private String instanceId;
 
     /**
-     * 
+     * The bucket in which to store the AMI. You can specify a bucket that
+     * you already own or a new bucket that Amazon EC2 creates on your
+     * behalf. If you specify a bucket that belongs to someone else, Amazon
+     * EC2 returns an error.
      */
     private Storage storage;
 
@@ -49,15 +68,16 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest  implements S
      * initialize any additional object members.
      * 
      * @param instanceId The ID of the instance to bundle.
-     * @param storage
+     * @param storage The bucket in which to store the AMI. You can specify a
+     * bucket that you already own or a new bucket that Amazon EC2 creates on
+     * your behalf. If you specify a bucket that belongs to someone else,
+     * Amazon EC2 returns an error.
      */
     public BundleInstanceRequest(String instanceId, Storage storage) {
-        this.instanceId = instanceId;
-        this.storage = storage;
+        setInstanceId(instanceId);
+        setStorage(storage);
     }
 
-    
-    
     /**
      * The ID of the instance to bundle.
      *
@@ -84,47 +104,75 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest  implements S
      * @param instanceId The ID of the instance to bundle.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleInstanceRequest withInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
     }
-    
-    
+
     /**
-     * 
+     * The bucket in which to store the AMI. You can specify a bucket that
+     * you already own or a new bucket that Amazon EC2 creates on your
+     * behalf. If you specify a bucket that belongs to someone else, Amazon
+     * EC2 returns an error.
      *
-     * @return 
+     * @return The bucket in which to store the AMI. You can specify a bucket that
+     *         you already own or a new bucket that Amazon EC2 creates on your
+     *         behalf. If you specify a bucket that belongs to someone else, Amazon
+     *         EC2 returns an error.
      */
     public Storage getStorage() {
         return storage;
     }
     
     /**
-     * 
+     * The bucket in which to store the AMI. You can specify a bucket that
+     * you already own or a new bucket that Amazon EC2 creates on your
+     * behalf. If you specify a bucket that belongs to someone else, Amazon
+     * EC2 returns an error.
      *
-     * @param storage 
+     * @param storage The bucket in which to store the AMI. You can specify a bucket that
+     *         you already own or a new bucket that Amazon EC2 creates on your
+     *         behalf. If you specify a bucket that belongs to someone else, Amazon
+     *         EC2 returns an error.
      */
     public void setStorage(Storage storage) {
         this.storage = storage;
     }
     
     /**
-     * 
+     * The bucket in which to store the AMI. You can specify a bucket that
+     * you already own or a new bucket that Amazon EC2 creates on your
+     * behalf. If you specify a bucket that belongs to someone else, Amazon
+     * EC2 returns an error.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param storage 
+     * @param storage The bucket in which to store the AMI. You can specify a bucket that
+     *         you already own or a new bucket that Amazon EC2 creates on your
+     *         behalf. If you specify a bucket that belongs to someone else, Amazon
+     *         EC2 returns an error.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public BundleInstanceRequest withStorage(Storage storage) {
         this.storage = storage;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<BundleInstanceRequest> getDryRunRequest() {
+        Request<BundleInstanceRequest> request = new BundleInstanceRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -137,8 +185,8 @@ public class BundleInstanceRequest extends AmazonWebServiceRequest  implements S
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");    	
+        sb.append("{");
+        if (getInstanceId() != null) sb.append("InstanceId: " + getInstanceId() + ",");
         if (getStorage() != null) sb.append("Storage: " + getStorage() );
         sb.append("}");
         return sb.toString();

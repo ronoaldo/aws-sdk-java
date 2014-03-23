@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudsearch.AmazonCloudSearch#describeDomains(DescribeDomainsRequest) DescribeDomains operation}.
  * <p>
- * Gets information about the search domains owned by this account. Can be limited to specific domains. Shows all domains by default.
+ * Gets information about the search domains owned by this account. Can
+ * be limited to specific domains. Shows all domains by default.
  * </p>
  *
  * @see com.amazonaws.services.cloudsearch.AmazonCloudSearch#describeDomains(DescribeDomainsRequest)
  */
-public class DescribeDomainsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDomainsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * Limits the DescribeDomains response to the specified search domains.
      */
-    private java.util.List<String> domainNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> domainNames;
 
     /**
      * Limits the DescribeDomains response to the specified search domains.
@@ -37,9 +40,9 @@ public class DescribeDomainsRequest extends AmazonWebServiceRequest  implements 
      * @return Limits the DescribeDomains response to the specified search domains.
      */
     public java.util.List<String> getDomainNames() {
-        
         if (domainNames == null) {
-            domainNames = new java.util.ArrayList<String>();
+              domainNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              domainNames.setAutoConstruct(true);
         }
         return domainNames;
     }
@@ -54,8 +57,7 @@ public class DescribeDomainsRequest extends AmazonWebServiceRequest  implements 
             this.domainNames = null;
             return;
         }
-
-        java.util.List<String> domainNamesCopy = new java.util.ArrayList<String>(domainNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> domainNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domainNames.size());
         domainNamesCopy.addAll(domainNames);
         this.domainNames = domainNamesCopy;
     }
@@ -68,7 +70,7 @@ public class DescribeDomainsRequest extends AmazonWebServiceRequest  implements 
      * @param domainNames Limits the DescribeDomains response to the specified search domains.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDomainsRequest withDomainNames(String... domainNames) {
         if (getDomainNames() == null) setDomainNames(new java.util.ArrayList<String>(domainNames.length));
@@ -86,20 +88,20 @@ public class DescribeDomainsRequest extends AmazonWebServiceRequest  implements 
      * @param domainNames Limits the DescribeDomains response to the specified search domains.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDomainsRequest withDomainNames(java.util.Collection<String> domainNames) {
         if (domainNames == null) {
             this.domainNames = null;
         } else {
-            java.util.List<String> domainNamesCopy = new java.util.ArrayList<String>(domainNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> domainNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domainNames.size());
             domainNamesCopy.addAll(domainNames);
             this.domainNames = domainNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +113,7 @@ public class DescribeDomainsRequest extends AmazonWebServiceRequest  implements 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDomainNames() != null) sb.append("DomainNames: " + getDomainNames() );
         sb.append("}");
         return sb.toString();

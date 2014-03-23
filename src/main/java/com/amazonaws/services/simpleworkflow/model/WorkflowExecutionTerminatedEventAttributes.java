@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>WorkflowExecutionTerminated</code> event.
+ * Provides details of the <code>WorkflowExecutionTerminated</code>
+ * event.
  * </p>
  */
-public class WorkflowExecutionTerminatedEventAttributes  implements Serializable  {
+public class WorkflowExecutionTerminatedEventAttributes implements Serializable {
 
     /**
      * The reason provided for the termination (if any).
@@ -100,14 +102,13 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
      * @param reason The reason provided for the termination (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionTerminatedEventAttributes withReason(String reason) {
         this.reason = reason;
         return this;
     }
-    
-    
+
     /**
      * The details provided for the termination (if any).
      * <p>
@@ -143,14 +144,13 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
      * @param details The details provided for the termination (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public WorkflowExecutionTerminatedEventAttributes withDetails(String details) {
         this.details = details;
         return this;
     }
-    
-    
+
     /**
      * The policy used for the child workflow executions of this workflow
      * execution. The supported child policies are: <ul>
@@ -238,7 +238,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -246,8 +246,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * The policy used for the child workflow executions of this workflow
      * execution. The supported child policies are: <ul>
@@ -305,7 +304,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
      *         will be taken. The child executions will continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -313,7 +312,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * If set, indicates that the workflow execution was automatically
      * terminated, and specifies the cause. This happens if the parent
@@ -371,7 +370,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
      *         set to terminate child executions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see WorkflowExecutionTerminatedCause
      */
@@ -379,8 +378,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
         this.cause = cause;
         return this;
     }
-    
-    
+
     /**
      * If set, indicates that the workflow execution was automatically
      * terminated, and specifies the cause. This happens if the parent
@@ -418,7 +416,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
      *         set to terminate child executions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see WorkflowExecutionTerminatedCause
      */
@@ -426,7 +424,7 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
         this.cause = cause.toString();
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -438,10 +436,10 @@ public class WorkflowExecutionTerminatedEventAttributes  implements Serializable
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getReason() != null) sb.append("Reason: " + getReason() + ",");    	
-        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");    	
-        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");    	
+        sb.append("{");
+        if (getReason() != null) sb.append("Reason: " + getReason() + ",");
+        if (getDetails() != null) sb.append("Details: " + getDetails() + ",");
+        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");
         if (getCause() != null) sb.append("Cause: " + getCause() );
         sb.append("}");
         return sb.toString();

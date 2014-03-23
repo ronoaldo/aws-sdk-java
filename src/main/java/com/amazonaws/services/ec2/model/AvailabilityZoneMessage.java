@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,49 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Availability Zone Message
+ * <p>
+ * Describes a message about an Availability Zone.
+ * </p>
  */
-public class AvailabilityZoneMessage  implements Serializable  {
+public class AvailabilityZoneMessage implements Serializable {
 
+    /**
+     * The message about the Availability Zone.
+     */
     private String message;
 
     /**
-     * Returns the value of the Message property for this object.
+     * The message about the Availability Zone.
      *
-     * @return The value of the Message property for this object.
+     * @return The message about the Availability Zone.
      */
     public String getMessage() {
         return message;
     }
     
     /**
-     * Sets the value of the Message property for this object.
+     * The message about the Availability Zone.
      *
-     * @param message The new value for the Message property for this object.
+     * @param message The message about the Availability Zone.
      */
     public void setMessage(String message) {
         this.message = message;
     }
     
     /**
-     * Sets the value of the Message property for this object.
+     * The message about the Availability Zone.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param message The new value for the Message property for this object.
+     * @param message The message about the Availability Zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AvailabilityZoneMessage withMessage(String message) {
         this.message = message;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -67,7 +72,7 @@ public class AvailabilityZoneMessage  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getMessage() != null) sb.append("Message: " + getMessage() );
         sb.append("}");
         return sb.toString();

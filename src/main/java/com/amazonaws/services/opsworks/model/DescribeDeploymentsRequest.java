@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeDeployments(DescribeDeploymentsRequest) DescribeDeployments operation}.
  * <p>
  * Requests a description of a specified set of deployments.
  * </p>
+ * <p>
+ * <b>NOTE:</b>You must specify at least one of the parameters.
+ * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Show, Deploy, or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeDeployments(DescribeDeploymentsRequest)
  */
-public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeDeploymentsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The stack ID. If you include this parameter,
@@ -46,7 +59,7 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
      * the specified deployments. Otherwise, it returns a description of
      * every deployment.
      */
-    private java.util.List<String> deploymentIds;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> deploymentIds;
 
     /**
      * The stack ID. If you include this parameter,
@@ -86,14 +99,13 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
      *         associated with the specified stack.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDeploymentsRequest withStackId(String stackId) {
         this.stackId = stackId;
         return this;
     }
-    
-    
+
     /**
      * The app ID. If you include this parameter,
      * <code>DescribeDeployments</code> returns a description of the commands
@@ -132,14 +144,13 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
      *         associated with the specified app.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDeploymentsRequest withAppId(String appId) {
         this.appId = appId;
         return this;
     }
-    
-    
+
     /**
      * An array of deployment IDs to be described. If you include this
      * parameter, <code>DescribeDeployments</code> returns a description of
@@ -152,9 +163,9 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
      *         every deployment.
      */
     public java.util.List<String> getDeploymentIds() {
-        
         if (deploymentIds == null) {
-            deploymentIds = new java.util.ArrayList<String>();
+              deploymentIds = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              deploymentIds.setAutoConstruct(true);
         }
         return deploymentIds;
     }
@@ -175,8 +186,7 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
             this.deploymentIds = null;
             return;
         }
-
-        java.util.List<String> deploymentIdsCopy = new java.util.ArrayList<String>(deploymentIds.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> deploymentIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(deploymentIds.size());
         deploymentIdsCopy.addAll(deploymentIds);
         this.deploymentIds = deploymentIdsCopy;
     }
@@ -195,7 +205,7 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
      *         every deployment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDeploymentsRequest withDeploymentIds(String... deploymentIds) {
         if (getDeploymentIds() == null) setDeploymentIds(new java.util.ArrayList<String>(deploymentIds.length));
@@ -219,20 +229,20 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
      *         every deployment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeDeploymentsRequest withDeploymentIds(java.util.Collection<String> deploymentIds) {
         if (deploymentIds == null) {
             this.deploymentIds = null;
         } else {
-            java.util.List<String> deploymentIdsCopy = new java.util.ArrayList<String>(deploymentIds.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> deploymentIdsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(deploymentIds.size());
             deploymentIdsCopy.addAll(deploymentIds);
             this.deploymentIds = deploymentIdsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -244,9 +254,9 @@ public class DescribeDeploymentsRequest extends AmazonWebServiceRequest  impleme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");    	
-        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");    	
+        sb.append("{");
+        if (getStackId() != null) sb.append("StackId: " + getStackId() + ",");
+        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");
         if (getDeploymentIds() != null) sb.append("DeploymentIds: " + getDeploymentIds() );
         sb.append("}");
         return sb.toString();

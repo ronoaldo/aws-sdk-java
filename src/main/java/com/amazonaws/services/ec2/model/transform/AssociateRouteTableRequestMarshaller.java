@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,12 +33,12 @@ public class AssociateRouteTableRequestMarshaller implements Marshaller<Request<
     public Request<AssociateRouteTableRequest> marshall(AssociateRouteTableRequest associateRouteTableRequest) {
 
         if (associateRouteTableRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<AssociateRouteTableRequest> request = new DefaultRequest<AssociateRouteTableRequest>(associateRouteTableRequest, "AmazonEC2");
         request.addParameter("Action", "AssociateRouteTable");
-        request.addParameter("Version", "2013-02-01");
+        request.addParameter("Version", "2013-10-15");
 
         if (associateRouteTableRequest.getSubnetId() != null) {
             request.addParameter("SubnetId", StringUtils.fromString(associateRouteTableRequest.getSubnetId()));
@@ -46,7 +46,6 @@ public class AssociateRouteTableRequestMarshaller implements Marshaller<Request<
         if (associateRouteTableRequest.getRouteTableId() != null) {
             request.addParameter("RouteTableId", StringUtils.fromString(associateRouteTableRequest.getRouteTableId()));
         }
-
 
         return request;
     }

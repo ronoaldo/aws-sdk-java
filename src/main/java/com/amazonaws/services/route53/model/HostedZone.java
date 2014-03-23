@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that contain information about the specified hosted zone.
+ * A complex type that contain information about the specified hosted
+ * zone.
  * </p>
  */
-public class HostedZone  implements Serializable  {
+public class HostedZone implements Serializable {
 
     /**
      * The ID of the specified hosted zone.
@@ -89,13 +91,11 @@ public class HostedZone  implements Serializable  {
      * create the hosted zone.
      */
     public HostedZone(String id, String name, String callerReference) {
-        this.id = id;
-        this.name = name;
-        this.callerReference = callerReference;
+        setId(id);
+        setName(name);
+        setCallerReference(callerReference);
     }
 
-    
-    
     /**
      * The ID of the specified hosted zone.
      * <p>
@@ -131,14 +131,13 @@ public class HostedZone  implements Serializable  {
      * @param id The ID of the specified hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HostedZone withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The name of the domain. This must be a fully-specified domain, for
      * example, www.example.com. The trailing dot is optional; Route 53
@@ -222,14 +221,13 @@ public class HostedZone  implements Serializable  {
      *         <code>DelegationSet</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HostedZone withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A unique string that identifies the request to create the hosted zone.
      * <p>
@@ -265,14 +263,13 @@ public class HostedZone  implements Serializable  {
      * @param callerReference A unique string that identifies the request to create the hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HostedZone withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains the <code>Comment</code> element.
      *
@@ -299,14 +296,13 @@ public class HostedZone  implements Serializable  {
      * @param config A complex type that contains the <code>Comment</code> element.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HostedZone withConfig(HostedZoneConfig config) {
         this.config = config;
         return this;
     }
-    
-    
+
     /**
      * Total number of resource record sets in the hosted zone.
      *
@@ -333,14 +329,13 @@ public class HostedZone  implements Serializable  {
      * @param resourceRecordSetCount Total number of resource record sets in the hosted zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public HostedZone withResourceRecordSetCount(Long resourceRecordSetCount) {
         this.resourceRecordSetCount = resourceRecordSetCount;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -352,11 +347,11 @@ public class HostedZone  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");    	
-        if (getConfig() != null) sb.append("Config: " + getConfig() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");
+        if (getConfig() != null) sb.append("Config: " + getConfig() + ",");
         if (getResourceRecordSetCount() != null) sb.append("ResourceRecordSetCount: " + getResourceRecordSetCount() );
         sb.append("}");
         return sb.toString();

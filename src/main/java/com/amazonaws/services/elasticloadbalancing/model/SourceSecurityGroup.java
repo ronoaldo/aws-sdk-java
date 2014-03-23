@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,17 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * This data type is used as a response element in the DescribeLoadBalancers action. For information about Elastic Load Balancing security groups, go to
- * <a href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-features.html#using-elb-security-groups"> Using
- * Security Groups With Elastic Load Balancing </a> in the <i>Elastic Load Balancing Developer Guide</i> .
+ * This data type is used as a response element in the
+ * DescribeLoadBalancers action. For information about Elastic Load
+ * Balancing security groups, go to
+ * <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-features.html#using-elb-security-groups"> Using Security Groups With Elastic Load Balancing </a>
+ * in the <i>Elastic Load Balancing Developer Guide</i> .
  * 
  * </p>
  */
-public class SourceSecurityGroup  implements Serializable  {
+public class SourceSecurityGroup implements Serializable {
 
     /**
      * Owner of the source security group. Use this value for the
@@ -85,14 +88,13 @@ public class SourceSecurityGroup  implements Serializable  {
      *         tool.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceSecurityGroup withOwnerAlias(String ownerAlias) {
         this.ownerAlias = ownerAlias;
         return this;
     }
-    
-    
+
     /**
      * Name of the source security group. Use this value for the
      * <code>--source-group</code> parameter of the
@@ -137,14 +139,13 @@ public class SourceSecurityGroup  implements Serializable  {
      *         tool.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceSecurityGroup withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -156,8 +157,8 @@ public class SourceSecurityGroup  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");    	
+        sb.append("{");
+        if (getOwnerAlias() != null) sb.append("OwnerAlias: " + getOwnerAlias() + ",");
         if (getGroupName() != null) sb.append("GroupName: " + getGroupName() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,24 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.rds.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.rds.AmazonRDS#describeEventCategories(DescribeEventCategoriesRequest) DescribeEventCategories operation}.
  * <p>
- * Displays a list of categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories
- * and source types in the <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html"> Events </a> topic in the Amazon RDS User
- * Guide.
+ * Displays a list of categories for all event source types, or, if
+ * specified, for a specified source type. You can see a list of the
+ * event categories and source types in the
+ * <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html"> Events </a>
+ * topic in the Amazon RDS User Guide.
  * </p>
  *
  * @see com.amazonaws.services.rds.AmazonRDS#describeEventCategories(DescribeEventCategoriesRequest)
  */
-public class DescribeEventCategoriesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeEventCategoriesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The type of source that will be generating the events. <p>Valid
@@ -73,14 +77,13 @@ public class DescribeEventCategoriesRequest extends AmazonWebServiceRequest  imp
      *         db-snapshot
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeEventCategoriesRequest withSourceType(String sourceType) {
         this.sourceType = sourceType;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -92,7 +95,7 @@ public class DescribeEventCategoriesRequest extends AmazonWebServiceRequest  imp
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSourceType() != null) sb.append("SourceType: " + getSourceType() );
         sb.append("}");
         return sb.toString();

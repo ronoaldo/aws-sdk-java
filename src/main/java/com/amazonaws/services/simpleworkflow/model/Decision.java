@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,45 +13,75 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Specifies a decision made by the decider. A decision can be one of these types:
+ * Specifies a decision made by the decider. A decision can be one of
+ * these types:
  * </p>
  * 
  * <ul>
- * <li> <b>CancelTimer</b> cancels a previously started timer and records a <code>TimerCanceled</code> event in the history.</li>
- * <li> <b>CancelWorkflowExecution</b> closes the workflow execution and records a <code>WorkflowExecutionCanceled</code> event in the history.</li>
- * <li> <b>CompleteWorkflowExecution</b> closes the workflow execution and records a <code>WorkflowExecutionCompleted</code> event in the history .</li>
- * <li> <b>ContinueAsNewWorkflowExecution</b> closes the workflow execution and starts a new workflow execution of the same type using the same workflow
- * id and a unique run Id. A <code>WorkflowExecutionContinuedAsNew</code> event is recorded in the history.</li>
- * <li> <b>FailWorkflowExecution</b> closes the workflow execution and records a <code>WorkflowExecutionFailed</code> event in the history.</li>
- * <li> <b>RecordMarker</b> records a <code>MarkerRecorded</code> event in the history. Markers can be used for adding custom information in the history
- * for instance to let deciders know that they do not need to look at the history beyond the marker event.</li>
- * <li> <b>RequestCancelActivityTask</b> attempts to cancel a previously scheduled activity task. If the activity task was scheduled but has not been
- * assigned to a worker, then it will be canceled. If the activity task was already assigned to a worker, then the worker will be informed that
- * cancellation has been requested in the response to RecordActivityTaskHeartbeat.</li>
- * <li> <b>RequestCancelExternalWorkflowExecution</b> requests that a request be made to cancel the specified external workflow execution and records a
- * <code>RequestCancelExternalWorkflowExecutionInitiated</code> event in the history.</li>
- * <li> <b>ScheduleActivityTask</b> schedules an activity task.</li>
- * <li> <b>SignalExternalWorkflowExecution</b> requests a signal to be delivered to the specified external workflow execution and records a
- * <code>SignalExternalWorkflowExecutionInitiated</code> event in the history.</li>
- * <li> <b>StartChildWorkflowExecution</b> requests that a child workflow execution be started and records a
- * <code>StartChildWorkflowExecutionInitiated</code> event in the history. The child workflow execution is a separate workflow execution with its own
+ * <li> <b>CancelTimer</b> cancels a previously started timer and
+ * records a <code>TimerCanceled</code> event in the history.</li>
+ * <li> <b>CancelWorkflowExecution</b> closes the workflow execution and
+ * records a <code>WorkflowExecutionCanceled</code> event in the
  * history.</li>
- * <li> <b>StartTimer</b> starts a timer for this workflow execution and records a <code>TimerStarted</code> event in the history. This timer will fire
- * after the specified delay and record a <code>TimerFired</code> event.</li>
+ * <li> <b>CompleteWorkflowExecution</b> closes the workflow execution
+ * and records a <code>WorkflowExecutionCompleted</code> event in the
+ * history .</li>
+ * <li> <b>ContinueAsNewWorkflowExecution</b> closes the workflow
+ * execution and starts a new workflow execution of the same type using
+ * the same workflow id and a unique run Id. A
+ * <code>WorkflowExecutionContinuedAsNew</code> event is recorded in the
+ * history.</li>
+ * <li> <b>FailWorkflowExecution</b> closes the workflow execution and
+ * records a <code>WorkflowExecutionFailed</code> event in the
+ * history.</li>
+ * <li> <b>RecordMarker</b> records a <code>MarkerRecorded</code> event
+ * in the history. Markers can be used for adding custom information in
+ * the history for instance to let deciders know that they do not need to
+ * look at the history beyond the marker event.</li>
+ * <li> <b>RequestCancelActivityTask</b> attempts to cancel a previously
+ * scheduled activity task. If the activity task was scheduled but has
+ * not been assigned to a worker, then it will be canceled. If the
+ * activity task was already assigned to a worker, then the worker will
+ * be informed that cancellation has been requested in the response to
+ * RecordActivityTaskHeartbeat.</li>
+ * <li> <b>RequestCancelExternalWorkflowExecution</b> requests that a
+ * request be made to cancel the specified external workflow execution
+ * and records a
+ * <code>RequestCancelExternalWorkflowExecutionInitiated</code> event in
+ * the history.</li>
+ * <li> <b>ScheduleActivityTask</b> schedules an activity task.</li>
+ * <li> <b>SignalExternalWorkflowExecution</b> requests a signal to be
+ * delivered to the specified external workflow execution and records a
+ * <code>SignalExternalWorkflowExecutionInitiated</code> event in the
+ * history.</li>
+ * <li> <b>StartChildWorkflowExecution</b> requests that a child
+ * workflow execution be started and records a
+ * <code>StartChildWorkflowExecutionInitiated</code> event in the
+ * history. The child workflow execution is a separate workflow execution
+ * with its own history.</li>
+ * <li> <b>StartTimer</b> starts a timer for this workflow execution and
+ * records a <code>TimerStarted</code> event in the history. This timer
+ * will fire after the specified delay and record a
+ * <code>TimerFired</code> event.</li>
  * 
  * </ul>
  * <p>
  * <b>Access Control</b>
  * </p>
  * <p>
- * If you grant permission to use <code>RespondDecisionTaskCompleted</code> , you can use IAM policies to express permissions for the list of decisions
- * returned by this action as if they were members of the API. Treating decisions as a pseudo API maintains a uniform conceptual model and helps keep
- * policies readable. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">
- * Using IAM to Manage Access to Amazon SWF Workflows </a> .
+ * If you grant permission to use
+ * <code>RespondDecisionTaskCompleted</code> , you can use IAM policies
+ * to express permissions for the list of decisions returned by this
+ * action as if they were members of the API. Treating decisions as a
+ * pseudo API maintains a uniform conceptual model and helps keep
+ * policies readable. For details and example IAM policies, see
+ * <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html"> Using IAM to Manage Access to Amazon SWF Workflows </a>
+ * .
  * </p>
  * <p>
  * <b>Decision Failure</b>
@@ -61,58 +91,89 @@ import java.io.Serializable;
  * </p>
  * 
  * <ul>
- * <li>The ordering of decisions should follow a logical flow. Some decisions might not make sense in the current context of the workflow execution and
- * will therefore fail.</li>
+ * <li>The ordering of decisions should follow a logical flow. Some
+ * decisions might not make sense in the current context of the workflow
+ * execution and will therefore fail.</li>
  * <li>A limit on your account was reached.</li>
  * <li>The decision lacks sufficient permissions.</li>
  * 
  * </ul>
  * <p>
- * One of the following events might be added to the history to indicate an error. The event attribute's <b>cause</b> parameter indicates the cause. If
- * <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions.
+ * One of the following events might be added to the history to indicate
+ * an error. The event attribute's <b>cause</b> parameter indicates the
+ * cause. If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision
+ * failed because it lacked sufficient permissions.
  * </p>
  * 
  * <ul>
- * <li> <b>ScheduleActivityTaskFailed</b> a ScheduleActivityTask decision failed. This could happen if the activity type specified in the decision is
- * not registered, is in a deprecated state, or the decision is not properly configured.</li>
- * <li> <b>RequestCancelActivityTaskFailed</b> a RequestCancelActivityTask decision failed. This could happen if there is no open activity task with the
- * specified activityId.</li>
- * <li> <b>StartTimerFailed</b> a StartTimer decision failed. This could happen if there is another open timer with the same timerId.</li>
- * <li> <b>CancelTimerFailed</b> a CancelTimer decision failed. This could happen if there is no open timer with the specified timerId.</li>
- * <li> <b>StartChildWorkflowExecutionFailed</b> a StartChildWorkflowExecution decision failed. This could happen if the workflow type specified is not
- * registered, is deprecated, or the decision is not properly configured.</li>
- * <li> <b>SignalExternalWorkflowExecutionFailed</b> a SignalExternalWorkflowExecution decision failed. This could happen if the <code>workflowID</code>
- * specified in the decision was incorrect. </li>
- * <li> <b>RequestCancelExternalWorkflowExecutionFailed</b> a RequestCancelExternalWorkflowExecution decision failed. This could happen if the
- * <code>workflowID</code> specified in the decision was incorrect. </li>
- * <li> <b>CancelWorkflowExecutionFailed</b> a CancelWorkflowExecution decision failed. This could happen if there is an unhandled decision task pending
- * in the workflow execution. </li>
- * <li> <b>CompleteWorkflowExecutionFailed</b> a CompleteWorkflowExecution decision failed. This could happen if there is an unhandled decision task
- * pending in the workflow execution. </li>
- * <li> <b>ContinueAsNewWorkflowExecutionFailed</b> a ContinueAsNewWorkflowExecution decision failed. This could happen if there is an unhandled
- * decision task pending in the workflow execution or the ContinueAsNewWorkflowExecution decision was not configured correctly. </li>
- * <li> <b>FailWorkflowExecutionFailed</b> a FailWorkflowExecution decision failed. This could happen if there is an unhandled decision task pending in
- * the workflow execution. </li>
+ * <li> <b>ScheduleActivityTaskFailed</b> a ScheduleActivityTask
+ * decision failed. This could happen if the activity type specified in
+ * the decision is not registered, is in a deprecated state, or the
+ * decision is not properly configured.</li>
+ * <li> <b>RequestCancelActivityTaskFailed</b> a
+ * RequestCancelActivityTask decision failed. This could happen if there
+ * is no open activity task with the specified activityId.</li>
+ * <li> <b>StartTimerFailed</b> a StartTimer decision failed. This could
+ * happen if there is another open timer with the same timerId.</li>
+ * <li> <b>CancelTimerFailed</b> a CancelTimer decision failed. This
+ * could happen if there is no open timer with the specified
+ * timerId.</li>
+ * <li> <b>StartChildWorkflowExecutionFailed</b> a
+ * StartChildWorkflowExecution decision failed. This could happen if the
+ * workflow type specified is not registered, is deprecated, or the
+ * decision is not properly configured.</li>
+ * <li> <b>SignalExternalWorkflowExecutionFailed</b> a
+ * SignalExternalWorkflowExecution decision failed. This could happen if
+ * the <code>workflowID</code> specified in the decision was incorrect.
+ * </li>
+ * <li> <b>RequestCancelExternalWorkflowExecutionFailed</b> a
+ * RequestCancelExternalWorkflowExecution decision failed. This could
+ * happen if the <code>workflowID</code> specified in the decision was
+ * incorrect. </li>
+ * <li> <b>CancelWorkflowExecutionFailed</b> a CancelWorkflowExecution
+ * decision failed. This could happen if there is an unhandled decision
+ * task pending in the workflow execution. </li>
+ * <li> <b>CompleteWorkflowExecutionFailed</b> a
+ * CompleteWorkflowExecution decision failed. This could happen if there
+ * is an unhandled decision task pending in the workflow execution. </li>
+ * <li> <b>ContinueAsNewWorkflowExecutionFailed</b> a
+ * ContinueAsNewWorkflowExecution decision failed. This could happen if
+ * there is an unhandled decision task pending in the workflow execution
+ * or the ContinueAsNewWorkflowExecution decision was not configured
+ * correctly. </li>
+ * <li> <b>FailWorkflowExecutionFailed</b> a FailWorkflowExecution
+ * decision failed. This could happen if there is an unhandled decision
+ * task pending in the workflow execution. </li>
  * 
  * </ul>
  * <p>
- * The preceding error events might occur due to an error in the decider logic, which might put the workflow execution in an unstable state The cause
- * field in the event structure for the error event indicates the cause of the error.
+ * The preceding error events might occur due to an error in the decider
+ * logic, which might put the workflow execution in an unstable state The
+ * cause field in the event structure for the error event indicates the
+ * cause of the error.
  * </p>
  * <p>
- * <b>NOTE:</b> A workflow execution may be closed by the decider by returning one of the following decisions when completing a decision task:
- * CompleteWorkflowExecution, FailWorkflowExecution, CancelWorkflowExecution and ContinueAsNewWorkflowExecution. An UnhandledDecision fault will be
- * returned if a workflow closing decision is specified and a signal or activity event had been added to the history while the decision task was being
- * performed by the decider. Unlike the above situations which are logic issues, this fault is always possible because of race conditions in a
- * distributed system. The right action here is to call RespondDecisionTaskCompleted without any decisions. This would result in another decision task
- * with these new events included in the history. The decider should handle the new events and may decide to close the workflow execution.
+ * <b>NOTE:</b> A workflow execution may be closed by the decider by
+ * returning one of the following decisions when completing a decision
+ * task: CompleteWorkflowExecution, FailWorkflowExecution,
+ * CancelWorkflowExecution and ContinueAsNewWorkflowExecution. An
+ * UnhandledDecision fault will be returned if a workflow closing
+ * decision is specified and a signal or activity event had been added to
+ * the history while the decision task was being performed by the
+ * decider. Unlike the above situations which are logic issues, this
+ * fault is always possible because of race conditions in a distributed
+ * system. The right action here is to call RespondDecisionTaskCompleted
+ * without any decisions. This would result in another decision task with
+ * these new events included in the history. The decider should handle
+ * the new events and may decide to close the workflow execution.
  * </p>
  * <p>
  * <b>How to Code a Decision</b>
  * </p>
  * <p>
- * You code a decision by first setting the decision type field to one of the above decision values, and then set the corresponding attributes field
- * shown below:
+ * You code a decision by first setting the decision type field to one
+ * of the above decision values, and then set the corresponding
+ * attributes field shown below:
  * </p>
  * 
  * <ul>
@@ -131,7 +192,7 @@ import java.io.Serializable;
  * 
  * </ul>
  */
-public class Decision  implements Serializable  {
+public class Decision implements Serializable {
 
     /**
      * Specifies the type of the decision.
@@ -253,7 +314,7 @@ public class Decision  implements Serializable  {
      * @param decisionType Specifies the type of the decision.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DecisionType
      */
@@ -261,8 +322,7 @@ public class Decision  implements Serializable  {
         this.decisionType = decisionType;
         return this;
     }
-    
-    
+
     /**
      * Specifies the type of the decision.
      * <p>
@@ -288,7 +348,7 @@ public class Decision  implements Serializable  {
      * @param decisionType Specifies the type of the decision.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see DecisionType
      */
@@ -296,7 +356,7 @@ public class Decision  implements Serializable  {
         this.decisionType = decisionType.toString();
         return this;
     }
-    
+
     /**
      * Provides details of the <code>ScheduleActivityTask</code> decision. It
      * is not set for other decision types.
@@ -329,14 +389,13 @@ public class Decision  implements Serializable  {
      *         is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withScheduleActivityTaskDecisionAttributes(ScheduleActivityTaskDecisionAttributes scheduleActivityTaskDecisionAttributes) {
         this.scheduleActivityTaskDecisionAttributes = scheduleActivityTaskDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>RequestCancelActivityTask</code>
      * decision. It is not set for other decision types.
@@ -369,14 +428,13 @@ public class Decision  implements Serializable  {
      *         decision. It is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withRequestCancelActivityTaskDecisionAttributes(RequestCancelActivityTaskDecisionAttributes requestCancelActivityTaskDecisionAttributes) {
         this.requestCancelActivityTaskDecisionAttributes = requestCancelActivityTaskDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>CompleteWorkflowExecution</code>
      * decision. It is not set for other decision types.
@@ -409,14 +467,13 @@ public class Decision  implements Serializable  {
      *         decision. It is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withCompleteWorkflowExecutionDecisionAttributes(CompleteWorkflowExecutionDecisionAttributes completeWorkflowExecutionDecisionAttributes) {
         this.completeWorkflowExecutionDecisionAttributes = completeWorkflowExecutionDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>FailWorkflowExecution</code> decision.
      * It is not set for other decision types.
@@ -449,14 +506,13 @@ public class Decision  implements Serializable  {
      *         It is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withFailWorkflowExecutionDecisionAttributes(FailWorkflowExecutionDecisionAttributes failWorkflowExecutionDecisionAttributes) {
         this.failWorkflowExecutionDecisionAttributes = failWorkflowExecutionDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>CancelWorkflowExecution</code> decision.
      * It is not set for other decision types.
@@ -489,14 +545,13 @@ public class Decision  implements Serializable  {
      *         It is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withCancelWorkflowExecutionDecisionAttributes(CancelWorkflowExecutionDecisionAttributes cancelWorkflowExecutionDecisionAttributes) {
         this.cancelWorkflowExecutionDecisionAttributes = cancelWorkflowExecutionDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>ContinueAsNewWorkflowExecution</code>
      * decision. It is not set for other decision types.
@@ -529,14 +584,13 @@ public class Decision  implements Serializable  {
      *         decision. It is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withContinueAsNewWorkflowExecutionDecisionAttributes(ContinueAsNewWorkflowExecutionDecisionAttributes continueAsNewWorkflowExecutionDecisionAttributes) {
         this.continueAsNewWorkflowExecutionDecisionAttributes = continueAsNewWorkflowExecutionDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>RecordMarker</code> decision. It is not
      * set for other decision types.
@@ -569,14 +623,13 @@ public class Decision  implements Serializable  {
      *         set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withRecordMarkerDecisionAttributes(RecordMarkerDecisionAttributes recordMarkerDecisionAttributes) {
         this.recordMarkerDecisionAttributes = recordMarkerDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>StartTimer</code> decision. It is not
      * set for other decision types.
@@ -609,14 +662,13 @@ public class Decision  implements Serializable  {
      *         set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withStartTimerDecisionAttributes(StartTimerDecisionAttributes startTimerDecisionAttributes) {
         this.startTimerDecisionAttributes = startTimerDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>CancelTimer</code> decision. It is not
      * set for other decision types.
@@ -649,14 +701,13 @@ public class Decision  implements Serializable  {
      *         set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withCancelTimerDecisionAttributes(CancelTimerDecisionAttributes cancelTimerDecisionAttributes) {
         this.cancelTimerDecisionAttributes = cancelTimerDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>SignalExternalWorkflowExecution</code>
      * decision. It is not set for other decision types.
@@ -689,14 +740,13 @@ public class Decision  implements Serializable  {
      *         decision. It is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withSignalExternalWorkflowExecutionDecisionAttributes(SignalExternalWorkflowExecutionDecisionAttributes signalExternalWorkflowExecutionDecisionAttributes) {
         this.signalExternalWorkflowExecutionDecisionAttributes = signalExternalWorkflowExecutionDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the
      * <code>RequestCancelExternalWorkflowExecution</code> decision. It is
@@ -735,14 +785,13 @@ public class Decision  implements Serializable  {
      *         not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withRequestCancelExternalWorkflowExecutionDecisionAttributes(RequestCancelExternalWorkflowExecutionDecisionAttributes requestCancelExternalWorkflowExecutionDecisionAttributes) {
         this.requestCancelExternalWorkflowExecutionDecisionAttributes = requestCancelExternalWorkflowExecutionDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Provides details of the <code>StartChildWorkflowExecution</code>
      * decision. It is not set for other decision types.
@@ -775,14 +824,13 @@ public class Decision  implements Serializable  {
      *         decision. It is not set for other decision types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public Decision withStartChildWorkflowExecutionDecisionAttributes(StartChildWorkflowExecutionDecisionAttributes startChildWorkflowExecutionDecisionAttributes) {
         this.startChildWorkflowExecutionDecisionAttributes = startChildWorkflowExecutionDecisionAttributes;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -794,19 +842,19 @@ public class Decision  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDecisionType() != null) sb.append("DecisionType: " + getDecisionType() + ",");    	
-        if (getScheduleActivityTaskDecisionAttributes() != null) sb.append("ScheduleActivityTaskDecisionAttributes: " + getScheduleActivityTaskDecisionAttributes() + ",");    	
-        if (getRequestCancelActivityTaskDecisionAttributes() != null) sb.append("RequestCancelActivityTaskDecisionAttributes: " + getRequestCancelActivityTaskDecisionAttributes() + ",");    	
-        if (getCompleteWorkflowExecutionDecisionAttributes() != null) sb.append("CompleteWorkflowExecutionDecisionAttributes: " + getCompleteWorkflowExecutionDecisionAttributes() + ",");    	
-        if (getFailWorkflowExecutionDecisionAttributes() != null) sb.append("FailWorkflowExecutionDecisionAttributes: " + getFailWorkflowExecutionDecisionAttributes() + ",");    	
-        if (getCancelWorkflowExecutionDecisionAttributes() != null) sb.append("CancelWorkflowExecutionDecisionAttributes: " + getCancelWorkflowExecutionDecisionAttributes() + ",");    	
-        if (getContinueAsNewWorkflowExecutionDecisionAttributes() != null) sb.append("ContinueAsNewWorkflowExecutionDecisionAttributes: " + getContinueAsNewWorkflowExecutionDecisionAttributes() + ",");    	
-        if (getRecordMarkerDecisionAttributes() != null) sb.append("RecordMarkerDecisionAttributes: " + getRecordMarkerDecisionAttributes() + ",");    	
-        if (getStartTimerDecisionAttributes() != null) sb.append("StartTimerDecisionAttributes: " + getStartTimerDecisionAttributes() + ",");    	
-        if (getCancelTimerDecisionAttributes() != null) sb.append("CancelTimerDecisionAttributes: " + getCancelTimerDecisionAttributes() + ",");    	
-        if (getSignalExternalWorkflowExecutionDecisionAttributes() != null) sb.append("SignalExternalWorkflowExecutionDecisionAttributes: " + getSignalExternalWorkflowExecutionDecisionAttributes() + ",");    	
-        if (getRequestCancelExternalWorkflowExecutionDecisionAttributes() != null) sb.append("RequestCancelExternalWorkflowExecutionDecisionAttributes: " + getRequestCancelExternalWorkflowExecutionDecisionAttributes() + ",");    	
+        sb.append("{");
+        if (getDecisionType() != null) sb.append("DecisionType: " + getDecisionType() + ",");
+        if (getScheduleActivityTaskDecisionAttributes() != null) sb.append("ScheduleActivityTaskDecisionAttributes: " + getScheduleActivityTaskDecisionAttributes() + ",");
+        if (getRequestCancelActivityTaskDecisionAttributes() != null) sb.append("RequestCancelActivityTaskDecisionAttributes: " + getRequestCancelActivityTaskDecisionAttributes() + ",");
+        if (getCompleteWorkflowExecutionDecisionAttributes() != null) sb.append("CompleteWorkflowExecutionDecisionAttributes: " + getCompleteWorkflowExecutionDecisionAttributes() + ",");
+        if (getFailWorkflowExecutionDecisionAttributes() != null) sb.append("FailWorkflowExecutionDecisionAttributes: " + getFailWorkflowExecutionDecisionAttributes() + ",");
+        if (getCancelWorkflowExecutionDecisionAttributes() != null) sb.append("CancelWorkflowExecutionDecisionAttributes: " + getCancelWorkflowExecutionDecisionAttributes() + ",");
+        if (getContinueAsNewWorkflowExecutionDecisionAttributes() != null) sb.append("ContinueAsNewWorkflowExecutionDecisionAttributes: " + getContinueAsNewWorkflowExecutionDecisionAttributes() + ",");
+        if (getRecordMarkerDecisionAttributes() != null) sb.append("RecordMarkerDecisionAttributes: " + getRecordMarkerDecisionAttributes() + ",");
+        if (getStartTimerDecisionAttributes() != null) sb.append("StartTimerDecisionAttributes: " + getStartTimerDecisionAttributes() + ",");
+        if (getCancelTimerDecisionAttributes() != null) sb.append("CancelTimerDecisionAttributes: " + getCancelTimerDecisionAttributes() + ",");
+        if (getSignalExternalWorkflowExecutionDecisionAttributes() != null) sb.append("SignalExternalWorkflowExecutionDecisionAttributes: " + getSignalExternalWorkflowExecutionDecisionAttributes() + ",");
+        if (getRequestCancelExternalWorkflowExecutionDecisionAttributes() != null) sb.append("RequestCancelExternalWorkflowExecutionDecisionAttributes: " + getRequestCancelExternalWorkflowExecutionDecisionAttributes() + ",");
         if (getStartChildWorkflowExecutionDecisionAttributes() != null) sb.append("StartChildWorkflowExecutionDecisionAttributes: " + getStartChildWorkflowExecutionDecisionAttributes() );
         sb.append("}");
         return sb.toString();

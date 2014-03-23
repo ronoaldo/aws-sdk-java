@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,26 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.autoscaling.AmazonAutoScaling#describeNotificationConfigurations(DescribeNotificationConfigurationsRequest) DescribeNotificationConfigurations operation}.
  * <p>
- * Returns a list of notification actions associated with Auto Scaling groups for specified events.
+ * Returns a list of notification actions associated with Auto Scaling
+ * groups for specified events.
  * </p>
  *
  * @see com.amazonaws.services.autoscaling.AmazonAutoScaling#describeNotificationConfigurations(DescribeNotificationConfigurationsRequest)
  */
-public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the Auto Scaling group.
      */
-    private java.util.List<String> autoScalingGroupNames;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNames;
 
     /**
      * A string that is used to mark the start of the next batch of returned
@@ -54,9 +57,9 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @return The name of the Auto Scaling group.
      */
     public java.util.List<String> getAutoScalingGroupNames() {
-        
         if (autoScalingGroupNames == null) {
-            autoScalingGroupNames = new java.util.ArrayList<String>();
+              autoScalingGroupNames = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              autoScalingGroupNames.setAutoConstruct(true);
         }
         return autoScalingGroupNames;
     }
@@ -71,8 +74,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
             this.autoScalingGroupNames = null;
             return;
         }
-
-        java.util.List<String> autoScalingGroupNamesCopy = new java.util.ArrayList<String>(autoScalingGroupNames.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingGroupNames.size());
         autoScalingGroupNamesCopy.addAll(autoScalingGroupNames);
         this.autoScalingGroupNames = autoScalingGroupNamesCopy;
     }
@@ -85,7 +87,7 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @param autoScalingGroupNames The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withAutoScalingGroupNames(String... autoScalingGroupNames) {
         if (getAutoScalingGroupNames() == null) setAutoScalingGroupNames(new java.util.ArrayList<String>(autoScalingGroupNames.length));
@@ -103,20 +105,20 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @param autoScalingGroupNames The name of the Auto Scaling group.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withAutoScalingGroupNames(java.util.Collection<String> autoScalingGroupNames) {
         if (autoScalingGroupNames == null) {
             this.autoScalingGroupNames = null;
         } else {
-            java.util.List<String> autoScalingGroupNamesCopy = new java.util.ArrayList<String>(autoScalingGroupNames.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> autoScalingGroupNamesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(autoScalingGroupNames.size());
             autoScalingGroupNamesCopy.addAll(autoScalingGroupNames);
             this.autoScalingGroupNames = autoScalingGroupNamesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that is used to mark the start of the next batch of returned
      * results for pagination.
@@ -158,14 +160,13 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      *         results for pagination.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Maximum number of records to be returned.
      * <p>
@@ -201,14 +202,13 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
      * @param maxRecords Maximum number of records to be returned.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeNotificationConfigurationsRequest withMaxRecords(Integer maxRecords) {
         this.maxRecords = maxRecords;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -220,9 +220,9 @@ public class DescribeNotificationConfigurationsRequest extends AmazonWebServiceR
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAutoScalingGroupNames() != null) sb.append("AutoScalingGroupNames: " + getAutoScalingGroupNames() + ",");    	
-        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");    	
+        sb.append("{");
+        if (getAutoScalingGroupNames() != null) sb.append("AutoScalingGroupNames: " + getAutoScalingGroupNames() + ",");
+        if (getNextToken() != null) sb.append("NextToken: " + getNextToken() + ",");
         if (getMaxRecords() != null) sb.append("MaxRecords: " + getMaxRecords() );
         sb.append("}");
         return sb.toString();

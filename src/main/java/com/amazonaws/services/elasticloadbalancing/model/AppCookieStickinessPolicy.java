@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,11 +21,11 @@ import java.io.Serializable;
  * The AppCookieStickinessPolicy data type.
  * </p>
  */
-public class AppCookieStickinessPolicy  implements Serializable  {
+public class AppCookieStickinessPolicy implements Serializable {
 
     /**
      * The mnemonic name for the policy being created. The name must be
-     * unique within a set of policies for this LoadBalancer.
+     * unique within a set of policies for this load balancer.
      */
     private String policyName;
 
@@ -45,23 +46,21 @@ public class AppCookieStickinessPolicy  implements Serializable  {
      * initialize any additional object members.
      * 
      * @param policyName The mnemonic name for the policy being created. The
-     * name must be unique within a set of policies for this LoadBalancer.
+     * name must be unique within a set of policies for this load balancer.
      * @param cookieName The name of the application cookie used for
      * stickiness.
      */
     public AppCookieStickinessPolicy(String policyName, String cookieName) {
-        this.policyName = policyName;
-        this.cookieName = cookieName;
+        setPolicyName(policyName);
+        setCookieName(cookieName);
     }
 
-    
-    
     /**
      * The mnemonic name for the policy being created. The name must be
-     * unique within a set of policies for this LoadBalancer.
+     * unique within a set of policies for this load balancer.
      *
      * @return The mnemonic name for the policy being created. The name must be
-     *         unique within a set of policies for this LoadBalancer.
+     *         unique within a set of policies for this load balancer.
      */
     public String getPolicyName() {
         return policyName;
@@ -69,10 +68,10 @@ public class AppCookieStickinessPolicy  implements Serializable  {
     
     /**
      * The mnemonic name for the policy being created. The name must be
-     * unique within a set of policies for this LoadBalancer.
+     * unique within a set of policies for this load balancer.
      *
      * @param policyName The mnemonic name for the policy being created. The name must be
-     *         unique within a set of policies for this LoadBalancer.
+     *         unique within a set of policies for this load balancer.
      */
     public void setPolicyName(String policyName) {
         this.policyName = policyName;
@@ -80,22 +79,21 @@ public class AppCookieStickinessPolicy  implements Serializable  {
     
     /**
      * The mnemonic name for the policy being created. The name must be
-     * unique within a set of policies for this LoadBalancer.
+     * unique within a set of policies for this load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param policyName The mnemonic name for the policy being created. The name must be
-     *         unique within a set of policies for this LoadBalancer.
+     *         unique within a set of policies for this load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AppCookieStickinessPolicy withPolicyName(String policyName) {
         this.policyName = policyName;
         return this;
     }
-    
-    
+
     /**
      * The name of the application cookie used for stickiness.
      *
@@ -122,14 +120,13 @@ public class AppCookieStickinessPolicy  implements Serializable  {
      * @param cookieName The name of the application cookie used for stickiness.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public AppCookieStickinessPolicy withCookieName(String cookieName) {
         this.cookieName = cookieName;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -141,8 +138,8 @@ public class AppCookieStickinessPolicy  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");    	
+        sb.append("{");
+        if (getPolicyName() != null) sb.append("PolicyName: " + getPolicyName() + ",");
         if (getCookieName() != null) sb.append("CookieName: " + getCookieName() );
         sb.append("}");
         return sb.toString();

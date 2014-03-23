@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,21 +13,15 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
  * A JSON object containing the following fields:
  * </p>
- * 
- * <ul>
- * <li> GatewayARN </li>
- * <li> DescribeBandwidthRateLimitOutput$AverageDownloadRateLimitInBitsPerSec </li>
- * <li> DescribeBandwidthRateLimitOutput$AverageDownloadRateLimitInBitsPerSec </li>
- * 
- * </ul>
  */
-public class DescribeBandwidthRateLimitResult  implements Serializable  {
+public class DescribeBandwidthRateLimitResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -105,14 +99,13 @@ public class DescribeBandwidthRateLimitResult  implements Serializable  {
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBandwidthRateLimitResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * The average upload bandwidth rate limit in bits per second. This field
      * does not appear in the response if the upload rate limit is not set.
@@ -154,14 +147,13 @@ public class DescribeBandwidthRateLimitResult  implements Serializable  {
      *         does not appear in the response if the upload rate limit is not set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBandwidthRateLimitResult withAverageUploadRateLimitInBitsPerSec(Long averageUploadRateLimitInBitsPerSec) {
         this.averageUploadRateLimitInBitsPerSec = averageUploadRateLimitInBitsPerSec;
         return this;
     }
-    
-    
+
     /**
      * The average download bandwidth rate limit in bits per second. This
      * field does not appear in the response if the download rate limit is
@@ -209,14 +201,13 @@ public class DescribeBandwidthRateLimitResult  implements Serializable  {
      *         not set.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeBandwidthRateLimitResult withAverageDownloadRateLimitInBitsPerSec(Long averageDownloadRateLimitInBitsPerSec) {
         this.averageDownloadRateLimitInBitsPerSec = averageDownloadRateLimitInBitsPerSec;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -228,9 +219,9 @@ public class DescribeBandwidthRateLimitResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getAverageUploadRateLimitInBitsPerSec() != null) sb.append("AverageUploadRateLimitInBitsPerSec: " + getAverageUploadRateLimitInBitsPerSec() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getAverageUploadRateLimitInBitsPerSec() != null) sb.append("AverageUploadRateLimitInBitsPerSec: " + getAverageUploadRateLimitInBitsPerSec() + ",");
         if (getAverageDownloadRateLimitInBitsPerSec() != null) sb.append("AverageDownloadRateLimitInBitsPerSec: " + getAverageDownloadRateLimitInBitsPerSec() );
         sb.append("}");
         return sb.toString();

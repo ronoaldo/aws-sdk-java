@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -39,7 +39,8 @@ public class CloudFrontSigner extends AbstractAWSSigner {
             addSessionCredentials(request, (AWSSessionCredentials) sanitizedCredentials);
         }
 
-        String date = new DateUtils().formatRfc822Date(new Date());
+        Date signDate = getSignatureDate(getTimeOffset(request));
+        String date = new DateUtils().formatRfc822Date(signDate);
         request.addHeader("Date", date);
         String canonicalString = date;
         log.debug("Calculated string to sign:\n\"" + canonicalString + "\"");

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,52 +13,54 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
- * 
+ * <p>
+ * Returns the QueueUrl element of the created queue.
+ * </p>
  */
-public class CreateQueueResult  implements Serializable  {
+public class CreateQueueResult implements Serializable {
 
     /**
-     * The URL for the created SQS queue.
+     * The URL for the created Amazon SQS queue.
      */
     private String queueUrl;
 
     /**
-     * The URL for the created SQS queue.
+     * The URL for the created Amazon SQS queue.
      *
-     * @return The URL for the created SQS queue.
+     * @return The URL for the created Amazon SQS queue.
      */
     public String getQueueUrl() {
         return queueUrl;
     }
     
     /**
-     * The URL for the created SQS queue.
+     * The URL for the created Amazon SQS queue.
      *
-     * @param queueUrl The URL for the created SQS queue.
+     * @param queueUrl The URL for the created Amazon SQS queue.
      */
     public void setQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
     }
     
     /**
-     * The URL for the created SQS queue.
+     * The URL for the created Amazon SQS queue.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param queueUrl The URL for the created SQS queue.
+     * @param queueUrl The URL for the created Amazon SQS queue.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateQueueResult withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -70,7 +72,7 @@ public class CreateQueueResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getQueueUrl() != null) sb.append("QueueUrl: " + getQueueUrl() );
         sb.append("}");
         return sb.toString();

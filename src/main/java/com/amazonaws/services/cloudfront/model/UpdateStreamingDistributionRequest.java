@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#updateStreamingDistribution(UpdateStreamingDistributionRequest) UpdateStreamingDistribution operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#updateStreamingDistribution(UpdateStreamingDistributionRequest)
  */
-public class UpdateStreamingDistributionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateStreamingDistributionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The streaming distribution's configuration information.
@@ -61,13 +63,11 @@ public class UpdateStreamingDistributionRequest extends AmazonWebServiceRequest 
      * E2QWRUHAPOMQZL.
      */
     public UpdateStreamingDistributionRequest(StreamingDistributionConfig streamingDistributionConfig, String id, String ifMatch) {
-        this.streamingDistributionConfig = streamingDistributionConfig;
-        this.id = id;
-        this.ifMatch = ifMatch;
+        setStreamingDistributionConfig(streamingDistributionConfig);
+        setId(id);
+        setIfMatch(ifMatch);
     }
 
-    
-    
     /**
      * The streaming distribution's configuration information.
      *
@@ -94,14 +94,13 @@ public class UpdateStreamingDistributionRequest extends AmazonWebServiceRequest 
      * @param streamingDistributionConfig The streaming distribution's configuration information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateStreamingDistributionRequest withStreamingDistributionConfig(StreamingDistributionConfig streamingDistributionConfig) {
         this.streamingDistributionConfig = streamingDistributionConfig;
         return this;
     }
-    
-    
+
     /**
      * The streaming distribution's id.
      *
@@ -128,14 +127,13 @@ public class UpdateStreamingDistributionRequest extends AmazonWebServiceRequest 
      * @param id The streaming distribution's id.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateStreamingDistributionRequest withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The value of the ETag header you received when retrieving the
      * streaming distribution's configuration. For example: E2QWRUHAPOMQZL.
@@ -168,14 +166,13 @@ public class UpdateStreamingDistributionRequest extends AmazonWebServiceRequest 
      *         streaming distribution's configuration. For example: E2QWRUHAPOMQZL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateStreamingDistributionRequest withIfMatch(String ifMatch) {
         this.ifMatch = ifMatch;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -187,9 +184,9 @@ public class UpdateStreamingDistributionRequest extends AmazonWebServiceRequest 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStreamingDistributionConfig() != null) sb.append("StreamingDistributionConfig: " + getStreamingDistributionConfig() + ",");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getStreamingDistributionConfig() != null) sb.append("StreamingDistributionConfig: " + getStreamingDistributionConfig() + ",");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getIfMatch() != null) sb.append("IfMatch: " + getIfMatch() );
         sb.append("}");
         return sb.toString();

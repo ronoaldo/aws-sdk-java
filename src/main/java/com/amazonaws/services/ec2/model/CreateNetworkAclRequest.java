@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,79 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.CreateNetworkAclRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#createNetworkAcl(CreateNetworkAclRequest) CreateNetworkAcl operation}.
  * <p>
- * Creates a new network ACL in a VPC. Network ACLs provide an optional layer of security (on top of security groups) for the instances in your VPC. For
- * more information about network ACLs, go to Network ACLs in the Amazon Virtual Private Cloud User Guide.
+ * Creates a network ACL in a VPC. Network ACLs provide an optional layer
+ * of security (in addition to security groups) for the instances in your
+ * VPC.
+ * </p>
+ * <p>
+ * For more information about network ACLs, see
+ * <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html"> Network ACLs </a>
+ * in the <i>Amazon Virtual Private Cloud User Guide</i> .
  * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#createNetworkAcl(CreateNetworkAclRequest)
  */
-public class CreateNetworkAclRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateNetworkAclRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<CreateNetworkAclRequest> {
 
     /**
-     * The ID of the VPC where the network ACL will be created.
+     * The ID of the VPC.
      */
     private String vpcId;
 
     /**
-     * The ID of the VPC where the network ACL will be created.
+     * The ID of the VPC.
      *
-     * @return The ID of the VPC where the network ACL will be created.
+     * @return The ID of the VPC.
      */
     public String getVpcId() {
         return vpcId;
     }
     
     /**
-     * The ID of the VPC where the network ACL will be created.
+     * The ID of the VPC.
      *
-     * @param vpcId The ID of the VPC where the network ACL will be created.
+     * @param vpcId The ID of the VPC.
      */
     public void setVpcId(String vpcId) {
         this.vpcId = vpcId;
     }
     
     /**
-     * The ID of the VPC where the network ACL will be created.
+     * The ID of the VPC.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param vpcId The ID of the VPC where the network ACL will be created.
+     * @param vpcId The ID of the VPC.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateNetworkAclRequest withVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<CreateNetworkAclRequest> getDryRunRequest() {
+        Request<CreateNetworkAclRequest> request = new CreateNetworkAclRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -77,7 +98,7 @@ public class CreateNetworkAclRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getVpcId() != null) sb.append("VpcId: " + getVpcId() );
         sb.append("}");
         return sb.toString();

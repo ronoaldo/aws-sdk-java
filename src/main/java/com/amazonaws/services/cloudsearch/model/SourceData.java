@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * The source attribute name and an optional default value to use if a document doesn't have an attribute of that name.
+ * The source attribute name and an optional default value to use if a
+ * document doesn't have an attribute of that name.
  * </p>
  */
-public class SourceData  implements Serializable  {
+public class SourceData implements Serializable {
 
     /**
      * The name of the document source field to add to this
@@ -33,7 +35,8 @@ public class SourceData  implements Serializable  {
     private String sourceName;
 
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
@@ -84,57 +87,61 @@ public class SourceData  implements Serializable  {
      *         <code>IndexField</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceData withSourceName(String sourceName) {
         this.sourceName = sourceName;
         return this;
     }
-    
-    
+
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @return The value of a field or source document attribute.
+     * @return The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      */
     public String getDefaultValue() {
         return defaultValue;
     }
     
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @param defaultValue The value of a field or source document attribute.
+     * @param defaultValue The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      */
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
     }
     
     /**
-     * The value of a field or source document attribute.
+     * The default value to use if the source attribute is not specified in a
+     * document. Optional.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 1024<br/>
      *
-     * @param defaultValue The value of a field or source document attribute.
+     * @param defaultValue The default value to use if the source attribute is not specified in a
+     *         document. Optional.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SourceData withDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -146,8 +153,8 @@ public class SourceData  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getSourceName() != null) sb.append("SourceName: " + getSourceName() + ",");    	
+        sb.append("{");
+        if (getSourceName() != null) sb.append("SourceName: " + getSourceName() + ",");
         if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,26 +13,33 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#updateBandwidthRateLimit(UpdateBandwidthRateLimitRequest) UpdateBandwidthRateLimit operation}.
  * <p>
- * This operation updates the bandwidth rate limits of a gateway. You can update both the upload and download bandwidth rate limit or specify only one of
- * the two. If you don't set a bandwidth rate limit, the existing rate limit remains.
+ * This operation updates the bandwidth rate limits of a gateway. You can
+ * update both the upload and download bandwidth rate limit or specify
+ * only one of the two. If you don't set a bandwidth rate limit, the
+ * existing rate limit remains.
  * </p>
  * <p>
- * By default, a gateway's bandwidth rate limits are not set. If you don't set any limit, the gateway does not have any limitations on its bandwidth
- * usage and could potentially use the maximum available bandwidth.
+ * By default, a gateway's bandwidth rate limits are not set. If you
+ * don't set any limit, the gateway does not have any limitations on its
+ * bandwidth usage and could potentially use the maximum available
+ * bandwidth.
  * </p>
  * <p>
- * To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
+ * To specify which gateway to update, use the Amazon Resource Name (ARN)
+ * of the gateway in your request.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#updateBandwidthRateLimit(UpdateBandwidthRateLimitRequest)
  */
-public class UpdateBandwidthRateLimitRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateBandwidthRateLimitRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -107,14 +114,13 @@ public class UpdateBandwidthRateLimitRequest extends AmazonWebServiceRequest  im
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateBandwidthRateLimitRequest withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
      * The average upload bandwidth rate limit in bits per second.
      * <p>
@@ -150,14 +156,13 @@ public class UpdateBandwidthRateLimitRequest extends AmazonWebServiceRequest  im
      * @param averageUploadRateLimitInBitsPerSec The average upload bandwidth rate limit in bits per second.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateBandwidthRateLimitRequest withAverageUploadRateLimitInBitsPerSec(Long averageUploadRateLimitInBitsPerSec) {
         this.averageUploadRateLimitInBitsPerSec = averageUploadRateLimitInBitsPerSec;
         return this;
     }
-    
-    
+
     /**
      * The average download bandwidth rate limit in bits per second.
      * <p>
@@ -193,14 +198,13 @@ public class UpdateBandwidthRateLimitRequest extends AmazonWebServiceRequest  im
      * @param averageDownloadRateLimitInBitsPerSec The average download bandwidth rate limit in bits per second.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateBandwidthRateLimitRequest withAverageDownloadRateLimitInBitsPerSec(Long averageDownloadRateLimitInBitsPerSec) {
         this.averageDownloadRateLimitInBitsPerSec = averageDownloadRateLimitInBitsPerSec;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -212,9 +216,9 @@ public class UpdateBandwidthRateLimitRequest extends AmazonWebServiceRequest  im
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
-        if (getAverageUploadRateLimitInBitsPerSec() != null) sb.append("AverageUploadRateLimitInBitsPerSec: " + getAverageUploadRateLimitInBitsPerSec() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
+        if (getAverageUploadRateLimitInBitsPerSec() != null) sb.append("AverageUploadRateLimitInBitsPerSec: " + getAverageUploadRateLimitInBitsPerSec() + ",");
         if (getAverageDownloadRateLimitInBitsPerSec() != null) sb.append("AverageDownloadRateLimitInBitsPerSec: " + getAverageDownloadRateLimitInBitsPerSec() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  */
 package com.amazonaws.services.opsworks.model.transform;
 
-
+import static com.amazonaws.util.StringUtils.UTF8;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
@@ -39,8 +39,6 @@ import com.amazonaws.util.json.*;
  */
 public class CreateStackRequestMarshaller implements Marshaller<Request<CreateStackRequest>, CreateStackRequest> {
 
-    
-
     public Request<CreateStackRequest> marshall(CreateStackRequest createStackRequest) {
     if (createStackRequest == null) {
         throw new AmazonClientException("Invalid argument passed to marshall(...)");
@@ -51,9 +49,7 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
         request.addHeader("X-Amz-Target", target);
         request.addHeader("Content-Type", "application/x-amz-json-1.1");
 
-        
         request.setHttpMethod(HttpMethodName.POST);
-
 
         String uriResourcePath = ""; 
 
@@ -75,14 +71,10 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
 
         request.setResourcePath(uriResourcePath);
 
-
-        
         try {
           StringWriter stringWriter = new StringWriter();
           JSONWriter jsonWriter = new JSONWriter(stringWriter);
 
-          
-            
           jsonWriter.object();
           
             if (createStackRequest.getName() != null) {
@@ -90,6 +82,9 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
             }
             if (createStackRequest.getRegion() != null) {
                 jsonWriter.key("Region").value(createStackRequest.getRegion());
+            }
+            if (createStackRequest.getVpcId() != null) {
+                jsonWriter.key("VpcId").value(createStackRequest.getVpcId());
             }
             if (createStackRequest.getAttributes() != null) {
                 jsonWriter.key("Attributes");
@@ -118,8 +113,25 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
             if (createStackRequest.getDefaultAvailabilityZone() != null) {
                 jsonWriter.key("DefaultAvailabilityZone").value(createStackRequest.getDefaultAvailabilityZone());
             }
+            if (createStackRequest.getDefaultSubnetId() != null) {
+                jsonWriter.key("DefaultSubnetId").value(createStackRequest.getDefaultSubnetId());
+            }
             if (createStackRequest.getCustomJson() != null) {
                 jsonWriter.key("CustomJson").value(createStackRequest.getCustomJson());
+            }
+            StackConfigurationManager configurationManager = createStackRequest.getConfigurationManager();
+            if (configurationManager != null) {
+
+                jsonWriter.key("ConfigurationManager");
+                jsonWriter.object();
+
+                if (configurationManager.getName() != null) {
+                    jsonWriter.key("Name").value(configurationManager.getName());
+                }
+                if (configurationManager.getVersion() != null) {
+                    jsonWriter.key("Version").value(configurationManager.getVersion());
+                }
+                jsonWriter.endObject();
             }
             if (createStackRequest.isUseCustomCookbooks() != null) {
                 jsonWriter.key("UseCustomCookbooks").value(createStackRequest.isUseCustomCookbooks());
@@ -158,22 +170,15 @@ public class CreateStackRequestMarshaller implements Marshaller<Request<CreateSt
             }
 
           jsonWriter.endObject();
-          
 
           String snippet = stringWriter.toString();
-          byte[] content = snippet.getBytes("UTF-8");
+          byte[] content = snippet.getBytes(UTF8);
           request.setContent(new StringInputStream(snippet));
           request.addHeader("Content-Length", Integer.toString(content.length));
         } catch(Throwable t) {
           throw new AmazonClientException("Unable to marshall request to JSON: " + t.getMessage(), t);
         }
-        
 
         return request;
-    }
-
-    private String getString(String s) {
-        if (s == null) return "";
-        return s;
     }
 }

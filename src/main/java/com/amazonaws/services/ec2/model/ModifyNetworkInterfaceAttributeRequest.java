@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,182 +13,260 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.Request;
+import com.amazonaws.services.ec2.model.transform.ModifyNetworkInterfaceAttributeRequestMarshaller;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.ec2.AmazonEC2#modifyNetworkInterfaceAttribute(ModifyNetworkInterfaceAttributeRequest) ModifyNetworkInterfaceAttribute operation}.
- * 
+ * <p>
+ * Modifies the specified network interface attribute. You can specify
+ * only one attribute at a time.
+ * </p>
  *
  * @see com.amazonaws.services.ec2.AmazonEC2#modifyNetworkInterfaceAttribute(ModifyNetworkInterfaceAttributeRequest)
  */
-public class ModifyNetworkInterfaceAttributeRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ModifyNetworkInterfaceAttributeRequest extends AmazonWebServiceRequest implements Serializable, DryRunSupportedRequest<ModifyNetworkInterfaceAttributeRequest> {
 
+    /**
+     * The ID of the network interface.
+     */
     private String networkInterfaceId;
 
     /**
-     * String value
+     * A description for the network interface.
      */
     private String description;
 
     /**
-     * Boolean value
+     * Indicates whether source/destination checking is enabled. A value of
+     * <code>true</code> means checking is enabled, and <code>false</code>
+     * means checking is disabled. This value must be <code>false</code> for
+     * a NAT instance to perform NAT. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     * Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
     private Boolean sourceDestCheck;
 
-    private java.util.List<String> groups;
+    /**
+     * Changes the security groups for the network interface. The new set of
+     * groups you specify replaces the current set. You must specify at least
+     * one group, even if it's just the default security group in the VPC.
+     * You must specify the ID of the security group, not the name.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> groups;
 
+    /**
+     * The ID of the interface attachment.
+     */
     private NetworkInterfaceAttachmentChanges attachment;
 
     /**
-     * Returns the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      *
-     * @return The value of the NetworkInterfaceId property for this object.
+     * @return The ID of the network interface.
      */
     public String getNetworkInterfaceId() {
         return networkInterfaceId;
     }
     
     /**
-     * Sets the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      *
-     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
+     * @param networkInterfaceId The ID of the network interface.
      */
     public void setNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
     }
     
     /**
-     * Sets the value of the NetworkInterfaceId property for this object.
+     * The ID of the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param networkInterfaceId The new value for the NetworkInterfaceId property for this object.
+     * @param networkInterfaceId The ID of the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyNetworkInterfaceAttributeRequest withNetworkInterfaceId(String networkInterfaceId) {
         this.networkInterfaceId = networkInterfaceId;
         return this;
     }
-    
-    
+
     /**
-     * String value
+     * A description for the network interface.
      *
-     * @return String value
+     * @return A description for the network interface.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * String value
+     * A description for the network interface.
      *
-     * @param description String value
+     * @param description A description for the network interface.
      */
     public void setDescription(String description) {
         this.description = description;
     }
     
     /**
-     * String value
+     * A description for the network interface.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param description String value
+     * @param description A description for the network interface.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyNetworkInterfaceAttributeRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * Boolean value
+     * Indicates whether source/destination checking is enabled. A value of
+     * <code>true</code> means checking is enabled, and <code>false</code>
+     * means checking is disabled. This value must be <code>false</code> for
+     * a NAT instance to perform NAT. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     * Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      *
-     * @return Boolean value
+     * @return Indicates whether source/destination checking is enabled. A value of
+     *         <code>true</code> means checking is enabled, and <code>false</code>
+     *         means checking is disabled. This value must be <code>false</code> for
+     *         a NAT instance to perform NAT. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     *         Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
     public Boolean isSourceDestCheck() {
         return sourceDestCheck;
     }
     
     /**
-     * Boolean value
+     * Indicates whether source/destination checking is enabled. A value of
+     * <code>true</code> means checking is enabled, and <code>false</code>
+     * means checking is disabled. This value must be <code>false</code> for
+     * a NAT instance to perform NAT. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     * Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      *
-     * @param sourceDestCheck Boolean value
+     * @param sourceDestCheck Indicates whether source/destination checking is enabled. A value of
+     *         <code>true</code> means checking is enabled, and <code>false</code>
+     *         means checking is disabled. This value must be <code>false</code> for
+     *         a NAT instance to perform NAT. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     *         Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
     public void setSourceDestCheck(Boolean sourceDestCheck) {
         this.sourceDestCheck = sourceDestCheck;
     }
     
     /**
-     * Boolean value
+     * Indicates whether source/destination checking is enabled. A value of
+     * <code>true</code> means checking is enabled, and <code>false</code>
+     * means checking is disabled. This value must be <code>false</code> for
+     * a NAT instance to perform NAT. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     * Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param sourceDestCheck Boolean value
+     * @param sourceDestCheck Indicates whether source/destination checking is enabled. A value of
+     *         <code>true</code> means checking is enabled, and <code>false</code>
+     *         means checking is disabled. This value must be <code>false</code> for
+     *         a NAT instance to perform NAT. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     *         Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyNetworkInterfaceAttributeRequest withSourceDestCheck(Boolean sourceDestCheck) {
         this.sourceDestCheck = sourceDestCheck;
         return this;
     }
-    
-    
+
     /**
-     * Boolean value
+     * Indicates whether source/destination checking is enabled. A value of
+     * <code>true</code> means checking is enabled, and <code>false</code>
+     * means checking is disabled. This value must be <code>false</code> for
+     * a NAT instance to perform NAT. For more information, see <a
+     * href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     * Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      *
-     * @return Boolean value
+     * @return Indicates whether source/destination checking is enabled. A value of
+     *         <code>true</code> means checking is enabled, and <code>false</code>
+     *         means checking is disabled. This value must be <code>false</code> for
+     *         a NAT instance to perform NAT. For more information, see <a
+     *         href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT
+     *         Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
     public Boolean getSourceDestCheck() {
         return sourceDestCheck;
     }
-    
+
     /**
-     * Returns the value of the Groups property for this object.
+     * Changes the security groups for the network interface. The new set of
+     * groups you specify replaces the current set. You must specify at least
+     * one group, even if it's just the default security group in the VPC.
+     * You must specify the ID of the security group, not the name.
      *
-     * @return The value of the Groups property for this object.
+     * @return Changes the security groups for the network interface. The new set of
+     *         groups you specify replaces the current set. You must specify at least
+     *         one group, even if it's just the default security group in the VPC.
+     *         You must specify the ID of the security group, not the name.
      */
     public java.util.List<String> getGroups() {
-        
         if (groups == null) {
-            groups = new java.util.ArrayList<String>();
+              groups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              groups.setAutoConstruct(true);
         }
         return groups;
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * Changes the security groups for the network interface. The new set of
+     * groups you specify replaces the current set. You must specify at least
+     * one group, even if it's just the default security group in the VPC.
+     * You must specify the ID of the security group, not the name.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups Changes the security groups for the network interface. The new set of
+     *         groups you specify replaces the current set. You must specify at least
+     *         one group, even if it's just the default security group in the VPC.
+     *         You must specify the ID of the security group, not the name.
      */
     public void setGroups(java.util.Collection<String> groups) {
         if (groups == null) {
             this.groups = null;
             return;
         }
-
-        java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
         groupsCopy.addAll(groups);
         this.groups = groupsCopy;
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * Changes the security groups for the network interface. The new set of
+     * groups you specify replaces the current set. You must specify at least
+     * one group, even if it's just the default security group in the VPC.
+     * You must specify the ID of the security group, not the name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups Changes the security groups for the network interface. The new set of
+     *         groups you specify replaces the current set. You must specify at least
+     *         one group, even if it's just the default security group in the VPC.
+     *         You must specify the ID of the security group, not the name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyNetworkInterfaceAttributeRequest withGroups(String... groups) {
         if (getGroups() == null) setGroups(new java.util.ArrayList<String>(groups.length));
@@ -199,60 +277,77 @@ public class ModifyNetworkInterfaceAttributeRequest extends AmazonWebServiceRequ
     }
     
     /**
-     * Sets the value of the Groups property for this object.
+     * Changes the security groups for the network interface. The new set of
+     * groups you specify replaces the current set. You must specify at least
+     * one group, even if it's just the default security group in the VPC.
+     * You must specify the ID of the security group, not the name.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param groups The new value for the Groups property for this object.
+     * @param groups Changes the security groups for the network interface. The new set of
+     *         groups you specify replaces the current set. You must specify at least
+     *         one group, even if it's just the default security group in the VPC.
+     *         You must specify the ID of the security group, not the name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyNetworkInterfaceAttributeRequest withGroups(java.util.Collection<String> groups) {
         if (groups == null) {
             this.groups = null;
         } else {
-            java.util.List<String> groupsCopy = new java.util.ArrayList<String>(groups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> groupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(groups.size());
             groupsCopy.addAll(groups);
             this.groups = groupsCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * Returns the value of the Attachment property for this object.
+     * The ID of the interface attachment.
      *
-     * @return The value of the Attachment property for this object.
+     * @return The ID of the interface attachment.
      */
     public NetworkInterfaceAttachmentChanges getAttachment() {
         return attachment;
     }
     
     /**
-     * Sets the value of the Attachment property for this object.
+     * The ID of the interface attachment.
      *
-     * @param attachment The new value for the Attachment property for this object.
+     * @param attachment The ID of the interface attachment.
      */
     public void setAttachment(NetworkInterfaceAttachmentChanges attachment) {
         this.attachment = attachment;
     }
     
     /**
-     * Sets the value of the Attachment property for this object.
+     * The ID of the interface attachment.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param attachment The new value for the Attachment property for this object.
+     * @param attachment The ID of the interface attachment.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ModifyNetworkInterfaceAttributeRequest withAttachment(NetworkInterfaceAttachmentChanges attachment) {
         this.attachment = attachment;
         return this;
     }
-    
+
+    /**
+     * This method is intended for internal use only.
+     * Returns the marshaled request configured with additional parameters to
+     * enable operation dry-run.
+     */
+    @Override
+    public Request<ModifyNetworkInterfaceAttributeRequest> getDryRunRequest() {
+        Request<ModifyNetworkInterfaceAttributeRequest> request = new ModifyNetworkInterfaceAttributeRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return request;
+    }
     
     /**
      * Returns a string representation of this object; useful for testing and
@@ -265,11 +360,11 @@ public class ModifyNetworkInterfaceAttributeRequest extends AmazonWebServiceRequ
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");    	
-        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");    	
+        sb.append("{");
+        if (getNetworkInterfaceId() != null) sb.append("NetworkInterfaceId: " + getNetworkInterfaceId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (isSourceDestCheck() != null) sb.append("SourceDestCheck: " + isSourceDestCheck() + ",");
+        if (getGroups() != null) sb.append("Groups: " + getGroups() + ",");
         if (getAttachment() != null) sb.append("Attachment: " + getAttachment() );
         sb.append("}");
         return sb.toString();

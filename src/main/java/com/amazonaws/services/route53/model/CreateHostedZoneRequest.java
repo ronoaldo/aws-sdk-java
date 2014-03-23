@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.route53.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.route53.AmazonRoute53#createHostedZone(CreateHostedZoneRequest) CreateHostedZone operation}.
@@ -22,24 +24,31 @@ import java.io.Serializable;
  * This action creates a new hosted zone.
  * </p>
  * <p>
- * To create a new hosted zone, send a <code>POST</code> request to the <code>2012-12-12/hostedzone</code> resource. The request body must include an XML
- * document with a <code>CreateHostedZoneRequest</code> element. The response returns the <code>CreateHostedZoneResponse</code> element that contains
- * metadata about the hosted zone.
+ * To create a new hosted zone, send a <code>POST</code> request to the
+ * <code>2013-04-01/hostedzone</code> resource. The request body must
+ * include an XML document with a <code>CreateHostedZoneRequest</code>
+ * element. The response returns the
+ * <code>CreateHostedZoneResponse</code> element that contains metadata
+ * about the hosted zone.
  * </p>
  * <p>
- * Route 53 automatically creates a default SOA record and four NS records for the zone. The NS records in the hosted zone are the name servers you give
- * your registrar to delegate your domain to. For more information about SOA and NS records, see <a
- * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html"> NS and SOA Records that Route 53 Creates for a Hosted Zone </a>
+ * Route 53 automatically creates a default SOA record and four NS
+ * records for the zone. The NS records in the hosted zone are the name
+ * servers you give your registrar to delegate your domain to. For more
+ * information about SOA and NS records, see
+ * <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html"> NS and SOA Records that Route 53 Creates for a Hosted Zone </a>
  * in the <i>Amazon Route 53 Developer Guide</i> .
  * </p>
  * <p>
- * When you create a zone, its initial status is <code>PENDING</code> . This means that it is not yet available on all DNS servers. The status of the
- * zone changes to <code>INSYNC</code> when the NS and SOA records are available on all Route 53 DNS servers.
+ * When you create a zone, its initial status is <code>PENDING</code> .
+ * This means that it is not yet available on all DNS servers. The status
+ * of the zone changes to <code>INSYNC</code> when the NS and SOA records
+ * are available on all Route 53 DNS servers.
  * </p>
  *
  * @see com.amazonaws.services.route53.AmazonRoute53#createHostedZone(CreateHostedZoneRequest)
  */
-public class CreateHostedZoneRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreateHostedZoneRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The name of the domain. This must be a fully-specified domain, for
@@ -110,12 +119,10 @@ public class CreateHostedZoneRequest extends AmazonWebServiceRequest  implements
      * the value must be less than 128 bytes.
      */
     public CreateHostedZoneRequest(String name, String callerReference) {
-        this.name = name;
-        this.callerReference = callerReference;
+        setName(name);
+        setCallerReference(callerReference);
     }
 
-    
-    
     /**
      * The name of the domain. This must be a fully-specified domain, for
      * example, www.example.com. The trailing dot is optional; Route 53
@@ -199,14 +206,13 @@ public class CreateHostedZoneRequest extends AmazonWebServiceRequest  implements
      *         <code>DelegationSet</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHostedZoneRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A unique string that identifies the request and that allows failed
      * <code>CreateHostedZone</code> requests to be retried without the risk
@@ -290,14 +296,13 @@ public class CreateHostedZoneRequest extends AmazonWebServiceRequest  implements
      *         the value must be less than 128 bytes.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHostedZoneRequest withCallerReference(String callerReference) {
         this.callerReference = callerReference;
         return this;
     }
-    
-    
+
     /**
      * A complex type that contains an optional comment about your hosted
      * zone.
@@ -330,14 +335,13 @@ public class CreateHostedZoneRequest extends AmazonWebServiceRequest  implements
      *         zone.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreateHostedZoneRequest withHostedZoneConfig(HostedZoneConfig hostedZoneConfig) {
         this.hostedZoneConfig = hostedZoneConfig;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -349,9 +353,9 @@ public class CreateHostedZoneRequest extends AmazonWebServiceRequest  implements
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getCallerReference() != null) sb.append("CallerReference: " + getCallerReference() + ",");
         if (getHostedZoneConfig() != null) sb.append("HostedZoneConfig: " + getHostedZoneConfig() );
         sb.append("}");
         return sb.toString();

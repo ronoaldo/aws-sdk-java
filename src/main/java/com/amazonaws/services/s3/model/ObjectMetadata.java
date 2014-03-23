@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.codec.binary.Base64;
+
 import com.amazonaws.services.s3.Headers;
 import com.amazonaws.services.s3.internal.ObjectExpirationResult;
 import com.amazonaws.services.s3.internal.ObjectRestoreResult;
@@ -29,8 +31,9 @@ import com.amazonaws.services.s3.internal.ServerSideEncryptionResult;
  * user-supplied metadata, as well as the standard HTTP headers that Amazon S3
  * sends and receives (Content-Length, ETag, Content-MD5, etc.).
  */
-public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirationResult, ObjectRestoreResult {
-
+public class ObjectMetadata implements ServerSideEncryptionResult,
+        ObjectExpirationResult, ObjectRestoreResult, Cloneable
+{
     /*
      * TODO: Might be nice to get as many of the internal use only methods out
      *       of here so users never even see them.
@@ -42,13 +45,13 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
      * Custom user metadata, represented in responses with the x-amz-meta-
      * header prefix
      */
-    private Map<String, String> userMetadata = new HashMap<String, String>();
+    private Map<String, String> userMetadata;
 
     /**
      * All other (non user custom) headers such as Content-Length, Content-Type,
      * etc.
      */
-    private Map<String, Object> metadata = new HashMap<String, Object>();
+    private Map<String, Object> metadata;
 
     public static final String AES_256_SERVER_SIDE_ENCRYPTION = "AES256";
 
@@ -58,23 +61,29 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
     private Date httpExpiresDate;
 
     /**
-     * The time this object expires, or null if it has no expiration.
+     * The time this object will expire and be completely removed from S3, or
+     * null if this object will never expire.
      * <p>
      * This and the expiration time rule aren't stored in the metadata map
      * because the header contains both the time and the rule.
      */
     private Date expirationTime;
 
-    /** The expiration rule for this object */
+    /**
+     * The expiration rule id for this object.
+     */
     private String expirationTimeRuleId;
 
     /**
-     * Boolean value to indicate whether there is an ongoing restore request.
+     * Boolean value indicating whether there is an ongoing request to restore
+     * an archived copy of this object from Amazon Glacier.
      */
     private Boolean ongoingRestore;
 
     /**
-     * The expiration time when the object is scheduled to move to Amazon Glacier, or null if it has no expiration.
+     * The time at which an object that has been temporarily restored from
+     * Glacier will expire, and will need to be restored again in order to be
+     * accessed. Null if this object has not been restored from Glacier.
      */
     private Date restoreExpirationTime;
 
@@ -449,7 +458,8 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
      * Sets the base64 encoded 128-bit MD5 digest of the associated object
      * (content - not including headers) according to RFC 1864. This data is
      * used as a message integrity check to verify that the data received by
-     * Amazon S3 is the same data that the caller sent.
+     * Amazon S3 is the same data that the caller sent. If set to null,then the
+     * MD5 digest is removed from the metadata.
      * </p>
      * <p>
      * This field represents the base64 encoded 128-bit MD5 digest digest of an
@@ -461,15 +471,20 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
      * The AWS S3 Java client will attempt to calculate this field automatically
      * when uploading files to Amazon S3.
      * </p>
-     *
+     * 
      * @param md5Base64
      *            The base64 encoded MD5 hash of the content for the object
      *            associated with this metadata.
-     *
+     * 
      * @see ObjectMetadata#getContentMD5()
      */
     public void setContentMD5(String md5Base64) {
-        metadata.put(Headers.CONTENT_MD5, md5Base64);
+        if(md5Base64 == null){
+            metadata.remove(Headers.CONTENT_MD5);
+        }else{
+            metadata.put(Headers.CONTENT_MD5, md5Base64);
+        }
+
     }
 
     /**
@@ -598,7 +613,8 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
     }
 
     /**
-     * Returns the expiration time for this object, or null if it doesn't expire.
+     * Returns the time this object will expire and be completely removed from
+     * S3. Returns null if this object will never expire.
      */
     public Date getExpirationTime() {
         return expirationTime;
@@ -637,19 +653,22 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
 
 
     /**
-     * Returns the expiration time when the object is scheduled to move to
-     * Amazon Glacier, or null if it doesn't expire.
+     * Returns the time at which an object that has been temporarily restored
+     * from Amazon Glacier will expire, and will need to be restored again in
+     * order to be accessed. Returns null if this is not a temporary copy of an
+     * object restored from Glacier.
      */
     public Date getRestoreExpirationTime() {
         return restoreExpirationTime;
     }
 
     /**
-     * Sets the expiration time when the object is scheduled to move to Amazon
-     * Glacier.
+     * For internal use only. This will *not* set the object's restore
+     * expiration time, and is only used to set the value in the object after
+     * receiving the value in a response from S3.
      *
-     * @param expirationTime
-     *            The expiration time for the object to move to.
+     * @param restoreExpirationTime
+     *            The new restore expiration time for the object.
      */
     public void setRestoreExpirationTime(Date restoreExpirationTime) {
         this.restoreExpirationTime = restoreExpirationTime;
@@ -686,4 +705,30 @@ public class ObjectMetadata implements ServerSideEncryptionResult, ObjectExpirat
         return httpExpiresDate;
     }
 
+    /**
+     * Returns the value of the specified user meta datum.
+     */
+    public String getUserMetaDataOf(String key) {
+        return userMetadata == null ? null : userMetadata.get(key);
+    }
+    
+    public ObjectMetadata() {
+        userMetadata = new HashMap<String, String>();
+        metadata = new HashMap<String, Object>();
+    }
+
+    private ObjectMetadata(ObjectMetadata from) {
+        // shallow clone the internal hash maps
+        userMetadata = from.userMetadata == null ? null : new HashMap<String,String>(from.userMetadata);
+        metadata = from.metadata == null ? null : new HashMap<String, Object>(from.metadata);
+        this.expirationTime = from.expirationTime;
+        this.expirationTimeRuleId = from.expirationTimeRuleId;
+        this.httpExpiresDate = from.httpExpiresDate;
+        this.ongoingRestore = from.ongoingRestore;
+        this.restoreExpirationTime = from.restoreExpirationTime;
+    }
+
+    public ObjectMetadata clone() {
+        return new ObjectMetadata(this);
+    }
 }

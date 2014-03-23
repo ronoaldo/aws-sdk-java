@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Cancel Reserved Instances Listing Result
+ * 
  */
-public class CancelReservedInstancesListingResult  implements Serializable  {
-
-    private java.util.List<ReservedInstancesListing> reservedInstancesListings;
+public class CancelReservedInstancesListingResult implements Serializable {
 
     /**
-     * Returns the value of the ReservedInstancesListings property for this
-     * object.
+     * The Reserved Instance listing.
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing> reservedInstancesListings;
+
+    /**
+     * The Reserved Instance listing.
      *
-     * @return The value of the ReservedInstancesListings property for this object.
+     * @return The Reserved Instance listing.
      */
     public java.util.List<ReservedInstancesListing> getReservedInstancesListings() {
-        
         if (reservedInstancesListings == null) {
-            reservedInstancesListings = new java.util.ArrayList<ReservedInstancesListing>();
+              reservedInstancesListings = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing>();
+              reservedInstancesListings.setAutoConstruct(true);
         }
         return reservedInstancesListings;
     }
     
     /**
-     * Sets the value of the ReservedInstancesListings property for this
-     * object.
+     * The Reserved Instance listing.
      *
-     * @param reservedInstancesListings The new value for the ReservedInstancesListings property for this
-     *         object.
+     * @param reservedInstancesListings The Reserved Instance listing.
      */
     public void setReservedInstancesListings(java.util.Collection<ReservedInstancesListing> reservedInstancesListings) {
         if (reservedInstancesListings == null) {
             this.reservedInstancesListings = null;
             return;
         }
-
-        java.util.List<ReservedInstancesListing> reservedInstancesListingsCopy = new java.util.ArrayList<ReservedInstancesListing>(reservedInstancesListings.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing> reservedInstancesListingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing>(reservedInstancesListings.size());
         reservedInstancesListingsCopy.addAll(reservedInstancesListings);
         this.reservedInstancesListings = reservedInstancesListingsCopy;
     }
     
     /**
-     * Sets the value of the ReservedInstancesListings property for this
-     * object.
+     * The Reserved Instance listing.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstancesListings The new value for the ReservedInstancesListings property for this
-     *         object.
+     * @param reservedInstancesListings The Reserved Instance listing.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelReservedInstancesListingResult withReservedInstancesListings(ReservedInstancesListing... reservedInstancesListings) {
         if (getReservedInstancesListings() == null) setReservedInstancesListings(new java.util.ArrayList<ReservedInstancesListing>(reservedInstancesListings.length));
@@ -75,29 +73,27 @@ public class CancelReservedInstancesListingResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ReservedInstancesListings property for this
-     * object.
+     * The Reserved Instance listing.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param reservedInstancesListings The new value for the ReservedInstancesListings property for this
-     *         object.
+     * @param reservedInstancesListings The Reserved Instance listing.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CancelReservedInstancesListingResult withReservedInstancesListings(java.util.Collection<ReservedInstancesListing> reservedInstancesListings) {
         if (reservedInstancesListings == null) {
             this.reservedInstancesListings = null;
         } else {
-            java.util.List<ReservedInstancesListing> reservedInstancesListingsCopy = new java.util.ArrayList<ReservedInstancesListing>(reservedInstancesListings.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing> reservedInstancesListingsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ReservedInstancesListing>(reservedInstancesListings.size());
             reservedInstancesListingsCopy.addAll(reservedInstancesListings);
             this.reservedInstancesListings = reservedInstancesListingsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -109,7 +105,7 @@ public class CancelReservedInstancesListingResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getReservedInstancesListings() != null) sb.append("ReservedInstancesListings: " + getReservedInstancesListings() );
         sb.append("}");
         return sb.toString();

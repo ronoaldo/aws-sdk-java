@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The output for the DescribeLoadBalancerPolicies action.
  * </p>
  */
-public class DescribeLoadBalancerPoliciesResult  implements Serializable  {
+public class DescribeLoadBalancerPoliciesResult implements Serializable {
 
     /**
      * A list of policy description structures.
      */
-    private java.util.List<PolicyDescription> policyDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PolicyDescription> policyDescriptions;
 
     /**
      * A list of policy description structures.
@@ -33,9 +34,9 @@ public class DescribeLoadBalancerPoliciesResult  implements Serializable  {
      * @return A list of policy description structures.
      */
     public java.util.List<PolicyDescription> getPolicyDescriptions() {
-        
         if (policyDescriptions == null) {
-            policyDescriptions = new java.util.ArrayList<PolicyDescription>();
+              policyDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyDescription>();
+              policyDescriptions.setAutoConstruct(true);
         }
         return policyDescriptions;
     }
@@ -50,8 +51,7 @@ public class DescribeLoadBalancerPoliciesResult  implements Serializable  {
             this.policyDescriptions = null;
             return;
         }
-
-        java.util.List<PolicyDescription> policyDescriptionsCopy = new java.util.ArrayList<PolicyDescription>(policyDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PolicyDescription> policyDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyDescription>(policyDescriptions.size());
         policyDescriptionsCopy.addAll(policyDescriptions);
         this.policyDescriptions = policyDescriptionsCopy;
     }
@@ -64,7 +64,7 @@ public class DescribeLoadBalancerPoliciesResult  implements Serializable  {
      * @param policyDescriptions A list of policy description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesResult withPolicyDescriptions(PolicyDescription... policyDescriptions) {
         if (getPolicyDescriptions() == null) setPolicyDescriptions(new java.util.ArrayList<PolicyDescription>(policyDescriptions.length));
@@ -82,20 +82,20 @@ public class DescribeLoadBalancerPoliciesResult  implements Serializable  {
      * @param policyDescriptions A list of policy description structures.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLoadBalancerPoliciesResult withPolicyDescriptions(java.util.Collection<PolicyDescription> policyDescriptions) {
         if (policyDescriptions == null) {
             this.policyDescriptions = null;
         } else {
-            java.util.List<PolicyDescription> policyDescriptionsCopy = new java.util.ArrayList<PolicyDescription>(policyDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PolicyDescription> policyDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyDescription>(policyDescriptions.size());
             policyDescriptionsCopy.addAll(policyDescriptions);
             this.policyDescriptions = policyDescriptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class DescribeLoadBalancerPoliciesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getPolicyDescriptions() != null) sb.append("PolicyDescriptions: " + getPolicyDescriptions() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * Provides details of the <code>TimerFired</code> event.
  * </p>
  */
-public class TimerFiredEventAttributes  implements Serializable  {
+public class TimerFiredEventAttributes implements Serializable {
 
     /**
      * The unique Id of the timer that fired.
@@ -72,14 +73,13 @@ public class TimerFiredEventAttributes  implements Serializable  {
      * @param timerId The unique Id of the timer that fired.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerFiredEventAttributes withTimerId(String timerId) {
         this.timerId = timerId;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>TimerStarted</code> event that was recorded when
      * this timer was started. This information can be useful for diagnosing
@@ -118,14 +118,13 @@ public class TimerFiredEventAttributes  implements Serializable  {
      *         problems by tracing back the chain of events leading up to this event.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TimerFiredEventAttributes withStartedEventId(Long startedEventId) {
         this.startedEventId = startedEventId;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -137,8 +136,8 @@ public class TimerFiredEventAttributes  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTimerId() != null) sb.append("TimerId: " + getTimerId() + ",");    	
+        sb.append("{");
+        if (getTimerId() != null) sb.append("TimerId: " + getTimerId() + ",");
         if (getStartedEventId() != null) sb.append("StartedEventId: " + getStartedEventId() );
         sb.append("}");
         return sb.toString();

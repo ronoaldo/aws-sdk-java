@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,13 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * A JSON object containing the following fields:
- * </p>
- * 
- * <ul>
- * <li> ListLocalDisksOutput$Disks </li>
- * <li> GatewayARN </li>
- * 
- * </ul>
+ * List Local Disks Result
  */
-public class ListLocalDisksResult  implements Serializable  {
+public class ListLocalDisksResult implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -38,10 +31,7 @@ public class ListLocalDisksResult  implements Serializable  {
      */
     private String gatewayARN;
 
-    /**
-     * An array of <a>Disk</a> objects.
-     */
-    private java.util.List<Disk> disks;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Disk> disks;
 
     /**
      * The Amazon Resource Name (ARN) of the gateway. Use the
@@ -90,52 +80,50 @@ public class ListLocalDisksResult  implements Serializable  {
      *         account and region.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListLocalDisksResult withGatewayARN(String gatewayARN) {
         this.gatewayARN = gatewayARN;
         return this;
     }
-    
-    
+
     /**
-     * An array of <a>Disk</a> objects.
+     * Returns the value of the Disks property for this object.
      *
-     * @return An array of <a>Disk</a> objects.
+     * @return The value of the Disks property for this object.
      */
     public java.util.List<Disk> getDisks() {
-        
         if (disks == null) {
-            disks = new java.util.ArrayList<Disk>();
+              disks = new com.amazonaws.internal.ListWithAutoConstructFlag<Disk>();
+              disks.setAutoConstruct(true);
         }
         return disks;
     }
     
     /**
-     * An array of <a>Disk</a> objects.
+     * Sets the value of the Disks property for this object.
      *
-     * @param disks An array of <a>Disk</a> objects.
+     * @param disks The new value for the Disks property for this object.
      */
     public void setDisks(java.util.Collection<Disk> disks) {
         if (disks == null) {
             this.disks = null;
             return;
         }
-
-        java.util.List<Disk> disksCopy = new java.util.ArrayList<Disk>(disks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Disk> disksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Disk>(disks.size());
         disksCopy.addAll(disks);
         this.disks = disksCopy;
     }
     
     /**
-     * An array of <a>Disk</a> objects.
+     * Sets the value of the Disks property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param disks An array of <a>Disk</a> objects.
+     * @param disks The new value for the Disks property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListLocalDisksResult withDisks(Disk... disks) {
         if (getDisks() == null) setDisks(new java.util.ArrayList<Disk>(disks.length));
@@ -146,27 +134,27 @@ public class ListLocalDisksResult  implements Serializable  {
     }
     
     /**
-     * An array of <a>Disk</a> objects.
+     * Sets the value of the Disks property for this object.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param disks An array of <a>Disk</a> objects.
+     * @param disks The new value for the Disks property for this object.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListLocalDisksResult withDisks(java.util.Collection<Disk> disks) {
         if (disks == null) {
             this.disks = null;
         } else {
-            java.util.List<Disk> disksCopy = new java.util.ArrayList<Disk>(disks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Disk> disksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Disk>(disks.size());
             disksCopy.addAll(disks);
             this.disks = disksCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -178,8 +166,8 @@ public class ListLocalDisksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");    	
+        sb.append("{");
+        if (getGatewayARN() != null) sb.append("GatewayARN: " + getGatewayARN() + ",");
         if (getDisks() != null) sb.append("Disks: " + getDisks() );
         sb.append("}");
         return sb.toString();

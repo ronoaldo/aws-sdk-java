@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,68 +13,61 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Instance Status Result
+ * 
  */
-public class DescribeInstanceStatusResult  implements Serializable  {
+public class DescribeInstanceStatusResult implements Serializable {
 
     /**
-     * Collection of instance statuses describing the state of the requested
-     * instances.
+     * One or more instance status descriptions.
      */
-    private java.util.List<InstanceStatus> instanceStatuses;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus> instanceStatuses;
 
     /**
-     * A string specifying the next paginated set of results to return.
+     * The next paginated set of results to return.
      */
     private String nextToken;
 
     /**
-     * Collection of instance statuses describing the state of the requested
-     * instances.
+     * One or more instance status descriptions.
      *
-     * @return Collection of instance statuses describing the state of the requested
-     *         instances.
+     * @return One or more instance status descriptions.
      */
     public java.util.List<InstanceStatus> getInstanceStatuses() {
-        
         if (instanceStatuses == null) {
-            instanceStatuses = new java.util.ArrayList<InstanceStatus>();
+              instanceStatuses = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus>();
+              instanceStatuses.setAutoConstruct(true);
         }
         return instanceStatuses;
     }
     
     /**
-     * Collection of instance statuses describing the state of the requested
-     * instances.
+     * One or more instance status descriptions.
      *
-     * @param instanceStatuses Collection of instance statuses describing the state of the requested
-     *         instances.
+     * @param instanceStatuses One or more instance status descriptions.
      */
     public void setInstanceStatuses(java.util.Collection<InstanceStatus> instanceStatuses) {
         if (instanceStatuses == null) {
             this.instanceStatuses = null;
             return;
         }
-
-        java.util.List<InstanceStatus> instanceStatusesCopy = new java.util.ArrayList<InstanceStatus>(instanceStatuses.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus> instanceStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus>(instanceStatuses.size());
         instanceStatusesCopy.addAll(instanceStatuses);
         this.instanceStatuses = instanceStatusesCopy;
     }
     
     /**
-     * Collection of instance statuses describing the state of the requested
-     * instances.
+     * One or more instance status descriptions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceStatuses Collection of instance statuses describing the state of the requested
-     *         instances.
+     * @param instanceStatuses One or more instance status descriptions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceStatusResult withInstanceStatuses(InstanceStatus... instanceStatuses) {
         if (getInstanceStatuses() == null) setInstanceStatuses(new java.util.ArrayList<InstanceStatus>(instanceStatuses.length));
@@ -85,63 +78,60 @@ public class DescribeInstanceStatusResult  implements Serializable  {
     }
     
     /**
-     * Collection of instance statuses describing the state of the requested
-     * instances.
+     * One or more instance status descriptions.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param instanceStatuses Collection of instance statuses describing the state of the requested
-     *         instances.
+     * @param instanceStatuses One or more instance status descriptions.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceStatusResult withInstanceStatuses(java.util.Collection<InstanceStatus> instanceStatuses) {
         if (instanceStatuses == null) {
             this.instanceStatuses = null;
         } else {
-            java.util.List<InstanceStatus> instanceStatusesCopy = new java.util.ArrayList<InstanceStatus>(instanceStatuses.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus> instanceStatusesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<InstanceStatus>(instanceStatuses.size());
             instanceStatusesCopy.addAll(instanceStatuses);
             this.instanceStatuses = instanceStatusesCopy;
         }
 
         return this;
     }
-    
+
     /**
-     * A string specifying the next paginated set of results to return.
+     * The next paginated set of results to return.
      *
-     * @return A string specifying the next paginated set of results to return.
+     * @return The next paginated set of results to return.
      */
     public String getNextToken() {
         return nextToken;
     }
     
     /**
-     * A string specifying the next paginated set of results to return.
+     * The next paginated set of results to return.
      *
-     * @param nextToken A string specifying the next paginated set of results to return.
+     * @param nextToken The next paginated set of results to return.
      */
     public void setNextToken(String nextToken) {
         this.nextToken = nextToken;
     }
     
     /**
-     * A string specifying the next paginated set of results to return.
+     * The next paginated set of results to return.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param nextToken A string specifying the next paginated set of results to return.
+     * @param nextToken The next paginated set of results to return.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeInstanceStatusResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -153,8 +143,8 @@ public class DescribeInstanceStatusResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getInstanceStatuses() != null) sb.append("InstanceStatuses: " + getInstanceStatuses() + ",");    	
+        sb.append("{");
+        if (getInstanceStatuses() != null) sb.append("InstanceStatuses: " + getInstanceStatuses() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

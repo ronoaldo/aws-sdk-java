@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +21,7 @@ import java.io.Serializable;
  * The PolicyTypeDescription data type.
  * </p>
  */
-public class PolicyTypeDescription  implements Serializable  {
+public class PolicyTypeDescription implements Serializable {
 
     /**
      * The name of the policy type.
@@ -33,10 +34,10 @@ public class PolicyTypeDescription  implements Serializable  {
     private String description;
 
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      */
-    private java.util.List<PolicyAttributeTypeDescription> policyAttributeTypeDescriptions;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription> policyAttributeTypeDescriptions;
 
     /**
      * The name of the policy type.
@@ -64,14 +65,13 @@ public class PolicyTypeDescription  implements Serializable  {
      * @param policyTypeName The name of the policy type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyTypeDescription withPolicyTypeName(String policyTypeName) {
         this.policyTypeName = policyTypeName;
         return this;
     }
-    
-    
+
     /**
      * A human-readable description of the policy type.
      *
@@ -98,58 +98,56 @@ public class PolicyTypeDescription  implements Serializable  {
      * @param description A human-readable description of the policy type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyTypeDescription withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      *
-     * @return The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @return The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      */
     public java.util.List<PolicyAttributeTypeDescription> getPolicyAttributeTypeDescriptions() {
-        
         if (policyAttributeTypeDescriptions == null) {
-            policyAttributeTypeDescriptions = new java.util.ArrayList<PolicyAttributeTypeDescription>();
+              policyAttributeTypeDescriptions = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription>();
+              policyAttributeTypeDescriptions.setAutoConstruct(true);
         }
         return policyAttributeTypeDescriptions;
     }
     
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      *
-     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      */
     public void setPolicyAttributeTypeDescriptions(java.util.Collection<PolicyAttributeTypeDescription> policyAttributeTypeDescriptions) {
         if (policyAttributeTypeDescriptions == null) {
             this.policyAttributeTypeDescriptions = null;
             return;
         }
-
-        java.util.List<PolicyAttributeTypeDescription> policyAttributeTypeDescriptionsCopy = new java.util.ArrayList<PolicyAttributeTypeDescription>(policyAttributeTypeDescriptions.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription> policyAttributeTypeDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription>(policyAttributeTypeDescriptions.size());
         policyAttributeTypeDescriptionsCopy.addAll(policyAttributeTypeDescriptions);
         this.policyAttributeTypeDescriptions = policyAttributeTypeDescriptionsCopy;
     }
     
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyTypeDescription withPolicyAttributeTypeDescriptions(PolicyAttributeTypeDescription... policyAttributeTypeDescriptions) {
         if (getPolicyAttributeTypeDescriptions() == null) setPolicyAttributeTypeDescriptions(new java.util.ArrayList<PolicyAttributeTypeDescription>(policyAttributeTypeDescriptions.length));
@@ -160,29 +158,29 @@ public class PolicyTypeDescription  implements Serializable  {
     }
     
     /**
-     * The description of the policy attributes associated with the
-     * LoadBalancer policies defined by the Elastic Load Balancing service.
+     * The description of the policy attributes associated with the load
+     * balancer policies defined by the Elastic Load Balancing service.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the
-     *         LoadBalancer policies defined by the Elastic Load Balancing service.
+     * @param policyAttributeTypeDescriptions The description of the policy attributes associated with the load
+     *         balancer policies defined by the Elastic Load Balancing service.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PolicyTypeDescription withPolicyAttributeTypeDescriptions(java.util.Collection<PolicyAttributeTypeDescription> policyAttributeTypeDescriptions) {
         if (policyAttributeTypeDescriptions == null) {
             this.policyAttributeTypeDescriptions = null;
         } else {
-            java.util.List<PolicyAttributeTypeDescription> policyAttributeTypeDescriptionsCopy = new java.util.ArrayList<PolicyAttributeTypeDescription>(policyAttributeTypeDescriptions.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription> policyAttributeTypeDescriptionsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PolicyAttributeTypeDescription>(policyAttributeTypeDescriptions.size());
             policyAttributeTypeDescriptionsCopy.addAll(policyAttributeTypeDescriptions);
             this.policyAttributeTypeDescriptions = policyAttributeTypeDescriptionsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -194,9 +192,9 @@ public class PolicyTypeDescription  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPolicyTypeName() != null) sb.append("PolicyTypeName: " + getPolicyTypeName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
+        sb.append("{");
+        if (getPolicyTypeName() != null) sb.append("PolicyTypeName: " + getPolicyTypeName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
         if (getPolicyAttributeTypeDescriptions() != null) sb.append("PolicyAttributeTypeDescriptions: " + getPolicyAttributeTypeDescriptions() );
         sb.append("}");
         return sb.toString();

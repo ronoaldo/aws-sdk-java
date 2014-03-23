@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,32 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#describeUserProfiles(DescribeUserProfilesRequest) DescribeUserProfiles operation}.
  * <p>
  * Describe specified users.
  * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have an attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#describeUserProfiles(DescribeUserProfilesRequest)
  */
-public class DescribeUserProfilesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class DescribeUserProfilesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * An array of IAM user ARNs that identify the users to be described.
      */
-    private java.util.List<String> iamUserArns;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> iamUserArns;
 
     /**
      * An array of IAM user ARNs that identify the users to be described.
@@ -37,9 +46,9 @@ public class DescribeUserProfilesRequest extends AmazonWebServiceRequest  implem
      * @return An array of IAM user ARNs that identify the users to be described.
      */
     public java.util.List<String> getIamUserArns() {
-        
         if (iamUserArns == null) {
-            iamUserArns = new java.util.ArrayList<String>();
+              iamUserArns = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              iamUserArns.setAutoConstruct(true);
         }
         return iamUserArns;
     }
@@ -54,8 +63,7 @@ public class DescribeUserProfilesRequest extends AmazonWebServiceRequest  implem
             this.iamUserArns = null;
             return;
         }
-
-        java.util.List<String> iamUserArnsCopy = new java.util.ArrayList<String>(iamUserArns.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> iamUserArnsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(iamUserArns.size());
         iamUserArnsCopy.addAll(iamUserArns);
         this.iamUserArns = iamUserArnsCopy;
     }
@@ -68,7 +76,7 @@ public class DescribeUserProfilesRequest extends AmazonWebServiceRequest  implem
      * @param iamUserArns An array of IAM user ARNs that identify the users to be described.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUserProfilesRequest withIamUserArns(String... iamUserArns) {
         if (getIamUserArns() == null) setIamUserArns(new java.util.ArrayList<String>(iamUserArns.length));
@@ -86,20 +94,20 @@ public class DescribeUserProfilesRequest extends AmazonWebServiceRequest  implem
      * @param iamUserArns An array of IAM user ARNs that identify the users to be described.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeUserProfilesRequest withIamUserArns(java.util.Collection<String> iamUserArns) {
         if (iamUserArns == null) {
             this.iamUserArns = null;
         } else {
-            java.util.List<String> iamUserArnsCopy = new java.util.ArrayList<String>(iamUserArns.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> iamUserArnsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(iamUserArns.size());
             iamUserArnsCopy.addAll(iamUserArns);
             this.iamUserArns = iamUserArnsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -111,7 +119,7 @@ public class DescribeUserProfilesRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getIamUserArns() != null) sb.append("IamUserArns: " + getIamUserArns() );
         sb.append("}");
         return sb.toString();

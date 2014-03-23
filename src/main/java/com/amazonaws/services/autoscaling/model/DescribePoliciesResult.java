@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The <code>PoliciesType</code> data type.
  * </p>
  */
-public class DescribePoliciesResult  implements Serializable  {
+public class DescribePoliciesResult implements Serializable {
 
     /**
      * A list of scaling policies.
      */
-    private java.util.List<ScalingPolicy> scalingPolicies;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ScalingPolicy> scalingPolicies;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -41,9 +42,9 @@ public class DescribePoliciesResult  implements Serializable  {
      * @return A list of scaling policies.
      */
     public java.util.List<ScalingPolicy> getScalingPolicies() {
-        
         if (scalingPolicies == null) {
-            scalingPolicies = new java.util.ArrayList<ScalingPolicy>();
+              scalingPolicies = new com.amazonaws.internal.ListWithAutoConstructFlag<ScalingPolicy>();
+              scalingPolicies.setAutoConstruct(true);
         }
         return scalingPolicies;
     }
@@ -58,8 +59,7 @@ public class DescribePoliciesResult  implements Serializable  {
             this.scalingPolicies = null;
             return;
         }
-
-        java.util.List<ScalingPolicy> scalingPoliciesCopy = new java.util.ArrayList<ScalingPolicy>(scalingPolicies.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ScalingPolicy> scalingPoliciesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ScalingPolicy>(scalingPolicies.size());
         scalingPoliciesCopy.addAll(scalingPolicies);
         this.scalingPolicies = scalingPoliciesCopy;
     }
@@ -72,7 +72,7 @@ public class DescribePoliciesResult  implements Serializable  {
      * @param scalingPolicies A list of scaling policies.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePoliciesResult withScalingPolicies(ScalingPolicy... scalingPolicies) {
         if (getScalingPolicies() == null) setScalingPolicies(new java.util.ArrayList<ScalingPolicy>(scalingPolicies.length));
@@ -90,20 +90,20 @@ public class DescribePoliciesResult  implements Serializable  {
      * @param scalingPolicies A list of scaling policies.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePoliciesResult withScalingPolicies(java.util.Collection<ScalingPolicy> scalingPolicies) {
         if (scalingPolicies == null) {
             this.scalingPolicies = null;
         } else {
-            java.util.List<ScalingPolicy> scalingPoliciesCopy = new java.util.ArrayList<ScalingPolicy>(scalingPolicies.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ScalingPolicy> scalingPoliciesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ScalingPolicy>(scalingPolicies.size());
             scalingPoliciesCopy.addAll(scalingPolicies);
             this.scalingPolicies = scalingPoliciesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -139,14 +139,13 @@ public class DescribePoliciesResult  implements Serializable  {
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribePoliciesResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +157,8 @@ public class DescribePoliciesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getScalingPolicies() != null) sb.append("ScalingPolicies: " + getScalingPolicies() + ",");    	
+        sb.append("{");
+        if (getScalingPolicies() != null) sb.append("ScalingPolicies: " + getScalingPolicies() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

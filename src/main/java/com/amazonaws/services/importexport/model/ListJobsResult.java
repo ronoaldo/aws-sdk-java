@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.importexport.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * Output structure for the ListJobs operation.
  * </p>
  */
-public class ListJobsResult  implements Serializable  {
+public class ListJobsResult implements Serializable {
 
     /**
      * A list container for Jobs returned by the ListJobs operation.
      */
-    private java.util.List<Job> jobs;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Job> jobs;
 
     /**
      * Indicates whether the list of jobs was truncated. If true, then call
@@ -39,9 +40,9 @@ public class ListJobsResult  implements Serializable  {
      * @return A list container for Jobs returned by the ListJobs operation.
      */
     public java.util.List<Job> getJobs() {
-        
         if (jobs == null) {
-            jobs = new java.util.ArrayList<Job>();
+              jobs = new com.amazonaws.internal.ListWithAutoConstructFlag<Job>();
+              jobs.setAutoConstruct(true);
         }
         return jobs;
     }
@@ -56,8 +57,7 @@ public class ListJobsResult  implements Serializable  {
             this.jobs = null;
             return;
         }
-
-        java.util.List<Job> jobsCopy = new java.util.ArrayList<Job>(jobs.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Job> jobsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Job>(jobs.size());
         jobsCopy.addAll(jobs);
         this.jobs = jobsCopy;
     }
@@ -70,7 +70,7 @@ public class ListJobsResult  implements Serializable  {
      * @param jobs A list container for Jobs returned by the ListJobs operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsResult withJobs(Job... jobs) {
         if (getJobs() == null) setJobs(new java.util.ArrayList<Job>(jobs.length));
@@ -88,20 +88,20 @@ public class ListJobsResult  implements Serializable  {
      * @param jobs A list container for Jobs returned by the ListJobs operation.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsResult withJobs(java.util.Collection<Job> jobs) {
         if (jobs == null) {
             this.jobs = null;
         } else {
-            java.util.List<Job> jobsCopy = new java.util.ArrayList<Job>(jobs.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Job> jobsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Job>(jobs.size());
             jobsCopy.addAll(jobs);
             this.jobs = jobsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Indicates whether the list of jobs was truncated. If true, then call
      * ListJobs again using the last JobId element as the marker.
@@ -134,14 +134,13 @@ public class ListJobsResult  implements Serializable  {
      *         ListJobs again using the last JobId element as the marker.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListJobsResult withIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
-    
-    
+
     /**
      * Indicates whether the list of jobs was truncated. If true, then call
      * ListJobs again using the last JobId element as the marker.
@@ -152,7 +151,7 @@ public class ListJobsResult  implements Serializable  {
     public Boolean getIsTruncated() {
         return isTruncated;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -164,8 +163,8 @@ public class ListJobsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getJobs() != null) sb.append("Jobs: " + getJobs() + ",");    	
+        sb.append("{");
+        if (getJobs() != null) sb.append("Jobs: " + getJobs() + ",");
         if (isTruncated() != null) sb.append("IsTruncated: " + isTruncated() );
         sb.append("}");
         return sb.toString();

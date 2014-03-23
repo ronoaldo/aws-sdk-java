@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticbeanstalk.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#checkDNSAvailability(CheckDNSAvailabilityRequest) CheckDNSAvailability operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalk#checkDNSAvailability(CheckDNSAvailabilityRequest)
  */
-public class CheckDNSAvailabilityRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CheckDNSAvailabilityRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The prefix used when this CNAME is reserved.
@@ -48,11 +50,9 @@ public class CheckDNSAvailabilityRequest extends AmazonWebServiceRequest  implem
      * @param cNAMEPrefix The prefix used when this CNAME is reserved.
      */
     public CheckDNSAvailabilityRequest(String cNAMEPrefix) {
-        this.cNAMEPrefix = cNAMEPrefix;
+        setCNAMEPrefix(cNAMEPrefix);
     }
 
-    
-    
     /**
      * The prefix used when this CNAME is reserved.
      * <p>
@@ -88,14 +88,13 @@ public class CheckDNSAvailabilityRequest extends AmazonWebServiceRequest  implem
      * @param cNAMEPrefix The prefix used when this CNAME is reserved.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CheckDNSAvailabilityRequest withCNAMEPrefix(String cNAMEPrefix) {
         this.cNAMEPrefix = cNAMEPrefix;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +106,7 @@ public class CheckDNSAvailabilityRequest extends AmazonWebServiceRequest  implem
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCNAMEPrefix() != null) sb.append("CNAMEPrefix: " + getCNAMEPrefix() );
         sb.append("}");
         return sb.toString();

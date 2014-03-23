@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudsearch.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,10 +21,10 @@ import java.io.Serializable;
  * Options that define a <code>uint</code> field in the search index.
  * </p>
  */
-public class UIntOptions  implements Serializable  {
+public class UIntOptions implements Serializable {
 
     /**
-     * The default value for an unsigned integer field.
+     * The default value for an unsigned integer field. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>0 - <br/>
@@ -31,48 +32,47 @@ public class UIntOptions  implements Serializable  {
     private Integer defaultValue;
 
     /**
-     * The default value for an unsigned integer field.
+     * The default value for an unsigned integer field. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>0 - <br/>
      *
-     * @return The default value for an unsigned integer field.
+     * @return The default value for an unsigned integer field. Optional.
      */
     public Integer getDefaultValue() {
         return defaultValue;
     }
     
     /**
-     * The default value for an unsigned integer field.
+     * The default value for an unsigned integer field. Optional.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>0 - <br/>
      *
-     * @param defaultValue The default value for an unsigned integer field.
+     * @param defaultValue The default value for an unsigned integer field. Optional.
      */
     public void setDefaultValue(Integer defaultValue) {
         this.defaultValue = defaultValue;
     }
     
     /**
-     * The default value for an unsigned integer field.
+     * The default value for an unsigned integer field. Optional.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      * <p>
      * <b>Constraints:</b><br/>
      * <b>Range: </b>0 - <br/>
      *
-     * @param defaultValue The default value for an unsigned integer field.
+     * @param defaultValue The default value for an unsigned integer field. Optional.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UIntOptions withDefaultValue(Integer defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -84,7 +84,7 @@ public class UIntOptions  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getDefaultValue() != null) sb.append("DefaultValue: " + getDefaultValue() );
         sb.append("}");
         return sb.toString();

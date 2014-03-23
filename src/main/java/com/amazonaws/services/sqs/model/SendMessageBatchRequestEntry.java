@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,20 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.sqs.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the details of a single SQS message along with a <code>Id</code> .
+ * Contains the details of a single Amazon SQS message along with a
+ * <code>Id</code> .
  * </p>
  */
-public class SendMessageBatchRequestEntry  implements Serializable  {
+public class SendMessageBatchRequestEntry implements Serializable {
 
     /**
      * An identifier for the message in this batch. This is used to
-     * communicate the result. Note that the the <code>Id</code>s of a batch
+     * communicate the result. Note that the <code>Id</code>s of a batch
      * request need to be unique within the request.
      */
     private String id;
@@ -51,24 +53,22 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      * initialize any additional object members.
      * 
      * @param id An identifier for the message in this batch. This is used to
-     * communicate the result. Note that the the <code>Id</code>s of a batch
+     * communicate the result. Note that the <code>Id</code>s of a batch
      * request need to be unique within the request.
      * @param messageBody Body of the message.
      */
     public SendMessageBatchRequestEntry(String id, String messageBody) {
-        this.id = id;
-        this.messageBody = messageBody;
+        setId(id);
+        setMessageBody(messageBody);
     }
 
-    
-    
     /**
      * An identifier for the message in this batch. This is used to
-     * communicate the result. Note that the the <code>Id</code>s of a batch
+     * communicate the result. Note that the <code>Id</code>s of a batch
      * request need to be unique within the request.
      *
      * @return An identifier for the message in this batch. This is used to
-     *         communicate the result. Note that the the <code>Id</code>s of a batch
+     *         communicate the result. Note that the <code>Id</code>s of a batch
      *         request need to be unique within the request.
      */
     public String getId() {
@@ -77,11 +77,11 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
     
     /**
      * An identifier for the message in this batch. This is used to
-     * communicate the result. Note that the the <code>Id</code>s of a batch
+     * communicate the result. Note that the <code>Id</code>s of a batch
      * request need to be unique within the request.
      *
      * @param id An identifier for the message in this batch. This is used to
-     *         communicate the result. Note that the the <code>Id</code>s of a batch
+     *         communicate the result. Note that the <code>Id</code>s of a batch
      *         request need to be unique within the request.
      */
     public void setId(String id) {
@@ -90,24 +90,23 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
     
     /**
      * An identifier for the message in this batch. This is used to
-     * communicate the result. Note that the the <code>Id</code>s of a batch
+     * communicate the result. Note that the <code>Id</code>s of a batch
      * request need to be unique within the request.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param id An identifier for the message in this batch. This is used to
-     *         communicate the result. Note that the the <code>Id</code>s of a batch
+     *         communicate the result. Note that the <code>Id</code>s of a batch
      *         request need to be unique within the request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchRequestEntry withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * Body of the message.
      *
@@ -134,14 +133,13 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      * @param messageBody Body of the message.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchRequestEntry withMessageBody(String messageBody) {
         this.messageBody = messageBody;
         return this;
     }
-    
-    
+
     /**
      * The number of seconds for which the message has to be delayed.
      *
@@ -168,14 +166,13 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
      * @param delaySeconds The number of seconds for which the message has to be delayed.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SendMessageBatchRequestEntry withDelaySeconds(Integer delaySeconds) {
         this.delaySeconds = delaySeconds;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -187,9 +184,9 @@ public class SendMessageBatchRequestEntry  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
-        if (getMessageBody() != null) sb.append("MessageBody: " + getMessageBody() + ",");    	
+        sb.append("{");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
+        if (getMessageBody() != null) sb.append("MessageBody: " + getMessageBody() + ",");
         if (getDelaySeconds() != null) sb.append("DelaySeconds: " + getDelaySeconds() );
         sb.append("}");
         return sb.toString();

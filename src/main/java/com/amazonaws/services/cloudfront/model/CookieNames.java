@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that specifies the whitelisted cookies, if any, that you want CloudFront to forward to your origin that is associated with this cache
- * behavior.
+ * A complex type that specifies the whitelisted cookies, if any, that
+ * you want CloudFront to forward to your origin that is associated with
+ * this cache behavior.
  * </p>
  */
-public class CookieNames  implements Serializable  {
+public class CookieNames implements Serializable {
 
     /**
      * The number of whitelisted cookies for this cache behavior.
@@ -32,7 +34,7 @@ public class CookieNames  implements Serializable  {
      * Optional: A complex type that contains whitelisted cookies for this
      * cache behavior. If Quantity is 0, you can omit Items.
      */
-    private java.util.List<String> items;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> items;
 
     /**
      * The number of whitelisted cookies for this cache behavior.
@@ -60,14 +62,13 @@ public class CookieNames  implements Serializable  {
      * @param quantity The number of whitelisted cookies for this cache behavior.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CookieNames withQuantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
-    
-    
+
     /**
      * Optional: A complex type that contains whitelisted cookies for this
      * cache behavior. If Quantity is 0, you can omit Items.
@@ -76,9 +77,9 @@ public class CookieNames  implements Serializable  {
      *         cache behavior. If Quantity is 0, you can omit Items.
      */
     public java.util.List<String> getItems() {
-        
         if (items == null) {
-            items = new java.util.ArrayList<String>();
+              items = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              items.setAutoConstruct(true);
         }
         return items;
     }
@@ -95,8 +96,7 @@ public class CookieNames  implements Serializable  {
             this.items = null;
             return;
         }
-
-        java.util.List<String> itemsCopy = new java.util.ArrayList<String>(items.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(items.size());
         itemsCopy.addAll(items);
         this.items = itemsCopy;
     }
@@ -111,7 +111,7 @@ public class CookieNames  implements Serializable  {
      *         cache behavior. If Quantity is 0, you can omit Items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CookieNames withItems(String... items) {
         if (getItems() == null) setItems(new java.util.ArrayList<String>(items.length));
@@ -131,20 +131,20 @@ public class CookieNames  implements Serializable  {
      *         cache behavior. If Quantity is 0, you can omit Items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CookieNames withItems(java.util.Collection<String> items) {
         if (items == null) {
             this.items = null;
         } else {
-            java.util.List<String> itemsCopy = new java.util.ArrayList<String>(items.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(items.size());
             itemsCopy.addAll(items);
             this.items = itemsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -156,8 +156,8 @@ public class CookieNames  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");    	
+        sb.append("{");
+        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");
         if (getItems() != null) sb.append("Items: " + getItems() );
         sb.append("}");
         return sb.toString();

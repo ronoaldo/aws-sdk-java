@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,18 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.opsworks.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.opsworks.AWSOpsWorks#updateApp(UpdateAppRequest) UpdateApp operation}.
  * <p>
  * Updates a specified app.
  * </p>
+ * <p>
+ * <b>Required Permissions</b> : To use this action, an IAM user must
+ * have a Deploy or Manage permissions level for the stack, or an
+ * attached policy that explicitly grants permissions. For more
+ * information on user permissions, see
+ * <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html"> Managing User Permissions </a>
+ * .
+ * </p>
  *
  * @see com.amazonaws.services.opsworks.AWSOpsWorks#updateApp(UpdateAppRequest)
  */
-public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateAppRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The app ID.
@@ -58,7 +68,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * The app's virtual host settings, with multiple domains separated by
      * commas. For example: <code>'www.example.com, example.com'</code>
      */
-    private java.util.List<String> domains;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> domains;
 
     /**
      * Whether SSL is enabled for the app.
@@ -102,14 +112,13 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param appId The app ID.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withAppId(String appId) {
         this.appId = appId;
         return this;
     }
-    
-    
+
     /**
      * The app name.
      *
@@ -136,14 +145,13 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param name The app name.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withName(String name) {
         this.name = name;
         return this;
     }
-    
-    
+
     /**
      * A description of the app.
      *
@@ -170,14 +178,13 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param description A description of the app.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The app type.
      * <p>
@@ -217,7 +224,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param type The app type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AppType
      */
@@ -225,8 +232,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * The app type.
      * <p>
@@ -252,7 +258,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param type The app type.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see AppType
      */
@@ -260,7 +266,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
         this.type = type.toString();
         return this;
     }
-    
+
     /**
      * A <code>Source</code> object that specifies the app repository.
      *
@@ -287,14 +293,13 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param appSource A <code>Source</code> object that specifies the app repository.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withAppSource(Source appSource) {
         this.appSource = appSource;
         return this;
     }
-    
-    
+
     /**
      * The app's virtual host settings, with multiple domains separated by
      * commas. For example: <code>'www.example.com, example.com'</code>
@@ -303,9 +308,9 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         commas. For example: <code>'www.example.com, example.com'</code>
      */
     public java.util.List<String> getDomains() {
-        
         if (domains == null) {
-            domains = new java.util.ArrayList<String>();
+              domains = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              domains.setAutoConstruct(true);
         }
         return domains;
     }
@@ -322,8 +327,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
             this.domains = null;
             return;
         }
-
-        java.util.List<String> domainsCopy = new java.util.ArrayList<String>(domains.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> domainsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domains.size());
         domainsCopy.addAll(domains);
         this.domains = domainsCopy;
     }
@@ -338,7 +342,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         commas. For example: <code>'www.example.com, example.com'</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withDomains(String... domains) {
         if (getDomains() == null) setDomains(new java.util.ArrayList<String>(domains.length));
@@ -358,20 +362,20 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         commas. For example: <code>'www.example.com, example.com'</code>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withDomains(java.util.Collection<String> domains) {
         if (domains == null) {
             this.domains = null;
         } else {
-            java.util.List<String> domainsCopy = new java.util.ArrayList<String>(domains.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> domainsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(domains.size());
             domainsCopy.addAll(domains);
             this.domains = domainsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Whether SSL is enabled for the app.
      *
@@ -398,14 +402,13 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param enableSsl Whether SSL is enabled for the app.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withEnableSsl(Boolean enableSsl) {
         this.enableSsl = enableSsl;
         return this;
     }
-    
-    
+
     /**
      * Whether SSL is enabled for the app.
      *
@@ -414,7 +417,7 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
     public Boolean getEnableSsl() {
         return enableSsl;
     }
-    
+
     /**
      * An <code>SslConfiguration</code> object with the SSL configuration.
      *
@@ -441,14 +444,13 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      * @param sslConfiguration An <code>SslConfiguration</code> object with the SSL configuration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withSslConfiguration(SslConfiguration sslConfiguration) {
         this.sslConfiguration = sslConfiguration;
         return this;
     }
-    
-    
+
     /**
      * One or more user-defined key/value pairs to be added to the stack
      * attributes bag.
@@ -462,7 +464,6 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
             attributes = new java.util.HashMap<String,String>();
         }
         return attributes;
-
     }
     
     /**
@@ -486,10 +487,41 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
      *         attributes bag.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateAppRequest withAttributes(java.util.Map<String,String> attributes) {
         setAttributes(attributes);
+        return this;
+    }
+
+    /**
+     * One or more user-defined key/value pairs to be added to the stack
+     * attributes bag.
+     * <p>
+     * The method adds a new key-value pair into Attributes parameter, and
+     * returns a reference to this object so that method calls can be chained
+     * together.
+     *
+     * @param key The key of the entry to be added into Attributes.
+     * @param value The corresponding value of the entry to be added into Attributes.
+     */
+    public UpdateAppRequest addAttributesEntry(String key, String value) {
+        if (null == this.attributes) {
+            this.attributes = new java.util.HashMap<String,String>();
+        }
+        if (this.attributes.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.attributes.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Attributes.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     */
+    public UpdateAppRequest clearAttributesEntries() {
+        this.attributes = null;
         return this;
     }
     
@@ -504,15 +536,15 @@ public class UpdateAppRequest extends AmazonWebServiceRequest  implements Serial
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getAppSource() != null) sb.append("AppSource: " + getAppSource() + ",");    	
-        if (getDomains() != null) sb.append("Domains: " + getDomains() + ",");    	
-        if (isEnableSsl() != null) sb.append("EnableSsl: " + isEnableSsl() + ",");    	
-        if (getSslConfiguration() != null) sb.append("SslConfiguration: " + getSslConfiguration() + ",");    	
+        sb.append("{");
+        if (getAppId() != null) sb.append("AppId: " + getAppId() + ",");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getAppSource() != null) sb.append("AppSource: " + getAppSource() + ",");
+        if (getDomains() != null) sb.append("Domains: " + getDomains() + ",");
+        if (isEnableSsl() != null) sb.append("EnableSsl: " + isEnableSsl() + ",");
+        if (getSslConfiguration() != null) sb.append("SslConfiguration: " + getSslConfiguration() + ",");
         if (getAttributes() != null) sb.append("Attributes: " + getAttributes() );
         sb.append("}");
         return sb.toString();

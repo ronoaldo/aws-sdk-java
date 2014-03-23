@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,58 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * <p>
- * The result of describing <i>Amazon Machine Images</i> (AMIs).
- * </p>
+ * 
  */
-public class DescribeImagesResult  implements Serializable  {
+public class DescribeImagesResult implements Serializable {
 
     /**
-     * The list of the described AMIs.
+     * Information about one or more images.
      */
-    private java.util.List<Image> images;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<Image> images;
 
     /**
-     * The list of the described AMIs.
+     * Information about one or more images.
      *
-     * @return The list of the described AMIs.
+     * @return Information about one or more images.
      */
     public java.util.List<Image> getImages() {
-        
         if (images == null) {
-            images = new java.util.ArrayList<Image>();
+              images = new com.amazonaws.internal.ListWithAutoConstructFlag<Image>();
+              images.setAutoConstruct(true);
         }
         return images;
     }
     
     /**
-     * The list of the described AMIs.
+     * Information about one or more images.
      *
-     * @param images The list of the described AMIs.
+     * @param images Information about one or more images.
      */
     public void setImages(java.util.Collection<Image> images) {
         if (images == null) {
             this.images = null;
             return;
         }
-
-        java.util.List<Image> imagesCopy = new java.util.ArrayList<Image>(images.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<Image> imagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Image>(images.size());
         imagesCopy.addAll(images);
         this.images = imagesCopy;
     }
     
     /**
-     * The list of the described AMIs.
+     * Information about one or more images.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param images The list of the described AMIs.
+     * @param images Information about one or more images.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesResult withImages(Image... images) {
         if (getImages() == null) setImages(new java.util.ArrayList<Image>(images.length));
@@ -75,27 +73,27 @@ public class DescribeImagesResult  implements Serializable  {
     }
     
     /**
-     * The list of the described AMIs.
+     * Information about one or more images.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param images The list of the described AMIs.
+     * @param images Information about one or more images.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeImagesResult withImages(java.util.Collection<Image> images) {
         if (images == null) {
             this.images = null;
         } else {
-            java.util.List<Image> imagesCopy = new java.util.ArrayList<Image>(images.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<Image> imagesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<Image>(images.size());
             imagesCopy.addAll(images);
             this.images = imagesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +105,7 @@ public class DescribeImagesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getImages() != null) sb.append("Images: " + getImages() );
         sb.append("}");
         return sb.toString();

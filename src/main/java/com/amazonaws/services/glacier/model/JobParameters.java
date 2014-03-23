@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.glacier.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,20 +21,20 @@ import java.io.Serializable;
  * Provides options for defining a job.
  * </p>
  */
-public class JobParameters  implements Serializable  {
+public class JobParameters implements Serializable {
 
     /**
      * When initiating a job to retrieve a vault inventory, you can
      * optionally add this parameter to your request to specify the output
      * format. If you are initiating an inventory job and do not specify a
-     * Format field, JSON is the default format. Valid Values are "CSV" and
+     * Format field, JSON is the default format. Valid values are "CSV" and
      * "JSON".
      */
     private String format;
 
     /**
      * The job type. You can initiate a job to retrieve an archive or get an
-     * inventory of a vault. Valid Values are "archive-retrieval" and
+     * inventory of a vault. Valid values are "archive-retrieval" and
      * "inventory-retrieval".
      */
     private String type;
@@ -49,8 +50,8 @@ public class JobParameters  implements Serializable  {
     /**
      * The optional description for the job. The description must be less
      * than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
-     * without control codes���specifically, ASCII values 32���126 decimal or
-     * 0x20���0x7E hexadecimal.
+     * without control codes-specifically, ASCII values 32-126 decimal or
+     * 0x20-0x7E hexadecimal.
      */
     private String description;
 
@@ -62,7 +63,23 @@ public class JobParameters  implements Serializable  {
      */
     private String sNSTopic;
 
+    /**
+     * The byte range to retrieve for an archive retrieval. in the form
+     * "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the
+     * whole archive is retrieved. If specified, the byte range must be
+     * megabyte (1024*1024) aligned which means that <i>StartByteValue</i>
+     * must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be
+     * divisible by 1 MB or be the end of the archive specified as the
+     * archive byte size value minus 1. If RetrievalByteRange is not megabyte
+     * aligned, this operation returns a 400 response. <p>An error occurs if
+     * you specify this field for an inventory retrieval job request.
+     */
     private String retrievalByteRange;
+
+    /**
+     * Input parameters used for range inventory retrieval.
+     */
+    private InventoryRetrievalJobInput inventoryRetrievalParameters;
 
     /**
      * Default constructor for a new JobParameters object.  Callers should use the
@@ -78,10 +95,10 @@ public class JobParameters  implements Serializable  {
      * @param format When initiating a job to retrieve a vault inventory, you
      * can optionally add this parameter to your request to specify the
      * output format. If you are initiating an inventory job and do not
-     * specify a Format field, JSON is the default format. Valid Values are
+     * specify a Format field, JSON is the default format. Valid values are
      * "CSV" and "JSON".
      * @param type The job type. You can initiate a job to retrieve an
-     * archive or get an inventory of a vault. Valid Values are
+     * archive or get an inventory of a vault. Valid values are
      * "archive-retrieval" and "inventory-retrieval".
      * @param archiveId The ID of the archive that you want to retrieve. This
      * field is required only if <code>Type</code> is set to
@@ -89,29 +106,27 @@ public class JobParameters  implements Serializable  {
      * parameter for an inventory retrieval job request.
      * @param description The optional description for the job. The
      * description must be less than or equal to 1,024 bytes. The allowable
-     * characters are 7-bit ASCII without control codes���specifically, ASCII
-     * values 32���126 decimal or 0x20���0x7E hexadecimal.
+     * characters are 7-bit ASCII without control codes-specifically, ASCII
+     * values 32-126 decimal or 0x20-0x7E hexadecimal.
      */
     public JobParameters(String format, String type, String archiveId, String description) {
-        this.format = format;
-        this.type = type;
-        this.archiveId = archiveId;
-        this.description = description;
+        setFormat(format);
+        setType(type);
+        setArchiveId(archiveId);
+        setDescription(description);
     }
 
-    
-    
     /**
      * When initiating a job to retrieve a vault inventory, you can
      * optionally add this parameter to your request to specify the output
      * format. If you are initiating an inventory job and do not specify a
-     * Format field, JSON is the default format. Valid Values are "CSV" and
+     * Format field, JSON is the default format. Valid values are "CSV" and
      * "JSON".
      *
      * @return When initiating a job to retrieve a vault inventory, you can
      *         optionally add this parameter to your request to specify the output
      *         format. If you are initiating an inventory job and do not specify a
-     *         Format field, JSON is the default format. Valid Values are "CSV" and
+     *         Format field, JSON is the default format. Valid values are "CSV" and
      *         "JSON".
      */
     public String getFormat() {
@@ -122,13 +137,13 @@ public class JobParameters  implements Serializable  {
      * When initiating a job to retrieve a vault inventory, you can
      * optionally add this parameter to your request to specify the output
      * format. If you are initiating an inventory job and do not specify a
-     * Format field, JSON is the default format. Valid Values are "CSV" and
+     * Format field, JSON is the default format. Valid values are "CSV" and
      * "JSON".
      *
      * @param format When initiating a job to retrieve a vault inventory, you can
      *         optionally add this parameter to your request to specify the output
      *         format. If you are initiating an inventory job and do not specify a
-     *         Format field, JSON is the default format. Valid Values are "CSV" and
+     *         Format field, JSON is the default format. Valid values are "CSV" and
      *         "JSON".
      */
     public void setFormat(String format) {
@@ -139,7 +154,7 @@ public class JobParameters  implements Serializable  {
      * When initiating a job to retrieve a vault inventory, you can
      * optionally add this parameter to your request to specify the output
      * format. If you are initiating an inventory job and do not specify a
-     * Format field, JSON is the default format. Valid Values are "CSV" and
+     * Format field, JSON is the default format. Valid values are "CSV" and
      * "JSON".
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
@@ -147,25 +162,24 @@ public class JobParameters  implements Serializable  {
      * @param format When initiating a job to retrieve a vault inventory, you can
      *         optionally add this parameter to your request to specify the output
      *         format. If you are initiating an inventory job and do not specify a
-     *         Format field, JSON is the default format. Valid Values are "CSV" and
+     *         Format field, JSON is the default format. Valid values are "CSV" and
      *         "JSON".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobParameters withFormat(String format) {
         this.format = format;
         return this;
     }
-    
-    
+
     /**
      * The job type. You can initiate a job to retrieve an archive or get an
-     * inventory of a vault. Valid Values are "archive-retrieval" and
+     * inventory of a vault. Valid values are "archive-retrieval" and
      * "inventory-retrieval".
      *
      * @return The job type. You can initiate a job to retrieve an archive or get an
-     *         inventory of a vault. Valid Values are "archive-retrieval" and
+     *         inventory of a vault. Valid values are "archive-retrieval" and
      *         "inventory-retrieval".
      */
     public String getType() {
@@ -174,11 +188,11 @@ public class JobParameters  implements Serializable  {
     
     /**
      * The job type. You can initiate a job to retrieve an archive or get an
-     * inventory of a vault. Valid Values are "archive-retrieval" and
+     * inventory of a vault. Valid values are "archive-retrieval" and
      * "inventory-retrieval".
      *
      * @param type The job type. You can initiate a job to retrieve an archive or get an
-     *         inventory of a vault. Valid Values are "archive-retrieval" and
+     *         inventory of a vault. Valid values are "archive-retrieval" and
      *         "inventory-retrieval".
      */
     public void setType(String type) {
@@ -187,24 +201,23 @@ public class JobParameters  implements Serializable  {
     
     /**
      * The job type. You can initiate a job to retrieve an archive or get an
-     * inventory of a vault. Valid Values are "archive-retrieval" and
+     * inventory of a vault. Valid values are "archive-retrieval" and
      * "inventory-retrieval".
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param type The job type. You can initiate a job to retrieve an archive or get an
-     *         inventory of a vault. Valid Values are "archive-retrieval" and
+     *         inventory of a vault. Valid values are "archive-retrieval" and
      *         "inventory-retrieval".
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobParameters withType(String type) {
         this.type = type;
         return this;
     }
-    
-    
+
     /**
      * The ID of the archive that you want to retrieve. This field is
      * required only if <code>Type</code> is set to archive-retrieval. An
@@ -249,24 +262,23 @@ public class JobParameters  implements Serializable  {
      *         retrieval job request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobParameters withArchiveId(String archiveId) {
         this.archiveId = archiveId;
         return this;
     }
-    
-    
+
     /**
      * The optional description for the job. The description must be less
      * than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
-     * without control codes���specifically, ASCII values 32���126 decimal or
-     * 0x20���0x7E hexadecimal.
+     * without control codes-specifically, ASCII values 32-126 decimal or
+     * 0x20-0x7E hexadecimal.
      *
      * @return The optional description for the job. The description must be less
      *         than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
-     *         without control codes���specifically, ASCII values 32���126 decimal or
-     *         0x20���0x7E hexadecimal.
+     *         without control codes-specifically, ASCII values 32-126 decimal or
+     *         0x20-0x7E hexadecimal.
      */
     public String getDescription() {
         return description;
@@ -275,13 +287,13 @@ public class JobParameters  implements Serializable  {
     /**
      * The optional description for the job. The description must be less
      * than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
-     * without control codes���specifically, ASCII values 32���126 decimal or
-     * 0x20���0x7E hexadecimal.
+     * without control codes-specifically, ASCII values 32-126 decimal or
+     * 0x20-0x7E hexadecimal.
      *
      * @param description The optional description for the job. The description must be less
      *         than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
-     *         without control codes���specifically, ASCII values 32���126 decimal or
-     *         0x20���0x7E hexadecimal.
+     *         without control codes-specifically, ASCII values 32-126 decimal or
+     *         0x20-0x7E hexadecimal.
      */
     public void setDescription(String description) {
         this.description = description;
@@ -290,25 +302,24 @@ public class JobParameters  implements Serializable  {
     /**
      * The optional description for the job. The description must be less
      * than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
-     * without control codes���specifically, ASCII values 32���126 decimal or
-     * 0x20���0x7E hexadecimal.
+     * without control codes-specifically, ASCII values 32-126 decimal or
+     * 0x20-0x7E hexadecimal.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
      * @param description The optional description for the job. The description must be less
      *         than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
-     *         without control codes���specifically, ASCII values 32���126 decimal or
-     *         0x20���0x7E hexadecimal.
+     *         without control codes-specifically, ASCII values 32-126 decimal or
+     *         0x20-0x7E hexadecimal.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobParameters withDescription(String description) {
         this.description = description;
         return this;
     }
-    
-    
+
     /**
      * The Amazon SNS topic ARN to which Amazon Glacier sends a notification
      * when the job is completed and the output is ready for you to download.
@@ -353,48 +364,127 @@ public class JobParameters  implements Serializable  {
      *         SNS topic must exist.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobParameters withSNSTopic(String sNSTopic) {
         this.sNSTopic = sNSTopic;
         return this;
     }
-    
-    
+
     /**
-     * Returns the value of the RetrievalByteRange property for this object.
+     * The byte range to retrieve for an archive retrieval. in the form
+     * "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the
+     * whole archive is retrieved. If specified, the byte range must be
+     * megabyte (1024*1024) aligned which means that <i>StartByteValue</i>
+     * must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be
+     * divisible by 1 MB or be the end of the archive specified as the
+     * archive byte size value minus 1. If RetrievalByteRange is not megabyte
+     * aligned, this operation returns a 400 response. <p>An error occurs if
+     * you specify this field for an inventory retrieval job request.
      *
-     * @return The value of the RetrievalByteRange property for this object.
+     * @return The byte range to retrieve for an archive retrieval. in the form
+     *         "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the
+     *         whole archive is retrieved. If specified, the byte range must be
+     *         megabyte (1024*1024) aligned which means that <i>StartByteValue</i>
+     *         must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be
+     *         divisible by 1 MB or be the end of the archive specified as the
+     *         archive byte size value minus 1. If RetrievalByteRange is not megabyte
+     *         aligned, this operation returns a 400 response. <p>An error occurs if
+     *         you specify this field for an inventory retrieval job request.
      */
     public String getRetrievalByteRange() {
         return retrievalByteRange;
     }
     
     /**
-     * Sets the value of the RetrievalByteRange property for this object.
+     * The byte range to retrieve for an archive retrieval. in the form
+     * "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the
+     * whole archive is retrieved. If specified, the byte range must be
+     * megabyte (1024*1024) aligned which means that <i>StartByteValue</i>
+     * must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be
+     * divisible by 1 MB or be the end of the archive specified as the
+     * archive byte size value minus 1. If RetrievalByteRange is not megabyte
+     * aligned, this operation returns a 400 response. <p>An error occurs if
+     * you specify this field for an inventory retrieval job request.
      *
-     * @param retrievalByteRange The new value for the RetrievalByteRange property for this object.
+     * @param retrievalByteRange The byte range to retrieve for an archive retrieval. in the form
+     *         "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the
+     *         whole archive is retrieved. If specified, the byte range must be
+     *         megabyte (1024*1024) aligned which means that <i>StartByteValue</i>
+     *         must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be
+     *         divisible by 1 MB or be the end of the archive specified as the
+     *         archive byte size value minus 1. If RetrievalByteRange is not megabyte
+     *         aligned, this operation returns a 400 response. <p>An error occurs if
+     *         you specify this field for an inventory retrieval job request.
      */
     public void setRetrievalByteRange(String retrievalByteRange) {
         this.retrievalByteRange = retrievalByteRange;
     }
     
     /**
-     * Sets the value of the RetrievalByteRange property for this object.
+     * The byte range to retrieve for an archive retrieval. in the form
+     * "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the
+     * whole archive is retrieved. If specified, the byte range must be
+     * megabyte (1024*1024) aligned which means that <i>StartByteValue</i>
+     * must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be
+     * divisible by 1 MB or be the end of the archive specified as the
+     * archive byte size value minus 1. If RetrievalByteRange is not megabyte
+     * aligned, this operation returns a 400 response. <p>An error occurs if
+     * you specify this field for an inventory retrieval job request.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param retrievalByteRange The new value for the RetrievalByteRange property for this object.
+     * @param retrievalByteRange The byte range to retrieve for an archive retrieval. in the form
+     *         "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the
+     *         whole archive is retrieved. If specified, the byte range must be
+     *         megabyte (1024*1024) aligned which means that <i>StartByteValue</i>
+     *         must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be
+     *         divisible by 1 MB or be the end of the archive specified as the
+     *         archive byte size value minus 1. If RetrievalByteRange is not megabyte
+     *         aligned, this operation returns a 400 response. <p>An error occurs if
+     *         you specify this field for an inventory retrieval job request.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public JobParameters withRetrievalByteRange(String retrievalByteRange) {
         this.retrievalByteRange = retrievalByteRange;
         return this;
     }
+
+    /**
+     * Input parameters used for range inventory retrieval.
+     *
+     * @return Input parameters used for range inventory retrieval.
+     */
+    public InventoryRetrievalJobInput getInventoryRetrievalParameters() {
+        return inventoryRetrievalParameters;
+    }
     
+    /**
+     * Input parameters used for range inventory retrieval.
+     *
+     * @param inventoryRetrievalParameters Input parameters used for range inventory retrieval.
+     */
+    public void setInventoryRetrievalParameters(InventoryRetrievalJobInput inventoryRetrievalParameters) {
+        this.inventoryRetrievalParameters = inventoryRetrievalParameters;
+    }
     
+    /**
+     * Input parameters used for range inventory retrieval.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param inventoryRetrievalParameters Input parameters used for range inventory retrieval.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     */
+    public JobParameters withInventoryRetrievalParameters(InventoryRetrievalJobInput inventoryRetrievalParameters) {
+        this.inventoryRetrievalParameters = inventoryRetrievalParameters;
+        return this;
+    }
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -406,13 +496,14 @@ public class JobParameters  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");    	
-        if (getType() != null) sb.append("Type: " + getType() + ",");    	
-        if (getArchiveId() != null) sb.append("ArchiveId: " + getArchiveId() + ",");    	
-        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");    	
-        if (getSNSTopic() != null) sb.append("SNSTopic: " + getSNSTopic() + ",");    	
-        if (getRetrievalByteRange() != null) sb.append("RetrievalByteRange: " + getRetrievalByteRange() );
+        sb.append("{");
+        if (getFormat() != null) sb.append("Format: " + getFormat() + ",");
+        if (getType() != null) sb.append("Type: " + getType() + ",");
+        if (getArchiveId() != null) sb.append("ArchiveId: " + getArchiveId() + ",");
+        if (getDescription() != null) sb.append("Description: " + getDescription() + ",");
+        if (getSNSTopic() != null) sb.append("SNSTopic: " + getSNSTopic() + ",");
+        if (getRetrievalByteRange() != null) sb.append("RetrievalByteRange: " + getRetrievalByteRange() + ",");
+        if (getInventoryRetrievalParameters() != null) sb.append("InventoryRetrievalParameters: " + getInventoryRetrievalParameters() );
         sb.append("}");
         return sb.toString();
     }
@@ -428,6 +519,7 @@ public class JobParameters  implements Serializable  {
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode()); 
         hashCode = prime * hashCode + ((getSNSTopic() == null) ? 0 : getSNSTopic().hashCode()); 
         hashCode = prime * hashCode + ((getRetrievalByteRange() == null) ? 0 : getRetrievalByteRange().hashCode()); 
+        hashCode = prime * hashCode + ((getInventoryRetrievalParameters() == null) ? 0 : getInventoryRetrievalParameters().hashCode()); 
         return hashCode;
     }
     
@@ -451,6 +543,8 @@ public class JobParameters  implements Serializable  {
         if (other.getSNSTopic() != null && other.getSNSTopic().equals(this.getSNSTopic()) == false) return false; 
         if (other.getRetrievalByteRange() == null ^ this.getRetrievalByteRange() == null) return false;
         if (other.getRetrievalByteRange() != null && other.getRetrievalByteRange().equals(this.getRetrievalByteRange()) == false) return false; 
+        if (other.getInventoryRetrievalParameters() == null ^ this.getInventoryRetrievalParameters() == null) return false;
+        if (other.getInventoryRetrievalParameters() != null && other.getInventoryRetrievalParameters().equals(this.getInventoryRetrievalParameters()) == false) return false; 
         return true;
     }
     

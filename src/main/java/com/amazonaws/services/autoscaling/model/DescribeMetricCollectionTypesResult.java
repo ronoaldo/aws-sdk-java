@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,32 +21,32 @@ import java.io.Serializable;
  * The output of the DescribeMetricCollectionTypes action.
  * </p>
  */
-public class DescribeMetricCollectionTypesResult  implements Serializable  {
+public class DescribeMetricCollectionTypesResult implements Serializable {
 
     /**
-     * The list of Metrics collected.The following metrics are supported:
+     * The list of Metrics collected. The following metrics are supported:
      * <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      * <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      * <li><p>GroupPendingInstances</li>
      * <li><p>GroupTerminatingInstances</li> <li><p>GroupTotalInstances</li>
      * </ul>
      */
-    private java.util.List<MetricCollectionType> metrics;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<MetricCollectionType> metrics;
 
     /**
      * A list of granularities for the listed Metrics.
      */
-    private java.util.List<MetricGranularityType> granularities;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<MetricGranularityType> granularities;
 
     /**
-     * The list of Metrics collected.The following metrics are supported:
+     * The list of Metrics collected. The following metrics are supported:
      * <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      * <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      * <li><p>GroupPendingInstances</li>
      * <li><p>GroupTerminatingInstances</li> <li><p>GroupTotalInstances</li>
      * </ul>
      *
-     * @return The list of Metrics collected.The following metrics are supported:
+     * @return The list of Metrics collected. The following metrics are supported:
      *         <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      *         <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      *         <li><p>GroupPendingInstances</li>
@@ -53,22 +54,22 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
      *         </ul>
      */
     public java.util.List<MetricCollectionType> getMetrics() {
-        
         if (metrics == null) {
-            metrics = new java.util.ArrayList<MetricCollectionType>();
+              metrics = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricCollectionType>();
+              metrics.setAutoConstruct(true);
         }
         return metrics;
     }
     
     /**
-     * The list of Metrics collected.The following metrics are supported:
+     * The list of Metrics collected. The following metrics are supported:
      * <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      * <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      * <li><p>GroupPendingInstances</li>
      * <li><p>GroupTerminatingInstances</li> <li><p>GroupTotalInstances</li>
      * </ul>
      *
-     * @param metrics The list of Metrics collected.The following metrics are supported:
+     * @param metrics The list of Metrics collected. The following metrics are supported:
      *         <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      *         <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      *         <li><p>GroupPendingInstances</li>
@@ -80,14 +81,13 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
             this.metrics = null;
             return;
         }
-
-        java.util.List<MetricCollectionType> metricsCopy = new java.util.ArrayList<MetricCollectionType>(metrics.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<MetricCollectionType> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricCollectionType>(metrics.size());
         metricsCopy.addAll(metrics);
         this.metrics = metricsCopy;
     }
     
     /**
-     * The list of Metrics collected.The following metrics are supported:
+     * The list of Metrics collected. The following metrics are supported:
      * <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      * <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      * <li><p>GroupPendingInstances</li>
@@ -96,7 +96,7 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param metrics The list of Metrics collected.The following metrics are supported:
+     * @param metrics The list of Metrics collected. The following metrics are supported:
      *         <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      *         <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      *         <li><p>GroupPendingInstances</li>
@@ -104,7 +104,7 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeMetricCollectionTypesResult withMetrics(MetricCollectionType... metrics) {
         if (getMetrics() == null) setMetrics(new java.util.ArrayList<MetricCollectionType>(metrics.length));
@@ -115,7 +115,7 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
     }
     
     /**
-     * The list of Metrics collected.The following metrics are supported:
+     * The list of Metrics collected. The following metrics are supported:
      * <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      * <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      * <li><p>GroupPendingInstances</li>
@@ -124,7 +124,7 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param metrics The list of Metrics collected.The following metrics are supported:
+     * @param metrics The list of Metrics collected. The following metrics are supported:
      *         <ul> <li><p>GroupMinSize</li> <li><p>GroupMaxSize</li>
      *         <li><p>GroupDesiredCapacity</li> <li><p>GroupInServiceInstances</li>
      *         <li><p>GroupPendingInstances</li>
@@ -132,29 +132,29 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
      *         </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeMetricCollectionTypesResult withMetrics(java.util.Collection<MetricCollectionType> metrics) {
         if (metrics == null) {
             this.metrics = null;
         } else {
-            java.util.List<MetricCollectionType> metricsCopy = new java.util.ArrayList<MetricCollectionType>(metrics.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<MetricCollectionType> metricsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricCollectionType>(metrics.size());
             metricsCopy.addAll(metrics);
             this.metrics = metricsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A list of granularities for the listed Metrics.
      *
      * @return A list of granularities for the listed Metrics.
      */
     public java.util.List<MetricGranularityType> getGranularities() {
-        
         if (granularities == null) {
-            granularities = new java.util.ArrayList<MetricGranularityType>();
+              granularities = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricGranularityType>();
+              granularities.setAutoConstruct(true);
         }
         return granularities;
     }
@@ -169,8 +169,7 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
             this.granularities = null;
             return;
         }
-
-        java.util.List<MetricGranularityType> granularitiesCopy = new java.util.ArrayList<MetricGranularityType>(granularities.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<MetricGranularityType> granularitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricGranularityType>(granularities.size());
         granularitiesCopy.addAll(granularities);
         this.granularities = granularitiesCopy;
     }
@@ -183,7 +182,7 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
      * @param granularities A list of granularities for the listed Metrics.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeMetricCollectionTypesResult withGranularities(MetricGranularityType... granularities) {
         if (getGranularities() == null) setGranularities(new java.util.ArrayList<MetricGranularityType>(granularities.length));
@@ -201,20 +200,20 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
      * @param granularities A list of granularities for the listed Metrics.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeMetricCollectionTypesResult withGranularities(java.util.Collection<MetricGranularityType> granularities) {
         if (granularities == null) {
             this.granularities = null;
         } else {
-            java.util.List<MetricGranularityType> granularitiesCopy = new java.util.ArrayList<MetricGranularityType>(granularities.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<MetricGranularityType> granularitiesCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<MetricGranularityType>(granularities.size());
             granularitiesCopy.addAll(granularities);
             this.granularities = granularitiesCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -226,8 +225,8 @@ public class DescribeMetricCollectionTypesResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");    	
+        sb.append("{");
+        if (getMetrics() != null) sb.append("Metrics: " + getMetrics() + ",");
         if (getGranularities() != null) sb.append("Granularities: " + getGranularities() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,18 +21,27 @@ import com.amazonaws.services.simpledb.model.*;
 /**
  * Interface for accessing AmazonSimpleDB.
  * Amazon SimpleDB <p>
- * Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By offloading the time and effort
- * associated with building and operating a web-scale database, SimpleDB provides developers the freedom to focus on application development.
+ * Amazon SimpleDB is a web service providing the core database
+ * functions of data indexing and querying in the cloud. By offloading
+ * the time and effort associated with building and operating a web-scale
+ * database, SimpleDB provides developers the freedom to focus on
+ * application development.
  * </p>
  * <p>
- * A traditional, clustered relational database requires a sizable upfront capital outlay, is complex to design, and often requires extensive and
- * repetitive database administration. Amazon SimpleDB is dramatically simpler, requiring no schema, automatically indexing your data and providing a
- * simple API for storage and access. This approach eliminates the administrative burden of data modeling, index maintenance, and performance tuning.
- * Developers gain access to this functionality within Amazon's proven computing environment, are able to scale instantly, and pay only for what they
- * use.
+ * A traditional, clustered relational database requires a sizable
+ * upfront capital outlay, is complex to design, and often requires
+ * extensive and repetitive database administration. Amazon SimpleDB is
+ * dramatically simpler, requiring no schema, automatically indexing your
+ * data and providing a simple API for storage and access. This approach
+ * eliminates the administrative burden of data modeling, index
+ * maintenance, and performance tuning. Developers gain access to this
+ * functionality within Amazon's proven computing environment, are able
+ * to scale instantly, and pay only for what they use.
  * </p>
  * <p>
- * Visit <a href="http://aws.amazon.com/simpledb/"> http://aws.amazon.com/simpledb/ </a> for more information.
+ * Visit
+ * <a href="http://aws.amazon.com/simpledb/"> http://aws.amazon.com/simpledb/ </a>
+ * for more information.
  * </p>
  */
 public interface AmazonSimpleDB {
@@ -93,7 +102,7 @@ public interface AmazonSimpleDB {
      * @see Region#createClient(Class, com.amazonaws.auth.AWSCredentialsProvider, ClientConfiguration)
      */
     public void setRegion(Region region) throws java.lang.IllegalArgumentException;
-	
+    
     /**
      * <p>
      * The <code>Select</code> operation returns a set of attributes for
@@ -199,6 +208,7 @@ public interface AmazonSimpleDB {
      * @param putAttributesRequest Container for the necessary parameters to
      *           execute the PutAttributes service method on AmazonSimpleDB.
      * 
+     * 
      * @throws InvalidParameterValueException
      * @throws NumberDomainBytesExceededException
      * @throws NumberDomainAttributesExceededException
@@ -253,6 +263,7 @@ public interface AmazonSimpleDB {
      *           parameters to execute the BatchDeleteAttributes service method on
      *           AmazonSimpleDB.
      * 
+     * 
      *
      * @throws AmazonClientException
      *             If any internal errors are encountered inside the client while
@@ -280,6 +291,7 @@ public interface AmazonSimpleDB {
      *
      * @param deleteDomainRequest Container for the necessary parameters to
      *           execute the DeleteDomain service method on AmazonSimpleDB.
+     * 
      * 
      * @throws MissingParameterException
      *
@@ -310,13 +322,14 @@ public interface AmazonSimpleDB {
      * The client can create up to 100 domains per account.
      * </p>
      * <p>
-     * If the client requires additional domains, go to <a
-     * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-     * http://aws.amazon.com/contact-us/simpledb-limit-request/ </a> .
+     * If the client requires additional domains, go to
+     * <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/"> http://aws.amazon.com/contact-us/simpledb-limit-request/ </a>
+     * .
      * </p>
      *
      * @param createDomainRequest Container for the necessary parameters to
      *           execute the CreateDomain service method on AmazonSimpleDB.
+     * 
      * 
      * @throws InvalidParameterValueException
      * @throws NumberDomainsExceededException
@@ -358,6 +371,7 @@ public interface AmazonSimpleDB {
      *
      * @param deleteAttributesRequest Container for the necessary parameters
      *           to execute the DeleteAttributes service method on AmazonSimpleDB.
+     * 
      * 
      * @throws InvalidParameterValueException
      * @throws NoSuchDomainException
@@ -524,6 +538,7 @@ public interface AmazonSimpleDB {
      *           parameters to execute the BatchPutAttributes service method on
      *           AmazonSimpleDB.
      * 
+     * 
      * @throws DuplicateItemNameException
      * @throws InvalidParameterValueException
      * @throws NumberDomainBytesExceededException
@@ -599,7 +614,5 @@ public interface AmazonSimpleDB {
      *             either a problem with the data in the request, or a server side issue.
      */
     public ListDomainsResult listDomains() throws AmazonServiceException, AmazonClientException;
-    
-
 }
         

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudfront.AmazonCloudFront#updateDistribution(UpdateDistributionRequest) UpdateDistribution operation}.
@@ -24,7 +26,7 @@ import java.io.Serializable;
  *
  * @see com.amazonaws.services.cloudfront.AmazonCloudFront#updateDistribution(UpdateDistributionRequest)
  */
-public class UpdateDistributionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateDistributionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The distribution's configuration information.
@@ -61,13 +63,11 @@ public class UpdateDistributionRequest extends AmazonWebServiceRequest  implemen
      * E2QWRUHAPOMQZL.
      */
     public UpdateDistributionRequest(DistributionConfig distributionConfig, String id, String ifMatch) {
-        this.distributionConfig = distributionConfig;
-        this.id = id;
-        this.ifMatch = ifMatch;
+        setDistributionConfig(distributionConfig);
+        setId(id);
+        setIfMatch(ifMatch);
     }
 
-    
-    
     /**
      * The distribution's configuration information.
      *
@@ -94,14 +94,13 @@ public class UpdateDistributionRequest extends AmazonWebServiceRequest  implemen
      * @param distributionConfig The distribution's configuration information.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateDistributionRequest withDistributionConfig(DistributionConfig distributionConfig) {
         this.distributionConfig = distributionConfig;
         return this;
     }
-    
-    
+
     /**
      * The distribution's id.
      *
@@ -128,14 +127,13 @@ public class UpdateDistributionRequest extends AmazonWebServiceRequest  implemen
      * @param id The distribution's id.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateDistributionRequest withId(String id) {
         this.id = id;
         return this;
     }
-    
-    
+
     /**
      * The value of the ETag header you received when retrieving the
      * distribution's configuration. For example: E2QWRUHAPOMQZL.
@@ -168,14 +166,13 @@ public class UpdateDistributionRequest extends AmazonWebServiceRequest  implemen
      *         distribution's configuration. For example: E2QWRUHAPOMQZL.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateDistributionRequest withIfMatch(String ifMatch) {
         this.ifMatch = ifMatch;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -187,9 +184,9 @@ public class UpdateDistributionRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getDistributionConfig() != null) sb.append("DistributionConfig: " + getDistributionConfig() + ",");    	
-        if (getId() != null) sb.append("Id: " + getId() + ",");    	
+        sb.append("{");
+        if (getDistributionConfig() != null) sb.append("DistributionConfig: " + getDistributionConfig() + ",");
+        if (getId() != null) sb.append("Id: " + getId() + ",");
         if (getIfMatch() != null) sb.append("IfMatch: " + getIfMatch() );
         sb.append("}");
         return sb.toString();

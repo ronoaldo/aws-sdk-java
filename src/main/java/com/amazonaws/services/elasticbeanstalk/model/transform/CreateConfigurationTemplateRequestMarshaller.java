@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ public class CreateConfigurationTemplateRequestMarshaller implements Marshaller<
     public Request<CreateConfigurationTemplateRequest> marshall(CreateConfigurationTemplateRequest createConfigurationTemplateRequest) {
 
         if (createConfigurationTemplateRequest == null) {
-		    throw new AmazonClientException("Invalid argument passed to marshall(...)");
-		}
+            throw new AmazonClientException("Invalid argument passed to marshall(...)");
+        }
 
         Request<CreateConfigurationTemplateRequest> request = new DefaultRequest<CreateConfigurationTemplateRequest>(createConfigurationTemplateRequest, "AWSElasticBeanstalk");
         request.addParameter("Action", "CreateConfigurationTemplate");
@@ -84,7 +84,6 @@ public class CreateConfigurationTemplateRequestMarshaller implements Marshaller<
 
             optionSettingsListIndex++;
         }
-
 
         return request;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import java.io.Serializable;
  * attribute primary keys have one index value: a <code>HashKeyElement</code> .
  * A composite hash-and-range primary key contains two attribute values: a <code>HashKeyElement</code> and a <code>RangeKeyElement</code> .
  * </p>
+ * @deprecated This class is no longer supported by the latest service API.
  */
 @Deprecated
 public class KeySchema  implements Serializable  {

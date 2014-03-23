@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.elasticloadbalancing.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,51 +21,50 @@ import java.io.Serializable;
  * The out for the ApplySecurityGroupsToLoadBalancer action.
  * </p>
  */
-public class ApplySecurityGroupsToLoadBalancerResult  implements Serializable  {
+public class ApplySecurityGroupsToLoadBalancerResult implements Serializable {
 
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      */
-    private java.util.List<String> securityGroups;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroups;
 
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      *
-     * @return A list of security group IDs associated with your LoadBalancer.
+     * @return A list of security group IDs associated with your load balancer.
      */
     public java.util.List<String> getSecurityGroups() {
-        
         if (securityGroups == null) {
-            securityGroups = new java.util.ArrayList<String>();
+              securityGroups = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              securityGroups.setAutoConstruct(true);
         }
         return securityGroups;
     }
     
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      *
-     * @param securityGroups A list of security group IDs associated with your LoadBalancer.
+     * @param securityGroups A list of security group IDs associated with your load balancer.
      */
     public void setSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
             return;
         }
-
-        java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
         securityGroupsCopy.addAll(securityGroups);
         this.securityGroups = securityGroupsCopy;
     }
     
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param securityGroups A list of security group IDs associated with your LoadBalancer.
+     * @param securityGroups A list of security group IDs associated with your load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplySecurityGroupsToLoadBalancerResult withSecurityGroups(String... securityGroups) {
         if (getSecurityGroups() == null) setSecurityGroups(new java.util.ArrayList<String>(securityGroups.length));
@@ -75,27 +75,27 @@ public class ApplySecurityGroupsToLoadBalancerResult  implements Serializable  {
     }
     
     /**
-     * A list of security group IDs associated with your LoadBalancer.
+     * A list of security group IDs associated with your load balancer.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param securityGroups A list of security group IDs associated with your LoadBalancer.
+     * @param securityGroups A list of security group IDs associated with your load balancer.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ApplySecurityGroupsToLoadBalancerResult withSecurityGroups(java.util.Collection<String> securityGroups) {
         if (securityGroups == null) {
             this.securityGroups = null;
         } else {
-            java.util.List<String> securityGroupsCopy = new java.util.ArrayList<String>(securityGroups.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> securityGroupsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(securityGroups.size());
             securityGroupsCopy.addAll(securityGroups);
             this.securityGroups = securityGroupsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -107,7 +107,7 @@ public class ApplySecurityGroupsToLoadBalancerResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getSecurityGroups() != null) sb.append("SecurityGroups: " + getSecurityGroups() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,121 +13,241 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Instance Status Details
+ * <p>
+ * Describes the instance status.
+ * </p>
  */
-public class InstanceStatusDetails  implements Serializable  {
+public class InstanceStatusDetails implements Serializable {
 
+    /**
+     * The type of instance status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>reachability
+     */
     private String name;
 
+    /**
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>passed, failed, insufficient-data
+     */
     private String status;
 
+    /**
+     * The time when a status check failed. For an instance that was launched
+     * and impaired, this is the time when the instance was launched.
+     */
     private java.util.Date impairedSince;
 
     /**
-     * Returns the value of the Name property for this object.
+     * The type of instance status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>reachability
      *
-     * @return The value of the Name property for this object.
+     * @return The type of instance status.
+     *
+     * @see StatusName
      */
     public String getName() {
         return name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The type of instance status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>reachability
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The type of instance status.
+     *
+     * @see StatusName
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * Sets the value of the Name property for this object.
+     * The type of instance status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>reachability
      *
-     * @param name The new value for the Name property for this object.
+     * @param name The type of instance status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see StatusName
      */
     public InstanceStatusDetails withName(String name) {
         this.name = name;
         return this;
     }
-    
+
+    /**
+     * The type of instance status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>reachability
+     *
+     * @param name The type of instance status.
+     *
+     * @see StatusName
+     */
+    public void setName(StatusName name) {
+        this.name = name.toString();
+    }
     
     /**
-     * Returns the value of the Status property for this object.
+     * The type of instance status.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>reachability
      *
-     * @return The value of the Status property for this object.
+     * @param name The type of instance status.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see StatusName
+     */
+    public InstanceStatusDetails withName(StatusName name) {
+        this.name = name.toString();
+        return this;
+    }
+
+    /**
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>passed, failed, insufficient-data
+     *
+     * @return The status.
+     *
+     * @see StatusType
      */
     public String getStatus() {
         return status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>passed, failed, insufficient-data
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status.
+     *
+     * @see StatusType
      */
     public void setStatus(String status) {
         this.status = status;
     }
     
     /**
-     * Sets the value of the Status property for this object.
+     * The status.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>passed, failed, insufficient-data
      *
-     * @param status The new value for the Status property for this object.
+     * @param status The status.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
+     *
+     * @see StatusType
      */
     public InstanceStatusDetails withStatus(String status) {
         this.status = status;
         return this;
     }
-    
+
+    /**
+     * The status.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>passed, failed, insufficient-data
+     *
+     * @param status The status.
+     *
+     * @see StatusType
+     */
+    public void setStatus(StatusType status) {
+        this.status = status.toString();
+    }
     
     /**
-     * Returns the value of the ImpairedSince property for this object.
+     * The status.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>passed, failed, insufficient-data
      *
-     * @return The value of the ImpairedSince property for this object.
+     * @param status The status.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together.
+     *
+     * @see StatusType
+     */
+    public InstanceStatusDetails withStatus(StatusType status) {
+        this.status = status.toString();
+        return this;
+    }
+
+    /**
+     * The time when a status check failed. For an instance that was launched
+     * and impaired, this is the time when the instance was launched.
+     *
+     * @return The time when a status check failed. For an instance that was launched
+     *         and impaired, this is the time when the instance was launched.
      */
     public java.util.Date getImpairedSince() {
         return impairedSince;
     }
     
     /**
-     * Sets the value of the ImpairedSince property for this object.
+     * The time when a status check failed. For an instance that was launched
+     * and impaired, this is the time when the instance was launched.
      *
-     * @param impairedSince The new value for the ImpairedSince property for this object.
+     * @param impairedSince The time when a status check failed. For an instance that was launched
+     *         and impaired, this is the time when the instance was launched.
      */
     public void setImpairedSince(java.util.Date impairedSince) {
         this.impairedSince = impairedSince;
     }
     
     /**
-     * Sets the value of the ImpairedSince property for this object.
+     * The time when a status check failed. For an instance that was launched
+     * and impaired, this is the time when the instance was launched.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param impairedSince The new value for the ImpairedSince property for this object.
+     * @param impairedSince The time when a status check failed. For an instance that was launched
+     *         and impaired, this is the time when the instance was launched.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public InstanceStatusDetails withImpairedSince(java.util.Date impairedSince) {
         this.impairedSince = impairedSince;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -139,9 +259,9 @@ public class InstanceStatusDetails  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getName() != null) sb.append("Name: " + getName() + ",");    	
-        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");    	
+        sb.append("{");
+        if (getName() != null) sb.append("Name: " + getName() + ",");
+        if (getStatus() != null) sb.append("Status: " + getStatus() + ",");
         if (getImpairedSince() != null) sb.append("ImpairedSince: " + getImpairedSince() );
         sb.append("}");
         return sb.toString();

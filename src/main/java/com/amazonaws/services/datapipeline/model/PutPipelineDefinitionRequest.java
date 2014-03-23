@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,29 +13,37 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.datapipeline.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.datapipeline.DataPipeline#putPipelineDefinition(PutPipelineDefinitionRequest) PutPipelineDefinition operation}.
  * <p>
- * Adds tasks, schedules, and preconditions that control the behavior of the pipeline. You can use PutPipelineDefinition to populate a new pipeline or to
- * update an existing pipeline that has not yet been activated.
+ * Adds tasks, schedules, and preconditions that control the behavior of
+ * the pipeline. You can use PutPipelineDefinition to populate a new
+ * pipeline or to update an existing pipeline that has not yet been
+ * activated.
  * </p>
  * <p>
- * PutPipelineDefinition also validates the configuration as it adds it to the pipeline. Changes to the pipeline are saved unless one of the following
- * three validation errors exists in the pipeline. <ol> <li>An object is missing a name or identifier field.</li>
+ * PutPipelineDefinition also validates the configuration as it adds it
+ * to the pipeline. Changes to the pipeline are saved unless one of the
+ * following three validation errors exists in the pipeline. <ol> <li>An
+ * object is missing a name or identifier field.</li>
  * <li>A string or reference field is empty.</li>
- * <li>The number of objects in the pipeline exceeds the maximum allowed objects.</li>
+ * <li>The number of objects in the pipeline exceeds the maximum allowed
+ * objects.</li>
  * </ol>
  * </p>
  * <p>
- * Pipeline object definitions are passed to the PutPipelineDefinition action and returned by the GetPipelineDefinition action.
+ * Pipeline object definitions are passed to the PutPipelineDefinition
+ * action and returned by the GetPipelineDefinition action.
  * </p>
  *
  * @see com.amazonaws.services.datapipeline.DataPipeline#putPipelineDefinition(PutPipelineDefinitionRequest)
  */
-public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identifier of the pipeline to be configured.
@@ -50,7 +58,7 @@ public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
      * The objects that define the pipeline. These will overwrite the
      * existing pipeline definition.
      */
-    private java.util.List<PipelineObject> pipelineObjects;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjects;
 
     /**
      * The identifier of the pipeline to be configured.
@@ -90,14 +98,13 @@ public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
      * @param pipelineId The identifier of the pipeline to be configured.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionRequest withPipelineId(String pipelineId) {
         this.pipelineId = pipelineId;
         return this;
     }
-    
-    
+
     /**
      * The objects that define the pipeline. These will overwrite the
      * existing pipeline definition.
@@ -106,9 +113,9 @@ public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
      *         existing pipeline definition.
      */
     public java.util.List<PipelineObject> getPipelineObjects() {
-        
         if (pipelineObjects == null) {
-            pipelineObjects = new java.util.ArrayList<PipelineObject>();
+              pipelineObjects = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>();
+              pipelineObjects.setAutoConstruct(true);
         }
         return pipelineObjects;
     }
@@ -125,8 +132,7 @@ public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
             this.pipelineObjects = null;
             return;
         }
-
-        java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
         pipelineObjectsCopy.addAll(pipelineObjects);
         this.pipelineObjects = pipelineObjectsCopy;
     }
@@ -141,7 +147,7 @@ public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
      *         existing pipeline definition.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionRequest withPipelineObjects(PipelineObject... pipelineObjects) {
         if (getPipelineObjects() == null) setPipelineObjects(new java.util.ArrayList<PipelineObject>(pipelineObjects.length));
@@ -161,20 +167,20 @@ public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
      *         existing pipeline definition.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public PutPipelineDefinitionRequest withPipelineObjects(java.util.Collection<PipelineObject> pipelineObjects) {
         if (pipelineObjects == null) {
             this.pipelineObjects = null;
         } else {
-            java.util.List<PipelineObject> pipelineObjectsCopy = new java.util.ArrayList<PipelineObject>(pipelineObjects.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject> pipelineObjectsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<PipelineObject>(pipelineObjects.size());
             pipelineObjectsCopy.addAll(pipelineObjects);
             this.pipelineObjects = pipelineObjectsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -186,8 +192,8 @@ public class PutPipelineDefinitionRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");    	
+        sb.append("{");
+        if (getPipelineId() != null) sb.append("PipelineId: " + getPipelineId() + ",");
         if (getPipelineObjects() != null) sb.append("PipelineObjects: " + getPipelineObjects() );
         sb.append("}");
         return sb.toString();

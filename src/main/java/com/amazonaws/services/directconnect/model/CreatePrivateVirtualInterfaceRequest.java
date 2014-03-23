@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,23 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.directconnect.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.directconnect.AmazonDirectConnect#createPrivateVirtualInterface(CreatePrivateVirtualInterfaceRequest) CreatePrivateVirtualInterface operation}.
  * <p>
- * Creates a new private virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A private virtual interface
- * supports sending traffic to a single Virtual Private Cloud (VPC).
+ * Creates a new private virtual interface. A virtual interface is the
+ * VLAN that transports AWS Direct Connect traffic. A private virtual
+ * interface supports sending traffic to a single virtual private cloud
+ * (VPC).
  * </p>
  *
  * @see com.amazonaws.services.directconnect.AmazonDirectConnect#createPrivateVirtualInterface(CreatePrivateVirtualInterfaceRequest)
  */
-public class CreatePrivateVirtualInterfaceRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class CreatePrivateVirtualInterfaceRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
@@ -33,7 +37,7 @@ public class CreatePrivateVirtualInterfaceRequest extends AmazonWebServiceReques
     private String connectionId;
 
     /**
-     * Detailed information of the private virtual interface to be created.
+     * Detailed information for the private virtual interface to be created.
      * <p>Default: None
      */
     private NewPrivateVirtualInterface newPrivateVirtualInterface;
@@ -64,19 +68,18 @@ public class CreatePrivateVirtualInterfaceRequest extends AmazonWebServiceReques
      * @param connectionId ID of the connection. <p>Example: dxcon-fg5678gh <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePrivateVirtualInterfaceRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
     }
-    
-    
+
     /**
-     * Detailed information of the private virtual interface to be created.
+     * Detailed information for the private virtual interface to be created.
      * <p>Default: None
      *
-     * @return Detailed information of the private virtual interface to be created.
+     * @return Detailed information for the private virtual interface to be created.
      *         <p>Default: None
      */
     public NewPrivateVirtualInterface getNewPrivateVirtualInterface() {
@@ -84,10 +87,10 @@ public class CreatePrivateVirtualInterfaceRequest extends AmazonWebServiceReques
     }
     
     /**
-     * Detailed information of the private virtual interface to be created.
+     * Detailed information for the private virtual interface to be created.
      * <p>Default: None
      *
-     * @param newPrivateVirtualInterface Detailed information of the private virtual interface to be created.
+     * @param newPrivateVirtualInterface Detailed information for the private virtual interface to be created.
      *         <p>Default: None
      */
     public void setNewPrivateVirtualInterface(NewPrivateVirtualInterface newPrivateVirtualInterface) {
@@ -95,23 +98,22 @@ public class CreatePrivateVirtualInterfaceRequest extends AmazonWebServiceReques
     }
     
     /**
-     * Detailed information of the private virtual interface to be created.
+     * Detailed information for the private virtual interface to be created.
      * <p>Default: None
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param newPrivateVirtualInterface Detailed information of the private virtual interface to be created.
+     * @param newPrivateVirtualInterface Detailed information for the private virtual interface to be created.
      *         <p>Default: None
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public CreatePrivateVirtualInterfaceRequest withNewPrivateVirtualInterface(NewPrivateVirtualInterface newPrivateVirtualInterface) {
         this.newPrivateVirtualInterface = newPrivateVirtualInterface;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -123,8 +125,8 @@ public class CreatePrivateVirtualInterfaceRequest extends AmazonWebServiceReques
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");    	
+        sb.append("{");
+        if (getConnectionId() != null) sb.append("ConnectionId: " + getConnectionId() + ",");
         if (getNewPrivateVirtualInterface() != null) sb.append("NewPrivateVirtualInterface: " + getNewPrivateVirtualInterface() );
         sb.append("}");
         return sb.toString();

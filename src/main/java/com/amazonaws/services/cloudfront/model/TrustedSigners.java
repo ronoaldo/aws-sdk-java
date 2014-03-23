@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,19 +13,27 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudfront.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require
- * signed URLs in requests for objects in the target origin that match the PathPattern for this cache behavior, specify true for Enabled, and specify the
- * applicable values for Quantity and Items. For more information, go to Using a Signed URL to Serve Private Content in the Amazon CloudFront Developer
- * Guide. If you don't want to require signed URLs in requests for objects that match PathPattern, specify false for Enabled and 0 for Quantity. Omit
- * Items. To add, change, or remove one or more trusted signers, change Enabled to true (if it's currently false), change Quantity as applicable, and
- * specify all of the trusted signers that you want to include in the updated distribution.
+ * A complex type that specifies the AWS accounts, if any, that you want
+ * to allow to create signed URLs for private content. If you want to
+ * require signed URLs in requests for objects in the target origin that
+ * match the PathPattern for this cache behavior, specify true for
+ * Enabled, and specify the applicable values for Quantity and Items. For
+ * more information, go to Using a Signed URL to Serve Private Content in
+ * the Amazon CloudFront Developer Guide. If you don't want to require
+ * signed URLs in requests for objects that match PathPattern, specify
+ * false for Enabled and 0 for Quantity. Omit Items. To add, change, or
+ * remove one or more trusted signers, change Enabled to true (if it's
+ * currently false), change Quantity as applicable, and specify all of
+ * the trusted signers that you want to include in the updated
+ * distribution.
  * </p>
  */
-public class TrustedSigners  implements Serializable  {
+public class TrustedSigners implements Serializable {
 
     /**
      * Specifies whether you want to require end users to use signed URLs to
@@ -42,7 +50,7 @@ public class TrustedSigners  implements Serializable  {
      * Optional: A complex type that contains trusted signers for this cache
      * behavior. If Quantity is 0, you can omit Items.
      */
-    private java.util.List<String> items;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> items;
 
     /**
      * Default constructor for a new TrustedSigners object.  Callers should use the
@@ -59,11 +67,9 @@ public class TrustedSigners  implements Serializable  {
      * for this cache behavior. If Quantity is 0, you can omit Items.
      */
     public TrustedSigners(java.util.List<String> items) {
-        this.items = items;
+        setItems(items);
     }
 
-    
-    
     /**
      * Specifies whether you want to require end users to use signed URLs to
      * access the files specified by PathPattern and TargetOriginId.
@@ -96,14 +102,13 @@ public class TrustedSigners  implements Serializable  {
      *         access the files specified by PathPattern and TargetOriginId.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedSigners withEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
-    
-    
+
     /**
      * Specifies whether you want to require end users to use signed URLs to
      * access the files specified by PathPattern and TargetOriginId.
@@ -114,7 +119,7 @@ public class TrustedSigners  implements Serializable  {
     public Boolean getEnabled() {
         return enabled;
     }
-    
+
     /**
      * The number of trusted signers for this cache behavior.
      *
@@ -141,14 +146,13 @@ public class TrustedSigners  implements Serializable  {
      * @param quantity The number of trusted signers for this cache behavior.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedSigners withQuantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
-    
-    
+
     /**
      * Optional: A complex type that contains trusted signers for this cache
      * behavior. If Quantity is 0, you can omit Items.
@@ -157,9 +161,9 @@ public class TrustedSigners  implements Serializable  {
      *         behavior. If Quantity is 0, you can omit Items.
      */
     public java.util.List<String> getItems() {
-        
         if (items == null) {
-            items = new java.util.ArrayList<String>();
+              items = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              items.setAutoConstruct(true);
         }
         return items;
     }
@@ -176,8 +180,7 @@ public class TrustedSigners  implements Serializable  {
             this.items = null;
             return;
         }
-
-        java.util.List<String> itemsCopy = new java.util.ArrayList<String>(items.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(items.size());
         itemsCopy.addAll(items);
         this.items = itemsCopy;
     }
@@ -192,7 +195,7 @@ public class TrustedSigners  implements Serializable  {
      *         behavior. If Quantity is 0, you can omit Items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedSigners withItems(String... items) {
         if (getItems() == null) setItems(new java.util.ArrayList<String>(items.length));
@@ -212,20 +215,20 @@ public class TrustedSigners  implements Serializable  {
      *         behavior. If Quantity is 0, you can omit Items.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedSigners withItems(java.util.Collection<String> items) {
         if (items == null) {
             this.items = null;
         } else {
-            java.util.List<String> itemsCopy = new java.util.ArrayList<String>(items.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> itemsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(items.size());
             itemsCopy.addAll(items);
             this.items = itemsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -237,9 +240,9 @@ public class TrustedSigners  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (isEnabled() != null) sb.append("Enabled: " + isEnabled() + ",");    	
-        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");    	
+        sb.append("{");
+        if (isEnabled() != null) sb.append("Enabled: " + isEnabled() + ",");
+        if (getQuantity() != null) sb.append("Quantity: " + getQuantity() + ",");
         if (getItems() != null) sb.append("Items: " + getItems() );
         sb.append("}");
         return sb.toString();

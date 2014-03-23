@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,23 +13,28 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.storagegateway.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.storagegateway.AWSStorageGateway#updateChapCredentials(UpdateChapCredentialsRequest) UpdateChapCredentials operation}.
  * <p>
- * This operation updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target. By default, a gateway does not
- * have CHAP enabled; however, for added security, you might use it.
+ * This operation updates the Challenge-Handshake Authentication Protocol
+ * (CHAP) credentials for a specified iSCSI target. By default, a gateway
+ * does not have CHAP enabled; however, for added security, you might use
+ * it.
  * </p>
  * <p>
- * <b>IMPORTANT:</b> When you update CHAP credentials, all existing connections on the target are closed and initiators must reconnect with the new
- * credentials.
+ * <b>IMPORTANT:</b> When you update CHAP credentials, all existing
+ * connections on the target are closed and initiators must reconnect
+ * with the new credentials.
  * </p>
  *
  * @see com.amazonaws.services.storagegateway.AWSStorageGateway#updateChapCredentials(UpdateChapCredentialsRequest)
  */
-public class UpdateChapCredentialsRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class UpdateChapCredentialsRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
@@ -115,14 +120,13 @@ public class UpdateChapCredentialsRequest extends AmazonWebServiceRequest  imple
      *         TargetARN for specified VolumeARN.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateChapCredentialsRequest withTargetARN(String targetARN) {
         this.targetARN = targetARN;
         return this;
     }
-    
-    
+
     /**
      * The secret key that the initiator (e.g. Windows client) must provide
      * to participate in mutual CHAP with the target.
@@ -164,14 +168,13 @@ public class UpdateChapCredentialsRequest extends AmazonWebServiceRequest  imple
      *         to participate in mutual CHAP with the target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateChapCredentialsRequest withSecretToAuthenticateInitiator(String secretToAuthenticateInitiator) {
         this.secretToAuthenticateInitiator = secretToAuthenticateInitiator;
         return this;
     }
-    
-    
+
     /**
      * The iSCSI initiator that connects to the target.
      * <p>
@@ -210,14 +213,13 @@ public class UpdateChapCredentialsRequest extends AmazonWebServiceRequest  imple
      * @param initiatorName The iSCSI initiator that connects to the target.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateChapCredentialsRequest withInitiatorName(String initiatorName) {
         this.initiatorName = initiatorName;
         return this;
     }
-    
-    
+
     /**
      * The secret key that the target must provide to participate in mutual
      * CHAP with the initiator (e.g. Windows client).
@@ -259,14 +261,13 @@ public class UpdateChapCredentialsRequest extends AmazonWebServiceRequest  imple
      *         CHAP with the initiator (e.g. Windows client).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public UpdateChapCredentialsRequest withSecretToAuthenticateTarget(String secretToAuthenticateTarget) {
         this.secretToAuthenticateTarget = secretToAuthenticateTarget;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -278,10 +279,10 @@ public class UpdateChapCredentialsRequest extends AmazonWebServiceRequest  imple
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");    	
-        if (getSecretToAuthenticateInitiator() != null) sb.append("SecretToAuthenticateInitiator: " + getSecretToAuthenticateInitiator() + ",");    	
-        if (getInitiatorName() != null) sb.append("InitiatorName: " + getInitiatorName() + ",");    	
+        sb.append("{");
+        if (getTargetARN() != null) sb.append("TargetARN: " + getTargetARN() + ",");
+        if (getSecretToAuthenticateInitiator() != null) sb.append("SecretToAuthenticateInitiator: " + getSecretToAuthenticateInitiator() + ",");
+        if (getInitiatorName() != null) sb.append("InitiatorName: " + getInitiatorName() + ",");
         if (getSecretToAuthenticateTarget() != null) sb.append("SecretToAuthenticateTarget: " + getSecretToAuthenticateTarget() );
         sb.append("}");
         return sb.toString();

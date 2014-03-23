@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,8 +13,10 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.cloudformation.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.cloudformation.AmazonCloudFormation#listStackResources(ListStackResourcesRequest) ListStackResources operation}.
@@ -22,16 +24,20 @@ import java.io.Serializable;
  * Returns descriptions of all resources of the specified stack.
  * </p>
  * <p>
- * For deleted stacks, ListStackResources returns resource information for up to 90 days after the stack has been deleted.
+ * For deleted stacks, ListStackResources returns resource information
+ * for up to 90 days after the stack has been deleted.
  * </p>
  *
  * @see com.amazonaws.services.cloudformation.AmazonCloudFormation#listStackResources(ListStackResourcesRequest)
  */
-public class ListStackResourcesRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class ListStackResourcesRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
-     * The name or the unique identifier associated with the stack.
-     * <p>Default: There is no default value.
+     * The name or the unique identifier associated with the stack, which are
+     * not always interchangeable: <ul> <li>Running stacks: You can specify
+     * either the stack's name or its unique stack ID.</li> <li>Deleted
+     * stacks: You must specify the unique stack ID.</li> </ul> <p>Default:
+     * There is no default value.
      */
     private String stackName;
 
@@ -45,45 +51,62 @@ public class ListStackResourcesRequest extends AmazonWebServiceRequest  implemen
     private String nextToken;
 
     /**
-     * The name or the unique identifier associated with the stack.
-     * <p>Default: There is no default value.
+     * The name or the unique identifier associated with the stack, which are
+     * not always interchangeable: <ul> <li>Running stacks: You can specify
+     * either the stack's name or its unique stack ID.</li> <li>Deleted
+     * stacks: You must specify the unique stack ID.</li> </ul> <p>Default:
+     * There is no default value.
      *
-     * @return The name or the unique identifier associated with the stack.
-     *         <p>Default: There is no default value.
+     * @return The name or the unique identifier associated with the stack, which are
+     *         not always interchangeable: <ul> <li>Running stacks: You can specify
+     *         either the stack's name or its unique stack ID.</li> <li>Deleted
+     *         stacks: You must specify the unique stack ID.</li> </ul> <p>Default:
+     *         There is no default value.
      */
     public String getStackName() {
         return stackName;
     }
     
     /**
-     * The name or the unique identifier associated with the stack.
-     * <p>Default: There is no default value.
+     * The name or the unique identifier associated with the stack, which are
+     * not always interchangeable: <ul> <li>Running stacks: You can specify
+     * either the stack's name or its unique stack ID.</li> <li>Deleted
+     * stacks: You must specify the unique stack ID.</li> </ul> <p>Default:
+     * There is no default value.
      *
-     * @param stackName The name or the unique identifier associated with the stack.
-     *         <p>Default: There is no default value.
+     * @param stackName The name or the unique identifier associated with the stack, which are
+     *         not always interchangeable: <ul> <li>Running stacks: You can specify
+     *         either the stack's name or its unique stack ID.</li> <li>Deleted
+     *         stacks: You must specify the unique stack ID.</li> </ul> <p>Default:
+     *         There is no default value.
      */
     public void setStackName(String stackName) {
         this.stackName = stackName;
     }
     
     /**
-     * The name or the unique identifier associated with the stack.
-     * <p>Default: There is no default value.
+     * The name or the unique identifier associated with the stack, which are
+     * not always interchangeable: <ul> <li>Running stacks: You can specify
+     * either the stack's name or its unique stack ID.</li> <li>Deleted
+     * stacks: You must specify the unique stack ID.</li> </ul> <p>Default:
+     * There is no default value.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param stackName The name or the unique identifier associated with the stack.
-     *         <p>Default: There is no default value.
+     * @param stackName The name or the unique identifier associated with the stack, which are
+     *         not always interchangeable: <ul> <li>Running stacks: You can specify
+     *         either the stack's name or its unique stack ID.</li> <li>Deleted
+     *         stacks: You must specify the unique stack ID.</li> </ul> <p>Default:
+     *         There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStackResourcesRequest withStackName(String stackName) {
         this.stackName = stackName;
         return this;
     }
-    
-    
+
     /**
      * String that identifies the start of the next list of stack resource
      * summaries, if there is one. <p>Default: There is no default value.
@@ -125,14 +148,13 @@ public class ListStackResourcesRequest extends AmazonWebServiceRequest  implemen
      *         summaries, if there is one. <p>Default: There is no default value.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public ListStackResourcesRequest withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -144,8 +166,8 @@ public class ListStackResourcesRequest extends AmazonWebServiceRequest  implemen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");    	
+        sb.append("{");
+        if (getStackName() != null) sb.append("StackName: " + getStackName() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();

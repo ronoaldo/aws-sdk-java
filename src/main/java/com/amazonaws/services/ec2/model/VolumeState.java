@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ public enum VolumeState {
     Available("available"),
     InUse("in-use"),
     Deleting("deleting"),
+    Deleted("deleted"),
     Error("error");
 
     private String value;
@@ -55,6 +56,8 @@ public enum VolumeState {
             return VolumeState.InUse;
         } else if ("deleting".equals(value)) {
             return VolumeState.Deleting;
+        } else if ("deleted".equals(value)) {
+            return VolumeState.Deleted;
         } else if ("error".equals(value)) {
             return VolumeState.Error;
         } else {

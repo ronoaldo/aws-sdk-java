@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,68 +13,62 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.support.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * JSON-formatted child object of TrustedAdvisorCheckResult objects.
+ * The container for summary information that relates to the category of
+ * the Trusted Advisor check.
  * </p>
  */
-public class TrustedAdvisorCategorySpecificSummary  implements Serializable  {
+public class TrustedAdvisorCategorySpecificSummary implements Serializable {
 
     /**
-     * Corresponds to the <i>Cost Optimizing</i> tab on the AWS Support
-     * Center Trusted Advisor page. This field is only available to checks in
-     * the Cost Optimizing category.
+     * The summary information about cost savings for a Trusted Advisor check
+     * that is in the Cost Optimizing category.
      */
     private TrustedAdvisorCostOptimizingSummary costOptimizing;
 
     /**
-     * Corresponds to the <i>Cost Optimizing</i> tab on the AWS Support
-     * Center Trusted Advisor page. This field is only available to checks in
-     * the Cost Optimizing category.
+     * The summary information about cost savings for a Trusted Advisor check
+     * that is in the Cost Optimizing category.
      *
-     * @return Corresponds to the <i>Cost Optimizing</i> tab on the AWS Support
-     *         Center Trusted Advisor page. This field is only available to checks in
-     *         the Cost Optimizing category.
+     * @return The summary information about cost savings for a Trusted Advisor check
+     *         that is in the Cost Optimizing category.
      */
     public TrustedAdvisorCostOptimizingSummary getCostOptimizing() {
         return costOptimizing;
     }
     
     /**
-     * Corresponds to the <i>Cost Optimizing</i> tab on the AWS Support
-     * Center Trusted Advisor page. This field is only available to checks in
-     * the Cost Optimizing category.
+     * The summary information about cost savings for a Trusted Advisor check
+     * that is in the Cost Optimizing category.
      *
-     * @param costOptimizing Corresponds to the <i>Cost Optimizing</i> tab on the AWS Support
-     *         Center Trusted Advisor page. This field is only available to checks in
-     *         the Cost Optimizing category.
+     * @param costOptimizing The summary information about cost savings for a Trusted Advisor check
+     *         that is in the Cost Optimizing category.
      */
     public void setCostOptimizing(TrustedAdvisorCostOptimizingSummary costOptimizing) {
         this.costOptimizing = costOptimizing;
     }
     
     /**
-     * Corresponds to the <i>Cost Optimizing</i> tab on the AWS Support
-     * Center Trusted Advisor page. This field is only available to checks in
-     * the Cost Optimizing category.
+     * The summary information about cost savings for a Trusted Advisor check
+     * that is in the Cost Optimizing category.
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param costOptimizing Corresponds to the <i>Cost Optimizing</i> tab on the AWS Support
-     *         Center Trusted Advisor page. This field is only available to checks in
-     *         the Cost Optimizing category.
+     * @param costOptimizing The summary information about cost savings for a Trusted Advisor check
+     *         that is in the Cost Optimizing category.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public TrustedAdvisorCategorySpecificSummary withCostOptimizing(TrustedAdvisorCostOptimizingSummary costOptimizing) {
         this.costOptimizing = costOptimizing;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -86,7 +80,7 @@ public class TrustedAdvisorCategorySpecificSummary  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getCostOptimizing() != null) sb.append("CostOptimizing: " + getCostOptimizing() );
         sb.append("}");
         return sb.toString();

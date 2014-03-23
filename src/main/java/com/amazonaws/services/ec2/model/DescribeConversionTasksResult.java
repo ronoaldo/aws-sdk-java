@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,53 +13,56 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.ec2.model;
+
 import java.io.Serializable;
 
 /**
- * Describe Conversion Tasks Result
+ * 
  */
-public class DescribeConversionTasksResult  implements Serializable  {
-
-    private java.util.List<ConversionTask> conversionTasks;
+public class DescribeConversionTasksResult implements Serializable {
 
     /**
-     * Returns the value of the ConversionTasks property for this object.
+     * 
+     */
+    private com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask> conversionTasks;
+
+    /**
+     * 
      *
-     * @return The value of the ConversionTasks property for this object.
+     * @return 
      */
     public java.util.List<ConversionTask> getConversionTasks() {
-        
         if (conversionTasks == null) {
-            conversionTasks = new java.util.ArrayList<ConversionTask>();
+              conversionTasks = new com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask>();
+              conversionTasks.setAutoConstruct(true);
         }
         return conversionTasks;
     }
     
     /**
-     * Sets the value of the ConversionTasks property for this object.
+     * 
      *
-     * @param conversionTasks The new value for the ConversionTasks property for this object.
+     * @param conversionTasks 
      */
     public void setConversionTasks(java.util.Collection<ConversionTask> conversionTasks) {
         if (conversionTasks == null) {
             this.conversionTasks = null;
             return;
         }
-
-        java.util.List<ConversionTask> conversionTasksCopy = new java.util.ArrayList<ConversionTask>(conversionTasks.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask> conversionTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask>(conversionTasks.size());
         conversionTasksCopy.addAll(conversionTasks);
         this.conversionTasks = conversionTasksCopy;
     }
     
     /**
-     * Sets the value of the ConversionTasks property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param conversionTasks The new value for the ConversionTasks property for this object.
+     * @param conversionTasks 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksResult withConversionTasks(ConversionTask... conversionTasks) {
         if (getConversionTasks() == null) setConversionTasks(new java.util.ArrayList<ConversionTask>(conversionTasks.length));
@@ -70,27 +73,27 @@ public class DescribeConversionTasksResult  implements Serializable  {
     }
     
     /**
-     * Sets the value of the ConversionTasks property for this object.
+     * 
      * <p>
      * Returns a reference to this object so that method calls can be chained together.
      *
-     * @param conversionTasks The new value for the ConversionTasks property for this object.
+     * @param conversionTasks 
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeConversionTasksResult withConversionTasks(java.util.Collection<ConversionTask> conversionTasks) {
         if (conversionTasks == null) {
             this.conversionTasks = null;
         } else {
-            java.util.List<ConversionTask> conversionTasksCopy = new java.util.ArrayList<ConversionTask>(conversionTasks.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask> conversionTasksCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<ConversionTask>(conversionTasks.size());
             conversionTasksCopy.addAll(conversionTasks);
             this.conversionTasks = conversionTasksCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -102,7 +105,7 @@ public class DescribeConversionTasksResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
+        sb.append("{");
         if (getConversionTasks() != null) sb.append("ConversionTasks: " + getConversionTasks() );
         sb.append("}");
         return sb.toString();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleworkflow.model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * Provides details of the <code>StartChildWorkflowExecutionInitiated</code> event.
+ * Provides details of the
+ * <code>StartChildWorkflowExecutionInitiated</code> event.
  * </p>
  */
-public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Serializable  {
+public class StartChildWorkflowExecutionInitiatedEventAttributes implements Serializable {
 
     /**
      * The <code>workflowId</code> of the child workflow execution.
@@ -116,7 +118,7 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      * <b>Constraints:</b><br/>
      * <b>Length: </b>0 - 5<br/>
      */
-    private java.util.List<String> tagList;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<String> tagList;
 
     /**
      * The <code>workflowId</code> of the child workflow execution.
@@ -153,14 +155,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      * @param workflowId The <code>workflowId</code> of the child workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
-    
-    
+
     /**
      * The type of the child workflow execution.
      *
@@ -187,14 +188,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      * @param workflowType The type of the child workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withWorkflowType(WorkflowType workflowType) {
         this.workflowType = workflowType;
         return this;
     }
-    
-    
+
     /**
      * Optional data attached to the event that can be used by the decider in
      * subsequent decision tasks. This data is not sent to the activity.
@@ -236,14 +236,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      *         subsequent decision tasks. This data is not sent to the activity.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withControl(String control) {
         this.control = control;
         return this;
     }
-    
-    
+
     /**
      * The inputs provided to the child workflow execution (if any).
      * <p>
@@ -279,14 +278,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      * @param input The inputs provided to the child workflow execution (if any).
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withInput(String input) {
         this.input = input;
         return this;
     }
-    
-    
+
     /**
      * The maximum duration for the child workflow execution. If the workflow
      * execution is not closed within this duration, it will be timed out and
@@ -352,14 +350,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      *         unlimited duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withExecutionStartToCloseTimeout(String executionStartToCloseTimeout) {
         this.executionStartToCloseTimeout = executionStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The name of the task list used for the decision tasks of the child
      * workflow execution.
@@ -392,14 +389,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      *         workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withTaskList(TaskList taskList) {
         this.taskList = taskList;
         return this;
     }
-    
-    
+
     /**
      * The id of the <code>DecisionTaskCompleted</code> event corresponding
      * to the decision task that resulted in the
@@ -450,14 +446,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      *         diagnosing problems by tracing back the cause of events.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withDecisionTaskCompletedEventId(Long decisionTaskCompletedEventId) {
         this.decisionTaskCompletedEventId = decisionTaskCompletedEventId;
         return this;
     }
-    
-    
+
     /**
      * The policy to use for the child workflow executions if this execution
      * gets terminated by explicitly calling the
@@ -557,7 +552,7 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      *         continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -565,8 +560,7 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
         this.childPolicy = childPolicy;
         return this;
     }
-    
-    
+
     /**
      * The policy to use for the child workflow executions if this execution
      * gets terminated by explicitly calling the
@@ -632,7 +626,7 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      *         continue to run.</li> </ul>
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      *
      * @see ChildPolicy
      */
@@ -640,7 +634,7 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
         this.childPolicy = childPolicy.toString();
         return this;
     }
-    
+
     /**
      * The maximum duration allowed for the decision tasks for this workflow
      * execution. <p>The valid values are integers greater than or equal to
@@ -700,14 +694,13 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      *         duration.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withTaskStartToCloseTimeout(String taskStartToCloseTimeout) {
         this.taskStartToCloseTimeout = taskStartToCloseTimeout;
         return this;
     }
-    
-    
+
     /**
      * The list of tags to associated with the child workflow execution.
      * <p>
@@ -717,9 +710,9 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      * @return The list of tags to associated with the child workflow execution.
      */
     public java.util.List<String> getTagList() {
-        
         if (tagList == null) {
-            tagList = new java.util.ArrayList<String>();
+              tagList = new com.amazonaws.internal.ListWithAutoConstructFlag<String>();
+              tagList.setAutoConstruct(true);
         }
         return tagList;
     }
@@ -737,8 +730,7 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
             this.tagList = null;
             return;
         }
-
-        java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
         tagListCopy.addAll(tagList);
         this.tagList = tagListCopy;
     }
@@ -754,7 +746,7 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      * @param tagList The list of tags to associated with the child workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withTagList(String... tagList) {
         if (getTagList() == null) setTagList(new java.util.ArrayList<String>(tagList.length));
@@ -775,20 +767,20 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
      * @param tagList The list of tags to associated with the child workflow execution.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public StartChildWorkflowExecutionInitiatedEventAttributes withTagList(java.util.Collection<String> tagList) {
         if (tagList == null) {
             this.tagList = null;
         } else {
-            java.util.List<String> tagListCopy = new java.util.ArrayList<String>(tagList.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<String> tagListCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<String>(tagList.size());
             tagListCopy.addAll(tagList);
             this.tagList = tagListCopy;
         }
 
         return this;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -800,16 +792,16 @@ public class StartChildWorkflowExecutionInitiatedEventAttributes  implements Ser
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");    	
-        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");    	
-        if (getControl() != null) sb.append("Control: " + getControl() + ",");    	
-        if (getInput() != null) sb.append("Input: " + getInput() + ",");    	
-        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");    	
-        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");    	
-        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");    	
-        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");    	
-        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");    	
+        sb.append("{");
+        if (getWorkflowId() != null) sb.append("WorkflowId: " + getWorkflowId() + ",");
+        if (getWorkflowType() != null) sb.append("WorkflowType: " + getWorkflowType() + ",");
+        if (getControl() != null) sb.append("Control: " + getControl() + ",");
+        if (getInput() != null) sb.append("Input: " + getInput() + ",");
+        if (getExecutionStartToCloseTimeout() != null) sb.append("ExecutionStartToCloseTimeout: " + getExecutionStartToCloseTimeout() + ",");
+        if (getTaskList() != null) sb.append("TaskList: " + getTaskList() + ",");
+        if (getDecisionTaskCompletedEventId() != null) sb.append("DecisionTaskCompletedEventId: " + getDecisionTaskCompletedEventId() + ",");
+        if (getChildPolicy() != null) sb.append("ChildPolicy: " + getChildPolicy() + ",");
+        if (getTaskStartToCloseTimeout() != null) sb.append("TaskStartToCloseTimeout: " + getTaskStartToCloseTimeout() + ",");
         if (getTagList() != null) sb.append("TagList: " + getTagList() );
         sb.append("}");
         return sb.toString();

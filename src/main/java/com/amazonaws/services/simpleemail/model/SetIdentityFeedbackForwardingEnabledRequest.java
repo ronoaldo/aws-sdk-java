@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,20 +13,31 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.simpleemail.model;
-import com.amazonaws.AmazonWebServiceRequest;
+
 import java.io.Serializable;
+
+import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * Container for the parameters to the {@link com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityFeedbackForwardingEnabled(SetIdentityFeedbackForwardingEnabledRequest) SetIdentityFeedbackForwardingEnabled operation}.
  * <p>
- * Given an identity (email address or domain), enables or disables whether Amazon SES forwards feedback notifications as email. Feedback forwarding may
- * only be disabled when both complaint and bounce topics are set. For more information about feedback notification, see the <a
- * href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide"> Amazon SES Developer Guide </a> .
+ * Given an identity (email address or domain), enables or disables
+ * whether Amazon SES forwards feedback notifications as email. Feedback
+ * forwarding may only be disabled when both complaint and bounce topics
+ * are set.
+ * </p>
+ * <p>
+ * This action is throttled at one request per second.
+ * </p>
+ * <p>
+ * For more information about feedback notification, see the
+ * <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/bounce-complaint-notifications.html"> Amazon SES Developer Guide </a>
+ * .
  * </p>
  *
  * @see com.amazonaws.services.simpleemail.AmazonSimpleEmailService#setIdentityFeedbackForwardingEnabled(SetIdentityFeedbackForwardingEnabledRequest)
  */
-public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServiceRequest  implements Serializable  {
+public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServiceRequest implements Serializable {
 
     /**
      * The identity for which to set feedback notification forwarding.
@@ -77,14 +88,13 @@ public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServic
      *         Examples: <code>user@example.com</code>, <code>example.com</code>.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityFeedbackForwardingEnabledRequest withIdentity(String identity) {
         this.identity = identity;
         return this;
     }
-    
-    
+
     /**
      * Sets whether Amazon SES will forward feedback notifications as email.
      * <code>true</code> specifies that Amazon SES will forward feedback
@@ -147,14 +157,13 @@ public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServic
      *         <code>Bounce</code> and <code>Complaint</code> topic types.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public SetIdentityFeedbackForwardingEnabledRequest withForwardingEnabled(Boolean forwardingEnabled) {
         this.forwardingEnabled = forwardingEnabled;
         return this;
     }
-    
-    
+
     /**
      * Sets whether Amazon SES will forward feedback notifications as email.
      * <code>true</code> specifies that Amazon SES will forward feedback
@@ -175,7 +184,7 @@ public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServic
     public Boolean getForwardingEnabled() {
         return forwardingEnabled;
     }
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -187,8 +196,8 @@ public class SetIdentityFeedbackForwardingEnabledRequest extends AmazonWebServic
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");    	
+        sb.append("{");
+        if (getIdentity() != null) sb.append("Identity: " + getIdentity() + ",");
         if (isForwardingEnabled() != null) sb.append("ForwardingEnabled: " + isForwardingEnabled() );
         sb.append("}");
         return sb.toString();

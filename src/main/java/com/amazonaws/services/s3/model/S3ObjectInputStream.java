@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2013 Amazon Technologies, Inc.
+ * Copyright 2012-2014 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
  */
 package com.amazonaws.services.s3.model;
 
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.SocketException;
@@ -23,19 +22,51 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.conn.EofSensorInputStream;
 
+import com.amazonaws.internal.MetricAware;
+import com.amazonaws.internal.SdkFilterInputStream;
+import com.amazonaws.metrics.AwsSdkMetrics;
+import com.amazonaws.metrics.MetricFilterInputStream;
+import com.amazonaws.services.s3.metrics.S3ServiceMetric;
+
 /**
  * Input stream representing the content of an {@link S3Object}. In addition to
  * the methods supplied by the {@link InputStream} class,
  * {@link S3ObjectInputStream} supplies the abort() method, which will terminate
  * an HTTP connection to the S3 object.
  */
-public class S3ObjectInputStream extends FilterInputStream {
+public class S3ObjectInputStream extends SdkFilterInputStream {
 
     private final HttpRequestBase httpRequest;
 
     public S3ObjectInputStream(InputStream in, HttpRequestBase httpRequest) {
-        super(in);
+        this(in, httpRequest, wrapWithByteCounting(in));
+    }
+
+    public S3ObjectInputStream(
+            InputStream in,
+            HttpRequestBase httpRequest,
+            boolean collectMetrics) {
+
+        super(collectMetrics
+                ? new MetricFilterInputStream(S3ServiceMetric.S3DownloadThroughput, in)
+                : in);
+
         this.httpRequest = httpRequest;
+    }
+
+    /**
+     * Returns true if we should wrap the given input stream with a byte
+     * counting wrapper; false otherwise.
+     */
+    private static boolean wrapWithByteCounting(InputStream in) {
+        if (!AwsSdkMetrics.isMetricsEnabled())
+            return false;   // metrics is disabled
+        if (in instanceof MetricAware) {
+            MetricAware aware = (MetricAware)in;
+            // wrap only if not already wrapped in one of it's inner chain of input stream
+            return !aware.isMetricActivated();
+        }
+        return true; // this is a raw input stream so metric wrapping is necessary
     }
 
     /**
@@ -50,13 +81,13 @@ public class S3ObjectInputStream extends FilterInputStream {
      * to clients to decide when to take the performance hit implicit in not
      * reusing an http connection in order to not read unnecessary information
      * from S3.
-     * 
+     *
      * @see EofSensorInputStream
      */
     public void abort() throws IOException {
         getHttpRequest().abort();
         try {
-            close();            
+            close();
         } catch (SocketException e) {
             // expected from some implementations because the stream is closed
         }

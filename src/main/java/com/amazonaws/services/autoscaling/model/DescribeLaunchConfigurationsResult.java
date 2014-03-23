@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2014 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 package com.amazonaws.services.autoscaling.model;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ import java.io.Serializable;
  * The <code>LaunchConfigurationsType</code> data type.
  * </p>
  */
-public class DescribeLaunchConfigurationsResult  implements Serializable  {
+public class DescribeLaunchConfigurationsResult implements Serializable {
 
     /**
      * A list of launch configurations.
      */
-    private java.util.List<LaunchConfiguration> launchConfigurations;
+    private com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration> launchConfigurations;
 
     /**
      * A string that marks the start of the next batch of returned results.
@@ -41,9 +42,9 @@ public class DescribeLaunchConfigurationsResult  implements Serializable  {
      * @return A list of launch configurations.
      */
     public java.util.List<LaunchConfiguration> getLaunchConfigurations() {
-        
         if (launchConfigurations == null) {
-            launchConfigurations = new java.util.ArrayList<LaunchConfiguration>();
+              launchConfigurations = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration>();
+              launchConfigurations.setAutoConstruct(true);
         }
         return launchConfigurations;
     }
@@ -58,8 +59,7 @@ public class DescribeLaunchConfigurationsResult  implements Serializable  {
             this.launchConfigurations = null;
             return;
         }
-
-        java.util.List<LaunchConfiguration> launchConfigurationsCopy = new java.util.ArrayList<LaunchConfiguration>(launchConfigurations.size());
+        com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration> launchConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration>(launchConfigurations.size());
         launchConfigurationsCopy.addAll(launchConfigurations);
         this.launchConfigurations = launchConfigurationsCopy;
     }
@@ -72,7 +72,7 @@ public class DescribeLaunchConfigurationsResult  implements Serializable  {
      * @param launchConfigurations A list of launch configurations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLaunchConfigurationsResult withLaunchConfigurations(LaunchConfiguration... launchConfigurations) {
         if (getLaunchConfigurations() == null) setLaunchConfigurations(new java.util.ArrayList<LaunchConfiguration>(launchConfigurations.length));
@@ -90,20 +90,20 @@ public class DescribeLaunchConfigurationsResult  implements Serializable  {
      * @param launchConfigurations A list of launch configurations.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLaunchConfigurationsResult withLaunchConfigurations(java.util.Collection<LaunchConfiguration> launchConfigurations) {
         if (launchConfigurations == null) {
             this.launchConfigurations = null;
         } else {
-            java.util.List<LaunchConfiguration> launchConfigurationsCopy = new java.util.ArrayList<LaunchConfiguration>(launchConfigurations.size());
+            com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration> launchConfigurationsCopy = new com.amazonaws.internal.ListWithAutoConstructFlag<LaunchConfiguration>(launchConfigurations.size());
             launchConfigurationsCopy.addAll(launchConfigurations);
             this.launchConfigurations = launchConfigurationsCopy;
         }
 
         return this;
     }
-    
+
     /**
      * A string that marks the start of the next batch of returned results.
      * <p>
@@ -139,14 +139,13 @@ public class DescribeLaunchConfigurationsResult  implements Serializable  {
      * @param nextToken A string that marks the start of the next batch of returned results.
      *
      * @return A reference to this updated object so that method calls can be chained 
-     *         together. 
+     *         together.
      */
     public DescribeLaunchConfigurationsResult withNextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
-    
-    
+
     /**
      * Returns a string representation of this object; useful for testing and
      * debugging.
@@ -158,8 +157,8 @@ public class DescribeLaunchConfigurationsResult  implements Serializable  {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{");    	
-        if (getLaunchConfigurations() != null) sb.append("LaunchConfigurations: " + getLaunchConfigurations() + ",");    	
+        sb.append("{");
+        if (getLaunchConfigurations() != null) sb.append("LaunchConfigurations: " + getLaunchConfigurations() + ",");
         if (getNextToken() != null) sb.append("NextToken: " + getNextToken() );
         sb.append("}");
         return sb.toString();
